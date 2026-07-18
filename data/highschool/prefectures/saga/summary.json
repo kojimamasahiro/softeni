@@ -37,6 +37,17 @@
     "teamId": "sagakiyokazu",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls"
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
     "result": "ベスト8",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -52,6 +63,50 @@
     "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2025,
+    "gender": "girls"
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
     "gender": "girls"
   },
   {
@@ -114,10 +169,32 @@
     "teamId": "ureshino",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2022,
     "gender": "boys"
   },
   {
@@ -140,6 +217,39 @@
     "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
     "gender": "boys"
   },
   {
@@ -152,7 +262,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["諸岡_雄心_唐津工_佐賀県", "橋本_政都_唐津工_佐賀県"]
+    "playerIds": [
+      "諸岡_雄心_唐津工_佐賀県",
+      "橋本_政都_唐津工_佐賀県"
+    ]
   },
   {
     "team": "唐津西",
@@ -164,7 +277,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["草場_悠太_唐津西_佐賀県", "中村_玲唯_唐津西_佐賀県"]
+    "playerIds": [
+      "草場_悠太_唐津西_佐賀県",
+      "中村_玲唯_唐津西_佐賀県"
+    ]
   },
   {
     "team": "鹿島",
@@ -176,7 +292,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["武富_美咲_鹿島_佐賀県", "山口_華音_鹿島_佐賀県"]
+    "playerIds": [
+      "武富_美咲_鹿島_佐賀県",
+      "山口_華音_鹿島_佐賀県"
+    ]
   },
   {
     "team": "小城",
@@ -188,7 +307,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["秀島_凛_小城_佐賀県", "児玉_有希_小城_佐賀県"]
+    "playerIds": [
+      "秀島_凛_小城_佐賀県",
+      "児玉_有希_小城_佐賀県"
+    ]
   },
   {
     "team": "小城",
@@ -200,7 +322,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["秀島_凛_小城_佐賀県", "藤瀬_愛梨_小城_佐賀県"]
+    "playerIds": [
+      "秀島_凛_小城_佐賀県",
+      "藤瀬_愛梨_小城_佐賀県"
+    ]
   },
   {
     "team": "小城",
@@ -212,7 +337,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["池田_晄_レグルス鹿島_佐賀県", "児玉_聖_小城_佐賀県"]
+    "playerIds": [
+      "池田_晄_レグルス鹿島_佐賀県",
+      "児玉_聖_小城_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -224,7 +352,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["上野_寧々_佐賀清和_高体連", "島内_美智子_佐賀清和_高体連"]
+    "playerIds": [
+      "上野_寧々_佐賀清和_高体連",
+      "島内_美智子_佐賀清和_高体連"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -236,7 +367,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "花木_夏々璃_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "花木_夏々璃_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -248,7 +382,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["島内_美智子_國學院大學_佐賀県", "田代_愛花_佐賀清和_佐賀県"]
+    "playerIds": [
+      "島内_美智子_國學院大學_佐賀県",
+      "田代_愛花_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -260,7 +397,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["岡本_ないる_佐賀清和_佐賀県", "原武_聖_佐賀清和_佐賀県"]
+    "playerIds": [
+      "岡本_ないる_佐賀清和_佐賀県",
+      "原武_聖_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -272,7 +412,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["田代_花鈴_佐賀清和_佐賀県", "橋本_きら_佐賀清和_佐賀県"]
+    "playerIds": [
+      "田代_花鈴_佐賀清和_佐賀県",
+      "橋本_きら_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -284,7 +427,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["松本_結衣_佐賀清和_佐賀県", "峰松_真弓_佐賀清和_佐賀県"]
+    "playerIds": [
+      "松本_結衣_佐賀清和_佐賀県",
+      "峰松_真弓_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -296,7 +442,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["石井_春菜_佐賀清和_佐賀県", "峯_綺良莉_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_春菜_佐賀清和_佐賀県",
+      "峯_綺良莉_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -308,7 +457,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["内田_雪喜_佐賀清和_佐賀県", "林田_真奈_佐賀清和_佐賀県"]
+    "playerIds": [
+      "内田_雪喜_佐賀清和_佐賀県",
+      "林田_真奈_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -320,7 +472,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["上野_寧々_佐賀清和_佐賀県", "島内_美智子_佐賀清和_佐賀県"]
+    "playerIds": [
+      "上野_寧々_佐賀清和_佐賀県",
+      "島内_美智子_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -332,7 +487,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["西村_羽花_佐賀清和_佐賀県", "村中_智香_佐賀清和_佐賀県"]
+    "playerIds": [
+      "西村_羽花_佐賀清和_佐賀県",
+      "村中_智香_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -344,7 +502,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["森_彩乃_佐賀清和_佐賀県", "前川_心音_佐賀清和_佐賀県"]
+    "playerIds": [
+      "森_彩乃_佐賀清和_佐賀県",
+      "前川_心音_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -356,7 +517,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙瀬_結月_佐賀清和_佐賀県", "松本_なつき_佐賀清和_佐賀県"]
+    "playerIds": [
+      "髙瀬_結月_佐賀清和_佐賀県",
+      "松本_なつき_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -368,7 +532,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["花木_夏々璃_佐賀清和_佐賀県", "松本_なつき_佐賀清和_佐賀県"]
+    "playerIds": [
+      "花木_夏々璃_佐賀清和_佐賀県",
+      "松本_なつき_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -380,7 +547,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["内田_雪喜_佐賀清和_佐賀県", "三原_ひかり_佐賀清和_佐賀県"]
+    "playerIds": [
+      "内田_雪喜_佐賀清和_佐賀県",
+      "三原_ひかり_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -392,7 +562,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["石井_春菜_佐賀清和_佐賀県", "田代_愛花_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_春菜_佐賀清和_佐賀県",
+      "田代_愛花_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -404,7 +577,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["林田_真奈_佐賀清和_佐賀県", "松下_りょう_佐賀清和_佐賀県"]
+    "playerIds": [
+      "林田_真奈_佐賀清和_佐賀県",
+      "松下_りょう_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -416,7 +592,115 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["古川_結麻_佐賀清和_佐賀県", "百武_真央_佐賀清和_佐賀県"]
+    "playerIds": [
+      "古川_結麻_佐賀清和_佐賀県",
+      "百武_真央_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "髙橋_美直_佐賀清和_佐賀県",
+      "中島_玲妃子_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "髙市_絆_佐賀清和_佐賀県",
+      "橋本_ひまわり_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "山下_純鈴_佐賀清和_佐賀県",
+      "大塚_優奈_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "髙瀬_捺月_佐賀清和_佐賀県",
+      "髙瀬_結月_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "下牟田_彩希_佐賀清和_佐賀県",
+      "大鋸_舞依_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "諸岡_末采_佐賀清和_佐賀県",
+      "原田_渚_佐賀清和_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "城戸_結心_佐賀清和_佐賀県",
+      "古川_嬉帆_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -428,7 +712,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["上野_寧々_佐賀清和_佐賀県", "島内_美智子_佐賀清和_佐賀県"]
+    "playerIds": [
+      "上野_寧々_佐賀清和_佐賀県",
+      "島内_美智子_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -440,7 +727,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["峯_綺良莉_佐賀清和_佐賀県", "山田_彩乃_佐賀清和_佐賀県"]
+    "playerIds": [
+      "峯_綺良莉_佐賀清和_佐賀県",
+      "山田_彩乃_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -452,7 +742,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["木下_真晶_佐賀清和_佐賀県", "辻田_萌乃佳_佐賀清和_佐賀県"]
+    "playerIds": [
+      "木下_真晶_佐賀清和_佐賀県",
+      "辻田_萌乃佳_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -464,7 +757,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["石井_日菜子_佐賀清和_佐賀県", "石井_春菜_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_日菜子_佐賀清和_佐賀県",
+      "石井_春菜_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -476,7 +772,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["松本_結衣_佐賀清和_佐賀県", "林田_真奈_佐賀清和_佐賀県"]
+    "playerIds": [
+      "松本_結衣_佐賀清和_佐賀県",
+      "林田_真奈_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -488,7 +787,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["上野_寧々_佐賀清和_佐賀県", "島内_美智子_佐賀清和_佐賀県"]
+    "playerIds": [
+      "上野_寧々_佐賀清和_佐賀県",
+      "島内_美智子_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -500,7 +802,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["山田_枇知_佐賀工_佐賀県", "川添_康永_佐賀工_佐賀県"]
+    "playerIds": [
+      "山田_枇知_佐賀工_佐賀県",
+      "川添_康永_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -512,7 +817,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["姉川_勝哉_佐賀工_佐賀県", "横田_祥伍_佐賀工_佐賀県"]
+    "playerIds": [
+      "姉川_勝哉_佐賀工_佐賀県",
+      "横田_祥伍_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -524,7 +832,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["西_駿介_佐賀工_佐賀県", "石井_礼都_佐賀工_佐賀県"]
+    "playerIds": [
+      "西_駿介_佐賀工_佐賀県",
+      "石井_礼都_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -536,7 +847,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["山田_枇知_佐賀工_佐賀県", "内田_拓真_佐賀工_佐賀県"]
+    "playerIds": [
+      "山田_枇知_佐賀工_佐賀県",
+      "内田_拓真_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -548,7 +862,40 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["池上_英佑_佐賀工_佐賀県", "糸山_晃生_佐賀工_佐賀県"]
+    "playerIds": [
+      "池上_英佑_佐賀工_佐賀県",
+      "糸山_晃生_佐賀工_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀工",
+    "teamId": "sagakou",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "西_駿介_佐賀工_佐賀県",
+      "石井_礼都_佐賀工_佐賀県"
+    ]
+  },
+  {
+    "team": "佐賀工",
+    "teamId": "sagakou",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "川上_夏希_佐賀工_佐賀県",
+      "山口_凌輝_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -560,7 +907,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["姉川_勝哉_佐賀工_佐賀県", "港_昂史朗_佐賀工_佐賀県"]
+    "playerIds": [
+      "姉川_勝哉_佐賀工_佐賀県",
+      "港_昂史朗_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -572,7 +922,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["石井_大裕_佐賀工_佐賀県", "高崎_幸樹_佐賀工_佐賀県"]
+    "playerIds": [
+      "石井_大裕_佐賀工_佐賀県",
+      "高崎_幸樹_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -584,7 +937,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["西_駿介_佐賀工_佐賀県", "石井_礼都_佐賀工_佐賀県"]
+    "playerIds": [
+      "西_駿介_佐賀工_佐賀県",
+      "石井_礼都_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -596,7 +952,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["三ヶ島_稀莉斗_佐賀工_佐賀県", "松隈_勇太_佐賀工_佐賀県"]
+    "playerIds": [
+      "三ヶ島_稀莉斗_佐賀工_佐賀県",
+      "松隈_勇太_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -608,7 +967,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["山田_枇知_佐賀工_佐賀県", "内田_拓真_佐賀工_佐賀県"]
+    "playerIds": [
+      "山田_枇知_佐賀工_佐賀県",
+      "内田_拓真_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "佐賀工",
@@ -620,7 +982,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["西_駿介_佐賀工_佐賀県", "石井_礼都_佐賀工_佐賀県"]
+    "playerIds": [
+      "西_駿介_佐賀工_佐賀県",
+      "石井_礼都_佐賀工_佐賀県"
+    ]
   },
   {
     "team": "鳥栖商",
@@ -632,7 +997,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["村山_藍_鳥栖商_佐賀県", "大川_未夢_鳥栖商_佐賀県"]
+    "playerIds": [
+      "村山_藍_鳥栖商_佐賀県",
+      "大川_未夢_鳥栖商_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -644,7 +1012,10 @@
     "tournamentId": "world-championship-qualifier",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["村田_匠_TeamSSP_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "村田_匠_TeamSSP_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -656,7 +1027,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["杉原_澄_嬉野_高体連", "松本_唯郁_嬉野_高体連"]
+    "playerIds": [
+      "杉原_澄_嬉野_高体連",
+      "松本_唯郁_嬉野_高体連"
+    ]
   },
   {
     "team": "嬉野",
@@ -668,7 +1042,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "花木_夏々璃_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "花木_夏々璃_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -680,7 +1057,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中島_那菜_天理大学_日本学連", "阿辺_未羽_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_天理大学_日本学連",
+      "阿辺_未羽_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -692,7 +1072,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -704,7 +1087,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -716,7 +1102,10 @@
     "tournamentId": "zennihon-mixed",
     "year": 2026,
     "gender": "mixed",
-    "playerIds": ["松尾_航希_嬉野_日本連盟", "結城_和華_宮崎商業高校_日本連盟"]
+    "playerIds": [
+      "松尾_航希_嬉野_日本連盟",
+      "結城_和華_宮崎商業高校_日本連盟"
+    ]
   },
   {
     "team": "嬉野",
@@ -728,7 +1117,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中島_那菜_嬉野_佐賀県", "井手_夕月_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_嬉野_佐賀県",
+      "井手_夕月_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -740,7 +1132,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["井田_隼介_嬉野_佐賀県", "中島_繫人_嬉野_佐賀県"]
+    "playerIds": [
+      "井田_隼介_嬉野_佐賀県",
+      "中島_繫人_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -752,7 +1147,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -764,7 +1162,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["橋本_大翼_嬉野_佐賀県", "今村_柊斗_嬉野_佐賀県"]
+    "playerIds": [
+      "橋本_大翼_嬉野_佐賀県",
+      "今村_柊斗_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -776,7 +1177,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "中村_旭_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "中村_旭_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -788,7 +1192,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["待永_桃奈_嬉野_佐賀県", "吉田_姫菜_嬉野_佐賀県"]
+    "playerIds": [
+      "待永_桃奈_嬉野_佐賀県",
+      "吉田_姫菜_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -800,7 +1207,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["杉原_澄_嬉野_佐賀県", "松本_唯郁_嬉野_佐賀県"]
+    "playerIds": [
+      "杉原_澄_嬉野_佐賀県",
+      "松本_唯郁_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -812,7 +1222,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["田中_悠磨_嬉野_佐賀県", "小川_晃典_嬉野_佐賀県"]
+    "playerIds": [
+      "田中_悠磨_嬉野_佐賀県",
+      "小川_晃典_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -824,7 +1237,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県", "山口_柊_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県",
+      "山口_柊_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -836,7 +1252,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小山_純司_嬉野_佐賀県", "百田_辰児_嬉野_佐賀県"]
+    "playerIds": [
+      "小山_純司_嬉野_佐賀県",
+      "百田_辰児_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -848,7 +1267,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["仁戸田_遥斗_嬉野_佐賀県", "川浪_孝太郎_嬉野_佐賀県"]
+    "playerIds": [
+      "仁戸田_遥斗_嬉野_佐賀県",
+      "川浪_孝太郎_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -860,7 +1282,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["百田_虎児_嬉野_佐賀県", "上岩_結都_嬉野_佐賀県"]
+    "playerIds": [
+      "百田_虎児_嬉野_佐賀県",
+      "上岩_結都_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -872,7 +1297,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["木下_瑞姫_嬉野_佐賀県", "池田_朝花_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_瑞姫_嬉野_佐賀県",
+      "池田_朝花_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -884,7 +1312,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["阿辺_未羽_嬉野_佐賀県", "松本_唯郁_嬉野_佐賀県"]
+    "playerIds": [
+      "阿辺_未羽_嬉野_佐賀県",
+      "松本_唯郁_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -896,7 +1327,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "中村_旭_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "中村_旭_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -908,7 +1342,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["井田_隼介_嬉野_佐賀県", "山口_柊_嬉野_佐賀県"]
+    "playerIds": [
+      "井田_隼介_嬉野_佐賀県",
+      "山口_柊_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -920,7 +1357,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["吉原_健哉_嬉野_佐賀県", "上岩_結都_嬉野_佐賀県"]
+    "playerIds": [
+      "吉原_健哉_嬉野_佐賀県",
+      "上岩_結都_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -932,7 +1372,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -944,7 +1387,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["松尾_優希_嬉野_佐賀県", "山田_謙輔_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_優希_嬉野_佐賀県",
+      "山田_謙輔_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -956,7 +1402,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["小山_純司_嬉野_佐賀県", "小川_晃典_嬉野_佐賀県"]
+    "playerIds": [
+      "小山_純司_嬉野_佐賀県",
+      "小川_晃典_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -968,7 +1417,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県", "川浪_孝太郎_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県",
+      "川浪_孝太郎_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -980,7 +1432,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山上_珠花_嬉野_佐賀県", "中村_旭_嬉野_佐賀県"]
+    "playerIds": [
+      "山上_珠花_嬉野_佐賀県",
+      "中村_旭_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -992,7 +1447,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["木下_瑞姫_嬉野_佐賀県", "松本_唯郁_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_瑞姫_嬉野_佐賀県",
+      "松本_唯郁_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1004,7 +1462,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中島_那菜_嬉野_佐賀県", "石井_胡桃_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_嬉野_佐賀県",
+      "石井_胡桃_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1016,7 +1477,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["今村_柊斗_嬉野_佐賀県", "松尾_響介_嬉野_佐賀県"]
+    "playerIds": [
+      "今村_柊斗_嬉野_佐賀県",
+      "松尾_響介_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1028,7 +1492,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1040,7 +1507,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["松尾_優希_嬉野_佐賀県", "熊本_隆之介_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_優希_嬉野_佐賀県",
+      "熊本_隆之介_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1052,7 +1522,85 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["井田_隼介_嬉野_佐賀県", "中島_繫人_嬉野_佐賀県"]
+    "playerIds": [
+      "井田_隼介_嬉野_佐賀県",
+      "中島_繫人_嬉野_佐賀県"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "窪山_みなみ_嬉野_佐賀県",
+      "牧山_彩羽_嬉野_佐賀県"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "松浦_心誠_嬉野_佐賀県",
+      "小津和_翔_嬉野_佐賀県"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "百田_虎児_嬉野_佐賀県",
+      "百田_辰児_嬉野_佐賀県"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県",
+      "小川_晃典_嬉野_佐賀県"
+    ]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "大矢_昊叶_嬉野_佐賀県",
+      "小橋_康希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1064,7 +1612,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["髙田_圭吾_嬉野_佐賀県", "百田_鉄馬_嬉野_佐賀県"]
+    "playerIds": [
+      "髙田_圭吾_嬉野_佐賀県",
+      "百田_鉄馬_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1076,7 +1627,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["橋本_大翼_嬉野_佐賀県", "中島_繫人_嬉野_佐賀県"]
+    "playerIds": [
+      "橋本_大翼_嬉野_佐賀県",
+      "中島_繫人_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1088,7 +1642,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["小川_裕太郎_嬉野_佐賀県", "永石_優水_嬉野_佐賀県"]
+    "playerIds": [
+      "小川_裕太郎_嬉野_佐賀県",
+      "永石_優水_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1100,7 +1657,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["小森_琢真_嬉野_佐賀県", "百田_鉄馬_嬉野_佐賀県"]
+    "playerIds": [
+      "小森_琢真_嬉野_佐賀県",
+      "百田_鉄馬_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1112,7 +1672,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "中村_旭_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "中村_旭_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1124,7 +1687,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県", "山口_柊_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県",
+      "山口_柊_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1136,7 +1702,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県", "中村_旭_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県",
+      "中村_旭_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1148,7 +1717,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1160,7 +1732,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中島_那菜_嬉野_佐賀県", "石井_胡桃_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_嬉野_佐賀県",
+      "石井_胡桃_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1172,7 +1747,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1184,7 +1762,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["阿辺_未羽_嬉野_佐賀県", "杉原_澄_嬉野_佐賀県"]
+    "playerIds": [
+      "阿辺_未羽_嬉野_佐賀県",
+      "杉原_澄_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1196,7 +1777,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県", "小川_晃典_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県",
+      "小川_晃典_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1208,7 +1792,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["杉原_澄_嬉野_佐賀県", "松本_唯郁_嬉野_佐賀県"]
+    "playerIds": [
+      "杉原_澄_嬉野_佐賀県",
+      "松本_唯郁_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1220,7 +1807,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["野中_翔太_ルーテル学院_熊本県", "藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "野中_翔太_ルーテル学院_熊本県",
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   },
   {
     "team": "牛津",
@@ -1232,7 +1822,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["古賀_侑夏_牛津_佐賀県", "古賀_香音_牛津_佐賀県"]
+    "playerIds": [
+      "古賀_侑夏_牛津_佐賀県",
+      "古賀_香音_牛津_佐賀県"
+    ]
   },
   {
     "team": "小城",
@@ -1244,7 +1837,9 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["森_旺亮_小城_佐賀県"]
+    "playerIds": [
+      "森_旺亮_小城_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -1256,7 +1851,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["諸岡_末采_佐賀清和_佐賀県"]
+    "playerIds": [
+      "諸岡_末采_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -1268,7 +1865,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙瀬_結月_佐賀清和_佐賀県"]
+    "playerIds": [
+      "髙瀬_結月_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -1280,7 +1879,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["髙瀬_捺月_佐賀清和_佐賀県"]
+    "playerIds": [
+      "髙瀬_捺月_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -1292,7 +1893,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["田代_愛花_佐賀清和_佐賀県"]
+    "playerIds": [
+      "田代_愛花_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "佐賀清和",
@@ -1304,7 +1907,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["石井_春菜_佐賀清和_佐賀県"]
+    "playerIds": [
+      "石井_春菜_佐賀清和_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1316,7 +1921,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["山口_柊_嬉野_"]
+    "playerIds": [
+      "山口_柊_嬉野"
+    ]
   },
   {
     "team": "嬉野",
@@ -1328,7 +1935,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_"]
+    "playerIds": [
+      "松尾_航希_嬉野"
+    ]
   },
   {
     "team": "嬉野",
@@ -1340,7 +1949,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["阿辺_未羽_嬉野_佐賀県"]
+    "playerIds": [
+      "阿辺_未羽_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1352,7 +1963,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1364,7 +1977,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1376,7 +1991,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["百田_鉄馬_嬉野_佐賀県"]
+    "playerIds": [
+      "百田_鉄馬_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1388,7 +2005,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中島_那菜_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1400,7 +2019,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1412,7 +2033,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1424,7 +2047,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["松尾_優希_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_優希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1436,7 +2061,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["石井_胡桃_嬉野_佐賀県"]
+    "playerIds": [
+      "石井_胡桃_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1448,7 +2075,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["木下_琉希_嬉野_佐賀県"]
+    "playerIds": [
+      "木下_琉希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1460,7 +2089,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中島_那菜_嬉野_佐賀県"]
+    "playerIds": [
+      "中島_那菜_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1472,7 +2103,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["松尾_航希_嬉野_佐賀県"]
+    "playerIds": [
+      "松尾_航希_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1484,7 +2117,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["杉原_澄_嬉野_佐賀県"]
+    "playerIds": [
+      "杉原_澄_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1496,7 +2131,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["松本_唯郁_嬉野_佐賀県"]
+    "playerIds": [
+      "松本_唯郁_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1508,7 +2145,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["杉原_澄_嬉野_佐賀県"]
+    "playerIds": [
+      "杉原_澄_嬉野_佐賀県"
+    ]
   },
   {
     "team": "嬉野",
@@ -1520,6 +2159,8 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["藤井_智暉_嬉野_佐賀県"]
+    "playerIds": [
+      "藤井_智暉_嬉野_佐賀県"
+    ]
   }
 ]

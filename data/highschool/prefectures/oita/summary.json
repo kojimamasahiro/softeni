@@ -48,10 +48,32 @@
     "teamId": "meihou",
     "prefecture": "大分県",
     "prefectureId": "oita",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2022,
     "gender": "girls"
   },
   {
@@ -70,6 +92,28 @@
     "teamId": "meihou",
     "prefecture": "大分県",
     "prefectureId": "oita",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
     "result": "準優勝",
     "category": "team",
     "tournamentId": "secondaryschool-championship",
@@ -110,6 +154,17 @@
     "gender": "boys"
   },
   {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
     "team": "大分商",
     "teamId": "ooitashou",
     "prefecture": "大分県",
@@ -130,6 +185,50 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
+    "gender": "girls"
   },
   {
     "team": "日田林工",
@@ -141,7 +240,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["池田_瑛太_日田林工_大分県", "半田_凜乃介_日田林工_大分県"]
+    "playerIds": [
+      "池田_瑛太_日田林工_大分県",
+      "半田_凜乃介_日田林工_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -153,7 +255,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県", "宮﨑_那々_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県",
+      "宮﨑_那々_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -165,7 +270,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中嶋_珠暖_明豊中学校_大分県", "鹿野_叶恵_明豊中学校_大分県"]
+    "playerIds": [
+      "中嶋_珠暖_明豊中学校_大分県",
+      "鹿野_叶恵_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -177,7 +285,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["小林_司_明豊_大分県", "片山_伊織_明豊_大分県"]
+    "playerIds": [
+      "小林_司_明豊_大分県",
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -189,7 +300,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県", "中嶋_心暖_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県",
+      "中嶋_心暖_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -201,7 +315,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_高体連", "竹松_美紀_明豊_高体連"]
+    "playerIds": [
+      "樽村_妹穏_明豊_高体連",
+      "竹松_美紀_明豊_高体連"
+    ]
   },
   {
     "team": "明豊",
@@ -213,7 +330,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県", "中嶋_心暖_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県",
+      "中嶋_心暖_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -225,7 +345,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["吉田_野乃_明豊_大分県", "河野_夏希_明豊_大分県"]
+    "playerIds": [
+      "吉田_野乃_明豊_大分県",
+      "河野_夏希_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -237,7 +360,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県", "宮﨑_那々_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県",
+      "宮﨑_那々_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -249,7 +375,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["小林_司_明豊_大分県", "片山_伊織_明豊_大分県"]
+    "playerIds": [
+      "小林_司_明豊_大分県",
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -261,7 +390,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["河野_花奈_明豊_大分県", "久保_日葵_明豊_大分県"]
+    "playerIds": [
+      "河野_花奈_明豊_大分県",
+      "久保_日葵_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -273,7 +405,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["渡邊_希海_明豊_大分県", "赤澤_衣舞姫_明豊_大分県"]
+    "playerIds": [
+      "渡邊_希海_明豊_大分県",
+      "赤澤_衣舞姫_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -285,7 +420,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["鹿野_百恵_明豊_大分県", "諏佐_杏_明豊_大分県"]
+    "playerIds": [
+      "鹿野_百恵_明豊_大分県",
+      "諏佐_杏_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -297,7 +435,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["河野_花奈_明豊_大分県", "久保_日葵_明豊_大分県"]
+    "playerIds": [
+      "河野_花奈_明豊_大分県",
+      "久保_日葵_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -309,7 +450,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小林_司_明豊_大分県", "中嶋_心暖_明豊_大分県"]
+    "playerIds": [
+      "小林_司_明豊_大分県",
+      "中嶋_心暖_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -321,7 +465,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県", "片山_伊織_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県",
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -333,7 +480,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["岩倉_好美_明豊_大分県", "岩永_実桜_明豊_大分県"]
+    "playerIds": [
+      "岩倉_好美_明豊_大分県",
+      "岩永_実桜_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -345,7 +495,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県", "竹松_美紀_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県",
+      "竹松_美紀_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -357,7 +510,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["河野_夏希_明豊_大分県", "中嶋_心暖_明豊_大分県"]
+    "playerIds": [
+      "河野_夏希_明豊_大分県",
+      "中嶋_心暖_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -369,7 +525,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["小林_司_明豊_大分県", "吉良_璃音_明豊_大分県"]
+    "playerIds": [
+      "小林_司_明豊_大分県",
+      "吉良_璃音_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -381,7 +540,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中村_日花莉_明豊_大分県", "藤山_和花_明豊_大分県"]
+    "playerIds": [
+      "中村_日花莉_明豊_大分県",
+      "藤山_和花_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -393,7 +555,70 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["宮﨑_那々_明豊_大分県", "西田_海晴_明豊_大分県"]
+    "playerIds": [
+      "宮﨑_那々_明豊_大分県",
+      "西田_海晴_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "渡邊_希海_明豊_大分県",
+      "山森_小湊_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_珠暖_明豊_大分県",
+      "諏佐_杏_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_恋暖_明豊_大分県",
+      "久保_日葵_明豊_大分県"
+    ]
+  },
+  {
+    "team": "明豊",
+    "teamId": "meihou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "鹿野_叶恵_明豊_大分県",
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -405,7 +630,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["宮﨑_愛実_明豊_大分県", "大村_風薫_明豊_大分県"]
+    "playerIds": [
+      "宮﨑_愛実_明豊_大分県",
+      "大村_風薫_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -417,7 +645,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["大知_ひなた_明豊_大分県", "江渕_真比呂_明豊_大分県"]
+    "playerIds": [
+      "大知_ひなた_明豊_大分県",
+      "江渕_真比呂_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -429,7 +660,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["中村_佑莉菜_明豊_大分県", "吉満_芽生_明豊_大分県"]
+    "playerIds": [
+      "中村_佑莉菜_明豊_大分県",
+      "吉満_芽生_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -441,7 +675,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["宮﨑_那々_明豊_大分県", "竹松_美紀_明豊_大分県"]
+    "playerIds": [
+      "宮﨑_那々_明豊_大分県",
+      "竹松_美紀_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -453,7 +690,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県", "今城_涼音_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県",
+      "今城_涼音_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -465,7 +705,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県", "宮﨑_那々_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県",
+      "宮﨑_那々_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -477,7 +720,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県", "宮﨑_那々_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県",
+      "宮﨑_那々_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -489,7 +735,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["鹿野_叶恵_明豊_大分県", "片山_伊織_明豊_大分県"]
+    "playerIds": [
+      "鹿野_叶恵_明豊_大分県",
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -501,7 +750,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["岩倉_好美_明豊_大分県", "吉良_璃音_明豊_大分県"]
+    "playerIds": [
+      "岩倉_好美_明豊_大分県",
+      "吉良_璃音_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -513,7 +765,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["加藤_美雲_明豊中学校_大分県", "柳原_瑚々_明豊中学校_大分県"]
+    "playerIds": [
+      "加藤_美雲_明豊中学校_大分県",
+      "柳原_瑚々_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -525,7 +780,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["佐藤_凜華_明豊中学校_大分県", "古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "佐藤_凜華_明豊中学校_大分県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -537,7 +795,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中嶋_珠暖_明豊中学校_大分県", "鹿野_叶恵_明豊中学校_大分県"]
+    "playerIds": [
+      "中嶋_珠暖_明豊中学校_大分県",
+      "鹿野_叶恵_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -549,7 +810,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["泉_妃夏_明豊中学校_大分県", "辻本_舞姫_明豊中学校_大分県"]
+    "playerIds": [
+      "泉_妃夏_明豊中学校_大分県",
+      "辻本_舞姫_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -561,7 +825,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["松原_萌菜_明豊中学校_大分県", "古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "松原_萌菜_明豊中学校_大分県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -573,7 +840,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中嶋_恋暖_明豊中学校_大分県", "古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "中嶋_恋暖_明豊中学校_大分県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -585,7 +855,10 @@
     "tournamentId": "secondaryschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["木村_哩々_明豊中学校_大分県", "鹿野_叶恵_明豊中学校_大分県"]
+    "playerIds": [
+      "木村_哩々_明豊中学校_大分県",
+      "鹿野_叶恵_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -597,7 +870,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["松原_萌菜_明豊中学校_大分県", "柳原_瑚々_明豊中学校_大分県"]
+    "playerIds": [
+      "松原_萌菜_明豊中学校_大分県",
+      "柳原_瑚々_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -609,7 +885,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["渡邉_恵衣_明豊中学校_大分県", "原_瑠実花_大神中学校_大分県"]
+    "playerIds": [
+      "渡邉_恵衣_明豊中学校_大分県",
+      "原_瑠実花_大神中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -621,7 +900,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["佐藤_凜華_明豊中学校_大分県", "加藤_美雲_明豊中学校_大分県"]
+    "playerIds": [
+      "佐藤_凜華_明豊中学校_大分県",
+      "加藤_美雲_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -633,7 +915,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["加藤_美雲_明豊_大分県", "隈井_光梨_PUERICLUB_大分県"]
+    "playerIds": [
+      "加藤_美雲_明豊_大分県",
+      "隈井_光梨_PUERICLUB_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -645,7 +930,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["泉_夏妃_明豊_大分県", "辻本_舞姫_明豊_大分県"]
+    "playerIds": [
+      "泉_夏妃_明豊_大分県",
+      "辻本_舞姫_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -657,7 +945,10 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中嶋_珠暖_明豊_大分県", "鹿野_叶恵_明豊_大分県"]
+    "playerIds": [
+      "中嶋_珠暖_明豊_大分県",
+      "鹿野_叶恵_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -669,7 +960,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["鹿野_叶恵_明豊中学校_大分県", "古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "鹿野_叶恵_明豊中学校_大分県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -681,7 +975,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["吉田_唯杏_西郷第一中学校_福島県", "古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "吉田_唯杏_西郷第一中学校_福島県",
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "中津東",
@@ -693,7 +990,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["佐知_直翔_中津東_大分県", "石元_遥馬_中津東_大分県"]
+    "playerIds": [
+      "佐知_直翔_中津東_大分県",
+      "石元_遥馬_中津東_大分県"
+    ]
   },
   {
     "team": "中津東",
@@ -705,7 +1005,25 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["稲生_拓斗_中津東_大分県", "藤原_涼太郎_中津東_大分県"]
+    "playerIds": [
+      "稲生_拓斗_中津東_大分県",
+      "藤原_涼太郎_中津東_大分県"
+    ]
+  },
+  {
+    "team": "中津東",
+    "teamId": "nakatsuhigashi",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "江藤_遼也_中津東_大分県",
+      "永瀬_駿音_中津東_大分県"
+    ]
   },
   {
     "team": "中津東",
@@ -717,7 +1035,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["矢野_楓太_中津東_大分県", "川底_倖弥_中津東_大分県"]
+    "playerIds": [
+      "矢野_楓太_中津東_大分県",
+      "川底_倖弥_中津東_大分県"
+    ]
   },
   {
     "team": "中津東",
@@ -729,7 +1050,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["佐知_直翔_中津東_大分県", "松岡_亮佑_中津東_大分県"]
+    "playerIds": [
+      "佐知_直翔_中津東_大分県",
+      "松岡_亮佑_中津東_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -741,7 +1065,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["河野_汐苑_大分_大分県", "長野_虎之介_大分_大分県"]
+    "playerIds": [
+      "河野_汐苑_大分_大分県",
+      "長野_虎之介_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -753,7 +1080,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["木下_了太_大分_大分県", "穴見_陸_大分_大分県"]
+    "playerIds": [
+      "木下_了太_大分_大分県",
+      "穴見_陸_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -765,7 +1095,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["岡本_央睦_大分_大分県", "一法_師優吾_大分_大分県"]
+    "playerIds": [
+      "岡本_央睦_大分_大分県",
+      "一法_師優吾_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -777,7 +1110,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["安部_陸斗_大分_大分県", "樋口_晴喜_大分_大分県"]
+    "playerIds": [
+      "安部_陸斗_大分_大分県",
+      "樋口_晴喜_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -789,7 +1125,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["坂口_竣亮_大分_大分県", "青野_良真_大分_大分県"]
+    "playerIds": [
+      "坂口_竣亮_大分_大分県",
+      "青野_良真_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -801,7 +1140,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["穴見_舜_大分_大分県", "山田_卓弥_大分_大分県"]
+    "playerIds": [
+      "穴見_舜_大分_大分県",
+      "山田_卓弥_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -813,7 +1155,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["河野_暖斗_大分_大分県", "石本_瑠偉_大分_大分県"]
+    "playerIds": [
+      "河野_暖斗_大分_大分県",
+      "石本_瑠偉_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -825,7 +1170,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["成松_愛果_大分_大分県", "神品_紗智_大分_大分県"]
+    "playerIds": [
+      "成松_愛果_大分_大分県",
+      "神品_紗智_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -837,7 +1185,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["坂口_竣亮_大分_大分県", "青野_良真_大分_大分県"]
+    "playerIds": [
+      "坂口_竣亮_大分_大分県",
+      "青野_良真_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -849,7 +1200,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["河野_翔空_大分_大分県", "中橋_蓮_大分_大分県"]
+    "playerIds": [
+      "河野_翔空_大分_大分県",
+      "中橋_蓮_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -861,7 +1215,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["池永_陵_大分_大分県", "山田_卓弥_大分_大分県"]
+    "playerIds": [
+      "池永_陵_大分_大分県",
+      "山田_卓弥_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -873,7 +1230,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["中野_大翔_大分_大分県", "宇都宮_大知_大分_大分県"]
+    "playerIds": [
+      "中野_大翔_大分_大分県",
+      "宇都宮_大知_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -885,7 +1245,40 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["河野_翔空_大分_大分県", "宇都宮_大知_大分_大分県"]
+    "playerIds": [
+      "河野_翔空_大分_大分県",
+      "宇都宮_大知_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "穴見_舜_大分_大分県",
+      "柴田_夢浬_大分_大分県"
+    ]
+  },
+  {
+    "team": "大分",
+    "teamId": "ooita",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "中野_琉翔_大分_大分県",
+      "杉森_陽太_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -897,7 +1290,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["安部_陸斗_大分_大分県", "樋口_晴喜_大分_大分県"]
+    "playerIds": [
+      "安部_陸斗_大分_大分県",
+      "樋口_晴喜_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -909,7 +1305,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["岡本_央睦_大分_大分県", "藤平_優希_大分_大分県"]
+    "playerIds": [
+      "岡本_央睦_大分_大分県",
+      "藤平_優希_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -921,7 +1320,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["河野_暖斗_大分_大分県", "石本_瑠偉_大分_大分県"]
+    "playerIds": [
+      "河野_暖斗_大分_大分県",
+      "石本_瑠偉_大分_大分県"
+    ]
   },
   {
     "team": "大分舞鶴",
@@ -933,7 +1335,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["清水_慎之亮_大分舞鶴_大分県", "佐藤_寛人_大分舞鶴_大分県"]
+    "playerIds": [
+      "清水_慎之亮_大分舞鶴_大分県",
+      "佐藤_寛人_大分舞鶴_大分県"
+    ]
   },
   {
     "team": "大分舞鶴",
@@ -945,7 +1350,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["三宮_周_大分舞鶴_大分県", "藤澤_知彌_大分舞鶴_大分県"]
+    "playerIds": [
+      "三宮_周_大分舞鶴_大分県",
+      "藤澤_知彌_大分舞鶴_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -957,7 +1365,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県", "内藤_彩音_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県",
+      "内藤_彩音_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -969,7 +1380,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["廣末_梨桜_大分商_大分県", "藤澤_詩乃_大分商_大分県"]
+    "playerIds": [
+      "廣末_梨桜_大分商_大分県",
+      "藤澤_詩乃_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -981,7 +1395,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["三村_唯_大分商_大分県", "姫野_さくら_大分商_大分県"]
+    "playerIds": [
+      "三村_唯_大分商_大分県",
+      "姫野_さくら_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -993,7 +1410,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["羽田_野吏功_大分商_大分県", "矢野_遥己_大分商_大分県"]
+    "playerIds": [
+      "羽田_野吏功_大分商_大分県",
+      "矢野_遥己_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1005,7 +1425,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["大海_香桜_大分商_大分県", "姫嶋_心優_大分商_大分県"]
+    "playerIds": [
+      "大海_香桜_大分商_大分県",
+      "姫嶋_心優_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1017,7 +1440,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["松尾_咲和_大分商_大分県", "羽田野_結梨_大分商_大分県"]
+    "playerIds": [
+      "松尾_咲和_大分商_大分県",
+      "羽田野_結梨_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1029,7 +1455,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["松本_琉世_大分商_大分県", "森迫_翔_大分商_大分県"]
+    "playerIds": [
+      "松本_琉世_大分商_大分県",
+      "森迫_翔_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1041,7 +1470,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小野_泰輝_大分商_大分県", "小野_弘太郎_大分商_大分県"]
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1053,7 +1485,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県", "内藤_彩音_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県",
+      "内藤_彩音_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1065,7 +1500,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["岡本_みひろ_大分商_大分県", "藤塚_らら_大分商_大分県"]
+    "playerIds": [
+      "岡本_みひろ_大分商_大分県",
+      "藤塚_らら_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1077,7 +1515,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小野_友梨香_大分商_大分県", "衛藤_こころ_大分商_大分県"]
+    "playerIds": [
+      "小野_友梨香_大分商_大分県",
+      "衛藤_こころ_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1089,7 +1530,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["小野_泰輝_大分商_大分県", "加藤_蒼唯_大分商_大分県"]
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "加藤_蒼唯_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1101,7 +1545,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["紀野_文汰_大分商_大分県", "小野_弘太郎_大分商_大分県"]
+    "playerIds": [
+      "紀野_文汰_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1113,7 +1560,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県", "内藤_彩音_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県",
+      "内藤_彩音_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1125,7 +1575,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["後藤_稔哉_大分商_大分県", "北野_颯己_大分商_大分県"]
+    "playerIds": [
+      "後藤_稔哉_大分商_大分県",
+      "北野_颯己_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1137,7 +1590,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["衞藤_結生_大分商_大分県", "簾_友翔_大分商_大分県"]
+    "playerIds": [
+      "衞藤_結生_大分商_大分県",
+      "簾_友翔_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1149,7 +1605,85 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["小野_泰輝_大分商_大分県", "加藤_蒼唯_大分商_大分県"]
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "加藤_蒼唯_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "内藤_美咲_大分商_大分県",
+      "姫野_結凪_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "大海_香桜_大分商_大分県",
+      "姫嶋_心優_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "塩川_瑛太_大分商_大分県",
+      "古本_佑樹_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "工藤_翔悟_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
+  },
+  {
+    "team": "大分商",
+    "teamId": "ooitashou",
+    "prefecture": "大分県",
+    "prefectureId": "oita",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "衞藤_敦生_大分商_大分県",
+      "安藤_健留_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1161,7 +1695,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["江藤_海羽_大分商_大分県", "藤澤_詩乃_大分商_大分県"]
+    "playerIds": [
+      "江藤_海羽_大分商_大分県",
+      "藤澤_詩乃_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1173,7 +1710,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["松原_七海_大分商_大分県", "成松_莉緒_大分商_大分県"]
+    "playerIds": [
+      "松原_七海_大分商_大分県",
+      "成松_莉緒_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1185,7 +1725,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["三村_唯_大分商_大分県", "姫嶋_愛音_大分商_大分県"]
+    "playerIds": [
+      "三村_唯_大分商_大分県",
+      "姫嶋_愛音_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1197,7 +1740,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["後藤_悠紀_大分商_大分県", "紀野_駿之佑_大分商_大分県"]
+    "playerIds": [
+      "後藤_悠紀_大分商_大分県",
+      "紀野_駿之佑_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1209,7 +1755,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["廣末_梨桜_大分商_大分県", "姫野_さくら_大分商_大分県"]
+    "playerIds": [
+      "廣末_梨桜_大分商_大分県",
+      "姫野_さくら_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1221,7 +1770,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["羽田野_吏功_大分商_大分県", "矢野_遥己_大分商_大分県"]
+    "playerIds": [
+      "羽田野_吏功_大分商_大分県",
+      "矢野_遥己_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1233,7 +1785,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["大海_香桜_大分商_大分県", "姫嶋_心優_大分商_大分県"]
+    "playerIds": [
+      "大海_香桜_大分商_大分県",
+      "姫嶋_心優_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1245,7 +1800,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小野_泰輝_大分商_大分県", "小野_弘太郎_大分商_大分県"]
+    "playerIds": [
+      "小野_泰輝_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1257,7 +1815,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県", "内藤_彩音_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県",
+      "内藤_彩音_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1269,7 +1830,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["紀野_文汰_大分商_大分県", "小野_弘太郎_大分商_大分県"]
+    "playerIds": [
+      "紀野_文汰_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1281,7 +1845,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["廣末_梨桜_大分商_大分県", "姫野_さくら_大分商_大分県"]
+    "playerIds": [
+      "廣末_梨桜_大分商_大分県",
+      "姫野_さくら_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1293,7 +1860,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["衞藤_結生_大分商_大分県", "簾_友翔_大分商_大分県"]
+    "playerIds": [
+      "衞藤_結生_大分商_大分県",
+      "簾_友翔_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1305,7 +1875,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["大海_香桜_大分商_大分県", "姫嶋_心優_大分商_大分県"]
+    "playerIds": [
+      "大海_香桜_大分商_大分県",
+      "姫嶋_心優_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1317,7 +1890,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["工藤_翔悟_大分商_大分県", "小野_弘太郎_大分商_大分県"]
+    "playerIds": [
+      "工藤_翔悟_大分商_大分県",
+      "小野_弘太郎_大分商_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1329,7 +1905,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1341,7 +1919,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["松原_萌菜_明豊中学校_大分県"]
+    "playerIds": [
+      "松原_萌菜_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1353,7 +1933,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1365,7 +1947,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中田_理央_明豊_大分県"]
+    "playerIds": [
+      "中田_理央_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1377,7 +1961,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["宮﨑_那々_明豊_大分県"]
+    "playerIds": [
+      "宮﨑_那々_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1389,7 +1975,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["藤山_和花_明豊_大分県"]
+    "playerIds": [
+      "藤山_和花_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1401,7 +1989,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1413,7 +2003,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["鹿野_叶恵_明豊_大分県"]
+    "playerIds": [
+      "鹿野_叶恵_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1425,7 +2017,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["加藤_美雲_明豊中学校_大分県"]
+    "playerIds": [
+      "加藤_美雲_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1437,7 +2031,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["樽村_妹穏_明豊_大分県"]
+    "playerIds": [
+      "樽村_妹穏_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1449,7 +2045,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["西田_海晴_明豊_大分県"]
+    "playerIds": [
+      "西田_海晴_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1461,7 +2059,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["片山_伊織_明豊_大分県"]
+    "playerIds": [
+      "片山_伊織_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1473,7 +2073,9 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["泉_妃夏_明豊中学校_大分県"]
+    "playerIds": [
+      "泉_妃夏_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1485,7 +2087,9 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["松原_萌菜_明豊_大分県"]
+    "playerIds": [
+      "松原_萌菜_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1497,7 +2101,9 @@
     "tournamentId": "zennihon-secondaryschool-versus",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["古川_夢望_明豊_大分県"]
+    "playerIds": [
+      "古川_夢望_明豊_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1509,7 +2115,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["鹿野_叶恵_明豊中学校_大分県"]
+    "playerIds": [
+      "鹿野_叶恵_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1521,7 +2129,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "明豊",
@@ -1533,7 +2143,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["古川_夢望_明豊中学校_大分県"]
+    "playerIds": [
+      "古川_夢望_明豊中学校_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -1545,7 +2157,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["坂口_竣亮_大分_大分県"]
+    "playerIds": [
+      "坂口_竣亮_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -1557,7 +2171,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["坂口_竣亮_大分_大分県"]
+    "playerIds": [
+      "坂口_竣亮_大分_大分県"
+    ]
   },
   {
     "team": "大分",
@@ -1569,7 +2185,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["中野_琉翔_大分_大分県"]
+    "playerIds": [
+      "中野_琉翔_大分_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1581,7 +2199,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["廣末_梨桜_大分商_大分県"]
+    "playerIds": [
+      "廣末_梨桜_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1593,7 +2213,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["三村_唯_大分商_大分県"]
+    "playerIds": [
+      "三村_唯_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1605,7 +2227,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["衞藤_結生_大分商_大分県"]
+    "playerIds": [
+      "衞藤_結生_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1617,7 +2241,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["松尾_咲和_大分商_大分県"]
+    "playerIds": [
+      "松尾_咲和_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1629,7 +2255,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["紀野_文汰_大分商_大分県"]
+    "playerIds": [
+      "紀野_文汰_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1641,7 +2269,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1653,7 +2283,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["衞藤_結生_大分商_大分県"]
+    "playerIds": [
+      "衞藤_結生_大分商_大分県"
+    ]
   },
   {
     "team": "大分商",
@@ -1665,6 +2297,8 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["小橋_愛菜_大分商_大分県"]
+    "playerIds": [
+      "小橋_愛菜_大分商_大分県"
+    ]
   }
 ]

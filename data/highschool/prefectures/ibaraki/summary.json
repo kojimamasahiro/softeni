@@ -26,11 +26,33 @@
     "teamId": "joubandai",
     "prefecture": "茨城県",
     "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls"
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys"
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
+    "gender": "girls"
   },
   {
     "team": "霞ヶ浦",
@@ -63,6 +85,28 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2022,
     "gender": "boys"
   },
   {
@@ -77,6 +121,50 @@
     "gender": "boys"
   },
   {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
+    "gender": "boys"
+  },
+  {
     "team": "明秀日立",
     "teamId": "meisyuhitachi",
     "prefecture": "茨城県",
@@ -96,6 +184,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "明秀日立",
+    "teamId": "meisyuhitachi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2021,
     "gender": "boys"
   },
   {
@@ -130,7 +229,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["野口_優来_藤代紫水_茨城県", "坂本_妃菜_藤代紫水_茨城県"]
+    "playerIds": [
+      "野口_優来_藤代紫水_茨城県",
+      "坂本_妃菜_藤代紫水_茨城県"
+    ]
   },
   {
     "team": "藤代紫水",
@@ -142,7 +244,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["阿久津_黎_藤代紫水_茨城県", "佐々木_歩夢_藤代紫水_茨城県"]
+    "playerIds": [
+      "阿久津_黎_藤代紫水_茨城県",
+      "佐々木_歩夢_藤代紫水_茨城県"
+    ]
   },
   {
     "team": "日立北",
@@ -154,7 +259,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["植木_萌香_日立北_茨城県", "鈴木_咲夏_日立北_茨城県"]
+    "playerIds": [
+      "植木_萌香_日立北_茨城県",
+      "鈴木_咲夏_日立北_茨城県"
+    ]
   },
   {
     "team": "鉾田一",
@@ -166,7 +274,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["日比野_希美_鉾田一_茨城県", "大河_愛望_鉾田一_茨城県"]
+    "playerIds": [
+      "日比野_希美_鉾田一_茨城県",
+      "大河_愛望_鉾田一_茨城県"
+    ]
   },
   {
     "team": "鉾田一",
@@ -178,7 +289,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["関口_夢來_鉾田一_茨城県", "金澤_帆花_鉾田一_茨城県"]
+    "playerIds": [
+      "関口_夢來_鉾田一_茨城県",
+      "金澤_帆花_鉾田一_茨城県"
+    ]
   },
   {
     "team": "岩瀬日大",
@@ -190,7 +304,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["齋藤_綾乃_岩瀬日大_茨城県", "川田_桃叶_岩瀬日大_茨城県"]
+    "playerIds": [
+      "齋藤_綾乃_岩瀬日大_茨城県",
+      "川田_桃叶_岩瀬日大_茨城県"
+    ]
   },
   {
     "team": "岩瀬日大",
@@ -202,7 +319,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["加倉井_尊_岩瀬日大_茨城県", "大崎_竣也_岩瀬日大_茨城県"]
+    "playerIds": [
+      "加倉井_尊_岩瀬日大_茨城県",
+      "大崎_竣也_岩瀬日大_茨城県"
+    ]
   },
   {
     "team": "岩瀬日大",
@@ -214,7 +334,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["川田_桃叶_岩瀬日大_茨城県", "齋藤_綾乃_岩瀬日大_茨城県"]
+    "playerIds": [
+      "川田_桃叶_岩瀬日大_茨城県",
+      "齋藤_綾乃_岩瀬日大_茨城県"
+    ]
   },
   {
     "team": "岩瀬日大",
@@ -226,7 +349,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["川田_桃叶_岩瀬日大_茨城県", "齋藤_綾乃_岩瀬日大_茨城県"]
+    "playerIds": [
+      "川田_桃叶_岩瀬日大_茨城県",
+      "齋藤_綾乃_岩瀬日大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -238,7 +364,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["大図_果凛_常磐大_茨城県", "飯塚_梨乃_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果凛_常磐大_茨城県",
+      "飯塚_梨乃_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -250,7 +379,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["大津_琴海_常磐大_茨城県", "鈴木_ゆり乃_常磐大_茨城県"]
+    "playerIds": [
+      "大津_琴海_常磐大_茨城県",
+      "鈴木_ゆり乃_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -262,7 +394,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["根本_柊吾_常磐大_茨城県", "小沼_海靖_常磐大_茨城県"]
+    "playerIds": [
+      "根本_柊吾_常磐大_茨城県",
+      "小沼_海靖_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -274,7 +409,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["大図_果暖_常磐大_茨城県", "鈴木_純奈_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果暖_常磐大_茨城県",
+      "鈴木_純奈_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -286,7 +424,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["大図_果凛_常磐大_茨城県", "佐藤_もえ_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果凛_常磐大_茨城県",
+      "佐藤_もえ_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -298,7 +439,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["飯塚_梨乃_常磐大_茨城県", "齋藤_花実_常磐大_茨城県"]
+    "playerIds": [
+      "飯塚_梨乃_常磐大_茨城県",
+      "齋藤_花実_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -310,7 +454,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["飯塚_梨乃_常磐大_茨城県", "大図_果凛_常磐大_茨城県"]
+    "playerIds": [
+      "飯塚_梨乃_常磐大_茨城県",
+      "大図_果凛_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -322,7 +469,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["小室_昂誠_常磐大_茨城県", "里見_大輔_常磐大_茨城県"]
+    "playerIds": [
+      "小室_昂誠_常磐大_茨城県",
+      "里見_大輔_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -334,7 +484,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["小貫_暁都_常磐大_茨城県", "小沼_海靖_常磐大_茨城県"]
+    "playerIds": [
+      "小貫_暁都_常磐大_茨城県",
+      "小沼_海靖_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -346,7 +499,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["大図_果凛_常磐大_茨城県", "飯塚_梨乃_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果凛_常磐大_茨城県",
+      "飯塚_梨乃_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -358,7 +514,70 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["大津_琴海_常磐大_茨城県", "鈴木_ゆり乃_常磐大_茨城県"]
+    "playerIds": [
+      "大津_琴海_常磐大_茨城県",
+      "鈴木_ゆり乃_常磐大_茨城県"
+    ]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "伊藤_心愛_常磐大_茨城県",
+      "縣_依央_常磐大_茨城県"
+    ]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "齋藤_花実_常磐大_茨城県",
+      "小松﨑_麻友_常磐大_茨城県"
+    ]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "慶野_玖向_常磐大_茨城県",
+      "菊池_健_常磐大_茨城県"
+    ]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "木下_凱心_常磐大_茨城県",
+      "本屋_賢人_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -370,7 +589,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["大図_果暖_常磐大_茨城県", "鈴木_純奈_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果暖_常磐大_茨城県",
+      "鈴木_純奈_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -382,7 +604,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["新堀_幹太_常磐大_茨城県", "野上_星翔_常磐大_茨城県"]
+    "playerIds": [
+      "新堀_幹太_常磐大_茨城県",
+      "野上_星翔_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -394,7 +619,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["大図_果凛_常磐大_茨城県", "飯塚_梨乃_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果凛_常磐大_茨城県",
+      "飯塚_梨乃_常磐大_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -406,7 +634,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["小貫_暁都_常磐大_茨城県", "小沼_海靖_常磐大_茨城県"]
+    "playerIds": [
+      "小貫_暁都_常磐大_茨城県",
+      "小沼_海靖_常磐大_茨城県"
+    ]
   },
   {
     "team": "科技学園日立",
@@ -418,7 +649,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["本間_威風_科技学園日立_茨城県", "大内_雄斗_科技学園日立_茨城県"]
+    "playerIds": [
+      "本間_威風_科技学園日立_茨城県",
+      "大内_雄斗_科技学園日立_茨城県"
+    ]
   },
   {
     "team": "鹿島学園",
@@ -430,7 +664,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["貝塚_ひなた_鹿島学園高校_茨城県", "田向_ひなの_鹿島学園高校_茨城県"]
+    "playerIds": [
+      "貝塚_ひなた_鹿島学園高校_茨城県",
+      "田向_ひなの_鹿島学園高校_茨城県"
+    ]
   },
   {
     "team": "鹿島学園",
@@ -442,7 +679,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["貝塚_ひなた_鹿島学園高校_茨城県", "田向_ひなの_鹿島学園高校_茨城県"]
+    "playerIds": [
+      "貝塚_ひなた_鹿島学園高校_茨城県",
+      "田向_ひなの_鹿島学園高校_茨城県"
+    ]
   },
   {
     "team": "鹿島学園",
@@ -454,7 +694,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中川_実咲_鹿島学園高校_茨城県", "大﨑_千理子_鹿島学園高校_茨城県"]
+    "playerIds": [
+      "中川_実咲_鹿島学園高校_茨城県",
+      "大﨑_千理子_鹿島学園高校_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -466,7 +709,10 @@
     "tournamentId": "asian-championship-qualifier",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_", "一ノ宮_大和_早稲田大学_"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦",
+      "一ノ宮_大和_早稲田大学"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -478,7 +724,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -490,7 +739,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["齋藤_大貴_霞ヶ浦_高体連", "奥田_向陽_霞ヶ浦_高体連"]
+    "playerIds": [
+      "齋藤_大貴_霞ヶ浦_高体連",
+      "奥田_向陽_霞ヶ浦_高体連"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -502,7 +754,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_高体連", "一ノ宮_大和_霞ヶ浦_高体連"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_高体連",
+      "一ノ宮_大和_霞ヶ浦_高体連"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -514,7 +769,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -526,7 +784,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["清家_心優_霞ヶ浦_茨城県", "塚田_心遥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "清家_心優_霞ヶ浦_茨城県",
+      "塚田_心遥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -538,7 +799,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["松本_和希_霞ヶ浦_茨城県", "高嶋_春弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "松本_和希_霞ヶ浦_茨城県",
+      "高嶋_春弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -550,7 +814,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["田中_駿裕_霞ヶ浦_茨城県", "谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "田中_駿裕_霞ヶ浦_茨城県",
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -562,7 +829,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["横田_翔_霞ヶ浦_茨城県", "桐原_尚大_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "横田_翔_霞ヶ浦_茨城県",
+      "桐原_尚大_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -574,7 +844,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["村中_美桜_霞ヶ浦_茨城県", "折原_詩依奈_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "村中_美桜_霞ヶ浦_茨城県",
+      "折原_詩依奈_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -586,7 +859,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -598,7 +874,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["佐々木_陽向_霞ヶ浦_茨城県", "重田_隼_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "佐々木_陽向_霞ヶ浦_茨城県",
+      "重田_隼_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -610,7 +889,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["吉井_翼_霞ヶ浦_茨城県", "堀_ひかる_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "吉井_翼_霞ヶ浦_茨城県",
+      "堀_ひかる_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -622,7 +904,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["長谷川_博人_霞ヶ浦_茨城県", "髙嶋_雅弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "長谷川_博人_霞ヶ浦_茨城県",
+      "髙嶋_雅弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -634,7 +919,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["淀川_大成_霞ヶ浦_茨城県", "桐山_浩輔_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "淀川_大成_霞ヶ浦_茨城県",
+      "桐山_浩輔_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -646,7 +934,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_茨城県", "白川_隼平_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_茨城県",
+      "白川_隼平_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -658,7 +949,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["飯村_文悠_霞ヶ浦_茨城県", "横瀬_未優志_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "飯村_文悠_霞ヶ浦_茨城県",
+      "横瀬_未優志_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -670,7 +964,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["齋藤_大貴_霞ヶ浦_茨城県", "奥田_向陽_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "齋藤_大貴_霞ヶ浦_茨城県",
+      "奥田_向陽_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -682,7 +979,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["廣瀨_彩音_霞ヶ浦_茨城県", "渡邊_結衣_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "廣瀨_彩音_霞ヶ浦_茨城県",
+      "渡邊_結衣_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -694,7 +994,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -706,7 +1009,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["吉井_翼_霞ヶ浦_茨城県", "加藤_心温_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "吉井_翼_霞ヶ浦_茨城県",
+      "加藤_心温_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -718,7 +1024,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["一ノ宮_大和_霞ヶ浦_茨城県", "善福_留生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "一ノ宮_大和_霞ヶ浦_茨城県",
+      "善福_留生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -730,7 +1039,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["長谷川_博人_霞ヶ浦_茨城県", "髙嶋_雅弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "長谷川_博人_霞ヶ浦_茨城県",
+      "髙嶋_雅弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -742,7 +1054,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["齋藤_大貴_霞ヶ浦_茨城県", "白川_隼平_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "齋藤_大貴_霞ヶ浦_茨城県",
+      "白川_隼平_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -754,7 +1069,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["郡司_望美_霞ヶ浦_茨城県", "赤井_琴音_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "郡司_望美_霞ヶ浦_茨城県",
+      "赤井_琴音_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -766,7 +1084,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["松本_和希_霞ヶ浦_茨城県", "桐原_尚大_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "松本_和希_霞ヶ浦_茨城県",
+      "桐原_尚大_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -778,7 +1099,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["横田_翔_霞ヶ浦_茨城県", "髙嶋_雅弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "横田_翔_霞ヶ浦_茨城県",
+      "髙嶋_雅弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -790,7 +1114,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["長谷川_博人_霞ヶ浦_茨城県", "加藤_心温_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "長谷川_博人_霞ヶ浦_茨城県",
+      "加藤_心温_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -802,7 +1129,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["深海_星太_霞ヶ浦_茨城県", "谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "深海_星太_霞ヶ浦_茨城県",
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -814,7 +1144,100 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["齋藤_大貴_霞ヶ浦_茨城県", "白川_隼平_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "齋藤_大貴_霞ヶ浦_茨城県",
+      "白川_隼平_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "廣瀨_彩音_霞ヶ浦_茨城県",
+      "秋山_ゆずか_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "佐々木_陽向_霞ヶ浦_茨城県",
+      "石橋_達希_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "飯田_陽乃助_霞ヶ浦_茨城県",
+      "山里_綺乙_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "飯村_文悠_霞ヶ浦_茨城県",
+      "根本_悠暉_霞ヶ浦_茨城県"
+    ]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "吉井_翼紀_霞ヶ浦_茨城県",
+      "井橋_篤紀_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -826,7 +1249,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["根本_翼_霞ヶ浦_茨城県", "高嶋_春弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "根本_翼_霞ヶ浦_茨城県",
+      "高嶋_春弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -838,7 +1264,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["田中_駿裕_霞ヶ浦_茨城県", "飯塚_弘貴_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "田中_駿裕_霞ヶ浦_茨城県",
+      "飯塚_弘貴_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -850,7 +1279,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["神山_源_霞ヶ浦_茨城県", "五味_知晃_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "神山_源_霞ヶ浦_茨城県",
+      "五味_知晃_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -862,7 +1294,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["白井_宏宜_霞ヶ浦_茨城県", "菊池_孔生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "白井_宏宜_霞ヶ浦_茨城県",
+      "菊池_孔生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -874,7 +1309,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["田中_駿裕_霞ヶ浦_茨城県", "谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "田中_駿裕_霞ヶ浦_茨城県",
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -886,7 +1324,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -898,7 +1339,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_茨城県", "白川_隼平_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_茨城県",
+      "白川_隼平_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -910,7 +1354,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["長谷川_博人_霞ヶ浦_茨城県", "髙嶋_雅弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "長谷川_博人_霞ヶ浦_茨城県",
+      "髙嶋_雅弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -922,7 +1369,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["深海_星太_霞ヶ浦_茨城県", "谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "深海_星太_霞ヶ浦_茨城県",
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -934,7 +1384,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["菅原_野々華_霞ヶ浦_茨城県", "片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "菅原_野々華_霞ヶ浦_茨城県",
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -946,7 +1399,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["佐々木_陽向_霞ヶ浦_茨城県", "石橋_達希_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "佐々木_陽向_霞ヶ浦_茨城県",
+      "石橋_達希_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -958,7 +1414,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_福島県", "草野_春真_田村_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_福島県",
+      "草野_春真_田村_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -970,7 +1429,10 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["一ノ宮_大和_霞ヶ浦_茨城県", "善福_留生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "一ノ宮_大和_霞ヶ浦_茨城県",
+      "善福_留生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -982,7 +1444,10 @@
     "tournamentId": "primaryschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["中村_匠_美浦ジュニアスポ少_茨城県", "中崎_翔_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "中村_匠_美浦ジュニアスポ少_茨城県",
+      "中崎_翔_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "明秀日立",
@@ -994,7 +1459,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["百々塚_さくら_明秀日立_茨城県", "鈴木_想奈_明秀日立_茨城県"]
+    "playerIds": [
+      "百々塚_さくら_明秀日立_茨城県",
+      "鈴木_想奈_明秀日立_茨城県"
+    ]
   },
   {
     "team": "明秀日立",
@@ -1006,7 +1474,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["鈴木_想_明秀日立_茨城県", "菊池_七斗_明秀日立_茨城県"]
+    "playerIds": [
+      "鈴木_想_明秀日立_茨城県",
+      "菊池_七斗_明秀日立_茨城県"
+    ]
   },
   {
     "team": "明秀日立",
@@ -1018,7 +1489,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["前岡_和亜_明秀日立_茨城県", "菅谷_朋輝_明秀日立_茨城県"]
+    "playerIds": [
+      "前岡_和亜_明秀日立_茨城県",
+      "菅谷_朋輝_明秀日立_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1030,7 +1504,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県", "宮崎_紫帆_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県",
+      "宮崎_紫帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1042,7 +1519,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["斉藤_奈々_水戸女子_茨城県", "笹本_留衣_水戸女子_茨城県"]
+    "playerIds": [
+      "斉藤_奈々_水戸女子_茨城県",
+      "笹本_留衣_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1054,7 +1534,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["髙根_夏樹_水戸女子_茨城県", "髙野_友里_水戸女子_茨城県"]
+    "playerIds": [
+      "髙根_夏樹_水戸女子_茨城県",
+      "髙野_友里_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1066,7 +1549,25 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["増渕_萌夏_水戸女子_茨城県", "増渕_愛夏_水戸女子_茨城県"]
+    "playerIds": [
+      "増渕_萌夏_水戸女子_茨城県",
+      "増渕_愛夏_水戸女子_茨城県"
+    ]
+  },
+  {
+    "team": "水戸女子",
+    "teamId": "mitojoshi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "戸田_優愛_水戸女子高校_茨城県",
+      "髙野_ほなみ_水戸女子高校_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1078,7 +1579,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["斉藤_奈々_水戸女子_茨城県", "笹本_留衣_水戸女子_茨城県"]
+    "playerIds": [
+      "斉藤_奈々_水戸女子_茨城県",
+      "笹本_留衣_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1090,7 +1594,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県", "宮崎_紫帆_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県",
+      "宮崎_紫帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1102,7 +1609,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["増渕_萌夏_水戸女子_茨城県", "増渕_愛夏_水戸女子_茨城県"]
+    "playerIds": [
+      "増渕_萌夏_水戸女子_茨城県",
+      "増渕_愛夏_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1114,7 +1624,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["高根_夏樹_水戸女子_茨城県", "髙野_友里_水戸女子_茨城県"]
+    "playerIds": [
+      "高根_夏樹_水戸女子_茨城県",
+      "髙野_友里_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1126,7 +1639,25 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["藤田_絢花_水戸女子_茨城県", "菅澤_凜嘉_水戸女子_茨城県"]
+    "playerIds": [
+      "藤田_絢花_水戸女子_茨城県",
+      "菅澤_凜嘉_水戸女子_茨城県"
+    ]
+  },
+  {
+    "team": "水戸女子",
+    "teamId": "mitojoshi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "戸田_優愛_水戸女子_茨城県",
+      "髙野_ほなみ_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1138,7 +1669,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県", "宮崎_紫帆_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県",
+      "宮崎_紫帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1150,7 +1684,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["山口_桃奈_水戸女子_茨城県", "笹本_留衣_水戸女子_茨城県"]
+    "playerIds": [
+      "山口_桃奈_水戸女子_茨城県",
+      "笹本_留衣_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1162,7 +1699,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["斉藤_奈々_水戸女子_茨城県", "宮崎_華帆_水戸女子_茨城県"]
+    "playerIds": [
+      "斉藤_奈々_水戸女子_茨城県",
+      "宮崎_華帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1174,7 +1714,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県", "宮崎_紫帆_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県",
+      "宮崎_紫帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸桜ノ牧",
@@ -1186,7 +1729,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["髙山_文愛_水戸桜ノ牧_茨城県", "秋本_帆花_水戸桜ノ牧_茨城県"]
+    "playerIds": [
+      "髙山_文愛_水戸桜ノ牧_茨城県",
+      "秋本_帆花_水戸桜ノ牧_茨城県"
+    ]
   },
   {
     "team": "竜ヶ崎一",
@@ -1198,7 +1744,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["福島_好花_竜ヶ崎一_茨城県", "白川_葉由_竜ヶ崎一_茨城県"]
+    "playerIds": [
+      "福島_好花_竜ヶ崎一_茨城県",
+      "白川_葉由_竜ヶ崎一_茨城県"
+    ]
   },
   {
     "team": "竜ヶ崎一",
@@ -1210,7 +1759,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["酒井_菜々花_竜ヶ崎一_茨城県", "幸坂_理子_竜ヶ崎一_茨城県"]
+    "playerIds": [
+      "酒井_菜々花_竜ヶ崎一_茨城県",
+      "幸坂_理子_竜ヶ崎一_茨城県"
+    ]
   },
   {
     "team": "多賀",
@@ -1222,7 +1774,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["真弓_愛海_多賀高校_茨城県", "千葉_えみり_多賀高校_茨城県"]
+    "playerIds": [
+      "真弓_愛海_多賀高校_茨城県",
+      "千葉_えみり_多賀高校_茨城県"
+    ]
   },
   {
     "team": "多賀",
@@ -1234,7 +1789,25 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["真弓_愛海_多賀高校_茨城県", "千葉_えみり_多賀高校_茨城県"]
+    "playerIds": [
+      "真弓_愛海_多賀高校_茨城県",
+      "千葉_えみり_多賀高校_茨城県"
+    ]
+  },
+  {
+    "team": "多賀",
+    "teamId": "taga",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "真弓_愛海_多賀_茨城県",
+      "千葉_えみり_多賀_茨城県"
+    ]
   },
   {
     "team": "東洋大牛久",
@@ -1246,7 +1819,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["竹﨑_真莉亜_東洋大牛久_茨城県", "遠藤_理衣_東洋大牛久_茨城県"]
+    "playerIds": [
+      "竹﨑_真莉亜_東洋大牛久_茨城県",
+      "遠藤_理衣_東洋大牛久_茨城県"
+    ]
   },
   {
     "team": "牛久",
@@ -1258,7 +1834,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["岡野_裕太_牛久_茨城県", "大川_プラニシュ_牛久_茨城県"]
+    "playerIds": [
+      "岡野_裕太_牛久_茨城県",
+      "大川_プラニシュ_牛久_茨城県"
+    ]
   },
   {
     "team": "日立北",
@@ -1270,7 +1849,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["植木_萌香_日立北_茨城県"]
+    "playerIds": [
+      "植木_萌香_日立北_茨城県"
+    ]
   },
   {
     "team": "常磐大",
@@ -1282,7 +1863,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["大図_果凛_常磐大_茨城県"]
+    "playerIds": [
+      "大図_果凛_常磐大_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1294,7 +1877,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1306,7 +1891,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1318,7 +1905,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["赤井_琴音_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "赤井_琴音_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1330,7 +1919,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["郡司_望美_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "郡司_望美_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1342,7 +1933,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1354,7 +1947,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1366,7 +1961,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["髙嶋_雅弥_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "髙嶋_雅弥_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1378,7 +1975,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["谷口_健斗_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "谷口_健斗_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1390,7 +1989,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["郡司_望美_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "郡司_望美_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1402,7 +2003,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["佐々木_陽向_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "佐々木_陽向_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1414,7 +2017,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["片岡_結愛_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "片岡_結愛_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1426,7 +2031,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1438,7 +2045,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["一ノ宮_大和_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "一ノ宮_大和_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "霞ヶ浦",
@@ -1450,7 +2059,9 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["善福_留生_霞ヶ浦_茨城県"]
+    "playerIds": [
+      "善福_留生_霞ヶ浦_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1462,7 +2073,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1474,7 +2087,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["宮崎_紫帆_水戸女子_茨城県"]
+    "playerIds": [
+      "宮崎_紫帆_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1486,7 +2101,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["斉藤_奈々_水戸女子_茨城県"]
+    "playerIds": [
+      "斉藤_奈々_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1498,7 +2115,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["緑川_あい_水戸女子_茨城県"]
+    "playerIds": [
+      "緑川_あい_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1510,7 +2129,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["緑川_まい_水戸女子_茨城県"]
+    "playerIds": [
+      "緑川_まい_水戸女子_茨城県"
+    ]
   },
   {
     "team": "水戸女子",
@@ -1522,7 +2143,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["小川_木乃花_水戸女子_茨城県"]
+    "playerIds": [
+      "小川_木乃花_水戸女子_茨城県"
+    ]
   },
   {
     "team": "多賀",
@@ -1534,7 +2157,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["真弓_愛海_多賀高校_茨城県"]
+    "playerIds": [
+      "真弓_愛海_多賀高校_茨城県"
+    ]
   },
   {
     "team": "多賀",
@@ -1546,6 +2171,8 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["真弓_愛海_多賀高校_茨城県"]
+    "playerIds": [
+      "真弓_愛海_多賀高校_茨城県"
+    ]
   }
 ]

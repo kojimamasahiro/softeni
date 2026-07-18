@@ -1,5 +1,16 @@
 [
   {
+    "team": "高崎",
+    "teamId": "takasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys"
+  },
+  {
     "team": "高崎女子",
     "teamId": "takasakijoshi",
     "prefecture": "群馬県",
@@ -66,6 +77,39 @@
     "gender": "boys"
   },
   {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
+    "gender": "boys"
+  },
+  {
     "team": "健大高崎",
     "teamId": "takeshioodakasaki",
     "prefecture": "群馬県",
@@ -107,6 +151,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
     "gender": "girls"
   },
   {
@@ -121,6 +176,17 @@
     "gender": "girls"
   },
   {
+    "team": "東農大二",
+    "teamId": "tounoudaini",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
     "team": "桐生市立商",
     "teamId": "kiryuushiritsushou",
     "prefecture": "群馬県",
@@ -130,7 +196,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["五十嵐_知隼_桐生市立商_群馬県", "大木_康生_桐生市立商_群馬県"]
+    "playerIds": [
+      "五十嵐_知隼_桐生市立商_群馬県",
+      "大木_康生_桐生市立商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -142,7 +211,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["石田_滉樹_前橋商_群馬県", "佐々木_琉_前橋商_群馬県"]
+    "playerIds": [
+      "石田_滉樹_前橋商_群馬県",
+      "佐々木_琉_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -154,7 +226,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["小暮_隆太郎_前橋商_群馬県", "佐々木_麻洋_前橋商_群馬県"]
+    "playerIds": [
+      "小暮_隆太郎_前橋商_群馬県",
+      "佐々木_麻洋_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -166,7 +241,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["安井_勇翔_前橋商_群馬県", "水落_礼翔_前橋商_群馬県"]
+    "playerIds": [
+      "安井_勇翔_前橋商_群馬県",
+      "水落_礼翔_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -178,7 +256,40 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["百澤_賢亮_前橋商_群馬県", "𠮷田_聖_前橋商_群馬県"]
+    "playerIds": [
+      "百澤_賢亮_前橋商_群馬県",
+      "𠮷田_聖_前橋商_群馬県"
+    ]
+  },
+  {
+    "team": "前橋商",
+    "teamId": "maebashishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "間庭_旭飛_前橋商_群馬県",
+      "坂庭_駿介_前橋商_群馬県"
+    ]
+  },
+  {
+    "team": "前橋商",
+    "teamId": "maebashishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "和地_真太朗_前橋商_群馬県",
+      "石田_滉樹_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -190,7 +301,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["千明_朔弥_前橋商_群馬県", "相内_翔琉_前橋商_群馬県"]
+    "playerIds": [
+      "千明_朔弥_前橋商_群馬県",
+      "相内_翔琉_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -202,7 +316,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["小暮_隆太郎_前橋商_群馬県", "佐々木_麻洋_前橋商_群馬県"]
+    "playerIds": [
+      "小暮_隆太郎_前橋商_群馬県",
+      "佐々木_麻洋_前橋商_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -214,7 +331,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["武田_豊_前橋商_群馬県", "中島_魁成_前橋商_群馬県"]
+    "playerIds": [
+      "武田_豊_前橋商_群馬県",
+      "中島_魁成_前橋商_群馬県"
+    ]
   },
   {
     "team": "沼田",
@@ -226,7 +346,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["砂山_温斗_沼田_群馬県", "金井_琉偉_沼田_群馬県"]
+    "playerIds": [
+      "砂山_温斗_沼田_群馬県",
+      "金井_琉偉_沼田_群馬県"
+    ]
   },
   {
     "team": "渋川",
@@ -238,7 +361,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["田村_悠和_渋川_群馬県", "保科_陽向_渋川_群馬県"]
+    "playerIds": [
+      "田村_悠和_渋川_群馬県",
+      "保科_陽向_渋川_群馬県"
+    ]
   },
   {
     "team": "渋川",
@@ -250,7 +376,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["田中_輝_渋川_群馬県", "保科_陽向_渋川_群馬県"]
+    "playerIds": [
+      "田中_輝_渋川_群馬県",
+      "保科_陽向_渋川_群馬県"
+    ]
   },
   {
     "team": "渋川",
@@ -262,7 +391,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["大須賀_聡汰_渋川_群馬県", "萩原_滉大_渋川_群馬県"]
+    "playerIds": [
+      "大須賀_聡汰_渋川_群馬県",
+      "萩原_滉大_渋川_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -274,7 +406,25 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎_群馬県", "齊藤_慧伸_高崎_群馬県"]
+    "playerIds": [
+      "大河原_兜_高崎_群馬県",
+      "齊藤_慧伸_高崎_群馬県"
+    ]
+  },
+  {
+    "team": "高崎",
+    "teamId": "takasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "牧野_穂_高崎高校_群馬県",
+      "齊藤_慧伸_高崎高校_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -286,7 +436,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎_群馬県", "齊藤_慧伸_高崎_群馬県"]
+    "playerIds": [
+      "大河原_兜_高崎_群馬県",
+      "齊藤_慧伸_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -298,7 +451,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎_群馬県", "茂木_俊樹_高崎_群馬県"]
+    "playerIds": [
+      "大河原_兜_高崎_群馬県",
+      "茂木_俊樹_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -310,7 +466,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["片貝_匠_高崎_群馬県", "田村_真人_高崎_群馬県"]
+    "playerIds": [
+      "片貝_匠_高崎_群馬県",
+      "田村_真人_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -322,7 +481,25 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["片貝_匠_高崎_群馬県", "田村_真人_高崎_群馬県"]
+    "playerIds": [
+      "片貝_匠_高崎_群馬県",
+      "田村_真人_高崎_群馬県"
+    ]
+  },
+  {
+    "team": "高崎",
+    "teamId": "takasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "牧野_穂_高崎_群馬県",
+      "齊藤_慧伸_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -334,7 +511,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎_群馬県", "齊藤_慧伸_高崎_群馬県"]
+    "playerIds": [
+      "大河原_兜_高崎_群馬県",
+      "齊藤_慧伸_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -346,7 +526,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["牧野_穂_高崎_群馬県", "齊藤_慧伸_高崎_群馬県"]
+    "playerIds": [
+      "牧野_穂_高崎_群馬県",
+      "齊藤_慧伸_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -358,7 +541,25 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["佐野_天音_高崎女子_群馬県", "大瀧_結奈_高崎女子_群馬県"]
+    "playerIds": [
+      "佐野_天音_高崎女子_群馬県",
+      "大瀧_結奈_高崎女子_群馬県"
+    ]
+  },
+  {
+    "team": "高崎女子",
+    "teamId": "takasakijoshi",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "丸山_姫衣_高崎女子高校_群馬県",
+      "栁井_鈴_高崎女子高校_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -370,7 +571,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県", "栁井_鈴_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県",
+      "栁井_鈴_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -382,7 +586,40 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県", "後藤_理子_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県",
+      "後藤_理子_高崎女子_群馬県"
+    ]
+  },
+  {
+    "team": "高崎女子",
+    "teamId": "takasakijoshi",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "諸田_美陽_高崎女子_群馬県",
+      "茂野_雫_高崎女子_群馬県"
+    ]
+  },
+  {
+    "team": "高崎女子",
+    "teamId": "takasakijoshi",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県",
+      "栁井_鈴_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -394,7 +631,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県", "栁井_鈴_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県",
+      "栁井_鈴_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -406,7 +646,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["渡邉_妃菜乃_高崎商_群馬県", "水野_沙姫_高崎商_群馬県"]
+    "playerIds": [
+      "渡邉_妃菜乃_高崎商_群馬県",
+      "水野_沙姫_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -418,7 +661,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["大和_昌生_高崎商_群馬県", "五十嵐_響紀_高崎商_群馬県"]
+    "playerIds": [
+      "大和_昌生_高崎商_群馬県",
+      "五十嵐_響紀_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -430,7 +676,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["稲葉_太一_高崎商_群馬県", "井草_優斗_高崎商_群馬県"]
+    "playerIds": [
+      "稲葉_太一_高崎商_群馬県",
+      "井草_優斗_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -442,7 +691,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大塚_陸玖_高崎商_群馬県", "森平_蓮心_高崎商_群馬県"]
+    "playerIds": [
+      "大塚_陸玖_高崎商_群馬県",
+      "森平_蓮心_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -454,7 +706,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["後藤_類_高崎商_群馬県", "野村_優心_高崎商_群馬県"]
+    "playerIds": [
+      "後藤_類_高崎商_群馬県",
+      "野村_優心_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -466,7 +721,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["萩原_啓太_高崎商_群馬県", "石田_吏_高崎商_群馬県"]
+    "playerIds": [
+      "萩原_啓太_高崎商_群馬県",
+      "石田_吏_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -478,7 +736,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["大塚_陸玖_高崎商_群馬県", "松本_健太郎_高崎商_群馬県"]
+    "playerIds": [
+      "大塚_陸玖_高崎商_群馬県",
+      "松本_健太郎_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -490,7 +751,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["剱持_杏衣_高崎商_群馬県", "水野_沙姫_高崎商_群馬県"]
+    "playerIds": [
+      "剱持_杏衣_高崎商_群馬県",
+      "水野_沙姫_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -502,7 +766,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["清水_春来_高崎商_群馬県", "永井_秀弥_高崎商_群馬県"]
+    "playerIds": [
+      "清水_春来_高崎商_群馬県",
+      "永井_秀弥_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -514,7 +781,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["大塚_陸玖_高崎商_群馬県", "森平_蓮心_高崎商_群馬県"]
+    "playerIds": [
+      "大塚_陸玖_高崎商_群馬県",
+      "森平_蓮心_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -526,7 +796,25 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["南雲_隼人_高崎商_群馬県", "松本_健太郎_高崎商_群馬県"]
+    "playerIds": [
+      "南雲_隼人_高崎商_群馬県",
+      "松本_健太郎_高崎商_群馬県"
+    ]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "後藤_類_高崎商_群馬県",
+      "小澤_柊太_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -538,7 +826,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["橋本_菜々子_高崎商_群馬県", "北舘_萌_高崎商_群馬県"]
+    "playerIds": [
+      "橋本_菜々子_高崎商_群馬県",
+      "北舘_萌_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -550,7 +841,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["喜樂_洸音_高崎商_群馬県", "金井_亮太_高崎商_群馬県"]
+    "playerIds": [
+      "喜樂_洸音_高崎商_群馬県",
+      "金井_亮太_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -562,7 +856,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["大和_昌生_高崎商_群馬県", "北爪_琉登_高崎商_群馬県"]
+    "playerIds": [
+      "大和_昌生_高崎商_群馬県",
+      "北爪_琉登_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -574,7 +871,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["神澤_政也_高崎商_群馬県", "後藤_柊_高崎商_群馬県"]
+    "playerIds": [
+      "神澤_政也_高崎商_群馬県",
+      "後藤_柊_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -586,7 +886,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["渡邉_妃菜乃_高崎商_群馬県", "岩﨑_珠奈_高崎商_群馬県"]
+    "playerIds": [
+      "渡邉_妃菜乃_高崎商_群馬県",
+      "岩﨑_珠奈_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -598,7 +901,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["岸_海椰美_高崎商_群馬県", "四方田_綺音_高崎商_群馬県"]
+    "playerIds": [
+      "岸_海椰美_高崎商_群馬県",
+      "四方田_綺音_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -610,7 +916,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["黒岩_ほのみ_高崎商_群馬県", "小林_きらら_高崎商_群馬県"]
+    "playerIds": [
+      "黒岩_ほのみ_高崎商_群馬県",
+      "小林_きらら_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -622,7 +931,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["宮﨑_葵_高崎商_群馬県", "織田_愛生_高崎商_群馬県"]
+    "playerIds": [
+      "宮﨑_葵_高崎商_群馬県",
+      "織田_愛生_高崎商_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -634,7 +946,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["林_紗悠乃_健大高崎_群馬県", "小林_きらら_高崎商業高校_群馬県"]
+    "playerIds": [
+      "林_紗悠乃_健大高崎_群馬県",
+      "小林_きらら_高崎商業高校_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -646,7 +961,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小池_ありさ_健大高崎_群馬県", "小池_ののか_健大高崎_群馬県"]
+    "playerIds": [
+      "小池_ありさ_健大高崎_群馬県",
+      "小池_ののか_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -658,7 +976,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県", "宮田_茉実_アキム_埼玉県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県",
+      "宮田_茉実_アキム_埼玉県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -670,7 +991,10 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["林_紗悠乃_健大高崎_群馬県", "目黒_ななみ_健大高崎_群馬県"]
+    "playerIds": [
+      "林_紗悠乃_健大高崎_群馬県",
+      "目黒_ななみ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -682,7 +1006,10 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["井浪_瑛麻_健大高崎_群馬県", "小池_ありさ_健大高崎_群馬県"]
+    "playerIds": [
+      "井浪_瑛麻_健大高崎_群馬県",
+      "小池_ありさ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -694,7 +1021,55 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["藤澤_陽奈子_健大高崎_群馬県", "山﨑_望生_健大高崎_群馬県"]
+    "playerIds": [
+      "藤澤_陽奈子_健大高崎_群馬県",
+      "山﨑_望生_健大高崎_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "黒澤_祐菜_健大高崎高校_群馬県",
+      "佐藤_愛桜_健大高崎高校_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "安田_海歌_健大高崎高校_群馬県",
+      "石倉_ひまり_健大高崎高校_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_夏鈴_健大高崎高校_群馬県",
+      "五十嵐_杏寿_健大高崎高校_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -706,7 +1081,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["林_紗悠乃_健大高崎_群馬県", "目黒_ななみ_健大高崎_群馬県"]
+    "playerIds": [
+      "林_紗悠乃_健大高崎_群馬県",
+      "目黒_ななみ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -718,7 +1096,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県", "岡田_陽菜_健大高崎_群馬県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県",
+      "岡田_陽菜_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -730,7 +1111,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中曽根_楓_健大高崎_群馬県", "稲葉_葵_健大高崎_群馬県"]
+    "playerIds": [
+      "中曽根_楓_健大高崎_群馬県",
+      "稲葉_葵_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -742,7 +1126,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["田川_雅也_健大高崎_群馬県", "桒原_充樹_健大高崎_群馬県"]
+    "playerIds": [
+      "田川_雅也_健大高崎_群馬県",
+      "桒原_充樹_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -754,7 +1141,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["松村_遼太郎_健大高崎_群馬県", "古谷_悠斗_健大高崎_群馬県"]
+    "playerIds": [
+      "松村_遼太郎_健大高崎_群馬県",
+      "古谷_悠斗_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -766,7 +1156,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["安藤_七暖_健大高崎_群馬県", "山崎_望生_健大高崎_群馬県"]
+    "playerIds": [
+      "安藤_七暖_健大高崎_群馬県",
+      "山崎_望生_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -778,7 +1171,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["関口_心咲_健大高崎_群馬県", "中島_柚花_健大高崎_群馬県"]
+    "playerIds": [
+      "関口_心咲_健大高崎_群馬県",
+      "中島_柚花_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -790,7 +1186,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["黒澤_祐菜_健大高崎_群馬県", "五十嵐_杏寿_健大高崎_群馬県"]
+    "playerIds": [
+      "黒澤_祐菜_健大高崎_群馬県",
+      "五十嵐_杏寿_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -802,7 +1201,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["中嶋_夏鈴_健大高崎_群馬県", "藤澤_陽奈子_健大高崎_群馬県"]
+    "playerIds": [
+      "中嶋_夏鈴_健大高崎_群馬県",
+      "藤澤_陽奈子_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -814,7 +1216,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["林_詩恩_健大高崎_群馬県", "目黒_ななみ_健大高崎_群馬県"]
+    "playerIds": [
+      "林_詩恩_健大高崎_群馬県",
+      "目黒_ななみ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -826,7 +1231,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小池_ののか_健大高崎_群馬県", "小池_ありさ_健大高崎_群馬県"]
+    "playerIds": [
+      "小池_ののか_健大高崎_群馬県",
+      "小池_ありさ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -838,7 +1246,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["金城_ひかる_健大高崎_群馬県", "加藤_結衣_健大高崎_群馬県"]
+    "playerIds": [
+      "金城_ひかる_健大高崎_群馬県",
+      "加藤_結衣_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -850,7 +1261,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中曽根_楓_健大高崎_群馬県", "稲葉_葵_健大高崎_群馬県"]
+    "playerIds": [
+      "中曽根_楓_健大高崎_群馬県",
+      "稲葉_葵_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -862,7 +1276,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["尾花_涼汰_健大高崎_群馬県", "後閑_晴登_健大高崎_群馬県"]
+    "playerIds": [
+      "尾花_涼汰_健大高崎_群馬県",
+      "後閑_晴登_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -874,7 +1291,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["田王_羽菜_健大高崎_群馬県", "山口_わかば_健大高崎_群馬県"]
+    "playerIds": [
+      "田王_羽菜_健大高崎_群馬県",
+      "山口_わかば_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -886,7 +1306,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県", "岡田_陽菜_健大高崎_群馬県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県",
+      "岡田_陽菜_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -898,7 +1321,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["林_詩恩_健大高崎_群馬県", "入山_杏澄_健大高崎_群馬県"]
+    "playerIds": [
+      "林_詩恩_健大高崎_群馬県",
+      "入山_杏澄_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -910,7 +1336,70 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["中曽根_楓_健大高崎_群馬県", "稲葉_葵_健大高崎_群馬県"]
+    "playerIds": [
+      "中曽根_楓_健大高崎_群馬県",
+      "稲葉_葵_健大高崎_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "黒澤_祐奈_健大高崎_群馬県",
+      "佐藤_愛桜_健大高崎_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "藤澤_陽奈子_健大高崎_群馬県",
+      "小池_ありさ_健大高崎_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "井浪_瑛麻_健大高崎_群馬県",
+      "加藤_結衣_健大高崎_群馬県"
+    ]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "中嶋_夏鈴_健大高崎_群馬県",
+      "五十嵐_杏寿_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -922,7 +1411,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["田村_瑳菜_健大高崎_群馬県", "川端_瑚白_健大高崎_群馬県"]
+    "playerIds": [
+      "田村_瑳菜_健大高崎_群馬県",
+      "川端_瑚白_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -934,7 +1426,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["岡村_紗希_健大高崎_群馬県", "棚橋_愛爽_健大高崎_群馬県"]
+    "playerIds": [
+      "岡村_紗希_健大高崎_群馬県",
+      "棚橋_愛爽_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -946,7 +1441,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["渡邊_愛梨_健大高崎_群馬県", "柄澤_雅_健大高崎_群馬県"]
+    "playerIds": [
+      "渡邊_愛梨_健大高崎_群馬県",
+      "柄澤_雅_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -958,7 +1456,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["角田_乃依瑠_健大高崎_群馬県", "飯野_叶_健大高崎_群馬県"]
+    "playerIds": [
+      "角田_乃依瑠_健大高崎_群馬県",
+      "飯野_叶_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -970,7 +1471,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["永井_美彩紀_健大高崎_群馬県", "青木_樹里_健大高崎_群馬県"]
+    "playerIds": [
+      "永井_美彩紀_健大高崎_群馬県",
+      "青木_樹里_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -982,7 +1486,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["松村_遼太郎_健大高崎_群馬県", "古谷_悠斗_健大高崎_群馬県"]
+    "playerIds": [
+      "松村_遼太郎_健大高崎_群馬県",
+      "古谷_悠斗_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -994,7 +1501,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["井浪_瑛麻_健大高崎_群馬県", "小池_ありさ_健大高崎_群馬県"]
+    "playerIds": [
+      "井浪_瑛麻_健大高崎_群馬県",
+      "小池_ありさ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1006,7 +1516,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中曽根_楓_健大高崎_群馬県", "稲葉_葵_健大高崎_群馬県"]
+    "playerIds": [
+      "中曽根_楓_健大高崎_群馬県",
+      "稲葉_葵_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1018,7 +1531,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県", "岡田_陽菜_健大高崎_群馬県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県",
+      "岡田_陽菜_健大高崎_群馬県"
+    ]
   },
   {
     "team": "東京農大二",
@@ -1030,7 +1546,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["高徳_梨々愛_東京農大二_群馬県", "新井_月葵_東京農大二_群馬県"]
+    "playerIds": [
+      "高徳_梨々愛_東京農大二_群馬県",
+      "新井_月葵_東京農大二_群馬県"
+    ]
   },
   {
     "team": "東京農大二",
@@ -1042,7 +1561,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["生方_弥生_東京農大二_群馬県", "松井_瑞季_東京農大二_群馬県"]
+    "playerIds": [
+      "生方_弥生_東京農大二_群馬県",
+      "松井_瑞季_東京農大二_群馬県"
+    ]
   },
   {
     "team": "東京農大二",
@@ -1054,7 +1576,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["松井_瑞季_東京農大二_群馬県", "髙山_果歩_東京農大二_群馬県"]
+    "playerIds": [
+      "松井_瑞季_東京農大二_群馬県",
+      "髙山_果歩_東京農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1066,7 +1591,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["関根_理央_東農大二_群馬県", "髙山_果歩_東農大二_群馬県"]
+    "playerIds": [
+      "関根_理央_東農大二_群馬県",
+      "髙山_果歩_東農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1078,7 +1606,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["小林_純大_東農大二_群馬県", "戸丸_朝陽_東農大二_群馬県"]
+    "playerIds": [
+      "小林_純大_東農大二_群馬県",
+      "戸丸_朝陽_東農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1090,7 +1621,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["葭葉_凛斗_東農大二_群馬県", "野村_太輝_東農大二_群馬県"]
+    "playerIds": [
+      "葭葉_凛斗_東農大二_群馬県",
+      "野村_太輝_東農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1102,7 +1636,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["関根_理央_東農大二_群馬県", "松井_瑞季_東農大二_群馬県"]
+    "playerIds": [
+      "関根_理央_東農大二_群馬県",
+      "松井_瑞季_東農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1114,7 +1651,40 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["間庭_賢人_東農大二_群馬県", "市川_悠翔_東農大二_群馬県"]
+    "playerIds": [
+      "間庭_賢人_東農大二_群馬県",
+      "市川_悠翔_東農大二_群馬県"
+    ]
+  },
+  {
+    "team": "東農大二",
+    "teamId": "tounoudaini",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "保科_夕陽_東農大二_群馬県",
+      "飯ケ谷_星成_東農大二_群馬県"
+    ]
+  },
+  {
+    "team": "東農大二",
+    "teamId": "tounoudaini",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "戸丸_雅也_東農大二_群馬県",
+      "齋藤_壮介_東農大二_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1126,7 +1696,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["間庭_賢人_東農大二_群馬県", "市川_悠翔_東農大二_群馬県"]
+    "playerIds": [
+      "間庭_賢人_東農大二_群馬県",
+      "市川_悠翔_東農大二_群馬県"
+    ]
   },
   {
     "team": "前橋商",
@@ -1138,7 +1711,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["相内_花音_前橋商_群馬県"]
+    "playerIds": [
+      "相内_花音_前橋商_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -1150,7 +1725,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎高校_"]
+    "playerIds": [
+      "大河原_兜_高崎高校"
+    ]
   },
   {
     "team": "高崎",
@@ -1162,7 +1739,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["大河原_兜_高崎_群馬県"]
+    "playerIds": [
+      "大河原_兜_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎",
@@ -1174,7 +1753,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["牧野_穂_高崎_群馬県"]
+    "playerIds": [
+      "牧野_穂_高崎_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -1186,7 +1767,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -1198,7 +1781,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -1210,7 +1795,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎女子",
@@ -1222,7 +1809,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["丸山_姫衣_高崎女子_群馬県"]
+    "playerIds": [
+      "丸山_姫衣_高崎女子_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -1234,7 +1823,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["大和_昌生_高崎商_群馬県"]
+    "playerIds": [
+      "大和_昌生_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -1246,7 +1837,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["大塚_陸玖_高崎商_群馬県"]
+    "playerIds": [
+      "大塚_陸玖_高崎商_群馬県"
+    ]
   },
   {
     "team": "高崎商",
@@ -1258,7 +1851,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["大塚_陸玖_高崎商_群馬県"]
+    "playerIds": [
+      "大塚_陸玖_高崎商_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1270,7 +1865,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["小池_ののか_健大高崎_群馬県"]
+    "playerIds": [
+      "小池_ののか_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1282,7 +1879,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1294,7 +1893,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["目黒_ななみ_健大高崎_群馬県"]
+    "playerIds": [
+      "目黒_ななみ_健大高崎_群馬県"
+    ]
   },
   {
     "team": "健大高崎",
@@ -1306,7 +1907,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["青木_香林_健大高崎_群馬県"]
+    "playerIds": [
+      "青木_香林_健大高崎_群馬県"
+    ]
   },
   {
     "team": "東農大二",
@@ -1318,6 +1921,8 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["間庭_賢人_東農大二_群馬県"]
+    "playerIds": [
+      "間庭_賢人_東農大二_群馬県"
+    ]
   }
 ]

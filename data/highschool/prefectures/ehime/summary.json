@@ -33,6 +33,17 @@
     "gender": "girls"
   },
   {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
+    "gender": "girls"
+  },
+  {
     "team": "新田",
     "teamId": "nitta",
     "prefecture": "愛媛県",
@@ -63,6 +74,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
     "gender": "boys"
   },
   {
@@ -136,6 +158,50 @@
     "teamId": "saibi",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
@@ -154,6 +220,50 @@
     "gender": "boys"
   },
   {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "girls"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
+    "gender": "boys"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2020,
+    "gender": "boys"
+  },
+  {
     "team": "聖カタリナ",
     "teamId": "hijirikatarina",
     "prefecture": "愛媛県",
@@ -163,7 +273,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山本_佑奈_聖カタリナ_愛媛県", "木村_朱里_聖カタリナ_愛媛県"]
+    "playerIds": [
+      "山本_佑奈_聖カタリナ_愛媛県",
+      "木村_朱里_聖カタリナ_愛媛県"
+    ]
   },
   {
     "team": "聖カタリナ",
@@ -175,7 +288,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["片山_心羽_聖カタリナ_愛媛県", "太田_菫_聖カタリナ_愛媛県"]
+    "playerIds": [
+      "片山_心羽_聖カタリナ_愛媛県",
+      "太田_菫_聖カタリナ_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -187,7 +303,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中路_心結_今治北_愛媛県", "森本_汐夏_今治北_愛媛県"]
+    "playerIds": [
+      "中路_心結_今治北_愛媛県",
+      "森本_汐夏_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -199,7 +318,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["正岡_由衣_今治北_愛媛県", "西本_奈津希_今治北_愛媛県"]
+    "playerIds": [
+      "正岡_由衣_今治北_愛媛県",
+      "西本_奈津希_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -211,7 +333,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["児玉_春来_今治北_愛媛県", "高田_聖都_今治北_愛媛県"]
+    "playerIds": [
+      "児玉_春来_今治北_愛媛県",
+      "高田_聖都_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -223,7 +348,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["矢野_朱莉_今治北_愛媛県", "伊東_ひなた_今治北_愛媛県"]
+    "playerIds": [
+      "矢野_朱莉_今治北_愛媛県",
+      "伊東_ひなた_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -235,7 +363,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["宗雪_開晟_今治北_愛媛県", "大塚_結人_今治北_愛媛県"]
+    "playerIds": [
+      "宗雪_開晟_今治北_愛媛県",
+      "大塚_結人_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -247,7 +378,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中路_心結_今治北_愛媛県", "正岡_由光_今治北_愛媛県"]
+    "playerIds": [
+      "中路_心結_今治北_愛媛県",
+      "正岡_由光_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -259,7 +393,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["西崎_沙和_今治北_愛媛県", "佐薙_奈央_今治北_愛媛県"]
+    "playerIds": [
+      "西崎_沙和_今治北_愛媛県",
+      "佐薙_奈央_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -271,7 +408,25 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["児玉_春来_今治北_愛媛県", "高田_聖都_今治北_愛媛県"]
+    "playerIds": [
+      "児玉_春来_今治北_愛媛県",
+      "高田_聖都_今治北_愛媛県"
+    ]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "﨑山​_聖_今治北_愛媛県",
+      "菊川_かの_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -283,7 +438,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["黒川_愛結_今治北_愛媛県", "児玉_日和_今治北_愛媛県"]
+    "playerIds": [
+      "黒川_愛結_今治北_愛媛県",
+      "児玉_日和_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -295,7 +453,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["木村_こはく_今治北_愛媛県", "槇_凜子_今治北_愛媛県"]
+    "playerIds": [
+      "木村_こはく_今治北_愛媛県",
+      "槇_凜子_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -307,7 +468,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["山岡_鈴芽_今治北_愛媛県", "山岡_愛芽_今治北_愛媛県"]
+    "playerIds": [
+      "山岡_鈴芽_今治北_愛媛県",
+      "山岡_愛芽_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -319,7 +483,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["神尾_響_今治北_愛媛県", "門田_大知_今治北_愛媛県"]
+    "playerIds": [
+      "神尾_響_今治北_愛媛県",
+      "門田_大知_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -331,7 +498,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["正岡_由衣_今治北_愛媛県", "西本_奈津希_今治北_愛媛県"]
+    "playerIds": [
+      "正岡_由衣_今治北_愛媛県",
+      "西本_奈津希_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -343,7 +513,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["矢野_朱莉_今治北_愛媛県", "伊東_ひなた_今治北_愛媛県"]
+    "playerIds": [
+      "矢野_朱莉_今治北_愛媛県",
+      "伊東_ひなた_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治工",
@@ -355,7 +528,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["濱川_響輝_今治工_愛媛県", "村井_純也_今治工_愛媛県"]
+    "playerIds": [
+      "濱川_響輝_今治工_愛媛県",
+      "村井_純也_今治工_愛媛県"
+    ]
   },
   {
     "team": "今治工",
@@ -367,7 +543,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["濱川_響輝_今治工_愛媛県", "村井_純也_今治工_愛媛県"]
+    "playerIds": [
+      "濱川_響輝_今治工_愛媛県",
+      "村井_純也_今治工_愛媛県"
+    ]
   },
   {
     "team": "川之石",
@@ -379,7 +558,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西村_留莉_川之石_愛媛県", "今城_佳奈_川之石_愛媛県"]
+    "playerIds": [
+      "西村_留莉_川之石_愛媛県",
+      "今城_佳奈_川之石_愛媛県"
+    ]
   },
   {
     "team": "川之石",
@@ -391,7 +573,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["中野_愛菜_川之石_愛媛県", "宇都宮_礼_川之石_愛媛県"]
+    "playerIds": [
+      "中野_愛菜_川之石_愛媛県",
+      "宇都宮_礼_川之石_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -403,7 +588,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["和氣_道宏_新田_愛媛県", "確田_冬吹樹_新田_愛媛県"]
+    "playerIds": [
+      "和氣_道宏_新田_愛媛県",
+      "確田_冬吹樹_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -415,7 +603,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["大谷_孔太_新田_愛媛県", "小倉_光生_新田_愛媛県"]
+    "playerIds": [
+      "大谷_孔太_新田_愛媛県",
+      "小倉_光生_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -427,7 +618,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["藤原_悠_新田_愛媛県", "大谷_和夢_新田_愛媛県"]
+    "playerIds": [
+      "藤原_悠_新田_愛媛県",
+      "大谷_和夢_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -439,7 +633,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["德増_愛紘_新田_愛媛県", "市川_あずみ_新田_愛媛県"]
+    "playerIds": [
+      "德増_愛紘_新田_愛媛県",
+      "市川_あずみ_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -451,7 +648,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["毛利_航太_新田_愛媛県", "仲田_翔磨_新田_愛媛県"]
+    "playerIds": [
+      "毛利_航太_新田_愛媛県",
+      "仲田_翔磨_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -463,7 +663,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["辻_和樹_新田_愛媛県", "須山_洸聖_新田_愛媛県"]
+    "playerIds": [
+      "辻_和樹_新田_愛媛県",
+      "須山_洸聖_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -475,7 +678,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["德増_愛紘_新田_愛媛県", "高智_英美_新田_愛媛県"]
+    "playerIds": [
+      "德増_愛紘_新田_愛媛県",
+      "高智_英美_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -487,7 +693,25 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["毛利_航太_新田_愛媛県", "仲田_翔磨_新田_愛媛県"]
+    "playerIds": [
+      "毛利_航太_新田_愛媛県",
+      "仲田_翔磨_新田_愛媛県"
+    ]
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "村上_亮資_新田_愛媛県",
+      "大谷_和夢_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -499,7 +723,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["井澤_伊茶_新田_愛媛県", "確田_冬吹樹_新田_愛媛県"]
+    "playerIds": [
+      "井澤_伊茶_新田_愛媛県",
+      "確田_冬吹樹_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -511,7 +738,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["小倉_一郎_新田_愛媛県", "城戸_秀哉_新田_愛媛県"]
+    "playerIds": [
+      "小倉_一郎_新田_愛媛県",
+      "城戸_秀哉_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -523,7 +753,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["和氣_道宏_新田_愛媛県", "小倉_光生_新田_愛媛県"]
+    "playerIds": [
+      "和氣_道宏_新田_愛媛県",
+      "小倉_光生_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -535,7 +768,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["大谷_孔太_新田_愛媛県", "濱田_翔太_新田_愛媛県"]
+    "playerIds": [
+      "大谷_孔太_新田_愛媛県",
+      "濱田_翔太_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -547,7 +783,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["和氣_道宏_新田_愛媛県", "確田_冬吹樹_新田_愛媛県"]
+    "playerIds": [
+      "和氣_道宏_新田_愛媛県",
+      "確田_冬吹樹_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -559,7 +798,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["毛利_航太_新田_愛媛県", "仲田_翔磨_新田_愛媛県"]
+    "playerIds": [
+      "毛利_航太_新田_愛媛県",
+      "仲田_翔磨_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -571,7 +813,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["増本_拓流_新田_愛媛県", "仲田_翔磨_新田_愛媛県"]
+    "playerIds": [
+      "増本_拓流_新田_愛媛県",
+      "仲田_翔磨_新田_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -583,7 +828,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["高田_ひより_済美_愛媛県", "尾田_淳香_済美_愛媛県"]
+    "playerIds": [
+      "高田_ひより_済美_愛媛県",
+      "尾田_淳香_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -595,7 +843,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西田_美織_済美_愛媛県", "大澤_鈴夏_済美_愛媛県"]
+    "playerIds": [
+      "西田_美織_済美_愛媛県",
+      "大澤_鈴夏_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -607,7 +858,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["山本_彩羽_済美_愛媛県", "鈴木_実秋_済美_愛媛県"]
+    "playerIds": [
+      "山本_彩羽_済美_愛媛県",
+      "鈴木_実秋_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -619,7 +873,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["赤松_富心_済美_愛媛県", "山﨑_里紗_済美_愛媛県"]
+    "playerIds": [
+      "赤松_富心_済美_愛媛県",
+      "山﨑_里紗_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -631,7 +888,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["岡原_煌虎_済美_愛媛県", "立石_鼓童_済美_愛媛県"]
+    "playerIds": [
+      "岡原_煌虎_済美_愛媛県",
+      "立石_鼓童_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -643,7 +903,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["桑原_聖汰_済美_愛媛県", "藤原_拓巳_済美_愛媛県"]
+    "playerIds": [
+      "桑原_聖汰_済美_愛媛県",
+      "藤原_拓巳_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -655,7 +918,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["白岡_祐也_済美_愛媛県", "橋田_巧_済美_愛媛県"]
+    "playerIds": [
+      "白岡_祐也_済美_愛媛県",
+      "橋田_巧_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -667,7 +933,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["高瀬_ひより_済美_愛媛県", "森田_悠愛_済美_愛媛県"]
+    "playerIds": [
+      "高瀬_ひより_済美_愛媛県",
+      "森田_悠愛_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -679,7 +948,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["伊藤_楓_済美_愛媛県", "池田_心優_済美_愛媛県"]
+    "playerIds": [
+      "伊藤_楓_済美_愛媛県",
+      "池田_心優_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -691,7 +963,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["武下_和奏_済美_愛媛県", "髙橋_妃菜_済美_愛媛県"]
+    "playerIds": [
+      "武下_和奏_済美_愛媛県",
+      "髙橋_妃菜_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -703,7 +978,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["清家_七海_済美_愛媛県", "平田_華帆_済美_愛媛県"]
+    "playerIds": [
+      "清家_七海_済美_愛媛県",
+      "平田_華帆_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -715,7 +993,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["廣瀬_咲紀_済美_愛媛県", "渡邊_心晴_済美_愛媛県"]
+    "playerIds": [
+      "廣瀬_咲紀_済美_愛媛県",
+      "渡邊_心晴_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -727,7 +1008,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["上甲_楓_済美_愛媛県", "髙梨_心優_済美_愛媛県"]
+    "playerIds": [
+      "上甲_楓_済美_愛媛県",
+      "髙梨_心優_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -739,7 +1023,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["平岡_大輝_済美_愛媛県", "石丸_玄昇_済美_愛媛県"]
+    "playerIds": [
+      "平岡_大輝_済美_愛媛県",
+      "石丸_玄昇_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -751,7 +1038,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["増本_考太郎_済美_愛媛県", "松末_隼輔_済美_愛媛県"]
+    "playerIds": [
+      "増本_考太郎_済美_愛媛県",
+      "松末_隼輔_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -763,7 +1053,10 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["槇_佑一郎_済美_愛媛県", "山本_煌_済美_愛媛県"]
+    "playerIds": [
+      "槇_佑一郎_済美_愛媛県",
+      "山本_煌_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -775,7 +1068,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["山本_彩羽_済美_愛媛県", "森松_瑠菜_済美_愛媛県"]
+    "playerIds": [
+      "山本_彩羽_済美_愛媛県",
+      "森松_瑠菜_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -787,7 +1083,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["鈴木_実秋_済美_愛媛県", "岡原_羽椛_済美_愛媛県"]
+    "playerIds": [
+      "鈴木_実秋_済美_愛媛県",
+      "岡原_羽椛_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -799,7 +1098,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["河野_桐_済美_愛媛県", "松原_愛_済美_愛媛県"]
+    "playerIds": [
+      "河野_桐_済美_愛媛県",
+      "松原_愛_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -811,7 +1113,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["尾上_葵埜_済美_愛媛県", "河村_カーン勇太_済美_愛媛県"]
+    "playerIds": [
+      "尾上_葵埜_済美_愛媛県",
+      "河村_カーン勇太_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -823,7 +1128,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["平岡_大輝_済美_愛媛県", "二宮_唯人_済美_愛媛県"]
+    "playerIds": [
+      "平岡_大輝_済美_愛媛県",
+      "二宮_唯人_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -835,7 +1143,10 @@
     "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["石川_柊我_済美_愛媛県", "藤本_暖_済美_愛媛県"]
+    "playerIds": [
+      "石川_柊我_済美_愛媛県",
+      "藤本_暖_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -847,7 +1158,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["尾﨑_凜_済美_愛媛県", "岡原_羽椛_済美_愛媛県"]
+    "playerIds": [
+      "尾﨑_凜_済美_愛媛県",
+      "岡原_羽椛_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -859,7 +1173,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["池内_麻乃_済美_愛媛県", "安部_蒼空_済美_愛媛県"]
+    "playerIds": [
+      "池内_麻乃_済美_愛媛県",
+      "安部_蒼空_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -871,7 +1188,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["尾田_淳香_済美_愛媛県", "赤松_富心_済美_愛媛県"]
+    "playerIds": [
+      "尾田_淳香_済美_愛媛県",
+      "赤松_富心_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -883,7 +1203,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["山本_彩羽_済美_愛媛県", "森松_瑠菜_済美_愛媛県"]
+    "playerIds": [
+      "山本_彩羽_済美_愛媛県",
+      "森松_瑠菜_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -895,7 +1218,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["鈴木_実秋_済美_愛媛県", "大澤_鈴夏_済美_愛媛県"]
+    "playerIds": [
+      "鈴木_実秋_済美_愛媛県",
+      "大澤_鈴夏_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -907,7 +1233,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["西山_春樹_済美_愛媛県", "神野_晃希_済美_愛媛県"]
+    "playerIds": [
+      "西山_春樹_済美_愛媛県",
+      "神野_晃希_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -919,7 +1248,10 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["岩井_颯良_済美_愛媛県", "二宮_唯人_済美_愛媛県"]
+    "playerIds": [
+      "岩井_颯良_済美_愛媛県",
+      "二宮_唯人_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -931,7 +1263,145 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["石川_柊我_済美_愛媛県", "藤本_暖_済美_愛媛県"]
+    "playerIds": [
+      "石川_柊我_済美_愛媛県",
+      "藤本_暖_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "山﨑_史帆里_済美_愛媛県",
+      "小川_望愛_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "伊藤_楓_済美_愛媛県",
+      "廣瀬_咲紀_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "森本_瀬里奈_済美_愛媛県",
+      "菊川_はる香_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "渡邊_心晴_済美_愛媛県",
+      "池田_心優_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": [
+      "岡﨑_心愛_済美_愛媛県",
+      "正岡_ちひろ_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "増本_考太郎_済美_愛媛県",
+      "白井_瑠夏_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "梅谷_咲仁_済美_愛媛県",
+      "山本_煌_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "髙市_蓮太_済美_愛媛県",
+      "行元_大雅_済美_愛媛県"
+    ]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "白石_健_済美_愛媛県",
+      "河野_敏也_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -943,7 +1413,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["川上_真歩_済美_愛媛県", "小寺_心晴_済美_愛媛県"]
+    "playerIds": [
+      "川上_真歩_済美_愛媛県",
+      "小寺_心晴_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -955,7 +1428,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["角田_裕輔_済美_愛媛県", "橋田_巧_済美_愛媛県"]
+    "playerIds": [
+      "角田_裕輔_済美_愛媛県",
+      "橋田_巧_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -967,7 +1443,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西田_美織_済美_愛媛県", "大澤_鈴夏_済美_愛媛県"]
+    "playerIds": [
+      "西田_美織_済美_愛媛県",
+      "大澤_鈴夏_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -979,7 +1458,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["白岡_祐也_済美_愛媛県", "橋田_巧_済美_愛媛県"]
+    "playerIds": [
+      "白岡_祐也_済美_愛媛県",
+      "橋田_巧_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -991,7 +1473,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["武下_和奏_済美_愛媛県", "髙橋_妃菜_済美_愛媛県"]
+    "playerIds": [
+      "武下_和奏_済美_愛媛県",
+      "髙橋_妃菜_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1003,7 +1488,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["平岡_大輝_済美_愛媛県", "石丸_玄昇_済美_愛媛県"]
+    "playerIds": [
+      "平岡_大輝_済美_愛媛県",
+      "石丸_玄昇_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1015,7 +1503,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["鈴木_実秋_済美_愛媛県", "岡原_羽椛_済美_愛媛県"]
+    "playerIds": [
+      "鈴木_実秋_済美_愛媛県",
+      "岡原_羽椛_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1027,7 +1518,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["鈴木_実秋_済美_愛媛県", "大澤_鈴夏_済美_愛媛県"]
+    "playerIds": [
+      "鈴木_実秋_済美_愛媛県",
+      "大澤_鈴夏_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1039,7 +1533,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["西山_春樹_済美_愛媛県", "神野_晃希_済美_愛媛県"]
+    "playerIds": [
+      "西山_春樹_済美_愛媛県",
+      "神野_晃希_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1051,7 +1548,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["渡邊_心晴_済美_愛媛県", "池田_心優_済美_愛媛県"]
+    "playerIds": [
+      "渡邊_心晴_済美_愛媛県",
+      "池田_心優_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1063,7 +1563,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["増本_考太郎_済美_愛媛県", "白井_瑠夏_済美_愛媛県"]
+    "playerIds": [
+      "増本_考太郎_済美_愛媛県",
+      "白井_瑠夏_済美_愛媛県"
+    ]
   },
   {
     "team": "西条",
@@ -1075,7 +1578,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["宮原_大和_西条_愛媛県", "菅_琉斗_西条_愛媛県"]
+    "playerIds": [
+      "宮原_大和_西条_愛媛県",
+      "菅_琉斗_西条_愛媛県"
+    ]
   },
   {
     "team": "西条",
@@ -1087,7 +1593,25 @@
     "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["安藤_大輝_西条_愛媛県", "福光_寛慈_西条_愛媛県"]
+    "playerIds": [
+      "安藤_大輝_西条_愛媛県",
+      "福光_寛慈_西条_愛媛県"
+    ]
+  },
+  {
+    "team": "西条",
+    "teamId": "saijou",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "安藤_大輝_西条_愛媛県",
+      "福光_寛慈_西条_愛媛県"
+    ]
   },
   {
     "team": "西条",
@@ -1099,7 +1623,10 @@
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["田中_愛海_西条_愛媛県", "渡邊_きらら_西条_愛媛県"]
+    "playerIds": [
+      "田中_愛海_西条_愛媛県",
+      "渡邊_きらら_西条_愛媛県"
+    ]
   },
   {
     "team": "西条",
@@ -1111,7 +1638,10 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["安藤_大輝_西条_愛媛県", "福光_寛慈_西条_愛媛県"]
+    "playerIds": [
+      "安藤_大輝_西条_愛媛県",
+      "福光_寛慈_西条_愛媛県"
+    ]
   },
   {
     "team": "八幡浜工",
@@ -1123,7 +1653,10 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["井上_憂斗_八幡浜工_愛媛県", "片山_レン_八幡浜工_愛媛県"]
+    "playerIds": [
+      "井上_憂斗_八幡浜工_愛媛県",
+      "片山_レン_八幡浜工_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -1135,7 +1668,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["﨑山_七海_今治北_愛媛県"]
+    "playerIds": [
+      "﨑山_七海_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治北",
@@ -1147,7 +1682,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["中路_心結_今治北_愛媛県"]
+    "playerIds": [
+      "中路_心結_今治北_愛媛県"
+    ]
   },
   {
     "team": "今治工",
@@ -1159,7 +1696,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["濱川_響輝_今治工_愛媛県"]
+    "playerIds": [
+      "濱川_響輝_今治工_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -1171,7 +1710,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["確田_冬吹樹_新田_愛媛県"]
+    "playerIds": [
+      "確田_冬吹樹_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -1183,7 +1724,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["毛利_航太_新田_愛媛県"]
+    "playerIds": [
+      "毛利_航太_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -1195,7 +1738,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "boys",
-    "playerIds": ["毛利_航太_新田_愛媛県"]
+    "playerIds": [
+      "毛利_航太_新田_愛媛県"
+    ]
   },
   {
     "team": "新田",
@@ -1207,7 +1752,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["大谷_和夢_新田_愛媛県"]
+    "playerIds": [
+      "大谷_和夢_新田_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1219,7 +1766,9 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山﨑_史帆里_済美_愛媛県"]
+    "playerIds": [
+      "山﨑_史帆里_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1231,7 +1780,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["西田_美織_済美_愛媛県"]
+    "playerIds": [
+      "西田_美織_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1243,7 +1794,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["山本_煌_済美_愛媛県"]
+    "playerIds": [
+      "山本_煌_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1255,7 +1808,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["武下_和奏_済美_愛媛県"]
+    "playerIds": [
+      "武下_和奏_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1267,7 +1822,9 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["鈴木_実秋_済美_愛媛県"]
+    "playerIds": [
+      "鈴木_実秋_済美_愛媛県"
+    ]
   },
   {
     "team": "済美",
@@ -1279,6 +1836,8 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
-    "playerIds": ["山﨑_史帆里_済美_愛媛県"]
+    "playerIds": [
+      "山﨑_史帆里_済美_愛媛県"
+    ]
   }
 ]
