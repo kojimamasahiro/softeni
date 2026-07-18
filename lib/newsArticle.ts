@@ -377,6 +377,8 @@ type FieldIndex = {
   championKeyToEntryNo: Map<string, number>;
   /** playerKey → 今大会の entryNo（partial=新ペアの継続選手の引き当て用） */
   playerKeyToEntryNo: Map<string, number>;
+  /** フルネーム（正規化）→ 今大会の entryNo 集合（所属変更フォールバック照合用） */
+  nameToEntryNos: Map<string, Set<number>>;
   /** entryNo → 今大会エントリーの名簿（分割時に今大会ペアを主役表示するため） */
   entryRosterByNo: Map<number, { players: PreviewPlayerRef[]; team: string | null }>;
   /** entryNo → 今大会の途中経過/敗退（detail.results 由来。未掲載なら空） */
@@ -501,6 +503,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
   const championKeySet = new Set<string>();
   const championKeyToEntryNo = new Map<string, number>();
   const playerKeyToEntryNo = new Map<string, number>();
+  const nameToEntryNos = new Map<string, Set<number>>();
   const entryRosterByNo = new Map<number, { players: PreviewPlayerRef[]; team: string | null }>();
   const prefectureCount = new Map<string, number>();
   const teamCount = new Map<string, number>();
@@ -521,6 +524,10 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
         const pk = playerMatchKey(name, team);
         playerKeySet.add(pk);
         if (!playerKeyToEntryNo.has(pk)) playerKeyToEntryNo.set(pk, e.entryNo);
+        const nk = normPart(name);
+        const ens = nameToEntryNos.get(nk) ?? new Set<number>();
+        ens.add(e.entryNo);
+        nameToEntryNos.set(nk, ens);
         roster.push({ name, playerId: resolvePlayerId(name), returning: true, team: team ? cleanDisplay(team) : null });
       }
       if (team) {
@@ -561,11 +568,30 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
     championKeySet,
     championKeyToEntryNo,
     playerKeyToEntryNo,
+    nameToEntryNos,
     entryRosterByNo,
     standingByEntryNo,
     prefectureCount,
     teamCount,
   };
+}
+
+/**
+ * 所属変更フォールバック照合（2026-07-18〜）。
+ * 「名前@所属」の照合は選手が年度間で所属を変えると外れる（例: east-japan 2026 の
+ * 左近知美: 日本体育大学→ナガセケンコー。前回王者ペアの片割れが紐付かず partial 扱いになった）。
+ * 名前のみ照合は同名別人の誤マッチ要因（2026-07-03 に廃した理由）のため、
+ * **今大会内でフルネームが一意（1 エントリーのみ）の場合に限り** 名前のみで entryNo を解決する。
+ */
+function uniqueEntryNoByName(field: FieldIndex, name: string): number | null {
+  const ens = field.nameToEntryNos.get(normPart(name));
+  if (!ens || ens.size !== 1) return null;
+  return ens.values().next().value ?? null;
+}
+
+/** 継続選手の今大会 entryNo。名前@所属 → （外れたら）一意な名前のみ の順で解決 */
+function resolveFieldEntryNo(field: FieldIndex, name: string, team: string | null | undefined): number | null {
+  return field.playerKeyToEntryNo.get(playerMatchKey(name, team)) ?? uniqueEntryNoByName(field, name);
 }
 
 /** 前回主役（王者/入賞者）→ 今大会での継続状況と、結果を紐付ける今大会エントリー */
@@ -605,12 +631,13 @@ function resolvePairFate(c: ChampionEntry, field: FieldIndex | null): PairFate {
   }
 
   // 個人/ダブルス: 「名前@正規化所属」で継続選手を判定し、各継続選手の今大会 entryNo を引く。
+  // 所属変更（例: 大学→実業団）で外れる場合は一意な名前のみでフォールバック（resolveFieldEntryNo）。
   const prevPlayers: PreviewPlayerRef[] = c.players.map((name, i) => {
     const team = c.playerTeams[i] ?? null;
     return {
       name,
       playerId: resolvePlayerId(name),
-      returning: field.playerKeySet.has(playerMatchKey(name, team)),
+      returning: resolveFieldEntryNo(field, name, team) != null,
       team: team ? cleanDisplay(team) : null,
     };
   });
@@ -621,7 +648,7 @@ function resolvePairFate(c: ChampionEntry, field: FieldIndex | null): PairFate {
   const entryToCarried = new Map<number, string[]>();
   c.players.forEach((name, i) => {
     if (!prevPlayers[i].returning) return;
-    const en = field.playerKeyToEntryNo.get(playerMatchKey(name, c.playerTeams[i] ?? null));
+    const en = resolveFieldEntryNo(field, name, c.playerTeams[i] ?? null);
     if (en == null) return;
     const arr = entryToCarried.get(en) ?? [];
     arr.push(name);
@@ -946,13 +973,14 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
   const seen = new Set<string>(alreadyShownNames);
   const out: RecentAchiever[] = [];
   for (const [key, info] of recentIndex) {
-    if (!field.playerKeySet.has(key)) continue; // 当大会の出場者でない
+    // 当大会の出場者か（名前@所属 → 外れたら一意な名前のみでフォールバック。所属変更を吸収）
+    const entryNo = field.playerKeyToEntryNo.get(key) ?? uniqueEntryNoByName(field, info.name);
+    if (entryNo == null) continue; // 当大会の出場者でない
     const nameKey = normPart(info.name);
     if (seen.has(nameKey)) continue; // 既出（他ブロック or 同一人物の別所属キー）
     seen.add(nameKey);
     // 今大会の途中経過/敗退（前回入賞者の再登場ブロックと同様、playerKey→entryNo→standing で引く）
-    const entryNo = field.playerKeyToEntryNo.get(key);
-    const standing = entryNo != null ? (field.standingByEntryNo.get(entryNo) ?? null) : null;
+    const standing = field.standingByEntryNo.get(entryNo) ?? null;
     out.push({
       player: {
         name: info.name,
