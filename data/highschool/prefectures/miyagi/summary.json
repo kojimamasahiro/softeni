@@ -1,27 +1,5 @@
 [
   {
-    "team": "聖ウルスラ英智",
-    "teamId": "seiurusuraeichi",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2025,
-    "gender": "boys"
-  },
-  {
-    "team": "聖ウルスラ英智",
-    "teamId": "seiurusuraeichi",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-senbatsu",
-    "year": 2024,
-    "gender": "boys"
-  },
-  {
     "team": "東北",
     "teamId": "touhoku",
     "prefecture": "宮城県",
@@ -283,6 +261,28 @@
     "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
+    "gender": "boys"
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-senbatsu",
+    "year": 2024,
     "gender": "boys"
   },
   {
@@ -1246,7 +1246,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1261,7 +1261,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1276,7 +1276,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1291,7 +1291,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1306,7 +1306,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1321,7 +1321,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1336,7 +1336,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -1351,7 +1351,7 @@
     "teamId": "touhoku",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
-    "result": "出場",
+    "result": "4回戦進出",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2026,
@@ -3072,51 +3072,6 @@
     ]
   },
   {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": [
-      "青柳_空杜_ウルスラ_宮城県",
-      "佐々木_成愛_ウルスラ_宮城県"
-    ]
-  },
-  {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "ベスト8",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": [
-      "佐藤_榎南_ウルスラ_宮城県",
-      "冨主_純翔_ウルスラ_宮城県"
-    ]
-  },
-  {
-    "team": "ウルスラ",
-    "teamId": "urusura",
-    "prefecture": "宮城県",
-    "prefectureId": "miyagi",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2026,
-    "gender": "boys",
-    "playerIds": [
-      "小野_友聖_ウルスラ_宮城県",
-      "桑山_左京_ウルスラ_宮城県"
-    ]
-  },
-  {
     "team": "ウルスラ英智",
     "teamId": "urusurahidetomo",
     "prefecture": "宮城県",
@@ -3174,6 +3129,51 @@
     "playerIds": [
       "菅野_暖空_ウルスラ英智_宮城県",
       "山下_翔世_ウルスラ英智_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": [
+      "青柳_空杜_ウルスラ英智_宮城県",
+      "佐々木_成愛_ウルスラ英智_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": [
+      "佐藤_榎南_ウルスラ英智_宮城県",
+      "冨主_純翔_ウルスラ英智_宮城県"
+    ]
+  },
+  {
+    "team": "ウルスラ英智",
+    "teamId": "urusurahidetomo",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": [
+      "小野_友聖_ウルスラ英智_宮城県",
+      "桑山_左京_ウルスラ英智_宮城県"
     ]
   },
   {
