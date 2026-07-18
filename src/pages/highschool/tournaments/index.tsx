@@ -116,7 +116,10 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
           ))}
         </div>
 
-        <div className="mt-10 text-sm">
+        <div className="mt-10 flex flex-wrap gap-4 text-sm">
+          <Link href="/highschool/rankings/" className="text-link hover:underline">
+            全国大会成績から見る強豪校ランキング →
+          </Link>
           <Link href="/highschool/boys/" className="text-link hover:underline">
             高校 都道府県別・学校別ページへ →
           </Link>

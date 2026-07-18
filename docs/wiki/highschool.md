@@ -55,10 +55,12 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 学校名→学校ページ、都道府県名→都道府県ページへ内部リンク。タブ裏対策の静的「男女別 上位校まとめ」（上位10校）を掲載（seo.md #9 と同型、カニバリ整理は seo.md #10）
 - 構造化データ: BreadcrumbList / ItemList（上位10校）/ FAQPage
 - 入口: `/highschool/`（カード）と `/highschool/[gender]`（誘導セクション）からリンク
+- **都道府県別ポイントランキング（2026-07-18 追加）**: 県内校の合計ポイントによる47都道府県ランキングを同ページに併設（タブ連動の全県表＋静的な男女別上位10まとめ＋「強い都道府県」FAQ）。集計は `buildPrefectureRankingBoards`。都道府県名→都道府県ページ、県内1位校→学校ページへ内部リンク。「ソフトテニス 強い県」系クエリの受け皿
+- 都道府県ページには県内絞り込みの「県内強豪校」上位5校を表示（`getPrefectureTopSchools`、2026-07-18 追加）
 - 実装: `src/pages/highschool/rankings/index.tsx`、`lib/highschoolRanking.ts`
 
 ## 発展候補アイデア一覧（Idea Backlog）
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。残: M1 IH2026即日反映、M3 データ拡充（選抜過去年・国体）、M4 GSC検証、Phase 2「卒業生の活躍」表示（ユーザー興味あり・実現性確認済み） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |
+| 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。選抜46〜51回収録・歴代ページ対応・県内強豪校セクションまで完了（2026-07-18）。残: M4 GSC検証、国体データ、Phase 2「主な卒業生」（**要件確定済み・実装待ち**。閾値=卒業後ベスト8以上等/学校ページのみ/代表実績1行） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |

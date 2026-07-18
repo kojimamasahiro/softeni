@@ -18,6 +18,7 @@ import {
   isBest8Result,
   isVisibleGender,
 } from '@/lib/highschool';
+import { getPrefectureTopSchools, type PrefectureTopSchool } from '@/lib/highschoolRanking';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
@@ -80,6 +81,7 @@ type Props = {
   recentMajorTeams: RecentMajorTeam[];
   best8SchoolCount: number;
   recentMajorSchoolCount: number;
+  prefTopSchools: PrefectureTopSchool[];
 };
 
 type AliasReasonGroup = {
@@ -106,10 +108,22 @@ export default function PrefectureHighschoolPage({
   recentMajorTeams,
   best8SchoolCount,
   recentMajorSchoolCount,
+  prefTopSchools,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/`;
   const prefectureName = prefecture.name;
   const faqItems = [
+    ...(prefTopSchools.length > 0
+      ? [
+          {
+            question: `${prefectureName}の高校${genderLabel}ソフトテニスの強豪校はどこですか？`,
+            answer: `当サイト収録の全国大会成績をポイント化した独自集計では、${prefTopSchools
+              .slice(0, 3)
+              .map((s) => s.team)
+              .join('、')}などが${prefectureName}の上位校です。公式ランキングではなく、収録大会のみに基づく参考情報です。`,
+          },
+        ]
+      : []),
     {
       question: `${prefectureName}の高校${genderLabel}で全国大会成績を調べるには？`,
       answer: `${prefectureName}の高校${genderLabel}の学校別一覧から、気になる学校を選ぶと年度別・大会別の全国大会成績を確認できます。`,
@@ -261,6 +275,40 @@ export default function PrefectureHighschoolPage({
             <p className="text-2xl font-bold">{recentMajorSchoolCount}校</p>
           </div>
         </section>
+
+        {prefTopSchools.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-1">
+              {prefecture.name}の高校{genderLabel}ソフトテニス 強豪校
+            </h2>
+            <p className="text-sm text-text-secondary mb-3">
+              当サイト収録の全国大会（インターハイ・ハイスクールジャパンカップ・全日本高校選抜）の成績をポイント化した独自集計による、{prefecture.name}
+              の上位校です。順位は全国ランキングでの順位を示します。
+            </p>
+            <ul className="space-y-1 text-sm">
+              {prefTopSchools.map((s) => (
+                <li key={s.teamId}>
+                  <span className="font-semibold">県内{s.prefRank}位</span>{' '}
+                  <Link href={`/highschool/${gender}/${prefecture.id}/${s.teamId}`} className="text-link hover:underline">
+                    {s.team}
+                  </Link>
+                  （全国{s.rank}位・{s.points}pt
+                  {[s.winner > 0 ? `・優勝${s.winner}` : null, s.runnerup > 0 ? `・準優勝${s.runnerup}` : null, s.best4 > 0 ? `・ベスト4×${s.best4}` : null]
+                    .filter(Boolean)
+                    .join('')}
+                  ）
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              ※ 公式ランキングではありません。集計方法は
+              <Link href="/highschool/rankings/" className="text-link hover:underline">
+                全国 強豪校ランキング
+              </Link>
+              を参照してください。
+            </p>
+          </section>
+        )}
 
         <div className="mb-6">
           <p className="text-sm">
@@ -653,6 +701,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const genderLabel = getGenderLabel(gender);
 
+  // 県内強豪校（全国ランキングの県内絞り込み・上位5校）。seo.md #10 の県別強豪クエリの受け皿
+  const prefTopSchools = getPrefectureTopSchools(process.cwd(), prefecture.id, gender, 5);
+
   return {
     props: {
       prefecture,
@@ -663,6 +714,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       recentMajorTeams,
       best8SchoolCount,
       recentMajorSchoolCount,
+      prefTopSchools,
     },
   };
 };

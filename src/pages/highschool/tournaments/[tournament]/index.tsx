@@ -539,6 +539,9 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
           <Link href="/highschool/tournaments/" className="text-link hover:underline">
             ← 全国大会の歴代記録 一覧へ
           </Link>
+          <Link href="/highschool/rankings/" className="text-link hover:underline">
+            強豪校ランキングを見る
+          </Link>
           <Link href="/highschool/boys/" className="text-link hover:underline">
             高校 都道府県別ページへ
           </Link>

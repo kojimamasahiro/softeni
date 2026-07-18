@@ -13,24 +13,32 @@ import { useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { buildSchoolRankingBoards, type SchoolRankingBoard } from '@/lib/highschoolRanking';
+import { buildPrefectureRankingBoards, buildSchoolRankingBoards, type PrefectureRankingBoard, type SchoolRankingBoard } from '@/lib/highschoolRanking';
 
 const TOP_N = 100;
 
 type Props = {
   boards: SchoolRankingBoard[];
+  prefBoards: PrefectureRankingBoard[];
 };
 
 const GENDER_LABEL: Record<string, string> = { boys: '男子', girls: '女子' };
 
-export default function HighschoolRankingsPage({ boards }: Props) {
+export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
   const [tab, setTab] = useState(0);
   const board = boards[Math.min(tab, Math.max(boards.length - 1, 0))];
+  const prefBoard = prefBoards.find((b) => b.gender === board?.gender);
   const latestYear = board?.latestYear ?? new Date().getFullYear();
   const minYear = board?.minYear ?? latestYear;
 
   const pageUrl = 'https://softeni-pick.com/highschool/rankings/';
-  const description = `高校ソフトテニスの強豪校ランキング(全国・男女別)。当サイト収録のインターハイ・ハイスクールジャパンカップ・全日本高校選抜の成績(${minYear}〜${latestYear}年)をポイント化した独自集計です。学校ごとの全国大会成績ページへもたどれます。`;
+  const description = `高校ソフトテニスの強豪校ランキング(全国・都道府県別)。当サイト収録のインターハイ・ハイスクールジャパンカップ・全日本高校選抜の成績(${minYear}〜${latestYear}年)をポイント化した独自集計です。学校別の上位100校と、都道府県別のポイントランキングを男女別に掲載しています。`;
+
+  const prefTop3 = (gender: string) =>
+    (prefBoards.find((b) => b.gender === gender)?.entries ?? [])
+      .slice(0, 3)
+      .map((e) => e.prefecture)
+      .join('、');
 
   const faqItems = [
     {
@@ -45,11 +53,15 @@ export default function HighschoolRankingsPage({ boards }: Props) {
       question: '対象の大会はどれですか？',
       answer: `当サイト収録分のインターハイ(全国高等学校総合体育大会)、ハイスクールジャパンカップ、全日本高校選抜が対象です(${minYear}〜${latestYear}年)。国体(国民スポーツ大会)は含まれません。データ追加にあわせて順次反映します。`,
     },
+    {
+      question: '高校ソフトテニスが強い都道府県はどこですか？',
+      answer: `県内校の合計ポイントによる当サイトの独自集計では、男子は${prefTop3('boys')}など、女子は${prefTop3('girls')}などが上位です。ページ内の都道府県別ポイントランキングで全都道府県を確認できます。`,
+    },
   ];
 
   return (
     <>
-      <MetaHead title="高校ソフトテニス 強豪校ランキング(全国・男女別) | Softeni Pick" description={description} url={pageUrl} type="article" />
+      <MetaHead title="高校ソフトテニス 強豪校ランキング(全国・都道府県別) | Softeni Pick" description={description} url={pageUrl} type="article" />
 
       <Head>
         <script
@@ -197,6 +209,49 @@ export default function HighschoolRankingsPage({ boards }: Props) {
           <p className="text-sm text-text-muted">ランキングを算出できるデータがありません。</p>
         )}
 
+        {prefBoard && board && (
+          <section>
+            <h2 className="mb-1 text-lg font-bold">{GENDER_LABEL[board.gender]} 都道府県別ポイントランキング</h2>
+            <p className="mb-3 text-xs text-text-muted">
+              県内校の合計ポイントによる都道府県ランキングです。都道府県名から各県の学校一覧へ、学校名から各校の成績ページへ移動できます。
+            </p>
+            <table className="w-full border border-border-strong text-sm">
+              <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
+                <tr>
+                  <th className="py-1.5 px-2 text-center">順位</th>
+                  <th className="py-1.5 px-2 text-left">都道府県</th>
+                  <th className="py-1.5 px-2 text-center">ポイント</th>
+                  <th className="py-1.5 px-2 text-center">収録校</th>
+                  <th className="py-1.5 px-2 text-left">県内1位</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prefBoard.entries.map((e) => (
+                  <tr
+                    key={`${prefBoard.gender}-${e.prefectureId}`}
+                    className={`border-t border-border-strong ${e.rank <= 3 ? 'bg-amber-50/60 dark:bg-amber-950/20' : ''}`}
+                  >
+                    <td className="py-1.5 px-2 text-center font-semibold">{e.rank}</td>
+                    <td className="py-1.5 px-2">
+                      <Link href={`/highschool/${e.gender}/${e.prefectureId}`} className="text-link hover:underline">
+                        {e.prefecture}
+                      </Link>
+                    </td>
+                    <td className="py-1.5 px-2 text-center">{e.points}</td>
+                    <td className="py-1.5 px-2 text-center">{e.schools}校</td>
+                    <td className="py-1.5 px-2 text-xs text-text-secondary">
+                      <Link href={`/highschool/${e.gender}/${e.prefectureId}/${e.topTeamId}`} className="text-link hover:underline">
+                        {e.topTeam}
+                      </Link>
+                      （全国{e.topTeamRank}位）
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        )}
+
         {/* 男女の上位10校(静的HTML)。タブ裏はクライアント描画でクローラに見えないため、
             学校名と内部リンクをここで担保する(seo.md #9 と同型)。 */}
         <section>
@@ -222,6 +277,40 @@ export default function HighschoolRankingsPage({ boards }: Props) {
           </div>
         </section>
 
+        {/* 男女の都道府県上位10(静的HTML)。タブ裏対策は上と同様 */}
+        <section>
+          <h2 className="mb-1 text-lg font-bold">男女別 都道府県上位まとめ</h2>
+          <p className="mb-4 text-xs text-text-muted">県内校の合計ポイントによる都道府県ランキングの上位10です。詳細は上の男女切替で確認できます。</p>
+          <div className="space-y-4">
+            {prefBoards.map((b) => (
+              <div key={`pref-summary-${b.gender}`}>
+                <h3 className="mb-1 text-base font-semibold">{GENDER_LABEL[b.gender]}</h3>
+                <ul className="space-y-1 text-sm text-text-secondary">
+                  {b.entries.slice(0, 10).map((e) => (
+                    <li key={`pref-summary-${b.gender}-${e.prefectureId}`}>
+                      {e.rank}位{' '}
+                      <Link href={`/highschool/${e.gender}/${e.prefectureId}`} className="text-link hover:underline">
+                        {e.prefecture}
+                      </Link>
+                      （{e.points}pt・県内1位 {e.topTeam}）
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-xl border border-info-border bg-info-bg p-5">
+          <h2 className="text-lg font-semibold mb-1">全国大会の歴代記録</h2>
+          <p className="text-sm text-text-secondary mb-3">
+            ランキングの元になっているインターハイ・ハイスクールジャパンカップ・全日本高校選抜の歴代優勝〜ベスト4は、大会別の歴代記録ページで年度別に確認できます。
+          </p>
+          <Link href="/highschool/tournaments/" className="inline-block text-sm font-semibold text-link hover:underline">
+            全国大会の歴代記録を見る →
+          </Link>
+        </section>
+
         <div className="text-right">
           <Link href="/highschool" className="text-sm text-link hover:underline">
             高校ソフトテニスのトップへ
@@ -234,5 +323,6 @@ export default function HighschoolRankingsPage({ boards }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const boards = buildSchoolRankingBoards(process.cwd(), TOP_N);
-  return { props: { boards } };
+  const prefBoards = buildPrefectureRankingBoards(process.cwd());
+  return { props: { boards, prefBoards } };
 };

@@ -107,6 +107,100 @@ function loadRows(root: string): SummaryRow[] {
   return rows;
 }
 
+/** 都道府県ページ用: 県内上位校（全国順位付き） */
+export type PrefectureTopSchool = SchoolRankEntry & {
+  /** 県内順位（1始まり） */
+  prefRank: number;
+};
+
+// 都道府県ページ（47県×男女）から毎回フル集計しないためのモジュールスコープキャッシュ。
+// getSchoolResolver 等と同じ規約（ビルドプロセス内で一度だけ構築）。
+let fullBoardsCache: SchoolRankingBoard[] | null = null;
+
+function getFullBoards(root: string): SchoolRankingBoard[] {
+  if (!fullBoardsCache) fullBoardsCache = buildSchoolRankingBoards(root, Number.MAX_SAFE_INTEGER);
+  return fullBoardsCache;
+}
+
+/**
+ * 県内の強豪校 上位 topN 校を返す（rank は全国順位、prefRank は県内順位）。
+ * 「{県名} 高校 ソフトテニス 強豪」系クエリの受け皿として都道府県ページに静的表示する
+ * （docs/wiki/seo.md #10。全国軸は /highschool/rankings/、県内一覧軸は都道府県ページで分担）。
+ */
+export function getPrefectureTopSchools(root: string, prefectureId: string, gender: string, topN = 5): PrefectureTopSchool[] {
+  const board = getFullBoards(root).find((b) => b.gender === gender);
+  if (!board) return [];
+  return board.entries
+    .filter((e) => e.prefectureId === prefectureId)
+    .slice(0, topN)
+    .map((e, i) => ({ ...e, prefRank: i + 1 }));
+}
+
+/** 都道府県別ポイントランキングの1行（県内校の合計ポイント） */
+export type PrefectureRankEntry = {
+  rank: number;
+  prefecture: string;
+  prefectureId: string;
+  gender: string;
+  /** 県内校の合計ポイント（小数1桁） */
+  points: number;
+  /** ポイントを持つ収録校数 */
+  schools: number;
+  /** 県内1位校 */
+  topTeam: string;
+  topTeamId: string;
+  /** 県内1位校の全国順位 */
+  topTeamRank: number;
+};
+
+export type PrefectureRankingBoard = {
+  gender: string;
+  entries: PrefectureRankEntry[];
+};
+
+/**
+ * 都道府県別ポイントランキング（県内校の合計ポイント・男女別）。
+ * 「ソフトテニス 強い県」系クエリの受け皿として /highschool/rankings/ に表示する。
+ * 同点は同順位（丸め後ポイントで判定）。
+ */
+export function buildPrefectureRankingBoards(root: string): PrefectureRankingBoard[] {
+  return getFullBoards(root).map((board) => {
+    const byPref = new Map<string, { prefecture: string; points: number; schools: number; topTeam: string; topTeamId: string; topTeamRank: number }>();
+    for (const e of board.entries) {
+      let p = byPref.get(e.prefectureId);
+      if (!p) {
+        // entries は全国順位順なので、最初に出た学校が県内1位
+        p = { prefecture: e.prefecture, points: 0, schools: 0, topTeam: e.team, topTeamId: e.teamId, topTeamRank: e.rank };
+        byPref.set(e.prefectureId, p);
+      }
+      p.points += e.points;
+      p.schools += 1;
+    }
+    const sorted = [...byPref.entries()].sort((a, b) => b[1].points - a[1].points || a[1].prefecture.localeCompare(b[1].prefecture, 'ja'));
+    const entries: PrefectureRankEntry[] = [];
+    let prevPoints: number | null = null;
+    let prevRank = 0;
+    sorted.forEach(([prefectureId, p], i) => {
+      const points = Math.round(p.points * 10) / 10;
+      const rank = points === prevPoints ? prevRank : i + 1;
+      prevPoints = points;
+      prevRank = rank;
+      entries.push({
+        rank,
+        prefecture: p.prefecture,
+        prefectureId,
+        gender: board.gender,
+        points,
+        schools: p.schools,
+        topTeam: p.topTeam,
+        topTeamId: p.topTeamId,
+        topTeamRank: p.topTeamRank,
+      });
+    });
+    return { gender: board.gender, entries };
+  });
+}
+
 /** 全国版の強豪校ランキングを男女別に集計する。 */
 export function buildSchoolRankingBoards(root: string, topN = 100): SchoolRankingBoard[] {
   const rows = loadRows(root);
