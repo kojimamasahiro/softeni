@@ -66,6 +66,18 @@ function readJSONSafe<T>(p: string): T | null {
   }
 }
 
+/**
+ * 日付文字列を YYYY-MM-DD にゼロ埋め正規化する。
+ * データ側に "2026-7-31" のような非ゼロ埋めが混ざると、
+ * 文字列比較での並び替えが崩れるため（"2026-7-31" > "2026-11-21"）ここで吸収する。
+ */
+function normalizeDate(d: string): string {
+  if (!d) return '';
+  const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(d);
+  if (!m) return d;
+  return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}`;
+}
+
 /** tournamentId から level を推定する */
 function inferLevel(tournamentId: string, isLocal: boolean): TournamentLevel {
   if (isLocal) return 'prefecture';
@@ -208,8 +220,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         generationLabel: genLabelMap[t.generationId] ?? t.generationId,
         year: info.year,
         label: info.label ?? t.label,
-        startDate: info.startDate,
-        endDate: info.endDate,
+        startDate: normalizeDate(info.startDate),
+        endDate: normalizeDate(info.endDate),
         location: info.location,
         prefectureId: prefNameToId[info.location] ?? null,
         level,
@@ -248,8 +260,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         generationLabel: genLabelMap[t.generationId] ?? t.generationId,
         year: info.year,
         label: info.label ?? t.label,
-        startDate: info.startDate,
-        endDate: info.endDate,
+        startDate: normalizeDate(info.startDate),
+        endDate: normalizeDate(info.endDate),
         location: info.location,
         prefectureId: t.federationId,
         level,
