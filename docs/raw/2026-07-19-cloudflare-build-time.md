@@ -166,3 +166,139 @@ docs/wiki/deployment.md に反映したもの:
 まだ書き戻していないもの:
 
 - なし
+
+---
+
+## 追記2: 修正後の実測（commit 2f34553）と generate-facts の増分キャッシュ化
+
+### teams 系修正の効果: 22分41秒 → 8分53秒（2.6倍）
+
+| フェーズ | 前 | 後 |
+|---|---|---|
+| clone + `npm ci` | 25秒 | 24秒 |
+| prebuild | 2分15秒 | 2分6秒 |
+| lint + 型チェック | 22秒 | 22秒 |
+| webpack compile | 2分6秒 | 1分45秒 |
+| Collecting page data | 1分49秒 | **10秒**（11倍） |
+| Generating static pages | 14分39秒 | **3分13秒**（4.6倍） |
+| upload + deploy | 34秒 | 40秒 |
+
+ルート別（1ページ平均）:
+
+| ルート | 前 | 後 |
+|---|---|---|
+| `/teams/[teamId]/[year]/[gender]` | 17,187ms | 1,467ms（11.8倍） |
+| `/teams/[teamId]` | 13,479ms | 1,238ms（11.1倍） |
+| `/players/[id]/results` | 1,242ms | 1,239ms（**変化なし**） |
+
+### GC道連れ説は棄却された
+
+追記1で立てた「teams 系の GC 負荷が results ページを道連れにしている」という仮説は
+**外れ**。teams を12倍速くしても results は 1,242ms → 1,239ms で不変だった。
+
+代わりの説明: 私が計測し忘れていたのは **React の SSR レンダリング**。Next の報告値は
+getStaticProps だけでなく HTML 生成まで含むが、追記1ではデータ取得部分しか測っていなかった。
+
+床（floor）の証拠がログにある。`/st-league/about` は getStaticProps を持たない純粋な
+静的ページだが **468ms**。`/highschool/[gender]` は2ページで445ms。SSG 全体では
+3,744ページ / 193秒 = 平均51.6ms/ページ（約18ワーカー並列）に収まっており、
+results の1,239msはもはや外れ値ではない。
+
+props も確認した（`out/_next/data` の40ページサンプル）。平均25.2kB、内訳は
+`playerStatistics` 9.1kB / `playerMatches` 6.6kB / `playerTournaments` 6.5kB。
+全選手リストのような無駄な同梱は無い（`allPlayers` は0.2kB）。削れる脂肪も無い。
+
+→ **`/players/[id]/results` は最適化対象から外す。** reverse index 化の案は取り下げ。
+
+### generate-facts の増分キャッシュ化（実装済み）
+
+`scripts/playerStats/cache-sync.mjs` を追加し、prebuild の先頭で `restore`、
+末尾で `save` を実行するようにした。`_facts` / `_index` / `_manifest.json` を
+`.next/cache/playerstats/` に退避する。
+
+Cloudflare Pages のビルドキャッシュは Next.js プロジェクトに対して `.next/cache` を
+保存・復元する（公式ドキュメント Build caching > Frameworks の表で明示。他に
+package manager のグローバルキャッシュ。保持期間7日、上限10GB/プロジェクト）。
+
+実測:
+
+| | 実測 |
+|---|---|
+| generate-facts フルビルド（Cloudflare） | 1分59秒 |
+| generate-facts 増分（変更なし） | **3.1秒** |
+| generate-facts 増分（1ファイル変更 → 494選手再生成） | **10.1秒** |
+| `_facts` のサイズ | 130MB / 18,485ファイル（tar.gz で9.9MB） |
+| cpSync による save / restore | 各 0.3秒 |
+
+### 検証
+
+- **コピーの忠実性**: 18,486ファイルを save → 削除 → restore し、md5 の総和が完全一致。
+- **キャッシュ破損時の挙動**: `_facts` から500ファイル削除した状態で restore すると
+  `cache truncated (expected 18485, found 17985)` で復元を拒否し、フルビルドに落ちる。
+- **ローカル開発への影響なし**: 作業コピーが存在する場合 restore はスキップする。
+- **増分の正しさ**: 増分ビルドの産物と `--ids` による再計算を300選手分比較し、md5一致。
+- `tsc --noEmit` パス。playerStats のユニットテスト 28件パス（manifest の diff ロジックは
+  `lib/playerStats/__tests__/manifest.test.ts` で既にテスト済み）。
+
+### 安全性の根拠
+
+- manifest は **mtime ではなく内容ハッシュ(sha1)** ベース。復元物が古くても、入力の内容が
+  変わっていれば該当選手が再生成される。git clone で mtime が失われても影響しない。
+- `engineVersion` / `globalHash` / `configHash` のいずれかが変われば全再計算に落ちる。
+  globalHash の入力5ファイル（tournaments/index.json, local_index.json,
+  players/index.json, homonyms.json, participant-aliases.json）は**全て git 管理下**で
+  prebuild が生成するものではないため、ビルド間で安定する。
+- save は一時ディレクトリ + `rename` で原子的に差し替える。途中で落ちても
+  不完全なキャッシュが次回に読まれない。
+- restore 前にファイル数をメタデータと照合する。10GB上限による部分退避などで
+  切り詰められていた場合は復元を拒否する。
+- スクリプトは全例外を握り潰して常に exit 0。キャッシュ層の障害でビルドは落ちない。
+
+### 残っているデメリット（許容と判断）
+
+1. ローカル `npm run build` でも save が走り、`.next/cache` が130MB増える。
+   実害は薄いがディスクは使う。
+2. `.next/cache` への相乗りは Cloudflare の仕様に依存する。仕様変更で黙って
+   フルビルドに戻る（= fail safe）。
+3. 7日デプロイしないとキャッシュが purge されフルビルドになる（= fail safe）。
+
+### 想定される次の姿
+
+prebuild 2分6秒 → 約20秒。全体 8分53秒 → **7分前後**。
+残る大物は webpack compile 1分45秒（Turbopack、未検証）と
+Generating static pages 3分13秒（床があり削りにくい）。
+
+### 副産物: golden fixture の陳腐化を検出
+
+`verify-facts-golden.ts` が2件失敗する。
+
+- funemizu-hayato (id=3): facts L=17 G=442-183 vs golden L=16 G=441-179
+- kurosaka-takuya (id=10): facts W=142 G=663-306 vs golden W=141 G=659-305
+
+golden は `scripts/playerStats/verify-facts-golden.ts` にハードコードされており
+最終更新は 2026-07-02。東日本2026のデータ投入（2026-07-19）で両選手の試合が増えたため。
+**今回の変更とは無関係の既存問題**（cache-sync はファイルをコピーするだけで
+facts の計算に一切関与しない）。golden の更新が必要。
+
+## Compile Log（追記2分）
+
+docs/wiki/deployment.md に反映するもの:
+
+- 修正後のフェーズ別内訳（8分53秒）— 既存の22.7分の表が陳腐化するため差し替え
+- `.next/cache` が Cloudflare の Next.js キャッシュ対象であるという確定情報と、
+  そこに増分アーティファクトを退避する仕組みの存在（運用者が知る必要がある）
+- 「ページ生成には数百msの床があり、SSG は床に近づくと削れない」という一般則
+- Open Questions の `/players/[id]/results` を「調査完了・対象外」として閉じる
+
+意図的に wiki へ載せないもの:
+
+- GC道連れ説とその棄却の経緯 — 結論だけで十分、過程は raw に残す
+- props の内訳サンプル（25.2kB の分解）— 一度きりの調査で陳腐化する
+- cache-sync の検証手順の詳細 — コード内コメントとこの raw が一次情報
+- golden fixture の陳腐化 — ビルド性能とは別問題。別途 Open Questions 化すべきだが
+  deployment.md の管轄ではない
+
+まだ書き戻していないもの:
+
+- golden fixture 2件の陳腐化。docs/wiki/open-questions.md か playerStats 側の
+  ドキュメントに起票すべきだが、今回は raw への記録に留めた

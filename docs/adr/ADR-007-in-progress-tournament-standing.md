@@ -36,9 +36,22 @@ Accepted。決定日: 2026-06-26。現状仕様: `docs/tournament-data-structure
 - `tools/shared/normalize-core.js`（`deriveEntryStanding` / `computeRankFromStanding`、`ongoing` 付与）
 - `lib/newsArticle.ts`（`EntryStanding` / `buildFieldIndex` の entryNo マップ / `currentStandingOf` / `standingFromResult`）
 - `src/pages/news/[articleId].tsx`（`StandingBadge`）
+- `lib/tournamentCoverage.ts`（`computeResultCoverage` / `formatResultCoverageBodyText` / `formatResultCoverageMetaSuffix`）
+- `src/components/Tournament/ResultCoverageNotice.tsx`
+- `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`
 - `docs/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`
+
+## Implementation Status（2026-07-19 追記。検討経緯は [2026-07-19-result-coverage-notice-design.md](../raw/2026-07-19-result-coverage-notice-design.md)）
+
+結果ページでの明示表示を実装した。**SEO/クリック上の狙いは「更新時刻」ではなく「どこまで結果が反映されているか」を伝えること**（更新時刻は手動運用ゆえ鮮度のムラがそのまま弱点に見えてしまう一方、反映範囲は `matches`/`results` から常に正確に導出できるため）。
+
+- `lib/tournamentCoverage.ts`: `computeResultCoverage()`。決勝T（`stage:'knockout'`）の decided/total 件数と最深確定ラウンドを集計。完了/進行中の判定は **`results[].tournament.rank.kind === 'ongoing'` の有無を主軸**にする（`matches` の decided/total 比だけに頼ると、3位決定戦が未実施の大会や欠番のある古い完了済みデータを誤って「進行中」と判定してしまうため。`highschool-championship/2025` や `asian-games-qualifier/2025` の実データで確認済み）。
+- `src/components/Tournament/ResultCoverageNotice.tsx`: 結果ページ H1 直下に1行表示。`completed` / `unsupported` では非表示。
+- `src/pages/tournaments/.../[gender]/index.tsx`: 本文バナーに加え、`MetaHead` の `description` にも同内容を追記（Googleは指定した meta description をそのまま使うとは限らず、本文中に同趣旨の文言があった方が検索結果に反映されやすいため、本文とメタの両方に出す設計にした）。
+- スコープ: 個人戦 + 団体戦の**決勝トーナメントのみ**。予選リーグ（`stage:'roundrobin'`）は進捗の測り方が別物（ラウンド深度でなくグループ内消化数・順位確定）になるため対象外（下記 Open Questions へ）。
 
 ## Open Questions
 
-- 結果ページ（`/tournaments/.../[gender]/`）でも途中経過（`ongoing`）を明示表示するか（現状は `matches`/ブラケット表示に委ねる）。
-- 途中経過の鮮度を上げる運用（再 export の頻度・自動化の可否）。
+- 結果ページでの途中経過表示 → **上記の通り実装済み（2026-07-19）**。
+- 予選リーグ（`roundrobin`）の反映状況表示 → 今回は対象外。グループ内消化試合数・順位確定を別ロジックで測る必要があり、対応するかは反響次第。
+- 途中経過の鮮度を上げる運用（再 export の頻度・自動化の可否）→ 未着手。今回のUIは鮮度でなく反映範囲を主役にする方針にしたため優先度は下げている。

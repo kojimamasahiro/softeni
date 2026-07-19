@@ -13,6 +13,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ResultContextBlocks from '@/components/ResultContextBlocks';
 import MatchResults from '@/components/Tournament/MatchResults';
+import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
@@ -21,6 +22,7 @@ import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressCha
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 
@@ -86,6 +88,12 @@ export default function TournamentYearResultPage({
   const [searchQuery, setSearchQuery] = useState('');
   const detailData = useMemo(() => (detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null), [detailDataPacked]);
 
+  // 「どこまで結果が反映されているか」。ADR-007 Open Question対応。
+  // completed/unsupported（過去の完了済み大会や予選リーグのみのデータ）では
+  // meta description・本文とも変化なし。
+  const resultCoverage = useMemo(() => computeResultCoverage(detailData), [detailData]);
+  const coverageMetaSuffix = formatResultCoverageMetaSuffix(resultCoverage);
+
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
     { label: '大会結果一覧', href: '/tournaments' },
@@ -115,7 +123,7 @@ export default function TournamentYearResultPage({
     <>
       <MetaHead
         title={`${label} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果・トーナメント表 | ソフトテニス情報`}
-        description={`ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。`}
+        description={`ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
       />
@@ -187,6 +195,10 @@ export default function TournamentYearResultPage({
           {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
           大会結果
         </h1>
+
+        {/* ✅ どこまで結果が反映されているか（進行中/組み合わせのみの大会でのみ表示） */}
+        <ResultCoverageNotice detailData={detailData} />
+
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
             ソフトテニス「{label}」{year}年度
