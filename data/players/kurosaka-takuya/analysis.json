@@ -1,13 +1,13 @@
 {
-  "totalMatches": 167,
-  "wins": 134,
+  "totalMatches": 175,
+  "wins": 141,
   "losses": 32,
-  "totalWinRate": 0.802,
+  "totalWinRate": 0.806,
   "games": {
-    "total": 928,
-    "won": 631,
-    "lost": 297,
-    "gameRate": 0.68
+    "total": 964,
+    "won": 659,
+    "lost": 305,
+    "gameRate": 0.684
   },
   "byPartner": {
     "8": {
@@ -50,6 +50,20 @@
         "won": 20,
         "lost": 7,
         "gameRate": 0.741
+      }
+    },
+    "119": {
+      "matches": {
+        "total": 8,
+        "wins": 7,
+        "losses": 0,
+        "winRate": 0.875
+      },
+      "games": {
+        "total": 36,
+        "won": 28,
+        "lost": 8,
+        "gameRate": 0.778
       }
     },
     "163": {
@@ -210,25 +224,25 @@
     },
     "2026": {
       "matches": {
-        "total": 21,
-        "wins": 18,
+        "total": 29,
+        "wins": 25,
         "losses": 3,
-        "winRate": 0.857
+        "winRate": 0.862
       },
       "games": {
-        "total": 119,
-        "won": 81,
-        "lost": 38,
-        "gameRate": 0.681
+        "total": 155,
+        "won": 109,
+        "lost": 46,
+        "gameRate": 0.703
       }
     }
   },
   "latestMatch": {
-    "tournament": "コリアカップ国際大会",
-    "date": "2026年6月15日〜2026年6月22日",
-    "location": "韓国",
-    "partner": 8323,
-    "result": "2回戦敗退",
-    "link": "https://www.softtennis.or.kr/"
+    "tournament": "東日本選手権大会",
+    "date": "2026年7月18日〜2026年7月19日",
+    "location": "山形県",
+    "partner": 119,
+    "result": "決勝進出",
+    "link": "https://softtennis-tokyo.com/higashinihon-softtennis-association/"
   }
 }
