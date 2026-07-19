@@ -5,25 +5,34 @@ import path from 'path';
 
 import type { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
-/**
- * Recursively scan data/tournaments/details/ for all JSON files
- * @returns Array of { tournamentId, year, category, filePath }
- */
-export function getAllTournamentFiles(): Array<{
+type TournamentFileDescriptor = {
   tournamentId: string;
   year: number;
   category: string;
   filePath: string;
-}> {
+};
+
+// ビルド時、この2関数は「大会ディレクトリ全走査」と「大会JSONの読み込み+parse」を
+// 呼ばれるたびに実行していた。team-data-aggregator は 1回の集計の中でも Pass1 /
+// Pass1.5(不動点ループ) / Pass2 で全ファイルを読み直すため、1ページ生成あたり
+// 297ファイル × 数回 の readFileSync + JSON.parse が走っていた。
+// 内容はビルド中に変化しないので、プロセス内で一度だけ読んでキャッシュする。
+// （全297ファイルを保持してもヒープ約36MB。実測 parse 208ms/回。）
+let cachedTournamentFiles: TournamentFileDescriptor[] | null = null;
+const tournamentDataCache = new Map<string, TournamentDetailData | null>();
+
+/**
+ * Recursively scan data/tournaments/details/ for all JSON files
+ * @returns Array of { tournamentId, year, category, filePath }
+ */
+export function getAllTournamentFiles(): TournamentFileDescriptor[] {
+  if (cachedTournamentFiles) return cachedTournamentFiles;
+
   const detailsDir = path.join(process.cwd(), 'data/tournaments/details');
-  const results: Array<{
-    tournamentId: string;
-    year: number;
-    category: string;
-    filePath: string;
-  }> = [];
+  const results: TournamentFileDescriptor[] = [];
 
   if (!fs.existsSync(detailsDir)) {
+    cachedTournamentFiles = results;
     return results;
   }
 
@@ -49,20 +58,31 @@ export function getAllTournamentFiles(): Array<{
     }
   }
 
+  cachedTournamentFiles = results;
   return results;
 }
 
 /**
  * Load and parse a single tournament JSON file
+ *
+ * 返り値はプロセス内で共有されるキャッシュ済みオブジェクト。呼び出し側で
+ * 破壊的変更をしてはならない（読み取り専用として扱うこと）。
  */
 export function loadTournamentData(filePath: string): TournamentDetailData | null {
+  const cached = tournamentDataCache.get(filePath);
+  if (cached !== undefined) return cached;
+
+  let parsed: TournamentDetailData | null = null;
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(content) as TournamentDetailData;
+    parsed = JSON.parse(content) as TournamentDetailData;
   } catch (error) {
     console.error(`Failed to load tournament data from ${filePath}:`, error);
-    return null;
+    parsed = null;
   }
+
+  tournamentDataCache.set(filePath, parsed);
+  return parsed;
 }
 
 /**
