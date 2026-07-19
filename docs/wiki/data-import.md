@@ -128,6 +128,55 @@ Deprecated:
 - `data/players/*/analysis.json` は `data/tournaments/details/**` と `data/tournaments/information/*.json` から `scripts/generate-player-analysis.mjs` で自動生成する
 - score 系は `data/**` ではなく Supabase -> `public/data/beta-matches/**` 生成の流れを持つ
 
+### データ品質チェック: `npm run check:entries`
+
+`scripts/check-tournament-entries.mjs` が `data/tournaments/details/**` を全走査し、
+entries の入力ミスを検出する。問題があれば終了コード1。取り込み後に実行する
+（`check-identity-health.mjs` と同じ位置づけ）。`temp/` 配下は作業中ファイルなので除外する。
+
+検出ルール:
+
+| ルール | 意味 |
+|---|---|
+| `pair-single-player` | ペア戦なのに `playerIds` が1人。カテゴリの付け間違いか相方の入力漏れ |
+| `duplicate-player-id` | `playerIds` に同一IDが重複。相方欄に本人をコピーした入力ミス |
+| `singles-multi-player` | シングルスなのに複数人 |
+| `unknown-participant` | `participants` に存在しない `playerId` を参照 |
+| `orphan-participant` | `participants` に居るのに、どの entry にも登場しない。**表記ゆれによる二重登録のサイン** |
+| `match-entry-not-found` | `matches[].entries` が存在しない entryNo（`null` 含む）を参照 |
+| `result-entry-not-found` | `results[].entryNo` が存在しない |
+
+なぜ必要か: 統計エンジンはこれらを「相方不明」として**黙って除外する**ため、
+サイトの表示を見ても気付けない。2026-07-19 に、選手ページのパートナー別集計が
+試合数と合わない問題を追った結果、原因は全てここに挙げた入力ミスだった。
+
+### 入力ツール側の同時チェック
+
+ルールの実体は `tools/shared/validate-entries.js`（Browser + Node 両対応の UMD）にあり、
+上記の Node スクリプトと入力ツールが**同じモジュールを共有する**（二重管理を避けるため）。
+
+`ToolBridge.normalize()` が成形直後に検証を走らせ、`ToolBridge.renderValidation(el)` が
+結果を描画する。組み込み済みのツール:
+
+- `tools/tournament3/` — `#validationResult` に表示
+- `tools/roundrobin/` — 同上
+
+`tools/tournament/` と `tools/tournament2/` は共有パイプライン（normalize-core /
+tool-bridge）を経由しない旧ツールのため未対応。
+
+ツール側では `categoryId` を渡していない。保存ファイル名は localStorage 由来で
+前回の種目が残っている可能性があり、誤判定を招くため。代わりに entries の
+多数派人数からシングルス/ペア戦を推定する。
+
+**検出は選手側から逆引きせず、details を全走査すること。**
+選手をサンプリングして逆引きすると、サンプル外の選手が絡む分を取りこぼす
+（2026-07-19 に実際に4件見落とした）。
+
+実例（2026-07-19）: `asian-games-qualifier/2025` の6ファイルが `doubles-*` だったが
+127エントリー全部が1人で、実際はシングルス戦だった。`singles-*` に訂正し、
+`public/_redirects` に旧 URL からの 301 を追加した。
+詳細は docs/raw/2026-07-19-asian-games-qualifier-2025-singles-correction.md。
+
 ### 大会結果データの学校名・県名の名寄せ
 
 - 大会結果（`data/tournaments/details/**`）は表示にそのまま使われるため、学校名・県名の表記揺れがあると同一校が別チームのように見える（例: `高田商` / `高田商業` / `高田商業高校`、`徳島` / `徳島県`）

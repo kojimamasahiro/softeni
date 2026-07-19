@@ -24,6 +24,7 @@
       を押してください。
       <span id="jsonEditStatus" style="margin-left: 8px"></span>
     </p>
+    <div id="validationResult"></div>
     <div id="saveUi"></div>
     <textarea id="jsonOutput"></textarea>
 
@@ -51,6 +52,7 @@
 
     <script src="initialPlayer.js"></script>
     <script src="../shared/normalize-core.js"></script>
+    <script src="../shared/validate-entries.js"></script>
     <script src="../shared/tool-bridge.js"></script>
     <script>
       const initScore = 4; // 初期スコア
@@ -475,6 +477,10 @@
         try {
           document.getElementById('jsonOutput').value =
             ToolBridge.normalize(output);
+          // 保存前に入力ミス（相方の重複・未登録の対戦相手など）を表示する。
+          ToolBridge.renderValidation(
+            document.getElementById('validationResult'),
+          );
         } catch (e) {
           document.getElementById('jsonOutput').value =
             '成形エラー: ' + (e && e.message ? e.message : e);

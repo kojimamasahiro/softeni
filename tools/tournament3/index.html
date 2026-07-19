@@ -53,6 +53,7 @@
     <button id="nextRoundBtn">次のラウンドへ</button>
 
     <h2>最終JSON出力（成形済み）</h2>
+    <div id="validationResult"></div>
     <div id="saveUi"></div>
     <textarea id="jsonOutput" style="height: 400px"></textarea>
 
@@ -67,6 +68,7 @@
 
     <script src="initialPlayer.js"></script>
     <script src="../shared/normalize-core.js"></script>
+    <script src="../shared/validate-entries.js"></script>
     <script src="../shared/tool-bridge.js"></script>
     <script>
       /** =========================
@@ -1733,6 +1735,10 @@
 
         try {
           jsonOutputEl.value = ToolBridge.normalize(output);
+          // 保存前に入力ミス（相方の重複・未登録の対戦相手など）を表示する。
+          ToolBridge.renderValidation(
+            document.getElementById('validationResult'),
+          );
         } catch (e) {
           jsonOutputEl.value =
             '成形エラー: ' + (e && e.message ? e.message : e);

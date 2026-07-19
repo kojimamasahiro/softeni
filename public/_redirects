@@ -28,3 +28,19 @@
 /news/west-japan-2026-preview/ /news/west-japan-2026/ 301
 /news/highschool-japan-cup-2026-preview /news/highschool-japan-cup-2026/ 301
 /news/highschool-japan-cup-2026-preview/ /news/highschool-japan-cup-2026/ 301
+
+# (2026-07-19) アジア競技大会日本代表予選会 2025 はシングルス戦だったため
+# categoryId を doubles-* → singles-* に訂正（元データの entries が全て1人＝ペアではなかった）。
+# 旧 URL からの 301。2022年大会は元から singles-none-* で変更なし。
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/final/boys /tournaments/international-qualifier/asian-games-qualifier/2025/singles/final/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/final/boys/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/final/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/final/girls /tournaments/international-qualifier/asian-games-qualifier/2025/singles/final/girls/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/final/girls/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/final/girls/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/semifinal/boys /tournaments/international-qualifier/asian-games-qualifier/2025/singles/semifinal/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/semifinal/boys/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/semifinal/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/semifinal/girls /tournaments/international-qualifier/asian-games-qualifier/2025/singles/semifinal/girls/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/semifinal/girls/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/semifinal/girls/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/boys /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/boys/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/boys/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/girls /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/girls/ 301
+/tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/girls/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/girls/ 301

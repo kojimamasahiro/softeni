@@ -46,10 +46,11 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save",
+    "prebuild": "node scripts/check-tournament-entries.mjs && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save",
     "playerstats:cache-sync": "node scripts/playerStats/cache-sync.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
+    "check:entries": "node scripts/check-tournament-entries.mjs",
     "rare-events:generate": "node scripts/generate-rare-events.mjs",
     "rare-events:report": "node scripts/rare-events-report.mjs",
     "rare-events:discover": "node scripts/rare-events-discover.mjs",

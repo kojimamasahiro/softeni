@@ -2157,8 +2157,8 @@
       "prefecture": "長野県"
     },
     {
-      "id": "新田_空愛_鹿児島実_鹿児島県",
-      "lastName": "新田",
+      "id": "荒田_空愛_鹿児島実_鹿児島県",
+      "lastName": "荒田",
       "firstName": "空愛",
       "team": "鹿児島実",
       "prefecture": "鹿児島県"
@@ -2169,13 +2169,6 @@
       "firstName": "友菜",
       "team": "鹿児島実",
       "prefecture": "鹿児島県"
-    },
-    {
-      "id": "荒井田_空愛_鹿児島実",
-      "lastName": "荒井田",
-      "firstName": "空愛",
-      "team": "鹿児島実",
-      "prefecture": null
     },
     {
       "id": "鈴木_幸桃_学法石川_福島県",
@@ -4703,7 +4696,7 @@
     },
     {
       "entryNo": 49,
-      "playerIds": ["荒井田_空愛_鹿児島実", "須ケ牟田_友菜_鹿児島実_鹿児島県"],
+      "playerIds": ["荒田_空愛_鹿児島実_鹿児島県", "須ケ牟田_友菜_鹿児島実_鹿児島県"],
       "type": "seed"
     },
     {
@@ -6166,7 +6159,7 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-9",
-      "nextMatchId": "match-82",
+      "nextMatchId": "match-83",
       "prevMatchIds": [],
       "prevMatchId": null
     },
@@ -7102,25 +7095,9 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-81",
-      "nextMatchId": "match-201",
+      "nextMatchId": "match-202",
       "prevMatchIds": [],
       "prevMatchId": null
-    },
-    {
-      "entries": [48, null],
-      "scores": {
-        "48": 1,
-        "P:新田_空愛_鹿児島実_鹿児島|須ケ牟田_友菜_鹿児島実_鹿児島": 4
-      },
-      "round": "2回戦",
-      "winnerEntryNo": null,
-      "retired": false,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-82",
-      "nextMatchId": null,
-      "prevMatchIds": ["match-9"],
-      "prevMatchId": "match-9"
     },
     {
       "entries": [49, 48],
@@ -7132,8 +7109,8 @@
       "group": null,
       "matchId": "match-83",
       "nextMatchId": "match-202",
-      "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchIds": ["match-9"],
+      "prevMatchId": "match-9"
     },
     {
       "entries": [50, 52],
@@ -8657,22 +8634,6 @@
       "prevMatchId": null
     },
     {
-      "entries": [46, null],
-      "scores": {
-        "46": 4,
-        "P:新田_空愛_鹿児島実_鹿児島|須ケ牟田_友菜_鹿児島実_鹿児島": 0
-      },
-      "round": "3回戦",
-      "winnerEntryNo": 46,
-      "retired": true,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-201",
-      "nextMatchId": "match-261",
-      "prevMatchIds": ["match-81"],
-      "prevMatchId": "match-81"
-    },
-    {
       "entries": [49, 46],
       "scores": { "46": 4, "49": 0 },
       "round": "3回戦",
@@ -8682,7 +8643,7 @@
       "group": null,
       "matchId": "match-202",
       "nextMatchId": "match-261",
-      "prevMatchIds": ["match-83"],
+      "prevMatchIds": ["match-83", "match-81"],
       "prevMatchId": "match-83"
     },
     {
@@ -9449,7 +9410,7 @@
       "group": null,
       "matchId": "match-261",
       "nextMatchId": "match-291",
-      "prevMatchIds": ["match-200", "match-201", "match-202"],
+      "prevMatchIds": ["match-200", "match-202"],
       "prevMatchId": null
     },
     {

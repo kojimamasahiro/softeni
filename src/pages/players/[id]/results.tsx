@@ -342,6 +342,53 @@ export default function PlayerResultsPage({
   );
 }
 
+/**
+ * Player Statistics Engine の出力を、サマリー表示用の PlayerStats 形へ変換する。
+ *
+ * このページはかつて getStaticProps 内で独自に戦績を集計していたが、その集計は
+ * 「retired（不戦勝・途中棄権）を除外する」という決定（ADR-011 / docs/wiki/players-pages.md
+ * 2026-07-01）を実装しておらず、勝率の分母にも勝敗のつかない試合を含めていた。
+ * 結果として「試合数」と「年度別・パートナー別の合計」が同一ページ内で食い違い
+ * （例: 船水颯人 113 vs 112、黒坂卓矢 175 vs 173）、さらに同じページ下部の
+ * 「詳細スタッツ」は方針どおりエンジン由来だったため、上下で集計基準が違っていた。
+ *
+ * 集計の正は Player Statistics Engine 側に一本化する。ここは表示形への詰め替えのみ。
+ *
+ * 注意: エンジンの byPartner はダブルスの相方のみを返す（シングルスを含まない）ため、
+ * シングルス行は career.byDiscipline.singles から補う（従来表示の 'singles' キー相当）。
+ */
+function toSummaryStats(playerId: string, stats: import('@/types/playerStatistics').PlayerStatistics): import('@/types/stats').PlayerStats {
+  const overall = stats.career.overall;
+
+  const byPartner: import('@/types/stats').PartnerStats = {};
+  for (const row of stats.byPartner ?? []) {
+    if (row.partnerId == null) continue;
+    byPartner[String(row.partnerId)] = { matches: row.matches, games: row.games };
+  }
+  const singles = stats.career.byDiscipline?.singles;
+  if (singles && singles.matches.total > 0) {
+    byPartner.singles = { matches: singles.matches, games: singles.games };
+  }
+
+  const byYear: import('@/types/stats').YearStats = {};
+  for (const row of stats.byYear ?? []) {
+    // byYear は種目別行も持ちうる。総計行（discipline='all'）だけを使う。
+    if (row.discipline !== 'all') continue;
+    byYear[String(row.year)] = { matches: row.matches, games: row.games };
+  }
+
+  return {
+    playerId,
+    totalMatches: overall.matches.total,
+    wins: overall.matches.wins,
+    losses: overall.matches.losses,
+    totalWinRate: overall.matches.winRate,
+    games: overall.games,
+    byPartner,
+    byYear,
+  };
+}
+
 // data/players/index.json は結果ページ(getStaticPaths/getStaticProps)が対象選手数ぶん
 // (数千回)呼ばれるたびに毎回読み直され、そこから allPlayersList/countById も毎回
 // 再構築されていた。全ページで内容は共通なので、プロセス内で一度だけ読み込み・
@@ -1015,6 +1062,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     playerStatistics = null;
   }
 
+  // サマリー（試合数・勝敗・ゲーム・パートナー別・年度別）はエンジンの集計を正とする。
+  // エンジンが使えない場合のみ、従来のページ内集計にフォールバックする。
+  const summaryStats = playerStatistics ? toSummaryStats(playerId, playerStatistics) : playerStats;
+
   // H2H 相手のうち結果ページが実在する（count>=5）選手のみリンク化する。
   const statsLinkableIds = (playerStatistics?.headToHead ?? [])
     .map((h) => h.opponentId)
@@ -1043,7 +1094,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       latestActivityDate,
       playerMatches,
       playerTournaments,
-      playerStats,
+      playerStats: summaryStats,
       playerStatistics,
       statsLinkableIds,
       tournamentGenerationMap,

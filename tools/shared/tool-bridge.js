@@ -67,9 +67,61 @@ const ToolBridge = (() => {
   // ---- 成形（normalize） ----
   // raw: ツールが生成した生JSON（matches / results / roundRobinMatches / standings）
   // 戻り値: data/tournaments/details 用の最終JSON文字列
+  // 直近の normalize() で検出した入力ミス。renderValidation() が参照する。
+  let lastValidation = [];
+
   function normalize(raw) {
     const outObj = NormalizeCore.normalizeResults(raw, getEntriesMeta());
+    // 成形直後に入力ミスを検出する。統計エンジンは相方不明の試合を黙って除外するため、
+    // ここで気付けないと後工程でも表示でも分からなくなる（validate-entries.js の冒頭参照）。
+    // categoryId は敢えて渡さない。保存ファイル名は localStorage 由来で前回の種目が
+    // 残っている可能性があり、誤判定（例: ダブルス入力中に singles と見なす）を招く。
+    // 渡さない場合は entries の多数派人数から推定するので、実際の入力ミスは検出できる。
+    try {
+      lastValidation = typeof ValidateEntries !== 'undefined' ? ValidateEntries.validateTournamentData(outObj) : [];
+    } catch (e) {
+      lastValidation = [];
+    }
     return NormalizeCore.serializeOutput(outObj);
+  }
+
+  function getLastValidation() {
+    return lastValidation;
+  }
+
+  // containerEl に検証結果を描画する。問題が無ければ緑、あれば赤で一覧表示。
+  // normalize() の後に呼ぶこと。
+  function renderValidation(containerEl) {
+    if (!containerEl) return;
+    containerEl.innerHTML = '';
+    const findings = lastValidation;
+
+    const box = document.createElement('div');
+    box.style.cssText = 'margin:8px 0;padding:10px 12px;border-radius:6px;font-size:13px;line-height:1.6;';
+
+    if (!findings.length) {
+      box.style.cssText += 'background:#e8f5e9;border:1px solid #a5d6a7;color:#1b5e20;';
+      box.textContent = '入力チェック: 問題は見つかりませんでした';
+      containerEl.appendChild(box);
+      return;
+    }
+
+    box.style.cssText += 'background:#ffebee;border:1px solid #ef9a9a;color:#b71c1c;';
+    const head = document.createElement('strong');
+    head.textContent = '入力チェック: ' + findings.length + '件の問題（保存前に確認してください）';
+    box.appendChild(head);
+
+    const ul = document.createElement('ul');
+    ul.style.cssText = 'margin:6px 0 0;padding-left:20px;';
+    const labels = (typeof ValidateEntries !== 'undefined' && ValidateEntries.RULE_LABELS) || {};
+    for (const f of findings) {
+      const li = document.createElement('li');
+      const label = labels[f.rule] || f.rule;
+      li.textContent = (f.entryNo != null ? '[' + f.entryNo + '] ' : '') + label + ' — ' + f.message;
+      ul.appendChild(li);
+    }
+    box.appendChild(ul);
+    containerEl.appendChild(box);
   }
 
   // ---- 保存UI ----
@@ -195,6 +247,8 @@ const ToolBridge = (() => {
     getOutputName,
     setOutputName,
     normalize,
+    getLastValidation,
+    renderValidation,
     buildSaveUI,
     download,
     copy,
