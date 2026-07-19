@@ -25,6 +25,7 @@
 - [チーム・選手の名寄せと識別](./team-player-identity.md)
 - [Deployment](./deployment.md)
 - [Open Questions](./open-questions.md)
+- [Idea Backlog 索引](./idea-backlog.md)
 
 ## 既存補助ページ
 

@@ -46,8 +46,15 @@
   1試合が未決定（`winnerEntryNo: null`）のまま残っている。中身を見ると `entries: [48, None]` という
   対戦相手が欠けたダミー枠のような試合で、恐らく3位決定戦が実施されなかった/データが不完全な枠。
   この1試合のせいで単純な decided/total 比は永遠に 99.7% にしかならない。
-- `asian-games-qualifier/2025/doubles-tournament-boys.json`: 47試合中43試合決定、4試合未決定。
+  - **【2026-07-19 訂正】この「ダミー枠」の正体が判明し、データを修正済み。**
+    同一選手が表記ゆれで二重登録されていたことによる**同じ試合の二重登録**（残骸）だった。
+    残骸2件を削除して現在は **317試合中317試合が決定済み**（未決定0）。
+    経緯: docs/raw/2026-07-19-asian-games-qualifier-2025-singles-correction.md 追記2。
+    なお下記 `asian-games-qualifier` の例は現在も有効なので、**この節の結論は変わらない**。
+- `asian-games-qualifier/2025/singles-tournament-boys.json`: 47試合中43試合決定、4試合未決定。
   これも同様に大会自体はとっくに終わっている（2025年開催、現在2026年7月）。
+  - **【2026-07-19 訂正】ファイル名を変更した。** 執筆時は `doubles-tournament-boys.json` だったが、
+    実際はシングルス戦だったため `singles-tournament-boys.json` に訂正した（試合数の記述は現在も正）。
 
 対策として、完了/進行中の判定は **`results[].tournament.rank.kind === 'ongoing'` が1件でも
 残っているか**を主軸にした。`ongoing` は `tools/shared/normalize-core.js` の
@@ -62,8 +69,8 @@
 | ファイル | 決勝T decided/total | `ongoing` 件数 | 判定結果 |
 |---|---|---|---|
 | `highschool-championship/2026/doubles-none-girls.json`（組み合わせのみ・未開催） | 0/157 | 314 | `not_recorded`（正） |
-| `highschool-championship/2025/doubles-none-girls.json`（完了済み・欠番あり） | 318/319 | 0 | `completed`（正・誤判定を回避） |
-| `asian-games-qualifier/2025/doubles-tournament-boys.json`（完了済み・欠番あり） | 43/47 | 0 | `completed`（正・誤判定を回避） |
+| `highschool-championship/2025/doubles-none-girls.json`（完了済み・欠番あり） | 318/319 ※現在は 317/317 | 0 | `completed`（正・誤判定を回避） |
+| `asian-games-qualifier/2025/singles-tournament-boys.json` ※旧 `doubles-` （完了済み・欠番あり） | 43/47 | 0 | `completed`（正・誤判定を回避） |
 | `zennihon-senbatsu/2026/doubles-none-girls.json`（予選リーグ+決勝T混在・完了済み） | 7/7 | 0 | `completed`（正） |
 
 ## 実装
@@ -88,3 +95,21 @@
 - ADR-007 の Implementation Status / Open Questions / Related Files に反映済み（2026-07-19）。
 - docs/wiki への追加ページ化は見送り。ADR-007 が本機能の唯一の関連ドキュメントであり、
   wiki の別ページを新設するほどの独立性は無いと判断（除外理由）。
+
+---
+
+## 訂正記録（2026-07-19）
+
+docs/raw は原則 append-only だが、**本文中のファイル名・数値が実データと食い違う状態になった**ため、
+依頼を受けて本文に注釈を追記した（元の記述は削除せず、`【2026-07-19 訂正】` として併記）。
+
+1. `asian-games-qualifier/2025/doubles-tournament-boys.json`
+   → `singles-tournament-boys.json` にリネーム（実際はシングルス戦だった）。
+   試合数の記述（47試合中43試合決定）は現在も正しい。
+2. `highschool-championship/2025/doubles-none-girls.json` の「318/319・未決定1件」
+   → 未決定の正体は同一試合の二重登録による残骸で、削除済み。現在は 317/317。
+
+**この節の設計判断（decided/total 比ではなく `ongoing` を主軸にする）は変わらない。**
+2 は解消したが 1 は現在も 43/47 で残っており、根拠として有効なため。
+
+経緯: docs/raw/2026-07-19-asian-games-qualifier-2025-singles-correction.md
