@@ -88,7 +88,7 @@ export default function Home({ recentTournaments }: HomeProps) {
           <Breadcrumbs crumbs={[{ label: 'ホーム', href: '/' }]} />
         </div>
 
-        {/* ✅ サイト紹介文（ページ最上部に設置） */}
+        {/* サイト紹介文（ページ最上部に設置） */}
         <section className="max-w-3xl mx-auto mb-10 px-4">
           <h1 className="text-2xl font-bold mb-4">ソフトテニスの大会結果・選手成績データベース「Softeni Pick」</h1>
           <p className="text-lg leading-relaxed mb-4">
@@ -106,11 +106,11 @@ export default function Home({ recentTournaments }: HomeProps) {
           </p>
         </section>
 
-        {/* ✅ 試合結果・大会リンク */}
+        {/* 試合結果・大会リンク */}
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
 
-          {/* ✅ STリーグへのリンク */}
+          {/* STリーグへのリンク */}
           <section className="max-w-4xl mx-auto mb-8 px-4">
             <Link href="/st-league" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle mb-4">
               <h3 className="text-xl font-bold mb-1">STリーグ</h3>
@@ -118,7 +118,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </Link>
           </section>
 
-          {/* ✅ 最近追加された大会（カード形式） */}
+          {/* 最近追加された大会（カード形式） */}
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
 
@@ -146,7 +146,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </div>
           </section>
 
-          {/* ✅ よく見られている選手（カード形式） */}
+          {/* よく見られている選手（カード形式） */}
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
@@ -181,7 +181,7 @@ export default function Home({ recentTournaments }: HomeProps) {
               ))}
             </div>
 
-            {/* ✅ 一覧ページへのリンク */}
+            {/* 一覧ページへのリンク */}
             <div className="text-right mb-10">
               <Link href="/players" className="text-sm text-blue-500 hover:underline">
                 掲載中の選手一覧はこちら
@@ -189,7 +189,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </div>
           </section>
 
-          {/* ✅ 選手ランキングへのリンク */}
+          {/* 選手ランキングへのリンク */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">選手ランキング</h2>
 
@@ -203,7 +203,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </Link>
           </section>
 
-          {/* ✅ 高校カテゴリへのリンク */}
+          {/* 高校カテゴリへのリンク */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
 
@@ -217,7 +217,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </Link>
           </section>
 
-          {/* ✅ 所属別成績 */}
+          {/* 所属別成績 */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
 

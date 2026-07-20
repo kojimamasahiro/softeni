@@ -195,13 +195,13 @@ export default function TournamentYearResultPage({
       <PageLayout>
         <Breadcrumbs crumbs={breadcrumbs} />
 
-        {/* ✅ h1 + 大会紹介文 */}
+        {/* h1 + 大会紹介文 */}
         <h1 className="text-2xl font-bold mb-4">
           {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
           大会結果
         </h1>
 
-        {/* ✅ どこまで結果が反映されているか（進行中/組み合わせのみの大会でのみ表示） */}
+        {/* どこまで結果が反映されているか（進行中/組み合わせのみの大会でのみ表示） */}
         <ResultCoverageNotice detailData={detailData} />
 
         <section className="mb-6 px-1">
@@ -225,13 +225,13 @@ export default function TournamentYearResultPage({
           )}
         </section>
 
-        {/* ✅ 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
+        {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} />
 
-        {/* ✅ トーナメント表 */}
+        {/* トーナメント表 */}
         {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} />}
 
-        {/* ✅ スコア詳細（ポイント分析つき試合） */}
+        {/* スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
           <section className="mb-6 rounded-lg border border-success-border bg-success-bg p-4">
             <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
@@ -257,7 +257,7 @@ export default function TournamentYearResultPage({
           </section>
         )}
 
-        {/* ✅ チーム別成績 */}
+        {/* チーム別成績 */}
         <TeamResults
           detailData={detailData ? [detailData] : []}
           highschoolGender={generation === 'highschool' ? gender : null}

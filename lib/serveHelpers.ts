@@ -89,7 +89,7 @@ export function calculateAllServingTeams(game: Game, bestOf: number, gamesWonA: 
  * @returns 表示用テキスト
  */
 export function getServeDisplayText(servingTeam: 'A' | 'B'): string {
-  return `🏓 ${servingTeam}のサーブ`;
+  return `${servingTeam}のサーブ`;
 }
 
 /**

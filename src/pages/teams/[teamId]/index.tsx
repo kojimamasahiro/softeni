@@ -133,7 +133,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
             <p className="text-sm text-text-muted mb-3">
               出場: {stLeague!.firstYear}〜{stLeague!.lastYear}
               {stLeague!.titlesTop > 0 && (
-                <span className="ml-2 inline-flex items-center gap-1 text-warning font-semibold">🏆 Ⅰ部優勝 {stLeague!.titlesTop}回</span>
+                <span className="ml-2 inline-flex items-center gap-1 text-warning font-semibold">Ⅰ部優勝 {stLeague!.titlesTop}回</span>
               )}
             </p>
 
@@ -172,7 +172,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
                       </td>
                       <td className="py-2.5 px-3 text-center whitespace-nowrap">
                         {s.isChampion ? (
-                          <span className="inline-flex items-center gap-1 text-warning font-bold">🏆 優勝</span>
+                          <span className="inline-flex items-center gap-1 text-warning font-bold">優勝</span>
                         ) : s.rank ? (
                           `${s.rank}位`
                         ) : (

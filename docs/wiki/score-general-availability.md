@@ -39,6 +39,7 @@ ADR-003（[score-media-tool-separation](../adr/ADR-003-score-media-tool-separati
 | ランキング較正ハーネス（バックテスト基盤） | **P1〜P4完了**（2026-07-11）。較正・国際除外・tier再分類をエンジン反映、統合Elo＋giant-killing検知を `data/ratings/` に生成（内部利用）。仕様は [ranking.md](./ranking.md)。以降は運用（監査・再較正）と公開面の判断 | [アイデア](../raw/2026-07-11-idea-ranking-calibration-harness.md) / [検討](../raw/2026-07-11-ranking-calibration-harness-plan.md) |
 | シングルスのポイントランキング廃止＋同点をシングルスで並び替え（種目区別の整理） | **実装済み**（2026-07-11）。採点はダブルスのみ（`disciplines=["doubles"]`）、表示は男女1本の板、同点はシングルス best-1 で並び替え＋好成績バッジ表示（合算にしないのがミソ）。残: シングルスのタイトル記録導線（未設計）。仕様は [ranking.md](./ranking.md) | [アイデア](../raw/2026-07-11-idea-singles-ranking-retire.md) |
 | score記録の半自動化（動画からのポイント抽出支援） | 発散フェーズ（2026-07-11）。ポイントデータは外部に存在せず、方向は記録コスト削減。音声区切り検出→スコアボードOCRの段階案。権利リスク要整理 | [アイデア](../raw/2026-07-11-idea-score-recording-semiauto.md) |
+| 選手の全国大会優勝歴の可視化（インハイ優勝等） | **P0 実装済み**（2026-07-20）: 選手結果ページ h1直下に勲章（メダル）カード。**1カテゴリ=1枚**（ジュニア/高校/大学/総合/国際大会/シニア）でベスト8以上の最高成績を表示し、複数受賞は`<details>`で展開（該当1,519人）。SEOは優勝のみで title/description/JSON-LD `award` に通称 literal（「インターハイ優勝」・該当236人）。判定は`isNational`ではなく`lib/nationalTitles.ts`のホワイトリストで、**勲章カードとSEOで対象集合が意図的にずれる**（社会人と国際大会の扱いが逆）。キャリア年表の「全国初出場/初優勝」もSEO側と同基準に統一。仕様は [players-pages.md](./players-pages.md)「全国大会優勝の実績表示」。残=GSCでの効果測定と他ページへの展開判断 | [アイデア](../raw/2026-07-20-idea-player-title-prestige-badge.md) |
 
 背景の調査・検討経緯（市場調査、記録文化比較、パイロット分析）は
 [docs/raw/2026-07-11-score-general-availability-research.md](../raw/2026-07-11-score-general-availability-research.md)。

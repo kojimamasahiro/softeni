@@ -79,7 +79,7 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlay
   return (
     <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-6">
       <div className="text-center">
-        <h3 className="text-lg font-semibold mb-4 text-yellow-800">🏓 サーブ権の決定</h3>
+        <h3 className="text-lg font-semibold mb-4 text-yellow-800">サーブ権の決定</h3>
         <p className="text-yellow-700 mb-4">{getGameText()}</p>
 
         <>

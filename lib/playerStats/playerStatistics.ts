@@ -21,6 +21,7 @@ import { aggregateMilestones } from './aggregators/milestones';
 import { readRankingTrend } from './aggregators/ranking';
 import { aggregateReachRates } from './aggregators/reachRates';
 import { aggregateRecords } from './aggregators/records';
+import { aggregateMajorResults } from './aggregators/majorResults';
 import { aggregateTitles } from './aggregators/titles';
 import { loadRankingConfig, PlayerStatsConfig } from './config';
 import { buildFacts, ENGINE_VERSION } from './facts';
@@ -40,6 +41,7 @@ const ALL_SECTIONS: StatSection[] = [
   'highlights',
   'reachRates',
   'titles',
+  'majorResults',
   'milestones',
   'rankingTrend',
   'careerTimeline',
@@ -157,8 +159,10 @@ function defaultStats(facts: PlayerFacts, slug?: string | null): PlayerStatistic
       byTournament: {},
       streaks: [],
       nth: {},
+      national: { count: 0, tournamentCount: 0, titles: [] },
       firsts: { firstNational: null, firstNationalTitle: null },
     },
+    majorResults: [],
     milestones: [],
     rankingTrend: [],
     careerTimeline: [],
@@ -240,6 +244,7 @@ export async function getPlayerStatistics(playerId: number, options: PlayerStati
   }
   if (need('reachRates')) stats.reachRates = aggregateReachRates(facts);
   if (needTitles) stats.titles = aggregateTitles(facts);
+  if (need('majorResults')) stats.majorResults = aggregateMajorResults(facts);
   if (needMilestones) stats.milestones = aggregateMilestones(facts);
   if (need('rankingTrend')) {
     stats.rankingTrend = readRankingTrend(playerId, cwd);

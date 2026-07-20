@@ -7,11 +7,13 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
+import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
 import PlayerStatisticsSections from '@/components/PlayerStatisticsSections';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PageLayout from '@/components/PageLayout';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
+import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
@@ -135,24 +137,34 @@ export default function PlayerResultsPage({
     return parts.length > 0 ? `${parts.join('、')}。` : '';
   })();
 
+  // 全国大会優勝（lib/nationalTitles.ts のホワイトリスト判定）。該当者のみ非空。
+  // 本文バッジ・title・description・JSON-LD award の 4 箇所で同じ実績を使う。
+  const nationalTitles = playerStatistics?.titles?.national?.titles ?? [];
+  // 主要大会の実績カード用（ベスト8以上・カテゴリ別）。SEO 文言の nationalTitles とは対象集合が違う
+  // （社会人と国際大会の扱いが逆）ので、まとめずに別々に持つ。
+  const majorResults = playerStatistics?.majorResults ?? [];
+  const nationalTitlePhrase = nationalTitleTitlePhrase(nationalTitles);
+  const nationalDescriptionPhrase = nationalTitleDescriptionPhrase(nationalTitles);
+
+  // description は先頭が truncate されにくいので、実績は通算成績より前に置く。
   const summarySentence = [
     `${displayName}のソフトテニス試合結果・戦績。`,
+    nationalDescriptionPhrase ?? '',
     latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
     totalMatches > 0 ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${winRatePct !== null ? `（勝率${winRatePct}%）` : ''}。` : '',
     engineStatsPhrase,
     mainPartnerName ? `主なペアは${mainPartnerName}。` : '',
   ].join('');
 
+  // 通称（インターハイ 等）を title に literal で出し、「{選手名} インターハイ 優勝」系の
+  // クエリに寄せる。正式名称だけでは通称クエリに一致しないため（docs/wiki/seo.md #3）。
+  const metaTitle = nationalTitlePhrase
+    ? `${displayName} ${nationalTitlePhrase}｜試合結果・戦績 | ソフトテニス`
+    : `${displayName}の試合結果・戦績 | ソフトテニス`;
+
   return (
     <>
-      <MetaHead
-        title={`${displayName}の試合結果・戦績 | ソフトテニス`}
-        description={summarySentence}
-        url={pageUrl}
-        type="article"
-        noindex={noindex}
-        noindexFollow={noindex}
-      />
+      <MetaHead title={metaTitle} description={summarySentence} url={pageUrl} type="article" noindex={noindex} noindexFollow={noindex} />
 
       <Head>
         <script
@@ -177,6 +189,10 @@ export default function PlayerResultsPage({
                     name: team,
                   },
                 }),
+                // 全国大会優勝を構造化データにも持たせる。
+                // Assumption: Google 側の専用リッチリザルトがあるかは未確認だが、
+                // エンティティ理解の材料にはなる想定（低コスト・低リスクのため実施）。
+                ...(nationalTitles.length > 0 && { award: nationalTitleAwards(nationalTitles) }),
                 url: pageUrl,
               },
               publisher: {
@@ -242,6 +258,10 @@ export default function PlayerResultsPage({
             {summarySentence}
             出場大会や成績、主な勝ち上がり情報を掲載しています。
           </p>
+          {/* 主要大会の最高成績タイル（該当者のみ）。h1 直下ではなくリード文の直後に置く
+              （2026-07-20 決定。文章の流れを保ちつつファーストビューには収まる位置）。
+              カテゴリ別のベスト8以上、文言は通称 literal（インターハイ 等）。 */}
+          <PlayerMajorResults results={majorResults} scopeNote={playerStatistics?.scopeNote} />
           {profileSlug && (
             <p className="mt-2 text-sm">
               <Link href={`/players/${profileSlug}/`} className="text-link hover:underline">

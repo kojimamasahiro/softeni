@@ -17,7 +17,6 @@ interface BetaFeature {
   description: string;
   href: string;
   status: '試作中' | '検証中' | '改善中';
-  icon: string;
 }
 
 const betaFeatures: BetaFeature[] = [
@@ -27,7 +26,6 @@ const betaFeatures: BetaFeature[] = [
     description: 'ポイント詳細記録システムで記録された試合の結果をご覧いただけます。ラリー数、決定打の種類、選手別統計などの詳細な分析データを確認できます。',
     href: getPublicMatchesListPath(),
     status: '試作中',
-    icon: '🎾',
   },
   {
     id: 'point-recording-admin',
@@ -35,7 +33,6 @@ const betaFeatures: BetaFeature[] = [
     description: '管理者専用機能です。試合のポイントごとの詳細な記録・入力ができます。ラリー数、決定打の種類、選手名などを詳細に記録できます。',
     href: '/beta/matches',
     status: '試作中',
-    icon: '🔧',
   },
 ];
 
@@ -89,14 +86,14 @@ export default function BetaIndexPage() {
 
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-4 flex items-center gap-3">
-              🧪 ベータ機能
+              ベータ機能
               <span className="text-lg font-normal text-warning bg-warning-bg px-2 py-1 rounded text-sm">試作版</span>
             </h1>
             <p className="text-text-secondary text-lg">新しい機能を試験的に公開しています。</p>
           </div>
 
           <section className="mb-8 p-6 bg-warning-bg border border-warning-border rounded-lg">
-            <h2 className="text-lg font-semibold text-warning mb-3 flex items-center gap-2">⚠️ ベータ機能について</h2>
+            <h2 className="text-lg font-semibold text-warning mb-3 flex items-center gap-2">ベータ機能について</h2>
             <ul className="space-y-2 text-sm text-warning">
               <li className="flex items-start gap-2">
                 <span>•</span>
@@ -124,7 +121,6 @@ export default function BetaIndexPage() {
                   className="block p-6 border border-border rounded-lg bg-surface hover:border-amber-300 dark:hover:border-amber-600 hover:shadow-md transition-all duration-200 group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="text-2xl">{feature.icon}</div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-lg font-semibold text-text group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
@@ -152,7 +148,7 @@ export default function BetaIndexPage() {
 
           {isDebugMode() && (
             <div className="mt-8 p-4 bg-info-bg border border-info-border rounded-lg">
-              <h3 className="text-sm font-semibold text-info mb-2">🔧 開発者向け機能</h3>
+              <h3 className="text-sm font-semibold text-info mb-2">開発者向け機能</h3>
               <div className="flex gap-4">
                 <Link href="/test-db" className="text-sm text-link hover:underline">
                   データベーステスト

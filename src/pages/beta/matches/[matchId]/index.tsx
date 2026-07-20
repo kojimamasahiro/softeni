@@ -657,7 +657,7 @@ const MatchDetail = () => {
         {matchWinner && (
           <div className="rounded border border-green-400 bg-green-100 p-4">
             <p className="text-lg font-semibold text-green-800">
-              🏆 チーム{matchWinner} ({matchWinner === 'A' ? match.team_a : match.team_b}) の勝利！
+              チーム{matchWinner} ({matchWinner === 'A' ? match.team_a : match.team_b}) の勝利！
             </p>
           </div>
         )}

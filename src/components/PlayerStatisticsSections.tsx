@@ -52,6 +52,16 @@ function HighlightCards({ stats }: { stats: PlayerStatistics }) {
   const { records, highlights, reachRates, titles } = stats;
   const items: Array<{ label: string; value: string; sub?: string }> = [];
 
+  // 全国大会優勝は「通算優勝」より先に出す（該当者にとって最も価値の高い事実のため）。
+  // 判定は lib/nationalTitles.ts のホワイトリスト（東日本/西日本選手権は含めない）。
+  if (titles.national && titles.national.count > 0) {
+    const latest = titles.national.titles[0];
+    items.push({
+      label: '全国大会優勝',
+      value: `${titles.national.count}回`,
+      sub: latest ? `直近は${latest.year}年 ${latest.shortLabel}（${latest.discipline}）` : undefined,
+    });
+  }
   if (titles.total > 0) {
     items.push({
       label: '通算優勝',

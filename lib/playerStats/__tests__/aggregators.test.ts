@@ -6,6 +6,7 @@ import { aggregateByPartner } from '../aggregators/byPartner';
 import { aggregateByTeam } from '../aggregators/byTeam';
 import { aggregateCareer } from '../aggregators/career';
 import { aggregateHeadToHead } from '../aggregators/headToHead';
+import { aggregateMajorResults } from '../aggregators/majorResults';
 import { aggregateReachRates } from '../aggregators/reachRates';
 import { aggregateRecords } from '../aggregators/records';
 import { aggregateTitles } from '../aggregators/titles';
@@ -161,16 +162,91 @@ test('byPartner: partnerKey で集約（数値id付き参照を優先保持）',
 });
 
 test('titles: 連覇・n回目・全国初優勝', () => {
+  // firstNationalTitle はホワイトリスト大会でのみ立つため、実在の全国大会 ID を使う
   const entries = [
-    entry({ year: 2021, placement: { kind: 'winner' }, isNational: true, date: '2021-05-01' }),
-    entry({ year: 2022, placement: { kind: 'winner' }, isNational: true, date: '2022-05-01' }),
-    entry({ year: 2024, placement: { kind: 'winner' }, isNational: true, date: '2024-05-01' }),
+    entry({ tournamentId: 'highschool-championship', year: 2021, placement: { kind: 'winner' }, isNational: true, date: '2021-05-01' }),
+    entry({ tournamentId: 'highschool-championship', year: 2022, placement: { kind: 'winner' }, isNational: true, date: '2022-05-01' }),
+    entry({ tournamentId: 'highschool-championship', year: 2024, placement: { kind: 'winner' }, isNational: true, date: '2024-05-01' }),
   ];
   const t = aggregateTitles(facts([], entries));
   assert.strictEqual(t.total, 3);
   assert.strictEqual(t.streaks.length, 1); // 2021-2022 連覇
   assert.strictEqual(t.streaks[0].streak, 2);
   assert.strictEqual(t.firsts.firstNationalTitle!.year, 2021);
+});
+
+test('titles.national: ホワイトリスト大会の優勝だけを拾い、年度降順で返す', () => {
+  const entries = [
+    // インターハイ優勝 2 回（同一大会）
+    entry({ tournamentId: 'highschool-championship', categoryId: 'doubles-none-boys', year: 2023, placement: { kind: 'winner' }, date: '2023-08-01' }),
+    entry({ tournamentId: 'highschool-championship', categoryId: 'doubles-none-boys', year: 2024, placement: { kind: 'winner' }, date: '2024-08-01' }),
+    // 別の全国大会での優勝
+    entry({ tournamentId: 'highschool-japan-cup', categoryId: 'singles-none-boys', year: 2024, placement: { kind: 'winner' }, date: '2024-07-01' }),
+  ];
+  const t = aggregateTitles(facts([], entries));
+  assert.strictEqual(t.national.count, 3);
+  assert.strictEqual(t.national.tournamentCount, 2);
+  // 年度降順・同年度は日付降順（2024 インハイ → 2024 ハイジャパ → 2023 インハイ）
+  assert.strictEqual(t.national.titles[0].year, 2024);
+  assert.strictEqual(t.national.titles[0].shortLabel, 'インターハイ');
+  assert.strictEqual(t.national.titles[1].shortLabel, 'ハイスクールジャパンカップ');
+  assert.strictEqual(t.national.titles[2].year, 2023);
+});
+
+test('titles.national: isNational=true でも東日本/西日本選手権は全国大会優勝に数えない', () => {
+  // 東日本・西日本選手権は地域大会だが、エンジンの isNational は
+  // 「国際大会以外＝true」の広い定義なので true になる。実績表示では除外されるべき。
+  const entries = [
+    entry({ tournamentId: 'east-japan', year: 2026, placement: { kind: 'winner' }, isNational: true, date: '2026-05-01' }),
+    entry({ tournamentId: 'west-japan', year: 2025, placement: { kind: 'winner' }, isNational: true, date: '2025-05-01' }),
+  ];
+  const t = aggregateTitles(facts([], entries));
+  assert.strictEqual(t.total, 2); // 通算優勝には数える
+  assert.strictEqual(t.national.count, 0); // 全国大会優勝には数えない
+  // キャリア年表の「全国初出場 / 全国初優勝」も同じホワイトリスト基準に統一済み（2026-07-20）。
+  // 以前は広義 isNational を使っていたため東日本選手権が「全国初優勝」として出ていた。
+  assert.strictEqual(t.firsts.firstNationalTitle, null);
+  assert.strictEqual(t.firsts.firstNational, null);
+});
+
+test('majorResults: ベスト8以上をカテゴリ別に集約し、最高成績を best にする', () => {
+  const entries = [
+    // 高校: ベスト4 と 優勝 → best は優勝
+    entry({ tournamentId: 'highschool-championship', year: 2023, placement: { kind: 'best', bestLevel: 4 }, date: '2023-08-01' }),
+    entry({ tournamentId: 'highschool-japan-cup', year: 2024, placement: { kind: 'winner' }, date: '2024-07-01' }),
+    // 大学: ベスト8 のみ
+    entry({ tournamentId: 'zennihon-university', year: 2026, placement: { kind: 'best', bestLevel: 8 }, date: '2026-09-01' }),
+    // ベスト8 未満は対象外
+    entry({ tournamentId: 'zennihon-championship', year: 2026, placement: { kind: 'roundLoss', round: 2 }, date: '2026-10-01' }),
+  ];
+  const r = aggregateMajorResults(facts([], entries));
+  // カテゴリ順は senior→international→general→university→highschool→junior 固定
+  // （キャリアの新しい側から。2026-07-20 に進行順から反転）
+  assert.strictEqual(r.length, 2);
+  assert.strictEqual(r[0].category, 'university');
+  assert.strictEqual(r[0].best.placementLabel, 'ベスト8');
+  assert.strictEqual(r[1].category, 'highschool');
+  assert.strictEqual(r[1].categoryLabel, '高校');
+  assert.strictEqual(r[1].best.placementLabel, '優勝');
+  assert.strictEqual(r[1].entries.length, 2); // 優勝 → ベスト4 の順
+  assert.strictEqual(r[1].entries[1].placementLabel, 'ベスト4');
+});
+
+test('majorResults: 社会人・東西日本・国際予選はカードを出さない / 国際大会は出す', () => {
+  const entries = [
+    entry({ tournamentId: 'zennihon-workers', year: 2025, placement: { kind: 'winner' }, date: '2025-05-01' }), // 社会人
+    entry({ tournamentId: 'east-japan', year: 2025, placement: { kind: 'winner' }, date: '2025-06-01' }), // 地域大会
+    entry({ tournamentId: 'asian-games-qualifier', year: 2025, placement: { kind: 'winner' }, date: '2025-07-01' }), // 国際予選
+    entry({ tournamentId: 'international-korea-cup', year: 2025, placement: { kind: 'best', bestLevel: 4 }, date: '2025-08-01' }), // 国際大会
+  ];
+  const r = aggregateMajorResults(facts([], entries));
+  assert.strictEqual(r.length, 1);
+  assert.strictEqual(r[0].category, 'international');
+
+  // 一方 SEO 側（titles.national）は社会人を含み、国際大会を含まない（意図的な非対称）
+  const t = aggregateTitles(facts([], entries));
+  assert.strictEqual(t.national.count, 1);
+  assert.strictEqual(t.national.titles[0].tournamentId, 'zennihon-workers');
 });
 
 test('byTeam: 国際大会（generationId=international）の国別代表コードは所属に数えない', () => {

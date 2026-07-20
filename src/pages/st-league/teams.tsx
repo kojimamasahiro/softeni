@@ -95,9 +95,7 @@ export default function StLeagueTeamsList({ groups, totalTeams }: Props) {
                       >
                         <span className="font-medium truncate">{t.name}</span>
                         {t.titlesTop > 0 && (
-                          <span className="ml-2 shrink-0 text-amber-500" title={`STリーグⅠ 優勝 ${t.titlesTop}回`} aria-label={`優勝${t.titlesTop}回`}>
-                            🏆
-                          </span>
+                          <span className="ml-2 shrink-0 text-amber-500" title={`STリーグⅠ 優勝 ${t.titlesTop}回`} aria-label={`優勝${t.titlesTop}回`}></span>
                         )}
                       </Link>
                     ))}

@@ -16,7 +16,13 @@ import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFac
 // RankingPoint.gender 追加）。バージョンを上げ全再計算で旧形式の順位表を一掃する。
 // 1.2.0: 逆引き id 解決でエイリアス（国際大会ローマ字→本人id）を姓名一致より優先。
 // ローマ字重複idに散っていた国際大会成績を本人idへ集約する。全再計算で旧索引を一掃。
-export const ENGINE_VERSION = '1.2.0';
+// 1.3.0: titles.national（全国大会優勝の件数＋一覧）を追加（2026-07-20）。
+// 1.4.0: titles.firsts.firstNational* の「全国」判定を、広義 isNational から
+//        lib/nationalTitles.ts のホワイトリストへ統一（東日本/西日本選手権を除外）（2026-07-20）。
+// 1.5.0: majorResults（主要大会のカテゴリ別ベスト8以上・勲章カード用）を追加。
+//        あわせて大会マスタを 2 フラグ制（majorCategory / nationalTitle）にし、
+//        国際大会をマスタに追加（2026-07-20）。
+export const ENGINE_VERSION = '1.5.0';
 
 function personRefFromParticipant(
   identity: Identity,

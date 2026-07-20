@@ -1193,8 +1193,7 @@ const MatchInput = () => {
                           </div>
                         </div>
                         <div className="text-xs text-gray-600">
-                          🏓{' '}
-                          {(() => {
+                                          {(() => {
                             const servingPlayer = getServingPlayerForPoint(game, point.point_number);
                             return servingPlayer ? `${servingPlayer.playerName} (チーム${point.serving_team})` : `チーム${point.serving_team}のサーブ`;
                           })()}
@@ -1411,7 +1410,7 @@ const MatchInput = () => {
       {/* 試合終了表示 */}
       {matchFinished && matchWinner && (
         <div className="bg-green-100 border border-green-400 rounded-lg p-6 mb-6 text-center">
-          <h2 className="text-2xl font-bold text-green-800 mb-2">🏆 試合終了！</h2>
+          <h2 className="text-2xl font-bold text-green-800 mb-2">試合終了！</h2>
           <p className="text-xl text-green-700">{matchWinner === 'A' ? match.team_a : match.team_b} の勝利！</p>
           <p className="text-green-600 mt-2">ゲームスコア: {getGameScores()}</p>
         </div>
@@ -1622,7 +1621,7 @@ const MatchInput = () => {
                   }`}
                 >
                   <div className="text-center">
-                    <div className="text-sm mt-1">🏓 チーム{getCurrentServe()}のサーブ</div>
+                    <div className="text-sm mt-1">チーム{getCurrentServe()}のサーブ</div>
                   </div>
                 </div>
               )}
