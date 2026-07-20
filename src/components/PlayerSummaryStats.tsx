@@ -34,6 +34,8 @@ export type MatchStats = {
 export type MatchGameStats = {
   matches: MatchStats;
   games: GameStats;
+  // エンジンが解決済みの表示名（パートナー別のみ）。あれば allPlayers ルックアップより優先する。
+  name?: string;
 };
 
 type StatsTableProps = {
@@ -88,15 +90,12 @@ function StatsTable({ title, data, isYear = false, allPlayers }: StatsTableProps
         </thead>
         <tbody>
           {sortedEntries.map(([key, stats]) => {
-            const label = isYear
-              ? `${key}年`
-              : allPlayers.find((p) => p.id === key)
-                ? `${allPlayers.find((p) => p.id === key)!.lastName} ${allPlayers.find((p) => p.id === key)!.firstName || ''}`
-                : key;
+            const matchedPlayer = allPlayers.find((p) => p.id === key);
+            const label = isYear ? `${key}年` : (stats.name ?? (matchedPlayer ? `${matchedPlayer.lastName} ${matchedPlayer.firstName || ''}` : key));
 
             // 結果ページが実在する（count>=5）選手のみページへリンクする。
             // count<5 の選手は 404 になるためリンクせず、モーダル（PlayerLiteLink）で表示する。
-            const partner = !isYear ? allPlayers.find((p) => p.id === key) : undefined;
+            const partner = !isYear ? matchedPlayer : undefined;
             const hasPage = partner ? (partner.count ?? 0) >= 5 : false;
             const link = hasPage ? `/players/${key}/results` : undefined;
             const liteId = partner && !hasPage ? key : undefined;

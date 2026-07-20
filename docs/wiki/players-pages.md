@@ -57,6 +57,7 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 - 表示: `src/components/PlayerLiteLink.tsx`。名前クリックでモーダルを開き当該 JSON を fetch（簡易キャッシュあり）。モーダル内のペアは `hasPage`（count>=5）なら `/players/{id}/results` へリンク、`count<5` は入れ子モーダルにせず名前のみ表示。
 - 起点: ①結果ページの大会カードの「ペア」（`PlayerResults.tsx`、`PlayerTournament.partnerLiteId`）、②サマリーの「パートナー別」表（`PlayerSummaryStats.tsx`、`liteId`）。いずれも `count>=5` はページリンク、`count<5` は `PlayerLiteLink` に振り分ける。
 - デッドリンク防止: 以前は `count<5` のペアにも `/players/{id}/results` を張って 404 になっていた。リンク可否は `data/players/index.json` の `count`（`PlayerInfo.count` として伝播）で判定する。
+- 不具合修正（2026-07-20）: サマリーの「パートナー別」に、パートナー名の代わりに数値 ID（例 `8329`）がそのまま表示される不具合があった。原因は `PlayerSummaryStats.tsx` の名前解決が `allPlayers`（`results.tsx` の `getStaticProps` が**エンジン適用前**の集計 `byPartnerNormalized` から絞り込んだ部分集合）だけに依存しており、エンジン（`toSummaryStats`）が返す `playerStats.byPartner` のパートナーIDと集合が食い違うことがあった点。対処: エンジン側（`PartnerRow.partnerName`）が解決済みの名前を `PlayerStats.byPartner[id].name` として保持し（`types/stats.ts`）、`PlayerSummaryStats.tsx` は `allPlayers` ルックアップより先にこの `name` を使うよう変更。あわせて `allPlayers`（`minimalPlayersList`）も `byPartnerNormalized` と `summaryStats.byPartner` 両方のキー集合を合わせて絞り込むよう修正し、リンク可否判定（`count>=5`）の抜け漏れも防いだ。
 
 ## 選手ページの SEO 方針（2026-06 改善）
 

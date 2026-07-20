@@ -22,7 +22,15 @@ import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFac
 // 1.5.0: majorResults（主要大会のカテゴリ別ベスト8以上・勲章カード用）を追加。
 //        あわせて大会マスタを 2 フラグ制（majorCategory / nationalTitle）にし、
 //        国際大会をマスタに追加（2026-07-20）。
-export const ENGINE_VERSION = '1.5.0';
+// 1.6.0: personRefFromParticipant（対戦相手・パートナーの id 解決）を、reverseIndex.ts と
+//        同じ「エイリアス優先」順に修正（resolveAliasedPlayerId ?? resolveNumericId）。
+//        従来は resolveNumericId を先に試していたため、ローマ字参加者が index.json に
+//        別の数値idで自動登録されているケース（例: MIYAMAE KIHO が id 8329、本人の
+//        漢字プロフィールは id 44）で、対応表（participant-aliases.json）があっても
+//        重複idの方に紐付き、パートナー・対戦相手名がローマ字連結表示（例:
+//        「MIYAMAEKIHO」）になっていた。全再計算で誤った紐付けの facts を一掃する
+//        （2026-07-20）。
+export const ENGINE_VERSION = '1.6.0';
 
 function personRefFromParticipant(
   identity: Identity,
@@ -35,9 +43,12 @@ function personRefFromParticipant(
     return { id: null, key: playerKey(name), name, team: null };
   }
   const rawName = `${p.lastName ?? ''}${p.firstName ?? ''}`.trim();
+  // エイリアス（国際大会ローマ字→本人の数値id）を姓名一致より優先する（reverseIndex.ts と同順）。
+  // ローマ字参加者は index.json に別idで自動登録され得るため、resolveNumericId を先に引くと
+  // 対応表があっても本人ではなく重複idへ紐付いてしまう（2026-07-20 修正）。
   const id =
-    resolveNumericId(identity, p.lastName, p.firstName) ??
-    (aliasCtx ? resolveAliasedPlayerId(aliasCtx.tournamentId, aliasCtx.year, p.lastName, p.firstName) : null);
+    (aliasCtx ? resolveAliasedPlayerId(aliasCtx.tournamentId, aliasCtx.year, p.lastName, p.firstName) : null) ??
+    resolveNumericId(identity, p.lastName, p.firstName);
   // ローマ字参加者が対応表で解決できた場合、表示名は既存の漢字表記（identity.byId）を優先する。
   const idInfo = id != null ? identity.byId.get(id) : undefined;
   const name = idInfo ? `${idInfo.lastName}${idInfo.firstName}` : rawName;

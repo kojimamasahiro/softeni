@@ -221,9 +221,10 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 
 詳細は [data-import.md](./data-import.md)「国際大会（ローマ字表記のみの参加者）の選手同定」。
 
-- コリアカップ2026は日本選手63名中9名のみ `data/tournaments/participant-aliases.json` で解決済み（curated slugとの完全一致で確度100%が取れた分のみ）。残り54名は連盟発表等で漢字が判明次第、追記する
+- コリアカップ2026は日本選手63名中27名が `data/tournaments/participant-aliases.json` で解決済み（curated slugとの完全一致で確度100%が取れた分のみ、2026-07-20時点）。残り36名は連盟発表等で漢字が判明次第、追記する
 - 対応表はこの1大会・1年度に限定していない（`tournaments[].years[]` 構造）ため、今後の国際大会（アジア選手権、ワールドカップ予選等）でも同じ仕組みを使い回せる。次の国際大会でも「代表発表(ローマ字)に対して、既存curatedプロフィールとの機械的完全一致でどこまで拾えるか」をまず確認し、残りは手動追記する運用を継続する
-- 対応表の更新はincremental差分検知の対象外（`participant-aliases.json` はmanifestのファイルスナップショット対象に含まれていない）。更新時は`playerstats:facts`をフル実行する運用ルールを徹底する必要がある
+- 対応表の更新はincremental差分検知の対象（`participant-aliases.json` は `computeGlobalHash`、`lib/playerStats/manifest.ts` のグローバル入力ハッシュ対象に含まれている）。追記すればハッシュが変わり prebuild が自動でフル再計算をトリガーするため、手動で `--full` を付ける必要はない（旧・対象外という記述は誤りだったため訂正。2026-07-20）
+- パートナー（対戦相手だけでなく、自分と組んだ相方）の紐付けもこの対応表で解決される。`personRefFromParticipant`（`lib/playerStats/facts.ts`）は対戦相手・パートナーを区別せず同じロジックで解決するため、対応表に載っている相手であれば byPartner 集計（`lib/playerStats/aggregators/byPartner.ts`）や選手結果ページの「サマリー」→「パートナー別」でも自動的に本人の数値idへ紐付く。追加の実装は不要で、`aliases[]` にエントリを追記するだけで反映される
 
 ## 高校カテゴリ
 

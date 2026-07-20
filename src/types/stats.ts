@@ -19,6 +19,9 @@ export interface PartnerStats {
   [partnerId: string]: {
     matches: MatchStats;
     games: Games;
+    // エンジンが解決した表示名。あれば allPlayers ルックアップより優先して使う
+    // （allPlayers は表示用に絞り込んだ部分集合のため、ここに載らないパートナーIDがあり得る）。
+    name?: string;
   };
 }
 

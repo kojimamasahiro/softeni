@@ -383,11 +383,11 @@ function toSummaryStats(playerId: string, stats: import('@/types/playerStatistic
   const byPartner: import('@/types/stats').PartnerStats = {};
   for (const row of stats.byPartner ?? []) {
     if (row.partnerId == null) continue;
-    byPartner[String(row.partnerId)] = { matches: row.matches, games: row.games };
+    byPartner[String(row.partnerId)] = { matches: row.matches, games: row.games, name: row.partnerName };
   }
   const singles = stats.career.byDiscipline?.singles;
   if (singles && singles.matches.total > 0) {
-    byPartner.singles = { matches: singles.matches, games: singles.games };
+    byPartner.singles = { matches: singles.matches, games: singles.games, name: 'シングルス' };
   }
 
   const byYear: import('@/types/stats').YearStats = {};
@@ -1011,10 +1011,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     byYear: byYearNormalized,
   };
 
-  // Build minimal allPlayers list - only include partners referenced in stats
-  const referencedPartnerIds = new Set(Object.keys(byPartnerNormalized).filter((k) => k !== 'singles'));
-  const minimalPlayersList = allPlayersList.filter((p) => referencedPartnerIds.has(p.id));
-
   // 関連選手（主なペア）: byPartner を試合数で降順に並べ、
   // 結果ページを持つ選手（index.json の count>=5）のみリンク対象にする。
   const partnerNameById = new Map(allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]));
@@ -1085,6 +1081,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // サマリー（試合数・勝敗・ゲーム・パートナー別・年度別）はエンジンの集計を正とする。
   // エンジンが使えない場合のみ、従来のページ内集計にフォールバックする。
   const summaryStats = playerStatistics ? toSummaryStats(playerId, playerStatistics) : playerStats;
+
+  // Build minimal allPlayers list - only include partners referenced in the stats that are
+  // actually rendered (summaryStats). byPartnerNormalized はエンジン未使用時のフォールバック
+  // 集計元であり、エンジン採用時（通常経路）は summaryStats.byPartner のキー集合と食い違うことが
+  // あるため、両方の参照IDを合わせて拾う（このズレが「パートナー欄に数字IDが出る」不具合の原因だった）。
+  const referencedPartnerIds = new Set([...Object.keys(byPartnerNormalized), ...Object.keys(summaryStats.byPartner)].filter((k) => k !== 'singles'));
+  const minimalPlayersList = allPlayersList.filter((p) => referencedPartnerIds.has(p.id));
 
   // H2H 相手のうち結果ページが実在する（count>=5）選手のみリンク化する。
   const statsLinkableIds = (playerStatistics?.headToHead ?? [])
