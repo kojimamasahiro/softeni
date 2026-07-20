@@ -27,6 +27,11 @@
 ## チームマスタ `data/teams/teams.json`
 
 - 生成: `scripts/build-team-master.mjs`。`{ id(連番), name(最頻出表記), prefecture, count, aliases?, reviewPrefectures? }`。
+- **表示名の全角ASCIIは半角へ寄せる**（`ＹＫＫ`→`YKK`、`Ｊ－Ｋｉｄｓ`→`J-Kids`）。
+  `scripts/lib/halfwidth.mjs` の `toHalfWidthAscii()`。全角英数はほぼ入力・OCR由来の揺れで、
+  正式表記が全角の団体は実質ないため。半角化前の生表記は `aliases` 側に残るので情報は失われない。
+  NFKC ではなく U+FF01–FF5E 限定の変換を使う（NFKC は半角カナ→全角カナ、㈱→(株) 等も巻き込むため）。
+  なお **大会データ本体は書き換えない**（表示名のみ）。
 - `prefecture` は実県の最頻値だが、**実県カバー率が低いチーム（大学・連盟系など）は信頼できない
   ため null**（社会人/学校は県が安定するので付与される）。
 - id は count 降順→名前で決定的に採番（再生成で安定）。
@@ -39,6 +44,40 @@
 大会データ本体で**最頻出の表記へ寄せる**（人手不要・冪等）。例: `one team`/`oneteam`→`one team`、
 `Up Rise`/`UpRise`→`Up Rise`、`ＵＢＥ`/`UBE`→片方へ。`team`/`id`/`playerIds` を追従。
 注意: **大文字小文字差は NFKC で畳まれない**（`UpRise`≠`Uprise`）。必要なら別途対応。
+注意: ここは**頻度依存なので、データが増えると採用表記が入れ替わりうる**（NFKC等価ペアに限る）。
+表記を固定したい場合は alias 表に canonical として明示的に書くこと。
+
+## 異体字・旧字体の扱い（照合と表示の分離）
+
+NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`崎`、`學`≠`学`、`應`≠`応`）。
+このため字体だけ違う同一チームが別チームとして分裂する。実例: `西鄉第一` と `西郷第一中学校`
+（福島県西郷村の同一中学校）が別チーム扱いになり、選手ページのキャリア年表で所属が割れていた。
+
+対応方針は**照合と表示を分ける**こと:
+
+| 用途 | 方式 | 理由 |
+| --- | --- | --- |
+| 照合（マージ候補検出） | 新字体へ畳む | 機械的・再現可能。取りこぼしを無くす |
+| 表示（canonical） | **正式名称** | 公開サイトなので正確さ・検索流入を優先 |
+
+- 対応表: `scripts/lib/kanji-variants.mjs`（`foldKanjiVariants()`）。
+- 照合キーの算出は `scripts/lib/team-core.mjs`（`teamCore()`）に集約。
+  **`build-team-merge-candidates.mjs` と `check-identity-health.mjs` は必ず同じ定義を使うこと。**
+  以前は両者が `core()` を各自複製しており、候補生成側だけ異体字対応を入れた結果、
+  ヘルスチェックが未統合候補を 8件→2件 と過少報告した。判定ロジックを増やすときは
+  共通モジュール側を直す。
+- **この畳み込みは候補検出専用**。データ本体の表記を自動で書き換えてはいけない
+  （正式名称に旧字体を使う学校・大学があるため）。実際の名寄せは従来どおり人手レビュー →
+  `team-name-aliases.json` 経由。
+- 表示まで新字体に統一するのは**不採用**。`國學院大學`→`国学院大学`、`慶應義塾大学`→`慶応義塾大学`
+  となり正式名称と乖離する。
+- **canonical は「正式名称」を採る**。最頻出表記は初期候補にすぎない（多くの場合一致するが、
+  一致は保証されない）。
+- canonical は alias 表に文字列で固定されるため、**後から出現数が逆転しても入れ替わらない**。
+  ただし `build-team-master.mjs` の表示名はグループ内の生表記の最頻出なので、
+  **`normalize-team-names` を流さずに `build-team-master` だけ回すと表示名が alias 側に振れる**。
+  下記の実行順序を必ず守ること。
+- 誤爆を避けるため、対応表には「明らかに同字の異体字」のみ入れる。意味の異なる別漢字は入れない。
 
 ## チーム名寄せの運用
 
@@ -46,7 +85,8 @@
 蓄積し、大会データへ適用する。
 
 1. **候補生成** `scripts/build-team-merge-candidates.mjs`: 県内ブロックで接尾辞除去後のコア一致を
-   抽出（高校/中学校/中/少年団/各種クラブ等を除去、付↔附を同一視）。`data/teams/merge-candidates.json`。
+   抽出（高校/中学校/中/少年団/各種クラブ等を除去、付↔附を同一視、NFKC＋異体字を畳む）。
+   `data/teams/merge-candidates.json`。
 2. **レビュー** `scripts/build-team-review-html.mjs` → `data/teams/team-merge-review.html`
    （ブラウザでクリック判断）。各メンバーに選手名・年・大会を表示。
    - **自動判定（大会の共起ベース）**: ジャンル（出場大会の段階）が違えば自動で別チーム。
@@ -61,6 +101,12 @@
    - ファイル方式: 書き出した `team-alias-additions.json` を
      `node scripts/apply-team-aliases.mjs <file>`。
    - 自動OK一括: `node scripts/apply-auto-merges.mjs`（自動OKクラスタの統合を一括反映）。
+     **注意: canonical が「最頻出表記」で自動決定される。** これは正式名称とは限らず、
+     全角表記（`Ｊ－Ｋｉｄｓ`）や略称（`都城西中`）が canonical に選ばれることがある。
+     実行後は追加された canonical を必ず目視し、必要なら手で入れ直すこと
+     （2026-07 に `J-Kidsクラブ` `NIKKO` `都城西中` が選ばれ、手動修正した実績あり）。
+     また **段階や性格が違うだけの別チームを巻き込むことがある**（`府中STC`/`府中クラブ` は
+     2対2の同数で別団体の可能性が残るため、意図的に統合していない）。
 4. **データへ適用** `scripts/normalize-team-names.mjs --scope=all`: alias を `team`/`id`/`playerIds`
    へ反映（**NFKC照合**。全角半角差の別名も取りこぼさない）。冪等・`--dry-run` 可。
 
@@ -88,8 +134,14 @@ node scripts/build-team-master.mjs              # teams.json + team-context.json
 node scripts/build-team-merge-candidates.mjs    # merge-candidates.json
 node scripts/build-team-review-html.mjs         # レビューHTML
 python3 scripts/build-player-homonyms.py        # homonyms.json
+npm run playerstats:facts                       # data/players/_facts の再生成（キャリア年表の元データ）
 node scripts/check-identity-health.mjs          # 未対応項目のヘルスチェック
 ```
+
+**`normalize-team-names` → `build-team-master` の順序は必須**（逆順・片方だけの実行は表示名が
+alias 側に振れる）。また `data/players/_facts/**` は選手ページのキャリア年表・所属推移の元データで、
+チーム名を焼き込んでいるため、名寄せ後は再生成しないと**画面上は分裂したまま**になる
+（`prebuild` でも生成されるが、ローカル確認時は明示的に実行すること）。
 
 ## 運用: 対応忘れを防ぐヘルスチェック
 
@@ -107,6 +159,9 @@ node scripts/check-identity-health.mjs          # 未対応項目のヘルスチ
 
 検出できないもの（信号が無い）: 内部略称（理大/理科大）と、同じ学校に別々の年に在籍した同姓同名。
 これらは外部情報や気づきに依存する。
+
+なお **異体字差は 2026-07 以前は検出できていなかった**（`西鄉第一` がレビューに一度も上がらなかった）。
+`kanji-variants.mjs` の対応表に無い字体は今も検出できないので、気づいたら表に追加する。
 
 ## 既知の残課題
 

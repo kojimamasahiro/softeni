@@ -5,6 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { teamCore } from './lib/team-core.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DET = path.join(ROOT, 'data', 'tournaments', 'details');
@@ -22,8 +23,8 @@ const catOf = (tid) => {
   return null;
 };
 const ORD = { 小: 0, 中: 1, 高: 2, 大: 3, 成: 4 };
-const SUF = ['高等学校', '高校', '中学校', '中学', '小学校', '小学', '大学', 'ソフトテニスクラブ', 'テニスクラブ', 'スポーツ少年団', 'スポ少', '少年団', 'ジュニアクラブ', 'ジュニア', 'クラブ', 'STC', 'JSC', 'JST', 'TC', 'SC', '中', '高', '小', '大'];
-const core = (name) => { let s = name.replace(/付/g, '附'); let ch = true; while (ch) { ch = false; for (const suf of SUF) { if (s.endsWith(suf) && s.length - suf.length >= 2) { s = s.slice(0, -suf.length); ch = true; break; } } } return s; };
+// コア算出は build-team-merge-candidates.mjs と必ず同じ定義を使う（過少報告防止）。
+const core = teamCore;
 const level = (n) => { if (/中学/.test(n)) return '中'; if (/高校|高等学校/.test(n)) return '高'; if (/大学/.test(n)) return '大'; if (/小学|スポーツ少年団|スポ少|ジュニア/.test(n)) return '小'; if (/クラブ|ＯＢ|OB|役場|電力|協会|ＳＴＣ|STC|JSC/.test(n)) return 'ク'; return null; };
 
 const read = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
@@ -31,7 +32,14 @@ const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) =
 
 // ---- 読み込み ----
 const aliases = new Set();
-for (const e of read(path.join(ROOT, 'data', 'tournaments', 'team-name-aliases.json'), { teamAliases: [] }).teamAliases) for (const a of e.aliases || []) aliases.add(norm(a));
+const canonicals = new Set();
+for (const e of read(path.join(ROOT, 'data', 'tournaments', 'team-name-aliases.json'), { teamAliases: [] }).teamAliases) {
+  canonicals.add(norm(e.canonical));
+  for (const a of e.aliases || []) aliases.add(norm(a));
+}
+// 別名が canonical と NFKC 等価な場合（全角/半角違いなど。例: Ｊ－Ｋｉｄｓ ⇄ J-Kids）、
+// 正準化済みの生表記まで「別名のまま」と誤検出してしまうので canonical 側を除外する。
+for (const c of canonicals) aliases.delete(c);
 const teams = read(path.join(ROOT, 'data', 'teams', 'teams.json'), []);
 const ctx = read(path.join(ROOT, 'data', 'teams', 'team-context.json'), {});
 const homo = read(path.join(ROOT, 'data', 'players', 'homonyms.json'), []);

@@ -4,17 +4,17 @@
     "core": "東北",
     "members": [
       {
-        "id": 3,
+        "id": 2,
         "name": "東北",
-        "count": 372
+        "count": 444
       },
       {
-        "id": 1677,
+        "id": 1722,
         "name": "東北STC",
         "count": 5
       },
       {
-        "id": 2998,
+        "id": 3035,
         "name": "東北高校クラブ",
         "count": 2
       }
@@ -27,12 +27,12 @@
       {
         "id": 6,
         "name": "三重",
-        "count": 299
+        "count": 329
       },
       {
-        "id": 344,
+        "id": 336,
         "name": "三重高クラブ",
-        "count": 26
+        "count": 28
       }
     ]
   },
@@ -41,12 +41,12 @@
     "core": "ヨネックス",
     "members": [
       {
-        "id": 9,
+        "id": 10,
         "name": "ヨネックス",
-        "count": 275
+        "count": 289
       },
       {
-        "id": 1138,
+        "id": 1192,
         "name": "ヨネックスクラブ",
         "count": 8
       }
@@ -59,10 +59,10 @@
       {
         "id": 17,
         "name": "能登",
-        "count": 186
+        "count": 219
       },
       {
-        "id": 676,
+        "id": 710,
         "name": "能登スポーツ少年団",
         "count": 15
       }
@@ -73,19 +73,14 @@
     "core": "昇陽",
     "members": [
       {
-        "id": 37,
+        "id": 36,
         "name": "昇陽",
-        "count": 139
+        "count": 154
       },
       {
-        "id": 168,
+        "id": 155,
         "name": "昇陽中学校",
-        "count": 47
-      },
-      {
-        "id": 1468,
-        "name": "昇陽中",
-        "count": 6
+        "count": 53
       }
     ]
   },
@@ -94,19 +89,14 @@
     "core": "明徳義塾",
     "members": [
       {
-        "id": 38,
+        "id": 27,
         "name": "明徳義塾",
-        "count": 138
+        "count": 170
       },
       {
-        "id": 524,
+        "id": 438,
         "name": "明徳義塾中学校",
-        "count": 19
-      },
-      {
-        "id": 1956,
-        "name": "明徳義塾中",
-        "count": 4
+        "count": 23
       }
     ]
   },
@@ -115,30 +105,30 @@
     "core": "和歌山信愛",
     "members": [
       {
-        "id": 31,
+        "id": 24,
         "name": "和歌山信愛",
-        "count": 150
+        "count": 176
       },
       {
-        "id": 2720,
+        "id": 2774,
         "name": "和歌山信愛中学校",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": null,
-    "core": "東海",
+    "prefecture": "福島県",
+    "core": "学法石川",
     "members": [
       {
-        "id": 33,
-        "name": "東海大学",
-        "count": 146
+        "id": 32,
+        "name": "学法石川",
+        "count": 161
       },
       {
-        "id": 1970,
-        "name": "東海クラブ",
-        "count": 4
+        "id": 2841,
+        "name": "学法石川クラブ",
+        "count": 2
       }
     ]
   },
@@ -147,12 +137,12 @@
     "core": "立教",
     "members": [
       {
-        "id": 32,
+        "id": 35,
         "name": "立教大学",
-        "count": 148
+        "count": 155
       },
       {
-        "id": 4263,
+        "id": 4238,
         "name": "立教大",
         "count": 1
       }
@@ -163,19 +153,30 @@
     "core": "京都光華",
     "members": [
       {
-        "id": 53,
+        "id": 49,
         "name": "京都光華",
-        "count": 111
+        "count": 133
       },
       {
-        "id": 580,
+        "id": 540,
         "name": "京都光華中学校",
-        "count": 17
+        "count": 19
+      }
+    ]
+  },
+  {
+    "prefecture": null,
+    "core": "東海",
+    "members": [
+      {
+        "id": 40,
+        "name": "東海大学",
+        "count": 146
       },
       {
-        "id": 2617,
-        "name": "京都光華中",
-        "count": 2
+        "id": 2020,
+        "name": "東海クラブ",
+        "count": 4
       }
     ]
   },
@@ -184,17 +185,17 @@
     "core": "霞ヶ浦",
     "members": [
       {
-        "id": 49,
+        "id": 48,
         "name": "霞ヶ浦",
-        "count": 116
+        "count": 134
       },
       {
-        "id": 1722,
+        "id": 1766,
         "name": "霞ヶ浦クラブ",
         "count": 5
       },
       {
-        "id": 3346,
+        "id": 3370,
         "name": "霞ヶ浦高",
         "count": 2
       }
@@ -205,30 +206,14 @@
     "core": "嬉野",
     "members": [
       {
-        "id": 48,
+        "id": 47,
         "name": "嬉野",
-        "count": 119
+        "count": 134
       },
       {
-        "id": 2787,
+        "id": 2840,
         "name": "嬉野クラブ",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "学法石川",
-    "members": [
-      {
-        "id": 50,
-        "name": "学法石川",
-        "count": 115
-      },
-      {
-        "id": 3910,
-        "name": "学法石川クラブ",
-        "count": 1
       }
     ]
   },
@@ -237,40 +222,14 @@
     "core": "明豊",
     "members": [
       {
-        "id": 78,
+        "id": 76,
         "name": "明豊",
-        "count": 80
+        "count": 92
       },
       {
-        "id": 321,
+        "id": 297,
         "name": "明豊中学校",
-        "count": 28
-      },
-      {
-        "id": 1957,
-        "name": "明豊中",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "千葉県",
-    "core": "昭和学院",
-    "members": [
-      {
-        "id": 62,
-        "name": "昭和学院",
-        "count": 97
-      },
-      {
-        "id": 824,
-        "name": "昭和学院中学校",
-        "count": 12
-      },
-      {
-        "id": 2968,
-        "name": "昭和学院中",
-        "count": 2
+        "count": 32
       }
     ]
   },
@@ -279,19 +238,30 @@
     "core": "就実",
     "members": [
       {
-        "id": 64,
+        "id": 63,
         "name": "就実",
-        "count": 96
+        "count": 107
       },
       {
-        "id": 1073,
+        "id": 692,
         "name": "就実中学校",
-        "count": 9
+        "count": 15
+      }
+    ]
+  },
+  {
+    "prefecture": "千葉県",
+    "core": "昭和学院",
+    "members": [
+      {
+        "id": 68,
+        "name": "昭和学院",
+        "count": 103
       },
       {
-        "id": 1447,
-        "name": "就実中",
-        "count": 6
+        "id": 754,
+        "name": "昭和学院中学校",
+        "count": 14
       }
     ]
   },
@@ -300,203 +270,13 @@
     "core": "笛吹",
     "members": [
       {
-        "id": 83,
+        "id": 82,
         "name": "笛吹",
-        "count": 76
+        "count": 87
       },
       {
-        "id": 3188,
+        "id": 3224,
         "name": "笛吹高",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "岐阜県",
-    "core": "多治見",
-    "members": [
-      {
-        "id": 113,
-        "name": "多治見ジュニアクラブ",
-        "count": 62
-      },
-      {
-        "id": 1640,
-        "name": "多治見",
-        "count": 5
-      },
-      {
-        "id": 1874,
-        "name": "多治見クラブ",
-        "count": 4
-      },
-      {
-        "id": 2750,
-        "name": "多治見中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "奈良県",
-    "core": "奈良育英",
-    "members": [
-      {
-        "id": 104,
-        "name": "奈良育英",
-        "count": 65
-      },
-      {
-        "id": 1887,
-        "name": "奈良育英中学校",
-        "count": 4
-      },
-      {
-        "id": 2782,
-        "name": "奈良育英中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "和歌山県",
-    "core": "田辺",
-    "members": [
-      {
-        "id": 115,
-        "name": "田辺STC",
-        "count": 62
-      },
-      {
-        "id": 1500,
-        "name": "田辺",
-        "count": 6
-      },
-      {
-        "id": 3125,
-        "name": "田辺クラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "兵庫県",
-    "core": "姫路",
-    "members": [
-      {
-        "id": 99,
-        "name": "姫路ジュニア",
-        "count": 67
-      },
-      {
-        "id": 2249,
-        "name": "姫路クラブ",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "福井県",
-    "core": "武生",
-    "members": [
-      {
-        "id": 96,
-        "name": "武生スポ少",
-        "count": 68
-      },
-      {
-        "id": 3050,
-        "name": "武生",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "清明学園",
-    "members": [
-      {
-        "id": 111,
-        "name": "清明学園中学校",
-        "count": 63
-      },
-      {
-        "id": 1488,
-        "name": "清明学園中",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "大阪府",
-    "core": "四天王寺",
-    "members": [
-      {
-        "id": 102,
-        "name": "四天王寺高校",
-        "count": 66
-      },
-      {
-        "id": 3837,
-        "name": "四天王寺中学校",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "茨城県",
-    "core": "筑西",
-    "members": [
-      {
-        "id": 143,
-        "name": "筑西クラブ",
-        "count": 51
-      },
-      {
-        "id": 725,
-        "name": "筑西STC",
-        "count": 14
-      }
-    ]
-  },
-  {
-    "prefecture": "埼玉県",
-    "core": "松山",
-    "members": [
-      {
-        "id": 225,
-        "name": "松山",
-        "count": 37
-      },
-      {
-        "id": 365,
-        "name": "松山中学校",
-        "count": 25
-      },
-      {
-        "id": 3017,
-        "name": "松山中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "岡山県",
-    "core": "山陽学園",
-    "members": [
-      {
-        "id": 195,
-        "name": "山陽学園",
-        "count": 41
-      },
-      {
-        "id": 587,
-        "name": "山陽学園中学校",
-        "count": 17
-      },
-      {
-        "id": 2856,
-        "name": "山陽学園中",
         "count": 2
       }
     ]
@@ -506,19 +286,247 @@
     "core": "札幌大谷",
     "members": [
       {
-        "id": 211,
+        "id": 127,
         "name": "札幌大谷",
+        "count": 62
+      },
+      {
+        "id": 647,
+        "name": "札幌大谷中学校",
+        "count": 16
+      }
+    ]
+  },
+  {
+    "prefecture": "大阪府",
+    "core": "四天王寺",
+    "members": [
+      {
+        "id": 98,
+        "name": "四天王寺高校",
+        "count": 76
+      },
+      {
+        "id": 3812,
+        "name": "四天王寺中学校",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "奈良県",
+    "core": "奈良育英",
+    "members": [
+      {
+        "id": 108,
+        "name": "奈良育英",
+        "count": 70
+      },
+      {
+        "id": 1930,
+        "name": "奈良育英中学校",
+        "count": 4
+      },
+      {
+        "id": 2832,
+        "name": "奈良育英中",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "埼玉県",
+    "core": "昌平",
+    "members": [
+      {
+        "id": 105,
+        "name": "昌平",
+        "count": 72
+      },
+      {
+        "id": 2003,
+        "name": "昌平高校",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "岐阜県",
+    "core": "多治見",
+    "members": [
+      {
+        "id": 126,
+        "name": "多治見ジュニアクラブ",
+        "count": 62
+      },
+      {
+        "id": 1352,
+        "name": "多治見",
+        "count": 7
+      },
+      {
+        "id": 1916,
+        "name": "多治見クラブ",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "兵庫県",
+    "core": "姫路",
+    "members": [
+      {
+        "id": 113,
+        "name": "姫路ジュニア",
+        "count": 67
+      },
+      {
+        "id": 2311,
+        "name": "姫路クラブ",
+        "count": 3
+      },
+      {
+        "id": 2837,
+        "name": "姫路",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "福井県",
+    "core": "武生",
+    "members": [
+      {
+        "id": 111,
+        "name": "武生スポ少",
+        "count": 68
+      },
+      {
+        "id": 2027,
+        "name": "武生",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "岡山県",
+    "core": "山陽学園",
+    "members": [
+      {
+        "id": 160,
+        "name": "山陽学園",
+        "count": 52
+      },
+      {
+        "id": 546,
+        "name": "山陽学園中学校",
+        "count": 19
+      }
+    ]
+  },
+  {
+    "prefecture": "和歌山県",
+    "core": "田辺",
+    "members": [
+      {
+        "id": 128,
+        "name": "田辺STC",
+        "count": 62
+      },
+      {
+        "id": 1558,
+        "name": "田辺",
+        "count": 6
+      },
+      {
+        "id": 3162,
+        "name": "田辺クラブ",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "埼玉県",
+    "core": "松山",
+    "members": [
+      {
+        "id": 234,
+        "name": "松山",
         "count": 39
       },
       {
-        "id": 718,
-        "name": "札幌大谷中学校",
-        "count": 14
+        "id": 360,
+        "name": "松山中学校",
+        "count": 27
       },
       {
-        "id": 2986,
-        "name": "札幌大谷中",
+        "id": 3053,
+        "name": "松山高校",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "茨城県",
+    "core": "筑西",
+    "members": [
+      {
+        "id": 156,
+        "name": "筑西クラブ",
+        "count": 53
+      },
+      {
+        "id": 708,
+        "name": "筑西STC",
+        "count": 15
+      }
+    ]
+  },
+  {
+    "prefecture": "神奈川県",
+    "core": "東海大相模",
+    "members": [
+      {
+        "id": 149,
+        "name": "東海大相模",
+        "count": 55
+      },
+      {
+        "id": 1530,
+        "name": "東海大相模高校",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "prefecture": "神奈川県",
+    "core": "相洋",
+    "members": [
+      {
+        "id": 180,
+        "name": "相洋",
+        "count": 49
+      },
+      {
+        "id": 1141,
+        "name": "相洋中学校",
+        "count": 9
+      }
+    ]
+  },
+  {
+    "prefecture": "兵庫県",
+    "core": "竜野",
+    "members": [
+      {
+        "id": 260,
+        "name": "龍野クラブ",
+        "count": 36
+      },
+      {
+        "id": 570,
+        "name": "龍野ジュニア",
+        "count": 19
       }
     ]
   },
@@ -527,140 +535,18 @@
     "core": "芳賀",
     "members": [
       {
-        "id": 277,
+        "id": 301,
         "name": "芳賀クラブジュニア",
         "count": 32
       },
       {
-        "id": 914,
+        "id": 808,
         "name": "芳賀",
-        "count": 11
+        "count": 13
       },
       {
-        "id": 1011,
+        "id": 1064,
         "name": "芳賀クラブ",
-        "count": 10
-      },
-      {
-        "id": 3225,
-        "name": "芳賀中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "埼玉県",
-    "core": "上青木",
-    "members": [
-      {
-        "id": 164,
-        "name": "上青木中学校",
-        "count": 47
-      },
-      {
-        "id": 1388,
-        "name": "上青木中",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "稲城",
-    "members": [
-      {
-        "id": 150,
-        "name": "稲城ジュニア",
-        "count": 50
-      },
-      {
-        "id": 3180,
-        "name": "稲城STC",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "兵庫県",
-    "core": "龍野",
-    "members": [
-      {
-        "id": 298,
-        "name": "龍野クラブ",
-        "count": 30
-      },
-      {
-        "id": 537,
-        "name": "龍野ジュニア",
-        "count": 19
-      }
-    ]
-  },
-  {
-    "prefecture": "三重県",
-    "core": "桑名",
-    "members": [
-      {
-        "id": 190,
-        "name": "桑名ジュニアクラブ",
-        "count": 42
-      },
-      {
-        "id": 1681,
-        "name": "桑名STC",
-        "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "徳島県",
-    "core": "市場",
-    "members": [
-      {
-        "id": 349,
-        "name": "市場中学校",
-        "count": 26
-      },
-      {
-        "id": 551,
-        "name": "市場ジュニアクラブ",
-        "count": 18
-      },
-      {
-        "id": 2886,
-        "name": "市場中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "長崎県",
-    "core": "諫早",
-    "members": [
-      {
-        "id": 185,
-        "name": "諫早ジュニア",
-        "count": 43
-      },
-      {
-        "id": 2391,
-        "name": "諫早",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "奈良県",
-    "core": "高田",
-    "members": [
-      {
-        "id": 250,
-        "name": "高田ジュニアクラブ",
-        "count": 35
-      },
-      {
-        "id": 1022,
-        "name": "高田クラブ",
         "count": 10
       }
     ]
@@ -670,19 +556,110 @@
     "core": "常磐",
     "members": [
       {
-        "id": 522,
+        "id": 202,
         "name": "常磐大",
-        "count": 19
+        "count": 43
       },
       {
-        "id": 712,
-        "name": "常磐大高",
-        "count": 14
-      },
-      {
-        "id": 895,
+        "id": 940,
         "name": "常磐大学高校",
         "count": 11
+      }
+    ]
+  },
+  {
+    "prefecture": "東京都",
+    "core": "稲城",
+    "members": [
+      {
+        "id": 175,
+        "name": "稲城ジュニア",
+        "count": 50
+      },
+      {
+        "id": 3218,
+        "name": "稲城STC",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "群馬県",
+    "core": "スマイリー",
+    "members": [
+      {
+        "id": 250,
+        "name": "スマイリー",
+        "count": 36
+      },
+      {
+        "id": 835,
+        "name": "スマイリーSTC",
+        "count": 12
+      }
+    ]
+  },
+  {
+    "prefecture": "三重県",
+    "core": "桑名",
+    "members": [
+      {
+        "id": 215,
+        "name": "桑名ジュニアクラブ",
+        "count": 42
+      },
+      {
+        "id": 1727,
+        "name": "桑名STC",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "奈良県",
+    "core": "高田",
+    "members": [
+      {
+        "id": 271,
+        "name": "高田ジュニアクラブ",
+        "count": 35
+      },
+      {
+        "id": 963,
+        "name": "高田クラブ",
+        "count": 11
+      }
+    ]
+  },
+  {
+    "prefecture": "徳島県",
+    "core": "市場",
+    "members": [
+      {
+        "id": 341,
+        "name": "市場中学校",
+        "count": 28
+      },
+      {
+        "id": 585,
+        "name": "市場ジュニアクラブ",
+        "count": 18
+      }
+    ]
+  },
+  {
+    "prefecture": "長崎県",
+    "core": "諫早",
+    "members": [
+      {
+        "id": 206,
+        "name": "諫早ジュニア",
+        "count": 43
+      },
+      {
+        "id": 2450,
+        "name": "諫早",
+        "count": 3
       }
     ]
   },
@@ -691,14 +668,30 @@
     "core": "土浦",
     "members": [
       {
-        "id": 284,
+        "id": 294,
         "name": "土浦クラブ",
-        "count": 31
+        "count": 32
       },
       {
-        "id": 881,
+        "id": 926,
         "name": "土浦ジュニア",
         "count": 11
+      }
+    ]
+  },
+  {
+    "prefecture": "茨城県",
+    "core": "水戸女子",
+    "members": [
+      {
+        "id": 228,
+        "name": "水戸女子",
+        "count": 40
+      },
+      {
+        "id": 3094,
+        "name": "水戸女子高",
+        "count": 2
       }
     ]
   },
@@ -707,12 +700,12 @@
     "core": "三国",
     "members": [
       {
-        "id": 269,
+        "id": 292,
         "name": "三国クラブ",
         "count": 32
       },
       {
-        "id": 940,
+        "id": 989,
         "name": "三国",
         "count": 10
       }
@@ -723,17 +716,17 @@
     "core": "中条",
     "members": [
       {
-        "id": 299,
+        "id": 319,
         "name": "中条スポ少",
         "count": 29
       },
       {
-        "id": 1274,
+        "id": 1334,
         "name": "中条クラブ",
         "count": 7
       },
       {
-        "id": 1391,
+        "id": 1447,
         "name": "中条",
         "count": 6
       }
@@ -744,19 +737,30 @@
     "core": "朝日",
     "members": [
       {
-        "id": 322,
+        "id": 316,
         "name": "朝日中学校",
-        "count": 28
+        "count": 30
       },
       {
-        "id": 900,
+        "id": 946,
         "name": "朝日STC",
         "count": 11
+      }
+    ]
+  },
+  {
+    "prefecture": "兵庫県",
+    "core": "伊丹",
+    "members": [
+      {
+        "id": 384,
+        "name": "伊丹ジュニア",
+        "count": 25
       },
       {
-        "id": 2973,
-        "name": "朝日中",
-        "count": 2
+        "id": 633,
+        "name": "伊丹クラブ",
+        "count": 16
       }
     ]
   },
@@ -765,19 +769,35 @@
     "core": "徳山",
     "members": [
       {
-        "id": 320,
+        "id": 342,
         "name": "徳山ジュニア",
         "count": 28
       },
       {
-        "id": 1077,
+        "id": 1123,
         "name": "徳山クラブ",
         "count": 9
       },
       {
-        "id": 1937,
+        "id": 1984,
         "name": "徳山",
         "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "長野県",
+    "core": "都市大塩尻",
+    "members": [
+      {
+        "id": 238,
+        "name": "都市大塩尻",
+        "count": 39
+      },
+      {
+        "id": 3318,
+        "name": "都市大塩尻高校",
+        "count": 2
       }
     ]
   },
@@ -786,24 +806,19 @@
     "core": "野木",
     "members": [
       {
-        "id": 681,
+        "id": 625,
         "name": "野木中学校",
-        "count": 15
+        "count": 17
       },
       {
-        "id": 775,
+        "id": 814,
         "name": "野木",
         "count": 13
       },
       {
-        "id": 1016,
+        "id": 1071,
         "name": "野木クラブ",
         "count": 10
-      },
-      {
-        "id": 3299,
-        "name": "野木中",
-        "count": 2
       }
     ]
   },
@@ -812,44 +827,44 @@
     "core": "野々市",
     "members": [
       {
-        "id": 311,
+        "id": 330,
         "name": "野々市クラブ",
         "count": 29
       },
       {
-        "id": 1015,
+        "id": 1070,
         "name": "野々市ジュニア",
         "count": 10
       }
     ]
   },
   {
-    "prefecture": "神奈川県",
-    "core": "相洋",
+    "prefecture": "富山県",
+    "core": "砺波",
     "members": [
       {
-        "id": 294,
-        "name": "相洋",
-        "count": 30
+        "id": 442,
+        "name": "砺波",
+        "count": 23
       },
       {
-        "id": 1091,
-        "name": "相洋中学校",
-        "count": 9
+        "id": 658,
+        "name": "砺波クラブ",
+        "count": 16
       }
     ]
   },
   {
     "prefecture": null,
-    "core": "駒澤",
+    "core": "駒沢",
     "members": [
       {
-        "id": 236,
+        "id": 258,
         "name": "駒澤大学",
         "count": 36
       },
       {
-        "id": 3366,
+        "id": 3391,
         "name": "駒澤大学高校",
         "count": 2
       }
@@ -860,12 +875,12 @@
     "core": "皆野",
     "members": [
       {
-        "id": 434,
+        "id": 461,
         "name": "皆野クラブ",
         "count": 22
       },
       {
-        "id": 621,
+        "id": 657,
         "name": "皆野ジュニア",
         "count": 16
       }
@@ -876,45 +891,13 @@
     "core": "船橋",
     "members": [
       {
-        "id": 309,
+        "id": 328,
         "name": "船橋ジュニア",
         "count": 29
       },
       {
-        "id": 1101,
+        "id": 1154,
         "name": "船橋クラブ",
-        "count": 9
-      }
-    ]
-  },
-  {
-    "prefecture": "茨城県",
-    "core": "水戸女子",
-    "members": [
-      {
-        "id": 233,
-        "name": "水戸女子",
-        "count": 36
-      },
-      {
-        "id": 3060,
-        "name": "水戸女子高",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "岡山県",
-    "core": "総社",
-    "members": [
-      {
-        "id": 308,
-        "name": "総社ジュニア",
-        "count": 29
-      },
-      {
-        "id": 1097,
-        "name": "総社クラブ",
         "count": 9
       }
     ]
@@ -924,13 +907,50 @@
     "core": "東予",
     "members": [
       {
-        "id": 232,
+        "id": 253,
         "name": "東予ジュニア",
         "count": 36
       },
       {
-        "id": 2991,
+        "id": 3029,
         "name": "東予STC",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "岡山県",
+    "core": "総社",
+    "members": [
+      {
+        "id": 327,
+        "name": "総社ジュニア",
+        "count": 29
+      },
+      {
+        "id": 1149,
+        "name": "総社クラブ",
+        "count": 9
+      }
+    ]
+  },
+  {
+    "prefecture": "京都府",
+    "core": "城陽",
+    "members": [
+      {
+        "id": 388,
+        "name": "城陽テニスクラブ",
+        "count": 25
+      },
+      {
+        "id": 1013,
+        "name": "城陽ジュニアクラブ",
+        "count": 10
+      },
+      {
+        "id": 2795,
+        "name": "城陽",
         "count": 2
       }
     ]
@@ -940,30 +960,14 @@
     "core": "テニ研",
     "members": [
       {
-        "id": 254,
+        "id": 274,
         "name": "テニ研ジュニア",
         "count": 34
       },
       {
-        "id": 2178,
+        "id": 2237,
         "name": "テニ研クラブ",
         "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "富山県",
-    "core": "砺波",
-    "members": [
-      {
-        "id": 472,
-        "name": "砺波",
-        "count": 21
-      },
-      {
-        "id": 622,
-        "name": "砺波クラブ",
-        "count": 16
       }
     ]
   },
@@ -972,51 +976,30 @@
     "core": "能美",
     "members": [
       {
-        "id": 505,
+        "id": 528,
         "name": "能美ジュニアクラブ",
         "count": 20
       },
       {
-        "id": 632,
+        "id": 665,
         "name": "能美クラブ",
         "count": 16
       }
     ]
   },
   {
-    "prefecture": "兵庫県",
-    "core": "伊丹",
+    "prefecture": "福島県",
+    "core": "二本松",
     "members": [
       {
-        "id": 359,
-        "name": "伊丹ジュニア",
-        "count": 25
+        "id": 337,
+        "name": "二本松ジュニア",
+        "count": 28
       },
       {
-        "id": 871,
-        "name": "伊丹クラブ",
-        "count": 11
-      }
-    ]
-  },
-  {
-    "prefecture": "福井県",
-    "core": "丸岡",
-    "members": [
-      {
-        "id": 290,
-        "name": "丸岡スポ少",
-        "count": 30
-      },
-      {
-        "id": 2202,
-        "name": "丸岡",
-        "count": 3
-      },
-      {
-        "id": 3718,
-        "name": "丸岡クラブ",
-        "count": 1
+        "id": 1204,
+        "name": "二本松クラブ",
+        "count": 8
       }
     ]
   },
@@ -1025,34 +1008,87 @@
     "core": "浜田",
     "members": [
       {
-        "id": 559,
+        "id": 592,
         "name": "浜田ジュニア",
         "count": 18
       },
       {
-        "id": 618,
+        "id": 621,
         "name": "浜田",
-        "count": 16
+        "count": 17
       }
     ]
   },
   {
-    "prefecture": "京都府",
-    "core": "城陽",
+    "prefecture": "石川県",
+    "core": "七尾",
     "members": [
       {
-        "id": 455,
-        "name": "城陽テニスクラブ",
-        "count": 21
+        "id": 539,
+        "name": "七尾ジュニアクラブ",
+        "count": 19
       },
       {
-        "id": 962,
-        "name": "城陽ジュニアクラブ",
-        "count": 10
+        "id": 1196,
+        "name": "七尾",
+        "count": 8
       },
       {
-        "id": 2743,
-        "name": "城陽",
+        "id": 1328,
+        "name": "七尾中学校",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "prefecture": "茨城県",
+    "core": "古河",
+    "members": [
+      {
+        "id": 354,
+        "name": "古河クラブ",
+        "count": 27
+      },
+      {
+        "id": 1346,
+        "name": "古河STC",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "prefecture": "福井県",
+    "core": "丸岡",
+    "members": [
+      {
+        "id": 311,
+        "name": "丸岡スポ少",
+        "count": 30
+      },
+      {
+        "id": 2261,
+        "name": "丸岡",
+        "count": 3
+      },
+      {
+        "id": 3695,
+        "name": "丸岡クラブ",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "沖縄県",
+    "core": "糸満",
+    "members": [
+      {
+        "id": 299,
+        "name": "糸満",
+        "count": 32
+      },
+      {
+        "id": 3231,
+        "name": "糸満高校",
         "count": 2
       }
     ]
@@ -1062,19 +1098,14 @@
     "core": "向陽台",
     "members": [
       {
-        "id": 489,
+        "id": 509,
         "name": "向陽台JST",
         "count": 20
       },
       {
-        "id": 879,
+        "id": 790,
         "name": "向陽台",
-        "count": 11
-      },
-      {
-        "id": 2712,
-        "name": "向陽台中",
-        "count": 2
+        "count": 13
       }
     ]
   },
@@ -1083,50 +1114,45 @@
     "core": "日野",
     "members": [
       {
-        "id": 523,
+        "id": 551,
         "name": "日野ジュニア",
         "count": 19
       },
       {
-        "id": 714,
+        "id": 752,
         "name": "日野クラブ",
         "count": 14
       }
     ]
   },
   {
-    "prefecture": "福島県",
-    "core": "二本松",
+    "prefecture": "山口県",
+    "core": "宇部",
     "members": [
       {
-        "id": 316,
-        "name": "二本松ジュニア",
-        "count": 28
+        "id": 372,
+        "name": "宇部ジュニア",
+        "count": 26
       },
       {
-        "id": 1610,
-        "name": "二本松クラブ",
-        "count": 5
+        "id": 1357,
+        "name": "宇部",
+        "count": 7
       }
     ]
   },
   {
-    "prefecture": "石川県",
-    "core": "七尾",
+    "prefecture": "群馬県",
+    "core": "渋川",
     "members": [
       {
-        "id": 512,
-        "name": "七尾ジュニアクラブ",
-        "count": 19
+        "id": 361,
+        "name": "渋川スポ少",
+        "count": 27
       },
       {
-        "id": 1268,
-        "name": "七尾中学校",
-        "count": 7
-      },
-      {
-        "id": 1380,
-        "name": "七尾",
+        "id": 1546,
+        "name": "渋川",
         "count": 6
       }
     ]
@@ -1136,14 +1162,30 @@
     "core": "印南",
     "members": [
       {
-        "id": 292,
+        "id": 313,
         "name": "印南STC",
         "count": 30
       },
       {
-        "id": 2692,
+        "id": 2747,
         "name": "印南",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "高知県",
+    "core": "中村",
+    "members": [
+      {
+        "id": 303,
+        "name": "中村",
+        "count": 31
+      },
+      {
+        "id": 3681,
+        "name": "中村ジュニアクラブ",
+        "count": 1
       }
     ]
   },
@@ -1152,17 +1194,17 @@
     "core": "仙北",
     "members": [
       {
-        "id": 300,
+        "id": 320,
         "name": "仙北スポ少",
         "count": 29
       },
       {
-        "id": 2623,
+        "id": 2683,
         "name": "仙北クラブ",
         "count": 2
       },
       {
-        "id": 3736,
+        "id": 3712,
         "name": "仙北スポ少大",
         "count": 1
       }
@@ -1173,12 +1215,12 @@
     "core": "出雲",
     "members": [
       {
-        "id": 317,
+        "id": 338,
         "name": "出雲JST",
         "count": 28
       },
       {
-        "id": 1837,
+        "id": 1880,
         "name": "出雲",
         "count": 4
       }
@@ -1189,78 +1231,35 @@
     "core": "宇土",
     "members": [
       {
-        "id": 405,
+        "id": 434,
         "name": "宇土ジュニア",
         "count": 23
       },
       {
-        "id": 1069,
+        "id": 1116,
         "name": "宇土クラブ",
         "count": 9
       }
     ]
   },
   {
-    "prefecture": "山口県",
-    "core": "宇部",
+    "prefecture": "千葉県",
+    "core": "成田",
     "members": [
       {
-        "id": 347,
-        "name": "宇部ジュニア",
-        "count": 26
+        "id": 550,
+        "name": "成田",
+        "count": 19
       },
       {
-        "id": 1647,
-        "name": "宇部",
-        "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "秋田県",
-    "core": "大曲",
-    "members": [
-      {
-        "id": 586,
-        "name": "大曲ジュニア",
-        "count": 17
+        "id": 1247,
+        "name": "成田高校",
+        "count": 8
       },
       {
-        "id": 703,
-        "name": "大曲",
-        "count": 14
-      }
-    ]
-  },
-  {
-    "prefecture": "群馬県",
-    "core": "渋川",
-    "members": [
-      {
-        "id": 366,
-        "name": "渋川スポ少",
-        "count": 25
-      },
-      {
-        "id": 1489,
-        "name": "渋川",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "沖縄県",
-    "core": "糸満",
-    "members": [
-      {
-        "id": 307,
-        "name": "糸満",
-        "count": 29
-      },
-      {
-        "id": 3198,
-        "name": "糸満高校",
-        "count": 2
+        "id": 1991,
+        "name": "成田クラブ",
+        "count": 4
       }
     ]
   },
@@ -1269,14 +1268,88 @@
     "core": "瀬戸",
     "members": [
       {
-        "id": 527,
+        "id": 556,
         "name": "瀬戸ジュニア",
         "count": 19
       },
       {
-        "id": 910,
+        "id": 874,
         "name": "瀬戸クラブ",
-        "count": 11
+        "count": 12
+      }
+    ]
+  },
+  {
+    "prefecture": "秋田県",
+    "core": "大曲",
+    "members": [
+      {
+        "id": 616,
+        "name": "大曲ジュニア",
+        "count": 17
+      },
+      {
+        "id": 738,
+        "name": "大曲",
+        "count": 14
+      }
+    ]
+  },
+  {
+    "prefecture": "宮崎県",
+    "core": "日南学園",
+    "members": [
+      {
+        "id": 376,
+        "name": "日南学園",
+        "count": 26
+      },
+      {
+        "id": 1712,
+        "name": "日南学園高",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "福岡県",
+    "core": "大牟田",
+    "members": [
+      {
+        "id": 339,
+        "name": "大牟田",
+        "count": 28
+      },
+      {
+        "id": 2812,
+        "name": "大牟田クラブ",
+        "count": 2
+      },
+      {
+        "id": 3847,
+        "name": "大牟田ジュニア",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "新潟県",
+    "core": "中越",
+    "members": [
+      {
+        "id": 383,
+        "name": "中越",
+        "count": 25
+      },
+      {
+        "id": 1854,
+        "name": "中越高校",
+        "count": 4
+      },
+      {
+        "id": 3686,
+        "name": "中越クラブ",
+        "count": 1
       }
     ]
   },
@@ -1285,13 +1358,29 @@
     "core": "下松",
     "members": [
       {
-        "id": 329,
+        "id": 351,
         "name": "下松ジュニア",
         "count": 27
       },
       {
-        "id": 2594,
+        "id": 2656,
         "name": "下松",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "東京都",
+    "core": "向原",
+    "members": [
+      {
+        "id": 370,
+        "name": "向原JST",
+        "count": 26
+      },
+      {
+        "id": 2765,
+        "name": "向原",
         "count": 2
       }
     ]
@@ -1301,45 +1390,13 @@
     "core": "広島土曜",
     "members": [
       {
-        "id": 379,
+        "id": 409,
         "name": "広島土曜クラブジュニア",
         "count": 24
       },
       {
-        "id": 1932,
+        "id": 1978,
         "name": "広島土曜クラブ",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "愛知県",
-    "core": "朝日丘",
-    "members": [
-      {
-        "id": 496,
-        "name": "朝日丘中学校",
-        "count": 20
-      },
-      {
-        "id": 1200,
-        "name": "朝日丘中",
-        "count": 8
-      }
-    ]
-  },
-  {
-    "prefecture": "千葉県",
-    "core": "横芝",
-    "members": [
-      {
-        "id": 383,
-        "name": "横芝中学校",
-        "count": 24
-      },
-      {
-        "id": 1979,
-        "name": "横芝中",
         "count": 4
       }
     ]
@@ -1349,83 +1406,14 @@
     "core": "今治S.O.C",
     "members": [
       {
-        "id": 599,
+        "id": 632,
         "name": "今治S.O.Cジュニア",
         "count": 16
       },
       {
-        "id": 805,
+        "id": 846,
         "name": "今治S.O.C",
         "count": 12
-      }
-    ]
-  },
-  {
-    "prefecture": "福岡県",
-    "core": "大牟田",
-    "members": [
-      {
-        "id": 363,
-        "name": "大牟田",
-        "count": 25
-      },
-      {
-        "id": 2762,
-        "name": "大牟田クラブ",
-        "count": 2
-      },
-      {
-        "id": 3874,
-        "name": "大牟田ジュニア",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "向原",
-    "members": [
-      {
-        "id": 361,
-        "name": "向原JST",
-        "count": 25
-      },
-      {
-        "id": 2710,
-        "name": "向原",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "山形県",
-    "core": "鶴岡",
-    "members": [
-      {
-        "id": 443,
-        "name": "鶴岡スポ少",
-        "count": 22
-      },
-      {
-        "id": 1732,
-        "name": "鶴岡クラブ",
-        "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "高知県",
-    "core": "中村",
-    "members": [
-      {
-        "id": 345,
-        "name": "中村",
-        "count": 26
-      },
-      {
-        "id": 3704,
-        "name": "中村ジュニアクラブ",
-        "count": 1
       }
     ]
   },
@@ -1434,30 +1422,30 @@
     "core": "富士見",
     "members": [
       {
-        "id": 519,
+        "id": 514,
         "name": "富士見",
-        "count": 19
+        "count": 20
       },
       {
-        "id": 1182,
+        "id": 1236,
         "name": "富士見高校",
         "count": 8
       }
     ]
   },
   {
-    "prefecture": "岐阜県",
-    "core": "大垣市",
+    "prefecture": "山形県",
+    "core": "鶴岡",
     "members": [
       {
-        "id": 514,
-        "name": "大垣市スポーツ少年団",
-        "count": 19
+        "id": 468,
+        "name": "鶴岡スポ少",
+        "count": 22
       },
       {
-        "id": 1287,
-        "name": "大垣市少年団",
-        "count": 7
+        "id": 1777,
+        "name": "鶴岡クラブ",
+        "count": 5
       }
     ]
   },
@@ -1466,35 +1454,30 @@
     "core": "飯能",
     "members": [
       {
-        "id": 442,
+        "id": 467,
         "name": "飯能クラブ",
         "count": 22
       },
       {
-        "id": 2094,
+        "id": 2145,
         "name": "飯能スポ少",
         "count": 4
       }
     ]
   },
   {
-    "prefecture": "新潟県",
-    "core": "中越",
+    "prefecture": "徳島県",
+    "core": "永遠",
     "members": [
       {
-        "id": 448,
-        "name": "中越",
+        "id": 489,
+        "name": "永遠クラブ",
         "count": 21
       },
       {
-        "id": 1815,
-        "name": "中越高校",
-        "count": 4
-      },
-      {
-        "id": 3709,
-        "name": "中越クラブ",
-        "count": 1
+        "id": 1732,
+        "name": "永遠クラブジュニア",
+        "count": 5
       }
     ]
   },
@@ -1503,12 +1486,12 @@
     "core": "小山",
     "members": [
       {
-        "id": 426,
+        "id": 453,
         "name": "小山クラブ",
         "count": 22
       },
       {
-        "id": 1908,
+        "id": 1952,
         "name": "小山",
         "count": 4
       }
@@ -1519,51 +1502,40 @@
     "core": "今市",
     "members": [
       {
-        "id": 581,
+        "id": 611,
         "name": "今市ジュニア",
         "count": 17
       },
       {
-        "id": 1277,
+        "id": 1340,
         "name": "今市クラブ",
         "count": 7
       },
       {
-        "id": 2620,
+        "id": 2680,
         "name": "今市中学校",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "宮崎県",
-    "core": "日南学園",
+    "prefecture": "滋賀県",
+    "core": "守山",
     "members": [
       {
-        "id": 466,
-        "name": "日南学園",
-        "count": 21
+        "id": 794,
+        "name": "守山ジュニア",
+        "count": 13
       },
       {
-        "id": 1667,
-        "name": "日南学園高",
-        "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "西郷第一",
-    "members": [
-      {
-        "id": 475,
-        "name": "西郷第一中学校",
-        "count": 21
+        "id": 1020,
+        "name": "守山STC",
+        "count": 10
       },
       {
-        "id": 2069,
-        "name": "西郷第一中",
-        "count": 4
+        "id": 2315,
+        "name": "守山",
+        "count": 3
       }
     ]
   },
@@ -1572,19 +1544,14 @@
     "core": "城端",
     "members": [
       {
-        "id": 752,
+        "id": 687,
         "name": "城端中学校",
-        "count": 13
+        "count": 15
       },
       {
-        "id": 961,
+        "id": 1012,
         "name": "城端スポーツ少年団",
         "count": 10
-      },
-      {
-        "id": 2741,
-        "name": "城端中",
-        "count": 2
       }
     ]
   },
@@ -1593,51 +1560,35 @@
     "core": "敦賀",
     "members": [
       {
-        "id": 590,
+        "id": 618,
         "name": "敦賀",
         "count": 17
       },
       {
-        "id": 1948,
+        "id": 1994,
         "name": "敦賀クラブ",
         "count": 4
       },
       {
-        "id": 1949,
+        "id": 1995,
         "name": "敦賀スポーツ少年団",
         "count": 4
       }
     ]
   },
   {
-    "prefecture": "徳島県",
-    "core": "永遠",
+    "prefecture": "秋田県",
+    "core": "秋田北鷹",
     "members": [
       {
-        "id": 499,
-        "name": "永遠クラブ",
-        "count": 20
+        "id": 443,
+        "name": "秋田北鷹",
+        "count": 23
       },
       {
-        "id": 1687,
-        "name": "永遠クラブジュニア",
-        "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "宮崎県",
-    "core": "宮崎商業",
-    "members": [
-      {
-        "id": 376,
-        "name": "宮崎商業高校",
-        "count": 24
-      },
-      {
-        "id": 3923,
-        "name": "宮崎商業高",
-        "count": 1
+        "id": 3212,
+        "name": "秋田北鷹高校",
+        "count": 2
       }
     ]
   },
@@ -1646,13 +1597,29 @@
     "core": "江津",
     "members": [
       {
-        "id": 385,
+        "id": 413,
         "name": "江津ジュニア",
         "count": 24
       },
       {
-        "id": 4135,
+        "id": 4112,
         "name": "江津",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "宮崎県",
+    "core": "宮崎商業",
+    "members": [
+      {
+        "id": 407,
+        "name": "宮崎商業高校",
+        "count": 24
+      },
+      {
+        "id": 3894,
+        "name": "宮崎商業高",
         "count": 1
       }
     ]
@@ -1662,12 +1629,12 @@
     "core": "半田球友",
     "members": [
       {
-        "id": 488,
+        "id": 508,
         "name": "半田球友クラブ",
         "count": 20
       },
       {
-        "id": 1851,
+        "id": 1894,
         "name": "半田球友",
         "count": 4
       }
@@ -1678,12 +1645,12 @@
     "core": "福部",
     "members": [
       {
-        "id": 592,
+        "id": 622,
         "name": "福部STC",
         "count": 17
       },
       {
-        "id": 1332,
+        "id": 1394,
         "name": "福部",
         "count": 7
       }
@@ -1694,12 +1661,12 @@
     "core": "みらい",
     "members": [
       {
-        "id": 483,
+        "id": 503,
         "name": "みらいジュニア",
         "count": 20
       },
       {
-        "id": 1784,
+        "id": 1824,
         "name": "みらいクラブ",
         "count": 4
       }
@@ -1710,30 +1677,46 @@
     "core": "白根",
     "members": [
       {
-        "id": 619,
+        "id": 655,
         "name": "白根スポ少",
         "count": 16
       },
       {
-        "id": 1217,
+        "id": 1271,
         "name": "白根クラブ",
         "count": 8
       }
     ]
   },
   {
-    "prefecture": "秋田県",
-    "core": "秋田北鷹",
+    "prefecture": "岩手県",
+    "core": "高田",
     "members": [
       {
-        "id": 436,
-        "name": "秋田北鷹",
-        "count": 22
+        "id": 569,
+        "name": "高田",
+        "count": 19
       },
       {
-        "id": 3172,
-        "name": "秋田北鷹高校",
-        "count": 2
+        "id": 1771,
+        "name": "高田高校",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "静岡県",
+    "core": "豊田健友",
+    "members": [
+      {
+        "id": 714,
+        "name": "豊田健友ジュニア",
+        "count": 15
+      },
+      {
+        "id": 1160,
+        "name": "豊田健友クラブ",
+        "count": 9
       }
     ]
   },
@@ -1742,17 +1725,17 @@
     "core": "玉城",
     "members": [
       {
-        "id": 500,
+        "id": 522,
         "name": "玉城クラブ",
         "count": 20
       },
       {
-        "id": 2349,
+        "id": 2410,
         "name": "玉城",
         "count": 3
       },
       {
-        "id": 4185,
+        "id": 4159,
         "name": "玉城中学校",
         "count": 1
       }
@@ -1763,12 +1746,12 @@
     "core": "大宜味",
     "members": [
       {
-        "id": 515,
+        "id": 542,
         "name": "大宜味ジュニア",
         "count": 19
       },
       {
-        "id": 1641,
+        "id": 1690,
         "name": "大宜味",
         "count": 5
       }
@@ -1779,51 +1762,35 @@
     "core": "松阪",
     "members": [
       {
-        "id": 497,
+        "id": 520,
         "name": "松阪ジュニアクラブ",
         "count": 20
       },
       {
-        "id": 3023,
+        "id": 3058,
         "name": "松阪",
         "count": 2
       },
       {
-        "id": 4109,
+        "id": 4085,
         "name": "松阪クラブ",
         "count": 1
       }
     ]
   },
   {
-    "prefecture": "滋賀県",
-    "core": "朝桜",
+    "prefecture": "山梨県",
+    "core": "都留",
     "members": [
       {
-        "id": 468,
-        "name": "朝桜中学校",
+        "id": 495,
+        "name": "都留クラブジュニア",
         "count": 21
       },
       {
-        "id": 2974,
-        "name": "朝桜中",
+        "id": 3320,
+        "name": "都留クラブ",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "静岡県",
-    "core": "豊田健友",
-    "members": [
-      {
-        "id": 680,
-        "name": "豊田健友ジュニア",
-        "count": 15
-      },
-      {
-        "id": 1238,
-        "name": "豊田健友クラブ",
-        "count": 8
       }
     ]
   },
@@ -1832,12 +1799,12 @@
     "core": "丸亀",
     "members": [
       {
-        "id": 449,
+        "id": 474,
         "name": "丸亀スポ少",
         "count": 21
       },
       {
-        "id": 3716,
+        "id": 3693,
         "name": "丸亀ジュニアスポ少",
         "count": 1
       }
@@ -1848,12 +1815,12 @@
     "core": "四日市",
     "members": [
       {
-        "id": 453,
+        "id": 478,
         "name": "四日市ジュニアクラブ",
         "count": 21
       },
       {
-        "id": 3838,
+        "id": 3813,
         "name": "四日市クラブ",
         "count": 1
       }
@@ -1864,12 +1831,12 @@
     "core": "三原",
     "members": [
       {
-        "id": 577,
+        "id": 608,
         "name": "三原ジュニアクラブ",
         "count": 17
       },
       {
-        "id": 1600,
+        "id": 1659,
         "name": "三原JST",
         "count": 5
       }
@@ -1880,14 +1847,30 @@
     "core": "刈谷",
     "members": [
       {
-        "id": 653,
+        "id": 685,
         "name": "刈谷クラブ",
         "count": 15
       },
       {
-        "id": 1280,
+        "id": 1342,
         "name": "刈谷ジュニア",
         "count": 7
+      }
+    ]
+  },
+  {
+    "prefecture": "高知県",
+    "core": "土佐女子",
+    "members": [
+      {
+        "id": 510,
+        "name": "土佐女子",
+        "count": 20
+      },
+      {
+        "id": 2791,
+        "name": "土佐女子中学校",
+        "count": 2
       }
     ]
   },
@@ -1896,14 +1879,35 @@
     "core": "手賀沼",
     "members": [
       {
-        "id": 664,
+        "id": 696,
         "name": "手賀沼ジュニア",
         "count": 15
       },
       {
-        "id": 1300,
+        "id": 1364,
         "name": "手賀沼クラブ",
         "count": 7
+      }
+    ]
+  },
+  {
+    "prefecture": "愛媛県",
+    "core": "松山",
+    "members": [
+      {
+        "id": 702,
+        "name": "松山ジュニア",
+        "count": 15
+      },
+      {
+        "id": 1532,
+        "name": "松山クラブ",
+        "count": 6
+      },
+      {
+        "id": 4074,
+        "name": "松山ソフトテニスクラブ",
+        "count": 1
       }
     ]
   },
@@ -1912,12 +1916,12 @@
     "core": "阿波",
     "members": [
       {
-        "id": 639,
+        "id": 671,
         "name": "阿波ジュニアクラブ",
         "count": 16
       },
       {
-        "id": 1547,
+        "id": 1607,
         "name": "阿波",
         "count": 6
       }
@@ -1928,14 +1932,30 @@
     "core": "山口",
     "members": [
       {
-        "id": 891,
+        "id": 936,
         "name": "山口クラブ",
         "count": 11
       },
       {
-        "id": 892,
+        "id": 937,
         "name": "山口ジュニア",
         "count": 11
+      }
+    ]
+  },
+  {
+    "prefecture": "群馬県",
+    "core": "高崎",
+    "members": [
+      {
+        "id": 567,
+        "name": "高崎",
+        "count": 19
+      },
+      {
+        "id": 2473,
+        "name": "高崎高校",
+        "count": 3
       }
     ]
   },
@@ -1944,40 +1964,24 @@
     "core": "小千谷",
     "members": [
       {
-        "id": 1071,
+        "id": 1118,
         "name": "小千谷クラブ",
         "count": 9
       },
       {
-        "id": 1072,
+        "id": 1119,
         "name": "小千谷ジュニア",
         "count": 9
       },
       {
-        "id": 2830,
+        "id": 2884,
         "name": "小千谷ジュニアクラブ",
         "count": 2
       },
       {
-        "id": 2831,
+        "id": 2885,
         "name": "小千谷中学校",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "山梨県",
-    "core": "都留",
-    "members": [
-      {
-        "id": 476,
-        "name": "都留クラブジュニア",
-        "count": 21
-      },
-      {
-        "id": 4357,
-        "name": "都留クラブ",
-        "count": 1
       }
     ]
   },
@@ -1986,12 +1990,12 @@
     "core": "東風平",
     "members": [
       {
-        "id": 525,
+        "id": 553,
         "name": "東風平ジュニア",
         "count": 19
       },
       {
-        "id": 2312,
+        "id": 2373,
         "name": "東風平中学校",
         "count": 3
       }
@@ -2002,12 +2006,12 @@
     "core": "多摩",
     "members": [
       {
-        "id": 754,
+        "id": 793,
         "name": "多摩ジュニア",
         "count": 13
       },
       {
-        "id": 1166,
+        "id": 1220,
         "name": "多摩クラブ",
         "count": 8
       }
@@ -2018,12 +2022,12 @@
     "core": "広島",
     "members": [
       {
-        "id": 552,
+        "id": 586,
         "name": "広島クラブ",
         "count": 18
       },
       {
-        "id": 2277,
+        "id": 2339,
         "name": "広島クラブジュニア",
         "count": 3
       }
@@ -2034,12 +2038,12 @@
     "core": "坂戸",
     "members": [
       {
-        "id": 882,
+        "id": 927,
         "name": "坂戸クラブ",
         "count": 11
       },
       {
-        "id": 959,
+        "id": 1010,
         "name": "坂戸ジュニア",
         "count": 10
       }
@@ -2050,46 +2054,14 @@
     "core": "レグルス鹿島",
     "members": [
       {
-        "id": 598,
+        "id": 631,
         "name": "レグルス鹿島",
         "count": 16
       },
       {
-        "id": 1598,
+        "id": 1657,
         "name": "レグルス鹿島ジュニア",
         "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "愛媛県",
-    "core": "松山",
-    "members": [
-      {
-        "id": 666,
-        "name": "松山ジュニア",
-        "count": 15
-      },
-      {
-        "id": 1474,
-        "name": "松山クラブ",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "岩手県",
-    "core": "高田",
-    "members": [
-      {
-        "id": 567,
-        "name": "高田",
-        "count": 18
-      },
-      {
-        "id": 2415,
-        "name": "高田高校",
-        "count": 3
       }
     ]
   },
@@ -2098,12 +2070,12 @@
     "core": "帯山",
     "members": [
       {
-        "id": 521,
+        "id": 548,
         "name": "帯山クラブ",
         "count": 19
       },
       {
-        "id": 2889,
+        "id": 2937,
         "name": "帯山中学校",
         "count": 2
       }
@@ -2114,51 +2086,51 @@
     "core": "琴平",
     "members": [
       {
-        "id": 998,
-        "name": "琴平ジュニアクラブ",
+        "id": 1048,
+        "name": "琴平",
         "count": 10
       },
       {
-        "id": 1497,
-        "name": "琴平",
-        "count": 6
-      },
-      {
-        "id": 2016,
-        "name": "琴平中",
-        "count": 4
+        "id": 1049,
+        "name": "琴平ジュニアクラブ",
+        "count": 10
       }
     ]
   },
   {
-    "prefecture": "埼玉県",
-    "core": "芝東",
+    "prefecture": "茨城県",
+    "core": "茨城県教職員",
     "members": [
       {
-        "id": 633,
-        "name": "芝東",
-        "count": 16
+        "id": 809,
+        "name": "茨城県教職員クラブ",
+        "count": 13
       },
       {
-        "id": 2058,
-        "name": "芝東中",
+        "id": 2106,
+        "name": "茨城県教職員",
         "count": 4
+      },
+      {
+        "id": 2440,
+        "name": "茨城県教職員ソフトテニスクラブ",
+        "count": 3
       }
     ]
   },
   {
-    "prefecture": "島根県",
-    "core": "羽須美",
+    "prefecture": "熊本県",
+    "core": "尚絅",
     "members": [
       {
-        "id": 631,
-        "name": "羽須美",
-        "count": 16
+        "id": 583,
+        "name": "尚絅",
+        "count": 18
       },
       {
-        "id": 2053,
-        "name": "羽須美中",
-        "count": 4
+        "id": 2895,
+        "name": "尚絅高校",
+        "count": 2
       }
     ]
   },
@@ -2167,12 +2139,12 @@
     "core": "南関",
     "members": [
       {
-        "id": 582,
+        "id": 612,
         "name": "南関ジュニア",
         "count": 17
       },
       {
-        "id": 2228,
+        "id": 2288,
         "name": "南関中学校",
         "count": 3
       }
@@ -2183,14 +2155,30 @@
     "core": "静内",
     "members": [
       {
-        "id": 778,
+        "id": 816,
         "name": "静内少年団",
         "count": 13
       },
       {
-        "id": 1551,
+        "id": 1611,
         "name": "静内クラブ",
         "count": 6
+      }
+    ]
+  },
+  {
+    "prefecture": "和歌山県",
+    "core": "維吹",
+    "members": [
+      {
+        "id": 594,
+        "name": "維吹",
+        "count": 18
+      },
+      {
+        "id": 4254,
+        "name": "維吹クラブ",
+        "count": 1
       }
     ]
   },
@@ -2199,14 +2187,30 @@
     "core": "浦和あづま",
     "members": [
       {
-        "id": 560,
+        "id": 593,
         "name": "浦和あづまクラブ",
         "count": 18
       },
       {
-        "id": 4152,
+        "id": 4129,
         "name": "浦和あづま",
         "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "埼玉県",
+    "core": "秩父COC",
+    "members": [
+      {
+        "id": 806,
+        "name": "秩父COCクラブ",
+        "count": 13
+      },
+      {
+        "id": 1573,
+        "name": "秩父COC",
+        "count": 6
       }
     ]
   },
@@ -2215,19 +2219,14 @@
     "core": "篠山",
     "members": [
       {
-        "id": 913,
+        "id": 956,
         "name": "篠山ジュニアクラブ",
         "count": 11
       },
       {
-        "id": 1513,
+        "id": 1279,
         "name": "篠山中学校",
-        "count": 6
-      },
-      {
-        "id": 3191,
-        "name": "篠山中",
-        "count": 2
+        "count": 8
       }
     ]
   },
@@ -2236,72 +2235,83 @@
     "core": "箕郷",
     "members": [
       {
-        "id": 628,
+        "id": 662,
         "name": "箕郷スポ少",
         "count": 16
       },
       {
-        "id": 2371,
+        "id": 2430,
         "name": "箕郷中学校",
         "count": 3
       }
     ]
   },
   {
-    "prefecture": "高知県",
-    "core": "土佐女子",
+    "prefecture": "島根県",
+    "core": "松江工業",
     "members": [
       {
-        "id": 603,
-        "name": "土佐女子",
-        "count": 16
+        "id": 703,
+        "name": "松江工業高校",
+        "count": 15
       },
       {
-        "id": 2735,
-        "name": "土佐女子中学校",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "千葉県",
-    "core": "成田",
-    "members": [
-      {
-        "id": 819,
-        "name": "成田",
-        "count": 12
-      },
-      {
-        "id": 1945,
-        "name": "成田クラブ",
-        "count": 4
-      },
-      {
-        "id": 2927,
-        "name": "成田高校",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "茨城県",
-    "core": "茨城県教職員",
-    "members": [
-      {
-        "id": 771,
-        "name": "茨城県教職員クラブ",
-        "count": 13
-      },
-      {
-        "id": 2381,
-        "name": "茨城県教職員ソフトテニスクラブ",
+        "id": 2377,
+        "name": "松江工業",
         "count": 3
       },
       {
-        "id": 3232,
-        "name": "茨城県教職員",
+        "id": 4084,
+        "name": "松江工業クラブ",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "神奈川県",
+    "core": "横浜創英",
+    "members": [
+      {
+        "id": 620,
+        "name": "横浜創英",
+        "count": 17
+      },
+      {
+        "id": 3080,
+        "name": "横浜創英高校",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "三重県",
+    "core": "伊勢",
+    "members": [
+      {
+        "id": 634,
+        "name": "伊勢ジュニアクラブ",
+        "count": 16
+      },
+      {
+        "id": 2685,
+        "name": "伊勢",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "埼玉県",
+    "core": "東松山東山",
+    "members": [
+      {
+        "id": 755,
+        "name": "東松山東山クラブ",
+        "count": 14
+      },
+      {
+        "id": 2019,
+        "name": "東松山東山",
+        "count": 4
       }
     ]
   },
@@ -2310,12 +2320,12 @@
     "core": "大磯",
     "members": [
       {
-        "id": 811,
+        "id": 851,
         "name": "大磯ジュニアテニスクラブ",
         "count": 12
       },
       {
-        "id": 1429,
+        "id": 1485,
         "name": "大磯",
         "count": 6
       }
@@ -2326,12 +2336,12 @@
     "core": "新宮",
     "members": [
       {
-        "id": 609,
+        "id": 644,
         "name": "新宮中学校",
         "count": 16
       },
       {
-        "id": 2933,
+        "id": 2978,
         "name": "新宮高校",
         "count": 2
       }
@@ -2342,30 +2352,14 @@
     "core": "甲賀",
     "members": [
       {
-        "id": 999,
+        "id": 1050,
         "name": "甲賀スポ少",
         "count": 10
       },
       {
-        "id": 1216,
+        "id": 1270,
         "name": "甲賀",
         "count": 8
-      }
-    ]
-  },
-  {
-    "prefecture": "熊本県",
-    "core": "尚絅",
-    "members": [
-      {
-        "id": 607,
-        "name": "尚絅",
-        "count": 16
-      },
-      {
-        "id": 2842,
-        "name": "尚絅高校",
-        "count": 2
       }
     ]
   },
@@ -2374,17 +2368,17 @@
     "core": "熊本学園",
     "members": [
       {
-        "id": 1087,
+        "id": 1137,
         "name": "熊本学園クラブ",
         "count": 9
       },
       {
-        "id": 1213,
+        "id": 1267,
         "name": "熊本学園ジュニア",
         "count": 8
       },
       {
-        "id": 4175,
+        "id": 4151,
         "name": "熊本学園",
         "count": 1
       }
@@ -2395,14 +2389,30 @@
     "core": "高瀬",
     "members": [
       {
-        "id": 780,
+        "id": 817,
         "name": "高瀬",
         "count": 13
       },
       {
-        "id": 2101,
+        "id": 2154,
         "name": "高瀬高校",
         "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "東京都",
+    "core": "豊南",
+    "members": [
+      {
+        "id": 713,
+        "name": "豊南",
+        "count": 15
+      },
+      {
+        "id": 3296,
+        "name": "豊南高校",
+        "count": 2
       }
     ]
   },
@@ -2411,29 +2421,29 @@
     "core": "世田谷",
     "members": [
       {
-        "id": 944,
+        "id": 994,
         "name": "世田谷ジュニア",
         "count": 10
       },
       {
-        "id": 1272,
+        "id": 1331,
         "name": "世田谷",
         "count": 7
       }
     ]
   },
   {
-    "prefecture": "埼玉県",
-    "core": "秩父第一",
+    "prefecture": "奈良県",
+    "core": "郡山",
     "members": [
       {
-        "id": 674,
-        "name": "秩父第一中学校",
+        "id": 715,
+        "name": "郡山クラブ",
         "count": 15
       },
       {
-        "id": 3179,
-        "name": "秩父第一中",
+        "id": 3315,
+        "name": "郡山",
         "count": 2
       }
     ]
@@ -2443,18 +2453,29 @@
     "core": "九度山",
     "members": [
       {
-        "id": 947,
+        "id": 998,
         "name": "九度山ジュニアクラブ",
         "count": 10
       },
       {
-        "id": 1609,
+        "id": 1337,
         "name": "九度山",
-        "count": 5
+        "count": 7
+      }
+    ]
+  },
+  {
+    "prefecture": "大阪府",
+    "core": "高槻",
+    "members": [
+      {
+        "id": 718,
+        "name": "高槻クラブ",
+        "count": 15
       },
       {
-        "id": 2611,
-        "name": "九度山中",
+        "id": 3398,
+        "name": "高槻ソフトテニスクラブ",
         "count": 2
       }
     ]
@@ -2464,12 +2485,12 @@
     "core": "佐倉",
     "members": [
       {
-        "id": 806,
+        "id": 847,
         "name": "佐倉クラブジュニア",
         "count": 12
       },
       {
-        "id": 1615,
+        "id": 1667,
         "name": "佐倉クラブ",
         "count": 5
       }
@@ -2480,14 +2501,30 @@
     "core": "氷見",
     "members": [
       {
-        "id": 669,
+        "id": 705,
         "name": "氷見ジュニアクラブ",
         "count": 15
       },
       {
-        "id": 3061,
+        "id": 3095,
         "name": "氷見クラブ",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "群馬県",
+    "core": "富岡ST",
+    "members": [
+      {
+        "id": 854,
+        "name": "富岡ST",
+        "count": 12
+      },
+      {
+        "id": 1699,
+        "name": "富岡STクラブ",
+        "count": 5
       }
     ]
   },
@@ -2496,12 +2533,12 @@
     "core": "座間",
     "members": [
       {
-        "id": 662,
+        "id": 695,
         "name": "座間ジュニアクラブ",
         "count": 15
       },
       {
-        "id": 2908,
+        "id": 2955,
         "name": "座間中",
         "count": 2
       }
@@ -2512,12 +2549,12 @@
     "core": "浜名",
     "members": [
       {
-        "id": 766,
+        "id": 803,
         "name": "浜名",
         "count": 13
       },
       {
-        "id": 1992,
+        "id": 2039,
         "name": "浜名高校",
         "count": 4
       }
@@ -2528,30 +2565,14 @@
     "core": "綾部",
     "members": [
       {
-        "id": 838,
+        "id": 880,
         "name": "綾部ジュニアクラブ",
         "count": 12
       },
       {
-        "id": 2052,
+        "id": 2099,
         "name": "綾部",
         "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "宮城県",
-    "core": "北仙台",
-    "members": [
-      {
-        "id": 698,
-        "name": "北仙台中学校",
-        "count": 14
-      },
-      {
-        "id": 2659,
-        "name": "北仙台中",
-        "count": 2
       }
     ]
   },
@@ -2560,13 +2581,34 @@
     "core": "砧南",
     "members": [
       {
-        "id": 724,
+        "id": 759,
         "name": "砧南ジュニア",
         "count": 14
       },
       {
-        "id": 3151,
+        "id": 3188,
         "name": "砧南中",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "和歌山県",
+    "core": "日高",
+    "members": [
+      {
+        "id": 1127,
+        "name": "日高中学校",
+        "count": 9
+      },
+      {
+        "id": 1715,
+        "name": "日高ジュニアクラブ",
+        "count": 5
+      },
+      {
+        "id": 2995,
+        "name": "日高クラブ",
         "count": 2
       }
     ]
@@ -2576,29 +2618,13 @@
     "core": "川島",
     "members": [
       {
-        "id": 661,
+        "id": 694,
         "name": "川島STC",
         "count": 15
       },
       {
-        "id": 3977,
+        "id": 3949,
         "name": "川島クラブ",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "大阪府",
-    "core": "高槻",
-    "members": [
-      {
-        "id": 684,
-        "name": "高槻クラブ",
-        "count": 15
-      },
-      {
-        "id": 4404,
-        "name": "高槻ソフトテニスクラブ",
         "count": 1
       }
     ]
@@ -2608,14 +2634,30 @@
     "core": "レペゼン千葉",
     "members": [
       {
-        "id": 860,
+        "id": 904,
         "name": "レペゼン千葉",
         "count": 11
       },
       {
-        "id": 1599,
+        "id": 1658,
         "name": "レペゼン千葉ジュニア",
         "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "兵庫県",
+    "core": "三田",
+    "members": [
+      {
+        "id": 727,
+        "name": "三田クラブ",
+        "count": 14
+      },
+      {
+        "id": 2652,
+        "name": "三田ジュニアクラブ",
+        "count": 2
       }
     ]
   },
@@ -2624,30 +2666,14 @@
     "core": "ジョイント",
     "members": [
       {
-        "id": 650,
+        "id": 681,
         "name": "ジョイントクラブ",
         "count": 15
       },
       {
-        "id": 3636,
+        "id": 3613,
         "name": "ジョイント",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "滋賀県",
-    "core": "守山",
-    "members": [
-      {
-        "id": 756,
-        "name": "守山ジュニア",
-        "count": 13
-      },
-      {
-        "id": 2253,
-        "name": "守山",
-        "count": 3
       }
     ]
   },
@@ -2656,12 +2682,12 @@
     "core": "安曇川",
     "members": [
       {
-        "id": 1176,
+        "id": 1229,
         "name": "安曇川",
         "count": 8
       },
       {
-        "id": 1177,
+        "id": 1230,
         "name": "安曇川スポーツ少年団",
         "count": 8
       }
@@ -2672,12 +2698,12 @@
     "core": "橋本",
     "members": [
       {
-        "id": 765,
+        "id": 802,
         "name": "橋本ジュニアクラブ",
         "count": 13
       },
       {
-        "id": 3048,
+        "id": 3083,
         "name": "橋本",
         "count": 2
       }
@@ -2688,253 +2714,14 @@
     "core": "淡路",
     "members": [
       {
-        "id": 1210,
+        "id": 1264,
         "name": "淡路ジュニアクラブ",
         "count": 8
       },
       {
-        "id": 1324,
+        "id": 1386,
         "name": "淡路クラブ",
         "count": 7
-      }
-    ]
-  },
-  {
-    "prefecture": "栃木県",
-    "core": "黒磯",
-    "members": [
-      {
-        "id": 845,
-        "name": "黒磯ジュニア",
-        "count": 12
-      },
-      {
-        "id": 2423,
-        "name": "黒磯クラブ",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "島根県",
-    "core": "松江工業",
-    "members": [
-      {
-        "id": 903,
-        "name": "松江工業高校",
-        "count": 11
-      },
-      {
-        "id": 2317,
-        "name": "松江工業",
-        "count": 3
-      },
-      {
-        "id": 4108,
-        "name": "松江工業クラブ",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "京都府",
-    "core": "宇治",
-    "members": [
-      {
-        "id": 966,
-        "name": "宇治ジュニアクラブ",
-        "count": 10
-      },
-      {
-        "id": 2250,
-        "name": "宇治STC",
-        "count": 3
-      },
-      {
-        "id": 3913,
-        "name": "宇治",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "常磐",
-    "members": [
-      {
-        "id": 815,
-        "name": "常磐クラブ",
-        "count": 12
-      },
-      {
-        "id": 2894,
-        "name": "常磐",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "奈良県",
-    "core": "郡山",
-    "members": [
-      {
-        "id": 842,
-        "name": "郡山クラブ",
-        "count": 12
-      },
-      {
-        "id": 3288,
-        "name": "郡山",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "愛知県",
-    "core": "津島市",
-    "members": [
-      {
-        "id": 906,
-        "name": "津島市ジュニアクラブ",
-        "count": 11
-      },
-      {
-        "id": 2333,
-        "name": "津島市クラブ",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "鳥取県",
-    "core": "湊山",
-    "members": [
-      {
-        "id": 832,
-        "name": "湊山",
-        "count": 12
-      },
-      {
-        "id": 3097,
-        "name": "湊山クラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "和歌山県",
-    "core": "日高",
-    "members": [
-      {
-        "id": 1304,
-        "name": "日高中学校",
-        "count": 7
-      },
-      {
-        "id": 1670,
-        "name": "日高ジュニアクラブ",
-        "count": 5
-      },
-      {
-        "id": 2950,
-        "name": "日高クラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "兵庫県",
-    "core": "三田",
-    "members": [
-      {
-        "id": 799,
-        "name": "三田クラブ",
-        "count": 12
-      },
-      {
-        "id": 2589,
-        "name": "三田ジュニアクラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "富山県",
-    "core": "庄川",
-    "members": [
-      {
-        "id": 817,
-        "name": "庄川少年団",
-        "count": 12
-      },
-      {
-        "id": 2904,
-        "name": "庄川スポ少",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "富山県",
-    "core": "滑川",
-    "members": [
-      {
-        "id": 833,
-        "name": "滑川ジュニアクラブ",
-        "count": 12
-      },
-      {
-        "id": 3101,
-        "name": "滑川",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "鹿児島県",
-    "core": "広木",
-    "members": [
-      {
-        "id": 1190,
-        "name": "広木小スポーツ少年団",
-        "count": 8
-      },
-      {
-        "id": 1455,
-        "name": "広木スポ少",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "大阪府",
-    "core": "上宮学園",
-    "members": [
-      {
-        "id": 1269,
-        "name": "上宮学園",
-        "count": 7
-      },
-      {
-        "id": 1387,
-        "name": "上宮学園中",
-        "count": 6
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "いわき",
-    "members": [
-      {
-        "id": 929,
-        "name": "いわきジュニアスポ少",
-        "count": 10
-      },
-      {
-        "id": 2153,
-        "name": "いわきクラブ",
-        "count": 3
       }
     ]
   },
@@ -2943,12 +2730,12 @@
     "core": "翼翼",
     "members": [
       {
-        "id": 839,
+        "id": 761,
         "name": "翼翼クラブ",
-        "count": 12
+        "count": 14
       },
       {
-        "id": 4289,
+        "id": 4265,
         "name": "翼翼",
         "count": 1
       }
@@ -2959,30 +2746,237 @@
     "core": "岡山南",
     "members": [
       {
-        "id": 813,
+        "id": 746,
         "name": "岡山南",
-        "count": 12
+        "count": 14
       },
       {
-        "id": 3964,
+        "id": 3936,
         "name": "岡山南高クラブ",
         "count": 1
       }
     ]
   },
   {
-    "prefecture": "山梨県",
-    "core": "竜王",
+    "prefecture": "栃木県",
+    "core": "黒磯",
     "members": [
       {
-        "id": 912,
-        "name": "竜王クラブジュニア",
+        "id": 886,
+        "name": "黒磯ジュニア",
+        "count": 12
+      },
+      {
+        "id": 2482,
+        "name": "黒磯クラブ",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "prefecture": "京都府",
+    "core": "宇治",
+    "members": [
+      {
+        "id": 1019,
+        "name": "宇治ジュニアクラブ",
+        "count": 10
+      },
+      {
+        "id": 2312,
+        "name": "宇治STC",
+        "count": 3
+      },
+      {
+        "id": 3884,
+        "name": "宇治",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "東京都",
+    "core": "常磐",
+    "members": [
+      {
+        "id": 858,
+        "name": "常磐クラブ",
+        "count": 12
+      },
+      {
+        "id": 2942,
+        "name": "常磐",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "愛知県",
+    "core": "津島市",
+    "members": [
+      {
+        "id": 951,
+        "name": "津島市ジュニアクラブ",
         "count": 11
       },
       {
-        "id": 3186,
-        "name": "竜王中",
+        "id": 2393,
+        "name": "津島市クラブ",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "prefecture": "鳥取県",
+    "core": "湊山",
+    "members": [
+      {
+        "id": 871,
+        "name": "湊山",
+        "count": 12
+      },
+      {
+        "id": 3133,
+        "name": "湊山クラブ",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "和歌山県",
+    "core": "新宮",
+    "members": [
+      {
+        "id": 1125,
+        "name": "新宮STC",
+        "count": 9
+      },
+      {
+        "id": 1710,
+        "name": "新宮スポ少",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "埼玉県",
+    "core": "山村国際",
+    "members": [
+      {
+        "id": 855,
+        "name": "山村国際",
+        "count": 12
+      },
+      {
+        "id": 2907,
+        "name": "山村国際高校",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "富山県",
+    "core": "滑川",
+    "members": [
+      {
+        "id": 872,
+        "name": "滑川ジュニアクラブ",
+        "count": 12
+      },
+      {
+        "id": 3137,
+        "name": "滑川",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "長野県",
+    "core": "長野",
+    "members": [
+      {
+        "id": 1296,
+        "name": "長野",
+        "count": 8
+      },
+      {
+        "id": 3345,
+        "name": "長野ジュニアクラブ",
+        "count": 2
+      },
+      {
+        "id": 3346,
+        "name": "長野大学",
+        "count": 2
+      },
+      {
+        "id": 3350,
+        "name": "長野高校",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "三重県",
+    "core": "Volare四日市",
+    "members": [
+      {
+        "id": 1179,
+        "name": "Volare四日市STC",
+        "count": 8
+      },
+      {
+        "id": 1644,
+        "name": "Volare四日市",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "山形県",
+    "core": "余目",
+    "members": [
+      {
+        "id": 1105,
+        "name": "余目スポ少",
+        "count": 9
+      },
+      {
+        "id": 1872,
+        "name": "余目",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "鳥取県",
+    "core": "八頭",
+    "members": [
+      {
+        "id": 1108,
+        "name": "八頭クラブ",
+        "count": 9
+      },
+      {
+        "id": 1877,
+        "name": "八頭",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "福島県",
+    "core": "いわき",
+    "members": [
+      {
+        "id": 977,
+        "name": "いわきジュニアスポ少",
+        "count": 10
+      },
+      {
+        "id": 2210,
+        "name": "いわきクラブ",
+        "count": 3
       }
     ]
   },
@@ -2991,18 +2985,34 @@
     "core": "大田原",
     "members": [
       {
-        "id": 1289,
+        "id": 1354,
         "name": "大田原クラブ",
         "count": 7
       },
       {
-        "id": 1879,
+        "id": 1923,
         "name": "大田原ジュニア",
         "count": 4
       },
       {
-        "id": 2763,
+        "id": 2813,
         "name": "大田原",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "山梨県",
+    "core": "竜王",
+    "members": [
+      {
+        "id": 955,
+        "name": "竜王クラブジュニア",
+        "count": 11
+      },
+      {
+        "id": 3223,
+        "name": "竜王中",
         "count": 2
       }
     ]
@@ -3012,12 +3022,12 @@
     "core": "大社",
     "members": [
       {
-        "id": 1067,
+        "id": 1114,
         "name": "大社スポーツ少年団",
         "count": 9
       },
       {
-        "id": 1880,
+        "id": 1924,
         "name": "大社",
         "count": 4
       }
@@ -3028,12 +3038,12 @@
     "core": "長田",
     "members": [
       {
-        "id": 1342,
+        "id": 1402,
         "name": "長田ジュニア",
         "count": 7
       },
       {
-        "id": 1543,
+        "id": 1604,
         "name": "長田",
         "count": 6
       }
@@ -3044,30 +3054,14 @@
     "core": "玉川",
     "members": [
       {
-        "id": 1214,
+        "id": 1268,
         "name": "玉川大学",
         "count": 8
       },
       {
-        "id": 2012,
+        "id": 2060,
         "name": "玉川ソフトテニスクラブ",
         "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "山形県",
-    "core": "余目",
-    "members": [
-      {
-        "id": 1057,
-        "name": "余目スポ少",
-        "count": 9
-      },
-      {
-        "id": 2212,
-        "name": "余目",
-        "count": 3
       }
     ]
   },
@@ -3076,12 +3070,12 @@
     "core": "杉戸",
     "members": [
       {
-        "id": 1083,
+        "id": 1132,
         "name": "杉戸ジュニアスポ少",
         "count": 9
       },
       {
-        "id": 2306,
+        "id": 2367,
         "name": "杉戸中学校",
         "count": 3
       }
@@ -3092,12 +3086,12 @@
     "core": "須崎",
     "members": [
       {
-        "id": 1020,
+        "id": 1075,
         "name": "須崎ジュニア",
         "count": 10
       },
       {
-        "id": 3358,
+        "id": 3384,
         "name": "須崎",
         "count": 2
       }
@@ -3108,12 +3102,12 @@
     "core": "畑沢",
     "members": [
       {
-        "id": 911,
+        "id": 954,
         "name": "畑沢ジュニア",
         "count": 11
       },
       {
-        "id": 4202,
+        "id": 4176,
         "name": "畑沢",
         "count": 1
       }
@@ -3121,16 +3115,16 @@
   },
   {
     "prefecture": "千葉県",
-    "core": "きさらづＫＳ",
+    "core": "きさらづKS",
     "members": [
       {
-        "id": 930,
-        "name": "きさらづＫＳジュニア",
+        "id": 978,
+        "name": "きさらづKSジュニア",
         "count": 10
       },
       {
-        "id": 2516,
-        "name": "きさらづＫＳクラブ",
+        "id": 2572,
+        "name": "きさらづKSクラブ",
         "count": 2
       }
     ]
@@ -3140,14 +3134,30 @@
     "core": "友部",
     "members": [
       {
-        "id": 957,
+        "id": 1006,
         "name": "友部ジュニア",
         "count": 10
       },
       {
-        "id": 2696,
+        "id": 2751,
         "name": "友部クラブ",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "山口県",
+    "core": "長門",
+    "members": [
+      {
+        "id": 1162,
+        "name": "長門",
+        "count": 9
+      },
+      {
+        "id": 2464,
+        "name": "長門STCジュニア",
+        "count": 3
       }
     ]
   },
@@ -3156,12 +3166,12 @@
     "core": "前橋",
     "members": [
       {
-        "id": 874,
+        "id": 920,
         "name": "前橋ジュニアクラブ",
         "count": 11
       },
       {
-        "id": 3767,
+        "id": 3743,
         "name": "前橋クラブ",
         "count": 1
       }
@@ -3172,12 +3182,12 @@
     "core": "福岡",
     "members": [
       {
-        "id": 1004,
+        "id": 1057,
         "name": "福岡クラブ",
         "count": 10
       },
       {
-        "id": 3166,
+        "id": 3203,
         "name": "福岡",
         "count": 2
       }
@@ -3188,78 +3198,14 @@
     "core": "千歳",
     "members": [
       {
-        "id": 1410,
+        "id": 1465,
         "name": "千歳クラブ",
         "count": 6
       },
       {
-        "id": 1628,
+        "id": 1679,
         "name": "千歳",
         "count": 5
-      }
-    ]
-  },
-  {
-    "prefecture": "北海道",
-    "core": "附属旭川",
-    "members": [
-      {
-        "id": 1110,
-        "name": "附属旭川",
-        "count": 9
-      },
-      {
-        "id": 3342,
-        "name": "附属旭川中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "鳥取県",
-    "core": "八頭",
-    "members": [
-      {
-        "id": 1062,
-        "name": "八頭クラブ",
-        "count": 9
-      },
-      {
-        "id": 2649,
-        "name": "八頭",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "岡山県",
-    "core": "岡山理科大附",
-    "members": [
-      {
-        "id": 1297,
-        "name": "岡山理科大附高校",
-        "count": 7
-      },
-      {
-        "id": 1918,
-        "name": "岡山理科大付高校",
-        "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "岩手県",
-    "core": "中野",
-    "members": [
-      {
-        "id": 1054,
-        "name": "中野中学校",
-        "count": 9
-      },
-      {
-        "id": 2606,
-        "name": "中野中",
-        "count": 2
       }
     ]
   },
@@ -3268,30 +3214,14 @@
     "core": "増田",
     "members": [
       {
-        "id": 963,
+        "id": 1014,
         "name": "増田ジュニア",
         "count": 10
       },
       {
-        "id": 3856,
+        "id": 3829,
         "name": "増田中学校",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "神奈川県",
-    "core": "秦野",
-    "members": [
-      {
-        "id": 1095,
-        "name": "秦野",
-        "count": 9
-      },
-      {
-        "id": 3176,
-        "name": "秦野クラブ",
-        "count": 2
       }
     ]
   },
@@ -3300,18 +3230,50 @@
     "core": "沼田",
     "members": [
       {
-        "id": 1320,
+        "id": 1382,
         "name": "沼田ジュニア",
         "count": 7
       },
       {
-        "id": 3068,
+        "id": 3103,
         "name": "沼田",
         "count": 2
       },
       {
-        "id": 3069,
+        "id": 3104,
         "name": "沼田クラブ",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "新潟県",
+    "core": "新潟西",
+    "members": [
+      {
+        "id": 1519,
+        "name": "新潟西",
+        "count": 6
+      },
+      {
+        "id": 1711,
+        "name": "新潟西高校",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "prefecture": "神奈川県",
+    "core": "秦野",
+    "members": [
+      {
+        "id": 1145,
+        "name": "秦野",
+        "count": 9
+      },
+      {
+        "id": 3216,
+        "name": "秦野クラブ",
         "count": 2
       }
     ]
@@ -3321,13 +3283,29 @@
     "core": "下山門",
     "members": [
       {
-        "id": 943,
+        "id": 992,
         "name": "下山門ジュニア",
         "count": 10
       },
       {
-        "id": 3697,
+        "id": 3674,
         "name": "下山門",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "静岡県",
+    "core": "下田",
+    "members": [
+      {
+        "id": 993,
+        "name": "下田",
+        "count": 10
+      },
+      {
+        "id": 3676,
+        "name": "下田中学校",
         "count": 1
       }
     ]
@@ -3337,12 +3315,12 @@
     "core": "長島インターナショナル",
     "members": [
       {
-        "id": 1539,
+        "id": 1600,
         "name": "長島インターナショナル",
         "count": 6
       },
       {
-        "id": 1719,
+        "id": 1763,
         "name": "長島インターナショナルテニスクラブ",
         "count": 5
       }
@@ -3353,14 +3331,51 @@
     "core": "奈良",
     "members": [
       {
-        "id": 1174,
+        "id": 1226,
         "name": "奈良クラブ",
         "count": 8
       },
       {
-        "id": 2781,
+        "id": 2831,
         "name": "奈良",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "福島県",
+    "core": "西郷村協会",
+    "members": [
+      {
+        "id": 1589,
+        "name": "西郷村協会ジュニアクラブ",
+        "count": 6
+      },
+      {
+        "id": 2115,
+        "name": "西郷村協会",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "prefecture": "兵庫県",
+    "core": "洲本",
+    "members": [
+      {
+        "id": 1263,
+        "name": "洲本",
+        "count": 8
+      },
+      {
+        "id": 4121,
+        "name": "洲本ジュニアクラブ",
+        "count": 1
+      },
+      {
+        "id": 4122,
+        "name": "洲本高等学校",
+        "count": 1
       }
     ]
   },
@@ -3369,12 +3384,12 @@
     "core": "西脇",
     "members": [
       {
-        "id": 1236,
+        "id": 1289,
         "name": "西脇クラブ",
         "count": 8
       },
       {
-        "id": 3260,
+        "id": 3288,
         "name": "西脇",
         "count": 2
       }
@@ -3385,35 +3400,14 @@
     "core": "小城",
     "members": [
       {
-        "id": 1445,
+        "id": 1502,
         "name": "小城",
         "count": 6
       },
       {
-        "id": 2833,
+        "id": 1951,
         "name": "小城中",
-        "count": 2
-      },
-      {
-        "id": 2834,
-        "name": "小城中学校",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "茨城県",
-    "core": "取手第一",
-    "members": [
-      {
-        "id": 1162,
-        "name": "取手第一",
-        "count": 8
-      },
-      {
-        "id": 2699,
-        "name": "取手第一中",
-        "count": 2
+        "count": 4
       }
     ]
   },
@@ -3422,12 +3416,12 @@
     "core": "スフィーダ",
     "members": [
       {
-        "id": 1046,
+        "id": 1095,
         "name": "スフィーダテニスクラブ",
         "count": 9
       },
       {
-        "id": 3638,
+        "id": 3615,
         "name": "スフィーダクラブ",
         "count": 1
       }
@@ -3438,35 +3432,46 @@
     "core": "二ツ井",
     "members": [
       {
-        "id": 1149,
+        "id": 1203,
         "name": "二ツ井ジュニア",
         "count": 8
       },
       {
-        "id": 2612,
+        "id": 2671,
         "name": "二ツ井",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "長野県",
-    "core": "長野",
+    "prefecture": "栃木県",
+    "core": "宇都宮ACE",
     "members": [
       {
-        "id": 1544,
-        "name": "長野",
+        "id": 1227,
+        "name": "宇都宮ACEクラブ",
+        "count": 8
+      },
+      {
+        "id": 2852,
+        "name": "宇都宮ACE",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "神奈川県",
+    "core": "西湘",
+    "members": [
+      {
+        "id": 1588,
+        "name": "西湘",
         "count": 6
       },
       {
-        "id": 3321,
-        "name": "長野ジュニアクラブ",
-        "count": 2
-      },
-      {
-        "id": 3322,
-        "name": "長野大学",
-        "count": 2
+        "id": 2114,
+        "name": "西湘高校",
+        "count": 4
       }
     ]
   },
@@ -3475,29 +3480,13 @@
     "core": "綾川",
     "members": [
       {
-        "id": 1226,
+        "id": 1281,
         "name": "綾川ジュニア",
         "count": 8
       },
       {
-        "id": 4280,
+        "id": 4256,
         "name": "綾川中学校",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "旭テニス",
-    "members": [
-      {
-        "id": 1197,
-        "name": "旭テニスクラブ",
-        "count": 8
-      },
-      {
-        "id": 4049,
-        "name": "旭テニス",
         "count": 1
       }
     ]
@@ -3507,12 +3496,12 @@
     "core": "藤テニス",
     "members": [
       {
-        "id": 1714,
+        "id": 1758,
         "name": "藤テニス",
         "count": 5
       },
       {
-        "id": 2062,
+        "id": 2108,
         "name": "藤テニスクラブ",
         "count": 4
       }
@@ -3523,30 +3512,14 @@
     "core": "犀生",
     "members": [
       {
-        "id": 1494,
+        "id": 1553,
         "name": "犀生中学校",
         "count": 6
       },
       {
-        "id": 2348,
+        "id": 2409,
         "name": "犀生ジュニアクラブ",
         "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "愛知県",
-    "core": "植田",
-    "members": [
-      {
-        "id": 1314,
-        "name": "植田中学校",
-        "count": 7
-      },
-      {
-        "id": 3038,
-        "name": "植田中",
-        "count": 2
       }
     ]
   },
@@ -3555,35 +3528,19 @@
     "core": "Next",
     "members": [
       {
-        "id": 1755,
+        "id": 1796,
         "name": "Nextテニスクラブ",
         "count": 4
       },
       {
-        "id": 2145,
+        "id": 2201,
         "name": "NextSTC",
         "count": 3
       },
       {
-        "id": 2464,
+        "id": 2532,
         "name": "Next",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "西郷村協会",
-    "members": [
-      {
-        "id": 1528,
-        "name": "西郷村協会ジュニアクラブ",
-        "count": 6
-      },
-      {
-        "id": 2390,
-        "name": "西郷村協会",
-        "count": 3
       }
     ]
   },
@@ -3592,12 +3549,12 @@
     "core": "鹿島",
     "members": [
       {
-        "id": 1351,
+        "id": 1408,
         "name": "鹿島ジュニア",
         "count": 7
       },
       {
-        "id": 3395,
+        "id": 3423,
         "name": "鹿島",
         "count": 2
       }
@@ -3608,12 +3565,12 @@
     "core": "水戸",
     "members": [
       {
-        "id": 1481,
+        "id": 1539,
         "name": "水戸スポーツ少年団",
         "count": 6
       },
       {
-        "id": 2326,
+        "id": 2386,
         "name": "水戸クラブ",
         "count": 3
       }
@@ -3624,12 +3581,12 @@
     "core": "三本木",
     "members": [
       {
-        "id": 1143,
+        "id": 1198,
         "name": "三本木",
         "count": 8
       },
       {
-        "id": 3684,
+        "id": 3661,
         "name": "三本木中学校",
         "count": 1
       }
@@ -3640,30 +3597,14 @@
     "core": "別府市",
     "members": [
       {
-        "id": 1281,
+        "id": 1343,
         "name": "別府市",
         "count": 7
       },
       {
-        "id": 2653,
+        "id": 2711,
         "name": "別府市クラブ",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "新潟県",
-    "core": "新潟西",
-    "members": [
-      {
-        "id": 1665,
-        "name": "新潟西高校",
-        "count": 5
-      },
-      {
-        "id": 1952,
-        "name": "新潟西",
-        "count": 4
       }
     ]
   },
@@ -3672,30 +3613,30 @@
     "core": "榛名",
     "members": [
       {
-        "id": 1476,
+        "id": 1535,
         "name": "榛名ジュニア",
         "count": 6
       },
       {
-        "id": 2324,
+        "id": 2384,
         "name": "榛名",
         "count": 3
       }
     ]
   },
   {
-    "prefecture": "福岡県",
-    "core": "篠栗北",
+    "prefecture": "新潟県",
+    "core": "柏崎",
     "members": [
       {
-        "id": 1334,
-        "name": "篠栗北中学校",
-        "count": 7
+        "id": 1533,
+        "name": "柏崎ジュニア",
+        "count": 6
       },
       {
-        "id": 3192,
-        "name": "篠栗北中",
-        "count": 2
+        "id": 2379,
+        "name": "柏崎クラブ",
+        "count": 3
       }
     ]
   },
@@ -3704,12 +3645,12 @@
     "core": "富士宮",
     "members": [
       {
-        "id": 1180,
+        "id": 1234,
         "name": "富士宮スポーツ少年団",
         "count": 8
       },
       {
-        "id": 3927,
+        "id": 3898,
         "name": "富士宮クラブ",
         "count": 1
       }
@@ -3720,51 +3661,46 @@
     "core": "東長崎",
     "members": [
       {
-        "id": 1973,
+        "id": 1531,
         "name": "東長崎",
+        "count": 6
+      },
+      {
+        "id": 2372,
+        "name": "東長崎ジュニア",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "prefecture": "山形県",
+    "core": "米沢中央",
+    "members": [
+      {
+        "id": 2094,
+        "name": "米沢中央",
         "count": 4
       },
       {
-        "id": 2311,
-        "name": "東長崎ジュニア",
-        "count": 3
-      },
-      {
-        "id": 3013,
-        "name": "東長崎中",
-        "count": 2
+        "id": 2095,
+        "name": "米沢中央高校",
+        "count": 4
       }
     ]
   },
   {
-    "prefecture": "石川県",
-    "core": "宝達",
+    "prefecture": "広島県",
+    "core": "安部",
     "members": [
       {
-        "id": 1438,
-        "name": "宝達中学校",
-        "count": 6
+        "id": 1358,
+        "name": "安部クラブ",
+        "count": 7
       },
       {
-        "id": 2805,
-        "name": "宝達中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "北海道",
-    "core": "旭川啓北",
-    "members": [
-      {
-        "id": 1467,
-        "name": "旭川啓北",
-        "count": 6
-      },
-      {
-        "id": 2958,
-        "name": "旭川啓北中",
-        "count": 2
+        "id": 3888,
+        "name": "安部",
+        "count": 1
       }
     ]
   },
@@ -3773,13 +3709,29 @@
     "core": "浦和ファミリー",
     "members": [
       {
-        "id": 1323,
+        "id": 1385,
         "name": "浦和ファミリー",
         "count": 7
       },
       {
-        "id": 4153,
+        "id": 4130,
         "name": "浦和ファミリーテニスクラブ",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "千葉県",
+    "core": "南房総",
+    "members": [
+      {
+        "id": 1345,
+        "name": "南房総ジュニア",
+        "count": 7
+      },
+      {
+        "id": 3776,
+        "name": "南房総",
         "count": 1
       }
     ]
@@ -3789,12 +3741,12 @@
     "core": "宝塚",
     "members": [
       {
-        "id": 1437,
+        "id": 1495,
         "name": "宝塚中学校",
         "count": 6
       },
       {
-        "id": 2803,
+        "id": 2858,
         "name": "宝塚クラブ",
         "count": 2
       }
@@ -3805,55 +3757,18 @@
     "core": "御津",
     "members": [
       {
-        "id": 1456,
+        "id": 1511,
         "name": "御津",
         "count": 6
       },
       {
-        "id": 4010,
+        "id": 3982,
         "name": "御津クラブ",
         "count": 1
       },
       {
-        "id": 4011,
+        "id": 3983,
         "name": "御津ジュニア",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "兵庫県",
-    "core": "洲本",
-    "members": [
-      {
-        "id": 1483,
-        "name": "洲本",
-        "count": 6
-      },
-      {
-        "id": 4144,
-        "name": "洲本ジュニアクラブ",
-        "count": 1
-      },
-      {
-        "id": 4145,
-        "name": "洲本高等学校",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "千葉県",
-    "core": "南房総",
-    "members": [
-      {
-        "id": 1282,
-        "name": "南房総ジュニア",
-        "count": 7
-      },
-      {
-        "id": 3801,
-        "name": "南房総",
         "count": 1
       }
     ]
@@ -3863,13 +3778,29 @@
     "core": "牛津",
     "members": [
       {
-        "id": 1492,
+        "id": 1551,
         "name": "牛津ジュニアクラブ",
         "count": 6
       },
       {
-        "id": 3112,
+        "id": 3149,
         "name": "牛津",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "群馬県",
+    "core": "新町",
+    "members": [
+      {
+        "id": 1520,
+        "name": "新町クラブ",
+        "count": 6
+      },
+      {
+        "id": 2985,
+        "name": "新町ジュニアクラブ",
         "count": 2
       }
     ]
@@ -3879,18 +3810,34 @@
     "core": "双葉",
     "members": [
       {
-        "id": 1413,
+        "id": 1469,
         "name": "双葉クラブジュニア",
         "count": 6
       },
       {
-        "id": 3809,
+        "id": 3784,
         "name": "双葉",
         "count": 1
       },
       {
-        "id": 3810,
+        "id": 3785,
         "name": "双葉クラブ",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "prefecture": "島根県",
+    "core": "かみあり",
+    "members": [
+      {
+        "id": 1318,
+        "name": "かみありクラブ",
+        "count": 7
+      },
+      {
+        "id": 3553,
+        "name": "かみあり",
         "count": 1
       }
     ]
@@ -3900,12 +3847,12 @@
     "core": "玉川",
     "members": [
       {
-        "id": 1495,
+        "id": 1554,
         "name": "玉川",
         "count": 6
       },
       {
-        "id": 3118,
+        "id": 3155,
         "name": "玉川クラブ",
         "count": 2
       }
@@ -3916,35 +3863,14 @@
     "core": "綾瀬",
     "members": [
       {
-        "id": 2051,
-        "name": "綾瀬テニスクラブ",
+        "id": 2097,
+        "name": "綾瀬",
         "count": 4
       },
       {
-        "id": 3204,
-        "name": "綾瀬",
-        "count": 2
-      },
-      {
-        "id": 3205,
-        "name": "綾瀬中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "群馬県",
-    "core": "新町",
-    "members": [
-      {
-        "id": 1462,
-        "name": "新町クラブ",
-        "count": 6
-      },
-      {
-        "id": 2940,
-        "name": "新町ジュニアクラブ",
-        "count": 2
+        "id": 2098,
+        "name": "綾瀬テニスクラブ",
+        "count": 4
       }
     ]
   },
@@ -3953,46 +3879,14 @@
     "core": "北九州",
     "members": [
       {
-        "id": 1842,
+        "id": 1885,
         "name": "北九州クラブ",
         "count": 4
       },
       {
-        "id": 1843,
+        "id": 1886,
         "name": "北九州ジュニア",
         "count": 4
-      }
-    ]
-  },
-  {
-    "prefecture": "島根県",
-    "core": "かみあり",
-    "members": [
-      {
-        "id": 1259,
-        "name": "かみありクラブ",
-        "count": 7
-      },
-      {
-        "id": 3577,
-        "name": "かみあり",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "静岡県",
-    "core": "下田",
-    "members": [
-      {
-        "id": 1271,
-        "name": "下田",
-        "count": 7
-      },
-      {
-        "id": 3699,
-        "name": "下田中学校",
-        "count": 1
       }
     ]
   },
@@ -4001,12 +3895,12 @@
     "core": "天草",
     "members": [
       {
-        "id": 1290,
+        "id": 1355,
         "name": "天草ジュニア",
         "count": 7
       },
       {
-        "id": 3896,
+        "id": 3869,
         "name": "天草",
         "count": 1
       }
@@ -4017,30 +3911,14 @@
     "core": "松橋",
     "members": [
       {
-        "id": 1311,
+        "id": 1375,
         "name": "松橋クラブ",
         "count": 7
       },
       {
-        "id": 4106,
+        "id": 4082,
         "name": "松橋",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "東京都",
-    "core": "稲城第三",
-    "members": [
-      {
-        "id": 1706,
-        "name": "稲城第三",
-        "count": 5
-      },
-      {
-        "id": 3181,
-        "name": "稲城第三中",
-        "count": 2
       }
     ]
   },
@@ -4049,17 +3927,17 @@
     "core": "大谷",
     "members": [
       {
-        "id": 1882,
+        "id": 1926,
         "name": "大谷",
         "count": 4
       },
       {
-        "id": 2769,
+        "id": 2820,
         "name": "大谷中",
         "count": 2
       },
       {
-        "id": 3878,
+        "id": 3851,
         "name": "大谷中学校",
         "count": 1
       }
@@ -4070,77 +3948,61 @@
     "core": "岡山kids",
     "members": [
       {
-        "id": 1916,
+        "id": 1960,
         "name": "岡山kidsクラブ",
         "count": 4
       },
       {
-        "id": 2267,
+        "id": 2329,
         "name": "岡山kids",
         "count": 3
       }
     ]
   },
   {
-    "prefecture": "新潟県",
-    "core": "柏崎",
+    "prefecture": "静岡県",
+    "core": "韮山",
     "members": [
       {
-        "id": 1977,
-        "name": "柏崎ジュニア",
+        "id": 1767,
+        "name": "韮山ジュニア",
+        "count": 5
+      },
+      {
+        "id": 3378,
+        "name": "韮山",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "山形県",
+    "core": "長井",
+    "members": [
+      {
+        "id": 2129,
+        "name": "長井スポーツ少年団",
         "count": 4
       },
       {
-        "id": 2319,
-        "name": "柏崎クラブ",
-        "count": 3
-      }
-    ]
-  },
-  {
-    "prefecture": "群馬県",
-    "core": "群馬中央",
-    "members": [
-      {
-        "id": 1708,
-        "name": "群馬中央中学校",
-        "count": 5
-      },
-      {
-        "id": 3213,
-        "name": "群馬中央中",
+        "id": 3336,
+        "name": "長井",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "鹿児島県",
-    "core": "垂水中央",
+    "prefecture": "山形県",
+    "core": "長井北",
     "members": [
       {
-        "id": 1639,
-        "name": "垂水中央",
-        "count": 5
+        "id": 2130,
+        "name": "長井北",
+        "count": 4
       },
       {
-        "id": 2738,
-        "name": "垂水中央中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "島根県",
-    "core": "益田",
-    "members": [
-      {
-        "id": 1702,
-        "name": "益田中学校",
-        "count": 5
-      },
-      {
-        "id": 3134,
-        "name": "益田中",
+        "id": 3337,
+        "name": "長井北中学校",
         "count": 2
       }
     ]
@@ -4150,12 +4012,12 @@
     "core": "輪島",
     "members": [
       {
-        "id": 2075,
+        "id": 2120,
         "name": "輪島ジュニアクラブ",
         "count": 4
       },
       {
-        "id": 3278,
+        "id": 3308,
         "name": "輪島",
         "count": 2
       }
@@ -4166,45 +4028,13 @@
     "core": "旭川",
     "members": [
       {
-        "id": 1954,
+        "id": 2002,
         "name": "旭川ジュニア",
         "count": 4
       },
       {
-        "id": 2957,
+        "id": 3000,
         "name": "旭川",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "山形県",
-    "core": "宮内",
-    "members": [
-      {
-        "id": 1894,
-        "name": "宮内",
-        "count": 4
-      },
-      {
-        "id": 2808,
-        "name": "宮内中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "山形県",
-    "core": "長井",
-    "members": [
-      {
-        "id": 2081,
-        "name": "長井スポーツ少年団",
-        "count": 4
-      },
-      {
-        "id": 3312,
-        "name": "長井",
         "count": 2
       }
     ]
@@ -4214,12 +4044,12 @@
     "core": "岐阜しらさぎ",
     "members": [
       {
-        "id": 1915,
+        "id": 1959,
         "name": "岐阜しらさぎクラブ",
         "count": 4
       },
       {
-        "id": 2858,
+        "id": 2910,
         "name": "岐阜しらさぎ",
         "count": 2
       }
@@ -4230,30 +4060,14 @@
     "core": "秩父",
     "members": [
       {
-        "id": 1705,
+        "id": 1751,
         "name": "秩父ジュニア",
         "count": 5
       },
       {
-        "id": 4257,
+        "id": 4232,
         "name": "秩父クラブ",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "中央台南",
-    "members": [
-      {
-        "id": 1814,
-        "name": "中央台南",
-        "count": 4
-      },
-      {
-        "id": 2599,
-        "name": "中央台南中",
-        "count": 2
       }
     ]
   },
@@ -4262,12 +4076,12 @@
     "core": "高岡",
     "members": [
       {
-        "id": 2098,
+        "id": 2150,
         "name": "高岡",
         "count": 4
       },
       {
-        "id": 3368,
+        "id": 3393,
         "name": "高岡少年団",
         "count": 2
       }
@@ -4278,12 +4092,12 @@
     "core": "那賀川",
     "members": [
       {
-        "id": 2077,
+        "id": 2123,
         "name": "那賀川",
         "count": 4
       },
       {
-        "id": 3287,
+        "id": 3314,
         "name": "那賀川ジュニア",
         "count": 2
       }
@@ -4294,62 +4108,14 @@
     "core": "防府",
     "members": [
       {
-        "id": 2086,
+        "id": 2135,
         "name": "防府クラブ",
         "count": 4
       },
       {
-        "id": 3335,
+        "id": 3362,
         "name": "防府ジュニア",
         "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "山梨県",
-    "core": "下吉田",
-    "members": [
-      {
-        "id": 1812,
-        "name": "下吉田",
-        "count": 4
-      },
-      {
-        "id": 2593,
-        "name": "下吉田中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "秋田県",
-    "core": "土崎",
-    "members": [
-      {
-        "id": 1864,
-        "name": "土崎",
-        "count": 4
-      },
-      {
-        "id": 2736,
-        "name": "土崎中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "神奈川県",
-    "core": "茅ヶ崎",
-    "members": [
-      {
-        "id": 1713,
-        "name": "茅ヶ崎クラブ",
-        "count": 5
-      },
-      {
-        "id": 4306,
-        "name": "茅ヶ崎",
-        "count": 1
       }
     ]
   },
@@ -4358,12 +4124,12 @@
     "core": "宮崎西",
     "members": [
       {
-        "id": 1898,
+        "id": 1940,
         "name": "宮崎西",
         "count": 4
       },
       {
-        "id": 2812,
+        "id": 2866,
         "name": "宮崎西高",
         "count": 2
       }
@@ -4374,35 +4140,35 @@
     "core": "清武",
     "members": [
       {
-        "id": 3093,
+        "id": 3128,
         "name": "清武",
         "count": 2
       },
       {
-        "id": 3094,
+        "id": 3129,
         "name": "清武ジュニア",
         "count": 2
       },
       {
-        "id": 3095,
+        "id": 3130,
         "name": "清武中",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "静岡県",
-    "core": "大里",
+    "prefecture": "神奈川県",
+    "core": "茅ヶ崎",
     "members": [
       {
-        "id": 1884,
-        "name": "大里",
-        "count": 4
+        "id": 1757,
+        "name": "茅ヶ崎クラブ",
+        "count": 5
       },
       {
-        "id": 2770,
-        "name": "大里中",
-        "count": 2
+        "id": 4280,
+        "name": "茅ヶ崎",
+        "count": 1
       }
     ]
   },
@@ -4411,14 +4177,30 @@
     "core": "尼崎",
     "members": [
       {
-        "id": 2264,
+        "id": 2325,
         "name": "尼崎高校",
         "count": 3
       },
       {
-        "id": 2845,
+        "id": 2898,
         "name": "尼崎ジュニア",
         "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "広島県",
+    "core": "福山",
+    "members": [
+      {
+        "id": 2082,
+        "name": "福山STC",
+        "count": 4
+      },
+      {
+        "id": 4220,
+        "name": "福山クラブ",
+        "count": 1
       }
     ]
   },
@@ -4427,12 +4209,12 @@
     "core": "狭山入間川",
     "members": [
       {
-        "id": 2010,
+        "id": 2058,
         "name": "狭山入間川クラブ",
         "count": 4
       },
       {
-        "id": 4184,
+        "id": 4158,
         "name": "狭山入間川",
         "count": 1
       }
@@ -4443,12 +4225,12 @@
     "core": "さくらそう",
     "members": [
       {
-        "id": 2157,
+        "id": 2214,
         "name": "さくらそう",
         "count": 3
       },
       {
-        "id": 2523,
+        "id": 2579,
         "name": "さくらそうクラブ",
         "count": 2
       }
@@ -4459,29 +4241,13 @@
     "core": "追手前",
     "members": [
       {
-        "id": 2398,
+        "id": 2458,
         "name": "追手前",
         "count": 3
       },
       {
-        "id": 3284,
+        "id": 3311,
         "name": "追手前クラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "福島県",
-    "core": "石川義塾",
-    "members": [
-      {
-        "id": 2361,
-        "name": "石川義塾",
-        "count": 3
-      },
-      {
-        "id": 3149,
-        "name": "石川義塾中",
         "count": 2
       }
     ]
@@ -4491,12 +4257,12 @@
     "core": "神栖",
     "members": [
       {
-        "id": 2035,
+        "id": 2080,
         "name": "神栖スポ少",
         "count": 4
       },
       {
-        "id": 4240,
+        "id": 4216,
         "name": "神栖クラブ",
         "count": 1
       }
@@ -4507,12 +4273,12 @@
     "core": "牛久",
     "members": [
       {
-        "id": 2346,
+        "id": 2408,
         "name": "牛久クラブ",
         "count": 3
       },
       {
-        "id": 3111,
+        "id": 3148,
         "name": "牛久",
         "count": 2
       }
@@ -4523,30 +4289,14 @@
     "core": "黒石烏城",
     "members": [
       {
-        "id": 2117,
+        "id": 2172,
         "name": "黒石烏城ジュニア",
         "count": 4
       },
       {
-        "id": 4420,
+        "id": 4385,
         "name": "黒石烏城クラブ",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "岡山県",
-    "core": "津山峰南",
-    "members": [
-      {
-        "id": 2332,
-        "name": "津山峰南テニスクラブ",
-        "count": 3
-      },
-      {
-        "id": 3077,
-        "name": "津山峰南クラブ",
-        "count": 2
       }
     ]
   },
@@ -4555,13 +4305,29 @@
     "core": "美馬市体育協会",
     "members": [
       {
-        "id": 2377,
+        "id": 2436,
         "name": "美馬市体育協会ジュニア",
         "count": 3
       },
       {
-        "id": 3212,
+        "id": 3242,
         "name": "美馬市体育協会",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "岡山県",
+    "core": "津山峰南",
+    "members": [
+      {
+        "id": 2392,
+        "name": "津山峰南テニスクラブ",
+        "count": 3
+      },
+      {
+        "id": 3112,
+        "name": "津山峰南クラブ",
         "count": 2
       }
     ]
@@ -4571,29 +4337,29 @@
     "core": "盛岡市役所",
     "members": [
       {
-        "id": 2358,
+        "id": 2418,
         "name": "盛岡市役所",
         "count": 3
       },
       {
-        "id": 3138,
+        "id": 3173,
         "name": "盛岡市役所クラブ",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "鹿児島県",
-    "core": "松元",
+    "prefecture": "岩手県",
+    "core": "花巻南",
     "members": [
       {
-        "id": 2313,
-        "name": "松元中学校",
+        "id": 2437,
+        "name": "花巻南",
         "count": 3
       },
       {
-        "id": 3015,
-        "name": "松元中",
+        "id": 3254,
+        "name": "花巻南高校",
         "count": 2
       }
     ]
@@ -4603,30 +4369,30 @@
     "core": "妻ヶ丘",
     "members": [
       {
-        "id": 2248,
+        "id": 2310,
         "name": "妻ヶ丘",
         "count": 3
       },
       {
-        "id": 2784,
+        "id": 2835,
         "name": "妻ヶ丘中",
         "count": 2
       }
     ]
   },
   {
-    "prefecture": "三重県",
-    "core": "大台",
+    "prefecture": "広島県",
+    "core": "安芸紅葉",
     "members": [
       {
-        "id": 2752,
-        "name": "大台",
-        "count": 2
+        "id": 2317,
+        "name": "安芸紅葉",
+        "count": 3
       },
       {
-        "id": 2754,
-        "name": "大台中",
-        "count": 2
+        "id": 3887,
+        "name": "安芸紅葉クラブ",
+        "count": 1
       }
     ]
   },
@@ -4635,45 +4401,29 @@
     "core": "広島文化",
     "members": [
       {
-        "id": 2278,
+        "id": 2340,
         "name": "広島文化クラブ",
         "count": 3
       },
       {
-        "id": 4001,
+        "id": 3973,
         "name": "広島文化ジュニア",
         "count": 1
       }
     ]
   },
   {
-    "prefecture": "石川県",
-    "core": "寺井",
+    "prefecture": "広島県",
+    "core": "府中",
     "members": [
       {
-        "id": 2826,
-        "name": "寺井",
+        "id": 2951,
+        "name": "府中STC",
         "count": 2
       },
       {
-        "id": 2827,
-        "name": "寺井中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "石川県",
-    "core": "錦城",
-    "members": [
-      {
-        "id": 3309,
-        "name": "錦城中",
-        "count": 2
-      },
-      {
-        "id": 3310,
-        "name": "錦城中学校",
+        "id": 2952,
+        "name": "府中クラブ",
         "count": 2
       }
     ]
@@ -4683,45 +4433,13 @@
     "core": "佐屋",
     "members": [
       {
-        "id": 2634,
+        "id": 2693,
         "name": "佐屋クラブ",
         "count": 2
       },
       {
-        "id": 2635,
+        "id": 2694,
         "name": "佐屋ジュニアクラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "北海道",
-    "core": "岩見沢光陵",
-    "members": [
-      {
-        "id": 2869,
-        "name": "岩見沢光陵",
-        "count": 2
-      },
-      {
-        "id": 2870,
-        "name": "岩見沢光陵中",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "北海道",
-    "core": "早来学園",
-    "members": [
-      {
-        "id": 2953,
-        "name": "早来学園",
-        "count": 2
-      },
-      {
-        "id": 2954,
-        "name": "早来学園中",
         "count": 2
       }
     ]
@@ -4731,12 +4449,12 @@
     "core": "川越",
     "members": [
       {
-        "id": 2882,
+        "id": 2931,
         "name": "川越",
         "count": 2
       },
       {
-        "id": 2883,
+        "id": 2932,
         "name": "川越クラブ",
         "count": 2
       }
@@ -4747,12 +4465,12 @@
     "core": "佐賀",
     "members": [
       {
-        "id": 2211,
+        "id": 2270,
         "name": "佐賀クラブ",
         "count": 3
       },
       {
-        "id": 3750,
+        "id": 3726,
         "name": "佐賀ジュニア",
         "count": 1
       }
@@ -4763,45 +4481,13 @@
     "core": "大浦",
     "members": [
       {
-        "id": 2760,
+        "id": 2809,
         "name": "大浦",
         "count": 2
       },
       {
-        "id": 2761,
+        "id": 2810,
         "name": "大浦ジュニアクラブ",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "愛媛県",
-    "core": "北条北",
-    "members": [
-      {
-        "id": 2665,
-        "name": "北条北中",
-        "count": 2
-      },
-      {
-        "id": 2666,
-        "name": "北条北中学校",
-        "count": 2
-      }
-    ]
-  },
-  {
-    "prefecture": "愛媛県",
-    "core": "近見",
-    "members": [
-      {
-        "id": 3281,
-        "name": "近見中",
-        "count": 2
-      },
-      {
-        "id": 3282,
-        "name": "近見中学校",
         "count": 2
       }
     ]
@@ -4811,30 +4497,14 @@
     "core": "大在",
     "members": [
       {
-        "id": 2238,
+        "id": 2299,
         "name": "大在クラブ",
         "count": 3
       },
       {
-        "id": 3859,
+        "id": 3832,
         "name": "大在",
         "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "山梨県",
-    "core": "富士川",
-    "members": [
-      {
-        "id": 2819,
-        "name": "富士川",
-        "count": 2
-      },
-      {
-        "id": 2820,
-        "name": "富士川スポ少",
-        "count": 2
       }
     ]
   },
@@ -4843,13 +4513,45 @@
     "core": "SST",
     "members": [
       {
-        "id": 2472,
+        "id": 2543,
         "name": "SST",
         "count": 2
       },
       {
-        "id": 2474,
+        "id": 2545,
         "name": "SSTクラブ",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "山梨県",
+    "core": "富士川",
+    "members": [
+      {
+        "id": 2873,
+        "name": "富士川",
+        "count": 2
+      },
+      {
+        "id": 2874,
+        "name": "富士川スポ少",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "prefecture": "岩手県",
+    "core": "大船渡",
+    "members": [
+      {
+        "id": 2818,
+        "name": "大船渡スポーツ少年団",
+        "count": 2
+      },
+      {
+        "id": 2819,
+        "name": "大船渡高校",
         "count": 2
       }
     ]
@@ -4859,12 +4561,12 @@
     "core": "東海",
     "members": [
       {
-        "id": 3002,
+        "id": 3039,
         "name": "東海中",
         "count": 2
       },
       {
-        "id": 3003,
+        "id": 3040,
         "name": "東海中学校",
         "count": 2
       }
@@ -4875,45 +4577,29 @@
     "core": "浜岡",
     "members": [
       {
-        "id": 2334,
+        "id": 2394,
         "name": "浜岡クラブジュニア",
         "count": 3
       },
       {
-        "id": 4148,
+        "id": 4125,
         "name": "浜岡クラブ",
         "count": 1
       }
     ]
   },
   {
-    "prefecture": "静岡県",
-    "core": "牧之原",
+    "prefecture": "長野県",
+    "core": "長野日",
     "members": [
       {
-        "id": 2347,
-        "name": "牧之原少年団",
-        "count": 3
-      },
-      {
-        "id": 4182,
-        "name": "牧之原スポ少",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "静岡県",
-    "core": "附属島田",
-    "members": [
-      {
-        "id": 3340,
-        "name": "附属島田中",
+        "id": 3347,
+        "name": "長野日大",
         "count": 2
       },
       {
-        "id": 3341,
-        "name": "附属島田中学校",
+        "id": 3348,
+        "name": "長野日大高校",
         "count": 2
       }
     ]
@@ -4923,12 +4609,12 @@
     "core": "多度津",
     "members": [
       {
-        "id": 2749,
+        "id": 2801,
         "name": "多度津クラブ",
         "count": 2
       },
       {
-        "id": 3857,
+        "id": 3830,
         "name": "多度津",
         "count": 1
       }
@@ -4939,29 +4625,29 @@
     "core": "式下",
     "members": [
       {
-        "id": 2909,
+        "id": 2957,
         "name": "式下中",
         "count": 2
       },
       {
-        "id": 4005,
+        "id": 3977,
         "name": "式下中学校",
         "count": 1
       }
     ]
   },
   {
-    "prefecture": "愛知県",
-    "core": "葉栗",
+    "prefecture": "山形県",
+    "core": "寒河江",
     "members": [
       {
-        "id": 3241,
-        "name": "葉栗中",
+        "id": 2880,
+        "name": "寒河江ジュニアクラブ",
         "count": 2
       },
       {
-        "id": 4315,
-        "name": "葉栗",
+        "id": 3905,
+        "name": "寒河江クラブ",
         "count": 1
       }
     ]
@@ -4971,12 +4657,12 @@
     "core": "釧路リバティー",
     "members": [
       {
-        "id": 3307,
+        "id": 3333,
         "name": "釧路リバティークラブ",
         "count": 2
       },
       {
-        "id": 4365,
+        "id": 4333,
         "name": "釧路リバティー",
         "count": 1
       }
@@ -4987,12 +4673,12 @@
     "core": "越谷",
     "members": [
       {
-        "id": 3274,
+        "id": 3303,
         "name": "越谷ジュニアクラブ",
         "count": 2
       },
       {
-        "id": 4343,
+        "id": 4314,
         "name": "越谷クラブ",
         "count": 1
       }
@@ -5000,16 +4686,16 @@
   },
   {
     "prefecture": "兵庫県",
-    "core": "太子東",
+    "core": "相生学院",
     "members": [
       {
-        "id": 2778,
-        "name": "太子東中",
+        "id": 3175,
+        "name": "相生学院",
         "count": 2
       },
       {
-        "id": 3897,
-        "name": "太子東",
+        "id": 4191,
+        "name": "相生学院高校",
         "count": 1
       }
     ]
@@ -5019,12 +4705,12 @@
     "core": "取手ママ",
     "members": [
       {
-        "id": 2698,
+        "id": 2753,
         "name": "取手ママテニスクラブ",
         "count": 2
       },
       {
-        "id": 3811,
+        "id": 3786,
         "name": "取手ママ",
         "count": 1
       }
@@ -5035,29 +4721,13 @@
     "core": "福野",
     "members": [
       {
-        "id": 3171,
+        "id": 3210,
         "name": "福野",
         "count": 2
       },
       {
-        "id": 4253,
+        "id": 4228,
         "name": "福野スポ少",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "愛媛県",
-    "core": "城辺",
-    "members": [
-      {
-        "id": 2742,
-        "name": "城辺中",
-        "count": 2
-      },
-      {
-        "id": 3853,
-        "name": "城辺",
         "count": 1
       }
     ]
@@ -5067,12 +4737,12 @@
     "core": "石和",
     "members": [
       {
-        "id": 3144,
+        "id": 3181,
         "name": "石和",
         "count": 2
       },
       {
-        "id": 4227,
+        "id": 4202,
         "name": "石和クラブ",
         "count": 1
       }
@@ -5083,12 +4753,12 @@
     "core": "大宮",
     "members": [
       {
-        "id": 2758,
+        "id": 2807,
         "name": "大宮中",
         "count": 2
       },
       {
-        "id": 3864,
+        "id": 3837,
         "name": "大宮中学校",
         "count": 1
       }
@@ -5099,12 +4769,12 @@
     "core": "木脇",
     "members": [
       {
-        "id": 2979,
+        "id": 3018,
         "name": "木脇中",
         "count": 2
       },
       {
-        "id": 4069,
+        "id": 4042,
         "name": "木脇",
         "count": 1
       }
@@ -5115,12 +4785,12 @@
     "core": "八日市",
     "members": [
       {
-        "id": 2646,
+        "id": 2705,
         "name": "八日市スポーツ少年団",
         "count": 2
       },
       {
-        "id": 3761,
+        "id": 3737,
         "name": "八日市クラブ",
         "count": 1
       }
@@ -5131,45 +4801,13 @@
     "core": "静南",
     "members": [
       {
-        "id": 3350,
+        "id": 3374,
         "name": "静南クラブ",
         "count": 2
       },
       {
-        "id": 4389,
+        "id": 4357,
         "name": "静南ジュニアクラブ",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "広島県",
-    "core": "安芸紅葉",
-    "members": [
-      {
-        "id": 3916,
-        "name": "安芸紅葉",
-        "count": 1
-      },
-      {
-        "id": 3917,
-        "name": "安芸紅葉クラブ",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "prefecture": "北海道",
-    "core": "北海道科学",
-    "members": [
-      {
-        "id": 3782,
-        "name": "北海道科学大学高校",
-        "count": 1
-      },
-      {
-        "id": 3783,
-        "name": "北海道科学大高校",
         "count": 1
       }
     ]
@@ -5179,12 +4817,12 @@
     "core": "鉾田第一",
     "members": [
       {
-        "id": 4368,
+        "id": 4336,
         "name": "鉾田第一高",
         "count": 1
       },
       {
-        "id": 4369,
+        "id": 4337,
         "name": "鉾田第一高校",
         "count": 1
       }
@@ -5195,12 +4833,12 @@
     "core": "臼杵",
     "members": [
       {
-        "id": 4294,
+        "id": 4269,
         "name": "臼杵",
         "count": 1
       },
       {
-        "id": 4295,
+        "id": 4270,
         "name": "臼杵クラブ",
         "count": 1
       }
@@ -5211,12 +4849,12 @@
     "core": "西那須野",
     "members": [
       {
-        "id": 4328,
+        "id": 4299,
         "name": "西那須野",
         "count": 1
       },
       {
-        "id": 4329,
+        "id": 4300,
         "name": "西那須野クラブ",
         "count": 1
       }
@@ -5227,12 +4865,12 @@
     "core": "京セラ鹿児島",
     "members": [
       {
-        "id": 3729,
+        "id": 3706,
         "name": "京セラ鹿児島",
         "count": 1
       },
       {
-        "id": 3730,
+        "id": 3707,
         "name": "京セラ鹿児島クラブ",
         "count": 1
       }

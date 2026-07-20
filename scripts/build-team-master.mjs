@@ -5,6 +5,7 @@
 // - 実県が複数に割れるチームは reviewPrefectures（同名別校の確認用）。
 // 使い方: node scripts/build-team-master.mjs
 import fs from 'fs';import path from 'path';import {fileURLToPath} from 'url';
+import {toHalfWidthAscii} from './lib/halfwidth.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DET=path.join(ROOT,'data','tournaments','details');
 const COV_MIN=0.4, SHARE_MIN=0.5;
@@ -43,7 +44,9 @@ const top=m=>[...m.entries()].sort((a,b)=>b[1]-a[1])[0];
 const topN=(m,n)=>[...m.entries()].sort((a,b)=>b[1]-a[1]).slice(0,n).map(([k])=>k);
 const teams=[];let nulled=0;const review=[];const context={};
 for(const key of [...tot.keys()].sort((a,b)=>tot.get(b)-tot.get(a)||(a<b?-1:a>b?1:0))){ // count降順→名前で決定的タイブレーク（id安定化）
-const rc=rawC.get(key);const name=top(rc)[0];
+// 表示名は最頻出の生表記だが、全角ASCIIは半角へ寄せる（ＹＫＫ→YKK, Ｊ－Ｋｉｄｓ→J-Kids）。
+// 半角化前の生表記は aliases 側に残るので、元の表記は失われない。
+const rc=rawC.get(key);const name=toHalfWidthAscii(top(rc)[0]);
 const aliases=[...rc.keys()].filter(r=>r!==name).sort();
 const total=tot.get(key);const pc=prefC.get(key);
 let prefecture=null,others=[];
