@@ -38,6 +38,22 @@ answered in chat and forgotten.
 
 ---
 
+## UI の表記ルール
+
+- **絵文字を使わない**。公開ページの本文・見出し・バッジ・ラベル、およびそれらを生成する
+  コード上の文字列リテラルに絵文字（🏆 ✅ ⚠️ 等）を入れないこと。装飾やアイコンが必要な場合は
+  inline SVG か CSS で描く。理由: 絵文字は OS / ブラウザ / フォントで見た目が大きく変わり、
+  スクリーンリーダーの読み上げも制御しにくく、サイトのトーンとも合わないため。
+- 装飾目的の SVG には `aria-hidden` / `role="presentation"` を付け、意味は必ずテキストで併記する。
+- このルールは **eslint で機械的に強制**している（`eslint.config.mjs` の `no-restricted-syntax`、
+  `src/**` に error で適用）。検出は `\p{Emoji_Presentation}` ＋ 異体字セレクタ U+FE0F。
+  矢印（→ ←）・幾何学図形（▲ ▼ ◀ ▶ ○ ●）・罫線（─）・チェック記号（✓ ✗ ✕）・丸数字（① ②）・
+  著作権記号（©）は絵文字ではないので許可される。
+- 対象は**公開ページの UI** に限る。SNS 投稿テンプレ（`lib/rareEvents.mjs`）と CLI 出力
+  （`scripts/**`）は対象外（前者は投稿先の慣習に合わせる、後者は人が一度読むだけの出力のため）。
+
+---
+
 ## Before coding
 
 Before implementing any feature or modifying behavior:
