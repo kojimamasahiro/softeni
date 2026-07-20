@@ -350,6 +350,17 @@ export function listPublishedPreviews(): NewsArticleRecord[] {
   return listPublishedArticles().filter((r) => r.type === 'preview');
 }
 
+/**
+ * 指定の大会・年度に対応する公開済み展望（preview）記事（あれば1件）。
+ * 大会結果ページ（[gender]/index.tsx）から展望記事への内部リンクを出すために使う。
+ * 1大会・1年度につき記事は基本1件（全種目対象。categoryId は問わない）を想定。
+ * 「結果」を狙うリンクではなく、preview記事とのカニバリを避けるための低リスクな内部リンク
+ * （docs/wiki/seo.md #8 の方針に沿う。結果クエリでの競合は意図しない）。
+ */
+export function findPublishedPreviewForTournament(tournamentId: string, year: number): NewsArticleRecord | null {
+  return listPublishedPreviews().find((r) => r.tournamentId === tournamentId && r.year === year) ?? null;
+}
+
 /** 対象 tournamentId/year に存在する categoryId 一覧（details 実体から） */
 function listCategoryIds(tournamentId: string, year: number): string[] {
   const dir = path.join(resolveRoot(), ...DETAILS_ROOT, tournamentId, String(year));

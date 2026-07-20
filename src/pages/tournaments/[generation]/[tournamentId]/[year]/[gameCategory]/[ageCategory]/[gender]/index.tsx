@@ -19,6 +19,7 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
+import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
@@ -60,6 +61,9 @@ interface TournamentYearResultPageProps {
   scoreMatchLinks?: ScoreMatchLink[];
   // 文脈ブロック（連覇 / 初優勝 / 王者撃破）。docs/wiki/news-context-blocks.md
   contextMilestones?: ContextMilestone[];
+  // 対応する展望（preview）記事の articleId（あれば）。/news への内部リンク用。
+  // 「結果」を狙うリンクではないため、SEO カニバリの心配なく張れる（docs/wiki/seo.md #8）。
+  previewArticleId?: string | null;
 }
 
 export default function TournamentYearResultPage({
@@ -81,6 +85,7 @@ export default function TournamentYearResultPage({
   prefectureName = null,
   scoreMatchLinks = [],
   contextMilestones = [],
+  previewArticleId = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
 
@@ -209,6 +214,13 @@ export default function TournamentYearResultPage({
             <p className="text-sm text-text-secondary">
               開催地:{infoForYear.location} / 日程:
               {infoForYear.startDate}〜{infoForYear.endDate}
+            </p>
+          )}
+          {previewArticleId && (
+            <p className="mt-2 text-sm">
+              <Link href={`/news/${previewArticleId}/`} className="text-link hover:underline">
+                {label} {year}年の展望・注目選手はこちら
+              </Link>
             </p>
           )}
         </section>
@@ -647,6 +659,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const tournamentPath = `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`;
   const scoreMatchLinks = getScoreMatchLinksForTournament(tournamentPath);
 
+  // 対応する展望（preview）記事があれば articleId を渡す（/news への内部リンク用）
+  const previewYearNum = Number(year);
+  const previewArticleId = Number.isFinite(previewYearNum) ? (findPublishedPreviewForTournament(tournamentId, previewYearNum)?.articleId ?? null) : null;
+
   // --- 文脈ブロック（過去データ由来のイベント）---
   // docs/wiki/news-context-blocks.md / ADR-005。
   // この年・種目の優勝者視点の milestone（連覇 / 初優勝）と、前回王者視点の
@@ -697,6 +713,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         prefectureName,
         scoreMatchLinks,
         contextMilestones,
+        previewArticleId,
       };
     })(),
   };
