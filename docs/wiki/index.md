@@ -18,6 +18,7 @@
 - [SEO（カニバリ/重複制御）](./seo.md)
 - [高校SEO M4検証ランブック（GSC事後検証・2026年8月中旬に実行）](./highschool-seo-m4-verification.md)
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md)
+- [SNSストーリー生成基盤](./sns-story-platform.md)
 - [Tournaments Local](./tournaments-local.md)
 - [SNS 1日目投稿画像](./sns-day1-images.md)
 - [Data Model](./data-model.md)
