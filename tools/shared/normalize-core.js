@@ -818,10 +818,12 @@
         if (idsArr.length) oppKey = idsArr.join('|');
       }
       if (!oppKey && row.opponentTeam && row.opponentTeam.team) {
-        // Build oppKey with prefecture if available to match keyToEntryNo format
-        const teamName = String(row.opponentTeam.team);
-        const prefecture = row.opponentTeam.prefecture;
-        oppKey = prefecture ? `${teamName}_${prefecture}` : teamName;
+        // keyToEntryNo は team カテゴリを row.team（チーム名のみ、prefecture無し）で
+        // 登録するため、oppKey もそれに合わせてチーム名のみにする。ここに prefecture を
+        // 付けると自チーム視点(myKey=team名のみ)と相手視点(oppKey=team名_prefecture)で
+        // キーの形式がずれ、2つの視点が同じ試合として統合できなくなる
+        // （winnerが取れず entries が [entryNo, null] になるバグの原因だった）。
+        oppKey = String(row.opponentTeam.team);
       }
       if (!oppKey && row.opponentEntryNo != null)
         oppKey = `E${String(row.opponentEntryNo)}`;

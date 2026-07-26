@@ -18,16 +18,33 @@
     - `champion-defeat`（王者撃破）: 前回王者（対象年より前で直近に優勝者が判明している開催の優勝ペア/校）が対象年に**出場し試合で敗退した**場合のみ、撃破した側を subject にしたイベントを返す。当年 `matches` から `championKey`（所属＋名前）一致で前回王者エントリを特定し、敗戦試合の勝者を解決する。不出場・無敗（連覇）は出さない。`getChampionDefeat()` として優勝者視点の `getChampionMilestones()` とは分離（主役が優勝者ではないため）。confidence は `confirmed`（試合の勝敗は確定）だが「前回王者」認定は掲載範囲依存のため scopeNote を添える。
   - `lib/careerRecord.ts`（analysis.json＋優勝歴。CareerTitle に categoryId を保持）
   - 大会ハブ差し込み: `src/components/TournamentContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`（最新年度の milestone と curated 優勝者の通算成績）
-  - 結果ページ差し込み（年度×種目）: `src/components/ResultContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`（その年・種目の repeat-title / first-title / champion-defeat を「注目ポイント」バッジで表示。historical-winners を共有して二重走査を回避）
+  - 結果ページ差し込み（年度×種目）: `src/components/ResultContextBlocks.tsx` ＋ `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`（その年・種目の repeat-title / first-title / champion-defeat を「注目ポイント」バッジで表示。historical-winners を共有して二重走査を回避。**2026-07-26 に「再戦」＝`priorMeetings` を追加**）
   - 選手ページ差し込み: `src/components/PlayerCareerHighlights.tsx` ＋ `src/pages/players/[id]/index.tsx`（通算成績・優勝歴・優勝歴由来の連覇/初優勝 milestone。curated 選手のみ）
-  - `/news` 記事（プレビュー/結果）: `lib/newsArticle.ts`（記事レコード＋ビュー組み立て）、`src/pages/news/[articleId].tsx`、`src/pages/news/index.tsx`、生成 `scripts/generate-news-drafts.mjs`。記事レコードは `data/news/<articleId>.json`（state: draft→review→published、公開は published のみ）。結果は優勝者＋milestone＋歴代。プレビュー→結果は同一 articleId で type を昇格。
-    - プレビューの構成（2026-06-25〜）: **curated 注目選手は廃止**（curated 選手が少なく、対象大会のエントリーにシード指定も無いため実質ゼロ件で見出しと中身が乖離していた）。代わりに当サイト掲載のエントリー＋前年/直近データの照合だけで決定的に出せる 5 ブロックを `lib/newsArticle.ts` で算出する: ①**連覇・防衛ウォッチ**（前回王者の出場可否＝`titleDefense`。ペア/校一致=intact、ダブルスで片方のみ継続=partial、双方が別々の新ペアで継続=split、不在=absent。partial/split の見せ方は後述）、②**前回入賞者の再登場**（前年 results の 準優勝/ベスト4/**ベスト8**で今大会も出場する者＝`returningPlacers`。優勝は①が扱うため除外。2026-06-26 にベスト8まで拡大）、③**過去の優勝者の再挑戦**（前々回以前の歴代優勝者で今大会も出場＝`returningFormerChampions`）、④**直近大会の好成績者**（直近の他大会でベスト4以上＝`recentAchievers`。後述）、⑤**出場規模・勢力図**（エントリー数・都道府県別・複数エントリー校＝`fieldOverview`）。照合は `tournamentRecords` の `resolveEntryToChampion` で前年/直近エントリを解決し、`buildFieldIndex` の出場者集合と突合する。判定単位は milestone と同様（個人=選手単位、団体=校単位）。
-    - 所属校の表記揺れ吸収（重要）: 年度間で所属校名の末尾に "_<都道府県>"（例: 2025「嬉野」/ 2026「嬉野_佐賀県」）が付くデータが混在する（HJSC 2026 では同名選手 75 人中 29 人で相違）。素の `playerKey`（名前@所属）で照合すると継続出場を取りこぼすため、プレビュー照合は `normalizeTeam()`（末尾 `_[^_]+?[都道府県]` を除去）で正規化したキーで突合し、表示は `cleanDisplay()` で同サフィックスを除去する。**本質的にはデータ側の表記統一が望ましい**（Open Questions 参照）。
+  - `/news` 記事（プレビュー/結果）: `lib/newsArticle.ts`（記事レコード＋ビュー組み立て）、`src/pages/news/[articleId].tsx`、`src/pages/news/index.tsx`、生成 `scripts/generate-news-drafts.mjs`。記事レコードは `data/news/<articleId>.json`（state: draft→review→published、公開は published のみ）。結果は優勝者＋milestone＋歴代。~~プレビュー→結果は同一 articleId で type を昇格。~~（ADR-010 で result 廃止）
+    - **`articleId` の命名規約（確定・2026-07-26 明文化）**: **`{tournamentId}-{year}`**。`scripts/generate-news-drafts.mjs` が生成する（`const articleId = \`${tid}-${year}\``）。ADR-010 で result 記事を廃止し `type` は常に `preview` 固定になったため、**`type` は articleId に含めない**。当初の Open Question「プレビュー→結果で共有する安定 ID をどう設計するか」は、昇格そのものが無くなったことで消滅した。現行 4 記事（`east-japan-2026` / `west-japan-2026` / `highschool-championship-2026` / `highschool-japan-cup-2026`）はすべてこの規約に従っている。
+    - プレビューの構成（2026-06-25〜）: **curated 注目選手は廃止**（curated 選手が少なく、対象大会のエントリーにシード指定も無いため実質ゼロ件で見出しと中身が乖離していた）。代わりに当サイト掲載のエントリー＋前年/直近データの照合だけで決定的に出せる 5 ブロックを `lib/newsArticle.ts` で算出する: ①**連覇・防衛ウォッチ**（前回王者の出場可否＝`titleDefense`。ペア/校一致=intact、ダブルスで片方のみ継続=partial、双方が別々の新ペアで継続=split、不在=absent。partial/split の見せ方は後述）、②**前回入賞者の再登場**（前年 results の 準優勝/ベスト4/**ベスト8**で今大会も出場する者＝`returningPlacers`。優勝は①が扱うため除外。2026-06-26 にベスト8まで拡大）、③**過去の優勝者の再挑戦**（前々回以前の歴代優勝者で今大会も出場＝`returningFormerChampions`）、④**直近大会の好成績者**（直近の他大会でベスト4以上＝`recentAchievers`。後述）、⑤**出場規模・勢力図**（エントリー数・都道府県別・複数エントリー校＝`fieldOverview`）、⑥**前哨戦**（出場ペアどうしが直近の他大会で既に対戦しているカード＝`priorMeetings`。2026-07-26 追加。後述）。照合は `tournamentRecords` の `resolveEntryToChampion` で前年/直近エントリを解決し、`buildFieldIndex` の出場者集合と突合する。判定単位は milestone と同様（個人=選手単位、団体=校単位）。
+    - 所属校の表記揺れ吸収（重要）: 年度間で所属校名の末尾に "_<都道府県>"（例: 2025「嬉野」/ 2026「嬉野_佐賀県」）が付くデータが混在する（HJSC 2026 では同名選手 75 人中 29 人で相違）。素の `playerKey`（名前@所属）で照合すると継続出場を取りこぼすため、プレビュー照合は `normalizeTeam()`（末尾 `_[^_]+?[都道府県]` を除去）で正規化したキーで突合し、表示は `cleanDisplay()` で同サフィックスを除去する。
+      - **決着（2026-07-26）**: 「本質的にはデータ側の表記統一が望ましい」という当時の Open Question は**データ側で解消済み**。`scripts/normalize-team-names.mjs` ＋ `data/tournaments/team-name-aliases.json`（都道府県サフィックスの揺れはスクリプト内蔵の 47 都道府県マップで自動補完）によりインポート時に正規化される運用になった。実測（2026-07-26・`data/tournaments/details` 全 455 ファイル走査）で **`participants[].team` 51,397 件のうち "_" を含むものは 0 件**。
+      - よって `normalizeTeam()` / `cleanDisplay()` は現時点で発火しない**防御コード**。撤去はせず残す（未正規化のデータが再流入した場合の保険であり、コストがゼロのため）。データ側の正規化が崩れたことを検知したい場合は上記の実測コマンドと同じ走査を回す。
     - 所属変更のフォールバック照合（2026-07-18〜）: 選手が年度間で所属を変える（例: east-japan 2026 女子の左近知美: 日本体育大学→ナガセケンコー）と「名前@所属」照合が外れ、前回王者ペアの片割れが継続扱いされず partial 誤判定・新ペアへの紐付け漏れが起きる。名前のみ照合は同名別人の誤マッチ要因（2026-07-03 に廃した理由）のため、**今大会のエントリー内でフルネームが一意（1 エントリーのみ）の場合に限り**名前のみで entryNo を解決するフォールバックを入れた（`lib/newsArticle.ts` の `uniqueEntryNoByName` / `resolveFieldEntryNo`。①②③の `resolvePairFate` と④ `buildRecentAchievers` の双方に適用）。同名が今大会に複数いる場合はフォールバックせず従来どおり不一致とする。残リスク: 本人不在で同名別人だけが出場しているケースは誤マッチしうる（名寄せ導入までの割り切り）。
     - 混成ペア（所属が異なるダブルス）の照合・表示（2026-07-03〜）: 一般大会ではペアの所属が割れる（クラブ＋実業団など）ケースがある。継続出場の照合は `ChampionEntry.playerTeams`（`players` と index 対応の選手個人の所属）を使い「名前@本人の所属」で突合する（従来はペアのどちらかの所属と一致すれば継続とみなしており、同名別人の誤マッチ要因だった）。表示は `teamDisplayOf` が混成ペアで null を返し、UI 側（`PlayerNames` の `perPlayerTeam`）が選手ごとに「名前（所属）」を付ける（所属が同じペアは従来どおりペア末尾に 1 回）。
-    - 直近大会の好成績者の再登場（2026-06-26〜）: 当プレビュー種目の出場者のうち、**直近の他大会でベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手を `recentAchievers` としてピックアップする。直近の定義は **プレビュー開催日（`information[year].startDate`）から 3ヶ月以内・最大 2 大会**で、`index.json` の **`isMajorTitle` を優先**（major→新しい順で 2 件選抜＝`findRecentTournaments`）。自大会は除外（前回入賞は②が扱う）。「**種目を問わない**」: 直近大会のどの種目での好成績でもよく、個人戦のみ対象（団体は per-player 不可）。`buildRecentAchieverIndex` が直近大会の全種目の results からベスト4以上を `playerKey`（`playerMatchKey`）で人物単位（最良成績）に索引化し、各種目で当大会の出場者集合（`field.playerKeySet`）と突合する。既に①②③で出ている選手は名前で重複排除し、成績→major→新しさ順に最大 8 名（`RECENT_ACHIEVERS_PER_CATEGORY`）。表示は選手名（id 系結果ページへリンク）＋「大会名 年 種目 成績」、major には「主要大会」バッジ。閾値・件数は `lib/newsArticle.ts` の定数（`RECENT_WINDOW_MONTHS`/`RECENT_TOURNAMENT_LIMIT`/`RECENT_ACHIEVERS_PER_CATEGORY`）。
+    - 直近大会の好成績者の再登場（2026-06-26〜）: 当プレビュー種目の出場者のうち、**直近の他大会でベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手を `recentAchievers` としてピックアップする。直近の定義は **プレビュー開催日（`information[year].startDate`）から 3ヶ月以内・プレビュー対象大会と同一 `generationId`・最大 2 大会**で、`index.json` の **`isMajorTitle` を優先**（major→新しい順で 2 件選抜＝`findRecentTournaments`）。自大会は除外（前回入賞は②が扱う）。
+      - **`generationId` フィルタ（2026-07-26〜）**: 当初は世代を問わず `index.json` の全 29 大会を候補にしていたため、高校大会のプレビューでも**一般カテゴリの major が枠を独占**していた。実測（インターハイ 2026）では枠を取るのが全日本ミックス（6/6・major）と全日本シングルス（5/15・major）で、IH 出場者との一致は 1 人 / 0 人。最も関連の深いハイスクールジャパンカップ（6/25・21 人一致）は `isMajorTitle:false` のため構造的に選ばれなかった。
+      - さらにこの「1 人」は**同名別人**だった。全日本ミックス `doubles-over65-mixed` のベスト4「山本幸輝」が、IH 2026 男子ダブルスでフルネームが一意な高校生「山本幸輝（早鞆・山口県）」に `uniqueEntryNoByName` フォールバックで紐づき、**over65 混合ダブルスの成績が「主要大会」バッジ付きで高校生に表示される**状態だった。世代をまたぐ照合は年齢・所属という手掛かりが効かず同名別人リスクが最大化するため、「決定的生成・誤り混入ゼロ」（ADR-005）の原則に沿って**候補段階で世代を絞る**。
+      - 効果: インターハイ 2026 は **1 人（誤情報）→ 21 人（HJC 由来・正しい）**。HJC 2026 は候補が全日本選抜 2025 に変わるが同大会は団体戦のみ収録のため 0 人で変化なし（団体は per-player 不可）。一般大会（東日本・西日本、`generationId:'all'`）は候補が変わらず回帰なし。
+      - フォールバック: プレビュー対象大会が `index.json` に無く `generationId` を解決できない場合は絞り込みを行わず従来動作を保つ（誤って候補ゼロにするより安全側）。
+      - トレードオフ: 高校生が一般大会で入賞した事実（本物なら強い文脈情報）は拾えなくなる。名寄せ（`homonyms.json`）が整備され世代をまたいだ照合が安全になった時点で再検討する（Open Questions 参照）。「**種目を問わない**」: 直近大会のどの種目での好成績でもよく、個人戦のみ対象（団体は per-player 不可）。`buildRecentAchieverIndex` が直近大会の全種目の results からベスト4以上を `playerKey`（`playerMatchKey`）で人物単位（最良成績）に索引化し、各種目で当大会の出場者集合（`field.playerKeySet`）と突合する。既に①②③で出ている選手は名前で重複排除し、成績→major→新しさ順に最大 8 名（`RECENT_ACHIEVERS_PER_CATEGORY`）。表示は選手名（id 系結果ページへリンク）＋「大会名 年 種目 成績」、major には「主要大会」バッジ。閾値・件数は `lib/newsArticle.ts` の定数（`RECENT_WINDOW_MONTHS`/`RECENT_TOURNAMENT_LIMIT`/`RECENT_ACHIEVERS_PER_CATEGORY`）。
     - ピックアップ選手の途中経過/敗退（2026-06-26〜）: プレビューでピックアップした選手（①連覇・防衛ウォッチ＝前回王者、②前回入賞者、③過去の優勝者）について、その年・種目の大会が**進行中なら途中経過、敗退済みなら敗退情報**を「今大会: ◯◯」バッジで表示する（`EntryStanding`。alive=進行中・緑／eliminated=敗退・灰／champion・runnerup=琥珀）。データ源は当年・種目の `detail.results`（`rank.kind`）で、`normalize-core.js` が **大会途中でも results を生成する**運用変更（未実施試合は敗退でなく `kind:'ongoing'`）に対応したもの。`buildFieldIndex` が `championKey→entryNo`／`playerKey→entryNo`／`entryNo→今大会名簿(entryRosterByNo)`／`entryNo→EntryStanding` を持ち、`resolvePairFate()` がピックアップ対象（前年 `ChampionEntry`）を**継続選手ごとに**当年 entryNo へ解決して状況を引く。**results 未掲載（途中経過が未入力）なら何も出さない**（graceful）。`rank.kind` 語彙と運用の詳細は [tournament-data-structure.md](../tournament-data-structure.md)。
     - 前回ペアが分かれた場合の紐付け（2026-07-05〜, 案A+C）: ダブルスで前回主役（王者/入賞者/元王者）のペアが今大会に**別々の新ペアで臨む**と、前回ペアを主体に表示すると「今大会の結果バッジが誰の・どのペアの成績か」が曖昧になり、消えた相方も誤って単独主役に見えてしまう。そこで **`resolvePairFate()`** が継続選手を entryNo 単位で解決し、`intact`（同ペア継続=1件）/`partial`（片方のみ継続・相方不在=1件）/`split`（双方が別ペアで継続=複数件）/`absent` を区別する（従来の `returningOf` は「両選手出場」を一律 intact と判定し、別ペアに分かれた split を intact と誤判定していた）。partial/split では**結果バッジを「今大会の実在ペア」（`CurrentPairEntry`。`entryRosterByNo` 由来の今大会名簿）に紐付けて主役化**し（案A）、前回ペアと解消の事実は注記/実績行に回す（案C）。①連覇・防衛ウォッチは**前回王者ヒーローカード**（`TitleDefenseHero`, 2026-07-05〜, 案A）で表示する。前回王者はプレビューの見出し格なので、注目の選手（`PickPlayerCardItem`）より一段強い専用カードで主役化する（従来は小さな一文で注目の選手より埋もれていた）。琥珀アクセントで強調し、**王者が敗退済み（`isAliveOrOpen`=false）または不在（absent）のときは灰に落とす**。intact=そのまま連覇挑戦（ラベルは連覇挑戦/連覇挑戦中/連覇達成/連覇ならず）、absent=不在（新王者へ）、partial/split=ペア解消（前回ペアをカード見出しにし、今大会ペアを枠内の行で並べる。split は今大会ペアごとに 1 行）。②③の「注目の選手」カードは今大会ペアを主役にして 1 枚化する。**同一の今大会ペアが複数の前回主役由来で重複**する場合（例: 前回準優勝ペアと前回ベスト4ペアがともに分割し、双方の片割れが今大会同じペアを組む）は、`buildPickPlayers` が今大会ペア（選手名の集合）単位で 1 枚にまとめ、複数の実績理由を `PickPlayerCard.achievements`（文字列配列）の**複数行**として保持し UI で行分けする。判定単位は milestone と同様（個人=選手単位、団体=校単位。団体はペア分割の概念が無く従来どおり championKey 一致）。
+    - **⑥前哨戦・再戦（2026-07-26〜）**: 出場ペアどうしが**直近の他大会で既に対戦していた**事実を出す。実装は `lib/priorMeetings.ts`（`buildPriorMeetingIndex`）で、**プレビュー記事と年度別結果ページの両方が同じ索引を共有する**（ADR-005「文脈ブロックが一次成果物、記事はその再利用先の一つ」）。
+      - **ペア（名前セット）単位で照合する**のが設計の肝。2026-07-26 の実測で、選手単位の照合は同姓同名の汚染が約 3%（地区大会にスコープを絞っても 2.11% でほとんど下がらない）である一方、ダブルスのペア単位ではインターハイ 2026 で同一の名前セットを持つエントリが男女とも 0 件（316/314 ペア）、地区大会 → IH で一致した 565 ペアの都道府県不一致も 0 件だった。**誤マッチ率を決めるのはスコープの狭さではなく照合キーの結合度**。詳細は [team-player-identity.md](./team-player-identity.md) と [raw/2026-07-26-homonym-measurement.md](../raw/2026-07-26-homonym-measurement.md)。
+      - この性質に依存するため **シングルス（1 名エントリ）と団体戦は対象外**（前者は名前 1 つでは一意性が担保できず、後者は選手名を持たない）。該当しない種目では空を返す（graceful）。
+      - 候補となる「前の大会」は **同一 `generationId`・同一 `categoryId`・開催日から 3 ヶ月以内**。④ の `findRecentTournaments` と違い**件数を絞らない**（地区大会は 9 件が同時に該当するのが正常で、ここは網羅することに意味があるため）。供給源の主力が地区大会なので `index.json` と `local_index.json` の両方を読む。
+      - **プレビューと結果ページで役割を分ける**（[seo.md](./seo.md) #8 のインテント分割）: プレビューは「起こりうるカード」＋カバレッジ（例: 出場 314 ペアのうち 230 ペアが対戦経験あり）を見せ、結果ページは**実際に組まれた対戦だけ**を「◯◯大会◯回戦の再戦」として見せる。
+      - **大会進行中に効く**設計。インターハイ 2026 は `matches` が 1 回戦しか登録されていないため再戦の検出は 1 件だが、大会が進んで `matches` が埋まるにつれて増える（ADR-007 の `ongoing` 運用）。
+      - 表示順は「今大会で再戦が確定しているもの → 前回対戦のラウンドが深い（決勝に近い）順」。1 種目あたり `PRIOR_MEETING_CARDS`(=6) 件まで。
+      - 性能: 結果ページ相当 333 件で合計 788ms・平均 2.4ms・最悪 11ms（2026-07-26 実測）。ビルド時間への影響は無視できる。
+      - 実装: `lib/priorMeetings.ts`、`lib/newsArticle.ts`（`buildPriorMeetingsBlock`）、`src/pages/news/[articleId].tsx`（`PriorMeetingsSection`）、`src/components/ResultContextBlocks.tsx`、`src/pages/tournaments/[generation]/[tournamentId]/[year]/.../index.tsx`
     - 結果ページへのリンク（2026-06-26〜）: プレビュー記事の各種目セクションからも、その年・種目の大会結果ページ（`/tournaments/{generation}/{tournamentId}/{year}/{category}/{age}/{gender}/`）へリンクする（結果記事と同形・文言は「大会結果を見る」）。リンクは結果ページが実在する場合のみ張る: `buildCategoryBlock` の `resultHref` を、当年・種目の detail（`readYearDetail`）が存在する場合のみ非 null にし、未掲載の年度ではリンクを出さない（結果ページの `getStaticPaths` が details ディレクトリ走査で生成するため、detail があれば必ずページが存在する）。`categoryId:null` のプレビューは details ディレクトリ走査で種目を列挙するため通常は全種目で実在し、明示 `categoryId` 指定時のみ実在ガードが効く。
     - 選手名のリンク（2026-06-25〜）: ①②③ の選手名は **id 系の結果ページ `/players/{id}/results/`** へ内部リンクする（`PreviewPlayerRef.playerId`）。解決は `data/players/index.json` を姓名一致（`count>=5`・同姓同名は最初の id）で行い、結果ページが無い選手は名前のみ（`lib/newsArticle.ts` の `resolvePlayerId`、学校ページ等と同じ既存規約）。**curated の slug プロフィール `/players/{slug}` は使わない**（curated が少なく網羅できないため）。slug 系と id 系の区別は [players-pages.md](./players-pages.md)「選手 URL の 2 系統」を参照。
   - `/news` 記事の OGP 画像（`summary_large_image` / 1200×630）: `tools/sns-images/news_og.py` が **ローカル生成**し `public/og/news/<articleId>-<hash>.png` を git にコミット（本番ビルドに依存を増やさない方針）。対象は `state==="published"` かつ `type==="result"` のみ。生成時に記事レコードへ `ogImage` を書き戻し、`src/pages/news/[articleId].tsx` が `ogImage` のある記事だけ large カードを出す（無ければ既定の `summary` カードへフォールバック）。`MetaHead` は `imageWidth`/`imageHeight` props で large と既定（192）を共存。preview のOGPは後回し。設計: [raw/2026-06-22-news-ogp-image-design.md](../raw/2026-06-22-news-ogp-image-design.md)。
@@ -89,7 +106,70 @@
 ## Open Questions
 
 - `milestone` / イベント抽出の語彙確定（初優勝・連覇・3連覇・初出場・王者撃破・通算N勝・ベスト4初進出 のキー定義と判定条件）。
+  - 現況（2026-07-26）: 実装済みは `repeat-title` / `first-title` / `champion-defeat` / `giant-killing` の 4 種。
+    **未実装は `best4-first` / `career-wins` / `first-appearance` の 3 種**（`lib/milestones.ts` の
+    型定義には既に存在し、`MILESTONE_PRIORITY` にも席がある）。3 種とも「その選手のキャリア全体を
+    通算する」判定のため名寄せ未整備がブロッカーで、語彙の議論以前に前提が揃っていない。
 - `head-to-head` 導入可否を判断する名寄せ精度の検証方法。
-- 記事 `articleId` の命名規約（プレビュー→結果で共有する安定 ID）。
-- 大会改称をまたぐ歴代結合（エイリアス table を持つか tournamentId 単位で割り切るか）。
-- **所属校名の表記統一**: `participants[].team` に "_<都道府県>" サフィックスが付くファイルと付かないファイルが混在し、年度間照合・集計の取りこぼし要因になる。現状はプレビュー側で `normalizeTeam()`/`cleanDisplay()` により実行時に吸収しているが、根本的にはインポート時にデータを正規化（または team とは別に prefecture 列へ分離）すべき。Assumption: 校名本体に "_" は出現しない前提でサフィックスを判定している。
+  - ~~補助線（2026-07-26）: 地区大会（`highschool-*-block`）は**同一年度・同一世代・同一地区**という
+    極めて狭いスコープで、同名別人の誤マッチ余地が構造的に小さい。ここを `head-to-head` の
+    先行導入スコープにできないか検討中。~~
+  - **訂正（2026-07-26・実測）**: 上の「スコープが狭ければ安全」という見立ては**測ったら支持されなかった**。
+    別人確定 70 名（[team-player-identity.md](./team-player-identity.md) の実測）を含む試合の割合は
+    **全データ 32,043 試合中 936 件＝2.92%** に対し、**地区大会のみ 1,940 試合中 41 件＝2.11%** で、
+    ほとんど下がらない。同姓同名は世代・地域に関係なく一様に分布するため、スコープを絞っても
+    誤マッチ率は下がらない。
+  - **効くのは照合キーの結合度だった**。ペア（ダブルス）単位で照合すると:
+    - インターハイ 2026 で**同一の名前セットを持つエントリは男女とも 0 件**（316 ペア / 314 ペア）。
+      2 名の名前の結合だけでエントリが一意に定まる。
+    - 地区大会 → IH の照合で一致した **565 ペアのうち、都道府県の不一致は 0 件**。
+      校名の不一致 32 件はすべて略称ゆれ（`北海道科学大学`/`北科大`、`東京農大二`/`東農大二`、
+      `高岡商業`/`高岡商` 等）で別人ではない（→ `team-name-aliases.json` 案件）。
+  - **結論**: `head-to-head` および前哨戦・再戦は、**ダブルスのペア単位に限れば現在の名寄せ水準でも
+    安全に実装できる**。危険なのは (a) 選手単位に降ろした時、(b) 世代を跨いだ時、の 2 つ。
+    優先度 C の凍結理由だった「名寄せ精度」は、**粒度を分けて評価すれば部分的に解除できる**。
+- **世代をまたいだ選手照合の解禁条件**: ④ は 2026-07-26 に `generationId` フィルタを入れて世代跨ぎを
+  止めたが、これは「高校生が一般大会で入賞した」という本物の強い文脈情報も同時に捨てている。
+  `uniqueEntryNoByName`（フルネームが一意なら名前のみで解決するフォールバック）が世代を跨ぐと
+  over65 の選手と高校生が結びつくところまで壊れるのが直接原因。`homonyms.json` による名寄せが
+  どこまで整備されればフィルタを緩められるか、判定基準が未定。
+  - 実測（2026-07-26）: `homonyms.json` のカバー率は **17%**（70 名中 12 名）。この水準で世代跨ぎを
+    解禁するのは早すぎる。解禁の目安は「E / F の未登録が 0 になる」ではなく（それでも同世代・同県の
+    同名は残るため）、**`homonyms.json` が id 分割としてアプリの選手解決に統合される**こと。
+    現状の登録は「危険な名前の記録」であって id は 1 名前 = 1 id のまま分割されていない。
+
+> **棚卸し（2026-07-26）**: 上記 3 件は**すべて同じ根**（同一人物を確実に同定できるか＝名寄せ）に
+> 帰着する。同日に実測を行い、問題の大きさと切り分け方が判明した（詳細は
+> [team-player-identity.md](./team-player-identity.md)「実測（2026-07-26）」）。
+>
+> - 別人と**証明できる**同姓同名は **70 名**（`homonyms.json` の登録は 16 名＝カバー率 17%）。
+>   全員が `players/index.json` で 1 id に融合され、37 名は結果ページ生成済み・4 名は index 対象。
+>   これは下限で、同世代かつ同一都道府県の同名は原理的に検出できない。
+> - 既存の `check-identity-health.mjs` は「未登録の同姓同名 0」と報告していたが、判定が
+>   「同一年 × 非隣接段階」に限定されていたため。**物差しが無かったのではなく感度が足りなかった**。
+>   検出器 E（出生年レンジ矛盾）/ F（同一大会 × 異なる都道府県）を同スクリプトに追加済み。
+> - **誤マッチ率を決めるのはスコープの狭さではなく照合キーの結合度**（上の `head-to-head` 項の訂正を参照）。
+>   ペア単位なら実測で曖昧性ゼロ、選手単位・世代跨ぎは 3% 前後の汚染。
+>
+> よって 3 件は「名寄せが終わるまで一括保留」ではなく、**照合キーの粒度ごとに個別に解禁可否を
+> 判断できる**。ペア単位＝解禁可、選手単位・世代跨ぎ＝`homonyms.json` の整備と id 分割を待つ。
+
+## 決着済み（旧 Open Questions）
+
+過去に Open Question として挙がっていたが、その後の実装・データ整備・ADR で決着したもの。
+「まだ未解決だ」と誤読されないようここに退避する（棚卸し: 2026-07-26）。
+
+- **記事 `articleId` の命名規約** → **決着**。`{tournamentId}-{year}` で確定。ADR-010 の result 記事廃止により
+  「プレビュー→結果で共有する安定 ID」という問い自体が消滅した。詳細は本ページ上部の
+  「`articleId` の命名規約（確定）」を参照。
+- **所属校名の表記統一** → **決着**。`scripts/normalize-team-names.mjs` ＋ `team-name-aliases.json` により
+  インポート時に正規化される運用になり、実測で `participants[].team` 51,397 件中 "_" 付きは 0 件。
+  詳細は本ページ上部の「所属校の表記揺れ吸収」の決着注記を参照。
+- **大会改称をまたぐ歴代結合**（エイリアス table を持つか tournamentId 単位で割り切るか）
+  → **tournamentId 単位で割り切る**（2026-07-26 決定）。理由: 実データに改称事例が存在しない。
+  `information/*.json` で年度間にラベル差がある 12 大会を確認したが、差分はすべて**回次**
+  （例:「第77回 天皇賜杯・皇后賜杯 全日本選手権大会」→「第78回 …」）で、大会名の改称は 1 件も無い。
+  `tournamentId` は年度に依らず安定し、正式名称は `index.json` の `label`、回次込みの表記は
+  `information[].label` が持つ、という現行の二層構造で足りている。
+  エイリアス table は**実際に改称が発生した時点で**作る（今作ると使われないまま陳腐化する）。
+  Assumption: 将来の改称時は `information[].label` の差分で検知できる前提。

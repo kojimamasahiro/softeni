@@ -17,7 +17,7 @@ import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitle
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
-import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
+import { getAllDetailRecords, loadInformationMap, loadNationalTournamentIds, loadTournamentIndex } from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
 import type { Games as GamesType, MatchStats as MatchStatsType } from '@/types/stats';
 import { TournamentEntry, TournamentParticipant } from '@/types/tournament';
@@ -1064,8 +1064,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // 全国高校大会出場選手（有名校の主力選手を含む）は試合数に関わらず常にインデックス対象とする。
   // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が
   // 生成 HTML の robots meta を読んで自動的に行うため、判定はこの 1 箇所に集約する。
+  //
+  // 重要（2026-07-26）: `generationId === 'highschool'` だけで判定してはいけない。
+  // `tournamentMeta` の元である `loadTournamentIndex()` は index.json と local_index.json を
+  // 連結して返すため、地区大会（`highschool-*-block` ほか。local_index 側で
+  // `generationId: 'highschool'` を持つ）まで「全国高校大会」と誤認し、地区大会に 1 試合
+  // 出ただけの薄い選手ページが試合数に関わらず全て index 対象になってしまう
+  // （地区大会 9 件＋東海選抜のユニーク選手は約 3,200 人。ページ生成対象 1,917 人を上回る規模）。
+  // `loadNationalTournamentIds()`（index.json 収録のみ）で全国大会に限定する。
+  // 規約の出典は `lib/playerStats/sourceAdapter.ts`（index.json＝national 候補 /
+  // local_index＝常に非 national）。
   const PLAYER_INDEX_MIN_MATCHES = 15;
-  const hasHighschoolNational = playerMatches.some((m) => tournamentMeta.get(m.tournamentId)?.generationId === 'highschool');
+  const nationalTournamentIds = await loadNationalTournamentIds(root);
+  const hasHighschoolNational = playerMatches.some(
+    (m) => nationalTournamentIds.has(m.tournamentId) && tournamentMeta.get(m.tournamentId)?.generationId === 'highschool',
+  );
   const shouldIndex = totalMatches >= PLAYER_INDEX_MIN_MATCHES || hasHighschoolNational;
 
   // Player Statistics Engine（facade）を併用し新データを追加提供する（P5・非破壊）。

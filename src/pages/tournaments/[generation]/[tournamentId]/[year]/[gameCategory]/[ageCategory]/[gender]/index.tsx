@@ -11,7 +11,7 @@ import { useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import ResultContextBlocks from '@/components/ResultContextBlocks';
+import ResultContextBlocks, { type PriorMeetingSummary } from '@/components/ResultContextBlocks';
 import MatchResults from '@/components/Tournament/MatchResults';
 import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
@@ -19,6 +19,7 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
+import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
@@ -64,6 +65,9 @@ interface TournamentYearResultPageProps {
   scoreMatchLinks?: ScoreMatchLink[];
   // 文脈ブロック（連覇 / 初優勝 / 王者撃破）。docs/wiki/news-context-blocks.md
   contextMilestones?: ContextMilestone[];
+  // 文脈ブロック「前哨戦・再戦」。この年・種目で実際に組まれた対戦のうち、
+  // 直近の他大会（主に地区大会）で既に対戦していたもの。lib/priorMeetings.ts
+  priorMeetingCards?: PriorMeetingSummary[];
   // 対応する展望（preview）記事の articleId（あれば）。/news への内部リンク用。
   // 「結果」を狙うリンクではないため、SEO カニバリの心配なく張れる（docs/wiki/seo.md #8）。
   previewArticleId?: string | null;
@@ -90,6 +94,7 @@ export default function TournamentYearResultPage({
   blockName = null,
   scoreMatchLinks = [],
   contextMilestones = [],
+  priorMeetingCards = [],
   previewArticleId = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
@@ -244,7 +249,7 @@ export default function TournamentYearResultPage({
         </section>
 
         {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
-        <ResultContextBlocks label={label} year={year} milestones={contextMilestones} />
+        <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} />
 
         {/* トーナメント表 */}
         {detailData && (
@@ -742,6 +747,35 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // --- 文脈ブロック「前哨戦・再戦」---
+  // 出場ペアどうしが直近の他大会（同一世代・同一種目・3ヶ月以内。主に地区大会）で
+  // 既に対戦していた事実を、この年・種目の結果ページにも出す。プレビュー記事と同じ
+  // lib/priorMeetings.ts を共有する（ADR-005「文脈ブロックが一次成果物」）。
+  // ペア単位で照合するため団体戦・シングルスでは空になる（graceful）。
+  const priorMeetingCards: PriorMeetingSummary[] = [];
+  if (Number.isFinite(targetYearNum)) {
+    const idx = buildPriorMeetingIndex(tournamentId, targetYearNum, categoryId, generation || null);
+    if (idx.size > 0 && detailData?.matches?.length) {
+      // 結果ページでは「今大会で実際に組まれた対戦」に絞る＝正真正銘の再戦だけを出す。
+      // プレビュー側が「起こりうるカード」を見せるのと役割を分ける（カニバリ回避）。
+      for (const m of detailData.matches) {
+        const es = m.entries ?? [];
+        if (es.length !== 2) continue;
+        const list = idx.get(meetingKey(es[0], es[1]));
+        if (!list?.length) continue;
+        const prev = list[0];
+        priorMeetingCards.push({
+          round: m.round ?? null,
+          winnerNames: prev.winnerNames,
+          loserNames: prev.loserNames,
+          priorLabel: prev.tournamentLabel,
+          priorYear: prev.year,
+          priorRound: prev.round,
+        });
+      }
+    }
+  }
+
   return {
     props: ((): Record<string, unknown> => {
       return {
@@ -765,6 +799,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         blockName,
         scoreMatchLinks,
         contextMilestones,
+        priorMeetingCards,
         previewArticleId,
       };
     })(),

@@ -16,6 +16,7 @@ type DetailRecord = {
 
 type TournamentDataCacheEntry = {
   tournamentIndex?: Promise<TournamentIndexEntry[]>;
+  nationalTournamentIds?: Promise<Set<string>>;
   informationMap?: Promise<Map<string, TournamentInformationEntry[]>>;
   detailRecords?: Promise<DetailRecord[]>;
   generations?: Promise<GenerationEntry[]>;
@@ -77,6 +78,44 @@ export const loadTournamentIndex = async (root?: string): Promise<TournamentInde
   })();
 
   return cacheEntry.tournamentIndex;
+};
+
+/**
+ * `data/tournaments/index.json` にのみ収録された大会 ID の集合（＝全国・主要大会）。
+ *
+ * `loadTournamentIndex()` は index.json と local_index.json を連結して返すため、
+ * 「その大会が全国規模か」を `generationId` だけで判定すると地区大会・県大会
+ * （local_index 側。`generationId: 'highschool'` を持つ）まで巻き込む。
+ * `lib/playerStats/sourceAdapter.ts` の「index.json 収録＝national 候補 /
+ * local_index は常に非 national」という既存規約に合わせるためのヘルパー。
+ */
+export const loadNationalTournamentIds = async (root?: string): Promise<Set<string>> => {
+  const cacheEntry = getCacheEntry(root);
+  if (cacheEntry.nationalTournamentIds) {
+    return cacheEntry.nationalTournamentIds;
+  }
+
+  cacheEntry.nationalTournamentIds = (async () => {
+    const fs = await import('fs');
+    const path = await import('path');
+    const cwd = root || process.cwd();
+    const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
+    const ids = new Set<string>();
+    if (!fs.existsSync(indexPath)) return ids;
+    try {
+      const data = JSON.parse(fs.readFileSync(indexPath, 'utf-8')) as TournamentIndexEntry[];
+      if (Array.isArray(data)) {
+        for (const t of data) {
+          if (t?.tournamentId) ids.add(t.tournamentId);
+        }
+      }
+    } catch {
+      // ignore
+    }
+    return ids;
+  })();
+
+  return cacheEntry.nationalTournamentIds;
 };
 
 // Load all information/*.json files into a map keyed by tournamentId

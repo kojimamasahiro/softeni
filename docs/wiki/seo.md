@@ -32,6 +32,28 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
 - 制御: `totalMatches >= 15` または全国高校大会出場歴ありなら index、どちらも満たさなければ `noindex, follow`。判定閾値は `PLAYER_INDEX_MIN_MATCHES`。sitemap も `scripts/filter-noindex-from-sitemap.mjs` で連動除去
 - 状態: **対策済**（データ増で自動的に index 復帰）
 - 詳細: [players-pages.md](./players-pages.md)「選手結果ページの noindex 選別」
+- **追記2（2026-07-26・「全国高校大会出場歴」の判定範囲を修正）**: 上記の「全国高校大会出場歴あり」
+  条件は `tournamentMeta.get(tid)?.generationId === 'highschool'` で判定していたが、その元である
+  `loadTournamentIndex()`（`lib/tournamentData.ts`）は **`index.json` と `local_index.json` を連結**
+  して返す。`local_index` 側にも `generationId: 'highschool'` の大会（**地区大会9件＋東海高等学校
+  選抜**）があるため、地区大会に 1 試合出ただけの薄い選手ページが試合数に関わらず全て index 対象に
+  なっていた。これは本節の設計思想（薄いページを外してインデックス枠を厚いページへ集中させる）を
+  構造的に反転させる。
+  - 規模: `local_index` の `generationId=highschool` 大会のユニーク選手は約 **3,223 人**。現在の
+    ページ生成対象（`count >= 5`）は 1,917 人。`data/players/index.json` が地区大会投入（2026-07-26）
+    より前の生成物だったため**まだ顕在化しておらず**、次の再生成前に修正できた。
+  - 修正: `lib/tournamentData.ts` に `loadNationalTournamentIds()`（`index.json` 収録 ID のみ・
+    キャッシュ付き）を追加し、判定を `nationalTournamentIds.has(tid) && generationId === 'highschool'`
+    に限定。規約の出典は `lib/playerStats/sourceAdapter.ts` の「index.json＝national 候補 /
+    local_index＝常に非 national」。
+  - 効果（全 details 走査の実測）: `hasHighschoolNational=true` の選手が **7,625 人 → 5,727 人
+    （−1,898 人）**。この 1,898 人は本来の `totalMatches >= 15` 判定に戻る。
+  - **教訓**: `local_index.json` に新しい大会カテゴリを足すとき、`generationId` を条件に使っている
+    既存ロジックが `index.json` 限定のつもりでないかを必ず確認する。両者を連結して返すローダー
+    （`loadTournamentIndex` / `tournamentHelpers.server.ts` の `loadTournamentIndexEntries`）が
+    複数あるため、`generationId` 単独での判定は原則として不十分。
+  - 実装: `lib/tournamentData.ts`（`loadNationalTournamentIds`）、`src/pages/players/[id]/results.tsx`
+  - 経緯: [raw/2026-07-26-idea-block-tournament-news-integration.md](../raw/2026-07-26-idea-block-tournament-news-integration.md)
 - 追記（2026-07-20・全国大会優勝の通称 literal）: index に残る側のページの一意性・情報密度を上げる
   施策として、**全国大会優勝歴のある選手（236人）の title / description / 本文に大会の通称を
   literal で出す**。狙いは「{選手名} インターハイ 優勝」のような**選手名＋通称**のクエリで、

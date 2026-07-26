@@ -14,6 +14,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { getChampionMilestones, getGiantKillings, type MilestoneEvent } from './milestones';
+import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings, meetingKey } from './priorMeetings';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -22,6 +23,7 @@ import {
   resolveEntryToChampion,
   type ChampionEntry,
   type RawDetail,
+  type RawParticipant,
 } from './tournamentRecords';
 import { getCategoryLabel } from './utils';
 
@@ -220,6 +222,34 @@ export type FieldOverview = {
   multiEntryTeams: Array<{ team: string; count: number }>;
 };
 
+/** 前哨戦の 1 カード（表示用） */
+export type PriorMeetingCard = {
+  /** 対戦が行われた大会のラベル（例: 近畿高等学校ソフトテニス選手権大会） */
+  tournamentLabel: string;
+  year: number;
+  /** 例: 準々決勝 */
+  round: string | null;
+  winner: PreviewPlayerRef[];
+  loser: PreviewPlayerRef[];
+  /** その大会での勝者側の所属（表示用。混成ペアなら null） */
+  winnerTeam: string | null;
+  loserTeam: string | null;
+  /** 今大会で既に再戦が実現しているか（1回戦など、対戦カードが確定済みの場合） */
+  rematchScheduled: boolean;
+};
+
+export type PriorMeetingsBlock = {
+  /** 既知の対戦カード総数（表示は上位のみ） */
+  totalCards: number;
+  /** 対戦履歴を持つ出場ペア数 / 全出場ペア数 */
+  coveredEntries: number;
+  totalEntries: number;
+  /** 供給元の大会ラベル（重複除去・新しい順） */
+  sourceLabels: string[];
+  /** 表示するカード（今大会で再戦が確定しているものを優先） */
+  cards: PriorMeetingCard[];
+};
+
 export type NewsCategoryBlock = {
   categoryId: string;
   categoryLabel: string;
@@ -244,6 +274,8 @@ export type NewsCategoryBlock = {
   returningFormerChampions: ReturningFormerChampion[];
   /** プレビューのみ: 直近他大会でベスト4以上の好成績を残した出場者 */
   recentAchievers: RecentAchiever[];
+  /** プレビューのみ: 前哨戦（出場ペアどうしが直近の他大会で既に対戦していたカード）。無ければ null */
+  priorMeetings: PriorMeetingsBlock | null;
   /**
    * プレビューのみ: 「注目の選手」統合カード。
    * returningPlacers / returningFormerChampions / recentAchievers を1本にマージし、
@@ -850,8 +882,13 @@ function readTournamentIndex(): Array<{
   tournamentId: string;
   label?: string;
   isMajorTitle?: boolean;
+  generationId?: string;
 }> {
-  return readJson<Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean }>>(path.join(resolveRoot(), 'data', 'tournaments', 'index.json')) ?? [];
+  return (
+    readJson<Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean; generationId?: string }>>(
+      path.join(resolveRoot(), 'data', 'tournaments', 'index.json'),
+    ) ?? []
+  );
 }
 
 /** 大会情報（開催日）を読む。年度ごとの startDate を持つ */
@@ -889,8 +926,26 @@ function previewStartDate(tournamentId: string, year: number): string | null {
 
 /**
  * プレビュー開催日から見た「直近の他大会」を最大 RECENT_TOURNAMENT_LIMIT 件選ぶ。
- * 条件: 開催日が (previewDate − 3ヶ月, previewDate) の窓内・自大会は除外。
+ * 条件: 開催日が (previewDate − 3ヶ月, previewDate) の窓内・自大会は除外・
+ *       **プレビュー対象大会と同一 generationId**（2026-07-26 追加。理由は下記）。
  * 並び: isMajorTitle 優先 → 新しい順。これで major を優先しつつ枠を埋める。
+ *
+ * generationId フィルタ（2026-07-26）:
+ * 従来は世代を問わず index.json の全大会を候補にし `isMajorTitle` 優先でソートしていたため、
+ * 高校大会のプレビューでも**一般カテゴリの major が枠を独占**していた。実測（インターハイ 2026）:
+ * 枠を取っていたのは全日本ミックス（6/6・major）と全日本シングルス（5/15・major）で、
+ * IH 出場者との一致はそれぞれ 1 人 / 0 人。最も関連の深いハイスクールジャパンカップ
+ * （6/25・21 人一致）は major でないため構造的に選ばれなかった。
+ *
+ * さらに重要なのは**誤り混入**で、この 1 人は同名別人だった。全日本ミックス
+ * `doubles-over65-mixed` のベスト4「山本幸輝」が、IH 2026 男子ダブルスでフルネームが一意な
+ * 高校生「山本幸輝（早鞆・山口県）」に `uniqueEntryNoByName` フォールバックで紐づき、
+ * over65 混合ダブルスの成績が「主要大会」バッジ付きで高校生に表示される状態だった。
+ * 世代をまたぐ照合は年齢・所属という手掛かりが効かず同名別人リスクが最大化するため、
+ * 「本文は決定的生成・誤り混入ゼロ」（ADR-005）の原則に沿って**候補段階で世代を絞る**。
+ *
+ * トレードオフ: 高校生が一般大会で入賞した事実（本物なら強い文脈情報）は拾えなくなる。
+ * 名寄せ（homonyms）が整備され世代をまたいだ照合が安全になった時点で再検討する。
  */
 function findRecentTournaments(previewTournamentId: string, previewDateIso: string): RecentTournamentEdition[] {
   const previewDate = new Date(previewDateIso);
@@ -899,9 +954,13 @@ function findRecentTournaments(previewTournamentId: string, previewDateIso: stri
   windowStart.setMonth(windowStart.getMonth() - RECENT_WINDOW_MONTHS);
 
   const idx = readTournamentIndex();
+  // プレビュー対象大会の generationId。index.json に無い場合は絞り込みを諦めて従来動作にする
+  // （誤って候補ゼロにするより、従来の挙動を保つ方が安全）。
+  const previewGeneration = idx.find((t) => t.tournamentId === previewTournamentId)?.generationId ?? null;
   const candidates: RecentTournamentEdition[] = [];
   for (const t of idx) {
     if (!t.tournamentId || t.tournamentId === previewTournamentId) continue;
+    if (previewGeneration && t.generationId !== previewGeneration) continue;
     for (const ed of readTournamentEditions(t.tournamentId)) {
       if (!ed.startDate) continue;
       const d = new Date(ed.startDate);
@@ -1147,6 +1206,88 @@ function buildPickPlayers(
   return Array.from(merged.values()).sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
 }
 
+/** 前哨戦ブロックで表示するカードの上限（1 種目あたり） */
+const PRIOR_MEETING_CARDS = 6;
+
+/**
+ * 前哨戦ブロックを組み立てる。
+ *
+ * `lib/priorMeetings.ts` がペア単位で索引した「出場ペアどうしの過去の対戦」を、
+ * 表示用に整形する。**今大会で既に対戦カードが確定しているもの（＝再戦が実現するもの）を
+ * 最優先**で見せる。インターハイ 2026 のように 1 回戦しか登録されていない段階では該当が
+ * 少ないが、大会が進んで `matches` が埋まるにつれて増える（ADR-007 の ongoing 運用）。
+ */
+function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId: string, generation: string): PriorMeetingsBlock | null {
+  const index = buildPriorMeetingIndex(tournamentId, year, categoryId, generation || null);
+  if (index.size === 0) return null;
+
+  const detail = readYearDetail(tournamentId, year, categoryId);
+  const totalEntries = detail?.entries?.length ?? 0;
+
+  // 今大会で既に組まれている対戦カード（1 回戦など）を集合化し、再戦の実現を判定する。
+  const scheduled = new Set<string>();
+  for (const m of detail?.matches ?? []) {
+    const es = m.entries ?? [];
+    if (es.length === 2) scheduled.add(meetingKey(es[0], es[1]));
+  }
+
+  const pmap = detail ? buildParticipantMap(detail) : new Map<string, RawParticipant>();
+  const entryById = new Map((detail?.entries ?? []).map((e) => [e.entryNo, e] as const));
+  /** 今大会のエントリ → 所属（ペアで割れていれば null） */
+  const teamOf = (entryNo: number): string | null => {
+    const e = entryById.get(entryNo);
+    if (!e) return null;
+    const teams = new Set<string>();
+    for (const id of e.playerIds ?? []) {
+      const t = pmap.get(id)?.team;
+      if (t) teams.add(cleanDisplay(t));
+    }
+    return teams.size === 1 ? [...teams][0] : null;
+  };
+  const refs = (names: string[]): PreviewPlayerRef[] => names.map((n) => ({ name: n, playerId: resolvePlayerId(n), returning: true, team: null }));
+
+  const cards: Array<PriorMeetingCard & { _sched: boolean }> = [];
+  const sourceLabels = new Set<string>();
+  for (const [key, list] of index) {
+    for (const m of list) {
+      sourceLabels.add(m.tournamentLabel);
+      cards.push({
+        tournamentLabel: m.tournamentLabel,
+        year: m.year,
+        round: m.round,
+        winner: refs(m.winnerNames),
+        loser: refs(m.loserNames),
+        winnerTeam: teamOf(m.winnerEntryNo),
+        loserTeam: teamOf(m.loserEntryNo),
+        rematchScheduled: scheduled.has(key),
+        _sched: scheduled.has(key),
+      });
+    }
+  }
+  // 再戦確定 → 勝ち上がりの深いラウンド（決勝に近い＝価値が高い）→ 大会名 の順。
+  const roundRank = (r: string | null): number => {
+    if (!r) return 0;
+    if (r.includes('決勝') && !r.includes('準')) return 100;
+    if (r.includes('準決勝')) return 90;
+    if (r.includes('準々決勝')) return 80;
+    const m = /(\d+)回戦/u.exec(r);
+    return m ? Number(m[1]) : 10;
+  };
+  cards.sort((a, b) => Number(b._sched) - Number(a._sched) || roundRank(b.round) - roundRank(a.round) || a.tournamentLabel.localeCompare(b.tournamentLabel));
+
+  return {
+    totalCards: countPriorMeetings(index),
+    coveredEntries: countCoveredEntries(index),
+    totalEntries,
+    sourceLabels: [...sourceLabels],
+    cards: cards.slice(0, PRIOR_MEETING_CARDS).map((c) => {
+      const { _sched: _omit, ...rest } = c;
+      void _omit;
+      return rest;
+    }),
+  };
+}
+
 function buildCategoryBlock(
   record: NewsArticleRecord,
   categoryId: string,
@@ -1168,6 +1309,7 @@ function buildCategoryBlock(
   let returningFormerChampions: ReturningFormerChampion[] = [];
   let recentAchievers: RecentAchiever[] = [];
   let fieldOverview: FieldOverview | null = null;
+  let priorMeetings: PriorMeetingsBlock | null = null;
 
   if (type === 'result') {
     const ms = getChampionMilestones(tournamentId, categoryId, year);
@@ -1200,6 +1342,7 @@ function buildCategoryBlock(
     for (const rf of returningFormerChampions) addPrevAndCurrent(rf.players, rf.currentEntries);
     recentAchievers = buildRecentAchievers(field, recentIndex, alreadyShownNames);
     fieldOverview = buildFieldOverview(field);
+    priorMeetings = buildPriorMeetingsBlock(tournamentId, year, categoryId, generation);
   }
 
   // その年・種目の結果ページは details ファイルが存在する場合のみ生成される
@@ -1225,6 +1368,7 @@ function buildCategoryBlock(
     returningPlacers,
     returningFormerChampions,
     recentAchievers,
+    priorMeetings,
     pickPlayers,
     fieldOverview,
     resultHref,

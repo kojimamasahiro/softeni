@@ -28,6 +28,30 @@ const core = teamCore;
 const level = (n) => { if (/中学/.test(n)) return '中'; if (/高校|高等学校/.test(n)) return '高'; if (/大学/.test(n)) return '大'; if (/小学|スポーツ少年団|スポ少|ジュニア/.test(n)) return '小'; if (/クラブ|ＯＢ|OB|役場|電力|協会|ＳＴＣ|STC|JSC/.test(n)) return 'ク'; return null; };
 
 const read = (p, d) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return d; } };
+
+// 大会 → generationId。index.json と local_index.json の両方（地区大会等は local 側）。
+const genOf = new Map();
+for (const fn of ['index.json', 'local_index.json']) for (const t of read(path.join(ROOT, 'data', 'tournaments', fn), [])) if (t && t.tournamentId) genOf.set(t.tournamentId, t.generationId);
+
+/**
+ * 1 観測（世代・年齢区分・開催年）が示す「出生年の許容レンジ」[lo, hi]。
+ * チェックE で使う。**わざと広め**に取る（レンジが広い＝矛盾しにくい＝過小検出側）。
+ * 目的は「確実に別人と言えるものだけ挙げる」ことで、疑わしきは挙げない。
+ */
+const birthBand = (gen, age, y) => {
+  const m = /^over(\d+)$/.exec(age);
+  if (m) return [y - +m[1] - 30, y - +m[1]]; // overNN は NN 歳以上（上限は +30 歳で丸める）
+  if (gen === 'highschool') return [y - 19, y - 14];
+  if (gen === 'university') return [y - 25, y - 17];
+  if (gen === 'junior') {
+    if (/grade\d/.test(age)) return [y - 14, y - 5]; // 小学生の学年別
+    if (age === 'u14') return [y - 16, y - 10];
+    if (age === 'u17') return [y - 19, y - 13];
+    if (age === 'u20') return [y - 22, y - 15];
+    return [y - 17, y - 10]; // 中学生・ジュニア一般
+  }
+  return [y - 60, y - 14]; // all / corporate / masters(none) / international など成年区分
+};
 const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => { const p = path.join(dir, e.name); return e.isDirectory() ? (e.name === 'temp' ? [] : walk(p)) : (e.name.endsWith('.json') ? [p] : []); });
 
 // ---- 読み込み ----
@@ -51,9 +75,15 @@ let brokenRefs = 0; const brokenEx = [];
 let dupIds = 0; const dupEx = [];
 let aliasLeft = 0;
 const appByName = new Map(); // name -> [(year,stage)]
+const bandByName = new Map(); // name -> {lo,hi,ex:[]} 出生年レンジの積集合（チェックE）
+const prefByName = new Map(); // name -> Map('tid\tyear' -> Set(prefecture))（チェックF）
 for (const f of walk(DET)) {
   const d = read(f, null); if (!d || !Array.isArray(d.participants)) continue;
   const rel = path.relative(DET, f).split(path.sep); const tid = rel[0]; const year = /^\d{4}$/.test(rel[1]) ? +rel[1] : null; const stage = catOf(tid);
+  // categoryId（`category-age-gender`）の age 部。E の overNN / 学年別判定に使う。
+  const seg = (rel[rel.length - 1] || '').replace(/\.json$/, '').split('-');
+  const age = seg.length >= 3 ? seg[seg.length - 2] : null;
+  const gen = genOf.get(tid) ?? null;
   const ids = new Set(); const seen = new Set();
   for (const p of d.participants) {
     if (p.prefecture != null) prefCount.set(p.prefecture, (prefCount.get(p.prefecture) || 0) + 1);
@@ -61,6 +91,19 @@ for (const f of walk(DET)) {
     if (p.id) { if (seen.has(p.id) && !ids.has('dup:' + p.id)) { dupIds++; ids.add('dup:' + p.id); if (dupEx.length < 5) dupEx.push(rel.join('/') + ' : ' + p.id); } seen.add(p.id); ids.add(p.id); }
     const nm = (p.lastName || '') + '\t' + (p.firstName || '');
     if (p.lastName && year && stage) (appByName.get(nm) || appByName.set(nm, []).get(nm)).push([year, stage]);
+    if (p.lastName && year && age) {
+      const [lo, hi] = birthBand(gen, age, year);
+      const cur = bandByName.get(nm);
+      const label = `${year} ${gen || '?'}/${age} ${p.team || ''}`;
+      if (!cur) bandByName.set(nm, { lo, hi, ex: [label] });
+      else { cur.lo = Math.max(cur.lo, lo); cur.hi = Math.min(cur.hi, hi); if (cur.ex.length < 4) cur.ex.push(label); }
+    }
+    // F は「実在 47 都道府県」のみで判定する（学連 / 高体連 / 連盟 等は所属区分であり県ではない）。
+    if (p.lastName && year && REAL.has(p.prefecture)) {
+      const ed = prefByName.get(nm) || prefByName.set(nm, new Map()).get(nm);
+      const k = tid + '\t' + year;
+      (ed.get(k) || ed.set(k, new Set()).get(k)).add(p.prefecture);
+    }
   }
   for (const e of d.entries || []) for (const r of e.playerIds || []) if (!ids.has(r)) { brokenRefs++; if (brokenEx.length < 5) brokenEx.push(rel.join('/') + ' : ' + r); }
 }
@@ -102,6 +145,39 @@ for (const [nm, aps] of appByName) {
   if (conf && !homoNames.has(nm)) newHomo.push(nm.replace('\t', ''));
 }
 
+// ---- チェックE: 未登録の同姓同名（出生年レンジの矛盾。年をまたいで検出）----
+// D は「同一年 × 段階 ORD 差 2 以上」しか見ないため、(a) 年をまたぐ矛盾、(b) catOf が null を返す
+// 大会（zennihon-championship / east-japan 等）、(c) overNN のマスターズ区分 を取りこぼしていた。
+// E は generationId と categoryId の age 部から出生年レンジを引き、積集合が空なら別人確定とする。
+// 名(firstName)が空の participant は「姓だけの一致」であり同姓同名の根拠にならない
+// （下流の identity.ts も nameKey(lastName, firstName) で照合する）。データ側の名前分割の
+// 不備として別枠で数える。build-player-homonyms.py も同じ理由で除外している。
+const noFirstName = new Set();
+const hasFirst = (nm) => { const t = nm.split('\t')[1]; if (t) return true; noFirstName.add(nm.split('\t')[0]); return false; };
+
+const dSet = new Set(newHomo);
+const ageConflict = [];
+for (const [nm, b] of bandByName) {
+  if (b.lo <= b.hi) continue;
+  const n = nm.replace('\t', '');
+  if (homoNames.has(nm) || dSet.has(n) || !hasFirst(nm)) continue;
+  ageConflict.push(n);
+}
+
+// ---- チェックF: 未登録の同姓同名（同一大会 × 異なる都道府県）----
+// 1 人が同じ大会・同じ年に 2 つの都道府県を代表することはできない。世代が同じ（＝E で検出できない）
+// 同姓同名を捕まえる唯一の信号。所属校名は略称ゆれがあるため県のみで判定する。
+const eSet = new Set(ageConflict);
+const prefConflict = [];
+for (const [nm, ed] of prefByName) {
+  let hit = false;
+  for (const s of ed.values()) if (s.size > 1) { hit = true; break; }
+  if (!hit) continue;
+  const n = nm.replace('\t', '');
+  if (homoNames.has(nm) || dSet.has(n) || eSet.has(n) || !hasFirst(nm)) continue;
+  prefConflict.push(n);
+}
+
 // ---- 出力 ----
 const line = (label, n, extra) => console.log(`${n > 0 ? '⚠' : '✓'} ${label}: ${n}${extra ? '  ' + extra : ''}`);
 console.log('=== 識別・名寄せ ヘルスチェック ===\n');
@@ -113,8 +189,13 @@ line('[チーム] 自動OK可の未統合候補', candAuto, candAuto ? '→ appl
 line('[チーム] 要人手レビュー候補(同一大会同居等)', candReview, reviewEx.length ? '例: ' + reviewEx.slice(0, 4).join(' ｜ ') : '');
 line('[チーム] 同名別校の疑い(reviewPrefectures)', reviewPref.length, reviewPref.slice(0, 4).map((t) => t.name).join(', '));
 line('[選手] 未登録の同姓同名(同年×非隣接段階)', newHomo.length, newHomo.slice(0, 8).join(', '));
+line('[選手] 未登録の同姓同名(出生年レンジ矛盾)', ageConflict.length, ageConflict.slice(0, 8).join(', '));
+line('[選手] 未登録の同姓同名(同一大会×異なる都道府県)', prefConflict.length, prefConflict.slice(0, 8).join(', '));
+line('[選手] 名(firstName)が未分割の同姓衝突', noFirstName.size, noFirstName.size ? [...noFirstName].slice(0, 8).join(', ') + ' → 取り込み元の氏名分割を確認' : '');
 
-const total = unresolvedPref.length + brokenRefs + dupIds + aliasLeft + candAuto + candReview + reviewPref.length + newHomo.length;
+const total = unresolvedPref.length + brokenRefs + dupIds + aliasLeft + candAuto + candReview + reviewPref.length + newHomo.length + ageConflict.length + prefConflict.length + noFirstName.size;
 console.log(`\n合計 要対応シグナル: ${total}`);
-console.log('注: 「内部略称(理大/理科大)」「同校別年の同姓同名」は信号が無く本チェックでは検出不可。');
+console.log('注: 「内部略称(理大/理科大)」は信号が無く本チェックでは検出不可。');
+console.log('注: 同姓同名の検出 D/E/F は下限。**同世代かつ同一都道府県**の同姓同名は 3 つとも信号が無く原理的に検出できない。');
+console.log('注: D/E/F の検出数は homonyms.json への登録漏れであり、登録しても players/index.json の id は分割されない（1 名前 = 1 id）。');
 process.exitCode = total > 0 ? 1 : 0;
