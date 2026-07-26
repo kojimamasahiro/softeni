@@ -205,7 +205,12 @@ function buildFieldPairIndex(detail: RawDetail): Map<string, number> {
  *
  * `categoryId` も揃える（男子ダブルスの対戦を女子ダブルスの文脈に混ぜない）。
  */
-function findPriorEditions(tournamentId: string, year: number, startDateIso: string, generationId: string | null): Array<{ tournamentId: string; label: string; year: number }> {
+function findPriorEditions(
+  tournamentId: string,
+  year: number,
+  startDateIso: string,
+  generationId: string | null,
+): Array<{ tournamentId: string; label: string; year: number }> {
   const target = new Date(startDateIso);
   if (Number.isNaN(target.getTime())) return [];
 

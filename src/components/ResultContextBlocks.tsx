@@ -86,7 +86,9 @@ export default function ResultContextBlocks({
                 {p.currentWinnerNames && (
                   <span className="block text-xs font-semibold">
                     今回は {p.currentWinnerNames.join('・')} が勝利
-                    {p.revenge && <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>}
+                    {p.revenge && (
+                      <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>
+                    )}
                   </span>
                 )}
               </li>

@@ -132,16 +132,22 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
   return (
     <li className={`rounded border border-border px-2.5 py-1.5 text-sm ${dead ? 'opacity-60' : ''}`}>
       {card.rematchStatus === 'scheduled' && (
-        <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">今大会で再戦</span>
+        <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">
+          今大会で再戦
+        </span>
       )}
       {/* 開催前は全ペアが alive なので「勝ち上がり中」とは言えない。中立の文言にする。 */}
       {card.rematchStatus === 'pending' && (
         <span className="mr-1.5 rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-bold text-sky-800 dark:bg-sky-900 dark:text-sky-100">再戦の可能性</span>
       )}
       {card.rematchStatus === 'possible' && (
-        <span className="mr-1.5 rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100">両者勝ち上がり中</span>
+        <span className="mr-1.5 rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100">
+          両者勝ち上がり中
+        </span>
       )}
-      {dead && <span className="mr-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-[10px] font-bold text-gray-700 dark:bg-gray-700 dark:text-gray-200">再戦なし</span>}
+      {dead && (
+        <span className="mr-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-[10px] font-bold text-gray-700 dark:bg-gray-700 dark:text-gray-200">再戦なし</span>
+      )}
       <span className="font-semibold">
         <PlayerNames players={card.winner} />
       </span>
@@ -161,12 +167,15 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
       {card.currentResult && (
         <span className="block text-xs font-semibold">
           今大会は {card.currentResult.winnerNames.join('・')} が勝利
-          {card.currentResult.revenge && <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>}
+          {card.currentResult.revenge && (
+            <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>
+          )}
         </span>
       )}
       {!card.currentResult && card.rematchStatus !== 'pending' && (card.winnerStanding || card.loserStanding) && (
         <span className="block text-xs opacity-70">
-          今大会: {card.winner.map((p) => p.name).join('・')} {card.winnerStanding?.label ?? '—'} / {card.loser.map((p) => p.name).join('・')} {card.loserStanding?.label ?? '—'}
+          今大会: {card.winner.map((p) => p.name).join('・')} {card.winnerStanding?.label ?? '—'} / {card.loser.map((p) => p.name).join('・')}{' '}
+          {card.loserStanding?.label ?? '—'}
         </span>
       )}
     </li>
