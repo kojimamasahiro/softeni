@@ -1009,7 +1009,7 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
         generation: entry.generationId,
         categoryTypes: [],
         isMajorTitle: entry.isMajorTitle ?? false,
-        officialUrl: entry.officialUrl,
+        officialUrl: entry.officialUrl ?? null,
       });
     }
 
