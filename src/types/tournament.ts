@@ -7,6 +7,8 @@ export interface TournamentIndexEntry {
   isMajorTitle: boolean;
   officialUrl: string;
   federationId?: string;
+  /** 高校総体の地区（ブロック）大会など、複数都道府県にまたがる大会の所属ブロックID。federationId とは排他 */
+  blockId?: string;
 }
 
 export interface TournamentCategoryInfo {
@@ -15,6 +17,14 @@ export interface TournamentCategoryInfo {
   category: string;
   gender: string;
   age: string;
+  /**
+   * 大会運営上の状態。'abandoned' は「途中で打ち切られ、以降の試合が実施されなかった」。
+   * 未設定＝通常どおり最後まで実施（既存データは全て未設定）。
+   * 打ち切り「理由」は保持しない（docs/raw/2026-07-26-abandoned-tournament-ui-design.md）。
+   */
+  status?: 'abandoned';
+  /** status==='abandoned' のとき、最後に完了したラウンド名（例: "3回戦"）。 */
+  abandonedAfterRound?: string;
 }
 
 export interface TournamentInformationEntry {

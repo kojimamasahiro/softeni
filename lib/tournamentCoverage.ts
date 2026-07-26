@@ -23,6 +23,7 @@ export type ResultCoverageStatus =
   | 'not_recorded' // 組み合わせは掲載済みだが決勝Tの結果はまだ1件も反映されていない
   | 'in_progress' // 決勝Tが一部反映されている（一部エントリーが ongoing）
   | 'completed' // 決勝Tの結果が出揃っている（ongoing なエントリーが無い）
+  | 'abandoned' // 大会が途中で打ち切られ、以降の試合が実施されなかった
   | 'unsupported'; // 決勝T(knockout)の試合データ自体が無い（予選リーグのみ等、今回はスコープ外）
 
 export interface ResultCoverage {
@@ -37,6 +38,10 @@ export interface ResultCoverage {
   deepestDecidedRoundLabel: string | null;
   /** results[].tournament.rank.kind === 'ongoing' なエントリー数（＝現在勝ち上がり中の枠数） */
   aliveEntries: number;
+  /** status==='abandoned' のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null */
+  abandonedAfterRound: string | null;
+  /** 勝者未確定の試合のうち、最も浅いラウンドの表示名（例: "準々決勝"）。打ち切り文言に使う */
+  firstUndecidedRoundLabel: string | null;
 }
 
 interface CoverageMatchInput {
@@ -81,9 +86,20 @@ const EMPTY_UNSUPPORTED: ResultCoverage = {
   progressRatio: null,
   deepestDecidedRoundLabel: null,
   aliveEntries: 0,
+  abandonedAfterRound: null,
+  firstUndecidedRoundLabel: null,
 };
 
-export function computeResultCoverage(detailData: CoverageDetailDataInput | null | undefined): ResultCoverage {
+/**
+ * @param abandonment 打ち切り情報（information の categories[] 由来。lib/tournamentAbandonment.ts）。
+ *   **detailData から導出できないので明示的に渡す**必要がある。理由: 打ち切り大会の detail は
+ *   読み出し時点で ongoing が確定成績へ解決済みのため、aliveEntries が 0 になり
+ *   completed と区別が付かないため。
+ */
+export function computeResultCoverage(
+  detailData: CoverageDetailDataInput | null | undefined,
+  abandonment?: { abandonedAfterRound: string } | null,
+): ResultCoverage {
   const matches = detailData?.matches ?? [];
   const results = detailData?.results ?? [];
 
@@ -107,10 +123,26 @@ export function computeResultCoverage(detailData: CoverageDetailDataInput | null
     }
   }
 
+  // 未確定試合のうち最も浅いラウンド（＝打ち切りなら「実施されなかった最初のラウンド」）。
+  let firstUndecidedRoundLabel: string | null = null;
+  let shallowestOrder = Infinity;
+  for (const m of knockoutMatches) {
+    if (m.winnerEntryNo !== null && m.winnerEntryNo !== undefined) continue;
+    const order = roundOrderOf(m.round);
+    if (order < shallowestOrder) {
+      shallowestOrder = order;
+      firstUndecidedRoundLabel = m.round ?? null;
+    }
+  }
+
   const aliveEntries = results.filter((r) => r?.tournament?.rank?.kind === 'ongoing').length;
 
   let status: ResultCoverageStatus;
-  if (results.length === 0) {
+  if (abandonment) {
+    // 打ち切りは最優先。「これから更新される」と誤解させないため、
+    // 未実施試合が残っていても in_progress にはしない。
+    status = 'abandoned';
+  } else if (results.length === 0) {
     // results 自体が無い（＝正規化パイプライン未実行等）。決勝T試合は存在するので
     // unsupported ではなく「反映前」として扱う。
     status = 'not_recorded';
@@ -127,11 +159,30 @@ export function computeResultCoverage(detailData: CoverageDetailDataInput | null
     progressRatio,
     deepestDecidedRoundLabel,
     aliveEntries,
+    abandonedAfterRound: abandonment?.abandonedAfterRound ?? null,
+    firstUndecidedRoundLabel,
   };
 }
 
-/** ページ本文（H1直下）に出す1行の文言。completed/unsupported は呼び出し側で非表示にする想定。 */
+/**
+ * ページ本文（H1直下）に出す1行の文言。completed/unsupported は呼び出し側で非表示にする想定。
+ *
+ * 打ち切り文言では**理由に一切言及しない**（「荒天のため」等を書かない）。
+ * 理由を断定できる典拠が無く、不正確な情報を出さないため。
+ * 詳細: docs/raw/2026-07-26-abandoned-tournament-ui-design.md
+ */
 export function formatResultCoverageBodyText(coverage: ResultCoverage): string | null {
+  if (coverage.status === 'abandoned') {
+    const lastRound = coverage.abandonedAfterRound ?? coverage.deepestDecidedRoundLabel;
+    const nextRound = coverage.firstUndecidedRoundLabel;
+    if (lastRound && nextRound) {
+      return `この大会は${lastRound}までで打ち切りとなり、${nextRound}以降は実施されませんでした。掲載している結果が最終結果です。`;
+    }
+    if (lastRound) {
+      return `この大会は${lastRound}までで打ち切りとなりました。掲載している結果が最終結果です。`;
+    }
+    return 'この大会は途中で打ち切りとなりました。掲載している結果が最終結果です。';
+  }
   if (coverage.status === 'not_recorded') {
     return `組み合わせを掲載しています。結果はこれから随時反映予定です(全${coverage.totalKnockoutMatches}試合)。`;
   }
@@ -146,6 +197,10 @@ export function formatResultCoverageBodyText(coverage: ResultCoverage): string |
 
 /** meta description に追記する短い一文（末尾に付け足す用途）。completed/unsupported は null。 */
 export function formatResultCoverageMetaSuffix(coverage: ResultCoverage): string | null {
+  if (coverage.status === 'abandoned') {
+    const lastRound = coverage.abandonedAfterRound ?? coverage.deepestDecidedRoundLabel;
+    return lastRound ? `${lastRound}までで打ち切り・これが最終結果。` : '途中で打ち切り・これが最終結果。';
+  }
   if (coverage.status === 'not_recorded') {
     return '組み合わせ掲載・結果は今後反映予定。';
   }

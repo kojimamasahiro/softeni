@@ -30,6 +30,13 @@ interface BracketMatchRow {
 interface TournamentBracketProps {
   detailData: TournamentDetailData;
   gameCategory?: string;
+  /**
+   * 打ち切り大会のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null。
+   * 未実施の試合を「未入力」ではなく「中止」と明示するために使う。
+   * 対戦カード自体は事実として価値があるので消さずに残す。
+   * docs/raw/2026-07-26-abandoned-tournament-ui-design.md
+   */
+  abandonedAfterRound?: string | null;
 }
 
 // entry の表示名パーツを組み立てる（MatchResults の MatchGroup ヘッダーと同じ規約）
@@ -399,8 +406,9 @@ function buildBracket(matches: TournamentMatch[]): {
   };
 }
 
-export default function TournamentBracket({ detailData, gameCategory }: TournamentBracketProps) {
+export default function TournamentBracket({ detailData, gameCategory, abandonedAfterRound = null }: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
+  const isAbandoned = Boolean(abandonedAfterRound);
   const shortOpponentNames = gameCategory !== undefined && gameCategory !== 'singles';
 
   // 選手名をタップした際に、遷移せずこの大会の対戦詳細（MatchGroup と同じ内容）をモーダルで表示する
@@ -574,7 +582,7 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
 
   return (
     <section className="mb-8">
-      <div className="flex justify-between items-center mb-4 px-1">
+      <div className="flex justify-between items-center mb-2 px-1">
         <h2 className="text-lg font-bold">トーナメント表</h2>
 
         {/* ラウンドセレクター */}
@@ -600,6 +608,12 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
           </div>
         )}
       </div>
+
+      {isAbandoned && (
+        <p className="mb-4 px-1 text-xs text-text-secondary">
+          {abandonedAfterRound}までで打ち切りとなったため、以降の対戦は実施されていません（「中止」と表示）。組み合わせは記録として残しています。
+        </p>
+      )}
 
       <div className="overflow-x-auto overflow-y-visible pb-4">
         <div className="relative inline-flex" style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}>
@@ -775,6 +789,20 @@ export default function TournamentBracket({ detailData, gameCategory }: Tourname
                                     const val = s[String(entryNo)] ?? s[entryNo];
                                     return val;
                                   })()}
+                                </text>
+                              )}
+
+                              {/* 打ち切りで実施されなかった試合。ペアの上側(index が偶数)にだけ1度出す。
+                                  空欄のままだと「結果未入力」と区別が付かないため明示する。 */}
+                              {isAbandoned && matchForEntry && !isChampionRound && matchForEntry.winnerEntryNo == null && index % 2 === 0 && (
+                                <text
+                                  x={ROUND_GAP - 2}
+                                  y={-6}
+                                  textAnchor="end"
+                                  fontSize="9"
+                                  className="fill-amber-700 dark:fill-amber-400 pointer-events-none select-none"
+                                >
+                                  中止
                                 </text>
                               )}
                             </svg>

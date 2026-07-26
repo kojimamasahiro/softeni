@@ -52,7 +52,11 @@ async function main() {
         for (const p of json.participants) {
           const ln = (p.lastName || '').trim();
           const fn = (p.firstName || '').trim();
-          if (ln || fn) {
+          // 姓・名の両方が揃っていない参加者（PDF由来で名が復元できない等）は
+          // 新規プレイヤーとして採番しない。旧仕様（ln || fn）は片方欠けでも
+          // 採番してしまい、参照されない「幽霊選手」を index.json に残していた
+          // （docs/raw/2026-07-19-manual-fix-checklist.md 7-1 参照）。
+          if (ln && fn) {
             const k = keyOf(ln, fn);
             counts.set(k, (counts.get(k) || 0) + 1);
           }

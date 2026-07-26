@@ -17,6 +17,7 @@ import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { getAbandonment } from '@/lib/tournamentAbandonment';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
@@ -28,6 +29,13 @@ type CategoryLink = {
   gender: string;
   href: string;
   winner: string | null;
+  /**
+   * 打ち切り大会のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null。
+   * 打ち切り年は優勝者が存在しないため、歴代優勝者リストで空欄（＝データ未整備に見える）
+   * にせず「打ち切り」と明示するために使う。
+   * docs/raw/2026-07-26-abandoned-tournament-ui-design.md
+   */
+  abandonedAfterRound: string | null;
 };
 
 type YearGroup = {
@@ -62,13 +70,18 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
   const oldestYear = years[years.length - 1] ?? '';
   const yearRange = latestYear && oldestYear && latestYear !== oldestYear ? `${oldestYear}〜${latestYear}年` : latestYear ? `${latestYear}年` : '';
 
+  // 打ち切り年は優勝者が存在しないが、行ごと落とすと「その年だけデータが無い」ように
+  // 見えてしまうため、優勝者名の代わりに打ち切り表記を入れて残す。
   const championRows = yearGroups.flatMap((g) =>
     g.categories
-      .filter((c) => c.winner)
+      .filter((c) => c.winner || c.abandonedAfterRound)
       .map((c) => ({
         year: g.year,
         categoryLabel: c.label,
-        winner: c.winner as string,
+        // 打ち切り年は null。JSON-LD の performer / description はこの null を見て出し分ける
+        // （プレースホルダ文字列を構造化データに混ぜない）。
+        winner: c.winner,
+        abandonedAfterRound: c.winner ? null : c.abandonedAfterRound,
         href: c.href,
         location: g.location,
         startDate: g.startDate,
@@ -151,7 +164,8 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                     ...resolveEventDates(r.startDate, r.endDate),
                     location: buildEventPlace(r.location),
                     organizer: buildEventOrganizer(),
-                    // performer: 優勝者（その大会の出場者）を推奨項目として付与
+                    // performer: 優勝者（その大会の出場者）を推奨項目として付与。
+                    // 打ち切り年は優勝者が存在しないので performer を出さない。
                     ...(r.winner
                       ? {
                           performer: {
@@ -160,7 +174,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                           },
                         }
                       : {}),
-                    description: `優勝: ${r.winner}`,
+                    description: r.winner ? `優勝: ${r.winner}` : `${r.abandonedAfterRound}までで打ち切りのため優勝者なし`,
                   },
                 })),
               }),
@@ -231,7 +245,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                         <Link href={r.href} className="text-link hover:underline">
                           {r.year}年
                         </Link>
-                        : {r.winner}
+                        : {r.winner ?? <span className="text-text-muted">{r.abandonedAfterRound}までで打ち切り（優勝者なし）</span>}
                       </li>
                     ))}
                   </ul>
@@ -453,6 +467,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           gender,
           href: `/tournaments/${generation}/${tournamentId}/${y}/${category}/${age}/${gender}`,
           winner: extractWinner(path.join(yearDir, f)),
+          abandonedAfterRound: getAbandonment(infoByYear.get(y)?.categories, categoryId)?.abandonedAfterRound ?? null,
         });
       }
 

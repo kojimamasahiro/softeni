@@ -23,6 +23,7 @@ import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
@@ -58,6 +59,8 @@ interface TournamentYearResultPageProps {
   federationId?: string | null;
   highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
   prefectureName?: string | null;
+  blockId?: string | null;
+  blockName?: string | null;
   scoreMatchLinks?: ScoreMatchLink[];
   // 文脈ブロック（連覇 / 初優勝 / 王者撃破）。docs/wiki/news-context-blocks.md
   contextMilestones?: ContextMilestone[];
@@ -83,6 +86,8 @@ export default function TournamentYearResultPage({
   federationId = null,
   highschoolTeamLinks = null,
   prefectureName = null,
+  blockId = null,
+  blockName = null,
   scoreMatchLinks = [],
   contextMilestones = [],
   previewArticleId = null,
@@ -93,10 +98,15 @@ export default function TournamentYearResultPage({
   const [searchQuery, setSearchQuery] = useState('');
   const detailData = useMemo(() => (detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null), [detailDataPacked]);
 
+  // 打ち切り情報は detailData から導出できない（読み出し時点で ongoing が解決済みのため）ので
+  // information から引く。打ち切りでない大会では null で、以降の挙動は一切変わらない。
+  const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
+  const abandonment = useMemo(() => getAbandonment(infoForYear?.categories, categoryId), [infoForYear, categoryId]);
+
   // 「どこまで結果が反映されているか」。ADR-007 Open Question対応。
   // completed/unsupported（過去の完了済み大会や予選リーグのみのデータ）では
   // meta description・本文とも変化なし。
-  const resultCoverage = useMemo(() => computeResultCoverage(detailData), [detailData]);
+  const resultCoverage = useMemo(() => computeResultCoverage(detailData, abandonment), [detailData, abandonment]);
   const coverageMetaSuffix = formatResultCoverageMetaSuffix(resultCoverage);
 
   const breadcrumbs = [
@@ -109,6 +119,14 @@ export default function TournamentYearResultPage({
     breadcrumbs.push({
       label: prefectureName,
       href: `/tournaments/local/${federationId}`,
+    });
+  }
+
+  if (blockId && blockName) {
+    breadcrumbs.push({ label: '地区大会', href: '/tournaments/block' });
+    breadcrumbs.push({
+      label: `${blockName}地区`,
+      href: `/tournaments/block/${blockId}`,
     });
   }
 
@@ -201,8 +219,8 @@ export default function TournamentYearResultPage({
           大会結果
         </h1>
 
-        {/* どこまで結果が反映されているか（進行中/組み合わせのみの大会でのみ表示） */}
-        <ResultCoverageNotice detailData={detailData} />
+        {/* どこまで結果が反映されているか（進行中/組み合わせのみ/打ち切りの大会でのみ表示） */}
+        <ResultCoverageNotice coverage={resultCoverage} />
 
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
@@ -229,7 +247,9 @@ export default function TournamentYearResultPage({
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} />
 
         {/* トーナメント表 */}
-        {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} />}
+        {detailData && (
+          <TournamentBracket detailData={detailData} gameCategory={gameCategory} abandonedAfterRound={abandonment?.abandonedAfterRound ?? null} />
+        )}
 
         {/* スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
@@ -557,11 +577,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const categoryId = `${gameCategory}-${ageCategory}-${gender}`;
   const detailsPath = path.join(detailsBase, year, `${categoryId}.json`);
 
+  // 打ち切り大会なら results の rank.kind:'ongoing' を確定成績へ解決する。
+  // このページは loadTournamentData を経由せず fs で直接 detail を読むため、
+  // ここでも明示的に適用が要る（lib/tournamentAbandonment.ts）。
+  const abandonment = getAbandonment(infoForYear?.categories, categoryId);
+
   let detailData: TournamentDetailData | null = null;
   const detailsWarnings: string[] = [];
   if (fs.existsSync(detailsPath)) {
     try {
       detailData = JSON.parse(fs.readFileSync(detailsPath, 'utf-8'));
+      if (detailData) {
+        detailData = applyAbandonment(detailData, abandonment, `${tournamentId}/${year}/${categoryId}`);
+      }
 
       // Resolve player IDs
       if (detailData && Array.isArray(detailData.participants)) {
@@ -616,6 +644,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const target = prefs.find((p) => p.id === federationId);
         if (target) {
           prefectureName = target.name;
+        }
+      } catch {
+        // ignore
+      }
+    }
+  }
+
+  // Resolving Block（高校総体の地区大会など複数都道府県にまたがる大会）info if available
+  const blockId = tournamentIndexEntry?.blockId ?? null;
+  let blockName: string | null = null;
+
+  if (blockId) {
+    const blocksPath = path.join(process.cwd(), 'data', 'tournaments', 'blocks.json');
+    if (fs.existsSync(blocksPath)) {
+      try {
+        const blocks = JSON.parse(fs.readFileSync(blocksPath, 'utf-8')) as Array<{
+          id: string;
+          name: string;
+        }>;
+        const target = blocks.find((b) => b.id === blockId);
+        if (target) {
+          blockName = target.name;
         }
       } catch {
         // ignore
@@ -711,6 +761,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         federationId,
         highschoolTeamLinks,
         prefectureName,
+        blockId,
+        blockName,
         scoreMatchLinks,
         contextMilestones,
         previewArticleId,

@@ -11,11 +11,12 @@ import PageLayout from '@/components/PageLayout';
 import SubNav from '@/components/nav/SubNav';
 import TournamentSearchTable, { TournamentInstance, TournamentLevel } from '@/components/tournaments/TournamentSearchTable';
 
-// 大会入口のサブナビ(すべて/主要/地域)。3ページ共通(docs/ui M2-3・C-3)
+// 大会入口のサブナビ(すべて/主要/地域/地区)。4ページ共通(docs/ui M2-3・C-3)
 export const TOURNAMENTS_SUBNAV = [
   { label: 'すべての大会', href: '/tournaments/', exact: true },
   { label: '主要大会', href: '/tournaments/major/', matchPrefix: '/tournaments/major' },
   { label: '地域大会', href: '/tournaments/local/', matchPrefix: '/tournaments/local' },
+  { label: '地区大会', href: '/tournaments/block/', matchPrefix: '/tournaments/block' },
 ];
 
 // ─── 型定義（ビルド専用） ──────────────────────────────────────────────────
@@ -28,7 +29,9 @@ type TournamentIndex = {
 };
 
 type LocalTournamentIndex = TournamentIndex & {
-  federationId: string;
+  // 都道府県単位の大会は federationId、複数都道府県にまたがる地区(ブロック)大会は blockId を持つ（排他）
+  federationId?: string;
+  blockId?: string;
   areaId?: TournamentLevel;
 };
 
@@ -227,7 +230,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         level,
         categoryLabels: info.categories.map((c) => c.label),
         hasInternalResult,
-        officialUrl: info.sourceUrl ?? t.officialUrl,
+        officialUrl: info.sourceUrl ?? t.officialUrl ?? null,
         firstCategoryPath,
       });
     }
@@ -239,7 +242,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const infos = readJSONSafe<TournamentInfo[]>(infoPath);
     if (!infos) continue;
 
-    const level: TournamentLevel = t.areaId ? t.areaId : inferLevel(t.tournamentId, true);
+    const level: TournamentLevel = t.areaId ? t.areaId : t.blockId ? 'block' : inferLevel(t.tournamentId, true);
 
     for (const info of infos) {
       const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
@@ -263,11 +266,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         startDate: normalizeDate(info.startDate),
         endDate: normalizeDate(info.endDate),
         location: info.location,
-        prefectureId: t.federationId,
+        // 都道府県大会は federationId で確定。地区大会など federationId が無いものは
+        // その年の開催地（info.location）から逆引きする（開催地フィルタで拾えなくなることを防ぐ）
+        prefectureId: t.federationId ?? prefNameToId[info.location] ?? null,
         level,
         categoryLabels: info.categories.map((c) => c.label),
         hasInternalResult,
-        officialUrl: info.sourceUrl ?? t.officialUrl,
+        officialUrl: info.sourceUrl ?? t.officialUrl ?? null,
         firstCategoryPath,
       });
     }

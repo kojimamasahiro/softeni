@@ -1,0 +1,47 @@
+[
+  {
+    "id": "hokkaido-block",
+    "name": "北海道",
+    "prefectureIds": ["hokkaido"]
+  },
+  {
+    "id": "tohoku",
+    "name": "東北",
+    "prefectureIds": ["aomori", "iwate", "miyagi", "akita", "yamagata", "fukushima"]
+  },
+  {
+    "id": "kanto",
+    "name": "関東",
+    "prefectureIds": ["ibaraki", "tochigi", "gunma", "saitama", "chiba", "tokyo", "kanagawa", "yamanashi"]
+  },
+  {
+    "id": "hokushinetsu",
+    "name": "北信越",
+    "prefectureIds": ["niigata", "toyama", "ishikawa", "fukui", "nagano"]
+  },
+  {
+    "id": "tokai",
+    "name": "東海",
+    "prefectureIds": ["gifu", "shizuoka", "aichi", "mie"]
+  },
+  {
+    "id": "kinki",
+    "name": "近畿",
+    "prefectureIds": ["shiga", "kyoto", "osaka", "hyogo", "nara", "wakayama"]
+  },
+  {
+    "id": "chugoku",
+    "name": "中国",
+    "prefectureIds": ["tottori", "shimane", "okayama", "hiroshima", "yamaguchi"]
+  },
+  {
+    "id": "shikoku",
+    "name": "四国",
+    "prefectureIds": ["tokushima", "kagawa", "ehime", "kochi"]
+  },
+  {
+    "id": "kyushu",
+    "name": "九州",
+    "prefectureIds": ["fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa"]
+  }
+]

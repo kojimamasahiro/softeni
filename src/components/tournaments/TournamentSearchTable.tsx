@@ -19,7 +19,7 @@ export type TournamentInstance = {
   level: TournamentLevel;
   categoryLabels: string[];
   hasInternalResult: boolean;
-  officialUrl: string;
+  officialUrl: string | null;
   firstCategoryPath: string | null;
 };
 

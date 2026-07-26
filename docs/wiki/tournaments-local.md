@@ -51,10 +51,11 @@
 ## `/tournaments/local` の仕様
 
 - `data/prefectures.json` の全都道府県を対象にページを生成する
-- 表示順は固定の地方区分順
-  北海道 → 東北 → 関東 → 中部 → 近畿 → 中国 → 四国 → 九州・沖縄
+- 表示順は固定の地方区分順（2026-07-22: 高校総体の地区大会区分に合わせて8→9区分に変更。中部を東海・北信越に分割し、山梨は関東へ移動）
+  北海道 → 東北 → 関東 → 北信越 → 東海 → 近畿 → 中国 → 四国 → 九州
 - 各都道府県カードは `/tournaments/local/{prefecture.id}` へリンクする
 - `federations.json` に `officialUrl` がある場合だけ「連盟サイト」リンクを出す
+- 各区分の見出しは、対応するブロックが `data/tournaments/blocks.json` に存在する場合 `/tournaments/block/{blockId}` へのリンクになる（後述）
 
 注意:
 
@@ -90,13 +91,28 @@
 - カテゴリチップ押下で既存の大会詳細ページへ遷移する
 - 外部結果ボタンは `sourceUrl` に新規タブで遷移する
 
+## 地区（ブロック）大会結果ページ（2026-07-22 追加）
+
+高校総体（インターハイ）の地区大会など、複数の都道府県にまたがる大会向けの別ルート。県予選のように「勝ち上がり式の予選」ではなく、地区大会での結果はインターハイ出場可否に影響しない（ユーザー確認済み）。詳細な経緯・決定事項は [2026-07-22-idea-highschool-block-tournament-data.md](../raw/2026-07-22-idea-highschool-block-tournament-data.md) / [2026-07-22-highschool-block-tournament-page-structure.md](../raw/2026-07-22-highschool-block-tournament-page-structure.md) を参照。
+
+対象 URL: `/tournaments/block`（入口）、`/tournaments/block/[blockId]`（ブロック別）。
+
+- `/tournaments/local/[federationId]` とは兄弟ルートにできない（Next.js Pages Router は同一階層で異なる動的セグメント名を共存できない）ため、`/tournaments/local` とは独立したルートにした
+- ブロックのマスタは `data/tournaments/blocks.json`（`id` / `name` / `prefectureIds` / 任意の `officialUrl`）。9ブロック、47都道府県すべてを1つずつ含む
+- 北海道はブロックと都道府県が1対1で重なるため、ブロックIDは `hokkaido-block`（都道府県IDの `hokkaido` と区別するため）
+- `local_index.json` の各大会は `federationId`（都道府県）と `blockId`（ブロック）のどちらか一方を持つ想定（排他）。ページ側のフィルタもそれぞれ `t.federationId === federationId` / `t.blockId === blockId` で絞り込む
+- `/tournaments/block/[blockId]` は `/tournaments/local/[federationId]` とほぼ同型構造（`TournamentCard` 等を共有）で、加えて対象都道府県一覧（`/tournaments/local/{id}` への内部リンク）を表示する
+- `/tournaments` の横断検索（`TournamentSearchTable`）では `level: 'block'` として扱われる（`t.blockId` があれば自動的に `block` 判定）。「開催地」フィルタ用の `prefectureId` は `federationId` が無い場合その年の開催地（`information` の `location`）から逆引きする
+- 年度別結果詳細ページ（`/tournaments/.../[gender]`）のパンくずは、`federationId` と同様に `blockId` があれば「地区大会 › {ブロック名}地区」を追加する
+- 高校カテゴリ（`/highschool/**`）の強豪校ランキング・都道府県ページの主要大会表示・主な卒業生集計・学校ページ内部リンクには**統合しない**方針（ブロックごとにデータ収録状況が揃わない可能性があるため）
+
 ## データ項目の実装上の扱い
 
 `local_index.json` の主な利用項目:
 
 - `tournamentId`
 - `generationId`
-- `federationId`
+- `federationId`（都道府県大会）または `blockId`（地区大会、2026-07-22 追加）
 - `label`
 
 実装メモ:

@@ -77,6 +77,13 @@
 - `/tournaments/local`
 - `/tournaments/local/[federationId]`
 
+地区（ブロック）大会結果ページ（2026-07-22 追加）:
+
+- `/tournaments/block`
+- `/tournaments/block/[blockId]`
+
+高校総体の地区大会など、複数都道府県にまたがる大会向け。`/tournaments/local`とは別ルート（`federationId`と`blockId`はNext.js Pages Routerの制約上、同一階層の動的セグメントに共存できないため）。
+
 関連:
 
 - [Tournaments Local](./tournaments-local.md)

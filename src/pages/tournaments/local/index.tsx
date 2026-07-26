@@ -23,19 +23,27 @@ type FederationInfo = {
   officialUrl?: string;
 };
 
+type Block = {
+  id: string;
+  name: string;
+  prefectureIds: string[];
+};
+
 type Props = {
   prefectures: Prefecture[];
   federationMap: Record<string, FederationInfo>;
+  blockIdByName: Record<string, string>;
 };
 
-export default function LocalTournamentsPage({ prefectures, federationMap }: Props) {
+export default function LocalTournamentsPage({ prefectures, federationMap, blockIdByName }: Props) {
   const pageUrl = `https://softeni-pick.com/tournaments/local/`;
 
-  // Group by region
-  const regions = ['北海道', '東北', '関東', '中部', '近畿', '中国', '四国', '九州・沖縄'];
+  // Group by region（高校総体の地区大会区分と揃えた9区分）
+  const regions = ['北海道', '東北', '関東', '北信越', '東海', '近畿', '中国', '四国', '九州'];
 
   const grouped = regions.map((region) => ({
     region,
+    blockId: blockIdByName[region],
     prefectures: prefectures.filter((p) => p.region === region),
   }));
 
@@ -61,7 +69,15 @@ export default function LocalTournamentsPage({ prefectures, federationMap }: Pro
             .filter((g) => g.prefectures.length > 0)
             .map((g) => (
               <section key={g.region}>
-                <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">{g.region}</h2>
+                <h2 className="text-xl font-bold mb-4 border-b border-border pb-2">
+                  {g.blockId ? (
+                    <Link href={`/tournaments/block/${g.blockId}`} className="text-link hover:underline">
+                      {g.region}地区
+                    </Link>
+                  ) : (
+                    g.region
+                  )}
+                </h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                   {g.prefectures.map((pref) => {
                     const fed = federationMap[pref.id];
@@ -104,6 +120,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   const tournamentRoot = path.join(process.cwd(), 'data', 'tournaments');
   const prefFile = path.join(process.cwd(), 'data/prefectures.json');
   const fedFile = path.join(tournamentRoot, 'federations.json');
+  const blocksFile = path.join(tournamentRoot, 'blocks.json');
 
   const prefectures: Prefecture[] = JSON.parse(fs.readFileSync(prefFile, 'utf-8'));
 
@@ -117,10 +134,21 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     federationMap[f.federationId] = f;
   }
 
+  let blocks: Block[] = [];
+  if (fs.existsSync(blocksFile)) {
+    blocks = JSON.parse(fs.readFileSync(blocksFile, 'utf-8'));
+  }
+
+  const blockIdByName: Record<string, string> = {};
+  for (const b of blocks) {
+    blockIdByName[b.name] = b.id;
+  }
+
   return {
     props: {
       prefectures,
       federationMap,
+      blockIdByName,
     },
   };
 };

@@ -8,6 +8,8 @@ import crypto from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
+import { type AbandonableCategoryInfo, applyAbandonment, getAbandonment } from '../tournamentAbandonment';
+
 const INTERNATIONAL_GENERATIONS = new Set(['international', 'international-qualifier']);
 
 export interface TournamentMeta {
@@ -73,6 +75,8 @@ export interface InformationEntry {
   endDate?: string | null;
   location?: string | null;
   sourceUrl?: string | null;
+  /** 打ち切り判定に使う（lib/tournamentAbandonment.ts）。日付用途では参照しない。 */
+  categories?: AbandonableCategoryInfo[] | null;
 }
 
 function readJsonRaw(filePath: string): { text: string; data: unknown } | null {
@@ -188,9 +192,20 @@ export class SourceAdapter {
     console.warn(`[sourceAdapter] ${msg}`);
   }
 
+  /** 打ち切り大会（information の categories[].status==='abandoned'）か。打ち切りでなければ null。 */
+  getAbandonmentFor(tournamentId: string, year: number | string, categoryId: string) {
+    const info = this.getInfoForYear(tournamentId, Number(year));
+    return getAbandonment(info?.categories, categoryId);
+  }
+
   /**
    * 標準スキーマ detail を読む。標準の実体（entries/matches/participants/results）が
    * 揃っていれば mixed も標準部として返す。非標準は null（ログして skip）。
+   *
+   * 打ち切り大会では results の `rank.kind:'ongoing'` を確定成績へ解決してから返す
+   * （lib/tournamentAbandonment.ts）。playerStats は src/utils/tournament-data-loader.ts
+   * とは別経路で details を読むため、両方に同じ解決を通す必要がある。
+   * 打ち切りでない大会では素通しで、既存の集計結果は一切変わらない。
    */
   readStandardDetail(tournamentId: string, year: number | string, categoryId: string): StandardDetail | null {
     const filePath = path.join(this.detailsRoot(), tournamentId, String(year), `${categoryId}.json`);
@@ -201,12 +216,14 @@ export class SourceAdapter {
     const data = parsed.data as Record<string, unknown>;
     const variant = this.detectVariant(data);
     if (variant === 'standard' || variant === 'mixed') {
-      return {
+      const detail: StandardDetail = {
         participants: (data.participants as RawParticipant[]) ?? [],
         entries: (data.entries as RawEntry[]) ?? [],
         matches: (data.matches as RawMatch[]) ?? [],
         results: (data.results as RawResult[]) ?? [],
       };
+      const abandonment = this.getAbandonmentFor(tournamentId, year, categoryId);
+      return applyAbandonment(detail, abandonment, `${tournamentId}/${year}/${categoryId}`);
     }
     this.warnOnce(`${tournamentId}/${year}/${categoryId}`, `non-standard schema (${variant}) skipped: ${tournamentId}/${year}/${categoryId}`);
     return null;

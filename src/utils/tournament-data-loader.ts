@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import type { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
 type TournamentFileDescriptor = {
@@ -20,6 +21,9 @@ type TournamentFileDescriptor = {
 // （全297ファイルを保持してもヒープ約36MB。実測 parse 208ms/回。）
 let cachedTournamentFiles: TournamentFileDescriptor[] | null = null;
 const tournamentDataCache = new Map<string, TournamentDetailData | null>();
+// information/<tid>.json も loadTournamentData から大会ファイル数ぶん引かれるため、
+// 同様にプロセス内キャッシュする（打ち切り判定で毎回読むのを避ける）。
+const tournamentInfoCache = new Map<string, TournamentInformationEntry[]>();
 
 /**
  * Recursively scan data/tournaments/details/ for all JSON files
@@ -63,10 +67,31 @@ export function getAllTournamentFiles(): TournamentFileDescriptor[] {
 }
 
 /**
+ * detail のファイルパスから {tournamentId, year, categoryId} を復元する。
+ * 期待する形: .../data/tournaments/details/<tournamentId>/<year>/<categoryId>.json
+ */
+function parseDetailPath(filePath: string): { tournamentId: string; year: number; categoryId: string } | null {
+  const parts = filePath.split(path.sep);
+  const detailsIdx = parts.lastIndexOf('details');
+  if (detailsIdx < 0 || parts.length < detailsIdx + 4) return null;
+  const tournamentId = parts[detailsIdx + 1];
+  const year = Number(parts[detailsIdx + 2]);
+  const categoryId = parts[detailsIdx + 3].replace(/\.json$/, '');
+  if (!tournamentId || !Number.isFinite(year) || !categoryId) return null;
+  return { tournamentId, year, categoryId };
+}
+
+/**
  * Load and parse a single tournament JSON file
  *
  * 返り値はプロセス内で共有されるキャッシュ済みオブジェクト。呼び出し側で
  * 破壊的変更をしてはならない（読み取り専用として扱うこと）。
+ *
+ * 打ち切り大会（information の categories[].status==='abandoned'）の場合、ここで
+ * results の `rank.kind:'ongoing'` を確定成績（ベスト8等）へ解決してから返す。
+ * detail を読む経路の choke point をここ1箇所にすることで、消費側が解決漏れを
+ * 起こさないようにしている。詳細は lib/tournamentAbandonment.ts。
+ * 打ち切りでない大会（＝既存の全データ）では素通しで、挙動は一切変わらない。
  */
 export function loadTournamentData(filePath: string): TournamentDetailData | null {
   const cached = tournamentDataCache.get(filePath);
@@ -81,34 +106,58 @@ export function loadTournamentData(filePath: string): TournamentDetailData | nul
     parsed = null;
   }
 
+  const descriptor = parsed ? parseDetailPath(filePath) : null;
+  if (parsed && descriptor) {
+    const abandonment = getTournamentAbandonment(descriptor.tournamentId, descriptor.year, descriptor.categoryId);
+    parsed = applyAbandonment(parsed, abandonment, `${descriptor.tournamentId}/${descriptor.year}/${descriptor.categoryId}`);
+  }
+
   tournamentDataCache.set(filePath, parsed);
   return parsed;
+}
+
+/**
+ * 指定大会・年・種目の打ち切り情報（information の categories[]）を返す。打ち切りでなければ null。
+ * coverage 表示など「打ち切りであること自体」を知りたい呼び出し側も使う
+ * （loadTournamentData 後の detail は ongoing が解決済みで判別できないため）。
+ */
+export function getTournamentAbandonment(tournamentId: string, year: number, categoryId: string) {
+  const info = getTournamentInfo(tournamentId, year);
+  return getAbandonment(info?.categories, categoryId);
 }
 
 /**
  * Get tournament information from data/tournaments/information/{tournamentId}.json
  */
 export function getTournamentInfo(tournamentId: string, year?: number): TournamentInformationEntry | null {
+  const infoArray = readTournamentInfoCached(tournamentId);
+  if (infoArray.length === 0) return null;
+
+  if (year) {
+    return infoArray.find((info) => info.year === year) || null;
+  }
+
+  // Return the most recent entry if no year specified
+  return infoArray.slice().sort((a, b) => b.year - a.year)[0] || null;
+}
+
+function readTournamentInfoCached(tournamentId: string): TournamentInformationEntry[] {
+  const hit = tournamentInfoCache.get(tournamentId);
+  if (hit) return hit;
+
   const infoPath = path.join(process.cwd(), `data/tournaments/information/${tournamentId}.json`);
-
-  if (!fs.existsSync(infoPath)) {
-    return null;
-  }
-
-  try {
-    const content = fs.readFileSync(infoPath, 'utf-8');
-    const infoArray = JSON.parse(content) as TournamentInformationEntry[];
-
-    if (year) {
-      return infoArray.find((info) => info.year === year) || null;
+  let parsed: TournamentInformationEntry[] = [];
+  if (fs.existsSync(infoPath)) {
+    try {
+      parsed = JSON.parse(fs.readFileSync(infoPath, 'utf-8')) as TournamentInformationEntry[];
+    } catch (error) {
+      console.error(`Failed to load tournament info from ${infoPath}:`, error);
+      parsed = [];
     }
-
-    // Return the most recent entry if no year specified
-    return infoArray.sort((a, b) => b.year - a.year)[0] || null;
-  } catch (error) {
-    console.error(`Failed to load tournament info from ${infoPath}:`, error);
-    return null;
   }
+
+  tournamentInfoCache.set(tournamentId, parsed);
+  return parsed;
 }
 
 /**
