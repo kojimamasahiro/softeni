@@ -6,7 +6,7 @@ export interface TournamentMeta {
   generation: string;
   categoryTypes: string[];
   isMajorTitle: boolean;
-  officialUrl?: string;
+  officialUrl?: string | null;
 }
 
 export interface TournamentYearMeta {
