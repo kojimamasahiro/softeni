@@ -45,12 +45,7 @@ async function main() {
   const existingMap = new Map();
   let maxId = 0;
   for (const p of existing) {
-    const idNum =
-      Number.isInteger(p.id) && p.id > 0
-        ? p.id
-        : parseInt(p.id, 10) > 0
-          ? parseInt(p.id, 10)
-          : 0;
+    const idNum = Number.isInteger(p.id) && p.id > 0 ? p.id : parseInt(p.id, 10) > 0 ? parseInt(p.id, 10) : 0;
     if (idNum > maxId) maxId = idNum;
     existingMap.set(keyOf(p.lastName, p.firstName), p);
   }
@@ -63,11 +58,7 @@ async function main() {
       // prefer fields id, lastName, firstName if present; else try name parsing
       const lastName = json.lastName || json.familyName || json.name || '';
       const firstName = json.firstName || json.givenName || '';
-      const id = Number.isInteger(json.id)
-        ? json.id
-        : json.id
-          ? parseInt(json.id, 10)
-          : undefined;
+      const id = Number.isInteger(json.id) ? json.id : json.id ? parseInt(json.id, 10) : undefined;
       collected.push({
         id,
         lastName: (lastName || '').toString().trim(),
@@ -105,8 +96,7 @@ async function main() {
 
   // sort deterministically by lastName,firstName
   out.sort((a, b) => {
-    if (a.lastName === b.lastName)
-      return a.firstName.localeCompare(b.firstName, 'ja');
+    if (a.lastName === b.lastName) return a.firstName.localeCompare(b.firstName, 'ja');
     return a.lastName.localeCompare(b.lastName, 'ja');
   });
 

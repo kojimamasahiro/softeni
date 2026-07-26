@@ -16,17 +16,9 @@ const matchesOutputRoot = path.join(outputRoot, 'matches');
 const growthOutputRoot = path.join(outputRoot, 'growth');
 const growthReportsOutputRoot = path.join(growthOutputRoot, 'reports');
 // 撤回（オプトアウト）リスト。ここに載せた subject_key は成長レポートを生成しない（ADR-004 Decision 5）。
-const growthExclusionsPath = path.join(
-  projectRoot,
-  'data',
-  'growth-exclusions.json',
-);
+const growthExclusionsPath = path.join(projectRoot, 'data', 'growth-exclusions.json');
 // ショーケース（featured）リスト。ここに載せた subject_key は visibility=public に引き上げる（ADR-004）。
-const growthFeaturedPath = path.join(
-  projectRoot,
-  'data',
-  'growth-featured.json',
-);
+const growthFeaturedPath = path.join(projectRoot, 'data', 'growth-featured.json');
 const detailsRoot = path.join(projectRoot, 'data', 'tournaments', 'details');
 const { loadEnvConfig } = nextEnv;
 const require = createRequire(import.meta.url);
@@ -36,10 +28,7 @@ process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
   moduleResolution: 'node',
 });
 require('ts-node/register/transpile-only');
-const {
-  buildGrowthReports,
-  getGrowthReportFileName,
-} = require('../lib/growthAnalysis.ts');
+const { buildGrowthReports, getGrowthReportFileName } = require('../lib/growthAnalysis.ts');
 
 // Align local script env loading with Next.js behavior while still allowing
 // CI/CD providers to inject environment variables directly.
@@ -48,10 +37,7 @@ loadEnvConfig(projectRoot);
 const isTestMode = process.env.NEXT_PUBLIC_TEST_MODE === 'true';
 
 const hasExistingSnapshot = () => {
-  return (
-    fs.existsSync(path.join(outputRoot, 'index.json')) &&
-    fs.existsSync(path.join(outputRoot, 'meta.json'))
-  );
+  return fs.existsSync(path.join(outputRoot, 'index.json')) && fs.existsSync(path.join(outputRoot, 'meta.json'));
 };
 
 const loadExistingSnapshotMatches = () => {
@@ -86,8 +72,7 @@ const getSupabaseConfig = () => {
     };
   }
 
-  const url =
-    process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? null;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? null;
   const serviceKey = process.env.SUPABASE_SERVICE_KEY ?? null;
 
   if (!url || !serviceKey) {
@@ -116,18 +101,14 @@ const readJsonIfExists = (filePath) => {
 // 形式は ["player:やまだたろう", ...] か [{ "subjectKey": "..." }, ...] の両対応。
 const loadSubjectKeys = (raw, listKey) => {
   const list = Array.isArray(raw) ? raw : (raw?.[listKey] ?? []);
-  return list
-    .map((entry) => (typeof entry === 'string' ? entry : entry?.subjectKey))
-    .filter((key) => typeof key === 'string' && key.length > 0);
+  return list.map((entry) => (typeof entry === 'string' ? entry : entry?.subjectKey)).filter((key) => typeof key === 'string' && key.length > 0);
 };
 
 // 撤回リスト（生成から除外する subject_key）。
-const loadGrowthExcludedKeys = () =>
-  loadSubjectKeys(readJsonIfExists(growthExclusionsPath), 'exclusions');
+const loadGrowthExcludedKeys = () => loadSubjectKeys(readJsonIfExists(growthExclusionsPath), 'exclusions');
 
 // ショーケース（featured）リスト（visibility=public に引き上げる subject_key）。
-const loadGrowthFeaturedKeys = () =>
-  loadSubjectKeys(readJsonIfExists(growthFeaturedPath), 'featured');
+const loadGrowthFeaturedKeys = () => loadSubjectKeys(readJsonIfExists(growthFeaturedPath), 'featured');
 
 const writeJson = (filePath, value) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
@@ -153,10 +134,7 @@ const stripGeneratedAtFields = (value) => {
 const hasSameContentIgnoringGeneratedAt = (nextValue, existingValue) => {
   if (!existingValue) return false;
 
-  return (
-    JSON.stringify(stripGeneratedAtFields(nextValue)) ===
-    JSON.stringify(stripGeneratedAtFields(existingValue))
-  );
+  return JSON.stringify(stripGeneratedAtFields(nextValue)) === JSON.stringify(stripGeneratedAtFields(existingValue));
 };
 
 const preserveExistingValueIfUnchanged = (nextValue, existingValue) => {
@@ -248,10 +226,7 @@ const buildGrowthAnalysisJson = (
   );
 
   reports.forEach((report) => {
-    const reportPath = path.join(
-      growthReportsOutputRoot,
-      getGrowthReportFileName(report.target.key),
-    );
+    const reportPath = path.join(growthReportsOutputRoot, getGrowthReportFileName(report.target.key));
 
     writeJson(
       reportPath,
@@ -260,9 +235,7 @@ const buildGrowthAnalysisJson = (
           generatedAt,
           report,
         },
-        existingGrowthReportsByFileName.get(
-          getGrowthReportFileName(report.target.key),
-        ),
+        existingGrowthReportsByFileName.get(getGrowthReportFileName(report.target.key)),
       ),
     );
   });
@@ -293,11 +266,7 @@ const attachGamesToMatches = async (supabase, matches) => {
   const matchIds = matches.map((match) => match.id);
   if (matchIds.length === 0) return matches;
 
-  const { data: games, error: gamesError } = await supabase
-    .from('games')
-    .select('*')
-    .in('match_id', matchIds)
-    .order('game_number', { ascending: true });
+  const { data: games, error: gamesError } = await supabase.from('games').select('*').in('match_id', matchIds).order('game_number', { ascending: true });
 
   if (gamesError) {
     throw gamesError;
@@ -308,11 +277,7 @@ const attachGamesToMatches = async (supabase, matches) => {
   let pointsByGameId = new Map();
 
   if (gameIds.length > 0) {
-    const { data: points, error: pointsError } = await supabase
-      .from('points')
-      .select('*')
-      .in('game_id', gameIds)
-      .order('point_number', { ascending: true });
+    const { data: points, error: pointsError } = await supabase.from('points').select('*').in('game_id', gameIds).order('point_number', { ascending: true });
 
     if (pointsError) {
       throw pointsError;
@@ -348,27 +313,17 @@ const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
   const summaryMatches = publicMatches.map(summarizeMatchForIndex);
   const existingMeta = readJsonIfExists(path.join(outputRoot, 'meta.json'));
   const existingIndex = readJsonIfExists(path.join(outputRoot, 'index.json'));
-  const existingMatchDetailsById = new Map(
-    matchIds.map((matchId) => [
-      matchId,
-      readJsonIfExists(path.join(matchesOutputRoot, `${matchId}.json`)),
-    ]),
-  );
+  const existingMatchDetailsById = new Map(matchIds.map((matchId) => [matchId, readJsonIfExists(path.join(matchesOutputRoot, `${matchId}.json`))]));
   const excludedKeys = loadGrowthExcludedKeys();
   const featuredKeys = loadGrowthFeaturedKeys();
-  const existingGrowthTargets = readJsonIfExists(
-    path.join(growthOutputRoot, 'targets.json'),
-  );
+  const existingGrowthTargets = readJsonIfExists(path.join(growthOutputRoot, 'targets.json'));
   const existingGrowthReportsByFileName = new Map(
     buildGrowthReports(publicMatches, generatedAt, {
       excludedKeys,
       featuredKeys,
     }).reports.map((report) => {
       const fileName = getGrowthReportFileName(report.target.key);
-      return [
-        fileName,
-        readJsonIfExists(path.join(growthReportsOutputRoot, fileName)),
-      ];
+      return [fileName, readJsonIfExists(path.join(growthReportsOutputRoot, fileName))];
     }),
   );
 
@@ -412,14 +367,7 @@ const writeBetaMatchesOutput = (publicMatches, generatedAt) => {
     );
   });
 
-  const growthStats = buildGrowthAnalysisJson(
-    publicMatches,
-    generatedAt,
-    existingGrowthTargets,
-    existingGrowthReportsByFileName,
-    excludedKeys,
-    featuredKeys,
-  );
+  const growthStats = buildGrowthAnalysisJson(publicMatches, generatedAt, existingGrowthTargets, existingGrowthReportsByFileName, excludedKeys, featuredKeys);
 
   const siteLinkCount = publicMatches.filter((match) => match.siteLink).length;
   return { growthStats, siteLinkCount };
@@ -431,25 +379,17 @@ const buildBetaMatchesJson = async () => {
   const config = getSupabaseConfig();
   if (!config) {
     if (hasExistingSnapshot()) {
-      console.warn(
-        'Supabase env is missing. Reusing committed beta matches JSON snapshot.',
-      );
+      console.warn('Supabase env is missing. Reusing committed beta matches JSON snapshot.');
       const generatedAt = new Date().toISOString();
-      const publicMatches =
-        loadExistingSnapshotMatches().map(enrichWithSiteLink);
-      const { growthStats, siteLinkCount } = writeBetaMatchesOutput(
-        publicMatches,
-        generatedAt,
-      );
+      const publicMatches = loadExistingSnapshotMatches().map(enrichWithSiteLink);
+      const { growthStats, siteLinkCount } = writeBetaMatchesOutput(publicMatches, generatedAt);
       console.log(
         `✓ Regenerated beta matches JSON from snapshot (${publicMatches.length} matches, ${siteLinkCount} linked, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,
       );
       return;
     }
 
-    throw new Error(
-      'Supabase env is missing and no beta matches JSON snapshot exists.',
-    );
+    throw new Error('Supabase env is missing and no beta matches JSON snapshot exists.');
   }
 
   const supabase = createClient(config.url, config.serviceKey, {
@@ -459,25 +399,17 @@ const buildBetaMatchesJson = async () => {
     },
   });
 
-  const { data: matches, error } = await supabase
-    .from('matches')
-    .select('*')
-    .order('created_at', { ascending: false });
+  const { data: matches, error } = await supabase.from('matches').select('*').order('created_at', { ascending: false });
 
   if (error) {
     throw error;
   }
 
   const safeMatches = await attachGamesToMatches(supabase, matches ?? []);
-  const publicMatches = safeMatches
-    .map(toPublicMatchSnapshot)
-    .map(enrichWithSiteLink);
+  const publicMatches = safeMatches.map(toPublicMatchSnapshot).map(enrichWithSiteLink);
   const generatedAt = new Date().toISOString();
 
-  const { growthStats, siteLinkCount } = writeBetaMatchesOutput(
-    publicMatches,
-    generatedAt,
-  );
+  const { growthStats, siteLinkCount } = writeBetaMatchesOutput(publicMatches, generatedAt);
 
   console.log(
     `✓ Generated beta matches JSON (${publicMatches.length} matches, ${siteLinkCount} linked, ${growthStats.reportCount}/${growthStats.targetCount} growth reports)`,

@@ -22,8 +22,7 @@ export default function ResultCoverageNotice({ coverage }: ResultCoverageNoticeP
 
   // 打ち切りは「更新待ち」ではなく確定した最終状態なので、in_progress / not_recorded の
   // info 系（青）と視覚的に区別する。
-  const tone =
-    coverage.status === 'abandoned' ? 'border-warning-border bg-warning-bg text-warning' : 'border-info-border bg-info-bg text-info';
+  const tone = coverage.status === 'abandoned' ? 'border-warning-border bg-warning-bg text-warning' : 'border-info-border bg-info-bg text-info';
 
   return (
     <p className={`mb-4 rounded border px-3 py-2 text-sm ${tone}`} role="status">

@@ -35,24 +35,60 @@ const DRY_RUN = process.argv.includes('--dry-run');
 
 // 47都道府県 + 北海道 の正準表記と短縮形
 const PREFS = [
-  '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
-  '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
-  '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県',
-  '静岡県', '愛知県', '三重県', '滋賀県', '京都府', '大阪府', '兵庫県',
-  '奈良県', '和歌山県', '鳥取県', '島根県', '岡山県', '広島県', '山口県',
-  '徳島県', '香川県', '愛媛県', '高知県', '福岡県', '佐賀県', '長崎県',
-  '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県',
+  '北海道',
+  '青森県',
+  '岩手県',
+  '宮城県',
+  '秋田県',
+  '山形県',
+  '福島県',
+  '茨城県',
+  '栃木県',
+  '群馬県',
+  '埼玉県',
+  '千葉県',
+  '東京都',
+  '神奈川県',
+  '新潟県',
+  '富山県',
+  '石川県',
+  '福井県',
+  '山梨県',
+  '長野県',
+  '岐阜県',
+  '静岡県',
+  '愛知県',
+  '三重県',
+  '滋賀県',
+  '京都府',
+  '大阪府',
+  '兵庫県',
+  '奈良県',
+  '和歌山県',
+  '鳥取県',
+  '島根県',
+  '岡山県',
+  '広島県',
+  '山口県',
+  '徳島県',
+  '香川県',
+  '愛媛県',
+  '高知県',
+  '福岡県',
+  '佐賀県',
+  '長崎県',
+  '熊本県',
+  '大分県',
+  '宮崎県',
+  '鹿児島県',
+  '沖縄県',
 ];
 const PREF_SET = new Set(PREFS);
-const SHORT_OF = new Map(
-  PREFS.filter((p) => p !== '北海道').map((p) => [p, p.replace(/[都道府県]$/, '')]),
-);
+const SHORT_OF = new Map(PREFS.filter((p) => p !== '北海道').map((p) => [p, p.replace(/[都道府県]$/, '')]));
 
 /** normalize-core.js の makeIdFromParts と同一ロジック */
 function makeIdFromParts(last, first, team, prefecture) {
-  return [last || '', first || '', team || '', prefecture || '']
-    .filter(Boolean)
-    .join('_');
+  return [last || '', first || '', team || '', prefecture || ''].filter(Boolean).join('_');
 }
 
 /**
@@ -106,16 +142,12 @@ function repairFile(file) {
     const { team: cleanTeam, pref: recoveredPref } = recoverTeam(p.team);
     const pref = p.prefecture ?? recoveredPref ?? null;
     if (recoveredPref && p.prefecture && recoveredPref !== p.prefecture) {
-      throw new Error(
-        `${path.relative(ROOT, file)}: 復元した都道府県(${recoveredPref})と既存フィールド(${p.prefecture})が矛盾: ${p.id}`,
-      );
+      throw new Error(`${path.relative(ROOT, file)}: 復元した都道府県(${recoveredPref})と既存フィールド(${p.prefecture})が矛盾: ${p.id}`);
     }
     if (recoveredPref && !p.prefecture) prefFix.push({ id: p.id, pref: recoveredPref });
     const newId = makeIdFromParts(p.lastName, p.firstName, cleanTeam, pref);
     if (newIds.has(newId) && newIds.get(newId) !== p.id) {
-      throw new Error(
-        `${path.relative(ROOT, file)}: 修復後IDが衝突: "${newIds.get(newId)}" と "${p.id}" → "${newId}"（要手動確認）`,
-      );
+      throw new Error(`${path.relative(ROOT, file)}: 修復後IDが衝突: "${newIds.get(newId)}" と "${p.id}" → "${newId}"（要手動確認）`);
     }
     newIds.set(newId, p.id);
     if (cleanTeam !== p.team) teamRepl.set(p.team, cleanTeam);
@@ -138,10 +170,7 @@ function repairFile(file) {
   // 裸の全文置換は team/name フィールドを巻き込む事故の原因だったため禁止。
   for (const { oldId, newId } of idRepl) {
     const o = escapeRegExp(oldId);
-    for (const re of [
-      new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'),
-      new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g'),
-    ]) {
+    for (const re of [new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'), new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g')]) {
       const count = (text.match(re) || []).length;
       if (!count) continue;
       text = text.replace(re, (_, prefix) => `${prefix}"${newId}"`);
@@ -156,16 +185,13 @@ function repairFile(file) {
     if (ids.has(p.id)) throw new Error(`${path.relative(ROOT, file)}: 修復後にID重複: ${p.id}`);
     ids.add(p.id);
     if (p.id.startsWith('_')) throw new Error(`${path.relative(ROOT, file)}: 破損IDが残存: ${p.id}`);
-    if (p.team && p.team.startsWith('_'))
-      throw new Error(`${path.relative(ROOT, file)}: 破損teamが残存: ${p.team}`);
+    if (p.team && p.team.startsWith('_')) throw new Error(`${path.relative(ROOT, file)}: 破損teamが残存: ${p.team}`);
     const expect = makeIdFromParts(p.lastName, p.firstName, p.team, p.prefecture);
-    if (p.id !== expect)
-      throw new Error(`${path.relative(ROOT, file)}: idがフィールド再構成と不一致: ${p.id} ≠ ${expect}`);
+    if (p.id !== expect) throw new Error(`${path.relative(ROOT, file)}: idがフィールド再構成と不一致: ${p.id} ≠ ${expect}`);
   }
   for (const e of after.entries ?? []) {
     for (const pid of e.playerIds ?? []) {
-      if (!ids.has(pid))
-        throw new Error(`${path.relative(ROOT, file)}: playerIds が未解決: ${pid}`);
+      if (!ids.has(pid)) throw new Error(`${path.relative(ROOT, file)}: playerIds が未解決: ${pid}`);
     }
   }
 
@@ -192,8 +218,7 @@ function main() {
     totalChanges += res.changed;
     console.log(`${DRY_RUN ? '[dry-run] ' : ''}${path.relative(ROOT, file)}: ${res.changed} 箇所置換`);
     for (const [oldT, newT] of res.teamRepl) console.log(`  team: "${oldT}" -> "${newT}"`);
-    for (const { oldId, newId } of res.idRepl.slice(0, 5))
-      console.log(`  id:   "${oldId}" -> "${newId}"`);
+    for (const { oldId, newId } of res.idRepl.slice(0, 5)) console.log(`  id:   "${oldId}" -> "${newId}"`);
     if (res.idRepl.length > 5) console.log(`  id:   ...他 ${res.idRepl.length - 5} 件`);
   }
 

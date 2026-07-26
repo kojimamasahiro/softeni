@@ -120,8 +120,7 @@ export default function STLeagueYearHub({ year, meta, divisionNames, champions }
                 <div key={key} className={`bg-surface rounded-xl p-5 border ${ring} shadow-sm`}>
                   <div className="text-xs font-semibold text-text-muted mb-1">{label}</div>
                   <div className="flex items-center gap-2">
-                    <span className="text-amber-500" aria-hidden>
-                              </span>
+                    <span className="text-amber-500" aria-hidden></span>
                     <span className="font-bold text-lg">{champions[key] ?? '—'}</span>
                   </div>
                 </div>

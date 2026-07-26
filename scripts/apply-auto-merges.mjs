@@ -21,27 +21,44 @@ function level(n) {
   if (/クラブ|ＯＢ|OB|役場|電力|協会|ＳＴＣ|STC|JSC/.test(n)) return 'ク';
   return null;
 }
-const memGenre = (m) => { const g = (ctx[m.id] || {}).genres || []; return g.length === 1 ? g[0] : null; };
+const memGenre = (m) => {
+  const g = (ctx[m.id] || {}).genres || [];
+  return g.length === 1 ? g[0] : null;
+};
 const instOf = (m) => new Set((ctx[m.id] || {}).inst || []);
 function defaultGroups(members) {
-  const keys = members.map((m, i) => { const g = memGenre(m); return g != null ? 'G:' + g : 'N:' + (level(m.name) || 'bare' + i); });
-  const uniq = [...new Set(keys)]; const idx = {}; uniq.forEach((k, i) => (idx[k] = i));
+  const keys = members.map((m, i) => {
+    const g = memGenre(m);
+    return g != null ? 'G:' + g : 'N:' + (level(m.name) || 'bare' + i);
+  });
+  const uniq = [...new Set(keys)];
+  const idx = {};
+  uniq.forEach((k, i) => (idx[k] = i));
   return keys.map((k) => idx[k]);
 }
 function autoOK(c) {
-  const groups = defaultGroups(c.members); const byG = {};
+  const groups = defaultGroups(c.members);
+  const byG = {};
   c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));
-  for (const g in byG) { const ms = byG[g];
-    for (let i = 0; i < ms.length; i++) for (let j = i + 1; j < ms.length; j++) {
-      const a = instOf(ms[i]), b = instOf(ms[j]); for (const x of a) if (b.has(x)) return false;
-    } }
+  for (const g in byG) {
+    const ms = byG[g];
+    for (let i = 0; i < ms.length; i++)
+      for (let j = i + 1; j < ms.length; j++) {
+        const a = instOf(ms[i]),
+          b = instOf(ms[j]);
+        for (const x of a) if (b.has(x)) return false;
+      }
+  }
   return true;
 }
 function mergeEntries(c) {
-  const groups = defaultGroups(c.members); const byG = {};
+  const groups = defaultGroups(c.members);
+  const byG = {};
   c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));
   const out = [];
-  for (const g in byG) { const ms = byG[g]; if (ms.length < 2) continue;
+  for (const g in byG) {
+    const ms = byG[g];
+    if (ms.length < 2) continue;
     ms.sort((a, b) => b.count - a.count);
     out.push({ canonical: ms[0].name, aliases: ms.slice(1).map((m) => m.name), note: c.prefecture || '' });
   }
@@ -50,7 +67,11 @@ function mergeEntries(c) {
 
 const additions = [];
 let autoClusters = 0;
-for (const c of clusters) { if (!autoOK(c)) continue; autoClusters++; for (const e of mergeEntries(c)) additions.push(e); }
+for (const c of clusters) {
+  if (!autoOK(c)) continue;
+  autoClusters++;
+  for (const e of mergeEntries(c)) additions.push(e);
+}
 console.log(`自動OKクラスタ: ${autoClusters} / 統合グループ(別名追加): ${additions.length}`);
 const res = applyAdditions(additions);
 console.log(`alias反映: 適用 ${res.applied.length} / スキップ ${res.skipped.length} / 競合 ${res.conflicts.length}`);

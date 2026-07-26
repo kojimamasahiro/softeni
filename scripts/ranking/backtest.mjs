@@ -475,9 +475,9 @@ function runRatedTier() {
 
   // --- 重み写像（正規化定数は予測比較に影響しないため、形だけ変える） ---
   const mappings = {
-    'exp200': (r) => 10 ** ((r - 1500) / 200), // レート差を強く効かせる
-    'exp400': (r) => 10 ** ((r - 1500) / 400), // Elo素直（+400で10倍）
-    'linear': (r) => Math.max(r - 1200, 1), // ゆるやか（線形）
+    exp200: (r) => 10 ** ((r - 1500) / 200), // レート差を強く効かせる
+    exp400: (r) => 10 ** ((r - 1500) / 400), // Elo素直（+400で10倍）
+    linear: (r) => Math.max(r - 1200, 1), // ゆるやか（線形）
   };
 
   // --- グループ化（grid と同じ）＋評価 ---
@@ -641,9 +641,7 @@ for (const r of results) {
     continue;
   }
   if (r.evaluator === 'rated-tier') {
-    console.log(
-      `  大会強度算出: ${r.params.tournamentsWithStrength}/${r.params.tournamentsTotal}大会（平均レート ${r.params.meanStrength}）`,
-    );
+    console.log(`  大会強度算出: ${r.params.tournamentsWithStrength}/${r.params.tournamentsTotal}大会（平均レート ${r.params.meanStrength}）`);
     console.log('  fit 降順:');
     for (const row of r.rows) {
       console.log(

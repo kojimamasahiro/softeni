@@ -54,9 +54,7 @@ export function buildReplay(options = {}) {
   }
 
   const configTierOverrides = new Map(
-    Object.entries(rankingConfig.ranking.tierOverrides ?? {}).filter(
-      ([k, v]) => !k.startsWith('_') && ['major', 'national', 'local'].includes(v),
-    ),
+    Object.entries(rankingConfig.ranking.tierOverrides ?? {}).filter(([k, v]) => !k.startsWith('_') && ['major', 'national', 'local'].includes(v)),
   );
   const configExcluded = new Set(rankingConfig.ranking.excludeTournaments ?? []);
 

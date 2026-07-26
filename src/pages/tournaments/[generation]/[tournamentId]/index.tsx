@@ -18,7 +18,8 @@ import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournam
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
-import { getHistoricalWinners } from '@/lib/tournamentRecords';
+import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings } from '@/lib/priorMeetings';
+import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
 import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
@@ -492,6 +493,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     latestYear,
     milestones: [],
     championRecords: [],
+    priorMeetings: [],
   };
 
   if (latestGroup) {
@@ -550,6 +552,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
           })),
           scopeNote: cr.scopeNote,
         });
+      }
+
+      // 前哨戦（最新年度の種目ごとに規模だけ出す。lib/priorMeetings.ts）
+      const pmIndex = buildPriorMeetingIndex(tournamentId, ty, categoryId, generation || null);
+      if (pmIndex.size > 0) {
+        const total = readYearDetail(tournamentId, ty, categoryId)?.entries?.length ?? 0;
+        if (total > 0) {
+          contextBlocks.priorMeetings?.push({
+            categoryLabel: c.label || categoryId,
+            cards: countPriorMeetings(pmIndex),
+            covered: countCoveredEntries(pmIndex),
+            total,
+            unit: categoryId.startsWith('team') ? '校' : categoryId.startsWith('singles') ? '選手' : 'ペア',
+            href: `/tournaments/${generation}/${tournamentId}/${ty}/${c.category}/${c.age}/${c.gender}/`,
+          });
+        }
       }
     }
   }

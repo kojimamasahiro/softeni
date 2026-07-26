@@ -110,12 +110,8 @@ function main() {
     console.log(`draft 作成: ${articleId}`);
   }
 
-  console.log(
-    `\n[${type}] 候補 ${candidates.length} / 新規 ${created} / 既存skip ${skipped}`,
-  );
-  console.log(
-    '確認後、各 data/news/<articleId>.json の "state" を "published" にすると公開されます。',
-  );
+  console.log(`\n[${type}] 候補 ${candidates.length} / 新規 ${created} / 既存skip ${skipped}`);
+  console.log('確認後、各 data/news/<articleId>.json の "state" を "published" にすると公開されます。');
 }
 
 main();

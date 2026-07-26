@@ -1193,7 +1193,7 @@ const MatchInput = () => {
                           </div>
                         </div>
                         <div className="text-xs text-gray-600">
-                                          {(() => {
+                          {(() => {
                             const servingPlayer = getServingPlayerForPoint(game, point.point_number);
                             return servingPlayer ? `${servingPlayer.playerName} (チーム${point.serving_team})` : `チーム${point.serving_team}のサーブ`;
                           })()}

@@ -234,20 +234,48 @@ export type PriorMeetingCard = {
   /** その大会での勝者側の所属（表示用。混成ペアなら null） */
   winnerTeam: string | null;
   loserTeam: string | null;
-  /** 今大会で既に再戦が実現しているか（1回戦など、対戦カードが確定済みの場合） */
-  rematchScheduled: boolean;
+  /**
+   * 今大会で再戦が起こるか。
+   * - `scheduled`: 対戦カードが組まれている（＝再戦が実現する／した）
+   * - `pending`: **まだ1試合も行われていない**（開催前）。両ペアとも当然勝ち残っているが、
+   *   勝ち上がった結果ではないので「勝ち上がり中」とは言えない
+   * - `possible`: 大会が進行中で、両ペアとも勝ち残っている
+   * - `gone`: 少なくとも一方が敗退済みで、もう起こらない
+   * - `unknown`: 今大会の結果が未掲載で判定できない
+   *
+   * `pending` と `possible` を分けているのは、`results` が `kind:'ongoing'`（未実施）でも
+   * standing が `alive`／ラベル「勝ち上がり中」になるため（ADR-007 の運用）。開催前は
+   * 全ペアが alive なので、そのまま「両者勝ち上がり中」と出すと事実に反する。
+   */
+  rematchStatus: 'scheduled' | 'pending' | 'possible' | 'gone' | 'unknown';
+  /** 今大会での各ペアの状況（勝ち上がり中/敗退/優勝など）。未掲載なら null */
+  winnerStanding: EntryStanding | null;
+  loserStanding: EntryStanding | null;
+  /**
+   * 今大会で再戦が**実際に行われて決着した**場合の結果。未実施・未確定なら null。
+   * `revenge` は前回敗れた側が今回勝った（＝雪辱）ことを示す。
+   */
+  currentResult: { winnerNames: string[]; revenge: boolean } | null;
 };
 
 export type PriorMeetingsBlock = {
   /** 既知の対戦カード総数（表示は上位のみ） */
   totalCards: number;
-  /** 対戦履歴を持つ出場ペア数 / 全出場ペア数 */
+  /** 対戦履歴を持つ出場ペア（団体は校）数 / 全出場数 */
   coveredEntries: number;
   totalEntries: number;
+  /** 数え上げの単位。ダブルス=ペア / シングルス=選手 / 団体=校 */
+  unit: 'ペア' | '選手' | '校';
   /** 供給元の大会ラベル（重複除去・新しい順） */
   sourceLabels: string[];
-  /** 表示するカード（今大会で再戦が確定しているものを優先） */
+  /**
+   * カード（今大会で再戦が確定しているものを優先した順）。
+   * UI は先頭 `PRIOR_MEETING_CARDS` 件を常時表示し、残りは折りたたみで見せる。
+   * `totalCards` が真の総数で、この配列は `PRIOR_MEETING_CARDS_MAX` 件で打ち切る。
+   */
   cards: PriorMeetingCard[];
+  /** 常時表示する件数（これを超えた分は折りたたみ） */
+  visibleCards: number;
 };
 
 export type NewsCategoryBlock = {
@@ -1206,8 +1234,14 @@ function buildPickPlayers(
   return Array.from(merged.values()).sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
 }
 
-/** 前哨戦ブロックで表示するカードの上限（1 種目あたり） */
+/** 前哨戦ブロックで**常時表示**するカード数（1 種目あたり） */
 const PRIOR_MEETING_CARDS = 6;
+/**
+ * 折りたたみを開いたときに見せられるカード数の上限（1 種目あたり）。
+ * 全件（インターハイ女子ダブルスで 273 件）を出すと 1 ページの HTML が数百 KB 増えるため、
+ * ここで打ち切る。真の総数は `totalCards` に出しており、そちらで規模は伝わる。
+ */
+const PRIOR_MEETING_CARDS_MAX = 50;
 
 /**
  * 前哨戦ブロックを組み立てる。
@@ -1217,7 +1251,13 @@ const PRIOR_MEETING_CARDS = 6;
  * 最優先**で見せる。インターハイ 2026 のように 1 回戦しか登録されていない段階では該当が
  * 少ないが、大会が進んで `matches` が埋まるにつれて増える（ADR-007 の ongoing 運用）。
  */
-function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId: string, generation: string): PriorMeetingsBlock | null {
+function buildPriorMeetingsBlock(
+  tournamentId: string,
+  year: number,
+  categoryId: string,
+  generation: string,
+  field: FieldIndex | null,
+): PriorMeetingsBlock | null {
   const index = buildPriorMeetingIndex(tournamentId, year, categoryId, generation || null);
   if (index.size === 0) return null;
 
@@ -1230,11 +1270,20 @@ function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId:
     const es = m.entries ?? [];
     if (es.length === 2) scheduled.add(meetingKey(es[0], es[1]));
   }
+  // 大会が実際に始まっているか（1 試合でも勝敗が付いているか）。
+  // 開催前は results が `kind:'ongoing'` で全員 alive になるため、standing だけでは
+  // 「勝ち上がっている」と「まだ始まっていない」を区別できない。
+  const hasStarted = (detail?.matches ?? []).some((m) => m.winnerEntryNo != null);
+
+  // 団体戦は 1 エントリ = 1 校で、`names` に校名が入る。所属の重複表示（例:「明徳義塾（明徳義塾）」）を
+  // 避けるため所属は付けず、校名を選手名として `resolvePlayerId` に渡すこともしない（誤リンクになる）。
+  const isTeamCategory = categoryId.startsWith('team');
 
   const pmap = detail ? buildParticipantMap(detail) : new Map<string, RawParticipant>();
   const entryById = new Map((detail?.entries ?? []).map((e) => [e.entryNo, e] as const));
-  /** 今大会のエントリ → 所属（ペアで割れていれば null） */
+  /** 今大会のエントリ → 所属（ペアで割れていれば null。団体戦は名前がそのまま校名なので null） */
   const teamOf = (entryNo: number): string | null => {
+    if (isTeamCategory) return null;
     const e = entryById.get(entryNo);
     if (!e) return null;
     const teams = new Set<string>();
@@ -1244,13 +1293,47 @@ function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId:
     }
     return teams.size === 1 ? [...teams][0] : null;
   };
-  const refs = (names: string[]): PreviewPlayerRef[] => names.map((n) => ({ name: n, playerId: resolvePlayerId(n), returning: true, team: null }));
+  const refs = (names: string[]): PreviewPlayerRef[] =>
+    names.map((n) => ({ name: cleanDisplay(n), playerId: isTeamCategory ? null : resolvePlayerId(n), returning: true, team: null }));
 
-  const cards: Array<PriorMeetingCard & { _sched: boolean }> = [];
+  // 今大会で組まれた対戦の勝敗（決着済みのものだけ）。「今大会で再戦」の結果表示に使う。
+  const currentWinnerByKey = new Map<string, number>();
+  for (const m of detail?.matches ?? []) {
+    const es = m.entries ?? [];
+    if (es.length === 2 && m.winnerEntryNo != null) currentWinnerByKey.set(meetingKey(es[0], es[1]), m.winnerEntryNo);
+  }
+
+  const standingOf = (entryNo: number): EntryStanding | null => field?.standingByEntryNo.get(entryNo) ?? null;
+  /** 敗退済み＝もう対戦は起こらない。優勝/準優勝/勝ち上がり中は「まだ起こりうる」側に数える。 */
+  const isOut = (s: EntryStanding | null): boolean => s?.state === 'eliminated';
+
+  const cards: PriorMeetingCard[] = [];
   const sourceLabels = new Set<string>();
   for (const [key, list] of index) {
     for (const m of list) {
       sourceLabels.add(m.tournamentLabel);
+      const ws = standingOf(m.winnerEntryNo);
+      const ls = standingOf(m.loserEntryNo);
+      // 今大会で対戦が組まれていれば scheduled。そうでなければ、どちらかが敗退していれば
+      // 再戦はもう起こらない（gone）。両者健在なら possible。結果未掲載なら unknown。
+      const rematchStatus: PriorMeetingCard['rematchStatus'] = scheduled.has(key)
+        ? 'scheduled'
+        : isOut(ws) || isOut(ls)
+          ? 'gone'
+          : !hasStarted
+            ? 'pending'
+            : ws || ls
+              ? 'possible'
+              : 'unknown';
+      // 今大会の勝者が「前回negative側」なら雪辱。前回勝者の名前は m.winnerNames。
+      const curWinner = currentWinnerByKey.get(key);
+      const currentResult =
+        curWinner == null
+          ? null
+          : {
+              winnerNames: curWinner === m.winnerEntryNo ? m.winnerNames : m.loserNames,
+              revenge: curWinner === m.loserEntryNo,
+            };
       cards.push({
         tournamentLabel: m.tournamentLabel,
         year: m.year,
@@ -1259,12 +1342,17 @@ function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId:
         loser: refs(m.loserNames),
         winnerTeam: teamOf(m.winnerEntryNo),
         loserTeam: teamOf(m.loserEntryNo),
-        rematchScheduled: scheduled.has(key),
-        _sched: scheduled.has(key),
+        rematchStatus,
+        winnerStanding: ws,
+        loserStanding: ls,
+        currentResult,
       });
     }
   }
-  // 再戦確定 → 勝ち上がりの深いラウンド（決勝に近い＝価値が高い）→ 大会名 の順。
+  // 再戦確定 → まだ起こりうる → 大会前（未掲載）→ もう起こらない、の順。
+  // 同順位内では前回対戦のラウンドが深い（決勝に近い＝カードの格が高い）ものを優先する。
+  const statusRank = (s: PriorMeetingCard['rematchStatus']): number =>
+    s === 'scheduled' ? 4 : s === 'possible' ? 3 : s === 'pending' ? 2 : s === 'unknown' ? 1 : 0;
   const roundRank = (r: string | null): number => {
     if (!r) return 0;
     if (r.includes('決勝') && !r.includes('準')) return 100;
@@ -1273,18 +1361,21 @@ function buildPriorMeetingsBlock(tournamentId: string, year: number, categoryId:
     const m = /(\d+)回戦/u.exec(r);
     return m ? Number(m[1]) : 10;
   };
-  cards.sort((a, b) => Number(b._sched) - Number(a._sched) || roundRank(b.round) - roundRank(a.round) || a.tournamentLabel.localeCompare(b.tournamentLabel));
+  cards.sort(
+    (a, b) =>
+      statusRank(b.rematchStatus) - statusRank(a.rematchStatus) ||
+      roundRank(b.round) - roundRank(a.round) ||
+      a.tournamentLabel.localeCompare(b.tournamentLabel),
+  );
 
   return {
     totalCards: countPriorMeetings(index),
     coveredEntries: countCoveredEntries(index),
     totalEntries,
+    unit: isTeamCategory ? '校' : categoryId.startsWith('singles') ? '選手' : 'ペア',
     sourceLabels: [...sourceLabels],
-    cards: cards.slice(0, PRIOR_MEETING_CARDS).map((c) => {
-      const { _sched: _omit, ...rest } = c;
-      void _omit;
-      return rest;
-    }),
+    cards: cards.slice(0, PRIOR_MEETING_CARDS_MAX),
+    visibleCards: PRIOR_MEETING_CARDS,
   };
 }
 
@@ -1342,7 +1433,7 @@ function buildCategoryBlock(
     for (const rf of returningFormerChampions) addPrevAndCurrent(rf.players, rf.currentEntries);
     recentAchievers = buildRecentAchievers(field, recentIndex, alreadyShownNames);
     fieldOverview = buildFieldOverview(field);
-    priorMeetings = buildPriorMeetingsBlock(tournamentId, year, categoryId, generation);
+    priorMeetings = buildPriorMeetingsBlock(tournamentId, year, categoryId, generation, field);
   }
 
   // その年・種目の結果ページは details ファイルが存在する場合のみ生成される
@@ -1381,10 +1472,21 @@ function defaultTitle(record: NewsArticleRecord, tournamentLabel: string): strin
     : `${tournamentLabel} ${record.year} 結果・優勝・歴代まとめ`;
 }
 
-function defaultDescription(record: NewsArticleRecord, tournamentLabel: string): string {
-  return record.type === 'preview'
-    ? `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`
-    : `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
+/**
+ * meta description。
+ * 前哨戦（priorMeetings）が算出できているときは、**当サイトにしか無い切り口**なので
+ * 「直近大会での対戦成績」を一文だけ足す。他の展望サイトと文面で差別化する狙い
+ * （[seo.md](../docs/wiki/seo.md) #8「farm が構造的に持てない DB 由来の文脈で差別化」）。
+ * 算出できない大会では従来文のまま（分岐 1 箇所で戻せる）。
+ */
+function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, categories: NewsCategoryBlock[]): string {
+  if (record.type !== 'preview') {
+    return `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
+  }
+  const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`;
+  const totalCards = categories.reduce((n, c) => n + (c.priorMeetings?.totalCards ?? 0), 0);
+  if (totalCards === 0) return base;
+  return `${base}直近大会で既に対戦している${totalCards}件の顔合わせ（前哨戦）も掲載。`;
 }
 
 /** 記事レコードから描画用ビューを組み立てる */
@@ -1410,7 +1512,7 @@ export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView
     generation: generationId,
     hubHref,
     title: record.title || defaultTitle(record, tournamentLabel),
-    description: record.description || defaultDescription(record, tournamentLabel),
+    description: record.description || defaultDescription(record, tournamentLabel, categories),
     categories,
   };
 }

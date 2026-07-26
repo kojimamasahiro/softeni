@@ -31,12 +31,7 @@ const makeNameKey = (last, first) => {
 function getAllDetailRecords(cwd) {
   const detailsRoot = path.join(cwd, 'data', 'tournaments', 'details');
   const indexPath = path.join(cwd, 'data', 'tournaments', 'index.json');
-  const localIndexPath = path.join(
-    cwd,
-    'data',
-    'tournaments',
-    'local_index.json',
-  );
+  const localIndexPath = path.join(cwd, 'data', 'tournaments', 'local_index.json');
 
   if (!fs.existsSync(detailsRoot)) {
     return [];
@@ -54,9 +49,7 @@ function getAllDetailRecords(cwd) {
   let localTournamentIndex = [];
   if (fs.existsSync(localIndexPath)) {
     try {
-      localTournamentIndex = JSON.parse(
-        fs.readFileSync(localIndexPath, 'utf-8'),
-      );
+      localTournamentIndex = JSON.parse(fs.readFileSync(localIndexPath, 'utf-8'));
     } catch {
       localTournamentIndex = [];
     }
@@ -113,9 +106,7 @@ function loadInformationMap(cwd) {
     return map;
   }
 
-  const files = fs
-    .readdirSync(informationRoot)
-    .filter((f) => f.endsWith('.json'));
+  const files = fs.readdirSync(informationRoot).filter((f) => f.endsWith('.json'));
   for (const file of files) {
     const tournamentId = file.replace(/\.json$/i, '');
     const filePath = path.join(informationRoot, file);
@@ -137,12 +128,7 @@ async function generatePlayersData(minMatchCount) {
   const informationMap = loadInformationMap(projectRoot);
 
   // Load base player index
-  const playersIndexPath = path.join(
-    projectRoot,
-    'data',
-    'players',
-    'index.json',
-  );
+  const playersIndexPath = path.join(projectRoot, 'data', 'players', 'index.json');
   let playersIndex = [];
   if (fs.existsSync(playersIndexPath)) {
     try {
@@ -176,9 +162,7 @@ async function generatePlayersData(minMatchCount) {
         const yr = parseInt(year, 10);
         const infoForYear = infoEntries.find((ie) => Number(ie.year) === yr);
         if (infoForYear && Array.isArray(infoForYear.categories)) {
-          const cat = infoForYear.categories.find(
-            (c) => c.categoryId === categoryId,
-          );
+          const cat = infoForYear.categories.find((c) => c.categoryId === categoryId);
           if (cat && cat.label) humanLabel = cat.label;
         }
       }
@@ -186,9 +170,7 @@ async function generatePlayersData(minMatchCount) {
       humanLabel = undefined;
     }
 
-    const participants = Array.isArray(detail.participants)
-      ? detail.participants
-      : [];
+    const participants = Array.isArray(detail.participants) ? detail.participants : [];
     const participantById = new Map();
     for (const p of participants) {
       if (p && p.id) participantById.set(String(p.id), p);
@@ -212,10 +194,7 @@ async function generatePlayersData(minMatchCount) {
           for (const pid of resultPlayerIds) {
             const participant = participantById.get(pid);
             if (!participant?.lastName || !participant?.firstName) continue;
-            const nameKey = makeNameKey(
-              participant?.lastName || '',
-              participant?.firstName || '',
-            );
+            const nameKey = makeNameKey(participant?.lastName || '', participant?.firstName || '');
             if (!indexMap.has(nameKey)) continue;
 
             const playerResult = {
@@ -231,9 +210,7 @@ async function generatePlayersData(minMatchCount) {
               gameCategory: categoryInfo.gameCategory,
               ageCategory: categoryInfo.ageCategory,
               gender: categoryInfo.gender,
-              categoryLabel:
-                humanLabel ??
-                `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
+              categoryLabel: humanLabel ?? `${categoryInfo.gameCategory}-${categoryInfo.ageCategory}-${categoryInfo.gender}`,
               playerId: String(indexMap.get(nameKey)[0]),
             };
 
@@ -258,15 +235,12 @@ async function generatePlayersData(minMatchCount) {
       })),
       count: uniquePlayersArray.length,
       differentTeams,
-      playerId:
-        uniquePlayersArray.find((p) => p.playerId)?.playerId ?? undefined,
+      playerId: uniquePlayersArray.find((p) => p.playerId)?.playerId ?? undefined,
     });
   }
 
   // Filter by minMatchCount
-  const filteredGroups = sameNameGroups.filter(
-    (group) => group.count >= minMatchCount,
-  );
+  const filteredGroups = sameNameGroups.filter((group) => group.count >= minMatchCount);
 
   return { sameNameGroups: filteredGroups };
 }
@@ -313,34 +287,17 @@ async function main() {
 
     // SSR（一覧の初期表示）用: 出場回数の多い選手のみ（フル記録つき）
     const min20Groups = allGroups.filter((g) => g.count >= 20);
-    fs.writeFileSync(
-      path.join(outputDir, 'players-min20.json'),
-      JSON.stringify({ sameNameGroups: min20Groups }, null, 2),
-      'utf-8',
-    );
-    console.log(
-      `✓ Generated players-min20.json (${min20Groups.length} groups)`,
-    );
+    fs.writeFileSync(path.join(outputDir, 'players-min20.json'), JSON.stringify({ sameNameGroups: min20Groups }, null, 2), 'utf-8');
+    console.log(`✓ Generated players-min20.json (${min20Groups.length} groups)`);
 
     // 検索用: 全収録選手の軽量インデックス（フル記録は持たない）
     const searchGroups = allGroups.map(toSearchGroup);
-    fs.writeFileSync(
-      path.join(outputDir, 'players-search.json'),
-      JSON.stringify({ sameNameGroups: searchGroups }),
-      'utf-8',
-    );
-    console.log(
-      `✓ Generated players-search.json (${searchGroups.length} groups)`,
-    );
+    fs.writeFileSync(path.join(outputDir, 'players-search.json'), JSON.stringify({ sameNameGroups: searchGroups }), 'utf-8');
+    console.log(`✓ Generated players-search.json (${searchGroups.length} groups)`);
 
     // 氏名サジェスト・重複検知用: data/players/index.json から重複を除いた氏名一覧。
     // ページ props に同梱すると数百kBになるため、別ファイルにしてクライアントで遅延取得する。
-    const playersIndexPath = path.join(
-      projectRoot,
-      'data',
-      'players',
-      'index.json',
-    );
+    const playersIndexPath = path.join(projectRoot, 'data', 'players', 'index.json');
     if (fs.existsSync(playersIndexPath)) {
       const rows = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8'));
       const seen = new Set();
@@ -354,18 +311,10 @@ async function main() {
         seen.add(key);
         knownPlayers.push({ lastName, firstName });
       }
-      fs.writeFileSync(
-        path.join(outputDir, 'known-players.json'),
-        JSON.stringify(knownPlayers),
-        'utf-8',
-      );
-      console.log(
-        `✓ Generated known-players.json (${knownPlayers.length} players)`,
-      );
+      fs.writeFileSync(path.join(outputDir, 'known-players.json'), JSON.stringify(knownPlayers), 'utf-8');
+      console.log(`✓ Generated known-players.json (${knownPlayers.length} players)`);
     } else {
-      console.warn(
-        '! Skipped known-players.json: data/players/index.json not found',
-      );
+      console.warn('! Skipped known-players.json: data/players/index.json not found');
     }
   } catch (error) {
     console.error('✗ Failed to generate players JSON:', error);

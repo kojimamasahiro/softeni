@@ -75,12 +75,7 @@ async function main() {
   const existingMap = new Map();
   let maxId = 0;
   for (const p of existing) {
-    const idNum =
-      Number.isInteger(p.id) && p.id > 0
-        ? p.id
-        : parseInt(p.id, 10) > 0
-          ? parseInt(p.id, 10)
-          : 0;
+    const idNum = Number.isInteger(p.id) && p.id > 0 ? p.id : parseInt(p.id, 10) > 0 ? parseInt(p.id, 10) : 0;
     if (idNum > maxId) maxId = idNum;
     const k = keyOf(p.lastName, p.firstName);
     if (!existingMap.has(k)) existingMap.set(k, p);

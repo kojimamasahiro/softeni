@@ -71,24 +71,14 @@ function parseArgs(argv) {
   }
 
   if (!QUALIFIER_LABELS[options.type]) {
-    throw new Error(
-      `Unknown qualifier type: ${options.type} (known: ${Object.keys(QUALIFIER_LABELS).join(', ')})`,
-    );
+    throw new Error(`Unknown qualifier type: ${options.type} (known: ${Object.keys(QUALIFIER_LABELS).join(', ')})`);
   }
 
   return options;
 }
 
 function resolveQualifierType(doc) {
-  return (
-    doc.inferred?.qualifierType ??
-    inferQualifierType(
-      doc.rawTitle,
-      doc.title,
-      doc.contextText,
-      doc.normalizedUrl,
-    )
-  );
+  return doc.inferred?.qualifierType ?? inferQualifierType(doc.rawTitle, doc.title, doc.contextText, doc.normalizedUrl);
 }
 
 // 年度(4月始まり)を解決する。inferred.year を優先し、無ければ検知日時から推定する。
@@ -111,8 +101,7 @@ function pickBestDocument(docs) {
   return [...docs].sort((a, b) => {
     const conf = (b.inferred?.confidence || 0) - (a.inferred?.confidence || 0);
     if (conf !== 0) return conf;
-    const rank =
-      (typeRank[a.contentType] ?? 2) - (typeRank[b.contentType] ?? 2);
+    const rank = (typeRank[a.contentType] ?? 2) - (typeRank[b.contentType] ?? 2);
     if (rank !== 0) return rank;
     return String(b.lastSeenAt || '').localeCompare(String(a.lastSeenAt || ''));
   })[0];
@@ -130,25 +119,16 @@ function main() {
   const localIndexIds = new Set(localIndex.map((t) => t.tournamentId));
 
   let prefectureSources = [];
-  const prefectureSourcesPath = path.join(
-    localSourcesDir,
-    'prefecture-sources.json',
-  );
+  const prefectureSourcesPath = path.join(localSourcesDir, 'prefecture-sources.json');
   if (fs.existsSync(prefectureSourcesPath)) {
     prefectureSources = readJson(prefectureSourcesPath);
   }
-  const officialUrlBySlug = new Map(
-    prefectureSources.map((s) => [s.slug, s.sourceUrl]),
-  );
+  const officialUrlBySlug = new Map(prefectureSources.map((s) => [s.slug, s.sourceUrl]));
 
   // 対象候補の抽出
   const candidates = documents.filter((doc) => {
     if (doc.appliedAt) return false;
-    if (
-      doc.status !== 'accepted' &&
-      !(options.allowNew && doc.status === 'new')
-    )
-      return false;
+    if (doc.status !== 'accepted' && !(options.allowNew && doc.status === 'new')) return false;
     if ((doc.inferred?.confidence || 0) < options.minConfidence) return false;
     if (resolveQualifierType(doc) !== options.type) return false;
     if (!prefNameById.has(doc.prefectureSlug)) return false;
@@ -189,9 +169,7 @@ function main() {
         generationId: 'highschool',
         federationId: slug,
         label,
-        ...(officialUrlBySlug.get(slug)
-          ? { officialUrl: officialUrlBySlug.get(slug) }
-          : {}),
+        ...(officialUrlBySlug.get(slug) ? { officialUrl: officialUrlBySlug.get(slug) } : {}),
       };
       localIndex.push(entry);
       localIndexIds.add(tournamentId);
@@ -252,9 +230,7 @@ function main() {
   const mode = options.dryRun ? '[dry-run] ' : '';
   console.log(`${mode}type=${options.type}`);
   console.log(`${mode}candidates: ${candidates.length}`);
-  console.log(
-    `${mode}new tournaments registered: ${summary.registeredTournaments.length}`,
-  );
+  console.log(`${mode}new tournaments registered: ${summary.registeredTournaments.length}`);
   for (const t of summary.registeredTournaments) {
     console.log(`  + ${t}`);
   }
@@ -262,9 +238,7 @@ function main() {
   for (const a of summary.applied) {
     console.log(`  + ${a.tournamentId} ${a.year} <- ${a.url}`);
   }
-  console.log(
-    `${mode}skipped (sourceUrl exists): ${summary.skippedExisting.length}`,
-  );
+  console.log(`${mode}skipped (sourceUrl exists): ${summary.skippedExisting.length}`);
   for (const s of summary.skippedExisting) {
     console.log(`  - ${s.tournamentId} ${s.year} (use --force to overwrite)`);
   }

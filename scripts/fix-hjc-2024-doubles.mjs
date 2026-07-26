@@ -57,8 +57,9 @@ function main() {
 
   for (const fx of participantFixes) {
     const re = new RegExp(
-      '(\\{\\s*"id": ")' + escapeRegex(fx.cur) +
-      '(",\\s*"lastName": "[^"]*",\\s*"firstName": ")[^"]*(",\\s*"team": "[^"]*",\\s*"prefecture": ")[^"]*("\\s*\\})',
+      '(\\{\\s*"id": ")' +
+        escapeRegex(fx.cur) +
+        '(",\\s*"lastName": "[^"]*",\\s*"firstName": ")[^"]*(",\\s*"team": "[^"]*",\\s*"prefecture": ")[^"]*("\\s*\\})',
     );
     const before = text;
     text = text.replace(re, (m, g1, g2, g3, g4) => g1 + fx.newId + g2 + fx.firstName + g3 + fx.prefecture + g4);
@@ -84,14 +85,16 @@ function main() {
   const ids = new Set(d.participants.map((p) => p.id));
   const dangling = [...new Set(d.entries.flatMap((e) => e.playerIds).filter((x) => !ids.has(x)))];
   const idDup = d.participants.length !== ids.size;
-  const mism = d.participants.filter(
-    (p) => p.id !== `${p.lastName ?? ''}_${p.firstName ?? ''}_${p.team ?? ''}_${p.prefecture ?? ''}`,
-  );
+  const mism = d.participants.filter((p) => p.id !== `${p.lastName ?? ''}_${p.firstName ?? ''}_${p.team ?? ''}_${p.prefecture ?? ''}`);
 
   console.log(`${DRY_RUN ? '[dry-run] ' : ''}置換: ${changed} 箇所`);
   console.log(`検証 -> dangling: ${dangling.length}, id重複: ${idDup}, id/氏名不整合: ${mism.length}`);
   if (dangling.length) console.log('  残dangling:', dangling);
-  if (mism.length) console.log('  残不整合:', mism.map((p) => p.id));
+  if (mism.length)
+    console.log(
+      '  残不整合:',
+      mism.map((p) => p.id),
+    );
 
   if (!DRY_RUN) fs.writeFileSync(FILE, text, 'utf8');
 }

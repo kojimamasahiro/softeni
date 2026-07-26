@@ -38,11 +38,49 @@ const SCOPE = SCOPE_ARG ? SCOPE_ARG.slice('--scope='.length) : 'highschool-japan
 // 47都道府県: 接尾辞なし表記 -> 正準表記
 const PREF_CANON = (() => {
   const ken = [
-    '青森', '岩手', '宮城', '秋田', '山形', '福島', '茨城', '栃木', '群馬', '埼玉',
-    '千葉', '神奈川', '新潟', '富山', '石川', '福井', '山梨', '長野', '岐阜', '静岡',
-    '愛知', '三重', '滋賀', '兵庫', '奈良', '和歌山', '鳥取', '島根', '岡山', '広島',
-    '山口', '徳島', '香川', '愛媛', '高知', '福岡', '佐賀', '長崎', '熊本', '大分',
-    '宮崎', '鹿児島', '沖縄',
+    '青森',
+    '岩手',
+    '宮城',
+    '秋田',
+    '山形',
+    '福島',
+    '茨城',
+    '栃木',
+    '群馬',
+    '埼玉',
+    '千葉',
+    '神奈川',
+    '新潟',
+    '富山',
+    '石川',
+    '福井',
+    '山梨',
+    '長野',
+    '岐阜',
+    '静岡',
+    '愛知',
+    '三重',
+    '滋賀',
+    '兵庫',
+    '奈良',
+    '和歌山',
+    '鳥取',
+    '島根',
+    '岡山',
+    '広島',
+    '山口',
+    '徳島',
+    '香川',
+    '愛媛',
+    '高知',
+    '福岡',
+    '佐賀',
+    '長崎',
+    '熊本',
+    '大分',
+    '宮崎',
+    '鹿児島',
+    '沖縄',
   ];
   const m = new Map();
   for (const k of ken) m.set(k, k + '県');
@@ -111,9 +149,7 @@ function normalizeFile(file, teamAliasMap) {
     if (newPref !== p.prefecture && p.prefecture != null) prefRepl.set(p.prefecture, newPref);
     // normalize-core.js の makeIdFromParts と同じく空要素を除去してから join する
     // （filter なしだとチーム参加者= lastName/firstName が null の id が "__チーム_県" に壊れる）
-    const newId = [p.lastName ?? '', p.firstName ?? '', newTeam, newPref ?? '']
-      .filter(Boolean)
-      .join('_');
+    const newId = [p.lastName ?? '', p.firstName ?? '', newTeam, newPref ?? ''].filter(Boolean).join('_');
     if (p.id && p.id !== newId) idRepl.push({ oldId: p.id, newId });
   }
 

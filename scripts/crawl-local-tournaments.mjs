@@ -5,10 +5,7 @@ import path from 'path';
 import iconv from 'iconv-lite';
 
 import { extractLocalSourceLinks } from './extract-local-source-links.mjs';
-import {
-  createIgnoredMatcher,
-  normalizeLocalTournamentCandidate,
-} from './normalize-local-tournament-candidate.mjs';
+import { createIgnoredMatcher, normalizeLocalTournamentCandidate } from './normalize-local-tournament-candidate.mjs';
 
 const USER_AGENT = 'softeni-pick-local-crawler/1.0 (+https://softeni-pick.com)';
 const DEFAULT_TIMEOUT_MS = 15000;
@@ -28,9 +25,7 @@ function writeJson(filePath, value) {
 }
 
 function getSourceUrls(source) {
-  const candidates = Array.isArray(source.sourceUrls)
-    ? source.sourceUrls
-    : [source.sourceUrl];
+  const candidates = Array.isArray(source.sourceUrls) ? source.sourceUrls : [source.sourceUrl];
 
   return candidates
     .filter((value) => typeof value === 'string')
@@ -134,9 +129,7 @@ function ensurePrefectureSlugs(prefectureSources) {
     }
 
     if (getSourceUrls(source).length === 0) {
-      throw new Error(
-        `No source URL configured for prefecture slug: ${source.slug}`,
-      );
+      throw new Error(`No source URL configured for prefecture slug: ${source.slug}`);
     }
   }
 }
@@ -177,21 +170,12 @@ async function main() {
   ensurePrefectureSlugs(prefectureSources);
 
   const ignoredMatcher = createIgnoredMatcher(ignoredDocuments);
-  const existingById = new Map(
-    detectedDocuments.map((document) => [document.id, document]),
-  );
-  const nextById = new Map(
-    detectedDocuments.map((document) => [document.id, document]),
-  );
+  const existingById = new Map(detectedDocuments.map((document) => [document.id, document]));
+  const nextById = new Map(detectedDocuments.map((document) => [document.id, document]));
   const currentFiscalYear = getCurrentFiscalYear();
 
-  const selectedSources = prefectureSources.filter((source) =>
-    options.prefecture ? source.slug === options.prefecture : true,
-  );
-  const totalSourceUrls = selectedSources.reduce(
-    (count, source) => count + getSourceUrls(source).length,
-    0,
-  );
+  const selectedSources = prefectureSources.filter((source) => (options.prefecture ? source.slug === options.prefecture : true));
+  const totalSourceUrls = selectedSources.reduce((count, source) => count + getSourceUrls(source).length, 0);
 
   if (options.prefecture && selectedSources.length === 0) {
     throw new Error(`Unknown prefecture source: ${options.prefecture}`);
@@ -222,9 +206,7 @@ async function main() {
     }
 
     if (source.crawlLevel === 'html_detail') {
-      console.warn(
-        `[warn] ${source.slug}: crawlLevel=html_detail is reserved in v1, fallback to link_only`,
-      );
+      console.warn(`[warn] ${source.slug}: crawlLevel=html_detail is reserved in v1, fallback to link_only`);
     }
 
     const seenIds = new Set();
@@ -255,9 +237,7 @@ async function main() {
             continue;
           }
 
-          if (
-            !shouldKeepCandidateForFiscalYear(normalized, currentFiscalYear)
-          ) {
+          if (!shouldKeepCandidateForFiscalYear(normalized, currentFiscalYear)) {
             stats.ignored += 1;
             continue;
           }
@@ -297,9 +277,7 @@ async function main() {
         }
       } catch (error) {
         stats.errors += 1;
-        console.error(
-          `[error] ${source.slug} (${sourceUrl}): ${error.message}`,
-        );
+        console.error(`[error] ${source.slug} (${sourceUrl}): ${error.message}`);
       }
     }
   }

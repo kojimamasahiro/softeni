@@ -9,10 +9,7 @@ process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
 });
 require('ts-node/register/transpile-only');
 
-const {
-  buildGrowthReport,
-  buildGrowthTargets,
-} = require('../lib/growthAnalysis.ts');
+const { buildGrowthReport, buildGrowthTargets } = require('../lib/growthAnalysis.ts');
 
 const player = (lastName, firstName, teamName = '北高校', region = '東京') => ({
   last_name: lastName,
@@ -21,13 +18,7 @@ const player = (lastName, firstName, teamName = '北高校', region = '東京') 
   region,
 });
 
-const point = (
-  gameId,
-  pointNumber,
-  winnerTeam,
-  servingTeam,
-  rallyCount = 3,
-) => ({
+const point = (gameId, pointNumber, winnerTeam, servingTeam, rallyCount = 3) => ({
   id: `${gameId}-p${pointNumber}`,
   game_id: gameId,
   point_number: pointNumber,
@@ -58,9 +49,7 @@ const game = (matchId, gameNumber, winners, servingTeam, winnerTeam) => {
     initial_serve_team: servingTeam,
     initial_serve_player_index: 0,
     created_at: '2026-01-01T00:00:00.000Z',
-    points: winners.map((winner, index) =>
-      point(id, index + 1, winner, servingTeam, index <= 1 ? 1 : index + 1),
-    ),
+    points: winners.map((winner, index) => point(id, index + 1, winner, servingTeam, index <= 1 ? 1 : index + 1)),
   };
 };
 
@@ -71,17 +60,9 @@ const match = ({ id, createdAt, targetSide, opponentSide, targetWins }) => {
     [targetSide]: targetPlayers,
     [opponentSide]: opponentPlayers,
   };
-  const targetWinners =
-    targetSide === 'A'
-      ? ['A', 'A', 'B', 'B', 'A', 'A']
-      : ['B', 'B', 'A', 'A', 'B', 'B'];
-  const opponentWinners =
-    targetSide === 'A'
-      ? ['A', 'A', 'B', 'B', 'B', 'B']
-      : ['B', 'B', 'A', 'A', 'A', 'A'];
-  const gameWinners = targetWins
-    ? [targetWinners, targetWinners]
-    : [opponentWinners, opponentWinners];
+  const targetWinners = targetSide === 'A' ? ['A', 'A', 'B', 'B', 'A', 'A'] : ['B', 'B', 'A', 'A', 'B', 'B'];
+  const opponentWinners = targetSide === 'A' ? ['A', 'A', 'B', 'B', 'B', 'B'] : ['B', 'B', 'A', 'A', 'A', 'A'];
+  const gameWinners = targetWins ? [targetWinners, targetWinners] : [opponentWinners, opponentWinners];
   const winnerTeam = targetWins ? targetSide : opponentSide;
 
   return {
@@ -113,12 +94,8 @@ const match = ({ id, createdAt, targetSide, opponentSide, targetWins }) => {
         players: teamPlayers.B,
       },
     },
-    team_a: teamPlayers.A.map(
-      (entry) => `${entry.last_name} ${entry.first_name}`,
-    ).join('・'),
-    team_b: teamPlayers.B.map(
-      (entry) => `${entry.last_name} ${entry.first_name}`,
-    ).join('・'),
+    team_a: teamPlayers.A.map((entry) => `${entry.last_name} ${entry.first_name}`).join('・'),
+    team_b: teamPlayers.B.map((entry) => `${entry.last_name} ${entry.first_name}`).join('・'),
     team_a_entry_number: 'A',
     team_a_player1_last_name: teamPlayers.A[0].last_name,
     team_a_player1_first_name: teamPlayers.A[0].first_name,
@@ -129,9 +106,7 @@ const match = ({ id, createdAt, targetSide, opponentSide, targetWins }) => {
     team_b_player1_first_name: teamPlayers.B[0].first_name,
     team_b_player1_team_name: teamPlayers.B[0].team_name,
     team_b_player1_region: teamPlayers.B[0].region,
-    games: gameWinners.map((winners, index) =>
-      game(id, index + 1, winners, targetSide, winnerTeam),
-    ),
+    games: gameWinners.map((winners, index) => game(id, index + 1, winners, targetSide, winnerTeam)),
   };
 };
 
@@ -152,18 +127,12 @@ const matches = [
   }),
 ];
 
-const target = buildGrowthTargets(matches).find(
-  (candidate) => candidate.displayName === '田中 太郎',
-);
+const target = buildGrowthTargets(matches).find((candidate) => candidate.displayName === '田中 太郎');
 
 assert.ok(target, 'target should be extracted');
 assert.equal(target.matchCount, 2, 'target should include A/B side swaps');
 
-const report = buildGrowthReport(
-  matches,
-  target.key,
-  '2026-01-09T00:00:00.000Z',
-);
+const report = buildGrowthReport(matches, target.key, '2026-01-09T00:00:00.000Z');
 assert.ok(report, 'report should be generated');
 assert.equal(report.comparison?.currentMatchCount, 1);
 assert.equal(report.comparison?.previousMatchCount, 1);
@@ -176,15 +145,11 @@ assert.ok(
   'same opponent comparison should be available',
 );
 
-const serviceMetric = report.comparison?.metrics.find(
-  (metric) => metric.key === 'servicePointWinRate',
-);
+const serviceMetric = report.comparison?.metrics.find((metric) => metric.key === 'servicePointWinRate');
 assert.ok(serviceMetric, 'service metric should exist');
 assert.equal(serviceMetric.trend, 'improved');
 
-const lostStreakMetric = report.comparison?.metrics.find(
-  (metric) => metric.key === 'threePointLostStreakCount',
-);
+const lostStreakMetric = report.comparison?.metrics.find((metric) => metric.key === 'threePointLostStreakCount');
 assert.ok(lostStreakMetric, 'lost streak metric should exist');
 assert.equal(lostStreakMetric.trend, 'improved');
 

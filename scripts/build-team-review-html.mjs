@@ -10,12 +10,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const clusters = JSON.parse(
-  fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'),
-);
-const contextAll = JSON.parse(
-  fs.readFileSync(path.join(ROOT, 'data', 'teams', 'team-context.json'), 'utf8'),
-);
+const clusters = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'));
+const contextAll = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'team-context.json'), 'utf8'));
 const teamsArr = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'teams.json'), 'utf8'));
 const idAliases = {};
 for (const t of teamsArr) idAliases[t.id] = t.aliases || [];
@@ -55,8 +51,14 @@ const data = clusters.map((c) => ({
 }));
 const needsReview = data.map((c) => new Set(c.groups).size > 1);
 const CTX = {};
-for (const c of clusters) for (const m of c.members) { const x = contextAll[m.id]; if (x) CTX[m.id] = { players: x.players, years: x.years, events: x.events, genres: x.genres }; }
-function instOf(m) { return new Set((contextAll[m.id] || {}).inst || []); }
+for (const c of clusters)
+  for (const m of c.members) {
+    const x = contextAll[m.id];
+    if (x) CTX[m.id] = { players: x.players, years: x.years, events: x.events, genres: x.genres };
+  }
+function instOf(m) {
+  return new Set((contextAll[m.id] || {}).inst || []);
+}
 
 // 自動OK判定（大会の共起ベース）:
 //  - 既定グループ（ジャンル/段階で分割）で統合される＝同一グループ内のメンバー同士を見て、
@@ -69,10 +71,12 @@ const autoOK = clusters.map((c) => {
   c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));
   for (const g in byG) {
     const ms = byG[g];
-    for (let i = 0; i < ms.length; i++) for (let j = i + 1; j < ms.length; j++) {
-      const a = instOf(ms[i]), b = instOf(ms[j]);
-      for (const x of a) if (b.has(x)) return false; // 同一大会で表記揺れが同居→要確認
-    }
+    for (let i = 0; i < ms.length; i++)
+      for (let j = i + 1; j < ms.length; j++) {
+        const a = instOf(ms[i]),
+          b = instOf(ms[j]);
+        for (const x of a) if (b.has(x)) return false; // 同一大会で表記揺れが同居→要確認
+      }
   }
   return true;
 });
@@ -223,4 +227,13 @@ render();
 
 const outPath = path.join(ROOT, 'data', 'teams', 'team-merge-review.html');
 fs.writeFileSync(outPath, html, 'utf8');
-console.log('生成:', path.relative(ROOT, outPath), '/ クラスタ', data.length, '/ 要確認', needsReview.filter(Boolean).length, '/ 文脈付きチーム', Object.keys(CTX).length);
+console.log(
+  '生成:',
+  path.relative(ROOT, outPath),
+  '/ クラスタ',
+  data.length,
+  '/ 要確認',
+  needsReview.filter(Boolean).length,
+  '/ 文脈付きチーム',
+  Object.keys(CTX).length,
+);

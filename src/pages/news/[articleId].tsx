@@ -123,46 +123,95 @@ function PlayerNames({ players, perPlayerTeam }: { players: PreviewPlayerRef[]; 
   );
 }
 
+/** 前哨戦カード 1 件。 */
+function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][number] }) {
+  // 再戦がもう起こらない（一方が敗退）カードは灰に落として、実現する／まだ起こりうる
+  // カードとの見た目の差をつける。消さずに残すのは「地区大会で対戦していた」という
+  // 事実自体は成績を読む文脈として有効なため。
+  const dead = card.rematchStatus === 'gone';
+  return (
+    <li className={`rounded border border-border px-2.5 py-1.5 text-sm ${dead ? 'opacity-60' : ''}`}>
+      {card.rematchStatus === 'scheduled' && (
+        <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">今大会で再戦</span>
+      )}
+      {/* 開催前は全ペアが alive なので「勝ち上がり中」とは言えない。中立の文言にする。 */}
+      {card.rematchStatus === 'pending' && (
+        <span className="mr-1.5 rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-bold text-sky-800 dark:bg-sky-900 dark:text-sky-100">再戦の可能性</span>
+      )}
+      {card.rematchStatus === 'possible' && (
+        <span className="mr-1.5 rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100">両者勝ち上がり中</span>
+      )}
+      {dead && <span className="mr-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-[10px] font-bold text-gray-700 dark:bg-gray-700 dark:text-gray-200">再戦なし</span>}
+      <span className="font-semibold">
+        <PlayerNames players={card.winner} />
+      </span>
+      {card.winnerTeam && <span className="text-xs opacity-70">（{card.winnerTeam}）</span>}
+      <span className="mx-1 opacity-60">が</span>
+      <PlayerNames players={card.loser} />
+      {card.loserTeam && <span className="text-xs opacity-70">（{card.loserTeam}）</span>}
+      <span className="mx-1 opacity-60">に勝利</span>
+      <span className="block text-xs opacity-70">
+        {card.tournamentLabel} {card.year}
+        {card.round ? ` ${card.round}` : ''}
+      </span>
+      {/*
+        再戦が実際に行われて決着した場合は、その結果まで出す。
+        「今大会で再戦」だけだと勝敗が分からず、記事として物足りないため。
+      */}
+      {card.currentResult && (
+        <span className="block text-xs font-semibold">
+          今大会は {card.currentResult.winnerNames.join('・')} が勝利
+          {card.currentResult.revenge && <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>}
+        </span>
+      )}
+      {!card.currentResult && card.rematchStatus !== 'pending' && (card.winnerStanding || card.loserStanding) && (
+        <span className="block text-xs opacity-70">
+          今大会: {card.winner.map((p) => p.name).join('・')} {card.winnerStanding?.label ?? '—'} / {card.loser.map((p) => p.name).join('・')} {card.loserStanding?.label ?? '—'}
+        </span>
+      )}
+    </li>
+  );
+}
+
 /**
  * 前哨戦セクション。
  * 「この大会の出場ペアどうしは、直近の地区大会等で既に対戦している」という文脈を出す。
  * 当サイトが大会・試合単位のデータを横断して持っているからこそ作れる情報で、
  * エントリー表と結果 PDF しか持たないサイトでは再現できない（ADR-005 の差別化方針）。
  *
- * 今大会で既に対戦カードが確定しているもの（＝再戦が実現するもの）は「再戦」バッジで
- * 先頭に出す。大会が進んで matches が埋まるにつれて該当が増える（ADR-007 の ongoing 運用）。
+ * 件数が多いため、先頭の数件だけ常時表示し、残りは `<details>` で折りたたむ
+ * （JS 不要で SSG と相性が良い）。
  */
 function PriorMeetingsSection({ block }: { block: PriorMeetingsBlock }) {
   if (block.cards.length === 0) return null;
   const pct = block.totalEntries > 0 ? Math.round((block.coveredEntries / block.totalEntries) * 100) : 0;
+  const head = block.cards.slice(0, block.visibleCards);
+  const rest = block.cards.slice(block.visibleCards);
+  const hidden = block.totalCards - block.cards.length;
   return (
     <div className="mb-3">
-      <h3 className="mb-1 text-sm font-semibold">前哨戦（すでに対戦しているペア）</h3>
+      <h3 className="mb-1 text-sm font-semibold">前哨戦（すでに対戦している顔合わせ）</h3>
       <p className="mb-2 text-xs text-gray-600 dark:text-gray-300">
-        出場 {block.totalEntries} ペアのうち <span className="font-semibold">{block.coveredEntries}</span> ペア（{pct}%）が、直近の
+        出場 {block.totalEntries} {block.unit}のうち <span className="font-semibold">{block.coveredEntries}</span> {block.unit}（{pct}%）が、直近の
         {block.sourceLabels.length} 大会で既に対戦経験あり。当サイト掲載分から {block.totalCards} 件の対戦カードを確認。
       </p>
       <ul className="flex flex-col gap-1.5">
-        {block.cards.map((card, i) => (
-          <li key={`${card.tournamentLabel}-${card.year}-${i}`} className="rounded border border-border px-2.5 py-1.5 text-sm">
-            {card.rematchScheduled && (
-              <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">今大会で再戦</span>
-            )}
-            <span className="font-semibold">
-              <PlayerNames players={card.winner} />
-            </span>
-            {card.winnerTeam && <span className="text-xs opacity-70">（{card.winnerTeam}）</span>}
-            <span className="mx-1 opacity-60">が</span>
-            <PlayerNames players={card.loser} />
-            {card.loserTeam && <span className="text-xs opacity-70">（{card.loserTeam}）</span>}
-            <span className="mx-1 opacity-60">に勝利</span>
-            <span className="block text-xs opacity-70">
-              {card.tournamentLabel} {card.year}
-              {card.round ? ` ${card.round}` : ''}
-            </span>
-          </li>
+        {head.map((card, i) => (
+          <PriorMeetingCardItem key={`pm-${i}`} card={card} />
         ))}
       </ul>
+      {rest.length > 0 && (
+        <details className="mt-1.5">
+          <summary className="cursor-pointer text-xs text-link hover:underline">
+            ほか {rest.length} 件を表示{hidden > 0 ? `（全 ${block.totalCards} 件中）` : ''}
+          </summary>
+          <ul className="mt-1.5 flex flex-col gap-1.5">
+            {rest.map((card, i) => (
+              <PriorMeetingCardItem key={`pm-rest-${i}`} card={card} />
+            ))}
+          </ul>
+        </details>
+      )}
       <p className="mt-1 text-[10px] opacity-70">※当サイト掲載分の試合データによる</p>
     </div>
   );

@@ -1,10 +1,6 @@
 import crypto from 'crypto';
 
-import {
-  detectContentType,
-  hasExcludedKeyword,
-  hasResultKeyword,
-} from './extract-local-source-links.mjs';
+import { detectContentType, hasExcludedKeyword, hasResultKeyword } from './extract-local-source-links.mjs';
 
 function normalizeWhitespace(value) {
   return String(value || '')
@@ -31,11 +27,7 @@ export function normalizeUrl(rawUrl, sourcePageUrl) {
 
   const cleaned = removeTrackingParams(url);
 
-  if (
-    (cleaned.pathname.match(/\.(pdf|xlsx?|xlsm|csv)(?:$)/i) ||
-      detectContentType(cleaned.pathname) === 'excel') &&
-    cleaned.pathname.length > 1
-  ) {
+  if ((cleaned.pathname.match(/\.(pdf|xlsx?|xlsm|csv)(?:$)/i) || detectContentType(cleaned.pathname) === 'excel') && cleaned.pathname.length > 1) {
     cleaned.pathname = cleaned.pathname.replace(/\/+$/g, '');
   }
 
@@ -60,8 +52,7 @@ function inferYear(...texts) {
 const QUALIFIER_PATTERNS = [
   {
     type: 'interhigh',
-    pattern:
-      /高校総体|インターハイ|インハイ|全国高等学校総合体育大会|高等学校総合体育大会|ＩＨ予選|IH予選/i,
+    pattern: /高校総体|インターハイ|インハイ|全国高等学校総合体育大会|高等学校総合体育大会|ＩＨ予選|IH予選/i,
   },
 ];
 
@@ -103,13 +94,7 @@ function inferTournamentName(title, contextText) {
   return stripped || undefined;
 }
 
-function inferConfidence({
-  title,
-  contextText,
-  normalizedUrl,
-  contentType,
-  qualifierType,
-}) {
+function inferConfidence({ title, contextText, normalizedUrl, contentType, qualifierType }) {
   let score = 0.2;
   if (title) score += 0.25;
   if (contextText) score += 0.15;
@@ -136,22 +121,12 @@ function buildTitle(rawTitle, normalizedUrl) {
 }
 
 export function createIgnoredMatcher(ignoredDocuments) {
-  const denySet = new Set(
-    (ignoredDocuments || []).map(
-      (item) => `${item.prefectureSlug}::${item.normalizedUrl}`,
-    ),
-  );
+  const denySet = new Set((ignoredDocuments || []).map((item) => `${item.prefectureSlug}::${item.normalizedUrl}`));
 
-  return ({ prefectureSlug, normalizedUrl }) =>
-    denySet.has(`${prefectureSlug}::${normalizedUrl}`);
+  return ({ prefectureSlug, normalizedUrl }) => denySet.has(`${prefectureSlug}::${normalizedUrl}`);
 }
 
-export function normalizeLocalTournamentCandidate({
-  source,
-  sourcePageUrl,
-  link,
-  ignoredMatcher,
-}) {
+export function normalizeLocalTournamentCandidate({ source, sourcePageUrl, link, ignoredMatcher }) {
   const normalizedUrl = normalizeUrl(link.href, sourcePageUrl);
   const denied = ignoredMatcher({
     prefectureSlug: source.slug,
@@ -161,39 +136,24 @@ export function normalizeLocalTournamentCandidate({
     return { ignored: true, normalizedUrl };
   }
 
-  const contentType =
-    link.contentType && link.contentType !== 'unknown'
-      ? link.contentType
-      : detectContentType(normalizedUrl);
+  const contentType = link.contentType && link.contentType !== 'unknown' ? link.contentType : detectContentType(normalizedUrl);
 
   const title = buildTitle(link.rawTitle, normalizedUrl);
   const rawTitle = normalizeWhitespace(link.rawTitle);
   const contextText = normalizeWhitespace(link.contextText || '') || undefined;
 
   // 高校総体予選などの定型大会の「結果」資料は、PDF/Excel 直リンクでも候補として保持する
-  const isQualifierResult =
-    Boolean(inferQualifierType(rawTitle, title, contextText, normalizedUrl)) &&
-    hasResultKeyword(rawTitle, contextText, normalizedUrl);
+  const isQualifierResult = Boolean(inferQualifierType(rawTitle, title, contextText, normalizedUrl)) && hasResultKeyword(rawTitle, contextText, normalizedUrl);
 
-  if (
-    (contentType === 'pdf' || contentType === 'excel') &&
-    !link.allowDocumentLink &&
-    !isQualifierResult
-  ) {
+  if ((contentType === 'pdf' || contentType === 'excel') && !link.allowDocumentLink && !isQualifierResult) {
     return { ignored: true, normalizedUrl };
   }
 
-  if (
-    contentType === 'image' &&
-    !hasResultKeyword(rawTitle, contextText, normalizedUrl)
-  ) {
+  if (contentType === 'image' && !hasResultKeyword(rawTitle, contextText, normalizedUrl)) {
     return { ignored: true, normalizedUrl };
   }
 
-  if (
-    contentType === 'unknown' &&
-    !hasResultKeyword(rawTitle, contextText, normalizedUrl)
-  ) {
+  if (contentType === 'unknown' && !hasResultKeyword(rawTitle, contextText, normalizedUrl)) {
     return null;
   }
 
@@ -201,12 +161,7 @@ export function normalizeLocalTournamentCandidate({
     return { ignored: true, normalizedUrl };
   }
 
-  const qualifierType = inferQualifierType(
-    rawTitle,
-    title,
-    contextText,
-    normalizedUrl,
-  );
+  const qualifierType = inferQualifierType(rawTitle, title, contextText, normalizedUrl);
 
   const inferred = {
     year: inferYear(rawTitle, title, contextText, normalizedUrl),
@@ -223,11 +178,7 @@ export function normalizeLocalTournamentCandidate({
     }),
   };
 
-  const id = `${source.slug}-${crypto
-    .createHash('sha1')
-    .update(normalizedUrl)
-    .digest('hex')
-    .slice(0, 12)}`;
+  const id = `${source.slug}-${crypto.createHash('sha1').update(normalizedUrl).digest('hex').slice(0, 12)}`;
 
   return {
     id,

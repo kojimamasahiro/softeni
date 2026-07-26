@@ -45,7 +45,8 @@ const server = http.createServer((req, res) => {
     });
     return;
   }
-  res.writeHead(404); res.end('not found');
+  res.writeHead(404);
+  res.end('not found');
 });
 
 server.listen(PORT, () => {

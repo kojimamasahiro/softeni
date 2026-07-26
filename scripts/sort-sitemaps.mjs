@@ -29,19 +29,14 @@ function sortSitemapXml(xml) {
 }
 
 function sortXmlEntries(xml, rootTag, entryTag) {
-  const rootPattern = new RegExp(
-    `^(?<header><\\?xml[^>]*>\\s*)(?<open><${rootTag}[^>]*>\\s*)(?<body>[\\s\\S]*?)(?<close>\\s*<\\/${rootTag}>\\s*)$`,
-  );
+  const rootPattern = new RegExp(`^(?<header><\\?xml[^>]*>\\s*)(?<open><${rootTag}[^>]*>\\s*)(?<body>[\\s\\S]*?)(?<close>\\s*<\\/${rootTag}>\\s*)$`);
   const match = xml.match(rootPattern);
 
   if (!match?.groups) {
     return xml;
   }
 
-  const entryPattern = new RegExp(
-    `<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`,
-    'g',
-  );
+  const entryPattern = new RegExp(`<${entryTag}>[\\s\\S]*?<\\/${entryTag}>`, 'g');
   const entries = match.groups.body.match(entryPattern);
 
   if (!entries) {

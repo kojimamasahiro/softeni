@@ -1,16 +1,6 @@
 import * as cheerio from 'cheerio';
 
-const RESULT_KEYWORDS = [
-  '結果',
-  '記録',
-  '成績',
-  '大会',
-  '選手権',
-  '速報',
-  'pdf',
-  'xls',
-  'xlsx',
-];
+const RESULT_KEYWORDS = ['結果', '記録', '成績', '大会', '選手権', '速報', 'pdf', 'xls', 'xlsx'];
 
 const EXCLUDED_KEYWORDS = [
   '要項',
@@ -70,17 +60,9 @@ export function extractLocalSourceLinks(html) {
       return;
     }
 
-    const rawTitle = normalizeText(
-      $(element).text() ||
-        $(element).attr('title') ||
-        $(element).attr('aria-label') ||
-        '',
-    );
+    const rawTitle = normalizeText($(element).text() || $(element).attr('title') || $(element).attr('aria-label') || '');
     const parentText = normalizeText($(element).parent().text());
-    const contextText =
-      parentText && parentText !== rawTitle
-        ? parentText.slice(0, 240)
-        : undefined;
+    const contextText = parentText && parentText !== rawTitle ? parentText.slice(0, 240) : undefined;
     const contentType = detectContentType(href);
     const resultKeyword = includesResultKeyword(rawTitle, contextText, href);
 

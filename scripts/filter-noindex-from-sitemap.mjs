@@ -42,10 +42,8 @@ function walkHtml(dir) {
   return result;
 }
 
-const NOINDEX_RE =
-  /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i;
-const CANONICAL_RE =
-  /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i;
+const NOINDEX_RE = /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i;
+const CANONICAL_RE = /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i;
 
 // 1) noindex ページの canonical URL を集める（sitemap の <loc> と完全一致する）
 const noindexLocs = new Set();
@@ -62,9 +60,7 @@ for (const file of walkHtml(exportDir)) {
   }
 }
 
-console.log(
-  `filter-noindex: HTML ${scanned} 件走査、noindex ${noindexLocs.size} 件を検出`,
-);
+console.log(`filter-noindex: HTML ${scanned} 件走査、noindex ${noindexLocs.size} 件を検出`);
 
 if (noindexLocs.size === 0) {
   console.log('filter-noindex: 除外対象なし。sitemap は変更しません。');
@@ -77,9 +73,7 @@ const LOC_RE = /<loc>(.*?)<\/loc>/;
 
 function filterSitemapDir(dir) {
   if (!fs.existsSync(dir)) return;
-  const files = fs
-    .readdirSync(dir)
-    .filter((f) => /^sitemap.*\.xml$/.test(f) && f !== 'sitemap.xml');
+  const files = fs.readdirSync(dir).filter((f) => /^sitemap.*\.xml$/.test(f) && f !== 'sitemap.xml');
   for (const f of files) {
     const file = path.join(dir, f);
     const xml = fs.readFileSync(file, 'utf8');

@@ -87,7 +87,7 @@ console.log('\n=== 3. 連覇: 打ち切り年は「開催年・優勝者なし�
   const y2026 = hw?.champions?.find((c) => c.year === 2026);
   check('2026 が開催年として年表に存在する', Boolean(y2026), true);
   check('2026 の優勝者は null（捏造しない）', y2026?.display ?? null, null);
-  check('2026 を対象年にした連覇は成立しない', hw?.repeatChampion ?? null, null);
+  check('2026 を対象年にした連覇は成立しない', hw?.edition?.repeatChampion ?? null, null);
 }
 
 console.log('\n=== 4. 4/8 以外は round フォールバック＋警告 ===');

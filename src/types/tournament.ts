@@ -96,6 +96,11 @@ export type MatchRow = {
   opponentDisplayName?: string;
   /** 対戦相手のプレーヤーID（結果ページリンク用）。シングルスは1要素、ダブルスは最大2要素。 */
   opponentPlayerIds?: number[];
+  /**
+   * 直近の他大会で同じ相手と対戦していた場合の説明（前哨戦・再戦）。
+   * lib/priorMeetings.ts / docs/wiki/news-context-blocks.md ⑥
+   */
+  rematchOf?: string | null;
   result: 'win' | 'lose' | 'draw';
   games: { won: string; lost: string };
 };

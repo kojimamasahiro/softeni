@@ -19,10 +19,10 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
-import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
+import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
@@ -252,9 +252,7 @@ export default function TournamentYearResultPage({
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} />
 
         {/* トーナメント表 */}
-        {detailData && (
-          <TournamentBracket detailData={detailData} gameCategory={gameCategory} abandonedAfterRound={abandonment?.abandonedAfterRound ?? null} />
-        )}
+        {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} abandonedAfterRound={abandonment?.abandonedAfterRound ?? null} />}
 
         {/* スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
@@ -764,6 +762,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const list = idx.get(meetingKey(es[0], es[1]));
         if (!list?.length) continue;
         const prev = list[0];
+        // この試合が決着していれば勝敗も持たせる（前回敗れた側が勝てば「雪辱」）。
+        const curWinner = m.winnerEntryNo ?? null;
         priorMeetingCards.push({
           round: m.round ?? null,
           winnerNames: prev.winnerNames,
@@ -771,6 +771,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
           priorLabel: prev.tournamentLabel,
           priorYear: prev.year,
           priorRound: prev.round,
+          currentWinnerNames: curWinner == null ? null : curWinner === prev.winnerEntryNo ? prev.winnerNames : prev.loserNames,
+          revenge: curWinner != null && curWinner === prev.loserEntryNo,
         });
       }
     }

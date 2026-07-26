@@ -74,10 +74,7 @@ function buildOutDirFromTemplate(template, captures) {
   });
 }
 
-const script = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  'normalize-to-participants-entries.cjs',
-);
+const script = path.join(path.dirname(fileURLToPath(import.meta.url)), 'normalize-to-participants-entries.cjs');
 if (!fs.existsSync(script)) {
   console.error('Normalizer script not found at', script);
   process.exit(3);
@@ -104,15 +101,7 @@ for (const m of matches) {
     if (!e.isFile()) continue;
     if (!e.name.endsWith('.json')) continue;
     // filename filter
-    if (
-      !(
-        e.name.startsWith('doubles') ||
-        e.name.startsWith('singles') ||
-        e.name.startsWith('team') ||
-        e.name.startsWith('versus')
-      )
-    )
-      continue;
+    if (!(e.name.startsWith('doubles') || e.name.startsWith('singles') || e.name.startsWith('team') || e.name.startsWith('versus'))) continue;
     const filePath = path.join(dir, e.name);
     const outPath = path.join(outDirResolved, e.name);
     console.log('Processing', filePath, '->', outPath);

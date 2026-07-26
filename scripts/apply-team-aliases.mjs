@@ -22,10 +22,15 @@ export function applyAdditions(additions) {
   const aliasOwner = new Map();
   for (const e of doc.teamAliases) for (const a of e.aliases || []) aliasOwner.set(a, e.canonical);
 
-  const applied = [], skipped = [], conflicts = [];
+  const applied = [],
+    skipped = [],
+    conflicts = [];
   for (const add of additions || []) {
     const canon = add.canonical;
-    if (!canon || !Array.isArray(add.aliases)) { skipped.push({ canonical: canon, reason: '形式不正' }); continue; }
+    if (!canon || !Array.isArray(add.aliases)) {
+      skipped.push({ canonical: canon, reason: '形式不正' });
+      continue;
+    }
     // 競合チェック
     const bad = [];
     for (const a of add.aliases) {
@@ -34,13 +39,28 @@ export function applyAdditions(additions) {
       if (owner && owner !== canon) bad.push({ alias: a, reason: '別canonicalに割当済', existing: owner });
       if (byCanon.has(a) && a !== canon) bad.push({ alias: a, reason: '既存canonicalをaliasにしようとした' });
     }
-    if (bad.length) { conflicts.push({ canonical: canon, issues: bad }); skipped.push({ canonical: canon, reason: '競合' }); continue; }
+    if (bad.length) {
+      conflicts.push({ canonical: canon, issues: bad });
+      skipped.push({ canonical: canon, reason: '競合' });
+      continue;
+    }
     // 適用
     let e = byCanon.get(canon);
-    if (!e) { e = { canonical: canon, aliases: [] }; if (add.note) e.note = add.note; doc.teamAliases.push(e); byCanon.set(canon, e); }
+    if (!e) {
+      e = { canonical: canon, aliases: [] };
+      if (add.note) e.note = add.note;
+      doc.teamAliases.push(e);
+      byCanon.set(canon, e);
+    }
     const set = new Set(e.aliases);
     let added = 0;
-    for (const a of add.aliases) { if (a !== canon && !set.has(a)) { set.add(a); aliasOwner.set(a, canon); added++; } }
+    for (const a of add.aliases) {
+      if (a !== canon && !set.has(a)) {
+        set.add(a);
+        aliasOwner.set(a, canon);
+        added++;
+      }
+    }
     e.aliases = [...set];
     if (added) applied.push({ canonical: canon, added });
   }
@@ -50,10 +70,16 @@ export function applyAdditions(additions) {
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const file = process.argv[2];
-  if (!file) { console.error('使い方: node scripts/apply-team-aliases.mjs <additions.json>'); process.exit(1); }
+  if (!file) {
+    console.error('使い方: node scripts/apply-team-aliases.mjs <additions.json>');
+    process.exit(1);
+  }
   const additions = JSON.parse(fs.readFileSync(file, 'utf8'));
   const res = applyAdditions(additions);
   console.log(`適用: ${res.applied.length} canonical / スキップ: ${res.skipped.length} / 競合: ${res.conflicts.length}`);
-  if (res.conflicts.length) { console.warn('⚠ 競合（取り込まず）:'); for (const c of res.conflicts) console.warn('  ', c.canonical, JSON.stringify(c.issues)); }
+  if (res.conflicts.length) {
+    console.warn('⚠ 競合（取り込まず）:');
+    for (const c of res.conflicts) console.warn('  ', c.canonical, JSON.stringify(c.issues));
+  }
   console.log('→ マスタ再生成: node scripts/build-team-master.mjs');
 }

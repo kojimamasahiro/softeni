@@ -18,6 +18,12 @@ export type PriorMeetingSummary = {
   priorLabel: string;
   priorYear: number;
   priorRound: string | null;
+  /**
+   * 今大会の勝者名。まだ決着していなければ null。
+   * `revenge` は前回敗れた側が今回勝った（＝雪辱）ことを示す。
+   */
+  currentWinnerNames: string[] | null;
+  revenge: boolean;
 };
 
 export default function ResultContextBlocks({
@@ -65,7 +71,9 @@ export default function ResultContextBlocks({
             {priorMeetings.map((p, i) => (
               <li key={`pm-${i}`} className="rounded border border-border px-2.5 py-1.5 text-sm">
                 {p.round && (
-                  <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">{p.round}</span>
+                  <span className="mr-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 dark:bg-amber-900 dark:text-amber-100">
+                    {p.round}
+                  </span>
                 )}
                 <span className="font-semibold">{p.winnerNames.join('・')}</span>
                 <span className="mx-1 opacity-60">対</span>
@@ -74,6 +82,13 @@ export default function ResultContextBlocks({
                   {p.priorLabel} {p.priorYear}
                   {p.priorRound ? ` ${p.priorRound}` : ''}では {p.winnerNames.join('・')} が勝利
                 </span>
+                {/* 決着済みならこの試合の勝敗まで出す（「再戦」だけでは結果が分からないため） */}
+                {p.currentWinnerNames && (
+                  <span className="block text-xs font-semibold">
+                    今回は {p.currentWinnerNames.join('・')} が勝利
+                    {p.revenge && <span className="ml-1 rounded bg-rose-100 px-1 py-0.5 text-[10px] text-rose-800 dark:bg-rose-900 dark:text-rose-100">雪辱</span>}
+                  </span>
+                )}
               </li>
             ))}
           </ul>

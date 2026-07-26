@@ -35,20 +35,8 @@ function walkDir(dir, cb) {
   }
 }
 
-const detailsRoot = path.join(
-  __dirname,
-  '..',
-  'data',
-  'tournaments',
-  'details',
-);
-const playersFile = path.join(
-  __dirname,
-  '..',
-  'data',
-  'players',
-  'players.json',
-);
+const detailsRoot = path.join(__dirname, '..', 'data', 'tournaments', 'details');
+const playersFile = path.join(__dirname, '..', 'data', 'players', 'players.json');
 
 // CLI args
 const argv = process.argv.slice(2);
@@ -130,13 +118,7 @@ for (const key of toAdd) {
 }
 
 if (dryRun) {
-  console.log(
-    'dry-run: would add ' +
-      added +
-      ' player(s) (minOccurrence=' +
-      minOccurrence +
-      ').',
-  );
+  console.log('dry-run: would add ' + added + ' player(s) (minOccurrence=' + minOccurrence + ').');
   process.exit(0);
 }
 

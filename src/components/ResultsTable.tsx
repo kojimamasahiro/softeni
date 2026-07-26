@@ -20,7 +20,15 @@ export default function ResultsTable({ rows, className = '' }: { rows: MatchRow[
           return (
             <tr key={i} className="text-center">
               <td className="border-b border-border px-2 py-1">{round}</td>
-              <td className="border-b border-border px-2 py-1">{opponentDisplay}</td>
+              <td className="border-b border-border px-2 py-1">
+                {opponentDisplay}
+                {/*
+                  前哨戦・再戦。直近の他大会（主に地区大会）で同じ相手と対戦していた場合に注記する。
+                  大会をまたいだ試合データを持っていて初めて出せる文脈で、薄くなりがちな選手結果
+                  ページの情報密度・一意性を上げる狙い（docs/wiki/seo.md #2 と同じ発想）。
+                */}
+                {match.rematchOf && <span className="mt-0.5 block text-[10px] leading-tight text-text-muted">{match.rematchOf}</span>}
+              </td>
               <td className="border-b border-border px-2 py-1">{scoreDisplay}</td>
             </tr>
           );

@@ -28,10 +28,27 @@ export type ContextChampionRecord = {
   scopeNote: string;
 };
 
+/**
+ * 最新年度の「前哨戦」サマリ（種目ごと 1 行）。
+ * ハブは年度なしの歴代まとめが主なので、個々の対戦カードは出さずに規模だけを示し、
+ * 詳細は年度別結果ページ／展望記事へ送る（[seo.md](../../docs/wiki/seo.md) #4 のインテント分割）。
+ */
+export type ContextPriorMeetingSummary = {
+  categoryLabel: string;
+  /** 既知の対戦カード数 */
+  cards: number;
+  /** 対戦履歴を持つ出場数 / 全出場数 */
+  covered: number;
+  total: number;
+  unit: 'ペア' | '選手' | '校';
+  href: string | null;
+};
+
 export type TournamentContextData = {
   latestYear: string | null;
   milestones: ContextMilestone[];
   championRecords: ContextChampionRecord[];
+  priorMeetings?: ContextPriorMeetingSummary[];
 };
 
 function winPct(rate: number): string {
@@ -41,7 +58,8 @@ function winPct(rate: number): string {
 export default function TournamentContextBlocks({ label, data }: { label: string; data: TournamentContextData }) {
   const hasMilestones = data.milestones.length > 0;
   const hasRecords = data.championRecords.length > 0;
-  if (!hasMilestones && !hasRecords) return null;
+  const priorMeetings = data.priorMeetings ?? [];
+  if (!hasMilestones && !hasRecords && priorMeetings.length === 0) return null;
 
   const hasScopeLimitedMilestone = data.milestones.some((m) => m.confidence === 'scope-limited');
 
@@ -89,6 +107,33 @@ export default function TournamentContextBlocks({ label, data }: { label: string
               )}
             </div>
           ))}
+        </div>
+      )}
+
+      {/*
+        前哨戦のサマリ。ハブは「年度なしの歴代まとめ」が主インテントなので、個々の対戦カードは
+        出さずに規模だけを示し、詳細は年度別結果ページへ送る（seo.md #4 のインテント分割）。
+      */}
+      {priorMeetings.length > 0 && (
+        <div className="mt-4">
+          <h3 className="mb-1 text-sm font-semibold">前哨戦{data.latestYear ? `（${data.latestYear}年度）` : ''}</h3>
+          <ul className="space-y-0.5 text-sm text-text-secondary">
+            {priorMeetings.map((p) => (
+              <li key={p.categoryLabel}>
+                {p.href ? (
+                  <Link href={p.href} className="text-link hover:underline">
+                    {p.categoryLabel}
+                  </Link>
+                ) : (
+                  p.categoryLabel
+                )}
+                : 出場 {p.total}
+                {p.unit}中 <span className="font-semibold">{p.covered}</span>
+                {p.unit}が直近大会で対戦経験あり（{p.cards} 件の対戦カード）
+              </li>
+            ))}
+          </ul>
+          <p className="mt-1 text-[10px] text-text-muted">※当サイト掲載分の試合データによる</p>
         </div>
       )}
     </section>

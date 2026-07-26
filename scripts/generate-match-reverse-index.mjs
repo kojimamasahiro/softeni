@@ -17,19 +17,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, '..');
-const betaMatchesRoot = path.join(
-  projectRoot,
-  'public',
-  'data',
-  'beta-matches',
-);
+const betaMatchesRoot = path.join(projectRoot, 'public', 'data', 'beta-matches');
 const reverseRoot = path.join(betaMatchesRoot, 'reverse');
-const playersIndexPath = path.join(
-  projectRoot,
-  'data',
-  'players',
-  'index.json',
-);
+const playersIndexPath = path.join(projectRoot, 'data', 'players', 'index.json');
 
 const readJsonIfExists = (filePath) => {
   if (!fs.existsSync(filePath)) return null;
@@ -76,8 +66,7 @@ const roundRank = (roundName) => {
   return 1000;
 };
 
-const sortLinksByRound = (links) =>
-  links.sort((a, b) => roundRank(a.round) - roundRank(b.round));
+const sortLinksByRound = (links) => links.sort((a, b) => roundRank(a.round) - roundRank(b.round));
 
 const joinPlayerName = (lastName, firstName) => {
   const last = (lastName ?? '').toString().trim();
@@ -91,10 +80,7 @@ const buildTeamDisplayName = (match, side) => {
   if (p1Last) {
     return [
       joinPlayerName(p1Last, match[`team_${side}_player1_first_name`]),
-      joinPlayerName(
-        match[`team_${side}_player2_last_name`],
-        match[`team_${side}_player2_first_name`],
-      ),
+      joinPlayerName(match[`team_${side}_player2_last_name`], match[`team_${side}_player2_first_name`]),
     ]
       .filter(Boolean)
       .join('・');
@@ -143,9 +129,7 @@ const buildReverseIndex = () => {
 
     const seenPlayerIds = new Set();
     for (const player of listMatchPlayers(match)) {
-      const playerId = playerIndexMap.get(
-        `${player.lastName}::${player.firstName}`,
-      );
+      const playerId = playerIndexMap.get(`${player.lastName}::${player.firstName}`);
       if (playerId === undefined) continue;
       if (seenPlayerIds.has(playerId)) continue;
       seenPlayerIds.add(playerId);
@@ -182,9 +166,7 @@ const main = () => {
     players: byPlayer,
   });
 
-  console.log(
-    `✓ Generated match reverse index (${Object.keys(byTournament).length} tournaments, ${Object.keys(byPlayer).length} players)`,
-  );
+  console.log(`✓ Generated match reverse index (${Object.keys(byTournament).length} tournaments, ${Object.keys(byPlayer).length} players)`);
 };
 
 main();

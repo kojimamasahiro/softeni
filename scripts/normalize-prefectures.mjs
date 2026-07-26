@@ -64,24 +64,17 @@ SUFFIX.set('京都', '京都府');
 SUFFIX.set('北海道', '北海道');
 
 // 地域接頭辞（X・都道府県 の X 部分）
-const REGIONS = new Set([
-  '北海道', '東北', '関東', '北信越', '信越', '東海', '近畿', '中国', '四国', '九州',
-  '開催地', '催地',
-]);
+const REGIONS = new Set(['北海道', '東北', '関東', '北信越', '信越', '東海', '近畿', '中国', '四国', '九州', '開催地', '催地']);
 
 // 外国名（誤付与の県を外して値として保持）
 const COUNTRIES = new Set(['韓国', '台湾', '中華台北', 'モンゴル']);
 
 // 連盟など都道府県でない区分（表記だけ整え、別の都道府県扱いの値として保持）
-const FEDERATION_KEEP = new Set([
-  '日本学連', '学連', '高体連', '中体連', '日本連盟', 'フリー',
-]);
+const FEDERATION_KEEP = new Set(['日本学連', '学連', '高体連', '中体連', '日本連盟', 'フリー']);
 // 誤付与の県を外すマップ（学連県→学連 等）は FEDERATION_KEEP から機械的に導出する。
 // 個別エントリの列挙だと漏れる（実際に 学連県 が漏れて east-japan/2026 の汚染を
 // 救えなかった）ため、保持集合と常に同期させる。
-const FEDERATIONS = new Map(
-  [...FEDERATION_KEEP].map((k) => [k + '県', k]),
-);
+const FEDERATIONS = new Map([...FEDERATION_KEEP].map((k) => [k + '県', k]));
 
 // Tier B: 崩れ・誤字の明示マップ（一意に復元できるもの）
 const CORRECTIONS = new Map([
@@ -102,7 +95,10 @@ const CORRECTIONS = new Map([
 /** 都道府県/区分を正準表記へ。未解決はそのまま返す（呼び出し側で記録）。 */
 export function canonPref(raw) {
   if (raw == null) return raw;
-  let s = raw.normalize('NFKC').replace(/[\s　]/g, '').replace(/[•･]/g, '・');
+  let s = raw
+    .normalize('NFKC')
+    .replace(/[\s　]/g, '')
+    .replace(/[•･]/g, '・');
   if (s === '') return raw;
 
   // 連盟など保持対象
@@ -171,12 +167,7 @@ function normalizeFile(file) {
     if (newPref !== p.prefecture) prefRepl.set(p.prefecture, newPref);
 
     // 未解決チェック（正準でも連盟でも外国でもない値を記録）
-    if (
-      newPref != null &&
-      !CANON.has(newPref) &&
-      !FEDERATION_KEEP.has(newPref) &&
-      !COUNTRIES.has(newPref)
-    ) {
+    if (newPref != null && !CANON.has(newPref) && !FEDERATION_KEEP.has(newPref) && !COUNTRIES.has(newPref)) {
       UNRESOLVED.set(newPref, (UNRESOLVED.get(newPref) ?? 0) + 1);
     }
 
@@ -184,13 +175,9 @@ function normalizeFile(file) {
     // normalize-core.js の makeIdFromParts と同じく空要素を除去してから join する
     // （filter なしだとチーム参加者= lastName/firstName が null の期待値が "__チーム_県" になり、
     //  正しい id "チーム_県" と一致せず id 更新が漏れて prefecture フィールドと乖離する）。
-    const expectOld = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? '']
-      .filter(Boolean)
-      .join('_');
+    const expectOld = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', p.prefecture ?? ''].filter(Boolean).join('_');
     if (p.id && p.id === expectOld) {
-      const newId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', newPref ?? '']
-        .filter(Boolean)
-        .join('_');
+      const newId = [p.lastName ?? '', p.firstName ?? '', p.team ?? '', newPref ?? ''].filter(Boolean).join('_');
       if (newId !== p.id) idRepl.push({ oldId: p.id, newId });
     }
   }
@@ -216,10 +203,7 @@ function normalizeFile(file) {
   // oldId と一致した場合に team フィールドまで巻き込んで破壊するため禁止。
   const applyId = (oldId, newId) => {
     const o = escapeRegExp(oldId);
-    for (const re of [
-      new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'),
-      new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g'),
-    ]) {
+    for (const re of [new RegExp(`("id"\\s*:\\s*)"${o}"`, 'g'), new RegExp(`([\\[,]\\s*)"${o}"(?=\\s*[,\\]])`, 'g')]) {
       const count = (text.match(re) || []).length;
       if (!count) continue;
       text = text.replace(re, (_, prefix) => `${prefix}"${newId}"`);

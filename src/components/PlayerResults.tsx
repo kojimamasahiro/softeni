@@ -20,6 +20,11 @@ export type PlayerMatch = {
   score: string;
   result: 'win' | 'lose' | 'unknown';
   partnerId?: string | null;
+  /**
+   * 直近の他大会で同じ相手と対戦していた場合の説明（例:「近畿高等学校ソフトテニス選手権大会 2026 準々決勝の再戦（前回は勝利）」）。
+   * 大会をまたいだ試合データを持っていて初めて出せる文脈。lib/priorMeetings.ts / docs/wiki/news-context-blocks.md ⑥
+   */
+  rematchOf?: string | null;
 };
 
 export type PlayerTournament = {
@@ -70,6 +75,7 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
       score: m.score || '',
       result: m.result === 'win' ? '勝' : m.result === 'lose' ? '敗' : '',
       partner: undefined,
+      rematchOf: m.rematchOf ?? null,
     });
   }
 
@@ -191,6 +197,7 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
                   group: null,
                   round: mr.round ?? null,
                   opponentDisplayName: mr.opponent,
+                  rematchOf: mr.rematchOf ?? null,
                   games: { won: parts[0] ?? '', lost: parts[1] ?? '' },
                   result: mr.result === '勝' ? 'win' : mr.result === '敗' ? 'lose' : 'draw',
                 };

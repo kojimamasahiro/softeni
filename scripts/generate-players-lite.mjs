@@ -49,14 +49,10 @@ function readJson(file, fallback = null) {
 function loadTournamentLabelMap() {
   const map = new Map();
   for (const name of ['index.json', 'local_index.json']) {
-    const arr = readJson(
-      path.join(projectRoot, 'data', 'tournaments', name),
-      [],
-    );
+    const arr = readJson(path.join(projectRoot, 'data', 'tournaments', name), []);
     if (Array.isArray(arr)) {
       for (const t of arr) {
-        if (t && t.tournamentId)
-          map.set(t.tournamentId, t.label || t.tournamentId);
+        if (t && t.tournamentId) map.set(t.tournamentId, t.label || t.tournamentId);
       }
     }
   }
@@ -73,9 +69,7 @@ function* iterDetailRecords() {
     for (const year of fs.readdirSync(tdir)) {
       const ydir = path.join(tdir, year);
       if (!fs.statSync(ydir).isDirectory()) continue;
-      for (const file of fs
-        .readdirSync(ydir)
-        .filter((f) => f.endsWith('.json'))) {
+      for (const file of fs.readdirSync(ydir).filter((f) => f.endsWith('.json'))) {
         const detail = readJson(path.join(ydir, file));
         if (!detail) continue;
         yield {
@@ -89,14 +83,10 @@ function* iterDetailRecords() {
   }
 }
 
-const nameKey = (last, first) =>
-  `${String(last ?? '')}||${String(first ?? '')}`;
+const nameKey = (last, first) => `${String(last ?? '')}||${String(first ?? '')}`;
 
 function main() {
-  const index = readJson(
-    path.join(projectRoot, 'data', 'players', 'index.json'),
-    [],
-  );
+  const index = readJson(path.join(projectRoot, 'data', 'players', 'index.json'), []);
   if (!Array.isArray(index) || index.length === 0) {
     console.warn('[players-lite] index.json が空のためスキップ');
     return;
@@ -131,9 +121,7 @@ function main() {
 
   for (const rec of iterDetailRecords()) {
     const { tournamentId, year, category, detail } = rec;
-    const participants = Array.isArray(detail.participants)
-      ? detail.participants
-      : [];
+    const participants = Array.isArray(detail.participants) ? detail.participants : [];
     if (participants.length === 0) continue;
     const participantById = new Map();
     for (const p of participants) participantById.set(p.id, p);
@@ -156,9 +144,7 @@ function main() {
             const pName = `${op.lastName ?? ''}${op.firstName ?? ''}`.trim();
             const pk = nameKey(op.lastName, op.firstName);
             const pid2 = firstIdByName.get(pk) ?? null;
-            const hasPage = pid2
-              ? (countById.get(pid2) ?? 0) >= PAGE_MIN_COUNT
-              : false;
+            const hasPage = pid2 ? (countById.get(pid2) ?? 0) >= PAGE_MIN_COUNT : false;
             partner = pName ? { name: pName, id: pid2, hasPage } : null;
           }
         }
@@ -169,10 +155,7 @@ function main() {
           tournamentName: labelMap.get(tournamentId) || tournamentId,
           year: Number(year) || year,
           gameCategory: category.split('-')[0] || null,
-          team:
-            self.team && String(self.team).trim().length > 0
-              ? String(self.team).trim()
-              : null,
+          team: self.team && String(self.team).trim().length > 0 ? String(self.team).trim() : null,
           partner,
         });
       }
@@ -226,10 +209,7 @@ function main() {
   }
 
   for (const [chunkIndex, players] of chunks.entries()) {
-    fs.writeFileSync(
-      path.join(outDir, `chunk-${chunkIndex}.json`),
-      JSON.stringify(players),
-    );
+    fs.writeFileSync(path.join(outDir, `chunk-${chunkIndex}.json`), JSON.stringify(players));
   }
 
   console.log(

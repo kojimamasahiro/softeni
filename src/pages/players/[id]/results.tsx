@@ -17,6 +17,7 @@ import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitle
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
+import { lookupPriorMeeting } from '@/lib/priorMeetings';
 import { getAllDetailRecords, loadInformationMap, loadNationalTournamentIds, loadTournamentIndex } from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
 import type { Games as GamesType, MatchStats as MatchStatsType } from '@/types/stats';
@@ -699,6 +700,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         cntMap.set(partnerId, (cntMap.get(partnerId) || 0) + 1);
       }
 
+      // 前哨戦・再戦（lib/priorMeetings.ts）。この試合の相手と、直近の他大会で既に
+      // 対戦していたかを引く。全大会分の索引はプロセス内で 1 度だけ構築される。
+      // docs/wiki/news-context-blocks.md ⑥
+      let rematchOf: string | null = null;
+      if (opponentEntryNos.length === 1) {
+        const prev = lookupPriorMeeting(tournamentId, year, category, playerEntryNo, opponentEntryNos[0]);
+        if (prev) {
+          const won = prev.winnerEntryNo === playerEntryNo;
+          rematchOf = `${prev.tournamentLabel} ${prev.year}${prev.round ? ` ${prev.round}` : ''}の再戦（前回は${won ? '勝利' : '敗戦'}）`;
+        }
+      }
+
       // Don't include opponents array to reduce data size - opponentNames is sufficient
       playerMatches.push({
         tournamentId,
@@ -712,6 +725,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         score,
         result: resultFlag,
         partnerId: partnerId ?? null,
+        rematchOf,
       });
     }
 
