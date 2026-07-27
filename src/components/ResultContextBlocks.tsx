@@ -2,7 +2,7 @@
 // 年度×種目の結果ページに差し込む「文脈ブロック（注目ポイント）」表示。
 // 過去の優勝者データ＋当年の試合から導けるイベント（連覇 / 初優勝 / 王者撃破）を
 // バッジで表示する。データ生成は getStaticProps 側（lib/milestones.ts）。
-// あわせて「前哨戦・再戦」（lib/priorMeetings.ts）も出す。
+// あわせて「再戦」（lib/priorMeetings.ts）も出す。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
 
 import MilestoneBadge from './MilestoneBadge';
@@ -60,7 +60,7 @@ export default function ResultContextBlocks({
       )}
 
       {/*
-        前哨戦・再戦。「この試合は◯◯大会◯回戦の再戦」という、大会をまたいだ試合データを
+        再戦。「この試合は◯◯大会◯回戦の再戦」という、大会をまたいだ試合データを
         持っていて初めて出せる文脈。結果ページでは**実際に組まれた対戦のみ**に絞る
         （起こりうるカードの提示はプレビュー記事側の役割。docs/wiki/seo.md #8 のインテント分割）。
       */}

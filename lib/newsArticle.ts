@@ -14,7 +14,8 @@ import fs from 'fs';
 import path from 'path';
 
 import { getChampionMilestones, getGiantKillings, type MilestoneEvent } from './milestones';
-import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings, meetingKey } from './priorMeetings';
+import { getBracketLayout, meetingRoundIndex, roundLabelOf } from './bracketLayout';
+import { buildPriorMeetingIndex, meetingKey } from './priorMeetings';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -248,6 +249,11 @@ export type PriorMeetingCard = {
    * 全ペアが alive なので、そのまま「両者勝ち上がり中」と出すと事実に反する。
    */
   rematchStatus: 'scheduled' | 'pending' | 'possible' | 'gone' | 'unknown';
+  /**
+   * 今大会のドロー上、両者が勝ち上がった場合に**最短で当たるラウンド**の表示名。
+   * ドローから復元できなければ null（`entries[].type` が無い大会など）。
+   */
+  meetingRoundLabel: string | null;
   /** 今大会での各ペアの状況（勝ち上がり中/敗退/優勝など）。未掲載なら null */
   winnerStanding: EntryStanding | null;
   loserStanding: EntryStanding | null;
@@ -1234,6 +1240,19 @@ function buildPickPlayers(
   return Array.from(merged.values()).sort((a, b) => standingSortRank(a.standing) - standingSortRank(b.standing));
 }
 
+/**
+ * 前哨戦として載せる「最短で当たるラウンド」の上限（0 始まり。2 = 3回戦まで）。
+ *
+ * 地区大会で対戦した相手は同じ地区＝同じ都道府県圏なので、全国大会のドローでは
+ * 意図的に離される。実測（インターハイ 2026）では **3 回戦までに当たる組は 0**、
+ * 男子ダブルス 103 組のうち 52 組は決勝でしか当たらなかった。
+ * 「決勝まで行かないと当たらないのに前哨戦として並べるのは誇大」という判断で閾値を置く。
+ *
+ * **実際に対戦カードが組まれた／対戦が行われたものは、この閾値に関係なく必ず残す**
+ * （`keepCard` 参照）。大会が進んで再戦が実現したら、何回戦であっても出したいため。
+ */
+const PRIOR_MEETING_MAX_ROUND_INDEX = 2;
+
 /** 前哨戦ブロックで**常時表示**するカード数（1 種目あたり） */
 const PRIOR_MEETING_CARDS = 6;
 /**
@@ -1244,7 +1263,7 @@ const PRIOR_MEETING_CARDS = 6;
 const PRIOR_MEETING_CARDS_MAX = 50;
 
 /**
- * 前哨戦ブロックを組み立てる。
+ * 「直近の対戦」ブロックを組み立てる。
  *
  * `lib/priorMeetings.ts` がペア単位で索引した「出場ペアどうしの過去の対戦」を、
  * 表示用に整形する。**今大会で既に対戦カードが確定しているもの（＝再戦が実現するもの）を
@@ -1307,11 +1326,17 @@ function buildPriorMeetingsBlock(
   /** 敗退済み＝もう対戦は起こらない。優勝/準優勝/勝ち上がり中は「まだ起こりうる」側に数える。 */
   const isOut = (s: EntryStanding | null): boolean => s?.state === 'eliminated';
 
+  // ドローから「最短で当たるラウンド」を求める。type 未入力の大会では null（絞り込みもしない）。
+  const layout = getBracketLayout(tournamentId, year, categoryId);
+
   const cards: PriorMeetingCard[] = [];
+  /** カード → 最短で当たるラウンド index。表示型には出さず絞り込みにだけ使う。 */
+  const cardRoundIndex = new Map<PriorMeetingCard, number | null>();
+  /** カード → 今大会の entryNo ペア。カバレッジ集計に使う。 */
+  const cardEntryNos = new Map<PriorMeetingCard, [number, number]>();
   const sourceLabels = new Set<string>();
   for (const [key, list] of index) {
     for (const m of list) {
-      sourceLabels.add(m.tournamentLabel);
       const ws = standingOf(m.winnerEntryNo);
       const ls = standingOf(m.loserEntryNo);
       // 今大会で対戦が組まれていれば scheduled。そうでなければ、どちらかが敗退していれば
@@ -1325,6 +1350,9 @@ function buildPriorMeetingsBlock(
             : ws || ls
               ? 'possible'
               : 'unknown';
+      const roundIdx = layout ? meetingRoundIndex(layout, m.winnerEntryNo, m.loserEntryNo) : null;
+      const meetingRoundLabel = layout && roundIdx != null ? roundLabelOf(roundIdx, layout.totalRounds) : null;
+
       // 今大会の勝者が「前回negative側」なら雪辱。前回勝者の名前は m.winnerNames。
       const curWinner = currentWinnerByKey.get(key);
       const currentResult =
@@ -1334,7 +1362,7 @@ function buildPriorMeetingsBlock(
               winnerNames: curWinner === m.winnerEntryNo ? m.winnerNames : m.loserNames,
               revenge: curWinner === m.loserEntryNo,
             };
-      cards.push({
+      const card: PriorMeetingCard = {
         tournamentLabel: m.tournamentLabel,
         year: m.year,
         round: m.round,
@@ -1343,12 +1371,37 @@ function buildPriorMeetingsBlock(
         winnerTeam: teamOf(m.winnerEntryNo),
         loserTeam: teamOf(m.loserEntryNo),
         rematchStatus,
+        meetingRoundLabel,
         winnerStanding: ws,
         loserStanding: ls,
         currentResult,
-      });
+      };
+      cards.push(card);
+      cardRoundIndex.set(card, roundIdx);
+      cardEntryNos.set(card, [m.winnerEntryNo, m.loserEntryNo]);
+      sourceLabels.add(m.tournamentLabel);
     }
   }
+  // ---- 絞り込み ----
+  // ドロー上「3回戦まで」に当たる組だけを前哨戦として残す（PRIOR_MEETING_MAX_ROUND_INDEX）。
+  // ただし **実際に対戦カードが組まれた／決着したものは何回戦でも残す**。
+  // 大会が進んで再戦が実現したら、決勝であってもそれは「起きた事実」なので出したい。
+  // ドローを復元できない大会（`entries[].type` 未入力）は絞り込まず従来どおり全件出す。
+  const keepCard = (c: PriorMeetingCard): boolean => {
+    if (c.rematchStatus === 'scheduled' || c.currentResult) return true; // 実現した／する
+    if (!layout) return true; // ドロー不明なので判断しない（安全側）
+    if (c.meetingRoundLabel == null) return true;
+    const idx = cardRoundIndex.get(c);
+    return idx == null || idx <= PRIOR_MEETING_MAX_ROUND_INDEX;
+  };
+  const kept = cards.filter(keepCard);
+  const keptEntryNos = new Set<number>();
+  for (const c of kept) {
+    const nos = cardEntryNos.get(c);
+    if (nos) { keptEntryNos.add(nos[0]); keptEntryNos.add(nos[1]); }
+  }
+  const keptCoveredEntries = keptEntryNos.size;
+
   // 再戦確定 → まだ起こりうる → 大会前（未掲載）→ もう起こらない、の順。
   // 同順位内では前回対戦のラウンドが深い（決勝に近い＝カードの格が高い）ものを優先する。
   const statusRank = (s: PriorMeetingCard['rematchStatus']): number =>
@@ -1368,13 +1421,17 @@ function buildPriorMeetingsBlock(
       a.tournamentLabel.localeCompare(b.tournamentLabel),
   );
 
+  if (kept.length === 0) return null;
+
+  // 集計は「残したカード」基準にする（総数だけ全件だと数字と中身が乖離するため）。
+  const keptSources = new Set(kept.map((c) => c.tournamentLabel));
   return {
-    totalCards: countPriorMeetings(index),
-    coveredEntries: countCoveredEntries(index),
+    totalCards: kept.length,
+    coveredEntries: keptCoveredEntries,
     totalEntries,
     unit: isTeamCategory ? '校' : categoryId.startsWith('singles') ? '選手' : 'ペア',
-    sourceLabels: [...sourceLabels],
-    cards: cards.slice(0, PRIOR_MEETING_CARDS_MAX),
+    sourceLabels: [...keptSources],
+    cards: kept.slice(0, PRIOR_MEETING_CARDS_MAX),
     visibleCards: PRIOR_MEETING_CARDS,
   };
 }
@@ -1486,7 +1543,7 @@ function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, 
   const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`;
   const totalCards = categories.reduce((n, c) => n + (c.priorMeetings?.totalCards ?? 0), 0);
   if (totalCards === 0) return base;
-  return `${base}直近大会で既に対戦している${totalCards}件の顔合わせ（前哨戦）も掲載。`;
+  return `${base}直近の大会で既に対戦している${totalCards}件の顔合わせも掲載。`;
 }
 
 /** 記事レコードから描画用ビューを組み立てる */

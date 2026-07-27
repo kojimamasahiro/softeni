@@ -29,7 +29,9 @@ export type ContextChampionRecord = {
 };
 
 /**
- * 最新年度の「前哨戦」サマリ（種目ごと 1 行）。
+ * 最新年度の「直近の対戦」サマリ（種目ごと 1 行）。
+ * 見出しに「前哨戦」を使わないのは、供給元が今大会より格上のことがあるため
+ * （src/pages/news/[articleId].tsx の PriorMeetingsSection のコメント参照）。
  * ハブは年度なしの歴代まとめが主なので、個々の対戦カードは出さずに規模だけを示し、
  * 詳細は年度別結果ページ／展望記事へ送る（[seo.md](../../docs/wiki/seo.md) #4 のインテント分割）。
  */
@@ -111,12 +113,12 @@ export default function TournamentContextBlocks({ label, data }: { label: string
       )}
 
       {/*
-        前哨戦のサマリ。ハブは「年度なしの歴代まとめ」が主インテントなので、個々の対戦カードは
+        規模のサマリ。ハブは「年度なしの歴代まとめ」が主インテントなので、個々の対戦カードは
         出さずに規模だけを示し、詳細は年度別結果ページへ送る（seo.md #4 のインテント分割）。
       */}
       {priorMeetings.length > 0 && (
         <div className="mt-4">
-          <h3 className="mb-1 text-sm font-semibold">前哨戦{data.latestYear ? `（${data.latestYear}年度）` : ''}</h3>
+          <h3 className="mb-1 text-sm font-semibold">直近の対戦{data.latestYear ? `（${data.latestYear}年度）` : ''}</h3>
           <ul className="space-y-0.5 text-sm text-text-secondary">
             {priorMeetings.map((p) => (
               <li key={p.categoryLabel}>

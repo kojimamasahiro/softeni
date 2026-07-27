@@ -46,6 +46,11 @@
       <input type="checkbox" id="roundNameToggle" checked />
       決勝・準決勝の表記にする
     </label>
+    <br />
+    <label title="パッキン（不戦勝）で自動的に勝ち上がった分を matches / results に出力しません。シード情報は entries[].type に入ります。">
+      <input type="checkbox" id="byeAdvanceToggle" checked />
+      不戦勝の勝ち上がりを出力しない（ドロー入力時の推奨）
+    </label>
     <button onclick="onClickGenerate()">出力</button>
 
     <div id="roundName"></div>
@@ -108,6 +113,9 @@
       // DOM
       const matchesRoot = document.getElementById('matches');
       const roundNameToggleEl = document.getElementById('roundNameToggle');
+      // 不戦勝（パッキン）で自動的に勝ち上がった分を matches / results に出さないモード。
+      // ドロー表だけを入力する段階では既定で ON。詳細は splitMatch* の isByeDerived を参照。
+      const byeAdvanceToggleEl = document.getElementById('byeAdvanceToggle');
       const jsonOutputEl = document.getElementById('jsonOutput');
       const totalScoredMatchesInput = document.getElementById(
         'totalScoredMatchesInput',
@@ -1442,6 +1450,31 @@
           targetMatch.scores = { p1: null, p2: null };
         }
 
+        // ---- 「不戦勝」と「勝者待ち（未確定）」を区別する ----
+        // 上のクリアで空枠は byePlayer になるが、それは「まだ勝者が決まっていない」だけで
+        // 不戦勝ではない。ここを区別しないと、下の自動決定がシードを勝ち上がらせ続け、
+        // 1回戦の結果を入れていないのにシード同士の対戦（例: 3回戦 1 対 6）が生成され、
+        // results に「3回戦進出」が付いてしまう（2026-07-26 の不具合）。
+        //
+        // 判定: 直前ラウンドの供給元 2 試合が「実在の対戦を持つか」を見る。
+        // 供給元に実在の選手がいるなら、その枠は空でも“勝者待ち”であって bye ではない。
+        const feederHasPlayers = (slotIsLeft) => {
+          const feederIdx = nextIndex * 2 + (slotIsLeft ? 0 : 1);
+          const feeder = bracket[rIdx]?.matches?.[feederIdx];
+          if (!feeder) return false;
+          return feeder.p1?.id !== 'bye' || feeder.p2?.id !== 'bye';
+        };
+        const p1Pending = targetMatch.p1?.id === 'bye' && feederHasPlayers(true);
+        const p2Pending = targetMatch.p2?.id === 'bye' && feederHasPlayers(false);
+        if (p1Pending || p2Pending) {
+          // 勝者待ちの枠がある間は、この試合を確定させない（先の連鎖もここで止める）。
+          targetMatch.winner = null;
+          targetMatch.scores = { p1: null, p2: null };
+          targetMatch.autoFromBye = false;
+          propagateWinner(rIdx + 1, nextIndex);
+          return;
+        }
+
         // 次枠が確定byeなら自動決定
         if (targetMatch.p1?.id === 'bye' && targetMatch.p2?.id !== 'bye') {
           targetMatch.winner = targetMatch.p2.id;
@@ -1576,6 +1609,34 @@
       }
 
       // ---------- JSON 出力 ----------
+      /**
+       * 「不戦勝（bye）で勝ち上がった結果だけで成立している試合か」を判定する。
+       *
+       * パッキンを指定すると、その枠は 1 回戦を戦わずに勝ち上がる。2 回戦以降で
+       * 「不戦勝どうし」が当たると、**1 試合も行われていないのに対戦カードが確定**する。
+       * 実際に起きる対戦ではあるが、ドロー入力の段階でこれを matches に出すと、
+       * 結果ページが「1回戦未実施なのに 2 回戦以降が進行している」ように見える。
+       * さらに伝播の実装ミスがあると架空の対戦（例: 4回戦のシード同士）まで生まれる。
+       *
+       * byeAdvanceToggle が ON のときは、この種の試合を matches / results から除く。
+       * シード情報は entries[].type（buildEntriesMeta）に入るので失われない。
+       * 1 回戦の結果を入力すれば、そこから通常どおり 2 回戦以降が現れる。
+       *
+       * 判定: その枠にいる者が「実際に勝った試合」を 1 つも持たずに辿り着いたか。
+       * bracket を根元まで遡り、途中の勝ちがすべて autoFromBye なら bye 由来とみなす。
+       */
+      function reachedOnlyByByes(rIdx, mIdx, side) {
+        if (rIdx === 0) return false; // 1回戦の枠は「勝ち上がり」ではない
+        const feederIdx = mIdx * 2 + (side === 'p1' ? 0 : 1);
+        const feeder = bracket[rIdx - 1]?.matches?.[feederIdx];
+        if (!feeder) return false;
+        if (!feeder.autoFromBye) return false; // 実際に勝った試合がある
+        // その供給元も bye で上がってきたのか、さらに遡る
+        const wonSide = feeder.winner != null && feeder.p1?.id === feeder.winner ? 'p1' : 'p2';
+        if (rIdx - 1 === 0) return true;
+        return reachedOnlyByByes(rIdx - 1, feederIdx, wonSide);
+      }
+
       function collectRoundHistory() {
         // bracket から互換の roundHistory を生成
         return bracket.map((round, rIdx) => {
@@ -1584,13 +1645,17 @@
           // ディープコピーして round を付与するのは updateJsonOutput で行う
           return {
             round: name,
-            matches: round.matches.map((m) => ({
+            matches: round.matches.map((m, mIdx) => ({
               p1: m.p1,
               p2: m.p2,
               scores: { ...m.scores },
               winner: m.winner,
               p1Retired: m.p1Retired,
               p2Retired: m.p2Retired,
+              // 両者とも不戦勝だけで辿り着いた＝まだ 1 試合も行われていない対戦
+              byeDerived:
+                reachedOnlyByByes(rIdx, mIdx, 'p1') &&
+                reachedOnlyByByes(rIdx, mIdx, 'p2'),
             })),
           };
         });
@@ -1635,6 +1700,7 @@
               if (!ranking) continue;
               for (const match of matches) {
                 if (!match.p1 || !match.p2 || !match.winner) continue;
+                if (match.byeDerived && byeAdvanceToggleEl?.checked) continue;
                 const isP1Winner = match.winner === match.p1.id;
                 const winnerTeam = isP1Winner ? match.p1 : match.p2;
                 const loserTeam = isP1Winner ? match.p2 : match.p1;
@@ -1666,6 +1732,7 @@
               if (!ranking) continue;
               for (const match of matches) {
                 if (!match.p1 || !match.p2 || !match.winner) continue;
+                if (match.byeDerived && byeAdvanceToggleEl?.checked) continue;
                 const p1Key = getPairKey(match.p1);
                 const p2Key = getPairKey(match.p2);
                 const p1Arr = getPairArray(match.p1);
@@ -1726,6 +1793,10 @@
           }
         }
 
+        // entriesMeta（試合結果に依存しないエントリー一覧＋シード種別）
+        // 詳細は buildEntriesMeta() のコメント。
+        output.entriesMeta = buildEntriesMeta(roundHistory);
+
         // ラウンドロビンからの持ち越し結果をマージ
         if (rrCarry) {
           if (rrCarry.roundRobinMatches)
@@ -1763,8 +1834,117 @@
           .join('・');
       }
 
+      /**
+       * 試合結果に依存せず、ドロー（パッキン配置）だけから
+       * entriesMeta = [{ entryNo, playerIds | team, type }] を組み立てる。
+       *
+       * なぜ必要か:
+       *   entries は normalize-core が `matches[].entryNo` から作るが、
+       *   splitMatchByPlayerIds / splitMatchByTeams は bye を含む試合を出力しない。
+       *   その結果、パッキン（＝1回戦不戦勝）で勝ち上がるシード側は
+       *   2回戦の結果を入力するまで entries に現れず、type も付かなかった。
+       *   ドロー表を入れた時点でシードが分かるようにするため、ここで明示的に出す。
+       *
+       * 判定は**1回戦の枠組みだけ**から行う（結果を見ない）。
+       *   normalize-core の calculateEntryType() は「実対戦の初出ラウンド」で判定するが、
+       *   **開催前は2回戦の枠が未確定**（1回戦の勝者が決まっていない）なので、その方式だと
+       *   シードの相手が bye のままになり type が null に落ちる。これが
+       *   「パッキンを押しても seed にならない」の原因だった。
+       *
+       *   1回戦の第 i 試合の勝者は 2回戦の第 floor(i/2) 試合へ進み、
+       *   そこで第 i^1 試合（隣の山）の勝者と当たる。よって:
+       *     - 第 i 試合が実対戦（両者あり）        → その2人は packing
+       *     - 第 i 試合が bye（パッキン）で、
+       *         隣の第 i^1 試合が実対戦            → seed（1回戦を戦った相手と2回戦で当たる）
+       *         隣の第 i^1 試合も bye              → extra（足長。seed でもその下でもない）
+       *   結果を入れた後もブラケット構造は変わらないので、判定は前後で一致する。
+       */
+      function buildEntriesMeta(roundHistory) {
+        const isTeamCat = category === 'team' || category === 'prefecture';
+        const isBye = (p) => !p || p.id === 'bye' || p.id == null;
+        const first = roundHistory[0];
+        if (!first || !Array.isArray(first.matches)) return [];
+
+        const idsOf = (p) => {
+          const ids = (p.information || []).map((i) => i.tempId);
+          return ids.every((x) => x != null) ? ids : null;
+        };
+        /**
+         * 選手の詳細（姓名・所属・都道府県）も持たせる。
+         * normalize-core の participants は matches 由来なので、1回戦不戦勝の
+         * シード／足長は **participants にも載らない**。playerIds（tempId）だけでは
+         * 姓名を復元できない（チーム名に "_" が含まれうるため分解が不確実）ので、
+         * ここで元の値をそのまま渡す。
+         */
+        const playersOf = (p) =>
+          (p.information || []).map((i) => ({
+            tempId: i.tempId ?? null,
+            lastName: i.lastName ?? null,
+            firstName: i.firstName ?? null,
+            team: i.team ?? null,
+            prefecture: i.prefecture ?? null,
+          }));
+        const baseOf = (p) =>
+          isTeamCat
+            ? { team: p.team || p.name, prefecture: p.prefecture || '' }
+            : { playerIds: idsOf(p), players: playersOf(p) };
+
+        const rows = new Map(); // entryNo -> { base, type }
+        const put = (p, type) => {
+          if (isBye(p) || p.id == null || rows.has(p.id)) return;
+          rows.set(p.id, { base: baseOf(p), type });
+        };
+
+        const ms = first.matches;
+        // 実対戦（両者あり）の山かどうか
+        const isReal = (i) => {
+          const m = ms[i];
+          return !!m && !isBye(m.p1) && !isBye(m.p2);
+        };
+
+        ms.forEach((m, i) => {
+          if (isReal(i)) {
+            put(m.p1, 'packing');
+            put(m.p2, 'packing');
+            return;
+          }
+          // bye を含む山: 実在する側だけを登録する
+          const solo = isBye(m.p1) ? m.p2 : m.p1;
+          if (isBye(solo)) return; // 両方 bye（空の山）は無視
+          const sibling = i ^ 1;
+          // 隣の山が存在しない（山数が奇数など）場合は断定せず null
+          const type = sibling < ms.length ? (isReal(sibling) ? 'seed' : 'extra') : null;
+          put(solo, type);
+        });
+
+        // 1回戦に現れない参加者（データ不整合時の保険）も拾っておく
+        roundHistory.forEach((round) => {
+          for (const m of round.matches) {
+            put(m.p1, null);
+            put(m.p2, null);
+          }
+        });
+
+        const out = [];
+        for (const [entryNo, { base, type }] of rows) {
+          const row = { entryNo, type };
+          if (isTeamCat) {
+            row.team = base.team;
+            if (base.prefecture) row.prefecture = base.prefecture;
+          } else {
+            if (base.playerIds) row.playerIds = base.playerIds;
+            if (base.players?.length) row.players = base.players;
+          }
+          out.push(row);
+        }
+        out.sort((a, b) => (Number(a.entryNo) || 0) - (Number(b.entryNo) || 0));
+        return out;
+      }
+
       function splitMatchByPlayerIds(match) {
         if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
+        // 不戦勝どうしの対戦は、トグル ON のとき出力しない（reachedOnlyByByes 参照）
+        if (match.byeDerived && byeAdvanceToggleEl?.checked) return [];
         const results = [];
         const p1Ids = match.p1.information.map((info) => info.tempId);
         const p2Ids = match.p2.information.map((info) => info.tempId);
@@ -1806,6 +1986,8 @@
 
       function splitMatchByTeams(match) {
         if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
+        // 不戦勝どうしの対戦は、トグル ON のとき出力しない（reachedOnlyByByes 参照）
+        if (match.byeDerived && byeAdvanceToggleEl?.checked) return [];
         const results = [];
         function getTeamLabel(obj) {
           if (obj.tempId) return obj.tempId;

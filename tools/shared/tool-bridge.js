@@ -71,7 +71,10 @@ const ToolBridge = (() => {
   let lastValidation = [];
 
   function normalize(raw) {
-    const outObj = NormalizeCore.normalizeResults(raw, getEntriesMeta());
+    // entriesMeta は「入力ツールが raw に載せたもの」を最優先する。
+    // ツール側は現在のドロー（パッキン配置）から毎回作り直しており、常に最新で正しい。
+    // localStorage 側（tools/index.html で貼り付ける外部メタ）は、それが無い場合のみ使う。
+    const outObj = NormalizeCore.normalizeResults(raw, Array.isArray(raw && raw.entriesMeta) ? raw.entriesMeta : getEntriesMeta());
     // 成形直後に入力ミスを検出する。統計エンジンは相方不明の試合を黙って除外するため、
     // ここで気付けないと後工程でも表示でも分からなくなる（validate-entries.js の冒頭参照）。
     // categoryId は敢えて渡さない。保存ファイル名は localStorage 由来で前回の種目が

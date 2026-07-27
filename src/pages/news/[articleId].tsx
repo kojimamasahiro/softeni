@@ -123,7 +123,7 @@ function PlayerNames({ players, perPlayerTeam }: { players: PreviewPlayerRef[]; 
   );
 }
 
-/** 前哨戦カード 1 件。 */
+/** 「直近の対戦」カード 1 件。 */
 function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][number] }) {
   // 再戦がもう起こらない（一方が敗退）カードは灰に落として、実現する／まだ起こりうる
   // カードとの見た目の差をつける。消さずに残すのは「地区大会で対戦していた」という
@@ -136,10 +136,16 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
           今大会で再戦
         </span>
       )}
-      {/* 開催前は全ペアが alive なので「勝ち上がり中」とは言えない。中立の文言にする。 */}
-      {card.rematchStatus === 'pending' && (
-        <span className="mr-1.5 rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-bold text-sky-800 dark:bg-sky-900 dark:text-sky-100">再戦の可能性</span>
-      )}
+      {/*
+        `pending`（開催前）にはバッジを出さない。
+        以前は「再戦の可能性」と出していたが、**実際に再戦が起こる可能性は計算できない**。
+        当サイトのドローデータは 1 回戦しか登録されておらず（2 回戦以降の試合レコード自体が無い・
+        `nextMatchId` も未設定）、山の位置を復元する手段が無いため。entryNo をブラケット位置と
+        みなす近似も検証したが的中率 17〜42%（不戦勝で位置がずれる）、試合 ID の連番から辿る
+        近似も 0/30 で不成立だった。決勝でしか当たらない組み合わせにも一律「可能性」と書くのは
+        期待値を過大に見せるので、**言えない事は書かない**方針にした。
+        セクション見出しが「直近の対戦」なので、バッジ無しでも意味は通る。
+      */}
       {card.rematchStatus === 'possible' && (
         <span className="mr-1.5 rounded bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100">
           両者勝ち上がり中
@@ -160,6 +166,10 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
         {card.tournamentLabel} {card.year}
         {card.round ? ` ${card.round}` : ''}
       </span>
+      {/* ドロー上、両者が勝ち上がった場合に最短で当たるラウンド。事実として書く。 */}
+      {card.meetingRoundLabel && !card.currentResult && (
+        <span className="block text-xs opacity-70">今大会は最短で {card.meetingRoundLabel} で対戦</span>
+      )}
       {/*
         再戦が実際に行われて決着した場合は、その結果まで出す。
         「今大会で再戦」だけだと勝敗が分からず、記事として物足りないため。
@@ -183,27 +193,35 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
 }
 
 /**
- * 前哨戦セクション。
- * 「この大会の出場ペアどうしは、直近の地区大会等で既に対戦している」という文脈を出す。
+ * 「直近の対戦」セクション。
+ *
+ * 「この大会の出場ペアどうしは、直近の他大会で既に対戦している」という文脈を出す。
  * 当サイトが大会・試合単位のデータを横断して持っているからこそ作れる情報で、
  * エントリー表と結果 PDF しか持たないサイトでは再現できない（ADR-005 の差別化方針）。
+ *
+ * **見出しに「前哨戦」を使わない**（2026-07-26 変更）: 供給元が今大会より格上のことがある。
+ * 実例として西日本選手権 2026（`generationId: all`）の供給元は全日本選手権・全日本インドアで、
+ * これを「前哨戦」と呼ぶのは事実に反する。本機能は全世代・全大会で動くので、
+ * **大会間の格を前提にしない語**にする。
+ *
+ * **規模のサマリ文も出さない**（同）: 以前は「出場 165 ペアのうち 4 ペア（2%）が、直近の
+ * 2 大会で既に対戦経験あり」と出していたが、(1) 分母が絞り込み前の出場総数で分子と対応せず
+ * 何の割合か読み取れない、(2)「直近の 2 大会」が実際の定義（1 年窓＋同一大会の前回開催）と
+ * ずれている、(3) 掲載範囲のエクスキューズは末尾の scopeNote で足りている、の 3 点による。
+ * 規模を語るのは大会ハブ側の役割にする（[seo.md](../../docs/wiki/seo.md) #8「結果面はハブを
+ * 強化（歴代横断統計）して受ける」）。
  *
  * 件数が多いため、先頭の数件だけ常時表示し、残りは `<details>` で折りたたむ
  * （JS 不要で SSG と相性が良い）。
  */
 function PriorMeetingsSection({ block }: { block: PriorMeetingsBlock }) {
   if (block.cards.length === 0) return null;
-  const pct = block.totalEntries > 0 ? Math.round((block.coveredEntries / block.totalEntries) * 100) : 0;
   const head = block.cards.slice(0, block.visibleCards);
   const rest = block.cards.slice(block.visibleCards);
   const hidden = block.totalCards - block.cards.length;
   return (
     <div className="mb-3">
-      <h3 className="mb-1 text-sm font-semibold">前哨戦（すでに対戦している顔合わせ）</h3>
-      <p className="mb-2 text-xs text-gray-600 dark:text-gray-300">
-        出場 {block.totalEntries} {block.unit}のうち <span className="font-semibold">{block.coveredEntries}</span> {block.unit}（{pct}%）が、直近の
-        {block.sourceLabels.length} 大会で既に対戦経験あり。当サイト掲載分から {block.totalCards} 件の対戦カードを確認。
-      </p>
+      <h3 className="mb-2 text-sm font-semibold">直近の対戦</h3>
       <ul className="flex flex-col gap-1.5">
         {head.map((card, i) => (
           <PriorMeetingCardItem key={`pm-${i}`} card={card} />
@@ -477,7 +495,7 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
               </div>
             )}
 
-            {/* プレビュー: 前哨戦（出場ペアどうしが直近の他大会で既に対戦しているカード） */}
+            {/* プレビュー: 直近の対戦（出場ペアどうしが直近の他大会で既に対戦しているカード） */}
             {isPreview && c.priorMeetings && <PriorMeetingsSection block={c.priorMeetings} />}
 
             {/* プレビュー: 出場規模・勢力図 */}

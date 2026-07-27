@@ -44,6 +44,21 @@ export interface ResultCoverage {
   firstUndecidedRoundLabel: string | null;
 }
 
+/**
+ * その試合の勝者が確定しているか。
+ *
+ * 注意: **`null` だけを見てはいけない**。ページに渡す際の pack/unpack
+ * （`lib/packedPageData.ts`）が `winnerEntryNo: number` 型に合わせて
+ * `null` を **`-1`** に置き換えるため、未実施の試合が「確定済み」と誤判定される。
+ * 実際、インターハイ 2026 男子ダブルス（1回戦 60 試合すべて未実施）で
+ * 「1回戦まで結果掲載中(全60試合中60試合終了・100%)」と表示される不具合が出た（2026-07-26）。
+ * entryNo は 1 以上なので、0 以下は「未確定」とみなす。
+ */
+function isDecided(m: CoverageMatchInput): boolean {
+  const w = m.winnerEntryNo;
+  return w !== null && w !== undefined && w > 0;
+}
+
 interface CoverageMatchInput {
   stage?: string | null;
   round?: string | null;
@@ -108,7 +123,7 @@ export function computeResultCoverage(
     return EMPTY_UNSUPPORTED;
   }
 
-  const decided = knockoutMatches.filter((m) => m.winnerEntryNo !== null && m.winnerEntryNo !== undefined);
+  const decided = knockoutMatches.filter((m) => isDecided(m));
   const totalKnockoutMatches = knockoutMatches.length;
   const decidedKnockoutMatches = decided.length;
   const progressRatio = totalKnockoutMatches > 0 ? decidedKnockoutMatches / totalKnockoutMatches : null;
@@ -127,7 +142,7 @@ export function computeResultCoverage(
   let firstUndecidedRoundLabel: string | null = null;
   let shallowestOrder = Infinity;
   for (const m of knockoutMatches) {
-    if (m.winnerEntryNo !== null && m.winnerEntryNo !== undefined) continue;
+    if (isDecided(m)) continue;
     const order = roundOrderOf(m.round);
     if (order < shallowestOrder) {
       shallowestOrder = order;

@@ -748,14 +748,63 @@
       result: r.result || null,
     }));
 
+    // ---- entriesMeta の選手を participants に登録する ----
+    // participants は matches 由来なので、**1回戦が不戦勝（パッキン）のシード／足長は
+    // participants にも載らない**。出場者集合はプレビュー記事の①連覇ウォッチ・②前回入賞者・
+    // ③過去の優勝者・④直近好成績者すべてが参照する（lib/newsArticle.ts の buildFieldIndex）
+    // ため、ここが欠けると「注目の選手」が軒並み拾えなくなる。
+    // 実測（2026-07-26）: インターハイ 2026 の出場者が 1,344 人 → 752 人に減り、
+    // ハイスクールジャパンカップ上位との一致が 21 人 → 4 人に落ちた。
+    // 入力ツールが entriesMeta に選手の姓名・所属を載せているので、それを使って補う。
+    for (const em of entriesMetaInput) {
+      if (!em) continue;
+      if (Array.isArray(em.players)) {
+        for (const pl of em.players) registerOpponent(pl);
+      } else if (em.team) {
+        // 団体戦。**registerFromTeamString は使わない**: あちらは id を校名そのものにするため
+        // 「文徳」を作ってしまい、matches 由来の正規 id「文徳_熊本県」と重複する
+        // （2026-07-26 の不具合。48 校に対し participants が 80 件になった）。
+        // registerOpponent なら makeIdFromParts で `校名_都道府県` を組み立てるので一致する。
+        registerOpponent({ team: em.team, prefecture: em.prefecture || null });
+      }
+    }
+
     const participants = Array.from(participantsMap.values());
 
-    // try to read entries metadata (types) from ../entries/doubles-none-boys.json
+    // entries のメタ情報（entryNo / type / playerIds|team）。
+    // 入力ツールが「試合結果に依存しないエントリー一覧」として渡してくる（buildEntriesMeta）ほか、
+    // 外部の entries/*.json からも渡せる。
     let entryTypeMap = new Map();
+    /** entriesMeta にしか無く、試合レコードを 1 件も持たないエントリーの entryNo */
+    const drawOnlyEntryNos = new Set();
     if (Array.isArray(entriesMetaInput)) {
       for (const em of entriesMetaInput) {
         if (em && em.entryNo != null)
           entryTypeMap.set(Number(em.entryNo), em.type || null);
+      }
+
+      // ---- entriesMeta にしか無いエントリーを補う ----
+      // entriesMap は data.matches[].entryNo から作られるため、**1回戦が不戦勝（パッキン）の
+      // シードは、2回戦の結果を入力するまで entries に現れない**（bye を含む試合は
+      // ツールが出力しないため）。ドロー表を入れた時点でシードを entries に出したいので、
+      // entriesMeta 側にあるものはここで作る。playerIds / team はメタが持っていれば使う。
+      for (const em of entriesMetaInput) {
+        if (!em || em.entryNo == null) continue;
+        const key = String(em.entryNo);
+        if (entriesMap.has(key)) continue;
+        let playerIds = [];
+        if (em.team) {
+          // 団体戦の playerIds は participants の id と一致させる必要がある。
+          // participants 側は `校名_都道府県`（makeIdFromParts）で登録されるので、
+          // 校名だけを入れると参照切れになる（2026-07-26 の不具合）。
+          playerIds = [normalizeRawId(makeIdFromParts(null, null, em.team, em.prefecture || null))];
+        } else if (Array.isArray(em.playerIds)) {
+          playerIds = em.playerIds.map((x) => normalizeRawId(String(x)));
+        }
+        entriesMap.set(key, { entryNo: Number(em.entryNo), playerIds });
+        // 「ドローには居るが、まだ 1 試合も無い」エントリー（＝1回戦が不戦勝のシード等）。
+        // 成績導出でこれを「不明」にしないため印を付ける（下の entryResults 参照）。
+        drawOnlyEntryNos.add(Number(em.entryNo));
       }
     }
     let entries = Array.from(entriesMap.values()).map((e) => ({
@@ -1363,7 +1412,15 @@
     }
 
     const entryResults = (entries || []).map((e) => {
-      const r = deriveResultLabelForEntry(e.entryNo);
+      let r = deriveResultLabelForEntry(e.entryNo);
+      // ドローには居るが試合レコードが 1 件も無いエントリー（1回戦が不戦勝のシード等）は、
+      // deriveEntryStanding が「不明 / unknown」を返す。これは「データ欠損」を意味する値なので、
+      // 開催前のシードに付くと results が壊れて見える（2026-07-26 の回帰）。
+      // 実態は「出場するがまだ試合をしていない」なので、他の未実施エントリーと同じ
+      // alive（→ rank.kind:'ongoing'）に揃える。
+      if (r.state === 'unknown' && drawOnlyEntryNos.has(Number(e.entryNo))) {
+        r = { resultLabel: '出場', eliminatedRound: null, lastMatchId: null, state: 'alive' };
+      }
       return {
         entryNo: e.entryNo,
         playerIds: Array.isArray(e.playerIds) ? e.playerIds : [],
