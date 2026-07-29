@@ -1,0 +1,308 @@
+{
+  "_meta": {
+    "fiscalYear": 2025,
+    "source": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_taikai_alle.pdf",
+    "supplementarySource": "https://www.jsta.or.jp/events/the_yealy_events",
+    "extractedAt": "2026-07-26",
+    "extractionMethod": "手動転記（PDFテキストから人手で構造化。自動パーサ未実装）",
+    "note": "開催地は市区町村レベル。複数市区町村・複数都道府県にまたがる大会がある（大会:会場は1:N）。施設名はここには含まれず、大会要項PDFの「4. 会場」節から別途取得する。"
+  },
+  "events": [
+    {
+      "category": "主催",
+      "name": "第9回 アジア選手権大会日本代表予選会",
+      "location": "宮城県仙台市",
+      "startDate": "2025-04-26",
+      "endDate": "2025-04-27",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A01_10c.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第32回 全日本シングルス選手権大会",
+      "location": "宮崎県宮崎市",
+      "startDate": "2025-05-17",
+      "endDate": "2025-05-18",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A02_10c.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第6回 全日本ミックスダブルス選手権大会",
+      "location": "広島県広島市、安芸郡、福山市",
+      "startDate": "2025-06-14",
+      "endDate": "2025-06-15",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A03_10b.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "男子第70回・女子第69回 全日本実業団選手権大会",
+      "location": "青森県青森市",
+      "startDate": "2025-07-25",
+      "endDate": "2025-07-27",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A04_10b.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第42回 全日本小学生選手権大会",
+      "location": "茨城県神栖市",
+      "startDate": "2025-07-31",
+      "endDate": "2025-08-03",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A05_10c.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第53回 全日本社会人選手権大会",
+      "location": "北海道苫小牧市、室蘭市、札幌市",
+      "startDate": "2025-08-30",
+      "endDate": "2025-08-31",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A06_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "全日本中学生クラブ選手権プレ大会",
+      "location": "千葉県白子町",
+      "startDate": "2025-09-13",
+      "endDate": "2025-09-15",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A07_10c.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第29回 全日本シニア選手権大会",
+      "location": "兵庫県神戸市/京都府福知山市、舞鶴市",
+      "startDate": "2025-09-20",
+      "endDate": "2025-09-21",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A08_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "JOCジュニアオリンピックカップ／第32回全日本ジュニア選手権大会",
+      "location": "広島県広島市",
+      "startDate": "2025-10-18",
+      "endDate": "2025-10-19",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A09_10b.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第3回 STリーグ Ⅱ",
+      "location": "京都府福知山市",
+      "startDate": "2025-10-24",
+      "endDate": "2025-10-26",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A10_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第32回 全日本クラブ選手権大会",
+      "location": "千葉県白子町",
+      "startDate": "2025-10-25",
+      "endDate": "2025-10-26",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A11_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第80回 天皇賜杯・皇后賜杯 全日本選手権大会",
+      "location": "東京都江東区",
+      "startDate": "2025-11-06",
+      "endDate": "2025-11-08",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A12_10b.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第3回 ＳＴリーグ",
+      "location": "栃木県宇都宮市",
+      "startDate": "2025-12-11",
+      "endDate": "2025-12-14",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A13_10b.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "STリーグ プレーオフ",
+      "location": "広島県福山市",
+      "startDate": "2025-12-19",
+      "endDate": "2025-12-21",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A14_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第71回 全日本インドア選手権大会",
+      "location": "大阪府大阪市",
+      "startDate": "2026-02-08",
+      "endDate": "2026-02-08",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A15_10.pdf"
+    },
+    {
+      "category": "主催",
+      "name": "第20回 アジア競技大会日本代表予選会",
+      "location": "福島県棚倉町",
+      "startDate": "2026-03-20",
+      "endDate": "2026-03-22",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A16_10.pdf"
+    },
+    {
+      "category": "共催",
+      "name": "第54回 ハイスクールジャパンカップ",
+      "location": "北海道札幌市",
+      "startDate": "2025-06-18",
+      "endDate": "2025-06-22",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "西日本シニア選手権大会",
+      "location": "和歌山県和歌山市、白浜町",
+      "startDate": "2025-07-05",
+      "endDate": "2025-07-06",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第79回 西日本選手権大会",
+      "location": "奈良県明日香村/京都府宇治市",
+      "startDate": "2025-07-12",
+      "endDate": "2025-07-13",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第80回 東日本選手権大会",
+      "location": "富山県",
+      "startDate": "2025-07-19",
+      "endDate": "2025-07-20",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "全日本高校選手権大会（男子）",
+      "location": "山口県宇部市",
+      "startDate": "2025-07-24",
+      "endDate": "2025-07-27",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "全日本高校選手権大会（女子）",
+      "location": "山口県宇部市",
+      "startDate": "2025-07-28",
+      "endDate": "2025-07-31",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第52回 全日本レディース大会（個人戦）",
+      "location": "三重県四日市市、鈴鹿市 他",
+      "startDate": "2025-07-26",
+      "endDate": "2025-07-27",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第56回 全国中学校大会",
+      "location": "熊本県熊本市",
+      "startDate": "2025-08-19",
+      "endDate": "2025-08-21",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_B08_10.pdf"
+    },
+    {
+      "category": "共催",
+      "name": "第47回 全日本レディース決勝大会（団体戦）",
+      "location": "福島県会津若松市",
+      "startDate": "2025-08-30",
+      "endDate": "2025-08-31",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "2025 全日本学生選手権大会",
+      "location": "千葉県千葉市",
+      "startDate": "2025-08-29",
+      "endDate": "2025-09-03",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第79回 国民スポーツ大会",
+      "location": "滋賀県長浜市",
+      "startDate": "2025-10-03",
+      "endDate": "2025-10-06",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "日本スポーツマスターズ 2025",
+      "location": "愛媛県今治市",
+      "startDate": "2025-09-20",
+      "endDate": "2025-09-21",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第5回 全日本レディース決勝大会（シニアの部）",
+      "location": "大阪府大阪市",
+      "startDate": "2025-10-16",
+      "endDate": "2025-10-17",
+      "guidelinePdf": null
+    },
+    {
+      "category": "共催",
+      "name": "第20回 ジュニアジャパンカップ",
+      "location": "宮崎県宮崎市",
+      "startDate": "2025-11-21",
+      "endDate": "2025-11-24",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_B14_10.pdf"
+    },
+    {
+      "category": "共催",
+      "name": "第6回 平和カップひろしま国際大会",
+      "location": "広島県広島市",
+      "startDate": "2026-03-14",
+      "endDate": "2026-03-15",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_B15_10.pdf"
+    },
+    {
+      "category": "共催",
+      "name": "第37回 都道府県対抗全日本中学生大会",
+      "location": "三重県伊勢市",
+      "startDate": "2026-03-26",
+      "endDate": "2026-03-28",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_B16_10.pdf"
+    },
+    {
+      "category": "共催",
+      "name": "第51回 全日本高校選抜大会",
+      "location": "愛知県名古屋市",
+      "startDate": "2026-03-28",
+      "endDate": "2026-03-30",
+      "guidelinePdf": null
+    },
+    {
+      "category": "拠点",
+      "name": "第25回 全国小学生大会",
+      "location": "千葉県白子町",
+      "startDate": "2026-03-29",
+      "endDate": "2026-03-31",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_C01_10b.pdf"
+    },
+    {
+      "category": "その他",
+      "name": "第37回 ねんりんピック2025",
+      "location": "岐阜県瑞穂市、大垣市",
+      "startDate": "2025-10-18",
+      "endDate": "2025-10-20",
+      "guidelinePdf": null
+    },
+    {
+      "category": "その他",
+      "name": "第33回 日・韓・中ジュニア交流競技大会",
+      "location": "中国内モンゴル自治区",
+      "startDate": "2025-08-23",
+      "endDate": "2025-08-29",
+      "guidelinePdf": null
+    },
+    {
+      "category": "その他",
+      "name": "第9回 アジア選手権大会",
+      "location": "韓国聞慶市",
+      "startDate": "2025-09-13",
+      "endDate": "2025-09-23",
+      "guidelinePdf": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_Z03_10.pdf"
+    }
+  ]
+}

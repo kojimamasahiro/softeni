@@ -4,6 +4,20 @@
     "location": "福島県",
     "startDate": "2026-03-20",
     "endDate": "2026-03-22",
+    "venues": [
+      {
+        "prefecture": "福島県",
+        "city": "東白川郡棚倉町",
+        "name": "テニスパーク棚倉",
+        "aliases": [],
+        "postalCode": "963-6123",
+        "address": "福島県東白川郡棚倉町大字関口字一本松43－1",
+        "tel": "0247-33-4111",
+        "courts": 12,
+        "note": "要項表記は「全天候型12面 ※天候により変更あり」。既存語彙（クレー/ハード/砂入り人工芝/木床フローリング）のいずれに対応するか不明のためsurfaceは未記録"
+      }
+    ],
+    "guidelineUrl": "https://www.jsta.or.jp/wp-content/uploads/t_records/2025/2025_A16_10.pdf",
     "label": "第20回 アジア競技大会日本代表予選会",
     "source": "公益財団法人 日本ソフトテニス連盟",
     "sourceUrl": "https://www.jsta.or.jp/competition_list?id=1&y=2026",
@@ -57,6 +71,32 @@
     "location": "福島県",
     "startDate": "2022-04-16",
     "endDate": "2022-04-17",
+    "venues": [
+      {
+        "prefecture": "福島県",
+        "city": "東白川郡棚倉町",
+        "name": "テニスパーク棚倉",
+        "aliases": [],
+        "postalCode": "963-6123",
+        "address": "福島県東白川郡棚倉町大字関口字一本松43-1",
+        "tel": "0247-33-4111",
+        "courts": 12,
+        "usage": "主会場",
+        "note": "要項表記は「全天候型12面」。既存語彙（クレー/ハード/砂入り人工芝/木床フローリング）のいずれに対応するか不明のためsurfaceは未記録"
+      },
+      {
+        "prefecture": "福島県",
+        "city": "東白川郡棚倉町",
+        "name": "ルネサンス棚倉テニスコート",
+        "aliases": ["ルネサンス棚倉コート"],
+        "postalCode": "963-6123",
+        "address": "福島県東白川郡棚倉町大字関口字一本松43-1",
+        "tel": "0247-33-4111",
+        "usage": "荒天時の予備会場",
+        "note": "要項では通常時「屋内全天候型4面」、荒天時は「ルネサンス棚倉コート（砂入り人工芝10面）」と別記載。同一施設内の屋内コートと屋外コートの可能性があるがcourts/surfaceを単一値に確定できないため未記録"
+      }
+    ],
+    "guidelineUrl": "https://softtennis-tokyo.com/tokyo1/wp-content/uploads/2022/02/%E3%82%A2%E3%82%B7%E3%82%99%E3%82%A2%E7%AB%B6%E6%8A%80%E5%A4%A7%E4%BC%9A%E6%97%A5%E6%9C%AC%E4%BB%A3%E8%A1%A8%E4%BA%88%E9%81%B8%E4%BC%9A.pdf",
     "label": "第19回 アジア競技大会日本代表予選会",
     "source": "公益財団法人 日本ソフトテニス連盟",
     "sourceUrl": "https://www.jsta.or.jp/wp-content/uploads/t_records/2022/2022_A01_40.pdf",

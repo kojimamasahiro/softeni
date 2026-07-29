@@ -4,6 +4,52 @@
     "location": "山形県",
     "startDate": "2026-07-18",
     "endDate": "2026-07-19",
+    "venues": [
+      {
+        "prefecture": "山形県",
+        "city": "山形市",
+        "name": "山形市総合スポーツセンターテニスコート",
+        "aliases": [],
+        "address": "山形県山形市落合町1",
+        "tel": "023-625-2630",
+        "courts": 16,
+        "surface": "砂入り人工芝",
+        "usage": "一般男子。予備日(7/20)は一般女子・シニア(男子・女子)65・70の会場もここに変更"
+      },
+      {
+        "prefecture": "山形県",
+        "city": "天童市",
+        "name": "山形県総合運動公園テニスコート",
+        "aliases": [],
+        "address": "山形県天童市山王1-1",
+        "tel": "023-655-5900",
+        "usage": "一般女子・シニア男子、シニア女子65・70、シニア男女75・80",
+        "note": "要項に砂入り人工芝18面（一般女子・シニア男子用、屋外）と屋内人工芝4面（シニア女子65・70、シニア男女75・80用）の2種類のコートが記載されているため、courts/surfaceは単一値にせず未記録"
+      },
+      {
+        "prefecture": "山形県",
+        "city": "酒田市",
+        "name": "酒田市営光ケ丘テニスコート",
+        "aliases": [],
+        "address": "山形県酒田市光ケ丘3-5-43",
+        "tel": "0234-33-4443",
+        "courts": 10,
+        "surface": "砂入り人工芝",
+        "usage": "男子・女子35・45、シニア男子・女子50"
+      },
+      {
+        "prefecture": "山形県",
+        "city": "酒田市",
+        "name": "酒田市国体記念テニスコート",
+        "aliases": [],
+        "address": "山形県酒田市光ケ丘3-45-9",
+        "tel": "0234-33-7911",
+        "courts": 8,
+        "surface": "砂入り人工芝",
+        "usage": "シニア男子・女子55・60"
+      }
+    ],
+    "guidelineUrl": "https://softtennis-tokyo.com/tokyo1/wp-content/uploads/2026/02/2.6%E6%8F%90%E6%A1%88%E3%80%80%E7%AC%AC81%E5%9B%9E%E6%9D%B1%E6%97%A5%E6%9C%AC%E9%81%B8%E6%89%8B%E6%A8%A9%E5%B1%B1%E5%BD%A2%E5%A4%A7%E4%BC%9A%E3%80%80%E9%96%8B%E5%82%AC%E8%A6%81%E9%A0%85%E6%A1%88.pdf",
     "source": "山形県ソフトテニス連盟",
     "sourceUrl": "https://softtennis-tokyo.com/higashinihon-softtennis-association/",
     "categories": [
@@ -28,6 +74,57 @@
     "location": "富山県",
     "startDate": "2025-07-19",
     "endDate": "2025-07-20",
+    "venues": [
+      {
+        "prefecture": "富山県",
+        "city": "富山市",
+        "name": "岩瀬スポーツ公園テニスコート",
+        "aliases": [],
+        "postalCode": "931-8332",
+        "address": "富山県富山市森5-1-17",
+        "tel": "076-438-4880",
+        "courts": 30,
+        "surface": "砂入り人工芝",
+        "usage": "一般男子、35男子、35女子、80男子、80女子"
+      },
+      {
+        "prefecture": "富山県",
+        "city": "高岡市",
+        "name": "高岡スポーツコアテニスコート",
+        "aliases": [],
+        "postalCode": "933-0816",
+        "address": "富山県高岡市二塚428-1",
+        "tel": "0766-20-1155",
+        "courts": 16,
+        "surface": "砂入り人工芝",
+        "usage": "一般女子、45男子、45女子、50男子、50女子"
+      },
+      {
+        "prefecture": "富山県",
+        "city": "小矢部市",
+        "name": "小矢部運動公園テニスコート",
+        "aliases": [],
+        "postalCode": "932-0134",
+        "address": "富山県小矢部市平桜字岡山200",
+        "tel": "0766-69-7707",
+        "courts": 8,
+        "surface": "砂入り人工芝",
+        "usage": "55男子、55女子、60男子、60女子"
+      },
+      {
+        "prefecture": "富山県",
+        "city": "魚津市",
+        "name": "魚津桃山運動公園テニスコート",
+        "aliases": [],
+        "postalCode": "937-0821",
+        "address": "富山県魚津市出字桃山36",
+        "tel": "0765-22-0077",
+        "courts": 10,
+        "surface": "砂入り人工芝",
+        "usage": "65男子、65女子、70男子、70女子、75男子、75女子"
+      }
+    ],
+    "guidelineUrl": "http://www.softtennis-toyama.com/my_document/eastjapan/game/attached/2025/20250719_%E4%BB%A4%E5%92%8C7%E5%B9%B4%E5%BA%A6%E6%9D%B1%E6%97%A5%E6%9C%AC%E3%82%BD%E3%83%95%E3%83%88%E3%83%86%E3%83%8B%E3%82%B9%E9%81%B8%E6%89%8B%E6%A8%A9%E5%A4%A7%E4%BC%9A%E8%A6%81%E9%A0%85.pdf",
     "source": "富山県ソフトテニス連盟",
     "sourceUrl": "http://www.softtennis-toyama.com/index.php",
     "categories": [

@@ -5,6 +5,29 @@
     "location": "石川県",
     "startDate": "2021-07-30",
     "endDate": "2021-07-31",
+    "venues": [
+      {
+        "prefecture": "石川県",
+        "city": "鳳珠郡能登町",
+        "name": "石川県立能都健民テニスコート",
+        "aliases": ["能登町藤波運動公園テニスコート"],
+        "postalCode": "927-0441",
+        "address": "石川県鳳珠郡能登町字藤波23-1-1",
+        "tel": "0768-62-3884",
+        "usage": "男子"
+      },
+      {
+        "prefecture": "石川県",
+        "city": "七尾市",
+        "name": "七尾市和倉温泉運動公園テニスコート",
+        "aliases": [],
+        "postalCode": "926-0171",
+        "address": "石川県七尾市石崎町泉台2",
+        "tel": "0767-62-0909",
+        "usage": "女子"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2021soutai/configbox/ishikawa/softtennis/jisshiyoukou.pdf",
     "source": "インターハイ「輝け君の汗と涙 北信越総体 2021」",
     "sourceUrl": "https://www.koukousoutai.com/2021soutai/",
     "categories": [
@@ -44,6 +67,18 @@
     "location": "愛媛県",
     "startDate": "2022-08-02",
     "endDate": "2022-08-03",
+    "venues": [
+      {
+        "prefecture": "愛媛県",
+        "city": "今治市",
+        "name": "スポーツパークテニスコート",
+        "aliases": [],
+        "postalCode": "794-0067",
+        "address": "愛媛県今治市高橋ふれあいの丘1番地2",
+        "tel": "0898-35-4111"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2022soutai/configbox/ehime/2022/03sohutotenisu/youkou.pdf",
     "source": "インターハイ「躍動の青い力 四国総体 2022」",
     "sourceUrl": "https://www.koukousoutai.com/2022soutai/",
     "categories": [
@@ -83,6 +118,18 @@
     "location": "北海道",
     "startDate": "2023-07-22",
     "endDate": "2023-07-24",
+    "venues": [
+      {
+        "prefecture": "北海道",
+        "city": "苫小牧市",
+        "name": "苫小牧市緑ケ丘公園庭球場",
+        "aliases": [],
+        "postalCode": "053-0034",
+        "address": "北海道苫小牧市清水町3丁目3番26号",
+        "tel": "0144-36-1181"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2023soutai/configbox/hokkaido/%E7%AB%B6%E6%8A%80%E4%BF%82/07%20%E3%82%BD%E3%83%95%E3%83%88%E3%83%86%E3%83%8B%E3%82%B9/050519%E3%80%90%E3%82%BD%E3%83%95%E3%83%88%E3%83%86%E3%83%8B%E3%82%B9%E3%80%91%E5%A4%A7%E4%BC%9A%E5%AE%9F%E6%96%BD%E8%A6%81%E9%A0%85.pdf",
     "source": "インターハイ「翔び立て若き翼 北海道総体 2023」",
     "sourceUrl": "https://www.koukousoutai.com/2023soutai/",
     "categories": [
@@ -122,6 +169,18 @@
     "location": "長崎県",
     "startDate": "2024-07-25",
     "endDate": "2024-08-01",
+    "venues": [
+      {
+        "prefecture": "長崎県",
+        "city": "長崎市",
+        "name": "かきどまり庭球場",
+        "aliases": ["ベネックス総合運動公園", "長崎市総合運動公園"],
+        "postalCode": "851-1134",
+        "address": "長崎県長崎市柿泊町2210",
+        "tel": "095-843-8100"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2024soutai/configbox/nagasaki/softtenis/jissiyoukou.pdf",
     "source": "インターハイ「ありがとうを強さに変えて 北部九州総体 2024」",
     "sourceUrl": "https://www.koukousoutai.com/2024soutai/",
     "categories": [
@@ -161,6 +220,18 @@
     "location": "山口県",
     "startDate": "2025-07-25",
     "endDate": "2025-07-27",
+    "venues": [
+      {
+        "prefecture": "山口県",
+        "city": "宇部市",
+        "name": "宇部市中央公園テニスコート",
+        "aliases": [],
+        "postalCode": "755-0022",
+        "address": "山口県宇部市神原町一丁目7番45号",
+        "tel": "0836-32-7759"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2025soutai/configbox/yamaguchi/2025.02.07ube/jisshiyoukou.pdf",
     "source": "インターハイ「開け未来の扉 中国総体 2025」",
     "sourceUrl": "https://www.koukousoutai.com/2025soutai/",
     "categories": [
@@ -196,9 +267,21 @@
   },
   {
     "year": 2026,
-    "location": "山口県",
+    "location": "京都府",
     "startDate": "2026-07-31",
     "endDate": "2026-08-07",
+    "venues": [
+      {
+        "prefecture": "京都府",
+        "city": "福知山市",
+        "name": "三段池科研電機テニスコート",
+        "aliases": ["福知山市三段池公園テニスコート"],
+        "postalCode": "620-0017",
+        "address": "京都府福知山市字猪崎377番地の1",
+        "tel": "0773-23-6295"
+      }
+    ],
+    "guidelineUrl": "https://www.koukousoutai.com/2026soutai/wp-content/uploads/2026/07/pref2_st0601_jissiyoukou.pdf",
     "source": "インターハイ「夢へ躍進 選手の夏 近畿総体 2026」",
     "sourceUrl": "https://www.koukousoutai.com/2026soutai/",
     "categories": [
