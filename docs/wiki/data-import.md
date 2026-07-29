@@ -324,6 +324,37 @@ CLI:
 - 本体は `tools/shared/normalize-core.js`（ブラウザ・Node 両対応）
 - `scripts/normalize-to-participants-entries.cjs` は同モジュールを呼ぶ薄いCLIラッパーに変更（`scripts/batch-normalize.mjs` からの利用・出力は従来と同一であることを確認済み）
 - entries メタ（type情報）はハブページの任意入力欄から渡せる。未指定時は従来どおり試合内容から推定
+- **`entriesMeta` は入力ツールが毎回ドローから作り直して `raw` に載せる**（2026-07-26〜）。`ToolBridge.normalize` は `raw.entriesMeta` を最優先し、無い場合だけ localStorage 側（ハブの任意入力欄）を使う。ツール側は現在のパッキン配置から生成するので常に最新で正しい
+
+### ドロー入力（結果を入れる前）の扱い（2026-07-26）
+
+大会前に組み合わせだけを入力する運用に対応するため、次の 3 点を入れた。経緯は
+[news-context-blocks.md](./news-context-blocks.md) の⑥「直近の対戦」と合わせて参照。
+
+- **試合結果が無くても `entries` と `type` が出る**。従来は `entries` を `matches[].entryNo` から
+  作っていたため、**1回戦が不戦勝（パッキン）のシードは 2 回戦の結果を入力するまで
+  `entries` に現れなかった**（bye を含む試合をツールが出力しないため）。
+  `buildEntriesMeta()` がドローから直接 `entriesMeta` を組み立て、`normalize-core` が
+  そこにしか無いエントリーを補う。
+- **不戦勝の勝ち上がりを `matches` / `results` に出さない**（ツールの「不戦勝の勝ち上がりを
+  出力しない」トグル、既定 ON）。パッキンを指定すると不戦勝どうしが 2 回戦以降で当たり、
+  **1 試合も行われていないのに対戦カードが確定**する。ドロー段階でこれを出すと結果ページが
+  「1回戦未実施なのに進行中」に見えるため除外する（`reachedOnlyByByes()`）。
+  1 回戦の結果を入れれば通常どおり 2 回戦以降が現れるので、最終的なデータは同じに収束する。
+- **`entriesMeta` の選手を `participants` にも登録する**。上の 2 点だけだと
+  **シード・足長が `participants` から丸ごと消える**。出場者集合はプレビュー記事の
+  ①連覇ウォッチ・②前回入賞者・③過去の優勝者・④直近好成績者すべてが参照するため、
+  ここが欠けると「注目の選手」が軒並みゼロになる（実測: インターハイ 2026 の出場者が
+  1,344 人 → 752 人、注目の選手が 13 人 → 1 人）。ツールは `entriesMeta[].players` に
+  姓名・所属・都道府県を載せ、`normalize-core` が `registerOpponent` で登録する。
+  - **団体戦の id 規約に注意**。`participants` の id は `makeIdFromParts` による
+    `校名_都道府県`（例: `文徳_熊本県`）。`registerFromTeamString` は id を校名そのものに
+    するため使ってはいけない（`文徳` を作って `matches` 由来の正規 id と重複し、
+    48 校に対し `participants` が 80 件になった）。`entries[].playerIds` 側も同じ規約で揃える。
+
+**検証観点**: 入れ直したデータは `participants` 件数（個人＝エントリー数×2 / 団体＝エントリー数）と
+`entries[].playerIds` の参照切れ・未参照の 3 つを突き合わせること。参照切れ 0 だけ見ていると
+重複登録を見逃す。
 - ラウンドロビン→トーナメント移行時は `roundRobinMatches`（RR持ち越し）と `matches`（トーナメント）が同一入力に共存する。participants と entries は両方をマージして収集する（どちらか一方だけを採用しない）。これにより、トーナメント側のペア・対戦相手・entryが participants / entries から欠落しない
 - RRで敗退し本戦へ進めなかった選手も `results` に残す。形式は `{"entryNo":N,"tournament":null,"roundrobin":{"group":..,"rank":..}}`（例: `data/tournaments/details/highschool-japan-cup/2025/doubles-none-boys.json`）。「予選敗退」「予選N位」等のラベルはJSONには保存せず、`tournament:null` かつ `roundrobin` ありの形から表示側（選手ページ・メジャータイトル判定等）で導出する
 - エントリー成績（`results[].tournament.rank`）は `matches` から `deriveEntryStanding` で算出する。**最深試合が未確定（`winnerEntryNo==null`）の間は敗退でなく進行中（`rank.kind:'ongoing'`）**として扱うため、大会途中の export でも `results` を生成できる（完了大会の出力は不変）。語彙・運用は [tournament-data-structure.md](../tournament-data-structure.md) と [ADR-007](../adr/ADR-007-in-progress-tournament-standing.md) を参照
