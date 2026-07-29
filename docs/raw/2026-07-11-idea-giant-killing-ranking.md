@@ -80,3 +80,20 @@ milestoneにそのまま使えそう」という汎用性の高さも評価さ�
 [2026-07-11-giant-killing-milestone-plan.md](./2026-07-11-giant-killing-milestone-plan.md) に作成した。
 要点: 主対象は既存読者（結果に「意味」を足すSEO差別化資産）、B系統3種を先行しP0で全既存データへの
 頻度検証を必須化、giant-killing はランキング較正後に判定関数分離（`lib/upsetDetection.ts`）で投入。
+
+## P0 頻度検証 完了（2026-07-30 追記）
+
+B系統3カテゴリの出現頻度を全大会データ（307エディション）で検証した。`perfect-title`（無敗優勝、
+3.3%）・`title-streak-gap`（◯年ぶりN回目、2.9%）は希少性の体感と合い採用。`first-region`（地域初優勝）
+は収録年数が薄いため実質「連覇でない優勝」とほぼ同義になり不採用（詳細・データは plan ファイル
+「P0 頻度検証結果」参照）。次はP1（perfect-title / title-streak-gap の milestone エンジン実装）。
+
+## P1 実装 完了（2026-07-30 追記）
+
+`lib/milestones.ts` に `perfect-title`（無敗優勝）を新規kindとして追加。`title-streak-gap`は
+既存の`nth-title`が同じ条件で既に発火していたため、別kind新設ではなく `nth-title` のラベルに
+「◯年ぶり」の年数ギャップを追加する形で統合した。大会結果ページ・選手ページ・記事生成は既存の
+汎用イベント消費経路（kind文字列でフィルタしない設計）のため無改修で新イベントを拾う。
+実データ5ケースで動作確認済み・tsc/eslintエラー0件。詳細は
+[giant-killing-milestone-plan.md](./2026-07-11-giant-killing-milestone-plan.md)「P1 実装結果」。
+残る作業はP2（win-streak、analysis.json時系列拡張が前提）とP4（発信キュー合流）。

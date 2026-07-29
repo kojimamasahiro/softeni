@@ -85,13 +85,15 @@ type RawResult = {
   tournament?: { label?: string; rank?: RawRank } | null;
 };
 
-/** 1 試合ぶん（champion-defeat 検出に必要な最小フィールドのみ） */
+/** 1 試合ぶん（champion-defeat / perfect-title 検出に必要な最小フィールドのみ） */
 export type RawMatch = {
   entries?: number[];
   winnerEntryNo?: number;
   round?: string | null;
   stage?: string | null;
   retired?: boolean;
+  /** entryNo（文字列キー）→ 獲得ゲーム数（個人戦）／獲得試合数（団体戦）。perfect-title 判定に使う */
+  scores?: Record<string, number>;
 };
 
 export type RawDetail = {

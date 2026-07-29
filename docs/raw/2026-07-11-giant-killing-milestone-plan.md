@@ -66,8 +66,8 @@ type MilestoneKind =
 
 | Phase | 内容 | 依存 |
 |---|---|---|
-| **P0** | 頻度検証スクリプトを既存全データに実行、カテゴリ取捨選択 | なし（今すぐ可能） |
-| **P1** | B系統 3種（perfect-title / title-streak-gap / first-region）を milestone エンジンに追加。大会ページ・選手ページ・記事に既存経路で自動露出 | P0 |
+| **P0** | 頻度検証スクリプトを既存全データに実行、カテゴリ取捨選択 | **完了（2026-07-30）**。詳細は下記「P0 頻度検証結果」。結論: perfect-title・title-streak-gapは採用、first-regionは現状の定義では不採用（頻度過多＋prefectureフィールドの非都道府県値混入） |
+| **P1** | B系統のうち perfect-title / title-streak-gap を milestone エンジンに追加。大会ページ・選手ページ・記事に既存経路で自動露出（first-region は見送り、下記参照） | **完了（2026-07-30）**。詳細は下記「P1 実装結果」 |
 | **P2** | `win-streak`（analysis.json の時系列拡張と同時） | P1 |
 | **P3** | A系統 giant-killing 投入 | **完了（2026-07-11、表示接続まで）**。判定基盤=`data/ratings/upsets.json`（期待勝率0.15以下・established両者限定・62件）。ユーザー決定: 露出面は champion-defeat と同等（大会結果ページ自動バッジ＋結果記事素材）、ラベルは数字なし定性表現（タグ「金星」、「◯◯ が格上の ◯◯ を破る金星」+scopeNote）。実装: `lib/ratingsUpsets.ts`・`lib/milestones.ts`（`getGiantKillings` / `suppressChampionDefeatIfDuplicate`）・大会結果ページ・`lib/newsArticle.ts`（result記事）・kindタグ。詳細: [ranking-calibration-harness-plan §10 P4](./2026-07-11-ranking-calibration-harness-plan.md) |
 | **P4** | 姉妹案の発信キューに milestone イベントを合流（「大会の記録的結果」＋「試合内の劇的瞬間」を同一キューでレビュー・投稿） | 姉妹案P2 |
@@ -76,6 +76,84 @@ type MilestoneKind =
 
 - P1: milestone イベント付き大会ページの直帰率・滞在時間の変化（付かないページ比）。
 - P3: giant-killing 認定件数/年（希少性の維持）、該当記事・投稿の反応。
+
+## P0 頻度検証結果（2026-07-30 追記）
+
+使い捨てスクリプト `scripts/pilot/count-result-rarities.mjs` を作成し、`data/tournaments/details/*/*/*.json`
+全333ファイル（`temp/`配下の作業中データは除外）を横断して B系統3カテゴリの出現頻度を検証した。
+優勝者が判明している大会×年×種目（＝「エディション」）は307件。
+
+### 結果サマリー
+
+| カテゴリ | 件数 / 母数 | 頻度 | 判定 |
+|---|---|---|---|
+| `perfect-title`（無敗優勝） | 10 / 307 | 約3.3% | **採用**。個人戦（ゲーム0失点）・団体戦（相手チームの個人戦勝利0）の両方で `matches[].scores` を同じロジックで判定でき、頻度も「たまに起きる」程度で希少性の体感と合う |
+| `title-streak-gap`（◯年ぶりN回目） | 9 / 307 | 約2.9% | **採用**。gap は8/9件が2年（前回大会からの間隔）、1件が3年。個人戦は選手個人単位（ダブルスは両選手で各1件、例: 2024年 zennihon-championship 男子ダブルス連覇明けの船水颯人・上松俊貴が各1件）で design（`docs/raw/2026-06-21-milestone-logic.md`）と整合 |
+| `first-region`（地域初優勝候補、prefecture軸） | 76 / 307 | 約24.8% | **不採用（現状の定義では）**。理由は下記 |
+
+判定不能（`matches`が0件で突合できない等）は0件。全て決定的に判定できた。
+
+### perfect-title の検証詳細
+
+`matches[].scores` は個人戦ではゲーム数、団体戦では「その団体戦ラウンドで勝った個人戦試合数」を表す同一形式であることを実データで確認（例: `highschool-championship/2024/team-none-boys.json` 決勝 `{"1":0,"48":2}` は団体戦2-0のことで、個人戦のゲームスコアと同じ「相手の獲得数」の意味で扱える）。そのためP0で想定した「優勝者が絡んだ全試合で相手の獲得数が0」という単一ロジックが個人戦・団体戦を区別せず機能する。棄権（`retired:true`）が絡んだ無敗優勝は0件（該当があれば注記が必要になる想定だったが今回は該当なし）。
+
+### title-streak-gap の検証詳細
+
+構造上の懸念（連続開催でない大会でのエディション間隔ずれ）は、開催年ではなく「実際にdetailsがある年（エディション）のインデックス差」で連続判定したため問題なし。9件全て gapEditions と gapYears が一致しており、隔年開催大会での誤判定は無かった（母数の大会がほぼ毎年開催のため今回は未検証だが、ロジック自体はエディション基準）。
+
+### first-region が不採用となった理由
+
+1. **頻度が高すぎる**: 収録範囲が大会あたり2〜5年程度と薄いため、「初優勝でない（＝連覇でない）優勝者」のほぼ全て（74/76）が「掲載範囲で見たことのない都道府県」に該当してしまう。実質「連覇でない優勝」とほぼ同義になっており、「地域初」としての意外性・語れる価値を持たない。
+2. **`prefecture` フィールドの値が都道府県に限らない**: 大学・実業団・連盟所属の選手は `prefecture` に「日本学連」「日本連盟」等の組織コードが入っており（例: `zennihon-championship 2025 doubles-none-boys` 橋場柊一郎・菊山太陽「日本学連」）、これが「新規都道府県」として誤検出される。地域軸の希少性検知には向かない値。
+3. **対応方針**: 「大会史上初の出来事」自体は筋が良い着想だが、軸を都道府県から「学校（team名）」に変えるとほぼ `first-title`（既存実装）と重複してしまい差別化にならない。掲載年数が蓄積してから（例: 1大会10年分以上）「地域初」の意外性が意味を持つと考えられるため、**今は実装せず後回し**とし、データ蓄積後に再検討する。
+
+### 結論・次アクション
+
+- P1 は `perfect-title` / `title-streak-gap` の2種類のみで着手する（`first-region` は範囲外）。
+- 実装は `lib/milestones.ts` の `MilestoneKind` 拡張として、既存の `first-title` / `repeat-title` と同じ場所（`getChampionMilestones` 内）に追加する。判定入力は `readYearDetail` の `matches` で完結し、新規データ取得は不要。
+- pilotスクリプトは `scripts/pilot/count-result-rarities.mjs` としてリポジトリに残置（使い捨て前提だが、再検証や閾値調整時にそのまま再利用できるため）。
+
+## P1 実装結果（2026-07-30 追記）
+
+`lib/milestones.ts` に実装した。既存の `getChampionMilestones`（個人戦=`buildIndividualMilestones` / 団体戦分岐）にそのまま追加し、新パイプラインは作らない方針どおり。
+
+### perfect-title（無敗優勝）
+
+新規 `MilestoneKind` として追加。判定関数 `isPerfectTitle()` は `readYearDetail` で当年 `matches` を読み、優勝エントリが絡んだ全試合で相手の獲得数（`scores[相手entryNo]`）が0かを見る。個人戦・団体戦は `matches[].scores` が同じ意味（相手の獲得数）を持つため同一ロジックで判定できることを実データで確認済み（`highschool-championship/2024/team-none-boys.json` 決勝 `{"1":0,"48":2}` 等）。`confidence: 'confirmed'`（当年データのみで完結、掲載範囲に依存しない）。
+
+重要度は `repeat-title` の直後（既存プランどおり）。repeat-title / first-title / nth-title のどの分岐が成立したかに関わらず独立に評価するため、例えば「2連覇かつ無敗優勝」のように**同時成立するイベントとして両方出る**（実データで確認: `highschool-championship/team-none-girls/2025` は東北が2連覇＋無敗優勝の両方を表示）。
+
+### title-streak-gap → nth-title への統合
+
+当初 milestone-logic.md では新規 kind として構想していたが、実装済みの `nth-title`（連覇でも初優勝でもない複数回優勝）が既に同じトリガー条件（過去に優勝歴があり、直前のエディションからの連続でない）で発火することが分かったため、**別kindを新設せず `nth-title` のラベル・detailに年数ギャップを追加する形で吸収した**（同一事象への二重イベント発行を避けるため）。
+
+- `detail` に `gapYears`（前回優勝からの経過年数）・`previousTitleYear`（前回優勝年）を追加。
+- ラベルを `${n}回目の優勝` → `${gapYears}年ぶり${n}回目の優勝` に変更（個人戦・団体戦の両方）。
+- `nth-title` の kind 文字列自体は変更していないため、`src/components/milestoneKindTag.ts` の種別タグ（「優勝」）・`src/components/PlayerStatisticsSections.tsx` 側のラベルマップなど既存の呼び出し元は無改修で動く。
+
+### 表示面の配線
+
+`getChampionMilestones` の戻り値（`events`）に新イベントが混ざるだけなので、既存の3消費箇所（大会結果ページ `ResultContextBlocks` / 大会ハブ・プレビュー `TournamentContextBlocks` / 選手ページ `PlayerCareerHighlights`、いずれも `kind: string` の汎用型でフィルタなし）・記事生成（`lib/newsArticle.ts`）は無改修で新イベントを自動的に拾う。`src/components/milestoneKindTag.ts` に `perfect-title`（表示テキスト「無敗優勝」、indigo系配色）を追加した。
+
+### 動作確認（2026-07-30、ts-node で実データに対して実行）
+
+P0検証で洗い出した候補を含む5ケースで `getChampionMilestones` を直接実行し、期待どおりの出力を確認した。
+
+| ケース | 期待 | 結果 |
+|---|---|---|
+| `highschool-championship/team-none-boys/2024` | perfect-title（高田商） | ○ perfect-title + first-title（初優勝でもあったため両方出力） |
+| `zennihon-championship/doubles-none-boys/2024` | nth-title 2年ぶり2回目（船水颯人・上松俊貴） | ○ 両選手それぞれ `"2年ぶり2回目の優勝"` |
+| `highschool-championship/team-none-girls/2025` | perfect-title（東北、2連覇と同時） | ○ repeat-title（2連覇）+ perfect-title の両方 |
+| `highschool-senbatsu/team-none-girls/2025` | nth-title 2年ぶり4回目（東北） | ○ `"2年ぶり4回目の優勝"` |
+| `zennihon-championship/doubles-none-boys/2025`（統制群） | perfect-titleでもnth-titleでもない | ○ first-titleのみ（誤検出なし） |
+
+`npx tsc --noEmit` はエラー0件、`eslint` も対象ファイルでエラー0件（既存の native binding 警告のみ、無関係）。
+
+### 未着手（範囲外のまま）
+
+- `win-streak`（P2、`analysis.json` の時系列拡張が前提）。
+- `first-region`（P0で不採用と結論済み）。
+- 記事生成キューへの合流（P4、姉妹案側の進捗待ち）。
 
 ## 4. 課題・未解決（更新）
 

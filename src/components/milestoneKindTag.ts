@@ -20,6 +20,7 @@ export type MilestoneKindTagInfo = {
 
 const KIND_TAG: Record<string, MilestoneKindTagInfo> = {
   'repeat-title': { text: '連覇', className: 'bg-amber-600 text-white dark:bg-amber-700' },
+  'perfect-title': { text: '無敗優勝', className: 'bg-indigo-600 text-white dark:bg-indigo-700' },
   'first-title': { text: '初優勝', className: 'bg-emerald-600 text-white dark:bg-emerald-700' },
   'nth-title': { text: '優勝', className: 'bg-sky-600 text-white dark:bg-sky-700' },
   'champion-defeat': { text: '王者撃破', className: 'bg-rose-600 text-white dark:bg-rose-700' },

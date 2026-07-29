@@ -11,6 +11,19 @@
 //      決定的に導ける。championKey による所属＋名前比較で判定するため playerId 名寄せに
 //      依存せず、誤判定リスクが低い。champion-defeat は前回王者が当年に出場し試合で敗退した
 //      場合のみ検出する（不出場は出さない）。
+//  - 実装済み（2026-07-30、P1）: perfect-title（無敗優勝） / nth-title の「◯年ぶり」拡張
+//    → docs/raw/2026-07-11-giant-killing-milestone-plan.md のB系統。P0頻度検証（全307
+//      エディション横断）で perfect-title 3.3%・title-streak-gap相当（nth-titleの再優勝
+//      ギャップ） 2.9% を確認し、想定どおりの希少性のため採用。
+//      perfect-title は matches[].scores（個人戦=ゲーム数、団体戦=団体内個人戦勝利数。
+//      同一ロジックで両方判定可能）で当年データのみから決定的に判定できる（confirmed）。
+//      「title-streak-gap」は当初 milestone-logic.md で新規 kind として構想されていたが、
+//      実装済みの nth-title が既に同じトリガー条件（過去に優勝歴があり連覇ではない）で
+//      発火するため、別kindを新設せず nth-title のラベルに年数ギャップを追加する形で
+//      吸収した（同一事象への二重イベント発行を避けるため）。
+//    → 見送り: first-region（大会史上初の地域）。掲載年数が薄く「連覇でない優勝」と
+//      ほぼ同義になり希少性が無いこと、team/participant の `prefecture` フィールドに
+//      「日本学連」等の非都道府県値が混入することを P0 で確認したため、当面実装しない。
 //  - 未実装（pending）: best4-first / career-wins / first-appearance
 //    → Step1 の placements 拡張（ベスト4）や analysis.json との突合（playerId 名寄せ）が
 //      必要。名寄せ精度の検証が済むまで出さない（誤った節目表示は信頼を損なうため）。
@@ -32,7 +45,8 @@ import { getCategoryLabel } from './utils';
 export type MilestoneKind =
   | 'first-title' // 初優勝（当サイト掲載範囲で）
   | 'repeat-title' // 連覇（2連覇以上）
-  | 'nth-title' // n回目の優勝（連覇でも初優勝でもない複数回優勝）
+  | 'perfect-title' // 無敗優勝（優勝までの全試合で相手の獲得数0。2026-07-30）
+  | 'nth-title' // n回目の優勝（連覇でも初優勝でもない複数回優勝。「◯年ぶり」ギャップ情報を含む）
   | 'first-appearance' // 初出場（pending）
   | 'champion-defeat' // 王者撃破（pending）
   | 'giant-killing' // 金星（実力指標で格上を破る。data/ratings/upsets.json 由来、2026-07-11）
@@ -85,13 +99,14 @@ const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
 /** 重要度（小さいほど上位）。並び順 docs/raw/2026-06-21-milestone-logic.md 準拠。 */
 const KIND_IMPORTANCE: Record<MilestoneKind, number> = {
   'repeat-title': 0,
-  'first-title': 1,
-  'nth-title': 2,
-  'giant-killing': 3, // champion-defeat と同一試合なら giant-killing を優先（重複抑制は呼び出し側）
-  'champion-defeat': 4,
-  'career-wins': 5,
-  'best4-first': 6,
-  'first-appearance': 7,
+  'perfect-title': 1,
+  'first-title': 2,
+  'nth-title': 3,
+  'giant-killing': 4, // champion-defeat と同一試合なら giant-killing を優先（重複抑制は呼び出し側）
+  'champion-defeat': 5,
+  'career-wins': 6,
+  'best4-first': 7,
+  'first-appearance': 8,
 };
 
 /**
@@ -115,6 +130,46 @@ function subjectOf(c: ChampionEntry): MilestoneEvent['subject'] {
     teams: c.teams,
     display: c.display ?? '',
   };
+}
+
+/**
+ * perfect-title（無敗優勝）判定。優勝エントリが絡んだ全試合で、相手の獲得数
+ * （個人戦=ゲーム数、団体戦=団体戦内の個人戦勝利数。matches[].scores は両者で同じ
+ * 「相手の獲得数」の意味を持つため同一ロジックで判定できる）が0だったかを見る。
+ *
+ * - 対象年の詳細データが無い／優勝エントリを特定できない／試合が1件も無い
+ *   （bye続き等）→ null（判定不能。呼び出し側はイベントを出さない）。
+ * - 1試合でも敗退・0以外の失点があれば false。
+ *
+ * P0頻度検証（2026-07-30、docs/raw/2026-07-11-giant-killing-milestone-plan.md）で
+ * 全307エディション中10件（約3.3%）の頻度・棄権絡み0件を確認済み。
+ */
+function isPerfectTitle(tournamentId: string, categoryId: string, targetYear: number, targetChampionKey: string | null): boolean | null {
+  if (!targetChampionKey) return null;
+  const detail = readYearDetail(tournamentId, targetYear, categoryId);
+  if (!detail) return null;
+  const participantById = buildParticipantMap(detail);
+
+  let championEntryNo: number | null = null;
+  for (const e of detail.entries ?? []) {
+    const ce = resolveEntryToChampion(e, participantById, targetYear);
+    if (championKey(ce) === targetChampionKey) {
+      championEntryNo = e.entryNo;
+      break;
+    }
+  }
+  if (championEntryNo == null) return null;
+
+  const champMatches = (detail.matches ?? []).filter((m) => Array.isArray(m.entries) && m.entries.includes(championEntryNo as number));
+  if (champMatches.length === 0) return null;
+
+  for (const m of champMatches) {
+    if (m.winnerEntryNo !== championEntryNo) return false;
+    const opponentEntryNo = m.entries?.find((e) => e !== championEntryNo);
+    const opponentScore = opponentEntryNo != null ? m.scores?.[String(opponentEntryNo)] : undefined;
+    if (typeof opponentScore !== 'number' || opponentScore !== 0) return false;
+  }
+  return true;
 }
 
 /**
@@ -151,12 +206,15 @@ function buildIndividualMilestones(
   targetYear: number,
   tournamentId: string,
   categoryId: string,
+  targetChampionKey: string | null,
 ): MilestoneEvent[] {
   const events: MilestoneEvent[] = [];
   // 種目（性別＋シングルス/ダブルス/団体）を区別するためのラベル前置。
   const cat = genreGenderLabel(categoryId);
   // 「優勝者が判明している」過去の収録年のみ「初」の反証に使える
   const priorKnownYears = block.champions.filter((c) => c.year < targetYear && c.display);
+  // perfect-title はペア単位の判定（両選手で共通）のため、選手ループの外で1回だけ判定する。
+  const perfect = isPerfectTitle(tournamentId, categoryId, targetYear, targetChampionKey);
 
   target.players.forEach((name, i) => {
     const key = target.playerKeys[i];
@@ -166,6 +224,23 @@ function buildIndividualMilestones(
       teams: target.teams,
       display: name,
     };
+
+    // --- perfect-title（無敗優勝）: 連覇/初優勝/n回目とは独立に判定（confirmed） ---
+    if (perfect) {
+      const shortLabel = `${cat}無敗優勝`;
+      events.push({
+        kind: 'perfect-title',
+        subject,
+        tournamentId,
+        categoryId,
+        year: targetYear,
+        detail: {},
+        confidence: 'confirmed',
+        label: `${name} ${shortLabel}`,
+        shortLabel,
+        resultLabel: `${name} 無敗優勝`,
+      });
+    }
 
     // --- repeat-title（連覇）: 本人の連続優勝（confirmed） ---
     const streak = computePlayerStreak(block.champions, targetYear, key);
@@ -208,20 +283,24 @@ function buildIndividualMilestones(
           scopeNote: SCOPE_NOTE,
         });
       } else {
-        // nth-title（n回目の優勝）: 連覇ではないが過去に優勝実績あり（scope-limited）
+        // nth-title（n回目の優勝）: 連覇ではないが過去に優勝実績あり（scope-limited）。
+        // 直近の優勝年からのギャップ（「◯年ぶり」）を添える（2026-07-30、P0検証で
+        // 採用したtitle-streak-gapを、別kindを新設せずここに統合）。
         const n = priorWins.length + 1;
-        const shortLabel = `${cat}${n}回目の優勝`;
+        const previousTitleYear = Math.max(...priorWins.map((c) => c.year));
+        const gapYears = targetYear - previousTitleYear;
+        const shortLabel = `${cat}${gapYears}年ぶり${n}回目の優勝`;
         events.push({
           kind: 'nth-title',
           subject,
           tournamentId,
           categoryId,
           year: targetYear,
-          detail: { n, coveredSince: block.sourceYears[0] },
+          detail: { n, coveredSince: block.sourceYears[0], gapYears, previousTitleYear },
           confidence: 'scope-limited',
           label: `${name} ${shortLabel}`,
           shortLabel,
-          resultLabel: `${name} ${n}回目の優勝`,
+          resultLabel: `${name} ${gapYears}年ぶり${n}回目の優勝`,
           scopeNote: SCOPE_NOTE,
         });
       }
@@ -257,11 +336,28 @@ export function getChampionMilestones(
     // --- 個人戦（シングルス/ダブルス）: 「選手個人」単位で判定する ---
     // ダブルスはペア単位ではなく各選手をそれぞれ主役にし、パートナーが替わっても
     // 本人の連続優勝を連覇・本人の掲載範囲初優勝を初優勝として 1 選手 1 イベント出す。
-    events = buildIndividualMilestones(block, target, targetYear, tournamentId, categoryId);
+    events = buildIndividualMilestones(block, target, targetYear, tournamentId, categoryId, targetKey);
   } else {
     // --- 団体戦: 校（championKey）単位で判定する（従来どおり） ---
     const subject = subjectOf(target);
     const cat = genreGenderLabel(categoryId);
+
+    // perfect-title（無敗優勝）: 連覇/初優勝/n回目とは独立に判定（confirmed）
+    if (isPerfectTitle(tournamentId, categoryId, targetYear, targetKey)) {
+      const shortLabel = `${cat}無敗優勝`;
+      events.push({
+        kind: 'perfect-title',
+        subject,
+        tournamentId,
+        categoryId,
+        year: targetYear,
+        detail: {},
+        confidence: 'confirmed',
+        label: `${subject.display} ${shortLabel}`,
+        shortLabel,
+        resultLabel: `${subject.display} 無敗優勝`,
+      });
+    }
 
     // repeat-title（連覇）: Step1 の連覇判定をそのまま使う（confirmed）
     const repeat: RepeatChampion | null = block.edition.repeatChampion;
@@ -303,20 +399,23 @@ export function getChampionMilestones(
           scopeNote: SCOPE_NOTE,
         });
       } else {
-        // nth-title（n回目の優勝）
+        // nth-title（n回目の優勝）。直近優勝年からのギャップ（「◯年ぶり」）を添える
+        // （2026-07-30、別kind新設せず title-streak-gap をここに統合。個人戦側と同じ扱い）。
         const n = priorWins.length + 1;
-        const shortLabel = `${cat}${n}回目の優勝`;
+        const previousTitleYear = Math.max(...priorWins.map((c) => c.year));
+        const gapYears = targetYear - previousTitleYear;
+        const shortLabel = `${cat}${gapYears}年ぶり${n}回目の優勝`;
         events.push({
           kind: 'nth-title',
           subject,
           tournamentId,
           categoryId,
           year: targetYear,
-          detail: { n, coveredSince: block.sourceYears[0] },
+          detail: { n, coveredSince: block.sourceYears[0], gapYears, previousTitleYear },
           confidence: 'scope-limited',
           label: `${subject.display} ${shortLabel}`,
           shortLabel,
-          resultLabel: `${subject.display} ${n}回目の優勝`,
+          resultLabel: `${subject.display} ${gapYears}年ぶり${n}回目の優勝`,
           scopeNote: SCOPE_NOTE,
         });
       }
