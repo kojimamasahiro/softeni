@@ -164,13 +164,19 @@ export type ReturningFormerChampion = {
 /**
  * プレビュー: 直近大会の好成績者の再登場。
  * 当プレビュー種目の出場者のうち、直近の他大会（プレビュー開催日から3ヶ月以内・最大2大会・
- * isMajorTitle 優先）で **ベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手をピックアップする。
- * 「種目を問わない」: 直近大会のどの種目での好成績でもよい（個人戦のみ。団体戦は per-player 不可のため対象外）。
- * 照合は playerKey（名前@正規化所属）で当大会の出場者と突合する。
+ * isMajorTitle 優先）で **ベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手・校をピックアップする。
+ * 「種目を問わない」: 直近大会のどの種目での好成績でもよい。
+ * 判定単位は他ブロックと同様（個人戦は選手単位＝playerKey、団体戦は校単位＝championKey/teamMatchKey、
+ * 2026-07-30〜。団体は当大会が team カテゴリのときのみ championKeySet と突合するため、
+ * 個人戦プレビューに校が混ざることはない）。
  */
 export type RecentAchiever = {
-  /** ピックアップ選手（当プレビュー種目の出場者）。playerId は結果ページリンク用 */
-  player: PreviewPlayerRef;
+  /** 表示名（個人戦=選手名 / 団体戦=校名） */
+  display: string;
+  /** 所属校（表示用・正規化済み）。団体戦は null（display が校名のため） */
+  team: string | null;
+  /** ピックアップ選手（個人戦/ダブルスのみ。団体戦は空配列）。playerId は結果ページリンク用 */
+  players: PreviewPlayerRef[];
   /** 直近大会の表示名（index.json の label） */
   tournamentLabel: string;
   /** 直近大会の開催年 */
@@ -889,8 +895,13 @@ function buildFieldOverview(field: FieldIndex | null): FieldOverview | null {
 
 // ---- 直近大会の好成績者（種目を問わず・3ヶ月以内・最大2大会・major優先） ----
 
-/** 当プレビュー種目の出場者 1 人に紐づく、直近大会での好成績（人物単位で最良を保持） */
+/**
+ * 当プレビュー種目の出場者（個人 or 校）1件に紐づく、直近大会での好成績。
+ * 個人は人物単位、団体は校単位（`teamMatchKey`）で最良成績を保持する（2026-07-30〜）。
+ */
 type RecentAchievementInfo = {
+  subjectKind: 'individual' | 'team';
+  /** 個人戦=選手名 / 団体戦=校名（表示用に正規化済み） */
   name: string;
   tournamentLabel: string;
   year: number;
@@ -912,17 +923,27 @@ const RECENT_WINDOW_MONTHS = 3;
 const RECENT_TOURNAMENT_LIMIT = 2;
 const RECENT_ACHIEVERS_PER_CATEGORY = 8;
 
-function readTournamentIndex(): Array<{
-  tournamentId: string;
-  label?: string;
-  isMajorTitle?: boolean;
-  generationId?: string;
-}> {
-  return (
-    readJson<Array<{ tournamentId: string; label?: string; isMajorTitle?: boolean; generationId?: string }>>(
-      path.join(resolveRoot(), 'data', 'tournaments', 'index.json'),
-    ) ?? []
-  );
+type TournamentIndexRow = { tournamentId: string; label?: string; isMajorTitle?: boolean; generationId?: string };
+
+/**
+ * index.json（全国・主要大会）と local_index.json（地区大会・県大会）を連結して読む。
+ * 従来は index.json のみだったため、地区大会（`highschool-*-block` 等）が候補に
+ * 一切入らず、団体戦の直近好成績（recentAchievers）が地区大会団体戦の結果を拾えなかった
+ * （2026-07-30 修正。`lib/priorMeetings.ts` の `readAllTournaments` と同じ理由・同じ対処）。
+ * 重複する tournamentId は index.json 側を優先する（isMajorTitle 等の付加情報を持つため）。
+ */
+function readTournamentIndex(): TournamentIndexRow[] {
+  const out: TournamentIndexRow[] = [];
+  const seen = new Set<string>();
+  for (const file of ['index.json', 'local_index.json']) {
+    const rows = readJson<TournamentIndexRow[]>(path.join(resolveRoot(), 'data', 'tournaments', file)) ?? [];
+    for (const r of rows) {
+      if (!r.tournamentId || seen.has(r.tournamentId)) continue;
+      seen.add(r.tournamentId);
+      out.push(r);
+    }
+  }
+  return out;
 }
 
 /** 大会情報（開催日）を読む。年度ごとの startDate を持つ */
@@ -1015,9 +1036,13 @@ function findRecentTournaments(previewTournamentId: string, previewDateIso: stri
 }
 
 /**
- * 直近大会（最大2）の全種目から、ベスト4以上の選手を playerKey で索引化する。
- * 種目を問わず（個人戦のみ。団体は per-player 不可のため対象外）、人物単位で最良成績を保持。
- * 当プレビュー種目の出場者照合に使うため、キーは `playerMatchKey`（buildFieldIndex と同一）。
+ * 直近大会（最大2）の全種目から、ベスト4以上の選手・校を索引化する。
+ * 種目を問わず、個人戦は人物単位（`playerMatchKey`）、団体戦は校単位（`teamMatchKey`）で
+ * 最良成績を保持する（2026-07-30〜。従来は団体戦を per-player 不可として対象外にしていたが、
+ * `championKeyToEntryNo`／`teamMatchKey` は他ブロック（連覇ウォッチ等）で既に校単位判定に
+ * 使われている既存の仕組みのため、同じキーで団体も扱えるようにした）。
+ * 当プレビュー種目の出場者照合に使うため、キーは `playerMatchKey`／`teamMatchKey`
+ * （buildFieldIndex の playerKeyToEntryNo／championKeyToEntryNo と同一の作り方）。
  */
 function buildRecentAchieverIndex(previewTournamentId: string, previewYear: number): Map<string, RecentAchievementInfo> {
   const out = new Map<string, RecentAchievementInfo>();
@@ -1045,9 +1070,30 @@ function buildRecentAchieverIndex(previewTournamentId: string, previewYear: numb
         const entry = entryByNo.get(r.entryNo);
         if (!entry) continue;
         const ce = resolveEntryToChampion(entry, pmap, rt.year);
-        if (ce.players.length === 0) continue; // 団体戦は対象外
+        if (!ce.display) continue;
+
+        if (ce.players.length === 0) {
+          // 団体戦: 校単位（teamMatchKey）で1キー。個人の playerKeyToEntryNo とは
+          // 別の名前空間（championKeyToEntryNo）で突合するため、個人戦プレビューには出ない。
+          const key = teamMatchKey(ce);
+          if (!key) continue;
+          const info: RecentAchievementInfo = {
+            subjectKind: 'team',
+            name: cleanDisplay(ce.display),
+            tournamentLabel: rt.label,
+            year: rt.year,
+            categoryLabel,
+            placement,
+            isMajor: rt.isMajor,
+          };
+          const cur = out.get(key);
+          out.set(key, cur ? better(cur, info) : info);
+          continue;
+        }
+
         for (const name of ce.players) {
           const info: RecentAchievementInfo = {
+            subjectKind: 'individual',
             name,
             tournamentLabel: rt.label,
             year: rt.year,
@@ -1069,29 +1115,30 @@ function buildRecentAchieverIndex(previewTournamentId: string, previewYear: numb
 }
 
 /**
- * 当プレビュー種目の出場者のうち、直近大会で好成績を残した選手を抽出する。
- * 既に他ブロック（連覇ウォッチ・前回入賞者・過去の優勝者）で出ている選手は重複排除する。
+ * 当プレビュー種目の出場者（個人 or 校）のうち、直近大会で好成績を残したものを抽出する。
+ * 既に他ブロック（連覇ウォッチ・前回入賞者・過去の優勝者）で出ている選手は重複排除する
+ * （団体戦は他ブロックの `alreadyShownNames` に校名が入ることが無いため、実質すり抜けない）。
  */
 function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string, RecentAchievementInfo>, alreadyShownNames: Set<string>): RecentAchiever[] {
   if (!field || recentIndex.size === 0) return [];
   const seen = new Set<string>(alreadyShownNames);
   const out: RecentAchiever[] = [];
   for (const [key, info] of recentIndex) {
-    // 当大会の出場者か（名前@所属 → 外れたら一意な名前のみでフォールバック。所属変更を吸収）
-    const entryNo = field.playerKeyToEntryNo.get(key) ?? uniqueEntryNoByName(field, info.name);
+    // 当大会の出場者か。個人=playerKey（外れたら一意な名前のみでフォールバック。所属変更を吸収）、
+    // 団体=championKey（teamMatchKey）。名前空間が分かれているため、団体の校名が誤って
+    // 個人戦プレビューの選手と衝突することはない。
+    const entryNo =
+      info.subjectKind === 'team' ? field.championKeyToEntryNo.get(key) : (field.playerKeyToEntryNo.get(key) ?? uniqueEntryNoByName(field, info.name));
     if (entryNo == null) continue; // 当大会の出場者でない
-    const nameKey = normPart(info.name);
-    if (seen.has(nameKey)) continue; // 既出（他ブロック or 同一人物の別所属キー）
-    seen.add(nameKey);
-    // 今大会の途中経過/敗退（前回入賞者の再登場ブロックと同様、playerKey→entryNo→standing で引く）
+    const dedupKey = `${info.subjectKind}:${normPart(info.name)}`;
+    if (seen.has(dedupKey)) continue; // 既出（他ブロック or 同一主体の別キー）
+    seen.add(dedupKey);
+    // 今大会の途中経過/敗退（前回入賞者の再登場ブロックと同様、キー→entryNo→standing で引く）
     const standing = field.standingByEntryNo.get(entryNo) ?? null;
     out.push({
-      player: {
-        name: info.name,
-        playerId: resolvePlayerId(info.name),
-        returning: true,
-        team: null,
-      },
+      display: info.name,
+      team: null,
+      players: info.subjectKind === 'team' ? [] : [{ name: info.name, playerId: resolvePlayerId(info.name), returning: true, team: null }],
       tournamentLabel: info.tournamentLabel,
       year: info.year,
       categoryLabel: info.categoryLabel,
@@ -1102,10 +1149,7 @@ function buildRecentAchievers(field: FieldIndex | null, recentIndex: Map<string,
   }
   out.sort(
     (a, b) =>
-      placementRank(b.placement) - placementRank(a.placement) ||
-      Number(b.isMajor) - Number(a.isMajor) ||
-      b.year - a.year ||
-      a.player.name.localeCompare(b.player.name),
+      placementRank(b.placement) - placementRank(a.placement) || Number(b.isMajor) - Number(a.isMajor) || b.year - a.year || a.display.localeCompare(b.display),
   );
   return out.slice(0, RECENT_ACHIEVERS_PER_CATEGORY);
 }
@@ -1204,9 +1248,9 @@ function buildPickPlayers(
   recentAchievers.forEach((a, i) => {
     cards.push({
       id: `recent-${i}`,
-      players: [a.player],
-      display: a.player.name,
-      team: null,
+      players: a.players,
+      display: a.display,
+      team: a.team,
       perPlayerTeam: false,
       achievements: [`${a.tournamentLabel}${a.year} ${a.categoryLabel} ${a.placement}`],
       standing: a.standing,
@@ -1398,7 +1442,10 @@ function buildPriorMeetingsBlock(
   const keptEntryNos = new Set<number>();
   for (const c of kept) {
     const nos = cardEntryNos.get(c);
-    if (nos) { keptEntryNos.add(nos[0]); keptEntryNos.add(nos[1]); }
+    if (nos) {
+      keptEntryNos.add(nos[0]);
+      keptEntryNos.add(nos[1]);
+    }
   }
   const keptCoveredEntries = keptEntryNos.size;
 

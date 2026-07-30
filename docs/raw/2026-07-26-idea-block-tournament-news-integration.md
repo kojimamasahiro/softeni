@@ -41,12 +41,35 @@ Idea Backlog。発散フェーズ。2026-07-26に着想。
   （`team-none-boys`/`team-none-girls`）も各地区で登録していく方針。近畿は
   `kinki_boys_team.json`/`kinki_girls_team.json`まで変換済みで未登録。この連携アイデアの
   設計は個人戦だけでなく**団体戦も考慮できる形にする**必要がある。
+  - **訂正・完了確認（2026-07-30追記）**: 上記は本追記時点（同日2026-07-26のより早い時刻）の
+    状況で、その後同日のコミット`77af6318`（「地区高校団体 2026」）で**9地区全ての男女団体戦
+    （`team-none-boys`/`team-none-girls`）が`data/tournaments/details/`へ登録済み**と判明。
+    `docs/wiki/highschool.md`のIdea Backlog表が「団体戦は近畿のみ変換済み・未登録」のまま
+    古い状態で残っていたため訂正した。本ファイルの「団体戦を考慮できる形にする必要がある」
+    という設計上の指摘自体は有効（データは揃ったが、`recentAchievers`が校単位に未対応という
+    課題は未解消）。
 - `recentAchievers`（④）は「団体は per-player 不可のため対象外」と明記されている
   （`docs/wiki/news-context-blocks.md`）。つまり現状の仕組みは個人戦専用で、団体戦の
   地区大会結果をそのまま流し込んでも拾われない。団体戦を文脈情報として出すなら、
   `historical-winners`/milestoneが団体戦を`championKey`（校単位）で扱っている既存パターンを
   参考に、選手単位とは別の校単位の仕組みを設けるか、`recentAchievers`自体を校単位にも
   対応させる拡張が要る。
+  - **解消（2026-07-30）**: 提案どおり、既存の校単位の仕組み（`teamMatchKey`／
+    `FieldIndex.championKeyToEntryNo`。①連覇・防衛ウォッチ等が既に使用）をそのまま
+    `recentAchievers`にも適用する形で対応した。`buildRecentAchieverIndex`／
+    `buildRecentAchievers`を個人=`playerMatchKey`・団体=`teamMatchKey`で分岐させ、
+    `RecentAchiever`型を`player: PreviewPlayerRef`から`display`/`team`/`players[]`
+    （`ReturningPlacer`と同型）に変更。あわせて、地区大会が`data/tournaments/index.json`に
+    未登録で`local_index.json`にしか無いため`findRecentTournaments`の候補に一切入っていない
+    という、より根本的な欠落も発見・修正した（`readTournamentIndex`が両ファイルを連結する
+    よう修正。`lib/priorMeetings.ts`の`readAllTournaments`と同じ対処）。実測（IH2026男子団体
+    プレビュー）で地区大会（中国・近畿）の優勝校「岡山理大附」「高田商」等が正しく表示される
+    ことを確認済み。tsc/eslintエラー0件。詳細は`docs/wiki/news-context-blocks.md`
+    「直近大会の好成績者の再登場」参照。
+    このブロックは主軸ではなくなり「前哨戦・再戦」（`priorMeetings`）が主軸になっている
+    （経緯は`docs/wiki/highschool.md`の該当Idea Backlog行参照）ため、効果は限定的（②③等で
+    既出の校は重複排除されるため、実質は「他ブロックにまだ出ていない地区大会の入賞校」を
+    追加で拾う程度）だが、設計課題自体は解消した。
 
 ## 課題・未解決
 
