@@ -178,6 +178,42 @@
         if (entry.team) return 'team';
         return 'unknown';
       }
+
+      // 試合結果に依存しないエントリー一覧（開催前でもJSONを取得できるようにする）。
+      // playersByGroup（グループ分けされた入力）から直接組み立てるので、
+      // 1試合もスコア入力していない状態でも participants / entries が出力される。
+      // tournament3/index.html の buildEntriesMeta() と役割は同じ。
+      function buildEntriesMeta() {
+        const rows = [];
+        for (const group in playersByGroup) {
+          const players = playersByGroup[group] || [];
+          for (const p of players) {
+            if (!p || p.id == null || p.id === 'bye') continue;
+            const row = { entryNo: p.id, type: null };
+            if (detectCategory(p) === 'team') {
+              row.team = p.team || p.name;
+              if (p.prefecture) row.prefecture = p.prefecture;
+            } else {
+              const info = Array.isArray(p.information) ? p.information : [];
+              const playerIds = info
+                .map((i) => i.tempId)
+                .filter((id) => id != null);
+              if (playerIds.length) row.playerIds = playerIds;
+              const players2 = info.map((i) => ({
+                tempId: i.tempId ?? null,
+                lastName: i.lastName ?? null,
+                firstName: i.firstName ?? null,
+                team: i.team ?? null,
+                prefecture: i.prefecture ?? null,
+              }));
+              if (players2.length) row.players = players2;
+            }
+            rows.push(row);
+          }
+        }
+        rows.sort((a, b) => (Number(a.entryNo) || 0) - (Number(b.entryNo) || 0));
+        return rows;
+      }
       // ---------------------------------------
 
       // 1. 最初に matchesDiv に1回だけイベントを仕込む
@@ -268,6 +304,9 @@
 
       function updateJsonOutput(force = false) {
         const output = { roundRobinMatches: [] };
+        // 開催前（1試合もスコア未入力）でも entries/participants を出力できるように、
+        // グループ分けされた入力から直接メタ情報を載せる。
+        output.entriesMeta = buildEntriesMeta();
 
         for (const group in allGroupMatches) {
           for (const match of allGroupMatches[group]) {
@@ -651,6 +690,8 @@
       });
 
       displayMatches();
+      // 開催前（スコア未入力）でも entries/participants JSON を即座に見せる。
+      updateJsonOutput();
     </script>
   </body>
 </html>
