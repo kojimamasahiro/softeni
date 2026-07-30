@@ -28,13 +28,21 @@
    * @param {{categoryId?: string}} [options]
    *   categoryId を渡すとシングルス/ペア戦を厳密に判定する。
    *   渡さない場合（入力ツールなど）は、entries の多数派の人数から推定する。
-   * @returns {{rule: string, entryNo: number|null, message: string}[]}
+   * @returns {{rule: string, entryNo: number|null, message: string, severity: 'error'|'warn'}[]}
+   *   severity='error' は「統計から黙って除外される＝表示を見ても気付けない」種類の入力ミス。
+   *   severity='warn' は表示側が graceful に諦めるので害は小さいが、機能が欠ける類。
+   *   全データ一括チェック（check-tournament-entries.mjs）は error のみ終了コード1にする。
    */
   function validateTournamentData(data, options) {
     const opts = options || {};
     const findings = [];
-    const add = (rule, entryNo, message) =>
-      findings.push({ rule: rule, entryNo: entryNo == null ? null : entryNo, message: message });
+    const add = (rule, entryNo, message, severity) =>
+      findings.push({
+        rule: rule,
+        entryNo: entryNo == null ? null : entryNo,
+        message: message,
+        severity: severity || 'error',
+      });
 
     if (!data || !Array.isArray(data.entries)) return findings;
 
@@ -120,6 +128,46 @@
       }
     }
 
+    // entries[].type からブラケットの席順を復元できるか。
+    //
+    // 席順は entryNo 順に「seed/extra は本人＋bye で 2 枠、packing は 2 組で 2 枠」と
+    // 積むと決まり、健全なドローなら合計はちょうど 2 の冪になる。2 冪にならないのは
+    // packing の並びが奇数個＝type の入力ミスで、**そこから先の席が全部 1 つずれる**。
+    // 表示側（lib/bracketLayout.ts）はずれを検出したら復元を諦めるので、症状は
+    // 「前哨戦ブロックの『◯回戦で当たる』が大会の後半で丸ごと消える」という形で出る。
+    // 2026-07-31 の全データ検証で 183 大会中 10 大会がこれに該当した。
+    if (entries.some((e) => e && (e.type === 'seed' || e.type === 'extra'))) {
+      const typeByNo = new Map(entries.map((e) => [e && e.entryNo, e && e.type]));
+      const nos = [...typeByNo.keys()].filter((n) => n != null).sort((a, b) => a - b);
+      let slotCount = 0;
+      let unpaired = null;
+      for (let i = 0; i < nos.length; ) {
+        const t = typeByNo.get(nos[i]);
+        slotCount += 2;
+        if (t === 'seed' || t === 'extra') {
+          i += 1;
+        } else {
+          if (typeByNo.get(nos[i + 1]) !== t && unpaired == null) unpaired = nos[i];
+          i += 2;
+        }
+      }
+      if (slotCount === 0 || (slotCount & (slotCount - 1)) !== 0) {
+        add(
+          'bracket-slot-parity',
+          unpaired,
+          'entries[].type から復元した枠数が2の冪でない（' +
+            slotCount +
+            '枠）。packing の並びが奇数個になっている' +
+            (unpaired == null ? '' : '（最初のずれは entryNo ' + unpaired + ' 付近）') +
+            '。以降の山が1つずつずれるため、シード/足長の指定を確認すること',
+          // warn: 表示側（lib/bracketLayout.ts）はずれを検出したら復元を諦めるので、
+          // 誤った情報は出ない。欠けるのは前哨戦ブロックの「◯回戦で当たる」だけ。
+          // 既存データに 10 件あり、これで build を止めるのは割に合わない。
+          'warn',
+        );
+      }
+    }
+
     return findings;
   }
 
@@ -132,6 +180,7 @@
     'orphan-participant': '選手一覧に居るが誰とも組んでいない',
     'match-entry-not-found': '試合が存在しない組を参照',
     'result-entry-not-found': '結果が存在しない組を参照',
+    'bracket-slot-parity': 'シード/足長の指定がずれている（枠数が2の冪でない）',
   };
 
   return {

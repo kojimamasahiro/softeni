@@ -167,9 +167,7 @@ function PriorMeetingCardItem({ card }: { card: PriorMeetingsBlock['cards'][numb
         {card.round ? ` ${card.round}` : ''}
       </span>
       {/* ドロー上、両者が勝ち上がった場合に最短で当たるラウンド。事実として書く。 */}
-      {card.meetingRoundLabel && !card.currentResult && (
-        <span className="block text-xs opacity-70">今大会は最短で {card.meetingRoundLabel} で対戦</span>
-      )}
+      {card.meetingRoundLabel && !card.currentResult && <span className="block text-xs opacity-70">今大会は最短で {card.meetingRoundLabel} で対戦</span>}
       {/*
         再戦が実際に行われて決着した場合は、その結果まで出す。
         「今大会で再戦」だけだと勝敗が分からず、記事として物足りないため。

@@ -61,3 +61,6 @@ data/players/_index/
 data/players/_manifest.json
 data/rankings/
 public/data/player-stats/
+
+# 検討用のモック（npm run bracket:preview で再生成できる）
+tournament-bracket-preview.html

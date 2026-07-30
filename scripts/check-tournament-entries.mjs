@@ -32,7 +32,7 @@ const walk = (dir) =>
   });
 
 const findings = [];
-const add = (file, entryNo, rule, message) => findings.push({ file, entryNo, rule, message });
+const add = (file, entryNo, rule, message, severity = 'error') => findings.push({ file, entryNo, rule, message, severity });
 
 for (const filePath of walk(DETAILS)) {
   let data;
@@ -48,28 +48,37 @@ for (const filePath of walk(DETAILS)) {
   const categoryId = path.basename(filePath, '.json');
 
   for (const f of validateTournamentData(data, { categoryId })) {
-    add(rel, f.entryNo, f.rule, f.message);
+    add(rel, f.entryNo, f.rule, f.message, f.severity);
   }
 }
+
+// error = 統計から黙って除外され表示でも気付けない入力ミス。ビルドを止める。
+// warn  = 表示側が graceful に諦めるので誤情報は出ないが、機能が欠ける類。止めない。
+const errors = findings.filter((f) => f.severity !== 'warn');
+const warnings = findings.filter((f) => f.severity === 'warn');
 
 if (asJson) {
   console.log(JSON.stringify(findings, null, 2));
 } else {
-  const byRule = new Map();
-  for (const f of findings) byRule.set(f.rule, [...(byRule.get(f.rule) ?? []), f]);
-
-  if (findings.length === 0) {
-    console.log('check-tournament-entries: 問題なし');
-  } else {
+  const dump = (list, label) => {
+    const byRule = new Map();
+    for (const f of list) byRule.set(f.rule, [...(byRule.get(f.rule) ?? []), f]);
     for (const [rule, items] of byRule) {
-      console.log(`\n[${rule}] ${items.length}件`);
+      console.log(`\n[${label}: ${rule}] ${items.length}件`);
       for (const i of items) {
         console.log(`  ${i.file}${i.entryNo != null ? ` entryNo=${i.entryNo}` : ''}`);
         console.log(`    ${i.message}`);
       }
     }
-    console.log(`\n合計 ${findings.length}件`);
+  };
+
+  if (findings.length === 0) {
+    console.log('check-tournament-entries: 問題なし');
+  } else {
+    dump(errors, 'error');
+    dump(warnings, 'warn');
+    console.log(`\n合計 ${findings.length}件（error ${errors.length} / warn ${warnings.length}）`);
   }
 }
 
-process.exitCode = findings.length > 0 ? 1 : 0;
+process.exitCode = errors.length > 0 ? 1 : 0;

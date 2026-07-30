@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 
+import BracketSheets from '@/components/Tournament/BracketSheets';
+import { describeBracketLayout } from '@/lib/bracketLayout';
 import { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
@@ -453,6 +455,20 @@ export default function TournamentBracket({ detailData, gameCategory, abandonedA
     return text;
   };
 
+  /**
+   * ドローから復元した新しいトーナメント表を使うか。
+   *
+   * 二段構え（2026-07-31 ユーザー決定）:
+   *   - `entries[].type` から席順を復元できる大会 → 新描画（BracketSheets）。
+   *     結果が未入力でも全ラウンドの枠と線が出るのが利点。
+   *   - 復元できない大会（予選リーグ 81・`type` 未入力 15・席ずれ 10）→ 従来描画。
+   *     これらは `matches` の `nextMatchId` から木を作れるので従来経路で足りる。
+   *
+   * 復元可否だけで分岐し、`nextMatchId` の有無では分岐しない。復元できるなら
+   * 完了済み大会でも新描画のほうが読みやすい（山ごとに分かれて画面に収まる）ため。
+   */
+  const useRestoredBracket = useMemo(() => describeBracketLayout(detailData).layout != null, [detailData]);
+
   const { rounds, entriesByRound, layoutByRound, defaultStartRound } = useMemo(() => buildBracket(matches), [matches]);
 
   const [startRound, setStartRound] = useState<string>(defaultStartRound);
@@ -582,240 +598,256 @@ export default function TournamentBracket({ detailData, gameCategory, abandonedA
 
   return (
     <section className="mb-8">
-      <div className="flex justify-between items-center mb-2 px-1">
-        <h2 className="text-lg font-bold">トーナメント表</h2>
+      {useRestoredBracket ? (
+        <>
+          <h2 className="mb-2 px-1 text-lg font-bold">トーナメント表</h2>
+          {isAbandoned && (
+            <p className="mb-2 px-1 text-xs text-text-secondary">
+              {abandonedAfterRound}までで打ち切りとなったため、以降の対戦は実施されていません。組み合わせは記録として残しています。
+            </p>
+          )}
+          <BracketSheets detailData={detailData} onSelectEntry={(entryNo) => setSelectedEntry({ entryNo, roundName: '' })} />
+        </>
+      ) : (
+        <>
+          <div className="flex justify-between items-center mb-2 px-1">
+            <h2 className="text-lg font-bold">トーナメント表</h2>
 
-        {/* ラウンドセレクター */}
-        {rounds.length > 1 && (
-          <div className="flex items-center gap-2">
-            <label htmlFor="round-select" className="text-sm text-text-muted">
-              表示開始:
-            </label>
-            <select
-              id="round-select"
-              value={startRound}
-              onChange={(e) => setStartRound(e.target.value)}
-              className="text-sm border rounded px-2 py-1 bg-surface border-border text-text"
-            >
-              {rounds
-                .filter((r) => r !== '優勝') // 優勝ラインから開始することを許可しない
-                .map((r) => (
-                  <option key={r} value={r}>
-                    {r}から
-                  </option>
-                ))}
-            </select>
+            {/* ラウンドセレクター */}
+            {rounds.length > 1 && (
+              <div className="flex items-center gap-2">
+                <label htmlFor="round-select" className="text-sm text-text-muted">
+                  表示開始:
+                </label>
+                <select
+                  id="round-select"
+                  value={startRound}
+                  onChange={(e) => setStartRound(e.target.value)}
+                  className="text-sm border rounded px-2 py-1 bg-surface border-border text-text"
+                >
+                  {rounds
+                    .filter((r) => r !== '優勝') // 優勝ラインから開始することを許可しない
+                    .map((r) => (
+                      <option key={r} value={r}>
+                        {r}から
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      {isAbandoned && (
-        <p className="mb-4 px-1 text-xs text-text-secondary">
-          {abandonedAfterRound}までで打ち切りとなったため、以降の対戦は実施されていません（「中止」と表示）。組み合わせは記録として残しています。
-        </p>
-      )}
+          {isAbandoned && (
+            <p className="mb-4 px-1 text-xs text-text-secondary">
+              {abandonedAfterRound}までで打ち切りとなったため、以降の対戦は実施されていません（「中止」と表示）。組み合わせは記録として残しています。
+            </p>
+          )}
 
-      <div className="overflow-x-auto overflow-y-visible pb-4">
-        <div className="relative inline-flex" style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}>
-          {displayedRounds.map((roundName, roundIndex) => {
-            const layout = dynamicLayout.get(roundName) || [];
+          <div className="overflow-x-auto overflow-y-visible pb-4">
+            <div className="relative inline-flex" style={{ gap: `${ROUND_GAP}px`, height: `${containerHeight}px` }}>
+              {displayedRounds.map((roundName, roundIndex) => {
+                const layout = dynamicLayout.get(roundName) || [];
 
-            // 表示に対する最初のラウンドでボックスを表示
-            const showBoxes = roundIndex === 0;
-            // 優勝ラウンドの特別処理（ただの線）
-            const isChampionRound = roundName === '優勝';
+                // 表示に対する最初のラウンドでボックスを表示
+                const showBoxes = roundIndex === 0;
+                // 優勝ラウンドの特別処理（ただの線）
+                const isChampionRound = roundName === '優勝';
 
-            return (
-              <div key={roundName} className="relative" style={{ width: showBoxes ? '220px' : '0px' }}>
-                {/* エントリーまたは接続ポイント */}
-                {layout.map((node, index) => {
-                  const entryNo = node.entryNo;
-                  if (entryNo === null) return null; // 枠を消して詰める
-                  if (isChampionRound) {
-                    // 勝者がいるかどうかで色を決定
-                    // entryNo は勝者の ID または -1 または null
-                    const hasWinner = entryNo !== null && entryNo !== -1;
-                    return (
-                      <div
-                        key={`champion-${roundName}-${index}`}
-                        className="absolute flex items-center"
-                        style={{
-                          top: `${node.y * ENTRY_HEIGHT}px`,
-                          height: `${ENTRY_HEIGHT}px`,
-                          width: '40px',
-                        }}
-                      >
-                        <div className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`} />
-                      </div>
-                    );
-                  }
+                return (
+                  <div key={roundName} className="relative" style={{ width: showBoxes ? '220px' : '0px' }}>
+                    {/* エントリーまたは接続ポイント */}
+                    {layout.map((node, index) => {
+                      const entryNo = node.entryNo;
+                      if (entryNo === null) return null; // 枠を消して詰める
+                      if (isChampionRound) {
+                        // 勝者がいるかどうかで色を決定
+                        // entryNo は勝者の ID または -1 または null
+                        const hasWinner = entryNo !== null && entryNo !== -1;
+                        return (
+                          <div
+                            key={`champion-${roundName}-${index}`}
+                            className="absolute flex items-center"
+                            style={{
+                              top: `${node.y * ENTRY_HEIGHT}px`,
+                              height: `${ENTRY_HEIGHT}px`,
+                              width: '40px',
+                            }}
+                          >
+                            <div className={`h-px w-10 ${hasWinner ? 'bg-blue-500 dark:bg-blue-400' : 'bg-gray-300 dark:bg-gray-600'}`} />
+                          </div>
+                        );
+                      }
 
-                  const entry = entries.find((e) => e.entryNo === entryNo);
-                  const player1 = entry ? participants.find((p) => p.id === entry.playerIds[0]) : null;
-                  const player2 = entry && entry.playerIds.length > 1 ? participants.find((p) => p.id === entry.playerIds[1]) : null;
+                      const entry = entries.find((e) => e.entryNo === entryNo);
+                      const player1 = entry ? participants.find((p) => p.id === entry.playerIds[0]) : null;
+                      const player2 = entry && entry.playerIds.length > 1 ? participants.find((p) => p.id === entry.playerIds[1]) : null;
 
-                  // このラウンドでこのエントリーが対戦した試合（対戦詳細モーダル用）
-                  const matchForEntry = matches.find((m) => m.stage === 'knockout' && m.round === roundName && m.entries.includes(entryNo));
+                      // このラウンドでこのエントリーが対戦した試合（対戦詳細モーダル用）
+                      const matchForEntry = matches.find((m) => m.stage === 'knockout' && m.round === roundName && m.entries.includes(entryNo));
 
-                  let displayName = '';
-                  let nameNodes: ReactNode = '';
-                  if (player2) {
-                    // ダブルス: 姓名フルネームを2行で表示する
-                    const n1 = player1?.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1?.team || '';
-                    const n2 = player2?.lastName ? `${player2.lastName} ${player2.firstName || ''}`.trim() : player2?.team || '';
-                    displayName = `${n1}・${n2}`;
-                    nameNodes = (
-                      <div className="flex w-full flex-col items-stretch leading-tight">
-                        <div className={`truncate ${n1.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
-                          {renderPlayerName(player1, n1, matchForEntry, roundName, entryNo)}
-                        </div>
-                        <div className={`truncate ${n2.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
-                          {renderPlayerName(player2, n2, matchForEntry, roundName, entryNo)}
-                        </div>
-                      </div>
-                    );
-                  } else if (player1) {
-                    displayName = player1.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1.team || '';
-                    nameNodes = renderPlayerName(player1, displayName, matchForEntry, roundName, entryNo);
-                  }
+                      let displayName = '';
+                      let nameNodes: ReactNode = '';
+                      if (player2) {
+                        // ダブルス: 姓名フルネームを2行で表示する
+                        const n1 = player1?.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1?.team || '';
+                        const n2 = player2?.lastName ? `${player2.lastName} ${player2.firstName || ''}`.trim() : player2?.team || '';
+                        displayName = `${n1}・${n2}`;
+                        nameNodes = (
+                          <div className="flex w-full flex-col items-stretch leading-tight">
+                            <div className={`truncate ${n1.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
+                              {renderPlayerName(player1, n1, matchForEntry, roundName, entryNo)}
+                            </div>
+                            <div className={`truncate ${n2.length > 6 ? 'text-[9px]' : 'text-[10px]'}`}>
+                              {renderPlayerName(player2, n2, matchForEntry, roundName, entryNo)}
+                            </div>
+                          </div>
+                        );
+                      } else if (player1) {
+                        displayName = player1.lastName ? `${player1.lastName} ${player1.firstName || ''}`.trim() : player1.team || '';
+                        nameNodes = renderPlayerName(player1, displayName, matchForEntry, roundName, entryNo);
+                      }
 
-                  const team1 = player1?.team || '';
-                  const team2 = player2?.team || '';
-                  const showTwoTeams = team2 && team1 !== team2;
+                      const team1 = player1?.team || '';
+                      const team2 = player2?.team || '';
+                      const showTwoTeams = team2 && team1 !== team2;
 
-                  const nextRoundName = displayedRounds[roundIndex + 1];
-                  const nextRoundEntries = nextRoundName ? entriesByRound.get(nextRoundName) : null;
-                  const isSeed = !matchForEntry && !!nextRoundEntries && entryNo !== null && nextRoundEntries.includes(entryNo);
+                      const nextRoundName = displayedRounds[roundIndex + 1];
+                      const nextRoundEntries = nextRoundName ? entriesByRound.get(nextRoundName) : null;
+                      const isSeed = !matchForEntry && !!nextRoundEntries && entryNo !== null && nextRoundEntries.includes(entryNo);
 
-                  const isWinner = matchForEntry?.winnerEntryNo === entryNo || isSeed;
+                      const isWinner = matchForEntry?.winnerEntryNo === entryNo || isSeed;
 
-                  // 名前の強調表示は優勝者のみ
-                  const isChampion = championEntryNo !== undefined && championEntryNo !== -1 && entryNo === championEntryNo;
+                      // 名前の強調表示は優勝者のみ
+                      const isChampion = championEntryNo !== undefined && championEntryNo !== -1 && entryNo === championEntryNo;
 
-                  return (
-                    <div
-                      key={`${roundName}-${entryNo}`}
-                      className="absolute w-full"
-                      style={{
-                        top: `${node.y * ENTRY_HEIGHT}px`,
-                        height: `${ENTRY_HEIGHT}px`,
-                      }}
-                    >
-                      {/* 最初のラウンドでのみエントリーボックスを表示 */}
-                      {showBoxes && (
+                      return (
                         <div
-                          className={`
+                          key={`${roundName}-${entryNo}`}
+                          className="absolute w-full"
+                          style={{
+                            top: `${node.y * ENTRY_HEIGHT}px`,
+                            height: `${ENTRY_HEIGHT}px`,
+                          }}
+                        >
+                          {/* 最初のラウンドでのみエントリーボックスを表示 */}
+                          {showBoxes && (
+                            <div
+                              className={`
                                                             h-full flex flex-row items-center
                                                             
                                                         `}
-                          style={{ width: '220px', minWidth: '220px' }}
-                        >
-                          {/* エントリー番号: 最大3桁 */}
-                          <div className="w-8 text-[10px] text-text-muted font-mono text-center shrink-0 border-r border-border">{entryNo}</div>
+                              style={{ width: '220px', minWidth: '220px' }}
+                            >
+                              {/* エントリー番号: 最大3桁 */}
+                              <div className="w-8 text-[10px] text-text-muted font-mono text-center shrink-0 border-r border-border">{entryNo}</div>
 
-                          {/* プレイヤー名: シングルスは1行(通常6文字最大、より多い場合は小さく)、ダブルスはフルネーム2行 */}
-                          <div
-                            className={`
+                              {/* プレイヤー名: シングルスは1行(通常6文字最大、より多い場合は小さく)、ダブルスはフルネーム2行 */}
+                              <div
+                                className={`
                                                                 flex-1 text-center font-medium px-1 border-r border-gray-100 dark:border-gray-700
                                                                 ${player2 ? '' : `truncate ${displayName.length > 6 ? 'text-[10px]' : 'text-xs'}`}
                                                                 ${isChampion ? 'text-blue-900 dark:text-blue-100' : 'text-gray-900 dark:text-gray-100'}
                                                             `}
-                          >
-                            {nameNodes}
-                          </div>
+                              >
+                                {nameNodes}
+                              </div>
 
-                          {/* チーム: 通常5文字最大、より多い場合は小さく */}
-                          <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
-                            <div className={`text-center text-text-muted truncate w-full ${team1.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>{team1}</div>
-                            {showTwoTeams && (
-                              <div className={`text-center text-text-muted truncate w-full ${team2.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>{team2}</div>
-                            )}
-                          </div>
-                        </div>
-                      )}
+                              {/* チーム: 通常5文字最大、より多い場合は小さく */}
+                              <div className="w-20 shrink-0 px-1 flex flex-col justify-center items-center leading-tight">
+                                <div className={`text-center text-text-muted truncate w-full ${team1.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>{team1}</div>
+                                {showTwoTeams && (
+                                  <div className={`text-center text-text-muted truncate w-full ${team2.length > 5 ? 'text-[9px]' : 'text-[10px]'}`}>
+                                    {team2}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          )}
 
-                      {/* 次のラウンドへの接続線、または最終・途中結果のスコア線 */}
-                      {(roundIndex < displayedRounds.length - 1 || matchForEntry) &&
-                        (() => {
-                          const nextRoundName = displayedRounds[roundIndex + 1];
-                          const nextLayout = nextRoundName ? dynamicLayout.get(nextRoundName) : undefined;
-                          // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
-                          const destNode = nextLayout?.[Math.floor(index / 2)];
+                          {/* 次のラウンドへの接続線、または最終・途中結果のスコア線 */}
+                          {(roundIndex < displayedRounds.length - 1 || matchForEntry) &&
+                            (() => {
+                              const nextRoundName = displayedRounds[roundIndex + 1];
+                              const nextLayout = nextRoundName ? dynamicLayout.get(nextRoundName) : undefined;
+                              // 次のラウンドのエントリーは、2つの子を1つにまとめるため、idx = Math.floor(index / 2)
+                              const destNode = nextLayout?.[Math.floor(index / 2)];
 
-                          if (roundIndex === displayedRounds.length - 1 && !matchForEntry) return null;
+                              if (roundIndex === displayedRounds.length - 1 && !matchForEntry) return null;
 
-                          return (
-                            <svg
-                              className="absolute pointer-events-none overflow-visible"
-                              style={{
-                                top: '50%',
-                                left: '100%',
-                                width: `${ROUND_GAP}px`,
-                                height: '1px',
-                                zIndex: 10,
-                              }}
-                            >
-                              <line
-                                x1="0"
-                                y1="0"
-                                x2={ROUND_GAP}
-                                y2="0"
-                                className={!showBoxes || isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
-                                strokeWidth="1"
-                              />
-
-                              {destNode && node.y !== destNode.y && (
-                                <line
-                                  x1={ROUND_GAP}
-                                  y1="0"
-                                  x2={ROUND_GAP}
-                                  y2={(destNode.y - node.y) * ENTRY_HEIGHT}
-                                  className={isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
-                                  strokeWidth="1"
-                                />
-                              )}
-
-                              {matchForEntry && !isChampionRound && !isWinner && (
-                                <text
-                                  x={ROUND_GAP - 2}
-                                  y={index % 2 === 0 ? -6 : 14}
-                                  textAnchor="end"
-                                  fontSize="10"
-                                  className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
+                              return (
+                                <svg
+                                  className="absolute pointer-events-none overflow-visible"
+                                  style={{
+                                    top: '50%',
+                                    left: '100%',
+                                    width: `${ROUND_GAP}px`,
+                                    height: '1px',
+                                    zIndex: 10,
+                                  }}
                                 >
-                                  {(() => {
-                                    const s = matchForEntry.scores;
-                                    if (!s) return null;
-                                    const val = s[String(entryNo)] ?? s[entryNo];
-                                    return val;
-                                  })()}
-                                </text>
-                              )}
+                                  <line
+                                    x1="0"
+                                    y1="0"
+                                    x2={ROUND_GAP}
+                                    y2="0"
+                                    className={!showBoxes || isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
+                                    strokeWidth="1"
+                                  />
 
-                              {/* 打ち切りで実施されなかった試合。ペアの上側(index が偶数)にだけ1度出す。
+                                  {destNode && node.y !== destNode.y && (
+                                    <line
+                                      x1={ROUND_GAP}
+                                      y1="0"
+                                      x2={ROUND_GAP}
+                                      y2={(destNode.y - node.y) * ENTRY_HEIGHT}
+                                      className={isWinner ? 'stroke-blue-500 dark:stroke-blue-400' : 'stroke-gray-300 dark:stroke-gray-600'}
+                                      strokeWidth="1"
+                                    />
+                                  )}
+
+                                  {matchForEntry && !isChampionRound && !isWinner && (
+                                    <text
+                                      x={ROUND_GAP - 2}
+                                      y={index % 2 === 0 ? -6 : 14}
+                                      textAnchor="end"
+                                      fontSize="10"
+                                      className="fill-gray-600 dark:fill-gray-400 pointer-events-none select-none"
+                                    >
+                                      {(() => {
+                                        const s = matchForEntry.scores;
+                                        if (!s) return null;
+                                        const val = s[String(entryNo)] ?? s[entryNo];
+                                        return val;
+                                      })()}
+                                    </text>
+                                  )}
+
+                                  {/* 打ち切りで実施されなかった試合。ペアの上側(index が偶数)にだけ1度出す。
                                   空欄のままだと「結果未入力」と区別が付かないため明示する。 */}
-                              {isAbandoned && matchForEntry && !isChampionRound && matchForEntry.winnerEntryNo == null && index % 2 === 0 && (
-                                <text
-                                  x={ROUND_GAP - 2}
-                                  y={-6}
-                                  textAnchor="end"
-                                  fontSize="9"
-                                  className="fill-amber-700 dark:fill-amber-400 pointer-events-none select-none"
-                                >
-                                  中止
-                                </text>
-                              )}
-                            </svg>
-                          );
-                        })()}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+                                  {isAbandoned && matchForEntry && !isChampionRound && matchForEntry.winnerEntryNo == null && index % 2 === 0 && (
+                                    <text
+                                      x={ROUND_GAP - 2}
+                                      y={-6}
+                                      textAnchor="end"
+                                      fontSize="9"
+                                      className="fill-amber-700 dark:fill-amber-400 pointer-events-none select-none"
+                                    >
+                                      中止
+                                    </text>
+                                  )}
+                                </svg>
+                              );
+                            })()}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      )}
 
       {selectedEntry &&
         (() => {

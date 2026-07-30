@@ -14,7 +14,8 @@ import fs from 'fs';
 import path from 'path';
 
 import { getChampionMilestones, getGiantKillings, type MilestoneEvent } from './milestones';
-import { getBracketLayout, meetingRoundIndex, roundLabelOf } from './bracketLayout';
+import { meetingRoundIndex, roundLabelOf } from './bracketLayout';
+import { getBracketLayout } from './bracketLayout.server';
 import { buildPriorMeetingIndex, meetingKey } from './priorMeetings';
 import {
   buildParticipantMap,
