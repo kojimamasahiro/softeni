@@ -41,7 +41,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from snslib import (  # noqa: E402
     GRAY, LINE, NAVY, WHITE, YELLOW,
-    draw_footer, entry_label, font, fit_font, new_canvas, participants_map, text_w,
+    entry_label, font, fit_font, new_canvas, participants_map, text_w,
 )
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
@@ -135,7 +135,14 @@ def draw_bracket(draw, tree, pmap, entries_by_no, top, bottom):
         is_champ = no == champion
         # 外側にエントリー番号を置くぶんを差し引く。国際大会は名前が長く、
         # 差し引かないと番号に接触する（例: JONGJITPRAEWA・SOMSANITTHANPITCHA）。
-        f = fit_font(draw, name, name_w - 52, 22, bold=is_champ, min_size=11)
+        max_w = name_w - 52
+        f = fit_font(draw, name, max_w, 22, bold=is_champ, min_size=11)
+        # 最小サイズでも収まらないほど長い名前は末尾を省略する。縮小だけに任せると
+        # はみ出してエントリー番号に重なる（実例: MANALACNOELLE CONCHITA・CATINDIG...）。
+        if text_w(draw, name, f) > max_w:
+            while len(name) > 4 and text_w(draw, name + '…', f) > max_w:
+                name = name[:-1]
+            name += '…' 
         sf_ = font(14)
         nx = (x_name_l - 8) if is_left else (x_name_r + 8)
         tw = text_w(draw, name, f)
@@ -204,31 +211,31 @@ def draw_bracket(draw, tree, pmap, entries_by_no, top, bottom):
     draw.ellipse([cx - 7, (ly + ry) / 2 - 7, cx + 7, (ly + ry) / 2 + 7], fill=YELLOW)
 
 
-def draw_head(draw, title, subtitle):
-    """大会名と「年 種目」を**同じ大きさ**で 2 行に出す（2026-07-31 ユーザー決定）。
+def draw_brand_bar(draw):
+    """上部にサイト名だけのバーを出す（2026-07-31 ユーザー決定）。
 
-    snslib.draw_header は大会名を 40px、副題を 24px で描くが、ここでは同サイズにしたいので
-    独自に描く。ヘッダーを低くするぶん、ブラケットの縦を稼げる（ベスト16 は縦 8 行要る）。
+    大会名・年・種目は**画像に入れない**。X はカードの下にページタイトル
+    （「{大会名} {年}年 {種目} 結果・トーナメント表 | ソフトテニス情報」）を必ず表示するので、
+    画像にも入れると同じ情報が 2 回出る。サイト名だけを上に置き、残りの縦をすべて
+    トーナメント表に使う。footer は廃止（サイト名を上へ移したため）。
     """
-    h = 96
+    h = 52
     draw.rectangle([0, 0, W, h], fill=NAVY)
     draw.rectangle([0, h, W, h + 5], fill=YELLOW)
-    f = fit_font(draw, title, W - 60, 26, bold=True)
-    draw.text((30, 20), title, font=f, fill=WHITE)
-    sf = fit_font(draw, subtitle, W - 60, 26, bold=True)
-    draw.text((30, 54), subtitle, font=sf, fill=(198, 208, 228))
+    draw.ellipse([28, h // 2 - 9, 28 + 18, h // 2 + 9], fill=YELLOW)
+    f = font(24, bold=True)
+    draw.text((56, h // 2 - 15), 'softeni-pick.com', font=f, fill=WHITE)
     return h + 5
 
 
-def render(data, title, subtitle):
+def render(data):
     img, draw = new_canvas(W, H)
     tree = build_tree(data['matches'])
     if not tree:
         return None
-    top = draw_head(draw, title, subtitle) + 22
-    bottom = H - 54 - 14
+    top = draw_brand_bar(draw) + 26
+    bottom = H - 22
     draw_bracket(draw, tree, participants_map(data), {e['entryNo']: e for e in data['entries']}, top, bottom)
-    draw_footer(draw, W, H)
     return img
 
 
@@ -237,35 +244,6 @@ def main():
     ap.add_argument('--apply', action='store_true', help='PNG と索引を書き込む')
     ap.add_argument('--only', help='tournamentId の前方一致で絞る')
     args = ap.parse_args()
-
-    # 大会名は index.json / local_index.json の label。
-    # information の `source` は「出典にした要項・結果 PDF の名称」であって大会名ではない
-    # （例: source="第72回全国高等学校総合体育大会" に対し label="全国高等学校総合体育大会"）。
-    # ページの見出しも index の label を使っているので、そちらに合わせる。
-    tournament_label = {}
-    for f in ('index.json', 'local_index.json'):
-        fp = os.path.join(ROOT, 'data', 'tournaments', f)
-        if not os.path.exists(fp):
-            continue
-        for e in json.load(open(fp, encoding='utf-8')):
-            if e.get('tournamentId') and e.get('label'):
-                tournament_label.setdefault(e['tournamentId'], e['label'])
-
-    info_cache = {}
-
-    def label_of(tid, year, cat):
-        """(大会名, 種目名) を返す。種目名だけは information の categories[].label から。"""
-        if tid not in info_cache:
-            p = os.path.join(ROOT, 'data', 'tournaments', 'information', f'{tid}.json')
-            info_cache[tid] = json.load(open(p, encoding='utf-8')) if os.path.exists(p) else []
-        catlabel = cat
-        for e in info_cache[tid]:
-            if str(e.get('year')) != str(year):
-                continue
-            for c in e.get('categories') or []:
-                if c.get('categoryId') == cat:
-                    catlabel = c.get('label') or cat
-        return tournament_label.get(tid, tid), catlabel
 
     index = {}
     made = 0
@@ -282,8 +260,7 @@ def main():
         if not isinstance(data, dict) or not data.get('entries') or not data.get('matches'):
             continue
 
-        name, catlabel = label_of(tid, year, cat)
-        img = render(data, f'{name}', f'{year}年 {catlabel}')
+        img = render(data)
         if img is None:
             skipped += 1
             continue
