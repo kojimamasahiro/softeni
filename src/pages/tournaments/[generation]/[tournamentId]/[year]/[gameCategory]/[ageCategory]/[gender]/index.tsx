@@ -22,6 +22,8 @@ import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressCha
 import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
+import { buildSiteUrl } from '@/lib/siteConfig';
+import { getTournamentOgImage } from '@/lib/tournamentOgImage';
 import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
@@ -71,6 +73,12 @@ interface TournamentYearResultPageProps {
   // 対応する展望（preview）記事の articleId（あれば）。/news への内部リンク用。
   // 「結果」を狙うリンクではないため、SEO カニバリの心配なく張れる（docs/wiki/seo.md #8）。
   previewArticleId?: string | null;
+  /**
+   * この大会・年度・種目の OGP 画像（ベスト8のトーナメント表、1200x630）。
+   * 決勝が未確定なら null で、既定の summary カードにフォールバックする。
+   * 生成: tools/sns-images/tournament_og.py
+   */
+  ogImage?: string | null;
 }
 
 export default function TournamentYearResultPage({
@@ -96,6 +104,7 @@ export default function TournamentYearResultPage({
   contextMilestones = [],
   priorMeetingCards = [],
   previewArticleId = null,
+  ogImage = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
 
@@ -154,6 +163,7 @@ export default function TournamentYearResultPage({
         description={`ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
+        {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
       />
 
       <Head>
@@ -803,6 +813,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         contextMilestones,
         priorMeetingCards,
         previewArticleId,
+        ogImage: getTournamentOgImage(tournamentId, year, categoryId),
       };
     })(),
   };

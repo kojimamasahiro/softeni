@@ -52,6 +52,8 @@
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "check:entries": "node scripts/check-tournament-entries.mjs",
     "bracket:verify": "node scripts/verify-bracket-layout.mjs",
+    "bracket:backfill-type": "node scripts/backfill-entry-type.mjs",
+    "og:tournaments": "python3 tools/sns-images/tournament_og.py",
     "bracket:verify:tree": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-bracket-tree.ts",
     "bracket:preview": "ts-node --project scripts/playerStats/tsconfig.json scripts/preview-bracket-sheets.ts",
     "bracket:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketLayout.test.ts && ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketDrawing.test.ts",
