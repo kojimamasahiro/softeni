@@ -6,6 +6,9 @@ Accepted（高レベル方針・データフロー）。具体ブロックの語
 
 決定日: 2026-06-21。親仕様: `docs/raw/2026-06-21-news-auto-draft-design.md`、現状仕様: `docs/wiki/news-context-blocks.md`。
 
+**一部 Superseded**: 「本文はテンプレートのみ・LLM不使用」は [ADR-012](./ADR-012-llm-authored-insights-with-machine-verification.md)（2026-08-01）が置き換えた。LLM不使用の根拠は「捏造を機械的に検出できない」ことだったが、`scripts/verify-story-text.mjs` による生データとの照合が実装され前提が崩れたため、**機械照合を通った散文に限りサイト本文への掲載を許可**する。テンプレート由来のバッジ表示・文脈ブロックを一次成果物とする方針・既存ページへの差し込みは本ADRのまま有効。
+[ADR-010](./ADR-010-retire-result-articles-consolidate-to-hub.md) が result 記事を廃止した点も併せて参照。
+
 ## Context
 
 流入の大きい時事系（速報・プレビュー）は需要が大きいが、現行の手動入力中心の運用では即応が難しく、機能化が見送られてきた。一方で自動化すれば競合（汎用テンプレ SEO farm）も同じことができ、強みにならない懸念があった。

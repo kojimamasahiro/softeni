@@ -11,7 +11,7 @@ import { useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import ResultContextBlocks, { type PriorMeetingSummary } from '@/components/ResultContextBlocks';
+import ResultContextBlocks, { type InsightSummary, type PriorMeetingSummary } from '@/components/ResultContextBlocks';
 import MatchResults from '@/components/Tournament/MatchResults';
 import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
@@ -19,6 +19,7 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
+import { getPublishedInsight } from '@/lib/tournamentInsight';
 import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
@@ -70,6 +71,11 @@ interface TournamentYearResultPageProps {
   // 文脈ブロック「前哨戦・再戦」。この年・種目で実際に組まれた対戦のうち、
   // 直近の他大会（主に地区大会）で既に対戦していたもの。lib/priorMeetings.ts
   priorMeetingCards?: PriorMeetingSummary[];
+  /**
+   * 大会インサイト（LLM執筆・機械照合済みの読み物）。ADR-012。
+   * 未公開・未検証なら null で、その場合セクションに何も出さない。
+   */
+  insight?: InsightSummary | null;
   // 対応する展望（preview）記事の articleId（あれば）。/news への内部リンク用。
   // 「結果」を狙うリンクではないため、SEO カニバリの心配なく張れる（docs/wiki/seo.md #8）。
   previewArticleId?: string | null;
@@ -103,6 +109,7 @@ export default function TournamentYearResultPage({
   scoreMatchLinks = [],
   contextMilestones = [],
   priorMeetingCards = [],
+  insight = null,
   previewArticleId = null,
   ogImage = null,
 }: TournamentYearResultPageProps) {
@@ -259,7 +266,7 @@ export default function TournamentYearResultPage({
         </section>
 
         {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
-        <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} />
+        <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} insight={insight} />
 
         {/* トーナメント表 */}
         {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} abandonedAfterRound={abandonment?.abandonedAfterRound ?? null} />}
@@ -812,6 +819,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
         scoreMatchLinks,
         contextMilestones,
         priorMeetingCards,
+        insight: (() => {
+          const found = getPublishedInsight(tournamentId, year, categoryId);
+          return found ? { paragraphs: found.paragraphs, scopeNote: found.scopeNote } : null;
+        })(),
         previewArticleId,
         ogImage: getTournamentOgImage(tournamentId, year, categoryId),
       };

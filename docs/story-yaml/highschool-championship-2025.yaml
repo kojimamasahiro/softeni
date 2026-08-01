@@ -1,0 +1,927 @@
+# 自動生成（scripts/generate-story-yaml.mjs）。手で編集しないこと。
+# LLMへの指示: この事実だけを使うこと。新しい数値・事実・評価を作らない、または推測しないこと。
+#   選手名・学校名・年はそのまま使うこと。scopeNote と notes.absence は必ず反映すること。
+#   related で結ばれたストーリーは同じ筋の可能性が高いので、1つの段落にまとめてよい。
+
+tournament:
+  tournamentId: 'highschool-championship'
+  year: 2025
+  label: 全国高等学校総合体育大会 2025
+  scope: 当サイト掲載大会分（2021・2022・2023・2024・2025・2026年）から算出
+
+stories:
+  - id: 'highschool-championship-2025-doubles-none-boys-title-won-1'
+    category: 成長
+    kind: 'title-won'
+    categoryId: 'doubles-none-boys'
+    priority: 1
+    subject:
+      players: [亀安隼亘, 関口光希]
+      subjectKeys: [亀安隼亘, 関口光希]
+      opponents: [山本一輝, 笹川慈瑛]
+    round: 決勝
+    facts:
+      runnerUp: 山本一輝・笹川慈瑛
+      finalScore: '4-3'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 植田璃音・荻谷侑磨
+      semifinalScore: '4-3'
+      sameTeamFinal: 尽誠学園
+    text: '2025年の優勝は亀安隼亘・関口光希。決勝は山本一輝・笹川慈瑛に4-3、準決勝は植田璃音・荻谷侑磨に4-3。決勝は尽誠学園同士の対戦。当サイト掲載範囲では初優勝。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-doubles-none-girls-title-won-1'
+    category: 成長
+    kind: 'title-won'
+    categoryId: 'doubles-none-girls'
+    priority: 1
+    subject:
+      players: [佐藤紗空, 天間麗奈]
+      subjectKeys: [佐藤紗空, 天間麗奈]
+      opponents: [原綾那, 西村ひよ]
+    round: 決勝
+    facts:
+      runnerUp: 原綾那・西村ひよ
+      finalScore: '4-3'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 久野凪桜・髙住莉舞奈
+      semifinalScore: '4-0'
+    text: '2025年の優勝は佐藤紗空・天間麗奈。決勝は原綾那・西村ひよに4-3、準決勝は久野凪桜・髙住莉舞奈に4-0。当サイト掲載範囲では初優勝。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-doubles-none-girls-self-best-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-doubles-none-girls-self-best-2', relation: counterpart }
+  - id: 'highschool-championship-2025-team-none-boys-title-won-1'
+    category: 成長
+    kind: 'title-won'
+    categoryId: 'team-none-boys'
+    priority: 1
+    subject:
+      teams: [岡崎城西]
+      subjectKeys: [岡崎城西]
+      opponents: [東北]
+    round: 決勝
+    facts:
+      runnerUp: 東北
+      finalScore: '2-1'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 尽誠学園
+      semifinalScore: '2-1'
+    text: '2025年の優勝は岡崎城西。決勝は東北に2-1、準決勝は尽誠学園に2-1。当サイト掲載範囲では初優勝。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: counterpart }
+  - id: 'highschool-championship-2025-team-none-girls-title-won-1'
+    category: 継続
+    kind: 'title-won'
+    categoryId: 'team-none-girls'
+    priority: 1
+    subject:
+      teams: [東北]
+      subjectKeys: [東北]
+      opponents: [京都光華]
+    round: 決勝
+    facts:
+      runnerUp: 京都光華
+      finalScore: '2-0'
+      titleCount: 3
+      isFirstTitle: false
+      repeatFrom: 2
+      previousTitleYear: 2024
+      semifinalOpponent: 広島翔洋
+      semifinalScore: '2-0'
+    text: '2025年の優勝は東北。決勝は京都光華に2-0、準決勝は広島翔洋に2-0。前回の優勝は2024年。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: counterpart }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3', relation: counterpart }
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-1'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [東北, 高田商]
+      subjectKeys: [東北, 高田商]
+    facts:
+      priorYear: 2024
+      priorRound: 準決勝
+      currentRound: 準決勝
+      revenge: true
+    text: 準決勝の東北対高田商は、2024年準決勝と同じ顔合わせ。2024年に敗れた東北が勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-2'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [京都文教, 田村]
+      subjectKeys: [京都文教, 田村]
+    facts:
+      priorYear: 2022
+      priorRound: 1回戦
+      currentRound: 1回戦
+      revenge: false
+    text: 1回戦の京都文教対田村は、2022年1回戦と同じ顔合わせ。田村が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-3'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 岡崎城西]
+      subjectKeys: [尽誠学園, 岡崎城西]
+    facts:
+      priorYear: 2022
+      priorRound: 2回戦
+      currentRound: 準決勝
+      revenge: true
+    text: 準決勝の尽誠学園対岡崎城西は、2022年2回戦と同じ顔合わせ。2022年に敗れた岡崎城西が勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-4'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [岡崎城西, 金津]
+      subjectKeys: [岡崎城西, 金津]
+    facts:
+      priorYear: 2023
+      priorRound: 2回戦
+      currentRound: 2回戦
+      revenge: false
+    text: 2回戦の岡崎城西対金津は、2023年2回戦と同じ顔合わせ。岡崎城西が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-5'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [上宮, 都城商]
+      subjectKeys: [上宮, 都城商]
+    facts:
+      priorYear: 2023
+      priorRound: 3回戦
+      currentRound: 3回戦
+      revenge: true
+    text: 3回戦の上宮対都城商は、2023年3回戦と同じ顔合わせ。2023年に敗れた上宮が勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-6'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [明徳義塾, 高田商]
+      subjectKeys: [明徳義塾, 高田商]
+    facts:
+      priorYear: 2023
+      priorRound: 3回戦
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の明徳義塾対高田商は、2023年3回戦と同じ顔合わせ。高田商が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-pair-rematch-7'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [三重, 尽誠学園]
+      subjectKeys: [三重, 尽誠学園]
+    facts:
+      priorYear: 2023
+      priorRound: 準決勝
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の三重対尽誠学園は、2023年準決勝と同じ顔合わせ。尽誠学園が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-1'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [広島翔洋, 東北]
+      subjectKeys: [広島翔洋, 東北]
+    facts:
+      priorYear: 2024
+      priorRound: 準決勝
+      currentRound: 準決勝
+      revenge: false
+    text: 準決勝の広島翔洋対東北は、2024年準決勝と同じ顔合わせ。東北が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-girls-school-both-events-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-girls-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-10'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [京都光華, 文大杉並]
+      subjectKeys: [京都光華, 文大杉並]
+    facts:
+      priorYear: 2024
+      priorRound: 3回戦
+      currentRound: 2回戦
+      revenge: false
+    text: 2回戦の京都光華対文大杉並は、2024年3回戦と同じ顔合わせ。京都光華が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-11'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 須磨学園]
+      subjectKeys: [尽誠学園, 須磨学園]
+    facts:
+      priorYear: 2024
+      priorRound: 3回戦
+      currentRound: 3回戦
+      revenge: false
+    text: 3回戦の尽誠学園対須磨学園は、2024年3回戦と同じ顔合わせ。須磨学園が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-2'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [一関学院, 文大杉並]
+      subjectKeys: [一関学院, 文大杉並]
+    facts:
+      priorYear: 2022
+      priorRound: 2回戦
+      currentRound: 1回戦
+      revenge: false
+    text: 1回戦の一関学院対文大杉並は、2022年2回戦と同じ顔合わせ。文大杉並が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-3'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [東北, 須磨学園]
+      subjectKeys: [東北, 須磨学園]
+    facts:
+      priorYear: 2024
+      priorRound: 決勝
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の東北対須磨学園は、2024年決勝と同じ顔合わせ。東北が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-4'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [京都光華, 昇陽]
+      subjectKeys: [京都光華, 昇陽]
+    facts:
+      priorYear: 2022
+      priorRound: 準々決勝
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の京都光華対昇陽は、2022年準々決勝と同じ顔合わせ。京都光華が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-8', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-4', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-5'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [京都光華, 岡崎城西]
+      subjectKeys: [京都光華, 岡崎城西]
+    facts:
+      priorYear: 2023
+      priorRound: 3回戦
+      currentRound: 3回戦
+      revenge: false
+    text: 3回戦の京都光華対岡崎城西は、2023年3回戦と同じ顔合わせ。京都光華が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-6'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [広島翔洋, 白鷗大足利]
+      subjectKeys: [広島翔洋, 白鷗大足利]
+    facts:
+      priorYear: 2023
+      priorRound: 準々決勝
+      currentRound: 2回戦
+      revenge: false
+    text: 2回戦の広島翔洋対白鷗大足利は、2023年準々決勝と同じ顔合わせ。広島翔洋が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-girls-school-both-events-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-7'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [京都光華, 東北]
+      subjectKeys: [京都光華, 東北]
+    facts:
+      priorYear: 2023
+      priorRound: 準々決勝
+      currentRound: 決勝
+      revenge: false
+    text: 決勝の京都光華対東北は、2023年準々決勝と同じ顔合わせ。東北が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-8'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [昇陽, 明豊]
+      subjectKeys: [昇陽, 明豊]
+    facts:
+      priorYear: 2024
+      priorRound: 2回戦
+      currentRound: 3回戦
+      revenge: false
+    text: 3回戦の昇陽対明豊は、2024年2回戦と同じ顔合わせ。昇陽が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-4', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-pair-rematch-9'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-girls'
+    priority: 5
+    subject:
+      teams: [和歌山信愛, 羽黒]
+      subjectKeys: [和歌山信愛, 羽黒]
+    facts:
+      priorYear: 2024
+      priorRound: 3回戦
+      currentRound: 準々決勝
+      revenge: true
+    text: 準々決勝の和歌山信愛対羽黒は、2024年3回戦と同じ顔合わせ。2024年に敗れた羽黒が勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1'
+    category: 再会
+    kind: 'recurring-matchup'
+    categoryId: 'team-none-boys'
+    priority: 5.5
+    subject:
+      teams: [東北, 高田商]
+      subjectKeys: [東北, 高田商]
+    facts:
+      times: 5
+      byYear: 2021年準決勝は高田商 / 2022年準決勝は高田商 / 2023年準決勝は東北 / 2024年準決勝は高田商 / 2025年準決勝は東北
+    text: 東北と高田商は、上位ラウンドで5回対戦している（2021年準決勝は高田商 / 2022年準決勝は高田商 / 2023年準決勝は東北 / 2024年準決勝は高田商 / 2025年準決勝は東北）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1'
+    category: 再会
+    kind: 'recurring-matchup'
+    categoryId: 'team-none-girls'
+    priority: 5.5
+    subject:
+      teams: [広島翔洋, 東北]
+      subjectKeys: [広島翔洋, 東北]
+    facts:
+      times: 3
+      byYear: 2023年準決勝は広島翔洋 / 2024年準決勝は東北 / 2025年準決勝は東北
+    text: 広島翔洋と東北は、上位ラウンドで3回対戦している（2023年準決勝は広島翔洋 / 2024年準決勝は東北 / 2025年準決勝は東北）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-girls-school-both-events-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-girls-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-doubles-none-girls-self-best-1'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-girls'
+    priority: 7
+    subject:
+      players: [原綾那]
+      subjectKeys: [原綾那]
+    facts:
+      before: ベスト8
+      after: 準優勝
+      resultsByYear: 2024年ベスト8 / 2025年準優勝
+    text: 原綾那は、これまでの最高ベスト8を上回る準優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-doubles-none-girls-self-best-2'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-girls'
+    priority: 7
+    subject:
+      players: [西村ひよ]
+      subjectKeys: [西村ひよ]
+    facts:
+      before: ベスト8
+      after: 準優勝
+      resultsByYear: 2024年ベスト8 / 2025年準優勝
+    text: 西村ひよは、これまでの最高ベスト8を上回る準優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-doubles-none-girls-self-best-3'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-girls'
+    priority: 7
+    subject:
+      players: [柏春花]
+      subjectKeys: [柏春花]
+    facts:
+      before: ベスト8
+      after: ベスト4
+      resultsByYear: 2024年ベスト8 / 2025年ベスト4
+    text: 柏春花は、これまでの最高ベスト8を上回るベスト4となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-doubles-none-girls-self-best-4'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-girls'
+    priority: 7
+    subject:
+      players: [村上芹]
+      subjectKeys: [村上芹]
+    facts:
+      before: ベスト8
+      after: ベスト4
+      resultsByYear: 2024年ベスト8 / 2025年ベスト4
+    text: 村上芹は、これまでの最高ベスト8を上回るベスト4となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2025-boys-school-both-events-1'
+    category: 継続
+    kind: 'school-both-events'
+    categoryId: （団体・個人横断）
+    priority: 8.5
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+    facts:
+      streakYears: 5
+      since: 2021
+      byYear: 2021年 団体準優勝・個人準優勝 / 2022年 団体準優勝・個人優勝 / 2023年 団体ベスト4・個人ベスト4 / 2024年 団体優勝・個人ベスト4 / 2025年 団体ベスト4・個人ベスト4
+    text: 高田商は5年連続で、団体戦と個人戦の両方でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-boys-school-both-events-2'
+    category: 継続
+    kind: 'school-both-events'
+    categoryId: （団体・個人横断）
+    priority: 8.5
+    subject:
+      teams: [尽誠学園]
+      subjectKeys: [尽誠学園]
+    facts:
+      streakYears: 5
+      since: 2021
+      byYear: 2021年 団体優勝・個人ベスト8 / 2022年 団体優勝・個人ベスト4 / 2023年 団体優勝・個人優勝 / 2024年 団体準優勝・個人ベスト8 / 2025年 団体ベスト4・個人優勝
+    text: 尽誠学園は5年連続で、団体戦と個人戦の両方でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-girls-school-both-events-3'
+    category: 継続
+    kind: 'school-both-events'
+    categoryId: （団体・個人横断）
+    priority: 8.5
+    subject:
+      teams: [広島翔洋]
+      subjectKeys: [広島翔洋]
+    facts:
+      streakYears: 3
+      since: 2023
+      byYear: 2023年 団体準優勝・個人ベスト8 / 2024年 団体ベスト4・個人優勝 / 2025年 団体ベスト4・個人ベスト4
+    text: 広島翔洋は3年連続で、団体戦と個人戦の両方でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [尽誠学園]
+      subjectKeys: [尽誠学園]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト8 / 2022年ベスト4 / 2023年優勝 / 2024年ベスト8 / 2025年優勝
+    text: 尽誠学園は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年準優勝 / 2022年優勝 / 2023年ベスト4 / 2024年ベスト4 / 2025年ベスト4
+    text: 高田商は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [岡崎城西]
+      subjectKeys: [岡崎城西]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト8 / 2022年ベスト4 / 2023年ベスト8 / 2024年ベスト8 / 2025年ベスト8
+    text: 岡崎城西は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-doubles-none-girls-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 9
+    subject:
+      teams: [広島翔洋]
+      subjectKeys: [広島翔洋]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト4 / 2022年準優勝 / 2023年ベスト8 / 2024年優勝 / 2025年ベスト4
+    text: 広島翔洋は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-girls-school-both-events-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [東北]
+      subjectKeys: [東北]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト4 / 2022年ベスト4 / 2023年準優勝 / 2024年ベスト4 / 2025年準優勝
+    text: 東北は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年準優勝 / 2022年準優勝 / 2023年ベスト4 / 2024年優勝 / 2025年ベスト4
+    text: 高田商は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-boys-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [尽誠学園]
+      subjectKeys: [尽誠学園]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年優勝 / 2022年優勝 / 2023年優勝 / 2024年準優勝 / 2025年ベスト4
+    text: 尽誠学園は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-11', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-boys-school-both-events-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-girls'
+    priority: 9
+    subject:
+      teams: [東北]
+      subjectKeys: [東北]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年優勝 / 2022年ベスト4 / 2023年ベスト4 / 2024年優勝 / 2025年優勝
+    text: 東北は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-girls'
+    priority: 9
+    subject:
+      teams: [和歌山信愛]
+      subjectKeys: [和歌山信愛]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト4 / 2022年優勝 / 2023年ベスト4 / 2024年ベスト8 / 2025年ベスト8
+    text: 和歌山信愛は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-9', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-girls'
+    priority: 9
+    subject:
+      teams: [京都光華]
+      subjectKeys: [京都光華]
+    facts:
+      streakYears: 5
+      since: 2021
+      resultsByYear: 2021年ベスト4 / 2022年ベスト4 / 2023年ベスト8 / 2024年ベスト8 / 2025年準優勝
+    text: 京都光華は5年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-10', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-7', relation: 'same-subject' }
+  - id: 'highschool-championship-2025-team-none-girls-school-best8-streak-4'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-girls'
+    priority: 9
+    subject:
+      teams: [昇陽]
+      subjectKeys: [昇陽]
+    facts:
+      streakYears: 4
+      since: 2022
+      resultsByYear: 2022年ベスト8 / 2023年ベスト8 / 2024年ベスト4 / 2025年ベスト8
+    text: 昇陽は4年連続でベスト8以上に入っている（2022年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2025-team-none-girls-pair-rematch-8', relation: 'same-subject' }
+
+# ストーリーにはしないが一覧として出す事実（LLMの執筆は不要。そのままリスト表示する）
+records:
+  doubles-none-boys:
+    firstBest8:
+      - { name: 山本一輝, result: 準優勝, appearedBefore: false }
+      - { name: 笹川慈瑛, result: 準優勝, appearedBefore: true }
+      - { name: 塚本光琉, result: ベスト8, appearedBefore: false }
+      - { name: 山田健太郎, result: ベスト8, appearedBefore: false }
+      - { name: 阿部堯, result: ベスト8, appearedBefore: true }
+      - { name: 髙澤泉, result: ベスト8, appearedBefore: true }
+      - { name: 木原祐翔, result: ベスト4, appearedBefore: false }
+      - { name: 伊藤陽聖, result: ベスト4, appearedBefore: false }
+      - { name: 亀安隼亘, result: 優勝, appearedBefore: true }
+      - { name: 関口光希, result: 優勝, appearedBefore: false }
+      - { name: 萩原塡ノ祐, result: ベスト8, appearedBefore: false }
+      - { name: 川内聡一郎, result: ベスト8, appearedBefore: false }
+      - { name: 三田勇人, result: ベスト8, appearedBefore: true }
+      - { name: 西山友晴, result: ベスト8, appearedBefore: false }
+      - { name: 荻谷侑磨, result: ベスト4, appearedBefore: true }
+  doubles-none-girls:
+    firstBest8:
+      - { name: 髙住莉舞奈, result: ベスト4, appearedBefore: true }
+      - { name: 久野凪桜, result: ベスト4, appearedBefore: false }
+      - { name: 太田倫, result: ベスト8, appearedBefore: false }
+      - { name: 松井颯花, result: ベスト8, appearedBefore: false }
+      - { name: 天間麗奈, result: 優勝, appearedBefore: true }
+      - { name: 佐藤紗空, result: 優勝, appearedBefore: true }
+      - { name: 杉原澄, result: ベスト8, appearedBefore: false }
+      - { name: 松本唯郁, result: ベスト8, appearedBefore: true }
+      - { name: 足利茉奈, result: ベスト8, appearedBefore: true }
+      - { name: 近坂優衣, result: ベスト8, appearedBefore: true }
+  team-none-boys:
+    firstBest8:
+      [] # 該当なし
+  team-none-girls:
+    firstBest8:
+      [] # 該当なし

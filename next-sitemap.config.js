@@ -7,6 +7,19 @@ const path = require('path');
 
 // tournamentId -> { year -> endDate|startDate }
 const tournamentDates = {};
+
+// ビルド日（YYYY-MM-DD）。lastmod が未来日にならないよう上限として使う。
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
+/**
+ * lastmod をビルド日で頭打ちにする。
+ * 大会の終了日をそのまま使うと開催前・開催中の大会が未来日になり、
+ * Google に無視されるうえ、途中経過を更新しても値が動かない。
+ */
+function clampToBuildDate(date) {
+  if (!date) return date;
+  return date > BUILD_DATE ? BUILD_DATE : date;
+}
 // playerId(number) -> 最新出場大会の日付 (ISO)
 const playerLastmod = {};
 // articleId -> updatedAt|createdAt (ISO)。/news/<articleId> の lastmod に使う
@@ -88,9 +101,12 @@ function loadData() {
         for (const year of fs.readdirSync(tidDir)) {
           const yearDir = path.join(tidDir, year);
           if (!fs.statSync(yearDir).isDirectory()) continue;
-          const date = tournamentDates[tid]
-            ? tournamentDates[tid][String(year)]
-            : null;
+          // 選手ページの lastmod は「その選手が出た大会のうち最も新しい日付」。
+          // ここも大会終了日そのままだと、開催前・開催中の大会に出場している選手が
+          // 未来日の lastmod を持ってしまうためクランプする。
+          const date = clampToBuildDate(
+            tournamentDates[tid] ? tournamentDates[tid][String(year)] : null,
+          );
           if (!date) continue;
           for (const file of fs.readdirSync(yearDir)) {
             if (!file.endsWith('.json')) continue;
@@ -162,6 +178,13 @@ module.exports = {
       lastmod = tournamentDates[tournamentMatch[1]]
         ? tournamentDates[tournamentMatch[1]][tournamentMatch[2]]
         : undefined;
+      // 大会の終了日をそのまま lastmod にすると、開催前・開催中の大会で**未来日**になる。
+      // 未来の lastmod は無視されるうえ、途中経過を何度更新しても値が動かないため
+      // 鮮度シグナルが一切効かない（インターハイ2026で lastmod=2026-08-07、
+      // 全日本インドア2026で 2027-02-07 が出ていた）。
+      // ビルド日でクランプすることで、開催中はビルドのたびに前進し、
+      // 終了済みの大会は従来どおり終了日のままになる。
+      lastmod = clampToBuildDate(lastmod);
     }
 
     // ニュース記事ページ: /news/{articleId}/

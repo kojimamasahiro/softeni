@@ -1637,6 +1637,24 @@
         return reachedOnlyByByes(rIdx - 1, feederIdx, wonSide);
       }
 
+      /**
+       * 「不戦勝どうしの対戦」を JSON から省くかどうか。
+       *
+       * トグルの意図は「ドロー表だけを入力した段階で、まだ行われていない対戦を出力しない」こと。
+       * したがって **勝者が入力された時点で出力しなければならない**。
+       * byeDerived は「その枠に不戦勝だけで辿り着いたか」であって「この試合が行われたか」では
+       * ないため、winner を見ずに省くと、実際に行われた試合が丸ごと欠落する。
+       *
+       * 実害の例（インターハイ2026 女子ダブルス）: extra 同士の 2 回戦 70 試合が
+       * すべて出力されず、敗者 70 組が JSON から消え、勝者 70 組は prevMatchIds が空の
+       * まま 3 回戦に現れていた（No.83 内田涼凪・実末彩奈 ほか）。
+       */
+      function shouldSkipByeDerived(match) {
+        if (!match?.byeDerived) return false;
+        if (!byeAdvanceToggleEl?.checked) return false;
+        return match.winner == null; // 勝者が入っていれば実施済みなので出力する
+      }
+
       function collectRoundHistory() {
         // bracket から互換の roundHistory を生成
         return bracket.map((round, rIdx) => {
@@ -1700,7 +1718,7 @@
               if (!ranking) continue;
               for (const match of matches) {
                 if (!match.p1 || !match.p2 || !match.winner) continue;
-                if (match.byeDerived && byeAdvanceToggleEl?.checked) continue;
+                if (shouldSkipByeDerived(match)) continue;
                 const isP1Winner = match.winner === match.p1.id;
                 const winnerTeam = isP1Winner ? match.p1 : match.p2;
                 const loserTeam = isP1Winner ? match.p2 : match.p1;
@@ -1732,7 +1750,7 @@
               if (!ranking) continue;
               for (const match of matches) {
                 if (!match.p1 || !match.p2 || !match.winner) continue;
-                if (match.byeDerived && byeAdvanceToggleEl?.checked) continue;
+                if (shouldSkipByeDerived(match)) continue;
                 const p1Key = getPairKey(match.p1);
                 const p2Key = getPairKey(match.p2);
                 const p1Arr = getPairArray(match.p1);
@@ -1943,8 +1961,8 @@
 
       function splitMatchByPlayerIds(match) {
         if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
-        // 不戦勝どうしの対戦は、トグル ON のとき出力しない（reachedOnlyByByes 参照）
-        if (match.byeDerived && byeAdvanceToggleEl?.checked) return [];
+        // 不戦勝どうしの対戦は、まだ行われていない間だけ出力しない（reachedOnlyByByes 参照）
+        if (shouldSkipByeDerived(match)) return [];
         const results = [];
         const p1Ids = match.p1.information.map((info) => info.tempId);
         const p2Ids = match.p2.information.map((info) => info.tempId);
@@ -1986,8 +2004,8 @@
 
       function splitMatchByTeams(match) {
         if (match.p1?.id === 'bye' || match.p2?.id === 'bye') return [];
-        // 不戦勝どうしの対戦は、トグル ON のとき出力しない（reachedOnlyByByes 参照）
-        if (match.byeDerived && byeAdvanceToggleEl?.checked) return [];
+        // 不戦勝どうしの対戦は、まだ行われていない間だけ出力しない（reachedOnlyByByes 参照）
+        if (shouldSkipByeDerived(match)) return [];
         const results = [];
         function getTeamLabel(obj) {
           if (obj.tempId) return obj.tempId;

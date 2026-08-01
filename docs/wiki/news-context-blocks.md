@@ -105,7 +105,7 @@
 
 ## 設計原則（確定）
 
-データ取得は完全手動入力のまま維持し、自動化するのは生成のみ（外部速報元の自動クロールはしない）。本文は LLM を使わず**テンプレートのみ**で決定的に生成する（誤り混入ゼロ・低コスト・鮮度シグナル安定）。公開記事は **human-in-the-loop**（自動ドラフト→人が承認→公開）。既存ページへのブロック差し込みは決定的生成のためビルド時自動。
+データ取得は完全手動入力のまま維持し、自動化するのは生成のみ（外部速報元の自動クロールはしない）。本文は LLM を使わず**テンプレートのみ**で決定的に生成する（誤り混入ゼロ・低コスト・鮮度シグナル安定）。**ただし2026-08-01の[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)で、大会インサイト（複数年にまたがる読み物）に限り、`scripts/verify-story-text.mjs` の機械照合を通った LLM 執筆の散文をサイト本文に載せてよいことになった**（公開条件は prebuild の `scripts/check-tournament-insights.mjs` が強制する）。バッジ・文脈ブロック本体は従来どおりテンプレートのみ。公開記事は **human-in-the-loop**（自動ドラフト→人が承認→公開）。既存ページへのブロック差し込みは決定的生成のためビルド時自動。
 
 ## パイプライン
 
@@ -150,6 +150,7 @@
 - アーキテクチャ判断（なぜ文脈ブロックを一次成果物にするか）: [ADR-005](../adr/ADR-005-news-context-block-architecture.md)
 - 大会途中の成績を `results`（`rank.kind:'ongoing'`）に保持する判断: [ADR-007](../adr/ADR-007-in-progress-tournament-standing.md)
 - 親仕様（確定事項・全 Open Questions の決定）: [raw/2026-06-21-news-auto-draft-design.md](../raw/2026-06-21-news-auto-draft-design.md)
+- 展望記事の拡充アイデア（発散フェーズ）: [sns-story-platform.md](./sns-story-platform.md)「SNSストーリー生成基盤」／その最初の具体候補である[ドローの厳しさ（山の偏り）ストーリー](../raw/2026-07-31-idea-news-draw-difficulty-story.md)
 - Step1 詳細設計: [raw/2026-06-21-historical-winners-logic.md](../raw/2026-06-21-historical-winners-logic.md)
 - データ構造: [data-model.md](./data-model.md) / [Data Import](./data-import.md)
 - SEO カニバリ運用: [seo.md](./seo.md)

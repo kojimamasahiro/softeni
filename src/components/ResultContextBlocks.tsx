@@ -26,18 +26,30 @@ export type PriorMeetingSummary = {
   revenge: boolean;
 };
 
+/**
+ * 大会インサイト（LLMが執筆し機械照合を通した読み物）。
+ * ADR-012。公開条件の判定は lib/tournamentInsight.ts 側で済んでおり、
+ * ここに渡ってきている時点で「published かつ照合済み」が保証されている。
+ */
+export type InsightSummary = {
+  paragraphs: string[];
+  scopeNote: string;
+};
+
 export default function ResultContextBlocks({
   label,
   year,
   milestones,
   priorMeetings = [],
+  insight = null,
 }: {
   label: string;
   year: string;
   milestones: ContextMilestone[];
   priorMeetings?: PriorMeetingSummary[];
+  insight?: InsightSummary | null;
 }) {
-  if (milestones.length === 0 && priorMeetings.length === 0) return null;
+  if (milestones.length === 0 && priorMeetings.length === 0 && !insight) return null;
 
   const hasScopeNote = milestones.some((m) => m.scopeNote);
 
@@ -46,6 +58,22 @@ export default function ResultContextBlocks({
       <h2 className="text-lg font-bold mb-2">
         {label} {year}年度 注目ポイント
       </h2>
+
+      {/*
+        読み物（大会インサイト）。バッジより先に置く。
+        バッジは単発の事実、インサイトは複数年にまたがる文脈で、後者のほうが読み手の
+        入口として機能するため。ADR-012 / docs/story-yaml/PROMPT.md
+      */}
+      {insight && (
+        <div className="mb-3 rounded-lg border border-border bg-surface p-3">
+          {insight.paragraphs.map((p, i) => (
+            <p key={`insight-${i}`} className={i === 0 ? 'text-sm leading-relaxed' : 'mt-2 text-sm leading-relaxed'}>
+              {p}
+            </p>
+          ))}
+          <p className="mt-2 text-[10px] opacity-70">{insight.scopeNote}</p>
+        </div>
+      )}
       {milestones.length > 0 && (
         <>
           <ul className="flex flex-wrap gap-2">
