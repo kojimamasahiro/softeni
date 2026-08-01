@@ -9,7 +9,7 @@ process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
 });
 require('ts-node/register/transpile-only');
 
-const { buildGrowthReport, buildGrowthTargets } = require('../lib/growthAnalysis.ts');
+const { buildGrowthReport, buildGrowthTargets } = require('../lib/growthAnalysis/index.ts');
 
 const player = (lastName, firstName, teamName = '北高校', region = '東京') => ({
   last_name: lastName,

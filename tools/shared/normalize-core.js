@@ -751,7 +751,7 @@
     // ---- entriesMeta の選手を participants に登録する ----
     // participants は matches 由来なので、**1回戦が不戦勝（パッキン）のシード／足長は
     // participants にも載らない**。出場者集合はプレビュー記事の①連覇ウォッチ・②前回入賞者・
-    // ③過去の優勝者・④直近好成績者すべてが参照する（lib/newsArticle.ts の buildFieldIndex）
+    // ③過去の優勝者・④直近好成績者すべてが参照する（lib/newsArticle/contextBlocks.ts の buildFieldIndex）
     // ため、ここが欠けると「注目の選手」が軒並み拾えなくなる。
     // 実測（2026-07-26）: インターハイ 2026 の出場者が 1,344 人 → 752 人に減り、
     // ハイスクールジャパンカップ上位との一致が 21 人 → 4 人に落ちた。

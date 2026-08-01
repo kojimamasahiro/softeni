@@ -129,5 +129,6 @@ python tools/sns-images/day1_all.py --tournament highschool-japan-cup --year 202
 
 ## 関連
 
-- 既存: `day1_results.py`（汎用ドロー＋結果一覧。knockout専用）, `power_map.py`（事前勢力図）, `h2h.py`（対戦カード）。
+- 既存: `day1_results.py`（汎用ドロー＋結果一覧。knockout専用）, `power_map.py`（事前勢力図）, `h2h.py`（対戦カード）,
+  `tournament_og.py` / `news_og.py`（OGP画像生成。本ページのSNS投稿画像とは別系統）。
 - 設計議論: `docs/raw/2026-06-16-hjc-day1-sns-design.md`。

@@ -1,451 +1,40 @@
-// lib/newsArticle.ts
-// /news 記事（プレビュー / 結果速報）の記録スキーマと、記事ビューの組み立て。
-// 記事は「一次成果物＝文脈ブロック」の再利用先の一つ（ADR-005）。本文は LLM を使わず
-// 既存の文脈ブロック（historical-winners / milestone / career-record）から決定的に構成する。
-//
-// 設計: docs/wiki/news-context-blocks.md / docs/raw/2026-06-21-news-auto-draft-design.md / ADR-005。
-// fs を使うため getStaticProps / ビルドスクリプトからのみ import すること。
-//
-// 公開フロー（human-in-the-loop）: 記事レコードは data/news/<articleId>.json。
-//   state: 'draft' → 'review' → 'published'。公開（getStaticPaths 対象）は published のみ。
-//   プレビュー→結果の昇格は同一 articleId で type を 'preview'→'result' に変えて行う。
+// /news 記事の「文脈ブロック」構築ロジック（連覇ウォッチ・前回入賞者・直近好成績者・前哨戦 ほか）。
+// buildCategoryBlock がこのファイルの内容を束ねて 1 種目分の NewsCategoryBlock を組み立てる。
+// 元 lib/newsArticle.ts から分割（2026-08-01）。設計: docs/wiki/news-context-blocks.md。
 
-import fs from 'fs';
 import path from 'path';
 
-import { getChampionMilestones, getGiantKillings, type MilestoneEvent } from './milestones';
-import { meetingRoundIndex, roundLabelOf } from './bracketLayout';
-import { getBracketLayout } from './bracketLayout.server';
-import { buildPriorMeetingIndex, meetingKey } from './priorMeetings';
+import { getChampionMilestones, getGiantKillings } from '../milestones';
+import { meetingRoundIndex, roundLabelOf } from '../bracketLayout';
+import { getBracketLayout } from '../bracketLayout.server';
+import { buildPriorMeetingIndex, meetingKey } from '../priorMeetings';
 import {
   buildParticipantMap,
   getHistoricalWinners,
-  parseCategoryFile,
   readYearDetail,
   resolveEntryToChampion,
   type ChampionEntry,
   type RawDetail,
   type RawParticipant,
-} from './tournamentRecords';
-import { getCategoryLabel } from './utils';
-
-export type NewsArticleType = 'preview' | 'result';
-export type NewsArticleState = 'draft' | 'review' | 'published';
-
-export type NewsArticleRecord = {
-  articleId: string;
-  type: NewsArticleType;
-  state: NewsArticleState;
-  tournamentId: string;
-  year: number;
-  /** 省略 / null は全種目対象 */
-  categoryId?: string | null;
-  /** テンプレ生成のため通常は空。明示指定があれば優先 */
-  title?: string;
-  description?: string;
-  /**
-   * OGP 画像のパス（"/og/news/<id>-<hash>.png"）。
-   * tools/sns-images/news_og.py がローカル生成して書き戻す（result の published のみ）。
-   * 設計: docs/raw/2026-06-22-news-ogp-image-design.md
-   */
-  ogImage?: string;
-  createdAt?: string;
-  updatedAt?: string;
-};
-
-/**
- * プレビューに出す選手参照。
- * playerId は `/players/{id}/results`（結果ページ）の数値 ID。
- * curated プロフィール（`/players/{slug}`）とは別系統で、count>=5 の全選手が対象。
- * 結果ページを持たない選手は null（リンク無し・名前のみ）。
- */
-export type PreviewPlayerRef = {
-  name: string;
-  playerId: number | null;
-  /** 今大会も出場するか */
-  returning: boolean;
-  /**
-   * この選手個人の所属（表示用・正規化済み）。無ければ null。
-   * ペア全員の所属が同じ場合は呼び出し側の `team`（ペア共通の所属）を使い、
-   * 所属が割れている（混成ペア）場合はこちらを選手ごとに表示する。
-   */
-  team: string | null;
-};
-
-/**
- * プレビュー: ピックアップ選手の「今大会の途中経過/敗退」。
- * 進行中の年でも results 配列が入る運用（normalize-core の rank.kind:'ongoing'）に対応し、
- * 当年・種目の detail.results から該当エントリーの状況を引く。results 未掲載なら null（非表示）。
- *   state: alive=進行中（◯◯進出） / eliminated=敗退 / champion=優勝 / runnerup=準優勝
- */
-export type EntryStanding = {
-  label: string;
-  state: 'alive' | 'eliminated' | 'champion' | 'runnerup';
-};
-
-/**
- * ペアが分かれた（partial/split）ときに、結果バッジを紐付ける主役となる「今大会のエントリー」。
- * 前回主役（王者/入賞者）をベースにせず、今大会に実在するペアを主体に見せる（案A+C）。
- * 例: 前回王者 内本隆文・内田理久 → 今大会 内本隆文・上松俊貴。この型は「内本・上松」を表す。
- */
-export type CurrentPairEntry = {
-  /** 今大会ペアの選手（所属は per-player。混成ペアは team=null 側で個別表示） */
-  players: PreviewPlayerRef[];
-  /** ペア共通の所属（表示用・正規化済み）。混成ペアは null */
-  team: string | null;
-  /** この今大会エントリーの途中経過/敗退（未掲載なら null） */
-  standing: EntryStanding | null;
-  /** この今大会エントリーへ引き継がれた「前回主役の選手名」（注記用。例: ["内本隆文"]） */
-  carriedFrom: string[];
-};
-
-/** プレビュー: 前回王者の今大会への出場状況（連覇・防衛ウォッチ） */
-export type TitleDefenseWatch = {
-  /** 前回王者の表示（ペア/校）。団体戦や選手が空のとき用 */
-  defendingChampionDisplay: string;
-  /** 前回優勝年 */
-  defendingYear: number;
-  /** 所属校（表示用・正規化済み）。団体戦は校名 */
-  team: string | null;
-  /** 前回王者の選手（個人戦/ダブルス。団体は空）。returning で継続可否を持つ */
-  players: PreviewPlayerRef[];
-  /**
-   * intact: ペア/校がそのまま出場（連覇に挑む）
-   * partial: ダブルスで片方の選手のみ継続出場（相方は不在。新ペアで連覇に挑む）
-   * split : 前回王者ペアが分かれ、双方が別々の新ペアで継続出場（複数の currentEntries）
-   * absent: 前回王者は不在（新王者へ）
-   */
-  status: 'intact' | 'partial' | 'split' | 'absent';
-  /**
-   * 今大会側のエントリー。intact/partial は 1 件、split は複数件、absent は空。
-   * partial/split の結果バッジはこちら（今大会の実在ペア）に紐付ける。
-   */
-  currentEntries: CurrentPairEntry[];
-  /** intact 時の今大会の途中経過/敗退（partial/split は currentEntries 側を使う。未掲載なら null） */
-  standing: EntryStanding | null;
-};
-
-/** プレビュー: 前回入賞者（準優勝/ベスト4/ベスト8）で今大会も出場 */
-export type ReturningPlacer = {
-  placement: '準優勝' | 'ベスト4' | 'ベスト8';
-  /** 前回の表示（ペア/校）。団体戦用 */
-  display: string;
-  /** 所属校（表示用・正規化済み） */
-  team: string | null;
-  /** 入賞時の選手（個人戦/ダブルス。団体は空） */
-  players: PreviewPlayerRef[];
-  /**
-   * intact: ペア/校がそのまま継続 / partial: 片方のみ継続（相方不在）/ split: 双方が別ペアで継続
-   */
-  status: 'intact' | 'partial' | 'split';
-  /** 今大会側のエントリー（partial/split で今大会ペアを主役化するため） */
-  currentEntries: CurrentPairEntry[];
-  /** intact 時の今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
-  standing: EntryStanding | null;
-};
-
-/** プレビュー: 過去の優勝者（前々回以前）で今大会も出場 */
-export type ReturningFormerChampion = {
-  /** 優勝した年（新しい順） */
-  years: number[];
-  /** 当時の優勝表示 */
-  display: string;
-  /** 所属校（表示用・正規化済み） */
-  team: string | null;
-  /** 当時の優勝選手（個人戦/ダブルス。団体は空） */
-  players: PreviewPlayerRef[];
-  /** intact: ペア/校がそのまま継続 / partial: 片方のみ継続 / split: 双方が別ペアで継続 */
-  status: 'intact' | 'partial' | 'split';
-  /** 今大会側のエントリー（partial/split で今大会ペアを主役化するため） */
-  currentEntries: CurrentPairEntry[];
-  /** intact 時の今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
-  standing: EntryStanding | null;
-};
-
-/**
- * プレビュー: 直近大会の好成績者の再登場。
- * 当プレビュー種目の出場者のうち、直近の他大会（プレビュー開催日から3ヶ月以内・最大2大会・
- * isMajorTitle 優先）で **ベスト4以上**（優勝/準優勝/ベスト4）の成績を残した選手・校をピックアップする。
- * 「種目を問わない」: 直近大会のどの種目での好成績でもよい。
- * 判定単位は他ブロックと同様（個人戦は選手単位＝playerKey、団体戦は校単位＝championKey/teamMatchKey、
- * 2026-07-30〜。団体は当大会が team カテゴリのときのみ championKeySet と突合するため、
- * 個人戦プレビューに校が混ざることはない）。
- */
-export type RecentAchiever = {
-  /** 表示名（個人戦=選手名 / 団体戦=校名） */
-  display: string;
-  /** 所属校（表示用・正規化済み）。団体戦は null（display が校名のため） */
-  team: string | null;
-  /** ピックアップ選手（個人戦/ダブルスのみ。団体戦は空配列）。playerId は結果ページリンク用 */
-  players: PreviewPlayerRef[];
-  /** 直近大会の表示名（index.json の label） */
-  tournamentLabel: string;
-  /** 直近大会の開催年 */
-  year: number;
-  /** 好成績を残した種目の表示ラベル（例: 男子シングルス） */
-  categoryLabel: string;
-  /** その大会での成績 */
-  placement: '優勝' | '準優勝' | 'ベスト4';
-  /** isMajorTitle の大会か */
-  isMajor: boolean;
-  /** 今大会の途中経過/敗退（進行中の年のみ。未掲載なら null） */
-  standing: EntryStanding | null;
-};
-
-/**
- * プレビュー: 「注目の選手」カード1件分。
- * returningPlacers / returningFormerChampions / recentAchievers の3ブロックは
- * いずれも「過去の実績 + 今大会の途中経過/敗退」という同じ構造を持つため、
- * 1つのカード表現に統合し、今大会の結果（勝ち上がり中/優勝/準優勝を上位、
- * 敗退を下位）でソートして表示する（見せ方の改善: docs/wiki/news-context-blocks.md）。
- */
-export type PickPlayerCard = {
-  /** React key 用の一意 ID */
-  id: string;
-  /** 選手（個人戦/ダブルス。団体や players が空の場合は display を使う） */
-  players: PreviewPlayerRef[];
-  /** players が空のときの表示（ペア/校の display） */
-  display: string;
-  /** 所属校（ペア/校で共通の場合）。混成ペア等で割れている場合は null（players 側の team を使う） */
-  team: string | null;
-  /** true のとき選手ごとの所属を名前の直後に表示する（team が null のときのみ意味を持つ） */
-  perPlayerTeam: boolean;
-  /**
-   * 過去の実績の表示（例: "前回準優勝" "2019・2020年優勝" "選抜2026 女子シングルス 準優勝"）。
-   * 同一の今大会ペアが複数の実績由来でまとまる場合（ペア解消の組み替え等）は複数行になる。
-   * UI では 1 行ずつ表示する。
-   */
-  achievements: string[];
-  /** 今大会の途中経過/敗退（未掲載なら null） */
-  standing: EntryStanding | null;
-};
-
-/** プレビュー: 出場規模・勢力図（純粋な事実） */
-export type FieldOverview = {
-  /** 出場ペア/選手/校の数（エントリー数） */
-  entryCount: number;
-  /** 都道府県別エントリー数（多い順・上位） */
-  topPrefectures: Array<{ prefecture: string; count: number }>;
-  /** 複数エントリーを送り込む所属校（2 以上・多い順） */
-  multiEntryTeams: Array<{ team: string; count: number }>;
-};
-
-/** 前哨戦の 1 カード（表示用） */
-export type PriorMeetingCard = {
-  /** 対戦が行われた大会のラベル（例: 近畿高等学校ソフトテニス選手権大会） */
-  tournamentLabel: string;
-  year: number;
-  /** 例: 準々決勝 */
-  round: string | null;
-  winner: PreviewPlayerRef[];
-  loser: PreviewPlayerRef[];
-  /** その大会での勝者側の所属（表示用。混成ペアなら null） */
-  winnerTeam: string | null;
-  loserTeam: string | null;
-  /**
-   * 今大会で再戦が起こるか。
-   * - `scheduled`: 対戦カードが組まれている（＝再戦が実現する／した）
-   * - `pending`: **まだ1試合も行われていない**（開催前）。両ペアとも当然勝ち残っているが、
-   *   勝ち上がった結果ではないので「勝ち上がり中」とは言えない
-   * - `possible`: 大会が進行中で、両ペアとも勝ち残っている
-   * - `gone`: 少なくとも一方が敗退済みで、もう起こらない
-   * - `unknown`: 今大会の結果が未掲載で判定できない
-   *
-   * `pending` と `possible` を分けているのは、`results` が `kind:'ongoing'`（未実施）でも
-   * standing が `alive`／ラベル「勝ち上がり中」になるため（ADR-007 の運用）。開催前は
-   * 全ペアが alive なので、そのまま「両者勝ち上がり中」と出すと事実に反する。
-   */
-  rematchStatus: 'scheduled' | 'pending' | 'possible' | 'gone' | 'unknown';
-  /**
-   * 今大会のドロー上、両者が勝ち上がった場合に**最短で当たるラウンド**の表示名。
-   * ドローから復元できなければ null（`entries[].type` が無い大会など）。
-   */
-  meetingRoundLabel: string | null;
-  /** 今大会での各ペアの状況（勝ち上がり中/敗退/優勝など）。未掲載なら null */
-  winnerStanding: EntryStanding | null;
-  loserStanding: EntryStanding | null;
-  /**
-   * 今大会で再戦が**実際に行われて決着した**場合の結果。未実施・未確定なら null。
-   * `revenge` は前回敗れた側が今回勝った（＝雪辱）ことを示す。
-   */
-  currentResult: { winnerNames: string[]; revenge: boolean } | null;
-};
-
-export type PriorMeetingsBlock = {
-  /** 既知の対戦カード総数（表示は上位のみ） */
-  totalCards: number;
-  /** 対戦履歴を持つ出場ペア（団体は校）数 / 全出場数 */
-  coveredEntries: number;
-  totalEntries: number;
-  /** 数え上げの単位。ダブルス=ペア / シングルス=選手 / 団体=校 */
-  unit: 'ペア' | '選手' | '校';
-  /** 供給元の大会ラベル（重複除去・新しい順） */
-  sourceLabels: string[];
-  /**
-   * カード（今大会で再戦が確定しているものを優先した順）。
-   * UI は先頭 `PRIOR_MEETING_CARDS` 件を常時表示し、残りは折りたたみで見せる。
-   * `totalCards` が真の総数で、この配列は `PRIOR_MEETING_CARDS_MAX` 件で打ち切る。
-   */
-  cards: PriorMeetingCard[];
-  /** 常時表示する件数（これを超えた分は折りたたみ） */
-  visibleCards: number;
-};
-
-export type NewsCategoryBlock = {
-  categoryId: string;
-  categoryLabel: string;
-  /** 前回王者（year-1 の優勝者）。無ければ null */
-  previousChampion: string | null;
-  /** 歴代優勝者（新しい年が先頭） */
-  historicalWinners: Array<{ year: number; display: string | null }>;
-  /** 結果速報のみ: その年の優勝者表示 */
-  champion: string | null;
-  /** 結果速報のみ: milestone（連覇/初優勝など） */
-  milestones: Array<{
-    kind: string;
-    label: string;
-    confidence: MilestoneEvent['confidence'];
-    scopeNote?: string | null;
-  }>;
-  /** プレビューのみ: 連覇・防衛ウォッチ（前回王者の出場状況）。算出不能なら null */
-  titleDefense: TitleDefenseWatch | null;
-  /** プレビューのみ: 前回入賞者（準優勝/ベスト4）で今大会も出場する者 */
-  returningPlacers: ReturningPlacer[];
-  /** プレビューのみ: 前々回以前の優勝者で今大会も出場する者 */
-  returningFormerChampions: ReturningFormerChampion[];
-  /** プレビューのみ: 直近他大会でベスト4以上の好成績を残した出場者 */
-  recentAchievers: RecentAchiever[];
-  /** プレビューのみ: 前哨戦（出場ペアどうしが直近の他大会で既に対戦していたカード）。無ければ null */
-  priorMeetings: PriorMeetingsBlock | null;
-  /**
-   * プレビューのみ: 「注目の選手」統合カード。
-   * returningPlacers / returningFormerChampions / recentAchievers を1本にマージし、
-   * 今大会の結果（勝ち上がり中/優勝/準優勝 > 未掲載 > 敗退）でソート済み。
-   * 表示にはこちらを使う（3配列は組み立て用の中間データとして残す）。
-   */
-  pickPlayers: PickPlayerCard[];
-  /** プレビューのみ: 出場規模・勢力図。算出不能なら null */
-  fieldOverview: FieldOverview | null;
-  /** その年・種目の結果ページ（年度別）への内部リンク。算出不能なら null */
-  resultHref: string | null;
-};
-
-export type NewsArticleView = {
-  record: NewsArticleRecord;
-  tournamentLabel: string;
-  /** 大会の generationId（内部リンク URL 構築用） */
-  generation: string;
-  /** 大会ハブ（歴代まとめ）への内部リンク */
-  hubHref: string;
-  title: string;
-  description: string;
-  categories: NewsCategoryBlock[];
-};
-
-const NEWS_ROOT = ['data', 'news'];
-const DETAILS_ROOT = ['data', 'tournaments', 'details'];
-
-function resolveRoot(): string {
-  return process.cwd();
-}
-
-function readJson<T>(filePath: string): T | null {
-  try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
-  } catch {
-    return null;
-  }
-}
-
-function tournamentMetaOf(tournamentId: string): {
-  label: string;
-  generationId: string;
-} {
-  const idx = readJson<Array<{ tournamentId: string; label?: string; generationId?: string }>>(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
-  const hit = idx?.find((t) => t.tournamentId === tournamentId);
-  return {
-    label: hit?.label ?? tournamentId,
-    generationId: hit?.generationId ?? '',
-  };
-}
-
-/** categoryId（`category-age-gender`）を URL 構成パーツに分解する */
-function categoryPathParts(categoryId: string): { category: string; age: string; gender: string } | null {
-  const parts = categoryId.split('-');
-  if (parts.length < 3) return null;
-  const gender = parts.pop() as string;
-  const age = parts.pop() as string;
-  const category = parts.join('-');
-  return { category, age, gender };
-}
-
-/** 記事レコードを読む */
-export function getArticleRecord(articleId: string): NewsArticleRecord | null {
-  return readJson<NewsArticleRecord>(path.join(resolveRoot(), ...NEWS_ROOT, `${articleId}.json`));
-}
-
-/** 全記事レコード（state 問わず） */
-export function listArticleRecords(): NewsArticleRecord[] {
-  const dir = path.join(resolveRoot(), ...NEWS_ROOT);
-  if (!fs.existsSync(dir)) return [];
-  const out: NewsArticleRecord[] = [];
-  for (const f of fs.readdirSync(dir)) {
-    if (!f.endsWith('.json')) continue;
-    const rec = readJson<NewsArticleRecord>(path.join(dir, f));
-    if (rec?.articleId) out.push(rec);
-  }
-  return out;
-}
-
-/**
- * 公開（published）記事のみ。getStaticPaths / 一覧で使う。
- * 公開日の降順（新しい記事が先頭）。updatedAt が同値（同一バッチでの一括公開等）の
- * 場合は createdAt を第二キーにして、実際の公開順が保たれるようにする。
- */
-export function listPublishedArticles(): NewsArticleRecord[] {
-  return listArticleRecords()
-    .filter((r) => r.state === 'published')
-    .sort((a, b) => {
-      const byUpdatedAt = (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '');
-      if (byUpdatedAt !== 0) return byUpdatedAt;
-      return (b.createdAt ?? '').localeCompare(a.createdAt ?? '');
-    });
-}
-
-/**
- * 公開済みの「展望（preview）」記事のみ。
- * 結果（result）記事は廃止し、「大会ごとの結果・優勝・歴代まとめ」は
- * 大会ハブ（/tournaments/[generation]/[tournamentId]、高校全国大会は
- * /highschool/tournaments/[tournament]）に集約する（ADR-008）。
- * /news は大会前の展望（前回王者・出場校 ほか）専用とする。
- */
-export function listPublishedPreviews(): NewsArticleRecord[] {
-  return listPublishedArticles().filter((r) => r.type === 'preview');
-}
-
-/**
- * 指定の大会・年度に対応する公開済み展望（preview）記事（あれば1件）。
- * 大会結果ページ（[gender]/index.tsx）から展望記事への内部リンクを出すために使う。
- * 1大会・1年度につき記事は基本1件（全種目対象。categoryId は問わない）を想定。
- * 「結果」を狙うリンクではなく、preview記事とのカニバリを避けるための低リスクな内部リンク
- * （docs/wiki/seo.md #8 の方針に沿う。結果クエリでの競合は意図しない）。
- */
-export function findPublishedPreviewForTournament(tournamentId: string, year: number): NewsArticleRecord | null {
-  return listPublishedPreviews().find((r) => r.tournamentId === tournamentId && r.year === year) ?? null;
-}
-
-/** 対象 tournamentId/year に存在する categoryId 一覧（details 実体から） */
-function listCategoryIds(tournamentId: string, year: number): string[] {
-  const dir = path.join(resolveRoot(), ...DETAILS_ROOT, tournamentId, String(year));
-  if (!fs.existsSync(dir)) return [];
-  const ids: string[] = [];
-  for (const f of fs.readdirSync(dir)) {
-    if (!f.endsWith('.json')) continue;
-    const parsed = parseCategoryFile(f);
-    if (parsed) ids.push(parsed.categoryId);
-  }
-  return ids;
-}
+} from '../tournamentRecords';
+import { getCategoryLabel } from '../utils';
+import { categoryPathParts, listCategoryIds, readJson, resolveRoot } from './recordIO';
+import type {
+  CurrentPairEntry,
+  EntryStanding,
+  FieldOverview,
+  NewsArticleRecord,
+  NewsCategoryBlock,
+  PairFate,
+  PickPlayerCard,
+  PreviewPlayerRef,
+  PriorMeetingCard,
+  PriorMeetingsBlock,
+  RecentAchiever,
+  ReturningFormerChampion,
+  ReturningPlacer,
+  TitleDefenseWatch,
+} from './types';
 
 /**
  * 今大会（対象年・種目）の出場者インデックス。前年データとの照合に使う。
@@ -678,21 +267,6 @@ function resolveFieldEntryNo(field: FieldIndex, name: string, team: string | nul
   return field.playerKeyToEntryNo.get(playerMatchKey(name, team)) ?? uniqueEntryNoByName(field, name);
 }
 
-/** 前回主役（王者/入賞者）→ 今大会での継続状況と、結果を紐付ける今大会エントリー */
-export type PairFate = {
-  /**
-   * intact: ペア/校がそのまま継続（1 currentEntry）
-   * partial: 片方のみ継続・相方は不在（1 currentEntry。新パートナーはいる場合も）
-   * split : ペアが分かれ、双方が別々の新ペアで継続（複数 currentEntries）
-   * absent: 誰も継続していない（0 currentEntry）
-   */
-  status: 'intact' | 'partial' | 'split' | 'absent';
-  /** 前回主役の選手（returning フラグ付き。団体は空） */
-  prevPlayers: PreviewPlayerRef[];
-  /** 今大会側のエントリー（結果バッジはこちらに紐付ける） */
-  currentEntries: CurrentPairEntry[];
-};
-
 /**
  * 前回主役の ChampionEntry を、今大会のどのエントリーに「継続」したか entryNo 単位で解決する。
  * 従来の returningOf は「両選手が出場」を一律 intact と判定していたが、両者が別々の新ペアに
@@ -900,7 +474,7 @@ function buildFieldOverview(field: FieldIndex | null): FieldOverview | null {
  * 当プレビュー種目の出場者（個人 or 校）1件に紐づく、直近大会での好成績。
  * 個人は人物単位、団体は校単位（`teamMatchKey`）で最良成績を保持する（2026-07-30〜）。
  */
-type RecentAchievementInfo = {
+export type RecentAchievementInfo = {
   subjectKind: 'individual' | 'team';
   /** 個人戦=選手名 / 団体戦=校名（表示用に正規化済み） */
   name: string;
@@ -997,6 +571,7 @@ function previewStartDate(tournamentId: string, year: number): string | null {
  * `doubles-over65-mixed` のベスト4「山本幸輝」が、IH 2026 男子ダブルスでフルネームが一意な
  * 高校生「山本幸輝（早鞆・山口県）」に `uniqueEntryNoByName` フォールバックで紐づき、
  * over65 混合ダブルスの成績が「主要大会」バッジ付きで高校生に表示される状態だった。
+ *
  * 世代をまたぐ照合は年齢・所属という手掛かりが効かず同名別人リスクが最大化するため、
  * 「本文は決定的生成・誤り混入ゼロ」（ADR-005）の原則に沿って**候補段階で世代を絞る**。
  *
@@ -1045,7 +620,7 @@ function findRecentTournaments(previewTournamentId: string, previewDateIso: stri
  * 当プレビュー種目の出場者照合に使うため、キーは `playerMatchKey`／`teamMatchKey`
  * （buildFieldIndex の playerKeyToEntryNo／championKeyToEntryNo と同一の作り方）。
  */
-function buildRecentAchieverIndex(previewTournamentId: string, previewYear: number): Map<string, RecentAchievementInfo> {
+export function buildRecentAchieverIndex(previewTournamentId: string, previewYear: number): Map<string, RecentAchievementInfo> {
   const out = new Map<string, RecentAchievementInfo>();
   const startDate = previewStartDate(previewTournamentId, previewYear);
   if (!startDate) return out;
@@ -1484,7 +1059,7 @@ function buildPriorMeetingsBlock(
   };
 }
 
-function buildCategoryBlock(
+export function buildCategoryBlock(
   record: NewsArticleRecord,
   categoryId: string,
   generation: string,
@@ -1569,84 +1144,4 @@ function buildCategoryBlock(
     fieldOverview,
     resultHref,
   };
-}
-
-function defaultTitle(record: NewsArticleRecord, tournamentLabel: string): string {
-  return record.type === 'preview'
-    ? `${tournamentLabel} ${record.year} 展望・連覇/前回王者・出場校`
-    : `${tournamentLabel} ${record.year} 結果・優勝・歴代まとめ`;
-}
-
-/**
- * meta description。
- * 前哨戦（priorMeetings）が算出できているときは、**当サイトにしか無い切り口**なので
- * 「直近大会での対戦成績」を一文だけ足す。他の展望サイトと文面で差別化する狙い
- * （[seo.md](../docs/wiki/seo.md) #8「farm が構造的に持てない DB 由来の文脈で差別化」）。
- * 算出できない大会では従来文のまま（分岐 1 箇所で戻せる）。
- */
-function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, categories: NewsCategoryBlock[]): string {
-  if (record.type !== 'preview') {
-    return `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
-  }
-  const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`;
-  const totalCards = categories.reduce((n, c) => n + (c.priorMeetings?.totalCards ?? 0), 0);
-  if (totalCards === 0) return base;
-  return `${base}直近の大会で既に対戦している${totalCards}件の顔合わせも掲載。`;
-}
-
-/** 記事レコードから描画用ビューを組み立てる */
-export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView {
-  const { label: tournamentLabel, generationId } = tournamentMetaOf(record.tournamentId);
-  const categoryIds = record.categoryId && record.categoryId.length > 0 ? [record.categoryId] : listCategoryIds(record.tournamentId, record.year);
-
-  // 直近大会の好成績者インデックスは種目に依存しないので記事単位で 1 回だけ構築する。
-  // result 記事では使わないため preview のときのみ。
-  const recentIndex = record.type === 'preview' ? buildRecentAchieverIndex(record.tournamentId, record.year) : new Map<string, RecentAchievementInfo>();
-
-  const categories: NewsCategoryBlock[] = [];
-  for (const cid of categoryIds) {
-    const block = buildCategoryBlock(record, cid, generationId, recentIndex);
-    if (block) categories.push(block);
-  }
-
-  const hubHref = generationId ? `/tournaments/${generationId}/${record.tournamentId}/` : '';
-
-  return {
-    record,
-    tournamentLabel,
-    generation: generationId,
-    hubHref,
-    title: record.title || defaultTitle(record, tournamentLabel),
-    description: record.description || defaultDescription(record, tournamentLabel, categories),
-    categories,
-  };
-}
-
-/**
- * 記事本文が実名で言及している選手を、構造化データ（JSON-LD の mentions）用に集約する。
- * ソース: 各カテゴリブロックの pickPlayers（注目の選手カード）と titleDefense（前回王者の連覇/防衛ウォッチ）。
- * 同一選手が複数箇所（例: 前回王者かつ注目の選手）に出ることがあるため、playerId（無ければ name）で重複排除する。
- * 表示順は影響しないため、カテゴリ・出現順のまま返す。
- */
-export function collectArticleMentions(categories: NewsCategoryBlock[]): PreviewPlayerRef[] {
-  const seen = new Set<string>();
-  const mentions: PreviewPlayerRef[] = [];
-
-  const add = (p: PreviewPlayerRef) => {
-    const key = p.playerId != null ? `id:${p.playerId}` : `name:${p.name}`;
-    if (seen.has(key)) return;
-    seen.add(key);
-    mentions.push(p);
-  };
-
-  for (const cat of categories) {
-    if (cat.titleDefense) {
-      for (const p of cat.titleDefense.players) add(p);
-    }
-    for (const card of cat.pickPlayers) {
-      for (const p of card.players) add(p);
-    }
-  }
-
-  return mentions;
 }

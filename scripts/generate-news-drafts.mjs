@@ -1,7 +1,7 @@
 // scripts/generate-news-drafts.mjs
 // /news 記事の「ドラフト stub」を生成する。
 // 本文ブロック（historical-winners / milestone / career-record）は記事ページの
-// getStaticProps が lib/newsArticle.ts でビルド時に構成するため、ここでは
+// getStaticProps が lib/newsArticle/（旧 lib/newsArticle.ts）でビルド時に構成するため、ここでは
 // 記事レコード（どの大会・年・種別を記事化するか + state)だけを作る。
 //
 // 公開フロー（human-in-the-loop）: ここで作るのは state:"draft"。

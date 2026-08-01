@@ -28,7 +28,7 @@ process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
   moduleResolution: 'node',
 });
 require('ts-node/register/transpile-only');
-const { buildGrowthReports, getGrowthReportFileName } = require('../lib/growthAnalysis.ts');
+const { buildGrowthReports, getGrowthReportFileName } = require('../lib/growthAnalysis/index.ts');
 
 // Align local script env loading with Next.js behavior while still allowing
 // CI/CD providers to inject environment variables directly.
