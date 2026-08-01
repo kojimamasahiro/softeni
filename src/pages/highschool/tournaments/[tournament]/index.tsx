@@ -15,6 +15,8 @@ import {
   HS_NATIONAL_TOURNAMENTS,
   type ChampionSummaryRow,
   type HsNationalTournamentSlug,
+  type InProgressCategory,
+  type InProgressEdition,
   type PlayerLink,
   type TeamLink,
   type TournamentRecords,
@@ -148,6 +150,109 @@ function UpcomingSection({ editions, shortLabel, officialUrl }: { editions: Upco
   );
 }
 
+/**
+ * 開催中（または組み合わせのみ掲載済み）の大会ブロック。
+ *
+ * このページは「{大会} 歴代」系クエリで唯一順位が付いている入口だが、大会期間中は
+ * 「結果が確定し次第このページに追加します」としか書いておらず、検索から来た人を
+ * 大会公式サイトへ逃がしていた。開催中は最上部でその年の対戦表・勝ち上がりへ
+ * 直接橋渡しする（docs/wiki/seo.md #11）。
+ */
+function InProgressSection({ edition, shortLabel, hasStarted }: { edition: InProgressEdition; shortLabel: string; hasStarted: boolean }) {
+  const dateRange = formatDateRange(edition.startDate, edition.endDate);
+  const statusLabel = hasStarted ? '開催中' : '組み合わせ掲載中';
+
+  return (
+    <section className="mb-10" id="current">
+      <div className="rounded-2xl border-2 border-emerald-500/70 bg-success-bg p-5 sm:p-6">
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <span className="rounded-full bg-emerald-600 text-white px-2.5 py-0.5 text-xs font-bold">{statusLabel}</span>
+          <h2 className="text-lg sm:text-xl font-bold">
+            {edition.year}年 {shortLabel} 結果・{hasStarted ? '途中経過' : '組み合わせ'}
+          </h2>
+        </div>
+
+        <dl className="flex flex-wrap gap-x-8 gap-y-1.5 text-sm mb-4">
+          {dateRange && (
+            <div className="flex gap-2">
+              <dt className="text-text-muted">日程</dt>
+              <dd className="font-semibold">{dateRange}</dd>
+            </div>
+          )}
+          {edition.location && (
+            <div className="flex gap-2">
+              <dt className="text-text-muted">開催地</dt>
+              <dd className="font-semibold">{edition.location}</dd>
+            </div>
+          )}
+          {edition.totalSchools > 0 && (
+            <div className="flex gap-2">
+              <dt className="text-text-muted">出場校</dt>
+              <dd className="font-semibold tabular-nums">{edition.totalSchools}校</dd>
+            </div>
+          )}
+          {edition.totalPrefectures > 0 && (
+            <div className="flex gap-2">
+              <dt className="text-text-muted">出場都道府県</dt>
+              <dd className="font-semibold tabular-nums">{edition.totalPrefectures}</dd>
+            </div>
+          )}
+        </dl>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          {edition.categories.map((cat) => (
+            <InProgressCategoryCard key={cat.categoryId} cat={cat} />
+          ))}
+        </div>
+
+        <p className="mt-4 text-xs text-text-secondary">
+          結果は大会の進行に合わせて随時更新しています。確定した優勝・準優勝・ベスト4は、下の「年度別の記録」へ順次追加します。
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/** 開催中の1種目ぶんのカード。対戦表への導線と、現在の勝ち上がりを出す。 */
+function InProgressCategoryCard({ cat }: { cat: InProgressCategory }) {
+  return (
+    <div className="rounded-xl border border-border bg-surface p-4">
+      <div className="flex items-center justify-between gap-2 mb-1.5">
+        <h3 className="font-semibold">{cat.label}</h3>
+        <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
+          対戦表・全試合結果
+        </Link>
+      </div>
+
+      <p className="text-xs text-text-muted mb-2 tabular-nums">
+        {cat.entryCount}
+        {cat.category === 'team' ? '校出場' : 'ペア出場'}
+        {cat.schoolCount > 0 && cat.category !== 'team' ? ` / ${cat.schoolCount}校` : ''}
+      </p>
+
+      {cat.statusText && <p className="text-xs text-text-secondary mb-2">{cat.statusText}</p>}
+
+      {cat.aliveRoundLabel && cat.aliveLeaders.length > 0 && (
+        <div className="mt-2 border-t border-border pt-2">
+          <p className="text-xs font-semibold text-text-secondary mb-1.5">現在勝ち上がり中（{cat.aliveRoundLabel}）</p>
+          <ul className="space-y-1">
+            {cat.aliveLeaders.map((p, idx) => (
+              <li key={`${cat.categoryId}-alive-${idx}`} className="text-sm">
+                <PlacementName playerLinks={p.playerLinks} teamLinks={p.teamLinks} />
+                {p.prefectures.length > 0 && <span className="ml-1 text-xs text-text-muted">{p.prefectures.join('・')}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {cat.aliveRoundLabel && cat.aliveLeaders.length === 0 && (
+        <p className="text-xs text-text-muted">現在の勝ち上がりは対戦表ページで確認できます（{cat.aliveRoundLabel}）。</p>
+      )}
+    </div>
+  );
+}
+
 const RANK_BADGE_CLASS: Record<string, string> = {
   優勝: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100',
   準優勝: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100',
@@ -212,10 +317,13 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
 }
 
 export default function HighschoolTournamentRecordsPage({ records }: Props) {
-  const { slug, label, shortLabel, aliases, officialUrl, description, years, championSummary, upcoming, lastModified, yearsCovered } = records;
+  const { slug, label, shortLabel, aliases, officialUrl, description, years, championSummary, upcoming, inProgress, lastModified, yearsCovered } = records;
 
   const pageUrl = `https://softeni-pick.com/highschool/tournaments/${slug}/`;
+  // yearRange は「歴代（優勝が確定している年）」の範囲。FAQ 等でそう名乗るのでここに開催中の年を混ぜない
   const yearRange = formatYearRange(yearsCovered);
+  // 収録年度の表示は、組み合わせ・途中経過を載せている開催中の年も含める
+  const coverageRange = formatYearRange(inProgress ? [...yearsCovered, inProgress.year] : yearsCovered);
   const titleName = label === shortLabel ? label : `${label}（${shortLabel}）`;
   // 検索略称（例: ハイジャパ）。専用ページは作らず、この大会ハブに literal で集約する。
   const primaryAlias = aliases?.[0] ?? null;
@@ -223,9 +331,35 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   const headingName = primaryAlias ? `${titleName}（${primaryAlias}）` : titleName;
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
-  const nextEdition = upcoming[0] ?? null;
+  // 開催中の年は InProgressSection が受け持つので、「開催予定」からは外す（同じ年を二重に出さない）
+  const upcomingEditions = inProgress ? upcoming.filter((e) => e.year !== inProgress.year) : upcoming;
+  const nextEdition = upcomingEditions[0] ?? null;
+
+  // 開催中フラグ。開催前（組み合わせのみ）と開催中で文言を変える
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const hasStarted = Boolean(inProgress?.startDate && inProgress.startDate <= todayIso);
+  const hasAnyResult = Boolean(inProgress?.categories.some((c) => c.status === 'in_progress'));
+  // 「途中経過」と名乗れるのは実際に試合結果が入っているときだけ。まだなら「組み合わせ」
+  const progressWord = hasAnyResult ? '途中経過' : '組み合わせ';
+  const inProgressDateRange = inProgress ? formatDateRange(inProgress.startDate, inProgress.endDate) : '';
 
   const faqItems = [
+    ...(inProgress
+      ? [
+          {
+            question: `${shortLabel}${inProgress.year}の結果はこのページで分かりますか？`,
+            answer: `${inProgress.year}年大会（${inProgressDateRange || '開催中'}${
+              inProgress.location ? `・${inProgress.location}` : ''
+            }）の${progressWord}をページ上部に掲載しています。種目ごとの「対戦表・全試合結果」から、全${inProgress.totalEntries}エントリー・${
+              inProgress.totalSchools
+            }校の勝ち上がりを1回戦から確認できます。大会の進行に合わせて随時更新しています。`,
+          },
+          {
+            question: `${shortLabel}${inProgress.year}の組み合わせ（ドロー）は見られますか？`,
+            answer: `見られます。各種目の対戦表ページに全${inProgress.totalEntries}エントリーの組み合わせを掲載しており、結果が入っていないラウンドも含めて勝ち上がりを追えます。出場は${inProgress.totalPrefectures}都道府県・${inProgress.totalSchools}校です。`,
+          },
+        ]
+      : []),
     ...(nextEdition
       ? [
           {
@@ -267,18 +401,30 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
     })),
   );
 
+  // 開催中は「{大会}{年} 結果」インテントを先頭に立てる。大会期間中がこのクエリの需要ピークで、
+  // かつ本ページはこの大会で唯一順位が付いている入口のため（docs/wiki/seo.md #11）。
+  // 終了後は従来の「歴代」インテントへ自動的に戻る。
+  const metaTitle = inProgress
+    ? `ソフトテニス ${shortLabel}${inProgress.year} 結果・${progressWord}｜${label} 歴代優勝校一覧 | ソフトテニス情報`
+    : `ソフトテニス ${headingName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`;
+
+  const metaDescription = inProgress
+    ? `ソフトテニス${shortLabel}${inProgress.year}（${label}）の${progressWord}を掲載中。${
+        inProgressDateRange ? `${inProgressDateRange}` : ''
+      }${inProgress.location ? `・${inProgress.location}開催` : ''}。${inProgress.categories
+        .map((c) => c.label)
+        .join('・')}の対戦表と、${inProgress.totalPrefectures}都道府県${inProgress.totalSchools}校・全${
+        inProgress.totalEntries
+      }エントリーの勝ち上がりを種目別に確認できます。${yearRange ? `${yearRange}の歴代優勝校・準優勝・ベスト4も一覧。` : ''}`
+    : `ソフトテニス「${titleName}」${primaryAlias ? `（通称「${primaryAlias}」）` : ''}の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
+        nextEdition
+          ? `${nextEdition.year}年大会は${formatDateRange(nextEdition.startDate, nextEdition.endDate) || '開催予定'}${nextEdition.location ? `（${nextEdition.location}）` : ''}。`
+          : ''
+      }`;
+
   return (
     <>
-      <MetaHead
-        title={`ソフトテニス ${headingName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`}
-        description={`ソフトテニス「${titleName}」${primaryAlias ? `（通称「${primaryAlias}」）` : ''}の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
-          nextEdition
-            ? `${nextEdition.year}年大会は${formatDateRange(nextEdition.startDate, nextEdition.endDate) || '開催予定'}${nextEdition.location ? `（${nextEdition.location}）` : ''}。`
-            : ''
-        }`}
-        url={pageUrl}
-        type="article"
-      />
+      <MetaHead title={metaTitle} description={metaDescription} url={pageUrl} type="article" />
 
       <Head>
         <script
@@ -421,15 +567,24 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         />
 
         <header className="mb-8 rounded-2xl border border-border bg-gradient-to-br from-gray-50 to-white dark:from-gray-800/80 dark:to-gray-900 p-6 sm:p-7">
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">{headingName} 歴代結果・優勝校一覧</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+            {inProgress ? `${headingName} ${inProgress.year} 結果・${progressWord}と歴代優勝校一覧` : `${headingName} 歴代結果・優勝校一覧`}
+          </h1>
           <p className="mt-2 text-sm text-text-secondary">{description}</p>
+          {inProgress && (
+            <p className="mt-2 text-sm text-text-secondary">
+              {inProgress.year}年大会は{inProgressDateRange || '開催中'}
+              {inProgress.location ? `・${inProgress.location}` : ''}で{hasStarted ? '開催中' : '開催予定'}です。
+              {progressWord}はこのページ上部にまとめています。
+            </p>
+          )}
 
-          {(yearRange || categoryCount > 0) && (
+          {(coverageRange || categoryCount > 0) && (
             <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-sm">
-              {yearRange && (
+              {coverageRange && (
                 <div>
                   <dt className="text-xs text-text-muted">収録年度</dt>
-                  <dd className="font-semibold tabular-nums">{yearRange}</dd>
+                  <dd className="font-semibold tabular-nums">{coverageRange}</dd>
                 </div>
               )}
               {categoryCount > 0 && (
@@ -454,7 +609,9 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
           )}
         </header>
 
-        <UpcomingSection editions={upcoming} shortLabel={shortLabel} officialUrl={officialUrl} />
+        {inProgress && <InProgressSection edition={inProgress} shortLabel={shortLabel} hasStarted={hasStarted} />}
+
+        <UpcomingSection editions={upcomingEditions} shortLabel={shortLabel} officialUrl={officialUrl} />
 
         <p className="mb-8 text-sm text-text-secondary">
           {yearRange ? `${yearRange}にかけての` : ''}各年度・種目別に、 優勝・準優勝・ベスト4の上位入賞をまとめています。

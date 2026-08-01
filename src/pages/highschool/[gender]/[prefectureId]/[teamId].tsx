@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getGenderLabel, HIGHSCHOOL_CATEGORY_PRIORITY, HIGHSCHOOL_TOURNAMENT_PRIORITY, isVisibleGender } from '@/lib/highschool';
 import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
+import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
 import { getAllTournamentIndex, getTournamentInfo } from '@/utils/tournament-data-loader';
 
@@ -75,10 +76,122 @@ type Props = {
   analysis: Analysis | null;
   playerLinks?: Record<string, number>;
   alumni: AlumniEntry[];
+  /** 開催中の全国大会での、この学校の出場状況（docs/wiki/seo.md #11） */
+  inProgressScopes: InProgressScope[];
 };
 
-export default function TeamPage({ prefectureName, prefectureId, gender, genderLabel, teamId, teamName, entries, analysis, playerLinks = {}, alumni }: Props) {
+/** ISO 日付の範囲を「2026年7月31日〜8月7日」の形にする */
+function formatEventDateRange(startDate: string | null, endDate: string | null): string {
+  if (!startDate) return '';
+  const fmt = (d: string) => {
+    const [y, m, day] = d.split('-');
+    return `${Number(y)}年${Number(m)}月${Number(day)}日`;
+  };
+  if (!endDate || endDate === startDate) return fmt(startDate);
+  const [, em, ed] = endDate.split('-');
+  return `${fmt(startDate)}〜${Number(em)}月${Number(ed)}日`;
+}
+
+/**
+ * 開催中の全国大会での、この学校の出場状況ブロック。
+ *
+ * 「{学校名} インターハイ 2026」のロングテールを、既にインデックス済みの学校ページで受ける。
+ * 会期中に新規URLを作ってもインデックスが間に合わないための選択（docs/wiki/seo.md #11）。
+ */
+function InProgressSchoolSection({
+  scope,
+  teamName,
+  genderLabel,
+  progressWord,
+}: {
+  scope: InProgressScope;
+  teamName: string;
+  genderLabel: string;
+  progressWord: string;
+}) {
+  const school = scope.schools[0];
+  if (!school) return null;
+  const dateRange = formatEventDateRange(scope.startDate, scope.endDate);
+
+  return (
+    <section className="mb-8" id="in-progress">
+      <div className="rounded-2xl border-2 border-emerald-500/70 bg-success-bg p-5">
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <span className="rounded-full bg-emerald-600 text-white px-2.5 py-0.5 text-xs font-bold">{scope.hasStarted ? '開催中' : '組み合わせ掲載中'}</span>
+          <h2 className="text-lg font-bold">
+            {teamName} {scope.shortLabel}
+            {scope.year} 出場・{progressWord}
+          </h2>
+        </div>
+
+        <p className="text-sm text-text-secondary mb-4">
+          {teamName}の高校{genderLabel}は、{dateRange ? `${dateRange}・` : ''}
+          {scope.location ? `${scope.location}で` : ''}
+          {scope.hasStarted ? '開催中' : '開催予定'}の{scope.shortLabel}（{scope.label}）に出場しています。
+          {school.hasAlive ? '現在も勝ち上がり中です。' : ''}
+          勝ち上がりは大会の進行に合わせて随時更新しています。
+        </p>
+
+        <div className="space-y-3">
+          {school.categories.map((cat) => (
+            <div key={cat.categoryId} className="rounded-xl border border-border bg-surface p-4">
+              <div className="flex items-baseline justify-between gap-2 mb-1.5">
+                <h3 className="text-sm font-semibold">{cat.label}</h3>
+                <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
+                  対戦表・全試合結果
+                </Link>
+              </div>
+              <ul className="space-y-0.5 text-sm">
+                {cat.standings.map((st, idx) => (
+                  <li key={`${cat.categoryId}-${idx}`} className={st.alive ? 'font-medium' : 'text-text-secondary'}>
+                    {st.playerLinks.length > 0
+                      ? st.playerLinks.map((p, i) => (
+                          <span key={`${p.name}-${i}`}>
+                            {i > 0 && '・'}
+                            {p.href ? (
+                              <Link href={p.href} className="text-link hover:underline">
+                                {p.name}
+                              </Link>
+                            ) : (
+                              p.name
+                            )}
+                          </span>
+                        ))
+                      : teamName}
+                    <span className="ml-1.5 text-xs text-text-muted">{st.statusLabel}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <Link href={scope.hubHref} className="mt-4 inline-block text-sm text-link hover:underline">
+          {scope.shortLabel}
+          {scope.year} 全国の{progressWord}・歴代優勝校を見る →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export default function TeamPage({
+  prefectureName,
+  prefectureId,
+  gender,
+  genderLabel,
+  teamId,
+  teamName,
+  entries,
+  analysis,
+  playerLinks = {},
+  alumni,
+  inProgressScopes,
+}: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
+  // 開催中の全国大会（通常は同時に1つ）
+  const currentScope = inProgressScopes[0] ?? null;
+  const currentWord = currentScope?.hasAnyResult ? '途中経過' : '組み合わせ';
   const championshipEntries = entries.filter((entry) => entry.tournamentId === 'highschool-championship');
   const championshipAppearances = championshipEntries.length;
   const latestChampionshipEntry =
@@ -127,6 +240,16 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
   })();
 
   const faqItems = [
+    ...(currentScope
+      ? [
+          {
+            question: `${teamName}は${currentScope.shortLabel}${currentScope.year}に出場していますか？`,
+            answer: `出場しています。${currentScope.year}年の${currentScope.shortLabel}（${currentScope.label}${
+              currentScope.location ? `・${currentScope.location}開催` : ''
+            }）に${currentScope.schools[0]?.categories.map((c) => c.label).join('・')}で出場しており、${currentWord}をこのページ上部に掲載しています。各種目の対戦表からは1回戦からの勝ち上がりを確認できます。`,
+          },
+        ]
+      : []),
     {
       question: `${teamName}の高校${genderLabel}の全国大会成績では何が分かりますか？`,
       answer: `${teamName}の全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、選抜大会などの実績を年度別・種目別に確認できます。`,
@@ -218,14 +341,26 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
   return (
     <>
       <MetaHead
-        title={`${teamName} 高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`}
-        description={`${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`}
+        title={
+          currentScope
+            ? `${teamName} ${currentScope.shortLabel}${currentScope.year} ${currentWord}｜高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`
+            : `${teamName} 高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`
+        }
+        description={
+          currentScope
+            ? `${teamName}の高校${genderLabel}が出場する${currentScope.shortLabel}${currentScope.year}（${currentScope.label}${
+                currentScope.location ? `・${currentScope.location}` : ''
+              }）の${currentWord}を掲載。${currentScope.schools[0]?.categories.map((c) => c.label).join('・')}の勝ち上がりと対戦表へのリンク、あわせて過去の全国大会成績と年度別メンバーも確認できます。`
+            : `${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`
+        }
         url={pageUrl}
         type="article"
       />
       <Head>
         <title>
-          {teamName} 高校{genderLabel} 全国大会成績・メンバー | ソフトテニス情報
+          {currentScope
+            ? `${teamName} ${currentScope.shortLabel}${currentScope.year} ${currentWord}｜高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`
+            : `${teamName} 高校${genderLabel} 全国大会成績・メンバー | ソフトテニス情報`}
         </title>
         <script
           type="application/ld+json"
@@ -324,6 +459,8 @@ export default function TeamPage({ prefectureName, prefectureId, gender, genderL
           について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
           選抜大会などソフトテニス主要大会での成績と出場メンバーを年度別・種目別にまとめています。
         </p>
+
+        {currentScope && <InProgressSchoolSection scope={currentScope} teamName={teamName} genderLabel={genderLabel} progressWord={currentWord} />}
 
         <section className="grid gap-4 sm:grid-cols-4 mb-8">
           <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
@@ -783,6 +920,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 主な卒業生（Phase 2）。要件は docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md
   const alumni = getSchoolAlumni(process.cwd(), teamName, gender);
 
+  // 開催中の全国大会での出場状況（docs/wiki/seo.md #11）
+  const inProgressScopes = getSchoolInProgress(teamName, prefecture.name, gender);
+
   return {
     props: {
       prefectureName: prefecture.name,
@@ -795,6 +935,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       analysis,
       playerLinks,
       alumni,
+      inProgressScopes,
     },
   };
 };

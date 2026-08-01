@@ -8,6 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import { computeResultCoverage, formatResultCoverageBodyText, type ResultCoverageStatus } from '@/lib/tournamentCoverage';
 import type { TournamentInformationEntry } from '@/types/tournament';
 
 /** URL スラッグ（/highschool/tournaments/[tournament]） */
@@ -180,11 +181,67 @@ export type UpcomingEdition = {
   sourceUrl: string | null;
 };
 
+/**
+ * 開催中（または組み合わせのみ掲載済み）の大会の、1 種目ぶんの掲載状況。
+ *
+ * 目的は SEO と回遊の両方。大会期間中は「{大会}{年}」系クエリの需要がピークになるが、
+ * 従来この歴代ページは「結果が確定し次第このページに追加します」としか書いておらず、
+ * 検索から来た人を大会公式サイトへ逃がしていた（docs/wiki/seo.md #11）。
+ * 上位入賞（優勝〜ベスト4）が確定する前でも、出場校数・現在の勝ち上がり・対戦表への
+ * リンクを出して受け止める。
+ */
+export type InProgressCategory = {
+  categoryId: string;
+  label: string;
+  category: string;
+  gender: string;
+  age: string;
+  /** その年度・種目の対戦表（全試合結果）ページ */
+  bracketHref: string;
+  status: ResultCoverageStatus;
+  /** 「現在◯回戦まで結果掲載中」等の1行（lib/tournamentCoverage.ts と共通文言） */
+  statusText: string | null;
+  /** 出場エントリー数（個人はペア数、団体は校数） */
+  entryCount: number;
+  /** 出場校数 */
+  schoolCount: number;
+  /** 現在勝ち上がり中のエントリーが到達しているラウンドのラベル（例: 5回戦進出） */
+  aliveRoundLabel: string | null;
+  /**
+   * 現在勝ち上がり中のエントリー（最深ラウンド到達者のみ）。
+   * 多すぎると意味のある情報にならないため、ALIVE_LEADERS_MAX 以下のときだけ入れる。
+   */
+  aliveLeaders: RecordPlacement[];
+};
+
+/** 開催中（または組み合わせのみ掲載済み）の大会 */
+export type InProgressEdition = {
+  year: number;
+  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  source: string | null;
+  sourceUrl: string | null;
+  categories: InProgressCategory[];
+  /** 全種目合計の出場エントリー数 */
+  totalEntries: number;
+  /** 全種目通算のユニーク出場校数 */
+  totalSchools: number;
+  /** 全種目通算のユニーク都道府県数 */
+  totalPrefectures: number;
+};
+
 export type TournamentRecords = HsNationalTournamentMeta & {
   years: YearRecord[];
   championSummary: ChampionSummaryRow[];
   /** information にあり、まだ結果が無い開催予定（新しい年が先） */
   upcoming: UpcomingEdition[];
+  /**
+   * 開催中（結果が一部のみ／組み合わせのみ）の大会。無ければ null。
+   * `upcoming` とは排他ではない: 一部種目だけ優勝が確定した年は `years`
+   * （確定分）と `inProgress`（未確定分）の両方に現れる。
+   */
+  inProgress: InProgressEdition | null;
   /** 収録情報の最終更新日（ISO 日付）。構造化データの dateModified 用 */
   lastModified: string | null;
   yearsCovered: number[];
@@ -211,10 +268,17 @@ type RawResult = {
   tournament?: { label?: string; rank?: RawRank } | null;
 };
 
+type RawMatch = {
+  stage?: string | null;
+  round?: string | null;
+  winnerEntryNo?: number | null;
+};
+
 type RawDetail = {
   participants?: RawParticipant[];
   entries?: RawEntry[];
   results?: RawResult[];
+  matches?: RawMatch[];
 };
 
 function resolveRoot(): string {
@@ -249,7 +313,7 @@ function classifyRank(rank: RawRank | undefined): { order: number; rankLabel: st
  * そこに存在する (teamId, prefectureId, gender) のみリンクする（デッドリンク防止）。
  * モジュールスコープで一度だけ構築してキャッシュする。
  */
-type SchoolResolver = (name: string, prefecture: string | null, gender: string) => string | null;
+export type SchoolResolver = (name: string, prefecture: string | null, gender: string) => string | null;
 
 type SchoolEntry = {
   prefectureId: string;
@@ -260,7 +324,7 @@ type SchoolEntry = {
 
 let cachedSchoolResolver: SchoolResolver | null = null;
 
-function getSchoolResolver(): SchoolResolver {
+export function getSchoolResolver(): SchoolResolver {
   if (cachedSchoolResolver) return cachedSchoolResolver;
 
   const byName = new Map<string, SchoolEntry[]>();
@@ -322,11 +386,11 @@ function getSchoolResolver(): SchoolResolver {
  * 同姓同名は最初の ID を使う（players/index.tsx・学校ページと同じ規約）。
  * モジュールスコープで一度だけ構築してキャッシュする。
  */
-type PlayerResolver = (lastName: string, firstName: string) => string | null;
+export type PlayerResolver = (lastName: string, firstName: string) => string | null;
 
 let cachedPlayerResolver: PlayerResolver | null = null;
 
-function getPlayerResolver(): PlayerResolver {
+export function getPlayerResolver(): PlayerResolver {
   if (cachedPlayerResolver) return cachedPlayerResolver;
 
   const nameToId = new Map<string, number>();
@@ -450,6 +514,91 @@ function extractPlacements(detailPath: string, gender: string, resolveSchoolHref
   return placements;
 }
 
+/**
+ * 「現在勝ち上がり中」として名前を出す上限。これを超える場合は人数だけ出す。
+ * 序盤（1回戦前に316ペアが全員 alive 等）に名前を羅列しても情報にならず、
+ * テンプレ的な水増しページに見えるのを避けるため。
+ * 32 はベスト32相当。インターハイ個人戦（約316ペア）で3回戦終了時の生存数が
+ * ここに収まる想定で、大会中盤から名前が出るように選んだ（2026-08-01）。
+ */
+const ALIVE_LEADERS_MAX = 32;
+
+/**
+ * 1 種目ファイルから、開催中の掲載状況（出場規模・進捗・現在の勝ち上がり）を抽出する。
+ * 上位入賞が未確定でも返る点が extractPlacements との違い。
+ */
+function extractInProgressCategory(
+  detailPath: string,
+  parsed: { categoryId: string; category: string; age: string; gender: string },
+  label: string,
+  bracketHref: string,
+  resolveSchoolHref: SchoolResolver,
+  resolvePlayerHref: PlayerResolver,
+): InProgressCategory | null {
+  let data: RawDetail;
+  try {
+    data = JSON.parse(fs.readFileSync(detailPath, 'utf-8')) as RawDetail;
+  } catch {
+    return null;
+  }
+
+  const coverage = computeResultCoverage(data);
+  // completed / abandoned / unsupported はこのセクションの対象外（年度別の記録側で出る）
+  if (coverage.status !== 'in_progress' && coverage.status !== 'not_recorded') return null;
+
+  const participantById = new Map<string, RawParticipant>((data.participants ?? []).map((p) => [p.id, p] as const));
+  const entryByNo = new Map<number, RawEntry>((data.entries ?? []).map((e) => [e.entryNo, e] as const));
+
+  const schools = new Set<string>();
+  for (const p of data.participants ?? []) {
+    if (p.team) schools.add(p.team);
+  }
+
+  // 現在勝ち上がり中（kind==='ongoing'）のうち、最も深いラウンドに到達しているものだけを拾う。
+  // round が無い（＝まだ1試合も消化していない）場合は最深＝undefined となり、全員が対象に
+  // なってしまうため、そのときは名前を出さない。
+  const ongoing = (data.results ?? []).filter((r) => r.tournament?.rank?.kind === 'ongoing');
+  let aliveRoundLabel: string | null = null;
+  let aliveLeaders: RecordPlacement[] = [];
+
+  const maxRound = ongoing.reduce<number>((acc, r) => Math.max(acc, r.tournament?.rank?.round ?? 0), 0);
+  if (maxRound > 0) {
+    const deepest = ongoing.filter((r) => (r.tournament?.rank?.round ?? 0) === maxRound);
+    aliveRoundLabel = deepest[0]?.tournament?.label ?? null;
+    if (deepest.length <= ALIVE_LEADERS_MAX) {
+      aliveLeaders = deepest
+        .map((r) => {
+          const entry = entryByNo.get(r.entryNo);
+          if (!entry) return null;
+          const resolved = resolveEntry(entry, participantById, parsed.gender, resolveSchoolHref, resolvePlayerHref);
+          if (!resolved.display) return null;
+          return {
+            rankLabel: aliveRoundLabel ?? '勝ち上がり中',
+            order: 0,
+            ...resolved,
+          } satisfies RecordPlacement;
+        })
+        .filter((p): p is RecordPlacement => p !== null)
+        .sort((a, b) => a.display.localeCompare(b.display, 'ja'));
+    }
+  }
+
+  return {
+    categoryId: parsed.categoryId,
+    label,
+    category: parsed.category,
+    gender: parsed.gender,
+    age: parsed.age,
+    bracketHref,
+    status: coverage.status,
+    statusText: formatResultCoverageBodyText(coverage),
+    entryCount: (data.entries ?? []).length,
+    schoolCount: schools.size,
+    aliveRoundLabel,
+    aliveLeaders,
+  };
+}
+
 function parseCategoryFile(fileName: string): {
   categoryId: string;
   category: string;
@@ -465,7 +614,10 @@ function parseCategoryFile(fileName: string): {
   return { categoryId: `${category}-${age}-${gender}`, category, age, gender };
 }
 
-function sortCategories(a: CategoryRecord, b: CategoryRecord): number {
+/** 種目の表示順（男子→女子、団体→ダブルス→シングルス）。CategoryRecord / InProgressCategory 共用 */
+type SortableCategory = Pick<CategoryRecord, 'categoryId' | 'category' | 'gender'>;
+
+function sortCategories(a: SortableCategory, b: SortableCategory): number {
   const ga = GENDER_ORDER[a.gender] ?? 9;
   const gb = GENDER_ORDER[b.gender] ?? 9;
   if (ga !== gb) return ga - gb;
@@ -496,6 +648,8 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
   const resolvePlayerHref = getPlayerResolver();
   const tidDir = path.join(resolveRoot(), ...DETAILS_ROOT, meta.tournamentId);
   const years: YearRecord[] = [];
+  /** 年度 → 開催中の種目一覧（結果未確定のものだけ入る） */
+  const inProgressByYear = new Map<number, InProgressCategory[]>();
 
   if (fs.existsSync(tidDir)) {
     const yearDirs = fs
@@ -512,6 +666,22 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
       for (const f of files) {
         const parsed = parseCategoryFile(f);
         if (!parsed) continue;
+
+        // 上位入賞が未確定でも、組み合わせ・進捗は開催中セクションで出す
+        const inProg = extractInProgressCategory(
+          path.join(yearDir, f),
+          parsed,
+          labelMap.get(parsed.categoryId) ?? parsed.categoryId,
+          `/tournaments/${GENERATION}/${meta.tournamentId}/${y}/${parsed.category}/${parsed.age}/${parsed.gender}`,
+          resolveSchoolHref,
+          resolvePlayerHref,
+        );
+        if (inProg) {
+          const list = inProgressByYear.get(Number(y)) ?? [];
+          list.push(inProg);
+          inProgressByYear.set(Number(y), list);
+        }
+
         const placements = extractPlacements(path.join(yearDir, f), parsed.gender, resolveSchoolHref, resolvePlayerHref);
         if (placements.length === 0) continue;
         categories.push({
@@ -556,18 +726,69 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
       sourceUrl: e.sourceUrl || null,
     }));
 
-  // 構造化データ dateModified 用に、information 中の最新日付を採用
+  // 開催中の大会は最新年度のものだけを扱う（過去年度に取り込み途中のものがあっても出さない）
+  const inProgressYear = inProgressByYear.size > 0 ? Math.max(...inProgressByYear.keys()) : null;
+  let inProgress: InProgressEdition | null = null;
+  if (inProgressYear !== null) {
+    const cats = (inProgressByYear.get(inProgressYear) ?? []).slice().sort(sortCategories);
+    const info = infoByYear.get(String(inProgressYear)) ?? null;
+    inProgress = {
+      year: inProgressYear,
+      location: info?.location || null,
+      startDate: info?.startDate || null,
+      endDate: info?.endDate || null,
+      source: info?.source || null,
+      sourceUrl: info?.sourceUrl || null,
+      categories: cats,
+      totalEntries: cats.reduce((acc, c) => acc + c.entryCount, 0),
+      totalSchools: countUniqueParticipants(tidDir, inProgressYear, 'team'),
+      totalPrefectures: countUniqueParticipants(tidDir, inProgressYear, 'prefecture'),
+    };
+  }
+
+  // 構造化データ dateModified 用に、information 中の最新日付を採用。
+  // ただし開催前・開催中の大会は終了日が未来日になるため、ビルド日で頭打ちにする
+  // （未来の dateModified は鮮度シグナルとして無視される。next-sitemap.config.js の
+  // clampToBuildDate と同じ理由。docs/wiki/seo.md #11）。
   const allDates = information.flatMap((e) => [e.endDate, e.startDate]).filter((d): d is string => Boolean(d));
-  const lastModified = allDates.length > 0 ? allDates.sort().slice(-1)[0] : null;
+  const rawLastModified = allDates.length > 0 ? allDates.sort().slice(-1)[0] : null;
+  const lastModified = clampToBuildDate(rawLastModified);
 
   return {
     ...meta,
     years,
     championSummary,
     upcoming,
+    inProgress,
     lastModified,
     yearsCovered,
   };
+}
+
+/** ISO 日付をビルド日で頭打ちにする（未来日を出さない） */
+function clampToBuildDate(date: string | null): string | null {
+  if (!date) return null;
+  const today = new Date().toISOString().slice(0, 10);
+  return date > today ? today : date;
+}
+
+/** 指定年度の全種目ファイルを走査して、participants のユニーク値数を数える */
+function countUniqueParticipants(tidDir: string, year: number, field: 'team' | 'prefecture'): number {
+  const yearDir = path.join(tidDir, String(year));
+  if (!fs.existsSync(yearDir)) return 0;
+  const seen = new Set<string>();
+  for (const f of fs.readdirSync(yearDir).filter((n) => n.endsWith('.json'))) {
+    try {
+      const data = JSON.parse(fs.readFileSync(path.join(yearDir, f), 'utf-8')) as RawDetail;
+      for (const p of data.participants ?? []) {
+        const v = p[field];
+        if (v) seen.add(v);
+      }
+    } catch {
+      // 壊れたファイルは無視して継続
+    }
+  }
+  return seen.size;
 }
 
 /** 種目ごとの歴代優勝サマリーを作る */

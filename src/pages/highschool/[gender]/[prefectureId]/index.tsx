@@ -7,8 +7,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
-import MetaHead from '@/components/MetaHead';
 import HighschoolGenderToggle from '@/components/highschool/HighschoolGenderToggle';
+import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import {
   getGenderLabel,
@@ -19,6 +19,7 @@ import {
   isVisibleGender,
 } from '@/lib/highschool';
 import { getPrefectureAlumni, type PrefectureAlumniEntry } from '@/lib/highschoolAlumni';
+import { getPrefectureInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getPrefectureTopSchools, type PrefectureTopSchool } from '@/lib/highschoolRanking';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
@@ -84,6 +85,8 @@ type Props = {
   recentMajorSchoolCount: number;
   prefTopSchools: PrefectureTopSchool[];
   prefAlumni: Array<PrefectureAlumniEntry & { schoolTeamId: string | null }>;
+  /** 開催中の全国大会に、この県から出場している学校（docs/wiki/seo.md #11） */
+  inProgressScopes: InProgressScope[];
 };
 
 type AliasReasonGroup = {
@@ -101,6 +104,123 @@ type RawResultEntry = {
   category: string;
 };
 
+/** ISO 日付の範囲を「2026年7月31日〜8月7日」の形にする */
+function formatEventDateRange(startDate: string | null, endDate: string | null): string {
+  if (!startDate) return '';
+  const fmt = (d: string) => {
+    const [y, m, day] = d.split('-');
+    return `${Number(y)}年${Number(m)}月${Number(day)}日`;
+  };
+  if (!endDate || endDate === startDate) return fmt(startDate);
+  const [, em, ed] = endDate.split('-');
+  return `${fmt(startDate)}〜${Number(em)}月${Number(ed)}日`;
+}
+
+/**
+ * 開催中の全国大会に、この県から出場している学校のブロック。
+ *
+ * 大会期間中は「{県名} {大会名} {年}」のロングテール需要が立つが、新規URLを作っても
+ * 会期中にインデックスされない。すでにインデックス済みの都道府県ページを更新することで
+ * その需要を受ける（docs/wiki/seo.md #11）。
+ */
+function InProgressPrefectureSection({
+  scope,
+  prefectureName,
+  genderLabel,
+  progressWord,
+  dateRange,
+}: {
+  scope: InProgressScope;
+  prefectureName: string;
+  genderLabel: string;
+  progressWord: string;
+  dateRange: string;
+}) {
+  return (
+    <section className="mb-8" id="in-progress">
+      <div className="rounded-2xl border-2 border-emerald-500/70 bg-success-bg p-5">
+        <div className="flex flex-wrap items-center gap-2 mb-2">
+          <span className="rounded-full bg-emerald-600 text-white px-2.5 py-0.5 text-xs font-bold">{scope.hasStarted ? '開催中' : '組み合わせ掲載中'}</span>
+          <h2 className="text-lg font-bold">
+            {prefectureName}の高校{genderLabel} {scope.shortLabel}
+            {scope.year} 出場校・{progressWord}
+          </h2>
+        </div>
+
+        <p className="text-sm text-text-secondary mb-4">
+          {dateRange ? `${dateRange}・` : ''}
+          {scope.location ? `${scope.location}で` : ''}
+          {scope.hasStarted ? '開催中' : '開催予定'}の{scope.shortLabel}（{scope.label}）に、{prefectureName}からは
+          <span className="font-semibold">{scope.schools.length}校</span>
+          が出場しています。勝ち上がりは大会の進行に合わせて随時更新しています。
+        </p>
+
+        <ul className="space-y-3">
+          {scope.schools.map((school) => (
+            <li key={school.teamName} className="rounded-xl border border-border bg-surface p-4">
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <h3 className="font-semibold">
+                  {school.teamHref ? (
+                    <Link href={school.teamHref} className="text-link hover:underline">
+                      {school.teamName}
+                    </Link>
+                  ) : (
+                    school.teamName
+                  )}
+                </h3>
+                {school.hasAlive && (
+                  <span className="rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100 px-2 py-0.5 text-xs font-semibold">
+                    勝ち上がり中
+                  </span>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                {school.categories.map((cat) => (
+                  <div key={cat.categoryId} className="text-sm">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <span className="text-xs font-semibold text-text-muted">{cat.label}</span>
+                      <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
+                        対戦表を見る
+                      </Link>
+                    </div>
+                    <ul className="mt-1 space-y-0.5">
+                      {cat.standings.map((st, idx) => (
+                        <li key={`${cat.categoryId}-${idx}`} className={st.alive ? 'font-medium' : 'text-text-secondary'}>
+                          {st.playerLinks.length > 0
+                            ? st.playerLinks.map((p, i) => (
+                                <span key={`${p.name}-${i}`}>
+                                  {i > 0 && '・'}
+                                  {p.href ? (
+                                    <Link href={p.href} className="text-link hover:underline">
+                                      {p.name}
+                                    </Link>
+                                  ) : (
+                                    p.name
+                                  )}
+                                </span>
+                              ))
+                            : school.teamName}
+                          <span className="ml-1.5 text-xs text-text-muted">{st.statusLabel}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <Link href={scope.hubHref} className="mt-4 inline-block text-sm text-link hover:underline">
+          {scope.shortLabel}
+          {scope.year} 全国の{progressWord}・歴代優勝校を見る →
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 export default function PrefectureHighschoolPage({
   prefecture,
   gender,
@@ -112,10 +232,30 @@ export default function PrefectureHighschoolPage({
   recentMajorSchoolCount,
   prefTopSchools,
   prefAlumni,
+  inProgressScopes,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/`;
   const prefectureName = prefecture.name;
+
+  // 開催中の全国大会（通常は同時に1つ）。大会期間中だけ最上部に出す
+  const currentScope = inProgressScopes[0] ?? null;
+  const currentWord = currentScope?.hasAnyResult ? '途中経過' : '組み合わせ';
+  const currentDateRange = currentScope ? formatEventDateRange(currentScope.startDate, currentScope.endDate) : '';
+
   const faqItems = [
+    ...(currentScope
+      ? [
+          {
+            question: `${prefectureName}から${currentScope.shortLabel}${currentScope.year}に出場している高校${genderLabel}はどこですか？`,
+            answer: `${currentScope.year}年の${currentScope.shortLabel}（${currentScope.label}${
+              currentDateRange ? `・${currentDateRange}` : ''
+            }${currentScope.location ? `・${currentScope.location}開催` : ''}）には、${prefectureName}から${currentScope.schools.length}校が出場しています（${currentScope.schools
+              .slice(0, 5)
+              .map((s) => s.teamName)
+              .join('、')}${currentScope.schools.length > 5 ? ' ほか' : ''}）。各校の${currentWord}はこのページ上部で確認できます。`,
+          },
+        ]
+      : []),
     ...(prefAlumni.length > 0
       ? [
           {
@@ -158,8 +298,19 @@ export default function PrefectureHighschoolPage({
   return (
     <>
       <MetaHead
-        title={`${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校 | Softeni Pick`}
-        description={`${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の学校別実績を確認できます。`}
+        title={
+          currentScope
+            ? `${prefectureName}の高校${genderLabel}ソフトテニス ${currentScope.shortLabel}${currentScope.year} 出場校・${currentWord}｜全国大会成績・強豪校 | Softeni Pick`
+            : `${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校 | Softeni Pick`
+        }
+        description={
+          currentScope
+            ? `${currentScope.shortLabel}${currentScope.year}（${currentScope.label}）に${prefectureName}から出場する高校${genderLabel}${currentScope.schools.length}校の${currentWord}を掲載。${currentScope.schools
+                .slice(0, 4)
+                .map((s) => s.teamName)
+                .join('、')}など。あわせて${prefectureName}の高校${genderLabel}の全国大会成績・強豪校を学校別に確認できます。`
+            : `${prefectureName}の高校${genderLabel}の全国大会成績を一覧掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の学校別実績を確認できます。`
+        }
         url={pageUrl}
         type="article"
       />
@@ -274,6 +425,16 @@ export default function PrefectureHighschoolPage({
           girlsHref={`/highschool/girls/${prefecture.id}`}
           className="mb-8 max-w-sm mx-auto"
         />
+
+        {currentScope && (
+          <InProgressPrefectureSection
+            scope={currentScope}
+            prefectureName={prefectureName}
+            genderLabel={genderLabel}
+            progressWord={currentWord}
+            dateRange={currentDateRange}
+          />
+        )}
 
         <section className="grid gap-4 sm:grid-cols-3 mb-8">
           <div className="rounded-xl border border-border bg-gray-50 dark:bg-gray-800 p-4">
@@ -770,6 +931,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     schoolTeamId: alumniTeamIdByName.get(a.school) ?? null,
   }));
 
+  // 開催中の全国大会に、この県から出場している学校（docs/wiki/seo.md #11）
+  const inProgressScopes = getPrefectureInProgress(prefecture.name, gender);
+
   return {
     props: {
       prefecture,
@@ -782,6 +946,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       recentMajorSchoolCount,
       prefTopSchools,
       prefAlumni,
+      inProgressScopes,
     },
   };
 };

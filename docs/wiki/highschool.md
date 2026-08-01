@@ -44,6 +44,19 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - Assumption: 2022 インターハイ男子ダブルスは元データに優勝・準優勝が複数登録されており、ページはこれを忠実に表示する（重複の整理が必要なら元データ側で対応する）
 - 実装: `src/pages/highschool/tournaments/index.tsx`、`src/pages/highschool/tournaments/[tournament]/index.tsx`、`lib/highschoolNationalTournaments.ts`
 
+## 開催中の全国大会の表示（2026-08-01 追加）
+
+対象 URL: 大会別歴代ページ、都道府県ページ、学校ページの**既存3種**（新規 URL は作らない）。
+
+- 会期中は「{通称}{年} 結果」の需要がピークになるが、**新規ページを作ってもインデックスが間に合わない**。そこで既にインデックス済みの3種のページを更新して受ける。設計判断と背景は [seo.md](./seo.md) #11 の 2026-08-01 追記、経緯は [raw/2026-08-01-in-progress-tournament-seo.md](../raw/2026-08-01-in-progress-tournament-seo.md)
+- 「開催中」の判定は**日付ではなくデータの状態**で行う。`computeResultCoverage`（`lib/tournamentCoverage.ts`・ADR-007）の `status` が `in_progress`（一部反映済み）または `not_recorded`（組み合わせのみ）の種目を対象にする。`completed` / `abandoned` は従来どおり「年度別の記録」側で表示する
+- 大会別歴代ページ: `InProgressEdition` / `InProgressCategory`（`lib/highschoolNationalTournaments.ts`）。**上位入賞（優勝〜ベスト4）が未確定でも**、出場校数・都道府県数・エントリー数・種目別の進捗・現在の勝ち上がり・年度別結果ページへの直リンクを最上部に出す。`upcoming`（開催予定）からは開催中の年を除外し、同じ年を二重に出さない
+- 都道府県ページ・学校ページ: `lib/highschoolInProgress.ts` が `(都道府県, 性別)` と `(学校名, 都道府県, 性別)` の索引をモジュールスコープで一度だけ構築し、`getPrefectureInProgress` / `getSchoolInProgress` で引く。学校ページ・選手結果ページへのリンク解決は歴代ページと同じ `getSchoolResolver` / `getPlayerResolver` を再利用する（デッドリンク防止）
+- 開示ルール: 結果が1件も入っていない種目は「途中経過」と名乗らず「**組み合わせ**」と表記する。現在勝ち上がり中の名前は `ALIVE_LEADERS_MAX`（=32）以下のときだけ列挙し、序盤に全エントリーを羅列しない
+- `lastModified` はビルド日で頭打ちにする（`clampToBuildDate`）。開催前・開催中の大会は `information` の `endDate` が未来日で、そのまま出すと構造化データの `dateModified` と表示上の「最終更新」が未来日になり鮮度シグナルが効かないため（`next-sitemap.config.js` の同名関数と同じ理由）
+- **会期後は自動で元に戻る**。優勝が確定すると対象種目が `completed` になり `inProgress` が null になるため、title・description・h1 は従来の「歴代」インテントへ戻る。巻き戻し作業は不要
+- 実装: `lib/highschoolInProgress.ts`（新規）、`lib/highschoolNationalTournaments.ts`、`src/pages/highschool/tournaments/[tournament]/index.tsx`、`src/pages/highschool/[gender]/[prefectureId]/index.tsx`、`src/pages/highschool/[gender]/[prefectureId]/[teamId].tsx`
+
 ## 学校ページの「主な卒業生」セクション（2026-07-18 追加・Phase 2）
 
 対象: `/highschool/[gender]/[prefectureId]/[teamId]`。集計は `lib/highschoolAlumni.ts`（`getSchoolAlumni`、モジュールスコープキャッシュ）。
@@ -79,6 +92,7 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
+| 開催中の全国大会を既存ページで受ける（会期中SEO） | **実装済み**（2026-08-01、インターハイ2026 会期中に着手。上記セクション参照）。会期中に唯一順位が付いていた大会ハブが「結果が確定し次第…最新情報は大会公式サイトを」と表示して訪問者を逃がしていたのが出発点。新規URLはインデックスが間に合わないため作らず、**ハブ1枚＋都道府県94枚＋学校243枚**の既存インデックス済みページを更新して「{通称}{年}」「{県名}／{学校名} インターハイ 2026」を受ける。会期後は `inProgress` が null になり自動で「歴代」インテントへ戻る。残: **実機での `npm run build`**、GSC での効果測定（8月中旬・M4検証と同時） | [経緯・検算](../raw/2026-08-01-in-progress-tournament-seo.md) / [seo.md #11](./seo.md) |
 | 高校ソフトテニス 強豪校ランキングページ | **M2 v1 実装済み**（2026-07-17、`/highschool/rankings/`。上記セクション参照）。選抜46〜51回収録・歴代ページ・県内/都道府県ランキング・主な卒業生まで**全て実装完了**（2026-07-18）。残: **M4 GSC検証（2026年8月中旬に [検証ランブック](./highschool-seo-m4-verification.md) を実行）**、国体データ、県別展開/公私立フィルタ（M4の結果待ち） | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |
 | 高校総体 地方（地区）大会結果の掲載 | **9地区の個人戦ダブルス・団体戦とも実データ投入済み**（個人戦2026-07-26、団体戦も同日2026-07-26のコミットで9地区全て`team-none-boys/girls`登録済みと2026-07-30に確認・訂正。旧版の本行は「団体戦は近畿のみ」としていたが誤りだった）。`region`8→9区分化・`blocks.json`・`/tournaments/block`＋`/tournaments/block/[blockId]`・`local_index.json`の`blockId`対応・パンくず/フィルタ対応に加え、9地区（北海道〜九州）の男女ダブルス・男女団体`information`/`details`を登録済み。東海はベスト8で大会打ち切りのため`status:'abandoned'`運用を新設（`lib/tournamentAbandonment.ts`、[打ち切りUI設計](../raw/2026-07-26-abandoned-tournament-ui-design.md)）。高校カテゴリ（ランキング/卒業生集計/都道府県ページの主要大会表示）へは統合しない方針を維持し、コード上のallowlist（`RANKING_TOURNAMENTS`等）でも未混入を確認済み。残: `needsReview`フラグ付き名前分割の精度確認、ADR-007/`tournament-data-structure.md`への打ち切り語彙の追記、本番ビルドでの目視確認 | [アイデア](../raw/2026-07-22-idea-highschool-block-tournament-data.md) / [ページ構成決定](../raw/2026-07-22-highschool-block-tournament-page-structure.md) / [打ち切りUI設計](../raw/2026-07-26-abandoned-tournament-ui-design.md) |
 | 地区大会結果とインターハイnewsプレビューの連携 | **一部実装済み**（2026-07-26）。「前哨戦・再戦」ブロックを`lib/priorMeetings.ts`として実装し、プレビュー記事（起こりうるカード＋カバレッジ）と年度別結果ページ（実際に組まれた再戦のみ）の両方に差し込み済み。**個人戦・団体戦の両方**に対応し、プレビュー記事／年度別結果ページ／大会ハブ／選手結果ページの4面に展開済み。IH2026実測で4種目合計492件（男子D205・女子D251・男子団体17・女子団体19）。再戦の有無は`EntryStanding`と連動した4状態（実現/起こりうる/もう起こらない/未掲載）で表示する。以下は経緯。当初の④`recentAchievers`統合案から、**「前哨戦・再戦」という新規表現**へ主軸を移した。地区大会には「両ペアがそのままIH2026に出場している既知の対戦カード」が352件あり（男子158・女子194）、IH出場ペアの62〜70%が対戦履歴を持つ。IH1回戦で既に再戦1件が実現。IH2026の`matches`は1回戦のみ登録のため、**プレビュー専用ではなくADR-007の`ongoing`運用と組み合わせて大会進行中に光る**機能になる。凍結中の`head-to-head`（優先度C）は、**2026-07-26の実測により「ダブルスのペア単位に限れば現在の名寄せ水準でも安全」と判明**（当初は「地区大会という狭スコープなら安全」と見立てたが、誤マッチ率は全データ2.92%に対し地区大会のみ2.11%とほぼ下がらず否定された。効くのはスコープの狭さではなく照合キーの結合度で、ペア単位ならIH2026で名前セットの重複0件・都道府県不一致0件）。「地区優勝＝IH優勝候補」の定量表現は**地区大会データが2026年の1年分しかなく基準率が出せない**ため過去年度投入が前提（16組の地区王者のうち同一ペアでのIH出場は12組）。SEOは「新規URLを増やさず選手結果ページの情報密度を上げる」（seo.md #2追記と同型）が本命。団体戦は個人戦と同じブロック内に校単位で併記する方針。**副産物として、地区大会投入で壊れていた選手ページのnoindex選別を修正済み**（seo.md #2追記2参照）。**2026-07-30追記**: 主軸ではなくなった旧④`recentAchievers`案も、「団体は per-player 不可のため対象外」だった設計課題を解消（`teamMatchKey`／`championKeyToEntryNo`で個人戦と同じ仕組みに統合。候補大会の取得も`index.json`のみ→`local_index.json`も連結し地区大会を拾えるよう修正）。実測でIH2026男子団体プレビューに地区大会（中国・近畿）の優勝校・入賞校が表示されることを確認済み。詳細は[news-context-blocks.md](./news-context-blocks.md)「直近大会の好成績者の再登場」 | [アイデア](../raw/2026-07-26-idea-block-tournament-news-integration.md) |
