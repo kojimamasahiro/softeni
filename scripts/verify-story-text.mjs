@@ -245,33 +245,40 @@ const STREAK_LEVEL = { 優勝: 100, 決勝: 90, 準優勝: 90, ベスト4: 80, �
 /**
  * 最終出現年から遡って連続している年数。掲載年の欠落は連続とみなさない
  * （例: 2019, 2022-2025 のように間が抜けている大会で 2022 を 2019 の翌年扱いしない）。
+ *
+ * maxYear を渡すと、それより後の年は「まだ無かったもの」として無視する。
+ * 過去の記事（例: 2025年公開の記事）が「N年連続」と書いた時点の事実は、翌年以降に
+ * 大会が続いて記録が伸びても変わらない。maxYear 無指定（フル照合の手動実行など）では
+ * 従来通り最新年まで見る。
  */
-function streakLength(history, facts, minScore = 70) {
-  const present = facts.years.filter((y) => (history[y] ?? 0) >= minScore);
+function streakLength(history, facts, minScore = 70, maxYear) {
+  const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
+  const present = years.filter((y) => (history[y] ?? 0) >= minScore);
   if (present.length === 0) return 0;
   const last = present[present.length - 1];
   let streak = 1;
-  for (let i = facts.years.indexOf(last) - 1; i >= 0; i -= 1) {
-    if ((history[facts.years[i]] ?? 0) >= minScore) streak += 1;
+  for (let i = years.indexOf(last) - 1; i >= 0; i -= 1) {
+    if ((history[years[i]] ?? 0) >= minScore) streak += 1;
     else break;
   }
   return streak;
 }
 
-/** 出場（エントリー）の連続年数。成績を問わない「N年連続出場」の照合に使う。 */
-function entryStreak(entryYears, facts) {
-  const present = facts.years.filter((y) => entryYears.has(y));
+/** 出場（エントリー）の連続年数。成績を問わない「N年連続出場」の照合に使う。maxYear の扱いは streakLength と同じ。 */
+function entryStreak(entryYears, facts, maxYear) {
+  const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
+  const present = years.filter((y) => entryYears.has(y));
   if (present.length === 0) return 0;
   const last = present[present.length - 1];
   let streak = 1;
-  for (let i = facts.years.indexOf(last) - 1; i >= 0; i -= 1) {
-    if (entryYears.has(facts.years[i])) streak += 1;
+  for (let i = years.indexOf(last) - 1; i >= 0; i -= 1) {
+    if (entryYears.has(years[i])) streak += 1;
     else break;
   }
   return streak;
 }
 
-function verify(claims, facts) {
+function verify(claims, facts, maxYear) {
   const findings = [];
   const seen = new Set();
 
@@ -338,7 +345,7 @@ function verify(claims, facts) {
       if (claim.type === 'streak' && claim.level === '出場') {
         const years = facts.playerEntryYears.get(owner) ?? facts.teamEntryYears.get(teamKey(owner));
         if (!years) return { owner, ok: false, actual: '出場記録なし' };
-        const actual = entryStreak(years, facts);
+        const actual = entryStreak(years, facts, maxYear);
         return { owner, ok: actual === claim.years, actual: `${actual}年連続出場` };
       }
 
@@ -353,17 +360,18 @@ function verify(claims, facts) {
         if (claim.level === '出場') {
           const years = facts.playerEntryYears.get(owner) ?? facts.teamEntryYears.get(teamKey(owner));
           if (!years) return { owner, ok: false, actual: '出場記録なし' };
-          const actual = entryStreak(years, facts);
+          const actual = entryStreak(years, facts, maxYear);
           return { owner, ok: actual === claim.years, actual: `${actual}年連続出場` };
         }
         const minScore = STREAK_LEVEL[claim.level] ?? 70;
-        const actual = streakLength(history, facts, minScore);
+        const actual = streakLength(history, facts, minScore, maxYear);
         return { owner, ok: actual === claim.years, actual: `${actual}年連続（${claim.level ?? 'ベスト8'}以上）` };
       }
       if (claim.type === 'repeat-title') {
+        const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
         let actual = 0;
-        for (let i = facts.years.length - 1; i >= 0; i -= 1) {
-          if (history[facts.years[i]] === 100) actual += 1;
+        for (let i = years.length - 1; i >= 0; i -= 1) {
+          if (history[years[i]] === 100) actual += 1;
           else if (actual > 0) break;
         }
         return { owner, ok: actual === claim.times, actual: `連続優勝${actual}回` };
@@ -403,6 +411,7 @@ function parseArgs(argv) {
     else if (a === '--category' || a === '-c') args.category = argv[++i];
     else if (a === '--text') args.text = argv[++i];
     else if (a === '--quiet' || a === '-q') args.quiet = true;
+    else if (a === '--year' || a === '-y') args.year = Number(argv[++i]);
     else args.files.push(a);
   }
   return args;
@@ -412,13 +421,18 @@ function parseArgs(argv) {
  * 複数種目をまとめて照合する。記事の単位は「大会×年（全種目束ね）」と決めたため、
  * 1本の原稿に複数種目の事実が混在する。種目ごとに facts を持ったまま順に当て、
  * **どれか1つの種目で一致すれば OK** とする（種目をまたいで事実を混ぜない）。
+ *
+ * maxYear: 「N年連続」「N連覇」の起点をこの年に固定する（過去の記事が後年の大会結果で
+ * 不一致になるのを防ぐ）。年×成績・スコア・固有名詞などそれ以外の主張は、記事が後年の
+ * 対戦履歴（例: 再戦の相手校のその後の対戦結果）に触れることがあるため、従来通り
+ * 掲載データの全期間で照合する。
  */
-function verifyAcross(text, tournamentId, categoryIds) {
+function verifyAcross(text, tournamentId, categoryIds, maxYear) {
   const factsList = categoryIds.map((categoryId) => ({ categoryId, facts: loadFacts(tournamentId, categoryId) }));
 
   const perCategory = factsList.map(({ categoryId, facts }) => ({
     categoryId,
-    findings: verify(extractClaims(text, facts), facts),
+    findings: verify(extractClaims(text, facts), facts, maxYear),
   }));
 
   // 主張の同一性は「本文中の位置＋元の文字列」で判定する。
@@ -438,8 +452,10 @@ function verifyAcross(text, tournamentId, categoryIds) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (!args.tournament || !args.category || (!args.text && args.files.length === 0)) {
-    console.error('使い方: node scripts/verify-story-text.mjs -t <tournamentId> -c <categoryId[,categoryId...]> [file...] [--text "..."]');
+    console.error('使い方: node scripts/verify-story-text.mjs -t <tournamentId> -c <categoryId[,categoryId...]> [file...] [--text "..."] [-y <year>]');
     console.error('  -c は種目をカンマ区切りで複数指定できる（全種目束ねの原稿を照合する場合）。');
+    console.error('  -y はこの記事が「何年時点」の記事かを指定する。「N年連続」「N連覇」の起点をその年に固定し、');
+    console.error('  翌年以降に大会が続いて記録が伸びても過去の記事が不一致にならないようにする（省略時は最新年まで見る）。');
     process.exit(2);
   }
 
@@ -448,7 +464,7 @@ function main() {
     .map((s) => s.trim())
     .filter(Boolean);
   const text = args.text ?? args.files.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
-  const { findings, years } = verifyAcross(text, args.tournament, categoryIds);
+  const { findings, years } = verifyAcross(text, args.tournament, categoryIds, args.year);
 
   const counts = { OK: 0, MISMATCH: 0, UNVERIFIED: 0 };
   for (const f of findings) counts[f.status] += 1;

@@ -68,9 +68,14 @@ for (const file of listInsightFiles()) {
 
   // verifiedAt を信用せず、その場で照合し直す。
   // 本文を後から書き換えて verifiedAt を残したままにする事故を防ぐ唯一の方法。
-  const result = spawnSync(process.execPath, [VERIFIER, '-t', insight.tournamentId, '-c', insight.categoryId, '--text', insight.paragraphs.join('\n'), '-q'], {
-    encoding: 'utf8',
-  });
+  //
+  // -y <year> でこの記事の年を渡す。「N年連続」「N連覇」の起点をその年に固定するため、
+  // 翌年以降に大会が続いて記録が伸びても、公開済みの過去記事がそれだけで不一致にならない。
+  const result = spawnSync(
+    process.execPath,
+    [VERIFIER, '-t', insight.tournamentId, '-c', insight.categoryId, '-y', String(insight.year), '--text', insight.paragraphs.join('\n'), '-q'],
+    { encoding: 'utf8' },
+  );
 
   checked += 1;
   if (result.status !== 0) {

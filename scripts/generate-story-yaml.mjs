@@ -48,6 +48,9 @@ const PRIORITY = {
   'watched-eliminated': 2, // 進行中: 注目主体の敗退（確定事実）
   'watched-advancing': 3, // 進行中: 注目主体の勝ち残り
   'watched-school-progress': 2.5, // 進行中: 学校ごとの残存組数（個人戦の集約）
+  'watched-title-watch': 2.8, // 進行中: 過去に優勝歴がある学校が、まだ生き残っている
+  'watched-self-best': 3.2, // 進行中: 選手の自己ベスト更新が確定
+  'watched-school-peak': 3.4, // 進行中: 学校の歴代最高（ピーク）更新が確定
 };
 
 // ---------------------------------------------------------------- 共通
@@ -456,6 +459,24 @@ function detectInProgress(tournamentId, categoryId, year, idx) {
     stories.push({ id: `${tournamentId}-${year}-${categoryId}-${kind}-${seq(kind)}`, category, kind, priority: PRIORITY[kind] ?? 99, categoryId, ...extra });
   };
 
+  // --- 現時点で「最低でもこの順位は確定している」を、残存数（ラウンド名ではなく）から出す。
+  // ラウンド名は種目・年で深さがずれる（例: 2026年女子ダブルスは6回戦でベスト8が確定した）ため、
+  // 「あと何人／何組残っているか」で判定するほうが年をまたいで揺れない。
+  // 残り2組なら少なくとも準優勝、4組なら少なくともベスト4、8組なら少なくともベスト8が確定する。
+  const lostEntryNos = new Set([...lostAt.keys()]);
+  const aliveCount = (detail.entries ?? []).length - lostEntryNos.size;
+  const guaranteedLevel = aliveCount <= 2 ? 90 : aliveCount <= 4 ? 80 : aliveCount <= 8 ? 70 : null;
+
+  // まだ生き残っている学校（団体戦なら1エントリー=1校、個人戦なら複数エントリーが同校のことがある）。
+  const aliveSchoolKeys = new Set();
+  for (const entry of detail.entries ?? []) {
+    if (lostEntryNos.has(entry.entryNo)) continue;
+    for (const p of entryPlayers.get(entry.entryNo) ?? []) {
+      const tk = teamKey(p.team);
+      if (tk) aliveSchoolKeys.add(tk);
+    }
+  }
+
   for (const entry of detail.entries ?? []) {
     const keys = keysOf(entry.entryNo).filter((k) => watched.has(k));
     if (keys.length === 0) continue;
@@ -492,6 +513,86 @@ function detectInProgress(tournamentId, categoryId, year, idx) {
         text: `${displayOf(entry.entryNo)}は${reached}を突破して勝ち残っている。${past}。`,
         scopeNote: SCOPE_NOTE,
       });
+
+      // 選手: 自己ベスト更新ウォッチ（個人戦のみ）。
+      // 「まだ決まっていない試合の結果を先読みしない」原則を守るため、実際に確定した
+      // 主張（残存数から導く下限）だけを使う。「並ぶ／上回る可能性がある」ではなく
+      // 「すでに並んだ・上回った（確定）」の形でしか出さない。
+      if (!isTeamEvent && guaranteedLevel != null) {
+        for (const name of keys) {
+          const hist = player.get(name);
+          if (!hist) continue;
+          const pastScores = prevYears.filter((y) => hist[y]).map((y) => hist[y].score);
+          if (pastScores.length === 0) continue;
+          const best = Math.max(...pastScores);
+          if (guaranteedLevel < best) continue; // まだ自己ベストに届いていない
+          mk('watched-self-best', '成長', {
+            subject: { players: [name], subjectKeys: [name] },
+            round: reached,
+            facts: {
+              priorBest: RANK_LABEL[best],
+              guaranteedLevel: RANK_LABEL[guaranteedLevel],
+              ties: guaranteedLevel === best,
+              resultsByYear: yearSeq(hist, years, year - 1),
+            },
+            text: `${name}は少なくとも${RANK_LABEL[guaranteedLevel]}が確定し、自己最高（${RANK_LABEL[best]}）に${
+              guaranteedLevel === best ? '並んだ' : '並ぶか上回った'
+            }。`,
+            scopeNote: SCOPE_NOTE,
+          });
+        }
+      }
+    }
+  }
+
+  // --- 学校: 連覇／◯年ぶり優勝ウォッチと、歴代最高（ピーク）更新ウォッチ。
+  // どちらも団体戦・個人戦の両方に共通（個人戦は所属選手の集約）。
+  // guaranteedLevel と同じ理由で、確定した下限のみを使う（先読みしない）。
+  if (guaranteedLevel != null) {
+    for (const sk of aliveSchoolKeys) {
+      const hist = school.get(sk);
+      if (!hist) continue;
+      const subjectLabel = idx.mixedPairRate > 0 ? `${sk}所属の選手` : sk;
+
+      const titleYears = prevYears.filter((y) => hist[y]?.score === 100);
+      if (titleYears.length > 0) {
+        const lastTitleYear = titleYears[titleYears.length - 1];
+        const gap = year - lastTitleYear;
+        mk('watched-title-watch', gap <= 1 ? '継続' : '成長', {
+          subject: { teams: [sk], subjectKeys: [sk] },
+          facts: {
+            lastTitleYear,
+            yearsSinceTitle: gap,
+            titleYears: titleYears.join('・'),
+            guaranteedLevel: RANK_LABEL[guaranteedLevel],
+          },
+          text: `${subjectLabel}は少なくとも${RANK_LABEL[guaranteedLevel]}が確定しており、この種目での前回優勝は${lastTitleYear}年（${gap}年前）。`,
+          scopeNote: SCOPE_NOTE,
+        });
+      }
+
+      const pastScores = prevYears.filter((y) => hist[y]).map((y) => hist[y].score);
+      if (pastScores.length > 0) {
+        const best = Math.max(...pastScores);
+        if (guaranteedLevel >= best) {
+          mk('watched-school-peak', '成長', {
+            subject: { teams: [sk], subjectKeys: [sk] },
+            facts: {
+              priorBest: RANK_LABEL[best],
+              guaranteedLevel: RANK_LABEL[guaranteedLevel],
+              ties: guaranteedLevel === best,
+              resultsByYear: yearSeq(hist, years, year - 1),
+            },
+            text: `${subjectLabel}は少なくとも${RANK_LABEL[guaranteedLevel]}が確定し、学校としてのこれまでの最高成績（${RANK_LABEL[best]}）に${
+              guaranteedLevel === best ? '並んだ' : '並ぶか上回った'
+            }。`,
+            scopeNote:
+              idx.mixedPairRate > 0
+                ? `${SCOPE_NOTE}。この種目には所属の異なる選手同士のペアが存在するため、主語は「所属選手」であり学校の成績ではない。`
+                : SCOPE_NOTE,
+          });
+        }
+      }
     }
   }
 

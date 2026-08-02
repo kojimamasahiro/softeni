@@ -26,6 +26,16 @@ npm run story:verify -- -t zennihon-championship -c doubles-none-boys,doubles-no
 検証は生成ロジック自体のバグを捕まえるために行う（照合先はYAMLではなく生データ）。
 生成物が検証を通ることを、YAMLを更新するたびに確認する。
 
+過去年の記事を検証・公開するときは `-y <year>` でその記事の年を渡す。「N年連続」「N連覇」の
+起点をその年に固定し、翌年以降に大会が続いて記録が伸びても公開済みの過去記事が不一致にならない
+ようにするため（詳細は `docs/raw/2026-08-02-bug-verify-streak-unbounded-by-article-year.md`）。
+`check-tournament-insights.mjs` は `data/tournament-insights/**/*.json` の `year` を自動で
+`-y` に渡すので、公開後の運用では何もしなくてよい。手元で照合するときだけ明示する。
+
+```bash
+npm run story:verify -- -t highschool-championship -c team-none-boys,team-none-girls,doubles-none-boys,doubles-none-girls -y 2022 draft.md -q
+```
+
 ## 現在の生成物
 
 | ファイル | 内容 | 検証 |
@@ -65,6 +75,20 @@ npm run story:generate -- -t highschool-championship -y 2026 --in-progress -o /t
 | `watched-eliminated` | 衰退 | 注目主体が敗退した（確定事実。どのラウンドで誰に負けたか＋過去の成績） |
 | `watched-advancing` | 継続 | 注目主体が勝ち残っている（突破した最深ラウンド＋過去の成績） |
 | `watched-school-progress` | 継続／衰退 | **個人戦のみ**。前年ベスト8以上の学校ごとに「何組残って何組消えたか」を集約 |
+| `watched-title-watch` | 継続／成長 | この種目で過去に優勝歴がある学校が、まだ生き残っている（前回優勝年・何年ぶりか） |
+| `watched-self-best` | 成長 | **個人戦のみ**。注目選手が、残存数から確定した順位ですでに自己最高に並んだ／上回った |
+| `watched-school-peak` | 成長 | 学校が、残存数から確定した順位ですでに学校としての歴代最高（ピーク）に並んだ／上回った |
+
+後発3つは「残り何組か」から**すでに確定した順位**だけを使う（まだ決まっていない試合を
+先読みしない）。ラウンド名ではなく残存エントリー数で判定する — ラウンド名は種目・年で
+深さがずれる（2026年女子ダブルスは6回戦でベスト8が確定した）ため、名前ではなく
+「残り2／4／8」で「少なくとも準優勝／ベスト4／ベスト8」を導く。
+`watched-title-watch` は前回優勝年との差が1年なら「連覇のかかった学校」、2年以上なら
+「◯年ぶり優勝のかかった学校」として書ける（数字は`yearsSinceTitle`）。
+`watched-self-best`／`watched-school-peak` は「並ぶ可能性がある」ではなく「すでに並んだ・
+上回った」の形でしか出さない（ADR-005の推測禁止に合わせる）。
+「日本代表」のような外部タグや、ベスト8未満の細かい順位（例: 5位）は元データに存在しないため
+検知できない。
 
 `watched-school-progress` が要る理由: **個人戦は選手単位だと卒業で枯れる**。
 インターハイ2026女子ダブルスの実測では、2025年ベスト8以上の16人のうち2026年も出場するのは
