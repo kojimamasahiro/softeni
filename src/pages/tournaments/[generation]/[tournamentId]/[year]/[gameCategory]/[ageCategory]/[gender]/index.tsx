@@ -265,6 +265,90 @@ export default function TournamentYearResultPage({
           )}
         </section>
 
+        {/* 年度・カテゴリ切り替え */}
+        {linkCategories &&
+          linkCategories.length > 0 &&
+          (() => {
+            // 年度は「その年度に何かカテゴリがある」だけで候補に出す。選択中カテゴリが
+            // その年度に無ければ、近いカテゴリへフォールバックして遷移先を決める
+            // （完全一致 → 同カテゴリ・同性別 → 同カテゴリ → その年度の先頭カテゴリ）。
+            const categoriesByYear = linkCategories.reduce<Record<string, LinkCategory[]>>((acc, link) => {
+              if (!acc[link.year]) acc[link.year] = [];
+              acc[link.year].push(link);
+              return acc;
+            }, {});
+
+            const yearOptions = Object.keys(categoriesByYear)
+              .sort((a, b) => Number(b) - Number(a))
+              .map((yearValue) => {
+                const links = categoriesByYear[yearValue];
+                const exact = links.find((l) => l.category === gameCategory && l.age === ageCategory && l.gender === gender);
+                const fallback =
+                  exact ?? links.find((l) => l.category === gameCategory && l.gender === gender) ?? links.find((l) => l.category === gameCategory) ?? links[0];
+                return { yearValue, target: fallback, isExact: Boolean(exact) };
+              });
+
+            const categoryOptions = linkCategories
+              .filter((link) => link.year === year)
+              .reduce<LinkCategory[]>((acc, link) => {
+                if (!acc.some((l) => l.category === link.category && l.age === link.age && l.gender === link.gender)) acc.push(link);
+                return acc;
+              }, []);
+
+            if (yearOptions.length <= 1 && categoryOptions.length <= 1) return null;
+
+            return (
+              <section className="mb-6 space-y-3">
+                {yearOptions.length > 1 && (
+                  <div>
+                    <h2 className="text-sm font-semibold text-text-secondary mb-2">年度を切り替え</h2>
+                    <ul className="flex flex-wrap gap-2">
+                      {yearOptions.map(({ yearValue, target, isExact }) =>
+                        yearValue === year ? (
+                          <li key={yearValue}>
+                            <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">{yearValue}年度</span>
+                          </li>
+                        ) : (
+                          <li key={yearValue}>
+                            <Link href={`/tournaments/${generation}/${tournamentId}/${yearValue}/${target.category}/${target.age}/${target.gender}`}>
+                              <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                {yearValue}年度
+                                {!isExact && <span className="ml-1 text-xs text-blue-500">（{target.label}）</span>}
+                              </span>
+                            </Link>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                )}
+
+                {categoryOptions.length > 1 && (
+                  <div>
+                    <h2 className="text-sm font-semibold text-text-secondary mb-2">カテゴリを切り替え</h2>
+                    <ul className="flex flex-wrap gap-2">
+                      {categoryOptions.map((link) =>
+                        link.isCurrent ? (
+                          <li key={`${link.category}-${link.age}-${link.gender}`}>
+                            <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">{link.label}</span>
+                          </li>
+                        ) : (
+                          <li key={`${link.category}-${link.age}-${link.gender}`}>
+                            <Link href={`/tournaments/${generation}/${tournamentId}/${year}/${link.category}/${link.age}/${link.gender}`}>
+                              <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
+                                {link.label}
+                              </span>
+                            </Link>
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                )}
+              </section>
+            );
+          })()}
+
         {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} insight={insight} />
 
@@ -315,42 +399,6 @@ export default function TournamentYearResultPage({
                 <li key={`det-${i}`}>{w}</li>
               ))}
             </ul>
-          </section>
-        )}
-
-        {linkCategories && linkCategories.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-lg font-bold mb-3">その他の大会結果</h2>
-            {Object.entries(
-              linkCategories.reduce<Record<string, LinkCategory[]>>((acc, link) => {
-                if (!acc[link.year]) acc[link.year] = [];
-                acc[link.year].push(link);
-                return acc;
-              }, {}),
-            )
-              .sort((a, b) => Number(b[0]) - Number(a[0])) // 年で降順
-              .map(([yearValue, links]) => (
-                <div className="mb-4" key={`${yearValue}-${links.map((link) => `${link.year}-${link.category}-${link.age}-${link.gender}`).join('-')}`}>
-                  <h4 className="text-md mb-2">{yearValue}年度</h4>
-                  <ul className="flex flex-wrap gap-2">
-                    {links.map((link) =>
-                      link.isCurrent ? (
-                        <li key={`${link.year}-${link.category}-${link.age}-${link.gender}`}>
-                          <span className="inline-block bg-gray-300 text-gray-600 px-3 py-1 rounded-full text-sm cursor-default">{link.label}</span>
-                        </li>
-                      ) : (
-                        <li key={`${link.year}-${link.category}-${link.age}-${link.gender}`}>
-                          <Link href={`/tournaments/${generation}/${tournamentId}/${link.year}/${link.category}/${link.age}/${link.gender}`}>
-                            <span className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:opacity-80 transition">
-                              {link.label}
-                            </span>
-                          </Link>
-                        </li>
-                      ),
-                    )}
-                  </ul>
-                </div>
-              ))}
           </section>
         )}
 
