@@ -6,6 +6,7 @@ import { hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
 import { isScoreSiteMode } from '../../../../lib/siteConfig';
 import { getCategoryOptions, TournamentCategory, TournamentMeta } from '../../../../lib/tournamentHelpers';
+import DevOnlyNotice from '../../../components/matches/DevOnlyNotice';
 
 type TournamentOption = {
   id: string;
@@ -227,14 +228,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
 
   // 開発環境でない場合はアクセス拒否
   if (!canEditMatches) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <strong className="font-bold">編集不可</strong>
-          <span className="block sm:inline ml-2">このページは開発サーバーでのみ利用できます。静的公開環境ではマッチ作成はできません。</span>
-        </div>
-      </div>
-    );
+    return <DevOnlyNotice title="編集不可" message="このページは開発サーバーでのみ利用できます。静的公開環境ではマッチ作成はできません。" />;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

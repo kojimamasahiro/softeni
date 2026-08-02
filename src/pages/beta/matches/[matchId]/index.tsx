@@ -5,8 +5,10 @@ import { useCallback as reactUseCallback, useEffect, useMemo, useState } from 'r
 
 import { fetchBetaMatchById, hasLiveMatchApi } from '../../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../../lib/env';
+import { getMatchWinner } from '../../../../../lib/matchLogic';
 import { isScoreSiteMode } from '../../../../../lib/siteConfig';
 import { buildYouTubeEmbedUrl, buildYouTubeWatchUrl } from '../../../../../lib/videoReview';
+import DevOnlyNotice from '../../../../components/matches/DevOnlyNotice';
 import { Game, Match, MatchVideoSession, Point } from '../../../../types/database';
 
 type TeamEditorState = {
@@ -194,18 +196,6 @@ const MatchDetail = () => {
     return <Error statusCode={404} />;
   }
 
-  const getMatchWinner = () => {
-    if (!match?.games) return null;
-
-    const gamesWonA = match.games.filter((game) => game.winner_team === 'A').length;
-    const gamesWonB = match.games.filter((game) => game.winner_team === 'B').length;
-    const requiredWins = Math.ceil(match.best_of / 2);
-
-    if (gamesWonA >= requiredWins) return 'A';
-    if (gamesWonB >= requiredWins) return 'B';
-    return null;
-  };
-
   const getResultTypeLabel = (type: string) => {
     const labels: { [key: string]: string } = {
       smash_winner: 'スマッシュウィナー',
@@ -364,20 +354,13 @@ const MatchDetail = () => {
   };
 
   if (!isDebugMode()) {
-    return (
-      <div className="mx-auto max-w-4xl p-6">
-        <div className="rounded border border-red-400 bg-red-100 px-4 py-3 text-red-700">
-          <strong className="font-bold">アクセス拒否</strong>
-          <span className="ml-2 block sm:inline">この機能は開発環境でのみ利用可能です。</span>
-        </div>
-      </div>
-    );
+    return <DevOnlyNotice title="アクセス拒否" message="この機能は開発環境でのみ利用可能です。" />;
   }
 
   if (loading) return <div className="p-6">Loading...</div>;
   if (!match) return <div className="p-6">Match not found</div>;
 
-  const matchWinner = getMatchWinner();
+  const matchWinner = getMatchWinner(match);
   const isDoublesMatch =
     match.game_type === 'doubles' ||
     Boolean(match.team_a_player2_last_name || match.team_a_player2_first_name || match.team_b_player2_last_name || match.team_b_player2_first_name);

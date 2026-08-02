@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { fetchBetaMatches, hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode } from '../../../../lib/env';
 import { isScoreSiteMode } from '../../../../lib/siteConfig';
+import DevOnlyNotice from '../../../components/matches/DevOnlyNotice';
 import { Game, Match } from '../../../types/database';
 
 const MatchList = () => {
@@ -21,14 +22,7 @@ const MatchList = () => {
   }, []);
 
   if (!isDebugMode()) {
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-          <strong className="font-bold">アクセス拒否</strong>
-          <span className="block sm:inline ml-2">この機能は開発環境でのみ利用可能です。</span>
-        </div>
-      </div>
-    );
+    return <DevOnlyNotice title="アクセス拒否" message="この機能は開発環境でのみ利用可能です。" />;
   }
 
   const fetchMatches = async () => {
