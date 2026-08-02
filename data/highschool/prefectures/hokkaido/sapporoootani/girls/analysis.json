@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 46,
   "byCategory": {
-    "team": 2,
-    "doubles": 20,
+    "team": 5,
+    "doubles": 30,
     "singles": 11
   },
   "resultsByCategory": {
@@ -40,10 +40,10 @@
         "prefectureId": "hokkaido",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["西畑_咲愛_札幌大谷_北海道", "上原_心音_札幌大谷_北海道"]
+        "playerIds": ["長嶺_花音_札幌大谷_北海道", "辻道_侑良_札幌大谷_北海道"]
       },
       "historicalBest": {
         "team": "札幌大谷",
@@ -52,10 +52,10 @@
         "prefectureId": "hokkaido",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["西畑_咲愛_札幌大谷_北海道", "上原_心音_札幌大谷_北海道"]
+        "playerIds": ["長嶺_花音_札幌大谷_北海道", "辻道_侑良_札幌大谷_北海道"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "西畑_咲愛_札幌大谷_北海道",
@@ -91,19 +91,19 @@
     },
     {
       "id": "上原_心音_札幌大谷_北海道",
-      "appearances": 6
+      "appearances": 8
     },
     {
       "id": "嶋野_杏_札幌大谷_北海道",
-      "appearances": 6
+      "appearances": 8
     },
     {
-      "id": "西畑_星愛_札幌大谷中学校_北海道",
+      "id": "川島_世愛_札幌大谷_北海道",
       "appearances": 4
     },
     {
-      "id": "長嶺_花音_札幌大谷中学校_北海道",
-      "appearances": 3
+      "id": "杉本_舞桜_札幌大谷_北海道",
+      "appearances": 4
     }
   ]
 }

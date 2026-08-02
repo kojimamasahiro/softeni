@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 32,
   "byCategory": {
-    "team": 1,
-    "doubles": 18,
+    "team": 4,
+    "doubles": 25,
     "singles": 3
   },
   "resultsByCategory": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["渡邉_智隼_学法石川_"]
+        "playerIds": ["渡邉_智隼_学法石川"]
       },
       "historicalBest": {
         "team": "学法石川",
@@ -29,7 +29,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["渡邉_智隼_学法石川_"]
+        "playerIds": ["渡邉_智隼_学法石川"]
       }
     },
     "doubles": {
@@ -59,41 +59,51 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "学法石川",
+        "teamId": "gakuhouishikawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "学法石川",
         "teamId": "gakuhouishikawa",
         "prefecture": "福島県",
         "prefectureId": "fukushima",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2020,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 26,
+  "uniquePlayers": 32,
   "topPlayers": [
     {
-      "id": "菅原_大馳_学法石川_福島県",
+      "id": "田林_克憲_学法石川_福島県",
       "appearances": 4
     },
     {
-      "id": "安田_舜_学法石川_福島県",
+      "id": "千葉_史和_学法石川_福島県",
       "appearances": 3
     },
     {
-      "id": "富塚_遥翔_学法石川_福島県",
-      "appearances": 2
+      "id": "宮本_凌生_学法石川_福島県",
+      "appearances": 3
     },
     {
-      "id": "髙島_蒼太_学法石川_福島県",
-      "appearances": 2
+      "id": "野口_翔磨_学法石川_福島県",
+      "appearances": 3
     },
     {
-      "id": "辻本_泰知_学法石川_福島県",
-      "appearances": 2
+      "id": "佐藤_良吹_学法石川_福島県",
+      "appearances": 3
     }
   ]
 }

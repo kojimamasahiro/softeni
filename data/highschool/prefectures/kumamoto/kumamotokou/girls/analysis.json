@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 14,
   "byCategory": {
-    "team": 3,
-    "doubles": 7,
+    "team": 4,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -38,24 +38,24 @@
         "teamId": "kumamotokou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["中嶋_海音_熊本工_熊本県", "永石_緑暖_熊本工_熊本県"]
+        "playerIds": ["永石_緑暖_熊本工_熊本県", "黒木_彩永_熊本工_熊本県"]
       },
       "historicalBest": {
         "team": "熊本工",
         "teamId": "kumamotokou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["中嶋_海音_熊本工_熊本県", "永石_緑暖_熊本工_熊本県"]
+        "playerIds": ["永石_緑暖_熊本工_熊本県", "黒木_彩永_熊本工_熊本県"]
       }
     },
     "team": {
@@ -83,26 +83,26 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "永石_緑暖_熊本工_熊本県",
+      "appearances": 4
+    },
     {
       "id": "中嶋_海音_熊本工_熊本県",
       "appearances": 3
     },
     {
-      "id": "永石_緑暖_熊本工_熊本県",
+      "id": "黒木_彩永_熊本工_熊本県",
       "appearances": 3
     },
     {
-      "id": "黒木_彩永_熊本工_熊本県",
+      "id": "平山_暁_熊本工_熊本県",
       "appearances": 2
     },
     {
       "id": "延壽_たから_熊本工_熊本県",
-      "appearances": 1
-    },
-    {
-      "id": "畠舎_愛菜_熊本工_熊本県",
       "appearances": 1
     }
   ]

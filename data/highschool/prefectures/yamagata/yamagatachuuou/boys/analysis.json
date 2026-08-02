@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 1,
-    "doubles": 7
+    "doubles": 13
   },
   "resultsByCategory": {
     "singles": {
@@ -15,10 +15,10 @@
         "teamId": "yamagatachuuou",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "3回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["村田_優_羽黒_山形県", "菅谷_峻大_山形中央_山形県"]
       },
@@ -27,10 +27,10 @@
         "teamId": "yamagatachuuou",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "3回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["村田_優_羽黒_山形県", "菅谷_峻大_山形中央_山形県"]
       }
@@ -60,27 +60,27 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
-      "id": "村田_優_羽黒_山形県",
-      "appearances": 1
-    },
-    {
-      "id": "菅谷_峻大_山形中央_山形県",
-      "appearances": 1
-    },
-    {
-      "id": "遠藤_雄輝_山形中央_山形県",
-      "appearances": 1
-    },
-    {
       "id": "渡邉_秀哉_山形中央_山形県",
-      "appearances": 1
+      "appearances": 3
     },
     {
       "id": "二戸_来夢_山形中央_山形県",
-      "appearances": 1
+      "appearances": 3
+    },
+    {
+      "id": "佐竹_颯音_山形中央_山形県",
+      "appearances": 3
+    },
+    {
+      "id": "村田_優_羽黒_山形県",
+      "appearances": 2
+    },
+    {
+      "id": "菅谷_峻大_山形中央_山形県",
+      "appearances": 2
     }
   ]
 }

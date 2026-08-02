@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 102,
+  "totalAppearances": 115,
   "byCategory": {
-    "team": 6,
-    "doubles": 63,
-    "singles": 33
+    "team": 12,
+    "doubles": 69,
+    "singles": 34
   },
   "resultsByCategory": {
     "singles": {
@@ -55,7 +55,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2022,
         "gender": "girls",
-        "playerIds": ["岩元_望美_和歌山信愛_和歌山県", "岩元_望美_和歌山信愛_和歌山県"]
+        "playerIds": ["岩元_望美_和歌山信愛_和歌山県", "岩元_愛美_和歌山信愛_和歌山県"]
       }
     },
     "team": {
@@ -64,10 +64,10 @@
         "teamId": "wakayamashinai",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "ベスト8",
+        "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
         "gender": "girls"
       },
       "historicalBest": {
@@ -77,24 +77,24 @@
         "prefectureId": "wakayama",
         "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 74,
+  "uniquePlayers": 78,
   "topPlayers": [
-    {
-      "id": "岩元_望美_和歌山信愛_和歌山県",
-      "appearances": 12
-    },
     {
       "id": "天野_莉子_和歌山信愛_和歌山県",
       "appearances": 10
     },
     {
-      "id": "佐藤_愛_和歌山信愛_和歌山県",
+      "id": "岩元_望美_和歌山信愛_和歌山県",
+      "appearances": 10
+    },
+    {
+      "id": "岩元_愛美_和歌山信愛_和歌山県",
       "appearances": 9
     },
     {
@@ -102,8 +102,8 @@
       "appearances": 9
     },
     {
-      "id": "岩元_愛美_和歌山信愛_和歌山県",
-      "appearances": 7
+      "id": "佐藤_愛_和歌山信愛_和歌山県",
+      "appearances": 9
     }
   ]
 }

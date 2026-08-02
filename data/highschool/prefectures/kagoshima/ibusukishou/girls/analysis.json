@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 16,
   "byCategory": {
-    "team": 1,
-    "doubles": 10,
+    "team": 3,
+    "doubles": 11,
     "singles": 2
   },
   "resultsByCategory": {
@@ -41,9 +41,9 @@
         "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["山迫_咲弥_指宿商_鹿児島県", "鶴田_奈々_指宿商_鹿児島県"]
+        "playerIds": ["山迫_咲弥_指宿商_鹿児島県", "菅原_心_指宿商_鹿児島県"]
       },
       "historicalBest": {
         "team": "指宿商",
@@ -65,15 +65,15 @@
         "teamId": "ibusukishou",
         "prefecture": "鹿児島県",
         "prefectureId": "kagoshima",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2021,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "吉木_理彩_指宿商_鹿児島県",

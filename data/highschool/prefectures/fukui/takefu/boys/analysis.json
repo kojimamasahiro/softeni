@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "武生",
+        "teamId": "takefu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["飯田_琳太郎_武生_福井県", "箱﨑_隼人_武生_福井県"]
+      },
+      "historicalBest": {
+        "team": "武生",
+        "teamId": "takefu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["飯田_琳太郎_武生_福井県", "箱﨑_隼人_武生_福井県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "飯田_琳太郎_武生_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "箱﨑_隼人_武生_福井県",
+      "appearances": 1
+    }
+  ]
+}

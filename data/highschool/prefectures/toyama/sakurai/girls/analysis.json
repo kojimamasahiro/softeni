@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "桜井",
+        "teamId": "sakurai",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["白米山_瑠花_桜井_奈良県", "南_妃織_桜井_奈良県"]
+      },
+      "historicalBest": {
+        "team": "桜井",
+        "teamId": "sakurai",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["白米山_瑠花_桜井_奈良県", "南_妃織_桜井_奈良県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "白米山_瑠花_桜井_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "南_妃織_桜井_奈良県",
+      "appearances": 1
+    }
+  ]
+}

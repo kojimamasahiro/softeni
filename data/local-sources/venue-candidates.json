@@ -6,11 +6,7 @@
     "generatedAt": "2026-07-26",
     "matching": "開始日の差(0日/±1日/±3日)・大会名の正規化類似度・都道府県の前方一致を加重した confidence。0.80以上は概ね正、0.45〜0.79は要目視、0.45未満は未マッチ扱い。",
     "knownFalsePositives": "同日開催の別大会が混入しうる（例: 2025-07-25 山口県の全日本高校選手権に対し jsta の同日行は実業団選手権）。confidence が低く出るので目視で弾く。",
-    "statusVocabulary": [
-      "new",
-      "accepted",
-      "rejected"
-    ]
+    "statusVocabulary": ["new", "accepted", "rejected"]
   },
   "candidates": [
     {

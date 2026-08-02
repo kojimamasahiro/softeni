@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "武蔵越生",
+        "teamId": "musashiogose",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["耒樂_奈子_武蔵越生_埼玉県", "井上_奈央_武蔵越生_埼玉県"]
+      },
       "historicalBest": {
         "team": "武蔵越生",
         "teamId": "musashiogose",
@@ -28,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "鈴木_真歩_武蔵越生_埼玉県",
@@ -36,6 +47,14 @@
     },
     {
       "id": "門倉_来和_武蔵越生_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "耒樂_奈子_武蔵越生_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "井上_奈央_武蔵越生_埼玉県",
       "appearances": 1
     }
   ]

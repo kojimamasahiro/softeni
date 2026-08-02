@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 4,
+    "team": 3,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -40,7 +41,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["小酒_虹海_金沢学院大附_石川県", "服部_亜子_金沢学院大附_石川県"]
       },
@@ -52,36 +53,56 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["小酒_虹海_金沢学院大附_石川県", "服部_亜子_金沢学院大附_石川県"]
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "金沢学院大附",
+        "teamId": "kanazawagakuindaifu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "金沢学院大附",
+        "teamId": "kanazawagakuindaifu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "小酒_虹海_金沢学院大附_石川県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "服部_亜子_金沢学院大附_石川県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "金瀬戸_のよ_金沢学院大附_石川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "南条_舞咲_金沢学院大附_石川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
-      "id": "林_空星_金沢学院大附_石川県",
+      "id": "柳_海花_金沢学院大附_石川県",
       "appearances": 1
     }
   ]

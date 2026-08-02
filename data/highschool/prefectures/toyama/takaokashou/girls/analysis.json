@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 60,
   "byCategory": {
-    "team": 5,
-    "doubles": 24,
-    "singles": 4
+    "team": 9,
+    "doubles": 39,
+    "singles": 12
   },
   "resultsByCategory": {
     "singles": {
@@ -14,10 +14,10 @@
         "prefectureId": "toyama",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["高倉_都羽_高岡商_富山県"]
+        "playerIds": ["横山_柑奈_高岡商_富山県"]
       },
       "historicalBest": {
         "team": "高岡商",
@@ -41,7 +41,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["高倉_都羽_高岡商_富山県", "横山_柑奈_高岡商_富山県"]
       },
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "高倉_都羽_高岡商_富山県",
-      "appearances": 7
-    },
-    {
-      "id": "高井_沙彩_高岡商_富山県",
-      "appearances": 5
+      "appearances": 12
     },
     {
       "id": "横山_柑奈_高岡商_富山県",
-      "appearances": 5
+      "appearances": 10
     },
     {
-      "id": "福田_唯子_高岡商_富山県",
-      "appearances": 4
+      "id": "高井_沙彩_高岡商_富山県",
+      "appearances": 6
+    },
+    {
+      "id": "水谷_朱璃_高岡商_富山県",
+      "appearances": 6
     },
     {
       "id": "清末_七生_高岡商_富山県",
-      "appearances": 3
+      "appearances": 5
     }
   ]
 }

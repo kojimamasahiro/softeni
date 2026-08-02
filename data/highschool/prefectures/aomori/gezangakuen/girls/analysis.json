@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 2,
+    "doubles": 3,
     "singles": 2
   },
   "resultsByCategory": {
@@ -40,9 +40,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["小野_美桜_下山学園高校_青森県", "太田_咲良_下山学園高校_青森県"]
+        "playerIds": ["小野_美桜_下山学園_青森県", "太田_咲良_下山学園_青森県"]
       },
       "historicalBest": {
         "team": "下山学園",
@@ -52,9 +52,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["小野_美桜_下山学園高校_青森県", "太田_咲良_下山学園高校_青森県"]
+        "playerIds": ["小野_美桜_下山学園_青森県", "太田_咲良_下山学園_青森県"]
       }
     },
     "team": {
@@ -65,15 +65,15 @@
   "uniquePlayers": 3,
   "topPlayers": [
     {
-      "id": "小野_美桜_下山学園高校_青森県",
-      "appearances": 4
+      "id": "小野_美桜_下山学園_青森県",
+      "appearances": 5
+    },
+    {
+      "id": "太田_咲良_下山学園_青森県",
+      "appearances": 2
     },
     {
       "id": "差ヶ久保_羽美_東北中学校_青森県",
-      "appearances": 1
-    },
-    {
-      "id": "太田_咲良_下山学園高校_青森県",
       "appearances": 1
     }
   ]

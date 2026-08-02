@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 3,
-    "doubles": 8,
+    "team": 5,
+    "doubles": 11,
     "singles": 5
   },
   "resultsByCategory": {
@@ -59,7 +59,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "尾道",
+        "teamId": "onomichi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "尾道",
         "teamId": "onomichi",
@@ -73,8 +83,12 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 18,
   "topPlayers": [
+    {
+      "id": "大名_快青_尾道_広島県",
+      "appearances": 3
+    },
     {
       "id": "岩永_優真_尾道_広島県",
       "appearances": 3
@@ -84,16 +98,12 @@
       "appearances": 3
     },
     {
-      "id": "大名_快青_尾道_広島県",
+      "id": "水野_健太朗_尾道_広島県",
       "appearances": 2
     },
     {
       "id": "片山_斗羽_尾道_広島県",
       "appearances": 2
-    },
-    {
-      "id": "尼子_裕也_尾道_広島県",
-      "appearances": 1
     }
   ]
 }

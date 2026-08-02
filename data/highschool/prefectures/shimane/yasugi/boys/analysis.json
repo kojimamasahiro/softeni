@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "安来",
+        "teamId": "yasugi",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["濱田_香芽_安来_島根県", "柴田_太陽_安来_島根県"]
+      },
       "historicalBest": {
         "team": "安来",
         "teamId": "yasugi",
@@ -28,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "三上_宗悟_安来_島根県",
@@ -36,6 +47,14 @@
     },
     {
       "id": "飯橋_照太_安来_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "濱田_香芽_安来_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "柴田_太陽_安来_島根県",
       "appearances": 1
     }
   ]

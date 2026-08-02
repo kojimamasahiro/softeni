@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 7,
+    "team": 1,
+    "doubles": 9,
     "singles": 3
   },
   "resultsByCategory": {
@@ -58,18 +59,42 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "高崎",
+        "teamId": "takasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 7,
   "topPlayers": [
     {
+      "id": "齊藤_慧伸_高崎_群馬県",
+      "appearances": 6
+    },
+    {
       "id": "大河原_兜_高崎_群馬県",
       "appearances": 5
     },
     {
-      "id": "齊藤_慧伸_高崎_群馬県",
+      "id": "牧野_穂_高崎_群馬県",
       "appearances": 4
     },
     {
@@ -78,10 +103,6 @@
     },
     {
       "id": "田村_真人_高崎_群馬県",
-      "appearances": 2
-    },
-    {
-      "id": "牧野_穂_高崎_群馬県",
       "appearances": 2
     }
   ]

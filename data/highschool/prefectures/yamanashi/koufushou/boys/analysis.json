@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
+    "team": 1,
     "doubles": 5
   },
   "resultsByCategory": {
@@ -36,7 +37,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "甲府商",
+        "teamId": "koufushou",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2020,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 10,

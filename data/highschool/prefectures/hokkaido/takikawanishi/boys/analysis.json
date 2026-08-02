@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 9,
   "byCategory": {
+    "team": 1,
     "doubles": 3,
     "singles": 5
   },
@@ -59,7 +60,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "滝川西",
+        "teamId": "takikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2021,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 8,

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 3,
+    "doubles": 6,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,24 +27,24 @@
         "teamId": "keiaigakuen",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["渋谷_斗真_敬愛学園_千葉県", "千葉_陽太_敬愛学園_千葉県"]
+        "playerIds": ["石川_航大_敬愛学園_千葉県", "長井_敬_敬愛学園_千葉県"]
       },
       "historicalBest": {
         "team": "敬愛学園",
         "teamId": "keiaigakuen",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["倉持_遥_敬愛学園_千葉県", "村松_優_敬愛学園_千葉県"]
+        "playerIds": ["石川_航大_敬愛学園_千葉県", "長井_敬_敬愛学園_千葉県"]
       }
     },
     "team": {
@@ -72,8 +72,16 @@
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "石川_航大_敬愛学園_千葉県",
+      "appearances": 2
+    },
+    {
+      "id": "長井_敬_敬愛学園_千葉県",
+      "appearances": 2
+    },
     {
       "id": "倉持_遥_敬愛学園_千葉県",
       "appearances": 1
@@ -84,14 +92,6 @@
     },
     {
       "id": "稲見_虎佑_敬愛学園_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "横井_陽汰_敬愛学園_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "渋谷_斗真_敬愛学園_千葉県",
       "appearances": 1
     }
   ]

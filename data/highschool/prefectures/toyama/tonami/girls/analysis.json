@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -39,10 +39,10 @@
         "prefectureId": "toyama",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["山本_優佳_砺波_富山県", "矢嶋_穂乃香_砺波_富山県"]
+        "playerIds": ["山本_優佳_砺波_富山県", "島_若菜_砺波_富山県"]
       },
       "historicalBest": {
         "team": "砺波",
@@ -51,10 +51,10 @@
         "prefectureId": "toyama",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["山本_優佳_砺波_富山県", "矢嶋_穂乃香_砺波_富山県"]
+        "playerIds": ["山本_優佳_砺波_富山県", "島_若菜_砺波_富山県"]
       }
     },
     "team": {
@@ -66,14 +66,14 @@
   "topPlayers": [
     {
       "id": "山本_優佳_砺波_富山県",
+      "appearances": 4
+    },
+    {
+      "id": "島_若菜_砺波_富山県",
       "appearances": 3
     },
     {
       "id": "矢嶋_穂乃香_砺波_富山県",
-      "appearances": 2
-    },
-    {
-      "id": "島_若菜_砺波_富山県",
       "appearances": 2
     },
     {

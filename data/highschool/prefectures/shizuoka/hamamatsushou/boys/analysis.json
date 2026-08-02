@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
     "team": 1,
-    "doubles": 4,
+    "doubles": 5,
     "singles": 1
   },
   "resultsByCategory": {
@@ -22,7 +22,18 @@
       }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "浜松商",
+        "teamId": "hamamatsushou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["渥美_和虎_浜松商_静岡県", "大城_駿真_浜松商_静岡県"]
+      },
       "historicalBest": {
         "team": "浜松商",
         "teamId": "hamamatsushou",
@@ -51,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "鈴木_駿_浜松商_静岡県",
@@ -70,7 +81,7 @@
       "appearances": 1
     },
     {
-      "id": "田垣_創羅_浜松商_静岡県",
+      "id": "渥美_和虎_浜松商_静岡県",
       "appearances": 1
     }
   ]

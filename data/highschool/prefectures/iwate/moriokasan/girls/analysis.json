@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["田中_もも_盛岡三_岩手県", "大吹_風_盛岡三_岩手県"]
+        "playerIds": ["本間_優衣_盛岡三_岩手県", "谷地_茜音_盛岡三_岩手県"]
       },
       "historicalBest": {
         "team": "盛岡三",
@@ -29,9 +29,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["田中_もも_盛岡三_岩手県", "大吹_風_盛岡三_岩手県"]
+        "playerIds": ["本間_優衣_盛岡三_岩手県", "谷地_茜音_盛岡三_岩手県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "田中_もも_盛岡三_岩手県",
@@ -47,6 +47,14 @@
     },
     {
       "id": "大吹_風_盛岡三_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "本間_優衣_盛岡三_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "谷地_茜音_盛岡三_岩手県",
       "appearances": 1
     }
   ]

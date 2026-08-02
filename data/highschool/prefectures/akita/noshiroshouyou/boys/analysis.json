@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "能代松陽",
+        "teamId": "noshiroshouyou",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["船木_柊_能代松陽_秋田県", "工藤_稔_能代松陽_秋田県"]
+      },
       "historicalBest": {
         "team": "能代松陽",
         "teamId": "noshiroshouyou",
@@ -28,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "髙沢_響_能代松陽_秋田県",
@@ -39,11 +50,15 @@
       "appearances": 1
     },
     {
-      "id": "平塚_颯_能代松陽_秋田県",
+      "id": "船木_柊_能代松陽_秋田県",
       "appearances": 1
     },
     {
-      "id": "藤井_新_能代松陽_秋田県",
+      "id": "工藤_稔_能代松陽_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "平塚_颯_能代松陽_秋田県",
       "appearances": 1
     }
   ]

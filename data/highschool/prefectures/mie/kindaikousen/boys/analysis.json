@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "team": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "近大高専",
+        "teamId": "kindaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "近大高専",
+        "teamId": "kindaikousen",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2020,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 0,
+  "topPlayers": []
+}

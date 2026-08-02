@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "早鞆",
+        "teamId": "hoyatomo",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["村上_月_早鞆_山口県", "山本_幸輝_早鞆_山口県"]
+      },
       "historicalBest": {
         "team": "早鞆",
         "teamId": "hoyatomo",
@@ -28,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "村上_月_早鞆_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_幸輝_早鞆_山口県",
+      "appearances": 1
+    },
     {
       "id": "内田_迅_早鞆_山口県",
       "appearances": 1

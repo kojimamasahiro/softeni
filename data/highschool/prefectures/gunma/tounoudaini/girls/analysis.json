@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 2
+    "team": 1,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -35,22 +36,50 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "東農大二",
+        "teamId": "tounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "松井_瑞季_東農大二_群馬県",
+      "appearances": 3
+    },
     {
       "id": "関根_理央_東農大二_群馬県",
       "appearances": 2
     },
     {
       "id": "髙山_果歩_東農大二_群馬県",
+      "appearances": 2
+    },
+    {
+      "id": "高徳_梨々愛_東農大二_群馬県",
       "appearances": 1
     },
     {
-      "id": "松井_瑞季_東農大二_群馬県",
+      "id": "新井_月葵_東農大二_群馬県",
       "appearances": 1
     }
   ]

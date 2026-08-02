@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 24,
   "byCategory": {
-    "team": 3,
-    "doubles": 15,
+    "team": 4,
+    "doubles": 17,
     "singles": 3
   },
   "resultsByCategory": {
@@ -59,7 +59,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "大分",
+        "teamId": "ooita",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "大分",
         "teamId": "ooita",
@@ -73,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 23,
   "topPlayers": [
     {
       "id": "坂口_竣亮_大分_大分県",

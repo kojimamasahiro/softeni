@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["上運天_桃子_向陽_沖縄県", "富田_麗心_向陽_沖縄県"]
+        "playerIds": ["仲村_有未_向陽_沖縄県", "照屋_羽奈絵_向陽_沖縄県"]
       },
       "historicalBest": {
         "team": "向陽",
@@ -29,9 +29,9 @@
         "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["上運天_桃子_向陽_沖縄県", "富田_麗心_向陽_沖縄県"]
+        "playerIds": ["仲村_有未_向陽_沖縄県", "照屋_羽奈絵_向陽_沖縄県"]
       }
     },
     "team": {
@@ -42,19 +42,19 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "仲村_有未_向陽_沖縄県",
+      "appearances": 2
+    },
+    {
+      "id": "照屋_羽奈絵_向陽_沖縄県",
+      "appearances": 2
+    },
+    {
       "id": "上運天_桃子_向陽_沖縄県",
       "appearances": 1
     },
     {
       "id": "富田_麗心_向陽_沖縄県",
-      "appearances": 1
-    },
-    {
-      "id": "仲村_有未_向陽_沖縄県",
-      "appearances": 1
-    },
-    {
-      "id": "照屋_羽奈絵_向陽_沖縄県",
       "appearances": 1
     }
   ]

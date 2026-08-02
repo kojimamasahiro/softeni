@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 33,
+  "totalAppearances": 39,
   "byCategory": {
-    "team": 2,
-    "doubles": 23,
+    "team": 5,
+    "doubles": 26,
     "singles": 8
   },
   "resultsByCategory": {
@@ -38,10 +38,10 @@
         "teamId": "takadashou",
         "prefecture": "奈良県",
         "prefectureId": "nara",
-        "result": "5回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["中條_世蓮_高田商_奈良県", "中田_百香_高田商_奈良県"]
       },
@@ -50,10 +50,10 @@
         "teamId": "takadashou",
         "prefecture": "奈良県",
         "prefectureId": "nara",
-        "result": "5回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
         "playerIds": ["中條_世蓮_高田商_奈良県", "中田_百香_高田商_奈良県"]
       }
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
       "id": "福井_理央_高田商_奈良県",
@@ -91,19 +91,19 @@
     },
     {
       "id": "中條_世蓮_高田商_奈良県",
-      "appearances": 6
+      "appearances": 7
+    },
+    {
+      "id": "中田_百香_高田商_奈良県",
+      "appearances": 5
     },
     {
       "id": "朝日_琴音_高田商_奈良県",
       "appearances": 5
     },
     {
-      "id": "中田_百香_高田商_奈良県",
+      "id": "中谷_紗耶加_高田商_奈良県",
       "appearances": 4
-    },
-    {
-      "id": "堀_奈帆美_高田商_奈良県",
-      "appearances": 3
     }
   ]
 }

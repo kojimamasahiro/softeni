@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 26,
+  "totalAppearances": 30,
   "byCategory": {
-    "team": 3,
-    "doubles": 18,
+    "team": 4,
+    "doubles": 21,
     "singles": 5
   },
   "resultsByCategory": {
@@ -41,9 +41,9 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["中島_菜々美_松商学園_長野県", "近藤_愛_松商学園_長野県"]
+        "playerIds": ["土田_萌々_松商学園_長野県", "南原_葵衣_松商学園_長野県"]
       },
       "historicalBest": {
         "team": "松商学園",
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "中島_菜々美_松商学園_長野県",
@@ -103,7 +103,7 @@
     },
     {
       "id": "村田_実優_松商学園_長野県",
-      "appearances": 3
+      "appearances": 4
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 6
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["工藤_葵_弘前_青森県", "藤田_ななみ_弘前_青森県"]
+        "playerIds": ["冨本_侑李_弘前_青森県", "藤田_ななみ_弘前_青森県"]
       },
       "historicalBest": {
         "team": "弘前",
@@ -29,9 +29,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["工藤_葵_弘前_青森県", "藤田_ななみ_弘前_青森県"]
+        "playerIds": ["冨本_侑李_弘前_青森県", "藤田_ななみ_弘前_青森県"]
       }
     },
     "team": {
@@ -51,14 +51,14 @@
     },
     {
       "id": "藤田_ななみ_弘前_青森県",
+      "appearances": 3
+    },
+    {
+      "id": "冨本_侑李_弘前_青森県",
       "appearances": 2
     },
     {
       "id": "佐藤_野彩_弘前大学_日本学連",
-      "appearances": 1
-    },
-    {
-      "id": "工藤_葵_弘前_青森県",
       "appearances": 1
     }
   ]

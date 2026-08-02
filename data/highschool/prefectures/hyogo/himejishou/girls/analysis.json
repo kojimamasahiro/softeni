@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -36,18 +37,28 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "姫路商",
+        "teamId": "himejishou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2020,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "頭島_羽奏_姫路商_兵庫県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "岡本_和心_姫路商_兵庫県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "北岡_朱莉_姫路商_兵庫県",

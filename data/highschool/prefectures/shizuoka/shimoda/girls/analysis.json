@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1,
+    "team": 1,
+    "doubles": 2,
     "singles": 1
   },
   "resultsByCategory": {
@@ -58,12 +59,40 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "下田",
+        "teamId": "shimoda",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "下田",
+        "teamId": "shimoda",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "鈴木_みのり_下田_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "隅谷_心珀_下田_静岡県",
+      "appearances": 1
+    },
     {
       "id": "石川_智子_静南クラブ_静岡県",
       "appearances": 1

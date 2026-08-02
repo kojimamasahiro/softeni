@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 5,
-    "singles": 1
+    "doubles": 7,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -49,12 +49,12 @@
         "teamId": "kanazawagakuindaifu",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2022,
         "gender": "boys",
-        "playerIds": ["久田_陸人_金沢学院大附_石川県", "柳田_蒼生_金沢学院大附_石川県"]
+        "playerIds": ["牧_海音_金沢学院大附_石川県", "玉岡_翔_金沢学院大附_石川県"]
       }
     },
     "team": {
@@ -62,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
       "id": "久田_陸人_金沢学院大附_石川県",
@@ -73,15 +73,15 @@
       "appearances": 3
     },
     {
+      "id": "牧_海音_金沢学院大附_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "玉岡_翔_金沢学院大附_石川県",
+      "appearances": 1
+    },
+    {
       "id": "平野_壱真_金沢学院大附_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "森田_暁仁_金沢学院大附_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "畠中_雄大_金沢学院大附_石川県",
       "appearances": 1
     }
   ]

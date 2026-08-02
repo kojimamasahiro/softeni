@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 16,
   "byCategory": {
-    "team": 1,
-    "doubles": 10,
+    "team": 3,
+    "doubles": 12,
     "singles": 1
   },
   "resultsByCategory": {
@@ -41,9 +41,9 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["飯塚_梨乃_常磐大_茨城県", "大図_果凛_常磐大_茨城県"]
+        "playerIds": ["齋藤_花実_常磐大_茨城県", "小松﨑_麻友_常磐大_茨城県"]
       },
       "historicalBest": {
         "team": "常磐大",
@@ -53,13 +53,23 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["飯塚_梨乃_常磐大_茨城県", "大図_果凛_常磐大_茨城県"]
+        "playerIds": ["齋藤_花実_常磐大_茨城県", "小松﨑_麻友_常磐大_茨城県"]
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "常磐大",
+        "teamId": "joubandai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      },
       "historicalBest": {
         "team": "常磐大",
         "teamId": "joubandai",
@@ -73,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "大図_果凛_常磐大_茨城県",

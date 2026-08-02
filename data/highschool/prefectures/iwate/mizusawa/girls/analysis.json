@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 7,
     "singles": 2
   },
   "resultsByCategory": {
@@ -40,9 +40,9 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["渡邉_夏姫_水沢_岩手県", "渡邉_侑莉_水沢_岩手県"]
+        "playerIds": ["渡邉_侑莉_水沢_岩手県", "柴田_夏帆_水沢_岩手県"]
       },
       "historicalBest": {
         "team": "水沢",
@@ -52,9 +52,9 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["渡邉_夏姫_水沢_岩手県", "渡邉_侑莉_水沢_岩手県"]
+        "playerIds": ["渡邉_侑莉_水沢_岩手県", "柴田_夏帆_水沢_岩手県"]
       }
     },
     "team": {
@@ -62,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "渡邉_夏姫_水沢_岩手県",
@@ -70,14 +70,18 @@
     },
     {
       "id": "渡邉_侑莉_水沢_岩手県",
-      "appearances": 2
+      "appearances": 4
+    },
+    {
+      "id": "柴田_夏帆_水沢_岩手県",
+      "appearances": 3
     },
     {
       "id": "佐藤_ちさと_水沢_岩手県",
       "appearances": 2
     },
     {
-      "id": "柴田_夏帆_水沢_岩手県",
+      "id": "北﨑_真海_水沢_岩手県",
       "appearances": 1
     }
   ]

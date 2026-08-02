@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 148,
+  "totalAppearances": 170,
   "byCategory": {
-    "team": 6,
-    "doubles": 81,
-    "singles": 61
+    "team": 12,
+    "doubles": 93,
+    "singles": 65
   },
   "resultsByCategory": {
     "singles": {
@@ -40,10 +40,10 @@
         "prefectureId": "miyagi",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["丸山_海斗_one team_", "天間_麗奈_東北_"]
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["柏_春花_東北_宮城県", "村上_芹_東北_宮城県"]
       },
       "historicalBest": {
         "team": "東北",
@@ -52,10 +52,10 @@
         "prefectureId": "miyagi",
         "result": "優勝",
         "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["丸山_海斗_one team_", "天間_麗奈_東北_"]
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["柏_春花_東北_宮城県", "村上_芹_東北_宮城県"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 85,
+  "uniquePlayers": 90,
   "topPlayers": [
     {
       "id": "天間_麗奈_東北_宮城県",
@@ -91,19 +91,19 @@
     },
     {
       "id": "柏_春花_東北_宮城県",
-      "appearances": 14
+      "appearances": 16
     },
     {
       "id": "村上_芹_東北_宮城県",
-      "appearances": 14
+      "appearances": 16
+    },
+    {
+      "id": "中山_萌_東北_宮城県",
+      "appearances": 10
     },
     {
       "id": "佐藤_紗空_東北_宮城県",
       "appearances": 9
-    },
-    {
-      "id": "中山_萌_東北_宮城県",
-      "appearances": 8
     }
   ]
 }

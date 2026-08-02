@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 29,
   "byCategory": {
-    "team": 3,
-    "doubles": 17,
+    "team": 7,
+    "doubles": 19,
     "singles": 3
   },
   "resultsByCategory": {
@@ -43,7 +43,7 @@
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "girls",
-        "playerIds": ["荒井田_空愛_鹿児島実_", "須ケ牟田_友菜_鹿児島実_鹿児島県"]
+        "playerIds": ["荒田_空愛_鹿児島実_鹿児島県", "須ケ牟田_友菜_鹿児島実_鹿児島県"]
       },
       "historicalBest": {
         "team": "鹿児島実",
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 27,
   "topPlayers": [
     {
       "id": "須ケ牟田_友菜_鹿児島実_鹿児島県",
@@ -94,15 +94,15 @@
       "appearances": 3
     },
     {
+      "id": "荒田_空愛_鹿児島実_鹿児島県",
+      "appearances": 3
+    },
+    {
       "id": "門松_輝_鹿児島実_鹿児島県",
       "appearances": 2
     },
     {
       "id": "荒田_姫來_鹿児島実_鹿児島県",
-      "appearances": 2
-    },
-    {
-      "id": "大田_璃乃_鹿児島実_鹿児島県",
       "appearances": 2
     }
   ]

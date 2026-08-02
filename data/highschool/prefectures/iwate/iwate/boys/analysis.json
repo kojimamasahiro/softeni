@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 1,
-    "doubles": 9,
+    "doubles": 14,
     "singles": 2
   },
   "resultsByCategory": {
@@ -17,7 +17,7 @@
         "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["長根_煌和_岩手_"]
+        "playerIds": ["長根_煌和_岩手"]
       },
       "historicalBest": {
         "team": "岩手",
@@ -38,24 +38,24 @@
         "teamId": "iwate",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["長根_煌和_岩手_岩手県", "関_涼真_岩手_岩手県"]
+        "playerIds": ["菊池_海音_岩手_岩手県", "田代_悠稀_岩手_岩手県"]
       },
       "historicalBest": {
         "team": "岩手",
         "teamId": "iwate",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["長根_煌和_岩手_岩手県", "関_涼真_岩手_岩手県"]
+        "playerIds": ["菊池_海音_岩手_岩手県", "田代_悠稀_岩手_岩手県"]
       }
     },
     "team": {
@@ -73,8 +73,16 @@
       }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 22,
   "topPlayers": [
+    {
+      "id": "菊池_海音_岩手_岩手県",
+      "appearances": 4
+    },
+    {
+      "id": "田代_悠稀_岩手_岩手県",
+      "appearances": 4
+    },
     {
       "id": "長根_煌和_岩手_岩手県",
       "appearances": 2
@@ -84,15 +92,7 @@
       "appearances": 2
     },
     {
-      "id": "菊池_海音_岩手_岩手県",
-      "appearances": 2
-    },
-    {
-      "id": "田代_悠稀_岩手_岩手県",
-      "appearances": 2
-    },
-    {
-      "id": "伊東_天鯉_岩手_岩手県",
+      "id": "佐々木_颯空_岩手_岩手県",
       "appearances": 1
     }
   ]

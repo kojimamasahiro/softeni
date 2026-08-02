@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 28,
   "byCategory": {
-    "team": 3,
+    "team": 7,
     "doubles": 19,
     "singles": 2
   },
@@ -48,16 +48,26 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": {
+      "recentlyResult": {
         "team": "日大藤沢",
         "teamId": "nichidaifujisawa",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
         "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "日大藤沢",
+        "teamId": "nichidaifujisawa",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2021,
         "gender": "girls"
       }
     }

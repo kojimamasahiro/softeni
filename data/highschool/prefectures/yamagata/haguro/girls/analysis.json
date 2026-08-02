@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 47,
+  "totalAppearances": 64,
   "byCategory": {
-    "team": 4,
-    "doubles": 31,
+    "team": 8,
+    "doubles": 44,
     "singles": 12
   },
   "resultsByCategory": {
@@ -38,24 +38,24 @@
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "6回戦敗退",
+        "result": "準優勝",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["栗田_みらい_羽黒_山形県", "山田_蒼子_羽黒_山形県"]
+        "playerIds": ["對馬_優_羽黒_山形県", "三浦_綾花_羽黒_山形県"]
       },
       "historicalBest": {
         "team": "羽黒",
         "teamId": "haguro",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "ベスト8",
+        "result": "準優勝",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["小林_美郷_羽黒_山形県", "福島_希_羽黒_山形県"]
+        "playerIds": ["對馬_優_羽黒_山形県", "三浦_綾花_羽黒_山形県"]
       }
     },
     "team": {
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 34,
   "topPlayers": [
     {
       "id": "對馬_優_羽黒_山形県",
-      "appearances": 10
+      "appearances": 12
     },
     {
       "id": "山田_蒼子_羽黒_山形県",
       "appearances": 9
     },
     {
+      "id": "戸川_瑠花_羽黒_山形県",
+      "appearances": 6
+    },
+    {
+      "id": "三浦_綾花_羽黒_山形県",
+      "appearances": 6
+    },
+    {
       "id": "栗田_みらい_羽黒_山形県",
       "appearances": 6
-    },
-    {
-      "id": "今井_寧々_羽黒_山形県",
-      "appearances": 6
-    },
-    {
-      "id": "諏訪_明日香_羽黒_山形県",
-      "appearances": 4
     }
   ]
 }

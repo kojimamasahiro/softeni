@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "team": 1,
+    "team": 2,
     "doubles": 3
   },
   "resultsByCategory": {
@@ -36,7 +36,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "石川高専",
+        "teamId": "ishikawakousen",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "石川高専",
         "teamId": "ishikawakousen",

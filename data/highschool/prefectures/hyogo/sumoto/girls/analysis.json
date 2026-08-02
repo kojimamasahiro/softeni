@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "洲本",
+        "teamId": "sumoto",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["森谷_明莉_洲本_兵庫県", "中野_琴子_洲本_兵庫県"]
+      },
+      "historicalBest": {
+        "team": "洲本",
+        "teamId": "sumoto",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["森谷_明莉_洲本_兵庫県", "中野_琴子_洲本_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "森谷_明莉_洲本_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "中野_琴子_洲本_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

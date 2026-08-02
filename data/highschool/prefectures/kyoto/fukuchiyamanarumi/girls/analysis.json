@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 12,
   "byCategory": {
+    "team": 1,
     "doubles": 10,
     "singles": 1
   },
@@ -48,7 +49,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "福知山成美",
+        "teamId": "fukuchiyamanarumi",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 14,

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 30,
   "byCategory": {
-    "team": 3,
-    "doubles": 19,
+    "team": 5,
+    "doubles": 22,
     "singles": 3
   },
   "resultsByCategory": {
@@ -59,7 +59,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "八戸工大一",
+        "teamId": "hachinohekoudaiichi",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "八戸工大一",
         "teamId": "hachinohekoudaiichi",
@@ -73,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 27,
+  "uniquePlayers": 32,
   "topPlayers": [
     {
       "id": "山中_裕太_八戸工大一_青森県",
@@ -84,15 +94,15 @@
       "appearances": 4
     },
     {
+      "id": "中村_心響_八戸工大一_青森県",
+      "appearances": 3
+    },
+    {
       "id": "山口_諒_八戸工大一_青森県",
       "appearances": 2
     },
     {
       "id": "大谷_紳_八戸工大一_青森県",
-      "appearances": 2
-    },
-    {
-      "id": "川守田_真翔_八戸工大一_青森県",
       "appearances": 2
     }
   ]

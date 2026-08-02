@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 12,
   "byCategory": {
-    "team": 1,
-    "doubles": 7,
+    "team": 2,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,12 +27,12 @@
         "teamId": "sundaikoufu",
         "prefecture": "山梨県",
         "prefectureId": "yamanashi",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-championship",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["箭本_茉央_双葉クラブ_山梨県", "井口_里咲_駿台甲府_山梨県"]
+        "playerIds": ["深澤_寧音_駿台甲府_山梨県", "渡邉_玲杏_駿台甲府_山梨県"]
       },
       "historicalBest": {
         "team": "駿台甲府",
@@ -48,7 +48,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "駿台甲府",
+        "teamId": "sundaikoufu",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      },
       "historicalBest": {
         "team": "駿台甲府",
         "teamId": "sundaikoufu",
@@ -62,7 +72,7 @@
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "井口_里咲_駿台甲府_山梨県",

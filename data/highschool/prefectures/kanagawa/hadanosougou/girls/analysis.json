@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["吉田_若菜_秦野総合_神奈川県", "芹澤_杏子_秦野総合_神奈川県"]
+        "playerIds": ["山岡_沙奈_秦野総合_神奈川県", "石山_輝莉_秦野総合_神奈川県"]
       },
       "historicalBest": {
         "team": "秦野総合",
@@ -29,9 +29,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["吉田_若菜_秦野総合_神奈川県", "芹澤_杏子_秦野総合_神奈川県"]
+        "playerIds": ["山岡_沙奈_秦野総合_神奈川県", "石山_輝莉_秦野総合_神奈川県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "吉田_若菜_秦野総合_神奈川県",
@@ -47,6 +47,18 @@
     },
     {
       "id": "芹澤_杏子_秦野総合_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "山岡_沙奈_秦野総合_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "石山_輝莉_秦野総合_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_桜優_秦野総合_神奈川県",
       "appearances": 1
     }
   ]

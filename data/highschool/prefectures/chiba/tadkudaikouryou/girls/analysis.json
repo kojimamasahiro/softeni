@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
     "team": 1,
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -18,9 +18,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["鈴木_樹璃_拓大紅陵_千葉県", "地曵_七海_拓大紅陵_千葉県"]
+        "playerIds": ["矢代_結羽_拓大紅陵_千葉県", "山田_帆乃_拓大紅陵_千葉県"]
       },
       "historicalBest": {
         "team": "拓大紅陵",
@@ -30,9 +30,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["鈴木_樹璃_拓大紅陵_千葉県", "地曵_七海_拓大紅陵_千葉県"]
+        "playerIds": ["矢代_結羽_拓大紅陵_千葉県", "山田_帆乃_拓大紅陵_千葉県"]
       }
     },
     "team": {
@@ -60,7 +60,7 @@
       }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "鈴木_樹璃_拓大紅陵_千葉県",
@@ -68,6 +68,14 @@
     },
     {
       "id": "地曵_七海_拓大紅陵_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "矢代_結羽_拓大紅陵_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "山田_帆乃_拓大紅陵_千葉県",
       "appearances": 1
     }
   ]

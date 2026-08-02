@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2,
+    "doubles": 3,
     "singles": 1
   },
   "resultsByCategory": {
@@ -32,7 +32,18 @@
       }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "武蔵越生",
+        "teamId": "musashiogose",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["吉田_駿風_武蔵越生_埼玉県", "寺門_共生_武蔵越生_埼玉県"]
+      },
       "historicalBest": {
         "team": "武蔵越生",
         "teamId": "musashiogose",
@@ -51,8 +62,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "寺門_共生_武蔵越生_埼玉県",
+      "appearances": 2
+    },
     {
       "id": "吉野_梓恩_武蔵越生_埼玉県",
       "appearances": 1
@@ -62,15 +77,11 @@
       "appearances": 1
     },
     {
+      "id": "吉田_駿風_武蔵越生_埼玉県",
+      "appearances": 1
+    },
+    {
       "id": "小林_大洋_武蔵越生_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "齊藤_大翔_武蔵越生_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "寺門_共生_武蔵越生_埼玉県",
       "appearances": 1
     }
   ]

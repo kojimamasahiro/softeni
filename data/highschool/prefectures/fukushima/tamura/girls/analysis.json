@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -16,10 +16,10 @@
         "prefectureId": "fukushima",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["草野_春真_田村_", "北川_アンナ璃咲_明治大学_"]
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["渡邉_結奈_田村_福島県", "仙波_純佳_田村_福島県"]
       },
       "historicalBest": {
         "team": "田村",
@@ -28,10 +28,10 @@
         "prefectureId": "fukushima",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["草野_春真_田村_", "北川_アンナ璃咲_明治大学_"]
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["渡邉_結奈_田村_福島県", "仙波_純佳_田村_福島県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "先﨑_琉那_田村_福島県",
@@ -50,15 +50,15 @@
       "appearances": 2
     },
     {
-      "id": "草野_春真_田村_",
+      "id": "草野_春真_田村",
       "appearances": 1
     },
     {
-      "id": "北川_アンナ璃咲_明治大学_",
+      "id": "北川_アンナ璃咲_明治大学",
       "appearances": 1
     },
     {
-      "id": "門馬_椿姫_田村_福島県",
+      "id": "渡邉_結奈_田村_福島県",
       "appearances": 1
     }
   ]

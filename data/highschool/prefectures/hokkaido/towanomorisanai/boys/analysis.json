@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 55,
+  "totalAppearances": 69,
   "byCategory": {
-    "team": 6,
-    "doubles": 37,
+    "team": 12,
+    "doubles": 45,
     "singles": 12
   },
   "resultsByCategory": {
@@ -38,12 +38,12 @@
         "teamId": "towanomorisanai",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "boys",
-        "playerIds": ["岩城_啓太_とわの森三愛_北海道", "佐藤_諒_とわの森三愛_北海道"]
+        "playerIds": ["五十嵐_奨真_とわの森三愛_北海道", "酒井_隆杜_とわの森三愛_北海道"]
       },
       "historicalBest": {
         "team": "とわの森三愛",
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 45,
+  "uniquePlayers": 48,
   "topPlayers": [
     {
       "id": "岩城_啓太_とわの森三愛_北海道",
@@ -98,11 +98,11 @@
       "appearances": 4
     },
     {
-      "id": "田中_陽稀_とわの森三愛_北海道",
+      "id": "五十嵐_奨真_とわの森三愛_北海道",
       "appearances": 4
     },
     {
-      "id": "長南_理大_とわの森三愛_北海道",
+      "id": "中川_遥琉_とわの森三愛_北海道",
       "appearances": 4
     }
   ]

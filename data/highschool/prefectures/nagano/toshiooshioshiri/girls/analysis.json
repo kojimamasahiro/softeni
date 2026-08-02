@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
     "team": 1,
-    "doubles": 4
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -17,10 +17,10 @@
         "prefectureId": "nagano",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["黒岩_陽夏_都市大塩尻_長野県", "武重_希空_都市大塩尻_長野県"]
+        "playerIds": ["上條_愛弥_都市大塩尻高校_長野県", "酒田_莉帆_都市大塩尻高校_長野県"]
       },
       "historicalBest": {
         "team": "都市大塩尻",
@@ -29,10 +29,10 @@
         "prefectureId": "nagano",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["黒岩_陽夏_都市大塩尻_長野県", "武重_希空_都市大塩尻_長野県"]
+        "playerIds": ["上條_愛弥_都市大塩尻高校_長野県", "酒田_莉帆_都市大塩尻高校_長野県"]
       }
     },
     "team": {
@@ -60,11 +60,19 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "黒岩_陽夏_都市大塩尻_長野県",
       "appearances": 3
+    },
+    {
+      "id": "上條_愛弥_都市大塩尻_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "酒田_莉帆_都市大塩尻_長野県",
+      "appearances": 2
     },
     {
       "id": "宮本_菜々子_都市大塩尻_長野県",
@@ -73,10 +81,6 @@
     {
       "id": "永井_美羽_都市大塩尻_長野県",
       "appearances": 2
-    },
-    {
-      "id": "武重_希空_都市大塩尻_長野県",
-      "appearances": 1
     }
   ]
 }

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 27,
   "byCategory": {
-    "doubles": 17,
+    "team": 3,
+    "doubles": 19,
     "singles": 5
   },
   "resultsByCategory": {
@@ -59,10 +60,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大分商",
+        "teamId": "ooitashou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2023,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 20,
   "topPlayers": [
     {
       "id": "小橋_愛菜_大分商_大分県",
@@ -77,12 +88,12 @@
       "appearances": 4
     },
     {
-      "id": "三村_唯_大分商_大分県",
-      "appearances": 3
+      "id": "大海_香桜_大分商_大分県",
+      "appearances": 4
     },
     {
-      "id": "姫野_さくら_大分商_大分県",
-      "appearances": 3
+      "id": "姫嶋_心優_大分商_大分県",
+      "appearances": 4
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "明誠学院",
+        "teamId": "meiseigakuin",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["奥山_裕貴_明誠学院_岡山県", "酒井_航晴_明誠学院_岡山県"]
+      },
       "historicalBest": {
         "team": "明誠学院",
         "teamId": "meiseigakuin",
@@ -28,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "奥山_裕貴_明誠学院_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "酒井_航晴_明誠学院_岡山県",
+      "appearances": 1
+    },
     {
       "id": "藤井_聡人_明誠学院_岡山県",
       "appearances": 1

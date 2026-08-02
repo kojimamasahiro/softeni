@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 18,
   "byCategory": {
-    "team": 3,
-    "doubles": 11,
+    "team": 4,
+    "doubles": 13,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,9 +27,9 @@
         "teamId": "nakamura",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "予選敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2026,
         "gender": "girls",
         "playerIds": ["西村_世汝_中村_高知県", "田渕_ひなた_中村_高知県"]
@@ -62,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "新谷_友徠_中村_高知県",

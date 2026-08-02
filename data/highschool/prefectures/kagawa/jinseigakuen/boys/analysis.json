@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 154,
+  "totalAppearances": 168,
   "byCategory": {
-    "team": 6,
-    "doubles": 83,
-    "singles": 65
+    "team": 12,
+    "doubles": 87,
+    "singles": 69
   },
   "resultsByCategory": {
     "singles": {
@@ -64,9 +64,9 @@
         "teamId": "jinseigakuen",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "準優勝",
+        "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-senbatsu",
         "year": 2024,
         "gender": "boys"
       },
@@ -77,24 +77,24 @@
         "prefectureId": "kagawa",
         "result": "優勝",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2023,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 89,
+  "uniquePlayers": 94,
   "topPlayers": [
     {
       "id": "坂口_生磨_尽誠学園_香川県",
       "appearances": 12
     },
     {
-      "id": "小山_寛晴_尽誠学園_香川県",
-      "appearances": 8
+      "id": "伊藤_陽聖_尽誠学園_香川県",
+      "appearances": 9
     },
     {
-      "id": "伊藤_陽聖_尽誠学園_香川県",
+      "id": "小山_寛晴_尽誠学園_香川県",
       "appearances": 8
     },
     {
@@ -103,7 +103,7 @@
     },
     {
       "id": "木原_祐翔_尽誠学園_香川県",
-      "appearances": 7
+      "appearances": 8
     }
   ]
 }

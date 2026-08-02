@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
+    "team": 1,
     "doubles": 2
   },
   "resultsByCategory": {
@@ -36,7 +37,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "享栄",
+        "teamId": "kyouei",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2021,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 4,

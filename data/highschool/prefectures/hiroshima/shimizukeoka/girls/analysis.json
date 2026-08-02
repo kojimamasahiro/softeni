@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
+    "team": 1,
     "doubles": 3,
     "singles": 1
   },
@@ -36,8 +37,28 @@
       }
     },
     "team": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "清水ヶ丘",
+        "teamId": "shimizukeoka",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 7,

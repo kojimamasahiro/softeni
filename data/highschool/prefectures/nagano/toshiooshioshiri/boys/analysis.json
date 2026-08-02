@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 16,
   "byCategory": {
-    "team": 2,
-    "doubles": 10,
+    "team": 3,
+    "doubles": 12,
     "singles": 1
   },
   "resultsByCategory": {
@@ -48,7 +48,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "出場",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "都市大塩尻",
         "teamId": "toshiooshioshiri",
@@ -62,7 +72,7 @@
       }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "古幡_悠馬_都市大塩尻_長野県",

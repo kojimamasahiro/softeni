@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
-    "team": 1,
-    "doubles": 8,
+    "team": 2,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -48,7 +48,17 @@
       }
     },
     "team": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "大同大学大同",
+        "teamId": "daidoudaigakudaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
+        "gender": "boys"
+      },
       "historicalBest": {
         "team": "大同大学大同",
         "teamId": "daidoudaigakudaidou",
@@ -56,8 +66,8 @@
         "prefectureId": "aichi",
         "result": "2回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2024,
         "gender": "boys"
       }
     }
@@ -69,16 +79,16 @@
       "appearances": 3
     },
     {
-      "id": "奥_直翔_大同大学大同_愛知県",
+      "id": "農上_知輝_大同大学大同_愛知県",
       "appearances": 2
     },
     {
-      "id": "農上_知輝_大同大学大同_愛知県",
-      "appearances": 1
+      "id": "蟹江_琉紀_大同大学大同_愛知県",
+      "appearances": 2
     },
     {
-      "id": "蟹江_琉紀_大同大学大同_愛知県",
-      "appearances": 1
+      "id": "奥_直翔_大同大学大同_愛知県",
+      "appearances": 2
     },
     {
       "id": "岡﨑_撞樹_大同大学大同_愛知県",

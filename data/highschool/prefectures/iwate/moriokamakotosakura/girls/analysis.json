@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "盛岡誠桜",
+        "teamId": "moriokamakotosakura",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["川崎_遥_盛岡誠桜_岩手県", "花立_玖悠_盛岡誠桜_岩手県"]
+      },
       "historicalBest": {
         "team": "盛岡誠桜",
         "teamId": "moriokamakotosakura",
@@ -28,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "川崎_遥_盛岡誠桜_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "花立_玖悠_盛岡誠桜_岩手県",
+      "appearances": 1
+    },
     {
       "id": "菊池_花凜_盛岡誠桜_岩手県",
       "appearances": 1
@@ -40,10 +59,6 @@
     },
     {
       "id": "岩泉_和奏_盛岡誠桜_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "髙際_桃々_盛岡誠桜_岩手県",
       "appearances": 1
     }
   ]

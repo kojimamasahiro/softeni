@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 50,
+  "totalAppearances": 61,
   "byCategory": {
-    "team": 6,
-    "doubles": 38,
+    "team": 12,
+    "doubles": 43,
     "singles": 6
   },
   "resultsByCategory": {
@@ -77,17 +77,21 @@
         "prefectureId": "tokushima",
         "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-senbatsu",
+        "year": 2022,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 37,
+  "uniquePlayers": 41,
   "topPlayers": [
     {
       "id": "長瀬_千咲_脇町_徳島県",
       "appearances": 6
+    },
+    {
+      "id": "浅井_優里_脇町_徳島県",
+      "appearances": 5
     },
     {
       "id": "島田_藍_脇町_徳島県",
@@ -99,10 +103,6 @@
     },
     {
       "id": "亀井_美来_脇町_徳島県",
-      "appearances": 4
-    },
-    {
-      "id": "浅井_優里_脇町_徳島県",
       "appearances": 4
     }
   ]

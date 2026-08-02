@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 5,
     "singles": 1
   },
   "resultsByCategory": {
@@ -40,9 +40,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["櫻川_未来_上溝南_神奈川県", "大谷_鞠歌_上溝南_神奈川県"]
+        "playerIds": ["石井_陽和_上溝南_神奈川県", "櫻川_未来_上溝南_神奈川県"]
       },
       "historicalBest": {
         "team": "上溝南",
@@ -62,22 +62,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "櫻川_未来_上溝南_神奈川県",
-      "appearances": 3
-    },
-    {
-      "id": "森下_芹羽_上溝南_神奈川県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "大谷_鞠歌_上溝南_神奈川県",
       "appearances": 2
     },
     {
+      "id": "森下_芹羽_上溝南_神奈川県",
+      "appearances": 2
+    },
+    {
       "id": "森下_汐羽_上溝南_神奈川県",
+      "appearances": 2
+    },
+    {
+      "id": "石井_陽和_上溝南_神奈川県",
       "appearances": 1
     }
   ]

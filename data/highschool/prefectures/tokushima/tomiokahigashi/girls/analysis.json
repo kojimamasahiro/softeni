@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -17,9 +17,9 @@
         "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["山川_実奈_富岡東_徳島県", "德本_梨愛_富岡東_徳島県"]
+        "playerIds": ["宮本_亜茉音_富岡東_徳島県", "工藤_心結_富岡東_徳島県"]
       },
       "historicalBest": {
         "team": "富岡東",
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "山川_実奈_富岡東_徳島県",
@@ -50,11 +50,15 @@
       "appearances": 1
     },
     {
-      "id": "幾野_百々_富岡東_徳島県",
+      "id": "宮本_亜茉音_富岡東_徳島県",
       "appearances": 1
     },
     {
-      "id": "脇岡_弥優_富岡東_徳島県",
+      "id": "工藤_心結_富岡東_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "幾野_百々_富岡東_徳島県",
       "appearances": 1
     }
   ]

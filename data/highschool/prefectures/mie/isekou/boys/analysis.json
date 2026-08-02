@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "伊勢工",
+        "teamId": "isekou",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["泉_煌大_伊勢工_三重県", "東川_斗真_伊勢工_三重県"]
+      },
       "historicalBest": {
         "team": "伊勢工",
         "teamId": "isekou",
@@ -28,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "泉_煌大_伊勢工_三重県",
+      "appearances": 1
+    },
+    {
+      "id": "東川_斗真_伊勢工_三重県",
+      "appearances": 1
+    },
     {
       "id": "北村_優_伊勢工_三重県",
       "appearances": 1
