@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs &&node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save",
+    "prebuild": "node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save",
     "playerstats:cache-sync": "node scripts/playerStats/cache-sync.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
@@ -73,7 +73,8 @@
     "playerstats:perf": "ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/verify-performance.ts",
     "start": "next start",
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "check:orphans": "node scripts/check-orphan-entries.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",

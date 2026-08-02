@@ -23,6 +23,13 @@ import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
 import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
+/** 優勝者の個人（選手ページを持つ場合は playerId が入る）。 */
+type WinnerPlayer = {
+  name: string;
+  /** /players/{playerId}/results/ の数値ID。結果ページが無い（count<5・未収録等）選手は null。 */
+  playerId: number | null;
+};
+
 type CategoryLink = {
   label: string;
   category: string;
@@ -30,6 +37,13 @@ type CategoryLink = {
   gender: string;
   href: string;
   winner: string | null;
+  /**
+   * winner の個人名内訳（選手ページへのリンク用）。team カテゴリ（個人名が無く学校名のみ）
+   * や参加者データが解決できない場合は null。
+   */
+  winnerPlayers: WinnerPlayer[] | null;
+  /** winner の所属表記（「（〇〇高校）」の中身）。個人名が無い team カテゴリでは null。 */
+  winnerTeamsLabel: string | null;
   /**
    * 打ち切り大会のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null。
    * 打ち切り年は優勝者が存在しないため、歴代優勝者リストで空欄（＝データ未整備に見える）
@@ -82,6 +96,8 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
         // 打ち切り年は null。JSON-LD の performer / description はこの null を見て出し分ける
         // （プレースホルダ文字列を構造化データに混ぜない）。
         winner: c.winner,
+        winnerPlayers: c.winnerPlayers,
+        winnerTeamsLabel: c.winnerTeamsLabel,
         abandonedAfterRound: c.winner ? null : c.abandonedAfterRound,
         href: c.href,
         location: g.location,
@@ -246,7 +262,30 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                         <Link href={r.href} className="text-link hover:underline">
                           {r.year}年
                         </Link>
-                        : {r.winner ?? <span className="text-text-muted">{r.abandonedAfterRound}までで打ち切り（優勝者なし）</span>}
+                        :{' '}
+                        {r.winner ? (
+                          r.winnerPlayers && r.winnerPlayers.length > 0 ? (
+                            <>
+                              {r.winnerPlayers.map((p, i) => (
+                                <span key={`${p.name}-${i}`}>
+                                  {i > 0 && '・'}
+                                  {p.playerId ? (
+                                    <Link href={`/players/${p.playerId}/results`} className="text-link hover:underline">
+                                      {p.name}
+                                    </Link>
+                                  ) : (
+                                    p.name
+                                  )}
+                                </span>
+                              ))}
+                              {r.winnerTeamsLabel ? `（${r.winnerTeamsLabel}）` : ''}
+                            </>
+                          ) : (
+                            r.winner
+                          )
+                        ) : (
+                          <span className="text-text-muted">{r.abandonedAfterRound}までで打ち切り（優勝者なし）</span>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -298,8 +337,49 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
 
 const DETAILS_ROOT = ['data', 'tournaments', 'details'];
 
+type ExtractedWinner = {
+  display: string;
+  /** 個人名の内訳（選手ページへのリンク用）。team カテゴリ（個人名が無い）では空配列。 */
+  players: WinnerPlayer[];
+  /** 所属表記（「（〇〇高校）」の中身）。無ければ null。 */
+  teamsLabel: string | null;
+};
+
+// data/players/index.json（掲載選手全体・数千件）は選手ページと同じ「姓名一致・count>=5・
+// 同姓同名は最初のID」規約で数値IDへ解決する（docs/wiki/players-pages.md「選手名から
+// 『その選手の成績ページ』へ内部リンクしたい一般用途」）。このハブページは大会数ぶん
+// （数十回）呼ばれるだけだが、他ページ（TeamsRanking 等）と同じくプロセス内で一度だけ
+// 読み込んでキャッシュし、1.2MB の JSON を毎回パースし直さないようにする。
+let cachedPlayerNameToId: Map<string, number> | null = null;
+
+function getPlayerNameToIdMap(): Map<string, number> {
+  if (cachedPlayerNameToId) return cachedPlayerNameToId;
+  const map = new Map<string, number>();
+  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+  if (fs.existsSync(playersIndexPath)) {
+    try {
+      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
+        id: number;
+        lastName: string;
+        firstName: string;
+        count: number;
+      }>;
+      for (const p of playersIndex) {
+        if (p.count < 5) continue;
+        const key = `${p.lastName}::${p.firstName}`;
+        // 同姓同名は最初の ID を使う（players/index.tsx 等と同じ既存規約）
+        if (!map.has(key)) map.set(key, p.id);
+      }
+    } catch (err) {
+      console.error('failed to parse players index.json', err);
+    }
+  }
+  cachedPlayerNameToId = map;
+  return map;
+}
+
 // 詳細JSONから優勝ペア（選手名・所属）を抽出する。なければ null。
-function extractWinner(detailPath: string): string | null {
+function extractWinner(detailPath: string, nameToId: Map<string, number>): ExtractedWinner | null {
   try {
     const data = JSON.parse(fs.readFileSync(detailPath, 'utf-8')) as {
       participants?: Array<{
@@ -319,13 +399,23 @@ function extractWinner(detailPath: string): string | null {
     const entry = (data.entries ?? []).find((e) => e.entryNo === winResult.entryNo);
     if (!entry) return null;
     const pmap = new Map((data.participants ?? []).map((p) => [p.id, p] as const));
+    const players: WinnerPlayer[] = [];
     const names = entry.playerIds.map((id) => {
       const p = pmap.get(id);
-      return p ? joinPlayerName(p.lastName, p.firstName) : id;
+      if (!p) return id;
+      const name = joinPlayerName(p.lastName, p.firstName);
+      // team カテゴリは lastName/firstName が無く name が空文字になるため、
+      // 個人名リストには入れない（リンク先の無い空リンクを作らない）。
+      if (p.lastName && p.firstName && name) {
+        players.push({ name, playerId: nameToId.get(`${p.lastName}::${p.firstName}`) ?? null });
+      }
+      return name;
     });
     const teams = [...new Set(entry.playerIds.map((id) => pmap.get(id)?.team).filter((t): t is string => Boolean(t)))];
     const nameStr = names.join('・');
-    return teams.length > 0 ? `${nameStr}（${teams.join('・')}）` : nameStr;
+    const teamsLabel = teams.length > 0 ? teams.join('・') : null;
+    const display = teamsLabel ? `${nameStr}（${teamsLabel}）` : nameStr;
+    return { display, players, teamsLabel };
   } catch {
     return null;
   }
@@ -432,6 +522,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     categoryLabelByYear.set(y, m);
   }
 
+  // 優勝者名 → 選手ページ数値ID の解決マップ（プロセス内キャッシュ）
+  const playerNameToId = getPlayerNameToIdMap();
+
   // details ディレクトリを走査し、実際にデータがある年度・種別のみリンク化
   const tidDir = path.join(process.cwd(), ...DETAILS_ROOT, tournamentId);
   const yearGroups: YearGroup[] = [];
@@ -461,13 +554,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
         const category = parts.join('-');
         const categoryId = `${category}-${age}-${gender}`;
 
+        const extracted = extractWinner(path.join(yearDir, f), playerNameToId);
+
         categories.push({
           label: labelMap.get(categoryId) ?? categoryId,
           category,
           age,
           gender,
           href: `/tournaments/${generation}/${tournamentId}/${y}/${category}/${age}/${gender}`,
-          winner: extractWinner(path.join(yearDir, f)),
+          winner: extracted?.display ?? null,
+          winnerPlayers: extracted && extracted.players.length > 0 ? extracted.players : null,
+          winnerTeamsLabel: extracted?.teamsLabel ?? null,
           abandonedAfterRound: getAbandonment(infoByYear.get(y)?.categories, categoryId)?.abandonedAfterRound ?? null,
         });
       }
