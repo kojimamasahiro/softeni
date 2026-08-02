@@ -4757,9 +4757,9 @@
     },
     {
       "entries": [226,235],
-      "scores": {"226":3,"235":4},
+      "scores": {"226":4,"235":3},
       "round": "5回戦",
-      "winnerEntryNo": 235,
+      "winnerEntryNo": 226,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -4886,10 +4886,10 @@
       "prevMatchId": null
     },
     {
-      "entries": [210,235],
-      "scores": {"210":2,"235":4},
+      "entries": [210,226],
+      "scores": {"210":2,"226":4},
       "round": "6回戦",
-      "winnerEntryNo": 235,
+      "winnerEntryNo": 226,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -4951,7 +4951,7 @@
       "prevMatchId": null
     },
     {
-      "entries": [168,235],
+      "entries": [168,226],
       "scores": {},
       "round": "準々決勝",
       "winnerEntryNo": null,
@@ -5203,7 +5203,7 @@
     {"entryNo":223,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":224,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":225,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":226,"tournament":{"label":"5回戦敗退","rank":{"kind":"round","round":5}},"roundrobin":null},
+    {"entryNo":226,"tournament":{"label":"ベスト8進出","rank":{"kind":"ongoing"}},"roundrobin":null},
     {"entryNo":227,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
     {"entryNo":228,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":229,"tournament":{"label":"4回戦敗退","rank":{"kind":"round","round":4}},"roundrobin":null},
@@ -5212,7 +5212,7 @@
     {"entryNo":232,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":233,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":234,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":235,"tournament":{"label":"ベスト8進出","rank":{"kind":"ongoing"}},"roundrobin":null},
+    {"entryNo":235,"tournament":{"label":"5回戦敗退","rank":{"kind":"round","round":5}},"roundrobin":null},
     {"entryNo":236,"tournament":{"label":"6回戦敗退","rank":{"kind":"round","round":6}},"roundrobin":null},
     {"entryNo":237,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
     {"entryNo":238,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
