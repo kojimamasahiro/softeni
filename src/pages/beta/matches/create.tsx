@@ -1,17 +1,29 @@
 import type { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { hasLiveMatchApi } from '../../../../lib/betaMatchesClient';
 import { isDebugMode, isTestMode } from '../../../../lib/env';
 import { isScoreSiteMode } from '../../../../lib/siteConfig';
 import { getCategoryOptions, TournamentCategory, TournamentMeta } from '../../../../lib/tournamentHelpers';
 import DevOnlyNotice from '../../../components/matches/DevOnlyNotice';
+import SelectableButtonGroup from '../../../components/matches/create/SelectableButtonGroup';
+import TeamPlayersFieldset from '../../../components/matches/create/TeamPlayersFieldset';
+import type { EntryOption, TeamFormState } from '../../../components/matches/create/types';
 
 type TournamentOption = {
   id: string;
   name: string;
   year: number;
+  tournamentId: string;
+  displayName: string;
+};
+
+// 大会名プルダウン用にグルーピングした大会（年をまたいで1エントリー）
+type TournamentGroup = {
+  tournamentId: string;
+  displayName: string;
+  years: number[];
 };
 
 type TournamentCatalogEntry = {
@@ -19,21 +31,13 @@ type TournamentCatalogEntry = {
   meta: TournamentMeta | null;
 };
 
-type EntryOption = {
-  entryNo: number;
-  label: string;
-  players: {
-    last_name: string;
-    first_name: string;
-    team_name: string;
-    region: string;
-  }[];
-};
-
 type KnownPlayer = {
   lastName: string;
   firstName: string;
 };
+
+// フォーカス時のキーボード操作向けリング（共通スタイル）
+const FOCUS_RING = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-blue-400';
 
 type CreateMatchProps = {
   tournamentOptions: TournamentOption[];
@@ -48,6 +52,31 @@ const looseNameKey = (lastName: string, firstName: string) => `${normalizeNameTe
 const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps) => {
   const router = useRouter();
   const canEditMatches = isDebugMode() && hasLiveMatchApi();
+
+  // 大会名プルダウン用: tournamentOptions（大会×年の組み合わせ）を大会単位にグルーピングする。
+  // tournamentOptions は大会ごとに年降順で並んでいるため、最初に現れた年が最新年になる。
+  const tournamentGroups = useMemo<TournamentGroup[]>(() => {
+    const groups: TournamentGroup[] = [];
+    const groupByTournamentId = new Map<string, TournamentGroup>();
+
+    for (const option of tournamentOptions) {
+      const existing = groupByTournamentId.get(option.tournamentId);
+      if (existing) {
+        existing.years.push(option.year);
+        continue;
+      }
+
+      const group: TournamentGroup = {
+        tournamentId: option.tournamentId,
+        displayName: option.displayName,
+        years: [option.year],
+      };
+      groupByTournamentId.set(option.tournamentId, group);
+      groups.push(group);
+    }
+
+    return groups;
+  }, [tournamentOptions]);
   // 氏名サジェスト・重複検知用の既知選手一覧。ページ props に同梱すると
   // 数百kBになるため、ビルド時生成の静的JSONをクライアントで遅延取得する。
   const [knownPlayers, setKnownPlayers] = useState<KnownPlayer[]>([]);
@@ -78,6 +107,11 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     opponent_level: 'unknown',
   });
 
+  // formData.tournament_name には大会ID（年なし）を保持する
+  const selectedTournamentGroup = tournamentGroups.find((group) => group.tournamentId === formData.tournament_name);
+  // 選択中の「大会＋年」の組み合わせキー（tournamentCatalog の参照キー・API送信用）
+  const selectedTournamentYearKey = formData.tournament_name && formData.year ? `${formData.tournament_name}-${formData.year}` : '';
+
   // カテゴリからゲーム形式を判定する関数
   const getGameTypeFromCategory = (selectedCategory: string): 'singles' | 'doubles' | 'team' => {
     if (!selectedCategory || !categoryOptions.gameCategories) return 'singles';
@@ -104,7 +138,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     // 優先選択肢がない場合は空文字（ユーザーに選択させる）
     return '';
   };
-  const [teamA, setTeamA] = useState({
+  const [teamA, setTeamA] = useState<TeamFormState>({
     entry_number: '',
     player1_last_name: '',
     player1_first_name: '',
@@ -115,7 +149,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     player2_team_name: '', // ダブルスの場合のみ
     player2_region: '', // ダブルスの場合のみ
   });
-  const [teamB, setTeamB] = useState({
+  const [teamB, setTeamB] = useState<TeamFormState>({
     entry_number: '',
     player1_last_name: '',
     player1_first_name: '',
@@ -145,7 +179,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
 
   // 選択中カテゴリの categoryId（ファイル名規約 {category}-{age}-{gender}）を解決
   const currentCategoryId = (() => {
-    const selected = tournamentCatalog[formData.tournament_name];
+    const selected = tournamentCatalog[selectedTournamentYearKey];
     if (!selected) return '';
     const matched = selected.categories.find((cat) => cat.category === formData.category && cat.gender === formData.gender);
     return matched?.id ?? '';
@@ -158,10 +192,11 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
       return;
     }
 
-    const tournamentId = formData.tournament_name.replace(/-\d{4}$/, '');
     let cancelled = false;
 
-    fetch(`/api/tournament-entries?tournamentId=${encodeURIComponent(tournamentId)}&year=${formData.year}&categoryId=${encodeURIComponent(currentCategoryId)}`)
+    fetch(
+      `/api/tournament-entries?tournamentId=${encodeURIComponent(formData.tournament_name)}&year=${formData.year}&categoryId=${encodeURIComponent(currentCategoryId)}`,
+    )
       .then((response) => (response.ok ? response.json() : { entries: [] }))
       .then((data) => {
         if (!cancelled) setEntryOptions(data.entries ?? []);
@@ -197,10 +232,10 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     }
   };
 
-  // 大会選択時にカテゴリと年を取得
+  // 大会・開催年の選択が確定するたびにカテゴリ候補を更新
   useEffect(() => {
     const updateCategories = () => {
-      if (!formData.tournament_name) {
+      if (!selectedTournamentYearKey) {
         setCategoryOptions({
           generations: [],
           genders: [],
@@ -209,11 +244,11 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         return;
       }
 
-      const selected = tournamentCatalog[formData.tournament_name];
+      const selected = tournamentCatalog[selectedTournamentYearKey];
       const options = getCategoryOptions(selected?.categories ?? [], selected?.meta ?? undefined);
       setCategoryOptions(options);
 
-      // フォームのカテゴリ選択をリセット（年は大会選択時に既に設定済み）
+      // フォームのカテゴリ選択をリセット
       // 選択肢が1つしかない場合は自動選択、複数ある場合は優先度に基づいて選択
       setFormData((prev) => ({
         ...prev,
@@ -224,7 +259,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     };
 
     updateCategories();
-  }, [formData.tournament_name, tournamentCatalog]);
+  }, [selectedTournamentYearKey, tournamentCatalog]);
 
   // 開発環境でない場合はアクセス拒否
   if (!canEditMatches) {
@@ -293,11 +328,12 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
       const gameType = getGameTypeFromCategory(formData.category);
 
       // API用にフィールド名を変換
-      // tournament_nameから年を除外してtournament_idとして使用
-      const tournamentId = formData.tournament_name.replace(/-\d{4}$/, '');
+      // formData.tournament_name は大会ID（年なし）。tournament_name には
+      // 大会詳細ページの解決（getTournamentInfoSSR）が前提とする「大会ID-年」形式で送る。
+      const tournamentId = formData.tournament_name;
       const apiData = {
-        tournament_name: formData.tournament_name,
-        tournament_id: tournamentId, // 年を除外したtournament_id
+        tournament_name: selectedTournamentYearKey,
+        tournament_id: tournamentId,
         tournament_generation: formData.generation,
         tournament_gender: formData.gender,
         tournament_category: formData.category,
@@ -477,32 +513,29 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
             ))}
         </datalist>
         <div>
-          <label className="block text-sm font-medium mb-2">大会名</label>
+          <label className="block text-sm font-medium mb-2">大会名 *</label>
 
-          <div className="space-y-2">
-            <div>
-              <select
-                required
-                value={formData.tournament_name}
-                onChange={(e) => {
-                  const selectedTournament = tournamentOptions.find((option) => option.id === e.target.value);
-                  setFormData({
-                    ...formData,
-                    tournament_name: e.target.value,
-                    year: selectedTournament ? selectedTournament.year : new Date().getFullYear(),
-                  });
-                }}
-                className="w-full border rounded p-2"
-              >
-                <option value="">大会を選択してください</option>
-                {tournamentOptions.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <select
+            required
+            value={formData.tournament_name}
+            onChange={(e) => {
+              const selectedGroup = tournamentGroups.find((group) => group.tournamentId === e.target.value);
+              setFormData({
+                ...formData,
+                tournament_name: e.target.value,
+                // 大会を選び直したら最新年をデフォルト選択（開催年プルダウンで変更可能）
+                year: selectedGroup ? selectedGroup.years[0] : new Date().getFullYear(),
+              });
+            }}
+            className={`w-full border rounded p-2 ${FOCUS_RING}`}
+          >
+            <option value="">大会を選択してください</option>
+            {tournamentGroups.map((group) => (
+              <option key={group.tournamentId} value={group.tournamentId}>
+                {group.displayName}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* カテゴリ選択 */}
@@ -514,26 +547,14 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
             {categoryOptions.generations.length > 0 && (
               <div>
                 <label className="block text-sm font-medium mb-2">世代</label>
-                <div className="space-y-2">
-                  {categoryOptions.generations.map((gen) => (
-                    <label key={gen.value} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="generation"
-                        value={gen.value}
-                        checked={formData.generation === gen.value}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            generation: e.target.value,
-                          })
-                        }
-                        className="mr-2"
-                      />
-                      {gen.label}
-                    </label>
-                  ))}
-                </div>
+                <SelectableButtonGroup
+                  name="generation"
+                  ariaLabel="世代"
+                  options={categoryOptions.generations}
+                  value={formData.generation}
+                  onChange={(value) => setFormData({ ...formData, generation: value })}
+                  columns={3}
+                />
               </div>
             )}
 
@@ -541,26 +562,14 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
             {categoryOptions.genders.length > 0 && (
               <div>
                 <label className="block text-sm font-medium mb-2">性別</label>
-                <div className="space-y-2">
-                  {categoryOptions.genders.map((gender) => (
-                    <label key={gender.value} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value={gender.value}
-                        checked={formData.gender === gender.value}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            gender: e.target.value,
-                          })
-                        }
-                        className="mr-2"
-                      />
-                      {gender.label}
-                    </label>
-                  ))}
-                </div>
+                <SelectableButtonGroup
+                  name="gender"
+                  ariaLabel="性別"
+                  options={categoryOptions.genders}
+                  value={formData.gender}
+                  onChange={(value) => setFormData({ ...formData, gender: value })}
+                  columns={2}
+                />
               </div>
             )}
 
@@ -568,52 +577,46 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
             {categoryOptions.gameCategories.length > 0 && (
               <div>
                 <label className="block text-sm font-medium mb-2">ゲームカテゴリ</label>
-                <div className="space-y-2">
-                  {categoryOptions.gameCategories.map((cat) => (
-                    <label key={cat.value} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="category"
-                        value={cat.value}
-                        checked={formData.category === cat.value}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            category: e.target.value,
-                          })
-                        }
-                        className="mr-2"
-                      />
-                      {cat.label}
-                    </label>
-                  ))}
-                </div>
+                <SelectableButtonGroup
+                  name="category"
+                  ariaLabel="ゲームカテゴリ"
+                  options={categoryOptions.gameCategories}
+                  value={formData.category}
+                  onChange={(value) => setFormData({ ...formData, category: value })}
+                  columns={2}
+                />
               </div>
             )}
           </div>
         )}
 
         <div>
-          <label className="block text-sm font-medium mb-2">開催年</label>
-          {formData.tournament_name ? (
-            <div className="w-full border rounded p-2 bg-gray-100 text-gray-700">{formData.year}年 (大会データより自動設定)</div>
-          ) : (
-            <input
-              type="number"
+          <label className="block text-sm font-medium mb-2">開催年 *</label>
+          {selectedTournamentGroup ? (
+            <select
               required
-              min="2020"
-              max="2030"
               value={formData.year}
               onChange={(e) => setFormData({ ...formData, year: parseInt(e.target.value) })}
-              className="w-full border rounded p-2"
-              placeholder="例: 2024"
-            />
+              className={`w-full border rounded p-2 ${FOCUS_RING}`}
+            >
+              {selectedTournamentGroup.years.map((year) => (
+                <option key={year} value={year}>
+                  {year}年
+                </option>
+              ))}
+            </select>
+          ) : (
+            <div className="w-full border rounded p-2 bg-gray-100 text-gray-500">先に大会名を選択してください</div>
           )}
         </div>
 
         <div>
           <label className="block text-sm font-medium mb-2">回戦</label>
-          <select value={formData.round_name} onChange={(e) => setFormData({ ...formData, round_name: e.target.value })} className="w-full border rounded p-2">
+          <select
+            value={formData.round_name}
+            onChange={(e) => setFormData({ ...formData, round_name: e.target.value })}
+            className={`w-full border rounded p-2 ${FOCUS_RING}`}
+          >
             <option value="">回戦を選択してください（任意）</option>
             <option value="1回戦">1回戦</option>
             <option value="2回戦">2回戦</option>
@@ -635,7 +638,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
               type="date"
               value={formData.match_date}
               onChange={(e) => setFormData({ ...formData, match_date: e.target.value })}
-              className="w-full border rounded p-2"
+              className={`w-full border rounded p-2 ${FOCUS_RING}`}
             />
           </div>
           <div>
@@ -644,7 +647,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
               type="text"
               value={formData.court_name}
               onChange={(e) => setFormData({ ...formData, court_name: e.target.value })}
-              className="w-full border rounded p-2"
+              className={`w-full border rounded p-2 ${FOCUS_RING}`}
               placeholder="例: 第1コート"
             />
           </div>
@@ -653,7 +656,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
             <select
               value={formData.opponent_level}
               onChange={(e) => setFormData({ ...formData, opponent_level: e.target.value })}
-              className="w-full border rounded p-2"
+              className={`w-full border rounded p-2 ${FOCUS_RING}`}
             >
               <option value="unknown">不明</option>
               <option value="stronger">格上</option>
@@ -663,286 +666,48 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-4">チームA</label>
-          {entryOptions.length > 0 && (
-            <div className="mb-4">
-              <label className="block text-xs text-emerald-700 mb-1">エントリーから選択（自動入力）</label>
-              <select
-                value=""
-                onChange={(e) => applyEntryToTeam('A', entryOptions.find((option) => String(option.entryNo) === e.target.value) ?? null)}
-                className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
-              >
-                <option value="">エントリーを選択…</option>
-                {entryOptions.map((option) => (
-                  <option key={option.entryNo} value={option.entryNo}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-          <div className="mb-4">
-            <label className="block text-xs text-gray-600 mb-1">エントリー番号</label>
-            <input
-              type="text"
-              value={teamA.entry_number}
-              onChange={(e) => setTeamA({ ...teamA, entry_number: e.target.value })}
-              className="w-full border rounded p-2 text-sm"
-              placeholder="例: A001"
-            />
-          </div>
+        <TeamPlayersFieldset
+          teamKey="A"
+          teamLabel="チーム A"
+          team={teamA}
+          onTeamChange={setTeamA}
+          isDoubles={getGameTypeFromCategory(formData.category) === 'doubles'}
+          entryOptions={entryOptions}
+          onApplyEntry={(option) => applyEntryToTeam('A', option)}
+          lastNameListId="known-last-names"
+          firstNameListId="known-first-names"
+        />
 
-          <div className="space-y-4">
-            <div className="border-l-4 border-blue-500 pl-4">
-              <label className="block text-xs text-gray-600 mb-2">選手1</label>
-              <div className="space-y-2">
-                <div className="grid grid-cols-2 gap-2">
-                  <input
-                    type="text"
-                    required
-                    value={teamA.player1_last_name}
-                    onChange={(e) => setTeamA({ ...teamA, player1_last_name: e.target.value })}
-                    className="border rounded p-2 text-sm"
-                    placeholder="姓"
-                    list="known-last-names"
-                  />
-                  <input
-                    type="text"
-                    required
-                    value={teamA.player1_first_name}
-                    onChange={(e) => setTeamA({ ...teamA, player1_first_name: e.target.value })}
-                    className="border rounded p-2 text-sm"
-                    placeholder="名"
-                    list="known-first-names"
-                  />
-                </div>
-                <input
-                  type="text"
-                  required
-                  value={teamA.player1_team_name}
-                  onChange={(e) => setTeamA({ ...teamA, player1_team_name: e.target.value })}
-                  className="w-full border rounded p-2 text-sm"
-                  placeholder="チーム名 (例: 東京都立高校)"
-                />
-                <input
-                  type="text"
-                  value={teamA.player1_region}
-                  onChange={(e) => setTeamA({ ...teamA, player1_region: e.target.value })}
-                  className="w-full border rounded p-2 text-sm"
-                  placeholder="地域 (例: 東京都)"
-                />
-              </div>
-            </div>
-
-            {getGameTypeFromCategory(formData.category) === 'doubles' && (
-              <div className="border-l-4 border-green-500 pl-4">
-                <label className="block text-xs text-gray-600 mb-2">選手2</label>
-                <div className="space-y-2">
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      type="text"
-                      required
-                      value={teamA.player2_last_name}
-                      onChange={(e) =>
-                        setTeamA({
-                          ...teamA,
-                          player2_last_name: e.target.value,
-                        })
-                      }
-                      className="border rounded p-2 text-sm"
-                      placeholder="姓"
-                    />
-                    <input
-                      type="text"
-                      required
-                      value={teamA.player2_first_name}
-                      onChange={(e) =>
-                        setTeamA({
-                          ...teamA,
-                          player2_first_name: e.target.value,
-                        })
-                      }
-                      className="border rounded p-2 text-sm"
-                      placeholder="名"
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    value={teamA.player2_team_name}
-                    onChange={(e) => setTeamA({ ...teamA, player2_team_name: e.target.value })}
-                    className="w-full border rounded p-2 text-sm"
-                    placeholder="チーム名 (例: 神奈川県立高校)"
-                  />
-                  <input
-                    type="text"
-                    value={teamA.player2_region}
-                    onChange={(e) => setTeamA({ ...teamA, player2_region: e.target.value })}
-                    className="w-full border rounded p-2 text-sm"
-                    placeholder="地域 (例: 神奈川県)"
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium mb-4">チームB</label>
-          {entryOptions.length > 0 && (
-            <div className="mb-4">
-              <label className="block text-xs text-emerald-700 mb-1">エントリーから選択（自動入力）</label>
-              <select
-                value=""
-                onChange={(e) => applyEntryToTeam('B', entryOptions.find((option) => String(option.entryNo) === e.target.value) ?? null)}
-                className="w-full border border-emerald-300 rounded p-2 text-sm bg-emerald-50"
-              >
-                <option value="">エントリーを選択…</option>
-                {entryOptions.map((option) => (
-                  <option key={option.entryNo} value={option.entryNo}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-          <div className="mb-4">
-            <label className="block text-xs text-gray-600 mb-1">エントリー番号</label>
-            <input
-              type="text"
-              value={teamB.entry_number}
-              onChange={(e) => setTeamB({ ...teamB, entry_number: e.target.value })}
-              className="w-full border rounded p-2 text-sm"
-              placeholder="例: B001"
-            />
-          </div>
-
-          <div className="space-y-4">
-            <div className="border-l-4 border-blue-500 pl-4">
-              <label className="block text-xs text-gray-600 mb-2">選手1</label>
-              <div className="space-y-2">
-                <div className="grid grid-cols-2 gap-2">
-                  <input
-                    type="text"
-                    required
-                    value={teamB.player1_last_name}
-                    onChange={(e) => setTeamB({ ...teamB, player1_last_name: e.target.value })}
-                    className="border rounded p-2 text-sm"
-                    placeholder="姓"
-                    list="known-last-names"
-                  />
-                  <input
-                    type="text"
-                    required
-                    value={teamB.player1_first_name}
-                    onChange={(e) => setTeamB({ ...teamB, player1_first_name: e.target.value })}
-                    className="border rounded p-2 text-sm"
-                    placeholder="名"
-                    list="known-first-names"
-                  />
-                </div>
-                <input
-                  type="text"
-                  required
-                  value={teamB.player1_team_name}
-                  onChange={(e) => setTeamB({ ...teamB, player1_team_name: e.target.value })}
-                  className="w-full border rounded p-2 text-sm"
-                  placeholder="チーム名 (例: 大阪府立高校)"
-                />
-                <input
-                  type="text"
-                  value={teamB.player1_region}
-                  onChange={(e) => setTeamB({ ...teamB, player1_region: e.target.value })}
-                  className="w-full border rounded p-2 text-sm"
-                  placeholder="地域 (例: 大阪府)"
-                />
-              </div>
-            </div>
-
-            {getGameTypeFromCategory(formData.category) === 'doubles' && (
-              <div className="border-l-4 border-green-500 pl-4">
-                <label className="block text-xs text-gray-600 mb-2">選手2</label>
-                <div className="space-y-2">
-                  <div className="grid grid-cols-2 gap-2">
-                    <input
-                      type="text"
-                      required
-                      value={teamB.player2_last_name}
-                      onChange={(e) =>
-                        setTeamB({
-                          ...teamB,
-                          player2_last_name: e.target.value,
-                        })
-                      }
-                      className="border rounded p-2 text-sm"
-                      placeholder="姓"
-                    />
-                    <input
-                      type="text"
-                      required
-                      value={teamB.player2_first_name}
-                      onChange={(e) =>
-                        setTeamB({
-                          ...teamB,
-                          player2_first_name: e.target.value,
-                        })
-                      }
-                      className="border rounded p-2 text-sm"
-                      placeholder="名"
-                    />
-                  </div>
-                  <input
-                    type="text"
-                    required
-                    value={teamB.player2_team_name}
-                    onChange={(e) => setTeamB({ ...teamB, player2_team_name: e.target.value })}
-                    className="w-full border rounded p-2 text-sm"
-                    placeholder="チーム名 (例: 兵庫県立高校)"
-                  />
-                  <input
-                    type="text"
-                    value={teamB.player2_region}
-                    onChange={(e) => setTeamB({ ...teamB, player2_region: e.target.value })}
-                    className="w-full border rounded p-2 text-sm"
-                    placeholder="地域 (例: 兵庫県)"
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
+        <TeamPlayersFieldset
+          teamKey="B"
+          teamLabel="チーム B"
+          team={teamB}
+          onTeamChange={setTeamB}
+          isDoubles={getGameTypeFromCategory(formData.category) === 'doubles'}
+          entryOptions={entryOptions}
+          onApplyEntry={(option) => applyEntryToTeam('B', option)}
+          lastNameListId="known-last-names"
+          firstNameListId="known-first-names"
+        />
 
         <div>
           <label className="block text-sm font-medium mb-2">マッチ形式</label>
-          <div className="space-y-2">
-            {[
-              { value: 3, label: '3ゲームマッチ' },
-              { value: 5, label: '5ゲームマッチ' },
-              { value: 7, label: '7ゲームマッチ' },
-              { value: 9, label: '9ゲームマッチ' },
-            ].map((option) => (
-              <label key={option.value} className="flex items-center">
-                <input
-                  type="radio"
-                  name="best_of"
-                  value={option.value}
-                  checked={formData.best_of === option.value}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      best_of: parseInt(e.target.value),
-                    })
-                  }
-                  className="mr-2"
-                />
-                {option.label}
-              </label>
-            ))}
-          </div>
+          <SelectableButtonGroup
+            name="best_of"
+            ariaLabel="マッチ形式"
+            options={[
+              { value: '3', label: '3ゲームマッチ' },
+              { value: '5', label: '5ゲームマッチ' },
+              { value: '7', label: '7ゲームマッチ' },
+              { value: '9', label: '9ゲームマッチ' },
+            ]}
+            value={String(formData.best_of)}
+            onChange={(value) => setFormData({ ...formData, best_of: parseInt(value) })}
+            columns={4}
+          />
         </div>
 
-        <button type="submit" disabled={creating} className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:bg-gray-300">
+        <button type="submit" disabled={creating} className={`w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:bg-gray-300 ${FOCUS_RING}`}>
           {creating ? 'マッチを作成中...' : 'マッチを作成して開始'}
         </button>
       </form>
@@ -1106,6 +871,8 @@ export const getStaticProps: GetStaticProps<CreateMatchProps> = async () => {
             id: optionId,
             name: `${displayName} ${year}`,
             year,
+            tournamentId,
+            displayName,
           });
 
           tournamentCatalog[optionId] = {

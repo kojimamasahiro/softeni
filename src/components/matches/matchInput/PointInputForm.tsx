@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 
 import { determineWinnerTeam, ERROR_BUTTONS, ERROR_RESULT_TYPES, getPlayerNamesFromMatch, getPlayerUniqueId, WINNER_BUTTONS } from '../../../../lib/matchLogic';
+import { formatVideoTimestamp } from '../../../../lib/youtubePlayback';
 import type { Match, Point } from '../../../types/database';
 import type { ManualServingPlayer, PointDataState, ServingPlayerInfo } from './types';
 import VideoTimeRangeInputs from './VideoTimeRangeInputs';
@@ -51,6 +53,20 @@ const PointInputForm = ({
   onCancelEditPoint,
 }: PointInputFormProps) => {
   const servingPlayer = getCurrentServingPlayer();
+
+  // 「開始/終了を記録」ボタン押下直後に一時的な確認表示を出すためのフラグ
+  const [justCaptured, setJustCaptured] = useState<'start' | 'end' | null>(null);
+
+  useEffect(() => {
+    if (!justCaptured) return;
+    const timer = setTimeout(() => setJustCaptured(null), 1500);
+    return () => clearTimeout(timer);
+  }, [justCaptured]);
+
+  const handleCaptureVideoTime = (target: 'start' | 'end') => {
+    onCaptureVideoTime(target);
+    setJustCaptured(target);
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4">
@@ -444,20 +460,35 @@ const PointInputForm = ({
       </div>
 
       {activeYouTubeVideoId && !youtubeEmbedBlocked && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          <button type="button" onClick={() => onCaptureVideoTime('start')} className="rounded bg-blue-600 px-3 py-1.5 text-xs text-white hover:bg-blue-700">
-            開始を記録
-          </button>
-          <button
-            type="button"
-            onClick={() => onCaptureVideoTime('end')}
-            className="rounded bg-emerald-600 px-3 py-1.5 text-xs text-white hover:bg-emerald-700"
-          >
-            終了を記録
-          </button>
-          <button type="button" onClick={onClearVideoRange} className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white">
-            クリア
-          </button>
+        <div className="mt-3">
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => handleCaptureVideoTime('start')}
+              aria-live="polite"
+              className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
+                justCaptured === 'start' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'
+              }`}
+            >
+              {justCaptured === 'start' ? '✓ 記録しました' : '開始を記録'}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleCaptureVideoTime('end')}
+              aria-live="polite"
+              className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
+                justCaptured === 'end' ? 'bg-green-600' : 'bg-emerald-600 hover:bg-emerald-700'
+              }`}
+            >
+              {justCaptured === 'end' ? '✓ 記録しました' : '終了を記録'}
+            </button>
+            <button type="button" onClick={onClearVideoRange} className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white">
+              クリア
+            </button>
+          </div>
+          <p className="mt-1.5 text-xs text-gray-600">
+            開始: {formatVideoTimestamp(pointData.video_start_ms, true)} ／ 終了: {formatVideoTimestamp(pointData.video_end_ms, true)}
+          </p>
         </div>
       )}
     </div>

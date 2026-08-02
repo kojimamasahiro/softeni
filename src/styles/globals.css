@@ -149,3 +149,19 @@ body {
 ins.adsbygoogle[data-ad-status='unfilled'] {
   display: none !important;
 }
+
+/*
+ * キーボード操作時のフォーカス可視化。
+ * :focus-visible はキーボード操作時のみ発火するため、マウスクリック時の見た目には影響しない。
+ * 個別コンポーネントで focus-visible:ring-* 等を明示している要素は Tailwind 側が優先される
+ * （class セレクタの方が詳細度が高いため、両立し二重表示にはならない）。
+ */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary, #2563eb);
+  outline-offset: 2px;
+}
