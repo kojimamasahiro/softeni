@@ -242,8 +242,14 @@ def render(data):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--apply', action='store_true', help='PNG と索引を書き込む')
-    ap.add_argument('--only', help='tournamentId の前方一致で絞る')
+    ap.add_argument('--only', help='限定フィルタ。tournamentId / tournamentId/year / tournamentId/year/category の形式で指定')
     args = ap.parse_args()
+
+    # --only フィルタをパース
+    only_parts = args.only.split('/') if args.only else None
+    only_tid = only_parts[0] if only_parts else None
+    only_year = only_parts[1] if len(only_parts) > 1 else None
+    only_cat = only_parts[2] if len(only_parts) > 2 else None
 
     index = {}
     made = 0
@@ -251,7 +257,11 @@ def main():
     for path in sorted(glob.glob(os.path.join(DETAILS, '*', '*', '*.json'))):
         tid, year, fname = path.split(os.sep)[-3:]
         cat = fname[:-5]
-        if args.only and not tid.startswith(args.only):
+        if only_tid and not tid.startswith(only_tid):
+            continue
+        if only_year and year != only_year:
+            continue
+        if only_cat and cat != only_cat:
             continue
         try:
             data = json.load(open(path, encoding='utf-8'))
@@ -280,13 +290,22 @@ def main():
                 f.write(raw)
 
     if args.apply:
+        # 既存の索引を読み込んで新しい結果をマージ（--only で限定した場合も他が消えないように）
+        merged = {}
+        if os.path.exists(INDEX_PATH):
+            try:
+                merged = json.load(open(INDEX_PATH, encoding='utf-8'))
+            except Exception:
+                pass
+        merged.update(index)
+
         # 古い PNG を掃除（内容ハッシュが変わると別名になるため）
-        keep = {os.path.basename(v) for v in index.values()}
+        keep = {os.path.basename(v) for v in merged.values()}
         for f in os.listdir(OUT_DIR) if os.path.isdir(OUT_DIR) else []:
             if f.endswith('.png') and f not in keep:
                 os.remove(os.path.join(OUT_DIR, f))
         with open(INDEX_PATH, 'w', encoding='utf-8') as f:
-            json.dump(dict(sorted(index.items())), f, ensure_ascii=False, indent=2)
+            json.dump(dict(sorted(merged.items())), f, ensure_ascii=False, indent=2)
             f.write('\n')
 
     print('OGP画像（ベスト16トーナメント表）' + ('生成・書き込み' if args.apply else ' dry-run（書き込みません）'))
