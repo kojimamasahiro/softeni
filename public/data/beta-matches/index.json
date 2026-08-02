@@ -1,6 +1,147 @@
 {
-  "generatedAt": "2026-07-17T00:26:08.782Z",
+  "generatedAt": "2026-08-02T15:06:21.256Z",
   "matches": [
+    {
+      "id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+      "tournament_name": "east-japan-2026",
+      "team_a": "124 川崎 康平 (日本体育大学) [学連] / 黒坂 卓矢 (日本体育大学) [学連]",
+      "team_b": "331 船水 颯人 (One) [青森県] / 端山 羅行 (稲門クラブ) [東京都]",
+      "best_of": 7,
+      "created_at": "2026-08-02T13:19:45.400044",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "124",
+      "team_a_player1_last_name": "川崎",
+      "team_a_player1_first_name": "康平",
+      "team_a_player1_team_name": "日本体育大学",
+      "team_a_player1_region": "学連",
+      "team_a_player2_last_name": "黒坂",
+      "team_a_player2_first_name": "卓矢",
+      "team_a_player2_team_name": "日本体育大学",
+      "team_a_player2_region": "学連",
+      "team_b_entry_number": "331",
+      "team_b_player1_last_name": "船水",
+      "team_b_player1_first_name": "颯人",
+      "team_b_player1_team_name": "One",
+      "team_b_player1_region": "青森県",
+      "team_b_player2_last_name": "端山",
+      "team_b_player2_first_name": "羅行",
+      "team_b_player2_team_name": "稲門クラブ",
+      "team_b_player2_region": "東京都",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "学連",
+              "last_name": "川崎",
+              "team_name": "日本体育大学",
+              "first_name": "康平"
+            },
+            {
+              "region": "学連",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "124"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "青森県",
+              "last_name": "船水",
+              "team_name": "One",
+              "first_name": "颯人"
+            },
+            {
+              "region": "東京都",
+              "last_name": "端山",
+              "team_name": "稲門クラブ",
+              "first_name": "羅行"
+            }
+          ],
+          "entry_number": "331"
+        }
+      },
+      "tournament_id": "east-japan",
+      "match_date": "2026-07-18",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-08-02T14:46:58.81+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "uiYdOVPzwdw",
+      "youtube_url": "https://www.youtube.com/watch?v=uiYdOVPzwdw",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "d11bd4c7-8d04-4947-b5dd-6d7a83055f67",
+          "match_id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-08-02T13:19:46.346067"
+        },
+        {
+          "id": "cd18ef9c-0b1c-4e2d-9885-114eb5e8d7bd",
+          "match_id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-08-02T14:34:12.236925"
+        },
+        {
+          "id": "5974707a-b7a9-46ef-8f94-085b2f0bc133",
+          "match_id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-08-02T14:36:35.453167"
+        },
+        {
+          "id": "548f2ed2-190f-4193-97dc-5e15f8a6af3d",
+          "match_id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 0,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-08-02T14:38:27.120345"
+        },
+        {
+          "id": "b080dd24-22cb-4387-8c99-64983f0af675",
+          "match_id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 5,
+          "points_b": 3,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "created_at": "2026-08-02T14:42:48.769888"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/all/east-japan/2026/doubles/none/boys",
+        "entryNos": [
+          124,
+          331
+        ]
+      }
+    },
     {
       "id": "c1391c3a-44d2-4b94-9cc1-a940f414ec70",
       "tournament_name": "west-japan-2026",
