@@ -300,29 +300,30 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
         {yearGroups.length === 0 ? (
           <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
         ) : (
-          yearGroups.map((g) => (
-            <section className="mb-8" key={g.year}>
-              <h2 className="text-lg font-bold mb-1">
-                {label} {g.year}年度 結果
-              </h2>
-              {(g.location || g.startDate) && (
-                <p className="mb-2 text-xs text-text-muted">
-                  {g.location ? `開催地:${g.location}` : ''}
-                  {g.location && g.startDate ? ' / ' : ''}
-                  {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
-                </p>
-              )}
-              <ul className="flex flex-wrap gap-2">
-                {g.categories.map((c) => (
-                  <li key={`${g.year}-${c.category}-${c.age}-${c.gender}`}>
-                    <Link href={c.href}>
-                      <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{c.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-3">年度別結果</h2>
+            {yearGroups.map((g) => (
+              <section className="mb-8" key={g.year}>
+                <h3 className="text-base font-semibold mb-1">{g.year}年度</h3>
+                {(g.location || g.startDate) && (
+                  <p className="mb-2 text-xs text-text-muted">
+                    {g.location ? `開催地:${g.location}` : ''}
+                    {g.location && g.startDate ? ' / ' : ''}
+                    {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
+                  </p>
+                )}
+                <ul className="flex flex-wrap gap-2">
+                  {g.categories.map((c) => (
+                    <li key={`${g.year}-${c.category}-${c.age}-${c.gender}`}>
+                      <Link href={c.href}>
+                        <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{c.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </section>
         )}
 
         <div className="text-right mt-10 mb-2">
