@@ -8,6 +8,7 @@ import path from 'path';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Fragment } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -20,6 +21,7 @@ import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBas
 import { getAbandonment } from '@/lib/tournamentAbandonment';
 import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings } from '@/lib/priorMeetings';
 import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
+import { getCategoryLabel } from '@/lib/utils';
 import { TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 import { joinPlayerName } from '@/utils/playerName';
 
@@ -92,6 +94,8 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
       .filter((c) => c.winner || c.abandonedAfterRound)
       .map((c) => ({
         year: g.year,
+        category: c.category,
+        gender: c.gender,
         categoryLabel: c.label,
         // 打ち切り年は null。JSON-LD の performer / description はこの null を見て出し分ける
         // （プレースホルダ文字列を構造化データに混ぜない）。
@@ -121,8 +125,37 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
     }
     return order.map((categoryLabel) => ({
       categoryLabel,
+      // 同じ categoryLabel の中身は常に同じ category（doubles/team/singles）・gender のはず
+      category: map.get(categoryLabel)![0]?.category ?? null,
+      gender: map.get(categoryLabel)![0]?.gender ?? null,
       winners: map.get(categoryLabel)!,
     }));
+  })();
+
+  // 性別のみの短いラベル。表の行見出しは「グループ見出し（ダブルス/団体戦）+ この短縮ラベル」
+  // で表すので、行ごとに「男子ダブルス」のように種目名を繰り返さない。
+  // 男子/女子/混合以外（想定外のカテゴリ）は null を返し、呼び出し側で categoryLabel にフォールバックする。
+  const genderShortLabel = (gender: string | null): string | null => {
+    if (gender === 'boys') return '男子';
+    if (gender === 'girls') return '女子';
+    if (gender === 'mixed') return '混合';
+    return null;
+  };
+
+  // 「歴代優勝者」を種目×年度の表で表示するためのデータ（年度が増えるほど縦に伸びる
+  // 種目別リストの代わりに、種目を行・年度を列にして一覧性を保つ）。
+  // category（doubles/team/singles）が切り替わる境目には見出し行を挟み、
+  // 1つの表のまま「ダブルス」「団体戦」をグループとして見分けられるようにする。
+  // 行見出し自体は性別のみ（例: 男子/女子）にして、グループ見出しと種目名が重複しないようにする。
+  const championTable = (() => {
+    const years = [...new Set(championRows.map((r) => r.year))].sort((a, b) => Number(b) - Number(a));
+    const rows = championCategoryGroups.map((group) => ({
+      categoryLabel: group.categoryLabel,
+      rowLabel: genderShortLabel(group.gender) ?? group.categoryLabel,
+      category: group.category,
+      cellsByYear: new Map(group.winners.map((r) => [r.year, r] as const)),
+    }));
+    return { years, rows };
   })();
 
   const breadcrumbs = [
@@ -251,46 +284,79 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
 
         {championCategoryGroups.length > 0 && (
           <section className="mb-10">
-            <h2 className="text-lg font-bold mb-3">{label} 歴代優勝者</h2>
-            <div className="space-y-5">
-              {championCategoryGroups.map((group) => (
-                <div key={group.categoryLabel} className="border-t border-border pt-4">
-                  <h3 className="mb-1 text-sm font-semibold">{group.categoryLabel}</h3>
-                  <ul className="list-inside list-disc space-y-0.5 text-sm text-gray-700 dark:text-gray-200">
-                    {group.winners.map((r) => (
-                      <li key={`${r.year}-${r.categoryLabel}`}>
-                        <Link href={r.href} className="text-link hover:underline">
-                          {r.year}年
-                        </Link>
-                        :{' '}
-                        {r.winner ? (
-                          r.winnerPlayers && r.winnerPlayers.length > 0 ? (
-                            <>
-                              {r.winnerPlayers.map((p, i) => (
-                                <span key={`${p.name}-${i}`}>
-                                  {i > 0 && '・'}
-                                  {p.playerId ? (
-                                    <Link href={`/players/${p.playerId}/results`} className="text-link hover:underline">
-                                      {p.name}
-                                    </Link>
-                                  ) : (
-                                    p.name
-                                  )}
-                                </span>
-                              ))}
-                              {r.winnerTeamsLabel ? `（${r.winnerTeamsLabel}）` : ''}
-                            </>
-                          ) : (
-                            r.winner
-                          )
-                        ) : (
-                          <span className="text-text-muted">{r.abandonedAfterRound}までで打ち切り（優勝者なし）</span>
-                        )}
-                      </li>
+            <h2 className="text-lg font-bold mb-3">歴代優勝者</h2>
+            {/* 種目×年度の表形式。年度が増えるほど右に伸びるので、種目（1列目）を固定して横スクロールできるようにする。 */}
+            <div className="overflow-x-auto rounded-lg shadow">
+              <table className="w-full min-w-max border-collapse text-sm text-gray-700 dark:text-gray-200">
+                <thead className="bg-bg-subtle text-text">
+                  <tr>
+                    <th className="sticky left-0 z-10 bg-bg-subtle px-4 py-2 text-left">種目</th>
+                    {championTable.years.map((year) => (
+                      <th key={year} className="whitespace-nowrap px-4 py-2">
+                        {year}年
+                      </th>
                     ))}
-                  </ul>
-                </div>
-              ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {championTable.rows.map((row, index) => {
+                    const prevCategory = index > 0 ? championTable.rows[index - 1].category : null;
+                    const showGroupHeader = row.category && row.category !== prevCategory;
+                    return (
+                      <Fragment key={row.categoryLabel}>
+                        {showGroupHeader && (
+                          <tr className="border-t border-border">
+                            <td
+                              colSpan={championTable.years.length + 1}
+                              className="sticky left-0 z-10 bg-bg-subtle px-4 py-1.5 text-xs font-semibold text-text-secondary"
+                            >
+                              {getCategoryLabel(row.category as string)}
+                            </td>
+                          </tr>
+                        )}
+                        <tr className="border-t border-border">
+                          <td className="sticky left-0 z-10 whitespace-nowrap bg-surface px-4 py-2 font-medium">{row.rowLabel}</td>
+                          {championTable.years.map((year) => {
+                            const r = row.cellsByYear.get(year) ?? null;
+                            return (
+                              <td key={year} className="whitespace-nowrap px-4 py-2 text-center">
+                                {!r ? (
+                                  <span className="text-text-muted">ー</span>
+                                ) : r.winner ? (
+                                  r.winnerPlayers && r.winnerPlayers.length > 0 ? (
+                                    <>
+                                      {r.winnerPlayers.map((p, i) => (
+                                        <span key={`${p.name}-${i}`}>
+                                          {i > 0 && '・'}
+                                          {p.playerId ? (
+                                            <Link href={`/players/${p.playerId}/results`} className="text-link hover:underline">
+                                              {p.name}
+                                            </Link>
+                                          ) : (
+                                            p.name
+                                          )}
+                                        </span>
+                                      ))}
+                                      {r.winnerTeamsLabel && <span className="mt-0.5 block text-xs text-text-muted">{r.winnerTeamsLabel}</span>}
+                                    </>
+                                  ) : (
+                                    // team カテゴリ（個人名が無い）は、その年度の結果ページへのリンクにする
+                                    <Link href={r.href} className="text-link hover:underline">
+                                      {r.winner}
+                                    </Link>
+                                  )
+                                ) : (
+                                  <span className="text-xs text-text-muted">{r.abandonedAfterRound}打ち切り</span>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      </Fragment>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </section>
         )}
@@ -388,6 +454,7 @@ function extractWinner(detailPath: string, nameToId: Map<string, number>): Extra
         lastName?: string;
         firstName?: string;
         team?: string;
+        prefecture?: string;
       }>;
       entries?: Array<{ entryNo: number; playerIds: string[] }>;
       results?: Array<{
