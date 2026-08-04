@@ -1,0 +1,76 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "浦和一女子",
+        "teamId": "urawaichijoko",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_零_浦和一女子_埼玉県"]
+      },
+      "historicalBest": {
+        "team": "浦和一女子",
+        "teamId": "urawaichijoko",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_零_浦和一女子_埼玉県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "浦和一女子",
+        "teamId": "urawaichijoko",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_零_浦和一女子_埼玉県", "渡邉_百音_浦和一女子_埼玉県"]
+      },
+      "historicalBest": {
+        "team": "浦和一女子",
+        "teamId": "urawaichijoko",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_零_浦和一女子_埼玉県", "渡邉_百音_浦和一女子_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "吉田_零_浦和一女子_埼玉県",
+      "appearances": 2
+    },
+    {
+      "id": "渡邉_百音_浦和一女子_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

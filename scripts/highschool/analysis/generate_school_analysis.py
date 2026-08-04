@@ -38,6 +38,22 @@ def normalize_prefecture_suffix(suffix: str, canonical_prefecture: str) -> str:
     return suffix
 
 
+def extract_normalized_school(player_id: str) -> str | None:
+    """player_id (姓_名_学校_都道府県) から、エイリアス解決済みの学校名を取り出す。"""
+    if '_' not in player_id:
+        return None
+
+    head, _suffix = player_id.rsplit('_', 1)
+    if '_' not in head:
+        return None
+
+    _name_part, school_part = head.rsplit('_', 1)
+    for alias in alias_match_order:
+        if alias == school_part:
+            return alias_map.get(alias, school_part)
+    return school_part
+
+
 def normalize_player_school(player_id: str, entry: dict) -> str:
     if not alias_map or '_' not in player_id:
         return player_id
@@ -134,7 +150,15 @@ def analyze_team(entries):
         by_cat[cat] += 1
 
         if 'playerIds' in e:
+            team_name = e.get('team')
             for pid in e['playerIds']:
+                # ダブルス/シングルスの playerIds には、代表選抜大会などで組んだ
+                # 他校の相方の pid が含まれることがある（例: 須磨学園の選手が東北の選手と
+                # ペアを組んだ全日本選手権の結果は、両校それぞれの summary に entry が複製される）。
+                # この entry がクレジットされている学校 (team_name) と pid の学校が一致する
+                # 選手だけを、このチームの選手数・出場回数集計に含める。
+                if team_name and extract_normalized_school(pid) != team_name:
+                    continue
                 # playerId の中の学校名の揺れを吸収して正規化する
                 normalized = normalize_player_school(pid, e)
                 player_counter[normalized] += 1

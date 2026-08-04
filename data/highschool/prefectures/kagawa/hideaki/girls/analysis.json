@@ -1,0 +1,88 @@
+{
+  "totalAppearances": 12,
+  "byCategory": {
+    "doubles": 6,
+    "singles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "英明",
+        "teamId": "hideaki",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "準優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["髙田_美滴_英明_香川県"]
+      },
+      "historicalBest": {
+        "team": "英明",
+        "teamId": "hideaki",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "準優勝",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["髙田_美滴_英明_香川県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "英明",
+        "teamId": "hideaki",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_唯杏_英明_香川県", "小池_涼花_英明_香川県"]
+      },
+      "historicalBest": {
+        "team": "英明",
+        "teamId": "hideaki",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉田_唯杏_英明_香川県", "小池_涼花_英明_香川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "吉田_唯杏_英明_香川県",
+      "appearances": 4
+    },
+    {
+      "id": "小池_涼花_英明_香川県",
+      "appearances": 3
+    },
+    {
+      "id": "髙田_美滴_英明_香川県",
+      "appearances": 3
+    },
+    {
+      "id": "北見_莉子_英明_香川県",
+      "appearances": 2
+    },
+    {
+      "id": "椎名_梨香子_英明_香川県",
+      "appearances": 2
+    }
+  ]
+}

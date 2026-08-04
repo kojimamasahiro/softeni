@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "日高",
+        "teamId": "hidaka",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["山岡_美愛_日高_和歌山県", "山下_結萌_日高_和歌山県"]
+      },
+      "historicalBest": {
+        "team": "日高",
+        "teamId": "hidaka",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["山岡_美愛_日高_和歌山県", "山下_結萌_日高_和歌山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山岡_美愛_日高_和歌山県",
+      "appearances": 1
+    },
+    {
+      "id": "山下_結萌_日高_和歌山県",
+      "appearances": 1
+    }
+  ]
+}

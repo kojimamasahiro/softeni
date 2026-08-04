@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "延岡",
+        "teamId": "nobeoka",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["西森_心柚_延岡_宮崎県", "佐藤_凛_延岡_宮崎県"]
+      },
+      "historicalBest": {
+        "team": "延岡",
+        "teamId": "nobeoka",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["西森_心柚_延岡_宮崎県", "佐藤_凛_延岡_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西森_心柚_延岡_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_凛_延岡_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

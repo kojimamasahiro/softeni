@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "長崎工業",
+        "teamId": "nagasakikougyou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["河村_瑠佳_長崎工業_長崎県", "中村_凛太郎_長崎工業_長崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "河村_瑠佳_長崎工業_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "中村_凛太郎_長崎工業_長崎県",
+      "appearances": 1
+    }
+  ]
+}

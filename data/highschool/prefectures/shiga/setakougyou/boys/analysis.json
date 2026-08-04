@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "瀬田工業",
+        "teamId": "setakougyou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["中村_海晴_瀬田工業_滋賀県", "燈中_柚樹_瀬田工業_滋賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中村_海晴_瀬田工業_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "燈中_柚樹_瀬田工業_滋賀県",
+      "appearances": 1
+    }
+  ]
+}

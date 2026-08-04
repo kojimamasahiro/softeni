@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "柏崎",
+        "teamId": "kashiwazaki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉原_唯々花_柏崎_新潟県", "飯田_愛菜_柏崎_新潟県"]
+      },
+      "historicalBest": {
+        "team": "柏崎",
+        "teamId": "kashiwazaki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉原_唯々花_柏崎_新潟県", "飯田_愛菜_柏崎_新潟県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "吉原_唯々花_柏崎_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "飯田_愛菜_柏崎_新潟県",
+      "appearances": 1
+    }
+  ]
+}

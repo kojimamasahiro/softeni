@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "伊勢",
+        "teamId": "ise",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["高屋_遼佳_伊勢_三重県", "西崎_悠真_伊勢_三重県"]
+      },
+      "historicalBest": {
+        "team": "伊勢",
+        "teamId": "ise",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["高屋_遼佳_伊勢_三重県", "西崎_悠真_伊勢_三重県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高屋_遼佳_伊勢_三重県",
+      "appearances": 1
+    },
+    {
+      "id": "西崎_悠真_伊勢_三重県",
+      "appearances": 1
+    }
+  ]
+}

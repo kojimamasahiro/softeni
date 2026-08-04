@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "姫路",
+        "teamId": "himeji",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["富田_琉叶_姫路_兵庫県", "岡田_樹希乙_姫路_兵庫県"]
+      },
+      "historicalBest": {
+        "team": "姫路",
+        "teamId": "himeji",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["富田_琉叶_姫路_兵庫県", "岡田_樹希乙_姫路_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "富田_琉叶_姫路_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "岡田_樹希乙_姫路_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

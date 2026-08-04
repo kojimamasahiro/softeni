@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "函館大妻",
+        "teamId": "hakodateootsuma",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["飛島_琳_函館大妻_北海道", "川端_来奈_函館大妻_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "飛島_琳_函館大妻_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "川端_来奈_函館大妻_北海道",
+      "appearances": 1
+    }
+  ]
+}

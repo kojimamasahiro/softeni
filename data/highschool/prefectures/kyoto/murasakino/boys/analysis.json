@@ -1,0 +1,61 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "紫野",
+        "teamId": "murasakino",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["嶋田_爽汰_紫野_京都府", "干場_蒼太_紫野_京都府"]
+      },
+      "historicalBest": {
+        "team": "紫野",
+        "teamId": "murasakino",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["嶋田_爽汰_紫野_京都府", "干場_蒼太_紫野_京都府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "嶋田_爽汰_紫野_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "干場_蒼太_紫野_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "中山_俊祐_紫野_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "村上_朔太郎_紫野_京都府",
+      "appearances": 1
+    }
+  ]
+}

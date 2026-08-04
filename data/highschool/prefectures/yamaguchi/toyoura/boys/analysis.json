@@ -1,0 +1,76 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 2,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "豊浦",
+        "teamId": "toyoura",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "予選敗退",
+        "category": "singles",
+        "tournamentId": "primaryschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["植村_蒼空_豊浦_茨城県"]
+      },
+      "historicalBest": {
+        "team": "豊浦",
+        "teamId": "toyoura",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "予選敗退",
+        "category": "singles",
+        "tournamentId": "primaryschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["植村_蒼空_豊浦_茨城県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "豊浦",
+        "teamId": "toyoura",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-primaryschool",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["植村_蒼空_豊浦_茨城県", "中島_陸登_古河ＳＴＣ_茨城県"]
+      },
+      "historicalBest": {
+        "team": "豊浦",
+        "teamId": "toyoura",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-primaryschool",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["植村_蒼空_豊浦_茨城県", "中島_陸登_古河ＳＴＣ_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "植村_蒼空_豊浦_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "菊池_凌央_豊浦_茨城県",
+      "appearances": 1
+    }
+  ]
+}

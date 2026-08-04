@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "熊本商",
+        "teamId": "kumamotoshou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["藤原_光優_熊本商_熊本県", "田原春_笑_熊本商_熊本県"]
+      },
+      "historicalBest": {
+        "team": "熊本商",
+        "teamId": "kumamotoshou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["藤原_光優_熊本商_熊本県", "田原春_笑_熊本商_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "藤原_光優_熊本商_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "田原春_笑_熊本商_熊本県",
+      "appearances": 1
+    }
+  ]
+}

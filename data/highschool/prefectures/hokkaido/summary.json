@@ -110,6 +110,17 @@
     "gender": "boys"
   },
   {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "boys"
+  },
+  {
     "team": "札幌大谷",
     "teamId": "sapporoootani",
     "prefecture": "北海道",
@@ -427,6 +438,18 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
     "gender": "boys"
+  },
+  {
+    "team": "旭川明成",
+    "teamId": "asahikawaakinari",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["斉藤_香恋_旭川明成_北海道", "西木戸_心_旭川明成_北海道"]
   },
   {
     "team": "旭川東",
@@ -787,6 +810,54 @@
     "year": 2022,
     "gender": "boys",
     "playerIds": ["川原_和馬_旭川工_北海道", "曽我部_光_旭川工_北海道"]
+  },
+  {
+    "team": "千歳",
+    "teamId": "chitose",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-primaryschool",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["根岸_生来_世田谷_東京都", "宮澤_菜々子_千歳_東京都"]
+  },
+  {
+    "team": "千歳",
+    "teamId": "chitose",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-primaryschool",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["畠中_大地_FSTA_東京都", "青山_航大_千歳_東京都"]
+  },
+  {
+    "team": "千歳",
+    "teamId": "chitose",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "primaryschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["木村_風太_千歳_東京都", "丸山_櫻太_千歳_東京都"]
+  },
+  {
+    "team": "函館大妻",
+    "teamId": "hakodateootsuma",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["飛島_琳_函館大妻_北海道", "川端_来奈_函館大妻_北海道"]
   },
   {
     "team": "岩見沢東",
@@ -1161,6 +1232,78 @@
     "playerIds": ["小林_果央_北見柏陽_北海道", "阿部_凛音_北見柏陽_北海道"]
   },
   {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["宮崎_航和_名寄_北海道", "駒津_太珂_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["藤原_悠綺_名寄_北海道", "佐々木_准一_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "secondaryschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["藤原_悠綺_名寄_北海道", "佐々木_准一_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["上島_琉偉_名寄_北海道", "南_智喜_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["佐々木_准一_名寄_北海道", "藤原_悠綺_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["藤原_悠綺_名寄_北海道", "濵﨑_広太_新宮中学校_福岡県"]
+  },
+  {
     "team": "登別明日中等",
     "teamId": "noboribetsuasujuunado",
     "prefecture": "北海道",
@@ -1267,6 +1410,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["加藤_虎牙_大谷室蘭_北海道", "関_悠陽_大谷室蘭_北海道"]
+  },
+  {
+    "team": "札幌東",
+    "teamId": "sapporohigashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["新居_拓翔_札幌東_北海道", "伊藤_颯世_札幌東_北海道"]
   },
   {
     "team": "札幌琴似工",
@@ -1893,6 +2048,18 @@
     "playerIds": ["田中_仁那_札幌龍谷学園_北海道", "余野_琥珀_札幌龍谷学園_北海道"]
   },
   {
+    "team": "室清水",
+    "teamId": "shitsushimizu",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["黒沢_明日香_室清水_北海道", "牛坂_来海_室清水_北海道"]
+  },
+  {
     "team": "滝川西",
     "teamId": "takikawanishi",
     "prefecture": "北海道",
@@ -1927,6 +2094,30 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["松坂_拓海_滝川西_北海道", "新井_樹_滝川西_北海道"]
+  },
+  {
+    "team": "苫小牧東",
+    "teamId": "tomakomaihigashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["井脇_楓花_苫小牧東_北海道", "原田_帆乃_苫小牧東_北海道"]
+  },
+  {
+    "team": "苫小牧東",
+    "teamId": "tomakomaihigashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["加藤_陽紀_苫小牧東_北海道", "西内_舜敬_苫小牧東_北海道"]
   },
   {
     "team": "苫小牧工",
@@ -2973,6 +3164,18 @@
     "playerIds": ["山田_泰宝_とわの森三愛_北海道", "岩間_吉平_とわの森三愛_北海道"]
   },
   {
+    "team": "旭川明成",
+    "teamId": "asahikawaakinari",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["西木戸_心_旭川明成_北海道"]
+  },
+  {
     "team": "旭川東",
     "teamId": "asahikawahigashi",
     "prefecture": "北海道",
@@ -3141,6 +3344,42 @@
     "playerIds": ["川原_和馬_旭川工_北海道"]
   },
   {
+    "team": "旭川商",
+    "teamId": "asahikawashou",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["水口_結愛_旭川商_北海道"]
+  },
+  {
+    "team": "旭川商業",
+    "teamId": "asahikawashougyou",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["西原_知里_旭川商業_北海道"]
+  },
+  {
+    "team": "千歳",
+    "teamId": "chitose",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["古園_由彩_千歳_北海道"]
+  },
+  {
     "team": "岩見沢東",
     "teamId": "iwamizawahigashi",
     "prefecture": "北海道",
@@ -3297,6 +3536,42 @@
     "playerIds": ["佐々木_美空_北見柏陽_北海道"]
   },
   {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["後藤_聖和_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-secondaryschool-versus",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["後藤_聖和_名寄_北海道"]
+  },
+  {
+    "team": "名寄",
+    "teamId": "nayoro",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["藤原_悠綺_名寄_北海道"]
+  },
+  {
     "team": "登別明日中等",
     "teamId": "noboribetsuasujuunado",
     "prefecture": "北海道",
@@ -3415,6 +3690,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["加藤_虎牙_大谷室蘭_北海道"]
+  },
+  {
+    "team": "札幌東",
+    "teamId": "sapporohigashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["伊藤_颯世_札幌東_北海道"]
   },
   {
     "team": "札幌大谷",

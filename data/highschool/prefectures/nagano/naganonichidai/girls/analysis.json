@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "長野日大",
+        "teamId": "naganonichidai",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["久世_結月_長野日大高校_長野県", "速水_葵葉_長野日大高校_長野県"]
+      },
+      "historicalBest": {
+        "team": "長野日大",
+        "teamId": "naganonichidai",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["久世_結月_長野日大高校_長野県", "速水_葵葉_長野日大高校_長野県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "速水_葵葉_長野日大_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "久世_結月_長野日大_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "小山_紗枝里_長野日大_長野県",
+      "appearances": 1
+    }
+  ]
+}

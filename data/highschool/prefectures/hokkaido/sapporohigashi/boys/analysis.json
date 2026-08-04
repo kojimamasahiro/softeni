@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "札幌東",
+        "teamId": "sapporohigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["伊藤_颯世_札幌東_北海道"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "札幌東",
+        "teamId": "sapporohigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["新居_拓翔_札幌東_北海道", "伊藤_颯世_札幌東_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "伊藤_颯世_札幌東_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "新居_拓翔_札幌東_北海道",
+      "appearances": 1
+    }
+  ]
+}

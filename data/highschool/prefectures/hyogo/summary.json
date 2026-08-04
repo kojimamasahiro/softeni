@@ -1,5 +1,16 @@
 [
   {
+    "team": "相生学院",
+    "teamId": "aioigakuin",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "international-hiroshima-peacecup",
+    "year": 2025,
+    "gender": "girls"
+  },
+  {
     "team": "姫路商",
     "teamId": "himejishou",
     "prefecture": "兵庫県",
@@ -232,6 +243,18 @@
     "playerIds": ["手島_健太_網干_兵庫県", "小野_凌大_網干_兵庫県"]
   },
   {
+    "team": "相生学院",
+    "teamId": "aioigakuin",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["黒崎_美菜_相生学院_兵庫県", "高階_愛理_相生学院_兵庫県"]
+  },
+  {
     "team": "明石北",
     "teamId": "akashikita",
     "prefecture": "兵庫県",
@@ -254,6 +277,30 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["林_ちひろ_明石商_兵庫県", "宮内_藍美_明石商_兵庫県"]
+  },
+  {
+    "team": "姫路",
+    "teamId": "himeji",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["富田_琉叶_姫路_兵庫県", "岡田_樹希乙_姫路_兵庫県"]
+  },
+  {
+    "team": "姫路工",
+    "teamId": "himejikou",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["長田_侑磨_姫路工_兵庫県", "岸本_周陽_姫路工_兵庫県"]
   },
   {
     "team": "姫路西",
@@ -976,6 +1023,42 @@
     "playerIds": ["村上_藍輝_西脇_兵庫県", "時本_武東_西脇_兵庫県"]
   },
   {
+    "team": "彩星工科",
+    "teamId": "saihoshikouka",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["久須見_煌生_彩星工科_兵庫県", "塩井_輝真_彩星工科_兵庫県"]
+  },
+  {
+    "team": "彩星工科",
+    "teamId": "saihoshikouka",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["関口_大和_彩星工科_兵庫県", "谷口_輝_彩星工科_兵庫県"]
+  },
+  {
+    "team": "市立尼崎",
+    "teamId": "shiritsuamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["實重_遼_市立尼崎_兵庫県", "後山_睦斗_市立尼崎_兵庫県"]
+  },
+  {
     "team": "須磨学園",
     "teamId": "sumagakuen",
     "prefecture": "兵庫県",
@@ -1540,6 +1623,18 @@
     "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本高等学校_兵庫県"]
   },
   {
+    "team": "太子",
+    "teamId": "taishi",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["豆﨑_夢恩_太子_兵庫県", "唐田_結衣_太子_兵庫県"]
+  },
+  {
     "team": "龍野北",
     "teamId": "tatsunokita",
     "prefecture": "兵庫県",
@@ -1636,6 +1731,18 @@
     "playerIds": ["岩井_亮樹_神戸星城_兵庫県"]
   },
   {
+    "team": "市立尼崎",
+    "teamId": "shiritsuamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["村上_陽向_市立尼崎_兵庫県"]
+  },
+  {
     "team": "須磨学園",
     "teamId": "sumagakuen",
     "prefecture": "兵庫県",
@@ -1681,7 +1788,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["竹平_碧純(_須磨学園_兵庫県"]
+    "playerIds": ["竹平_碧純_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",

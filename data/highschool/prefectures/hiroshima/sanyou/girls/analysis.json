@@ -1,0 +1,84 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "山陽",
+        "teamId": "sanyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["野田_悠月_山陽_岡山県"]
+      },
+      "historicalBest": {
+        "team": "山陽",
+        "teamId": "sanyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["野田_悠月_山陽_岡山県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "山陽",
+        "teamId": "sanyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["真野_愛梨_山陽_岡山県", "辻田_麗夢_山陽_岡山県"]
+      },
+      "historicalBest": {
+        "team": "山陽",
+        "teamId": "sanyou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["真野_愛梨_山陽_岡山県", "辻田_麗夢_山陽_岡山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "真野_愛梨_山陽_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "辻田_麗夢_山陽_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "稲田_結月_山陽_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "野田_悠月_山陽_岡山県",
+      "appearances": 1
+    }
+  ]
+}

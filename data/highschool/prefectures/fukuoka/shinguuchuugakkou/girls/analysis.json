@@ -1,0 +1,76 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "doubles": 2,
+    "singles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "新宮中学校",
+        "teamId": "shinguuchuugakkou",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["村上_恵理_新宮高校_福岡県"]
+      },
+      "historicalBest": {
+        "team": "新宮中学校",
+        "teamId": "shinguuchuugakkou",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["村上_恵理_新宮高校_福岡県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "新宮中学校",
+        "teamId": "shinguuchuugakkou",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["鴨川_未優_新宮中学校_福岡県", "又江_咲里_下山門_福岡県"]
+      },
+      "historicalBest": {
+        "team": "新宮中学校",
+        "teamId": "shinguuchuugakkou",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["鴨川_未優_新宮中学校_福岡県", "又江_咲里_下山門_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "野田_ひまり_新宮中学校_福岡県",
+      "appearances": 2
+    },
+    {
+      "id": "鴨川_未優_新宮中学校_福岡県",
+      "appearances": 2
+    }
+  ]
+}

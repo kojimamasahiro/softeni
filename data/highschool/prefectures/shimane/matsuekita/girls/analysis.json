@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "松江北",
+        "teamId": "matsuekita",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["桑谷_仁実_松江北_島根県", "金山_千紘_松江北_島根県"]
+      },
+      "historicalBest": {
+        "team": "松江北",
+        "teamId": "matsuekita",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["桑谷_仁実_松江北_島根県", "金山_千紘_松江北_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "桑谷_仁実_松江北_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "金山_千紘_松江北_島根県",
+      "appearances": 1
+    }
+  ]
+}

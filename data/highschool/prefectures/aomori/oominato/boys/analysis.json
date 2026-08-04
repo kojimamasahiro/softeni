@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "大湊",
+        "teamId": "oominato",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["菊池_陽翔_大湊_青森県", "小翠_蓮斗_大湊_青森県"]
+      },
+      "historicalBest": {
+        "team": "大湊",
+        "teamId": "oominato",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["菊池_陽翔_大湊_青森県", "小翠_蓮斗_大湊_青森県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "菊池_陽翔_大湊_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "小翠_蓮斗_大湊_青森県",
+      "appearances": 1
+    }
+  ]
+}

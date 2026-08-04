@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "入善",
+        "teamId": "nyuuzen",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "secondaryschool-championship",
+        "year": 2022,
+        "gender": "boys",
+        "playerIds": ["小坂_咲翔_入善_富山県", "大和_有_入善_富山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小坂_咲翔_入善_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "大和_有_入善_富山県",
+      "appearances": 1
+    }
+  ]
+}

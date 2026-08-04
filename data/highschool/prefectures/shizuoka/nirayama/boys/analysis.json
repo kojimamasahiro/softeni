@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "韮山",
+        "teamId": "nirayama",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["山越_翔理_韮山_静岡県", "土屋_篤人_韮山_静岡県"]
+      },
+      "historicalBest": {
+        "team": "韮山",
+        "teamId": "nirayama",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["山越_翔理_韮山_静岡県", "土屋_篤人_韮山_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山越_翔理_韮山_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "土屋_篤人_韮山_静岡県",
+      "appearances": 1
+    }
+  ]
+}

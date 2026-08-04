@@ -1,0 +1,76 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "旭川明成",
+        "teamId": "asahikawaakinari",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["西木戸_心_旭川明成_北海道"]
+      },
+      "historicalBest": {
+        "team": "旭川明成",
+        "teamId": "asahikawaakinari",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["西木戸_心_旭川明成_北海道"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "旭川明成",
+        "teamId": "asahikawaakinari",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["斉藤_香恋_旭川明成_北海道", "西木戸_心_旭川明成_北海道"]
+      },
+      "historicalBest": {
+        "team": "旭川明成",
+        "teamId": "asahikawaakinari",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["斉藤_香恋_旭川明成_北海道", "西木戸_心_旭川明成_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西木戸_心_旭川明成_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "斉藤_香恋_旭川明成_北海道",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "横田",
+        "teamId": "yokota",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "primaryschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["石原_新_横田_島根県", "寺本_大賀_横田_島根県"]
+      },
+      "historicalBest": {
+        "team": "横田",
+        "teamId": "yokota",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "primaryschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["石原_新_横田_島根県", "寺本_大賀_横田_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石原_新_横田_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "寺本_大賀_横田_島根県",
+      "appearances": 1
+    }
+  ]
+}

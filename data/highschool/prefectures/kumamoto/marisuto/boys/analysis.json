@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "マリスト",
+        "teamId": "marisuto",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["土村_凌久_マリスト_熊本県", "田﨑_京汰_マリスト_熊本県"]
+      },
+      "historicalBest": {
+        "team": "マリスト",
+        "teamId": "marisuto",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["土村_凌久_マリスト_熊本県", "田﨑_京汰_マリスト_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "土村_凌久_マリスト_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "田﨑_京汰_マリスト_熊本県",
+      "appearances": 1
+    }
+  ]
+}

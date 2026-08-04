@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "千歳",
+        "teamId": "chitose",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-primaryschool",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["畠中_大地_FSTA_東京都", "青山_航大_千歳_東京都"]
+      },
+      "historicalBest": {
+        "team": "千歳",
+        "teamId": "chitose",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-primaryschool",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["畠中_大地_FSTA_東京都", "青山_航大_千歳_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "青山_航大_千歳_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "木村_風太_千歳_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "丸山_櫻太_千歳_東京都",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "苫小牧東",
+        "teamId": "tomakomaihigashi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["井脇_楓花_苫小牧東_北海道", "原田_帆乃_苫小牧東_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "井脇_楓花_苫小牧東_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "原田_帆乃_苫小牧東_北海道",
+      "appearances": 1
+    }
+  ]
+}

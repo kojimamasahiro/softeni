@@ -211,12 +211,20 @@ export default function TeamPage({
       : null;
   // 年度別メンバー一覧（収録大会結果の playerIds を年度ごとに集計）
   // 同一年度内の同姓同名は同一人物として 1 件にまとめ、リンク可能な pid を優先する
+  //
+  // 注意: ダブルス/シングルスの playerIds には、代表選抜大会などで組んだ
+  // 「他校の相方」の pid も含まれることがある（例: 須磨学園の選手が東北の選手と
+  // ペアを組んだ全日本選手権の結果は、両校それぞれのチームサマリーに entry が
+  // 複製される）。pid の3番目のセグメント（学校名）が現在のチーム名と一致する
+  // 選手だけを「このチームのメンバー」として数える。試合結果一覧（下部）側は
+  // 相方の情報も含めて表示したいので、そちらはフィルタしない。
   const membersByYear = (() => {
     const byYear = new Map<number, Map<string, { pid: string }>>();
     for (const entry of entries) {
       for (const pid of entry.playerIds ?? []) {
         const parts = pid.split('_');
         if (parts.length < 2) continue;
+        if (parts.length >= 3 && parts[2] !== teamName) continue;
         const name = `${parts[0]} ${parts[1]}`;
         let yearMap = byYear.get(entry.year);
         if (!yearMap) {

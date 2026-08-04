@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "清峰",
+        "teamId": "seihou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["山口_愛未_清峰_長崎県", "小林_凪夢_清峰_長崎県"]
+      },
+      "historicalBest": {
+        "team": "清峰",
+        "teamId": "seihou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["山口_愛未_清峰_長崎県", "小林_凪夢_清峰_長崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山口_愛未_清峰_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_凪夢_清峰_長崎県",
+      "appearances": 1
+    }
+  ]
+}

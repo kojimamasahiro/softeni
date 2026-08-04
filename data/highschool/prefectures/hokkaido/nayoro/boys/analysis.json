@@ -1,0 +1,109 @@
+{
+  "totalAppearances": 10,
+  "byCategory": {
+    "team": 1,
+    "doubles": 6,
+    "singles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "4回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["後藤_聖和_名寄_北海道"]
+      },
+      "historicalBest": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "4回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["後藤_聖和_名寄_北海道"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["佐々木_准一_名寄_北海道", "藤原_悠綺_名寄_北海道"]
+      },
+      "historicalBest": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["佐々木_准一_名寄_北海道", "藤原_悠綺_名寄_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      },
+      "historicalBest": {
+        "team": "名寄",
+        "teamId": "nayoro",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "secondaryschool-championship",
+        "year": 2025,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 7,
+  "topPlayers": [
+    {
+      "id": "藤原_悠綺_名寄_北海道",
+      "appearances": 5
+    },
+    {
+      "id": "佐々木_准一_名寄_北海道",
+      "appearances": 3
+    },
+    {
+      "id": "後藤_聖和_名寄_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "宮崎_航和_名寄_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "駒津_太珂_名寄_北海道",
+      "appearances": 1
+    }
+  ]
+}

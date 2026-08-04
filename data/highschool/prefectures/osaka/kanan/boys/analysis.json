@@ -1,0 +1,80 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 2,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "河南",
+        "teamId": "kanan",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["勝部_太智_河南_島根県"]
+      },
+      "historicalBest": {
+        "team": "河南",
+        "teamId": "kanan",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["勝部_太智_河南_島根県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "河南",
+        "teamId": "kanan",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["栗原_拓真_羽須美_島根県", "内田_琉稀弥_河南_島根県"]
+      },
+      "historicalBest": {
+        "team": "河南",
+        "teamId": "kanan",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["栗原_拓真_羽須美_島根県", "内田_琉稀弥_河南_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "内田_琉稀弥_河南_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "中林_冬芽_河南_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "勝部_太智_河南_島根県",
+      "appearances": 1
+    }
+  ]
+}

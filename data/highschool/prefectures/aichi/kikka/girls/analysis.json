@@ -1,0 +1,76 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "菊華",
+        "teamId": "kikka",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["橋本_莉子_菊華_愛知県"]
+      },
+      "historicalBest": {
+        "team": "菊華",
+        "teamId": "kikka",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["橋本_莉子_菊華_愛知県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "菊華",
+        "teamId": "kikka",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["橋本_莉子_菊華_愛知県", "長谷川_莉那_菊華_愛知県"]
+      },
+      "historicalBest": {
+        "team": "菊華",
+        "teamId": "kikka",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["橋本_莉子_菊華_愛知県", "長谷川_莉那_菊華_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "橋本_莉子_菊華_愛知県",
+      "appearances": 2
+    },
+    {
+      "id": "長谷川_莉那_菊華_愛知県",
+      "appearances": 1
+    }
+  ]
+}

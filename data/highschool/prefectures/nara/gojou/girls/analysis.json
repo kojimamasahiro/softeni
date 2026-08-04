@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "五條",
+        "teamId": "gojou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["平井_翠_五條_奈良県", "安田_実代_五條_奈良県"]
+      },
+      "historicalBest": {
+        "team": "五條",
+        "teamId": "gojou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["平井_翠_五條_奈良県", "安田_実代_五條_奈良県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "平井_翠_五條_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "安田_実代_五條_奈良県",
+      "appearances": 1
+    }
+  ]
+}

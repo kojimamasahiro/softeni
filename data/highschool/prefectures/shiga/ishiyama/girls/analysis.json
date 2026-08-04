@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "石山",
+        "teamId": "ishiyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉岡_清稀_石山_滋賀県", "山本_真由花_石山_滋賀県"]
+      },
+      "historicalBest": {
+        "team": "石山",
+        "teamId": "ishiyama",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["吉岡_清稀_石山_滋賀県", "山本_真由花_石山_滋賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "吉岡_清稀_石山_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_真由花_石山_滋賀県",
+      "appearances": 1
+    }
+  ]
+}

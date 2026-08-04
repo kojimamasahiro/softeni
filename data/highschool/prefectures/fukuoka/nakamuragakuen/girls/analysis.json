@@ -1,0 +1,109 @@
+{
+  "totalAppearances": 10,
+  "byCategory": {
+    "team": 1,
+    "doubles": 5,
+    "singles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["田代_柚花_中村学園_福岡県"]
+      },
+      "historicalBest": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "ベスト8",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["田代_柚花_中村学園_福岡県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["田代_穂花_中村学園_福岡県", "野田_ひまり_中村学園_福岡県"]
+      },
+      "historicalBest": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["田代_穂花_中村学園_福岡県", "野田_ひまり_中村学園_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "中村学園",
+        "teamId": "nakamuragakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 9,
+  "topPlayers": [
+    {
+      "id": "田代_柚花_中村学園_福岡県",
+      "appearances": 3
+    },
+    {
+      "id": "長島_朱伽_中村学園_福岡県",
+      "appearances": 3
+    },
+    {
+      "id": "田代_穂花_中村学園_福岡県",
+      "appearances": 2
+    },
+    {
+      "id": "野田_ひまり_中村学園_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "深澤_里菜_中村学園_福岡県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "team": 1,
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "相生学院",
+        "teamId": "aioigakuin",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["黒崎_美菜_相生学院_兵庫県", "高階_愛理_相生学院_兵庫県"]
+      },
+      "historicalBest": {
+        "team": "相生学院",
+        "teamId": "aioigakuin",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["黒崎_美菜_相生学院_兵庫県", "高階_愛理_相生学院_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": {
+        "team": "相生学院",
+        "teamId": "aioigakuin",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "international-hiroshima-peacecup",
+        "year": 2025,
+        "gender": "girls"
+      },
+      "historicalBest": {
+        "team": "相生学院",
+        "teamId": "aioigakuin",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "international-hiroshima-peacecup",
+        "year": 2025,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "黒崎_美菜_相生学院_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "高階_愛理_相生学院_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

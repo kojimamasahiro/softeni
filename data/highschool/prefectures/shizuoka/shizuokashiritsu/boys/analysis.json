@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "静岡市立",
+        "teamId": "shizuokashiritsu",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["粉間_飛羽_静岡市立_静岡県", "糠谷_壮平_静岡市立_静岡県"]
+      },
+      "historicalBest": {
+        "team": "静岡市立",
+        "teamId": "shizuokashiritsu",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["粉間_飛羽_静岡市立_静岡県", "糠谷_壮平_静岡市立_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "粉間_飛羽_静岡市立_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "糠谷_壮平_静岡市立_静岡県",
+      "appearances": 1
+    }
+  ]
+}

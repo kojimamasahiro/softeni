@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "秋田",
+        "teamId": "akita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["佐々木_伸二郎_秋田_秋田県", "島田_大亮_秋田_秋田県"]
+      },
+      "historicalBest": {
+        "team": "秋田",
+        "teamId": "akita",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "出場",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["佐々木_伸二郎_秋田_秋田県", "島田_大亮_秋田_秋田県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "佐々木_伸二郎_秋田_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "島田_大亮_秋田_秋田県",
+      "appearances": 1
+    }
+  ]
+}
