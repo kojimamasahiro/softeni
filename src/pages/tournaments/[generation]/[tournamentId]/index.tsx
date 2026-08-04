@@ -415,7 +415,9 @@ function extractWinner(detailPath: string, nameToId: Map<string, number>): Extra
     const teams = [...new Set(entry.playerIds.map((id) => pmap.get(id)?.team).filter((t): t is string => Boolean(t)))];
     const nameStr = names.join('・');
     const teamsLabel = teams.length > 0 ? teams.join('・') : null;
-    const display = teamsLabel ? `${nameStr}（${teamsLabel}）` : nameStr;
+    // team カテゴリ（個人名が無い）は所属名がそのままチーム名なので、
+    // 「（チーム名）」ではなく素のチーム名を表示する。
+    const display = !nameStr ? (teamsLabel ?? '') : teamsLabel ? `${nameStr}（${teamsLabel}）` : nameStr;
     return { display, players, teamsLabel };
   } catch {
     return null;
