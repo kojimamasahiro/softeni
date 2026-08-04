@@ -128,7 +128,7 @@ function InProgressSchoolSection({
           {teamName}の高校{genderLabel}は、{dateRange ? `${dateRange}・` : ''}
           {scope.location ? `${scope.location}で` : ''}
           {scope.hasStarted ? '開催中' : '開催予定'}の{scope.shortLabel}（{scope.label}）に出場しています。
-          {school.hasAlive ? '現在も勝ち上がり中です。' : ''}
+          {school.hasAdvanced ? '現在も勝ち上がり中です。' : school.hasAlive ? '現在出場中です。' : ''}
           勝ち上がりは大会の進行に合わせて随時更新しています。
         </p>
 

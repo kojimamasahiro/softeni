@@ -170,7 +170,7 @@ function InProgressPrefectureSection({
                 </h3>
                 {school.hasAlive && (
                   <span className="rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100 px-2 py-0.5 text-xs font-semibold">
-                    勝ち上がり中
+                    {school.hasAdvanced ? '勝ち上がり中' : '出場中'}
                   </span>
                 )}
               </div>

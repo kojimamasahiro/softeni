@@ -59,6 +59,12 @@ export type InProgressSchool = {
   categories: InProgressSchoolCategory[];
   /** 現在まだ勝ち上がり中のエントリーが1つでもあるか（並び順に使う） */
   hasAlive: boolean;
+  /**
+   * alive なエントリーのうち、1回戦を突破して先の回戦に進んでいるものが1つでもあるか。
+   * false の場合は「出場のみ・1回戦は未決着（まだ始まっていない）」を意味する
+   * （statusLabel が「出場」のまま＝1回戦の勝敗が確定していない状態）。
+   */
+  hasAdvanced: boolean;
   /** 到達している最深ラウンド（並び順に使う。大きいほど勝ち残っている） */
   deepestRound: number;
 };
@@ -242,6 +248,7 @@ function buildIndex(): Index {
             prefecture,
             categories: [],
             hasAlive: false,
+            hasAdvanced: false,
             deepestRound: 0,
           };
           let cat = school.categories.find((c) => c.categoryId === parsed.categoryId);
@@ -251,6 +258,7 @@ function buildIndex(): Index {
           }
           cat.standings.push(standing);
           school.hasAlive = school.hasAlive || standing.alive;
+          school.hasAdvanced = school.hasAdvanced || (standing.alive && standing.statusLabel !== '出場');
           school.deepestRound = Math.max(school.deepestRound, rankDepth(rank));
           schoolMap.set(teamName, school);
           schoolsByPrefGender.set(key, schoolMap);
