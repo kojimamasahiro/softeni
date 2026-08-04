@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 
 import { MatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
-import { joinPlayerName } from '@/utils/playerName';
+import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
 type NamePart = {
   text: string;
@@ -191,8 +191,8 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       const players = (entry.playerIds ?? []).map((pid: string) => participantMap.get(pid)).filter(Boolean) as (typeof detail.participants)[0][];
       if (!players || players.length === 0) return `#${entry.entryNo ?? '?'}`;
 
-      // Check if this is a team format (lastName and firstName are both null)
-      const isTeamFormat = players.every((pl) => pl?.lastName === null && pl?.firstName === null);
+      // Check if this is a team format (lastName and firstName are both empty)
+      const isTeamFormat = isTeamFormatPlayers(players);
 
       if (isTeamFormat) {
         // For team format: display "チーム名（都道府県）"
@@ -241,7 +241,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       const players = (entry.playerIds ?? []).map((pid: string) => participantMap.get(pid)).filter(Boolean) as (typeof detail.participants)[0][];
       if (!players || players.length === 0) return [];
 
-      const isTeamFormat = players.every((pl) => pl?.lastName === null && pl?.firstName === null);
+      const isTeamFormat = isTeamFormatPlayers(players);
       if (isTeamFormat) return [];
 
       // group players by team, keeping per-player link info

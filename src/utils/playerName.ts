@@ -19,3 +19,15 @@ export function joinPlayerName(lastName?: string | null, firstName?: string | nu
   const isJapanese = JAPANESE_CHAR_RE.test(last) || JAPANESE_CHAR_RE.test(first);
   return isJapanese ? `${last}${first}` : `${last} ${first}`;
 }
+
+/**
+ * 団体戦のエントリーかどうかを判定する。
+ * 団体戦の participant は姓名を持たず（JSON 上は null）、`team` と `prefecture` だけを持つ。
+ * ただし `lib/packedPageData.ts` の pack/unpack を経由すると null は '' になるため、
+ * `=== null` ではなく「姓名がどちらも空」で判定する（そうしないと個人戦扱いになり
+ * 「（東北）」のように空の選手名＋括弧つきチーム名で表示されてしまう）。
+ */
+export function isTeamFormatPlayers(players: { lastName?: string | null; firstName?: string | null }[]): boolean {
+  if (players.length === 0) return false;
+  return players.every((pl) => !pl?.lastName && !pl?.firstName);
+}

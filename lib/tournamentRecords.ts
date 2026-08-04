@@ -198,7 +198,8 @@ function resolveEntry(
   const nameStr = players.join('・');
   let display: string;
   if (!nameStr) {
-    display = teams.join('・'); // 団体戦
+    // 団体戦: チーム名（都道府県）。個人名が無いので所属＝結果そのもの。
+    display = prefectures.length > 0 ? `${teams.join('・')}（${prefectures.join('・')}）` : teams.join('・');
   } else if (teams.length > 0) {
     display = `${nameStr}（${teams.join('・')}）`;
   } else {

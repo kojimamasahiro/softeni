@@ -6,7 +6,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import BracketSheets from '@/components/Tournament/BracketSheets';
 import { describeBracketLayout } from '@/lib/bracketLayout';
 import { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant } from '@/types/index';
-import { joinPlayerName } from '@/utils/playerName';
+import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
 interface SelectedEntryInfo {
   entryNo: number;
@@ -47,7 +47,7 @@ function buildEntryNameParts(participants: TournamentParticipant[], entry: Tourn
   const players = (entry.playerIds ?? []).map((pid) => participants.find((p) => p.id === pid)).filter((p): p is TournamentParticipant => !!p);
   if (players.length === 0) return [];
 
-  const isTeamFormat = players.every((pl) => pl.lastName === null && pl.firstName === null);
+  const isTeamFormat = isTeamFormatPlayers(players);
   if (isTeamFormat) {
     return players.map((pl) => ({ text: pl.prefecture ? `${pl.team || '不明'}（${pl.prefecture}）` : pl.team || '不明' }));
   }
@@ -84,7 +84,7 @@ function buildOpponentDisplay(
   const players = (entry.playerIds ?? []).map((pid) => participants.find((p) => p.id === pid)).filter((p): p is TournamentParticipant => !!p);
   if (players.length === 0) return { name: `#${entry.entryNo ?? '?'}`, playerIds: [] };
 
-  const isTeamFormat = players.every((pl) => pl.lastName === null && pl.firstName === null);
+  const isTeamFormat = isTeamFormatPlayers(players);
   if (isTeamFormat) {
     const teamNames = players
       .map((pl) => {

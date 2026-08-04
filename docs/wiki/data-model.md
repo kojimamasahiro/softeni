@@ -164,6 +164,13 @@
 - 判定は名前にひらがな・カタカナ・漢字が含まれるかで行い、含まれなければローマ字とみなしてスペース区切りにする。大会IDによる分岐はしない。
 - 適用箇所は試合結果（`MatchResults`）・出場選手一覧（`EntryOverview`）・大会トップの優勝者名表示など。トーナメント表（`TournamentBracket`）の単式は元々スペース区切りで表示している。
 
+団体戦の表示ルール:
+
+- 団体戦の `participants[]` は姓名を持たず（JSON 上は `lastName`/`firstName` が `null`）、`team` と `prefecture` だけを持つ。
+- 表示は個人戦の「選手名（所属）」ではなく **「チーム名（都道府県）」**（例: `東北（宮城県）`）。`prefecture` が無い大会（コリアカップ、大学王座など）はチーム名のみ。
+- 団体戦かどうかの判定は `src/utils/playerName.ts` の `isTeamFormatPlayers()` に集約する。**`lastName === null` で判定してはいけない**: `lib/packedPageData.ts` の `unpackTournamentDetailData()` が `readString()` を通して `null` を `''` に変換するため、ページ側に届く時点で `null` ではなくなっている。これを踏むと個人戦扱いになり、空の選手名＋括弧つきチーム名（`（東北）`）で表示される（2026-08 修正）。
+- 適用箇所は対戦詳細（`MatchResults` のエントリー見出しと対戦相手名）とトーナメント表（`TournamentBracket`）。`BracketSheets` と大会トップの優勝者表示は元々「姓名が空なら団体戦」と偽値で判定している。
+
 ### score 公開 JSON
 
 - `public/data/beta-matches/meta.json`

@@ -44,8 +44,13 @@ type CategoryLink = {
    * や参加者データが解決できない場合は null。
    */
   winnerPlayers: WinnerPlayer[] | null;
-  /** winner の所属表記（「（〇〇高校）」の中身）。個人名が無い team カテゴリでは null。 */
+  /**
+   * winner の所属校名。個人戦では「（〇〇高校）」の中身として選手名の下に、
+   * team カテゴリ（個人名が無い）ではチーム名そのものとして表示に使う。
+   */
   winnerTeamsLabel: string | null;
+  /** team カテゴリ（個人名が無い）の都道府県表記。チーム名の下に2行目として表示する。個人戦では null。 */
+  winnerPrefectureLabel: string | null;
   /**
    * 打ち切り大会のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null。
    * 打ち切り年は優勝者が存在しないため、歴代優勝者リストで空欄（＝データ未整備に見える）
@@ -102,6 +107,7 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
         winner: c.winner,
         winnerPlayers: c.winnerPlayers,
         winnerTeamsLabel: c.winnerTeamsLabel,
+        winnerPrefectureLabel: c.winnerPrefectureLabel,
         abandonedAfterRound: c.winner ? null : c.abandonedAfterRound,
         href: c.href,
         location: g.location,
@@ -340,10 +346,14 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
                                       {r.winnerTeamsLabel && <span className="mt-0.5 block text-xs text-text-muted">{r.winnerTeamsLabel}</span>}
                                     </>
                                   ) : (
-                                    // team カテゴリ（個人名が無い）は、その年度の結果ページへのリンクにする
-                                    <Link href={r.href} className="text-link hover:underline">
-                                      {r.winner}
-                                    </Link>
+                                    // team カテゴリ（個人名が無い）。ダブルスと同じく1行目にチーム名、
+                                    // 2行目に都道府県を表示する（その年度の結果ページへのリンク付き）。
+                                    <>
+                                      <Link href={r.href} className="text-link hover:underline">
+                                        {r.winnerTeamsLabel ?? r.winner}
+                                      </Link>
+                                      {r.winnerPrefectureLabel && <span className="mt-0.5 block text-xs text-text-muted">{r.winnerPrefectureLabel}</span>}
+                                    </>
                                   )
                                 ) : (
                                   <span className="text-xs text-text-muted">{r.abandonedAfterRound}打ち切り</span>
@@ -408,8 +418,10 @@ type ExtractedWinner = {
   display: string;
   /** 個人名の内訳（選手ページへのリンク用）。team カテゴリ（個人名が無い）では空配列。 */
   players: WinnerPlayer[];
-  /** 所属表記（「（〇〇高校）」の中身）。無ければ null。 */
+  /** 所属校名（個人戦は「（〇〇高校）」の中身、team カテゴリはチーム名そのもの）。無ければ null。 */
   teamsLabel: string | null;
+  /** team カテゴリ（個人名が無い）の都道府県表記。個人戦では null。 */
+  teamPrefectureLabel: string | null;
 };
 
 // data/players/index.json（掲載選手全体・数千件）は選手ページと同じ「姓名一致・count>=5・
@@ -480,12 +492,19 @@ function extractWinner(detailPath: string, nameToId: Map<string, number>): Extra
       return name;
     });
     const teams = [...new Set(entry.playerIds.map((id) => pmap.get(id)?.team).filter((t): t is string => Boolean(t)))];
+    const prefectures = [...new Set(entry.playerIds.map((id) => pmap.get(id)?.prefecture).filter((p): p is string => Boolean(p)))];
     const nameStr = names.join('・');
     const teamsLabel = teams.length > 0 ? teams.join('・') : null;
-    // team カテゴリ（個人名が無い）は所属名がそのままチーム名なので、
-    // 「（チーム名）」ではなく素のチーム名を表示する。
-    const display = !nameStr ? (teamsLabel ?? '') : teamsLabel ? `${nameStr}（${teamsLabel}）` : nameStr;
-    return { display, players, teamsLabel };
+    let display: string;
+    if (!nameStr) {
+      // team カテゴリ（個人名が無い）は所属名がそのままチーム名なので、
+      // 「（チーム名）」ではなく「チーム名（都道府県）」で表示する。
+      display = teamsLabel ? (prefectures.length > 0 ? `${teamsLabel}（${prefectures.join('・')}）` : teamsLabel) : '';
+    } else {
+      display = teamsLabel ? `${nameStr}（${teamsLabel}）` : nameStr;
+    }
+    const teamPrefectureLabel = !nameStr && prefectures.length > 0 ? prefectures.join('・') : null;
+    return { display, players, teamsLabel, teamPrefectureLabel };
   } catch {
     return null;
   }
@@ -635,6 +654,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           winner: extracted?.display ?? null,
           winnerPlayers: extracted && extracted.players.length > 0 ? extracted.players : null,
           winnerTeamsLabel: extracted?.teamsLabel ?? null,
+          winnerPrefectureLabel: extracted?.teamPrefectureLabel ?? null,
           abandonedAfterRound: getAbandonment(infoByYear.get(y)?.categories, categoryId)?.abandonedAfterRound ?? null,
         });
       }
