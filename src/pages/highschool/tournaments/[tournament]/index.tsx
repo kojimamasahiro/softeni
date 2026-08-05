@@ -335,6 +335,18 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   const displayAlias = primaryAlias && primaryAlias !== shortLabel && primaryAlias !== label ? primaryAlias : null;
   // タイトル/見出し向けの表示名。略称があれば exact 一致用に併記する。
   const headingName = displayAlias ? `${titleName}（${displayAlias}）` : titleName;
+  // --- title 専用の表示名（2026-08-06） ---
+  // title は「歴代」を**先頭30字以内**に置く。日本語 SERP の表示上限が概ね30字で、
+  // それより後ろの語は検索結果に出ないため。従来は正式名称を先に置いており、
+  // 「歴代」の開始位置が通常モード28字目・開催中モード40字目だった（実測）。
+  // 対して 全日本シングルス（汎用ハブ）は17字目で、同じ「歴代」クエリで上位に付いている。
+  // そこで title の頭は短い通称（shortLabel）にし、正式名称は後半へ回す。
+  // 略称の併記は通常モードのみ。開催中モードは先頭に「{通称}{年} 結果・途中経過」が入るので、
+  // 併記すると「歴代」が30字を超える（ハイジャパ併記時で40字目）。開催中でも略称は
+  // h1・description・FAQ に literal で出ているので取りこぼさない。
+  const titleLeadName = displayAlias && !inProgress ? `${shortLabel}（${displayAlias}）` : shortLabel;
+  // 正式名称が通称と同一のとき（ハイスクールジャパンカップ）は重ねない
+  const titleFormalSuffix = label === shortLabel ? '' : `｜${label}`;
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
   // 開催中の年は InProgressSection が受け持つので、「開催予定」からは外す（同じ年を二重に出さない）
@@ -410,9 +422,12 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   // 開催中は「{大会}{年} 結果」インテントを先頭に立てる。大会期間中がこのクエリの需要ピークで、
   // かつ本ページはこの大会で唯一順位が付いている入口のため（docs/wiki/seo.md #11）。
   // 終了後は従来の「歴代」インテントへ自動的に戻る。
+  // 収録年度（（2021〜2026年度）等）と次回開催予定は title から外し description・FAQ に置く。
+  // 30字の枠を「歴代優勝校・結果一覧」に使うため。とくに収録年度は、歴代クエリの利用者に
+  // 「6年分しか無い」と SERP 上で先に伝えてしまう面もある。
   const metaTitle = inProgress
-    ? `ソフトテニス ${shortLabel}${inProgress.year} 結果・${progressWord}｜${label} 歴代優勝校一覧 | ソフトテニス情報`
-    : `ソフトテニス ${headingName} 歴代優勝校・結果一覧${nextEdition ? `｜${nextEdition.year}年大会の開催予定` : ''}（${yearRange || '年度別'}） | ソフトテニス情報`;
+    ? `ソフトテニス ${titleLeadName}${inProgress.year} 結果・${progressWord}｜歴代優勝校一覧 | ソフトテニス情報`
+    : `ソフトテニス ${titleLeadName} 歴代優勝校・結果一覧${titleFormalSuffix} | ソフトテニス情報`;
 
   const metaDescription = inProgress
     ? `ソフトテニス${shortLabel}${inProgress.year}（${label}）の${progressWord}を掲載中。${

@@ -1,3 +1,4 @@
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
 import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import type { TournamentDetailData, TournamentEntry, TournamentIndexEntry, TournamentInformationEntry, TournamentParticipant } from '@/types/tournament';
 
@@ -188,7 +189,8 @@ export const getMajorTitlesForPlayer = async (lastName: string, firstName: strin
         yearsResults.push({ year: Number(year), result: resultStr || 'ー' });
       }
 
-      const link = m.generationId ? `/tournaments/${m.generationId}/${tournamentId}` : undefined;
+      // 高校全国大会は汎用ハブが noindex のため、歴代記録ページへ直接リンクする（seo.md #3）
+      const link = m.generationId ? getTournamentHubHref(m.generationId, tournamentId) : undefined;
       out.push({ name, years: yearsResults, link });
     }
 

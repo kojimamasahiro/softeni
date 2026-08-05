@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import PlayerCareerHighlights, { type PlayerCareerHighlightsData } from '@/components/PlayerCareerHighlights';
 import { getCareerRecord } from '@/lib/careerRecord';
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
 import { getChampionMilestones } from '@/lib/milestones';
 import { PlayerInfo } from '@/types/index';
 
@@ -432,7 +433,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         year: t.year,
         tournamentLabel: t.tournamentLabel,
         categoryLabel: t.categoryLabel,
-        tournamentLink: t.generationId ? `/tournaments/${t.generationId}/${t.tournamentId}` : null,
+        // 高校全国大会は汎用ハブが noindex のため歴代記録ページへ振り替わる（seo.md #3）
+        tournamentLink: t.generationId ? getTournamentHubHref(t.generationId, t.tournamentId) : null,
       })),
       scopeNote: career.scopeNote,
     };

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
 import { getAllDetailRecords, loadInformationMap } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
@@ -308,8 +309,9 @@ export async function getStaticProps() {
 
     if (!categoryInfo) continue;
 
-    // 大会ハブページ（年度なし）へリンクする
-    const link = `/tournaments/${record.generation}/${record.tournamentId}`;
+    // 大会ハブページ（年度なし）へリンクする。
+    // 高校全国大会は汎用ハブが noindex のため歴代記録ページへ振り替わる（seo.md #3）
+    const link = getTournamentHubHref(record.generation, record.tournamentId);
 
     // SSG とクライアントで同じ文字列になるよう、ロケール依存の
     // toLocaleDateString を使わず YYYY-MM-DD から決定的に整形する

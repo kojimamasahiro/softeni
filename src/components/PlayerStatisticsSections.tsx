@@ -8,6 +8,7 @@
 import Link from 'next/link';
 
 import PlayerLiteLink from '@/components/PlayerLiteLink';
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
 import type { Head2HeadRow, PlayerStatistics, RankingPoint, TeamRow, TimelineEvent, TournamentRow } from '@/types/playerStatistics';
 
 type Props = {
@@ -202,7 +203,7 @@ function TournamentTable({ rows, generationMap }: { rows: TournamentRow[]; gener
                   <td className="py-1 px-2 text-left">
                     {generation ? (
                       <Link
-                        href={`/tournaments/${generation}/${t.tournamentId}/`}
+                        href={getTournamentHubHref(generation, t.tournamentId)}
                         className="text-inherit underline decoration-dotted underline-offset-2 hover:decoration-solid"
                       >
                         {t.tournamentName}

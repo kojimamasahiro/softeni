@@ -99,6 +99,53 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
     title は 70字でサーバ上の SERP で確実に切れていた（本番 HTML で確認）。
     FAQ（「『高校選抜』とは？」）は略称クエリの受け皿なので `primaryAlias` のまま残す。
     修正後の title は 64字、ハイジャパ（`shortLabel` と異なる alias）は従来どおり併記される
+- **追記3（2026-08-06・「link equity は残る」という前提が崩れていた）**: 上の決定は
+  「汎用ハブを `noindex, follow` にすれば link equity は残り、誘導バナー経由で高校歴代ページへ
+  流れる」という前提だったが、**サイト全体の内部リンクの大半が noindex ページを1ホップ挟む**
+  構造になっていた。ビルド済み `out/` の実測（`href` 完全一致）:
+  - `/tournaments/highschool/highschool-championship/`（noindex 汎用ハブ）への被リンク **1,111枚**
+    （うち選手ページ 1,084・大会 25・news 1・トップ 1）
+  - `/highschool/tournaments/championship/`（集中先）への被リンク **194枚**
+  - 比較: `/tournaments/all/zennihon-singles/`（index の汎用ハブ）への被リンク **1,929枚**
+  - `follow` でも長期 noindex のページはクロール頻度が落ちるため、9割の内部リンクが
+    実質的に減衰していた。「インターハイ 歴代」#7 に対し「全日本シングルス 歴代」#3 という
+    順位差の最大の構造要因はこれ（年度カバレッジは IH 6年・シングルス 5年でほぼ同じ、
+    可視テキストは IH 3,797字・シングルス 1,012字で IH のほうが厚い）
+  - 修正: `lib/highschoolNationalTournamentMeta.ts` を新設し、**`getTournamentHubHref()` を
+    大会ハブへのリンク生成の唯一の入口**にした。高校全国大会のみ `/highschool/tournaments/{slug}/`
+    を返す。ハブ URL のベタ書きは全廃（`PlayerStatisticsSections` / `majorTitles` /
+    `TournamentCard` / トップ / `players/[id]` / `newsArticle`）。
+    **ハブへのリンクを新たに書くときは必ずこの関数を通すこと。**
+  - メタ定義を新モジュールに切り出したのは、`lib/highschoolNationalTournaments.ts` が
+    `import fs` していてクライアント側コンポーネントから使えないため。サーバー側は
+    新モジュールを re-export しており定義は二重管理していない
+  - パンくず（ハブ自身・年度別ページ）と `pageUrl`（canonical）は**振り替えていない**。
+    URL 階層上の親を指すのがパンくずの意味で BreadcrumbList にも出る、かつ該当25枚と量が
+    小さいため
+  - 検算: 全29大会で 3大会のみ振替・26大会は従来どおり、リンク先 HTML が全て存在（デッドリンク0）
+  - 経緯: [raw/2026-08-06-rekidai-serp-gap-interhigh-vs-singles.md](../raw/2026-08-06-rekidai-serp-gap-interhigh-vs-singles.md)
+- **追記4（2026-08-06・title は「歴代」を先頭30字以内に置く）**: 日本語 SERP のタイトル表示は
+  概ね30字。実測では「歴代」の開始位置が **開催中モード40字目・通常モード28字目**（全日本
+  シングルスは17字目）で、歴代クエリで出てもタイトルに「歴代」が見えていなかった。
+  - 修正: title の頭を正式名称（`headingName`）から短い通称（`shortLabel`）に変え、正式名称は
+    後半へ。収録年度（`（2021〜2026年度）`）と次回開催予定は title から外して description・FAQ へ
+    （どちらも30字より後ろで SERP に出ていなかった。収録年度は「6年分しか無い」ことを
+    SERP 上で先に伝える面もある）
+  - 略称の併記（ハイジャパ）は**通常モードのみ**。開催中モードは先頭に「{通称}{年} 結果・途中経過」が
+    入るため、併記すると「歴代」が40字目に戻る。開催中でも略称は h1・description・FAQ に literal で残る
+  - 検算（3大会×2モード）: championship 通常14字目/開催中26字目、japan-cup 通常28字目、
+    senbatsu 通常12字目/開催中24字目。**japan-cup の開催中モードのみ33字目で枠に入らない**が、
+    正式名称が13字あり結果インテントと両立できないこと、会期（6月）が歴代クエリの需要ピークと
+    ずれることから許容
+  - 実装: `src/pages/highschool/tournaments/[tournament]/index.tsx`（`titleLeadName` / `titleFormalSuffix`）
+- **未実施・効果の天井が最も高い施策（2026-08-06）**: IH の収録は 2021〜2026 の**6大会のみ**。
+  一方「インターハイ 歴代」上位の競合は埼玉県高体連の全国大会記録（全年度）、YouTube の
+  1989〜2019 一覧、shindeme.com の都道府県別 歴代出場校 と、30年以上を持っている。
+  「歴代」の検索意図は全史なので、上記2つの対策は取りこぼしを塞ぐものであって、
+  この構造的不足は解消していない。対戦表データ不要の **champions-only レイヤー**
+  （年 / 優勝 / 準優勝）を足すのが次の一手（先例: `src/pages/st-league/champions.tsx`）。
+  出典の確保と検算が必要。**Assumption**: 全日本シングルスの #3 は競合が Wikipedia と
+  個人ブログしかいない薄さによるもので、ページの出来の差ではない
 - 状態: **対策済（先行集中・監視継続）**。GSC が取れ次第、集中先が正しいか（高校歴代ページが対象クエリ・略称クエリで上位を取れているか）を確認する
 - 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`（ハブの noindex＋誘導バナー）、`src/pages/highschool/tournaments/[tournament]/index.tsx`（title 最適化）、`lib/highschoolNationalTournaments.ts`（`getHsNationalSlugByTournamentId`）
 - 関連: [highschool.md](./highschool.md)「高校 全国大会の歴代記録ページ」、[public-pages.md](./public-pages.md)「大会ハブページ」
@@ -282,10 +329,20 @@ siteLink あり＝自動で除外／野良試合＝自動で残る、と両方�
 
 新しい公開ページ種別を追加するときは、既存ページ種別とのキーワード/検索意図の重なりを本ページの重複マップに追記し、制御手段（インテント分割 / canonical / noindex / 内部リンク集約）を1つ選んで明記すること。
 
+**noindex を選んだときは、そのページへの内部リンクが何枚あるかを必ず数えること**（#3 追記3）。
+「`noindex, follow` だから link equity は残る」は、そのページに内部リンクが集中している場合には
+成り立たない。リンク元を index 側のページへ振り替えるところまでが対策の一部。
+数え方は生成済み `out/` に対する `grep -rl 'href="<パス>"' out --include="*.html" | wc -l`。
+
 ## Open Questions
 
 - **#3 / #7 / #10 の GSC 事後検証は [高校SEO M4検証ランブック](./highschool-seo-m4-verification.md) に手順化済み（2026年8月中旬に実行）**
 - #3 集中先（高校歴代ページ）が対象クエリで実際に上位を取れているかの GSC 事後検証。取れていなければインテント分割の見直し、または集中先の再判断
+- #3（2026-08-06 追記）内部リンク振り替え後、選手ページ→高校歴代ページのリンクが実際に
+  クロール・評価されるか（GSC の参照元ページと歴代ページの表示回数）。および title 変更後の
+  SERP タイトルが書き換えられずに出るか。計測は8月中旬の M4 検証と同じタイミング
+- #3（2026-08-06 追記）内部リンクが直接入るようになった結果ほぼ孤立する汎用ハブ
+  （被リンク25枚程度）に、`noindex` のまま残す意味があるか
 - #7 高校メンバー系クエリの受け皿を学校ページに一本化すべきか
 - #8 result 廃止・301 後の評価移行（集約先のハブ／高校歴代ページが対象クエリで受けているか）と、preview×ハブの棲み分けを GSC で確認
 - #11 大会期間中の日次更新が実際にクロールされるか（lastmod 修正後の再クロール頻度）。

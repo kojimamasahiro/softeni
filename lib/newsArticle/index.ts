@@ -16,6 +16,8 @@
 //   contextBlocks.ts … 文脈ブロック（連覇ウォッチ・前回入賞者・直近好成績者・前哨戦 ほか）の構築
 //   index.ts（本ファイル） … 上記を束ねて記事ビューを組み立てるエントリーポイント
 
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+
 import { buildRecentAchieverIndex, buildCategoryBlock, type RecentAchievementInfo } from './contextBlocks';
 import { listCategoryIds, tournamentMetaOf } from './recordIO';
 import type { NewsArticleRecord, NewsArticleView, NewsCategoryBlock } from './types';
@@ -61,7 +63,8 @@ export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView
     if (block) categories.push(block);
   }
 
-  const hubHref = generationId ? `/tournaments/${generationId}/${record.tournamentId}/` : '';
+  // 高校全国大会は汎用ハブが noindex のため歴代記録ページへ振り替わる（seo.md #3）
+  const hubHref = generationId ? getTournamentHubHref(generationId, record.tournamentId) : '';
 
   return {
     record,

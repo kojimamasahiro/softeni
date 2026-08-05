@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+
 export type CategoryLink = {
   year: number;
   gameCategory: string;
@@ -29,7 +31,8 @@ type Props = {
 export const TournamentCard = ({ tournament }: Props) => {
   const { id, name, generation, groups } = tournament;
 
-  const hubHref = `/tournaments/${generation}/${id}`;
+  // 高校全国大会は汎用ハブが noindex のため、歴代記録ページへ直接リンクする（seo.md #3）
+  const hubHref = getTournamentHubHref(generation, id);
 
   return (
     <div className="bg-surface p-4 rounded-lg shadow">
