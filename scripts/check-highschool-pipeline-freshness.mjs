@@ -1,120 +1,79 @@
 // 高校ソフトテニス データパイプライン（scripts/highschool/**）の生成物が、
-// 元データ（data/tournaments/details/highschool-*）より古くないかをチェックする。
+// 元データ（data/tournaments/details/highschool-*）に対して最新かをチェックする。
 //
 // 背景: パイプラインは scripts/highschool/README.md の手順を手動実行する運用だったため、
 // 大会結果（data/tournaments/details）だけが更新されて、summary/analysis 系の生成物が
 // 再生成されないまま取り残されることがあった。この状態では、大会結果ページのチームリンクが
 // 古い（存在しない）データと突き合わされて欠落する、といった不具合が気付かれにくい形で起きる。
 //
-// このチェックは「元データの最新更新日時」より「パイプライン生成物の最古の更新日時」が
-// 古い場合にビルドを失敗させ、`npm run highschool:pipeline` の再実行を促す。
+// 判定方法（2026-08-05 改訂）: タイムスタンプは一切使わない。
+// scripts/highschool/lib/source-hash.mjs で「元データ（01team/02result が実際に読む
+// data/tournaments/details/<highschool-*>/<year>/*.json、非再帰）の内容ハッシュ」を計算し、
+// npm run highschool:pipeline の最終ステップ（write-pipeline-marker.mjs）が
+// data/highschool/.pipeline-source-hash.json に記録したハッシュと突き合わせる。
+// 一致しなければ「今の元データに対してパイプラインが実行されていない」ことが確定するので
+// ビルドを失敗させ、`npm run highschool:pipeline` の再実行を促す。
+//
+// なぜ以前の mtime/gitコミット日時ベースをやめたか:
+// - CI（Netlify等）は毎回リポジトリをフレッシュに checkout するため、ファイルの mtime は
+//   実際の新旧ではなく checkout 時の書き込み順に左右され、誤検知した実例があった。
+// - git のコミット日時ベースにしても、「元データの一部だけが変わったが、この生成物の内容には
+//   影響しない変更だった」場合に生成物側の最終コミットが古いまま止まり、パイプラインを
+//   再実行しても内容が変わらない（＝新しいコミットが生まれない）ため、恒久的に
+//   stale 判定され続けてしまう問題があった。
+// 内容ハッシュの突き合わせなら、どちらの問題も原理的に起こらない。
 //
 // 使い方: node scripts/check-highschool-pipeline-freshness.mjs
 
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import { fileURLToPath } from 'node:url';
+import { computeSourceHash, MARKER_PATH_REL } from './highschool/lib/source-hash.mjs';
 
-const ROOT = process.cwd();
-const SOURCE_DIR = path.join(ROOT, 'data', 'tournaments', 'details');
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(SCRIPT_DIR, '..');
 
-/** data/tournaments/details 配下の highschool-* ディレクトリだけを対象にする。 */
-function findHighschoolSourceDirs() {
-  if (!fs.existsSync(SOURCE_DIR)) return [];
-  return fs
-    .readdirSync(SOURCE_DIR, { withFileTypes: true })
-    .filter((e) => e.isDirectory() && e.name.startsWith('highschool'))
-    .map((e) => path.join(SOURCE_DIR, e.name));
-}
+const { hash: currentHash, fileCount } = computeSourceHash(ROOT);
 
-/** 指定ディレクトリ配下の *.json を再帰的に集めて最新の mtime を返す。 */
-function latestMtime(dir) {
-  let latest = 0;
-  let latestFile = null;
-  const walk = (d) => {
-    for (const entry of fs.readdirSync(d, { withFileTypes: true })) {
-      const p = path.join(d, entry.name);
-      if (entry.isDirectory()) {
-        walk(p);
-        continue;
-      }
-      if (!entry.name.endsWith('.json')) continue;
-      const mtime = fs.statSync(p).mtimeMs;
-      if (mtime > latest) {
-        latest = mtime;
-        latestFile = p;
-      }
-    }
-  };
-  if (fs.existsSync(dir)) walk(dir);
-  return { mtime: latest, file: latestFile };
-}
-
-/** 存在しなければ「未生成」として mtime=0 を返す（＝必ず stale 扱いにする）。 */
-function mtimeOf(relPath) {
-  const p = path.join(ROOT, relPath);
-  if (!fs.existsSync(p)) return { mtime: 0, file: relPath, missing: true };
-  return { mtime: fs.statSync(p).mtimeMs, file: relPath, missing: false };
-}
-
-// --- 元データの最新更新日時 -------------------------------------------------
-const sourceDirs = findHighschoolSourceDirs();
-let source = { mtime: 0, file: null };
-for (const dir of sourceDirs) {
-  const found = latestMtime(dir);
-  if (found.mtime > source.mtime) source = found;
-}
-
-if (source.mtime === 0) {
+if (fileCount === 0) {
   console.log('ℹ️  highschool 大会データが見つからないため、チェックをスキップします。');
   process.exit(0);
 }
 
-// --- パイプライン生成物 -----------------------------------------------------
-const singleFileArtifacts = [
+// --- パイプライン生成物の存在チェック（内容そのものではなく「ファイルがあるか」だけを見る） -----
+const requiredArtifacts = [
   'scripts/highschool/01team/teams.json',
   'scripts/highschool/02result/results.json',
   'scripts/highschool/03list/prefecture-summary.json',
   'data/highschool/teams.json',
   'data/highschool/prefecture-summary.json',
 ];
+const missing = requiredArtifacts.filter((rel) => !fs.existsSync(path.join(ROOT, rel)));
 
-const artifacts = singleFileArtifacts.map(mtimeOf);
-
-// 都道府県別 summary.json も対象に含める（04summry ステップの実行漏れを検出するため）。
-// 学校別 analysis.json は対象外: generate_school_analysis.py はチームが現在の
-// summary.json に登場しなくなっても古い analysis.json を削除しないため（既知の別課題）、
-// 単なる「実行し忘れ」と「もう対象外になったチームの残骸」を区別できない。
-const prefecturesDir = path.join(ROOT, 'data', 'highschool', 'prefectures');
-if (fs.existsSync(prefecturesDir)) {
-  const walkForOldest = (dir) => {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const p = path.join(dir, entry.name);
-      if (entry.isDirectory()) {
-        walkForOldest(p);
-        continue;
-      }
-      if (entry.name === 'summary.json') {
-        artifacts.push({ mtime: fs.statSync(p).mtimeMs, file: path.relative(ROOT, p), missing: false });
-      }
-    }
-  };
-  walkForOldest(prefecturesDir);
+// --- 元データの内容ハッシュ vs 直近のパイプライン実行時のハッシュ ---------------------
+const markerPath = path.join(ROOT, MARKER_PATH_REL);
+let markerProblem = null;
+if (!fs.existsSync(markerPath)) {
+  markerProblem = `${MARKER_PATH_REL} が見つかりません（パイプラインが一度も実行されていない可能性があります）`;
+} else {
+  let marker;
+  try {
+    marker = JSON.parse(fs.readFileSync(markerPath, 'utf8'));
+  } catch {
+    markerProblem = `${MARKER_PATH_REL} の読み込みに失敗しました（壊れている可能性があります）`;
+  }
+  if (marker && marker.sourceHash !== currentHash) {
+    markerProblem = `元データの内容が、最後に記録されたパイプライン実行時（${marker.generatedAt ?? '不明'}）から変わっています`;
+  }
 }
-
-const missing = artifacts.filter((a) => a.missing);
-const oldest = artifacts.filter((a) => !a.missing).sort((a, b) => a.mtime - b.mtime)[0];
 
 const problems = [];
 if (missing.length > 0) {
-  problems.push(...missing.map((a) => `未生成: ${a.file}`));
+  problems.push(...missing.map((rel) => `未生成: ${rel}`));
 }
-if (oldest && oldest.mtime < source.mtime) {
-  const sourceRel = path.relative(ROOT, source.file);
-  problems.push(
-    `生成物が古い: ${oldest.file} (${new Date(oldest.mtime).toISOString()}) が` +
-      ` 元データ ${sourceRel} (${new Date(source.mtime).toISOString()}) より古いです`,
-  );
+if (markerProblem) {
+  problems.push(markerProblem);
 }
 
 if (problems.length > 0) {

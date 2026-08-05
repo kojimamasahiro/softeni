@@ -65,6 +65,11 @@ cp "$SCRIPT_DIR/03list/prefecture-summary.json" "$ROOT_DIR/data/highschool/prefe
 echo "  ✅ data/highschool/teams.json を更新しました"
 echo "  ✅ data/highschool/prefecture-summary.json を更新しました"
 
+# 元データの内容ハッシュを記録する。check-highschool-pipeline-freshness.mjs（ビルド時チェック）が
+# 「今の元データに対してパイプラインが実行済みか」をタイムスタンプなしで判定するために使う。
+# このマーカーファイルは、この実行で生成された他のファイルと一緒にコミットすること。
+node "$ROOT_DIR/scripts/highschool/write-pipeline-marker.mjs"
+
 # --- 6. フォーマット -------------------------------------------------------
 if command -v npx >/dev/null 2>&1; then
   step "6/6 prettier"
