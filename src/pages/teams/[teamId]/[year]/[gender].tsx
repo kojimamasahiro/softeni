@@ -12,6 +12,7 @@ import PageLayout from '@/components/PageLayout';
 import TeamsEventSummary from '@/components/TeamsEventSummary';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
+import { countTeamMatches, shouldIndexTeamPage } from '@/lib/teamIndexing';
 import type { EventResult, Player, TeamInfo } from '@/utils/team-data-aggregator';
 import { calculatePlayerStats, calculateTeamYearlySummary } from '@/utils/team-stats-calculator';
 
@@ -21,9 +22,12 @@ type Props = {
   year: number;
   gender: string;
   playerLinks?: Record<string, number>;
+  // SEO: 収録試合が薄いチーム年度ページは noindex にする（インデックス枠の集中）。
+  // 判定は getStaticProps 側（lib/teamIndexing.ts）。docs/wiki/seo.md #12。
+  noindex?: boolean;
 };
 
-export default function TeamYearGenderPage({ info, results, year, gender, playerLinks = {} }: Props) {
+export default function TeamYearGenderPage({ info, results, year, gender, playerLinks = {}, noindex = false }: Props) {
   const teamName = info.name;
   const genderLabel = gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : 'ミックス';
   const pageTitle = `${teamName} ${year}年度 ${genderLabel} 成績`;
@@ -119,7 +123,13 @@ export default function TeamYearGenderPage({ info, results, year, gender, player
 
   return (
     <>
-      <MetaHead title={`${pageTitle} | ソフトテニス情報`} description={`${teamName}の${year}年度${genderLabel}の大会成績詳細。`} url={pageUrl} />
+      <MetaHead
+        title={`${pageTitle} | ソフトテニス情報`}
+        description={`${teamName}の${year}年度${genderLabel}の大会成績詳細。`}
+        url={pageUrl}
+        noindex={noindex}
+        noindexFollow={noindex}
+      />
 
       <Head>
         <script
@@ -358,6 +368,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     }
 
+    // --- SEO: 薄いチーム年度ページの noindex 判定 ---
+    // 収録試合が TEAM_INDEX_MIN_MATCHES 未満のページを noindex, follow にする。
+    // follow なので、ここから /teams/{id}/ や選手結果ページへの内部リンクは評価を流す。
+    // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が
+    // 生成 HTML の robots meta を見て自動的に行うため、ここでは meta だけ制御する。
+    const matchCount = countTeamMatches(filteredResults, new Set(Object.keys(info.players)));
+
     return {
       props: {
         info,
@@ -365,6 +382,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         year: Number(year),
         gender,
         playerLinks,
+        noindex: !shouldIndexTeamPage(matchCount),
       },
     };
   } catch (error) {

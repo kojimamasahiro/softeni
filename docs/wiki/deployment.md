@@ -36,6 +36,32 @@
 - `build`: `next build`
 - `postbuild`: sitemap 生成とソート
 
+#### sitemap の出力先（2026-08-05 修正）
+
+`next-sitemap.config.js` に **`outDir: 'out'` を明示している**。既定値（`public/`）のままだと
+デプロイされる sitemap が**常に1ビルド古くなる**ため。
+
+順序が問題になる:
+
+```
+next build（output: 'export'）が public/ を out/ にコピー
+  → postbuild で next-sitemap が書く
+```
+
+既定では next-sitemap の書き込み先が `public/` なので、`out/sitemap-0.xml`（=
+`pages_build_output_dir` = 配信される実体）は「**前回**のビルドが `public/` に残した sitemap」に
+なる。2026-08-05 の実測で out/ 3,369 URL に対し public/ 3,461 URL、差分 92 件は全て index 対象の
+高校学校ページだった。
+
+あわせて:
+
+- `scripts/sort-sitemaps.mjs` の対象も `out/` に変更（従来 `public/` のみ）
+- `public/sitemap*.xml` / `public/robots.txt` は生成物なので `.gitignore` へ。
+  追跡したままだと export 時に out/ へコピーされ、同じ古さが復活しうる
+- `scripts/filter-noindex-from-sitemap.mjs` は従来から `out/` も見ているため変更不要
+
+詳細: [docs/raw/2026-08-05-seo-audit.md](../raw/2026-08-05-seo-audit.md) A-1
+
 ### ビルド時間の内訳（2026-07-19 実測）
 
 teams 系の集計最適化により **22分41秒 → 8分53秒**（commit 0076636 → 2f34553）。

@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { countTeamMatches, shouldIndexTeamPage } from '@/lib/teamIndexing';
 import { aggregateStLeagueTeam, getAllStLeagueTeamIds, StLeagueTeamSummary } from '@/utils/st-league';
 
 type TeamInfo = {
@@ -29,6 +30,9 @@ type Props = {
   // 対象外（STリーグのみ等）のチームでは該当リンクを描画しない（404 回避）。
   hasSubPages: boolean;
   stLeague: StLeagueTeamSummary | null;
+  // SEO: 収録試合が薄いチームページは noindex にする（インデックス枠の集中）。
+  // 判定は getStaticProps 側（lib/teamIndexing.ts）。docs/wiki/seo.md #12。
+  noindex?: boolean;
 };
 
 const GENDER_LABEL: Record<'boys' | 'girls', string> = {
@@ -36,7 +40,7 @@ const GENDER_LABEL: Record<'boys' | 'girls', string> = {
   girls: '女子',
 };
 
-export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: Props) {
+export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, noindex = false }: Props) {
   const teamName = info.name;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/`;
 
@@ -50,7 +54,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague }: 
 
   return (
     <>
-      <MetaHead title={title} description={description} url={pageUrl} />
+      <MetaHead title={title} description={description} url={pageUrl} noindex={noindex} noindexFollow={noindex} />
 
       <Head>
         <script
@@ -254,6 +258,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   let name = teamId;
   let stats: TeamYearlyStats[] = [];
+  // SEO: noindex 判定に使う収録試合数（大会 ＋ STリーグ の合算）。
+  let matchCount = (stLeague?.seasons ?? []).reduce((sum, season) => sum + season.played, 0);
 
   // tournament データ（下層ページ対象チームのみ集計してリンクを出す）
   if (hasSubPages) {
@@ -262,6 +268,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       if (fullInfo.name) name = fullInfo.name;
       if (fullInfo.players && Object.keys(fullInfo.players).length > 0) {
         const allResults = aggregateTeamResults(teamId);
+        matchCount += countTeamMatches(allResults, new Set(Object.keys(fullInfo.players)));
         // 混合ダブルスしか無い性別（実体の無い性別）は表示しない。
         const realGenders = gendersWithRealPresence(allResults);
         const statsMap = new Map<number, Map<'boys' | 'girls', number>>();
@@ -297,12 +304,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 
+  // --- SEO: 薄いチームページの noindex 判定 ---
+  // 大会 + STリーグ の収録試合が TEAM_INDEX_MIN_MATCHES 未満なら noindex, follow。
+  // follow なので年度別ページ・選手ページ・STリーグ側への内部リンクは評価を流す。
+  // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が自動追従する。
   return {
     props: {
       info: { id: teamId, name },
       stats,
       hasSubPages,
       stLeague,
+      noindex: !shouldIndexTeamPage(matchCount),
     },
   };
 };

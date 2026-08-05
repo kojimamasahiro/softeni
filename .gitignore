@@ -20,6 +20,13 @@
 # 生成物（prebuild の generate-players-lite.mjs が毎回生成。約6,400ファイルあるためコミットしない）
 /public/data/players-lite/
 
+# 生成物（postbuild の next-sitemap が out/ に直接出力する。2026-08-05 に outDir を
+# public → out に変更したため public/ 側は不要。追跡したままだと export 時に out/ へ
+# コピーされ、配信 sitemap が1ビルド古くなる元の不具合が再発しうる）
+/public/sitemap.xml
+/public/sitemap-*.xml
+/public/robots.txt
+
 # production
 /build
 

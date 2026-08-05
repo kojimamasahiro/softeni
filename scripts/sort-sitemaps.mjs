@@ -1,11 +1,28 @@
+// scripts/sort-sitemaps.mjs
+//
+// next-sitemap が出力した sitemap の <url> を loc 順に並べ替える（差分を読みやすくするため）。
+//
+// 対象ディレクトリは next-sitemap の outDir に追従させること。
+// 2026-08-05 に outDir を public → out に変更した（それ以前は public/ しか見ておらず、
+// 配信される out/sitemap-*.xml はソートも noindex 反映も1ビルド遅れていた）。
+// 詳細: docs/raw/2026-08-05-seo-audit.md A-1
+
 import fs from 'node:fs';
 import path from 'node:path';
 
-const publicDir = path.join(process.cwd(), 'public');
+// out/（export 構成の配信ディレクトリ）を優先し、無ければ public/（非 export ビルド）を見る。
+const candidateDirs = [path.join(process.cwd(), 'out'), path.join(process.cwd(), 'public')];
+const targetDir = candidateDirs.find((dir) => fs.existsSync(dir));
+
+if (!targetDir) {
+  console.log('sort-sitemaps: 対象ディレクトリが無いためスキップ');
+  process.exit(0);
+}
+
 const sitemapFiles = fs
-  .readdirSync(publicDir)
+  .readdirSync(targetDir)
   .filter((file) => /^sitemap.*\.xml$/.test(file))
-  .map((file) => path.join(publicDir, file));
+  .map((file) => path.join(targetDir, file));
 
 for (const sitemapFile of sitemapFiles) {
   const xml = fs.readFileSync(sitemapFile, 'utf8');
@@ -43,13 +60,52 @@ function sortXmlEntries(xml, rootTag, entryTag) {
     return xml;
   }
 
-  const sortedEntries = [...entries].sort((a, b) => {
+  const deduped = dedupeByLoc(entries, entryTag);
+
+  const sortedEntries = deduped.sort((a, b) => {
     const aLoc = extractLoc(a);
     const bLoc = extractLoc(b);
     return aLoc.localeCompare(bLoc, 'en');
   });
 
   return `${match.groups.header}${match.groups.open}${sortedEntries.join('\n')}${match.groups.close}`;
+}
+
+/**
+ * 同じ <loc> のエントリを1件にまとめる（2026-08-05・A-2/A-3）。
+ *
+ * next-sitemap.config.js の `additionalPaths` が明示追加している静的ページ
+ * （/about/ /contact/ /faq/ /privacy/ /st-league/about/ /growth/ /growth/<slug>）が
+ * 自動列挙とも重なり、<loc> が二重に出ていた（2026-08-05 実測で8件）。
+ * additionalPaths 側を削るとバージョン差で自動列挙から漏れたときに気づけないため、
+ * 「明示追加は残したまま、出力段で1件にまとめる」方針を採る。
+ *
+ * 残す1件は <lastmod> を持つほうを優先する（transform で付けた鮮度シグナルを捨てない）。
+ */
+function dedupeByLoc(entries, entryTag) {
+  const byLoc = new Map();
+  let dropped = 0;
+
+  for (const entry of entries) {
+    const loc = extractLoc(entry);
+    const existing = byLoc.get(loc);
+
+    if (!existing) {
+      byLoc.set(loc, entry);
+      continue;
+    }
+
+    dropped += 1;
+    if (!existing.includes('<lastmod>') && entry.includes('<lastmod>')) {
+      byLoc.set(loc, entry);
+    }
+  }
+
+  if (dropped > 0) {
+    console.log(`sort-sitemaps: 重複 <${entryTag}> を ${dropped} 件まとめました`);
+  }
+
+  return [...byLoc.values()];
 }
 
 function extractLoc(entry) {

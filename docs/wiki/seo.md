@@ -92,6 +92,13 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
   - **Assumption**: 現状どちらの URL が実績厚かは未測定。集中先は「高校カテゴリ内の回遊が厚い高校歴代ページ」を選んだ運用判断。
 - **略称クエリの集約（2026-06）**: 「ハイジャパ」（ハイスクールジャパンカップの通称）など略称での検索を、専用タグページを作らず `/highschool/tournaments/japan-cup` ハブ1枚に集約する。競合（ソフトテニスマガジン）は記事タイトルへの literal「【ハイジャパ】」＋ `/tag/ハイジャパ/` で略称を取っているが、当サイトで別 URL を作ると #3 の集中方針に反し薄いページを増やすため採らない。代わりに略称を `HsNationalTournamentMeta.aliases` に持たせ、ハブ側の title・h1・meta description・FAQ（「『ハイジャパ』とは？」）に literal で1〜2回出して exact 一致を取る。差別化は「ハイジャパ 歴代 優勝」等のロングテール（DB由来の歴代記録）で行う。
   - 実装: `lib/highschoolNationalTournaments.ts`（`aliases`）、`src/pages/highschool/tournaments/[tournament]/index.tsx`（headingName・description・FAQ）、`src/pages/highschool/tournaments/index.tsx`（入口の通称表記）
+  - **併記のルール（2026-08-05 修正）**: 表示名は `label（shortLabel）` に alias を足す形だが、
+    alias が `shortLabel` または `label` と同じ場合は**併記しない**（`displayAlias`）。
+    高校選抜は `shortLabel` も `aliases[0]` も「高校選抜」のため、素通しすると title・h1・
+    description が「全日本高等学校選抜ソフトテニス大会（高校選抜）（高校選抜）」と二重になり、
+    title は 70字でサーバ上の SERP で確実に切れていた（本番 HTML で確認）。
+    FAQ（「『高校選抜』とは？」）は略称クエリの受け皿なので `primaryAlias` のまま残す。
+    修正後の title は 64字、ハイジャパ（`shortLabel` と異なる alias）は従来どおり併記される
 - 状態: **対策済（先行集中・監視継続）**。GSC が取れ次第、集中先が正しいか（高校歴代ページが対象クエリ・略称クエリで上位を取れているか）を確認する
 - 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`（ハブの noindex＋誘導バナー）、`src/pages/highschool/tournaments/[tournament]/index.tsx`（title 最適化）、`lib/highschoolNationalTournaments.ts`（`getHsNationalSlugByTournamentId`）
 - 関連: [highschool.md](./highschool.md)「高校 全国大会の歴代記録ページ」、[public-pages.md](./public-pages.md)「大会ハブページ」
@@ -209,6 +216,67 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
 - 状態: **対策済／監視**（GSC で大会期間中の表示回数と、学校名・選手名クエリの獲得を確認）
 - 詳細: [ADR-007](../adr/ADR-007-in-progress-tournament-standing.md)、
   [docs/story-yaml/README.md](../story-yaml/README.md)
+
+### 12. チームページ同士（薄いページのインデックス枠競合）（2026-08-05 追加）
+
+- URL: `/teams/[teamId]/`（67枚）× `/teams/[teamId]/[year]/[gender]/`（約330枚）
+- 重なり: #2 と**同型**。ナビ＋数行しか無い薄いページが多数あり、ドメインのインデックス枠を
+  食い合う。2026-08-05 の実測では `/teams/**` 376枚のうち **274枚が可視テキスト700字未満**で、
+  全て index かつ sitemap 掲載だった（#2 を選手ページにしか適用していなかった）
+- 制御: 収録試合数が `TEAM_INDEX_MIN_MATCHES` 未満なら `noindex, follow`。
+  試合数は「チーム所属選手が1人でも出ている試合」を1と数える（ダブルスで両者が同一チームでも
+  二重に数えない）。ハブページは大会＋STリーグの全年度合算で判定する
+- **閾値は 5 試合**（2026-08-05 決定）。選手ページの 15 より小さいのは、チーム×年度×性別という
+  粒度では母数がそもそも小さく、15 だとほぼ全滅するため
+- 効果（実データでの事前計測）: 年度別ページ **333枚中 92枚**が noindex（残り241）、
+  ハブページ **67枚中 3枚**のみ noindex（残り64）。ハブが大きく残るのは STリーグの試合数が
+  合算されるため。入口は保ったまま薄い年度ページだけを外せている
+- sitemap は `scripts/filter-noindex-from-sitemap.mjs` が生成 HTML の robots meta を見て自動追従
+  （判定を二重に持たない。#2 と同じ仕組み）
+- 実装: `lib/teamIndexing.ts`、`src/pages/teams/[teamId]/index.tsx`、
+  `src/pages/teams/[teamId]/[year]/[gender].tsx`
+- 状態: **対策済／監視**（GSC の「クロール済み - インデックス未登録」が減るか、
+  残した厚いチームページの表示回数が上がるかを確認）
+- 経緯: [raw/2026-08-05-seo-audit.md](../raw/2026-08-05-seo-audit.md) B-1
+
+## sitemap 生成の運用（2026-08-05 追加）
+
+sitemap 側の制御は3つのスクリプト／設定に分かれている。順序と出力先を間違えると
+**ページ側の対策が sitemap に反映されない**ので、触るときは3つまとめて確認すること。
+
+1. `next-sitemap.config.js` — 列挙・`exclude`・`lastmod`・`additionalPaths`。
+   **出力先は `outDir: 'out'` を明示**（既定の `public/` のままだと配信 sitemap が
+   1ビルド古くなる。理由は [deployment.md](./deployment.md#sitemap-の出力先2026-08-05-修正)）
+2. `scripts/sort-sitemaps.mjs` — `<url>` を loc 順にソートし、**同じ `<loc>` を1件にまとめる**。
+   対象は `out/`
+3. `scripts/filter-noindex-from-sitemap.mjs` — 生成 HTML を真実として sitemap を派生させる。
+   除外条件は **(a) robots meta が noindex、(b) canonical が自 URL を指していない** の2つ。
+   **判定はページ側に置き、ここは追従するだけ**
+
+### 重複ページの除外は canonical で判定する（2026-08-05・A-2）
+
+score ドメイン用の `/matches/<id>/` が softeni-pick 側のビルドにも出力され、掲載大会の試合
+（siteLink あり）では canonical が `/tournaments/.../matches/<id>/` を指すのに sitemap には
+両方載っていた（GSC「代替ページ（適切な canonical タグあり）」の発生源）。
+
+`exclude: ['/matches/*']` で消す案は採らなかった。**野良試合（siteLink なし）にとっては
+`/matches/<id>/` が正の URL**（`lib/siteConfig.ts` の `getPublicMatchDetailPath`）なので、
+パスで一律に切ると「正なのに sitemap に無い」状態を作ってしまう。canonical で判定すれば
+siteLink あり＝自動で除外／野良試合＝自動で残る、と両方正しくなり、将来3つ目の重複 URL
+種別が増えても効く。
+
+既存ビルドでの検証（2026-08-05）: canonical 不一致 42件を検出（`/matches/<id>` 21 ＋
+`/beta/matches-results/<id>` 21）、sitemap からは 20件除去。野良試合1件
+（`/matches/0a7e33bb-…/`、self-canonical）と一覧ページ `/matches/` は**残った**。
+
+### `<loc>` の重複は出力段でまとめる（2026-08-05・A-3）
+
+`additionalPaths` が明示追加している静的ページ（`/about/` `/contact/` `/faq/` `/privacy/`
+`/st-league/about/` `/growth/` `/growth/<slug>`）が自動列挙とも重なり、`<loc>` が8件二重に
+出ていた。`additionalPaths` 側を削ると、バージョン差で自動列挙から漏れたときに気づけない
+（元のコメントは「純粋な静的ページは自動列挙されない」と書いていたが、実測では列挙されていた）。
+そこで **明示追加は残したまま、`sort-sitemaps.mjs` で1件にまとめる**。残す1件は `<lastmod>`
+を持つほうを優先する。
 
 ## 新規ページ追加時の運用
 

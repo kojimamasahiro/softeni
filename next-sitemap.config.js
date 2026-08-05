@@ -139,6 +139,17 @@ loadNews();
 
 module.exports = {
   siteUrl: 'https://softeni-pick.com', // サイトのURLを指定
+  // 出力先を out/ にする（既定は public/）。
+  //
+  // 既定のままだと **デプロイされる sitemap が常に1ビルド古くなる**。
+  //   next build（output: 'export'）が public/ を out/ にコピー
+  //     → その後 postbuild で next-sitemap が public/ に書く
+  // という順序のため、out/sitemap-0.xml は「前回ビルドが public/ に残した sitemap」になる。
+  // 2026-08-05 の実測では out/ 3,369 URL に対し public/ 3,461 URL で、
+  // 差分 92 件は全て index 対象の高校学校ページだった（sitemap 未掲載のまま配信されていた）。
+  // 配信対象は wrangler.toml の pages_build_output_dir = "out"。
+  // 詳細: docs/raw/2026-08-05-seo-audit.md A-1
+  outDir: 'out',
   generateRobotsTxt: true, // robots.txtを生成
   robotsTxtOptions: {
     policies: [

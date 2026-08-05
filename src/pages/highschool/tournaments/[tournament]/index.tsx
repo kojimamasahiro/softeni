@@ -326,9 +326,15 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   const coverageRange = formatYearRange(inProgress ? [...yearsCovered, inProgress.year] : yearsCovered);
   const titleName = label === shortLabel ? label : `${label}（${shortLabel}）`;
   // 検索略称（例: ハイジャパ）。専用ページは作らず、この大会ハブに literal で集約する。
+  // FAQ（「〜とは何ですか？」）はこの値で出す。
   const primaryAlias = aliases?.[0] ?? null;
+  // 見出し・description に**併記**する略称。titleName に既に出ている語
+  // （label / shortLabel）と同じなら併記しない。高校選抜は shortLabel も aliases[0] も
+  // 「高校選抜」のため、素通しすると
+  // 「全日本高等学校選抜ソフトテニス大会（高校選抜）（高校選抜）」と二重になる（2026-08-05 修正）。
+  const displayAlias = primaryAlias && primaryAlias !== shortLabel && primaryAlias !== label ? primaryAlias : null;
   // タイトル/見出し向けの表示名。略称があれば exact 一致用に併記する。
-  const headingName = primaryAlias ? `${titleName}（${primaryAlias}）` : titleName;
+  const headingName = displayAlias ? `${titleName}（${displayAlias}）` : titleName;
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
   // 開催中の年は InProgressSection が受け持つので、「開催予定」からは外す（同じ年を二重に出さない）
@@ -416,7 +422,7 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         .join('・')}の対戦表と、${inProgress.totalPrefectures}都道府県${inProgress.totalSchools}校・全${
         inProgress.totalEntries
       }エントリーの勝ち上がりを種目別に確認できます。${yearRange ? `${yearRange}の歴代優勝校・準優勝・ベスト4も一覧。` : ''}`
-    : `ソフトテニス「${titleName}」${primaryAlias ? `（通称「${primaryAlias}」）` : ''}の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
+    : `ソフトテニス「${titleName}」${displayAlias ? `（通称「${displayAlias}」）` : ''}の歴代優勝校・優勝ペアを年度別・種目別に一覧でまとめました。${yearRange ? `${yearRange}の` : ''}優勝・準優勝・ベスト4の上位入賞と都道府県、各年度の対戦表へのリンクを掲載。${
         nextEdition
           ? `${nextEdition.year}年大会は${formatDateRange(nextEdition.startDate, nextEdition.endDate) || '開催予定'}${nextEdition.location ? `（${nextEdition.location}）` : ''}。`
           : ''
