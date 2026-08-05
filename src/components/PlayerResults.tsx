@@ -71,7 +71,7 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
     if (!tournamentsById[id]) tournamentsById[id] = [];
     tournamentsById[id].push({
       round: m.round ?? '',
-      opponent: m.opponentNames.join(', ') || '不明',
+      opponent: m.opponentNames.join('・') || '不明',
       score: m.score || '',
       result: m.result === 'win' ? '勝' : m.result === 'lose' ? '敗' : '',
       partner: undefined,
