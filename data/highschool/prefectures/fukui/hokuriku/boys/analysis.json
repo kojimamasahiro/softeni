@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 4
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -9,18 +9,7 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "北陸",
-        "teamId": "hokuriku",
-        "prefecture": "福井県",
-        "prefectureId": "fukui",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["中川_周_北陸_福井県", "池尾_賢人_北陸_福井県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "北陸",
         "teamId": "hokuriku",
@@ -39,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "近江_一真_北陸_福井県",
@@ -51,10 +40,6 @@
     },
     {
       "id": "中川_周_北陸_福井県",
-      "appearances": 2
-    },
-    {
-      "id": "池尾_賢人_北陸_福井県",
       "appearances": 1
     }
   ]

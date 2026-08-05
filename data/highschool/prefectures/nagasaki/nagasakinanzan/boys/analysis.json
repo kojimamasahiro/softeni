@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 28,
+  "totalAppearances": 29,
   "byCategory": {
     "team": 7,
-    "doubles": 17,
+    "doubles": 18,
     "singles": 4
   },
   "resultsByCategory": {
@@ -43,7 +43,7 @@
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["竹内_煌_長崎南山_長崎県", "吉永_悠人_長崎南山_長崎県"]
+        "playerIds": ["宇田川_涅_長崎南山_長崎県", "村﨑_丈瑠_長崎南山_長崎県"]
       },
       "historicalBest": {
         "team": "長崎南山",
@@ -55,7 +55,7 @@
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["竹内_煌_長崎南山_長崎県", "吉永_悠人_長崎南山_長崎県"]
+        "playerIds": ["宇田川_涅_長崎南山_長崎県", "村﨑_丈瑠_長崎南山_長崎県"]
       }
     },
     "team": {
@@ -83,14 +83,10 @@
       }
     }
   },
-  "uniquePlayers": 23,
+  "uniquePlayers": 21,
   "topPlayers": [
     {
       "id": "深浦_琉可_長崎南山_長崎県",
-      "appearances": 4
-    },
-    {
-      "id": "白濱_凪騎_長崎南山_長崎県",
       "appearances": 4
     },
     {
@@ -98,11 +94,15 @@
       "appearances": 3
     },
     {
-      "id": "下田_詠太_長崎南山_長崎県",
+      "id": "白濱_凪騎_長崎南山_長崎県",
       "appearances": 3
     },
     {
       "id": "古藤_瑛亘_長崎南山_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "吉田_朝陽_長崎南山_長崎県",
       "appearances": 2
     }
   ]

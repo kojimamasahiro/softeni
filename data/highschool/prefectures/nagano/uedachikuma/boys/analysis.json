@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 6
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -15,10 +15,10 @@
         "teamId": "uedachikuma",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "出場",
+        "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["土屋_巧_上田千曲_長野県", "渡邉_柊人_上田千曲_長野県"]
       },
@@ -61,15 +61,15 @@
       "appearances": 2
     },
     {
+      "id": "土屋_巧_上田千曲_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "渡邉_柊人_上田千曲_長野県",
+      "appearances": 2
+    },
+    {
       "id": "堀内_裕心_上田千曲_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "髙橋_洸貴_上田千曲_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "金井_葵稔_上田千曲_長野県",
       "appearances": 1
     }
   ]

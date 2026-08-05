@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 9
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -15,24 +15,24 @@
         "teamId": "sundaikoufu",
         "prefecture": "山梨県",
         "prefectureId": "yamanashi",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["井上_颯_駿台甲府_山梨県", "津金_飛吹_駿台甲府_山梨県"]
+        "playerIds": ["長沼_快晴_駿台甲府_山梨県", "鈴木_絢也_駿台甲府_山梨県"]
       },
       "historicalBest": {
         "team": "駿台甲府",
         "teamId": "sundaikoufu",
         "prefecture": "山梨県",
         "prefectureId": "yamanashi",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["井上_颯_駿台甲府_山梨県", "津金_飛吹_駿台甲府_山梨県"]
+        "playerIds": ["長沼_快晴_駿台甲府_山梨県", "鈴木_絢也_駿台甲府_山梨県"]
       }
     },
     "team": {
@@ -60,27 +60,27 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
-      "id": "中塚_廣樹_駿台甲府_山梨県",
+      "id": "長沼_快晴_駿台甲府_山梨県",
       "appearances": 2
     },
     {
-      "id": "井上_颯_駿台甲府_山梨県",
+      "id": "鈴木_絢也_駿台甲府_山梨県",
       "appearances": 2
     },
     {
-      "id": "津金_飛吹_駿台甲府_山梨県",
+      "id": "土屋_大冴_駿台甲府_山梨県",
       "appearances": 2
     },
     {
-      "id": "千野_陽大_駿台甲府_山梨県",
-      "appearances": 1
+      "id": "山中_康輔_駿台甲府_山梨県",
+      "appearances": 2
     },
     {
-      "id": "浅川_拓海_駿台甲府_山梨県",
-      "appearances": 1
+      "id": "井上_颯吹_駿台甲府_山梨県",
+      "appearances": 2
     }
   ]
 }

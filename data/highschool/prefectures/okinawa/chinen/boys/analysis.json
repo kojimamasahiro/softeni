@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 9
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "chinen",
         "prefecture": "沖縄県",
         "prefectureId": "okinawa",
-        "result": "4回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["新垣_太賀_知念_沖縄県", "村上_蓮恩_知念_沖縄県"]
+        "playerIds": ["平良_悠_知念_沖縄県", "大城_和之真_知念_沖縄県"]
       },
       "historicalBest": {
         "team": "知念",
         "teamId": "chinen",
         "prefecture": "沖縄県",
         "prefectureId": "okinawa",
-        "result": "4回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["新垣_太賀_知念_沖縄県", "村上_蓮恩_知念_沖縄県"]
+        "playerIds": ["平良_悠_知念_沖縄県", "大城_和之真_知念_沖縄県"]
       }
     },
     "team": {
@@ -39,8 +39,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "平良_悠_知念_沖縄県",
+      "appearances": 3
+    },
     {
       "id": "大城_和之真_知念_沖縄県",
       "appearances": 3
@@ -50,16 +54,12 @@
       "appearances": 2
     },
     {
-      "id": "新垣_太賀_知念_沖縄県",
-      "appearances": 2
-    },
-    {
-      "id": "村上_蓮恩_知念_沖縄県",
-      "appearances": 2
-    },
-    {
       "id": "仲原_将吾_知念_沖縄県",
       "appearances": 2
+    },
+    {
+      "id": "大城_空翔_知念_沖縄県",
+      "appearances": 1
     }
   ]
 }

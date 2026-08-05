@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3,
+    "doubles": 4,
     "singles": 1
   },
   "resultsByCategory": {
@@ -37,10 +37,10 @@
         "teamId": "musashiogose",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "出場",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["吉田_駿風_武蔵越生_埼玉県", "寺門_共生_武蔵越生_埼玉県"]
       },
@@ -49,12 +49,12 @@
         "teamId": "musashiogose",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["吉野_梓恩_武蔵越生_埼玉県", "武藤_大空_武蔵越生_埼玉県"]
+        "playerIds": ["吉田_駿風_武蔵越生_埼玉県", "寺門_共生_武蔵越生_埼玉県"]
       }
     },
     "team": {
@@ -66,6 +66,10 @@
   "topPlayers": [
     {
       "id": "寺門_共生_武蔵越生_埼玉県",
+      "appearances": 3
+    },
+    {
+      "id": "吉田_駿風_武蔵越生_埼玉県",
       "appearances": 2
     },
     {
@@ -74,10 +78,6 @@
     },
     {
       "id": "武藤_大空_武蔵越生_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "吉田_駿風_武蔵越生_埼玉県",
       "appearances": 1
     },
     {

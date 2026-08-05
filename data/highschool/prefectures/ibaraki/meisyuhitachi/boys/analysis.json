@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 4,
   "byCategory": {
     "team": 3,
-    "doubles": 2
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -10,29 +10,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "明秀日立",
-        "teamId": "meisyuhitachi",
-        "prefecture": "茨城県",
-        "prefectureId": "ibaraki",
-        "result": "3回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["鈴木_想_明秀日立_茨城県", "菊池_七斗_明秀日立_茨城県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "明秀日立",
         "teamId": "meisyuhitachi",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["鈴木_想_明秀日立_茨城県", "菊池_七斗_明秀日立_茨城県"]
+        "playerIds": ["前岡_和亜_明秀日立_茨城県", "菅谷_朋輝_明秀日立_茨城県"]
       }
     },
     "team": {
@@ -60,16 +49,8 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 2,
   "topPlayers": [
-    {
-      "id": "鈴木_想_明秀日立_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "菊池_七斗_明秀日立_茨城県",
-      "appearances": 1
-    },
     {
       "id": "前岡_和亜_明秀日立_茨城県",
       "appearances": 1

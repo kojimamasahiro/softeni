@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 3,
+    "doubles": 4,
     "singles": 3
   },
   "resultsByCategory": {
@@ -39,7 +39,7 @@
         "prefectureId": "hokkaido",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": ["加藤_虎牙_大谷室蘭_北海道", "関_悠陽_大谷室蘭_北海道"]
@@ -51,7 +51,7 @@
         "prefectureId": "hokkaido",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": ["加藤_虎牙_大谷室蘭_北海道", "関_悠陽_大谷室蘭_北海道"]
@@ -66,11 +66,11 @@
   "topPlayers": [
     {
       "id": "加藤_虎牙_大谷室蘭_北海道",
-      "appearances": 5
+      "appearances": 6
     },
     {
       "id": "関_悠陽_大谷室蘭_北海道",
-      "appearances": 3
+      "appearances": 4
     }
   ]
 }

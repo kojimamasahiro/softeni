@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 2
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "uozu",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["中山_健心_魚津_富山県", "浮田_鳳雅_魚津_富山県"]
+        "playerIds": ["中山_健心_魚津_富山県", "浮田_凰雅_魚津_富山県"]
       },
       "historicalBest": {
         "team": "魚津",
         "teamId": "uozu",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["中山_健心_魚津_富山県", "浮田_鳳雅_魚津_富山県"]
+        "playerIds": ["中山_健心_魚津_富山県", "浮田_凰雅_魚津_富山県"]
       }
     },
     "team": {
@@ -39,18 +39,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "中山_健心_魚津_富山県",
-      "appearances": 2
-    },
-    {
-      "id": "浮田_凰雅_魚津_富山県",
       "appearances": 1
     },
     {
-      "id": "浮田_鳳雅_魚津_富山県",
+      "id": "浮田_凰雅_魚津_富山県",
       "appearances": 1
     }
   ]

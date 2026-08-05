@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 3
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "tsuna",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["富永_暖琉_津名_兵庫県", "打越_陸王_津名_兵庫県"]
+        "playerIds": ["樋口_獅維_津名_兵庫県", "満永_瑛人_津名_兵庫県"]
       },
       "historicalBest": {
         "team": "津名",
         "teamId": "tsuna",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["富永_暖琉_津名_兵庫県", "打越_陸王_津名_兵庫県"]
+        "playerIds": ["樋口_獅維_津名_兵庫県", "満永_瑛人_津名_兵庫県"]
       }
     },
     "team": {
@@ -39,27 +39,15 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "富永_暖琉_津名_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "打越_陸王_津名_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "速谷_優樹_津名_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "冨本_翔太_津名_兵庫県",
-      "appearances": 1
-    },
-    {
       "id": "樋口_獅維_津名_兵庫県",
-      "appearances": 1
+      "appearances": 2
+    },
+    {
+      "id": "満永_瑛人_津名_兵庫県",
+      "appearances": 2
     }
   ]
 }

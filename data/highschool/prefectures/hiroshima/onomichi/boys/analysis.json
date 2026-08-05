@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 22,
   "byCategory": {
     "team": 5,
-    "doubles": 11,
+    "doubles": 12,
     "singles": 5
   },
   "resultsByCategory": {
@@ -43,7 +43,7 @@
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["大名_快青_尾道_広島県", "神原_世凪_尾道_広島県"]
+        "playerIds": ["新谷_煌太朗_尾道_広島県", "水野_健太朗_尾道_広島県"]
       },
       "historicalBest": {
         "team": "尾道",
@@ -83,8 +83,12 @@
       }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 16,
   "topPlayers": [
+    {
+      "id": "佐藤_礼_尾道_広島県",
+      "appearances": 3
+    },
     {
       "id": "大名_快青_尾道_広島県",
       "appearances": 3
@@ -98,11 +102,7 @@
       "appearances": 3
     },
     {
-      "id": "水野_健太朗_尾道_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "片山_斗羽_尾道_広島県",
+      "id": "新谷_煌太朗_尾道_広島県",
       "appearances": 2
     }
   ]

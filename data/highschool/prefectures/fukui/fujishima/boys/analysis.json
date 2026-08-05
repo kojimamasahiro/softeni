@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "fujishima",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "予選敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "highschool-championship",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["上田_航_藤島_福井県", "池泉_太智_藤島_福井県"]
+        "playerIds": ["伊藤_琉希_藤島_福井県", "安倍_優_藤島_福井県"]
       },
       "historicalBest": {
         "team": "藤島",
         "teamId": "fujishima",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["伊藤_聖琉_藤島_福井県", "池上_理人_藤島_福井県"]
+        "playerIds": ["伊藤_琉希_藤島_福井県", "安倍_優_藤島_福井県"]
       }
     },
     "team": {
@@ -43,22 +43,22 @@
   "topPlayers": [
     {
       "id": "上田_航_藤島_福井県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "池泉_太智_藤島_福井県",
+      "appearances": 3
+    },
+    {
+      "id": "伊藤_琉希_藤島_福井県",
+      "appearances": 2
+    },
+    {
+      "id": "安倍_優_藤島_福井県",
       "appearances": 2
     },
     {
       "id": "伊藤_聖琉_藤島_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "池上_理人_藤島_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "伊藤_琉希_藤島_福井県",
       "appearances": 1
     }
   ]

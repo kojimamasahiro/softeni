@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -14,10 +14,10 @@
         "teamId": "oodateootorimei",
         "prefecture": "秋田県",
         "prefectureId": "akita",
-        "result": "出場",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["柳谷_羚葵_大館鳳鳴_秋田県", "三沢_昂葵_大館鳳鳴_秋田県"]
       },
@@ -26,12 +26,12 @@
         "teamId": "oodateootorimei",
         "prefecture": "秋田県",
         "prefectureId": "akita",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["黒澤_悠真_大館鳳鳴_秋田県", "石田_琉人_大館鳳鳴_秋田県"]
+        "playerIds": ["柳谷_羚葵_大館鳳鳴_秋田県", "三沢_昂葵_大館鳳鳴_秋田県"]
       }
     },
     "team": {
@@ -42,23 +42,23 @@
   "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "黒澤_悠真_大館鳳鳴_秋田県",
-      "appearances": 1
-    },
-    {
-      "id": "石田_琉人_大館鳳鳴_秋田県",
-      "appearances": 1
-    },
-    {
       "id": "柳谷_羚葵_大館鳳鳴_秋田県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "三沢_昂葵_大館鳳鳴_秋田県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "柏山_昇輝_大館鳳鳴_秋田県",
+      "appearances": 2
+    },
+    {
+      "id": "岩沢_陽飛_大館鳳鳴_秋田県",
+      "appearances": 2
+    },
+    {
+      "id": "黒澤_悠真_大館鳳鳴_秋田県",
       "appearances": 1
     }
   ]

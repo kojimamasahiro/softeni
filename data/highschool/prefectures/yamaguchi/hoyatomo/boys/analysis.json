@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -14,10 +14,10 @@
         "teamId": "hoyatomo",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "出場",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["村上_月_早鞆_山口県", "山本_幸輝_早鞆_山口県"]
       },
@@ -29,9 +29,9 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["内田_迅_早鞆_山口県", "徳田_一真_早鞆_山口県"]
+        "playerIds": ["村上_月_早鞆_山口県", "山本_幸輝_早鞆_山口県"]
       }
     },
     "team": {
@@ -43,11 +43,11 @@
   "topPlayers": [
     {
       "id": "村上_月_早鞆_山口県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "山本_幸輝_早鞆_山口県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "内田_迅_早鞆_山口県",

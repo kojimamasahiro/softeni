@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 19,
   "byCategory": {
     "team": 2,
-    "doubles": 13,
+    "doubles": 16,
     "singles": 1
   },
   "resultsByCategory": {
@@ -41,9 +41,9 @@
         "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["藤野_慶汰_東福岡_福岡県", "東條_陽斗_東福岡_福岡県"]
+        "playerIds": ["西小路_拳斗_東福岡_福岡県", "山田_侑人_東福岡_福岡県"]
       },
       "historicalBest": {
         "team": "東福岡",
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 20,
   "topPlayers": [
     {
       "id": "伊藤_駿平_東福岡_福岡県",
       "appearances": 4
     },
     {
-      "id": "東條_陽斗_東福岡_福岡県",
+      "id": "中岡_栄萬_東福岡_福岡県",
       "appearances": 2
     },
     {
-      "id": "帆足_光平_東福岡_福岡県",
+      "id": "本田_林路_東福岡_福岡県",
       "appearances": 2
     },
     {
-      "id": "山田_侑人_東福岡_福岡県",
+      "id": "比嘉_遼_東福岡_福岡県",
       "appearances": 2
     },
     {
-      "id": "木村_蓮_東福岡_福岡県",
-      "appearances": 1
+      "id": "前島_進士_東福岡_福岡県",
+      "appearances": 2
     }
   ]
 }

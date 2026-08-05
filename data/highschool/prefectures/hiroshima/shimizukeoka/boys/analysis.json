@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 18,
   "byCategory": {
     "team": 3,
-    "doubles": 13,
+    "doubles": 11,
     "singles": 4
   },
   "resultsByCategory": {
@@ -38,24 +38,24 @@
         "teamId": "shimizukeoka",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "4回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["東_稜久_清水ヶ丘_広島県", "小川_蓮太郎_清水ヶ丘_広島県"]
+        "playerIds": ["藤本_晴生_清水ヶ丘_広島県", "神田_陽飛_清水ヶ丘_広島県"]
       },
       "historicalBest": {
         "team": "清水ヶ丘",
         "teamId": "shimizukeoka",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "4回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["東_稜久_清水ヶ丘_広島県", "小川_蓮太郎_清水ヶ丘_広島県"]
+        "playerIds": ["藤本_晴生_清水ヶ丘_広島県", "神田_陽飛_清水ヶ丘_広島県"]
       }
     },
     "team": {
@@ -83,15 +83,11 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "藤本_晴生_清水ヶ丘_広島県",
       "appearances": 5
-    },
-    {
-      "id": "東_稜久_清水ヶ丘_広島県",
-      "appearances": 4
     },
     {
       "id": "工藤_祐輝_清水ヶ丘_広島県",
@@ -99,6 +95,10 @@
     },
     {
       "id": "神田_陽飛_清水ヶ丘_広島県",
+      "appearances": 3
+    },
+    {
+      "id": "東_稜久_清水ヶ丘_広島県",
       "appearances": 3
     },
     {

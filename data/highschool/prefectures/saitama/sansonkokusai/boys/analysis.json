@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 7
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "sansonkokusai",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["町田_優月希_山村国際_埼玉県", "石井_琉_山村国際_埼玉県"]
+        "playerIds": ["野田_健心_山村国際_埼玉県", "村上_友也_山村国際_埼玉県"]
       },
       "historicalBest": {
         "team": "山村国際",
         "teamId": "sansonkokusai",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["町田_優月希_山村国際_埼玉県", "石井_琉_山村国際_埼玉県"]
+        "playerIds": ["野田_健心_山村国際_埼玉県", "村上_友也_山村国際_埼玉県"]
       }
     },
     "team": {
@@ -39,26 +39,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "町田_優月希_山村国際_埼玉県",
+      "id": "村上_友也_山村国際_埼玉県",
       "appearances": 4
     },
     {
-      "id": "村上_友也_山村国際_埼玉県",
-      "appearances": 3
-    },
-    {
-      "id": "石井_琉_山村国際_埼玉県",
-      "appearances": 2
+      "id": "町田_優月希_山村国際_埼玉県",
+      "appearances": 4
     },
     {
       "id": "野田_健心_山村国際_埼玉県",
       "appearances": 1
     },
     {
-      "id": "松村_裕太_山村国際_埼玉県",
+      "id": "石井_琉_山村国際_埼玉県",
       "appearances": 1
     }
   ]

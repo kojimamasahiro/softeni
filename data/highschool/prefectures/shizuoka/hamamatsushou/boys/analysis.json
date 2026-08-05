@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 5,
+    "doubles": 6,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,10 +27,10 @@
         "teamId": "hamamatsushou",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "出場",
+        "result": "1回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["渥美_和虎_浜松商_静岡県", "大城_駿真_浜松商_静岡県"]
       },
@@ -73,15 +73,15 @@
       "appearances": 2
     },
     {
-      "id": "伊藤_吟時_浜松商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "町田_宙太_浜松商_静岡県",
-      "appearances": 1
-    },
-    {
       "id": "渥美_和虎_浜松商_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "大城_駿真_浜松商_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "伊藤_吟時_浜松商_静岡県",
       "appearances": 1
     }
   ]

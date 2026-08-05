@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 2,
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,18 +21,7 @@
       }
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "小松大谷",
-        "teamId": "komatsuootani",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["松岡_悠翔_小松大谷_石川県", "中_竜之介_小松大谷_石川県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "小松大谷",
         "teamId": "komatsuootani",
@@ -51,19 +40,11 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "古橋_迅_小松大谷_石川県",
       "appearances": 2
-    },
-    {
-      "id": "松岡_悠翔_小松大谷_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "中_竜之介_小松大谷_石川県",
-      "appearances": 1
     },
     {
       "id": "中_京介_小松大谷_石川県",

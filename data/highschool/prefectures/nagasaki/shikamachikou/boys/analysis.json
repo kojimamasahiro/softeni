@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "shikamachikou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["川下_蓮_鹿町工_長崎県", "濱野_翔稀_鹿町工_長崎県"]
+        "playerIds": ["山口_遥斗_鹿町工_長崎県", "岩村_龍吾_鹿町工_長崎県"]
       },
       "historicalBest": {
         "team": "鹿町工",
         "teamId": "shikamachikou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["川下_蓮_鹿町工_長崎県", "濱野_翔稀_鹿町工_長崎県"]
+        "playerIds": ["山口_遥斗_鹿町工_長崎県", "岩村_龍吾_鹿町工_長崎県"]
       }
     },
     "team": {
@@ -42,19 +42,19 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "山口_遥斗_鹿町工_長崎県",
+      "appearances": 2
+    },
+    {
+      "id": "岩村_龍吾_鹿町工_長崎県",
+      "appearances": 2
+    },
+    {
       "id": "川下_蓮_鹿町工_長崎県",
       "appearances": 1
     },
     {
       "id": "濱野_翔稀_鹿町工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "山口_遥斗_鹿町工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "岩村_龍吾_鹿町工_長崎県",
       "appearances": 1
     }
   ]

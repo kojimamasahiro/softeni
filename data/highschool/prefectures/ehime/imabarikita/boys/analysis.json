@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 4
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -9,18 +9,7 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "今治北",
-        "teamId": "imabarikita",
-        "prefecture": "愛媛県",
-        "prefectureId": "ehime",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["宗雪_開晟_今治北_愛媛県", "大塚_結人_今治北_愛媛県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "今治北",
         "teamId": "imabarikita",
@@ -39,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "児玉_春来_今治北_愛媛県",
@@ -50,15 +39,11 @@
       "appearances": 2
     },
     {
-      "id": "宗雪_開晟_今治北_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "大塚_結人_今治北_愛媛県",
-      "appearances": 1
-    },
-    {
       "id": "神尾_響_今治北_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "門田_大知_今治北_愛媛県",
       "appearances": 1
     }
   ]

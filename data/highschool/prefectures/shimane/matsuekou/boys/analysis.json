@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 32,
+  "totalAppearances": 30,
   "byCategory": {
     "team": 6,
-    "doubles": 22,
+    "doubles": 20,
     "singles": 4
   },
   "resultsByCategory": {
@@ -38,12 +38,12 @@
         "teamId": "matsuekou",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "4回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["平佐_凄凰_松江工_島根県", "加藤_陸_松江工_島根県"]
+        "playerIds": ["葉末_遼也_松江工_島根県", "杉田_悠_松江工_島根県"]
       },
       "historicalBest": {
         "team": "松江工",
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 33,
+  "uniquePlayers": 26,
   "topPlayers": [
     {
       "id": "尾島_涼太_松江工_島根県",
       "appearances": 5
     },
     {
-      "id": "永見_翔_松江工_島根県",
+      "id": "葉末_遼也_松江工_島根県",
       "appearances": 3
     },
     {
-      "id": "髙住_天翔_松江工_島根県",
-      "appearances": 2
+      "id": "杉田_悠_松江工_島根県",
+      "appearances": 3
     },
     {
-      "id": "佐藤_祇斗_松江工_島根県",
-      "appearances": 2
+      "id": "荒川_大空_松江工_島根県",
+      "appearances": 3
     },
     {
-      "id": "平佐_優吏_松江工_島根県",
-      "appearances": 2
+      "id": "永見_翔_松江工_島根県",
+      "appearances": 3
     }
   ]
 }
