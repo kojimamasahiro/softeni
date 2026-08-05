@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 3,
-    "doubles": 5,
+    "doubles": 7,
     "singles": 1
   },
   "resultsByCategory": {
@@ -22,7 +22,18 @@
       }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "熊本工",
+        "teamId": "kumamotokou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2025,
+        "gender": "boys",
+        "playerIds": ["大川_竜明_熊本工_熊本県", "横田_祥_熊本工_熊本県"]
+      },
       "historicalBest": {
         "team": "熊本工",
         "teamId": "kumamotokou",
@@ -61,7 +72,7 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "黒木_瑛太_熊本工_熊本県",

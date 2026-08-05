@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 3
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["濱田_香芽_安来_島根県", "柴田_太陽_安来_島根県"]
       },
@@ -29,7 +29,7 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["濱田_香芽_安来_島根県", "柴田_太陽_安来_島根県"]
       }
@@ -42,19 +42,19 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "濱田_香芽_安来_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "柴田_太陽_安来_島根県",
-      "appearances": 2
-    },
-    {
       "id": "三上_宗悟_安来_島根県",
       "appearances": 1
     },
     {
       "id": "飯橋_照太_安来_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "濱田_香芽_安来_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "柴田_太陽_安来_島根県",
       "appearances": 1
     }
   ]

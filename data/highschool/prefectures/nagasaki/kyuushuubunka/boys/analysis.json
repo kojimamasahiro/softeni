@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -14,9 +14,9 @@
         "teamId": "kyuushuubunka",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": ["澤田_博史_九州文化_長崎県", "吉松_要琉生_九州文化_長崎県"]
@@ -26,9 +26,9 @@
         "teamId": "kyuushuubunka",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
         "playerIds": ["澤田_博史_九州文化_長崎県", "吉松_要琉生_九州文化_長崎県"]
@@ -43,11 +43,11 @@
   "topPlayers": [
     {
       "id": "澤田_博史_九州文化_長崎県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "吉松_要琉生_九州文化_長崎県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

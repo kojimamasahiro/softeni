@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 23,
+  "totalAppearances": 24,
   "byCategory": {
     "team": 4,
-    "doubles": 16,
+    "doubles": 17,
     "singles": 3
   },
   "resultsByCategory": {
@@ -41,7 +41,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["中野_琉翔_大分_大分県", "杉森_陽太_大分_大分県"]
       },
@@ -53,7 +53,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["中野_琉翔_大分_大分県", "杉森_陽太_大分_大分県"]
       }
@@ -86,12 +86,8 @@
   "uniquePlayers": 23,
   "topPlayers": [
     {
-      "id": "中野_琉翔_大分_大分県",
-      "appearances": 3
-    },
-    {
       "id": "坂口_竣亮_大分_大分県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "岡本_央睦_大分_大分県",
@@ -103,6 +99,10 @@
     },
     {
       "id": "樋口_晴喜_大分_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "青野_良真_大分_大分県",
       "appearances": 2
     }
   ]

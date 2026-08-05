@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 4,
-    "doubles": 8,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -38,24 +38,24 @@
         "teamId": "chikushidai",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["大平_憲良_筑紫台_福岡県", "造隼_瑠星_筑紫台_福岡県"]
+        "playerIds": ["石井_壮_筑紫台_福岡県", "谷_結真_筑紫台_福岡県"]
       },
       "historicalBest": {
         "team": "筑紫台",
         "teamId": "chikushidai",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["大平_憲良_筑紫台_福岡県", "造隼_瑠星_筑紫台_福岡県"]
+        "playerIds": ["石井_壮_筑紫台_福岡県", "谷_結真_筑紫台_福岡県"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "橋田_武流_筑紫台_福岡県",
@@ -94,16 +94,16 @@
       "appearances": 2
     },
     {
-      "id": "大平_憲良_筑紫台_福岡県",
-      "appearances": 2
-    },
-    {
-      "id": "造隼_瑠星_筑紫台_福岡県",
+      "id": "谷_結真_筑紫台_福岡県",
       "appearances": 2
     },
     {
       "id": "中山_太稀_筑紫台_福岡県",
       "appearances": 2
+    },
+    {
+      "id": "水上_大生_筑紫台_福岡県",
+      "appearances": 1
     }
   ]
 }

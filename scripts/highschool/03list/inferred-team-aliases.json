@@ -668,6 +668,11 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "八戸工大一"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
             "team": "八戸工大一"
@@ -716,6 +721,27 @@
         "evidence": [
           {
             "tournamentId": "highschool-japan-cup",
+            "file": "doubles-none-boys.json",
+            "team": "八戸工大一"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "八戸工業大第一高校"
+          }
+        ]
+      },
+      {
+        "year": 2025,
+        "lastName": "葛西",
+        "firstName": "慧",
+        "aliases": [
+          "八戸工大一",
+          "八戸工業大第一高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
             "file": "doubles-none-boys.json",
             "team": "八戸工大一"
           },
@@ -1437,11 +1463,6 @@
           "大谷室蘭高校"
         ],
         "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "大谷室蘭"
-          },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
@@ -2658,6 +2679,11 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "富岡東"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
             "team": "富岡東"
@@ -2731,53 +2757,9 @@
     "canonical": "尽誠学園",
     "aliases": [
       "尽誠学園",
-      "野木中学校",
-      "上青木中学校",
       "東北福祉大学"
     ],
     "reasons": [
-      {
-        "year": 2025,
-        "lastName": "村田",
-        "firstName": "優斗",
-        "aliases": [
-          "上青木中学校",
-          "尽誠学園"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "尽誠学園"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "上青木中学校"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "鈴木",
-        "firstName": "佐禄",
-        "aliases": [
-          "尽誠学園",
-          "野木中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "尽誠学園"
-          },
-          {
-            "tournamentId": "zennihon-singles",
-            "file": "singles-none-boys.json",
-            "team": "野木中学校"
-          }
-        ]
-      },
       {
         "year": 2026,
         "lastName": "村田",
@@ -2972,12 +2954,89 @@
     ]
   },
   {
+    "canonical": "岡山南",
+    "aliases": [
+      "岡山南",
+      "岡山南高校"
+    ],
+    "reasons": [
+      {
+        "year": 2025,
+        "lastName": "松永",
+        "firstName": "凌",
+        "aliases": [
+          "岡山南",
+          "岡山南高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山南"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山南高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "岡山南高校"
+          }
+        ]
+      },
+      {
+        "year": 2025,
+        "lastName": "荻野",
+        "firstName": "永二",
+        "aliases": [
+          "岡山南",
+          "岡山南高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山南"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山南高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "岡山理大附",
     "aliases": [
       "岡山理大附",
       "岡山理科大附高校"
     ],
     "reasons": [
+      {
+        "year": 2025,
+        "lastName": "石灘",
+        "firstName": "蒼瑛",
+        "aliases": [
+          "岡山理大附",
+          "岡山理科大附高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山理大附"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "岡山理科大附高校"
+          }
+        ]
+      },
       {
         "year": 2025,
         "lastName": "青木",
@@ -2987,6 +3046,11 @@
           "岡山理科大附高校"
         ],
         "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "岡山理大附"
+          },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
@@ -3195,6 +3259,11 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "市尼崎"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
             "team": "市尼崎"
@@ -3215,6 +3284,11 @@
           "市尼崎"
         ],
         "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "市尼崎"
+          },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
@@ -3403,6 +3477,27 @@
           {
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
+            "team": "弘前実"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "弘前実業高校"
+          }
+        ]
+      },
+      {
+        "year": 2025,
+        "lastName": "三上",
+        "firstName": "結太",
+        "aliases": [
+          "弘前実",
+          "弘前実業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
             "team": "弘前実"
           },
           {
@@ -3925,32 +4020,10 @@
     "canonical": "早稲田実",
     "aliases": [
       "早稲田実",
-      "清明学園中学校",
       "早稲田実業高等部",
       "早稲田実業学校高等部"
     ],
     "reasons": [
-      {
-        "year": 2025,
-        "lastName": "赤金",
-        "firstName": "泰河",
-        "aliases": [
-          "早稲田実",
-          "清明学園中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "早稲田実"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "清明学園中学校"
-          }
-        ]
-      },
       {
         "year": 2026,
         "lastName": "小沼",
@@ -4023,32 +4096,6 @@
       "シャープクラブ"
     ],
     "reasons": [
-      {
-        "year": 2025,
-        "lastName": "山本",
-        "firstName": "幸輝",
-        "aliases": [
-          "シャープクラブ",
-          "早鞆"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "早鞆"
-          },
-          {
-            "tournamentId": "zennihon-mixed",
-            "file": "doubles-over65-mixed.json",
-            "team": "シャープクラブ"
-          },
-          {
-            "tournamentId": "zennihon-senior",
-            "file": "doubles-over65-boys.json",
-            "team": "シャープクラブ"
-          }
-        ]
-      },
       {
         "year": 2026,
         "lastName": "山本",
@@ -4181,85 +4228,33 @@
     ]
   },
   {
-    "canonical": "明徳義塾",
-    "aliases": [
-      "明徳義塾",
-      "朝日中学校",
-      "明徳義塾中学校"
-    ],
-    "reasons": [
-      {
-        "year": 2025,
-        "lastName": "山田",
-        "firstName": "隆真",
-        "aliases": [
-          "明徳義塾",
-          "朝日中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "明徳義塾"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "朝日中学校"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "杉田",
-        "firstName": "陽星",
-        "aliases": [
-          "明徳義塾",
-          "朝日中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "明徳義塾"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "朝日中学校"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "柴崎",
-        "firstName": "雄斗",
-        "aliases": [
-          "明徳義塾",
-          "明徳義塾中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "明徳義塾"
-          },
-          {
-            "tournamentId": "zennihon-singles",
-            "file": "singles-none-boys.json",
-            "team": "明徳義塾中学校"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "canonical": "木更津総合",
     "aliases": [
       "木更津総",
       "木更津総合"
     ],
     "reasons": [
+      {
+        "year": 2025,
+        "lastName": "嵯峨",
+        "firstName": "悠平",
+        "aliases": [
+          "木更津総",
+          "木更津総合"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "east-japan",
+            "file": "doubles-none-boys.json",
+            "team": "木更津総"
+          },
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "木更津総合"
+          }
+        ]
+      },
       {
         "year": 2025,
         "lastName": "舘田",
@@ -4284,85 +4279,6 @@
     ]
   },
   {
-    "canonical": "東北",
-    "aliases": [
-      "東北",
-      "朝日中学校",
-      "上青木中学校",
-      "清明学園中学校"
-    ],
-    "reasons": [
-      {
-        "year": 2025,
-        "lastName": "宇田川",
-        "firstName": "成寿",
-        "aliases": [
-          "東北",
-          "清明学園中学校"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "東北"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "清明学園中学校"
-          },
-          {
-            "tournamentId": "zennihon-singles",
-            "file": "singles-none-boys.json",
-            "team": "清明学園中学校"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "桐山",
-        "firstName": "柊介",
-        "aliases": [
-          "上青木中学校",
-          "東北"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "東北"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "上青木中学校"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "田中",
-        "firstName": "暖人",
-        "aliases": [
-          "朝日中学校",
-          "東北"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "東北"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "朝日中学校"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "canonical": "東海大相模",
     "aliases": [
       "東海大相模",
@@ -4378,6 +4294,11 @@
           "東海大相模高校"
         ],
         "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東海大相模"
+          },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
@@ -4399,6 +4320,11 @@
           "東海大相模高校"
         ],
         "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東海大相模"
+          },
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
@@ -6655,7 +6581,7 @@
     ],
     "reasons": [
       {
-        "year": 2025,
+        "year": 2026,
         "lastName": "大田",
         "firstName": "万葉",
         "aliases": [
@@ -6671,6 +6597,48 @@
           {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
+            "team": "米子松蔭"
+          }
+        ]
+      },
+      {
+        "year": 2026,
+        "lastName": "足立",
+        "firstName": "悠隼",
+        "aliases": [
+          "米子松蔭",
+          "米子松陰"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "米子松陰"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "米子松蔭"
+          }
+        ]
+      },
+      {
+        "year": 2026,
+        "lastName": "足立",
+        "firstName": "蒼士",
+        "aliases": [
+          "米子松蔭",
+          "米子松陰"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "米子松陰"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
             "team": "米子松蔭"
           }
         ]
@@ -6723,58 +6691,6 @@
             "tournamentId": "highschool-championship",
             "file": "doubles-none-boys.json",
             "team": "米沢中央"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "canonical": "能登",
-    "aliases": [
-      "能登",
-      "七尾中学校",
-      "氷見北部中学校"
-    ],
-    "reasons": [
-      {
-        "year": 2025,
-        "lastName": "中島",
-        "firstName": "悠真",
-        "aliases": [
-          "七尾中学校",
-          "能登"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "east-japan",
-            "file": "doubles-none-boys.json",
-            "team": "七尾中学校"
-          },
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "能登"
-          }
-        ]
-      },
-      {
-        "year": 2025,
-        "lastName": "飯久保",
-        "firstName": "淳耶",
-        "aliases": [
-          "氷見北部中学校",
-          "能登"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "east-japan",
-            "file": "doubles-none-boys.json",
-            "team": "氷見北部中学校"
-          },
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "能登"
           }
         ]
       }
@@ -7892,36 +7808,6 @@
     ]
   },
   {
-    "canonical": "高岡商",
-    "aliases": [
-      "高岡商",
-      "氷見北部中学校"
-    ],
-    "reasons": [
-      {
-        "year": 2025,
-        "lastName": "原田",
-        "firstName": "翔叶",
-        "aliases": [
-          "氷見北部中学校",
-          "高岡商"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "east-japan",
-            "file": "doubles-none-boys.json",
-            "team": "氷見北部中学校"
-          },
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "高岡商"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "canonical": "高崎",
     "aliases": [
       "高崎",
@@ -7939,6 +7825,11 @@
         "evidence": [
           {
             "tournamentId": "east-japan",
+            "file": "doubles-none-boys.json",
+            "team": "高崎"
+          },
+          {
+            "tournamentId": "highschool-championship",
             "file": "doubles-none-boys.json",
             "team": "高崎"
           },
@@ -8051,8 +7942,34 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高崎商"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
+            "team": "高崎商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高崎商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2025,
+        "lastName": "森平",
+        "firstName": "蓮心",
+        "aliases": [
+          "高崎商",
+          "高崎商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
             "team": "高崎商"
           },
           {
@@ -8450,6 +8367,11 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "鹿児島商"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
             "team": "鹿児島商"
@@ -8579,6 +8501,11 @@
         ],
         "evidence": [
           {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "鹿児島実"
+          },
+          {
             "tournamentId": "highschool-japan-cup",
             "file": "doubles-none-boys.json",
             "team": "鹿児島実"
@@ -8681,32 +8608,6 @@
       "ルーテル学院"
     ],
     "reasons": [
-      {
-        "year": 2025,
-        "lastName": "田中",
-        "firstName": "海斗",
-        "aliases": [
-          "ルーテル学院",
-          "龍野クラブ"
-        ],
-        "evidence": [
-          {
-            "tournamentId": "highschool-championship",
-            "file": "doubles-none-boys.json",
-            "team": "ルーテル学院"
-          },
-          {
-            "tournamentId": "west-japan",
-            "file": "doubles-none-boys.json",
-            "team": "龍野クラブ"
-          },
-          {
-            "tournamentId": "zennihon-championship",
-            "file": "doubles-none-boys.json",
-            "team": "龍野クラブ"
-          }
-        ]
-      },
       {
         "year": 2026,
         "lastName": "田中",

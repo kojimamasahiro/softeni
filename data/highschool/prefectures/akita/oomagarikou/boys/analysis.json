@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4,
+    "doubles": 5,
     "singles": 1
   },
   "resultsByCategory": {
@@ -29,9 +29,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["伊藤_琉哉_大曲工_秋田県", "佐藤_大駕_大曲工_秋田県"]
+        "playerIds": ["森川_蓮_大曲工_秋田県", "佐藤_大駕_大曲工_秋田県"]
       },
       "historicalBest": {
         "team": "大曲工",
@@ -51,8 +51,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
+    {
+      "id": "佐藤_大駕_大曲工_秋田県",
+      "appearances": 2
+    },
     {
       "id": "伊藤_琉哉_大曲工_秋田県",
       "appearances": 2
@@ -66,11 +70,7 @@
       "appearances": 2
     },
     {
-      "id": "佐藤_大駕_大曲工_秋田県",
-      "appearances": 1
-    },
-    {
-      "id": "福田_和彦_大曲工_秋田県",
+      "id": "森川_蓮_大曲工_秋田県",
       "appearances": 1
     }
   ]

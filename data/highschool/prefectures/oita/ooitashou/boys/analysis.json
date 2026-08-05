@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 23,
   "byCategory": {
     "team": 3,
-    "doubles": 18,
+    "doubles": 17,
     "singles": 3
   },
   "resultsByCategory": {
@@ -41,7 +41,7 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["工藤_翔悟_大分商_大分県", "小野_弘太郎_大分商_大分県"]
       },
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 20,
   "topPlayers": [
     {
       "id": "小野_弘太郎_大分商_大分県",
       "appearances": 6
     },
     {
+      "id": "小野_泰輝_大分商_大分県",
+      "appearances": 4
+    },
+    {
       "id": "衞藤_結生_大分商_大分県",
       "appearances": 4
     },
     {
-      "id": "工藤_翔悟_大分商_大分県",
-      "appearances": 3
-    },
-    {
-      "id": "小野_泰輝_大分商_大分県",
-      "appearances": 3
-    },
-    {
       "id": "紀野_文汰_大分商_大分県",
       "appearances": 3
+    },
+    {
+      "id": "矢野_遥己_大分商_大分県",
+      "appearances": 2
     }
   ]
 }

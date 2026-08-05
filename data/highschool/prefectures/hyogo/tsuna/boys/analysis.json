@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -17,7 +17,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["樋口_獅維_津名_兵庫県", "満永_瑛人_津名_兵庫県"]
       },
@@ -29,7 +29,7 @@
         "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["樋口_獅維_津名_兵庫県", "満永_瑛人_津名_兵庫県"]
       }
@@ -39,15 +39,27 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "樋口_獅維_津名_兵庫県",
-      "appearances": 2
+      "id": "富永_暖琉_津名_兵庫県",
+      "appearances": 1
     },
     {
-      "id": "満永_瑛人_津名_兵庫県",
-      "appearances": 2
+      "id": "打越_陸王_津名_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "速谷_優樹_津名_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "冨本_翔太_津名_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "樋口_獅維_津名_兵庫県",
+      "appearances": 1
     }
   ]
 }

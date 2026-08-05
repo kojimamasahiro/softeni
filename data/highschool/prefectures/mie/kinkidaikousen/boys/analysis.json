@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
     "team": 1,
-    "doubles": 5
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -60,11 +60,19 @@
       }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "髙橋_直希_近畿大高専_三重県",
+      "appearances": 2
+    },
     {
       "id": "弘田_和航_近畿大高専_三重県",
       "appearances": 2
+    },
+    {
+      "id": "奥井_友喜_近畿大高専_三重県",
+      "appearances": 1
     },
     {
       "id": "大山_航輝_近畿大高専_三重県",
@@ -72,14 +80,6 @@
     },
     {
       "id": "山村_総司_近畿大高専_三重県",
-      "appearances": 1
-    },
-    {
-      "id": "髙橋_直希_近畿大高専_三重県",
-      "appearances": 1
-    },
-    {
-      "id": "石田_陽大_近畿大高専_三重県",
       "appearances": 1
     }
   ]

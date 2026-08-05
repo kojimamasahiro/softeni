@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 7,
   "byCategory": {
     "team": 2,
-    "doubles": 6
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -18,7 +18,7 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["吉田_息吹_黒沢尻工_岩手県", "昆_翔惟_黒沢尻工_岩手県"]
       },
@@ -30,7 +30,7 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2026,
         "gender": "boys",
         "playerIds": ["吉田_息吹_黒沢尻工_岩手県", "昆_翔惟_黒沢尻工_岩手県"]
       }
@@ -63,14 +63,6 @@
   "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "吉田_息吹_黒沢尻工_岩手県",
-      "appearances": 2
-    },
-    {
-      "id": "昆_翔惟_黒沢尻工_岩手県",
-      "appearances": 2
-    },
-    {
       "id": "竹内_悠真_黒沢尻工_岩手県",
       "appearances": 2
     },
@@ -80,6 +72,14 @@
     },
     {
       "id": "佐藤_悠_黒沢尻工_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "八重樫_浬_黒沢尻工_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "吉田_息吹_黒沢尻工_岩手県",
       "appearances": 1
     }
   ]
