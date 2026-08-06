@@ -1,0 +1,154 @@
+# 自動生成（scripts/generate-story-yaml.mjs）。手で編集しないこと。
+# LLMへの指示: この事実だけを使うこと。新しい数値・事実・評価を作らない、または推測しないこと。
+#   選手名・学校名・年はそのまま使うこと。scopeNote と notes.absence は必ず反映すること。
+#   related で結ばれたストーリーは同じ筋の可能性が高いので、1つの段落にまとめてよい。
+
+tournament:
+  tournamentId: 'highschool-championship'
+  year: 2026
+  label: 全国高等学校総合体育大会 2026
+  scope: 当サイト掲載大会分（2021・2022・2023・2024・2025・2026年）から算出
+
+stories:
+  - id: 'highschool-championship-2026-doubles-none-boys-title-won-1'
+    category: 成長
+    kind: 'title-won'
+    categoryId: 'doubles-none-boys'
+    priority: 1
+    subject:
+      players: [塚本光琉, 山田健太郎]
+      subjectKeys: [塚本光琉, 山田健太郎]
+      opponents: [伊藤陽聖, 木原祐翔]
+    round: 決勝
+    facts:
+      runnerUp: 伊藤陽聖・木原祐翔
+      finalScore: '4-1'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 下村瑛和・河合顕志良
+      semifinalScore: '4-2'
+    text: '2026年の優勝は塚本光琉・山田健太郎。決勝は伊藤陽聖・木原祐翔に4-1、準決勝は下村瑛和・河合顕志良に4-2。当サイト掲載範囲では初優勝。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-doubles-none-boys-self-best-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-doubles-none-boys-self-best-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-doubles-none-boys-self-best-3', relation: counterpart }
+      - { id: 'highschool-championship-2026-doubles-none-boys-self-best-4', relation: counterpart }
+  - id: 'highschool-championship-2026-doubles-none-boys-self-best-1'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-boys'
+    priority: 7
+    subject:
+      players: [塚本光琉]
+      subjectKeys: [塚本光琉]
+    facts:
+      before: ベスト8
+      after: 優勝
+      resultsByYear: 2025年ベスト8 / 2026年優勝
+    text: 塚本光琉は、これまでの最高ベスト8を上回る優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-doubles-none-boys-title-won-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-doubles-none-boys-self-best-2'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-boys'
+    priority: 7
+    subject:
+      players: [山田健太郎]
+      subjectKeys: [山田健太郎]
+    facts:
+      before: ベスト8
+      after: 優勝
+      resultsByYear: 2025年ベスト8 / 2026年優勝
+    text: 山田健太郎は、これまでの最高ベスト8を上回る優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-doubles-none-boys-title-won-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-doubles-none-boys-self-best-3'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-boys'
+    priority: 7
+    subject:
+      players: [木原祐翔]
+      subjectKeys: [木原祐翔]
+    facts:
+      before: ベスト4
+      after: 準優勝
+      resultsByYear: 2025年ベスト4 / 2026年準優勝
+    text: 木原祐翔は、これまでの最高ベスト4を上回る準優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2026-doubles-none-boys-self-best-4'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-boys'
+    priority: 7
+    subject:
+      players: [伊藤陽聖]
+      subjectKeys: [伊藤陽聖]
+    facts:
+      before: ベスト4
+      after: 準優勝
+      resultsByYear: 2025年ベスト4 / 2026年準優勝
+    text: 伊藤陽聖は、これまでの最高ベスト4を上回る準優勝となった。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2026-doubles-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [尽誠学園]
+      subjectKeys: [尽誠学園]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年ベスト8 / 2022年ベスト4 / 2023年優勝 / 2024年ベスト8 / 2025年優勝 / 2026年準優勝
+    text: 尽誠学園は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2026-doubles-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年準優勝 / 2022年優勝 / 2023年ベスト4 / 2024年ベスト4 / 2025年ベスト4 / 2026年ベスト4
+    text: 高田商は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2026-doubles-none-boys-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [岡崎城西]
+      subjectKeys: [岡崎城西]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年ベスト8 / 2022年ベスト4 / 2023年ベスト8 / 2024年ベスト8 / 2025年ベスト8 / 2026年優勝
+    text: 岡崎城西は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+
+# ストーリーにはしないが一覧として出す事実（LLMの執筆は不要。そのままリスト表示する）
+records:
+  doubles-none-boys:
+    firstBest8:
+      - { name: 中村智葵, result: ベスト8, appearedBefore: true }
+      - { name: 三木煌士, result: ベスト8, appearedBefore: false }
+      - { name: 前田蒼生, result: ベスト4, appearedBefore: true }
+      - { name: 福田喜大, result: ベスト8, appearedBefore: true }
+      - { name: 西崎奏斗, result: ベスト8, appearedBefore: true }
+      - { name: 下村瑛和, result: ベスト4, appearedBefore: true }
+      - { name: 河合顕志良, result: ベスト4, appearedBefore: false }
+      - { name: 樋口大翔, result: ベスト8, appearedBefore: true }
+      - { name: 村上嘉弥, result: ベスト8, appearedBefore: true }
+      - { name: 錦見琉生, result: ベスト8, appearedBefore: true }
+      - { name: 宮田亮, result: ベスト8, appearedBefore: true }
