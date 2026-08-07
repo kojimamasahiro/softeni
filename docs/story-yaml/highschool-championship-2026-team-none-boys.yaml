@@ -1,0 +1,291 @@
+# 自動生成（scripts/generate-story-yaml.mjs）。手で編集しないこと。
+# LLMへの指示: この事実だけを使うこと。新しい数値・事実・評価を作らない、または推測しないこと。
+#   選手名・学校名・年はそのまま使うこと。scopeNote と notes.absence は必ず反映すること。
+#   related で結ばれたストーリーは同じ筋の可能性が高いので、1つの段落にまとめてよい。
+
+tournament:
+  tournamentId: 'highschool-championship'
+  year: 2026
+  label: 全国高等学校総合体育大会 2026
+  scope: 当サイト掲載大会分（2021・2022・2023・2024・2025・2026年）から算出
+
+stories:
+  - id: 'highschool-championship-2026-team-none-boys-title-won-1'
+    category: 継続
+    kind: 'title-won'
+    categoryId: 'team-none-boys'
+    priority: 1
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+      opponents: [尽誠学園]
+    round: 決勝
+    facts:
+      runnerUp: 尽誠学園
+      finalScore: '2-0'
+      titleCount: 2
+      isFirstTitle: false
+      previousTitleYear: 2024
+      semifinalOpponent: 上宮
+      semifinalScore: '2-0'
+    text: '2026年の優勝は高田商。決勝は尽誠学園に2-0、準決勝は上宮に2-0。前回の優勝は2024年。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: counterpart }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: counterpart }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: counterpart }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: counterpart }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-1'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [三重, 高田商]
+      subjectKeys: [三重, 高田商]
+    facts:
+      priorYear: 2022
+      priorRound: 準々決勝
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の三重対高田商は、2022年準々決勝と同じ顔合わせ。高田商が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-2'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 高田商]
+      subjectKeys: [尽誠学園, 高田商]
+    facts:
+      priorYear: 2024
+      priorRound: 決勝
+      currentRound: 決勝
+      revenge: false
+    text: 決勝の尽誠学園対高田商は、2024年決勝と同じ顔合わせ。高田商が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-3'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 岡崎城西]
+      subjectKeys: [尽誠学園, 岡崎城西]
+    facts:
+      priorYear: 2025
+      priorRound: 準決勝
+      currentRound: 準決勝
+      revenge: true
+    text: 準決勝の尽誠学園対岡崎城西は、2025年準決勝と同じ顔合わせ。2025年に敗れた尽誠学園が勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-4'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [田村, 鹿児島商]
+      subjectKeys: [田村, 鹿児島商]
+    facts:
+      priorYear: 2022
+      priorRound: 2回戦
+      currentRound: 1回戦
+      revenge: false
+    text: 1回戦の田村対鹿児島商は、2022年2回戦と同じ顔合わせ。鹿児島商が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-5'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 鹿児島商]
+      subjectKeys: [尽誠学園, 鹿児島商]
+    facts:
+      priorYear: 2024
+      priorRound: 準々決勝
+      currentRound: 3回戦
+      revenge: false
+    text: 3回戦の尽誠学園対鹿児島商は、2024年準々決勝と同じ顔合わせ。尽誠学園が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-4', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-6'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [尽誠学園, 東北]
+      subjectKeys: [尽誠学園, 東北]
+    facts:
+      priorYear: 2023
+      priorRound: 決勝
+      currentRound: 準々決勝
+      revenge: false
+    text: 準々決勝の尽誠学園対東北は、2023年決勝と同じ顔合わせ。尽誠学園が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-7'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [宇都宮短大附, 高田商]
+      subjectKeys: [宇都宮短大附, 高田商]
+    facts:
+      priorYear: 2024
+      priorRound: 2回戦
+      currentRound: 3回戦
+      revenge: false
+    text: 3回戦の宇都宮短大附対高田商は、2024年2回戦と同じ顔合わせ。高田商が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-pair-rematch-8'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'team-none-boys'
+    priority: 5
+    subject:
+      teams: [上宮, 中京]
+      subjectKeys: [上宮, 中京]
+    facts:
+      priorYear: 2024
+      priorRound: 3回戦
+      currentRound: 2回戦
+      revenge: false
+    text: 2回戦の上宮対中京は、2024年3回戦と同じ顔合わせ。上宮が再び勝った。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1'
+    category: 再会
+    kind: 'recurring-matchup'
+    categoryId: 'team-none-boys'
+    priority: 5.5
+    subject:
+      teams: [尽誠学園, 高田商]
+      subjectKeys: [尽誠学園, 高田商]
+    facts:
+      times: 4
+      byYear: 2021年決勝は尽誠学園 / 2022年決勝は尽誠学園 / 2024年決勝は高田商 / 2026年決勝は高田商
+    text: 尽誠学園と高田商は、上位ラウンドで4回対戦している（2021年決勝は尽誠学園 / 2022年決勝は尽誠学園 / 2024年決勝は高田商 / 2026年決勝は高田商）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [東北]
+      subjectKeys: [東北]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年ベスト4 / 2022年ベスト4 / 2023年準優勝 / 2024年ベスト4 / 2025年準優勝 / 2026年ベスト8
+    text: 東北は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [高田商]
+      subjectKeys: [高田商]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年準優勝 / 2022年準優勝 / 2023年ベスト4 / 2024年優勝 / 2025年ベスト4 / 2026年優勝
+    text: 高田商は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-title-won-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-1', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-7', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+  - id: 'highschool-championship-2026-team-none-boys-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'team-none-boys'
+    priority: 9
+    subject:
+      teams: [尽誠学園]
+      subjectKeys: [尽誠学園]
+    facts:
+      streakYears: 6
+      since: 2021
+      resultsByYear: 2021年優勝 / 2022年優勝 / 2023年優勝 / 2024年準優勝 / 2025年ベスト4 / 2026年準優勝
+    text: 尽誠学園は6年連続でベスト8以上に入っている（2021年〜）。
+    scopeNote: 当サイト掲載大会分の集計に基づく
+    related:
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-2', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-3', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-5', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-pair-rematch-6', relation: 'same-subject' }
+      - { id: 'highschool-championship-2026-team-none-boys-recurring-matchup-1', relation: 'same-subject' }
+
+# ストーリーにはしないが一覧として出す事実（LLMの執筆は不要。そのままリスト表示する）
+records:
+  team-none-boys:
+    firstBest8:
+      [] # 該当なし
