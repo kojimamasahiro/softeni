@@ -1,14 +1,16 @@
 // src/components/PlayerStatisticsSections.tsx
-// Player Statistics Engine（lib/playerStats）由来の新統計セクション群。
-// 既存の PlayerSummaryStats（通算・年度別・ペア別）と重複しないものだけを描画する:
-//   戦績ハイライト / 年度別ランキング推移 / 大会別成績 / 対戦相手との通算成績（H2H）/
-//   所属別成績 / キャリア年表。
-// データはすべてビルド時前計算（getStaticProps → facade）。ランタイム集計なし。
+// results.tsx の「スタッツ」セクションのうち、<details>「詳細を見る」で畳む深掘り層。
+// SectionCard（h3）を7枚並べる: 対戦成績（全パートナー・全年度）/ 戦績ハイライト /
+// 年度別ランキング推移 / 大会別成績 / 対戦相手との通算成績（H2H）/ 所属別成績 / キャリア年表。
+// 常時表示のチップ（PlayerSummaryStats.tsx）とは対になる関係で、自前の <h2> は持たない。
+// データはすべてビルド時前計算（getStaticProps → facade。対戦成績のみ toSummaryStats 経由）。
+// ランタイム集計なし。
 
 import Link from 'next/link';
 
 import PlayerLiteLink from '@/components/PlayerLiteLink';
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+import type { PlayerInfo, PlayerStats } from '@/types/index';
 import type { Head2HeadRow, PlayerStatistics, RankingPoint, TeamRow, TimelineEvent, TournamentRow } from '@/types/playerStatistics';
 
 type Props = {
@@ -17,6 +19,13 @@ type Props = {
   linkablePlayerIds?: number[];
   /** 大会別成績の各大会 → 大会ハブページの generation 解決用（tournamentId → generationId）。 */
   tournamentGenerationMap?: Record<string, string>;
+  /** 対戦成績（全パートナー・全年度）カード用。常時表示のサマリー（PlayerSummaryStats.tsx）
+   * と同じ playerStats/allPlayers を渡し、数値の食い違いを起こさない
+   * （2026-08-07: 旧 PlayerFullBreakdown.tsx を統合。単独 <section><h2> だと
+   * 「詳細スタッツを見る」で開いた直後に「対戦成績」「詳細スタッツ」という2つの見出しが
+   * 並んで見えたため、SectionCard の1枚としてこのコンポーネントに含めた）。 */
+  playerStats?: PlayerStats | null;
+  allPlayers?: PlayerInfo[];
 };
 
 const pct = (rate: number) => `${(rate * 100).toFixed(1)}%`;
@@ -46,6 +55,100 @@ function SectionCard({ title, note, children }: { title: string; note?: string; 
       {note && <p className="mb-3 text-xs text-text-muted">{note}</p>}
       {children}
     </div>
+  );
+}
+
+// 対戦成績（全パートナー・全年度）。旧 PlayerFullBreakdown.tsx から統合（2026-08-07）。
+// 常時表示のサマリー（PlayerSummaryStats.tsx、主なペア・直近年度のチップのみ）とは
+// 表示範囲が違うだけの対（同じ playerStats/allPlayers を参照）。
+type PartnerYearStats = {
+  matches: { total: number; wins: number; losses: number; winRate: number };
+  games: { total: number; won: number; lost: number; gameRate: number };
+  name?: string;
+};
+
+function formatGameStats(games?: { won: number; lost: number; gameRate: number }) {
+  if (!games) return '―';
+  return `${games.won} - ${games.lost}（${(games.gameRate * 100).toFixed(1)}%）`;
+}
+
+function PartnerYearRow({ label, stats, link, liteId }: { label: string; stats: PartnerYearStats; link?: string; liteId?: string }) {
+  return (
+    <tr className="border-t border-border-strong text-center">
+      <td className="py-1 px-2">
+        {link ? (
+          <Link href={link} className="text-inherit underline underline-offset-2 decoration-dotted hover:decoration-solid">
+            {label}
+          </Link>
+        ) : liteId ? (
+          <PlayerLiteLink id={liteId} name={label} />
+        ) : (
+          label
+        )}
+      </td>
+      <td className="py-1 px-2">
+        {stats.matches.wins}勝 {stats.matches.losses}敗（
+        {(stats.matches.winRate * 100).toFixed(1)}%）
+      </td>
+      <td className="py-1 px-2">{formatGameStats(stats.games)}</td>
+    </tr>
+  );
+}
+
+function PartnerYearTable({
+  title,
+  data,
+  isYear = false,
+  allPlayers,
+}: {
+  title: string;
+  data: Record<string, PartnerYearStats>;
+  isYear?: boolean;
+  allPlayers: PlayerInfo[];
+}) {
+  const entries = Object.entries(data);
+  // 年度別は新しい年が先、パートナー別は試合数の多い順（2026-08-07: 元は挿入順のままだった。
+  // 常時表示のサマリーから「よく組む相手が一目でわかる」役割を引き継ぐため、こちらも降順に揃えた）。
+  const sortedEntries = isYear ? entries.sort(([a], [b]) => Number(b) - Number(a)) : entries.sort(([, a], [, b]) => b.matches.total - a.matches.total);
+
+  return (
+    <div className="mb-4">
+      <h4 className="text-base font-semibold mb-2">{title}</h4>
+      <table className="w-full border border-border-strong text-sm">
+        <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
+          <tr>
+            <th className="py-1 px-2 text-center">{isYear ? '年度' : 'パートナー'}</th>
+            <th className="py-1 px-2 text-center">勝敗（勝率）</th>
+            <th className="py-1 px-2 text-center">ゲーム（獲得率）</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedEntries.map(([key, stats]) => {
+            const matchedPlayer = allPlayers.find((p) => p.id === key);
+            const label = isYear ? `${key}年` : (stats.name ?? (matchedPlayer ? `${matchedPlayer.lastName} ${matchedPlayer.firstName || ''}` : key));
+
+            // 結果ページが実在する（count>=5）選手のみページへリンクする。count<5 は
+            // 404 になるためリンクせず、モーダル（PlayerLiteLink）で表示する。
+            const partner = !isYear ? matchedPlayer : undefined;
+            const hasPage = partner ? (partner.count ?? 0) >= 5 : false;
+            const link = hasPage ? `/players/${key}/results` : undefined;
+            const liteId = partner && !hasPage ? key : undefined;
+
+            return <PartnerYearRow key={key} label={label} stats={stats} link={link} liteId={liteId} />;
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function PartnerYearBreakdown({ playerStats, allPlayers }: { playerStats?: PlayerStats | null; allPlayers: PlayerInfo[] }) {
+  if (!playerStats || !playerStats.totalMatches) return null;
+  return (
+    <SectionCard title="対戦成績（全パートナー・全年度）">
+      <PartnerYearTable title="パートナー別" data={playerStats.byPartner} allPlayers={allPlayers} />
+      <PartnerYearTable title="年度別" data={playerStats.byYear} allPlayers={allPlayers} isYear />
+    </SectionCard>
   );
 }
 
@@ -330,22 +433,23 @@ function CareerTimeline({ events }: { events: TimelineEvent[] }) {
  * 新統計セクション群（表示条件を満たすものだけ描画）。
  * データが無い選手では何も描画しない。
  */
-export default function PlayerStatisticsSections({ stats, linkablePlayerIds = [], tournamentGenerationMap = {} }: Props) {
+export default function PlayerStatisticsSections({ stats, linkablePlayerIds = [], tournamentGenerationMap = {}, playerStats = null, allPlayers = [] }: Props) {
   if (!stats || stats.coverage.totalMatches === 0) return null;
   const linkable = new Set(linkablePlayerIds);
 
+  // 自前の <h2> は持たない（2026-08-07: 呼び出し側 results.tsx が「スタッツ」という
+  // 1つの見出しの下に、常時表示のチップ（PlayerSummaryStats）とこのコンポーネントを
+  // <details>「詳細を見る」でまとめて配置する）。
   return (
-    <section>
-      <h2 className="mb-2 text-xl font-semibold">詳細スタッツ</h2>
+    <div className="mx-4">
       {stats.identity.homonymRisk && <p className="mb-3 text-xs text-warning">※ 同姓同名の別選手の成績が含まれている可能性があります。</p>}
-      <div className="mx-4">
-        <HighlightCards stats={stats} />
-        <RankingTrendTable trend={stats.rankingTrend} />
-        <TournamentTable rows={stats.byTournament} generationMap={tournamentGenerationMap} />
-        <HeadToHeadTable rows={stats.headToHead} linkable={linkable} />
-        <TeamTable rows={stats.byTeam} />
-        <CareerTimeline events={stats.careerTimeline} />
-      </div>
-    </section>
+      <PartnerYearBreakdown playerStats={playerStats} allPlayers={allPlayers} />
+      <HighlightCards stats={stats} />
+      <RankingTrendTable trend={stats.rankingTrend} />
+      <TournamentTable rows={stats.byTournament} generationMap={tournamentGenerationMap} />
+      <HeadToHeadTable rows={stats.headToHead} linkable={linkable} />
+      <TeamTable rows={stats.byTeam} />
+      <CareerTimeline events={stats.careerTimeline} />
+    </div>
   );
 }

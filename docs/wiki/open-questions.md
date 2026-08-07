@@ -218,6 +218,15 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
   - 将来の解決策（採用保留）: participant.id が所属を含むことを利用し人物別に numeric id を払い出す
     （index.json 生成パイプラインの変更）。既存 id・ページ URL・リンクへの影響が大きいため、必要が生じるまで着手しない。
 
+## 選手結果ページ「スコア詳細のある試合」の大会結果統合（2026-08-07 追加）
+
+選手結果ページのセクション階層化（[players-pages.md](./players-pages.md)「結果ページの
+セクション階層化」）で検討したが見送った案。「スコア詳細のある試合」（`scoreMatchLinks`）は
+大会結果（試合結果一覧）の一部試合への逆引きリンクで、内容が重複している。大会結果側の
+該当試合カードにバッジ的に統合できれば別枠の表示が不要になるが、`ScoreMatchLink.matchId`
+に対応する結合キーが `PlayerMatch`（`src/components/PlayerResults.tsx`）に無く、
+新規joinの実装が要る。効果とコストを見て着手判断する。
+
 ## 国際大会の選手同定（ローマ字表記）
 
 詳細は [data-import.md](./data-import.md)「国際大会（ローマ字表記のみの参加者）の選手同定」。

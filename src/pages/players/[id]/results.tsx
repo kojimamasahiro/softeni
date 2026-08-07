@@ -5,7 +5,6 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
-import MajorTitles from '@/components/MajorTitles';
 import MetaHead from '@/components/MetaHead';
 import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
@@ -42,14 +41,6 @@ type PlayerResultsProps = {
   // 大会別成績の各大会 → 大会ハブページの generation 解決用（tournamentId → generationId）。
   tournamentGenerationMap?: Record<string, string>;
   allPlayers?: import('@/types/player').PlayerInfo[];
-  relatedPlayers?: {
-    id: string;
-    name: string;
-    total: number;
-    wins: number;
-    losses: number;
-    hasPage: boolean;
-  }[];
   scoreMatchLinks?: ScoreMatchLink[];
   // ショーケース対象（data/growth-featured.json）の場合の成長記録ページ slug。なければ null。
   growthShowcaseSlug?: string | null;
@@ -73,7 +64,6 @@ export default function PlayerResultsPage({
   statsLinkableIds = [],
   tournamentGenerationMap = {},
   allPlayers,
-  relatedPlayers = [],
   scoreMatchLinks = [],
   growthShowcaseSlug = null,
   noindex = false,
@@ -272,9 +262,57 @@ export default function PlayerResultsPage({
           )}
         </header>
 
-        {/* 主な成績（タイトル）(再現未実装) */}
+        {/* スタッツ（チップ＋詳細）は見出しを持たせず、旧・主要タイトルの位置にそのまま置く
+            （2026-08-07: 主要タイトルは大会結果の中へ移設したため、その入れ替わりで
+            スタッツの「h2 スタッツ」も撤去し見出し無しの平置きにした。試合ファクト由来の
+            集計という性質は変わらない: 常時表示はチップ（主なペア・直近年度）に絞り、
+            6ブロック（対戦成績（全パートナー・全年度）・戦績ハイライト・
+            年度別ランキング推移・大会別成績・H2H・所属別成績・キャリア年表）は
+            ページ長の大半を占めるため段階的開示（P3）で<details>「詳細を見る」に畳む）。 */}
         <section>
-          <MajorTitles majorTitlesData={majorTitlesData} />
+          {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}
+
+          {/* <details> は閉じていても DOM に残りクローラは読む（勲章カードで採用済みの前提と
+              同型、docs/wiki/players-pages.md「主要大会の実績表示」参照）。SEOタイトル/
+              descriptionが約束する実績文言はリード文（summarySentence）側で既に保証している
+              ため、ここを畳んでも検索経由の訪問者が期待した情報を見失うことはない
+              （2026-08-07 検討）。 */}
+          <details className="group mt-4">
+            {/* 開閉トグルは PlayerMajorResults.tsx の慣例に合わせる（文言＋▼▲の入れ替えで
+                「その場で開く」ことを示す。リンク色にすると遷移に見えるため使わない）。
+                箱は中身全体ではなくトリガー（チップ）だけに付け、展開後の中身は既存の
+                各コンポーネントが持つ枠をそのまま活かす（2026-08-07 修正: 中身側にも枠を
+                付けると「箱の中の箱」になっていたが、地味すぎるとトリガーの存在感が無くなり
+                見落とされたため再修正）。文言は「詳細を見る」→「詳しい成績を見る」に変更
+                （2026-08-07: 「詳細」だけでは何の詳細か不明瞭だった。また「スタッツ」は
+                このサイトの語彙になく、実際は「成績」で統一されている＝対戦成績・大会別成績・
+                所属別成績・直前のチップ「直近○年の成績」と同じ語）。 */}
+            <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-full border border-border-strong bg-bg-subtle px-4 py-2 text-sm font-semibold text-text hover:bg-surface">
+              詳しい成績を見る
+              <span aria-hidden className="text-text-muted group-open:hidden">
+                ▼
+              </span>
+              <span aria-hidden className="hidden text-text-muted group-open:inline">
+                ▲
+              </span>
+            </summary>
+            <div className="mt-4 border-t border-border pt-6">
+              {/* Player Statistics Engine 由来（対戦成績（全パートナー・全年度）・戦績
+                  ハイライト・年度別ランキング推移・大会別・H2H・所属別・キャリア年表）。
+                  playerStats/allPlayers は常時表示のチップと同じものを渡すため数値の
+                  食い違いは起きない。詳しくは
+                  docs/raw/2026-08-07-idea-player-results-page-hierarchy.md）。 */}
+              {playerStatistics && (
+                <PlayerStatisticsSections
+                  stats={playerStatistics}
+                  linkablePlayerIds={statsLinkableIds}
+                  tournamentGenerationMap={tournamentGenerationMap}
+                  playerStats={playerStats}
+                  allPlayers={allPlayers || []}
+                />
+              )}
+            </div>
+          </details>
         </section>
 
         <div className="text-right">
@@ -283,80 +321,50 @@ export default function PlayerResultsPage({
           </Link>
         </div>
 
-        <section>{playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}</section>
-
-        {/* Player Statistics Engine 由来の詳細スタッツ（ハイライト・ランキング推移・
-            大会別・H2H・所属別・キャリア年表）。既存サマリーと重複しないもののみ。 */}
-        {playerStatistics && (
-          <PlayerStatisticsSections stats={playerStatistics} linkablePlayerIds={statsLinkableIds} tournamentGenerationMap={tournamentGenerationMap} />
-        )}
-
-        {scoreMatchLinks.length > 0 && (
-          <section className="rounded-lg border border-success-border bg-success-bg p-4">
-            <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
-            <p className="mb-3 text-xs text-success">ポイントごとの記録・分析を掲載しています。</p>
-            <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
-              {scoreMatchLinks.map((link) => (
-                <li key={link.matchId}>
-                  <Link
-                    href={link.detailPath}
-                    className="flex items-center gap-2 py-2 text-sm text-success transition-colors hover:text-emerald-700 dark:hover:text-emerald-300"
-                  >
-                    {link.round && <span className="shrink-0 rounded bg-success-bg px-1.5 py-0.5 text-xs font-semibold text-success">{link.round}</span>}
-                    <span className="font-medium">
-                      {link.teamA} vs {link.teamB}
-                    </span>
-                    <span aria-hidden className="ml-auto text-emerald-500">
-                      ›
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {growthShowcaseSlug && (
-          <section className="rounded-lg border border-info-border bg-info-bg p-4">
-            <h2 className="mb-1 text-base font-bold text-info">成長記録</h2>
-            <p className="mb-3 text-xs text-info">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
-            <Link href={`/growth/${growthShowcaseSlug}`} className="inline-flex items-center gap-1 text-sm font-medium text-link hover:underline">
-              {fullName}の成長記録を見る
-              <span aria-hidden>›</span>
-            </Link>
-          </section>
-        )}
-
-        {relatedPlayers.length > 0 && (
-          <section>
-            <h2 className="mb-2 text-base font-bold text-text">関連選手（主なペア）</h2>
-            <p className="mb-3 text-xs text-text-muted">{fullName}選手が収録大会でペアを組んだ選手です。</p>
-            <ul className="flex flex-wrap gap-2">
-              {relatedPlayers.map((p) => {
-                const label = `${p.name}（${p.total}試合 ${p.wins}勝${p.losses}敗）`;
-                return (
-                  <li key={p.id}>
-                    {p.hasPage ? (
+        {/* 他機能への導線（集計でも試合結果の生データでもない第3カテゴリ）。
+            該当者のみ・畳まずコンパクトに表示する（2026-08-07 決定）。 */}
+        {(scoreMatchLinks.length > 0 || growthShowcaseSlug) && (
+          <div className="space-y-3">
+            {scoreMatchLinks.length > 0 && (
+              <section className="rounded-lg border border-success-border bg-success-bg p-4">
+                <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
+                <p className="mb-3 text-xs text-success">ポイントごとの記録・分析を掲載しています。</p>
+                <ul className="divide-y divide-emerald-200/70 dark:divide-emerald-900/60">
+                  {scoreMatchLinks.map((link) => (
+                    <li key={link.matchId}>
                       <Link
-                        href={`/players/${p.id}/results`}
-                        className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-info transition-colors hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-gray-700"
+                        href={link.detailPath}
+                        className="flex items-center gap-2 py-2 text-sm text-success transition-colors hover:text-emerald-700 dark:hover:text-emerald-300"
                       >
-                        {label}
+                        {link.round && <span className="shrink-0 rounded bg-success-bg px-1.5 py-0.5 text-xs font-semibold text-success">{link.round}</span>}
+                        <span className="font-medium">
+                          {link.teamA} vs {link.teamB}
+                        </span>
+                        <span aria-hidden className="ml-auto text-emerald-500">
+                          ›
+                        </span>
                       </Link>
-                    ) : (
-                      <span className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-text-secondary dark:bg-gray-800">
-                        {label}
-                      </span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {growthShowcaseSlug && (
+              <section className="rounded-lg border border-info-border bg-info-bg p-4">
+                <h2 className="mb-1 text-base font-bold text-info">成長記録</h2>
+                <p className="mb-3 text-xs text-info">勝ち負けだけでは見えない、試合内容の変化を指標で追っています。</p>
+                <Link href={`/growth/${growthShowcaseSlug}`} className="inline-flex items-center gap-1 text-sm font-medium text-link hover:underline">
+                  {fullName}の成長記録を見る
+                  <span aria-hidden>›</span>
+                </Link>
+              </section>
+            )}
+          </div>
         )}
 
         <section>
-          <PlayerResults playerMatches={playerMatches} playerTournaments={playerTournaments} />
+          <PlayerResults playerMatches={playerMatches} playerTournaments={playerTournaments} majorTitlesData={majorTitlesData} />
         </section>
       </PageLayout>
     </>
@@ -1025,22 +1033,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     byYear: byYearNormalized,
   };
 
-  // 関連選手（主なペア）: byPartner を試合数で降順に並べ、
-  // 結果ページを持つ選手（index.json の count>=5）のみリンク対象にする。
-  const partnerNameById = new Map(allPlayersList.map((p) => [p.id, `${p.lastName}${p.firstName}`]));
-  const relatedPlayers = Object.entries(byPartnerNormalized)
-    .filter(([k]) => k !== 'singles')
-    .map(([id, agg]) => ({
-      id,
-      name: partnerNameById.get(id) ?? '',
-      total: agg.matches.total,
-      wins: agg.matches.wins,
-      losses: agg.matches.losses,
-      hasPage: (countById.get(id) ?? 0) >= 5,
-    }))
-    .filter((p) => p.name !== '')
-    .sort((a, b) => b.total - a.total)
-    .slice(0, 8);
+  // 旧「関連選手（主なペア）」の集計はここにあったが、常時表示のサマリー
+  // （PlayerSummaryStats.tsx）が summaryStats.byPartner から同じ内容をチップ表示するように
+  // なったため撤去した（2026-08-07、重複解消。docs/wiki/players-pages.md参照）。
 
   // latest team (most recent year wins)
   const team = teamRecords.length > 0 ? teamRecords.sort((a, b) => a.year - b.year).slice(-1)[0].team : null;
@@ -1149,7 +1144,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       statsLinkableIds,
       tournamentGenerationMap,
       allPlayers: minimalPlayersList,
-      relatedPlayers,
       majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
       scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
       growthShowcaseSlug,

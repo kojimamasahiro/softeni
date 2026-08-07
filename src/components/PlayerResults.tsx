@@ -3,8 +3,10 @@
 
 import Link from 'next/link';
 
+import MajorTitles from '@/components/MajorTitles';
 import PlayerLiteLink from '@/components/PlayerLiteLink';
 import ResultsTable from '@/components/ResultsTable';
+import type { MajorTitleData } from '@/lib/majorTitles';
 import { MatchResult } from '@/types/common';
 import { MatchRow, TournamentParticipant } from '@/types/tournament';
 
@@ -49,9 +51,13 @@ export type PlayerTournament = {
 type PlayerResultsProps = {
   playerMatches: PlayerMatch[];
   playerTournaments: PlayerTournament[];
+  // 主要タイトル（4大全日本大会×年度のマトリクス）。2026-08-07: 独立セクションから
+  // ここ（大会結果の中）へ移設。「どの大会でどう勝ち上がったか」という大会結果と
+  // 同じ関心事のため。詳しくは docs/raw/2026-08-07-idea-player-results-page-hierarchy.md。
+  majorTitlesData?: MajorTitleData[];
 };
 
-export default function PlayerResults({ playerMatches, playerTournaments }: PlayerResultsProps) {
+export default function PlayerResults({ playerMatches, playerTournaments, majorTitlesData = [] }: PlayerResultsProps) {
   if (!playerMatches || playerMatches.length === 0) {
     return <p>試合結果がありません。</p>;
   }
@@ -179,6 +185,8 @@ export default function PlayerResults({ playerMatches, playerTournaments }: Play
   return (
     <>
       <h2 className="text-xl font-bold mb-4">大会結果</h2>
+
+      <MajorTitles majorTitlesData={majorTitlesData} />
 
       {sortedYears.map((year) => (
         <div key={year} className="mb-8">

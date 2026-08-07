@@ -16,8 +16,13 @@ export default function MajorTitles({ majorTitlesData }: { majorTitlesData: Majo
 
   return (
     <section className="mb-8">
-      <h2 className="text-xl font-semibold mb-4 text-text">主要タイトル</h2>
-      <div className="mx-4 overflow-x-auto bg-surface rounded-lg shadow">
+      {/* 2026-08-07: 大会結果（PlayerResults.tsx）の中に移設したため、隣接する
+          年グループの見出し（`<h3 className="text-xl font-semibold text-text mb-3">`）と
+          同じ h3 に揃える（大会結果の h2 の下に主要タイトル・各年が並列で並ぶ構成のため）。 */}
+      <h3 className="text-xl font-semibold text-text mb-3">主要タイトル</h3>
+      {/* 2026-08-07: mx-4 を撤去。大会結果の中に移設した結果、隣接する試合結果カード
+          （PlayerResults.tsx、mx-4 無し）と左右がずれて見えたため、幅を揃えた。 */}
+      <div className="overflow-x-auto bg-surface rounded-lg shadow">
         <table className="min-w-max w-full text-sm text-gray-700 dark:text-gray-200 border-collapse">
           <thead className="bg-bg-subtle text-text">
             <tr>
