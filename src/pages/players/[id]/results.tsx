@@ -283,12 +283,12 @@ export default function PlayerResultsPage({
                 箱は中身全体ではなくトリガー（チップ）だけに付け、展開後の中身は既存の
                 各コンポーネントが持つ枠をそのまま活かす（2026-08-07 修正: 中身側にも枠を
                 付けると「箱の中の箱」になっていたが、地味すぎるとトリガーの存在感が無くなり
-                見落とされたため再修正）。文言は「詳細を見る」→「詳しい成績を見る」に変更
+                見落とされたため再修正）。文言は「詳細を見る」→「成績を詳しく見る」に変更
                 （2026-08-07: 「詳細」だけでは何の詳細か不明瞭だった。また「スタッツ」は
                 このサイトの語彙になく、実際は「成績」で統一されている＝対戦成績・大会別成績・
                 所属別成績・直前のチップ「直近○年の成績」と同じ語）。 */}
             <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-full border border-border-strong bg-bg-subtle px-4 py-2 text-sm font-semibold text-text hover:bg-surface">
-              詳しい成績を見る
+              成績を詳しく見る
               <span aria-hidden className="text-text-muted group-open:hidden">
                 ▼
               </span>
