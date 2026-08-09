@@ -1,0 +1,50 @@
+[
+  {
+    "year": 2026,
+    "location": "福岡県",
+    "startDate": "2026-08-06",
+    "endDate": "2026-08-07",
+    "venues": [
+      {
+        "prefecture": "福岡県",
+        "city": "福岡市",
+        "name": "博多の森テニス競技場",
+        "aliases": [],
+        "postalCode": "812-0852",
+        "address": "福岡県福岡市博多区東平尾公園1-1-1"
+      }
+    ],
+    "source": "令和8年度九州中学校体育大会 第57回九州中学校ソフトテニス競技大会",
+    "sourceUrl": "https://kyushu.chutairen.com/data/2026/softtennis/2026softtennis_q_youkou-saian.pdf",
+    "categories": [
+      {
+        "categoryId": "doubles-none-boys",
+        "label": "男子個人戦",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "doubles-none-girls",
+        "label": "女子個人戦",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子団体戦",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子団体戦",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  }
+]
