@@ -1,162 +1,239 @@
 // pages/players/index.tsx
+//
+// 選手を探す入口（04-site-structure.md: `/players` = 「選手入口(検索)」）。
+//
+// 2026-08-08 全面改修。それ以前はこのページが「同姓同名選手の一覧」を名乗っていたが、
+// データ実体は全収録選手を氏名でグループ化しただけで、`count` は同名人数ではなく出場した
+// 大会カテゴリ数、`differentTeams` は同名別人の所属ではなくその選手のキャリア変遷だった。
+// 実際の同姓同名は `data/players/homonyms.json`（65件）が持つ別データで、9,391組のうち
+// 「複数所属」4,512組と1件も重ならない。つまり冒頭の警告はほぼ全ユーザーに対して事実と
+// 異なっていたため撤去し、ページの役割を入口として定義し直した。
+//
+// 構成（06-design-principles.md P3「一覧では要約、詳細では全量」）:
+//   1. 検索（全収録選手 9,391 組が対象。インデックスは操作時に遅延ロード）
+//   2. 注目選手の表（出場数上位 200 人。名前・最新所属・出場数・最高成績）
+//   3. 全選手リンク（結果ページが実在する 1,917 人。内部リンクのハブ）
+//
+// 旧実装は出場数 20 以上の 97 人ぶんの全大会記録を SSR に埋め込んでおり生成 HTML が 1.45MB、
+// さらにマウント時に無条件で 3.0MB の検索インデックスを fetch していた（検索しない訪問者にも）。
+// 大会記録は選手結果ページと完全重複でカニバリ側（seo.md #2）のため一覧からは落とした。
+//
+// 姓の頭文字での分割ページは作らない: 頭文字は342種あり243種が5件未満で薄いページの量産に
+// なるため、seo.md の「入口を1ページに集約し、重複ページ自体を作らない」方針に反する
+// （/rankings が年度×種目×男女でURLを切らないのと同じ判断）。
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { PackedSameNameGroups, packSameNameGroups, unpackSameNameGroups } from '@/lib/packedPageData';
 
-interface PlayerResult {
-  firstName: string;
-  lastName: string;
-  fullName: string;
-  team: string;
-  prefecture?: string | null;
-  result: string;
-  tournamentName: string;
-  tournamentId: string;
-  generation: string;
-  year: string;
-  gameCategory: string;
-  ageCategory: string;
-  gender: string;
-  categoryLabel: string;
-  playerId?: string | null;
-}
+const PAGE_URL = 'https://softeni-pick.com/players/';
 
-interface SameNameGroup {
-  fullName: string;
-  // フル記録。SSR の初期表示（players-min20.json）にのみ含まれる。
-  // 検索インデックス（players-search.json）では未定義。
-  players?: PlayerResult[];
+/** 検索結果の初期表示件数。全件描画すると 9,391 行になり入力のたびに固まるため段階表示する。 */
+const SEARCH_PAGE_SIZE = 50;
+
+/** 構造化データ（ItemList）に載せる件数。 */
+const ITEMLIST_LIMIT = 50;
+
+/** 注目選手の表（SSR）1 人ぶんの要約。players-index.json 由来。 */
+type FeaturedPlayer = {
+  id: string | null;
+  name: string;
   count: number;
-  differentTeams: string[];
-  playerId?: string | null;
-  // 検索インデックス側のみ持つ、照合用の小文字結合テキスト。
-  searchText?: string;
+  team: string | null;
+  teamCount: number;
+  latestYear: string | null;
+  bestResult: string | null;
+  bestTournament: string | null;
+  bestYear: string | null;
+};
+
+/** 全選手リンク用の最小レコード。 */
+type PlayerLink = {
+  id: string;
+  name: string;
+};
+
+/** 検索インデックス（players-search.json）1 組ぶん。遅延ロードする。 */
+type SearchEntry = {
+  fullName: string;
+  playerId: string | null;
+  count: number;
+  team: string | null;
+  teamCount: number;
+  searchText: string;
+};
+
+type PlayersPageProps = {
+  featured: FeaturedPlayer[];
+  all: PlayerLink[];
+};
+
+/** 最高成績の色分け。P2「同じ情報は同じ見た目」に従い既存のステータストークンを使う。 */
+const RESULT_TONE: Record<string, string> = {
+  優勝: 'bg-warning-bg text-warning border-warning-border',
+  準優勝: 'bg-info-bg text-info border-info-border',
+};
+
+function ResultBadge({ result }: { result: string }) {
+  const tone = RESULT_TONE[result] ?? 'bg-neutral-bg text-neutral border-neutral-border';
+  return <span className={`inline-block whitespace-nowrap rounded border px-1.5 py-0.5 text-xs font-medium ${tone}`}>{result}</span>;
 }
 
-interface SameNamePlayerPageProps {
-  sameNameGroupsPacked: PackedSameNameGroups;
+/**
+ * 検索語（スペース区切り AND）をすべてハイライトする。
+ * 旧実装は queries[0] だけを見ており、2 語目以降が光らなかった。
+ */
+function highlightAll(text: string, queries: string[]) {
+  if (queries.length === 0) return text;
+  const escaped = queries.filter(Boolean).map((q) => q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  if (escaped.length === 0) return text;
+  const regex = new RegExp(`(${escaped.join('|')})`, 'gi');
+  const lowered = queries.map((q) => q.toLowerCase());
+  return text.split(regex).map((part, index) =>
+    lowered.includes(part.toLowerCase()) ? (
+      <mark key={index} className="rounded bg-warning-bg px-0.5 text-warning">
+        {part}
+      </mark>
+    ) : (
+      part
+    ),
+  );
 }
 
-export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPageProps) {
-  const [sortBy, setSortBy] = useState<'count' | 'name'>('count');
+export default function PlayersPage({ featured, all }: PlayersPageProps) {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
-  const [allData, setAllData] = useState<SameNameGroup[]>([]);
+  const [searchIndex, setSearchIndex] = useState<SearchEntry[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const sameNameGroups = useMemo(() => unpackSameNameGroups(sameNameGroupsPacked) as SameNameGroup[], [sameNameGroupsPacked]);
+  const [visibleCount, setVisibleCount] = useState(SEARCH_PAGE_SIZE);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const fetchStarted = useRef(false);
 
-  // Prefetch the full player dataset on mount so that search covers every
-  // player (including those with few appearances and no dedicated results
-  // page). The SSR props only contain the lightweight featured list.
-  useEffect(() => {
-    let cancelled = false;
+  // 入力の反映を遅らせて、9,391 件の絞り込みでキー入力が詰まるのを防ぐ。
+  const deferredQuery = useDeferredValue(searchQuery);
+
+  /**
+   * 検索インデックス（約 2.9MB）は「検索する意思」が見えた時だけ取りに行く。
+   * 旧実装はマウント時に無条件 fetch していたため、検索しない訪問者にも転送していた。
+   */
+  const ensureSearchIndex = useCallback(() => {
+    if (fetchStarted.current) return;
+    fetchStarted.current = true;
     setIsLoading(true);
     fetch('/data/players-search.json')
       .then((res) => res.json())
       .then((data) => {
-        if (cancelled) return;
-        setAllData(data.sameNameGroups || []);
+        setSearchIndex(data.sameNameGroups || []);
         setIsLoading(false);
       })
       .catch((error) => {
-        if (cancelled) return;
-        console.error('Error fetching player data:', error);
+        console.error('Error fetching player search index:', error);
+        setSearchIndex([]);
         setIsLoading(false);
       });
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
-  // While searching, use the full dataset (falling back to SSR data until it
-  // loads). With no query, show the lightweight featured list for a fast,
-  // light initial render.
-  const isSearching = searchQuery.trim().length > 0;
-  const activeData = isSearching && allData.length > 0 ? allData : sameNameGroups;
+  // ?q= で来た場合（共有・ブックマーク・ブラウザバック）は初期値として復元する。
+  useEffect(() => {
+    if (!router.isReady) return;
+    const q = typeof router.query.q === 'string' ? router.query.q : '';
+    setSearchQuery((current) => (current === '' && q !== '' ? q : current));
+    if (q) ensureSearchIndex();
+    // router.query.q の変化のみを見る（searchQuery を依存に入れると入力のたびに初期値へ戻る）
+  }, [router.isReady, router.query.q, ensureSearchIndex]);
 
-  const highlightMatch = (text: string, searchQuery: string) => {
-    if (!searchQuery.trim()) return text;
-    const queries = searchQuery.toLowerCase().trim().split(/\s+/);
-    const query = queries[0];
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})`, 'gi');
-    const parts = text.split(regex);
-    return parts.map((part, index) => {
-      if (part.toLowerCase() === query.toLowerCase()) {
-        return (
-          <mark key={index} className="bg-warning-bg rounded px-1">
-            {part}
-          </mark>
-        );
-      }
-      return part;
-    });
+  // 検索語を URL に反映する。共有・履歴・計測が効くようになる。
+  // canonical は常に /players/ 固定なので ?q= 付き URL は正規化される。
+  useEffect(() => {
+    if (!router.isReady) return;
+    const current = typeof router.query.q === 'string' ? router.query.q : '';
+    const next = deferredQuery.trim();
+    if (current === next) return;
+    const timer = setTimeout(() => {
+      router.replace({ pathname: '/players', query: next ? { q: next } : {} }, undefined, { shallow: true, scroll: false });
+    }, 400);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deferredQuery, router.isReady]);
+
+  const queries = useMemo(() => deferredQuery.toLowerCase().trim().split(/\s+/).filter(Boolean), [deferredQuery]);
+  const isSearching = queries.length > 0;
+
+  const results = useMemo(() => {
+    if (!isSearching || !searchIndex) return [];
+    return searchIndex
+      .filter((entry) => queries.every((query) => entry.searchText.includes(query)))
+      .sort((a, b) => b.count - a.count || a.fullName.localeCompare(b.fullName, 'ja'));
+  }, [isSearching, searchIndex, queries]);
+
+  // 新しい検索語のたびに段階表示をリセットする。
+  useEffect(() => {
+    setVisibleCount(SEARCH_PAGE_SIZE);
+  }, [deferredQuery]);
+
+  const clearSearch = () => {
+    setSearchQuery('');
+    inputRef.current?.focus();
   };
-
-  const sortedAndFilteredGroups = useMemo(() => {
-    return activeData
-      .filter((group) => {
-        if (searchQuery.trim()) {
-          const queries = searchQuery.toLowerCase().trim().split(/\s+/);
-          // 検索インデックス（players-search.json）は事前結合済みの
-          // searchText を持つ。各クエリ語の AND 一致で判定する。
-          if (group.searchText != null) {
-            return queries.every((query) => group.searchText!.includes(query));
-          }
-          // SSR のフルデータ（players-min20.json）はレコード単位で照合する。
-          return (group.players ?? []).some((player) => {
-            return queries.every((query) => {
-              return (
-                group.fullName.toLowerCase().includes(query) ||
-                player.team.toLowerCase().includes(query) ||
-                player.tournamentName.toLowerCase().includes(query) ||
-                player.categoryLabel.toLowerCase().includes(query) ||
-                player.year.includes(query) ||
-                `${player.year}年`.includes(query) ||
-                (player.prefecture && player.prefecture.toLowerCase().includes(query))
-              );
-            });
-          });
-        }
-        return true;
-      })
-      .sort((a, b) => {
-        if (sortBy === 'count') return b.count - a.count;
-        return a.fullName.localeCompare(b.fullName, 'ja');
-      });
-  }, [activeData, sortBy, searchQuery]);
 
   return (
     <>
       <MetaHead
-        title="選手一覧 | ソフトテニス情報"
-        description="ソフトテニス大会データから抽出した同姓同名選手一覧。名前・所属・大会で検索できます。"
-        url="https://softeni-pick.com/players/"
-        type="article"
+        title="選手一覧・選手検索 | ソフトテニス情報"
+        description="ソフトテニスの大会結果に登場する選手を名前・所属チーム・大会名・年度で検索できます。全国大会をはじめとする収録大会の出場記録から、各選手の成績ページへ移動できます。"
+        url={PAGE_URL}
+        type="website"
       />
 
+      {/* canonical は MetaHead が url（= PAGE_URL）で出力する。?q= は検索結果の一時的な
+          状態にすぎず、静的書き出し（output:'export'）では同じ HTML が返るため正規化される。 */}
       <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'WebPage',
-              headline: '選手一覧',
-              author: { '@type': 'Person', name: 'Softeni Pick' },
-              publisher: { '@type': 'Organization', name: 'Softeni Pick' },
-              datePublished: new Date().toISOString().split('T')[0],
-              dateModified: new Date().toISOString().split('T')[0],
+              '@type': 'CollectionPage',
+              name: '選手一覧・選手検索',
+              description: 'ソフトテニスの大会結果に登場する選手の一覧と検索。',
               inLanguage: 'ja',
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': 'https://softeni-pick.com/players/',
+              url: PAGE_URL,
+              // 旧実装は WebPage に datePublished/dateModified としてビルド日を入れていたため
+              // 毎ビルド日付が動いていた。実データ由来の日付を持たないので日付は出さない
+              // （選手結果ページで「ビルド日を使わない」と方針化済み・players-pages.md）。
+              mainEntity: {
+                '@type': 'ItemList',
+                numberOfItems: all.length,
+                itemListElement: featured.slice(0, ITEMLIST_LIMIT).map((player, index) => ({
+                  '@type': 'ListItem',
+                  position: index + 1,
+                  url: player.id ? `https://softeni-pick.com/players/${player.id}/results/` : undefined,
+                  name: player.name,
+                })),
               },
-              description: 'ソフトテニス大会での同姓同名選手の結果を一覧表示',
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              url: 'https://softeni-pick.com/',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                  '@type': 'EntryPoint',
+                  urlTemplate: 'https://softeni-pick.com/players/?q={search_term_string}',
+                },
+                'query-input': 'required name=search_term_string',
+              },
             }),
           }}
         />
@@ -170,221 +247,211 @@ export default function PlayersPage({ sameNameGroupsPacked }: SameNamePlayerPage
           ]}
         />
 
-        <h1 className="text-2xl font-bold mb-6">選手一覧</h1>
-
-        <p className="mb-6 text-sm">
-          <Link href="/rankings" className="text-link hover:underline">
-            年度別の選手ランキング（男女別・種目別）はこちら ›
-          </Link>
+        <h1 className="mb-2 text-2xl font-bold">選手一覧・選手検索</h1>
+        <p className="mb-6 text-sm text-text-secondary">
+          収録している大会結果から {all.length.toLocaleString()} 人の選手ページを作成しています。名前・所属・大会名・年度で検索できます。
         </p>
 
-        <section className="mb-6 p-4 bg-warning-bg border border-warning-border rounded-lg">
-          <div className="flex items-center gap-2 mb-3">
-            <h2 className="text-sm font-semibold text-warning">同姓同名選手の一覧</h2>
-          </div>
-          <p className="text-sm text-text-secondary">
-            大会結果データから抽出した同姓同名の選手の一覧です。下の検索では収録されている全選手が対象になります（初期表示は出場回数の多い選手のみ）。同じ名前でも異なる選手の可能性があります。所属チームや大会記録を確認してください。
-          </p>
-        </section>
-
-        <div className="mb-6">
-          <label htmlFor="searchQuery" className="block text-sm font-medium text-text-secondary mb-2">
-            大会記録検索（スペース区切りでAND検索）
+        {/* 検索 */}
+        <div role="search" className="mb-8">
+          <label htmlFor="searchQuery" className="mb-2 block text-sm font-medium text-text-secondary">
+            選手を検索（スペース区切りで絞り込み）
           </label>
-          <input
-            id="searchQuery"
-            type="text"
-            placeholder="例: 田中 全日本 2024、佐藤 明大 優勝..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-4 py-2 border border-border-strong rounded-md bg-surface text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          />
-          {searchQuery && (
-            <button onClick={() => setSearchQuery('')} className="mt-2 text-sm text-text-muted hover:text-gray-700 dark:hover:text-gray-200">
-              検索をクリア ✕
-            </button>
-          )}
-        </div>
-
-        <div className="mb-6 flex flex-wrap gap-4 items-center">
-          <div className="flex items-center gap-2">
-            <label htmlFor="sortBy" className="text-sm font-medium text-text-secondary">
-              並び順:
-            </label>
-            <select
-              id="sortBy"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'count' | 'name')}
-              className="px-3 py-1 border border-border-strong rounded-md bg-surface text-sm"
-            >
-              <option value="count">出場回数順</option>
-              <option value="name">名前順</option>
-            </select>
+          <div className="relative">
+            <input
+              ref={inputRef}
+              id="searchQuery"
+              type="search"
+              autoComplete="off"
+              placeholder="例: 田中 全日本 2024 / 佐藤 明大"
+              value={searchQuery}
+              onFocus={ensureSearchIndex}
+              onChange={(e) => {
+                ensureSearchIndex();
+                setSearchQuery(e.target.value);
+              }}
+              className="w-full rounded-md border border-border-strong bg-surface px-4 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+            />
           </div>
+          <p className="mt-2 text-xs text-text-muted">名前・所属チーム・大会名・年度が対象です。すべての語を含む選手が表示されます。</p>
+
+          {/* 件数の変化をスクリーンリーダーへ伝える。 */}
+          <p aria-live="polite" className="mt-3 text-sm text-text-secondary">
+            {!isSearching
+              ? ''
+              : isLoading
+                ? '検索データを読み込んでいます...'
+                : `「${deferredQuery.trim()}」に一致する選手 ${results.length.toLocaleString()} 人`}
+          </p>
         </div>
 
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <div className="text-sm text-text-muted">
-            {searchQuery ? (
+        {/* 検索結果 */}
+        {isSearching && (
+          <section className="mb-10">
+            <h2 className="mb-3 text-xl font-bold">検索結果</h2>
+            {!isLoading && results.length === 0 ? (
+              <div className="rounded-lg border border-border bg-surface p-6 text-center">
+                <p className="mb-2 text-sm">
+                  「<span className="font-medium">{deferredQuery.trim()}</span>」に一致する選手は見つかりませんでした。
+                </p>
+                <p className="mb-4 text-xs text-text-muted">
+                  選手名は漢字で登録されています。ひらがな・カタカナ・ローマ字では一致しません。語を減らすか、所属や大会名だけで試してください。
+                </p>
+                <button type="button" onClick={clearSearch} className="text-sm text-link hover:underline">
+                  検索をクリア
+                </button>
+              </div>
+            ) : (
               <>
-                <span className="font-medium">「{searchQuery}」</span>
-                {sortedAndFilteredGroups.length}組 の検索結果
-              </>
-            ) : (
-              <>{sortedAndFilteredGroups.length}組の同姓同名選手を表示中 （出場回数の多い選手のみ・検索で全選手対象）</>
-            )}
-          </div>
-          {isLoading && <div className="text-xs text-text-muted">全選手データを読み込み中...</div>}
-          {!isLoading && isSearching && allData.length > 0 && <div className="text-xs text-text-muted">全 {allData.length}組から検索</div>}
-        </div>
-
-        <div className="space-y-6">
-          {sortedAndFilteredGroups.map((group, groupIndex) => {
-            // 名前リンクがカード唯一の主リンクのとき、カード全体をタップ領域に
-            // する（stretched link）。名前の Link に after:absolute inset-0 の
-            // オーバーレイを敷き、カード内のどこをタップしても遷移させる。
-            const isLinked = Boolean(group.playerId && group.count >= 5);
-            return (
-              <div
-                key={group.playerId || `${group.fullName}-${groupIndex}`}
-                className={`relative border border-border rounded-lg p-4 bg-white dark:bg-gray-800${isLinked ? ' transition-colors cursor-pointer hover:border-blue-300 dark:hover:border-blue-700 hover:bg-gray-50 dark:hover:bg-gray-700/40 focus-within:ring-2 focus-within:ring-blue-500' : ''}`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-lg font-bold text-text">
-                    {isLinked ? (
-                      <Link
-                        href={`/players/${group.playerId}/results`}
-                        className="underline decoration-wavy decoration-gray-300 dark:decoration-gray-600 hover:decoration-blue-600 hover:text-primary transition-colors after:absolute after:inset-0 after:content-[''] focus:outline-none"
-                      >
-                        {searchQuery ? highlightMatch(group.fullName, searchQuery) : group.fullName}
-                      </Link>
-                    ) : searchQuery ? (
-                      highlightMatch(group.fullName, searchQuery)
-                    ) : (
-                      group.fullName
-                    )}
-                  </h2>
-                  <div className="text-sm text-text-muted">{group.count}回出場</div>
-                </div>
-
-                {group.differentTeams.length > 0 && (
-                  <div className="mb-3 text-sm">
-                    <span className="font-medium text-text-secondary">所属チーム:</span>
-                    <span className="ml-2 text-text-muted">
-                      {searchQuery
-                        ? group.differentTeams.map((team, i) => (
-                            <span key={team}>
-                              {i > 0 && ', '}
-                              {highlightMatch(team, searchQuery)}
-                            </span>
-                          ))
-                        : group.differentTeams.join(', ')}
-                    </span>
-                  </div>
-                )}
-
-                {group.players && group.players.length > 0 && (
-                  <div className="space-y-2">
-                    <div className="grid gap-2 text-sm">
-                      {group.players
-                        .sort((a, b) => {
-                          if (a.year !== b.year) return Number(b.year) - Number(a.year);
-                          const resultOrder: Record<string, number> = {
-                            優勝: 1,
-                            準優勝: 2,
-                            ベスト4: 3,
-                            ベスト8: 4,
-                          };
-                          const aOrder = resultOrder[a.result] || 999;
-                          const bOrder = resultOrder[b.result] || 999;
-                          return aOrder - bOrder;
-                        })
-                        .map((player, index) => (
-                          <div
-                            key={`${player.tournamentId}-${player.year}-${player.gameCategory}-${player.ageCategory}-${player.gender}-${index}`}
-                            className="flex flex-wrap items-center justify-between p-2 bg-gray-50 dark:bg-gray-700 rounded"
-                          >
-                            <div className="relative z-10 flex-1 min-w-0">
-                              <Link
-                                href={`/tournaments/${player.generation}/${player.tournamentId}/${player.year}/${player.gameCategory}/${player.ageCategory}/${player.gender}`}
-                                className="relative z-10 text-link hover:underline font-medium"
-                              >
-                                {searchQuery
-                                  ? highlightMatch(`${player.tournamentName} ${player.year}年 ${player.categoryLabel}`, searchQuery)
-                                  : `${player.tournamentName} ${player.year}年 ${player.categoryLabel}`}
-                              </Link>
-                            </div>
-                            <div className="flex items-center gap-2 text-xs text-text-muted">
-                              <span className="font-medium">{player.result}</span>
-                              <span>|</span>
-                              <span>{searchQuery ? highlightMatch(player.team, searchQuery) : player.team}</span>
-                            </div>
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {sortedAndFilteredGroups.length === 0 && (
-          <div className="text-center py-12 text-text-muted">
-            {searchQuery ? (
-              <div>
-                {isLoading ? (
-                  <p className="mb-2">全選手データを読み込み中です...</p>
-                ) : (
-                  <>
-                    <p className="mb-2">
-                      「<span className="font-medium">{searchQuery}</span>
-                      」に該当する選手が見つかりませんでした。
-                    </p>
-                    <p className="text-sm">
-                      選手名、チーム名、大会名、年度で検索できます。1つの大会記録でスペース区切りの全条件が満たされる必要があります。別のキーワードでお試しください。
-                    </p>
-                    <button onClick={() => setSearchQuery('')} className="mt-3 px-4 py-2 text-sm text-link hover:underline">
-                      検索をクリア
+                <ul className="divide-y divide-border rounded-lg border border-border bg-surface">
+                  {results.slice(0, visibleCount).map((entry) => (
+                    <li key={entry.playerId ?? entry.fullName} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 px-4 py-3">
+                      <span className="text-base font-medium">
+                        {entry.playerId ? (
+                          <Link href={`/players/${entry.playerId}/results/`} className="text-link hover:underline">
+                            {highlightAll(entry.fullName, queries)}
+                          </Link>
+                        ) : (
+                          highlightAll(entry.fullName, queries)
+                        )}
+                      </span>
+                      <span className="text-xs text-text-muted">
+                        {entry.team ? highlightAll(entry.team, queries) : '所属不明'}
+                        {entry.teamCount > 1 ? ` 他${entry.teamCount - 1}` : ''}
+                        <span className="mx-1.5">/</span>
+                        <span className="tabular-nums">{entry.count}</span> 大会
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                {results.length > visibleCount && (
+                  <div className="mt-3 text-center">
+                    <button
+                      type="button"
+                      onClick={() => setVisibleCount((c) => c + SEARCH_PAGE_SIZE)}
+                      className="rounded-full border border-border-strong bg-bg-subtle px-4 py-1.5 text-sm hover:border-blue-300"
+                    >
+                      さらに表示（残り {(results.length - visibleCount).toLocaleString()} 人）
                     </button>
-                  </>
+                  </div>
                 )}
-              </div>
-            ) : (
-              <p>条件に該当する同姓同名選手が見つかりませんでした。</p>
+                <p className="mt-3 text-xs text-text-muted">出場大会数が 5 未満の選手には個別ページがないため、名前のみの表示になります。</p>
+              </>
             )}
-          </div>
+          </section>
         )}
 
-        <div className="mt-12 text-center space-x-4">
-          <Link href="/tournaments" className="text-link hover:underline text-sm">
-            大会結果一覧
-          </Link>
-        </div>
+        {/* 注目選手（出場数上位）。P1「データが主役」に沿って表形式にする。 */}
+        <section className="mb-10">
+          <h2 className="mb-1 text-xl font-bold">出場数の多い選手</h2>
+          <p className="mb-3 text-xs text-text-muted">
+            収録大会への出場数が多い上位 {featured.length} 人です。所属は最新の出場時点、最高成績は収録範囲内のものです。
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full border border-border-strong text-sm">
+              <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
+                <tr>
+                  <th scope="col" className="px-2 py-1.5 text-left">
+                    選手
+                  </th>
+                  <th scope="col" className="px-2 py-1.5 text-left">
+                    所属（最新）
+                  </th>
+                  <th scope="col" className="px-2 py-1.5 text-center">
+                    出場
+                  </th>
+                  <th scope="col" className="px-2 py-1.5 text-left">
+                    最高成績
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {featured.map((player) => (
+                  <tr key={player.id ?? player.name} className="border-t border-border-strong">
+                    <td className="px-2 py-1.5 font-medium">
+                      {player.id ? (
+                        <Link href={`/players/${player.id}/results/`} className="text-link hover:underline">
+                          {player.name}
+                        </Link>
+                      ) : (
+                        player.name
+                      )}
+                    </td>
+                    <td className="px-2 py-1.5 text-text-secondary">
+                      {player.team ?? '―'}
+                      {player.teamCount > 1 && <span className="ml-1 text-xs text-text-muted">他{player.teamCount - 1}</span>}
+                    </td>
+                    <td className="px-2 py-1.5 text-center tabular-nums">{player.count}</td>
+                    <td className="px-2 py-1.5">
+                      {player.bestResult ? (
+                        <span className="flex flex-wrap items-center gap-1.5">
+                          <ResultBadge result={player.bestResult} />
+                          <span className="text-xs text-text-muted">
+                            {player.bestYear}年 {player.bestTournament}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="text-xs text-text-muted">―</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* 全選手リンク。内部リンクのハブとしてクローラにも訪問者にも全件を見せる。
+            読み仮名データが無いため五十音の見出しは付けられず、名前順で並べている。 */}
+        <section className="mb-10">
+          <h2 className="mb-1 text-xl font-bold">選手ページ一覧</h2>
+          <p className="mb-3 text-xs text-text-muted">個別ページのある {all.length.toLocaleString()} 人を名前順に並べています。</p>
+          <ul className="flex flex-wrap gap-x-3 gap-y-1.5 text-sm leading-relaxed">
+            {all.map((player) => (
+              <li key={player.id}>
+                <Link href={`/players/${player.id}/results/`} className="text-link hover:underline">
+                  {player.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <nav aria-label="関連ページ" className="border-t border-border pt-6 text-sm">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li>
+              <Link href="/rankings" className="text-link hover:underline">
+                年度別ランキング（男女別・種目別）
+              </Link>
+            </li>
+            <li>
+              <Link href="/tournaments" className="text-link hover:underline">
+                大会結果一覧
+              </Link>
+            </li>
+            <li>
+              <Link href="/teams" className="text-link hover:underline">
+                チーム一覧
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </PageLayout>
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<PlayersPageProps> = async () => {
   const fs = await import('fs');
   const path = await import('path');
 
-  const jsonPath = path.join(process.cwd(), 'public', 'data', 'players-min20.json');
-  let sameNameGroups = [];
+  const jsonPath = path.join(process.cwd(), 'public', 'data', 'players-index.json');
 
   try {
-    const fileContent = fs.readFileSync(jsonPath, 'utf-8');
-    const data = JSON.parse(fileContent);
-    sameNameGroups = data.sameNameGroups || [];
+    const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+    return { props: { featured: data.featured ?? [], all: data.all ?? [] } };
   } catch (error) {
-    console.error('Error reading players-min20.json:', error);
-    sameNameGroups = [];
+    console.error('Error reading players-index.json:', error);
+    return { props: { featured: [], all: [] } };
   }
-
-  return {
-    props: {
-      sameNameGroupsPacked: packSameNameGroups(sameNameGroups),
-    },
-  };
 };
