@@ -228,6 +228,24 @@ alias 側に振れる）。また `data/players/_facts/**` は選手ページの
 なお **異体字差は 2026-07 以前は検出できていなかった**（`西鄉第一` がレビューに一度も上がらなかった）。
 `kanji-variants.mjs` の対応表に無い字体は今も検出できないので、気づいたら表に追加する。
 
+## 性別判定の部分一致バグ（2026-08-11 修正済み）
+
+`src/utils/team-data-aggregator.ts` はカテゴリID（例: `singles-tournament-girls`）の
+文字列から選手の性別を判定する。以前はこれを `category.includes('boys') ||
+category.includes('men')` のような**部分一致**で行っていたが、英単語 "tournament" が
+部分文字列として "men" を含むため、"singles-**tournament**-girls" が `men` にヒットして
+**誤って 'boys' と判定される**バグがあった。
+
+- 実例: `data/tournaments/details/asian-games-qualifier/2025/singles-tournament-girls.json`
+  の女子選手8名が、アジア競技大会代表予選2025の男子として `aggregateTeamResults` の
+  出力に混入していた（日本体育大学のチームページ集計で発覚）。
+- 影響範囲: 全371大会ファイルのカテゴリ文字列を新旧ロジックで総当たり比較し、
+  **差分が出たのはこの1ファイルのみ**と確認済み。
+- 修正: `parseGenderFromCategory()` を新設し、`category.split('-')` の**最後のセグメントを
+  厳密一致**で判定するよう統一（部分一致による事故を構造的に防ぐ）。
+  `generateTeamInfo` / `aggregateTeamResults` 内の性別判定2箇所を両方この関数に統一した。
+- 経緯: [raw/2026-08-11-teams-tournament-roster-design.md](../raw/2026-08-11-teams-tournament-roster-design.md)「追加調査2」
+
 ## 既知の残課題
 
 - チーム名の内部略称（例: `岡山理大附` ↔ `岡山理科大附高校` の 理大／理科大）はコア一致で拾えず

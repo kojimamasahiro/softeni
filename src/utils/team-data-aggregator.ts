@@ -53,6 +53,24 @@ export type EventResult = {
 type TeamNameMappings = Record<string, string[]>;
 
 /**
+ * カテゴリID（拡張子を除いたファイル名。例: "singles-tournament-girls"）から性別を判定する。
+ * "-" 区切りの**最後のセグメントを厳密一致**で見る。
+ *
+ * 2026-08-11 修正: 以前は `category.includes('men')` のような部分一致で判定しており、
+ * "tournament" が部分文字列として "men" を含むため "singles-tournament-girls" が
+ * 誤って 'boys' 判定されるバグがあった（実データで発覚: asian-games-qualifier/2025/
+ * singles-tournament-girls.json の女子選手が男子として集計されていた）。
+ */
+export function parseGenderFromCategory(category: string): 'boys' | 'girls' | 'mixed' | 'unknown' {
+  const parts = category.split('-');
+  const last = parts[parts.length - 1];
+  if (last === 'boys' || last === 'men') return 'boys';
+  if (last === 'girls' || last === 'women') return 'girls';
+  if (last === 'mixed') return 'mixed';
+  return 'unknown';
+}
+
+/**
  * その結果が混合ダブルス（ミックス）由来かどうか。
  * link の末尾セグメント（genderPart）が "mixed" で判定。link が無い場合は大会名で補完。
  * 混合は男女双方に計上されるため、「その性別の実体があるか」を判定する際に除外する用途で使う。
@@ -371,12 +389,7 @@ export function aggregateTeamResults(teamId: string, customMappings?: TeamNameMa
   const processTournament = (data: TournamentDetailData, descriptor: { tournamentId: string; year: number; category: string }) => {
     const extracted = extractTeamDataFromTournament(data, descriptor.tournamentId, descriptor.year, descriptor.category, teamId, teamNameMappings);
 
-    let gender: 'boys' | 'girls' | 'mixed' | 'unknown' = 'unknown';
-    if (descriptor.category.includes('boys') || descriptor.category.includes('men')) {
-      gender = 'boys';
-    } else if (descriptor.category.includes('girls') || descriptor.category.includes('women')) {
-      gender = 'girls';
-    }
+    const gender = parseGenderFromCategory(descriptor.category);
 
     if (gender === 'boys' || gender === 'girls') {
       for (const playerId of extracted.players.keys()) {
@@ -540,15 +553,8 @@ export function aggregateTeamResults(teamId: string, customMappings?: TeamNameMa
       }
     }
 
-    // Determine gender from category ID (filename)
-    let gender = 'unknown';
-    if (descriptor.category.includes('boys') || descriptor.category.includes('men')) {
-      gender = 'boys';
-    } else if (descriptor.category.includes('girls') || descriptor.category.includes('women')) {
-      gender = 'girls';
-    } else if (descriptor.category.includes('mixed')) {
-      gender = 'mixed';
-    }
+    // Determine gender from category ID (filename)。parseGenderFromCategory() のバグ修正コメント参照。
+    const gender = parseGenderFromCategory(descriptor.category);
 
     if (gender === 'mixed') {
       // Distribute mixed results to boys/girls based on player gender
