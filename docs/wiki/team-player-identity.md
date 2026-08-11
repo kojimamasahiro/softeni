@@ -246,6 +246,25 @@ category.includes('men')` のような**部分一致**で行っていたが、�
   `generateTeamInfo` / `aggregateTeamResults` 内の性別判定2箇所を両方この関数に統一した。
 - 経緯: [raw/2026-08-11-teams-tournament-roster-design.md](../raw/2026-08-11-teams-tournament-roster-design.md)「追加調査2」
 
+## pid の重複と、チームの年度別メンバー（2026-08-11）
+
+`generateTeamInfo()` の `players` は生の `participant.id`（`姓_名_チーム_都道府県`）をキーに
+するが、都道府県サフィックスの有無や所属表記が大会ファイルごとに揺れるため、
+**同一人物が複数の pid 変種として重複する**。実測: 日本体育大学は生 pid 249件に対し、
+`normalizeJa(姓+名)` で dedup すると 118件（53%減）。
+
+チームページの年度別メンバー（`buildTeamRosterByYearGender()`）はこの正規化キーで dedup する。
+併せて注意すべき2点:
+
+- `results[].playerIds` / `matches[].pair` は**エントリー全員**の pid（他チームの相方を含む）。
+  必ず `generateTeamInfo().players` の集合で交差を取る（日体大で他チーム pid 38件）。
+- 団体戦では pid が選手ではなくチームを指し（`FUJITSU_東京都` 等）、氏名が `null` になる。
+  メンバー一覧からは除外する。
+- 同一年度・同一チームの本物の同姓同名は dedup で1人に潰れる（`homonyms.json` の
+  D/E/F 検出器は個人選手ページ向けで、チームの年度別名簿には適用していない）。
+- 詳細: [st-league.md](./st-league.md)「『メンバー』クエリの受け皿」、
+  [raw/2026-08-11-teams-tournament-roster-design.md](../raw/2026-08-11-teams-tournament-roster-design.md)
+
 ## 既知の残課題
 
 - チーム名の内部略称（例: `岡山理大附` ↔ `岡山理科大附高校` の 理大／理科大）はコア一致で拾えず

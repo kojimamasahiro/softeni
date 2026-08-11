@@ -123,26 +123,50 @@ data/st-league/
   （`/teams/[teamId]` と同じ `count>=5` ・先勝ちルール）。実データ（2025年男子NTT西日本）で
   10名中10名がリンク解決できることを検証済み。
 
-### 「メンバー」クエリの受け皿（2026-08-11 追加）
+### 「メンバー」クエリの受け皿（2026-08-11 追加 → 同日「年度別メンバー」に統合）
 
-STリーグ出場チームは実在する単一組織（実業団・クラブ）で `participants.json` に年度別ロースターが
-既にあるため、`/teams/[teamId]/index.tsx` に「{チーム名}のSTリーグ登録メンバー」節を追加し、
-「{チーム名} メンバー」系クエリを拾う。新規URLは作らず既存の `/teams/[teamId]/` を厚くするだけ
-（`docs/wiki/seo.md` の「内部リンク集約」方針と同型）。
+`/teams/[teamId]/index.tsx` に年度別メンバー節を置き、「{チーム名} メンバー」系クエリを拾う。
+新規URLは作らず既存の `/teams/[teamId]/` を厚くするだけ（`docs/wiki/seo.md` の
+「内部リンク集約」方針と同型）。
 
-- データ源: `StLeagueTeamSeason.players`（`aggregateStLeagueTeam()` が `participants.json` の
-  `Team.players` から抽出。id は使わず lastName/firstName のみ保持）。
-- **収録は年度・男女で偏りがある**（実測、2026-08-11）: 2025男子は40/40チームでロースター収録、
-  一方 2023/2024男子は11/40、2023〜2025女子は8〜10/18〜19。ロースターが無い年度・チームは
-  「STリーグでの成績」表（順位・W-L）には出るが「登録メンバー」節には出ない
-  （`season.players.length > 0` の年度のみ表示）。**Assumption**: 未収録は元データ（公式PDF等）の
-  欠落であり、今後の年度追加で埋まっていく想定。
-  詳細な現況は「Open Questions / 未入力データ」の該当項目も参照。
-- title/description は登録メンバーがある場合のみ「メンバー」を含める形に切替
-  （`STリーグ出場成績・メンバー` / 無い場合は従来どおり `STリーグ出場成績・順位`）。
-  FAQPage構造化データ（「{チーム名}のSTリーグのメンバーは確認できますか？」等）も同条件で追加。
-- 実装: `src/utils/st-league.ts`（`StLeagueTeamSeason.players`）、
-  `src/pages/teams/[teamId]/index.tsx`（`playerLinks` 生成・メンバー節・FAQ）。
+**Deprecated（初版）**: 当初は「{チーム名}のSTリーグ登録メンバー」節として
+`StLeagueTeamSeason.players` のみを表示していたが、同日中に下記の統合版へ置き換えた。
+STリーグ側ロースターの収録が年度・男女で大きく偏る（実測: 2025男子は40/40チームで収録、
+2023/2024男子は11/40、2023〜2025女子は8〜10/18〜19）ことが動機。
+
+**現行（統合版）**: メンバーは **STリーグ側ロースター ∪ 大会成績から確認できた選手** を
+**年度×性別**でまとめた1つの節（「{チーム名}の年度別メンバー」）で表示する。
+
+- 集計: `buildTeamRosterByYearGender()`（`src/utils/team-data-aggregator.ts`）。
+  `getStaticProps` で計算済みの `aggregateTeamResults()` / `generateTeamInfo().players` /
+  `aggregateStLeagueTeam().seasons` を受け取る純粋関数で、新たなファイル走査はしない。
+- **他チーム選手のフィルタが必須**: `extractTeamDataFromTournament` はエントリー内に1人でも
+  自チーム選手がいればエントリー全員の pid を `results[].playerIds` / `matches[].pair` に入れる。
+  合同ペアの相方など他チーム所属 pid が混ざるため（`nssu` で38件）、`generateTeamInfo().players`
+  の集合で必ず交差を取る。
+- **氏名の正規化 dedup**: pid（`姓_名_チーム_都道府県`）は都道府県サフィックスの有無などが揺れ、
+  生 pid では同一人物が重複する（`nssu` で249→118件）。`normalizeJa(姓+名)` をグルーピングキーに
+  使い、表示名は「`playerLinks` で解決できる表記」を優先する（`normalizeJa` は照合専用）。
+- 氏名が空（`null`）のチームエントリー pid（例: `FUJITSU_東京都`、`日本体育大学`）は除外する。
+  団体戦で `entries[].playerIds` がチームを指すファイルからは選手を拾えない（既知の制約）。
+- `gendersWithRealPresence`（大会別成績グリッド用フィルタ）は**適用しない**。ミックスにしか
+  出ていない選手もその年度のメンバーとして掲載する。ただし上流の `aggregateTeamResults` が
+  性別を推定できなかった選手はミックス分配時に落ちる。
+- 表示は**男女タブ**（男女両方ある21チームのみタブを出し、片方だけの40チームはタブ無し）。
+  非アクティブなパネルも HTML には出力して `hidden` で隠す（`/st-league/[year]/teams` と同方針。
+  クローラーが両方の性別のメンバーを読める）。タブ内は年度降順のカード。
+- title/description/FAQ は `hasStLeague` × `hasRoster`（メンバーが1件でもあるか）の**4パターン**。
+  メンバーFAQは出典を問わない中立文言（「{チーム名}のメンバーは確認できますか？」）にし、
+  STリーグ非出場チームでも文脈が合うようにした。実測の内訳（全67ページ）は
+  `true/true` 60・`true/false` 6・`false/true` 1（`nssu`）・`false/false` 0。
+- `playerLinks` は STリーグ側と大会成績側の**氏名の和集合**を対象に構築する
+  （旧実装は `if (stLeague)` の中でSTリーグ側の氏名だけを対象にしていたため、
+  STリーグ非出場の `nssu` では常に空だった）。照合ルール（`count>=5`・同姓同名先勝ち）は不変。
+- 効果の実測: STリーグ側ロースターが全年度0件の22チームのうち**16チーム**でメンバー節が
+  表示されるようになった。`nssu`（STリーグ非出場）は118名・年度×性別で最大37名を掲載。
+- 設計と検証の詳細: `docs/raw/2026-08-11-teams-tournament-roster-design.md`。
+- 実装: `src/utils/team-data-aggregator.ts`（`buildTeamRosterByYearGender`、
+  `parseGenderFromCategory`）、`src/pages/teams/[teamId]/index.tsx`。
 
 ## SEO / UX
 

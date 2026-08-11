@@ -3,9 +3,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import type { TournamentDetailData, TournamentInformationEntry } from '@/types/tournament';
-
 import { getAllTournamentFiles, getAllTournamentIndex, getTournamentLabel, loadTournamentData, PreloadedTournamentData } from './tournament-data-loader';
+
+import type { TournamentDetailData, TournamentInformationEntry } from '@/types/tournament';
 
 export type Player = {
   firstName: string;
@@ -715,4 +715,105 @@ export function generateTeamInfo(teamId: string, customMappings?: TeamNameMappin
     name: teamName,
     players,
   };
+}
+
+export type RosterMember = {
+  lastName: string;
+  firstName: string;
+};
+
+export type YearGenderRoster = {
+  year: number;
+  gender: 'boys' | 'girls';
+  members: RosterMember[];
+};
+
+/**
+ * チームの「年度×性別」メンバー一覧を作る。
+ *
+ * 入力は呼び出し側で計算済みのものを受け取る純粋関数（この関数はファイルを読まない）。
+ * 仕様: docs/raw/2026-08-11-teams-tournament-roster-design.md
+ *
+ * 実装上の要点:
+ * 1. **他チーム選手のフィルタが必須**。`extractTeamDataFromTournament` は、エントリー内に
+ *    1人でも自チーム選手がいればエントリー全員の pid を `results[].playerIds` / `matches[].pair`
+ *    に入れるため、合同ペアの相方など他チーム所属の pid が混ざる（`nssu` で38件）。
+ *    `teamPlayers` に無い pid は捨てる（`lib/teamIndexing.ts` の countTeamMatches と同じ考え方）。
+ * 2. **氏名の正規化キーで dedup**。pid は `姓_名_チーム_都道府県` 形式で都道府県サフィックスの
+ *    有無などが揺れるため、生 pid のままだと同一人物が重複する（`nssu` で249→118件）。
+ * 3. `normalizeJa` は照合専用で表示には使わない。表示名は「リンク解決できる表記」を優先する
+ *    （`isLinkable`）。解決できる表記が無ければ最初に見つかった表記。
+ * 4. `gendersWithRealPresence`（大会別成績グリッド用のフィルタ）は**適用しない**。
+ *    ミックスにしか出ていない選手もその年度のメンバーとして扱う。
+ */
+export function buildTeamRosterByYearGender(params: {
+  /** aggregateTeamResults の出力（hasSubPages でなければ空配列） */
+  results: EventResult[];
+  /** generateTeamInfo(teamId).players（自チーム所属 pid → 氏名） */
+  teamPlayers: Record<string, Player>;
+  /** STリーグ側の年度別登録メンバー（aggregateStLeagueTeam().seasons 相当。無ければ省略可） */
+  stLeagueSeasons?: { year: number; gender: 'boys' | 'girls'; players: RosterMember[] }[];
+  /** その表記が選手結果ページへリンクできるか（表示名の優先度判定に使う） */
+  isLinkable?: (member: RosterMember) => boolean;
+}): YearGenderRoster[] {
+  const { results, teamPlayers, stLeagueSeasons = [], isLinkable } = params;
+
+  // key: `${year}-${gender}` → (正規化氏名 → 採用中の表記)
+  const cells = new Map<string, Map<string, RosterMember>>();
+
+  const add = (year: number, gender: 'boys' | 'girls', raw: RosterMember) => {
+    // 団体戦のチームエントリー（例: pid "日本体育大学" で氏名が null）は選手ではないので除外する。
+    const member: RosterMember = { lastName: raw.lastName ?? '', firstName: raw.firstName ?? '' };
+    if (!member.lastName && !member.firstName) return;
+    const cellKey = `${year}-${gender}`;
+    let cell = cells.get(cellKey);
+    if (!cell) {
+      cell = new Map<string, RosterMember>();
+      cells.set(cellKey, cell);
+    }
+    const nameKey = normalizeJa(`${member.lastName}${member.firstName}`);
+    const current = cell.get(nameKey);
+    if (!current) {
+      cell.set(nameKey, member);
+      return;
+    }
+    // 既存がリンク解決できず、新しい表記なら解決できる場合だけ差し替える。
+    if (isLinkable && !isLinkable(current) && isLinkable(member)) {
+      cell.set(nameKey, member);
+    }
+  };
+
+  // (a) 大会成績由来
+  for (const result of results) {
+    const { year, gender } = result;
+    // EventResult.gender は string 型。parseGenderFromCategory は 'unknown' を返し得る。
+    if (gender !== 'boys' && gender !== 'girls') continue;
+    const pids = [...result.results.flatMap((r) => r.playerIds), ...result.matches.flatMap((m) => m.pair)];
+    for (const pid of pids) {
+      const player = teamPlayers[pid];
+      if (!player) continue; // 他チーム選手（上記1）
+      add(year, gender, { lastName: player.lastName, firstName: player.firstName });
+    }
+  }
+
+  // (b) STリーグ側の登録メンバー
+  for (const season of stLeagueSeasons) {
+    for (const player of season.players) {
+      add(season.year, season.gender, { lastName: player.lastName, firstName: player.firstName });
+    }
+  }
+
+  const rosters: YearGenderRoster[] = [];
+  for (const [cellKey, cell] of cells) {
+    if (cell.size === 0) continue;
+    const sep = cellKey.lastIndexOf('-');
+    const year = Number(cellKey.slice(0, sep));
+    const gender = cellKey.slice(sep + 1) as 'boys' | 'girls';
+    const members = Array.from(cell.values()).sort((a, b) => `${a.lastName}${a.firstName}`.localeCompare(`${b.lastName}${b.firstName}`, 'ja'));
+    rosters.push({ year, gender, members });
+  }
+
+  // 新しい年度が上。同一年度は男子→女子。
+  rosters.sort((a, b) => (b.year !== a.year ? b.year - a.year : a.gender.localeCompare(b.gender)));
+  return rosters;
 }
