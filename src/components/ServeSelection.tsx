@@ -5,7 +5,7 @@ interface ServeSelectionProps {
   teamB: string;
   teamAPlayers: string[];
   teamBPlayers: string[];
-  onServeTeamSelected: (team: 'A' | 'B', playerIndex?: number) => void;
+  onServeTeamSelected: (team: 'A' | 'B', playerIndex?: number, receivePlayerIndex?: number) => void;
   gameNumber: number;
   preselectedTeam?: 'A' | 'B'; // 第2ゲーム以降で自動決定されたサーブチーム
 }
@@ -13,6 +13,8 @@ interface ServeSelectionProps {
 const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlayers, teamBPlayers, onServeTeamSelected, gameNumber, preselectedTeam }) => {
   const [selectedTeam, setSelectedTeam] = useState<'A' | 'B' | null>(preselectedTeam ?? null);
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState<number>(0);
+  // 第1ポイントでレシーブする選手。ポイント入力時の「レシーブ失敗は誰か」の自動推定に使う。
+  const [selectedReceivePlayerIndex, setSelectedReceivePlayerIndex] = useState<number>(0);
 
   // preselectedTeamが変更されたときにselectedTeamを更新
   useEffect(() => {
@@ -24,6 +26,7 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlay
   const handleTeamSelect = (team: 'A' | 'B') => {
     setSelectedTeam(team);
     setSelectedPlayerIndex(0); // チーム変更時は最初の選手にリセット
+    setSelectedReceivePlayerIndex(0);
   };
 
   const handlePlayerSelect = (playerIndex: number) => {
@@ -32,8 +35,18 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlay
 
   const handleConfirm = () => {
     if (selectedTeam) {
-      onServeTeamSelected(selectedTeam, selectedPlayerIndex);
+      onServeTeamSelected(selectedTeam, selectedPlayerIndex, selectedReceivePlayerIndex);
     }
+  };
+
+  // レシーブ側（サーブチームの反対）の選手一覧
+  const getReceivingTeam = (): 'A' | 'B' | null => (selectedTeam ? (selectedTeam === 'A' ? 'B' : 'A') : null);
+
+  const getReceivingTeamPlayers = (): string[] => {
+    const receivingTeam = getReceivingTeam();
+    if (!receivingTeam) return [];
+
+    return receivingTeam === 'A' ? teamAPlayers : teamBPlayers;
   };
 
   // 選択されたチームが ダブルスかどうかを判定
@@ -200,6 +213,32 @@ const ServeSelection: React.FC<ServeSelectionProps> = ({ teamA, teamB, teamAPlay
               {gameNumber === 1 ? 'ゲーム内で2人が交互にサーブを行います' : 'デフォルトでは1番目の選手が選択されています'}
             </p>
           </div>
+
+          {/* レシーブ順（第1ポイントのレシーバー）。ポイント入力時にレシーブ失敗の選手を自動入力するために使う。 */}
+          {selectedTeam && getReceivingTeamPlayers().length > 1 && (
+            <div className="mb-6">
+              <h4 className="text-md font-medium mb-3 text-yellow-700">最初にレシーブする選手を選択（チーム {getReceivingTeam()}）</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-md mx-auto">
+                {getReceivingTeamPlayers().map((playerName, index) => (
+                  <button
+                    key={`receive-${index}`}
+                    onClick={() => setSelectedReceivePlayerIndex(index)}
+                    className={`p-3 border-2 rounded-lg font-medium transition-all text-sm ${
+                      selectedReceivePlayerIndex === index
+                        ? getReceivingTeam() === 'A'
+                          ? 'border-blue-500 bg-blue-50 text-blue-700'
+                          : 'border-red-500 bg-red-50 text-red-700'
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                  >
+                    {playerName}
+                    {index === 0 && <span className="text-xs text-gray-500 ml-1">(デフォルト)</span>}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-gray-600 mt-2 text-center">ゲーム内で2人が交互にレシーブする前提で、レシーブ失敗の選手を自動入力します</p>
+            </div>
+          )}
 
           <button
             onClick={handleConfirm}

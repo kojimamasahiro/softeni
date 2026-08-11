@@ -87,6 +87,7 @@ export interface Game {
   points_b: number;
   initial_serve_team: string | null; // 'A' or 'B' (ゲーム開始時のサーブ権)
   initial_serve_player_index?: number | null; // 0 or 1 (ゲーム開始時のサーブ選手インデックス)
+  initial_receive_player_index?: number | null; // 0 or 1 (第1ポイントでレシーブする選手のインデックス)
   created_at: string;
   points?: Point[];
 }

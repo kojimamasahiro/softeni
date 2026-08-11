@@ -1,5 +1,26 @@
 # Open Questions
 
+## ドキュメント運用（2026-08-12 lint で顕在化）
+
+`docs/raw/2026-08-12-llm-wiki-lint.md`（リポジトリ全体のヘルスチェック）の §5 より。
+機械的に直せるものは同 lint で修正済みで、ここには判断が要るものだけを残す。
+
+- `docs/sql/*.sql`（差分DDL）の本番適用状態を追跡する手段が無い。特に
+  `receive-order.sql` が未適用だとポイント入力の自動推定が動かない。適用ログを置くか、
+  migration ツールに寄せるか。
+- 2026-05-24 最終更新の4ページ（`backend.md` / `database.md` / `project-overview.md` /
+  `score-analysis.md`）を「復元した初期メモ」から「現行仕様」へ昇格させるか、統合して
+  Deprecated にするか。実装との突き合わせでは内容はほぼ正しく、格付けだけが古い。
+- Compile Log が無い raw ノート26本（ルール成文化 2026-07-11 以降にコミットされたもの）を
+  遡って埋めるか、AGENTS.md に適用開始日を明記して打ち切るか。
+- wiki → raw の参照が「バッククォートのパス表記」と Markdown リンクで混在しており、
+  到達性を機械チェックできない。どちらかに寄せるか。
+- 中断案件の「再開トリガー」を統一フォーマットで持たせる
+  （`docs/exploration-cycle-audit-2026-08-10.md` §1-7 の提言。最初の適用先候補は
+  `docs/ui/**` の M5＝トークン導入、2026-07-04 から停止中）。
+- この lint 自体を `scripts/check-docs-lint.mjs` として CI 化するか
+  （リンク切れ・孤立・Compile Log 欠落・ADR Status 記入漏れは機械判定できる）。
+
 ## 発展候補アイデア一覧（Idea Backlog・プロジェクト運用/メタ）
 
 プロダクト機能でなく、開発・AI協働の進め方に関するアイデアはここに積む
@@ -128,7 +149,7 @@ UGC 統合とあわせて保留し、コンテンツ拡大とユーザー反響�
 
 - 分析指標の採用基準は何か
 - 研究や現場知見に基づく裏付けをどこまで持たせるか
-- `lib/matchAnalysis.ts` と `lib/growthAnalysis.ts` の責務境界を正式に定義するか
+- `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界を正式に定義するか
 - 成長分析 JSON の更新タイミングと運用担当は誰か
 
 ## データ生成運用

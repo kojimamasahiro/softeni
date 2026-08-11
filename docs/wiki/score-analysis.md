@@ -5,7 +5,7 @@
 - `score` モードは試合結果と成長分析の閲覧公開面
 - URL は `score.softeni-pick.com` 想定
 - 実装の中心は `src/pages/matches/**` と `src/pages/beta/matches-results/**`
-- 分析ロジックの主な実装は `lib/matchAnalysis.ts` と `lib/growthAnalysis.ts`
+- 分析ロジックの主な実装は `lib/matchAnalysis/` と `lib/growthAnalysis/`
 
 ## 公開面
 
@@ -29,8 +29,8 @@
 
 主なコード:
 
-- `lib/growthAnalysis.ts`
-- `lib/matchAnalysis.ts`
+- `lib/growthAnalysis/`
+- `lib/matchAnalysis/`
 - `scripts/check-growth-analysis.mjs`
 
 確認できた分析観点:
@@ -87,8 +87,8 @@
 
 確認根拠:
 
-- `lib/matchAnalysis.ts`
-- `lib/growthAnalysis.ts`
+- `lib/matchAnalysis/`
+- `lib/growthAnalysis/`
 
 ## サービス・重要局面・流れの整理
 
@@ -139,6 +139,6 @@
 ## Open Questions
 
 - 成長分析 JSON の正式な生成コマンドと更新タイミング
-- `lib/matchAnalysis.ts` と `lib/growthAnalysis.ts` の責務境界
+- `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界
 - 公開対象 match の抽出条件
 - 指標採用の研究的根拠や現場根拠をどこまで持たせるか

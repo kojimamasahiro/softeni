@@ -195,6 +195,7 @@ const summarizeMatchForIndex = (match) =>
       points_b: game.points_b,
       initial_serve_team: game.initial_serve_team,
       initial_serve_player_index: game.initial_serve_player_index ?? null,
+      initial_receive_player_index: game.initial_receive_player_index ?? null,
       created_at: game.created_at,
     })),
   });

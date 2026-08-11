@@ -51,7 +51,7 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 確認根拠:
 
 - `src/pages/beta/matches-results/[matchId]/index.tsx`
-- `lib/matchAnalysis.ts`
+- `lib/matchAnalysis/`
 - `lib/siteConfig.ts`
 
 ## ポイント記録
@@ -78,6 +78,94 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 - `src/types/database.ts`
 - `src/pages/api/matches/[matchId]/points/index.ts`
 - `docs/sql/point-youtube-review.sql`
+
+### キーボードショートカット
+
+`/beta/matches/[matchId]/input` のショートカット（`useMatchInputController` の keydown ハンドラ）。
+テキスト入力中（input / textarea / select / contenteditable）と、Meta / Alt 併用時は無効。
+
+| キー | 操作 | 条件 |
+| --- | --- | --- |
+| `s` / `Ctrl+S` | 動画の開始時刻を記録 | 動画あり |
+| `e` / `Ctrl+E` | 動画の終了時刻を記録 | 動画あり |
+| `a` | サービスエース | 入力フォーム表示中 |
+| `d` | ダブルフォルト | 入力フォーム表示中 |
+| `f` | 1stフォルト | 入力フォーム表示中 |
+| `g` | ポイント記録（編集中は更新） | 入力フォーム表示中・勝者チーム選択済み・送信中でない |
+| `Ctrl+D` | 動画を再生 | 動画あり |
+| `Ctrl+F` | 動画時刻をクリア | 動画あり |
+| `←` / `→` | 5秒シーク | 動画あり |
+
+`d` / `f` は単キーと Ctrl 併用で意味が異なる（単キー＝ポイント入力、Ctrl＝動画操作）ことに注意。
+ポイント入力系のキーは動画が無い試合でも使えます。
+対応するボタンには割り当てキーを併記しています（`ShortcutKeyHint`）。
+
+サービスエース / ダブルフォルト / 1stフォルトの更新処理は、ボタンとショートカットで共有するため
+コントローラ側（`selectServiceAce` / `selectDoubleFault` / `toggleFirstServeFault`）にあります。
+
+確認根拠:
+
+- `src/components/matches/matchInput/useMatchInputController.ts`
+- `docs/raw/2026-08-11-score-input-keyboard-shortcuts.md`
+
+### 入力時の自動推定
+
+ポイント入力フォームでは、入力済みの内容から一意に決まる項目を自動で埋めます
+（`lib/pointInference.ts` の `inferPointData`、2026-08-11 追加）。
+
+- **空欄のみ埋める**設計で、手で選んだ値は上書きしません。埋めた値は通常の選択と同じ見た目で、
+  記録／更新ボタンを押すまで確定しません。
+- 補完対象: 結果タイプ＋関与選手→勝者チーム / サービスエース / ダブルフォルト /
+  **レシーブ失敗→サーブ側の得点・レシーブ選手・ラリー数2** /
+  **シングルスの関与選手**（1チーム1人なら結果タイプ＋勝者チームで一意）
+- 編集モードでは「次のポイント」ではなく**編集対象ポイント**のサーブ／レシーブを文脈に使います。
+
+レシーブ選手の特定には `games.initial_receive_player_index`（第1ポイントのレシーバー）を使い、
+ゲーム開始時の `ServeSelection` で選択します。適用 SQL は `docs/sql/receive-order.sql`。
+
+Assumption: ダブルスではゲーム開始時にレシーブ順が決まり、そのチームがレシーブするポイントごとに
+2人が交互に受ける、というルールで算出しています（`getCurrentReceivingPlayerIndex`）。
+ファイナルゲームは2ポイントごとにチームが入れ替わるため、そのチームがレシーブした回数で数えます。
+
+確認根拠:
+
+- `lib/pointInference.ts`
+- `lib/serveHelpers.ts`
+- `src/components/ServeSelection.tsx`
+- `docs/raw/2026-08-11-score-input-auto-inference.md`
+
+### 記録済みポイントの修正導線
+
+- ゲーム履歴（`GameHistorySection`）の各ポイントカードの「編集」ボタン
+- **直前ポイントのクイック修正カード**（`LastPointQuickEdit`、2026-08-11 追加）。
+  入力フォーム直上（フォーム非表示時はゲーム履歴の直上）に直前ポイントの要約を常時表示し、
+  「直前を修正」ボタン1つで同じ編集モードに入る。ゲーム履歴まで探しに行かずに済む。
+  - 現在のゲームにポイントが無い場合は前のゲームの最終ポイントまで遡るため、
+    ゲームを決めたポイントも直後に修正できる
+  - 楽観的更新中の仮ID（`temp-`）と送信中は編集不可
+- どちらも `startEditPoint(game, point)` → `updatePoint()` の同一経路。編集開始時に
+  動画は「1つ前のポイントの終了時刻」へシークする（`getEditPointSeekTimeMs`）。
+
+### ゲーム単位のやり直し
+
+ゲーム履歴の各ゲームに「ここからやり直す」があり、**指定ゲーム以降をまとめて削除**します
+（`DELETE /api/matches/[matchId]/games` に `{ from_game_number }`、2026-08-11 追加）。
+
+- 対象ゲームの points を先に明示削除してから games を削除します（FK の `ON DELETE` に依存しない）。
+- `status = completed` の試合は `in_progress` に戻し `completed_at` を null にします。
+- 削除後は `currentGame` が無くなるため、入力ページは「第Nゲームを開始」を表示し、
+  サーブ権・レシーブ順の選択からやり直せます。
+
+「そのゲームだけ入れ直す」形にしていないのは、ファイナルゲーム判定・ゲームごとのサーブ交代・
+試合終了判定がいずれも勝ちゲーム数とゲーム番号に依存しており、途中ゲームを差し替えると
+以降の記録済みポイントと前提が食い違うためです（詳細は
+`docs/raw/2026-08-11-score-input-restart-from-game.md`）。
+
+確認根拠:
+
+- `src/components/matches/matchInput/LastPointQuickEdit.tsx`
+- `src/components/matches/matchInput/useMatchInputController.ts`
+- `docs/raw/2026-08-11-score-input-last-point-quick-edit.md`
 
 ## YouTube 連携
 

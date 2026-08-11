@@ -61,6 +61,64 @@ export function getCurrentServingTeam(game: Game, pointNumber: number, bestOf: n
 }
 
 /**
+ * 現在のポイントでレシーブするチームを返す（＝サーブ権の反対側）。
+ */
+export function getCurrentReceivingTeam(game: Game, pointNumber: number, bestOf: number, gamesWonA: number = 0, gamesWonB: number = 0): 'A' | 'B' {
+  return getCurrentServingTeam(game, pointNumber, bestOf, gamesWonA, gamesWonB) === 'A' ? 'B' : 'A';
+}
+
+/**
+ * 現在のポイントでレシーブする選手のインデックスを決定する。
+ *
+ * Assumption: ソフトテニスのダブルスではゲーム開始時にレシーブ順が決まり、
+ * そのチームがレシーブするポイントごとに2人が交互に受ける、というルールで計算している。
+ * ファイナルゲームは2ポイントごとにサーブ／レシーブのチームが入れ替わるため、
+ * 「そのチームがレシーブした回数」を数えて交互に割り当てる。
+ *
+ * `initial_receive_player_index` は第1ポイントのレシーブチームについてのみ意味を持つ。
+ * ファイナルゲームで途中からレシーブに回るチーム（＝第1ポイントのサーブチーム）は
+ * 記録が無いので 0 番目の選手から始まるものとして扱う。
+ *
+ * @param game 対象ゲーム
+ * @param pointNumber ポイント番号（1から開始）
+ * @param bestOf 何ゲームマッチか
+ * @param gamesWonA チームAの勝利ゲーム数
+ * @param gamesWonB チームBの勝利ゲーム数
+ * @param teamPlayers レシーブチームの選手配列
+ * @param initialReceivePlayerIndex 第1ポイントのレシーバー（game 側に無い場合のフォールバック）
+ * @returns レシーブする選手のインデックス（0 または 1）
+ */
+export function getCurrentReceivingPlayerIndex(
+  game: Game,
+  pointNumber: number,
+  bestOf: number,
+  gamesWonA: number = 0,
+  gamesWonB: number = 0,
+  teamPlayers: string[] = [],
+  initialReceivePlayerIndex?: number,
+): number {
+  // シングルスの場合は常に0番目の選手
+  if (teamPlayers.length <= 1) {
+    return 0;
+  }
+
+  const receivingTeam = getCurrentReceivingTeam(game, pointNumber, bestOf, gamesWonA, gamesWonB);
+  const firstReceivingTeam = getCurrentReceivingTeam(game, 1, bestOf, gamesWonA, gamesWonB);
+
+  // 同じチームがこのポイントより前にレシーブした回数
+  let previousReceiveCount = 0;
+  for (let previousPoint = 1; previousPoint < pointNumber; previousPoint++) {
+    if (getCurrentReceivingTeam(game, previousPoint, bestOf, gamesWonA, gamesWonB) === receivingTeam) {
+      previousReceiveCount += 1;
+    }
+  }
+
+  const baseIndex = receivingTeam === firstReceivingTeam ? (game.initial_receive_player_index ?? initialReceivePlayerIndex ?? 0) : 0;
+
+  return (baseIndex + previousReceiveCount) % 2;
+}
+
+/**
  * ゲーム内のすべてのポイントのサーブ権を再計算する
  * @param game ゲーム情報
  * @param bestOf 何ゲームマッチか

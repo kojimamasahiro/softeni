@@ -11,7 +11,8 @@ import {
   getTeamFromPlayerId,
   isMatchFinished,
 } from '../../../../lib/matchLogic';
-import { determineInitialServeTeam, getCurrentServingPlayerIndex, getCurrentServingTeam } from '../../../../lib/serveHelpers';
+import { inferPointData, type PointInferenceContext } from '../../../../lib/pointInference';
+import { determineInitialServeTeam, getCurrentReceivingPlayerIndex, getCurrentServingPlayerIndex, getCurrentServingTeam } from '../../../../lib/serveHelpers';
 import { getGamesWon, isMatchFinishedByGames } from '../../../../lib/videoReview';
 import { formatMsForInput, normalizeYouTubeInput } from '../../../../lib/youtubePlayback';
 import type { YouTubeRangePlayerHandle } from '../../../components/YouTubeRangePlayer';
@@ -144,11 +145,10 @@ export const useMatchInputController = () => {
           }
         }
 
-        // 第1ゲームの初期サーブ権を保存
+        // 第1ゲームの初期サーブ権を保存。
+        // 第1ゲームごと削除してやり直した場合は、古い値が残らないようクリアする。
         const firstGame = games.find((game: Game) => game.game_number === 1);
-        if (firstGame?.initial_serve_team) {
-          setInitialServeTeam(firstGame.initial_serve_team as 'A' | 'B');
-        }
+        setInitialServeTeam(firstGame?.initial_serve_team ? (firstGame.initial_serve_team as 'A' | 'B') : null);
       }
     } catch (error) {
       console.error('Failed to fetch match:', error);
@@ -383,23 +383,68 @@ export const useMatchInputController = () => {
         target instanceof HTMLSelectElement ||
         Boolean(target?.closest('[contenteditable="true"]'));
 
-      if (isTypingTarget || !getActiveYouTubeVideoId()) {
+      if (isTypingTarget || event.metaKey || event.altKey) {
         return;
       }
 
-      if (event.ctrlKey && event.key.toLowerCase() === 's') {
+      const hasVideo = Boolean(getActiveYouTubeVideoId());
+      const key = event.key.toLowerCase();
+
+      // 既存の Ctrl 系（動画操作）
+      if (event.ctrlKey) {
+        if (!hasVideo) return;
+
+        if (key === 's') {
+          event.preventDefault();
+          captureVideoTime('start');
+        } else if (key === 'e') {
+          event.preventDefault();
+          captureVideoTime('end');
+        } else if (key === 'd') {
+          event.preventDefault();
+          resumeVideoPlayback();
+        } else if (key === 'f') {
+          event.preventDefault();
+          clearVideoRange();
+        }
+        return;
+      }
+
+      // 修飾なしの単キー（動画時刻）
+      if (key === 's' || key === 'e') {
+        if (!hasVideo) return;
         event.preventDefault();
-        captureVideoTime('start');
-      } else if (event.ctrlKey && event.key.toLowerCase() === 'e') {
+        captureVideoTime(key === 's' ? 'start' : 'end');
+        return;
+      }
+
+      // 修飾なしの単キー（ポイント入力）。入力フォームが出ているときだけ効く。
+      if (key === 'a' || key === 'd' || key === 'f') {
+        if (!isPointInputActive) return;
         event.preventDefault();
-        captureVideoTime('end');
-      } else if (event.ctrlKey && event.key.toLowerCase() === 'd') {
+
+        if (key === 'a') selectServiceAce();
+        if (key === 'd') selectDoubleFault();
+        if (key === 'f') toggleFirstServeFault();
+        return;
+      }
+
+      // 記録／更新の確定。ボタンの disabled 条件と同じ（勝者チーム未選択・送信中は無効）。
+      if (key === 'g') {
+        if (!isPointInputActive || !pointData.winner_team || submitting) return;
         event.preventDefault();
-        resumeVideoPlayback();
-      } else if (event.ctrlKey && event.key.toLowerCase() === 'f') {
-        event.preventDefault();
-        clearVideoRange();
-      } else if (event.key === 'ArrowLeft') {
+
+        if (isEditMode) {
+          updatePoint();
+        } else {
+          submitPoint();
+        }
+        return;
+      }
+
+      if (!hasVideo) return;
+
+      if (event.key === 'ArrowLeft') {
         event.preventDefault();
         seekVideoByMs(-5000);
       } else if (event.key === 'ArrowRight') {
@@ -773,7 +818,7 @@ export const useMatchInputController = () => {
   };
 
   // サーブ権を決定してゲームを開始
-  const handleServeTeamSelected = async (selectedTeam: 'A' | 'B', playerIndex?: number) => {
+  const handleServeTeamSelected = async (selectedTeam: 'A' | 'B', playerIndex?: number, receivePlayerIndex?: number) => {
     if (!match) return;
 
     const gameToUpdate = currentGame;
@@ -806,6 +851,7 @@ export const useMatchInputController = () => {
         body: JSON.stringify({
           initial_serve_team: initialServe,
           initial_serve_player_index: initialPlayerIndex,
+          initial_receive_player_index: receivePlayerIndex ?? 0,
         }),
       });
 
@@ -846,6 +892,52 @@ export const useMatchInputController = () => {
       }
     } catch (error) {
       console.error('Failed to start new game:', error);
+    }
+  };
+
+  /**
+   * 指定ゲーム以降を削除して、そのゲームから記録し直せるようにする。
+   *
+   * 途中のゲームだけを差し替えると、以降のゲームの前提（勝ちゲーム数・ファイナルゲーム判定・
+   * ゲームごとのサーブ交代）が崩れるため、対象ゲーム番号以上をまとめて消す方式にしている。
+   */
+  const restartFromGame = async (targetGame: Game) => {
+    if (!match) return;
+
+    const affectedGames = (match.games ?? []).filter((game: Game) => game.game_number >= targetGame.game_number);
+    const affectedPointCount = affectedGames.reduce((total: number, game: Game) => total + (game.points?.length ?? 0), 0);
+
+    const confirmed = window.confirm(
+      `第${targetGame.game_number}ゲーム以降を削除してやり直します。\n\n` +
+        `削除: ${affectedGames.length}ゲーム / ${affectedPointCount}ポイント\n` +
+        'この操作は取り消せません。よろしいですか？',
+    );
+    if (!confirmed) return;
+
+    setSubmitting(true);
+    try {
+      const response = await fetch(`/api/matches/${matchId}/games`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ from_game_number: targetGame.game_number }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(`削除に失敗しました: ${errorData.error || 'Unknown error'}`);
+        return;
+      }
+
+      cancelEditPoint();
+      setManualServingPlayer(null);
+      setCurrentGame(null);
+      setNeedsServeSelection(false);
+      await fetchMatch();
+    } catch (error) {
+      console.error('Failed to restart from game:', error);
+      alert('削除中にエラーが発生しました。');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -956,6 +1048,144 @@ export const useMatchInputController = () => {
     };
   };
 
+  /**
+   * ポイント入力の自動推定に渡す文脈を組み立てる。
+   *
+   * 編集モードでは「次のポイント」ではなく **編集対象ポイント** のサーブ／レシーブを使う。
+   * 直前に終了したゲームのポイントを編集することもあるため、ゲームも `editingPoint.game_id`
+   * から引き直す。
+   */
+  const buildPointInferenceContext = (): PointInferenceContext => {
+    const teamAPlayers = match ? getPlayerNamesFromMatch(match, 'A') : [];
+    const teamBPlayers = match ? getPlayerNamesFromMatch(match, 'B') : [];
+    const emptyContext: PointInferenceContext = {
+      teamAPlayers,
+      teamBPlayers,
+      servingTeam: null,
+      servingPlayerId: null,
+      receivingTeam: null,
+      receivingPlayerId: null,
+    };
+
+    if (!match) return emptyContext;
+
+    const editingGame = isEditMode && editingPoint ? ((match.games ?? []).find((game: Game) => game.id === editingPoint.game_id) ?? null) : null;
+    const targetGame = editingGame ?? currentGame;
+    if (!targetGame?.initial_serve_team) return emptyContext;
+
+    const targetPointNumber = isEditMode && editingPoint ? Number(editingPoint.point_number) : (currentGame?.points?.length || 0) + 1;
+    const gamesWonA = match.games?.filter((game: Game) => game.winner_team === 'A').length || 0;
+    const gamesWonB = match.games?.filter((game: Game) => game.winner_team === 'B').length || 0;
+
+    // 編集時は記録済みポイントのサーブ、それ以外は手動選択を反映した現在のサーブ
+    const servingInfo = editingGame ? getServingPlayerForPoint(editingGame, targetPointNumber) : getCurrentServingPlayer();
+    const servingTeam = servingInfo?.team ?? getCurrentServingTeam(targetGame, targetPointNumber, match.best_of, gamesWonA, gamesWonB);
+    const receivingTeam: 'A' | 'B' = servingTeam === 'A' ? 'B' : 'A';
+    const receivingTeamPlayers = getPlayerNamesFromMatch(match, receivingTeam);
+    const receivingPlayerIndex = getCurrentReceivingPlayerIndex(targetGame, targetPointNumber, match.best_of, gamesWonA, gamesWonB, receivingTeamPlayers);
+    const receivingPlayerName = receivingTeamPlayers[receivingPlayerIndex] || receivingTeamPlayers[0] || '';
+
+    return {
+      teamAPlayers,
+      teamBPlayers,
+      servingTeam,
+      servingPlayerId: servingInfo ? getPlayerUniqueId(servingInfo.team, servingInfo.playerIndex, servingInfo.playerName) : null,
+      receivingTeam,
+      receivingPlayerId: receivingPlayerName ? getPlayerUniqueId(receivingTeam, receivingPlayerIndex, receivingPlayerName) : null,
+    };
+  };
+
+  const pointInferenceContext = buildPointInferenceContext();
+
+  /**
+   * サーブ系の入力アクション。
+   * ボタンとキーボードショートカットの両方から呼ぶため、コントローラ側に置いて一本化している。
+   * 具体的な値は `inferPointData` に任せ、ここでは「何をリセットするか」だけを決める。
+   */
+  const selectServiceAce = () => {
+    setPointData((current) =>
+      inferPointData(
+        {
+          ...current,
+          result_type: 'service_ace',
+          // 推定で入れ直すため、他の結果タイプで選んだ内容は一度消す
+          winner_team: '',
+          winner_player: '',
+          loser_player: '',
+          double_fault: false,
+          rally_count: 0,
+        },
+        pointInferenceContext,
+      ),
+    );
+  };
+
+  const selectDoubleFault = () => {
+    setPointData((current) =>
+      inferPointData(
+        {
+          ...current,
+          result_type: 'double_fault',
+          double_fault: true,
+          winner_team: '',
+          winner_player: '',
+          loser_player: '',
+          rally_count: 0,
+        },
+        pointInferenceContext,
+      ),
+    );
+  };
+
+  const toggleFirstServeFault = () => {
+    setPointData((current) => {
+      // ダブルフォルトは1stフォルト確定なので切り替えさせない
+      if (current.result_type === 'double_fault') return current;
+
+      return inferPointData({ ...current, first_serve_fault: !current.first_serve_fault }, pointInferenceContext);
+    });
+  };
+
+  /**
+   * 直近に記録されたポイントとその所属ゲームを返す。
+   * 現在のゲームにまだポイントが無い場合（ゲーム開始直後など）は、
+   * 一つ前のゲームの最終ポイントまで遡る。
+   *
+   * `currentGame` は楽観的UI更新でポイントが先に入ることがあるため、
+   * `match.games` の同一ゲームより優先して参照する。
+   */
+  const findLastRecordedPoint = (): { game: Game; point: Point } | null => {
+    if (!match?.games?.length) return null;
+
+    const games = match.games
+      .map((game: Game) => (currentGame && game.id === currentGame.id ? currentGame : game))
+      .sort((left: Game, right: Game) => right.game_number - left.game_number);
+
+    for (const game of games) {
+      const points = [...(game.points ?? [])].sort((left, right) => Number(left.point_number) - Number(right.point_number));
+      const lastPoint = points[points.length - 1];
+
+      if (lastPoint) {
+        return { game, point: lastPoint };
+      }
+    }
+
+    return null;
+  };
+
+  const lastRecordedEntry = findLastRecordedPoint();
+  const lastRecordedPoint = lastRecordedEntry?.point ?? null;
+  const lastRecordedPointGame = lastRecordedEntry?.game ?? null;
+  // 楽観的更新中の仮ID（temp-）はサーバー未確定なので編集させない
+  const canEditLastRecordedPoint = Boolean(lastRecordedEntry && !String(lastRecordedEntry.point.id).startsWith('temp-') && !submitting);
+
+  /** 直前ポイントをワンクリックで編集モードにする。 */
+  const startEditLastRecordedPoint = () => {
+    if (!lastRecordedEntry || !canEditLastRecordedPoint) return;
+
+    startEditPoint(lastRecordedEntry.game, lastRecordedEntry.point);
+  };
+
   // ゲームスコア表示用（チーム別の獲得ゲーム数）
   const getGameScores = () => {
     if (!match || !match.games) return '';
@@ -1027,14 +1257,25 @@ export const useMatchInputController = () => {
     // ポイント入力フォーム
     pointData,
     setPointData,
+    pointInferenceContext,
+    selectServiceAce,
+    selectDoubleFault,
+    toggleFirstServeFault,
     submitPoint,
     updatePoint,
     startEditPoint,
     cancelEditPoint,
 
+    // 直前ポイントのクイック修正
+    lastRecordedPoint,
+    lastRecordedPointGame,
+    canEditLastRecordedPoint,
+    startEditLastRecordedPoint,
+
     // ゲーム操作
     startNewGame,
     startFirstGame,
+    restartFromGame,
     handleServeTeamSelected,
     getCurrentServe,
     getCurrentServingPlayer,

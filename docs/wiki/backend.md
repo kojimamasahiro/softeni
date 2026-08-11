@@ -30,8 +30,11 @@
 - `PATCH /api/matches/[matchId]`
 - `DELETE /api/matches/[matchId]`
 - `POST /api/matches/[matchId]/games`
+- `DELETE /api/matches/[matchId]/games`（`{ from_game_number }` で指定ゲーム以降を一括削除。
+  2026-08-11 追加。詳細は [score-feature.md](./score-feature.md)「ゲーム単位のやり直し」）
 - `PATCH /api/matches/[matchId]/games/[gameId]`
 - `POST|PUT|DELETE /api/matches/[matchId]/points`
+- `GET /api/tournament-entries`（大会エントリー参照。試合作成フォームの補助）
 
 補足:
 
@@ -75,7 +78,7 @@
 1. 管理系ページまたはローカルツールで試合を入力
 2. API が Supabase を更新
 3. 公開向けには `public/data/beta-matches/**` を利用
-4. 成長分析は静的 JSON と `lib/growthAnalysis.ts` ベースで表示
+4. 成長分析は静的 JSON と `lib/growthAnalysis/` ベースで表示
 
 ## Assumption
 

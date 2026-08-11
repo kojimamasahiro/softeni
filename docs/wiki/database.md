@@ -3,8 +3,11 @@
 ## 概要
 
 - Supabase を利用
-- ただし依頼に含まれていた `supabase/schema.sql` は未検出
-- そのため本ページは `src/types/database.ts` と `src/pages/api/matches/**` から復元した初期メモ
+- リポジトリに `supabase/schema.sql` のような**スキーマ全体の定義は無い**。
+  機能追加時の差分 DDL だけが `docs/sql/*.sql` に手動適用用として置かれている
+  （`growth-analysis.sql` / `point-youtube-review.sql` / `receive-order.sql` / `video-review.sql`）
+- そのため本ページは `src/types/database.ts`・`src/pages/api/matches/**`・`docs/sql/**` から
+  復元した推定スキーマ（実体は Supabase 側が正）
 
 ## 接続設定
 
@@ -67,6 +70,9 @@
 - `points_b`
 - `initial_serve_team`
 - `initial_serve_player_index`
+- `initial_receive_player_index`（0 or 1 / null。第1ポイントのレシーバー。2026-08-11 追加、
+  適用 DDL は `docs/sql/receive-order.sql`。ポイント入力の自動推定に使う。詳細は
+  [score-feature.md](./score-feature.md)「入力時の自動推定」）
 - `created_at`
 
 ### `points`
@@ -157,7 +163,8 @@
 
 ## Open Questions
 
-- 実際の SQL スキーマはどこで管理しているか
+- 差分 DDL（`docs/sql/**`）が本番 Supabase に適用済みかを追跡する手段が無い。
+  適用状態を記録するか、migration ツールに寄せるか（2026-08-12 lint で顕在化）
 - RLS の有無とポリシー
 - `matches.status` の正式な状態遷移
 - `points.result_type` / `processing_status` の正式 enum 定義

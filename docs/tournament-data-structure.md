@@ -27,7 +27,7 @@ data/tournament/
 
 #### データ構造
 
-> **型定義**: [`TournamentIndexEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L3-L9)
+> **型定義**: [`TournamentIndexEntry`](../src/types/tournament.ts#L3-L9)
 
 ```typescript
 export interface TournamentIndexEntry {
@@ -157,7 +157,7 @@ interface GenerationEntry {
 
 #### データ構造
 
-> **型定義**: [`TournamentInformationEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L19-L27), [`TournamentCategoryInfo`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L11-L17)
+> **型定義**: [`TournamentInformationEntry`](../src/types/tournament.ts#L19-L27), [`TournamentCategoryInfo`](../src/types/tournament.ts#L11-L17)
 
 ```typescript
 export interface TournamentInformationEntry {
@@ -230,7 +230,7 @@ export interface TournamentCategoryInfo {
 
 ##### 個人戦（ダブルス・シングルス）の場合
 
-> **型定義**: [`TournamentDetailData`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L73-L78), [`TournamentParticipant`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L29-L36), [`TournamentEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L38-L42), [`TournamentMatch`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L44-L56), [`TournamentResult`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L58-L71)
+> **型定義**: [`TournamentDetailData`](../src/types/tournament.ts#L73-L78), [`TournamentParticipant`](../src/types/tournament.ts#L29-L36), [`TournamentEntry`](../src/types/tournament.ts#L38-L42), [`TournamentMatch`](../src/types/tournament.ts#L44-L56), [`TournamentResult`](../src/types/tournament.ts#L58-L71)
 
 ```typescript
 export interface TournamentDetailData {
@@ -477,19 +477,19 @@ export interface TournamentParticipant {
 
 ## TypeScript型定義
 
-全ての型定義は [`src/types/tournament.ts`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts) に定義されています。
+全ての型定義は [`src/types/tournament.ts`](../src/types/tournament.ts) に定義されています。
 
 ### 主要な型
 
-- [`TournamentIndexEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L3-L9) - 大会マスタデータ
-- [`TournamentCategoryInfo`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L11-L17) - カテゴリ情報
-- [`TournamentInformationEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L19-L27) - 大会開催情報
-- [`TournamentParticipant`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L29-L36) - 参加者情報
-- [`TournamentEntry`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L38-L42) - エントリー情報
-- [`TournamentMatch`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L44-L56) - 試合情報
-- [`TournamentResult`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L58-L71) - 結果情報
-- [`TournamentDetailData`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L73-L78) - 大会詳細データ
-- [`MatchRow`](file:///Users/mkojima/Desktop/softeni-pick/src/types/tournament.ts#L80-L88) - 試合行データ（表示用）
+- [`TournamentIndexEntry`](../src/types/tournament.ts#L3-L9) - 大会マスタデータ
+- [`TournamentCategoryInfo`](../src/types/tournament.ts#L11-L17) - カテゴリ情報
+- [`TournamentInformationEntry`](../src/types/tournament.ts#L19-L27) - 大会開催情報
+- [`TournamentParticipant`](../src/types/tournament.ts#L29-L36) - 参加者情報
+- [`TournamentEntry`](../src/types/tournament.ts#L38-L42) - エントリー情報
+- [`TournamentMatch`](../src/types/tournament.ts#L44-L56) - 試合情報
+- [`TournamentResult`](../src/types/tournament.ts#L58-L71) - 結果情報
+- [`TournamentDetailData`](../src/types/tournament.ts#L73-L78) - 大会詳細データ
+- [`MatchRow`](../src/types/tournament.ts#L80-L88) - 試合行データ（表示用）
 
 ### 型定義されていないデータ
 

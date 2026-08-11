@@ -94,6 +94,25 @@ const WINNER_RESULT_TYPES = new Set(['smash_winner', 'volley_winner', 'passing_w
 export const ERROR_RESULT_TYPES = new Set(['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error']);
 
 /**
+ * `result_type` の日本語表示ラベル。
+ * ボタン一覧（WINNER_BUTTONS / ERROR_BUTTONS）に無いサーブ系の値も含む。
+ */
+const RESULT_TYPE_LABELS: Record<string, string> = {
+  ...Object.fromEntries(WINNER_BUTTONS.map(({ value, label }) => [value, label])),
+  ...Object.fromEntries(ERROR_BUTTONS.map(({ value, label }) => [value, label])),
+  service_ace: 'サービスエース',
+  double_fault: 'ダブルフォルト',
+  winner: 'ウィナー',
+};
+
+/** `result_type` を日本語ラベルに変換する。未知の値はそのまま返す。 */
+export const getResultTypeLabel = (resultType: string | null | undefined): string => {
+  if (!resultType) return '';
+
+  return RESULT_TYPE_LABELS[resultType] ?? resultType;
+};
+
+/**
  * 関与選手（一意識別子）とプレイ結果タイプから勝者チームを自動決定する。
  * ウィナー系は選手のチームが勝者、ミス系は相手チームが勝者。
  */

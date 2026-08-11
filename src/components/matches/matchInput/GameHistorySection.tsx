@@ -10,8 +10,10 @@ type GameHistorySectionProps = {
   isPointInputActive: boolean;
   activeYouTubeVideoId: string | null;
   youtubeEmbedBlocked: boolean;
+  submitting: boolean;
   onEditPoint: (game: Game, point: Point) => void;
   onJumpToPointVideo: (point: Point) => void;
+  onRestartFromGame: (game: Game) => void;
   getServingPlayerForPoint: (game: Game, pointNumber: number) => ServingPlayerInfo;
 };
 
@@ -22,8 +24,10 @@ const GameHistorySection = ({
   isPointInputActive,
   activeYouTubeVideoId,
   youtubeEmbedBlocked,
+  submitting,
   onEditPoint,
   onJumpToPointVideo,
+  onRestartFromGame,
   getServingPlayerForPoint,
 }: GameHistorySectionProps) => (
   <div className={`rounded-lg bg-white p-6 shadow-md ${isPointInputActive ? 'mt-4 xl:col-start-2 xl:mt-0' : ''}`}>
@@ -36,9 +40,22 @@ const GameHistorySection = ({
               <h4 className="font-semibold">第{game.game_number}ゲーム</h4>
               {currentGame?.id === game.id && <span className="rounded bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700">現在のゲーム</span>}
             </div>
-            <div className="text-lg font-bold">
-              {game.points_a} - {game.points_b}
-              {game.winner_team && <span className="ml-2 text-green-600">(チーム{game.winner_team}勝利)</span>}
+            <div className="flex items-center gap-3">
+              <div className="text-lg font-bold">
+                {game.points_a} - {game.points_b}
+                {game.winner_team && <span className="ml-2 text-green-600">(チーム{game.winner_team}勝利)</span>}
+              </div>
+              {canEditMatches && (
+                <button
+                  type="button"
+                  onClick={() => onRestartFromGame(game)}
+                  disabled={submitting}
+                  className="rounded border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:border-gray-200 disabled:text-gray-400"
+                  title={`第${game.game_number}ゲーム以降を削除してやり直す`}
+                >
+                  ここからやり直す
+                </button>
+              )}
             </div>
           </div>
 

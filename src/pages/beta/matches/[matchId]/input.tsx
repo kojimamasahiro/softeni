@@ -8,6 +8,7 @@ import DevOnlyNotice from '../../../../components/matches/DevOnlyNotice';
 import DesktopVideoSidebar from '../../../../components/matches/matchInput/DesktopVideoSidebar';
 import GameHistorySection from '../../../../components/matches/matchInput/GameHistorySection';
 import GameScoreSummaryPanel from '../../../../components/matches/matchInput/GameScoreSummaryPanel';
+import LastPointQuickEdit from '../../../../components/matches/matchInput/LastPointQuickEdit';
 import MatchInfoPanel from '../../../../components/matches/matchInput/MatchInfoPanel';
 import PointInputForm from '../../../../components/matches/matchInput/PointInputForm';
 import { useMatchInputController } from '../../../../components/matches/matchInput/useMatchInputController';
@@ -47,12 +48,21 @@ const MatchInput = () => {
     getVideoEndInput,
     pointData,
     setPointData,
+    pointInferenceContext,
+    selectServiceAce,
+    selectDoubleFault,
+    toggleFirstServeFault,
     submitPoint,
     updatePoint,
     startEditPoint,
     cancelEditPoint,
+    lastRecordedPoint,
+    lastRecordedPointGame,
+    canEditLastRecordedPoint,
+    startEditLastRecordedPoint,
     startNewGame,
     startFirstGame,
+    restartFromGame,
     handleServeTeamSelected,
     getCurrentServe,
     getCurrentServingPlayer,
@@ -80,6 +90,17 @@ const MatchInput = () => {
 
   const gameScores = getGameScores();
 
+  // 直前ポイントのクイック修正カード。編集モード中は編集対象と紛らわしいので出さない。
+  const lastPointQuickEdit =
+    !isEditMode && lastRecordedPoint && lastRecordedPointGame ? (
+      <LastPointQuickEdit
+        lastPoint={lastRecordedPoint}
+        lastPointGame={lastRecordedPointGame}
+        canEdit={canEditLastRecordedPoint}
+        onEditLastPoint={startEditLastRecordedPoint}
+      />
+    ) : null;
+
   const gameHistorySection = (
     <GameHistorySection
       sortedGames={sortedGames}
@@ -88,8 +109,10 @@ const MatchInput = () => {
       isPointInputActive={isPointInputActive}
       activeYouTubeVideoId={activeYouTubeVideoId}
       youtubeEmbedBlocked={youtubeEmbedBlocked}
+      submitting={submitting}
       onEditPoint={startEditPoint}
       onJumpToPointVideo={jumpToPointVideo}
+      onRestartFromGame={restartFromGame}
       getServingPlayerForPoint={getServingPlayerForPoint}
     />
   );
@@ -210,6 +233,8 @@ const MatchInput = () => {
         {/* ポイント入力フォーム */}
         {isPointInputActive && currentGame && (
           <div className="xl:col-start-2 xl:row-start-1">
+            {lastPointQuickEdit}
+
             <PointInputForm
               match={match}
               isEditMode={isEditMode}
@@ -217,17 +242,18 @@ const MatchInput = () => {
               submitting={submitting}
               pointData={pointData}
               setPointData={setPointData}
+              pointInferenceContext={pointInferenceContext}
               manualServingPlayer={manualServingPlayer}
               setManualServingPlayer={setManualServingPlayer}
-              getCurrentServe={getCurrentServe}
-              getCurrentServingPlayer={getCurrentServingPlayer}
-              isPointInputActive={isPointInputActive}
               activeYouTubeVideoId={activeYouTubeVideoId}
               youtubeEmbedBlocked={youtubeEmbedBlocked}
               getVideoStartInput={getVideoStartInput}
               getVideoEndInput={getVideoEndInput}
               onCaptureVideoTime={captureVideoTime}
               onClearVideoRange={clearVideoRange}
+              onSelectServiceAce={selectServiceAce}
+              onSelectDoubleFault={selectDoubleFault}
+              onToggleFirstServeFault={toggleFirstServeFault}
               onSubmitPoint={submitPoint}
               onUpdatePoint={updatePoint}
               onCancelEditPoint={cancelEditPoint}
@@ -237,7 +263,14 @@ const MatchInput = () => {
           </div>
         )}
 
-        {!isPointInputActive && gameHistorySection}
+        {!isPointInputActive && (
+          <>
+            {/* サーブ権選択待ち・ゲーム終了待ちなど、入力フォームが出ていない状態でも
+                直前ポイント（＝そのゲームを決めたポイント）は修正できるようにする。 */}
+            {lastPointQuickEdit}
+            {gameHistorySection}
+          </>
+        )}
       </div>
     </div>
   );

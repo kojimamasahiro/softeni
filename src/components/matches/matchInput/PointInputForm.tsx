@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 
-import { determineWinnerTeam, ERROR_BUTTONS, ERROR_RESULT_TYPES, getPlayerNamesFromMatch, getPlayerUniqueId, WINNER_BUTTONS } from '../../../../lib/matchLogic';
+import {
+  determineWinnerTeam,
+  ERROR_BUTTONS,
+  ERROR_RESULT_TYPES,
+  getPlayerNameFromId,
+  getPlayerNamesFromMatch,
+  getPlayerUniqueId,
+  WINNER_BUTTONS,
+} from '../../../../lib/matchLogic';
+import { inferPointData, type PointInferenceContext } from '../../../../lib/pointInference';
 import { formatVideoTimestamp } from '../../../../lib/youtubePlayback';
 import type { Match, Point } from '../../../types/database';
-import type { ManualServingPlayer, PointDataState, ServingPlayerInfo } from './types';
+import type { ManualServingPlayer, PointDataState } from './types';
 import VideoTimeRangeInputs from './VideoTimeRangeInputs';
 
 type PointInputFormProps = {
@@ -14,21 +23,29 @@ type PointInputFormProps = {
   submitting: boolean;
   pointData: PointDataState;
   setPointData: Dispatch<SetStateAction<PointDataState>>;
+  pointInferenceContext: PointInferenceContext;
   manualServingPlayer: ManualServingPlayer;
   setManualServingPlayer: Dispatch<SetStateAction<ManualServingPlayer>>;
-  getCurrentServe: () => 'A' | 'B' | null;
-  getCurrentServingPlayer: () => ServingPlayerInfo;
-  isPointInputActive: boolean;
   activeYouTubeVideoId: string | null;
   youtubeEmbedBlocked: boolean;
   getVideoStartInput: () => string;
   getVideoEndInput: () => string;
   onCaptureVideoTime: (target: 'start' | 'end') => void;
   onClearVideoRange: () => void;
+  onSelectServiceAce: () => void;
+  onSelectDoubleFault: () => void;
+  onToggleFirstServeFault: () => void;
   onSubmitPoint: () => void;
   onUpdatePoint: () => void;
   onCancelEditPoint: () => void;
 };
+
+/** ボタンに割り当てキーを小さく併記する。装飾なので読み上げ対象から外す。 */
+const ShortcutKeyHint = ({ shortcutKey }: { shortcutKey: string }) => (
+  <span aria-hidden="true" className="ml-1 rounded border border-current px-1 text-[10px] font-normal opacity-60">
+    {shortcutKey}
+  </span>
+);
 
 const PointInputForm = ({
   match,
@@ -37,22 +54,42 @@ const PointInputForm = ({
   submitting,
   pointData,
   setPointData,
+  pointInferenceContext,
   manualServingPlayer,
   setManualServingPlayer,
-  getCurrentServe,
-  getCurrentServingPlayer,
-  isPointInputActive,
   activeYouTubeVideoId,
   youtubeEmbedBlocked,
   getVideoStartInput,
   getVideoEndInput,
   onCaptureVideoTime,
   onClearVideoRange,
+  onSelectServiceAce,
+  onSelectDoubleFault,
+  onToggleFirstServeFault,
   onSubmitPoint,
   onUpdatePoint,
   onCancelEditPoint,
 }: PointInputFormProps) => {
-  const servingPlayer = getCurrentServingPlayer();
+  // サーブ／レシーブの表示は自動推定が使っている文脈と同じものを見せる。
+  // 編集モードでは「次のポイント」ではなく編集対象ポイントのサーブになる。
+  const currentServingTeam = pointInferenceContext.servingTeam;
+  const servingPlayerName = pointInferenceContext.servingPlayerId ? getPlayerNameFromId(pointInferenceContext.servingPlayerId) : '';
+  const receivingPlayerName = pointInferenceContext.receivingPlayerId ? getPlayerNameFromId(pointInferenceContext.receivingPlayerId) : '';
+  const servingTeamPlayers = currentServingTeam ? getPlayerNamesFromMatch(match, currentServingTeam) : [];
+  const isServingTeamDoubles = servingTeamPlayers.length > 1;
+  const showServePanel = Boolean(currentServingTeam && servingPlayerName);
+
+  const showVideoCaptureButtons = Boolean(activeYouTubeVideoId) && !youtubeEmbedBlocked;
+  // 動画がある場合、xl では手入力はサイドバー側に出るのでこちらは隠す
+  const manualTimeInputClass = activeYouTubeVideoId ? (showVideoCaptureButtons ? 'mt-3 border-t border-gray-200 pt-3 xl:hidden' : 'xl:hidden') : '';
+
+  /**
+   * 入力内容を更新するときは必ず自動推定を通す。
+   * 推定は空欄だけを埋めるので、手で選んだ値が書き換わることはない。
+   */
+  const applyPointData = (nextData: PointDataState) => {
+    setPointData(inferPointData(nextData, pointInferenceContext));
+  };
 
   // 「開始/終了を記録」ボタン押下直後に一時的な確認表示を出すためのフラグ
   const [justCaptured, setJustCaptured] = useState<'start' | 'end' | null>(null);
@@ -73,61 +110,101 @@ const PointInputForm = ({
       <div className="text-center mb-4">
         <h3 className="text-lg font-semibold">{isEditMode ? 'ポイント編集' : 'ポイント記録'}</h3>
         {isEditMode && editingPoint && <p className="text-sm text-blue-600 mt-1">#{editingPoint.point_number} を編集中</p>}
-        {!isEditMode && servingPlayer && (
-          <div className="mt-2">
-            {(() => {
-              const currentServingTeam = getCurrentServe();
-              if (!currentServingTeam) return null;
+      </div>
 
-              const teamPlayers = getPlayerNamesFromMatch(match, currentServingTeam);
-              const isDoubles = teamPlayers.length > 1;
+      {/*
+        サーブ選手（表示＋手動選択）と動画時刻を左右に並べる。
+        動画時刻はポイントの区切りを先に押さえてから中身を入力する流れなので、他の項目より上に置く。
+      */}
+      <div className={`mb-4 grid gap-3 ${showServePanel ? 'md:grid-cols-2' : 'grid-cols-1'}`}>
+        {showServePanel && currentServingTeam && (
+          <div className="rounded border border-yellow-200 bg-yellow-50 p-3">
+            <p className="text-sm font-medium text-yellow-800">
+              サーブ: チーム {currentServingTeam} {servingPlayerName}
+              {manualServingPlayer && !isEditMode && <span className="text-xs text-blue-600 ml-2">(手動選択)</span>}
+            </p>
+            <p className="mt-0.5 text-xs text-yellow-700">
+              レシーブ: チーム {pointInferenceContext.receivingTeam} {receivingPlayerName}
+            </p>
 
-              return (
-                <div className={`grid gap-3 ${isDoubles ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
-                  {/* サーバー表示 */}
-                  <div className="p-2 bg-yellow-50 border border-yellow-200 rounded">
-                    <p className="text-m font-medium text-yellow-800">
-                      サーブ: {servingPlayer.playerName}
-                      {manualServingPlayer && <span className="text-xs text-blue-600 ml-2">(手動選択)</span>}
-                    </p>
-                  </div>
-
-                  {/* 手動サーブ選手選択（ダブルスの場合のみ） */}
-                  {isDoubles && (
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded">
-                      <div className="flex gap-2 justify-center">
-                        {teamPlayers.map((playerName, index) => (
-                          <button
-                            key={index}
-                            onClick={() => {
-                              setManualServingPlayer({
-                                team: currentServingTeam,
-                                playerIndex: index,
-                              });
-                            }}
-                            className={`px-3 py-1 text-xs border rounded font-medium transition-all ${
-                              manualServingPlayer?.team === currentServingTeam && manualServingPlayer?.playerIndex === index
-                                ? 'border-blue-500 bg-blue-100 text-blue-700'
-                                : 'border-gray-300 hover:border-blue-300 text-gray-700'
-                            }`}
-                          >
-                            {playerName}
-                          </button>
-                        ))}
-                        <button
-                          onClick={() => setManualServingPlayer(null)}
-                          className="px-3 py-1 text-xs border border-gray-300 rounded text-gray-600 hover:border-red-300 hover:text-red-600"
-                        >
-                          自動
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })()}
+            {/* 手動サーブ選手選択（ダブルスの場合のみ）。同じカード内、横1行に並べる。 */}
+            {!isEditMode && isServingTeamDoubles && (
+              <div className="mt-2 flex gap-1">
+                {servingTeamPlayers.map((playerName, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setManualServingPlayer({
+                        team: currentServingTeam,
+                        playerIndex: index,
+                      });
+                    }}
+                    className={`min-w-0 flex-1 truncate rounded border px-2 py-1 text-xs font-medium transition-all ${
+                      manualServingPlayer?.team === currentServingTeam && manualServingPlayer?.playerIndex === index
+                        ? 'border-blue-500 bg-blue-100 text-blue-700'
+                        : 'border-gray-300 bg-white text-gray-700 hover:border-blue-300'
+                    }`}
+                  >
+                    {playerName}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setManualServingPlayer(null)}
+                  className="shrink-0 rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-600 hover:border-red-300 hover:text-red-600"
+                >
+                  自動
+                </button>
+              </div>
+            )}
           </div>
         )}
+
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3">
+          {showVideoCaptureButtons && (
+            <>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleCaptureVideoTime('start')}
+                  aria-live="polite"
+                  className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
+                    justCaptured === 'start' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'
+                  }`}
+                >
+                  {justCaptured === 'start' ? '✓ 記録しました' : '開始を記録'}
+                  {justCaptured !== 'start' && <ShortcutKeyHint shortcutKey="S" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleCaptureVideoTime('end')}
+                  aria-live="polite"
+                  className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
+                    justCaptured === 'end' ? 'bg-green-600' : 'bg-emerald-600 hover:bg-emerald-700'
+                  }`}
+                >
+                  {justCaptured === 'end' ? '✓ 記録しました' : '終了を記録'}
+                  {justCaptured !== 'end' && <ShortcutKeyHint shortcutKey="E" />}
+                </button>
+                <button type="button" onClick={onClearVideoRange} className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white">
+                  クリア
+                </button>
+              </div>
+              <p className="mt-1.5 text-xs text-gray-600">
+                開始: {formatVideoTimestamp(pointData.video_start_ms, true)} ／ 終了: {formatVideoTimestamp(pointData.video_end_ms, true)}
+              </p>
+            </>
+          )}
+
+          {/* 手入力（デスクトップの動画レイアウト時はサイドバー側に出るため非表示） */}
+          <div className={manualTimeInputClass}>
+            <VideoTimeRangeInputs
+              pointData={pointData}
+              onChange={(updates) => applyPointData({ ...pointData, ...updates })}
+              startInputValue={getVideoStartInput()}
+              endInputValue={getVideoEndInput()}
+            />
+          </div>
+        </div>
       </div>
 
       {/* サーブ情報 */}
@@ -135,45 +212,17 @@ const PointInputForm = ({
         <h4 className="text-sm font-medium mb-2 text-center">サーブ情報</h4>
         <div className="grid grid-cols-3 gap-2">
           <button
-            onClick={() => {
-              const currentServe = getCurrentServe();
-              const currentServingPlayer = getCurrentServingPlayer();
-              const servingPlayerName = currentServingPlayer?.playerName || '';
-              const servingPlayerKey = getPlayerUniqueId(
-                currentServingPlayer?.team || currentServe || 'A',
-                currentServingPlayer?.playerIndex || 0,
-                servingPlayerName,
-              );
-
-              setPointData({
-                ...pointData,
-                result_type: 'service_ace',
-                winner_team: currentServe || 'A',
-                winner_player: servingPlayerKey,
-                rally_count: 1,
-                // ダブルフォルト関連をクリア
-                double_fault: false,
-                loser_player: '',
-              });
-            }}
+            onClick={onSelectServiceAce}
             className={`p-2 border-2 rounded font-medium transition-all text-xs ${
               pointData.result_type === 'service_ace' ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-300 hover:border-green-300'
             }`}
           >
             サービスエース
+            <ShortcutKeyHint shortcutKey="A" />
           </button>
           <button
             disabled={pointData.result_type === 'double_fault'}
-            onClick={() => {
-              // ダブルフォルトが選択されている場合は何もしない
-              if (pointData.result_type === 'double_fault') {
-                return;
-              }
-              setPointData({
-                ...pointData,
-                first_serve_fault: !pointData.first_serve_fault,
-              });
-            }}
+            onClick={onToggleFirstServeFault}
             className={`p-2 border-2 rounded font-medium transition-all text-xs ${
               pointData.result_type === 'double_fault'
                 ? 'border-gray-200 bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -183,36 +232,16 @@ const PointInputForm = ({
             }`}
           >
             1stフォルト
+            <ShortcutKeyHint shortcutKey="F" />
           </button>
           <button
-            onClick={() => {
-              const currentServe = getCurrentServe();
-              const oppositeTeam = currentServe === 'A' ? 'B' : 'A';
-              const currentServingPlayer = getCurrentServingPlayer();
-              const servingPlayerName = currentServingPlayer?.playerName || '';
-              const servingPlayerKey = getPlayerUniqueId(
-                currentServingPlayer?.team || currentServe || 'A',
-                currentServingPlayer?.playerIndex || 0,
-                servingPlayerName,
-              );
-
-              setPointData({
-                ...pointData,
-                result_type: 'double_fault',
-                double_fault: true,
-                first_serve_fault: true, // ダブルフォルトの場合は1stフォルトも自動設定
-                winner_team: oppositeTeam,
-                loser_player: servingPlayerKey,
-                rally_count: 1,
-                // サービスエース関連をクリア
-                winner_player: '',
-              });
-            }}
+            onClick={onSelectDoubleFault}
             className={`p-2 border-2 rounded font-medium transition-all text-xs ${
               pointData.result_type === 'double_fault' ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-gray-300 hover:border-purple-300'
             }`}
           >
             ダブルフォルト
+            <ShortcutKeyHint shortcutKey="D" />
           </button>
         </div>
       </div>
@@ -225,7 +254,7 @@ const PointInputForm = ({
             {Array.from({ length: 100 }, (_, i) => i + 1).map((count) => (
               <button
                 key={count}
-                onClick={() => setPointData({ ...pointData, rally_count: count })}
+                onClick={() => applyPointData({ ...pointData, rally_count: count })}
                 className={`flex-shrink-0 w-8 h-8 border-2 rounded font-medium transition-all text-xs ${
                   pointData.rally_count === count ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-gray-300 hover:border-indigo-300'
                 }`}
@@ -261,7 +290,7 @@ const PointInputForm = ({
                       newData.winner_team = autoWinner;
                     }
                   }
-                  setPointData(newData);
+                  applyPointData(newData);
                 }}
                 className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                   pointData.result_type === value ? 'border-green-500 bg-green-50 text-green-700' : 'border-gray-300 hover:border-green-300'
@@ -280,23 +309,28 @@ const PointInputForm = ({
               <button
                 key={value}
                 onClick={() => {
+                  // レシーブ失敗は「誰が失敗したか」「どちらの得点か」が試合の進行から一意に決まるので、
+                  // 先に空にして自動推定で入れ直す（手で選び直せば上書きされない）
+                  const isReceiveError = value === 'receive_error';
                   const newData = {
                     ...pointData,
                     result_type: value,
                     // レシーブ失敗の場合はラリー数を2に設定
-                    rally_count: value === 'receive_error' ? 2 : pointData.rally_count,
+                    rally_count: isReceiveError ? 2 : pointData.rally_count,
                     // サーブ関連の自動設定をクリア（ただしダブルフォルト以外）
                     double_fault: false,
                     winner_player: '',
+                    loser_player: isReceiveError ? '' : pointData.loser_player,
+                    winner_team: isReceiveError ? '' : pointData.winner_team,
                   };
                   // 関与選手が設定されていれば勝者チームを自動決定
-                  if (pointData.winner_player) {
+                  if (!isReceiveError && pointData.winner_player) {
                     const autoWinner = determineWinnerTeam(pointData.winner_player, value);
                     if (autoWinner) {
                       newData.winner_team = autoWinner;
                     }
                   }
-                  setPointData(newData);
+                  applyPointData(newData);
                 }}
                 className={`p-2 border-2 rounded font-medium transition-all text-xs ${
                   pointData.result_type === value ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
@@ -320,7 +354,19 @@ const PointInputForm = ({
                 ? 'サービスエース：サーブ選手が自動選択されています'
                 : 'ダブルフォルト：サーブ選手と1stフォルトが自動選択されています'}
             </p>
-            <p className="text-xs text-yellow-600 mt-1">現在のサーブ選手: {getCurrentServingPlayer()?.playerName}</p>
+            <p className="text-xs text-yellow-600 mt-1">現在のサーブ選手: {servingPlayerName}</p>
+          </div>
+        )}
+
+        {/* レシーブ失敗時：自動選択したレシーブ選手を明示する（推定が外れていたら手で選び直せる） */}
+        {pointData.result_type === 'receive_error' && (
+          <div className="mb-3 rounded border border-yellow-200 bg-yellow-50 p-2 text-center">
+            <p className="text-xs text-yellow-800">レシーブ失敗：レシーブ選手が自動選択されています</p>
+            <p className="mt-1 text-xs text-yellow-600">
+              サーブ: チーム {currentServingTeam ?? '-'} {servingPlayerName || '-'}
+              {' ／ '}
+              レシーブ: チーム {pointInferenceContext.receivingTeam ?? '-'} {receivingPlayerName || '-'}
+            </p>
           </div>
         )}
         <div className="grid grid-cols-2 gap-2">
@@ -368,7 +414,7 @@ const PointInputForm = ({
                             }
                           }
                         }
-                        setPointData(newData);
+                        applyPointData(newData);
                       }}
                       className={`p-1 border-2 rounded font-medium transition-all text-xs ${
                         isAutoSelected
@@ -394,16 +440,6 @@ const PointInputForm = ({
         </div>
       </div>
 
-      {/* 動画時刻（デスクトップレイアウト時はサイドバー側に表示するため非表示） */}
-      <div className={`mb-4 rounded-lg border border-gray-200 bg-gray-50 p-4 ${isPointInputActive ? 'xl:hidden' : ''}`}>
-        <VideoTimeRangeInputs
-          pointData={pointData}
-          onChange={(updates) => setPointData({ ...pointData, ...updates })}
-          startInputValue={getVideoStartInput()}
-          endInputValue={getVideoEndInput()}
-        />
-      </div>
-
       {/* 勝者チーム */}
       <div className="mb-4">
         <div className="text-center mb-2">
@@ -411,7 +447,7 @@ const PointInputForm = ({
         </div>
         <div className="grid grid-cols-2 gap-2">
           <button
-            onClick={() => setPointData({ ...pointData, winner_team: 'A' })}
+            onClick={() => applyPointData({ ...pointData, winner_team: 'A' })}
             className={`p-2 border-2 rounded font-medium transition-all text-sm ${
               pointData.winner_team === 'A' ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-gray-300 hover:border-blue-300'
             }`}
@@ -419,7 +455,7 @@ const PointInputForm = ({
             チーム A
           </button>
           <button
-            onClick={() => setPointData({ ...pointData, winner_team: 'B' })}
+            onClick={() => applyPointData({ ...pointData, winner_team: 'B' })}
             className={`p-2 border-2 rounded font-medium transition-all text-sm ${
               pointData.winner_team === 'B' ? 'border-red-500 bg-red-50 text-red-700' : 'border-gray-300 hover:border-red-300'
             }`}
@@ -439,6 +475,7 @@ const PointInputForm = ({
               className="flex-1 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 disabled:bg-gray-300"
             >
               {submitting ? '更新中...' : 'ポイント更新'}
+              {!submitting && <ShortcutKeyHint shortcutKey="G" />}
             </button>
             <button
               onClick={onCancelEditPoint}
@@ -455,42 +492,10 @@ const PointInputForm = ({
             className="flex-1 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 disabled:bg-gray-300"
           >
             {submitting ? '記録中...' : 'ポイント記録'}
+            {!submitting && <ShortcutKeyHint shortcutKey="G" />}
           </button>
         )}
       </div>
-
-      {activeYouTubeVideoId && !youtubeEmbedBlocked && (
-        <div className="mt-3">
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => handleCaptureVideoTime('start')}
-              aria-live="polite"
-              className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
-                justCaptured === 'start' ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'
-              }`}
-            >
-              {justCaptured === 'start' ? '✓ 記録しました' : '開始を記録'}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleCaptureVideoTime('end')}
-              aria-live="polite"
-              className={`rounded px-3 py-1.5 text-xs font-medium text-white transition-colors ${
-                justCaptured === 'end' ? 'bg-green-600' : 'bg-emerald-600 hover:bg-emerald-700'
-              }`}
-            >
-              {justCaptured === 'end' ? '✓ 記録しました' : '終了を記録'}
-            </button>
-            <button type="button" onClick={onClearVideoRange} className="rounded border border-gray-300 px-3 py-1.5 text-xs hover:bg-white">
-              クリア
-            </button>
-          </div>
-          <p className="mt-1.5 text-xs text-gray-600">
-            開始: {formatVideoTimestamp(pointData.video_start_ms, true)} ／ 終了: {formatVideoTimestamp(pointData.video_end_ms, true)}
-          </p>
-        </div>
-      )}
     </div>
   );
 };

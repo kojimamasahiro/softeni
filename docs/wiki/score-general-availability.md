@@ -22,8 +22,8 @@ score機能で体現すること。論文等の研究知見を参考に指標を
 期待している。副次的に本サイトで使えるデータとして活用できると思うが、軸としては成長のヒント
 となるものを現役の選手で記録するとどうなるかを体現させようとしていた。」
 
-1. **［主軸］重要局面別の分析エンジン（成長のヒント）**: `lib/growthAnalysis.ts` /
-   `lib/matchAnalysis.ts` は単純平均でなくデュース・ゲームポイント等の局面別指標を持つ。
+1. **［主軸］重要局面別の分析エンジン（成長のヒント）**: `lib/growthAnalysis/` /
+   `lib/matchAnalysis/` は単純平均でなくデュース・ゲームポイント等の局面別指標を持つ。
    下記パイロット分析で、局面別に見ることの意味があるデータが実際に取れることを確認済み。
    score機能の存在意義そのもの＝「記録すると自分の成長のヒントが見える」を実証する部分。
 2. **［副次］動画ベースの事後記録**: 試合中の記録係が不要（動画からポイント候補を事後抽出）。
@@ -134,4 +134,4 @@ ADR-004（[growth-analysis-visibility-consent](../adr/ADR-004-growth-analysis-vi
 - [docs/wiki/open-questions.md](./open-questions.md)
 - [ADR-003](../adr/ADR-003-score-media-tool-separation.md)
 - [ADR-004](../adr/ADR-004-growth-analysis-visibility-consent.md)
-- `lib/matchRules.ts`, `lib/growthAnalysis.ts`, `lib/matchAnalysis.ts`
+- `lib/matchRules.ts`, `lib/growthAnalysis/`, `lib/matchAnalysis/`
