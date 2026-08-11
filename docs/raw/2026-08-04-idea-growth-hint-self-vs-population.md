@@ -91,3 +91,21 @@ score機能は課金システム化を考えており、(B) は他の単体記�
   [2026-07-11-player-style-profile-plan.md](./2026-07-11-player-style-profile-plan.md)（同型のパーセンタイル正規化・表示ゲートの先行設計、同じ「母数が育つまで待つ」教訓）
 - `lib/growthAnalysis/comparisons.ts`（`getRecentPeriodComparison`のwindowSizeロジック）
 - `lib/growthAnalysis/stats.ts`（`getConfidence`・`RATE_SAMPLE_SMALL`/`RATE_SAMPLE_ENOUGH`）
+
+## Compile Log（2026-08-12 遡って追記）
+
+反映先: `docs/wiki/score-general-availability.md`（Idea Backlog）、`docs/wiki/idea-backlog.md`（score行）。
+
+載せたもの:
+
+- **サイト全体比較は現状データでは棄却**という結論と、その根拠が実データ検証であること
+  （母集団5人・split-half 安定性検定で4人の順位が入れ替わる）
+- 当面は自己比較を優先し、データが増えたら再検証するという方針
+
+意図的に載せなかったもの:
+
+- split-half 検定の手順と個別の数値 — 棄却という結論が要点で、再検証するときは
+  データが増えた後の再実行になるため当時の数値は使い回せない。
+- ユーザーが興味を持った点・想定運用の節 — 発想の経緯。結論に吸収済み。
+- 「目指したい方向性」の各案 — まだ発散段階で、wiki（現在の仕様）に書く段階にない。
+  再開時は raw のこの節から。

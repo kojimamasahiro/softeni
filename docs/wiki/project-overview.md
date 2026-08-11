@@ -1,5 +1,8 @@
 # Project Overview
 
+> 現行仕様。2026-08-12 に `src/pages/**` の構成と突き合わせ済み。
+> 各領域の詳細は本ページではなく個別ページが正。ここは全体の地図に徹する。
+
 ## 概要
 
 Softeni Pick は、ソフトテニスの大会結果、選手情報、チーム情報、試合スコアを整理して公開する Web サイトです。
@@ -18,11 +21,17 @@ Softeni Pick は、ソフトテニスの大会結果、選手情報、チーム�
 
 主な導線:
 
-- 大会: `src/pages/tournaments/**`
-- 選手: `src/pages/players/**`
-- チーム: `src/pages/teams/**`
-- 高校カテゴリ: `src/pages/highschool/**`
-- 案内ページ: `src/pages/about.tsx`, `src/pages/faq.tsx`, `src/pages/privacy.tsx`
+- 大会: `src/pages/tournaments/**` → [tournaments-local.md](./tournaments-local.md)
+- 選手: `src/pages/players/**` → [players-pages.md](./players-pages.md)
+- チーム: `src/pages/teams/**` → [team-player-identity.md](./team-player-identity.md)
+- 高校カテゴリ: `src/pages/highschool/**` → [highschool.md](./highschool.md)
+- ランキング: `src/pages/rankings/**` → [ranking.md](./ranking.md)
+- STリーグ: `src/pages/st-league/**` → [st-league.md](./st-league.md)
+- ニュース（速報・プレビュー）: `src/pages/news/**` → [news-context-blocks.md](./news-context-blocks.md)
+- 成長記録ショーケース: `src/pages/growth/**` → [score-feature.md](./score-feature.md)
+- 案内ページ: `src/pages/about.tsx`, `src/pages/faq.tsx`, `src/pages/privacy.tsx`, `src/pages/contact.tsx`
+
+ページ全体の構成と SEO 上の役割分担は [public-pages.md](./public-pages.md) と [seo.md](./seo.md)。
 
 ### 2. score 系機能
 
@@ -60,12 +69,16 @@ score 系は、試合単位の記録・公開・分析を扱う領域です。
 - 試合作成、ポイント入力、動画レビュー、公開用 JSON 生成
 - `score.softeni-pick.com` 想定の公開 URL 切り替え
 
-## Assumption
+## 前提
 
-- Softeni Pick は個人運営または小規模運営のデータベース型メディアである
+- Softeni Pick は masahiro の個人運営によるデータベース型メディア
+- 本番はサーバーレスの完全な静的サイト（Cloudflare Pages）。データ更新はローカルからの
+  ビルドを通してのみ反映される → [backend.md](./backend.md)「実行モデル」
 - score 系は本体機能の一部として始まり、後から公開面を分ける方向で整理されている
 
 ## Open Questions
 
-- score 機能を本体サイトからどこまで分離するのが正式方針か
-- `softeni-pick` mode と `score` mode の運用責務を将来どう切るか
+- score 機能を本体サイトからどこまで分離するのが正式方針か。
+  高レベル方針は [ADR-003](../adr/ADR-003-score-media-tool-separation.md)（閲覧公開＝メディア／
+  ツール公開＝UGC の分離）で決着済みだが、ツール公開側の具体は未着手。
+  一般公開・ピボットの検討は [score-general-availability.md](./score-general-availability.md)

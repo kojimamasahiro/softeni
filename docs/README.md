@@ -54,7 +54,7 @@
 - [tournament-data-structure.md](./tournament-data-structure.md) — 大会データ JSON の型・構造（現行）
 - [beta-matches-results.md](./beta-matches-results.md) — 記録試合の公開面仕様
 - [story-yaml/](./story-yaml/) — 大会インサイトの YAML 仕様（ADR-012）
-- [sql/](./sql/) — Supabase への差分 DDL（手動適用）
+- [sql/APPLIED.md](./sql/APPLIED.md) — Supabase への差分 DDL（手動適用）とその適用台帳
 
 ### UI/情報設計 改善プロジェクト（2026-07-04 完了・移行実施中）
 

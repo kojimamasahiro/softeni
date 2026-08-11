@@ -1,5 +1,8 @@
 # Score Analysis
 
+> 現行仕様。2026-08-12 に `lib/growthAnalysis/**`・`lib/matchAnalysis/**`・
+> `scripts/generate-beta-matches-json.mjs` と突き合わせ済み。
+
 ## 概要
 
 - `score` モードは試合結果と成長分析の閲覧公開面
@@ -131,14 +134,35 @@
 - 入力・編集は `beta` 側と API 側に分離されている
 - 動画レビュー候補の確定結果が `points` に落ち、分析対象データになる
 
+## 生成と更新タイミング
+
+成長分析レポートは閲覧時計算ではなく、**ビルド時に静的 JSON として書き出される**。
+
+- `package.json` の `prebuild` → `scripts/generate-beta-matches-json.mjs` が
+  Supabase から `matches` を全件取得し、`buildGrowthReports()` の結果を
+  `public/data/beta-matches/growth/reports/*.json` と `growth/targets.json` に出力する
+- したがって試合を入力しても、**次のビルドまで成長分析には反映されない**
+- 検証用の単体実行は `npm run check:growth`（`scripts/check-growth-analysis.mjs`）
+- Supabase の環境変数が無い環境では、既存スナップショットから再生成にフォールバックする
+
+公開対象 match の抽出条件は「`matches` テーブルの全件」。ステータスによる絞り込みは無く、
+公開に出さない情報は `toPublicMatchSnapshot()` の**列レベルの間引き**で落としている。
+
+## 責務境界（`matchAnalysis` と `growthAnalysis`）
+
+- `lib/matchAnalysis/` … **1試合の中**を見る。チーム A / B の対比、局面別レート、
+  流れ（streak）、ラリー傾向。試合詳細ページ向け
+- `lib/growthAnalysis/` … **複数試合をまたぐ**。選手/ペアを target とし、期間・勝敗・
+  相手などの条件で current / previous を比較する。成長分析ページ向け
+- 両者は `lib/matchRules.ts`（先取点・2点差）を共通の土台にする
+
+（正式定義として文書化するかは Open Question のままだったが、実装側で
+`lib/growthAnalysis/index.ts` の冒頭コメントに分割意図が書かれており、上記はその要約。）
+
 ## Assumption
 
 - 成長分析は「試合中ポイント列が十分ある match」を前提にしている
-- レポート JSON は定期または手動生成で、閲覧時オンデマンド計算ではない可能性が高い
 
 ## Open Questions
 
-- 成長分析 JSON の正式な生成コマンドと更新タイミング
-- `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界
-- 公開対象 match の抽出条件
 - 指標採用の研究的根拠や現場根拠をどこまで持たせるか

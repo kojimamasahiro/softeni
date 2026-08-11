@@ -71,3 +71,22 @@ ERROR ではなく WARN に落とす**方式に変更。ストーリー区切り
 - [docs/story-yaml/highschool-championship-2025.yaml](../story-yaml/highschool-championship-2025.yaml)（入力）
 - [2026-08-01-idea-news-fact-based-story-categories.md](2026-08-01-idea-news-fact-based-story-categories.md)（親アイデア）
 - [2026-08-01-story-text-verification.md](2026-08-01-story-text-verification.md)（照合スクリプト）
+
+## Compile Log（2026-08-12 遡って追記）
+
+天皇賜杯版と同じく投稿案そのもの。wiki へは副産物だけを反映した。
+
+反映先: `docs/wiki/sns-story-platform.md`（Idea Backlog 行）、`docs/story-yaml/PROMPT.md`（書き方の作法）。
+
+載せたもの:
+
+- **学生カテゴリは学校を主役にする**方針（インターハイ個人戦の混成ペアは 0.00%＝0/3,792 なので
+  「◯◯高が3連覇」と書いてよい。高校は選手が3年で卒業するため経年ストーリーの器が学校しかない）
+- YAML を丸ごと渡す・`--no-records`・story id 併記・評価語の禁止という渡し方の作法（PROMPT.md へ）
+- この実施例で見つかった照合スクリプトの不具合（修正済み）
+
+意図的に載せなかったもの:
+
+- 投稿案3本の本文と LLM の選定出力 — 成果物。
+- 作法の一つ一つに至った理由づけ — PROMPT.md には指示だけを置き、なぜそうしたかは raw に残す
+  （指示文に理由を書くと LLM への入力が長くなるだけで従いやすくはならない）。

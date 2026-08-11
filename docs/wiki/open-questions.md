@@ -149,7 +149,8 @@ UGC 統合とあわせて保留し、コンテンツ拡大とユーザー反響�
 
 - 分析指標の採用基準は何か
 - 研究や現場知見に基づく裏付けをどこまで持たせるか
-- `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界を正式に定義するか
+- ~~`lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界を正式に定義するか~~
+  → 2026-08-12 に [score-analysis.md](./score-analysis.md)「責務境界」へ記述（1試合の中 / 複数試合をまたぐ）
 - 成長分析 JSON の更新タイミングと運用担当は誰か
 
 ## データ生成運用

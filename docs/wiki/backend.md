@@ -1,5 +1,8 @@
 # Backend
 
+> 現行仕様。2026-08-12 に実装（`next.config.mjs` / `lib/betaMatchesClient.ts` / `package.json`）と
+> 突き合わせ済み。
+
 ## 概要
 
 - フロント本体は Next.js Pages Router ベース
@@ -16,9 +19,19 @@
 
 ## 実行モデル
 
-- 静的公開ページが多く、`getStaticProps` / `getStaticPaths` を利用
-- 一方で試合入力・動画レビューは `src/pages/api/matches/**` と Supabase を使う動的機能
-- `score` モードでは書き込み API を 404 扱いにしている
+**本番にサーバーは無い。** `next.config.mjs` が本番だけ `output: 'export'` を付けるため、
+本番ビルドは完全な静的エクスポート（`out/` を Cloudflare Pages が配信、`wrangler.toml`）で、
+`src/pages/api/**` は成果物に含まれない。
+
+したがって API Routes と Supabase の読み書きは**ローカル開発時にだけ動く**。
+`hasLiveMatchApi()`（`lib/betaMatchesClient.ts`）は `NODE_ENV === 'development'` そのもので、
+真なら `/api/matches` を叩き、偽なら `public/data/beta-matches/**` の静的 JSON にフォールバックする。
+`isDebugMode()`（`lib/env.ts`）は開発環境または `NEXT_PUBLIC_DEBUG_MODE=true` で、編集UIの表示可否を決める。
+
+- 公開ページは `getStaticProps` / `getStaticPaths` でビルド時に確定
+- 試合入力・動画レビューは masahiro のローカル環境から Supabase を直接更新する運用
+- 公開面はその結果をビルド時にスナップショットした静的 JSON を読む
+- `score` モードでは編集系ページ・書き込み API を閉じる（そもそも本番には API が無い）
 
 ## 主要バックエンド機能
 
@@ -65,7 +78,14 @@
 用途:
 
 - `score` モード公開面のデータソース
-- 動的 API 不可な環境でも閲覧可能にするためのスナップショット
+- 本番には API が無いため、閲覧に必要な全データをビルド時にスナップショットしておく
+
+生成トリガー:
+
+- `package.json` の `prebuild` が `scripts/generate-beta-matches-json.mjs` を実行し、
+  Supabase から取得して `public/data/beta-matches/**` に書き出す
+- したがって**ローカルで入力した内容は、次のビルドまで公開面に出ない**
+- 詳細な生成パイプライン全体は [data-import.md](./data-import.md) / [deployment.md](./deployment.md)
 
 ## モード切替
 
@@ -80,15 +100,18 @@
 3. 公開向けには `public/data/beta-matches/**` を利用
 4. 成長分析は静的 JSON と `lib/growthAnalysis/` ベースで表示
 
-## Assumption
+## 認可
 
-- `src/pages/api/matches/**` が現行バックエンドの主軸
-- 認証・認可は厳密なユーザー認証ではなく、モード制御と開発向けフラグ中心
-- 将来的に README 記載どおり Cloudflare への移行を見据えている
+ユーザー認証は無い。書き込み経路が本番に存在しないこと自体が唯一の防御線で、
+`isDebugMode()` / `hasLiveMatchApi()` は UI の出し分けであって認可ではない。
+score をツールとして外部に開く（UGC）場合はここが前提から崩れる — [ADR-003](../adr/ADR-003-score-media-tool-separation.md) を参照。
 
 ## Open Questions
 
-- 本番で API Routes をどこまで使用しているか
-- 書き込み API の利用者制御を何で担保しているか
-- `public/data/beta-matches/**` の生成トリガーは何か
-- `functions/` が別リポジトリに存在するのか
+- score をツール公開（UGC）する場合、書き込み経路と認可をどう作るか（ADR-003 の未決部分）
+
+以前ここにあった「本番で API Routes をどこまで使うか」「書き込みの利用者制御」
+「`public/data/beta-matches/**` の生成トリガー」「`functions/` の所在」は
+2026-08-12 の lint で実装を確認して解決した（順に: 本番では使わない＝静的エクスポート／
+本番に書き込み経路が無いこと自体が制御／`prebuild` の `generate-beta-matches-json.mjs`／
+`functions/` はリポジトリに存在しない）。

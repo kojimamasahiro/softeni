@@ -44,3 +44,21 @@
 - `scripts/verify-story-text.mjs` / `scripts/check-tournament-insights.mjs`
 - `data/tournament-insights/highschool-championship/2025/doubles-none-girls.json`（実例）
 - `docs/story-yaml/PROMPT.md` / `docs/adr/ADR-012-llm-authored-insights-with-machine-verification.md`
+
+## Compile Log（2026-08-12 遡って追記）
+
+反映先: `docs/story-yaml/README.md`（過去年の記事を検証するときの `-y <year>`）。
+
+載せたもの:
+
+- 過去年の記事を検証・公開するときは `-y <year>` を渡すこと
+- その理由（「N年連続」「N連覇」は問い自体が「現在何年連続か」なので後年のデータで答えが変わる）
+- `check-tournament-insights.mjs` は `year` を自動で渡すので運用上は何もしなくてよいこと
+
+意図的に載せなかったもの:
+
+- 広島翔洋の5年連続→6年という具体例 — 症状の説明に使った実例で、運用手順としては不要。
+- `-y` を効かせる主張の種類と効かせない種類の切り分け理由（`year-result` / `score` /
+  固有名詞は全期間のまま。再戦相手のその後に触れられなくなるため） — 実装の設計判断で、
+  `verify-story-text.mjs` を触る人だけが要る情報。コード側のコメントと raw で足りる。
+- 修正の検証手順（`-y 2025` で通り、省略すると従来通り落ちる） — 一度きりの確認。

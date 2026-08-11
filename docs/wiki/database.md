@@ -1,11 +1,15 @@
 # Database
 
+> 現行仕様。2026-08-12 に `src/types/database.ts` と列単位で突き合わせ済み
+> （差分は `games.initial_receive_player_index` の1件のみで、反映済み）。
+> ただし制約・index・RLS・trigger はコードから読めないため、そこは推定のまま。
+
 ## 概要
 
 - Supabase を利用
 - リポジトリに `supabase/schema.sql` のような**スキーマ全体の定義は無い**。
-  機能追加時の差分 DDL だけが `docs/sql/*.sql` に手動適用用として置かれている
-  （`growth-analysis.sql` / `point-youtube-review.sql` / `receive-order.sql` / `video-review.sql`）
+  機能追加時の差分 DDL だけが `docs/sql/*.sql` に手動適用用として置かれている。
+  適用状態は [docs/sql/APPLIED.md](../sql/APPLIED.md) が唯一の記録場所
 - そのため本ページは `src/types/database.ts`・`src/pages/api/matches/**`・`docs/sql/**` から
   復元した推定スキーマ（実体は Supabase 側が正）
 
@@ -26,7 +30,9 @@
 - `lib/supabase.ts`
 - `lib/supabaseClient.ts`
 
-## 推定テーブル
+## テーブル
+
+列は `src/types/database.ts` と一致していることを確認済み（2026-08-12）。
 
 ### `matches`
 
@@ -142,7 +148,7 @@
 - `created_at`
 - `updated_at`
 
-## 推定リレーション
+## リレーション
 
 - `matches.id -> games.match_id`
 - `games.id -> points.game_id`
@@ -157,14 +163,15 @@
 
 ## Assumption
 
-- DB の真のソースは Supabase 上にあり、`src/types/database.ts` はそれを人手同期した型
+- DB の真のソースは Supabase 上にあり、`src/types/database.ts` はそれを人手同期した型。
+  ズレても検出する仕組みは無い
 - 厳密な制約、index、RLS、trigger はコードからは把握不可
 - `teams` JSON は将来的にフラット列からの移行先として扱われている可能性がある
 
 ## Open Questions
 
-- 差分 DDL（`docs/sql/**`）が本番 Supabase に適用済みかを追跡する手段が無い。
-  適用状態を記録するか、migration ツールに寄せるか（2026-08-12 lint で顕在化）
+- `receive-order.sql` が本番 Supabase に適用済みか未確認
+  （台帳は [docs/sql/APPLIED.md](../sql/APPLIED.md) に用意した。適用したら記入する）
 - RLS の有無とポリシー
 - `matches.status` の正式な状態遷移
 - `points.result_type` / `processing_status` の正式 enum 定義

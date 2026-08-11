@@ -79,11 +79,23 @@ interface TournamentHubPageProps {
   // 高校全国大会では noindex,follow にして検索面を高校歴代ページへ集中させる。
   // docs/wiki/seo.md #3 参照。
   hsNationalSlug: string | null;
+  // 結果が details ではなく専用の特集ページ側にある大会（STリーグ→`/st-league/`）の特集トップ。
+  // 特集ページとカニバるため、hsNationalSlug と同じく noindex,follow にして特集側へ検索面を集中させる。
+  featurePath: string | null;
   // 文脈ブロック（最新年度の milestone と優勝者の通算成績）。docs/wiki/news-context-blocks.md
   contextBlocks: TournamentContextData;
 }
 
-export default function TournamentHubPage({ generation, tournamentId, label, officialUrl, yearGroups, hsNationalSlug, contextBlocks }: TournamentHubPageProps) {
+export default function TournamentHubPage({
+  generation,
+  tournamentId,
+  label,
+  officialUrl,
+  yearGroups,
+  hsNationalSlug,
+  featurePath,
+  contextBlocks,
+}: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
 
@@ -178,7 +190,14 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
 
   return (
     <>
-      <MetaHead title={title} description={description} url={pageUrl} type="website" noindex={!!hsNationalSlug} noindexFollow={!!hsNationalSlug} />
+      <MetaHead
+        title={title}
+        description={description}
+        url={pageUrl}
+        type="website"
+        noindex={!!hsNationalSlug || !!featurePath}
+        noindexFollow={!!hsNationalSlug || !!featurePath}
+      />
 
       <Head>
         <script
@@ -267,6 +286,18 @@ export default function TournamentHubPage({ generation, tournamentId, label, off
             <p className="mt-1 text-text-secondary">
               種目別の歴代優勝サマリーや出場校の戦績まで、{label}
               のまとめは高校カテゴリの歴代記録ページに集約しています。
+            </p>
+          </div>
+        )}
+
+        {featurePath && (
+          <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
+            <Link href={featurePath} className="font-semibold text-link hover:underline">
+              {label} の結果・順位表・出場チームはこちら →
+            </Link>
+            <p className="mt-1 text-text-secondary">
+              {label}
+              は年度別の順位表・対戦結果・選手成績を専用ページにまとめています。
             </p>
           </div>
         )}
@@ -672,9 +703,39 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // 結果が details ではなく特集ページ側にある大会（STリーグ等）は、information の
+  // resultPath から年度別の導線を作る。details が無い＝空状態になるのを避けるため。
+  const featurePath = indexEntry?.featurePath || null;
+  if (featurePath && yearGroups.length === 0) {
+    for (const entry of [...information].sort((a, b) => b.year - a.year)) {
+      if (!entry.resultPath) continue;
+      yearGroups.push({
+        year: String(entry.year),
+        location: entry.location || null,
+        startDate: entry.startDate || null,
+        endDate: entry.endDate || null,
+        categories: [
+          {
+            label: '結果・順位表',
+            category: 'team',
+            age: 'none',
+            gender: 'all',
+            href: entry.resultPath,
+            winner: null,
+            winnerPlayers: null,
+            winnerTeamsLabel: null,
+            winnerPrefectureLabel: null,
+            abandonedAfterRound: null,
+          },
+        ],
+      });
+    }
+  }
+
   // --- 文脈ブロック（最新年度の milestone と優勝者の通算成績）---
   // docs/wiki/news-context-blocks.md / ADR-005。
-  const latestGroup = yearGroups[0] ?? null;
+  // featurePath 大会の yearGroups は details 由来ではない（優勝者・前哨戦を引けない）ため文脈ブロックは作らない
+  const latestGroup = featurePath ? null : (yearGroups[0] ?? null);
   const latestYear = latestGroup?.year ?? null;
   const contextBlocks: TournamentContextData = {
     latestYear,
@@ -767,6 +828,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       officialUrl,
       yearGroups,
       hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),
+      featurePath,
       contextBlocks,
     },
   };

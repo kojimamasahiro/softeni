@@ -1,0 +1,98 @@
+[
+  {
+    "year": 2025,
+    "location": "栃木県",
+    "startDate": "2025-12-11",
+    "endDate": "2025-12-14",
+    "venues": [
+      {
+        "prefecture": "栃木県",
+        "city": "宇都宮市",
+        "name": "日環アリーナ栃木",
+        "aliases": ["栃木県体育館"]
+      }
+    ],
+    "label": "第3回STリーグ",
+    "resultPath": "/st-league/2025/matches/",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "location": "愛知県",
+    "startDate": "2024-12-12",
+    "endDate": "2024-12-15",
+    "venues": [
+      {
+        "prefecture": "愛知県",
+        "city": "豊田市",
+        "name": "スカイホール豊田",
+        "aliases": ["豊田市総合体育館"]
+      }
+    ],
+    "label": "第2回STリーグ",
+    "resultPath": "/st-league/2024/matches/",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "location": "愛知県",
+    "startDate": "2023-11-30",
+    "endDate": "2023-12-03",
+    "venues": [
+      {
+        "prefecture": "愛知県",
+        "city": "豊橋市",
+        "name": "豊橋市総合体育館",
+        "aliases": []
+      }
+    ],
+    "label": "第1回STリーグ",
+    "resultPath": "/st-league/2023/matches/",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  }
+]

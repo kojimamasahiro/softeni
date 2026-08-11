@@ -95,3 +95,23 @@ npm run story:verify -- -t highschool-championship -c team-none-boys --text "尽
 - [2026-08-01-idea-news-fact-based-story-categories.md](2026-08-01-idea-news-fact-based-story-categories.md)（親アイデア）
 - [2026-08-01-sns-post-drafts-zennihon-championship-2025.md](2026-08-01-sns-post-drafts-zennihon-championship-2025.md)（誤り3件の発見元）
 - [ADR-005](../adr/ADR-005-news-context-block-architecture.md)（事実のみ・推測を含めない原則）
+
+## Compile Log（2026-08-12 遡って追記）
+
+反映先: `docs/wiki/sns-story-platform.md`（Idea Backlog 行の「機械照合」部分）、
+`docs/story-yaml/README.md`（使い方）、`docs/adr/ADR-012-...md`（公開条件の根拠）。
+
+載せたもの:
+
+- 照合先を YAML ではなく生データにしたこと（生成バグと LLM の捏造を同時に捕まえるため）
+- 既知の誤り4パターンを検出し、正しい投稿案5本に誤検知ゼロだったこと
+- 機械照合を通ることが公開の条件であり、prebuild がその場で照合し直して強制すること
+
+意図的に載せなかったもの:
+
+- 検証する主張の種類ごとの実装方針（`year-result` / `score` / `streak` 等の判定単位） —
+  スクリプトの内部設計。変更時は実装を読むのが正で、wiki に写すと必ず古くなる。
+- 3値（一致 / 不一致 / 判定不能）で報告する設計と、実装中に見つかった落とし穴 —
+  同上。ただし「判定不能を不一致と混ぜない」という考え方は ADR-012 の教訓に含めた。
+- 既知の限界の一覧 — ADR-012 に「機械照合は捏造を防ぐが集計ロジックの取りこぼしは防がない」
+  という形で要点だけ昇格させ、個別の限界は raw に残した。

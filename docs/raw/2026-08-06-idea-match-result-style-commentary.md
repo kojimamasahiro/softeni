@@ -83,3 +83,19 @@ Idea Backlog。発散フェーズ、実データでの一次検証済み（2026-
 - [docs/wiki/score-general-availability.md](../wiki/score-general-availability.md)
   「成長のヒントの見せ方」アイデア（split-half安定性チェックの先行事例）
 - `lib/playerStats/types.ts`（`PlayerMatchFact`、`gamesWon`/`gamesLost`）
+
+## Compile Log（2026-08-12 遡って追記）
+
+反映先: `docs/wiki/players-pages.md`（Idea Backlog）、`docs/wiki/idea-backlog.md`（選手ページ行）。
+
+載せたもの:
+
+- 発散フェーズであること、一次検証を実データで済ませたこと（2026-08-06）
+- **接戦度は split-half 信頼性検証で棄却**、勝率調整済み圧勝度の残差が唯一検証を通った候補指標
+
+意図的に載せなかったもの:
+
+- 検証に使った指標候補の全リストと個別の相関値 — 棄却/残存の結論が要点。
+  指標を作り直すときは raw を読む前提。
+- 目的・ユーザーが興味を持った点 — 着想の経緯。
+- 「目指したい方向性」 — 未検証の構想。実装に入る段階で wiki 化する。

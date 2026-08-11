@@ -32,6 +32,11 @@ answered in chat and forgotten.
   Append this as a "Compile Log" at the end of the source docs/raw note (raw stays append-only).
   Without this, a future reader can't tell "reviewed and excluded on purpose" from "never reviewed" —
   both look like silence otherwise.
+  This rule applies to docs/raw notes **created on or after 2026-07-11** (when the rule was written).
+  Earlier notes have no Compile Log by design, not by omission — do not read their silence as
+  "not yet reviewed", and do not retrofit one unless you are actually re-compiling the note.
+  Exception: notes dated 2026-08-01 onward were backfilled on 2026-08-12
+  (see docs/raw/2026-08-12-llm-wiki-lint.md).
 - When adding a new docs/wiki page, cross-link it: add it to docs/wiki/index.md and add at least
   one link from an existing related page. Wiki pages that aren't interconnected are effectively
   invisible to future compile passes.

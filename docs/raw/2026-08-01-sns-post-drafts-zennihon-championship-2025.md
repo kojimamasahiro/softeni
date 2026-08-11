@@ -186,3 +186,25 @@ Idea Backlog。[過去の事実ベース5分類ストーリー](2026-08-01-idea-
 - [2026-08-01-idea-news-fact-based-story-categories.md](2026-08-01-idea-news-fact-based-story-categories.md)（親アイデア・設計決着）
 - [2026-07-22-idea-sns-story-platform.md](2026-07-22-idea-sns-story-platform.md)（基盤アイデア）
 - [ADR-005](../adr/ADR-005-news-context-block-architecture.md)（事実のみ・推測を含めない原則）
+
+## Compile Log（2026-08-12 遡って追記）
+
+このノートは投稿案そのもの（成果物）であり、wiki へ「圧縮して移す」対象ではない。
+反映したのは、この作業で**設計の穴が見つかった**という副産物の部分だけ。
+
+反映先: `docs/wiki/sns-story-platform.md`（Idea Backlog 行）。
+
+載せたもの:
+
+- 個人戦は混成ペアがあるため `team-best8-streak` を「学校が◯連覇」と書くと誤りになること
+  （主語は「所属選手がベスト8以上に残った年数」に限定）
+- 所属は年をまたぐ本文に書けない場合があること（移籍）
+- 「同一ペアの継続」（`pair-continuity`）が kind として未設計だったこと
+- 試作YAMLに事実誤り3件が見つかり、**機械照合は必須**と確定したこと
+
+意図的に載せなかったもの:
+
+- 投稿案5本の本文 — 成果物そのもの。実際に投稿する/しないは運用判断で、
+  wiki（仕様の記述）には属さない。参照は Idea Backlog 行からのリンクで足りる。
+- 検証に使った事実の突合表（上位入賞2022-2025・選手別の推移） — 執筆時の裏取り記録。
+  同じ確認は `story:verify` が機械的にやるようになったため、手作業の記録は再利用されない。

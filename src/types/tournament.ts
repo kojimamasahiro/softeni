@@ -9,6 +9,12 @@ export interface TournamentIndexEntry {
   federationId?: string;
   /** 高校総体の地区（ブロック）大会など、複数都道府県にまたがる大会の所属ブロックID。federationId とは排他 */
   blockId?: string;
+  /**
+   * 結果が `data/tournaments/details/` ではなく専用の特集ページ側にある大会の、その特集トップ（例: STリーグ→`/st-league/`）。
+   * 設定するとハブページ（`/tournaments/[generation]/[tournamentId]`）は特集への誘導バナーを出し、
+   * 特集ページとのカニバリを避けるため `noindex, follow` になる（高校全国大会と同じ扱い。docs/wiki/seo.md #3）。
+   */
+  featurePath?: string;
 }
 
 export interface TournamentCategoryInfo {
@@ -35,6 +41,13 @@ export interface TournamentInformationEntry {
   source: string;
   sourceUrl: string;
   categories: TournamentCategoryInfo[];
+  /** その年度の表示名（例: "第3回STリーグ"）。無ければ index.json の label を使う。 */
+  label?: string;
+  /**
+   * 結果がこのサイト内の別ページにある場合の内部URL（例: STリーグ→`/st-league/2025/matches/`）。
+   * `data/tournaments/details/` を持たない大会でも大会一覧から結果へ導線を張るために使う。
+   */
+  resultPath?: string;
 }
 
 export interface TournamentParticipant {

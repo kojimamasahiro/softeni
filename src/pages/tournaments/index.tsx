@@ -51,6 +51,12 @@ type TournamentInfo = {
   label?: string;
   sourceUrl?: string;
   categories: InfoCategory[];
+  /**
+   * 結果がサイト内の別ページにある大会（例: STリーグ→`/st-league/2025/matches/`）の内部URL。
+   * `data/tournaments/details/` を持たないため通常の結果ページ導線が張れない大会でも、
+   * 一覧から結果へ内部リンクできるようにする。
+   */
+  resultPath?: string;
 };
 
 type Props = {
@@ -206,14 +212,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
     for (const info of infos) {
       const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
-      const hasInternalResult = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const hasDetailFiles = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      // 結果が details ではなくサイト内の特集ページにある大会（STリーグ等）は resultPath を優先する
+      const hasInternalResult = !!info.resultPath || hasDetailFiles;
 
-      let firstCategoryPath: string | null = null;
-      for (const cat of info.categories) {
-        const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
-        if (fs.existsSync(detailPath)) {
-          firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
-          break;
+      let firstCategoryPath: string | null = info.resultPath ?? null;
+      if (!firstCategoryPath) {
+        for (const cat of info.categories) {
+          const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
+          if (fs.existsSync(detailPath)) {
+            firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
+            break;
+          }
         }
       }
 
@@ -246,14 +256,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
     for (const info of infos) {
       const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
-      const hasInternalResult = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const hasDetailFiles = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      // 結果が details ではなくサイト内の特集ページにある大会（STリーグ等）は resultPath を優先する
+      const hasInternalResult = !!info.resultPath || hasDetailFiles;
 
-      let firstCategoryPath: string | null = null;
-      for (const cat of info.categories) {
-        const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
-        if (fs.existsSync(detailPath)) {
-          firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
-          break;
+      let firstCategoryPath: string | null = info.resultPath ?? null;
+      if (!firstCategoryPath) {
+        for (const cat of info.categories) {
+          const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
+          if (fs.existsSync(detailPath)) {
+            firstCategoryPath = `/tournaments/${t.generationId}/${t.tournamentId}/${info.year}/${cat.category}/${cat.age}/${cat.gender}`;
+            break;
+          }
         }
       }
 

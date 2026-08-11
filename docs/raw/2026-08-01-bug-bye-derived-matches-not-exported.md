@@ -122,3 +122,30 @@ console.log(miss.length, miss.map(e=>e.entryNo).slice(0,20));
 - [docs/tournament-data-structure.md](../tournament-data-structure.md)（`seed` / `packing` / `extra` の定義）
 - [2026-08-01-idea-news-fact-based-story-categories.md](2026-08-01-idea-news-fact-based-story-categories.md)（発見の経緯）
 - [ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)（機械照合では防げない誤りの実例として追記済み）
+
+## Compile Log（2026-08-12 遡って追記）
+
+このノートは2026-08-01の作業だが、Compile Log の運用が定着する前だったため未記入だった。
+実際にどこへ書かれたかを事後に整理したもので、当時の判断の再構成を含む。
+
+反映先: `docs/wiki/data-import.md`（不戦勝トグルの節）、
+`docs/adr/ADR-012-llm-authored-insights-with-machine-verification.md`（機械照合では防げない誤りの実例）。
+
+wiki に載せたもの:
+
+- `byeDerived` だけを見て「結果が入ったか」を見ていなかったこと、`shouldSkipByeDerived()` での修正
+- 「1回戦を入れれば収束するはず**だった**」という前提が `extra` 同士では崩れていたこと
+- 誤った大会インサイトが公開・取り下げになる実害が出たこと
+
+意図的に載せなかったもの:
+
+- インターハイ2026の欠落70試合の内訳・entryNo 単位の突合結果 — 修正の妥当性を確認した検証記録で、
+  再エクスポート後は現物と一致しないため仕様ではない。
+- 再エクスポート前後の試合数比較表（58→128 等） — 同上。修正が効いたことの証拠であって
+  データ運用の手順ではない。
+- 全大会走査のワンライナー（`node -e` のスニペット） — 一度きりの調査用。恒久的に要るなら
+  `scripts/check-orphan-entries.mjs` 側に持たせるべきで、wiki に貼ると二重管理になる。
+- 「就実は勝ち残りが無くなった」が結果的には事実として正しかった、という後日談 —
+  取り下げ判断の妥当性の議論であり、ADR-012 には教訓部分（根拠が無いのに断定しない）だけを残した。
+- `zennihon-university-indoor/2025` の未登場1件 — 別原因の可能性があり未確認。
+  本不具合の記述に混ぜると誤解を生むため raw に留めた。**未解決のまま**。
