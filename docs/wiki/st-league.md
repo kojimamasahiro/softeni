@@ -107,8 +107,42 @@ data/st-league/
 - **404 回避**: tournament の年度別下層 `/teams/[teamId]/[year]/[gender]` は mapping キーのチームしか
   生成しないため、「大会別成績」セクション（下層リンク）は `hasSubPages`（mapping キー）チームのみ描画。
   STリーグのみのチームでは大会別リンクを出さない。
-- **選手名はリンク化しない**: `/players/[id]` は手動整備の22名のみで id 体系も別。誤リンク/404 回避のため
-  対象外（将来、選手ページ整備とあわせて検討）。
+- **選手名のリンク化（2026-08-11 実装）**: 上記の「対象外」は古い記述（`/players/[id]` が手動整備22名
+  だった頃のもの）で、現在は Player Statistics Engine により `data/players/index.json` が18,543名を
+  カバーしている。`aggregateStLeagueTeam()` が返す `StLeagueTeamSeason.players`（年度別登録メンバー、
+  `participants.json` の `Team.players` 由来）を、`/teams/[teamId]/index.tsx` 側で姓名一致により
+  `/players/{id}/results/` へリンクする（高校学校ページの `playerLinks` と同じパターン。
+  `count>=5` の選手のみ、同姓同名は先勝ち）。
+  **`participants.json` 側の `player.id` はそのファイル内だけのローカル連番で、選手DBのグローバル id とは
+  別物**（実測: STリーグ側 `id:1`＝上松俊貴、選手DB側 `id:1`＝安藤圭祐で別人）。誤リンクを避けるため
+  この id はリンク生成に使わず、必ず姓名照合で解決すること。
+- **`/st-league/[year]/teams` の選手別成績表にも同じリンクを追加（2026-08-11）**: `TeamsRanking`
+  コンポーネントは元々 `playerLinks` propに対応していたが呼び出し側（`getStaticProps`）が渡していな
+  かった。`PlayerStats.id`（tournament由来のpid、または `manual_{teamId}_{姓}_{名}` の合成id）は
+  形式が一定しないため、id ではなく `PlayerStats.name`（`"姓 名"` 形式で確定）を分割して姓名照合する
+  （`/teams/[teamId]` と同じ `count>=5` ・先勝ちルール）。実データ（2025年男子NTT西日本）で
+  10名中10名がリンク解決できることを検証済み。
+
+### 「メンバー」クエリの受け皿（2026-08-11 追加）
+
+STリーグ出場チームは実在する単一組織（実業団・クラブ）で `participants.json` に年度別ロースターが
+既にあるため、`/teams/[teamId]/index.tsx` に「{チーム名}のSTリーグ登録メンバー」節を追加し、
+「{チーム名} メンバー」系クエリを拾う。新規URLは作らず既存の `/teams/[teamId]/` を厚くするだけ
+（`docs/wiki/seo.md` の「内部リンク集約」方針と同型）。
+
+- データ源: `StLeagueTeamSeason.players`（`aggregateStLeagueTeam()` が `participants.json` の
+  `Team.players` から抽出。id は使わず lastName/firstName のみ保持）。
+- **収録は年度・男女で偏りがある**（実測、2026-08-11）: 2025男子は40/40チームでロースター収録、
+  一方 2023/2024男子は11/40、2023〜2025女子は8〜10/18〜19。ロースターが無い年度・チームは
+  「STリーグでの成績」表（順位・W-L）には出るが「登録メンバー」節には出ない
+  （`season.players.length > 0` の年度のみ表示）。**Assumption**: 未収録は元データ（公式PDF等）の
+  欠落であり、今後の年度追加で埋まっていく想定。
+  詳細な現況は「Open Questions / 未入力データ」の該当項目も参照。
+- title/description は登録メンバーがある場合のみ「メンバー」を含める形に切替
+  （`STリーグ出場成績・メンバー` / 無い場合は従来どおり `STリーグ出場成績・順位`）。
+  FAQPage構造化データ（「{チーム名}のSTリーグのメンバーは確認できますか？」等）も同条件で追加。
+- 実装: `src/utils/st-league.ts`（`StLeagueTeamSeason.players`）、
+  `src/pages/teams/[teamId]/index.tsx`（`playerLinks` 生成・メンバー節・FAQ）。
 
 ## SEO / UX
 

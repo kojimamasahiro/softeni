@@ -30,6 +30,10 @@ type Props = {
   // 対象外（STリーグのみ等）のチームでは該当リンクを描画しない（404 回避）。
   hasSubPages: boolean;
   stLeague: StLeagueTeamSummary | null;
+  // STリーグ登録メンバー名 → 選手結果ページ id（姓名一致、count>=5 のみ。同姓同名は先勝ち）。
+  // キーは `${lastName}::${firstName}`。参加者側の id はローカル連番で選手DBの id とは
+  // 別物のため使わず、高校学校ページと同じ姓名照合で解決する（docs/wiki/st-league.md）。
+  playerLinks: Record<string, number>;
   // SEO: 収録試合が薄いチームページは noindex にする（インデックス枠の集中）。
   // 判定は getStaticProps 側（lib/teamIndexing.ts）。docs/wiki/seo.md #12。
   noindex?: boolean;
@@ -40,17 +44,39 @@ const GENDER_LABEL: Record<'boys' | 'girls', string> = {
   girls: '女子',
 };
 
-export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, noindex = false }: Props) {
+export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, playerLinks, noindex = false }: Props) {
   const teamName = info.name;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/`;
 
   const hasStLeague = !!stLeague && stLeague.seasons.length > 0;
-  const title = hasStLeague ? `${teamName}｜STリーグ出場成績・順位 | ソフトテニス情報` : `${teamName} 所属別成績 | ソフトテニス情報`;
+  // メンバー掲載シーズン（年度によって収録の有無・粒度が異なる。docs/wiki/st-league.md）
+  const rosterSeasons = hasStLeague ? stLeague!.seasons.filter((s) => s.players.length > 0) : [];
+  const hasRoster = rosterSeasons.length > 0;
+  const latestRosterSeason = rosterSeasons[0] ?? null;
+
+  const title = hasStLeague
+    ? `${teamName}｜STリーグ出場成績${hasRoster ? '・メンバー' : '・順位'} | ソフトテニス情報`
+    : `${teamName} 所属別成績 | ソフトテニス情報`;
   const description = hasStLeague
     ? `${teamName}のSTリーグ（ソフトテニス実業団リーグ）出場成績。年度別の所属リーグ・対戦成績・順位${
         stLeague!.titlesTop > 0 ? `・優勝${stLeague!.titlesTop}回` : ''
-      }をまとめています。`
+      }${hasRoster ? '・登録メンバー' : ''}をまとめています。`
     : `${teamName}の大会別成績、選手別勝敗、出場ペア数などの詳細を掲載。`;
+
+  const faqItems = hasStLeague
+    ? [
+        {
+          question: `${teamName}のSTリーグのメンバーは確認できますか？`,
+          answer: hasRoster
+            ? `${latestRosterSeason!.year}年度（${GENDER_LABEL[latestRosterSeason!.gender]}）の登録メンバーを年度別に掲載しています。個人の試合結果ページがある選手は選手名から移動できます。`
+            : `${teamName}のSTリーグ登録メンバーは、収録済みの年度から順次このページで確認できるようになります。`,
+        },
+        {
+          question: `${teamName}のSTリーグでの成績は何が分かりますか？`,
+          answer: `${teamName}の年度別の所属部・対戦成績・順位を確認できます。各年度のリンクから対戦表や個別カードの結果も見られます。`,
+        },
+      ]
+    : [];
 
   return (
     <>
@@ -103,6 +129,26 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, no
             }),
           }}
         />
+
+        {faqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: faqItems.map((item) => ({
+                  '@type': 'Question',
+                  name: item.question,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: item.answer,
+                  },
+                })),
+              }),
+            }}
+          />
+        )}
       </Head>
 
       <PageLayout className="space-y-6">
@@ -192,6 +238,42 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, no
           </section>
         )}
 
+        {/* STリーグ登録メンバー（年度別。収録がある年度のみ表示） */}
+        {hasRoster && (
+          <section>
+            <h2 className="text-xl font-bold mb-3">{teamName}のSTリーグ登録メンバー</h2>
+            <p className="text-sm text-text-secondary mb-4">STリーグの年度別登録メンバーです。個人の試合結果ページがある選手は選手名から移動できます。</p>
+            <div className="space-y-4">
+              {rosterSeasons.map((season) => (
+                <div key={`${season.year}-${season.gender}`} className="rounded-xl border border-border p-4">
+                  <h3 className="font-semibold mb-2">
+                    {season.year}年度 {GENDER_LABEL[season.gender]}（{season.divisionName}） ・ {season.players.length}名
+                  </h3>
+                  <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-gray-700 dark:text-gray-200">
+                    {season.players
+                      .slice()
+                      .sort((a, b) => `${a.lastName}${a.firstName}`.localeCompare(`${b.lastName}${b.firstName}`, 'ja'))
+                      .map((p, idx) => {
+                        const linkId = playerLinks[`${p.lastName}::${p.firstName}`];
+                        return (
+                          <li key={`${p.lastName}-${p.firstName}-${idx}`}>
+                            {linkId ? (
+                              <Link href={`/players/${linkId}/results`} className="text-link hover:underline">
+                                {p.lastName} {p.firstName}
+                              </Link>
+                            ) : (
+                              `${p.lastName} ${p.firstName}`
+                            )}
+                          </li>
+                        );
+                      })}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* 大会別成績（tournament の年度別ページがある対象のみ） */}
         {hasSubPages && stats.length > 0 && (
           <section>
@@ -213,6 +295,20 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, no
                 </div>
               </div>
             ))}
+          </section>
+        )}
+
+        {faqItems.length > 0 && (
+          <section className="mt-4 border-t border-border pt-8">
+            <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {faqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-border p-4">
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
           </section>
         )}
       </PageLayout>
@@ -304,6 +400,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return { notFound: true };
   }
 
+  // STリーグ登録メンバー名 → 選手結果ページ id（姓名一致、count>=5 のみ）。
+  // participants.json 側の id はローカル連番で選手DBの id とは別物なので使わない
+  // （docs/wiki/st-league.md、高校学校ページと同じ姓名照合パターン）。
+  const playerLinks: Record<string, number> = {};
+  if (stLeague) {
+    const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+    if (fs.existsSync(playersIndexPath)) {
+      try {
+        const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
+          id: number;
+          lastName: string;
+          firstName: string;
+          count: number;
+        }>;
+        const nameToId = new Map<string, number>();
+        for (const p of playersIndex) {
+          if (p.count < 5) continue;
+          const key = `${p.lastName}::${p.firstName}`;
+          // 同姓同名は最初の ID を使う（players/index.tsx と同じ規約）
+          if (!nameToId.has(key)) nameToId.set(key, p.id);
+        }
+        for (const season of stLeague.seasons) {
+          for (const player of season.players) {
+            const key = `${player.lastName}::${player.firstName}`;
+            if (playerLinks[key] !== undefined) continue;
+            const id = nameToId.get(key);
+            if (id !== undefined) playerLinks[key] = id;
+          }
+        }
+      } catch (err) {
+        console.error('failed to parse players index.json', err);
+      }
+    }
+  }
+
   // --- SEO: 薄いチームページの noindex 判定 ---
   // 大会 + STリーグ の収録試合が TEAM_INDEX_MIN_MATCHES 未満なら noindex, follow。
   // follow なので年度別ページ・選手ページ・STリーグ側への内部リンクは評価を流す。
@@ -314,6 +445,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       stats,
       hasSubPages,
       stLeague,
+      playerLinks,
       noindex: !shouldIndexTeamPage(matchCount),
     },
   };

@@ -46,9 +46,12 @@ type Props = {
     boys: TeamData[];
     girls: TeamData[];
   };
+  // PlayerStats.id（tournament由来の pid、または manual_{teamId}_{姓}_{名} の合成id）→
+  // 選手結果ページ id。姓名一致で解決する（/teams/[teamId] と同じパターン。count>=5 のみ）。
+  playerLinks: Record<string, number>;
 };
 
-export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Props) {
+export default function STLeagueTeamsPage({ year, meta, divisions, teams, playerLinks }: Props) {
   const [activeTab, setActiveTab] = useState<'boys' | 'girls'>('boys');
   const [divisionId, setDivisionId] = useState<string>(divisions[0]?.id ?? '1');
 
@@ -151,7 +154,7 @@ export default function STLeagueTeamsPage({ year, meta, divisions, teams }: Prop
                     </div>
                     <div>
                       <TeamsYearlySummary summary={team.summary} />
-                      <TeamsRanking statsList={team.stats} />
+                      <TeamsRanking statsList={team.stats} playerLinks={playerLinks} />
                     </div>
                   </div>
                 ))}
@@ -267,6 +270,41 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const meta = loadLeagueMeta(year);
   const divisions = getDivisions(meta);
 
+  // 選手別成績表（TeamsRanking）の選手名を /players/{id}/results/ へリンクする。
+  // PlayerStats.id は tournament 由来の pid か manual_{teamId}_{姓}_{名} の合成id で
+  // 形式が一定しないため、id ではなく `${姓} ${名}` の姓名一致で解決する
+  // （/teams/[teamId] と同じパターン。count>=5 のみ、同姓同名は先勝ち）。
+  const playerLinks: Record<string, number> = {};
+  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
+  if (fs.existsSync(playersIndexPath)) {
+    try {
+      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
+        id: number;
+        lastName: string;
+        firstName: string;
+        count: number;
+      }>;
+      const nameToId = new Map<string, number>();
+      for (const p of playersIndex) {
+        if (p.count < 5) continue;
+        const key = `${p.lastName}::${p.firstName}`;
+        if (!nameToId.has(key)) nameToId.set(key, p.id);
+      }
+      for (const team of [...boysTeams, ...girlsTeams]) {
+        for (const stat of team.stats) {
+          if (playerLinks[stat.id] !== undefined) continue;
+          const spaceIdx = stat.name.indexOf(' ');
+          if (spaceIdx < 0) continue;
+          const key = `${stat.name.slice(0, spaceIdx)}::${stat.name.slice(spaceIdx + 1)}`;
+          const id = nameToId.get(key);
+          if (id !== undefined) playerLinks[stat.id] = id;
+        }
+      }
+    } catch (err) {
+      console.error('failed to parse players index.json', err);
+    }
+  }
+
   return {
     props: {
       year: Number(year),
@@ -276,6 +314,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         boys: boysTeams,
         girls: girlsTeams,
       },
+      playerLinks,
     },
   };
 };

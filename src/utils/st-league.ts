@@ -247,6 +247,10 @@ export interface StLeagueTeamSeason {
   lost: number;
   rank: number | null; // 公式順位があればそれ、無ければ計算順位
   isChampion: boolean; // その部の優勝（divisionName で文脈表示）
+  // その年度の登録メンバー（participants.json の Team.players）。
+  // 年度・チームによっては未収録で空配列になる（実測: 2025男子は40/40だが
+  // それ以外の年度・女子は部分収録のみ。docs/wiki/st-league.md 参照）。
+  players: { lastName: string; firstName: string }[];
 }
 
 export interface StLeagueTeamSummary {
@@ -308,6 +312,7 @@ export function aggregateStLeagueTeam(teamId: string): StLeagueTeamSummary | nul
         lost: rec?.lost ?? 0,
         rank,
         isChampion: champion === teamId,
+        players: (team.players ?? []).map((p) => ({ lastName: p.lastName, firstName: p.firstName })),
       });
     });
   }
