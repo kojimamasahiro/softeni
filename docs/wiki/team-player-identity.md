@@ -26,7 +26,15 @@
 
 ## チームマスタ `data/teams/teams.json`
 
-- 生成: `scripts/build-team-master.mjs`。`{ id(連番), name(最頻出表記), prefecture, count, aliases?, reviewPrefectures? }`。
+- 生成: `scripts/build-team-master.mjs`。
+  `{ id(連番), name(最頻出表記), prefecture, count, boysCount?, girlsCount?, mixedCount?, aliases?, reviewPrefectures? }`。
+- **男女別の収録数**（2026-08-11 追加、`/teams` の男女切替用）: 大会ファイル名（カテゴリID）の
+  `-` 区切り**最後のセグメント**から性別を判定して数える（`boys`/`men`→男子、`girls`/`women`→女子、
+  `mixed`→ミックス）。部分一致だと `tournament` の `men` に誤ヒットするため厳密一致
+  （`src/utils/team-data-aggregator.ts` の `parseGenderFromCategory` と同じ規約）。
+  ミックスは男女ペアなので boys/girls には寄せず別に数える。**ミックス種目にしか出ていないチームが
+  78件あり**（全日本ミックスダブルスのみのクラブ）、この場合 `boysCount`/`girlsCount` とも付かない。
+  実測（count>=2 の3,861チーム）: 男子2,873・女子2,405・ミックスのみ78。
 - **表示名の全角ASCIIは半角へ寄せる**（`ＹＫＫ`→`YKK`、`Ｊ－Ｋｉｄｓ`→`J-Kids`）。
   `scripts/lib/halfwidth.mjs` の `toHalfWidthAscii()`。全角英数はほぼ入力・OCR由来の揺れで、
   正式表記が全角の団体は実質ないため。半角化前の生表記は `aliases` 側に残るので情報は失われない。

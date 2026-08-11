@@ -7,6 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 import { toHalfWidthAscii } from './lib/halfwidth.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DET = path.join(ROOT, 'data', 'tournaments', 'details');
@@ -22,6 +23,16 @@ const REAL = new Set([
     .map((k) => k + '県'),
 ]);
 const norm = (s) => (s == null ? s : s.normalize('NFKC').replace(/[ 　]/g, '').replace(/[･•]/g, '・'));
+// カテゴリID（ファイル名。例: singles-tournament-girls）-> 性別。
+// "-" 区切りの最後のセグメントを厳密一致で見る（部分一致だと "tournament" の "men" に
+// 誤ヒットする。src/utils/team-data-aggregator.ts の parseGenderFromCategory と同じ規約）。
+const genderOf = (category) => {
+  const last = category.split('-').pop();
+  if (last === 'boys' || last === 'men') return 'boys';
+  if (last === 'girls' || last === 'women') return 'girls';
+  if (last === 'mixed') return 'mixed';
+  return null;
+};
 // 大会id -> ジャンル（学校段階/社会人/シニア）。オープン・国際・ジュニア代表等は null。
 const catOf = (tid) => {
   if (tid.startsWith('primaryschool') || tid === 'zennihon-primaryschool') return '小';
@@ -51,6 +62,7 @@ const playerC = new Map(),
   yearsK = new Map(),
   genreK = new Map(),
   instK = new Map(); // 文脈: 選手名/大会/年/ジャンル/大会インスタンス
+const genderC = new Map(); // key -> Map<'boys'|'girls'|'mixed', 収録数>（/teams の男女切替用）
 const inc = (m, k, v) => {
   let x = m.get(k);
   if (!x) {
@@ -70,6 +82,7 @@ for (const f of walk(DET)) {
   const tid = rel[0];
   const ym = rel[1];
   const year = /^\d{4}$/.test(ym) ? +ym : null;
+  const gender = genderOf(path.basename(f, '.json'));
   for (const p of d.participants || []) {
     const raw = p.team;
     if (!raw) continue;
@@ -79,6 +92,7 @@ for (const f of walk(DET)) {
     inc(rawC, key, raw);
     tot.set(key, (tot.get(key) || 0) + 1);
     if (REAL.has(p.prefecture)) inc(prefC, key, p.prefecture);
+    if (gender) inc(genderC, key, gender);
     const nm = ((p.lastName || '') + (p.firstName || '')).trim();
     if (nm) inc(playerC, key, nm);
     inc(eventC, key, tid);
@@ -142,6 +156,15 @@ for (const key of [...tot.keys()].sort((a, b) => tot.get(b) - tot.get(a) || (a <
   }
   const id = teams.length + 1;
   const rec = { id, name, prefecture, count: total };
+  // 男女別の収録数（/teams の男女切替・高校ページへのリンク先判定に使う）。
+  // ミックスは男女ペアなので boys/girls のどちらにも寄せず mixed として別に数える
+  // （ミックスにしか出ていないクラブが78件ある。この場合 boys/girls とも 0）。
+  const gc = genderC.get(key);
+  if (gc) {
+    if (gc.get('boys')) rec.boysCount = gc.get('boys');
+    if (gc.get('girls')) rec.girlsCount = gc.get('girls');
+    if (gc.get('mixed')) rec.mixedCount = gc.get('mixed');
+  }
   if (aliases.length) rec.aliases = aliases;
   if (others.length) {
     rec.reviewPrefectures = [prefecture, ...others];
