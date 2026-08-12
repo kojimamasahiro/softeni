@@ -168,6 +168,33 @@ STリーグ側ロースターの収録が年度・男女で大きく偏る（実
 - 実装: `src/utils/team-data-aggregator.ts`（`buildTeamRosterByYearGender`、
   `parseGenderFromCategory`）、`src/pages/teams/[teamId]/index.tsx`。
 
+### 大会一覧との連携（2026-08-12）
+
+STリーグは `data/st-league/` の独立系統のため、従来は `/tournaments`（大会一覧）に一切出ていなかった。
+**結果本体は `/st-league/` に置いたまま、一覧には出す**方針で以下を追加した（結果データを
+`data/tournaments/details/` に複製する案は採らない。理由は下記）。
+
+- `data/tournaments/index.json` に `st-league`（`generationId: "corporate"`、
+  label「STリーグ（日本ソフトテニスリーグ）」）を追加。`featurePath: "/st-league/"` を持つ。
+- `data/tournaments/information/st-league.json` に第1〜3回（2023・2024・2025）を追加。
+  各年度は `resultPath` で `/st-league/{year}/matches/` を指す。会場は `league.json` から
+  転記し、住所・電話・コート数など未検証の項目は入れていない。
+  **プレーオフ（入替戦）は日程・会場が別**だが、一覧では大会1件＝リーグ戦本体として扱い、
+  別インスタンスにはしていない。
+- 一覧では「実業団・社会人」「全国」バッジ付きで並び、大会名・「結果」バッジから
+  `/st-league/{year}/matches/` へ内部リンクする（`resultPath` の仕組みは
+  [public-pages.md](./public-pages.md) 参照）。
+- ハブ `/tournaments/corporate/st-league/` は自動生成されるが、`featurePath` により
+  `noindex, follow` ＋ 特集への誘導バナーになる（`/st-league/` とのカニバリ回避）。
+
+**details に結果を複製しない理由**: (1) tie の内訳（D1・S・D2の本数と出場選手）が
+details の `matches[].scores`（エントリー単位の数値）に収まらず情報が落ちる、
+(2) `/st-league/[year]/matches` と検索面がカニバる、(3) 順位が `computeRanking()` の
+算出値なのに details 側は `results[].roundrobin.rank` を手で持つ形になり二重管理になる。
+なお details に入れれば Player Statistics Engine に乗り選手ページにSTリーグ戦績が出る
+（現状 `matches.json` は選手DBに流れていない）という利点はあるため、**選手DB連携が
+主目的になった場合は改めて判断する**（Open Question）。
+
 ## SEO / UX
 
 - ハブ: ItemList 構造化データ（開催年度一覧）。h1 は「STリーグ 結果・順位表・出場チーム」（

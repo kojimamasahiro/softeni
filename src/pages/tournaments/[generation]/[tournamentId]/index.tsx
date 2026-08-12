@@ -13,8 +13,10 @@ import { Fragment } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import ClubTransitionSection from '@/components/Tournament/ClubTransitionSection';
 import TournamentContextBlocks, { type TournamentContextData } from '@/components/TournamentContextBlocks';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
+import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
@@ -84,6 +86,9 @@ interface TournamentHubPageProps {
   featurePath: string | null;
   // 文脈ブロック（最新年度の milestone と優勝者の通算成績）。docs/wiki/news-context-blocks.md
   contextBlocks: TournamentContextData;
+  // 「学校部活動と地域クラブの内訳」。allowlist 外の大会（= 経年比較が成立しない大会）は null。
+  // docs/raw/2026-08-12-idea-juniorhigh-category-pages.md（候補3）
+  clubTransition: ClubTransitionData | null;
 }
 
 export default function TournamentHubPage({
@@ -95,6 +100,7 @@ export default function TournamentHubPage({
   hsNationalSlug,
   featurePath,
   contextBlocks,
+  clubTransition,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
@@ -403,6 +409,8 @@ export default function TournamentHubPage({
         )}
 
         <TournamentContextBlocks label={label} data={contextBlocks} />
+
+        {clubTransition && <ClubTransitionSection label={label} data={clubTransition} />}
 
         {yearGroups.length === 0 ? (
           <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
@@ -830,6 +838,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),
       featurePath,
       contextBlocks,
+      clubTransition: getClubTransition(tournamentId),
     },
   };
 };

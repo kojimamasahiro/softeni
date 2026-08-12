@@ -76,7 +76,8 @@
     "start": "next start",
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix .",
-    "check:orphans": "node scripts/check-orphan-entries.mjs"
+    "check:orphans": "node scripts/check-orphan-entries.mjs",
+    "club:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-club-transition.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",

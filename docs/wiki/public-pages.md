@@ -107,6 +107,15 @@
 - 結果未反映で外部リンク導線のみの大会は `外部掲載` を表示する
 - 一覧構造や既存URLは変更しない
 
+`information/{tournamentId}.json` の `resultPath`（2026-08-12 追加）:
+
+- 結果が `data/tournaments/details/` ではなく**サイト内の別ページ**にある大会のための任意フィールド。
+  値はその年度の内部URL（例: STリーグ 2025 → `/st-league/2025/matches/`）。
+- `/tournaments` の `getStaticProps` は `resultPath` があれば `firstCategoryPath` に採用し、
+  `hasInternalResult` も true にする。これにより details を持たない大会でも大会名リンク・
+  「結果」バッジ・モバイルカードのタップ先が**内部リンク**になり、「結果あり」フィルタにも乗る。
+- details がある大会では従来どおり `details/{年}/{categoryId}.json` の走査結果を使う（`resultPath` 優先）。
+
 大会ハブページ（`/tournaments/[generation]/[tournamentId]`、2026-06 追加）:
 
 - 年度を含まない「ソフトテニス 大会名 結果」検索クエリの受け皿となる、1大会の歴代結果まとめページ
@@ -117,7 +126,43 @@
 - 構造化データは `CollectionPage` / `ItemList`（歴代優勝者）/ `BreadcrumbList` を出力する
 - 大会一覧カード（`TournamentCard`）と年度別結果ページのパンくずからハブページへ内部リンクする。トップページの「最近追加された大会」カードのリンク先もこのハブページ（年度なし）とする（2026-06 変更。以前はカテゴリ別の年度別結果ページへリンクしていた）
 - 年度別結果ページ（`/tournaments/.../[gender]`）には `SportsEvent` 構造化データと冒頭の説明文を追加し、title / description を「結果・トーナメント表」を含む形に改善する
-- 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`、`src/components/tournaments/TournamentCard.tsx`
+- SEO（特集ページへの集中、2026-08-12）: `index.json` の `featurePath` を持つ大会（現状 STリーグのみ）のハブも
+  `noindex, follow` にし、検索面を特集トップ（`/st-league/`）へ集中させる。高校全国大会と同じ扱い（[seo.md](./seo.md) #3）。
+  該当時はページ上部に特集への誘導バナーを表示し、`details` が無いため空になる「年度別結果」は
+  `information[].resultPath` から年度カード（チップは「結果・順位表」1枚）を組み立てる。
+  歴代優勝者表・文脈ブロックは details 由来のデータが無いので出さない
+- 「学校部活動と地域クラブの内訳」節（2026-08-12 追加）: 出場団体を学校 / 地域クラブに分類し、年度別の推移を表で出す。
+  対象大会は `lib/clubTransition.ts` の allowlist で絞る（現状は全中 `secondaryschool-championship` のみ。
+  年度が2つ未満で推移として読めない大会は自動的に null）。詳細は下記「学校部活動と地域クラブの内訳」
+- 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`、`src/components/tournaments/TournamentCard.tsx`、`src/components/Tournament/ClubTransitionSection.tsx`
+
+### 学校部活動と地域クラブの内訳（2026-08-12 追加）
+
+対象 URL: 大会ハブ（`/tournaments/[generation]/[tournamentId]`）のうち allowlist に載る大会。現状は全中のみ。
+集計・分類は `lib/clubTransition.ts`、検証は `npm run club:verify`（`scripts/verify-club-transition.ts`）。
+検討記録は [raw/2026-08-12-idea-juniorhigh-category-pages.md](../raw/2026-08-12-idea-juniorhigh-category-pages.md)（候補3）。
+
+- 狙い: 日本中学校体育連盟が **2023年度（令和5年度）から全国中学校体育大会に「地域クラブ活動の参加資格の特例」を設けた**
+  という外部の制度変更を、自前の出場団体データで定量的に裏付ける。実測は 2022年度1団体(1%) → 2023年度10(10%)
+  → 2024年度21(21%) → 2025年度39(37%) で、**跳ね上がりの年が制度の変わり目と一致する**。
+  「部活動 地域移行」「地域クラブ活動」というソフトテニス系サイトが取りに行っていないキーワード群の受け皿であり、
+  [seo.md](./seo.md) #8 が言う「farm が構造的に持てない DB 由来の差別化」に当たる
+- **分類は「クラブと断定できる積極的な証拠がある場合のみ club」という下限カウント**。
+  中学の大会データは出典によって表記が混在しており（全中は略称、ブロック大会のPDFは正式名称）、
+  `名寄`（= 名寄市立名寄中学校）`湊山`（= 米子市立湊山中学校）のように「中学校」を含まない学校名が多数ある。
+  「中学校を含まない＝クラブ」と推定すると2022年度98団体中74件を誤ってクラブ側に倒し、
+  **トレンドが表記ゆれのアーティファクトになる**。判定できないものは `unknown` とし、学校にもクラブにも数えない
+- 判定順序: ①学校マーカー（`中学校` `中等教育学校` `学園` `学院` `義塾` `附属` `付属` `高等学校` `高校` `中$`）→ school
+  ②クラブマーカー（`クラブ` `スポ少` `少年団` `ジュニア` `ユース` `協会` `STC` `JSC` `JSTC` `SOC` `Jr` 等）→ club
+  ③ラテン文字2文字以上（区切り記号を除去して判定。`M's` `N.N` を拾うため）→ club
+  ④カタカナ3文字以上連続（`スマイリー` `レペゼン千葉`）→ club ⑤それ以外 → unknown
+- 規則の安全性は全中学大会データで検算済み: ラテン2文字以上を含む名前171件のうち学校マーカーも含むのは0件、
+  末尾 `中` の38件にカタカナ・ラテンの混入は0件、学校マーカー持ちでカタカナ3連を含むのは
+  `苫小牧市立ウトナイ中学校` の1件のみ（学校マーカーが先に効くので誤判定にならない）
+- UI では判定不能件数を年度ごとに併記し、「地域クラブ数は下限」と明示する。数字が実態より確かなものに見えないようにするため
+- Assumption: `男塾` `半田球友` のように名称からは判別できないクラブが unknown に残っている。下限であることの許容範囲として扱う
+- データ品質メモ: 中学の大会データに `四天王寺高校` という高校名の団体が混入している（中高一貫校の表記ゆれと見られる）。
+  学校であることは確かなのでクラブ側に倒さないよう `高校` を学校マーカーに含めてある
 
 `score` mode:
 

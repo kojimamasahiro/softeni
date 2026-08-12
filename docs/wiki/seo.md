@@ -90,6 +90,10 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
   - 高校歴代ページ側は title 先頭に「ソフトテニス」を入れて「ソフトテニス {大会名} 結果」系クエリの exact 一致を強める（その他のメタ・構造化データは既に歴代クエリ向けに最適化済み）。
   - 復帰: データが揃い高校歴代ページの実績が確認できれば、ハブの noindex を外すのは判定 1 箇所の変更で戻せる。逆にハブを正にしたくなった場合も同様。
   - **Assumption**: 現状どちらの URL が実績厚かは未測定。集中先は「高校カテゴリ内の回遊が厚い高校歴代ページ」を選んだ運用判断。
+- **特集ページを持つ大会への横展開（2026-08-12）**: 同じ「ハブを noindex, follow にして特集側へ集中させる」扱いを、
+  `data/tournaments/index.json` の `featurePath` で汎用化した。第1号は STリーグ（`/tournaments/corporate/st-league`
+  → `/st-league/`）。判定は高校全国大会の `getHsNationalSlugByTournamentId` と同じ 1 箇所（ハブの `getStaticProps` /
+  `MetaHead`）で、外すのも `featurePath` を消すだけ。詳細は [st-league.md](./st-league.md)「大会一覧との連携」
 - **略称クエリの集約（2026-06）**: 「ハイジャパ」（ハイスクールジャパンカップの通称）など略称での検索を、専用タグページを作らず `/highschool/tournaments/japan-cup` ハブ1枚に集約する。競合（ソフトテニスマガジン）は記事タイトルへの literal「【ハイジャパ】」＋ `/tag/ハイジャパ/` で略称を取っているが、当サイトで別 URL を作ると #3 の集中方針に反し薄いページを増やすため採らない。代わりに略称を `HsNationalTournamentMeta.aliases` に持たせ、ハブ側の title・h1・meta description・FAQ（「『ハイジャパ』とは？」）に literal で1〜2回出して exact 一致を取る。差別化は「ハイジャパ 歴代 優勝」等のロングテール（DB由来の歴代記録）で行う。
   - 実装: `lib/highschoolNationalTournaments.ts`（`aliases`）、`src/pages/highschool/tournaments/[tournament]/index.tsx`（headingName・description・FAQ）、`src/pages/highschool/tournaments/index.tsx`（入口の通称表記）
   - **併記のルール（2026-08-05 修正）**: 表示名は `label（shortLabel）` に alias を足す形だが、
