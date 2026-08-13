@@ -24,6 +24,7 @@
 - [Players Pages（選手ページ）](./players-pages.md)
 - [ランキング仕様](./ranking.md)
 - [Highschool Pages（高校カテゴリ）](./highschool.md)
+- [Secondary School Pages（中学カテゴリ）](./secondaryschool.md)
 - [Tournaments Local](./tournaments-local.md)
 - [STリーグ](./st-league.md)
 - [SEO（カニバリ/重複制御）](./seo.md)

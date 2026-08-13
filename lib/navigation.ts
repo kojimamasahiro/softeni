@@ -28,9 +28,11 @@ export type NavGroup = {
 
 // サイドバーのグループ構成（A案: 「特集」として明示 / ADR-006・Q6）。
 // 補足: `大会`(/tournaments) は世代別（国際/総合/大学/高校/ジュニア/シニア/実業団）を
-// すべて内包する総合入口。`高校`・`STリーグ` はそのうちの一部を SEO・独自データの
+// すべて内包する総合入口。`高校`・`中学`・`STリーグ` はそのうちの一部を SEO・独自データの
 // 都合で個別に切り出した「特集ハブ」であり、学校種別の網羅分類ではない。
-// そのため大学・中学に同等項目は無く、特集として明示することで非対称を意図的に見せる。
+// そのため大学に同等項目は無く、特集として明示することで非対称を意図的に見せる。
+// 中学（/secondaryschool、2026-08-12 追加）は高校と構成が違う。性別で分けず、
+// 大会軸のページも持たない（全中は大会ハブに寄せる）。docs/wiki/secondaryschool.md
 const SOFTENI_GROUPS: NavGroup[] = [
   {
     label: '成績・記録を調べる',
@@ -49,6 +51,7 @@ const SOFTENI_GROUPS: NavGroup[] = [
       // /highschool は入口ページ(男子/女子/歴代記録への案内。docs/ui M2-2・C-4)。
       // 以前の boys 直指し+meta refresh は廃止した。
       { label: '高校', href: '/highschool', matchPrefix: '/highschool' },
+      { label: '中学', href: '/secondaryschool', matchPrefix: '/secondaryschool' },
       { label: 'STリーグ', href: '/st-league', matchPrefix: '/st-league' },
     ],
   },

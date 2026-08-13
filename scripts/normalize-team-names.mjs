@@ -103,20 +103,82 @@ function normTeam(s) {
   return s == null ? s : s.normalize('NFKC').replace(/[ 　]/g, '').replace(/[･•]/g, '・');
 }
 
-/** team別名 -> 正準名 のルックアップを構築（キーはNFKC正規化形で照合）。 */
-function buildTeamAliasMap() {
+/**
+ * 大会ID -> generationId。alias の scope 判定に使う。
+ * index.json（全国大会）と local_index.json（地方大会）の両方を見る。
+ */
+function buildGenerationMap() {
+  const map = new Map();
+  for (const f of ['index.json', 'local_index.json']) {
+    const p = path.join(ROOT, 'data', 'tournaments', f);
+    if (!fs.existsSync(p)) continue;
+    for (const t of JSON.parse(fs.readFileSync(p, 'utf8'))) {
+      if (t.tournamentId) map.set(t.tournamentId, t.generationId ?? null);
+    }
+  }
+  return map;
+}
+
+/**
+ * alias エントリの scope が現在の大会に当てはまるか。
+ *
+ * scope を持たないエントリは従来どおり全大会に適用される（後方互換）。
+ * scope を持つ場合は、指定された条件を **すべて** 満たすときだけ適用する。
+ *   - `generation`: 大会の generationId がこの配列に含まれること
+ *   - `tournamentPrefix`: 大会IDがこの配列のいずれかで始まること
+ *   - `prefecture`: **参加者の都道府県**がこの配列に含まれること（他の2つと違い参加者単位で効く）
+ *
+ * なぜ必要か: alias 表はもともと文脈を持たず、`日高 -> 日高中学校`（和歌山）や
+ * `柏崎 -> 柏崎ジュニア`（新潟）のように、**中学・クラブの文脈でだけ正しい**
+ * エントリが混ざっている。--scope=all で全大会に流すと、インターハイに出ている
+ * 同名の高校（和歌山県立日高高校・新潟県立柏崎高校）まで中学校名／クラブ名に
+ * 書き換わってしまう。docs/raw/2026-08-12-idea-juniorhigh-category-pages.md
+ */
+function scopeMatches(scope, ctx) {
+  if (!scope) return true;
+  if (Array.isArray(scope.generation) && !scope.generation.includes(ctx.generation)) return false;
+  if (Array.isArray(scope.tournamentPrefix) && !scope.tournamentPrefix.some((p) => (ctx.tournamentId ?? '').startsWith(p))) return false;
+  // prefecture は参加者ごとに違うので ctx.prefecture が渡ってきたときだけ判定する
+  if (Array.isArray(scope.prefecture) && !scope.prefecture.includes(ctx.prefecture ?? null)) return false;
+  return true;
+}
+
+/**
+ * team別名 -> 正準名 のルックアップを構築（キーはNFKC正規化形で照合）。
+ * scope 付きエントリがあるため、単純な Map ではなく「文脈を受け取って引く関数」を返す。
+ */
+function buildTeamAliasResolver() {
   const raw = JSON.parse(fs.readFileSync(ALIAS_FILE, 'utf8'));
+  /** @type {Map<string, {canonical: string, scope: object|null}[]>} */
   const map = new Map();
   for (const e of raw.teamAliases ?? []) {
     for (const a of e.aliases ?? []) {
       const k = normTeam(a);
-      if (map.has(k) && map.get(k) !== e.canonical) {
-        throw new Error(`alias table conflict: "${a}" -> ${map.get(k)} / ${e.canonical}`);
+      const list = map.get(k) ?? [];
+      // 同じ別名を別の正準名へ割り当てるのは、scope で棲み分けている場合のみ許す。
+      // scope なし同士 / scope なしと scope あり の衝突は従来どおりエラーにする
+      // （どちらが勝つか決まらないため）。
+      for (const prev of list) {
+        if (prev.canonical === e.canonical) continue;
+        if (!prev.scope || !e.scope) {
+          throw new Error(`alias table conflict: "${a}" -> ${prev.canonical} / ${e.canonical}（scope で棲み分けてください）`);
+        }
       }
-      map.set(k, e.canonical);
+      list.push({ canonical: e.canonical, scope: e.scope ?? null });
+      map.set(k, list);
     }
   }
-  return map;
+  // scope 付きを先に評価する（より限定的な指定を優先）
+  for (const list of map.values()) list.sort((a, b) => (a.scope ? 0 : 1) - (b.scope ? 0 : 1));
+
+  return (name, ctx) => {
+    const list = map.get(normTeam(name));
+    if (!list) return undefined;
+    for (const cand of list) {
+      if (scopeMatches(cand.scope, ctx)) return cand.canonical;
+    }
+    return undefined;
+  };
 }
 
 function listDetailFiles(dir) {
@@ -133,7 +195,7 @@ function listDetailFiles(dir) {
   return out;
 }
 
-function normalizeFile(file, teamAliasMap) {
+function normalizeFile(file, resolveTeamAlias, ctx) {
   let text = fs.readFileSync(file, 'utf8');
   const data = JSON.parse(text);
   if (!Array.isArray(data.participants)) return null;
@@ -143,7 +205,7 @@ function normalizeFile(file, teamAliasMap) {
   const idRepl = []; // { oldId, newId }
 
   for (const p of data.participants) {
-    const newTeam = teamAliasMap.get(normTeam(p.team)) ?? p.team;
+    const newTeam = resolveTeamAlias(p.team, { ...ctx, prefecture: p.prefecture ?? null }) ?? p.team;
     const newPref = canonPref(p.prefecture);
     if (newTeam !== p.team) teamRepl.set(p.team, newTeam);
     if (newPref !== p.prefecture && p.prefecture != null) prefRepl.set(p.prefecture, newPref);
@@ -200,7 +262,8 @@ function normalizeFile(file, teamAliasMap) {
 }
 
 function main() {
-  const teamAliasMap = buildTeamAliasMap();
+  const resolveTeamAlias = buildTeamAliasResolver();
+  const generationMap = buildGenerationMap();
   const scopeRoot = SCOPE === 'all' ? DETAILS_DIR : path.join(DETAILS_DIR, SCOPE);
   if (!fs.existsSync(scopeRoot)) {
     console.error(`対象が見つかりません: ${path.relative(ROOT, scopeRoot)}`);
@@ -214,8 +277,11 @@ function main() {
 
   for (const file of files) {
     let res;
+    // data/tournaments/details/<tournamentId>/<year>/<category>.json から大会IDを取り出す
+    const tournamentId = path.relative(DETAILS_DIR, file).split(path.sep)[0] ?? null;
+    const ctx = { tournamentId, generation: generationMap.get(tournamentId) ?? null };
     try {
-      res = normalizeFile(file, teamAliasMap);
+      res = normalizeFile(file, resolveTeamAlias, ctx);
     } catch (err) {
       console.error(`ERROR ${path.relative(ROOT, file)}: ${err.message}`);
       process.exitCode = 1;

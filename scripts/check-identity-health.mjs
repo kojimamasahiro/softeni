@@ -5,6 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 import { teamCore } from './lib/team-core.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -83,13 +84,38 @@ const walk = (dir) =>
 // ---- 読み込み ----
 const aliases = new Set();
 const canonicals = new Set();
+// scope 付き別名は「その大会でだけ別名」なので、大会を見ずに判定すると誤検出になる。
+// 別名 -> scope[] を別に持ち、走査時に大会文脈で判定する。
+// （normalize-team-names.mjs の scopeMatches と同じ規約。片方だけ変えると
+//   ヘルスチェックが過少/過大報告する ＝ 2026-07 に異体字対応で起きた事故と同型）
+const scopedAliases = new Map();
 for (const e of read(path.join(ROOT, 'data', 'tournaments', 'team-name-aliases.json'), { teamAliases: [] }).teamAliases) {
   canonicals.add(norm(e.canonical));
-  for (const a of e.aliases || []) aliases.add(norm(a));
+  for (const a of e.aliases || []) {
+    if (e.scope) {
+      const list = scopedAliases.get(norm(a)) || [];
+      list.push(e.scope);
+      scopedAliases.set(norm(a), list);
+    } else {
+      aliases.add(norm(a));
+    }
+  }
 }
 // 別名が canonical と NFKC 等価な場合（全角/半角違いなど。例: Ｊ－Ｋｉｄｓ ⇄ J-Kids）、
 // 正準化済みの生表記まで「別名のまま」と誤検出してしまうので canonical 側を除外する。
 for (const c of canonicals) aliases.delete(c);
+
+/** scope 付き別名が、この大会で「別名のまま残っている」と言えるか。 */
+function scopedAliasLeft(teamName, tournamentId, generation, prefecture) {
+  const list = scopedAliases.get(norm(teamName));
+  if (!list) return false;
+  return list.some(
+    (s) =>
+      (!Array.isArray(s.generation) || s.generation.includes(generation)) &&
+      (!Array.isArray(s.tournamentPrefix) || s.tournamentPrefix.some((p) => (tournamentId ?? '').startsWith(p))) &&
+      (!Array.isArray(s.prefecture) || s.prefecture.includes(prefecture ?? null)),
+  );
+}
 const teams = read(path.join(ROOT, 'data', 'teams', 'teams.json'), []);
 const ctx = read(path.join(ROOT, 'data', 'teams', 'team-context.json'), {});
 const homo = read(path.join(ROOT, 'data', 'players', 'homonyms.json'), []);
@@ -120,7 +146,7 @@ for (const f of walk(DET)) {
   const seen = new Set();
   for (const p of d.participants) {
     if (p.prefecture != null) prefCount.set(p.prefecture, (prefCount.get(p.prefecture) || 0) + 1);
-    if (aliases.has(norm(p.team))) aliasLeft++;
+    if (aliases.has(norm(p.team)) || scopedAliasLeft(p.team, tid, gen, p.prefecture ?? null)) aliasLeft++;
     if (p.id) {
       if (seen.has(p.id) && !ids.has('dup:' + p.id)) {
         dupIds++;

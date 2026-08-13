@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getGenderLabel, HIGHSCHOOL_CATEGORY_PRIORITY, HIGHSCHOOL_TOURNAMENT_PRIORITY, isVisibleGender } from '@/lib/highschool';
 import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
+import { getFeederSchools, type FeederSchool } from '@/lib/highschoolFeederSchools';
 import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
 import { getAllTournamentIndex, getTournamentInfo } from '@/utils/tournament-data-loader';
@@ -76,6 +77,8 @@ type Props = {
   analysis: Analysis | null;
   playerLinks?: Record<string, number>;
   alumni: AlumniEntry[];
+  /** この学校の選手の出身中学（中学カテゴリの進路データの逆引き）。docs/wiki/secondaryschool.md */
+  feederSchools: FeederSchool[];
   /** 開催中の全国大会での、この学校の出場状況（docs/wiki/seo.md #11） */
   inProgressScopes: InProgressScope[];
 };
@@ -186,6 +189,7 @@ export default function TeamPage({
   analysis,
   playerLinks = {},
   alumni,
+  feederSchools,
   inProgressScopes,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
@@ -688,6 +692,34 @@ export default function TeamPage({
           </section>
         )}
 
+        {feederSchools.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">{teamName}の選手の出身中学</h2>
+            <p className="text-sm text-text-secondary mb-3">
+              中学の全国大会（全国中学校体育大会・都道府県対抗全日本中学生大会・各地区のブロック大会）に出場したあと、
+              {teamName}で高校の全国大会に出場した選手です。中学名から各チームの戦績ページへ移動できます。
+            </p>
+            <ul className="space-y-2 text-sm">
+              {feederSchools.map((f) => (
+                <li key={`feeder-${f.team}`}>
+                  {f.href ? (
+                    <Link href={f.href} className="text-link hover:underline font-semibold">
+                      {f.team}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{f.team}</span>
+                  )}
+                  <span className="text-text-secondary"> — {f.players.map((p) => `${p.name}（${p.highschoolFirstYear}年〜）`).join('・')}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              ※ 氏名の一致で追跡しています。中学と高校の所属都道府県が一致するか、中学で組んでいたペアがそのまま高校でも
+              組んでいる場合のみ掲載しているため、県をまたぐ進学は取りこぼしている可能性があります。 中学時代に収録大会へ出場していない選手は表示されません。
+            </p>
+          </section>
+        )}
+
         <section className="mb-8">
           <h2 className="text-xl font-semibold mb-3">関連ページ</h2>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -928,6 +960,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 主な卒業生（Phase 2）。要件は docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md
   const alumni = getSchoolAlumni(process.cwd(), teamName, gender);
 
+  // 出身中学の逆引き（中学カテゴリの進路データを高校名で引き直したもの）
+  const feederSchools = getFeederSchools(teamName, prefecture.name, gender);
+
   // 開催中の全国大会での出場状況（docs/wiki/seo.md #11）
   const inProgressScopes = getSchoolInProgress(teamName, prefecture.name, gender);
 
@@ -943,6 +978,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       analysis,
       playerLinks,
       alumni,
+      feederSchools,
       inProgressScopes,
     },
   };

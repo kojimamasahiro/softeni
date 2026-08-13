@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs && node scripts/check-highschool-pipeline-freshness.mjs && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save",
+    "prebuild": "node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs && node scripts/check-highschool-pipeline-freshness.mjs && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save && npm run secondaryschool:build",
     "playerstats:cache-sync": "node scripts/playerStats/cache-sync.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
@@ -77,7 +77,10 @@
     "postbuild": "next-sitemap && node scripts/sort-sitemaps.mjs && node scripts/filter-noindex-from-sitemap.mjs",
     "lint": "eslint --fix .",
     "check:orphans": "node scripts/check-orphan-entries.mjs",
-    "club:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-club-transition.ts"
+    "club:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-club-transition.ts",
+    "juniorhigh:measure": "node scripts/measure-juniorhigh-scale.mjs",
+    "secondaryschool:build": "node scripts/build-secondaryschool-index.mjs && node scripts/build-secondaryschool-pathways.mjs",
+    "secondaryschool:teamid-todo": "node scripts/build-secondaryschool-teamid-todo.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",

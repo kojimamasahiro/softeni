@@ -120,6 +120,48 @@ NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`
 
 注意: `apply-team-aliases.mjs` は競合（ある別名が別の正準名に割当済 等）を取り込まずに報告する。
 
+### alias の大会スコープ `scope`（2026-08-12 追加 / [ADR-013](../adr/ADR-013-scoped-team-name-aliases.md)）
+
+alias 表はもともと**文脈を持たない**ため、`--scope=all` で全大会へ流すと壊れるエントリがあった。
+そこでエントリに任意の `scope` を持たせ、その大会文脈でだけ適用できるようにした。
+
+```json
+{ "canonical": "昇陽中学校", "aliases": ["昇陽"],
+  "scope": { "tournamentPrefix": ["secondaryschool-", "zennihon-secondaryschool"] } }
+```
+
+- `scope.generation`: 大会の `generationId` が含まれるときだけ適用
+- `scope.tournamentPrefix`: 大会IDがいずれかで始まるときだけ適用
+- `scope.prefecture`: **参加者の都道府県**が含まれるときだけ適用（他の2つと違い参加者単位で効く）
+- 複数あれば AND。**`scope` 無しは従来どおり全大会に適用**（後方互換）
+- 同じ別名を別 canonical へ割り当てるのは**双方が `scope` を持つ場合のみ**許可。
+  解決時は `scope` 付きを先に評価する
+- `normalize-team-names.mjs`（`scopeMatches`）と `check-identity-health.mjs`（`scopedAliasLeft`）は
+  **必ず同じ規約で解釈する**。`teamCore()` と同じく、片方だけ変えると過少/過大報告になる
+
+`scope` が必要になるのは次の3パターン（2026-08-12 時点で 30件）:
+
+1. **中学・クラブの文脈でだけ正しい略称**（17件）。`日高` はインターハイ・和歌山県にも
+   出場があり（＝和歌山県立日高高校）、無条件に `日高中学校` へ寄せると高校が壊れる。
+   同型に `柏崎`（→柏崎ジュニア）`名寄` `阿波` `甲府西` など。`generation: ["junior"]` で限定する
+2. **中高一貫校**（7校）。`昇陽` `京都光華` `就実` `明徳義塾` `明豊` `昭和学院` `札幌大谷` は、
+   **素の略称が高校側の canonical でありながら、中学の大会に出るときは中学校を指す**。
+   ただし `zennihon-junior`（全日本ジュニア）での出場はすべて u17/u20 で高校生なので、
+   `generation: ["junior"]` では足りず `tournamentPrefix` で中学校の大会に限定する
+3. **同名の別団体が他県にもある**（3件）。`朝日`（愛知＝朝日中学校／兵庫・長野は別団体）、
+   `野木`（栃木）。`野木` に至っては**大会の系統で指すものが変わる**（中学校大会→`野木中学校`、
+   小学生大会→`野木クラブ`）ため、`tournamentPrefix` × `prefecture` の組み合わせで2エントリに分けた。
+   判定根拠は**選手名の突き合わせ**（素の略称の選手が、どちらの団体の顔ぶれと一致するか）
+
+**運用上の注意**: 素の略称を alias にするときは、**その名前が他の generation に出現しないかを必ず確認する**。
+確認は `data/tournaments/details/**` の `participants[].team` を `index.json` / `local_index.json` の
+`generationId` で集計すればよい。誤ると静かに誤変換される。
+
+`apply-auto-merges.mjs` は `scope` を出力しないため、自動マージが作ったエントリは人手確認が要る。
+2026-08-12 の作業では自動マージが `野木中学校 ← 野木STC`（地域クラブを学校へ統合）と
+`府中STC ← 府中クラブ`（本ページに「意図的に統合していない」と明記済み）を作ったため巻き戻した。
+また canonical が最頻出＝略称になる問題により**77件を正式名称へ反転**した（`名寄`→`名寄中学校` 等）。
+
 ## 選手の別人判定 `data/players/homonyms.json`
 
 - 基本は氏名ベース id（`data/players/index.json`、team非依存）。同姓同名の別人だけ分割する。

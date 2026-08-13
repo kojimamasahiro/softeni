@@ -12,6 +12,8 @@
 //   データがそれと一致していることを読者が自分で確かめられるようにする。
 // - **アイコン・絵文字は使わない**（AGENTS.md「UI の表記ルール」）。棒は CSS の矩形で描く。
 
+import Link from 'next/link';
+
 import type { ClubTransitionData } from '@/lib/clubTransition';
 
 interface Props {
@@ -97,6 +99,13 @@ export default function ClubTransitionSection({ label, data }: Props) {
           </ul>
         </details>
       )}
+
+      {/* 中学カテゴリへの回遊。都道府県別・チーム別の戦績はそちらに集約している */}
+      <p className="mt-3 text-sm">
+        <Link href="/secondaryschool/" className="text-link hover:underline">
+          中学ソフトテニスの都道府県別・チーム別の成績を見る
+        </Link>
+      </p>
     </section>
   );
 }

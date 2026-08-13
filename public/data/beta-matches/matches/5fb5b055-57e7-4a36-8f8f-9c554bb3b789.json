@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T10:17:00.565Z",
+  "generatedAt": "2026-08-12T15:50:09.966Z",
   "match": {
     "id": "5fb5b055-57e7-4a36-8f8f-9c554bb3b789",
     "tournament_name": "highschool-japan-cup-2026",
@@ -87,6 +87,7 @@
         "created_at": "2026-07-12T06:17:46.451776",
         "initial_serve_team": "A",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "0cf77440-601d-4d32-9f98-a17999b75b35",
@@ -192,6 +193,7 @@
         "created_at": "2026-07-12T06:48:54.015986",
         "initial_serve_team": "B",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "26a3f4aa-20f0-49bb-a951-6bad3e249d91",
@@ -320,6 +322,7 @@
         "created_at": "2026-07-12T06:55:29.520151",
         "initial_serve_team": "A",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "9eef5399-1787-4554-aeb0-2e2ef49ecbbe",
@@ -471,6 +474,7 @@
         "created_at": "2026-07-12T06:58:21.114264",
         "initial_serve_team": "B",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "d59e2a40-8b39-4e9f-915c-f17505af4655",
@@ -793,52 +797,6 @@
             "point_detail": null,
             "video_start_ms": 1501869,
             "video_end_ms": 1545701
-          },
-          {
-            "id": "666fc1ca-cd7b-4fcf-9338-eef8ad10d8d6",
-            "game_id": "28cd12c9-55a8-419c-b974-687798f76d7b",
-            "point_number": 15,
-            "winner_team": "B",
-            "rally_count": 3,
-            "first_serve_fault": false,
-            "double_fault": false,
-            "result_type": "volley_winner",
-            "winner_player": "山口 義人",
-            "loser_player": "",
-            "created_at": "2026-07-12T09:53:10.151045",
-            "serving_team": "B",
-            "serving_player": "山口 義人",
-            "point_note": null,
-            "shot_type": null,
-            "shot_course": null,
-            "recording_level": "basic",
-            "edited_at": null,
-            "point_detail": null,
-            "video_start_ms": 1558288,
-            "video_end_ms": 1572754
-          },
-          {
-            "id": "703dbb91-733a-4e2f-bc1c-d92119cc4af3",
-            "game_id": "28cd12c9-55a8-419c-b974-687798f76d7b",
-            "point_number": 16,
-            "winner_team": "B",
-            "rally_count": 7,
-            "first_serve_fault": false,
-            "double_fault": false,
-            "result_type": "volley_winner",
-            "winner_player": "山口 義人",
-            "loser_player": "",
-            "created_at": "2026-07-12T09:53:29.300439",
-            "serving_team": "B",
-            "serving_player": "山口 義人",
-            "point_note": null,
-            "shot_type": null,
-            "shot_course": null,
-            "recording_level": "basic",
-            "edited_at": null,
-            "point_detail": null,
-            "video_start_ms": 1580415,
-            "video_end_ms": 1596831
           }
         ]
       },
@@ -852,6 +810,7 @@
         "created_at": "2026-07-12T09:53:29.849113",
         "initial_serve_team": "A",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "2b40e65b-3055-4681-9516-923c77a20697",
@@ -1095,6 +1054,7 @@
         "created_at": "2026-07-12T10:01:16.449274",
         "initial_serve_team": "B",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "540ca575-5217-40d8-a8ae-330148b30392",
@@ -1223,6 +1183,7 @@
         "created_at": "2026-07-12T10:07:24.592409",
         "initial_serve_team": "A",
         "initial_serve_player_index": 0,
+        "initial_receive_player_index": null,
         "points": [
           {
             "id": "5837e2c1-7898-447f-8c7e-e3ec075bd406",

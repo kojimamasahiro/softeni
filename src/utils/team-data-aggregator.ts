@@ -3,9 +3,9 @@
 import fs from 'fs';
 import path from 'path';
 
-import { getAllTournamentFiles, getAllTournamentIndex, getTournamentLabel, loadTournamentData, PreloadedTournamentData } from './tournament-data-loader';
-
 import type { TournamentDetailData, TournamentInformationEntry } from '@/types/tournament';
+
+import { getAllTournamentFiles, getAllTournamentIndex, getTournamentLabel, loadTournamentData, PreloadedTournamentData } from './tournament-data-loader';
 
 export type Player = {
   firstName: string;

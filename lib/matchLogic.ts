@@ -1,6 +1,6 @@
-import { getGamesWon, isMatchFinishedByGames } from './videoReview';
-
 import type { Match } from '@/types/database';
+
+import { getGamesWon, isMatchFinishedByGames } from './videoReview';
 
 /**
  * 選手の一意識別子を生成する（チーム + インデックス + 名前）。

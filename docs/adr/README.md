@@ -50,3 +50,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-010](./ADR-010-retire-result-articles-consolidate-to-hub.md) | 結果記事（/news *-result）を廃止し大会ハブに集約する | Accepted |
 | [ADR-011](./ADR-011-player-statistics-engine.md) | 選手集計を Player Statistics Engine へ一本化する | Accepted |
 | [ADR-012](./ADR-012-llm-authored-insights-with-machine-verification.md) | サイト本文でのLLM利用を「機械照合を通ったものに限り可」とする | Accepted |
+| [ADR-013](./ADR-013-scoped-team-name-aliases.md) | チーム名 alias に大会スコープ（scope）を導入する | Accepted |

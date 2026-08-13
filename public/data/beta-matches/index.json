@@ -1,6 +1,346 @@
 {
-  "generatedAt": "2026-08-02T15:06:21.256Z",
+  "generatedAt": "2026-08-12T15:50:09.966Z",
   "matches": [
+    {
+      "id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+      "tournament_name": "east-japan-2026",
+      "team_a": "21 西本 一雅 (アキム) [埼玉県] / 黒須 柾暉 (アキム) [埼玉県]",
+      "team_b": "124 川崎 康平 (日本体育大学) [学連] / 黒坂 卓矢 (日本体育大学) [学連]",
+      "best_of": 7,
+      "created_at": "2026-08-11T15:16:26.799564",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "21",
+      "team_a_player1_last_name": "西本",
+      "team_a_player1_first_name": "一雅",
+      "team_a_player1_team_name": "アキム",
+      "team_a_player1_region": "埼玉県",
+      "team_a_player2_last_name": "黒須",
+      "team_a_player2_first_name": "柾暉",
+      "team_a_player2_team_name": "アキム",
+      "team_a_player2_region": "埼玉県",
+      "team_b_entry_number": "124",
+      "team_b_player1_last_name": "川崎",
+      "team_b_player1_first_name": "康平",
+      "team_b_player1_team_name": "日本体育大学",
+      "team_b_player1_region": "学連",
+      "team_b_player2_last_name": "黒坂",
+      "team_b_player2_first_name": "卓矢",
+      "team_b_player2_team_name": "日本体育大学",
+      "team_b_player2_region": "学連",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "埼玉県",
+              "last_name": "西本",
+              "team_name": "アキム",
+              "first_name": "一雅"
+            },
+            {
+              "region": "埼玉県",
+              "last_name": "黒須",
+              "team_name": "アキム",
+              "first_name": "柾暉"
+            }
+          ],
+          "entry_number": "21"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "学連",
+              "last_name": "川崎",
+              "team_name": "日本体育大学",
+              "first_name": "康平"
+            },
+            {
+              "region": "学連",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "124"
+        }
+      },
+      "tournament_id": "east-japan",
+      "match_date": "2026-07-19",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-08-12T13:08:21.743+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "Jc_ISY7h6hk",
+      "youtube_url": "https://www.youtube.com/watch?v=Jc_ISY7h6hk",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "eebd1cbf-fdd6-4c01-9edd-7130ae9bf6f8",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T15:16:27.93909"
+        },
+        {
+          "id": "f0f3a0e6-26ae-4adb-a14e-f48873bc52ac",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-12T10:24:17.465865"
+        },
+        {
+          "id": "c2ffd45e-fca4-401a-8a33-da9c72783d43",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 4,
+          "points_b": 6,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-12T10:26:06.215733"
+        },
+        {
+          "id": "8a15388d-35c6-4090-a335-55048e09322d",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-12T10:32:05.7998"
+        },
+        {
+          "id": "d20ded42-0781-4f88-9ae9-f6869286e23d",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-12T11:47:12.801723"
+        },
+        {
+          "id": "6fd434a8-2653-406c-84ac-df56d379b193",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-12T12:58:15.781524"
+        },
+        {
+          "id": "08e3e943-8bb4-468e-8a50-7cd69f5fcf04",
+          "match_id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 7,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-12T13:05:04.888375"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/all/east-japan/2026/doubles/none/boys",
+        "entryNos": [
+          21,
+          124
+        ]
+      }
+    },
+    {
+      "id": "a9715c94-abae-467b-8541-ee688e592522",
+      "tournament_name": "east-japan-2026",
+      "team_a": "207 植田 璃音 (早稲田大学) [学連] / 安達 宣 (早稲田大学) [学連]",
+      "team_b": "331 船水 颯人 (One) [青森県] / 端山 羅行 (稲門クラブ) [東京都]",
+      "best_of": 7,
+      "created_at": "2026-08-11T11:31:30.274025",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "207",
+      "team_a_player1_last_name": "植田",
+      "team_a_player1_first_name": "璃音",
+      "team_a_player1_team_name": "早稲田大学",
+      "team_a_player1_region": "学連",
+      "team_a_player2_last_name": "安達",
+      "team_a_player2_first_name": "宣",
+      "team_a_player2_team_name": "早稲田大学",
+      "team_a_player2_region": "学連",
+      "team_b_entry_number": "331",
+      "team_b_player1_last_name": "船水",
+      "team_b_player1_first_name": "颯人",
+      "team_b_player1_team_name": "One",
+      "team_b_player1_region": "青森県",
+      "team_b_player2_last_name": "端山",
+      "team_b_player2_first_name": "羅行",
+      "team_b_player2_team_name": "稲門クラブ",
+      "team_b_player2_region": "東京都",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "学連",
+              "last_name": "植田",
+              "team_name": "早稲田大学",
+              "first_name": "璃音"
+            },
+            {
+              "region": "学連",
+              "last_name": "安達",
+              "team_name": "早稲田大学",
+              "first_name": "宣"
+            }
+          ],
+          "entry_number": "207"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "青森県",
+              "last_name": "船水",
+              "team_name": "One",
+              "first_name": "颯人"
+            },
+            {
+              "region": "東京都",
+              "last_name": "端山",
+              "team_name": "稲門クラブ",
+              "first_name": "羅行"
+            }
+          ],
+          "entry_number": "331"
+        }
+      },
+      "tournament_id": "east-japan",
+      "match_date": "2026-07-19",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-08-11T12:21:49.19+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "ZzCeoJ3DYA0",
+      "youtube_url": "https://www.youtube.com/watch?v=ZzCeoJ3DYA0",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "c721b11a-dc48-4c8f-87c2-2724952fdf71",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T11:31:30.992938"
+        },
+        {
+          "id": "1941ac1c-ed98-455d-a3a9-8d26f03dc917",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 6,
+          "points_b": 8,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T11:41:53.385389"
+        },
+        {
+          "id": "f9572de9-3ef0-441b-a39b-1d9213281f23",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T11:47:11.088883"
+        },
+        {
+          "id": "2150f78a-e719-4c96-871d-5844494b6472",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T11:49:03.651936"
+        },
+        {
+          "id": "b96284b7-85a9-4975-a234-4f0320f935cf",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T12:02:49.913075"
+        },
+        {
+          "id": "77d387d9-ab21-4576-a180-9bbcf01de15c",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 6,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T12:07:23.104537"
+        },
+        {
+          "id": "2c5c3305-f042-41ce-b8ce-493b13c2a00d",
+          "match_id": "a9715c94-abae-467b-8541-ee688e592522",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 8,
+          "points_b": 10,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
+          "created_at": "2026-08-11T12:13:16.960319"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/all/east-japan/2026/doubles/none/boys",
+        "entryNos": [
+          207,
+          331
+        ]
+      }
+    },
     {
       "id": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
       "tournament_name": "east-japan-2026",
@@ -87,6 +427,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-08-02T13:19:46.346067"
         },
         {
@@ -98,6 +439,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-08-02T14:34:12.236925"
         },
         {
@@ -109,6 +451,7 @@
           "points_b": 0,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-08-02T14:36:35.453167"
         },
         {
@@ -120,6 +463,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-08-02T14:38:27.120345"
         },
         {
@@ -131,6 +475,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-08-02T14:42:48.769888"
         }
       ],
@@ -228,6 +573,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-13T12:58:55.583593"
         },
         {
@@ -239,6 +585,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-13T14:14:22.260315"
         },
         {
@@ -250,6 +597,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-13T14:16:13.372426"
         },
         {
@@ -261,6 +609,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-13T14:19:17.459157"
         },
         {
@@ -272,6 +621,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-13T14:21:44.752922"
         }
       ],
@@ -357,6 +707,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:44:29.128125"
         },
         {
@@ -368,6 +719,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:48:16.461972"
         },
         {
@@ -379,6 +731,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:51:52.183061"
         },
         {
@@ -390,6 +743,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:54:57.436593"
         },
         {
@@ -401,6 +755,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T15:00:08.41705"
         }
       ],
@@ -498,6 +853,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T12:13:19.568274"
         },
         {
@@ -509,6 +865,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T12:26:02.768311"
         },
         {
@@ -520,6 +877,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T13:25:22.758376"
         },
         {
@@ -531,6 +889,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:31:36.474221"
         },
         {
@@ -542,6 +901,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:33:40.899289"
         },
         {
@@ -553,6 +913,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T14:36:27.365836"
         }
       ],
@@ -650,6 +1011,7 @@
           "points_b": 0,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T06:17:46.451776"
         },
         {
@@ -661,6 +1023,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T06:48:54.015986"
         },
         {
@@ -672,6 +1035,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T06:55:29.520151"
         },
         {
@@ -683,6 +1047,7 @@
           "points_b": 9,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T06:58:21.114264"
         },
         {
@@ -694,6 +1059,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T09:53:29.849113"
         },
         {
@@ -705,6 +1071,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T10:01:16.449274"
         },
         {
@@ -716,6 +1083,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-07-12T10:07:24.592409"
         }
       ],
@@ -801,6 +1169,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-06-28T14:08:28.802091"
         },
         {
@@ -812,6 +1181,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-06-28T14:12:02.300193"
         },
         {
@@ -823,6 +1193,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-06-28T14:14:04.660428"
         },
         {
@@ -834,6 +1205,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-06-28T14:16:19.303063"
         },
         {
@@ -845,6 +1217,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-06-28T14:19:46.289712"
         }
       ],
@@ -930,6 +1303,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T13:17:16.770321"
         },
         {
@@ -941,6 +1315,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T15:08:39.484217"
         },
         {
@@ -952,6 +1327,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T15:11:16.867112"
         },
         {
@@ -963,6 +1339,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T15:13:33.390463"
         },
         {
@@ -974,6 +1351,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T15:16:20.390578"
         },
         {
@@ -985,6 +1363,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-22T15:20:17.213341"
         }
       ],
@@ -1070,6 +1449,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T15:00:20.719525"
         },
         {
@@ -1081,6 +1461,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T15:28:18.109876"
         },
         {
@@ -1092,6 +1473,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T15:31:34.364493"
         },
         {
@@ -1103,6 +1485,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T15:37:49.010712"
         },
         {
@@ -1114,6 +1497,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T15:40:40.738448"
         },
         {
@@ -1125,6 +1509,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-21T23:40:03.17651"
         }
       ],
@@ -1210,6 +1595,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:44:40.706949"
         },
         {
@@ -1221,6 +1607,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:49:57.596212"
         },
         {
@@ -1232,6 +1619,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:52:47.348563"
         },
         {
@@ -1243,6 +1631,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:54:44.318283"
         }
       ],
@@ -1328,6 +1717,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:23:20.690798"
         },
         {
@@ -1339,6 +1729,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:25:23.541031"
         },
         {
@@ -1350,6 +1741,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:27:38.319834"
         },
         {
@@ -1361,6 +1753,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:29:07.078971"
         },
         {
@@ -1372,6 +1765,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:30:56.695725"
         },
         {
@@ -1383,6 +1777,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-18T14:32:16.90816"
         }
       ],
@@ -1468,6 +1863,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:01:35.887975"
         },
         {
@@ -1479,6 +1875,7 @@
           "points_b": 0,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:04:24.629436"
         },
         {
@@ -1490,6 +1887,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:15:57.374942"
         },
         {
@@ -1501,6 +1899,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:18:29.807852"
         },
         {
@@ -1512,6 +1911,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:21:01.93297"
         },
         {
@@ -1523,6 +1923,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T14:24:23.852694"
         }
       ],
@@ -1608,6 +2009,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:38:50.554905"
         },
         {
@@ -1619,6 +2021,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:45:50.511806"
         },
         {
@@ -1630,6 +2033,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:50:38.153483"
         },
         {
@@ -1641,6 +2045,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:53:11.513156"
         },
         {
@@ -1652,6 +2057,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T01:02:11.619036"
         },
         {
@@ -1663,6 +2069,7 @@
           "points_b": 6,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T01:05:02.432541"
         },
         {
@@ -1674,6 +2081,7 @@
           "points_b": 0,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T01:09:48.076997"
         }
       ],
@@ -1759,6 +2167,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-16T23:27:06.537877"
         },
         {
@@ -1770,6 +2179,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-16T23:53:47.544818"
         },
         {
@@ -1781,6 +2191,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-16T23:55:26.631773"
         },
         {
@@ -1792,6 +2203,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-16T23:57:45.862646"
         },
         {
@@ -1803,6 +2215,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:01:00.082767"
         },
         {
@@ -1814,6 +2227,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:03:22.060544"
         },
         {
@@ -1825,6 +2239,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-17T00:12:51.16563"
         }
       ],
@@ -1910,6 +2325,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:43:46.888836"
         },
         {
@@ -1921,6 +2337,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:48:30.210922"
         },
         {
@@ -1932,6 +2349,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:51:08.849911"
         },
         {
@@ -1943,6 +2361,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:52:48.49246"
         },
         {
@@ -1954,6 +2373,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:55:02.470341"
         },
         {
@@ -1965,6 +2385,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2026-05-14T14:57:26.341992"
         }
       ],
@@ -2062,6 +2483,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:22:14.06715"
         },
         {
@@ -2073,6 +2495,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:25:08.650405"
         },
         {
@@ -2084,6 +2507,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:30:09.301868"
         },
         {
@@ -2095,6 +2519,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:31:41.313476"
         },
         {
@@ -2106,6 +2531,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:33:09.830938"
         },
         {
@@ -2117,6 +2543,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:59:31.178524"
         },
         {
@@ -2128,6 +2555,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T00:59:31.34445"
         },
         {
@@ -2139,6 +2567,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T01:07:36.685164"
         },
         {
@@ -2150,6 +2579,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-09T01:11:54.283924"
         }
       ],
@@ -2247,6 +2677,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T09:54:09.735204"
         },
         {
@@ -2258,6 +2689,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T09:57:31.453788"
         },
         {
@@ -2269,6 +2701,7 @@
           "points_b": 8,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T09:59:32.745568"
         },
         {
@@ -2280,6 +2713,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:05:02.664521"
         },
         {
@@ -2291,6 +2725,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:07:05.461839"
         },
         {
@@ -2302,6 +2737,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:08:42.031083"
         },
         {
@@ -2313,6 +2749,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:10:03.693112"
         },
         {
@@ -2324,6 +2761,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:12:08.528321"
         },
         {
@@ -2335,6 +2773,7 @@
           "points_b": 7,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-07T10:15:04.463471"
         }
       ],
@@ -2432,6 +2871,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:42:08.652034"
         },
         {
@@ -2443,6 +2883,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:45:25.566881"
         },
         {
@@ -2454,6 +2895,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:50:50.447774"
         },
         {
@@ -2465,6 +2907,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:52:15.259428"
         },
         {
@@ -2476,6 +2919,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:54:23.35203"
         },
         {
@@ -2487,6 +2931,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T07:57:16.629617"
         },
         {
@@ -2498,6 +2943,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T08:00:45.374594"
         }
       ],
@@ -2595,6 +3041,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:01:07.172248"
         },
         {
@@ -2606,6 +3053,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:05:33.074705"
         },
         {
@@ -2617,6 +3065,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:10:37.462741"
         },
         {
@@ -2628,6 +3077,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:13:10.349943"
         },
         {
@@ -2639,6 +3089,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:16:02.629844"
         },
         {
@@ -2650,6 +3101,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:20:04.158496"
         },
         {
@@ -2661,6 +3113,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:26:31.654258"
         },
         {
@@ -2672,6 +3125,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T05:30:11.004442"
         }
       ],
@@ -2763,6 +3217,7 @@
           "points_b": 1,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T02:26:12.289936"
         },
         {
@@ -2774,6 +3229,7 @@
           "points_b": 3,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T03:17:09.405877"
         },
         {
@@ -2785,6 +3241,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T03:34:30.914713"
         },
         {
@@ -2796,6 +3253,7 @@
           "points_b": 1,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T03:36:20.328887"
         },
         {
@@ -2807,6 +3265,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-06T03:38:11.211085"
         }
       ],
@@ -2904,6 +3363,7 @@
           "points_b": 0,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T14:41:19.565882"
         },
         {
@@ -2915,6 +3375,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T14:43:00.338027"
         },
         {
@@ -2926,6 +3387,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T14:49:39.213122"
         },
         {
@@ -2937,6 +3399,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T14:55:05.293896"
         },
         {
@@ -2948,6 +3411,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T14:57:48.836524"
         },
         {
@@ -2959,6 +3423,7 @@
           "points_b": 0,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T15:00:44.786661"
         },
         {
@@ -2970,6 +3435,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T15:01:58.673644"
         },
         {
@@ -2981,6 +3447,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T15:05:05.82663"
         },
         {
@@ -2992,6 +3459,7 @@
           "points_b": 6,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-05T15:13:37.452811"
         }
       ],
@@ -3089,6 +3557,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T05:10:34.930424"
         },
         {
@@ -3100,6 +3569,7 @@
           "points_b": 5,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T05:21:17.301771"
         },
         {
@@ -3111,6 +3581,7 @@
           "points_b": 5,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T05:26:24.083575"
         },
         {
@@ -3122,6 +3593,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T06:52:10.678438"
         },
         {
@@ -3133,6 +3605,7 @@
           "points_b": 2,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T06:55:09.45968"
         },
         {
@@ -3144,6 +3617,7 @@
           "points_b": 2,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T07:13:27.342184"
         },
         {
@@ -3155,6 +3629,7 @@
           "points_b": 4,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T07:39:24.098609"
         },
         {
@@ -3166,6 +3641,7 @@
           "points_b": 4,
           "initial_serve_team": "B",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T07:41:26.720139"
         },
         {
@@ -3177,6 +3653,7 @@
           "points_b": 7,
           "initial_serve_team": "A",
           "initial_serve_player_index": 0,
+          "initial_receive_player_index": null,
           "created_at": "2025-11-04T07:43:20.137232"
         }
       ],

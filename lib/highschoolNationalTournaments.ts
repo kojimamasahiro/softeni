@@ -8,6 +8,12 @@
 import fs from 'fs';
 import path from 'path';
 
+import {
+  HS_NATIONAL_SLUGS,
+  HS_NATIONAL_TOURNAMENTS,
+  type HsNationalTournamentMeta,
+  type HsNationalTournamentSlug,
+} from '@/lib/highschoolNationalTournamentMeta';
 import { computeResultCoverage, formatResultCoverageBodyText, type ResultCoverageStatus } from '@/lib/tournamentCoverage';
 import type { TournamentInformationEntry } from '@/types/tournament';
 
@@ -15,20 +21,8 @@ import type { TournamentInformationEntry } from '@/types/tournament';
 // lib/highschoolNationalTournamentMeta.ts に置き、ここから re-export する。
 // クライアントにも載るコンポーネント（TournamentCard 等）が fs 依存なしで
 // 同じ定義を使えるようにするため。定義の二重管理は作らないこと。
-export {
-  HS_NATIONAL_TOURNAMENTS,
-  HS_NATIONAL_SLUGS,
-  getHsNationalSlugByTournamentId,
-  getTournamentHubHref,
-} from '@/lib/highschoolNationalTournamentMeta';
-export type { HsNationalTournamentSlug, HsNationalTournamentMeta } from '@/lib/highschoolNationalTournamentMeta';
-
-import {
-  HS_NATIONAL_TOURNAMENTS,
-  HS_NATIONAL_SLUGS,
-  type HsNationalTournamentSlug,
-  type HsNationalTournamentMeta,
-} from '@/lib/highschoolNationalTournamentMeta';
+export { getHsNationalSlugByTournamentId, getTournamentHubHref, HS_NATIONAL_SLUGS, HS_NATIONAL_TOURNAMENTS } from '@/lib/highschoolNationalTournamentMeta';
+export type { HsNationalTournamentMeta, HsNationalTournamentSlug } from '@/lib/highschoolNationalTournamentMeta';
 
 const GENERATION = 'highschool';
 const DETAILS_ROOT = ['data', 'tournaments', 'details'];
