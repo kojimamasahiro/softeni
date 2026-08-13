@@ -204,7 +204,7 @@ export default function Home({ recentTournaments }: HomeProps) {
             </Link>
           </section>
 
-          {/* 高校カテゴリへのリンク */}
+          {/* 高校・中学カテゴリへのリンク */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
 
@@ -212,10 +212,16 @@ export default function Home({ recentTournaments }: HomeProps) {
               全国大会での成績を属性別にまとめています。都道府県ごとにも確認できるので、出身地や気になる地域の情報もチェックしてみてください。
             </p>
 
-            <Link href="/highschool/boys" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-              <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
-              <p className="text-text-secondary text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
-            </Link>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <Link href="/highschool/boys" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
+                <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
+                <p className="text-text-secondary text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
+              </Link>
+              <Link href="/secondaryschool" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
+                <h3 className="text-lg font-bold mb-1">中学カテゴリ</h3>
+                <p className="text-text-secondary text-sm">全中など中学全国大会の成績を都道府県・チーム別に掲載。中学から高校への進路も</p>
+              </Link>
+            </div>
           </section>
 
           {/* 所属別成績 */}

@@ -21,6 +21,7 @@ import {
 import { getPrefectureAlumni, type PrefectureAlumniEntry } from '@/lib/highschoolAlumni';
 import { getPrefectureInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getPrefectureTopSchools, type PrefectureTopSchool } from '@/lib/highschoolRanking';
+import { getPrefecture as getSecondarySchoolPrefecture } from '@/lib/secondaryschool';
 import { getTournamentLabel, resultPriority } from '@/lib/utils';
 
 type TeamSummary = {
@@ -87,6 +88,8 @@ type Props = {
   prefAlumni: Array<PrefectureAlumniEntry & { schoolTeamId: string | null }>;
   /** 開催中の全国大会に、この県から出場している学校（docs/wiki/seo.md #11） */
   inProgressScopes: InProgressScope[];
+  /** 同じ県の中学ページ（/secondaryschool/[prefectureId]）が実在するか。デッドリンク防止 */
+  hasSecondarySchoolPage: boolean;
 };
 
 type AliasReasonGroup = {
@@ -233,6 +236,7 @@ export default function PrefectureHighschoolPage({
   prefTopSchools,
   prefAlumni,
   inProgressScopes,
+  hasSecondarySchoolPage,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefecture.id}/`;
   const prefectureName = prefecture.name;
@@ -643,6 +647,20 @@ export default function PrefectureHighschoolPage({
           ))}
         </ul>
 
+        {/* 中学の県ページへの相互リンク。prefectureId は中学・高校で47件すべて共通だが、
+            中学は掲載チーム0件の県にページを作らないので、実在する県だけリンクする */}
+        {hasSecondarySchoolPage && (
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="text-xl font-semibold mb-2">{prefecture.name}の中学ソフトテニス</h2>
+            <p className="mb-3 text-sm text-text-secondary">
+              全中・都道府県対抗全日本中学生大会・ブロック大会に出場した{prefecture.name}のチームと、その中学から高校への進路をまとめています。
+            </p>
+            <Link href={`/secondaryschool/${prefecture.id}/`} className="text-link hover:underline text-sm">
+              {prefecture.name}の中学チーム一覧
+            </Link>
+          </section>
+        )}
+
         <section className="mt-12 border-t border-border pt-8">
           <h2 className="text-xl font-semibold mb-4">よくある質問</h2>
           <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
@@ -934,8 +952,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 開催中の全国大会に、この県から出場している学校（docs/wiki/seo.md #11）
   const inProgressScopes = getPrefectureInProgress(prefecture.name, gender);
 
+  // 中学の県ページは掲載チーム0件の県を作らないので、実在を確認してからリンクする
+  const hasSecondarySchoolPage = (getSecondarySchoolPrefecture(prefecture.id)?.teamCount ?? 0) > 0;
+
   return {
     props: {
+      hasSecondarySchoolPage,
       prefecture,
       gender,
       genderLabel,

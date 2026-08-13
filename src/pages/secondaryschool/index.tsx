@@ -8,6 +8,7 @@
 // このカテゴリの役割は「収録チームの名鑑＋進路」で、順位づけはしない。
 
 import type { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -40,6 +41,21 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
         url={pageUrl}
         type="website"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
+                { '@type': 'ListItem', position: 2, name: '中学', item: pageUrl },
+              ],
+            }),
+          }}
+        />
+      </Head>
 
       <PageLayout maxWidth="4xl">
         <Breadcrumbs

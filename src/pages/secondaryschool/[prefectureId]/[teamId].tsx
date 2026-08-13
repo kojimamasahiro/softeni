@@ -14,6 +14,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { getSchoolResolver } from '@/lib/highschoolNationalTournaments';
 import {
   describeResult,
   getAllTeams,
@@ -30,7 +31,8 @@ type NamedLink = { name: string; playerId: number | null };
 
 interface Props {
   team: SecondarySchoolTeam;
-  pathways: (PathwayRecord & { playerId: number | null })[];
+  /** `highschoolHref` は高校の学校ページが実在するときだけ入る（デッドリンク防止） */
+  pathways: (PathwayRecord & { playerId: number | null; highschoolHref: string | null })[];
   members: (NamedLink & { years: number[] })[];
   resultPlayers: Record<string, NamedLink[]>;
 }
@@ -89,6 +91,21 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
+                { '@type': 'ListItem', position: 2, name: '中学', item: 'https://softeni-pick.com/secondaryschool/' },
+                { '@type': 'ListItem', position: 3, name: team.prefecture, item: `https://softeni-pick.com/secondaryschool/${team.prefectureId}/` },
+                { '@type': 'ListItem', position: 4, name: team.name, item: pageUrl },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <PageLayout maxWidth="4xl">
@@ -143,7 +160,13 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
                     )}
                   </span>
                   <span className="mx-2 text-text-muted">→</span>
-                  <span>{p.highschool}</span>
+                  {p.highschoolHref ? (
+                    <Link href={p.highschoolHref} className="font-semibold text-link hover:underline">
+                      {p.highschool}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{p.highschool}</span>
+                  )}
                   <p className="mt-0.5 text-xs text-text-muted">
                     中学 {p.jhsLastYear}年 ／ 高校 {p.highschoolFirstYear}年〜
                   </p>
@@ -233,10 +256,24 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     if (!resultPlayers[key]) resultPlayers[key] = r.players.map((n) => ({ name: n, playerId: resolvePlayerId(n) }));
   }
 
+  // 進路の進学先を高校の学校ページへリンクする。逆引き（高校ページ→出身中学、
+  // lib/highschoolFeederSchools.ts）は実装済みだったが、順方向がテキストのままだった。
+  // 解決は summary.json を唯一の正とするリゾルバに任せる（存在しない組み合わせは null）。
+  const schoolResolver = getSchoolResolver();
+  const resolveHighschool = (p: PathwayRecord): string | null => {
+    // mixed（gender=null）は男子ページを優先し、無ければ女子ページへ落とす
+    const genders = p.highschoolGender ? [p.highschoolGender] : ['boys', 'girls'];
+    for (const g of genders) {
+      const href = schoolResolver(p.highschool, p.highschoolPrefecture, g);
+      if (href) return href;
+    }
+    return null;
+  };
+
   return {
     props: {
       team,
-      pathways: getPathways(team).map((p) => ({ ...p, playerId: resolvePlayerId(p.player) })),
+      pathways: getPathways(team).map((p) => ({ ...p, playerId: resolvePlayerId(p.player), highschoolHref: resolveHighschool(p) })),
       members: team.members.map((m) => ({ name: m.name, years: m.years, playerId: resolvePlayerId(m.name) })),
       resultPlayers,
     },

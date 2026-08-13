@@ -76,6 +76,20 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
+                { '@type': 'ListItem', position: 2, name: '中学', item: 'https://softeni-pick.com/secondaryschool/' },
+                { '@type': 'ListItem', position: 3, name: prefecture.name, item: pageUrl },
+              ],
+            }),
+          }}
+        />
       </Head>
 
       <PageLayout maxWidth="4xl">
@@ -124,6 +138,23 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
             個別ページは当サイト収録の出場が{threshold}回以上のチームに作成しています。
             {threshold}回未満のチームはここには表示されません。
           </p>
+        </section>
+
+        {/* 同じ県の高校ページへの相互リンク。prefectureId は中学・高校で47件すべて共通で、
+            高校の県ページは男女とも47県ぶん必ず存在するのでデッドリンクにならない */}
+        <section className="mb-8">
+          <h2 className="mb-2 text-lg font-bold">{prefecture.name}の高校ソフトテニス</h2>
+          <p className="mb-3 text-sm text-text-secondary">
+            進学先を調べるときはこちら。インターハイ・ハイスクールジャパンカップ・全日本高校選抜での{prefecture.name}の成績を学校別にまとめています。
+          </p>
+          <div className="flex gap-2">
+            <Link href={`/highschool/boys/${prefecture.id}/`} className="rounded-full bg-info-bg px-4 py-1.5 text-sm text-info transition hover:opacity-80">
+              {prefecture.name}の高校男子
+            </Link>
+            <Link href={`/highschool/girls/${prefecture.id}/`} className="rounded-full bg-info-bg px-4 py-1.5 text-sm text-info transition hover:opacity-80">
+              {prefecture.name}の高校女子
+            </Link>
+          </div>
         </section>
 
         <p className="text-sm">

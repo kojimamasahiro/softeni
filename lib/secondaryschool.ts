@@ -78,6 +78,8 @@ export interface PathwayRecord {
   highschool: string;
   highschoolPrefecture: string | null;
   highschoolFirstYear: number;
+  /** 高校側の性別。高校の学校ページが男女別なので、リンク先の解決に使う。mixed は null */
+  highschoolGender: 'boys' | 'girls' | null;
   basis: 'pair' | 'pref' | 'pair+pref';
 }
 
