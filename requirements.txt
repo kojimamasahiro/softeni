@@ -1,0 +1,5 @@
+# Cloudflare Pages のビルド時に自動でインストールされる (pages.dev の build image が
+# ルートの requirements.txt を検出して pip install する)。
+# scripts/build-secondaryschool-index.mjs が python3 -c "import pykakasi" を
+# サブプロセスで呼び出しており、これが無いとビルドが ModuleNotFoundError で失敗する。
+pykakasi==2.3.0

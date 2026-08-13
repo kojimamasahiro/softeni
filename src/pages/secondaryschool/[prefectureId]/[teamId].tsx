@@ -174,8 +174,17 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
               ))}
             </ul>
             <p className="mt-3 text-xs text-text-muted">
-              氏名の一致で追跡しています。中学と高校の所属都道府県が一致するか、中学で組んでいたペアがそのまま高校でも
-              組んでいる場合のみ掲載しており、県をまたぐ進学は取りこぼしている可能性があります。 進学しても収録大会に出場していない選手は表示されません。
+              氏名の一致で追跡しています。中学で最後に出場した年から5年以内に高校の全国大会へ出場した同姓同名の選手を
+              同一人物とみなしているため、同姓同名の別人が含まれている可能性があります。 進学しても収録大会に出場していない選手は表示されません。
+            </p>
+            {/* 中学のチームページは男女をまとめているので、両方への導線を出す */}
+            <p className="mt-2 flex flex-wrap gap-x-4 text-sm">
+              <Link href="/secondaryschool/pathways/boys/" className="text-link hover:underline">
+                高校男子の出身中学一覧
+              </Link>
+              <Link href="/secondaryschool/pathways/girls/" className="text-link hover:underline">
+                高校女子の出身中学一覧
+              </Link>
             </p>
           </section>
         )}

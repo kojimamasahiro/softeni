@@ -714,8 +714,14 @@ export default function TeamPage({
               ))}
             </ul>
             <p className="mt-2 text-xs text-text-muted">
-              ※ 氏名の一致で追跡しています。中学と高校の所属都道府県が一致するか、中学で組んでいたペアがそのまま高校でも
-              組んでいる場合のみ掲載しているため、県をまたぐ進学は取りこぼしている可能性があります。 中学時代に収録大会へ出場していない選手は表示されません。
+              ※ 氏名の一致で追跡しています。中学で最後に出場した年から5年以内に高校の全国大会へ出場した同姓同名の選手を
+              同一人物とみなしているため、同姓同名の別人が含まれている可能性があります。 中学時代に収録大会へ出場していない選手は表示されません。
+            </p>
+            <p className="mt-2 text-sm">
+              {/* 進路一覧も男女別URLなので、同じ性別のページへ送る */}
+              <Link href={`/secondaryschool/pathways/${gender}/`} className="text-link hover:underline">
+                他の高校{genderLabel}の出身中学も見る
+              </Link>
             </p>
           </section>
         )}

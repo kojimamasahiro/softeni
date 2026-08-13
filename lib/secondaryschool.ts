@@ -80,7 +80,8 @@ export interface PathwayRecord {
   highschoolFirstYear: number;
   /** 高校側の性別。高校の学校ページが男女別なので、リンク先の解決に使う。mixed は null */
   highschoolGender: 'boys' | 'girls' | null;
-  basis: 'pair' | 'pref' | 'pair+pref';
+  /** 採用根拠。確度は pair > pref > name の順。UIには出さない（後追い用） */
+  basis: 'pair' | 'pref' | 'pair+pref' | 'name';
 }
 
 interface IndexPayload {
@@ -163,6 +164,98 @@ export function countTeamsWithPathways(): number {
 
 export function countPathways(): number {
   return Object.values(getPathwayMap()).reduce((n, l) => n + l.length, 0);
+}
+
+/** 進路一覧ページ用。1つの中学から1つの高校へ進んだ選手のまとまり */
+export interface FeederEntry {
+  team: SecondarySchoolTeam;
+  players: { name: string; jhsLastYear: number; highschoolFirstYear: number }[];
+  /** 中学と高校で都道府県が違う（越境進学）。ペア継続で採用された分がここに出る */
+  crossPrefecture: boolean;
+  /** 中学名と高校名が同じ＝中高一貫の内部進学とみられる */
+  affiliated: boolean;
+}
+
+/** 高校（性別ごと）と、そこへ進学した中学のまとまり */
+export interface FeederGroup {
+  highschool: string;
+  prefecture: string | null;
+  gender: 'boys' | 'girls' | null;
+  feeders: FeederEntry[];
+  playerCount: number;
+}
+
+/** 学校名の比較用に「◯◯中学校」「（拠）」等を落とした芯を取る */
+function schoolCore(name: string): string {
+  return name
+    .replace(/（.*?）|\(.*?\)/g, '')
+    .replace(/(中等教育学校|中学校|中学|中)$/, '')
+    .trim();
+}
+
+/**
+ * **高校から見た「出身中学」**のまとまり。進路一覧ページ（/secondaryschool/pathways/）で使う。
+ *
+ * 中学起点ではなく高校起点にしているのは、検索需要が高校名に偏っているのと、
+ * この向きでしか見えない事実があるため（強豪校が県外の中学から集めている、など）。
+ * 中学起点の見え方は各中学のチームページが担当する。docs/wiki/seo.md #13
+ *
+ * 並びは「出身中学の種類が多い順 → 人数が多い順 → 県名・校名」。
+ * 種類数を先に見るのは、1中学から複数人という塊より
+ * 複数の中学から集めている高校のほうが情報量が多いため。
+ */
+export function getFeederGroups(gender?: 'boys' | 'girls'): FeederGroup[] {
+  const teams = getIndex().teams;
+  const byHighschool = new Map<string, FeederGroup>();
+
+  for (const [key, records] of Object.entries(getPathwayMap())) {
+    const [name, prefecture] = key.split('\t');
+    // 掲載閾値未満の中学は pathways.json に入らない規約（build-secondaryschool-pathways.mjs）だが、
+    // 索引と食い違ったときに壊れたリンクを出さないよう、チームが引けなければ捨てる
+    const team = teams.find((t) => t.name === name && t.prefecture === prefecture);
+    if (!team) continue;
+
+    for (const r of records) {
+      // 進路一覧も高校の学校ページに合わせて男女別URLにしている（docs/wiki/seo.md #13）。
+      // mixed（gender=null）は男女どちらにも出す規約（highschool.md）
+      if (gender && r.highschoolGender && r.highschoolGender !== gender) continue;
+      // 高校の学校ページは男女別なので、性別までを1つの単位にする
+      const gkey = `${r.highschool}\t${r.highschoolPrefecture ?? ''}\t${r.highschoolGender ?? ''}`;
+      const group = byHighschool.get(gkey) ?? {
+        highschool: r.highschool,
+        prefecture: r.highschoolPrefecture,
+        gender: r.highschoolGender,
+        feeders: [],
+        playerCount: 0,
+      };
+      const feeder = group.feeders.find((f) => f.team.id === team.id && f.team.prefectureId === team.prefectureId) ?? {
+        team,
+        players: [],
+        crossPrefecture: Boolean(r.highschoolPrefecture && team.prefecture !== r.highschoolPrefecture),
+        affiliated: schoolCore(team.name) === schoolCore(r.highschool),
+      };
+      if (!group.feeders.includes(feeder)) group.feeders.push(feeder);
+      feeder.players.push({ name: r.player, jhsLastYear: r.jhsLastYear, highschoolFirstYear: r.highschoolFirstYear });
+      group.playerCount += 1;
+      byHighschool.set(gkey, group);
+    }
+  }
+
+  const groups = [...byHighschool.values()];
+  for (const g of groups) {
+    for (const f of g.feeders) f.players.sort((a, b) => b.highschoolFirstYear - a.highschoolFirstYear || a.name.localeCompare(b.name, 'ja'));
+    // 県外の中学を先に出す（この一覧でしか見えない事実なので目立たせる）
+    g.feeders.sort(
+      (a, b) => Number(b.crossPrefecture) - Number(a.crossPrefecture) || b.players.length - a.players.length || a.team.name.localeCompare(b.team.name, 'ja'),
+    );
+  }
+  return groups.sort(
+    (a, b) =>
+      b.feeders.length - a.feeders.length ||
+      b.playerCount - a.playerCount ||
+      (a.prefecture ?? '').localeCompare(b.prefecture ?? '', 'ja') ||
+      a.highschool.localeCompare(b.highschool, 'ja'),
+  );
 }
 
 /** チーム種別の表示ラベル。「学校」と言い切らない（4割がクラブのため） */

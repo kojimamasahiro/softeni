@@ -78,12 +78,17 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
             <h2 className="text-base font-semibold text-text">全国中学校体育大会（全中）の結果</h2>
             <p className="text-xs text-text-muted">年度別の対戦表・優勝者と、学校部活動と地域クラブの内訳</p>
           </Link>
-          <div className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4">
-            <h2 className="text-base font-semibold text-text">中学から高校への進路</h2>
+          {/* 進路一覧は男女別URLだが、入口では分けず男子へ送る（全中カードと同じ1枚のリンク）。
+              女子へはリンク先ページの性別トグルで移動できる */}
+          <Link
+            href="/secondaryschool/pathways/boys/"
+            className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4 transition-colors hover:bg-bg-subtle"
+          >
+            <h2 className="text-base font-semibold text-text">高校別の出身中学</h2>
             <p className="text-xs text-text-muted">
-              {pathwayTeams}チーム・{pathwayTotal}件を各チームページに掲載しています
+              どの高校がどの中学から選手を集めているか。中学{pathwayTeams}チームから進学した{pathwayTotal}名を掲載
             </p>
-          </div>
+          </Link>
         </div>
 
         <section>
