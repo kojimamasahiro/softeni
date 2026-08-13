@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 3
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "ootsuka",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "ベスト8",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-championship",
+        "year": 2023,
         "gender": "boys",
-        "playerIds": ["福岡_大河_大塚_宮崎県", "茶木_廉太郎_大塚_宮崎県"]
+        "playerIds": ["小谷_大空_大塚_大阪府", "本田_昂暉_大塚_大阪府"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "小谷_大空_大塚_大阪府",
@@ -36,18 +36,6 @@
     },
     {
       "id": "本田_昂暉_大塚_大阪府",
-      "appearances": 1
-    },
-    {
-      "id": "福岡_大河_大塚_宮崎県",
-      "appearances": 1
-    },
-    {
-      "id": "茶木_廉太郎_大塚_宮崎県",
-      "appearances": 1
-    },
-    {
-      "id": "田村_俊輔_大塚_宮崎県",
       "appearances": 1
     }
   ]

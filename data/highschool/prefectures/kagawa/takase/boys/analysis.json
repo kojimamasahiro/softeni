@@ -1,35 +1,12 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 3,
-    "singles": 1
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "高瀬",
-        "teamId": "takase",
-        "prefecture": "香川県",
-        "prefectureId": "kagawa",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["富塚_涼雅_高瀬中学校_福島県"]
-      },
-      "historicalBest": {
-        "team": "高瀬",
-        "teamId": "takase",
-        "prefecture": "香川県",
-        "prefectureId": "kagawa",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["富塚_涼雅_高瀬中学校_福島県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -37,24 +14,24 @@
         "teamId": "takase",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "4回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["星優_惟_高瀬中学校_福島県", "佐藤_絢真_西郷第一中学校_福島県"]
+        "playerIds": ["吉田_真紘_高瀬_香川県", "入江_辰_高瀬_香川県"]
       },
       "historicalBest": {
         "team": "高瀬",
         "teamId": "takase",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "4回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
+        "tournamentId": "highschool-japan-cup",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["星優_惟_高瀬中学校_福島県", "佐藤_絢真_西郷第一中学校_福島県"]
+        "playerIds": ["吉田_真紘_高瀬_香川県", "入江_辰_高瀬_香川県"]
       }
     },
     "team": {

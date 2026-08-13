@@ -1,36 +1,13 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 5,
   "byCategory": {
     "team": 1,
-    "doubles": 6,
-    "singles": 1
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "城南",
-        "teamId": "jounan",
-        "prefecture": "福岡県",
-        "prefectureId": "fukuoka",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["内藤_理央_城南中学校_京都府"]
-      },
-      "historicalBest": {
-        "team": "城南",
-        "teamId": "jounan",
-        "prefecture": "福岡県",
-        "prefectureId": "fukuoka",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["内藤_理央_城南中学校_京都府"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {

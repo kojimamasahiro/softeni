@@ -10,18 +10,53 @@ RESULTS_PATH = str(SCRIPT_DIR / "results.json")
 TOURNAMENTS_INDEX_PATH = str(SCRIPT_DIR / "../../../data/tournaments/index.json")
 
 
+# 中学生・小学生**専用**の大会。高校カテゴリの集計に入れてはいけない（2026-08-13 追加）。
+#
+# ここを除外しないと、中学校のチームが高校の学校ページに混ざる。
+# 経路は2つあり、どちらも実在した:
+#   1. `四天王寺中学校` のような中高一貫校が、03list の normalize_school_name で
+#      「中学校」を落とされて高校の `四天王寺` に一致する（同日に normalize 側も修正済み）
+#   2. `栃木` `砺波` `豊浦` のように**接尾辞が無く高校名と完全一致する**中学校名。
+#      正規化を直しても一致してしまうので、大会そのものを除外するしかない（39種・143件）
+#
+# **全日本選手権・全日本シングルス・東西日本などは除外しない。** 高体連の高校生が
+# 正当に出場しており、「この高校の選手が全日本でベスト8」は高校ページに出すべき情報。
+# `zennihon-junior` も除外しない（u17/u20 は高校生。u14 で高校名に一致するのは実測0件）。
+EXCLUDED_TOURNAMENT_IDS = {
+    "secondaryschool-championship",          # 全国中学校体育大会（全中）
+    "zennihon-secondaryschool-versus",       # 都道府県対抗全日本中学生大会
+    "zennihon-secondaryschool-club-pre",     # 全日本中学生クラブ選手権プレ大会
+    "primaryschool-championship",            # 全国小学生大会
+    "zennihon-primaryschool",                # 全日本小学生大会
+} | {
+    f"secondaryschool-{block}-block"
+    for block in [
+        "hokkaido", "tohoku", "hokushinetsu", "kanto", "tokai",
+        "kinki", "chugoku", "shikoku", "kyushu",
+    ]
+}
+
+
 def load_target_tournaments():
     with open(TOURNAMENTS_INDEX_PATH, encoding="utf-8") as f:
         tournaments = json.load(f)
 
     tournament_ids = []
+    skipped = []
     for tournament in tournaments:
         tournament_id = tournament.get("tournamentId")
         if not tournament_id:
             continue
         tournament_path = os.path.join(DATA_DIR, tournament_id)
-        if os.path.isdir(tournament_path):
-            tournament_ids.append(tournament_id)
+        if not os.path.isdir(tournament_path):
+            continue
+        if tournament_id in EXCLUDED_TOURNAMENT_IDS:
+            skipped.append(tournament_id)
+            continue
+        tournament_ids.append(tournament_id)
+
+    if skipped:
+        print(f"⏭️  中学・小学専用の大会を除外しました: {len(skipped)}件 ({', '.join(sorted(skipped))})")
 
     return tournament_ids
 

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 78,
+  "totalAppearances": 51,
   "byCategory": {
-    "team": 11,
-    "doubles": 49,
-    "singles": 18
+    "team": 10,
+    "doubles": 32,
+    "singles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -12,24 +12,24 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "ベスト4",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["古川_夢望_明豊中学校_大分県"]
+        "playerIds": ["西田_海晴_明豊_大分県"]
       },
       "historicalBest": {
         "team": "明豊",
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "ベスト4",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-junior",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["古川_夢望_明豊中学校_大分県"]
+        "playerIds": ["西田_海晴_明豊_大分県"]
       }
     },
     "doubles": {
@@ -38,24 +38,24 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "準優勝",
+        "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
+        "tournamentId": "highschool-championship",
+        "year": 2025,
         "gender": "girls",
-        "playerIds": ["吉田_唯杏_西郷第一中学校_福島県", "古川_夢望_明豊中学校_大分県"]
+        "playerIds": ["小林_司_明豊_大分県", "片山_伊織_明豊_大分県"]
       },
       "historicalBest": {
         "team": "明豊",
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "準優勝",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "zennihon-junior",
-        "year": 2024,
+        "tournamentId": "highschool-championship",
+        "year": 2023,
         "gender": "girls",
-        "playerIds": ["吉田_唯杏_西郷第一中学校_福島県", "古川_夢望_明豊中学校_大分県"]
+        "playerIds": ["樽村_妹穏_明豊_大分県", "竹松_美紀_明豊_大分県"]
       }
     },
     "team": {
@@ -64,10 +64,10 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "準優勝",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2026,
         "gender": "girls"
       },
       "historicalBest": {
@@ -75,10 +75,10 @@
         "teamId": "meihou",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "準優勝",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2026,
         "gender": "girls"
       }
     }

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 2,
-    "singles": 2
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -11,10 +11,10 @@
         "teamId": "tosachuugakkou",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "4回戦敗退",
+        "result": "予選敗退",
         "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["山中_温人_土佐中学校_高知県"]
       },
@@ -23,10 +23,10 @@
         "teamId": "tosachuugakkou",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "4回戦敗退",
+        "result": "予選敗退",
         "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
         "playerIds": ["山中_温人_土佐中学校_高知県"]
       }
@@ -37,24 +37,24 @@
         "teamId": "tosachuugakkou",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["山中_温人_土佐中学校_高知県", "野中_崚太郎_土佐中学校_高知県"]
+        "playerIds": ["山中_温人_土佐中学校_高知県", "山田_柊輝_朝桜中学校_滋賀県"]
       },
       "historicalBest": {
         "team": "土佐中学校",
         "teamId": "tosachuugakkou",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "3回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2024,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["山中_温人_土佐中学校_高知県", "野中_崚太郎_土佐中学校_高知県"]
+        "playerIds": ["山中_温人_土佐中学校_高知県", "山田_柊輝_朝桜中学校_滋賀県"]
       }
     },
     "team": {
@@ -62,15 +62,11 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 1,
   "topPlayers": [
     {
       "id": "山中_温人_土佐中学校_高知県",
-      "appearances": 4
-    },
-    {
-      "id": "野中_崚太郎_土佐中学校_高知県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

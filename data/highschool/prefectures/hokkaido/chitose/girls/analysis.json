@@ -1,7 +1,6 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,42 +20,16 @@
       }
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "千歳",
-        "teamId": "chitose",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-primaryschool",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": ["根岸_生来_世田谷_東京都", "宮澤_菜々子_千歳_東京都"]
-      },
-      "historicalBest": {
-        "team": "千歳",
-        "teamId": "chitose",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-primaryschool",
-        "year": 2024,
-        "gender": "girls",
-        "playerIds": ["根岸_生来_世田谷_東京都", "宮澤_菜々子_千歳_東京都"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 1,
   "topPlayers": [
-    {
-      "id": "宮澤_菜々子_千歳_東京都",
-      "appearances": 1
-    },
     {
       "id": "古園_由彩_千歳_北海道",
       "appearances": 1

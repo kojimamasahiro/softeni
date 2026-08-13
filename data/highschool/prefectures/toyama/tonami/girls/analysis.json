@@ -1,35 +1,12 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 9,
-    "singles": 1
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "砺波",
-        "teamId": "tonami",
-        "prefecture": "富山県",
-        "prefectureId": "toyama",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "primaryschool-championship",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": ["山作_彩寧_砺波_富山県"]
-      },
-      "historicalBest": {
-        "team": "砺波",
-        "teamId": "tonami",
-        "prefecture": "富山県",
-        "prefectureId": "toyama",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "primaryschool-championship",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": ["山作_彩寧_砺波_富山県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -62,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "山本_優佳_砺波_富山県",
@@ -81,8 +58,8 @@
       "appearances": 2
     },
     {
-      "id": "寺島_芽生_砺波_富山県",
-      "appearances": 2
+      "id": "菊川_菜緒子_砺波_富山県",
+      "appearances": 1
     }
   ]
 }

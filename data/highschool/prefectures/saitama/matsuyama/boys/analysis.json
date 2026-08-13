@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 18,
   "byCategory": {
-    "team": 2,
-    "doubles": 18,
-    "singles": 5
+    "team": 1,
+    "doubles": 14,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -38,24 +38,24 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "ベスト4",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["杉_碧翔_松山中学校_埼玉県", "利根川_碧生_松山中学校_埼玉県"]
+        "playerIds": ["渡辺_幸誠_松山_埼玉県", "木田_大翔_松山_埼玉県"]
       },
       "historicalBest": {
         "team": "松山",
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "ベスト4",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2024,
+        "tournamentId": "east-japan",
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["杉_碧翔_松山中学校_埼玉県", "利根川_碧生_松山中学校_埼玉県"]
+        "playerIds": ["渡辺_幸誠_松山_埼玉県", "木田_大翔_松山_埼玉県"]
       }
     },
     "team": {
@@ -64,10 +64,10 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "ベスト4",
+        "result": "1回戦敗退",
         "category": "team",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys"
       },
       "historicalBest": {
@@ -75,10 +75,10 @@
         "teamId": "matsuyama",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "ベスト4",
+        "result": "1回戦敗退",
         "category": "team",
-        "tournamentId": "secondaryschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2024,
         "gender": "boys"
       }
     }

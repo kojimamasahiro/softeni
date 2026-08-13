@@ -1,35 +1,12 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 1,
-    "singles": 1
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "明星",
-        "teamId": "myoujou",
-        "prefecture": "大阪府",
-        "prefectureId": "osaka",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["児玉_慶二_明星_大阪府"]
-      },
-      "historicalBest": {
-        "team": "明星",
-        "teamId": "myoujou",
-        "prefecture": "大阪府",
-        "prefectureId": "osaka",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["児玉_慶二_明星_大阪府"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -62,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "児玉_拓海_明星_大阪府",
@@ -70,10 +47,6 @@
     },
     {
       "id": "龍見_京壱_明星_大阪府",
-      "appearances": 1
-    },
-    {
-      "id": "児玉_慶二_明星_大阪府",
       "appearances": 1
     }
   ]
