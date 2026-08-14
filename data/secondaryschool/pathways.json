@@ -1,65 +1,412 @@
 {
   "pathways": {
-    "上宮学園中学校\t大阪府": [
+    "稲城第三\t東京都": [
       {
-        "player": "清水勇斗",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
+        "player": "中山真言",
+        "jhsLastYear": 2021,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
         "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "磯部由佳",
+        "jhsLastYear": 2021,
+        "highschool": "清瀬",
+        "highschoolPrefecture": "東京都",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "早川悠佑",
+        "jhsLastYear": 2021,
+        "highschool": "高田商",
+        "highschoolPrefecture": "奈良県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "岩田夏穂",
+        "jhsLastYear": 2021,
+        "highschool": "日大藤沢",
+        "highschoolPrefecture": "神奈川県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "市場中学校\t徳島県": [
+      {
+        "player": "宮地日奈乃",
+        "jhsLastYear": 2025,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "近藤みいる",
+        "jhsLastYear": 2025,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "源愛恵",
+        "jhsLastYear": 2024,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "松田悠那",
+        "jhsLastYear": 2024,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "那須亮太",
+        "jhsLastYear": 2024,
+        "highschool": "徳島科技",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2026,
         "highschoolGender": "boys",
         "basis": "pref"
       },
       {
-        "player": "赤川奏太",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
-        "highschoolFirstYear": 2024,
+        "player": "宮田亮",
+        "jhsLastYear": 2024,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2025,
         "highschoolGender": "boys",
-        "basis": "pref"
+        "basis": "name"
       },
       {
-        "player": "中村悠人",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "福井竣也",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "福田喜大",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "濱中純誠",
-        "jhsLastYear": 2023,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "須原蒼",
+        "player": "堺瑠音",
         "jhsLastYear": 2022,
-        "highschool": "上宮",
-        "highschoolPrefecture": "大阪府",
+        "highschool": "岡山理大附",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "大倉優",
+        "jhsLastYear": 2022,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
+    "市場\t徳島県": [
+      {
+        "player": "盛岡昂生",
+        "jhsLastYear": 2021,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "亀井美来",
+        "jhsLastYear": 2021,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "宮田成将",
+        "jhsLastYear": 2021,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "藤原陽菜",
+        "jhsLastYear": 2021,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "美馬隆之介",
+        "jhsLastYear": 2021,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "昭和学院\t千葉県": [
+      {
+        "player": "井手凛太",
+        "jhsLastYear": 2021,
+        "highschool": "岡山理大附",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "内田陽斗",
+        "jhsLastYear": 2021,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "稲葉あこ",
+        "jhsLastYear": 2021,
+        "highschool": "昭和学院",
+        "highschoolPrefecture": "千葉県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "服部七海",
+        "jhsLastYear": 2021,
+        "highschool": "昭和学院",
+        "highschoolPrefecture": "千葉県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      }
+    ],
+    "芝東\t埼玉県": [
+      {
+        "player": "石田輝",
+        "jhsLastYear": 2021,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "脇谷結楽",
+        "jhsLastYear": 2021,
+        "highschool": "和歌山信愛",
+        "highschoolPrefecture": "和歌山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "赤沼裕希",
+        "jhsLastYear": 2021,
+        "highschool": "木更津総合",
+        "highschoolPrefecture": "千葉県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "熊木咲彩",
+        "jhsLastYear": 2021,
+        "highschool": "学法石川",
+        "highschoolPrefecture": "福島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "取手第一中学校\t茨城県": [
+      {
+        "player": "宮本果歩",
+        "jhsLastYear": 2024,
+        "highschool": "成田",
+        "highschoolPrefecture": "千葉県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "松本怜奈",
+        "jhsLastYear": 2023,
+        "highschool": "柏中央",
+        "highschoolPrefecture": "千葉県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "泉屋咲穂",
+        "jhsLastYear": 2024,
+        "highschool": "文大杉並",
+        "highschoolPrefecture": "東京都",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "柏春花",
+        "jhsLastYear": 2023,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "大門登馬",
+        "jhsLastYear": 2022,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "白川隼平",
+        "jhsLastYear": 2022,
+        "highschool": "霞ヶ浦",
+        "highschoolPrefecture": "茨城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "守山\t滋賀県": [
+      {
+        "player": "北村温暉",
+        "jhsLastYear": 2022,
+        "highschool": "立命館守山",
+        "highschoolPrefecture": "滋賀県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "稲葉大幸",
+        "jhsLastYear": 2022,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "岡野恵大",
+        "jhsLastYear": 2021,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "小山悠侍郎",
+        "jhsLastYear": 2021,
+        "highschool": "立命館守山",
+        "highschoolPrefecture": "滋賀県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "中野恵多",
+        "jhsLastYear": 2021,
+        "highschool": "立命館守山",
+        "highschoolPrefecture": "滋賀県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      }
+    ],
+    "明徳義塾中学校\t高知県": [
+      {
+        "player": "柴崎雄斗",
+        "jhsLastYear": 2025,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "大平庚真",
+        "jhsLastYear": 2025,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "福見哉太",
+        "jhsLastYear": 2025,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "添田玲音",
+        "jhsLastYear": 2023,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "林寿李稀",
+        "jhsLastYear": 2023,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "福見優心",
+        "jhsLastYear": 2023,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "加藤歓基",
+        "jhsLastYear": 2022,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "木本琉偉",
+        "jhsLastYear": 2022,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
         "highschoolFirstYear": 2023,
         "highschoolGender": "boys",
         "basis": "pref"
@@ -166,6 +513,374 @@
         "basis": "name"
       }
     ],
+    "清明学園\t東京都": [
+      {
+        "player": "伊藤幹太",
+        "jhsLastYear": 2021,
+        "highschool": "早稲田実",
+        "highschoolPrefecture": "東京都",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "河原愛花",
+        "jhsLastYear": 2021,
+        "highschool": "和歌山信愛",
+        "highschoolPrefecture": "和歌山県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "千葉翠",
+        "jhsLastYear": 2021,
+        "highschool": "文大杉並",
+        "highschoolPrefecture": "東京都",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "東谷山\t鹿児島県": [
+      {
+        "player": "松下翔",
+        "jhsLastYear": 2021,
+        "highschool": "鹿児島商",
+        "highschoolPrefecture": "鹿児島県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "菖蒲谷宙",
+        "jhsLastYear": 2021,
+        "highschool": "鹿児島商",
+        "highschoolPrefecture": "鹿児島県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      }
+    ],
+    "三原第三\t広島県": [
+      {
+        "player": "杉原羚夢",
+        "jhsLastYear": 2021,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "清家蒼人",
+        "jhsLastYear": 2021,
+        "highschool": "岡山理大附",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
+    "田原東部\t愛知県": [
+      {
+        "player": "香山侑月",
+        "jhsLastYear": 2021,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "石川智弘",
+        "jhsLastYear": 2022,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "石灘蒼瑛",
+        "jhsLastYear": 2022,
+        "highschool": "岡山理大附",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "大和朔也",
+        "jhsLastYear": 2021,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "鈴木唯斗",
+        "jhsLastYear": 2021,
+        "highschool": "高田商",
+        "highschoolPrefecture": "奈良県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "坂口生磨",
+        "jhsLastYear": 2021,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
+    "尾上\t青森県": [
+      {
+        "player": "松田拳弥",
+        "jhsLastYear": 2022,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair"
+      },
+      {
+        "player": "水木洸",
+        "jhsLastYear": 2022,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pair"
+      },
+      {
+        "player": "齋藤玲壱",
+        "jhsLastYear": 2021,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
+    "上宮学園\t大阪府": [
+      {
+        "player": "三上柊二",
+        "jhsLastYear": 2021,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "平井啓吾",
+        "jhsLastYear": 2021,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      }
+    ],
+    "取手第一\t茨城県": [
+      {
+        "player": "髙嶋雅弥",
+        "jhsLastYear": 2021,
+        "highschool": "霞ヶ浦",
+        "highschoolPrefecture": "茨城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "穴吹\t徳島県": [
+      {
+        "player": "大谷瑠尉",
+        "jhsLastYear": 2021,
+        "highschool": "つるぎ",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "知野稜平",
+        "jhsLastYear": 2021,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "大塚\t宮崎県": [
+      {
+        "player": "中田敦仁",
+        "jhsLastYear": 2022,
+        "highschool": "宮崎西",
+        "highschoolPrefecture": "宮崎県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "茶木將臣",
+        "jhsLastYear": 2021,
+        "highschool": "岡山理大附",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "福岡大河",
+        "jhsLastYear": 2022,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "工藤誠士郎",
+        "jhsLastYear": 2021,
+        "highschool": "都城商",
+        "highschoolPrefecture": "宮崎県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "上宮学園中学校\t大阪府": [
+      {
+        "player": "清水勇斗",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "赤川奏太",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "中村悠人",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "福井竣也",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "福田喜大",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "濱中純誠",
+        "jhsLastYear": 2023,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "須原蒼",
+        "jhsLastYear": 2022,
+        "highschool": "上宮",
+        "highschoolPrefecture": "大阪府",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "榛名\t群馬県": [
+      {
+        "player": "松本健太郎",
+        "jhsLastYear": 2021,
+        "highschool": "高崎商",
+        "highschoolPrefecture": "群馬県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      },
+      {
+        "player": "若林宝来",
+        "jhsLastYear": 2021,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
+    "明徳義塾\t高知県": [
+      {
+        "player": "片岡柾人",
+        "jhsLastYear": 2021,
+        "highschool": "明徳義塾",
+        "highschoolPrefecture": "高知県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "boys",
+        "basis": "pref"
+      }
+    ],
+    "稲城第三中学校\t東京都": [
+      {
+        "player": "小川蓮太郎",
+        "jhsLastYear": 2023,
+        "highschool": "清水ヶ丘",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "中村智葵",
+        "jhsLastYear": 2023,
+        "highschool": "高田商",
+        "highschoolPrefecture": "奈良県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "南龍之介",
+        "jhsLastYear": 2022,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "boys",
+        "basis": "name"
+      }
+    ],
     "吉富中学校\t福岡県": [
       {
         "player": "内田響己",
@@ -222,78 +937,645 @@
         "basis": "name"
       }
     ],
-    "明徳義塾中学校\t高知県": [
+    "就実中学校\t岡山県": [
       {
-        "player": "柴崎雄斗",
-        "jhsLastYear": 2025,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "大平庚真",
-        "jhsLastYear": 2025,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "福見哉太",
-        "jhsLastYear": 2025,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "添田玲音",
+        "player": "実末彩奈",
         "jhsLastYear": 2023,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
+        "highschool": "就実",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "岡野巴咲",
+        "jhsLastYear": 2023,
+        "highschool": "就実",
+        "highschoolPrefecture": "岡山県",
         "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
+        "highschoolGender": "girls",
         "basis": "pref"
       },
       {
-        "player": "林寿李稀",
-        "jhsLastYear": 2023,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "福見優心",
-        "jhsLastYear": 2023,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
+        "player": "近坂優衣",
+        "jhsLastYear": 2022,
+        "highschool": "就実",
+        "highschoolPrefecture": "岡山県",
         "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
+        "highschoolGender": "girls",
         "basis": "pair+pref"
       },
       {
-        "player": "加藤歓基",
+        "player": "足利茉奈",
         "jhsLastYear": 2022,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
+        "highschool": "就実",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "竹田凜",
+        "jhsLastYear": 2022,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
         "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "就実\t岡山県": [
+      {
+        "player": "脇坂瑠海",
+        "jhsLastYear": 2021,
+        "highschool": "京都光華",
+        "highschoolPrefecture": "京都府",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "岡美志",
+        "jhsLastYear": 2021,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "瓦井ひより",
+        "jhsLastYear": 2021,
+        "highschool": "福知山成美",
+        "highschoolPrefecture": "京都府",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "吾田\t宮崎県": [
+      {
+        "player": "鈴木心暖",
+        "jhsLastYear": 2021,
+        "highschool": "日南学園",
+        "highschoolPrefecture": "宮崎県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "倉田真織",
+        "jhsLastYear": 2021,
+        "highschool": "宮崎商",
+        "highschoolPrefecture": "宮崎県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "城端中学校\t富山県": [
+      {
+        "player": "樋口紗奈",
+        "jhsLastYear": 2024,
+        "highschool": "高岡工芸",
+        "highschoolPrefecture": "富山県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "牧優花",
+        "jhsLastYear": 2024,
+        "highschool": "京都光華",
+        "highschoolPrefecture": "京都府",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "林咲花",
+        "jhsLastYear": 2022,
+        "highschool": "京都光華",
+        "highschoolPrefecture": "京都府",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "山本優佳",
+        "jhsLastYear": 2023,
+        "highschool": "砺波",
+        "highschoolPrefecture": "富山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "山陽学園\t岡山県": [
+      {
+        "player": "渡邉和",
+        "jhsLastYear": 2021,
+        "highschool": "山陽学園",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "辻田莉夢",
+        "jhsLastYear": 2021,
+        "highschool": "山陽学園",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "神﨑萌花",
+        "jhsLastYear": 2021,
+        "highschool": "山陽学園",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "馬島沙英",
+        "jhsLastYear": 2021,
+        "highschool": "山陽学園",
+        "highschoolPrefecture": "岡山県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      }
+    ],
+    "朝日丘中学校\t愛知県": [
+      {
+        "player": "宮本彩羽",
+        "jhsLastYear": 2024,
+        "highschool": "和歌山信愛",
+        "highschoolPrefecture": "和歌山県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "関朝陽",
+        "jhsLastYear": 2023,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "黒木詩",
+        "jhsLastYear": 2023,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "赤星紗那",
+        "jhsLastYear": 2023,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "塚本光琉",
+        "jhsLastYear": 2023,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2025,
         "highschoolGender": "boys",
         "basis": "pref"
       },
       {
-        "player": "木本琉偉",
+        "player": "薄優心",
+        "jhsLastYear": 2023,
+        "highschool": "北越",
+        "highschoolPrefecture": "新潟県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "廣瀬礼衣",
+        "jhsLastYear": 2024,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "伊藤美咲華",
+        "jhsLastYear": 2023,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair"
+      },
+      {
+        "player": "松井文音",
+        "jhsLastYear": 2023,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "浦野はづき",
         "jhsLastYear": 2022,
-        "highschool": "明徳義塾",
-        "highschoolPrefecture": "高知県",
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
         "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pair"
+      },
+      {
+        "player": "塚本七海",
+        "jhsLastYear": 2022,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pair"
+      },
+      {
+        "player": "田上深央里",
+        "jhsLastYear": 2022,
+        "highschool": "三重",
+        "highschoolPrefecture": "三重県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pair"
+      }
+    ],
+    "中野中学校\t岩手県": [
+      {
+        "player": "長根周和",
+        "jhsLastYear": 2025,
+        "highschool": "八戸工大一",
+        "highschoolPrefecture": "青森県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "中村心響",
+        "jhsLastYear": 2023,
+        "highschool": "八戸工大一",
+        "highschoolPrefecture": "青森県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "八島銀音",
+        "jhsLastYear": 2023,
+        "highschool": "黒沢尻北",
+        "highschoolPrefecture": "岩手県",
+        "highschoolFirstYear": 2025,
         "highschoolGender": "boys",
         "basis": "pref"
+      },
+      {
+        "player": "橋場香久良",
+        "jhsLastYear": 2022,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "真下弥々",
+        "jhsLastYear": 2022,
+        "highschool": "八戸工大一",
+        "highschoolPrefecture": "青森県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "松山\t埼玉県": [
+      {
+        "player": "黒沢朋花",
+        "jhsLastYear": 2021,
+        "highschool": "広島翔洋",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "篠澤真那",
+        "jhsLastYear": 2021,
+        "highschool": "埼玉平成",
+        "highschoolPrefecture": "埼玉県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "庭田咲月",
+        "jhsLastYear": 2021,
+        "highschool": "埼玉平成",
+        "highschoolPrefecture": "埼玉県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      }
+    ],
+    "松山中学校\t埼玉県": [
+      {
+        "player": "五十畑咲和",
+        "jhsLastYear": 2025,
+        "highschool": "英明",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "篠澤美海",
+        "jhsLastYear": 2025,
+        "highschool": "羽黒",
+        "highschoolPrefecture": "山形県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "手塚咲希",
+        "jhsLastYear": 2025,
+        "highschool": "白鷗大足利",
+        "highschoolPrefecture": "栃木県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "利根川碧生",
+        "jhsLastYear": 2024,
+        "highschool": "尽誠学園",
+        "highschoolPrefecture": "香川県",
+        "highschoolFirstYear": 2026,
+        "highschoolGender": "boys",
+        "basis": "name"
+      },
+      {
+        "player": "中山萌",
+        "jhsLastYear": 2024,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "髙橋彩月",
+        "jhsLastYear": 2022,
+        "highschool": "文大杉並",
+        "highschoolPrefecture": "東京都",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "佐藤愛",
+        "jhsLastYear": 2022,
+        "highschool": "和歌山信愛",
+        "highschoolPrefecture": "和歌山県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "芳賀\t栃木県": [
+      {
+        "player": "村木涼果",
+        "jhsLastYear": 2021,
+        "highschool": "和歌山信愛",
+        "highschoolPrefecture": "和歌山県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "小城\t佐賀県": [
+      {
+        "player": "古賀香音",
+        "jhsLastYear": 2021,
+        "highschool": "牛津",
+        "highschoolPrefecture": "佐賀県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "古賀侑夏",
+        "jhsLastYear": 2021,
+        "highschool": "牛津",
+        "highschoolPrefecture": "佐賀県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "石井胡桃",
+        "jhsLastYear": 2021,
+        "highschool": "嬉野",
+        "highschoolPrefecture": "佐賀県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "中島千尋",
+        "jhsLastYear": 2021,
+        "highschool": "誠修",
+        "highschoolPrefecture": "福岡県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "田代愛花",
+        "jhsLastYear": 2021,
+        "highschool": "佐賀清和",
+        "highschoolPrefecture": "佐賀県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "小俣\t三重県": [
+      {
+        "player": "濱口芽花",
+        "jhsLastYear": 2021,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "東北\t青森県": [
+      {
+        "player": "天間麗奈",
+        "jhsLastYear": 2022,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "千葉遥菜",
+        "jhsLastYear": 2021,
+        "highschool": "東北",
+        "highschoolPrefecture": "宮城県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "name"
+      }
+    ],
+    "石川義塾中学校\t福島県": [
+      {
+        "player": "生田目和奈",
+        "jhsLastYear": 2023,
+        "highschool": "学法石川",
+        "highschoolPrefecture": "福島県",
+        "highschoolFirstYear": 2025,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "宮本絢菜",
+        "jhsLastYear": 2022,
+        "highschool": "学法石川",
+        "highschoolPrefecture": "福島県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "八重樫夢香",
+        "jhsLastYear": 2022,
+        "highschool": "学法石川",
+        "highschoolPrefecture": "福島県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "大曲\t秋田県": [
+      {
+        "player": "高橋星煌",
+        "jhsLastYear": 2022,
+        "highschool": "加計芸北",
+        "highschoolPrefecture": "広島県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "name"
+      },
+      {
+        "player": "佐藤美緒",
+        "jhsLastYear": 2022,
+        "highschool": "秋田令和",
+        "highschoolPrefecture": "秋田県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "朝日丘\t愛知県": [
+      {
+        "player": "薄優衣",
+        "jhsLastYear": 2021,
+        "highschool": "岡崎城西",
+        "highschoolPrefecture": "愛知県",
+        "highschoolFirstYear": 2022,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "榛原\t奈良県": [
+      {
+        "player": "福井理央",
+        "jhsLastYear": 2022,
+        "highschool": "高田商",
+        "highschoolPrefecture": "奈良県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "能都\t石川県": [
+      {
+        "player": "宮下日香莉",
+        "jhsLastYear": 2022,
+        "highschool": "能登",
+        "highschoolPrefecture": "石川県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      },
+      {
+        "player": "竹口陽菜",
+        "jhsLastYear": 2021,
+        "highschool": "能登",
+        "highschoolPrefecture": "石川県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pref"
+      }
+    ],
+    "芳賀中学校\t栃木県": [
+      {
+        "player": "阿久津美優",
+        "jhsLastYear": 2023,
+        "highschool": "白鷗大足利",
+        "highschoolPrefecture": "栃木県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "秋田紅美子",
+        "jhsLastYear": 2022,
+        "highschool": "宇都宮短大附",
+        "highschoolPrefecture": "栃木県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "螺良寧々",
+        "jhsLastYear": 2023,
+        "highschool": "白鷗大足利",
+        "highschoolPrefecture": "栃木県",
+        "highschoolFirstYear": 2024,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
+      },
+      {
+        "player": "廣谷流凛",
+        "jhsLastYear": 2022,
+        "highschool": "宇都宮短大附",
+        "highschoolPrefecture": "栃木県",
+        "highschoolFirstYear": 2023,
+        "highschoolGender": "girls",
+        "basis": "pair+pref"
       }
     ],
     "芝東中学校\t埼玉県": [
@@ -549,35 +1831,6 @@
         "basis": "name"
       }
     ],
-    "稲城第三中学校\t東京都": [
-      {
-        "player": "小川蓮太郎",
-        "jhsLastYear": 2023,
-        "highschool": "清水ヶ丘",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "中村智葵",
-        "jhsLastYear": 2023,
-        "highschool": "高田商",
-        "highschoolPrefecture": "奈良県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "南龍之介",
-        "jhsLastYear": 2022,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "boys",
-        "basis": "name"
-      }
-    ],
     "羽ノ浦中学校\t徳島県": [
       {
         "player": "山川実奈",
@@ -616,62 +1869,6 @@
         "highschoolFirstYear": 2024,
         "highschoolGender": "boys",
         "basis": "name"
-      }
-    ],
-    "取手第一中学校\t茨城県": [
-      {
-        "player": "宮本果歩",
-        "jhsLastYear": 2024,
-        "highschool": "成田",
-        "highschoolPrefecture": "千葉県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "松本怜奈",
-        "jhsLastYear": 2023,
-        "highschool": "柏中央",
-        "highschoolPrefecture": "千葉県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "泉屋咲穂",
-        "jhsLastYear": 2024,
-        "highschool": "文大杉並",
-        "highschoolPrefecture": "東京都",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "柏春花",
-        "jhsLastYear": 2023,
-        "highschool": "東北",
-        "highschoolPrefecture": "宮城県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "大門登馬",
-        "jhsLastYear": 2022,
-        "highschool": "尽誠学園",
-        "highschoolPrefecture": "香川県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "白川隼平",
-        "jhsLastYear": 2022,
-        "highschool": "霞ヶ浦",
-        "highschoolPrefecture": "茨城県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "boys",
-        "basis": "pref"
       }
     ],
     "大里\t静岡県": [
@@ -884,116 +2081,6 @@
         "basis": "pref"
       }
     ],
-    "朝日丘中学校\t愛知県": [
-      {
-        "player": "宮本彩羽",
-        "jhsLastYear": 2024,
-        "highschool": "和歌山信愛",
-        "highschoolPrefecture": "和歌山県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "関朝陽",
-        "jhsLastYear": 2023,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "黒木詩",
-        "jhsLastYear": 2023,
-        "highschool": "広島翔洋",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "赤星紗那",
-        "jhsLastYear": 2023,
-        "highschool": "東北",
-        "highschoolPrefecture": "宮城県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "塚本光琉",
-        "jhsLastYear": 2023,
-        "highschool": "岡崎城西",
-        "highschoolPrefecture": "愛知県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "薄優心",
-        "jhsLastYear": 2023,
-        "highschool": "北越",
-        "highschoolPrefecture": "新潟県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "廣瀬礼衣",
-        "jhsLastYear": 2024,
-        "highschool": "広島翔洋",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "伊藤美咲華",
-        "jhsLastYear": 2023,
-        "highschool": "広島翔洋",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair"
-      },
-      {
-        "player": "松井文音",
-        "jhsLastYear": 2023,
-        "highschool": "広島翔洋",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "浦野はづき",
-        "jhsLastYear": 2022,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "pair"
-      },
-      {
-        "player": "塚本七海",
-        "jhsLastYear": 2022,
-        "highschool": "広島翔洋",
-        "highschoolPrefecture": "広島県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "pair"
-      },
-      {
-        "player": "田上深央里",
-        "jhsLastYear": 2022,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "pair"
-      }
-    ],
     "岩見沢光陵\t北海道": [
       {
         "player": "大村怜央",
@@ -1023,80 +2110,6 @@
         "highschoolFirstYear": 2025,
         "highschoolGender": "boys",
         "basis": "pref"
-      }
-    ],
-    "市場中学校\t徳島県": [
-      {
-        "player": "宮地日奈乃",
-        "jhsLastYear": 2025,
-        "highschool": "脇町",
-        "highschoolPrefecture": "徳島県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "近藤みいる",
-        "jhsLastYear": 2025,
-        "highschool": "脇町",
-        "highschoolPrefecture": "徳島県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "源愛恵",
-        "jhsLastYear": 2024,
-        "highschool": "脇町",
-        "highschoolPrefecture": "徳島県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "松田悠那",
-        "jhsLastYear": 2024,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "那須亮太",
-        "jhsLastYear": 2024,
-        "highschool": "徳島科技",
-        "highschoolPrefecture": "徳島県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "宮田亮",
-        "jhsLastYear": 2024,
-        "highschool": "尽誠学園",
-        "highschoolPrefecture": "香川県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "堺瑠音",
-        "jhsLastYear": 2022,
-        "highschool": "岡山理大附",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "大倉優",
-        "jhsLastYear": 2022,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "boys",
-        "basis": "name"
       }
     ],
     "横芝中学校\t千葉県": [
@@ -1191,26 +2204,6 @@
         "highschoolFirstYear": 2024,
         "highschoolGender": "boys",
         "basis": "pair"
-      }
-    ],
-    "田原東部\t愛知県": [
-      {
-        "player": "石川智弘",
-        "jhsLastYear": 2022,
-        "highschool": "岡崎城西",
-        "highschoolPrefecture": "愛知県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "boys",
-        "basis": "pref"
-      },
-      {
-        "player": "石灘蒼瑛",
-        "jhsLastYear": 2022,
-        "highschool": "岡山理大附",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "boys",
-        "basis": "name"
       }
     ],
     "旭川啓北\t北海道": [
@@ -1448,35 +2441,6 @@
         "basis": "pref"
       }
     ],
-    "石川義塾中学校\t福島県": [
-      {
-        "player": "生田目和奈",
-        "jhsLastYear": 2023,
-        "highschool": "学法石川",
-        "highschoolPrefecture": "福島県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "宮本絢菜",
-        "jhsLastYear": 2022,
-        "highschool": "学法石川",
-        "highschoolPrefecture": "福島県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "八重樫夢香",
-        "jhsLastYear": 2022,
-        "highschool": "学法石川",
-        "highschoolPrefecture": "福島県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      }
-    ],
     "那賀川\t徳島県": [
       {
         "player": "宮本亜茉音",
@@ -1575,156 +2539,6 @@
         "basis": "name"
       }
     ],
-    "就実中学校\t岡山県": [
-      {
-        "player": "実末彩奈",
-        "jhsLastYear": 2023,
-        "highschool": "就実",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "岡野巴咲",
-        "jhsLastYear": 2023,
-        "highschool": "就実",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "近坂優衣",
-        "jhsLastYear": 2022,
-        "highschool": "就実",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "足利茉奈",
-        "jhsLastYear": 2022,
-        "highschool": "就実",
-        "highschoolPrefecture": "岡山県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "竹田凜",
-        "jhsLastYear": 2022,
-        "highschool": "三重",
-        "highschoolPrefecture": "三重県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "name"
-      }
-    ],
-    "松山中学校\t埼玉県": [
-      {
-        "player": "五十畑咲和",
-        "jhsLastYear": 2025,
-        "highschool": "英明",
-        "highschoolPrefecture": "香川県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "篠澤美海",
-        "jhsLastYear": 2025,
-        "highschool": "羽黒",
-        "highschoolPrefecture": "山形県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "手塚咲希",
-        "jhsLastYear": 2025,
-        "highschool": "白鷗大足利",
-        "highschoolPrefecture": "栃木県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "利根川碧生",
-        "jhsLastYear": 2024,
-        "highschool": "尽誠学園",
-        "highschoolPrefecture": "香川県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "中山萌",
-        "jhsLastYear": 2024,
-        "highschool": "東北",
-        "highschoolPrefecture": "宮城県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "髙橋彩月",
-        "jhsLastYear": 2022,
-        "highschool": "文大杉並",
-        "highschoolPrefecture": "東京都",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "佐藤愛",
-        "jhsLastYear": 2022,
-        "highschool": "和歌山信愛",
-        "highschoolPrefecture": "和歌山県",
-        "highschoolFirstYear": 2023,
-        "highschoolGender": "girls",
-        "basis": "name"
-      }
-    ],
-    "城端中学校\t富山県": [
-      {
-        "player": "樋口紗奈",
-        "jhsLastYear": 2024,
-        "highschool": "高岡工芸",
-        "highschoolPrefecture": "富山県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      },
-      {
-        "player": "牧優花",
-        "jhsLastYear": 2024,
-        "highschool": "京都光華",
-        "highschoolPrefecture": "京都府",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "林咲花",
-        "jhsLastYear": 2022,
-        "highschool": "京都光華",
-        "highschoolPrefecture": "京都府",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "山本優佳",
-        "jhsLastYear": 2023,
-        "highschool": "砺波",
-        "highschoolPrefecture": "富山県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pref"
-      }
-    ],
     "昭和学院中学校\t千葉県": [
       {
         "player": "叶屋玲音",
@@ -1774,89 +2588,24 @@
         "basis": "name"
       }
     ],
-    "芳賀中学校\t栃木県": [
+    "鷲敷\t徳島県": [
       {
-        "player": "阿久津美優",
-        "jhsLastYear": 2023,
-        "highschool": "白鷗大足利",
-        "highschoolPrefecture": "栃木県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "秋田紅美子",
+        "player": "吉岡梨緒",
         "jhsLastYear": 2022,
-        "highschool": "宇都宮短大附",
-        "highschoolPrefecture": "栃木県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "螺良寧々",
-        "jhsLastYear": 2023,
-        "highschool": "白鷗大足利",
-        "highschoolPrefecture": "栃木県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "pair+pref"
-      },
-      {
-        "player": "廣谷流凛",
-        "jhsLastYear": 2022,
-        "highschool": "宇都宮短大附",
-        "highschoolPrefecture": "栃木県",
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
         "highschoolFirstYear": 2023,
         "highschoolGender": "girls",
-        "basis": "pair+pref"
-      }
-    ],
-    "中野中学校\t岩手県": [
-      {
-        "player": "長根周和",
-        "jhsLastYear": 2025,
-        "highschool": "八戸工大一",
-        "highschoolPrefecture": "青森県",
-        "highschoolFirstYear": 2026,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "中村心響",
-        "jhsLastYear": 2023,
-        "highschool": "八戸工大一",
-        "highschoolPrefecture": "青森県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
-        "basis": "name"
-      },
-      {
-        "player": "八島銀音",
-        "jhsLastYear": 2023,
-        "highschool": "黒沢尻北",
-        "highschoolPrefecture": "岩手県",
-        "highschoolFirstYear": 2025,
-        "highschoolGender": "boys",
         "basis": "pref"
       },
       {
-        "player": "橋場香久良",
+        "player": "山崎苺碧",
         "jhsLastYear": 2022,
-        "highschool": "東北",
-        "highschoolPrefecture": "宮城県",
-        "highschoolFirstYear": 2024,
+        "highschool": "脇町",
+        "highschoolPrefecture": "徳島県",
+        "highschoolFirstYear": 2023,
         "highschoolGender": "girls",
-        "basis": "name"
-      },
-      {
-        "player": "真下弥々",
-        "jhsLastYear": 2022,
-        "highschool": "八戸工大一",
-        "highschoolPrefecture": "青森県",
-        "highschoolFirstYear": 2024,
-        "highschoolGender": "girls",
-        "basis": "name"
+        "basis": "pref"
       }
     ],
     "早来学園\t北海道": [

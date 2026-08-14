@@ -27,7 +27,7 @@
       "id": "aomori",
       "name": "青森県",
       "region": "東北",
-      "teamCount": 3,
+      "teamCount": 5,
       "schoolCount": 0,
       "clubCount": 3
     },
@@ -51,7 +51,7 @@
       "id": "akita",
       "name": "秋田県",
       "region": "東北",
-      "teamCount": 4,
+      "teamCount": 5,
       "schoolCount": 1,
       "clubCount": 3
     },
@@ -75,7 +75,7 @@
       "id": "ibaraki",
       "name": "茨城県",
       "region": "関東",
-      "teamCount": 7,
+      "teamCount": 8,
       "schoolCount": 1,
       "clubCount": 5
     },
@@ -83,7 +83,7 @@
       "id": "tochigi",
       "name": "栃木県",
       "region": "関東",
-      "teamCount": 7,
+      "teamCount": 8,
       "schoolCount": 2,
       "clubCount": 3
     },
@@ -91,7 +91,7 @@
       "id": "gunma",
       "name": "群馬県",
       "region": "関東",
-      "teamCount": 7,
+      "teamCount": 8,
       "schoolCount": 3,
       "clubCount": 3
     },
@@ -99,7 +99,7 @@
       "id": "saitama",
       "name": "埼玉県",
       "region": "関東",
-      "teamCount": 7,
+      "teamCount": 9,
       "schoolCount": 6,
       "clubCount": 0
     },
@@ -107,16 +107,16 @@
       "id": "chiba",
       "name": "千葉県",
       "region": "関東",
-      "teamCount": 6,
-      "schoolCount": 2,
+      "teamCount": 7,
+      "schoolCount": 3,
       "clubCount": 2
     },
     {
       "id": "tokyo",
       "name": "東京都",
       "region": "関東",
-      "teamCount": 6,
-      "schoolCount": 2,
+      "teamCount": 8,
+      "schoolCount": 3,
       "clubCount": 2
     },
     {
@@ -147,7 +147,7 @@
       "id": "toyama",
       "name": "富山県",
       "region": "北信越",
-      "teamCount": 5,
+      "teamCount": 6,
       "schoolCount": 2,
       "clubCount": 3
     },
@@ -155,7 +155,7 @@
       "id": "ishikawa",
       "name": "石川県",
       "region": "北信越",
-      "teamCount": 9,
+      "teamCount": 10,
       "schoolCount": 5,
       "clubCount": 3
     },
@@ -195,7 +195,7 @@
       "id": "aichi",
       "name": "愛知県",
       "region": "東海",
-      "teamCount": 10,
+      "teamCount": 11,
       "schoolCount": 4,
       "clubCount": 3
     },
@@ -211,7 +211,7 @@
       "id": "shiga",
       "name": "滋賀県",
       "region": "近畿",
-      "teamCount": 5,
+      "teamCount": 6,
       "schoolCount": 4,
       "clubCount": 1
     },
@@ -227,8 +227,8 @@
       "id": "osaka",
       "name": "大阪府",
       "region": "近畿",
-      "teamCount": 2,
-      "schoolCount": 2,
+      "teamCount": 3,
+      "schoolCount": 3,
       "clubCount": 0
     },
     {
@@ -243,7 +243,7 @@
       "id": "nara",
       "name": "奈良県",
       "region": "近畿",
-      "teamCount": 5,
+      "teamCount": 6,
       "schoolCount": 1,
       "clubCount": 4
     },
@@ -275,15 +275,15 @@
       "id": "okayama",
       "name": "岡山県",
       "region": "中国",
-      "teamCount": 6,
-      "schoolCount": 3,
+      "teamCount": 8,
+      "schoolCount": 4,
       "clubCount": 3
     },
     {
       "id": "hiroshima",
       "name": "広島県",
       "region": "中国",
-      "teamCount": 6,
+      "teamCount": 7,
       "schoolCount": 2,
       "clubCount": 4
     },
@@ -299,7 +299,7 @@
       "id": "tokushima",
       "name": "徳島県",
       "region": "四国",
-      "teamCount": 6,
+      "teamCount": 8,
       "schoolCount": 4,
       "clubCount": 0
     },
@@ -323,8 +323,8 @@
       "id": "kochi",
       "name": "高知県",
       "region": "四国",
-      "teamCount": 4,
-      "schoolCount": 2,
+      "teamCount": 5,
+      "schoolCount": 3,
       "clubCount": 2
     },
     {
@@ -339,7 +339,7 @@
       "id": "saga",
       "name": "佐賀県",
       "region": "九州",
-      "teamCount": 5,
+      "teamCount": 6,
       "schoolCount": 2,
       "clubCount": 3
     },
@@ -371,7 +371,7 @@
       "id": "miyazaki",
       "name": "宮崎県",
       "region": "九州",
-      "teamCount": 4,
+      "teamCount": 6,
       "schoolCount": 2,
       "clubCount": 0
     },
@@ -26689,6 +26689,190 @@
       ]
     },
     {
+      "id": "higashinagasaki",
+      "name": "東長崎",
+      "kind": "unknown",
+      "prefecture": "長崎県",
+      "prefectureId": "nagasaki",
+      "count": 12,
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2026
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-kyushu-block",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "ベスト8",
+        "score": 4,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-kyushu-block",
+          "tournamentLabel": "九州中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-kyushu-block",
+          "tournamentLabel": "九州中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": null,
+          "score": 0,
+          "players": [
+            "早田 琉羽",
+            "米倉 彩未"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "林 萌々音"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "西村 奏音",
+            "片山 伊織"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "西村 奏音",
+            "片山 伊織"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "早田 琉羽",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "米倉 彩未",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "八戸 葵衣",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "林 萌々音",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "西村 奏音",
+          "years": [
+            2022,
+            2023
+          ]
+        },
+        {
+          "name": "片山 伊織",
+          "years": [
+            2022,
+            2023
+          ]
+        }
+      ]
+    },
+    {
       "id": "himejifamiriiclub",
       "name": "姫路ふぁみりークラブ",
       "kind": "club",
@@ -29451,177 +29635,6 @@
       ]
     },
     {
-      "id": "higashinagasaki",
-      "name": "東長崎",
-      "kind": "unknown",
-      "prefecture": "長崎県",
-      "prefectureId": "nagasaki",
-      "count": 11,
-      "years": [
-        2022,
-        2023,
-        2024,
-        2026
-      ],
-      "genders": [
-        "girls"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship",
-        "secondaryschool-kyushu-block",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-championship",
-        "tournamentLabel": "全国中学校体育大会",
-        "short": "全中",
-        "year": 2022,
-        "categoryId": "team-none-girls",
-        "category": "team",
-        "gender": "girls",
-        "label": "ベスト8",
-        "score": 4,
-        "players": []
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-kyushu-block",
-          "tournamentLabel": "九州中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-kyushu-block",
-          "tournamentLabel": "九州中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": null,
-          "score": 0,
-          "players": [
-            "早田 琉羽",
-            "米倉 彩未"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-girls",
-          "category": "singles",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "林 萌々音"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "西村 奏音",
-            "片山 伊織"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "ベスト8",
-          "score": 4,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "西村 奏音",
-            "片山 伊織"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "早田 琉羽",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "米倉 彩未",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "八戸 葵衣",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "林 萌々音",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "西村 奏音",
-          "years": [
-            2022,
-            2023
-          ]
-        },
-        {
-          "name": "片山 伊織",
-          "years": [
-            2022,
-            2023
-          ]
-        }
-      ]
-    },
-    {
       "id": "shirakamijstc",
       "name": "白神JSTC",
       "kind": "club",
@@ -30279,6 +30292,161 @@
       ]
     },
     {
+      "id": "moriyama",
+      "name": "守山",
+      "kind": "unknown",
+      "prefecture": "滋賀県",
+      "prefectureId": "shiga",
+      "count": 10,
+      "years": [
+        2021,
+        2022,
+        2024
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "3回戦敗退",
+        "score": 1.15,
+        "players": [
+          "北村 温暉",
+          "稲葉 大幸"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "北村 温暉",
+            "稲葉 大幸"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "小山 悠侍郎",
+            "中野 恵多"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "岡野 恵大",
+            "中塚 啓仁"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "北村 温暉",
+            "稲葉 大幸"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "大田 新之助",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "稲葉 大幸",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "北村 温暉",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "岡野 恵大",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "小山 悠侍郎",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "中塚 啓仁",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "中野 恵多",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "mizusawaminami",
       "name": "水沢南中学校",
       "kind": "school",
@@ -30740,6 +30908,178 @@
           "name": "佐竹 颯音",
           "years": [
             2024
+          ]
+        }
+      ]
+    },
+    {
+      "id": "taharatoubu",
+      "name": "田原東部",
+      "kind": "unknown",
+      "prefecture": "愛知県",
+      "prefectureId": "aichi",
+      "count": 10,
+      "years": [
+        2021,
+        2022,
+        2026
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-tokai-block"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "準優勝",
+        "score": 5,
+        "players": [
+          "坂口 生磨",
+          "香山 侑月"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-tokai-block",
+          "tournamentLabel": "東海中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "鈴木 芽衣",
+            "朝倉 凛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "石川 智弘",
+            "石灘 蒼瑛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "準優勝",
+          "score": 5,
+          "players": [
+            "坂口 生磨",
+            "香山 侑月"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "準優勝",
+          "score": 5,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "鈴木 唯斗",
+            "大和 朔也"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "朝倉 凛",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "鈴木 芽衣",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "石川 智弘",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "石灘 蒼瑛",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "香山 侑月",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "坂口 生磨",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "大和 朔也",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "鈴木 唯斗",
+          "years": [
+            2021
           ]
         }
       ]
@@ -31968,6 +32308,145 @@
       ]
     },
     {
+      "id": "anabuki",
+      "name": "穴吹",
+      "kind": "unknown",
+      "prefecture": "徳島県",
+      "prefectureId": "tokushima",
+      "count": 9,
+      "years": [
+        2021,
+        2025,
+        2026
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-shikoku-block",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-shikoku-block",
+        "tournamentLabel": "四国中学校ソフトテニス大会",
+        "short": "ブロック",
+        "year": 2026,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "重長 志道",
+          "曽江 凌央"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-shikoku-block",
+          "tournamentLabel": "四国中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "重長 志道",
+            "曽江 凌央"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-shikoku-block",
+          "tournamentLabel": "四国中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "原田 太陽",
+            "天竹 大地"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "重長 志道",
+            "曽江 凌央"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "知野 稜平",
+            "大谷 瑠尉"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "原田 太陽",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "重長 志道",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "曽江 凌央",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "天竹 大地",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "大谷 瑠尉",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "知野 稜平",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "chuuou",
       "name": "江別市立中央中学校",
       "kind": "school",
@@ -32116,6 +32595,161 @@
           "name": "蓮實 璃子",
           "years": [
             2026
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ogi",
+      "name": "小城",
+      "kind": "unknown",
+      "prefecture": "佐賀県",
+      "prefectureId": "saga",
+      "count": 9,
+      "years": [
+        2021,
+        2024
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "ベスト8",
+        "score": 4,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "4回戦敗退",
+          "score": 1.2,
+          "players": [
+            "森 旺亮"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "石井 胡桃",
+            "古賀 香音"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "中島 千尋",
+            "古賀 侑夏"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "宮本 歩実",
+            "田代 愛花"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "児玉 聖",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "森 旺亮",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "宮本 歩実",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "古賀 香音",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "古賀 侑夏",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "石井 胡桃",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "中島 千尋",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "田代 愛花",
+          "years": [
+            2021
           ]
         }
       ]
@@ -33752,6 +34386,132 @@
       ]
     },
     {
+      "id": "omata",
+      "name": "小俣",
+      "kind": "unknown",
+      "prefecture": "三重県",
+      "prefectureId": "mie",
+      "count": 8,
+      "years": [
+        2021,
+        2024,
+        2025
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "團野 蒼海",
+          "濱口 芽花"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "重里 知哉"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "伊藤 飛空凪"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "團野 蒼海",
+            "濱口 芽花"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "重里 知哉",
+          "years": [
+            2025
+          ]
+        },
+        {
+          "name": "北川 仁",
+          "years": [
+            2024,
+            2025
+          ]
+        },
+        {
+          "name": "安西 日茉利",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "伊藤 飛空凪",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "大原 蓮翔",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "團野 蒼海",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "濱口 芽花",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "tarumichuuou",
       "name": "垂水中央",
       "kind": "unknown",
@@ -35183,6 +35943,134 @@
           "name": "八重 柊一郎",
           "years": [
             2025
+          ]
+        }
+      ]
+    },
+    {
+      "id": "azumayayama",
+      "name": "東谷山",
+      "kind": "unknown",
+      "prefecture": "鹿児島県",
+      "prefectureId": "kagoshima",
+      "count": 8,
+      "years": [
+        2021,
+        2024,
+        2025,
+        2026
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-kyushu-block",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-kyushu-block",
+        "tournamentLabel": "九州中学校ソフトテニス大会",
+        "short": "ブロック",
+        "year": 2026,
+        "categoryId": "team-none-boys",
+        "category": "team",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-kyushu-block",
+          "tournamentLabel": "九州中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-kyushu-block",
+          "tournamentLabel": "九州中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": null,
+          "score": 0,
+          "players": [
+            "大薄 梨久人",
+            "今吉 柊真"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "大薄 梨久人",
+            "今吉 柊真"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "菖蒲谷 宙",
+            "松下 翔"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "今吉 柊真",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "大薄 梨久人",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "安楽 花絢",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "松下 翔",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "菖蒲谷 宙",
+          "years": [
+            2021
           ]
         }
       ]
@@ -37325,6 +38213,130 @@
       ]
     },
     {
+      "id": "iwamizawahikariryou",
+      "name": "岩見沢光陵",
+      "kind": "unknown",
+      "prefecture": "北海道",
+      "prefectureId": "hokkaido",
+      "count": 7,
+      "years": [
+        2021,
+        2022,
+        2023
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2023,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "1回戦敗退",
+        "score": 1.05,
+        "players": [
+          "大村 怜央",
+          "樋口 颯汰"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "大村 怜央",
+            "樋口 颯汰"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "大村 怜央",
+            "佐藤 諒"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "大村 怜央",
+          "years": [
+            2022,
+            2023
+          ]
+        },
+        {
+          "name": "樋口 颯汰",
+          "years": [
+            2023
+          ]
+        },
+        {
+          "name": "佐藤 諒",
+          "years": [
+            2022
+          ]
+        }
+      ]
+    },
+    {
       "id": "tamaki",
       "name": "玉城",
       "kind": "unknown",
@@ -37794,111 +38806,114 @@
       ]
     },
     {
-      "id": "anabuki",
-      "name": "穴吹",
+      "id": "wareta",
+      "name": "吾田",
       "kind": "unknown",
-      "prefecture": "徳島県",
-      "prefectureId": "tokushima",
+      "prefecture": "宮崎県",
+      "prefectureId": "miyazaki",
       "count": 7,
       "years": [
-        2025,
-        2026
+        2021,
+        2024,
+        2025
       ],
       "genders": [
-        "boys"
+        "boys",
+        "girls"
       ],
       "tournamentIds": [
-        "secondaryschool-shikoku-block",
+        "secondaryschool-championship",
         "zennihon-secondaryschool-versus"
       ],
       "best": {
-        "tournamentId": "secondaryschool-shikoku-block",
-        "tournamentLabel": "四国中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
         "categoryId": "doubles-none-boys",
         "category": "doubles",
         "gender": "boys",
-        "label": "ベスト8",
-        "score": 4,
+        "label": "1回戦敗退",
+        "score": 1.05,
         "players": [
-          "重長 志道",
-          "曽江 凌央"
+          "森山 碧空",
+          "山口 凖斗"
         ]
       },
       "results": [
         {
-          "tournamentId": "secondaryschool-shikoku-block",
-          "tournamentLabel": "四国中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "重長 志道",
-            "曽江 凌央"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-shikoku-block",
-          "tournamentLabel": "四国中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "原田 太陽",
-            "天竹 大地"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
           "label": "1回戦敗退",
           "score": 1.05,
           "players": [
-            "重長 志道",
-            "曽江 凌央"
+            "森山 碧空",
+            "山口 凖斗"
           ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "鈴木 心暖",
+            "倉田 真織"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
         }
       ],
       "members": [
         {
-          "name": "原田 太陽",
+          "name": "戸田 璃斗",
           "years": [
-            2025,
-            2026
+            2024,
+            2025
           ]
         },
         {
-          "name": "重長 志道",
+          "name": "山口 凖斗",
           "years": [
-            2025,
-            2026
+            2021
           ]
         },
         {
-          "name": "曽江 凌央",
+          "name": "森山 碧空",
           "years": [
-            2025,
-            2026
+            2021
           ]
         },
         {
-          "name": "天竹 大地",
+          "name": "倉田 真織",
           "years": [
-            2026
+            2021
+          ]
+        },
+        {
+          "name": "鈴木 心暖",
+          "years": [
+            2021
           ]
         }
       ]
@@ -38255,6 +39270,262 @@
       ]
     },
     {
+      "id": "shijou",
+      "name": "市場",
+      "kind": "unknown",
+      "prefecture": "徳島県",
+      "prefectureId": "tokushima",
+      "count": 7,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト4",
+        "score": 4.5,
+        "players": [
+          "宮田 成将",
+          "盛岡 昂生"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": [
+            "宮田 成将",
+            "盛岡 昂生"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "藤原 陽菜",
+            "亀井 美来"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "堺 瑠音",
+            "美馬 隆之介"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "亀井 美来",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "宮田 成将",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "堺 瑠音",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "盛岡 昂生",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "藤原 陽菜",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "美馬 隆之介",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shuujitsu-2",
+      "name": "就実",
+      "kind": "unknown",
+      "prefecture": "岡山県",
+      "prefectureId": "okayama",
+      "count": 7,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "ベスト4",
+        "score": 4.5,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "柴田 凜",
+            "近坂 優衣"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "足利 茉奈",
+            "瓦井 ひより"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "脇坂 瑠海",
+            "岡 美志"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "岡 美志",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "瓦井 ひより",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "近坂 優衣",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "柴田 凜",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "足利 茉奈",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "脇坂 瑠海",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "jouyou",
       "name": "城陽",
       "kind": "unknown",
@@ -38485,6 +39756,133 @@
       ]
     },
     {
+      "id": "seimeigakuen-2",
+      "name": "清明学園",
+      "kind": "school",
+      "prefecture": "東京都",
+      "prefectureId": "tokyo",
+      "count": 7,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-boys",
+        "category": "team",
+        "gender": "boys",
+        "label": "優勝",
+        "score": 6,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "植田 璃音",
+            "伊藤 幹太"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "樋口 大翔",
+            "浦濱 大馬"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "千葉 翠",
+            "河原 愛花"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "伊藤 幹太",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "浦濱 大馬",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "河原 愛花",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "植田 璃音",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "千葉 翠",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "樋口 大翔",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "asakawa",
       "name": "浅川中学校",
       "kind": "school",
@@ -38595,6 +39993,136 @@
           "years": [
             2024,
             2025
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ootsuka",
+      "name": "大塚",
+      "kind": "unknown",
+      "prefecture": "宮崎県",
+      "prefectureId": "miyazaki",
+      "count": 7,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "福岡 大河",
+          "茶木 廉太郎"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "福岡 大河",
+            "茶木 廉太郎"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "田村 俊輔",
+            "中田 敦仁"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "工藤 誠士郎",
+            "茶木 將臣"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "茶木 廉太郎",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "中田 敦仁",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "田村 俊輔",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "福岡 大河",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "工藤 誠士郎",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "茶木 將臣",
+          "years": [
+            2021
           ]
         }
       ]
@@ -40879,6 +42407,124 @@
       ]
     },
     {
+      "id": "inagidaisan-2",
+      "name": "稲城第三",
+      "kind": "unknown",
+      "prefecture": "東京都",
+      "prefectureId": "tokyo",
+      "count": 6,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "3回戦敗退",
+        "score": 1.15,
+        "players": [
+          "中山 真言",
+          "早川 悠佑"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "中山 真言",
+            "早川 悠佑"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "岩田 夏穂",
+            "磯部 由佳"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "南 龍之介",
+            "笹原 星来"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "磯部 由佳",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "岩田 夏穂",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "笹原 星来",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "早川 悠佑",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "中山 真言",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "南 龍之介",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "hamurausc",
       "name": "羽村USC",
       "kind": "club",
@@ -40968,116 +42614,6 @@
           "name": "最上 夏羽",
           "years": [
             2025
-          ]
-        }
-      ]
-    },
-    {
-      "id": "iwamizawahikariryou",
-      "name": "岩見沢光陵",
-      "kind": "unknown",
-      "prefecture": "北海道",
-      "prefectureId": "hokkaido",
-      "count": 6,
-      "years": [
-        2022,
-        2023
-      ],
-      "genders": [
-        "boys"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-championship",
-        "tournamentLabel": "全国中学校体育大会",
-        "short": "全中",
-        "year": 2023,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "1回戦敗退",
-        "score": 1.05,
-        "players": [
-          "大村 怜央",
-          "樋口 颯汰"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "大村 怜央",
-            "樋口 颯汰"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "大村 怜央",
-            "佐藤 諒"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        }
-      ],
-      "members": [
-        {
-          "name": "大村 怜央",
-          "years": [
-            2022,
-            2023
-          ]
-        },
-        {
-          "name": "樋口 颯汰",
-          "years": [
-            2023
-          ]
-        },
-        {
-          "name": "佐藤 諒",
-          "years": [
-            2022
           ]
         }
       ]
@@ -41942,6 +43478,235 @@
       ]
     },
     {
+      "id": "sanyougakuen-2",
+      "name": "山陽学園",
+      "kind": "school",
+      "prefecture": "岡山県",
+      "prefectureId": "okayama",
+      "count": 6,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "1回戦敗退",
+        "score": 1.05,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "渡邉 和",
+            "神﨑 萌花"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "馬島 沙英",
+            "辻田 莉夢"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "神﨑 萌花",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "辻田 莉夢",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "渡邉 和",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "馬島 沙英",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
+      "id": "terai",
+      "name": "寺井",
+      "kind": "unknown",
+      "prefecture": "石川県",
+      "prefectureId": "ishikawa",
+      "count": 6,
+      "years": [
+        2021,
+        2022,
+        2023
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "2回戦敗退",
+        "score": 1.1,
+        "players": [
+          "斎藤 優月",
+          "東山 怜愛"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "久田 陸人",
+            "界 利來"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "斎藤 優月",
+            "東山 怜愛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "界 利來",
+          "years": [
+            2023
+          ]
+        },
+        {
+          "name": "久田 陸人",
+          "years": [
+            2023
+          ]
+        },
+        {
+          "name": "斎藤 優月",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "東山 怜愛",
+          "years": [
+            2022
+          ]
+        }
+      ]
+    },
+    {
       "id": "sasagurikita",
       "name": "篠栗北中学校",
       "kind": "school",
@@ -42051,6 +43816,124 @@
       ]
     },
     {
+      "id": "toridedaiichi-2",
+      "name": "取手第一",
+      "kind": "unknown",
+      "prefecture": "茨城県",
+      "prefectureId": "ibaraki",
+      "count": 6,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "3回戦敗退",
+        "score": 1.15,
+        "players": [
+          "大門 登馬",
+          "髙嶋 雅弥"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "大門 登馬",
+            "髙嶋 雅弥"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "福島 慶大",
+            "白川 隼平"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "柏 春花",
+            "松本 怜奈"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "松本 怜奈",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "大門 登馬",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "柏 春花",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "白川 隼平",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "福島 慶大",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "髙嶋 雅弥",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "oyamajounan",
       "name": "小山城南",
       "kind": "unknown",
@@ -42145,102 +44028,6 @@
           "name": "小野 理月",
           "years": [
             2025
-          ]
-        }
-      ]
-    },
-    {
-      "id": "omata",
-      "name": "小俣",
-      "kind": "unknown",
-      "prefecture": "三重県",
-      "prefectureId": "mie",
-      "count": 6,
-      "years": [
-        2024,
-        2025
-      ],
-      "genders": [
-        "boys",
-        "girls"
-      ],
-      "tournamentIds": [
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "tournamentLabel": "都道府県対抗全日本中学生大会",
-        "short": "県対抗",
-        "year": 2025,
-        "categoryId": "singles-none-boys",
-        "category": "singles",
-        "gender": "boys",
-        "label": "1回戦敗退",
-        "score": 1.05,
-        "players": [
-          "重里 知哉"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "singles-none-boys",
-          "category": "singles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "重里 知哉"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-boys",
-          "category": "singles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "伊藤 飛空凪"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "重里 知哉",
-          "years": [
-            2025
-          ]
-        },
-        {
-          "name": "北川 仁",
-          "years": [
-            2024,
-            2025
-          ]
-        },
-        {
-          "name": "安西 日茉利",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "伊藤 飛空凪",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "大原 蓮翔",
-          "years": [
-            2024
           ]
         }
       ]
@@ -42344,6 +44131,347 @@
           "name": "東 理紗",
           "years": [
             2025
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shouwagakuin-2",
+      "name": "昭和学院",
+      "kind": "school",
+      "prefecture": "千葉県",
+      "prefectureId": "chiba",
+      "count": 6,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト4",
+        "score": 4.5,
+        "players": [
+          "内田 陽斗",
+          "井手 凛太"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": [
+            "内田 陽斗",
+            "井手 凛太"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "稲葉 あこ",
+            "服部 七海"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "井手 凛太",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "稲葉 あこ",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "内田 陽斗",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "服部 七海",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haibara",
+      "name": "榛原",
+      "kind": "unknown",
+      "prefecture": "奈良県",
+      "prefectureId": "nara",
+      "count": 6,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "間井谷 紗生",
+          "福井 理央"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "間井谷 紗生",
+            "福井 理央"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "間井谷 紗生",
+            "福井 理央"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "間井谷 紗生",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "福井 理央",
+          "years": [
+            2021,
+            2022
+          ]
+        }
+      ]
+    },
+    {
+      "id": "haruna",
+      "name": "榛名",
+      "kind": "unknown",
+      "prefecture": "群馬県",
+      "prefectureId": "gunma",
+      "count": 6,
+      "years": [
+        2021,
+        2024,
+        2026
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-kanto-block",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "tournamentLabel": "都道府県対抗全日本中学生大会",
+        "short": "県対抗",
+        "year": 2024,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "2回戦敗退",
+        "score": 1.1,
+        "players": [
+          "山野 優珠",
+          "大塚 あみ"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "山野 優珠",
+            "大塚 あみ"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "浦野 珠来"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "若林 宝来",
+            "松本 健太郎"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "里見 星空",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "浦野 珠来",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "山野 優珠",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "大塚 あみ",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "若林 宝来",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "松本 健太郎",
+          "years": [
+            2021
           ]
         }
       ]
@@ -42773,6 +44901,117 @@
         {
           "name": "神藏 悠月",
           "years": [
+            2022
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oomagari",
+      "name": "大曲",
+      "kind": "unknown",
+      "prefecture": "秋田県",
+      "prefectureId": "akita",
+      "count": 6,
+      "years": [
+        2021,
+        2022,
+        2026
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-tohoku-block"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "3回戦敗退",
+        "score": 1.15,
+        "players": [
+          "高橋 星煌",
+          "佐藤 美緒"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-tohoku-block",
+          "tournamentLabel": "東北中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "大友 康聖",
+            "髙𫞏 凜"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "高橋 星煌",
+            "佐藤 美緒"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "高橋 星煌",
+            "佐藤 美緒"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "大友 康聖",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "髙𫞏 凜",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "高橋 星煌",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "佐藤 美緒",
+          "years": [
+            2021,
             2022
           ]
         }
@@ -43507,105 +45746,6 @@
             2024,
             2025,
             2026
-          ]
-        }
-      ]
-    },
-    {
-      "id": "azumayayama",
-      "name": "東谷山",
-      "kind": "unknown",
-      "prefecture": "鹿児島県",
-      "prefectureId": "kagoshima",
-      "count": 6,
-      "years": [
-        2024,
-        2025,
-        2026
-      ],
-      "genders": [
-        "boys",
-        "girls"
-      ],
-      "tournamentIds": [
-        "secondaryschool-kyushu-block",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-kyushu-block",
-        "tournamentLabel": "九州中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
-        "categoryId": "team-none-boys",
-        "category": "team",
-        "gender": "boys",
-        "label": "ベスト8",
-        "score": 4,
-        "players": []
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-kyushu-block",
-          "tournamentLabel": "九州中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-kyushu-block",
-          "tournamentLabel": "九州中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": null,
-          "score": 0,
-          "players": [
-            "大薄 梨久人",
-            "今吉 柊真"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "大薄 梨久人",
-            "今吉 柊真"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "今吉 柊真",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "大薄 梨久人",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "安楽 花絢",
-          "years": [
-            2024
           ]
         }
       ]
@@ -46583,19 +48723,17 @@
       ]
     },
     {
-      "id": "terai",
-      "name": "寺井",
+      "id": "miharadaisan",
+      "name": "三原第三",
       "kind": "unknown",
-      "prefecture": "石川県",
-      "prefectureId": "ishikawa",
+      "prefecture": "広島県",
+      "prefectureId": "hiroshima",
       "count": 5,
       "years": [
-        2022,
-        2023
+        2021
       ],
       "genders": [
-        "boys",
-        "girls"
+        "boys"
       ],
       "tournamentIds": [
         "secondaryschool-championship"
@@ -46604,15 +48742,15 @@
         "tournamentId": "secondaryschool-championship",
         "tournamentLabel": "全国中学校体育大会",
         "short": "全中",
-        "year": 2022,
-        "categoryId": "doubles-none-girls",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
         "category": "doubles",
-        "gender": "girls",
+        "gender": "boys",
         "label": "2回戦敗退",
         "score": 1.1,
         "players": [
-          "斎藤 優月",
-          "東山 怜愛"
+          "清家 蒼人",
+          "森崎 将年"
         ]
       },
       "results": [
@@ -46620,68 +48758,68 @@
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
-          "year": 2023,
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "清家 蒼人",
+            "森崎 将年"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
           "label": "1回戦敗退",
           "score": 1.05,
           "players": [
-            "久田 陸人",
-            "界 利來"
+            "森川 俸志",
+            "杉原 羚夢"
           ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "斎藤 優月",
-            "東山 怜愛"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": []
         }
       ],
       "members": [
         {
-          "name": "界 利來",
+          "name": "森崎 将年",
           "years": [
-            2023
+            2021
           ]
         },
         {
-          "name": "久田 陸人",
+          "name": "森川 俸志",
           "years": [
-            2023
+            2021
           ]
         },
         {
-          "name": "斎藤 優月",
+          "name": "杉原 羚夢",
           "years": [
-            2022
+            2021
           ]
         },
         {
-          "name": "東山 怜愛",
+          "name": "清家 蒼人",
           "years": [
-            2022
+            2021
           ]
         }
       ]
@@ -46784,6 +48922,109 @@
           "name": "中島 悠真",
           "years": [
             2025
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shibahigashi-2",
+      "name": "芝東",
+      "kind": "unknown",
+      "prefecture": "埼玉県",
+      "prefectureId": "saitama",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "赤沼 裕希",
+          "石田 輝"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "赤沼 裕希",
+            "石田 輝"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "脇谷 結楽",
+            "熊木 咲彩"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "熊木 咲彩",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "石田 輝",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "赤沼 裕希",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "脇谷 結楽",
+          "years": [
+            2021
           ]
         }
       ]
@@ -46988,7 +49229,7 @@
       ]
     },
     {
-      "id": "ogi",
+      "id": "oginaka",
       "name": "小城中",
       "kind": "school",
       "prefecture": "佐賀県",
@@ -47167,6 +49408,204 @@
           "name": "德元 颯人",
           "years": [
             2023
+          ]
+        }
+      ]
+    },
+    {
+      "id": "matsuyama-2",
+      "name": "松山",
+      "kind": "unknown",
+      "prefecture": "埼玉県",
+      "prefectureId": "saitama",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "優勝",
+        "score": 6,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "優勝",
+          "score": 6,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": [
+            "黒沢 朋花",
+            "佐藤 愛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "庭田 咲月",
+            "篠澤 真那"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "黒沢 朋花",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "佐藤 愛",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "篠澤 真那",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "庭田 咲月",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jouguugakuen",
+      "name": "上宮学園",
+      "kind": "school",
+      "prefecture": "大阪府",
+      "prefectureId": "osaka",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-boys",
+        "category": "team",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "三上 柊二",
+            "平井 啓吾"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "須原 蒼",
+            "濱中 純誠"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "三上 柊二",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "須原 蒼",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "平井 啓吾",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "濱中 純誠",
+          "years": [
+            2021
           ]
         }
       ]
@@ -47939,6 +50378,108 @@
       ]
     },
     {
+      "id": "asahioka",
+      "name": "朝日丘",
+      "kind": "unknown",
+      "prefecture": "愛知県",
+      "prefectureId": "aichi",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "準優勝",
+        "score": 5,
+        "players": [
+          "薄 優衣",
+          "塚本 七海"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "準優勝",
+          "score": 5,
+          "players": [
+            "薄 優衣",
+            "塚本 七海"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "田上 深央里",
+            "三輪 優月"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "三輪 優月",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "塚本 七海",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "田上 深央里",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "薄 優衣",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "kakujou",
       "name": "鶴城中学校",
       "kind": "school",
@@ -48033,111 +50574,6 @@
         },
         {
           "name": "中野 天希人",
-          "years": [
-            2022
-          ]
-        }
-      ]
-    },
-    {
-      "id": "taharatoubu",
-      "name": "田原東部",
-      "kind": "unknown",
-      "prefecture": "愛知県",
-      "prefectureId": "aichi",
-      "count": 5,
-      "years": [
-        2022,
-        2026
-      ],
-      "genders": [
-        "boys",
-        "girls"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship",
-        "secondaryschool-tokai-block"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-championship",
-        "tournamentLabel": "全国中学校体育大会",
-        "short": "全中",
-        "year": 2022,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "ベスト8",
-        "score": 4,
-        "players": [
-          "石川 智弘",
-          "石灘 蒼瑛"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-tokai-block",
-          "tournamentLabel": "東海中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "鈴木 芽衣",
-            "朝倉 凛"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "石川 智弘",
-            "石灘 蒼瑛"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2022,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        }
-      ],
-      "members": [
-        {
-          "name": "朝倉 凛",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "鈴木 芽衣",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "石川 智弘",
-          "years": [
-            2022
-          ]
-        },
-        {
-          "name": "石灘 蒼瑛",
           "years": [
             2022
           ]
@@ -48447,6 +50883,113 @@
           "name": "髙橋 律芯",
           "years": [
             2026
+          ]
+        }
+      ]
+    },
+    {
+      "id": "touhoku",
+      "name": "東北",
+      "kind": "unknown",
+      "prefecture": "青森県",
+      "prefectureId": "aomori",
+      "count": 5,
+      "years": [
+        2021,
+        2022,
+        2024
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "zennihon-secondaryschool-versus",
+        "tournamentLabel": "都道府県対抗全日本中学生大会",
+        "short": "県対抗",
+        "year": 2024,
+        "categoryId": "singles-none-girls",
+        "category": "singles",
+        "gender": "girls",
+        "label": "1回戦敗退",
+        "score": 1.05,
+        "players": [
+          "中嶋 莉奈"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "中嶋 莉奈"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "天間 麗奈",
+            "中嶋 琴音"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "千葉 遥菜",
+            "中嶋 琴音"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "中嶋 莉奈",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "中嶋 琴音",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "天間 麗奈",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "千葉 遥菜",
+          "years": [
+            2021
           ]
         }
       ]
@@ -48872,6 +51415,207 @@
       ]
     },
     {
+      "id": "nyuuzen",
+      "name": "入善",
+      "kind": "unknown",
+      "prefecture": "富山県",
+      "prefectureId": "toyama",
+      "count": 5,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "1回戦敗退",
+        "score": 1.05,
+        "players": [
+          "小坂 咲翔",
+          "大和 有"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "小坂 咲翔",
+            "大和 有"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "小坂 海翔",
+            "小坂 咲翔"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "小坂 咲翔",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "大和 有",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "小坂 海翔",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
+      "id": "noto",
+      "name": "能都",
+      "kind": "unknown",
+      "prefecture": "石川県",
+      "prefectureId": "ishikawa",
+      "count": 5,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "2回戦敗退",
+        "score": 1.1,
+        "players": [
+          "小原 萌々子",
+          "宮下 日香莉"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "小原 萌々子",
+            "宮下 日香莉"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "竹口 陽菜",
+            "小原 暖乃"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "宮下 日香莉",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "小原 萌々子",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "小原 暖乃",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "竹口 陽菜",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "shiroishi",
       "name": "白石",
       "kind": "unknown",
@@ -49172,6 +51916,104 @@
       ]
     },
     {
+      "id": "onoe",
+      "name": "尾上",
+      "kind": "unknown",
+      "prefecture": "青森県",
+      "prefectureId": "aomori",
+      "count": 5,
+      "years": [
+        2021,
+        2022
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "優勝",
+        "score": 6,
+        "players": [
+          "水木 洸",
+          "松田 拳弥"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": [
+            "水木 洸",
+            "松田 拳弥"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "齋藤 玲壱",
+            "水木 洸"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "松田 拳弥",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "水木 洸",
+          "years": [
+            2021,
+            2022
+          ]
+        },
+        {
+          "name": "齋藤 玲壱",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "fujinomiyadaiyon",
       "name": "富士宮第四",
       "kind": "unknown",
@@ -49347,6 +52189,108 @@
       ]
     },
     {
+      "id": "haga-2",
+      "name": "芳賀",
+      "kind": "unknown",
+      "prefecture": "栃木県",
+      "prefectureId": "tochigi",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "2回戦敗退",
+        "score": 1.1,
+        "players": [
+          "設樂 理莉",
+          "村木 涼果"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "設樂 理莉",
+            "村木 涼果"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "秋田 紅美子",
+            "廣谷 流凛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "秋田 紅美子",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "設樂 理莉",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "村木 涼果",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "廣谷 流凛",
+          "years": [
+            2021
+          ]
+        }
+      ]
+    },
+    {
       "id": "hondo",
       "name": "本渡中学校",
       "kind": "school",
@@ -49435,6 +52379,105 @@
           "years": [
             2025,
             2026
+          ]
+        }
+      ]
+    },
+    {
+      "id": "akinorigijuku",
+      "name": "明徳義塾",
+      "kind": "school",
+      "prefecture": "高知県",
+      "prefectureId": "kochi",
+      "count": 5,
+      "years": [
+        2021
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2021,
+        "categoryId": "team-none-boys",
+        "category": "team",
+        "gender": "boys",
+        "label": "ベスト4",
+        "score": 4.5,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "福見 優心",
+            "木本 琉偉"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "片岡 柾人",
+            "加藤 歓基"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "加藤 歓基",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "福見 優心",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "片岡 柾人",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "name": "木本 琉偉",
+          "years": [
+            2021
           ]
         }
       ]
@@ -49545,6 +52588,111 @@
           "name": "宝満 天音",
           "years": [
             2023
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wajiki",
+      "name": "鷲敷",
+      "kind": "unknown",
+      "prefecture": "徳島県",
+      "prefectureId": "tokushima",
+      "count": 5,
+      "years": [
+        2021,
+        2022,
+        2024
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2022,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
+        "gender": "girls",
+        "label": "2回戦敗退",
+        "score": 1.1,
+        "players": [
+          "山崎 苺碧",
+          "吉岡 梨緒"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "嶋田 美愛"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2022,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "山崎 苺碧",
+            "吉岡 梨緒"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2021,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "嶋田 美愛",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "柏木 海煌",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "吉岡 梨緒",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "name": "山崎 苺碧",
+          "years": [
+            2022
           ]
         }
       ]

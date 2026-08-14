@@ -1139,9 +1139,10 @@
       "canonical": "國學院大學",
       "aliases": [
         "國學院大学",
-        "國学院大学"
+        "國学院大学",
+        "學院大學"
       ],
-      "note": "旧字体 學→学 の揺れ。正式名称は國學院大學。2026-07 異体字対応で検出"
+      "note": "旧字体 學→学 の揺れ。正式名称は國學院大學。2026-07 異体字対応で検出 / 2026-08-14: インカレ2023 女子ダブルスの先頭欠落「學院大學」を追加。"
     },
     {
       "canonical": "土佐中学校",
@@ -5085,6 +5086,297 @@
         ]
       },
       "note": "高知県。**四国高校ブロック2026の出典が高校を「土佐中学校」と誤記している**。土佐中学校・高等学校は中高一貫校。同ファイルの高知県の他チームは全て高校（高知小津・明徳義塾・土佐女子・中村・高知学芸・宿毛工・追手前・岡豊・春野）。**選手4名が姓のみのデータで、他3件のような選手名での裏付けは取れていない**（2026-08-13 ユーザー判断で適用）。高知県には本物の土佐中学校もあるため大会・県で限定する"
+    },
+    {
+      "canonical": "神戸松蔭女子学院大学",
+      "aliases": [
+        "戸松蔭女子学院大学",
+        "神⼾松蔭⼥⼦学院⼤学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university",
+          "zennihon-indoor",
+          "asian-games-qualifier"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md / 異体字（康熙部首ブロックの ⼾⼥⼦⼤）も同じ正準名へ寄せる。**2025年に「神戸松蔭大学」へ改称しており、正しい表記が2つ残る点は未決** / 2026-08-14: 欠落表記が zennihon-indoor・asian-games-qualifier にも漏れていたため scope を拡張（大学生が一般大会に出るため大学名は大学大会の外にも現れる）"
+    },
+    {
+      "canonical": "昭和学院短期大学",
+      "aliases": [
+        "和学院短期大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "京都産業大学",
+      "aliases": [
+        "都産業大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "至学館大学",
+      "aliases": [
+        "学館大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "日本体育大学",
+      "aliases": [
+        "本体育大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "千里金蘭大学",
+      "aliases": [
+        "里金蘭大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "関西学院大学",
+      "aliases": [
+        "西学院大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "福岡大学",
+      "aliases": [
+        "岡大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "宮城学院女子大学",
+      "aliases": [
+        "城学院女子大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "福山平成大学",
+      "aliases": [
+        "山平成大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "関西外国語大学",
+      "aliases": [
+        "西外国語大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "白鴎大学",
+      "aliases": [
+        "鴎大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "関西大学",
+      "aliases": [
+        "西大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md / **名前だけでは「城西大学」とも両立する**。吉本裕香・辻元芽唯が他年に関西大学で出場していることで確定"
+    },
+    {
+      "canonical": "金沢星稜大学",
+      "aliases": [
+        "沢星稜大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "松山東雲女子大学",
+      "aliases": [
+        "山東雲女子大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "東京女子体育大学",
+      "aliases": [
+        "京女子体育大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "愛知淑徳大学",
+      "aliases": [
+        "知淑徳大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md / 素の「淑徳大学」（千葉の別大学と同名）は別途保留中"
+    },
+    {
+      "canonical": "天理大学",
+      "aliases": [
+        "理大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 女子ダブルスの取り込みで先頭文字が欠落したもの（participants の連続2ブロックに集中）。同一選手が他年に正準名で出場していることで裏取り済み。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "松山大学",
+      "aliases": [
+        "松山大学⽮野雄⼤"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2023 男子ダブルスで選手名「矢野雄大」がチーム名に連結したもの。川神堅汰が他年に松山大学で出場。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "石川工業高等専門学校",
+      "aliases": [
+        "石川工業高等専門学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-university"
+        ]
+      },
+      "note": "2026-08-14 追加。インカレ2025 男子ダブルスで末尾の「校」が欠落。docs/raw/2026-08-12-university-team-name-cleanup.md"
+    },
+    {
+      "canonical": "神戸松蔭大学",
+      "aliases": [
+        "神松蔭大学"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "west-japan"
+        ]
+      },
+      "note": "2026-08-14 追加。大学名は大学大会の外（一般大会）にも現れるため、大学大会だけを見た初回の棚卸しでは検出できなかった。docs/raw/2026-08-12-university-team-name-cleanup.md / 「戸」が欠落。west-japan 2025（改称後）なので新称へ寄せる。石原愛菜・木宮歩乃が他大会に同校"
+    },
+    {
+      "canonical": "神戸松蔭女子学院大学",
+      "aliases": [
+        "神戸松蔭学院大"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-championship"
+        ]
+      },
+      "note": "2026-08-14 追加。大学名は大学大会の外（一般大会）にも現れるため、大学大会だけを見た初回の棚卸しでは検出できなかった。docs/raw/2026-08-12-university-team-name-cleanup.md / 「女子」欠落・「学」省略。2022年（改称前）なので旧称へ寄せる"
+    },
+    {
+      "canonical": "立教大学",
+      "aliases": [
+        "立教大"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-championship"
+        ]
+      },
+      "note": "2026-08-14 追加。大学名は大学大会の外（一般大会）にも現れるため、大学大会だけを見た初回の棚卸しでは検出できなかった。docs/raw/2026-08-12-university-team-name-cleanup.md / 略称。**scope 必須**——無指定だと他世代の別校に当たる恐れがある"
+    },
+    {
+      "canonical": "石川工業高等専門学校",
+      "aliases": [
+        "石川工業高専"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "zennihon-singles"
+        ]
+      },
+      "note": "2026-08-14 追加。大学名は大学大会の外（一般大会）にも現れるため、大学大会だけを見た初回の棚卸しでは検出できなかった。docs/raw/2026-08-12-university-team-name-cleanup.md / 略称。zennihon-singles 2023-2025 の西牧幹起・御手洗友哉"
     }
   ]
 }
