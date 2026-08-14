@@ -24,6 +24,20 @@
         "gameRate": 0.695
       }
     },
+    "9": {
+      "matches": {
+        "total": 8,
+        "wins": 8,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 41,
+        "won": 32,
+        "lost": 9,
+        "gameRate": 0.78
+      }
+    },
     "12": {
       "matches": {
         "total": 5,
@@ -64,20 +78,6 @@
         "won": 20,
         "lost": 7,
         "gameRate": 0.741
-      }
-    },
-    "119": {
-      "matches": {
-        "total": 8,
-        "wins": 8,
-        "losses": 0,
-        "winRate": 1
-      },
-      "games": {
-        "total": 41,
-        "won": 32,
-        "lost": 9,
-        "gameRate": 0.78
       }
     },
     "163": {
@@ -241,7 +241,7 @@
     "tournament": "東日本選手権大会",
     "date": "2026年7月18日〜2026年7月19日",
     "location": "山形県",
-    "partner": 119,
+    "partner": 9,
     "result": "優勝",
     "link": "https://softtennis-tokyo.com/higashinihon-softtennis-association/"
   }

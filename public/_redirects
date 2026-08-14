@@ -44,3 +44,8 @@
 /tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/boys/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/boys/ 301
 /tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/girls /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/girls/ 301
 /tournaments/international-qualifier/asian-games-qualifier/2025/doubles/tournament/girls/ /tournaments/international-qualifier/asian-games-qualifier/2025/singles/tournament/girls/ 301
+
+# (2026-08-14) 川崎康平選手が表記揺れ(崎/﨑)で id=9(川﨑) と id=119(川崎) に分裂していたため id=9 に統合。
+# id=119 の結果ページは count=0 となり静的生成されなくなった(404)ため 301 で誘導。
+/players/119/results /players/9/results/ 301
+/players/119/results/ /players/9/results/ 301

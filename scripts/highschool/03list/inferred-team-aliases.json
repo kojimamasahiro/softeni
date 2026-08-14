@@ -6864,6 +6864,27 @@
     "reasons": [
       {
         "year": 2023,
+        "lastName": "川﨑",
+        "firstName": "康平",
+        "aliases": [
+          "都城商",
+          "都城商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "都城商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "都城商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2023,
         "lastName": "森",
         "firstName": "良輔",
         "aliases": [
@@ -6906,6 +6927,11 @@
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
             "team": "都城商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "都城商業高校"
           },
           {
             "tournamentId": "zennihon-indoor",
