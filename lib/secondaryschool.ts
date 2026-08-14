@@ -68,8 +68,6 @@ export interface SecondarySchoolPrefecture {
   name: string;
   region: string;
   teamCount: number;
-  schoolCount: number;
-  clubCount: number;
 }
 
 export interface PathwayRecord {

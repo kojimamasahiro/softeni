@@ -115,6 +115,10 @@ export type ChampionCell = {
 export type ChampionSummaryRow = {
   categoryId: string;
   label: string;
+  /** team / doubles / singles。表のグループ見出しに使う */
+  category: string;
+  /** boys / girls / mixed。表の行見出しに使う（グループ見出しと種目名が重複しないように） */
+  gender: string;
   byYear: ChampionCell[];
 };
 
@@ -576,6 +580,29 @@ function sortCategories(a: SortableCategory, b: SortableCategory): number {
   return a.categoryId.localeCompare(b.categoryId);
 }
 
+/**
+ * 歴代優勝の表（種目=行 / 年度=列）専用の並び。**種目を先、性別を後**にする。
+ *
+ * `sortCategories` は性別が先（男子団体→男子ダブルス→女子団体→女子ダブルス）だが、
+ * この表は種目でグループ見出しを挟むので、種目major でないとグループが分断される。
+ * 並びは「ダブルス（男女）→ シングルス（男女）→ 団体戦（男女）」＝個人戦が先。
+ */
+const CHAMPION_TABLE_CATEGORY_ORDER: Record<string, number> = {
+  doubles: 0,
+  singles: 1,
+  team: 2,
+};
+
+function sortChampionTableRows(a: SortableCategory, b: SortableCategory): number {
+  const ca = CHAMPION_TABLE_CATEGORY_ORDER[a.category] ?? 9;
+  const cb = CHAMPION_TABLE_CATEGORY_ORDER[b.category] ?? 9;
+  if (ca !== cb) return ca - cb;
+  const ga = GENDER_ORDER[a.gender] ?? 9;
+  const gb = GENDER_ORDER[b.gender] ?? 9;
+  if (ga !== gb) return ga - gb;
+  return a.categoryId.localeCompare(b.categoryId);
+}
+
 /** 指定スラッグの大会の歴代記録を取得する */
 export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): TournamentRecords {
   const meta = HS_NATIONAL_TOURNAMENTS[slug];
@@ -740,7 +767,10 @@ function countUniqueParticipants(tidDir: string, year: number, field: 'team' | '
   return seen.size;
 }
 
-/** 種目ごとの歴代優勝サマリーを作る */
+/**
+ * 種目ごとの歴代優勝サマリーを作る。
+ * 並びは表（種目=行 / 年度=列）に合わせて**種目major**（`sortChampionTableRows`）。
+ */
 function buildChampionSummary(years: YearRecord[]): ChampionSummaryRow[] {
   // 種目順を保つため、最初に現れた種目の並びを記録
   const orderIndex = new Map<string, number>();
@@ -755,7 +785,7 @@ function buildChampionSummary(years: YearRecord[]): ChampionSummaryRow[] {
       }
     }
   }
-  sample.sort(sortCategories);
+  sample.sort(sortChampionTableRows);
 
   return sample.map((c) => {
     const byYear: ChampionCell[] = years
@@ -776,6 +806,8 @@ function buildChampionSummary(years: YearRecord[]): ChampionSummaryRow[] {
     return {
       categoryId: c.categoryId,
       label: labelById.get(c.categoryId) ?? c.categoryId,
+      category: c.category,
+      gender: c.gender,
       byYear,
     };
   });

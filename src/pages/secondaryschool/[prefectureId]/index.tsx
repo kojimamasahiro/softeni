@@ -3,7 +3,13 @@
 //
 // 役割は「県内にどのチームが収録されているか」の一覧。**順位づけはしない**
 // （県別ポイントは 2026-08-12 に廃止。大会ごとに県の出場枠が違い比較が成立しないため）。
-// 中学校と地域クラブを分けて並べるのは実態が違うからで、優劣ではない。
+//
+// **中学校 / 地域クラブ / その他 の3見出しに分けるのをやめた**（2026-08-13）。
+// 分類（lib/clubTransition.ts）は「積極的な証拠があるときだけクラブと判定する」下限カウントで、
+// 判定できないチームが16%（47/293）ある。見出しの構造に使うと、その47件が
+// 「その他」として前面に出てしまい、しかも導入文の「区別せず扱っています」と食い違う。
+// 分類の本来の用途は全中ハブの地域移行トラッカーで、そちらは無傷。
+// ここでは**分かるときだけ小さなラベルで添える**（unknown は何も出さない）。
 // 仕様: docs/wiki/secondaryschool.md
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -19,6 +25,7 @@ import {
   getPrefectures,
   getTeamsByPrefecture,
   getThreshold,
+  teamKindLabel,
   type SecondarySchoolPrefecture,
   type SecondarySchoolTeam,
 } from '@/lib/secondaryschool';
@@ -31,17 +38,17 @@ interface Props {
 
 export default function SecondarySchoolPrefecturePage({ prefecture, teams, threshold }: Props) {
   const pageUrl = `https://softeni-pick.com/secondaryschool/${prefecture.id}/`;
-  const schools = teams.filter((t) => t.kind === 'school');
-  const clubs = teams.filter((t) => t.kind === 'club');
-  const others = teams.filter((t) => t.kind === 'unknown');
-
   const renderTeams = (list: SecondarySchoolTeam[]) => (
     <ul className="grid gap-2 sm:grid-cols-2">
       {list.map((t) => (
         <li key={t.id} className="rounded-lg border border-border bg-surface px-4 py-3">
-          <Link href={`/secondaryschool/${prefecture.id}/${t.id}/`} className="font-semibold text-link hover:underline">
-            {t.name}
-          </Link>
+          <span className="flex flex-wrap items-baseline gap-x-2">
+            <Link href={`/secondaryschool/${prefecture.id}/${t.id}/`} className="font-semibold text-link hover:underline">
+              {t.name}
+            </Link>
+            {/* 判定できたときだけ添える。unknown は何も出さない */}
+            {t.kind !== 'unknown' && <span className="text-xs text-text-muted">{teamKindLabel(t.kind)}</span>}
+          </span>
           <p className="mt-0.5 text-xs text-text-muted">
             {t.best ? describeResult(t.best) : `収録${t.count}件`}
             {t.years.length > 0 && ` ／ ${t.years[0]}〜${t.years[t.years.length - 1]}年`}
@@ -55,7 +62,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
     <>
       <MetaHead
         title={`${prefecture.name}の中学ソフトテニス | 全中・都道府県対抗の成績 | Softeni Pick`}
-        description={`${prefecture.name}の中学ソフトテニス。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した${teams.length}チーム（中学校${schools.length}・地域クラブ${clubs.length}）の戦績と、中学から高校への進路をまとめています。`}
+        description={`${prefecture.name}の中学ソフトテニス。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した${teams.length}チームの戦績と、中学から高校への進路をまとめています。`}
         url={pageUrl}
         type="website"
       />
@@ -110,31 +117,13 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
         <section className="mb-8">
           <h2 className="mb-3 text-lg font-bold">収録チーム（{teams.length}）</h2>
           <p className="mb-4 text-sm text-text-secondary">
-            中学校{schools.length}・地域クラブ{clubs.length}
-            {others.length > 0 && `・その他${others.length}`}。 2023年度から地域クラブ活動に所属する生徒も全中に出場できるようになったため、
-            このカテゴリでは学校とクラブを分けずに扱っています。
+            2023年度から地域クラブ活動に所属する生徒も全中に出場できるようになったため、
+            このカテゴリでは学校とクラブを分けずに扱っています。出場回数の多い順に並べています。
           </p>
 
-          {schools.length > 0 && (
-            <div className="mb-6">
-              <h3 className="mb-2 text-base font-semibold">中学校</h3>
-              {renderTeams(schools)}
-            </div>
-          )}
-          {clubs.length > 0 && (
-            <div className="mb-6">
-              <h3 className="mb-2 text-base font-semibold">地域クラブ</h3>
-              {renderTeams(clubs)}
-            </div>
-          )}
-          {others.length > 0 && (
-            <div className="mb-6">
-              <h3 className="mb-2 text-base font-semibold">その他のチーム</h3>
-              {renderTeams(others)}
-            </div>
-          )}
+          {renderTeams(teams)}
 
-          <p className="mt-2 text-xs text-text-muted">
+          <p className="mt-4 text-xs text-text-muted">
             個別ページは当サイト収録の出場が{threshold}回以上のチームに作成しています。
             {threshold}回未満のチームはここには表示されません。
           </p>

@@ -5,6 +5,7 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Fragment } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -266,51 +267,116 @@ function formatYearRange(years: number[]): string {
   return min === max ? `${min}年` : `${min}〜${max}年`;
 }
 
+/** 表のグループ見出し（種目）。行見出しは性別だけにして重複させない */
+function categoryGroupLabel(category: string): string {
+  if (category === 'team') return '団体戦';
+  if (category === 'singles') return 'シングルス';
+  if (category === 'doubles') return 'ダブルス';
+  return category;
+}
+
+function genderRowLabel(gender: string, fallback: string): string {
+  if (gender === 'boys') return '男子';
+  if (gender === 'girls') return '女子';
+  if (gender === 'mixed') return '混合';
+  return fallback;
+}
+
+/**
+ * 歴代優勝を**種目×年度の1つの表**で出す（2026-08-13 変更）。
+ *
+ * 以前は種目ごとにカードを作り、その中で「年度・学校・選手・都道府県」を縦に並べていた。
+ * 種目4つ×年度6つで4枚のカードに分かれ、**年度をまたいだ比較がしづらい**うえ、
+ * 年度が増えるほど縦に伸び続ける。
+ *
+ * 中学（`/tournaments/[generation]/[tournamentId]` の「歴代優勝者」）が同じ問題を
+ * 種目=行 / 年度=列 の表で解いているので、**UIをそちらに揃えた**。
+ * 年度が増えると右に伸びるため、1列目（種目）を `sticky` で固定して横スクロールさせる。
+ */
 function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
   if (rows.length === 0) return null;
 
+  const years = [...new Set(rows.flatMap((r) => r.byYear.map((c) => c.year)))].sort((a, b) => b - a);
+  const table = rows.map((r) => ({ ...r, cellsByYear: new Map(r.byYear.map((c) => [c.year, c] as const)) }));
+
   return (
     <section className="mb-12">
-      <h2 className="text-xl font-bold mb-1">歴代優勝（種目別）</h2>
-      <p className="text-sm text-text-secondary mb-4">
-        年度ごとの優勝を種目別に並べています。学校・都道府県の列を縦に見比べると、 優勝の傾向を自分で確認できます。
-      </p>
+      <h2 className="text-xl font-bold mb-1">歴代優勝者</h2>
+      <p className="text-sm text-text-secondary mb-4">年度ごとの優勝を種目別に並べています。横に並ぶ年度を見比べると、優勝の傾向を自分で確認できます。</p>
 
-      <div className="space-y-6">
-        {rows.map((row) => (
-          <div key={row.categoryId} className="rounded-xl border border-border overflow-hidden">
-            <h3 className="font-semibold px-4 py-2.5 bg-gray-50 dark:bg-gray-800/60 border-b border-border">{row.label}</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
-                <caption className="sr-only">{row.label}の歴代優勝（年度・学校・選手・都道府県）</caption>
-                <thead>
-                  <tr className="text-left text-xs uppercase tracking-wide text-text-muted">
-                    <th className="py-2 px-4 font-semibold w-16">年度</th>
-                    <th className="py-2 px-4 font-semibold">学校</th>
-                    <th className="py-2 px-4 font-semibold">選手・ペア</th>
-                    <th className="py-2 px-4 font-semibold w-28">都道府県</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {row.byYear.map((cell) => (
-                    <tr key={`${row.categoryId}-${cell.year}`} className="border-t border-gray-100 dark:border-gray-800">
-                      <td className="py-2.5 px-4 align-top whitespace-nowrap tabular-nums text-text-muted">{cell.year}</td>
-                      <td className="py-2.5 px-4 align-top font-semibold">
-                        <SchoolNames links={cell.teamLinks} />
-                      </td>
-                      <td className="py-2.5 px-4 align-top">
-                        {cell.playerLinks.length > 0 ? <PlayerNames links={cell.playerLinks} /> : <span className="text-gray-400">—</span>}
-                      </td>
-                      <td className="py-2.5 px-4 align-top text-text-muted whitespace-nowrap">
-                        {cell.prefectures.length > 0 ? cell.prefectures.join('・') : '—'}
+      {/* 年度が増えるほど右に伸びるので、種目（1列目）を固定して横スクロールできるようにする。 */}
+      <div className="overflow-x-auto rounded-lg shadow">
+        <table className="w-full min-w-max border-collapse text-sm text-gray-700 dark:text-gray-200">
+          <caption className="sr-only">歴代優勝（種目別・年度別の学校／選手／都道府県）</caption>
+          <thead className="bg-bg-subtle text-text">
+            <tr>
+              <th className="sticky left-0 z-10 bg-bg-subtle px-4 py-2 text-left">種目</th>
+              {years.map((year) => (
+                <th key={year} className="whitespace-nowrap px-4 py-2">
+                  {year}年
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {table.map((row, index) => {
+              const prevCategory = index > 0 ? table[index - 1].category : null;
+              const showGroupHeader = row.category && row.category !== prevCategory;
+              return (
+                <Fragment key={row.categoryId}>
+                  {showGroupHeader && (
+                    <tr className="border-t border-border">
+                      <td colSpan={years.length + 1} className="sticky left-0 z-10 bg-bg-subtle px-4 py-1.5 text-xs font-semibold text-text-secondary">
+                        {categoryGroupLabel(row.category)}
                       </td>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ))}
+                  )}
+                  <tr className="border-t border-border">
+                    <td className="sticky left-0 z-10 whitespace-nowrap bg-surface px-4 py-2 font-medium">{genderRowLabel(row.gender, row.label)}</td>
+                    {years.map((year) => {
+                      const cell = row.cellsByYear.get(year) ?? null;
+                      if (!cell) {
+                        return (
+                          <td key={year} className="whitespace-nowrap px-4 py-2 text-center">
+                            <span className="text-text-muted">ー</span>
+                          </td>
+                        );
+                      }
+                      return (
+                        <td key={year} className="whitespace-nowrap px-4 py-2 text-center">
+                          {/* 個人戦は「選手名」→「学校名（都道府県）」の2行。
+                              学校と都道府県を別行にすると3行になって表が間延びするため1行にまとめる。
+                              団体戦は学校名が主役なので「学校名」→「都道府県」の2行。 */}
+                          {cell.playerLinks.length > 0 ? (
+                            <>
+                              <span className="font-semibold">
+                                <PlayerNames links={cell.playerLinks} />
+                              </span>
+                              {(cell.teamLinks.length > 0 || cell.prefectures.length > 0) && (
+                                <span className="mt-0.5 block text-xs text-text-muted">
+                                  {cell.teamLinks.length > 0 && <SchoolNames links={cell.teamLinks} />}
+                                  {cell.prefectures.length > 0 &&
+                                    (cell.teamLinks.length > 0 ? `（${cell.prefectures.join('・')}）` : cell.prefectures.join('・'))}
+                                </span>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              <span className="font-semibold">
+                                <SchoolNames links={cell.teamLinks} />
+                              </span>
+                              {cell.prefectures.length > 0 && <span className="mt-0.5 block text-xs text-text-muted">{cell.prefectures.join('・')}</span>}
+                            </>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                </Fragment>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </section>
   );

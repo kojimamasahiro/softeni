@@ -292,7 +292,33 @@ function main() {
   }
 
   // ---- 閾値で絞り、ID を採番 ----
-  const kept = [...teams.values()].filter((t) => t.count >= THRESHOLD && t.prefName && prefIdByName.has(t.prefName));
+  //
+  // **チーム名が自県の名前そのものになっているものは落とす**（2026-08-13 追加）。
+  // 関東ブロック大会の**個人戦**は `participants[].team` に学校名ではなく都県名が入っており
+  // （`群馬` 32件・`茨城`/`埼玉`/`山梨`/`神奈川`/`千葉`/`東京`/`栃木` 各16件）、
+  // これを通すと `/secondaryschool/gunma/gunma/` という無意味なページができる。
+  // 同じ大会の団体戦は `野木中学校` `綾瀬チャレンジ` と正しく学校名が入っているので、
+  // 個人戦の抽出だけが落ちている状態。
+  //
+  // **学校名は復元できない**: 選手名で他大会と照合できるのは144名中41名（28%）だけで、
+  // しかも `皆野ジュニア` `箕郷スポ少` のような**小学生時代のクラブ**に当たってしまう。
+  // 出典（大会要項・結果）を当たり直すまでは載せないのが正しい。
+  //
+  // 判定は「チーム名 === その参加者の都道府県の短縮名」と狭くしてある。
+  // `群馬中央中学校` `群馬南` のような実在校は文字列が違うので残る。
+  const prefShortNames = new Set(prefectures.map((p) => p.name.replace(/[都道府県]$/, '')));
+  const droppedAsPrefName = [];
+  const kept = [...teams.values()].filter((t) => {
+    if (!(t.count >= THRESHOLD && t.prefName && prefIdByName.has(t.prefName))) return false;
+    if (prefShortNames.has(t.name) && t.prefName.replace(/[都道府県]$/, '') === t.name) {
+      droppedAsPrefName.push(`${t.name}(${t.prefName}, ${t.count}件)`);
+      return false;
+    }
+    return true;
+  });
+  if (droppedAsPrefName.length > 0) {
+    console.log(`  県名がそのままチーム名になっていたため除外: ${droppedAsPrefName.length}件 (${droppedAsPrefName.join(' / ')})`);
+  }
   const overrides = readJson(OVERRIDE_FILE, {});
   // 短縮形（既定）と、衝突したときのフォールバック用に元の名前も引いておく
   const needRomaji = new Set();
@@ -357,8 +383,6 @@ function main() {
       name: p.name,
       region: p.region,
       teamCount: teamsOfPref.length,
-      schoolCount: teamsOfPref.filter((t) => t.kind === 'school').length,
-      clubCount: teamsOfPref.filter((t) => t.kind === 'club').length,
     };
   });
 

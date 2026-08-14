@@ -300,8 +300,8 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
 ### 13. 中学カテゴリ × 既存ページ（2026-08-12 追加）
 
 - URL: `/secondaryschool/`（1枚）／`/secondaryschool/pathways/`（1枚）／
-  `/secondaryschool/[prefectureId]/`（47枚）／`/secondaryschool/[prefectureId]/[teamId]/`（**273枚**）。
-  計**322枚**。仕様は [secondaryschool.md](./secondaryschool.md)
+  `/secondaryschool/[prefectureId]/`（47枚）／`/secondaryschool/[prefectureId]/[teamId]/`（**293枚**）。
+  計**341枚**。仕様は [secondaryschool.md](./secondaryschool.md)
 - **`/teams/[teamId]` との重複は0件**（2026-08-12 実測）。`/teams/` 側のページが生成されるのは
   `team-name-mappings.json` のキーか STリーグ出場チームだけで、中学の280チームは**1件も該当しない**。
   同じチームが2つのURLを持つ状態にはならない

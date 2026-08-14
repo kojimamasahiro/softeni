@@ -23,13 +23,11 @@ interface Props {
   prefectures: SecondarySchoolPrefecture[];
   threshold: number;
   teamTotal: number;
-  schoolTotal: number;
-  clubTotal: number;
   pathwayTotal: number;
   pathwayTeams: number;
 }
 
-export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal, schoolTotal, clubTotal, pathwayTotal, pathwayTeams }: Props) {
+export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal, pathwayTotal, pathwayTeams }: Props) {
   const pageUrl = 'https://softeni-pick.com/secondaryschool/';
   const regions = [...new Set(prefectures.map((p) => p.region))];
 
@@ -37,7 +35,7 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
     <>
       <MetaHead
         title="中学ソフトテニス | 全中・都道府県対抗の成績と進路 | Softeni Pick"
-        description={`中学ソフトテニスの特集ページ。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・各ブロック大会の成績を都道府県別・チーム別にまとめています。収録${teamTotal}チーム（中学校${schoolTotal}・地域クラブ${clubTotal}）、中学から高校への進路${pathwayTotal}件を掲載。`}
+        description={`中学ソフトテニスの特集ページ。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・各ブロック大会の成績を都道府県別・チーム別にまとめています。収録${teamTotal}チーム、中学から高校への進路${pathwayTotal}件を掲載。`}
         url={pageUrl}
         type="website"
       />
@@ -68,7 +66,7 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
         <h1 className="text-2xl font-bold mb-2">中学ソフトテニス</h1>
         <p className="mb-6 text-sm text-text-secondary">
           全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・各地区のブロック大会の結果から、
-          都道府県ごとの成績と出場チームの戦績をまとめています。収録は{teamTotal}チーム （中学校{schoolTotal}・地域クラブ{clubTotal}）。
+          都道府県ごとの成績と出場チームの戦績をまとめています。収録は{teamTotal}チーム。
           <strong className="font-semibold">部活動の地域移行にともない地域クラブの出場が増えている</strong>ため、
           このカテゴリでは学校とクラブを区別せず「チーム」として扱っています。
         </p>
@@ -134,8 +132,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       prefectures,
       threshold: getThreshold(),
       teamTotal: teams,
-      schoolTotal: prefectures.reduce((n, p) => n + p.schoolCount, 0),
-      clubTotal: prefectures.reduce((n, p) => n + p.clubCount, 0),
       pathwayTotal: countPathways(),
       pathwayTeams: countTeamsWithPathways(),
     },
