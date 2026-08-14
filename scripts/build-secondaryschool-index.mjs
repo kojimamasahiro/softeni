@@ -23,8 +23,13 @@
  *       名寄せ前に流すと表記ゆれのぶんチームが分裂する。
  *
  * 使い方: node scripts/build-secondaryschool-index.mjs
- *   romaji ID の生成には pykakasi（Python）を使う。読みが誤るものは
- *   data/secondaryschool/team-id-overrides.json に手で書けば優先される。
+ *   romaji ID の生成には pykakasi（Python）を使うが、変換結果は
+ *   data/secondaryschool/team-name-romaji-cache.json に永続キャッシュしてある。
+ *   通常のビルド（Cloudflare Pages / Vercel など Python が無い/pykakasiが入らない環境）は
+ *   このキャッシュだけを読み、python3 を呼ばない。新しいチーム名が増えてキャッシュに
+ *   無いときだけ python3 を呼ぶので、その場合は `.venv` に pykakasi を入れたローカル環境で
+ *   一度実行してキャッシュを更新し、コミットすること。
+ *   読みが誤るものは data/secondaryschool/team-id-overrides.json に手で書けば優先される。
  */
 import { execFileSync } from 'child_process';
 import fs from 'fs';
@@ -35,6 +40,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DET = path.join(ROOT, 'data', 'tournaments', 'details');
 const OUT_DIR = path.join(ROOT, 'data', 'secondaryschool');
 const OVERRIDE_FILE = path.join(OUT_DIR, 'team-id-overrides.json');
+const ROMAJI_CACHE_FILE = path.join(OUT_DIR, 'team-name-romaji-cache.json');
 
 /** 掲載閾値（出場延べ）。これ未満のチームは個別ページを作らない。 */
 export const THRESHOLD = 5;
@@ -83,9 +89,20 @@ function readJson(p, fallback) {
   }
 }
 
-/** pykakasi でローマ字読みをまとめて引く（1プロセスで全件）。 */
+/**
+ * pykakasi でローマ字読みをまとめて引く（1プロセスで全件）。
+ *
+ * 結果は team-name-romaji-cache.json に永続キャッシュする。ビルド環境
+ * （Cloudflare Pages / Vercel など）には Python が無いか、あっても pykakasi は
+ * 入っていないため、python3 はキャッシュに無い名前があるときだけ呼ぶ。
+ * その python3 呼び出し自体に失敗したら、キャッシュ更新をローカルで行うよう促す
+ * エラーにして落とす（ビルドがサイレントに壊れたIDを吐かないようにするため）。
+ */
 function toRomajiBulk(names) {
-  const script = `
+  const cache = readJson(ROMAJI_CACHE_FILE, {});
+  const missing = names.filter((n) => !(n in cache));
+  if (missing.length) {
+    const script = `
 import sys, json
 import pykakasi
 k = pykakasi.kakasi()
@@ -95,8 +112,26 @@ for n in names:
     out[n] = ''.join(x['hepburn'] for x in k.convert(n))
 json.dump(out, sys.stdout, ensure_ascii=False)
 `;
-  const raw = execFileSync('python3', ['-c', script], { input: JSON.stringify(names), encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
-  return JSON.parse(raw);
+    let fresh;
+    try {
+      const raw = execFileSync('python3', ['-c', script], { input: JSON.stringify(missing), encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 });
+      fresh = JSON.parse(raw);
+    } catch (err) {
+      throw new Error(
+        `${path.relative(ROOT, ROMAJI_CACHE_FILE)} に無いチーム名が ${missing.length} 件あり、pykakasi（Python）でも変換できませんでした。\n` +
+          `.venv を有効化した（pykakasi をインストール済みの）ローカル環境で一度\n` +
+          `  node scripts/build-secondaryschool-index.mjs\n` +
+          `を実行してキャッシュを更新し、コミットしてください。\n` +
+          `未キャッシュ（先頭10件）: ${missing.slice(0, 10).join(', ')}${missing.length > 10 ? ` 他${missing.length - 10}件` : ''}\n` +
+          `元エラー: ${err.message}`,
+      );
+    }
+    Object.assign(cache, fresh);
+    fs.mkdirSync(OUT_DIR, { recursive: true });
+    const sortedKeys = Object.keys(cache).sort();
+    fs.writeFileSync(ROMAJI_CACHE_FILE, JSON.stringify(cache, sortedKeys, 2) + '\n', 'utf8');
+  }
+  return Object.fromEntries(names.map((n) => [n, cache[n]]));
 }
 
 /**
