@@ -61,6 +61,7 @@
     "bracket:verify:tree": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-bracket-tree.ts",
     "bracket:preview": "ts-node --project scripts/playerStats/tsconfig.json scripts/preview-bracket-sheets.ts",
     "bracket:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketLayout.test.ts && ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketDrawing.test.ts",
+    "analytics:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/analytics.test.ts",
     "rare-events:generate": "node scripts/generate-rare-events.mjs",
     "rare-events:report": "node scripts/rare-events-report.mjs",
     "rare-events:discover": "node scripts/rare-events-discover.mjs",

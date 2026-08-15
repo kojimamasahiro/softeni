@@ -82,6 +82,32 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 - SPA 遷移は `gtag('config')` 再実行ではなく `gtag('event','page_view')` で送信（二重計上・セッション分断の回避）
 - クッキーは `SameSite=Lax;Secure`（同一ドメイン first-party 用途のため Lax）
 
+### 回遊計測のカスタムイベント（2026-08-15 追加）
+
+回遊施策の合否を判定するために送っているイベント。手順・指標の定義は
+[回遊検証ランブック](./circulation-verification.md)が正で、ここは実装の所在だけを書く。
+
+| イベント | パラメータ | 送信箇所 | 用途 |
+|---|---|---|---|
+| `internal_link_click` | `module` / `from_type` / `to_type` | `lib/analytics.ts` の `attachInternalLinkTracking()`（`_app.tsx` から `<main>` に委譲リスナーを1つ張る） | 主指標「モジュールCTR」の分子 |
+| `consent_accept` / `consent_decline` | なし | `_app.tsx` の `handleAccept` / `handleDecline` | 同意率（セッション系指標の解釈に必須） |
+
+- **同意状態に関わらず送る**。未同意でも cookieless ping でイベントは GA4 に届くため、
+  イベント数どうしの比（CTR）はセッション結合の成否に影響されない。これが主指標を
+  「セッションあたりの表示回数」ではなくイベント比に置いている理由。
+- **計測対象は `<main>` 内のリンクのみ**。サイドナビ（`aside[data-sidebar]`）とフッターは
+  全ページ共通の定型リンクで、「そのページが次のクリックを作れたか」を測る対象ではない。
+  この線引きはランブックの実測（ビルド済み `out/` の静的解析）と同じ定義にしてあり、
+  静的解析のリンク本数と GA4 のクリック数を直接突き合わせられる。
+- **モジュール分離は `data-link-module` 属性**。リンクを含む要素に付けるとその値が `module` に入り、
+  付けなければ `unclassified` にまとまる。新しい回遊モジュールを作るときは属性を1つ足すだけでよく、
+  リンクコンポーネント側には手を入れない。
+- `from_type` / `to_type` のページ種別は `getPageType()`（`lib/analytics.ts`）が URL から判定する。
+  判定はビルド済み `out/` の全4,243 URL に対して静的解析の分類と**一致0件差**を確認済み（2026-08-15）。
+  回帰テストは `npm run analytics:test`。
+- **GA4 側の設定が別途必要**: `module` / `from_type` / `to_type` をカスタムディメンション
+  （イベントスコープ）に登録しないと探索で使えない。**登録前に届いたデータは遡って参照できない**。
+
 ### 計測精度に関する注意（2026-06）
 
 - GA4 は client-side 計測のため、広告ブロッカー・Safari ITP・同意 denied により**実トラフィックより常に少なく出る**（一般に10〜40%）。これは実装では完全には解消できない。

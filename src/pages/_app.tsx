@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import AppShell from '@/components/AppShell';
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
+import { attachInternalLinkTracking, trackConsentChoice } from '@/lib/analytics';
 
 export default function App({ Component, pageProps }: AppProps) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -41,6 +42,13 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events, GA_ID]);
 
+  // 回遊計測: <main> 内のリンククリックを internal_link_click として送る。
+  // 主指標「モジュールCTR」の分子になる。定義は docs/wiki/circulation-verification.md。
+  useEffect(() => {
+    if (!GA_ID) return;
+    return attachInternalLinkTracking(document);
+  }, [GA_ID]);
+
   const handleAccept = () => {
     setHasConsent(true);
     localStorage.setItem('cookieConsent', 'true');
@@ -48,6 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ad_storage: 'granted',
       analytics_storage: 'granted',
     });
+    trackConsentChoice(true);
   };
 
   const handleDecline = () => {
@@ -57,6 +66,7 @@ export default function App({ Component, pageProps }: AppProps) {
       ad_storage: 'denied',
       analytics_storage: 'denied',
     });
+    trackConsentChoice(false);
   };
 
   return (

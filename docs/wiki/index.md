@@ -29,6 +29,7 @@
 - [STリーグ](./st-league.md)
 - [SEO（カニバリ/重複制御）](./seo.md)
 - [高校SEO M4検証ランブック（GSC事後検証・2026年8月中旬に実行）](./highschool-seo-m4-verification.md)
+- [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md)
 
 ## コンテンツ生成・ストーリー
 
