@@ -29,8 +29,9 @@ PDF
 brew install ollama
 ollama serve &   # または Ollamaアプリを起動しておく
 
-# 2. モデルの取得 (Q4量子化、約7GB。16GB機でも余裕あり)
-ollama pull qwen2.5:9b-instruct
+# 2. モデルの取得 (約4.7GB。16GB機でも余裕あり)
+#    ※ qwen2.5 に 9b は無い。以前ここに書いていた qwen2.5:9b-instruct は pull できない
+ollama pull qwen2.5:7b-instruct
 
 # 3. Python依存関係
 pip3 install --break-system-packages pdfplumber requests

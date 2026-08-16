@@ -13,7 +13,9 @@ import re
 import requests
 
 OLLAMA_URL = "http://localhost:11434/api/chat"
-DEFAULT_MODEL = "qwen2.5:9b-instruct"
+# qwen2.5 に 9b は存在しない（0.5b/1.5b/3b/7b/14b/32b/72b）。
+# 以前ここに書かれていた "qwen2.5:9b-instruct" は pull できない誤った名前だった。
+DEFAULT_MODEL = "qwen2.5:7b-instruct"
 
 
 class OllamaError(RuntimeError):

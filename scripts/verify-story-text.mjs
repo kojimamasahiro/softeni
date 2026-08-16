@@ -197,6 +197,28 @@ function extractClaims(text, facts) {
     for (const m of flat.matchAll(/(\d{4})年(?:[はもにでandの、]|\s)*(優勝|準優勝|ベスト4|ベスト8)/g)) {
       claims.push({ type: 'year-result', segIndex, owners, stale, year: Number(m[1]), result: m[2], raw: m[0] });
     }
+    // (a2) 「YYYY年の◯◯大会△△は<主体>が優勝しました」形式。
+    // (a) は年と成績が隣接する語順しか拾わないため、PROMPT.md が指示する書き出し
+    // （「今年何が起きたか」を最初に書く＝年→大会名→種目→主体→成績の語順）が
+    // まるごと網から漏れていた。実測では公開済みインサイト24本すべてで、
+    // 記事の主語である「今年誰が優勝したか」が1件も照合されていなかった。
+    // 誤って年を結び付けないよう、年がちょうど1つの断片に限定する。
+    const yearsInSegment = [...new Set([...flat.matchAll(/(\d{4})年/g)].map((m) => Number(m[1])))];
+    if (yearsInSegment.length === 1) {
+      // 「が優勝し」に限定する。「準優勝となりました」のような、主体が主語でない
+      // 言い回しまで拾うと語順の推定が外れて誤検出になるため。
+      for (const m of flat.matchAll(/が(優勝|準優勝)し/g)) {
+        claims.push({
+          type: 'year-result',
+          segIndex,
+          owners,
+          stale,
+          year: yearsInSegment[0],
+          result: m[1],
+          raw: `${yearsInSegment[0]}年${m[1]}`,
+        });
+      }
+    }
     // (b) 「4年連続ベスト8以上」「5年連続出場」「3年連続で決勝」。
     // 「N年連続」だけを見て一律にベスト8以上と解釈すると、別の意味の連続（決勝進出・出場）を
     // 誤って不一致と報告してしまう。直後の語から水準を読み取り、判定できない語は未検証にする。
@@ -412,6 +434,7 @@ function parseArgs(argv) {
     else if (a === '--text') args.text = argv[++i];
     else if (a === '--quiet' || a === '-q') args.quiet = true;
     else if (a === '--year' || a === '-y') args.year = Number(argv[++i]);
+    else if (a === '--list-names') args.listNames = true;
     else args.files.push(a);
   }
   return args;
@@ -451,6 +474,43 @@ function verifyAcross(text, tournamentId, categoryIds, maxYear) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
+
+  // 実在する固有名詞の一覧をJSONで吐くだけのモード。
+  // 照合器は「既知の名前と一致した語」しか主張として抽出しないため、
+  // 捏造された固有名詞は主張にすらならず警告ゼロで素通りする（実測で確認済み）。
+  // その穴は本文側から「知らない名前が出ていないか」を見ないと塞げないので、
+  // 事実の読み込みを持つこのスクリプトから名前だけを外に出せるようにする。
+  // 利用側は scripts/insight-agent/lint.mjs。
+  if (args.listNames) {
+    if (!args.tournament || !args.category) {
+      console.error('使い方: node scripts/verify-story-text.mjs -t <tournamentId> -c <categoryId[,...]> --list-names');
+      process.exit(2);
+    }
+    const names = new Set();
+    const teams = new Set();
+    for (const categoryId of args.category.split(',').map((s) => s.trim()).filter(Boolean)) {
+      const facts = loadFacts(args.tournament, categoryId);
+      for (const n of facts.names) names.add(n);
+      for (const t of facts.teams) teams.add(t);
+    }
+    // 本文は「亀安・関口組」のように姓だけで呼ぶ。氏名の連結形しか返さないと、
+    // 正しい表記まで「知らない名前」に見えてしまうため、姓と名の断片も併せて返す。
+    // 元データは姓名を別フィールドで持つが facts は連結済みなので、ここで読み直す。
+    const parts = new Set();
+    for (const categoryId of args.category.split(',').map((s) => s.trim()).filter(Boolean)) {
+      const base = path.join(DETAILS_DIR, args.tournament);
+      for (const y of fs.readdirSync(base).filter((v) => /^\d{4}$/.test(v))) {
+        const file = path.join(base, y, `${categoryId}.json`);
+        if (!fs.existsSync(file)) continue;
+        for (const p of JSON.parse(fs.readFileSync(file, 'utf8')).participants ?? []) {
+          for (const v of [p.lastName, p.firstName]) if (normalize(v)) parts.add(normalize(v));
+        }
+      }
+    }
+    console.log(JSON.stringify({ names: [...names], teams: [...teams], nameParts: [...parts] }));
+    process.exit(0);
+  }
+
   if (!args.tournament || !args.category || (!args.text && args.files.length === 0)) {
     console.error('使い方: node scripts/verify-story-text.mjs -t <tournamentId> -c <categoryId[,categoryId...]> [file...] [--text "..."] [-y <year>]');
     console.error('  -c は種目をカンマ区切りで複数指定できる（全種目束ねの原稿を照合する場合）。');
