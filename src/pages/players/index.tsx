@@ -30,6 +30,7 @@ import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } f
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import PlayerLiteLink from '@/components/PlayerLiteLink';
 
 const PAGE_URL = 'https://softeni-pick.com/players/';
 
@@ -62,6 +63,9 @@ type PlayerLink = {
 type SearchEntry = {
   fullName: string;
   playerId: string | null;
+  // 結果ページ（/players/{id}/results/）が実在するか（data/players/index.json の count>=5）。
+  // false でも playerId があれば PlayerLiteLink のモーダルで出場大会・所属だけは見せられる。
+  hasPage: boolean;
   count: number;
   team: string | null;
   teamCount: number;
@@ -307,10 +311,15 @@ export default function PlayersPage({ featured, all }: PlayersPageProps) {
                   {results.slice(0, visibleCount).map((entry) => (
                     <li key={entry.playerId ?? entry.fullName} className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 px-4 py-3">
                       <span className="text-base font-medium">
-                        {entry.playerId ? (
+                        {entry.playerId && entry.hasPage ? (
                           <Link href={`/players/${entry.playerId}/results/`} className="text-link hover:underline">
                             {highlightAll(entry.fullName, queries)}
                           </Link>
+                        ) : entry.playerId ? (
+                          // 結果ページ（count>=5）が無い選手。専用ページへは飛ばさず、既存の
+                          // PlayerLiteLink モーダルで出場大会・所属・ペアだけをその場で見せる
+                          // （個別ページの薄いページ量産は避けつつ、検索から情報にたどり着けるようにする）。
+                          <PlayerLiteLink id={entry.playerId} name={entry.fullName} className="text-link underline decoration-dotted hover:decoration-solid" />
                         ) : (
                           highlightAll(entry.fullName, queries)
                         )}
@@ -335,7 +344,9 @@ export default function PlayersPage({ featured, all }: PlayersPageProps) {
                     </button>
                   </div>
                 )}
-                <p className="mt-3 text-xs text-text-muted">出場大会数が 5 未満の選手には個別ページがないため、名前のみの表示になります。</p>
+                <p className="mt-3 text-xs text-text-muted">
+                  出場大会数が 5 未満の選手には個別ページがないため、名前をクリックすると出場大会・所属をその場でポップアップ表示します。
+                </p>
               </>
             )}
           </section>

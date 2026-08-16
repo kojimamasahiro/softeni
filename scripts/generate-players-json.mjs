@@ -281,8 +281,20 @@ function summarizePlayerGroup(group) {
 
 // 軽量な検索インデックス用にグループを縮約する。
 // 各選手ごとのフルな大会記録配列は持たず、検索に必要なテキストのみを保持する。
-// 詳細は選手結果ページ（/players/{id}/results/）で見せる方針。
-function toSearchGroup(group) {
+// 詳細は選手結果ページ（/players/{id}/results/）またはライトモーダル（PlayerLiteLink）で見せる方針。
+//
+// linkableIds: 結果ページが実在する（data/players/index.json の count>=5）選手 id の集合。
+// group.playerId はこの関数が使う playerMap（detail.results 由来、minMatchCount=2 で収集）
+// から来ており、data/players/index.json の count とは母集団が異なる別カウントである。
+// そのため group.count>=2 であっても index.json 側は 5 未満のことがあり、hasPage を見ずに
+// playerId をそのまま /players/{id}/results/ へリンクすると、getStaticPaths が生成していない
+// （count>=5 のみ）ページで 404 になる（このバグの実体）。
+//
+// ただし id 自体は count<5 の選手にも public/data/players-lite/ 側で軽量データ
+// （出場大会・所属・ペア）が用意されている（generate-players-lite.mjs、PlayerLiteLink.tsx）。
+// そのため playerId は解決できる限り常に持たせ、hasPage で「/results/ へ直接リンクしてよいか」
+// をフロント側に伝える。hasPage=false の場合は PlayerLiteLink のモーダルで代替表示する。
+function toSearchGroup(group, linkableIds) {
   const teams = group.differentTeams || [];
   const keywords = new Set();
   keywords.add(group.fullName);
@@ -296,9 +308,12 @@ function toSearchGroup(group) {
     }
   }
   const summary = summarizePlayerGroup(group);
+  const playerId = group.playerId ?? null;
+  const hasPage = playerId != null && linkableIds.has(String(playerId));
   return {
     fullName: group.fullName,
-    playerId: group.playerId ?? null,
+    playerId,
+    hasPage,
     count: group.count,
     // 表示は最新所属のみ。全所属配列は searchText に畳み込んであるので検索性は落ちない。
     team: summary.team,
@@ -371,7 +386,7 @@ async function main() {
     }
 
     // 検索用: 全収録選手の軽量インデックス（フル記録は持たない）
-    const searchGroups = allGroups.map(toSearchGroup);
+    const searchGroups = allGroups.map((g) => toSearchGroup(g, linkableIds));
     fs.writeFileSync(path.join(outputDir, 'players-search.json'), JSON.stringify({ sameNameGroups: searchGroups }), 'utf-8');
     console.log(`✓ Generated players-search.json (${searchGroups.length} groups)`);
 
