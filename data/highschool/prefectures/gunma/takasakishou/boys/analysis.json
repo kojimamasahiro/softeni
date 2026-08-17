@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 24,
+  "totalAppearances": 26,
   "byCategory": {
     "team": 8,
-    "doubles": 13,
-    "singles": 3
+    "doubles": 14,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "takasakishou",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["大塚_陸玖_高崎商_群馬県"]
+        "playerIds": ["岩﨑_俊介_高崎商_群馬県"]
       }
     },
     "doubles": {
@@ -50,12 +50,12 @@
         "teamId": "takasakishou",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "6回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["大塚_陸玖_高崎商_群馬県", "森平_蓮心_高崎商_群馬県"]
+        "playerIds": ["大和_昌生_高崎商_群馬県", "岩﨑_俊介_高崎商_群馬県"]
       }
     },
     "team": {
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 20,
+  "uniquePlayers": 21,
   "topPlayers": [
     {
       "id": "大塚_陸玖_高崎商_群馬県",
@@ -91,7 +91,7 @@
     },
     {
       "id": "大和_昌生_高崎商_群馬県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "森平_蓮心_高崎商_群馬県",

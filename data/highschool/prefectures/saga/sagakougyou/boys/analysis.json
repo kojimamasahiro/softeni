@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "佐賀工業高校",
+        "teamId": "sagakougyou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["石井_大裕_佐賀工業高校_佐賀県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,

@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,17 +22,32 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "登別明日中等",
+        "teamId": "noboribetsuasujuunado",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["加藤_己達_登別明日中等_北海道", "伊藤_翔太_登別明日中等_北海道"]
+      }
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "加藤_己達_登別明日中等_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "伊藤_翔太_登別明日中等_北海道",
       "appearances": 1
     }
   ]

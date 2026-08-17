@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高知小津",
+        "teamId": "kouchiozu",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["中岡_莉菜_高知小津_高知県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,7 +44,7 @@
   "topPlayers": [
     {
       "id": "中岡_莉菜_高知小津_高知県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "好永_涼乃_高知小津_高知県",

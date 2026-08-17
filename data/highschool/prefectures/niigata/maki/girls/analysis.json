@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "巻",
+        "teamId": "maki",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["石山_実来_巻_新潟県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,10 +44,14 @@
   "topPlayers": [
     {
       "id": "石山_実来_巻_新潟県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "久保田_渚_巻_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "神保_瑞_巻_新潟県",
       "appearances": 2
     },
     {
@@ -44,10 +60,6 @@
     },
     {
       "id": "小林_愛佳_巻_新潟県",
-      "appearances": 1
-    },
-    {
-      "id": "山本_菜央_巻_新潟県",
       "appearances": 1
     }
   ]

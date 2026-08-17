@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 18,
+  "totalAppearances": 20,
   "byCategory": {
     "team": 5,
-    "doubles": 10,
-    "singles": 3
+    "doubles": 11,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "oomuta",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["野田_暖仁_大牟田_福岡県"]
+        "playerIds": ["五十嵐_涼介_大牟田_福岡県"]
       }
     },
     "doubles": {
@@ -50,12 +50,12 @@
         "teamId": "oomuta",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "6回戦敗退",
+        "result": "ベスト4",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "highschool-japan-cup",
         "year": 2021,
         "gender": "boys",
-        "playerIds": ["長友_海晴_大牟田_福岡県", "澤田_壮史_大牟田_福岡県"]
+        "playerIds": ["山下_風雅_大牟田_福岡県", "五十嵐_涼介_大牟田_福岡県"]
       }
     },
     "team": {
@@ -94,15 +94,15 @@
       "appearances": 3
     },
     {
+      "id": "五十嵐_涼介_大牟田_福岡県",
+      "appearances": 3
+    },
+    {
       "id": "平川_竜乃介_大牟田_福岡県",
       "appearances": 2
     },
     {
       "id": "長友_海晴_大牟田_福岡県",
-      "appearances": 2
-    },
-    {
-      "id": "山下_凱空_大牟田_福岡県",
       "appearances": 2
     }
   ]

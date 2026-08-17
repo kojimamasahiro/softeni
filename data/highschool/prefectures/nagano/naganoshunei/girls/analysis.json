@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 9,
   "byCategory": {
     "team": 1,
     "doubles": 5,
-    "singles": 2
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "naganoshunei",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2026,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
         "gender": "girls",
-        "playerIds": ["竹内_楓_長野俊英_長野県"]
+        "playerIds": ["榎本_優紗_長野俊英_長野県"]
       }
     },
     "doubles": {
@@ -84,15 +84,15 @@
       "appearances": 3
     },
     {
+      "id": "榎本_優紗_長野俊英_長野県",
+      "appearances": 2
+    },
+    {
       "id": "竹内_楓_長野俊英_長野県",
       "appearances": 2
     },
     {
       "id": "小林_まどか_長野俊英_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "榎本_優紗_長野俊英_長野県",
       "appearances": 1
     }
   ]

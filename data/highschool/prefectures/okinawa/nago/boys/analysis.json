@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 2,
-    "doubles": 11
+    "doubles": 11,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "名護",
+        "teamId": "nago",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["花田_悠馬_名護_沖縄県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -79,8 +91,8 @@
       "appearances": 2
     },
     {
-      "id": "大城_開路_名護_沖縄県",
-      "appearances": 1
+      "id": "花田_悠馬_名護_沖縄県",
+      "appearances": 2
     }
   ]
 }

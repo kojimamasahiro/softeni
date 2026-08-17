@@ -1,8 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 1,
   "byCategory": {
-    "team": 2,
-    "doubles": 3
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -16,59 +15,27 @@
         "teamId": "kanazawagakuin",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "予選敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
         "gender": "girls",
-        "playerIds": ["柳_海花_金沢学院_石川県", "道下_憧子_金沢学院_石川県"]
+        "playerIds": ["法花堂_古都_金沢学院_石川県", "棚田_すず_金沢学院_石川県"]
       }
     },
     "team": {
-      "recentlyResult": {
-        "team": "金沢学院",
-        "teamId": "kanazawagakuin",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-senbatsu",
-        "year": 2025,
-        "gender": "girls"
-      },
-      "historicalBest": {
-        "team": "金沢学院",
-        "teamId": "kanazawagakuin",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-senbatsu",
-        "year": 2025,
-        "gender": "girls"
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "柳_海花_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "道下_憧子_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "金瀬戸_のよ_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "南条_舞咲_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
       "id": "法花堂_古都_金沢学院_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "棚田_すず_金沢学院_石川県",
       "appearances": 1
     }
   ]

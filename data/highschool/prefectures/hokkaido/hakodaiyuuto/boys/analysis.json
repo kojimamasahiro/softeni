@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "函大有斗",
+        "teamId": "hakodaiyuuto",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["廣森_圭佑_函大有斗_北海道", "小田島_琢九磨_函大有斗_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "廣森_圭佑_函大有斗_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "小田島_琢九磨_函大有斗_北海道",
+      "appearances": 1
+    }
+  ]
+}

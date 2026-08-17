@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 12,
   "byCategory": {
     "team": 2,
     "doubles": 8,
-    "singles": 1
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -13,12 +13,12 @@
         "teamId": "izumohokuryou",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2022,
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["陰山_晃成_出雲北陵_島根県"]
+        "playerIds": ["神田_好太郎_出雲北陵_島根県"]
       }
     },
     "doubles": {
@@ -83,15 +83,15 @@
       "appearances": 2
     },
     {
+      "id": "神田_好太郎_出雲北陵_島根県",
+      "appearances": 2
+    },
+    {
       "id": "木村_蔵人_出雲北陵_島根県",
       "appearances": 1
     },
     {
       "id": "岡原_煌虎_出雲北陵_島根県",
-      "appearances": 1
-    },
-    {
-      "id": "川角_悠太_出雲北陵_島根県",
       "appearances": 1
     }
   ]

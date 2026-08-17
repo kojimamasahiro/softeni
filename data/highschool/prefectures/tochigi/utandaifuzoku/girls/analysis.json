@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宇短大附属",
+        "teamId": "utandaifuzoku",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["螺良_萌々_宇短大附属高校_栃木県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宇短大附属",
+        "teamId": "utandaifuzoku",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["螺良_萌々_宇短大附属_栃木県", "直井_莉里_宇短大附属_栃木県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "螺良_萌々_宇短大附属_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "直井_莉里_宇短大附属_栃木県",
+      "appearances": 1
+    }
+  ]
+}

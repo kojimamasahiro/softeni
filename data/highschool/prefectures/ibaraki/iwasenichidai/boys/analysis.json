@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "岩瀬日大",
+        "teamId": "iwasenichidai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["佐久間_啓輔_岩瀬日大_茨城県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -28,7 +40,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "加倉井_尊_岩瀬日大_茨城県",
@@ -36,6 +48,10 @@
     },
     {
       "id": "大崎_竣也_岩瀬日大_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "佐久間_啓輔_岩瀬日大_茨城県",
       "appearances": 1
     }
   ]

@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 2,
-    "doubles": 8,
-    "singles": 2
+    "doubles": 9,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -13,12 +13,12 @@
         "teamId": "takada",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "3回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2022,
+        "year": 2021,
         "gender": "girls",
-        "playerIds": ["門田_真歩_高田_岩手県"]
+        "playerIds": ["門田_真歩_高田高校_岩手県"]
       }
     },
     "doubles": {
@@ -76,7 +76,7 @@
   "topPlayers": [
     {
       "id": "門田_真歩_高田_岩手県",
-      "appearances": 4
+      "appearances": 6
     },
     {
       "id": "亘理_有沙_高田_岩手県",
@@ -91,8 +91,8 @@
       "appearances": 2
     },
     {
-      "id": "小林_桃果_高田_岩手県",
-      "appearances": 1
+      "id": "鈴木_咲彩_高田_岩手県",
+      "appearances": 2
     }
   ]
 }

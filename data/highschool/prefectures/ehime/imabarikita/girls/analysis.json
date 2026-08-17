@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 2,
-    "doubles": 11,
-    "singles": 2
+    "doubles": 12,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "imabarikita",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2022,
+        "year": 2021,
         "gender": "girls",
-        "playerIds": ["﨑山_七海_今治北_愛媛県"]
+        "playerIds": ["黒川_愛結_今治北_愛媛県"]
       }
     },
     "doubles": {
@@ -90,6 +90,10 @@
       "appearances": 3
     },
     {
+      "id": "黒川_愛結_今治北_愛媛県",
+      "appearances": 3
+    },
+    {
       "id": "正岡_由衣_今治北_愛媛県",
       "appearances": 2
     },
@@ -99,10 +103,6 @@
     },
     {
       "id": "矢野_朱莉_今治北_愛媛県",
-      "appearances": 2
-    },
-    {
-      "id": "伊東_ひなた_今治北_愛媛県",
       "appearances": 2
     }
   ]

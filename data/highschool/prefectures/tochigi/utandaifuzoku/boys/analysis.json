@@ -1,0 +1,58 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宇短大附属",
+        "teamId": "utandaifuzoku",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["渡邉_優心_宇短大附属_栃木県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宇短大附属",
+        "teamId": "utandaifuzoku",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["嶋田_和也_宇短大附属_栃木県", "熊木_海人_宇短大附属_栃木県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "嶋田_和也_宇短大附属_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "熊木_海人_宇短大附属_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "渡邉_優心_宇短大附属_栃木県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高岡西",
+        "teamId": "takaokanishi",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["小杉_菜月_高岡西_富山県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高岡西",
+        "teamId": "takaokanishi",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["小杉_菜月_高岡西_富山県", "金瀬_萌_高岡西_富山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小杉_菜月_高岡西_富山県",
+      "appearances": 2
+    },
+    {
+      "id": "金瀬_萌_高岡西_富山県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 9,
-    "singles": 1
+    "doubles": 10,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -12,12 +12,12 @@
         "teamId": "kannabeasahi",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
         "tournamentId": "highschool-japan-cup",
-        "year": 2022,
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["飯田_幸誠_神辺旭_広島県"]
+        "playerIds": ["杉原_僚太_神辺旭_広島県"]
       }
     },
     "doubles": {
@@ -62,15 +62,15 @@
       "appearances": 3
     },
     {
+      "id": "杉原_僚太_神辺旭_広島県",
+      "appearances": 3
+    },
+    {
       "id": "清川_颯斗_神辺旭_広島県",
       "appearances": 2
     },
     {
       "id": "坂本_賢哉_神辺旭_広島県",
-      "appearances": 2
-    },
-    {
-      "id": "上貝_悠斗_神辺旭_広島県",
       "appearances": 2
     }
   ]
