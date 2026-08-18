@@ -13,7 +13,7 @@ PDF_PATH = 'tournament.pdf'        # 入力PDFファイル名
 PAGE_NUMS = list(range(1, 2))      # 抽出するページ番号のリスト（1から開始）
 Y_TOLERANCE = 3                   # 同じ行と見なすy座標の許容誤差（ポイント）
 SMALL_SIZE_THRESHOLD = 6.5
-Y_CROP_MIN = 35                  # ★ 抽出範囲の最小Y座標 (上端)
+Y_CROP_MIN = 70                  # ★ 抽出範囲の最小Y座標 (上端)
 Y_CROP_MAX = 850                 # ★ 抽出範囲の最大Y座標 (下端)
 
 # ★ 名前分割方法の選択
@@ -26,27 +26,27 @@ if USE_NAMEDIVIDER:
     from namedivider import BasicNameDivider
     name_divider = BasicNameDivider()
 
-X_LEFT_ENTRY_MIN = 25    # 左側エントリー番号の最小X座標
-X_LEFT_ENTRY_MAX = 50    # 左側エントリー番号の最大X座標
-X_LEFT_NAME_MIN = 50   # 左側 姓の最小X座標
-X_LEFT_SURNAME_MAX = 75  # 左側 姓の最大X座標
-X_LEFT_FIRSTNAME_MIN = 75 # 左側 名の最小X座標
-X_LEFT_NAME_MAX = 178 # 左側 名の最大X座標
-X_LEFT_AREA_MIN = 180    # エリア名の最小X座標
-X_LEFT_AREA_MAX = 220    # エリア名の最大X座標
-X_LEFT_TEAM_MIN = 55    # チーム名の最小X座標
-X_LEFT_TEAM_MAX = 173   # チーム名の最大X座標
+X_LEFT_ENTRY_MIN = 45    # 左側エントリー番号の最小X座標
+X_LEFT_ENTRY_MAX = 70    # 左側エントリー番号の最大X座標
+X_LEFT_NAME_MIN = 0   # 左側 姓の最小X座標
+X_LEFT_SURNAME_MAX = 0  # 左側 姓の最大X座標
+X_LEFT_FIRSTNAME_MIN = 0 # 左側 名の最小X座標
+X_LEFT_NAME_MAX = 0 # 左側 名の最大X座標
+X_LEFT_AREA_MIN = 77    # エリア名の最小X座標
+X_LEFT_AREA_MAX = 160    # エリア名の最大X座標
+X_LEFT_TEAM_MIN = 70    # チーム名の最小X座標
+X_LEFT_TEAM_MAX = 170   # チーム名の最大X座標
 
-X_RIGHT_NAME_MIN = 300   # 右側 姓の最小X座標
-X_RIGHT_SURNAME_MAX = 395   # 右側 姓の最大X座標
-X_RIGHT_FIRSTNAME_MIN = 395 # 右側 名の最小X座標
-X_RIGHT_NAME_MAX = 425 # 右側 名の最大X座標
-X_RIGHT_AREA_MIN = 500  # エリア名の最小X座標
-X_RIGHT_AREA_MAX = 540  # エリア名の最大X座標
-X_RIGHT_TEAM_MIN = 380  # チーム名の最小X座標
-X_RIGHT_TEAM_MAX = 485  # チーム名の最大X座標
-X_RIGHT_ENTRY_MIN = 550  # 右側エントリー番号の最小X座標
-X_RIGHT_ENTRY_MAX = 575  # 右側エントリー番号の最大X座標
+X_RIGHT_NAME_MIN = 395   # 右側 姓の最小X座標
+X_RIGHT_SURNAME_MAX = 425   # 右側 姓の最大X座標
+X_RIGHT_FIRSTNAME_MIN = 425 # 右側 名の最小X座標
+X_RIGHT_NAME_MAX = 455 # 右側 名の最大X座標
+X_RIGHT_AREA_MIN = 425  # エリア名の最小X座標
+X_RIGHT_AREA_MAX = 530  # エリア名の最大X座標
+X_RIGHT_TEAM_MIN = 425  # チーム名の最小X座標
+X_RIGHT_TEAM_MAX = 530  # チーム名の最大X座標
+X_RIGHT_ENTRY_MIN = 530  # 右側エントリー番号の最小X座標
+X_RIGHT_ENTRY_MAX = 550  # 右側エントリー番号の最大X座標
 
 # ---------------------------------------------
 # 抽出関数
@@ -969,6 +969,162 @@ def team_extraction_strategy(line_data, data_df, X_SETTINGS):
                 'Team_Name': team,  # チーム名
                 'Entry_Number': entry_number
             })
+    return RESULTS
+
+
+def secondary_team_extraction_strategy(line_data, data_df, X_SETTINGS):
+    """
+    全中の団体戦用の抽出戦略。
+
+    基本構造:
+        1行目: チーム名
+        2行目: エントリーナンバー
+        3行目: 地域
+
+    PDFによっては2行目と3行目のY座標差が小さく、
+    line_data上で同一行として扱われることがあるため、
+    文字ごとのY座標を使って再判定する。
+    """
+
+    RESULTS = []
+
+    # --------------------------------------------------
+    # 1. 団体戦専用に行を再構成
+    # --------------------------------------------------
+    expanded_lines = []
+
+    for _, line in line_data.iterrows():
+
+        Y_MIN = line['top_min']
+        Y_MAX = line['top_max']
+
+        # このline_group内の文字
+        chars = data_df[
+            (data_df['top'] >= Y_MIN) &
+            (data_df['top'] <= Y_MAX)
+        ].copy()
+
+        if chars.empty:
+            expanded_lines.append(line.to_dict())
+            continue
+
+        # エントリー番号の文字
+        entry_chars = chars[
+            (chars['left'] >= X_SETTINGS['ENTRY_MIN']) &
+            (chars['left'] <= X_SETTINGS['ENTRY_MAX'])
+        ]
+
+        # 地域の文字
+        area_chars = chars[
+            (chars['left'] >= X_SETTINGS['AREA_MIN']) &
+            (chars['left'] <= X_SETTINGS['AREA_MAX'])
+        ]
+
+        # --------------------------------------------------
+        # エントリーと地域が同じline_groupに入っている場合
+        # --------------------------------------------------
+        if not entry_chars.empty and not area_chars.empty:
+
+            entry_top = entry_chars['top'].median()
+            area_top = area_chars['top'].median()
+
+            # 実際のY座標が異なる場合は別行として扱う
+            if abs(entry_top - area_top) > 0.5:
+
+                # 元の行を削除して2行に分割
+                expanded_lines.append({
+                    'line_group': line['line_group'],
+                    'full_text': ''.join(entry_chars['text']).strip(),
+                    'top_min': entry_chars['top'].min(),
+                    'top_max': entry_chars['top'].max(),
+                })
+
+                expanded_lines.append({
+                    'line_group': line['line_group'],
+                    'full_text': ''.join(area_chars['text']).strip(),
+                    'top_min': area_chars['top'].min(),
+                    'top_max': area_chars['top'].max(),
+                })
+
+                continue
+
+        # 通常の行
+        expanded_lines.append(line.to_dict())
+
+    line_data = pd.DataFrame(expanded_lines)
+
+    # --------------------------------------------------
+    # 2. 3行セットとして処理
+    # --------------------------------------------------
+    i = 0
+
+    while i + 2 < len(line_data):
+
+        line_team = line_data.iloc[i]
+        line_entry = line_data.iloc[i + 1]
+        line_area = line_data.iloc[i + 2]
+
+        # --------------------------------------------------
+        # チーム名
+        # --------------------------------------------------
+        team, _, _ = extract_team_line_content(
+            line_team,
+            data_df,
+            X_SETTINGS
+        )
+
+        # --------------------------------------------------
+        # エントリー番号
+        # --------------------------------------------------
+        _, _, entry_text = extract_team_line_content(
+            line_entry,
+            data_df,
+            X_SETTINGS
+        )
+
+        # --------------------------------------------------
+        # 地域
+        # --------------------------------------------------
+        _, area, _ = extract_team_line_content(
+            line_area,
+            data_df,
+            X_SETTINGS
+        )
+
+        # --------------------------------------------------
+        # 判定
+        # --------------------------------------------------
+        if (
+            team and
+            entry_text and
+            entry_text.isdigit() and
+            area
+        ):
+            entry_number = int(entry_text)
+
+            RESULTS.append({
+                'Surname': '',
+                'First_Name': '',
+                'Player_Name_Raw': '',
+                'Split_Index': 0,
+                'Area_Name': area,
+                'Team_Name': team,
+                'Entry_Number': entry_number
+            })
+
+            print(
+                f"抽出: "
+                f"Team={team}, "
+                f"Entry={entry_number}, "
+                f"Area={area}"
+            )
+
+            i += 3
+            continue
+
+        # 3行セットとして成立しなければ1行進める
+        i += 1
+
     return RESULTS
 
 def extract_team_line_content(line_data_row, data_df, X_SETTINGS):
