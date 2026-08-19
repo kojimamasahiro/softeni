@@ -21,6 +21,34 @@
         "category": "doubles",
         "gender": "girls",
         "age": "none"
+      },
+      {
+        "categoryId": "doubles-over35-boys",
+        "label": "男子35歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over35"
+      },
+      {
+        "categoryId": "doubles-over35-girls",
+        "label": "女子35歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over35"
+      },
+      {
+        "categoryId": "doubles-over45-boys",
+        "label": "男子45歳",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "over45"
+      },
+      {
+        "categoryId": "doubles-over45-girls",
+        "label": "女子45歳",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "over45"
       }
     ]
   },
