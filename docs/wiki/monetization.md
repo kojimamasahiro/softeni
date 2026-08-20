@@ -66,6 +66,18 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 - モバイル全画面（ビネット）はオフ。
 - `/beta/*` `/contact` `/privacy` `/about` を除外 URL に登録。
 
+#### モバイル全画面（ビネット）表示時のスクロール不能（2026-08-20）
+
+症状: スマホでビネット（インタースティシャル）広告が表示されると、閉じた後も
+ページがスクロールできなくなる。Google 側の Auto ads スクリプトが広告終了後に
+`body`/`html` の `overflow` 等を正しく解除できないことがある既知の挙動と推定
+（コード側に手動インタースティシャル実装は無く、本サイトの実装起因ではない）。
+
+対応: コードでの回避（Auto ads の DOM に干渉する防御的 JS 等）はポリシー・保守性の
+観点で見送り、**AdSense 管理画面でモバイル全画面（ビネット）を実際にオフに設定**した
+（上記の推奨方針を実施に移したもの）。これにより上記の Open Questions のうち
+「ビネット広告の費用対効果」は当面「オフで運用」として決着。
+
 ### アフィリエイト
 
 - `src/components/AffiliateLink.tsx` に もしもアフィリエイト実装あり
@@ -124,6 +136,14 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 score機能を一般ユーザーの練習試合でも使える形に広げる際の収益化案・需要調査・実データでの
 パイロット分析は [score-general-availability.md](./score-general-availability.md) に分離して記載。
 本ページ（AdSense/アフィリエイト）とは独立した検討トラック。
+
+## 発展候補アイデア一覧（Idea Backlog）
+
+- **Core Web Vitals改善**（2026-08-20、発散フェーズ）: AMP導入の代替案として出てきた
+  アイデア。AMPは2021年以降SEO優位性がほぼ消滅・本サイトのUI（テーブル中心）とは相性が
+  悪いため非推奨と判断し、代わりに既存ページのCore Web Vitals改善（画像最適化・不要JS
+  削減など）でモバイル表示速度を上げる方が投資対効果が良いという結論。詳細は
+  [raw/2026-08-20-idea-core-web-vitals-improvement.md](../raw/2026-08-20-idea-core-web-vitals-improvement.md)。
 
 ## Assumption
 
