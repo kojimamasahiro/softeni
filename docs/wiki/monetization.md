@@ -137,6 +137,14 @@ score機能を一般ユーザーの練習試合でも使える形に広げる際
 パイロット分析は [score-general-availability.md](./score-general-availability.md) に分離して記載。
 本ページ（AdSense/アフィリエイト）とは独立した検討トラック。
 
+## 発展候補アイデア一覧（Idea Backlog）
+
+- **Core Web Vitals改善**（2026-08-20、発散フェーズ）: AMP導入の代替案として出てきた
+  アイデア。AMPは2021年以降SEO優位性がほぼ消滅・本サイトのUI（テーブル中心）とは相性が
+  悪いため非推奨と判断し、代わりに既存ページのCore Web Vitals改善（画像最適化・不要JS
+  削減など）でモバイル表示速度を上げる方が投資対効果が良いという結論。詳細は
+  [raw/2026-08-20-idea-core-web-vitals-improvement.md](../raw/2026-08-20-idea-core-web-vitals-improvement.md)。
+
 ## Assumption
 
 - Web 本体の主収益化は AdSense と一部アフィリエイト
