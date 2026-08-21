@@ -368,8 +368,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "森田 凌世",
             "高倉 陽輝"
@@ -383,8 +383,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "北 悠真",
             "稲葉 大海"
@@ -398,8 +398,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "寺本 匠吾",
             "長谷川 和志"
@@ -413,8 +413,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "笹原 太陽",
             "村松 悠翔"
@@ -428,11 +428,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
-            "小野 寺和",
-            "宮澤 菜々子"
+            "野口 美桜",
+            "下田 百花"
           ]
         },
         {
@@ -443,11 +443,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
-            "野口 美桜",
-            "下田 百花"
+            "小野 寺和",
+            "宮澤 菜々子"
           ]
         },
         {
@@ -1230,6 +1230,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "小山 瑠美",
+            "鷹峰 ほなみ"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-kinki-block",
           "tournamentLabel": "近畿中学校ソフトテニス大会",
           "short": "ブロック",
@@ -1342,8 +1357,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "村山 由奈",
             "筒木 瑛"
@@ -1357,8 +1372,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "杉江 優芽",
             "中川 心愛"
@@ -1372,23 +1387,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "小山 瑠美",
-            "鷹峰 ほなみ"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "中田 蘭來",
             "岡島 明日奈"
@@ -2143,6 +2143,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "竹谷 太志",
+            "岩本 陽琉"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-chugoku-block",
           "tournamentLabel": "中国中学校ソフトテニス大会",
           "short": "ブロック",
@@ -2245,21 +2260,6 @@
           "players": [
             "岩﨑 遥風",
             "兼弘 凪彩"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "竹谷 太志",
-            "岩本 陽琉"
           ]
         },
         {
@@ -2957,6 +2957,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "土橋 咲愛",
+            "大倉 愛里"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-kinki-block",
           "tournamentLabel": "近畿中学校ソフトテニス大会",
           "short": "ブロック",
@@ -2969,6 +2984,21 @@
           "players": [
             "栢森 菜穂",
             "裏 心音"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "朝日 万央",
+            "谷口 莉央"
           ]
         },
         {
@@ -3014,36 +3044,6 @@
           "players": [
             "井村 結",
             "間井谷 瑠璃"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "朝日 万央",
-            "谷口 莉央"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "土橋 咲愛",
-            "大倉 愛里"
           ]
         },
         {
@@ -3547,6 +3547,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "大星 凛果",
+            "前田 蓮夏"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-kinki-block",
           "tournamentLabel": "近畿中学校ソフトテニス大会",
           "short": "ブロック",
@@ -3629,26 +3644,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "細川 莉子",
             "松山 穂乃香"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "大星 凛果",
-            "前田 蓮夏"
           ]
         },
         {
@@ -4163,8 +4163,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "泉 妃夏",
             "渡邉 恵衣"
@@ -4178,11 +4178,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
-            "松原 萌菜",
-            "柳原 瑚々"
+            "佐藤 凜華",
+            "加藤 美雲"
           ]
         },
         {
@@ -4193,11 +4193,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
-            "佐藤 凜華",
-            "加藤 美雲"
+            "松原 萌菜",
+            "柳原 瑚々"
           ]
         },
         {
@@ -5224,21 +5224,6 @@
           ]
         },
         {
-          "tournamentId": "secondaryschool-chugoku-block",
-          "tournamentLabel": "中国中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "淺原 響空",
-            "胡子 遥翔"
-          ]
-        },
-        {
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
@@ -5246,8 +5231,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "栗原 拓真",
             "岡崎 幸村"
@@ -5261,11 +5246,26 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "濱本 凛乃",
             "岡崎 紗奈"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-chugoku-block",
+          "tournamentLabel": "中国中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "淺原 響空",
+            "胡子 遥翔"
           ]
         },
         {
@@ -5665,8 +5665,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "ベスト8",
+          "score": 4,
           "players": [
             "藤井 涼太",
             "横田 来輝"
@@ -5680,8 +5680,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "會田 真菜夏",
             "髙橋 真響"
@@ -6687,6 +6687,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "寺島 瑞希",
+            "小西 唯愛"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-hokushinetsu-block",
           "tournamentLabel": "北信越中学校ソフトテニス大会",
           "short": "ブロック",
@@ -6727,21 +6742,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "寺島 瑞希",
-            "小西 唯愛"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-versus",
@@ -7119,6 +7119,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "穐山 紗和",
+            "上嶋 未徠"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-chugoku-block",
           "tournamentLabel": "中国中学校ソフトテニス大会",
           "short": "ブロック",
@@ -7141,26 +7156,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "森下 香穂",
             "馬島 涼歌"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "穐山 紗和",
-            "上嶋 未徠"
           ]
         },
         {
@@ -8509,6 +8509,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "田中 涼晴",
+            "新開 一護"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tokai-block",
           "tournamentLabel": "東海中学校ソフトテニス大会",
           "short": "ブロック",
@@ -8521,21 +8536,6 @@
           "players": [
             "平山 大地",
             "田﨑 煌大"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "田中 涼晴",
-            "新開 一護"
           ]
         },
         {
@@ -8916,21 +8916,6 @@
           ]
         },
         {
-          "tournamentId": "secondaryschool-hokushinetsu-block",
-          "tournamentLabel": "北信越中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "東崎 佑奈",
-            "大釜 仁衣奈"
-          ]
-        },
-        {
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
@@ -8938,8 +8923,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "髙山 鉄平",
             "海野 晴太"
@@ -8953,11 +8938,26 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "斎藤 陽愛",
             "柳田 七音"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-hokushinetsu-block",
+          "tournamentLabel": "北信越中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "東崎 佑奈",
+            "大釜 仁衣奈"
           ]
         },
         {
@@ -9371,6 +9371,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "小野 美怜",
+            "野中 晴子"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-shikoku-block",
           "tournamentLabel": "四国中学校ソフトテニス大会",
           "short": "ブロック",
@@ -9413,21 +9428,6 @@
           "players": [
             "三浦 由羅",
             "奥﨑 花乃"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "小野 美怜",
-            "野中 晴子"
           ]
         },
         {
@@ -10142,21 +10142,6 @@
           "players": []
         },
         {
-          "tournamentId": "secondaryschool-hokushinetsu-block",
-          "tournamentLabel": "北信越中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "宮下 叶羽",
-            "中川 奈南"
-          ]
-        },
-        {
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
@@ -10164,8 +10149,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "松縄 詩",
             "安藤 鈴音"
@@ -10179,11 +10164,26 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "松山 茜",
             "松山 夢芽"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-hokushinetsu-block",
+          "tournamentLabel": "北信越中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "宮下 叶羽",
+            "中川 奈南"
           ]
         },
         {
@@ -10488,6 +10488,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "佐藤 絢真",
+            "笠井 耀輝"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tohoku-block",
           "tournamentLabel": "東北中学校ソフトテニス大会",
           "short": "ブロック",
@@ -10515,21 +10530,6 @@
           "players": [
             "多治比 みう",
             "鈴木 愛梨"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "佐藤 絢真",
-            "笠井 耀輝"
           ]
         },
         {
@@ -10876,8 +10876,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "前場 朔",
             "桑野 寛太"
@@ -11274,14 +11274,14 @@
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
           "year": 2026,
-          "categoryId": "doubles-none-boys",
+          "categoryId": "doubles-none-girls",
           "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
-            "小野 暉介",
-            "竹田 陽希"
+            "首藤 優空",
+            "石原 星依"
           ]
         },
         {
@@ -11289,14 +11289,14 @@
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
           "year": 2026,
-          "categoryId": "doubles-none-girls",
+          "categoryId": "doubles-none-boys",
           "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
-            "首藤 優空",
-            "石原 星依"
+            "小野 暉介",
+            "竹田 陽希"
           ]
         },
         {
@@ -12358,6 +12358,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "野上 怜奈",
+            "上田 莉咲"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-chugoku-block",
           "tournamentLabel": "中国中学校ソフトテニス大会",
           "short": "ブロック",
@@ -12370,21 +12385,6 @@
           "players": [
             "中内 あん",
             "阿座上 黎"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "野上 怜奈",
-            "上田 莉咲"
           ]
         },
         {
@@ -13093,21 +13093,6 @@
           ]
         },
         {
-          "tournamentId": "secondaryschool-chugoku-block",
-          "tournamentLabel": "中国中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "小村 柚華梨",
-            "板持 愛々花"
-          ]
-        },
-        {
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
@@ -13115,8 +13100,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "古藤 向翔",
             "堀江 爽汰"
@@ -13130,11 +13115,26 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "太田 莉緒",
             "福嶋 結花"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-chugoku-block",
+          "tournamentLabel": "中国中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "小村 柚華梨",
+            "板持 愛々花"
           ]
         },
         {
@@ -13434,8 +13434,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "ベスト8",
+          "score": 4,
           "players": [
             "野田 悠月",
             "中川 琴葉"
@@ -13449,8 +13449,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "真野 愛梨",
             "辻田 麗夢"
@@ -14709,8 +14709,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "齊藤 公介",
             "山下 隆真"
@@ -14724,8 +14724,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "上岡 瑠之介",
             "横田 凌雅"
@@ -15080,8 +15080,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "百目木 花奏",
             "髙田 爽來羽"
@@ -15921,6 +15921,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "渡辺 颯冴",
+            "石栗 蒼生"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-hokushinetsu-block",
           "tournamentLabel": "北信越中学校ソフトテニス大会",
           "short": "ブロック",
@@ -15933,21 +15948,6 @@
           "players": [
             "工藤 雅悠",
             "近 風汰"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "渡辺 颯冴",
-            "石栗 蒼生"
           ]
         },
         {
@@ -16816,8 +16816,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "吉見 世名",
             "橋田 樹"
@@ -17350,8 +17350,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "市村 章馬",
             "赤星 佑哉"
@@ -17606,8 +17606,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "森田 昇大",
             "相川 暖仁"
@@ -17897,8 +17897,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "後藤 聖和",
             "須賀 心護"
@@ -18186,11 +18186,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
-            "川野 多凰",
-            "安藤 美乃子"
+            "鈴木 心陽",
+            "三鍋 咲心"
           ]
         },
         {
@@ -18201,11 +18201,11 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
-            "鈴木 心陽",
-            "三鍋 咲心"
+            "川野 多凰",
+            "安藤 美乃子"
           ]
         },
         {
@@ -18424,18 +18424,6 @@
           ]
         },
         {
-          "tournamentId": "secondaryschool-kyushu-block",
-          "tournamentLabel": "九州中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        },
-        {
           "tournamentId": "secondaryschool-championship",
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
@@ -18443,8 +18431,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "中島 瑚々奈",
             "山下 幸千"
@@ -18458,12 +18446,24 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "松本 心花",
             "野中 千代"
           ]
+        },
+        {
+          "tournamentId": "secondaryschool-kyushu-block",
+          "tournamentLabel": "九州中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
         },
         {
           "tournamentId": "zennihon-secondaryschool-versus",
@@ -18665,6 +18665,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "山岡 沙吏",
+            "三木 紅羽"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-kanto-block",
           "tournamentLabel": "関東中学校ソフトテニス大会",
           "short": "ブロック",
@@ -18675,21 +18690,6 @@
           "label": "2回戦敗退",
           "score": 1.1,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "山岡 沙吏",
-            "三木 紅羽"
-          ]
         },
         {
           "tournamentId": "secondaryschool-championship",
@@ -19701,18 +19701,36 @@
         "zennihon-secondaryschool-versus"
       ],
       "best": {
-        "tournamentId": "zennihon-secondaryschool-club-pre",
-        "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
-        "short": "クラブ選手権プレ",
-        "year": 2025,
-        "categoryId": "team-lower-girls",
-        "category": "team",
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2026,
+        "categoryId": "doubles-none-girls",
+        "category": "doubles",
         "gender": "girls",
         "label": "ベスト8",
         "score": 4,
-        "players": []
+        "players": [
+          "深井 るるか",
+          "中嶋 望"
+        ]
       },
       "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "深井 るるか",
+            "中嶋 望"
+          ]
+        },
         {
           "tournamentId": "secondaryschool-kanto-block",
           "tournamentLabel": "関東中学校ソフトテニス大会",
@@ -19724,21 +19742,6 @@
           "label": "2回戦敗退",
           "score": 1.1,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "深井 るるか",
-            "中嶋 望"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-club-pre",
@@ -20011,8 +20014,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "橋本 妃茉莉",
             "小野寺 莉央"
@@ -21026,8 +21029,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "檀上文 之介",
             "森下 寛斗"
@@ -21302,8 +21305,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "ベスト8",
+          "score": 4,
           "players": [
             "倉田 峻輝",
             "齋藤 颯真"
@@ -21317,11 +21320,11 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
-            "山内 航太",
-            "山本 樹希"
+            "丹羽 悠弦",
+            "當房 琉生"
           ]
         },
         {
@@ -21332,11 +21335,11 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
-            "丹羽 悠弦",
-            "當房 琉生"
+            "山内 航太",
+            "山本 樹希"
           ]
         },
         {
@@ -21770,7 +21773,7 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "片桐 祐生",
@@ -22518,8 +22521,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "水上 智永里",
             "後藤 嘉心"
@@ -23497,8 +23500,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "有馬 智樹",
             "下鶴 尊久"
@@ -23735,6 +23738,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "近藤 明歩",
+            "星川 りのん"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tokai-block",
           "tournamentLabel": "東海中学校ソフトテニス大会",
           "short": "ブロック",
@@ -23762,21 +23780,6 @@
           "players": [
             "近藤 美祈",
             "岡田 佳子"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "近藤 明歩",
-            "星川 りのん"
           ]
         },
         {
@@ -25748,6 +25751,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "倉橋 歩希",
+            "平林由 悠季"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-hokushinetsu-block",
           "tournamentLabel": "北信越中学校ソフトテニス大会",
           "short": "ブロック",
@@ -25758,21 +25776,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "倉橋 歩希",
-            "平林由 悠季"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-versus",
@@ -27222,8 +27225,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "柏谷 愛美",
             "渡部 陽葉"
@@ -27380,8 +27383,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "門田 颯真",
             "藤家 翔貴"
@@ -27746,6 +27749,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "松井 海咲",
+            "大窪 莉愛"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tokai-block",
           "tournamentLabel": "東海中学校ソフトテニス大会",
           "short": "ブロック",
@@ -27786,21 +27804,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "松井 海咲",
-            "大窪 莉愛"
-          ]
         },
         {
           "tournamentId": "secondaryschool-championship",
@@ -28138,8 +28141,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "3回戦敗退",
+          "score": 1.15,
           "players": [
             "間渕 蒼空",
             "荒井 陽雲"
@@ -28317,8 +28320,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "北野 晃都",
             "山下侑 樹一"
@@ -29474,7 +29477,7 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "堺 数音",
@@ -32429,7 +32432,7 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "柴田 結月",
@@ -32552,8 +32555,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "弓削 櫻",
             "安藤 成那"
@@ -32705,8 +32708,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "古賀 穂花",
             "榎本 奈月"
@@ -33316,8 +33319,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "斉藤 凛鈴",
             "岩城 そう"
@@ -33637,8 +33640,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "植作 倖帆",
             "笈沼 凛"
@@ -33912,6 +33915,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "板羽 日菜",
+            "積木 愛"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tokai-block",
           "tournamentLabel": "東海中学校ソフトテニス大会",
           "short": "ブロック",
@@ -33934,21 +33952,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "板羽 日菜",
-            "積木 愛"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-versus",
@@ -34240,8 +34243,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "松浦 心美",
             "小林 珠"
@@ -34545,6 +34548,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "佐々木 蓮",
+            "八重柊 一朗"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-hokkaido-block",
           "tournamentLabel": "北海道中学校体育大会",
           "short": "ブロック",
@@ -34555,21 +34573,6 @@
           "label": "ベスト8",
           "score": 4,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "佐々木 蓮",
-            "八重柊 一朗"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-versus",
@@ -34690,8 +34693,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "清本 幹太",
             "大橋 珀斗"
@@ -36495,6 +36498,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "手塚 律",
+            "川上 結一朗"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-kanto-block",
           "tournamentLabel": "関東中学校ソフトテニス大会",
           "short": "ブロック",
@@ -36505,21 +36523,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "手塚 律",
-            "川上 結一朗"
-          ]
         },
         {
           "tournamentId": "zennihon-secondaryschool-club-pre",
@@ -37444,8 +37447,8 @@
         "categoryId": "doubles-none-boys",
         "category": "doubles",
         "gender": "boys",
-        "label": "出場",
-        "score": 0,
+        "label": "1回戦敗退",
+        "score": 1.05,
         "players": [
           "田中 渚人",
           "黒川 海理"
@@ -37460,8 +37463,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "田中 渚人",
             "黒川 海理"
@@ -37475,8 +37478,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "佐薙 京平",
             "森 郁人"
@@ -37490,8 +37493,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "石山 萌々乃",
             "山本 紗帆"
@@ -39185,8 +39188,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "森澤 星斗",
             "畠山 友彰"
@@ -39673,18 +39676,36 @@
         "zennihon-secondaryschool-versus"
       ],
       "best": {
-        "tournamentId": "secondaryschool-kanto-block",
-        "tournamentLabel": "関東中学校ソフトテニス大会",
-        "short": "ブロック",
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
         "year": 2026,
-        "categoryId": "team-none-boys",
-        "category": "team",
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
         "gender": "boys",
         "label": "1回戦敗退",
         "score": 1.05,
-        "players": []
+        "players": [
+          "根本 唯杜",
+          "石﨑 優生"
+        ]
       },
       "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "根本 唯杜",
+            "石﨑 優生"
+          ]
+        },
         {
           "tournamentId": "secondaryschool-kanto-block",
           "tournamentLabel": "関東中学校ソフトテニス大会",
@@ -39696,21 +39717,6 @@
           "label": "1回戦敗退",
           "score": 1.05,
           "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "根本 唯杜",
-            "石﨑 優生"
-          ]
         }
       ],
       "members": [
@@ -41064,6 +41070,21 @@
           "players": []
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "岡原 梓実",
+            "蕨岡 凛"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-shikoku-block",
           "tournamentLabel": "四国中学校ソフトテニス大会",
           "short": "ブロック",
@@ -41076,21 +41097,6 @@
           "players": [
             "德原 千尋",
             "土居 日向"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "岡原 梓実",
-            "蕨岡 凛"
           ]
         }
       ],
@@ -42476,8 +42482,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "米沢 心音",
             "河﨑 葵咲"
@@ -43479,8 +43485,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "齋藤 羽月",
             "伊藤 小都花"
@@ -43711,8 +43717,8 @@
           "categoryId": "doubles-none-girls",
           "category": "doubles",
           "gender": "girls",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "深谷 希衣",
             "小林 和花"
@@ -44612,10 +44618,10 @@
         "zennihon-secondaryschool-versus"
       ],
       "best": {
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "tournamentLabel": "都道府県対抗全日本中学生大会",
-        "short": "県対抗",
-        "year": 2025,
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校体育大会",
+        "short": "全中",
+        "year": 2026,
         "categoryId": "doubles-none-boys",
         "category": "doubles",
         "gender": "boys",
@@ -44635,8 +44641,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "池上 陽太",
             "川嶋 大翔"
@@ -45494,6 +45500,21 @@
           ]
         },
         {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "尾田 美桜",
+            "登立 愛里珠"
+          ]
+        },
+        {
           "tournamentId": "secondaryschool-tokai-block",
           "tournamentLabel": "東海中学校ソフトテニス大会",
           "short": "ブロック",
@@ -45506,21 +45527,6 @@
           "players": [
             "大植 結心",
             "上野 颯"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校体育大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "出場",
-          "score": 0,
-          "players": [
-            "尾田 美桜",
-            "登立 愛里珠"
           ]
         }
       ],
@@ -46022,8 +46028,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "2回戦敗退",
+          "score": 1.1,
           "players": [
             "高橋 航",
             "青山 航大"
@@ -48934,8 +48940,8 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
-          "score": 0,
+          "label": "1回戦敗退",
+          "score": 1.05,
           "players": [
             "竹内 嵐音",
             "杉恭 太郎"
@@ -50397,7 +50403,7 @@
         "categoryId": "doubles-none-boys",
         "category": "doubles",
         "gender": "boys",
-        "label": "出場",
+        "label": "ベスト4進出",
         "score": 0,
         "players": [
           "北野 陽真",
@@ -50413,7 +50419,7 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "北野 陽真",
@@ -50428,7 +50434,7 @@
           "categoryId": "doubles-none-boys",
           "category": "doubles",
           "gender": "boys",
-          "label": "出場",
+          "label": "ベスト4進出",
           "score": 0,
           "players": [
             "那知上 晟生",
