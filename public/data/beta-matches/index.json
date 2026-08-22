@@ -1,6 +1,298 @@
 {
-  "generatedAt": "2026-08-14T15:16:28.181Z",
+  "generatedAt": "2026-08-22T05:06:22.542Z",
   "matches": [
+    {
+      "id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+      "tournament_name": "west-japan-2025",
+      "team_a": "150 矢野 颯人 (NTT西日本) [広島県] / 上松 俊貴 (NTT西日本) [広島県]",
+      "team_b": "239 上岡 俊介 (Up Rise) [京都府] / 丸山 海斗 (one team) [大阪府]",
+      "best_of": 7,
+      "created_at": "2026-08-20T12:03:14.18801",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2025,
+      "game_type": "doubles",
+      "team_a_entry_number": "150",
+      "team_a_player1_last_name": "矢野",
+      "team_a_player1_first_name": "颯人",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島県",
+      "team_a_player2_last_name": "上松",
+      "team_a_player2_first_name": "俊貴",
+      "team_a_player2_team_name": "NTT西日本",
+      "team_a_player2_region": "広島県",
+      "team_b_entry_number": "239",
+      "team_b_player1_last_name": "上岡",
+      "team_b_player1_first_name": "俊介",
+      "team_b_player1_team_name": "Up Rise",
+      "team_b_player1_region": "京都府",
+      "team_b_player2_last_name": "丸山",
+      "team_b_player2_first_name": "海斗",
+      "team_b_player2_team_name": "one team",
+      "team_b_player2_region": "大阪府",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島県",
+              "last_name": "矢野",
+              "team_name": "NTT西日本",
+              "first_name": "颯人"
+            },
+            {
+              "region": "広島県",
+              "last_name": "上松",
+              "team_name": "NTT西日本",
+              "first_name": "俊貴"
+            }
+          ],
+          "entry_number": "150"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "京都府",
+              "last_name": "上岡",
+              "team_name": "Up Rise",
+              "first_name": "俊介"
+            },
+            {
+              "region": "大阪府",
+              "last_name": "丸山",
+              "team_name": "one team",
+              "first_name": "海斗"
+            }
+          ],
+          "entry_number": "239"
+        }
+      },
+      "tournament_id": "west-japan",
+      "match_date": "2026-08-20",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-08-20T12:22:42.012+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "EPaZZ9EW0GI",
+      "youtube_url": "https://www.youtube.com/watch?v=EPaZZ9EW0GI",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "8614382d-7712-479b-b58b-9a273fb6f1fd",
+          "match_id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+          "game_number": 1,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-20T12:03:15.042062"
+        },
+        {
+          "id": "30f5fd5d-cede-4863-a385-08dee3aa85e4",
+          "match_id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-20T12:08:18.606309"
+        },
+        {
+          "id": "2fd4e1d9-0bae-4057-b5d1-ac00198f73b6",
+          "match_id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+          "game_number": 3,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-20T12:17:50.240481"
+        },
+        {
+          "id": "7e878c82-006d-4663-87a6-c028bf1353a9",
+          "match_id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-20T12:19:40.777517"
+        },
+        {
+          "id": "de7be193-f673-4bc0-bb8c-6f6b18ba6252",
+          "match_id": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-20T12:21:19.587949"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/all/west-japan/2025/doubles/none/boys",
+        "entryNos": [
+          150,
+          239
+        ]
+      }
+    },
+    {
+      "id": "164f1238-f12e-4705-984a-afb843eb667a",
+      "tournament_name": "west-japan-2026",
+      "team_a": "1 上岡 俊介 (Up Rise) [京都府] / 丸山 海斗 (one team) [大阪府]",
+      "team_b": "31 長江 光一 (NTT西日本) [広島県] / 林 佑太郎 (NTT西日本) [広島県]",
+      "best_of": 7,
+      "created_at": "2026-08-19T14:10:34.862664",
+      "tournament_generation": "all",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "5回戦",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "1",
+      "team_a_player1_last_name": "上岡",
+      "team_a_player1_first_name": "俊介",
+      "team_a_player1_team_name": "Up Rise",
+      "team_a_player1_region": "京都府",
+      "team_a_player2_last_name": "丸山",
+      "team_a_player2_first_name": "海斗",
+      "team_a_player2_team_name": "one team",
+      "team_a_player2_region": "大阪府",
+      "team_b_entry_number": "31",
+      "team_b_player1_last_name": "長江",
+      "team_b_player1_first_name": "光一",
+      "team_b_player1_team_name": "NTT西日本",
+      "team_b_player1_region": "広島県",
+      "team_b_player2_last_name": "林",
+      "team_b_player2_first_name": "佑太郎",
+      "team_b_player2_team_name": "NTT西日本",
+      "team_b_player2_region": "広島県",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "京都府",
+              "last_name": "上岡",
+              "team_name": "Up Rise",
+              "first_name": "俊介"
+            },
+            {
+              "region": "大阪府",
+              "last_name": "丸山",
+              "team_name": "one team",
+              "first_name": "海斗"
+            }
+          ],
+          "entry_number": "1"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "広島県",
+              "last_name": "長江",
+              "team_name": "NTT西日本",
+              "first_name": "光一"
+            },
+            {
+              "region": "広島県",
+              "last_name": "林",
+              "team_name": "NTT西日本",
+              "first_name": "佑太郎"
+            }
+          ],
+          "entry_number": "31"
+        }
+      },
+      "tournament_id": "west-japan",
+      "match_date": "2026-07-05",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-08-19T14:39:18.336+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "eQnF_PokjJs",
+      "youtube_url": "https://www.youtube.com/watch?v=eQnF_PokjJs",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "e860ec32-b7f1-4465-ab3f-d015ab5f480a",
+          "match_id": "164f1238-f12e-4705-984a-afb843eb667a",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-19T14:10:35.580772"
+        },
+        {
+          "id": "32fbaa02-95de-4a71-8c6d-fa33f44c359c",
+          "match_id": "164f1238-f12e-4705-984a-afb843eb667a",
+          "game_number": 2,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-19T14:31:13.312088"
+        },
+        {
+          "id": "00d6eb78-3d17-459d-9172-472bfa52618f",
+          "match_id": "164f1238-f12e-4705-984a-afb843eb667a",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 3,
+          "points_b": 5,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-19T14:33:47.082257"
+        },
+        {
+          "id": "c4a92da3-e925-49c2-8571-303ee1846c57",
+          "match_id": "164f1238-f12e-4705-984a-afb843eb667a",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 0,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-19T14:36:02.475899"
+        },
+        {
+          "id": "67a9092c-257b-434b-b64b-7d5d1ca1e465",
+          "match_id": "164f1238-f12e-4705-984a-afb843eb667a",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-08-19T14:37:00.05692"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/all/west-japan/2026/doubles/none/boys",
+        "entryNos": [
+          1,
+          31
+        ]
+      }
+    },
     {
       "id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
       "tournament_name": "east-japan-2026",

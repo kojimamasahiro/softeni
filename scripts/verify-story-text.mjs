@@ -265,39 +265,35 @@ function historyOf(subject, facts) {
 const STREAK_LEVEL = { 優勝: 100, 決勝: 90, 準優勝: 90, ベスト4: 80, ベスト8: 70, 入賞: 70 };
 
 /**
- * 最終出現年から遡って連続している年数。掲載年の欠落は連続とみなさない
- * （例: 2019, 2022-2025 のように間が抜けている大会で 2022 を 2019 の翌年扱いしない）。
+ * 条件を満たす最新年から遡って**暦年で連続**している回数。掲載年の欠落は連続とみなさない
+ * （例: 2019, 2022-2025 のように間が抜けている大会で 2022 を 2019 の翌年扱いしない。
+ * 2020年のような大会中止年も同様で、橋渡ししない — generate-story-yaml.mjs の
+ * streakEndingAt と同じ判定に揃える。旧実装は years 配列をインデックスで遡るだけで、
+ * 配列の隣接要素が実際に暦年で隣接しているかを見ておらず、この判定を満たしていなかった）。
  *
  * maxYear を渡すと、それより後の年は「まだ無かったもの」として無視する。
  * 過去の記事（例: 2025年公開の記事）が「N年連続」と書いた時点の事実は、翌年以降に
  * 大会が続いて記録が伸びても変わらない。maxYear 無指定（フル照合の手動実行など）では
  * 従来通り最新年まで見る。
  */
-function streakLength(history, facts, minScore = 70, maxYear) {
-  const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
-  const present = years.filter((y) => (history[y] ?? 0) >= minScore);
+function calendarStreak(years, maxYear, predicate) {
+  const scoped = maxYear == null ? years : years.filter((y) => y <= maxYear);
+  const yearSet = new Set(scoped);
+  const present = scoped.filter(predicate);
   if (present.length === 0) return 0;
   const last = present[present.length - 1];
   let streak = 1;
-  for (let i = years.indexOf(last) - 1; i >= 0; i -= 1) {
-    if ((history[years[i]] ?? 0) >= minScore) streak += 1;
-    else break;
-  }
+  for (let y = last - 1; yearSet.has(y) && predicate(y); y -= 1) streak += 1;
   return streak;
+}
+
+function streakLength(history, facts, minScore = 70, maxYear) {
+  return calendarStreak(facts.years, maxYear, (y) => (history[y] ?? 0) >= minScore);
 }
 
 /** 出場（エントリー）の連続年数。成績を問わない「N年連続出場」の照合に使う。maxYear の扱いは streakLength と同じ。 */
 function entryStreak(entryYears, facts, maxYear) {
-  const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
-  const present = years.filter((y) => entryYears.has(y));
-  if (present.length === 0) return 0;
-  const last = present[present.length - 1];
-  let streak = 1;
-  for (let i = years.indexOf(last) - 1; i >= 0; i -= 1) {
-    if (entryYears.has(years[i])) streak += 1;
-    else break;
-  }
-  return streak;
+  return calendarStreak(facts.years, maxYear, (y) => entryYears.has(y));
 }
 
 function verify(claims, facts, maxYear) {
@@ -390,12 +386,7 @@ function verify(claims, facts, maxYear) {
         return { owner, ok: actual === claim.years, actual: `${actual}年連続（${claim.level ?? 'ベスト8'}以上）` };
       }
       if (claim.type === 'repeat-title') {
-        const years = maxYear == null ? facts.years : facts.years.filter((y) => y <= maxYear);
-        let actual = 0;
-        for (let i = years.length - 1; i >= 0; i -= 1) {
-          if (history[years[i]] === 100) actual += 1;
-          else if (actual > 0) break;
-        }
+        const actual = calendarStreak(facts.years, maxYear, (y) => history[y] === 100);
         return { owner, ok: actual === claim.times, actual: `連続優勝${actual}回` };
       }
       return { owner, ok: false, actual: '未対応の主張' };

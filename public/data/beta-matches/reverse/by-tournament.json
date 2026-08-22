@@ -1,6 +1,43 @@
 {
-  "generatedAt": "2026-08-19T01:24:55.761Z",
+  "generatedAt": "2026-08-22T05:17:56.925Z",
   "tournaments": {
+    "/tournaments/all/west-japan/2025/doubles/none/boys": [
+      {
+        "matchId": "f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+        "detailPath": "/tournaments/all/west-japan/2025/doubles/none/boys/matches/f07c9b2e-e7d9-415b-bb58-a7c01e638a11",
+        "round": "準決勝",
+        "entryNos": [
+          150,
+          239
+        ],
+        "teamA": "矢野 颯人・上松 俊貴",
+        "teamB": "上岡 俊介・丸山 海斗"
+      }
+    ],
+    "/tournaments/all/west-japan/2026/doubles/none/boys": [
+      {
+        "matchId": "c1391c3a-44d2-4b94-9cc1-a940f414ec70",
+        "detailPath": "/tournaments/all/west-japan/2026/doubles/none/boys/matches/c1391c3a-44d2-4b94-9cc1-a940f414ec70",
+        "round": "決勝",
+        "entryNos": [
+          109,
+          246
+        ],
+        "teamA": "本倉 健太郎・広岡 宙",
+        "teamB": "内本 隆文・上松 俊貴"
+      },
+      {
+        "matchId": "164f1238-f12e-4705-984a-afb843eb667a",
+        "detailPath": "/tournaments/all/west-japan/2026/doubles/none/boys/matches/164f1238-f12e-4705-984a-afb843eb667a",
+        "round": "5回戦",
+        "entryNos": [
+          1,
+          31
+        ],
+        "teamA": "上岡 俊介・丸山 海斗",
+        "teamB": "長江 光一・林 佑太郎"
+      }
+    ],
     "/tournaments/all/east-japan/2026/doubles/none/boys": [
       {
         "matchId": "d78149ba-ad5e-44a9-b25b-5a29e1087eea",
@@ -34,19 +71,6 @@
         ],
         "teamA": "植田 璃音・安達 宣",
         "teamB": "船水 颯人・端山 羅行"
-      }
-    ],
-    "/tournaments/all/west-japan/2026/doubles/none/boys": [
-      {
-        "matchId": "c1391c3a-44d2-4b94-9cc1-a940f414ec70",
-        "detailPath": "/tournaments/all/west-japan/2026/doubles/none/boys/matches/c1391c3a-44d2-4b94-9cc1-a940f414ec70",
-        "round": "決勝",
-        "entryNos": [
-          109,
-          246
-        ],
-        "teamA": "本倉 健太郎・広岡 宙",
-        "teamB": "内本 隆文・上松 俊貴"
       }
     ],
     "/tournaments/highschool/highschool-japan-cup/2026/singles/none/boys": [

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T08:36:48.357Z",
+  "generatedAt": "2026-08-22T05:06:22.542Z",
   "report": {
     "target": {
       "key": "player:植田 璃音",
@@ -21,7 +21,7 @@
       "completedMatchCount": 3,
       "latestMatchDate": "2026-05-17T14:01:35.406387"
     },
-    "generatedAt": "2026-06-21T08:36:48.357Z",
+    "generatedAt": "2026-08-22T05:06:22.542Z",
     "matchCount": 3,
     "completedMatchCount": 3,
     "comparison": {
@@ -40,17 +40,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 55.00000000000001,
-          "previousValue": 53.84615384615385,
-          "delta": 1.1538461538461604,
-          "trend": "stable",
+          "previousValue": 52.17391304347826,
+          "delta": 2.826086956521749,
+          "trend": "improved",
           "confidence": "small_sample",
           "numerator": 11,
           "denominator": 20,
-          "previousNumerator": 14,
-          "previousDenominator": 26,
+          "previousNumerator": 12,
+          "previousDenominator": 23,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "サーブ時得点率は 54% から 55% で、大きな変化はありません。"
+          "summary": "サーブ時得点率は 52% から 55% に改善傾向です（+3pt）。"
         },
         {
           "key": "firstServeSuccessRate",
@@ -65,8 +65,8 @@
           "confidence": "small_sample",
           "numerator": 20,
           "denominator": 20,
-          "previousNumerator": 26,
-          "previousDenominator": 26,
+          "previousNumerator": 23,
+          "previousDenominator": 23,
           "matchCount": 1,
           "previousMatchCount": 1,
           "summary": "1stサービス成功率は 100% から 100% で、大きな変化はありません。"
@@ -78,17 +78,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 55.00000000000001,
-          "previousValue": 53.84615384615385,
-          "delta": 1.1538461538461604,
-          "trend": "stable",
+          "previousValue": 52.17391304347826,
+          "delta": 2.826086956521749,
+          "trend": "improved",
           "confidence": "small_sample",
           "numerator": 11,
           "denominator": 20,
-          "previousNumerator": 14,
-          "previousDenominator": 26,
+          "previousNumerator": 12,
+          "previousDenominator": 23,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "1stサービス時得点率は 54% から 55% で、大きな変化はありません。"
+          "summary": "1stサービス時得点率は 52% から 55% に改善傾向です（+3pt）。"
         },
         {
           "key": "secondServePointWinRate",
@@ -123,7 +123,7 @@
           "numerator": 0,
           "denominator": 20,
           "previousNumerator": 0,
-          "previousDenominator": 26,
+          "previousDenominator": 23,
           "matchCount": 1,
           "previousMatchCount": 1,
           "summary": "ダブルフォルト率は 0% から 0% で、大きな変化はありません。"
@@ -173,17 +173,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 100,
-          "previousValue": 75,
-          "delta": 25,
+          "previousValue": 66.66666666666666,
+          "delta": 33.33333333333334,
           "trend": "improved",
           "confidence": "small_sample",
           "numerator": 1,
           "denominator": 1,
-          "previousNumerator": 3,
-          "previousDenominator": 4,
+          "previousNumerator": 2,
+          "previousDenominator": 3,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
+          "summary": "デュースポイント取得率は 67% から 100% に改善傾向です（+33pt）。"
         },
         {
           "key": "gamePointWinRate",
@@ -192,17 +192,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 100,
-          "previousValue": 44.44444444444444,
-          "delta": 55.55555555555556,
+          "previousValue": 42.857142857142854,
+          "delta": 57.142857142857146,
           "trend": "improved",
           "confidence": "small_sample",
           "numerator": 2,
           "denominator": 2,
-          "previousNumerator": 4,
-          "previousDenominator": 9,
+          "previousNumerator": 3,
+          "previousDenominator": 7,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。"
+          "summary": "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。"
         },
         {
           "key": "opponentGamePointSaveRate",
@@ -287,14 +287,14 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": null,
-          "previousValue": 83.33333333333334,
+          "previousValue": 80,
           "delta": null,
           "trend": "stable",
           "confidence": "insufficient_sample",
           "numerator": 0,
           "denominator": 0,
-          "previousNumerator": 5,
-          "previousDenominator": 6,
+          "previousNumerator": 4,
+          "previousDenominator": 5,
           "matchCount": 1,
           "previousMatchCount": 1,
           "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
@@ -306,17 +306,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 37.5,
-          "previousValue": 50,
-          "delta": -12.5,
+          "previousValue": 55.55555555555556,
+          "delta": -18.055555555555557,
           "trend": "declined",
           "confidence": "small_sample",
           "numerator": 6,
           "denominator": 16,
           "previousNumerator": 5,
-          "previousDenominator": 10,
+          "previousDenominator": 9,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "3-5本ラリー得点率は 50% から 38% です。次はここを見てみましょう（-12pt）。"
+          "summary": "3-5本ラリー得点率は 56% から 38% です。次はここを見てみましょう（-18pt）。"
         },
         {
           "key": "longRallyWinRate",
@@ -325,17 +325,17 @@
           "unit": "percent",
           "higherIsBetter": true,
           "currentValue": 45,
-          "previousValue": 56.00000000000001,
-          "delta": -11.000000000000007,
+          "previousValue": 54.166666666666664,
+          "delta": -9.166666666666664,
           "trend": "declined",
           "confidence": "small_sample",
           "numerator": 9,
           "denominator": 20,
-          "previousNumerator": 14,
-          "previousDenominator": 25,
+          "previousNumerator": 13,
+          "previousDenominator": 24,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "6本以上ラリー得点率は 56% から 45% です。次はここを見てみましょう（-11pt）。"
+          "summary": "6本以上ラリー得点率は 54% から 45% です。次はここを見てみましょう（-9pt）。"
         },
         {
           "key": "threePointLostStreakCount",
@@ -396,7 +396,7 @@
         }
       ],
       "messages": [
-        "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。",
+        "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。",
         "レシーブ時得点率は 67% から 25% です。次はここを見てみましょう（-42pt）。"
       ]
     },
@@ -417,17 +417,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "サーブ時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "サーブ時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -442,8 +442,8 @@
             "confidence": "small_sample",
             "numerator": 20,
             "denominator": 20,
-            "previousNumerator": 26,
-            "previousDenominator": 26,
+            "previousNumerator": 23,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "1stサービス成功率は 100% から 100% で、大きな変化はありません。"
@@ -455,17 +455,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1stサービス時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "1stサービス時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "secondServePointWinRate",
@@ -500,7 +500,7 @@
             "numerator": 0,
             "denominator": 20,
             "previousNumerator": 0,
-            "previousDenominator": 26,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "ダブルフォルト率は 0% から 0% で、大きな変化はありません。"
@@ -550,17 +550,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 75,
-            "delta": 25,
+            "previousValue": 66.66666666666666,
+            "delta": 33.33333333333334,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 1,
             "denominator": 1,
-            "previousNumerator": 3,
-            "previousDenominator": 4,
+            "previousNumerator": 2,
+            "previousDenominator": 3,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
+            "summary": "デュースポイント取得率は 67% から 100% に改善傾向です（+33pt）。"
           },
           {
             "key": "gamePointWinRate",
@@ -569,17 +569,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 44.44444444444444,
-            "delta": 55.55555555555556,
+            "previousValue": 42.857142857142854,
+            "delta": 57.142857142857146,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 2,
             "denominator": 2,
-            "previousNumerator": 4,
-            "previousDenominator": 9,
+            "previousNumerator": 3,
+            "previousDenominator": 7,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。"
+            "summary": "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。"
           },
           {
             "key": "opponentGamePointSaveRate",
@@ -664,14 +664,14 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": null,
-            "previousValue": 83.33333333333334,
+            "previousValue": 80,
             "delta": null,
             "trend": "stable",
             "confidence": "insufficient_sample",
             "numerator": 0,
             "denominator": 0,
-            "previousNumerator": 5,
-            "previousDenominator": 6,
+            "previousNumerator": 4,
+            "previousDenominator": 5,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
@@ -683,17 +683,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 37.5,
-            "previousValue": 50,
-            "delta": -12.5,
+            "previousValue": 55.55555555555556,
+            "delta": -18.055555555555557,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 6,
             "denominator": 16,
             "previousNumerator": 5,
-            "previousDenominator": 10,
+            "previousDenominator": 9,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 38% です。次はここを見てみましょう（-12pt）。"
+            "summary": "3-5本ラリー得点率は 56% から 38% です。次はここを見てみましょう（-18pt）。"
           },
           {
             "key": "longRallyWinRate",
@@ -702,17 +702,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 45,
-            "previousValue": 56.00000000000001,
-            "delta": -11.000000000000007,
+            "previousValue": 54.166666666666664,
+            "delta": -9.166666666666664,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 9,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 25,
+            "previousNumerator": 13,
+            "previousDenominator": 24,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 56% から 45% です。次はここを見てみましょう（-11pt）。"
+            "summary": "6本以上ラリー得点率は 54% から 45% です。次はここを見てみましょう（-9pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -773,7 +773,7 @@
           }
         ],
         "messages": [
-          "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。",
+          "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。",
           "レシーブ時得点率は 67% から 25% です。次はここを見てみましょう（-42pt）。"
         ]
       },
@@ -792,18 +792,18 @@
             "category": "serve",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 53.84615384615385,
+            "currentValue": 52.17391304347826,
             "previousValue": 51.42857142857142,
-            "delta": 2.417582417582423,
-            "trend": "improved",
+            "delta": 0.7453416149068346,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 14,
-            "denominator": 26,
+            "numerator": 12,
+            "denominator": 23,
             "previousNumerator": 18,
             "previousDenominator": 35,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "サーブ時得点率は 51% から 54% に改善傾向です（+2pt）。"
+            "summary": "サーブ時得点率は 51% から 52% で、大きな変化はありません。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -816,8 +816,8 @@
             "delta": 2.857142857142861,
             "trend": "improved",
             "confidence": "small_sample",
-            "numerator": 26,
-            "denominator": 26,
+            "numerator": 23,
+            "denominator": 23,
             "previousNumerator": 34,
             "previousDenominator": 35,
             "matchCount": 1,
@@ -830,18 +830,18 @@
             "category": "serve",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 53.84615384615385,
+            "currentValue": 52.17391304347826,
             "previousValue": 52.94117647058824,
-            "delta": 0.9049773755656076,
+            "delta": -0.767263427109981,
             "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 14,
-            "denominator": 26,
+            "numerator": 12,
+            "denominator": 23,
             "previousNumerator": 18,
             "previousDenominator": 34,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1stサービス時得点率は 53% から 54% で、大きな変化はありません。"
+            "summary": "1stサービス時得点率は 53% から 52% で、大きな変化はありません。"
           },
           {
             "key": "secondServePointWinRate",
@@ -874,7 +874,7 @@
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 0,
-            "denominator": 26,
+            "denominator": 23,
             "previousNumerator": 1,
             "previousDenominator": 35,
             "matchCount": 1,
@@ -925,18 +925,18 @@
             "category": "key_moment",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 75,
+            "currentValue": 66.66666666666666,
             "previousValue": 100,
-            "delta": -25,
+            "delta": -33.33333333333334,
             "trend": "declined",
             "confidence": "small_sample",
-            "numerator": 3,
-            "denominator": 4,
+            "numerator": 2,
+            "denominator": 3,
             "previousNumerator": 2,
             "previousDenominator": 2,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "デュースポイント取得率は 100% から 75% です。次はここを見てみましょう（-25pt）。"
+            "summary": "デュースポイント取得率は 100% から 67% です。次はここを見てみましょう（-33pt）。"
           },
           {
             "key": "gamePointWinRate",
@@ -944,18 +944,18 @@
             "category": "key_moment",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 44.44444444444444,
+            "currentValue": 42.857142857142854,
             "previousValue": 100,
-            "delta": -55.55555555555556,
+            "delta": -57.142857142857146,
             "trend": "declined",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 9,
+            "numerator": 3,
+            "denominator": 7,
             "previousNumerator": 4,
             "previousDenominator": 4,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "ゲームポイント取得率は 100% から 44% です。次はここを見てみましょう（-56pt）。"
+            "summary": "ゲームポイント取得率は 100% から 43% です。次はここを見てみましょう（-57pt）。"
           },
           {
             "key": "opponentGamePointSaveRate",
@@ -1039,18 +1039,18 @@
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 83.33333333333334,
+            "currentValue": 80,
             "previousValue": 100,
-            "delta": -16.666666666666657,
+            "delta": -20,
             "trend": "declined",
             "confidence": "small_sample",
-            "numerator": 5,
-            "denominator": 6,
+            "numerator": 4,
+            "denominator": 5,
             "previousNumerator": 1,
             "previousDenominator": 1,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1-2本ラリー得点率は 100% から 83% です。次はここを見てみましょう（-17pt）。"
+            "summary": "1-2本ラリー得点率は 100% から 80% です。次はここを見てみましょう（-20pt）。"
           },
           {
             "key": "middleRallyWinRate",
@@ -1058,18 +1058,18 @@
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 50,
+            "currentValue": 55.55555555555556,
             "previousValue": 45.45454545454545,
-            "delta": 4.545454545454547,
+            "delta": 10.101010101010104,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 5,
-            "denominator": 10,
+            "denominator": 9,
             "previousNumerator": 15,
             "previousDenominator": 33,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "3-5本ラリー得点率は 45% から 50% に改善傾向です（+5pt）。"
+            "summary": "3-5本ラリー得点率は 45% から 56% に改善傾向です（+10pt）。"
           },
           {
             "key": "longRallyWinRate",
@@ -1077,18 +1077,18 @@
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 56.00000000000001,
+            "currentValue": 54.166666666666664,
             "previousValue": 38.23529411764706,
-            "delta": 17.76470588235295,
+            "delta": 15.931372549019606,
             "trend": "improved",
             "confidence": "small_sample",
-            "numerator": 14,
-            "denominator": 25,
+            "numerator": 13,
+            "denominator": 24,
             "previousNumerator": 13,
             "previousDenominator": 34,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "6本以上ラリー得点率は 38% から 56% に改善傾向です（+18pt）。"
+            "summary": "6本以上ラリー得点率は 38% から 54% に改善傾向です（+16pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -1150,7 +1150,7 @@
         ],
         "messages": [
           "レシーブ時得点率は 32% から 67% に改善傾向です（+34pt）。",
-          "ゲームポイント取得率は 100% から 44% です。次はここを見てみましょう（-56pt）。"
+          "ゲームポイント取得率は 100% から 43% です。次はここを見てみましょう（-57pt）。"
         ]
       },
       {
@@ -1545,17 +1545,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 51.21951219512195,
-            "delta": 3.7804878048780566,
+            "previousValue": 50,
+            "delta": 5.000000000000007,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 21,
-            "previousDenominator": 41,
+            "previousNumerator": 19,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "サーブ時得点率は 51% から 55% に改善傾向です（+4pt）。"
+            "summary": "サーブ時得点率は 50% から 55% に改善傾向です（+5pt）。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -1564,17 +1564,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 97.5609756097561,
-            "delta": 2.439024390243901,
+            "previousValue": 97.36842105263158,
+            "delta": 2.631578947368425,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 20,
             "denominator": 20,
-            "previousNumerator": 40,
-            "previousDenominator": 41,
+            "previousNumerator": 37,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1stサービス成功率は 98% から 100% に改善傾向です（+2pt）。"
+            "summary": "1stサービス成功率は 97% から 100% に改善傾向です（+3pt）。"
           },
           {
             "key": "firstServePointWinRate",
@@ -1583,17 +1583,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 52.5,
-            "delta": 2.500000000000007,
+            "previousValue": 51.35135135135135,
+            "delta": 3.64864864864866,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 21,
-            "previousDenominator": 40,
+            "previousNumerator": 19,
+            "previousDenominator": 37,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1stサービス時得点率は 53% から 55% に改善傾向です（+3pt）。"
+            "summary": "1stサービス時得点率は 51% から 55% に改善傾向です（+4pt）。"
           },
           {
             "key": "secondServePointWinRate",
@@ -1621,17 +1621,17 @@
             "unit": "percent",
             "higherIsBetter": false,
             "currentValue": 0,
-            "previousValue": 2.4390243902439024,
-            "delta": -2.4390243902439024,
+            "previousValue": 2.631578947368421,
+            "delta": -2.631578947368421,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 0,
             "denominator": 20,
             "previousNumerator": 1,
-            "previousDenominator": 41,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "ダブルフォルト率は 2% から 0% に改善傾向です（-2pt）。"
+            "summary": "ダブルフォルト率は 3% から 0% に改善傾向です（-3pt）。"
           },
           {
             "key": "receivePointWinRate",
@@ -1678,17 +1678,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 80,
-            "delta": 20,
+            "previousValue": 75,
+            "delta": 25,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 1,
             "denominator": 1,
-            "previousNumerator": 4,
-            "previousDenominator": 5,
+            "previousNumerator": 3,
+            "previousDenominator": 4,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "デュースポイント取得率は 80% から 100% に改善傾向です（+20pt）。"
+            "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
           },
           {
             "key": "gamePointWinRate",
@@ -1697,17 +1697,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 54.54545454545454,
-            "delta": 45.45454545454546,
+            "previousValue": 55.55555555555556,
+            "delta": 44.44444444444444,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 2,
             "denominator": 2,
-            "previousNumerator": 6,
-            "previousDenominator": 11,
+            "previousNumerator": 5,
+            "previousDenominator": 9,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "ゲームポイント取得率は 55% から 100% に改善傾向です（+45pt）。"
+            "summary": "ゲームポイント取得率は 56% から 100% に改善傾向です（+44pt）。"
           },
           {
             "key": "opponentGamePointSaveRate",
@@ -1792,14 +1792,14 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": null,
-            "previousValue": 85.71428571428571,
+            "previousValue": 83.33333333333334,
             "delta": null,
             "trend": "stable",
             "confidence": "insufficient_sample",
             "numerator": 0,
             "denominator": 0,
-            "previousNumerator": 6,
-            "previousDenominator": 7,
+            "previousNumerator": 5,
+            "previousDenominator": 6,
             "matchCount": 1,
             "previousMatchCount": 2,
             "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
@@ -1811,17 +1811,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 37.5,
-            "previousValue": 51.85185185185185,
-            "delta": -14.351851851851848,
+            "previousValue": 53.84615384615385,
+            "delta": -16.346153846153847,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 6,
             "denominator": 16,
             "previousNumerator": 14,
-            "previousDenominator": 27,
+            "previousDenominator": 26,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "3-5本ラリー得点率は 52% から 38% です。次はここを見てみましょう（-14pt）。"
+            "summary": "3-5本ラリー得点率は 54% から 38% です。次はここを見てみましょう（-16pt）。"
           },
           {
             "key": "longRallyWinRate",
@@ -1830,17 +1830,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 45,
-            "previousValue": 46.15384615384615,
-            "delta": -1.1538461538461533,
+            "previousValue": 44.73684210526316,
+            "delta": 0.2631578947368425,
             "trend": "stable",
             "confidence": "small_sample",
             "numerator": 9,
             "denominator": 20,
-            "previousNumerator": 18,
-            "previousDenominator": 39,
+            "previousNumerator": 17,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "6本以上ラリー得点率は 46% から 45% で、大きな変化はありません。"
+            "summary": "6本以上ラリー得点率は 45% から 45% で、大きな変化はありません。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -1901,7 +1901,7 @@
           }
         ],
         "messages": [
-          "ゲームポイント取得率は 55% から 100% に改善傾向です（+45pt）。",
+          "ゲームポイント取得率は 56% から 100% に改善傾向です（+44pt）。",
           "レシーブ時得点率は 52% から 25% です。次はここを見てみましょう（-27pt）。"
         ]
       },
@@ -1921,17 +1921,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 51.21951219512195,
-            "delta": 3.7804878048780566,
+            "previousValue": 50,
+            "delta": 5.000000000000007,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 21,
-            "previousDenominator": 41,
+            "previousNumerator": 19,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "サーブ時得点率は 51% から 55% に改善傾向です（+4pt）。"
+            "summary": "サーブ時得点率は 50% から 55% に改善傾向です（+5pt）。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -1940,17 +1940,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 97.5609756097561,
-            "delta": 2.439024390243901,
+            "previousValue": 97.36842105263158,
+            "delta": 2.631578947368425,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 20,
             "denominator": 20,
-            "previousNumerator": 40,
-            "previousDenominator": 41,
+            "previousNumerator": 37,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1stサービス成功率は 98% から 100% に改善傾向です（+2pt）。"
+            "summary": "1stサービス成功率は 97% から 100% に改善傾向です（+3pt）。"
           },
           {
             "key": "firstServePointWinRate",
@@ -1959,17 +1959,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 52.5,
-            "delta": 2.500000000000007,
+            "previousValue": 51.35135135135135,
+            "delta": 3.64864864864866,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 21,
-            "previousDenominator": 40,
+            "previousNumerator": 19,
+            "previousDenominator": 37,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "1stサービス時得点率は 53% から 55% に改善傾向です（+3pt）。"
+            "summary": "1stサービス時得点率は 51% から 55% に改善傾向です（+4pt）。"
           },
           {
             "key": "secondServePointWinRate",
@@ -1997,17 +1997,17 @@
             "unit": "percent",
             "higherIsBetter": false,
             "currentValue": 0,
-            "previousValue": 2.4390243902439024,
-            "delta": -2.4390243902439024,
+            "previousValue": 2.631578947368421,
+            "delta": -2.631578947368421,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 0,
             "denominator": 20,
             "previousNumerator": 1,
-            "previousDenominator": 41,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "ダブルフォルト率は 2% から 0% に改善傾向です（-2pt）。"
+            "summary": "ダブルフォルト率は 3% から 0% に改善傾向です（-3pt）。"
           },
           {
             "key": "receivePointWinRate",
@@ -2054,17 +2054,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 80,
-            "delta": 20,
+            "previousValue": 75,
+            "delta": 25,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 1,
             "denominator": 1,
-            "previousNumerator": 4,
-            "previousDenominator": 5,
+            "previousNumerator": 3,
+            "previousDenominator": 4,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "デュースポイント取得率は 80% から 100% に改善傾向です（+20pt）。"
+            "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
           },
           {
             "key": "gamePointWinRate",
@@ -2073,17 +2073,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 54.54545454545454,
-            "delta": 45.45454545454546,
+            "previousValue": 55.55555555555556,
+            "delta": 44.44444444444444,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 2,
             "denominator": 2,
-            "previousNumerator": 6,
-            "previousDenominator": 11,
+            "previousNumerator": 5,
+            "previousDenominator": 9,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "ゲームポイント取得率は 55% から 100% に改善傾向です（+45pt）。"
+            "summary": "ゲームポイント取得率は 56% から 100% に改善傾向です（+44pt）。"
           },
           {
             "key": "opponentGamePointSaveRate",
@@ -2168,14 +2168,14 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": null,
-            "previousValue": 85.71428571428571,
+            "previousValue": 83.33333333333334,
             "delta": null,
             "trend": "stable",
             "confidence": "insufficient_sample",
             "numerator": 0,
             "denominator": 0,
-            "previousNumerator": 6,
-            "previousDenominator": 7,
+            "previousNumerator": 5,
+            "previousDenominator": 6,
             "matchCount": 1,
             "previousMatchCount": 2,
             "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
@@ -2187,17 +2187,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 37.5,
-            "previousValue": 51.85185185185185,
-            "delta": -14.351851851851848,
+            "previousValue": 53.84615384615385,
+            "delta": -16.346153846153847,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 6,
             "denominator": 16,
             "previousNumerator": 14,
-            "previousDenominator": 27,
+            "previousDenominator": 26,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "3-5本ラリー得点率は 52% から 38% です。次はここを見てみましょう（-14pt）。"
+            "summary": "3-5本ラリー得点率は 54% から 38% です。次はここを見てみましょう（-16pt）。"
           },
           {
             "key": "longRallyWinRate",
@@ -2206,17 +2206,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 45,
-            "previousValue": 46.15384615384615,
-            "delta": -1.1538461538461533,
+            "previousValue": 44.73684210526316,
+            "delta": 0.2631578947368425,
             "trend": "stable",
             "confidence": "small_sample",
             "numerator": 9,
             "denominator": 20,
-            "previousNumerator": 18,
-            "previousDenominator": 39,
+            "previousNumerator": 17,
+            "previousDenominator": 38,
             "matchCount": 1,
             "previousMatchCount": 2,
-            "summary": "6本以上ラリー得点率は 46% から 45% で、大きな変化はありません。"
+            "summary": "6本以上ラリー得点率は 45% から 45% で、大きな変化はありません。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -2277,7 +2277,7 @@
           }
         ],
         "messages": [
-          "ゲームポイント取得率は 55% から 100% に改善傾向です（+45pt）。",
+          "ゲームポイント取得率は 56% から 100% に改善傾向です（+44pt）。",
           "レシーブ時得点率は 52% から 25% です。次はここを見てみましょう（-27pt）。"
         ]
       }
@@ -2287,7 +2287,7 @@
         "id": "summary",
         "title": "最近の成長",
         "messages": [
-          "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。",
+          "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。",
           "レシーブ時得点率は 67% から 25% です。次はここを見てみましょう（-42pt）。"
         ],
         "metrics": [
@@ -2298,17 +2298,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "サーブ時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "サーブ時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -2323,8 +2323,8 @@
             "confidence": "small_sample",
             "numerator": 20,
             "denominator": 20,
-            "previousNumerator": 26,
-            "previousDenominator": 26,
+            "previousNumerator": 23,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "1stサービス成功率は 100% から 100% で、大きな変化はありません。"
@@ -2336,17 +2336,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1stサービス時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "1stサービス時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "doubleFaultRate",
@@ -2362,7 +2362,7 @@
             "numerator": 0,
             "denominator": 20,
             "previousNumerator": 0,
-            "previousDenominator": 26,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "ダブルフォルト率は 0% から 0% で、大きな変化はありません。"
@@ -2384,17 +2384,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 44.44444444444444,
-            "delta": 55.55555555555556,
+            "previousValue": 42.857142857142854,
+            "delta": 57.142857142857146,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 2,
             "denominator": 2,
-            "previousNumerator": 4,
-            "previousDenominator": 9,
+            "previousNumerator": 3,
+            "previousDenominator": 7,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。"
+            "summary": "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。"
           },
           {
             "key": "deucePointWinRate",
@@ -2403,17 +2403,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 75,
-            "delta": 25,
+            "previousValue": 66.66666666666666,
+            "delta": 33.33333333333334,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 1,
             "denominator": 1,
-            "previousNumerator": 3,
-            "previousDenominator": 4,
+            "previousNumerator": 2,
+            "previousDenominator": 3,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
+            "summary": "デュースポイント取得率は 67% から 100% に改善傾向です（+33pt）。"
           },
           {
             "key": "twoPointLeadHoldRate",
@@ -2440,7 +2440,7 @@
         "id": "serve",
         "title": "サーブ成長",
         "messages": [
-          "大きな変化はまだ見えにくい状態です。次の数試合も続けて確認してみましょう。"
+          "サーブ時得点率は 52% から 55% に改善傾向です（+3pt）。"
         ],
         "metrics": [
           {
@@ -2450,17 +2450,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "サーブ時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "サーブ時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "firstServeSuccessRate",
@@ -2475,8 +2475,8 @@
             "confidence": "small_sample",
             "numerator": 20,
             "denominator": 20,
-            "previousNumerator": 26,
-            "previousDenominator": 26,
+            "previousNumerator": 23,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "1stサービス成功率は 100% から 100% で、大きな変化はありません。"
@@ -2488,17 +2488,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 55.00000000000001,
-            "previousValue": 53.84615384615385,
-            "delta": 1.1538461538461604,
-            "trend": "stable",
+            "previousValue": 52.17391304347826,
+            "delta": 2.826086956521749,
+            "trend": "improved",
             "confidence": "small_sample",
             "numerator": 11,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 26,
+            "previousNumerator": 12,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1stサービス時得点率は 54% から 55% で、大きな変化はありません。"
+            "summary": "1stサービス時得点率は 52% から 55% に改善傾向です（+3pt）。"
           },
           {
             "key": "doubleFaultRate",
@@ -2514,7 +2514,7 @@
             "numerator": 0,
             "denominator": 20,
             "previousNumerator": 0,
-            "previousDenominator": 26,
+            "previousDenominator": 23,
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "ダブルフォルト率は 0% から 0% で、大きな変化はありません。"
@@ -2525,7 +2525,7 @@
         "id": "key_moment",
         "title": "重要局面",
         "messages": [
-          "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。",
+          "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。",
           "2-2後の次ポイント取得率は 50% から 25% です。次はここを見てみましょう（-25pt）。"
         ],
         "metrics": [
@@ -2555,17 +2555,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 75,
-            "delta": 25,
+            "previousValue": 66.66666666666666,
+            "delta": 33.33333333333334,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 1,
             "denominator": 1,
-            "previousNumerator": 3,
-            "previousDenominator": 4,
+            "previousNumerator": 2,
+            "previousDenominator": 3,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "デュースポイント取得率は 75% から 100% に改善傾向です（+25pt）。"
+            "summary": "デュースポイント取得率は 67% から 100% に改善傾向です（+33pt）。"
           },
           {
             "key": "gamePointWinRate",
@@ -2574,17 +2574,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 100,
-            "previousValue": 44.44444444444444,
-            "delta": 55.55555555555556,
+            "previousValue": 42.857142857142854,
+            "delta": 57.142857142857146,
             "trend": "improved",
             "confidence": "small_sample",
             "numerator": 2,
             "denominator": 2,
-            "previousNumerator": 4,
-            "previousDenominator": 9,
+            "previousNumerator": 3,
+            "previousDenominator": 7,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "ゲームポイント取得率は 44% から 100% に改善傾向です（+56pt）。"
+            "summary": "ゲームポイント取得率は 43% から 100% に改善傾向です（+57pt）。"
           },
           {
             "key": "opponentGamePointSaveRate",
@@ -2715,7 +2715,7 @@
         "id": "rally",
         "title": "ラリー傾向",
         "messages": [
-          "3-5本ラリー得点率は 50% から 38% です。次はここを見てみましょう（-12pt）。"
+          "3-5本ラリー得点率は 56% から 38% です。次はここを見てみましょう（-18pt）。"
         ],
         "metrics": [
           {
@@ -2725,17 +2725,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 37.5,
-            "previousValue": 50,
-            "delta": -12.5,
+            "previousValue": 55.55555555555556,
+            "delta": -18.055555555555557,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 6,
             "denominator": 16,
             "previousNumerator": 5,
-            "previousDenominator": 10,
+            "previousDenominator": 9,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 38% です。次はここを見てみましょう（-12pt）。"
+            "summary": "3-5本ラリー得点率は 56% から 38% です。次はここを見てみましょう（-18pt）。"
           },
           {
             "key": "longRallyWinRate",
@@ -2744,17 +2744,17 @@
             "unit": "percent",
             "higherIsBetter": true,
             "currentValue": 45,
-            "previousValue": 56.00000000000001,
-            "delta": -11.000000000000007,
+            "previousValue": 54.166666666666664,
+            "delta": -9.166666666666664,
             "trend": "declined",
             "confidence": "small_sample",
             "numerator": 9,
             "denominator": 20,
-            "previousNumerator": 14,
-            "previousDenominator": 25,
+            "previousNumerator": 13,
+            "previousDenominator": 24,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 56% から 45% です。次はここを見てみましょう（-11pt）。"
+            "summary": "6本以上ラリー得点率は 54% から 45% です。次はここを見てみましょう（-9pt）。"
           }
         ]
       }
