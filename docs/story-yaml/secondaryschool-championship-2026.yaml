@@ -8,172 +8,79 @@ tournament:
   year: 2026
   label: 全国中学校体育大会 2026
   scope: 当サイト掲載大会分（2021・2022・2023・2024・2025・2026年）から算出
-  inProgress: true
-  asOf: # 種目ごとの「ここまで確定」ラウンド。これより先はまだ結果が入っていない
-    doubles-none-boys: 準々決勝
-    doubles-none-girls: 準々決勝
 
 stories:
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-eliminated-1'
-    category: 衰退
-    kind: 'watched-eliminated'
+  - id: 'secondaryschool-championship-2026-doubles-none-boys-title-won-1'
+    category: 成長
+    kind: 'title-won'
     categoryId: 'doubles-none-boys'
-    priority: 2
-    subject:
-      players: [丹羽悠弦, 當房琉生]
-      subjectKeys: [丹羽悠弦]
-    round: 3回戦
-    facts:
-      lostTo: 片桐祐生・八重樫琉映
-      priorStreak: 1
-      priorResults: 丹羽悠弦は2025年準優勝
-    text: 丹羽悠弦・當房琉生は3回戦で片桐祐生・八重樫琉映に敗れた。丹羽悠弦は2025年準優勝。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-girls-watched-eliminated-1'
-    category: 衰退
-    kind: 'watched-eliminated'
-    categoryId: 'doubles-none-girls'
-    priority: 2
-    subject:
-      players: [村山由奈, 筒木瑛]
-      subjectKeys: [村山由奈]
-    round: 1回戦
-    facts:
-      lostTo: 深井るるか・中嶋望
-      priorStreak: 1
-      priorResults: 村山由奈は2025年ベスト4
-    text: 村山由奈・筒木瑛は1回戦で深井るるか・中嶋望に敗れた。村山由奈は2025年ベスト4。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-school-progress-1'
-    category: 衰退
-    kind: 'watched-school-progress'
-    categoryId: 'doubles-none-boys'
-    priority: 2.5
-    subject:
-      teams: [清明学園]
-      subjectKeys: [清明学園]
-    facts:
-      alive: 0
-      eliminated: 4
-      unknown: 0
-      eliminatedPairs: 森田凌世・高倉陽輝（3回戦） / 北悠真・稲葉大海（2回戦） / 寺本匠吾・長谷川和志（2回戦） / 笹原太陽・村松悠翔（2回戦）
-      priorResults: 2021年ベスト8・2022年ベスト8・2025年ベスト4
-    text: 清明学園は勝ち残りが無くなった（4組が敗退）。清明学園は2021年ベスト8・2022年ベスト8・2025年ベスト4。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-school-progress-2'
-    category: 衰退
-    kind: 'watched-school-progress'
-    categoryId: 'doubles-none-boys'
-    priority: 2.5
-    subject:
-      teams: [朝日]
-      subjectKeys: [朝日]
-    facts:
-      alive: 0
-      eliminated: 1
-      unknown: 0
-      eliminatedPairs: 細見悠真・鳥谷悠人（1回戦）
-      priorResults: 2021年ベスト8・2023年ベスト4・2025年準優勝
-    text: 朝日は勝ち残りが無くなった（1組が敗退）。朝日は2021年ベスト8・2023年ベスト4・2025年準優勝。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-girls-watched-school-progress-1'
-    category: 衰退
-    kind: 'watched-school-progress'
-    categoryId: 'doubles-none-girls'
-    priority: 2.5
-    subject:
-      teams: [昇陽]
-      subjectKeys: [昇陽]
-    facts:
-      alive: 0
-      eliminated: 4
-      unknown: 0
-      eliminatedPairs: 村山由奈・筒木瑛（1回戦） / 杉江優芽・中川心愛（1回戦） / 小山瑠美・鷹峰ほなみ（準々決勝） / 中田蘭來・岡島明日奈（1回戦）
-      priorResults: 2022年優勝・2023年優勝・2025年ベスト4
-    text: 昇陽は勝ち残りが無くなった（4組が敗退）。昇陽は2022年優勝・2023年優勝・2025年ベスト4。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-girls-watched-school-progress-2'
-    category: 衰退
-    kind: 'watched-school-progress'
-    categoryId: 'doubles-none-girls'
-    priority: 2.5
-    subject:
-      teams: [新潟UCHINO]
-      subjectKeys: [新潟UCHINO]
-    facts:
-      alive: 0
-      eliminated: 2
-      unknown: 0
-      eliminatedPairs: 松縄詩・安藤鈴音（2回戦） / 松山茜・松山夢芽（2回戦）
-      priorResults: 2025年ベスト8
-    text: 新潟UCHINOは勝ち残りが無くなった（2組が敗退）。新潟UCHINOは2025年ベスト8。
-    scopeNote: 当サイト掲載大会分の集計に基づく
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-advancing-1'
-    category: 継続
-    kind: 'watched-advancing'
-    categoryId: 'doubles-none-boys'
-    priority: 3
+    priority: 1
     subject:
       players: [北野陽真, 東郷翔太]
       subjectKeys: [北野陽真, 東郷翔太]
-    round: 準々決勝
+      opponents: [八重樫琉映, 片桐祐生]
+    round: 決勝
     facts:
-      clearedRound: 準々決勝
-      priorResults: 北野陽真は2025年ベスト8、東郷翔太は2025年ベスト8
-    text: 北野陽真・東郷翔太は準々決勝を突破して勝ち残っている。北野陽真は2025年ベスト8、東郷翔太は2025年ベスト8。
+      runnerUp: 八重樫琉映・片桐祐生
+      finalScore: '4-2'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 堺数音・堺碧音
+      semifinalScore: '4-2'
+    text: '2026年の優勝は北野陽真・東郷翔太。決勝は八重樫琉映・片桐祐生に4-2、準決勝は堺数音・堺碧音に4-2。当サイト掲載範囲では初優勝。'
     scopeNote: 当サイト掲載大会分の集計に基づく
     related:
-      - { id: 'secondaryschool-championship-2026-doubles-none-boys-watched-self-best-1', relation: 'same-subject' }
-      - { id: 'secondaryschool-championship-2026-doubles-none-boys-watched-self-best-2', relation: 'same-subject' }
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-self-best-1'
+      - { id: 'secondaryschool-championship-2026-doubles-none-boys-self-best-1', relation: 'same-subject' }
+      - { id: 'secondaryschool-championship-2026-doubles-none-boys-self-best-2', relation: 'same-subject' }
+  - id: 'secondaryschool-championship-2026-doubles-none-girls-title-won-1'
     category: 成長
-    kind: 'watched-self-best'
+    kind: 'title-won'
+    categoryId: 'doubles-none-girls'
+    priority: 1
+    subject:
+      players: [松山穂乃香, 細川莉子]
+      subjectKeys: [松山穂乃香, 細川莉子]
+      opponents: [松原萌菜, 柳原瑚々]
+    round: 決勝
+    facts:
+      runnerUp: 松原萌菜・柳原瑚々
+      finalScore: '4-2'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 安藤美乃子・川野多凰
+      semifinalScore: '4-3'
+    text: '2026年の優勝は松山穂乃香・細川莉子。決勝は松原萌菜・柳原瑚々に4-2、準決勝は安藤美乃子・川野多凰に4-3。当サイト掲載範囲では初優勝。'
+    scopeNote: 当サイト掲載大会分の集計に基づく
+  - id: 'secondaryschool-championship-2026-doubles-none-boys-self-best-1'
+    category: 成長
+    kind: 'self-best'
     categoryId: 'doubles-none-boys'
-    priority: 3.2
+    priority: 7
     subject:
       players: [北野陽真]
       subjectKeys: [北野陽真]
-    round: 準々決勝
     facts:
-      priorBest: ベスト8
-      guaranteedLevel: ベスト4
-      ties: false
-      resultsByYear: 2025年ベスト8
-    text: 北野陽真は少なくともベスト4が確定し、自己最高（ベスト8）に並ぶか上回った。
+      before: ベスト8
+      after: 優勝
+      resultsByYear: 2025年ベスト8 / 2026年優勝
+    text: 北野陽真は、これまでの最高ベスト8を上回る優勝となった。
     scopeNote: 当サイト掲載大会分の集計に基づく
     related:
-      - { id: 'secondaryschool-championship-2026-doubles-none-boys-watched-advancing-1', relation: 'same-subject' }
-  - id: 'secondaryschool-championship-2026-doubles-none-boys-watched-self-best-2'
+      - { id: 'secondaryschool-championship-2026-doubles-none-boys-title-won-1', relation: 'same-subject' }
+  - id: 'secondaryschool-championship-2026-doubles-none-boys-self-best-2'
     category: 成長
-    kind: 'watched-self-best'
+    kind: 'self-best'
     categoryId: 'doubles-none-boys'
-    priority: 3.2
+    priority: 7
     subject:
       players: [東郷翔太]
       subjectKeys: [東郷翔太]
-    round: 準々決勝
     facts:
-      priorBest: ベスト8
-      guaranteedLevel: ベスト4
-      ties: false
-      resultsByYear: 2025年ベスト8
-    text: 東郷翔太は少なくともベスト4が確定し、自己最高（ベスト8）に並ぶか上回った。
+      before: ベスト8
+      after: 優勝
+      resultsByYear: 2025年ベスト8 / 2026年優勝
+    text: 東郷翔太は、これまでの最高ベスト8を上回る優勝となった。
     scopeNote: 当サイト掲載大会分の集計に基づく
     related:
-      - { id: 'secondaryschool-championship-2026-doubles-none-boys-watched-advancing-1', relation: 'same-subject' }
-  - id: 'secondaryschool-championship-2026-doubles-none-girls-watched-school-peak-1'
-    category: 成長
-    kind: 'watched-school-peak'
-    categoryId: 'doubles-none-girls'
-    priority: 3.4
-    subject:
-      teams: [京都光華]
-      subjectKeys: [京都光華]
-    facts:
-      priorBest: ベスト8
-      guaranteedLevel: ベスト4
-      ties: false
-      resultsByYear: 2024年ベスト8
-    text: 京都光華は少なくともベスト4が確定し、学校としてのこれまでの最高成績（ベスト8）に並ぶか上回った。
-    scopeNote: 当サイト掲載大会分の集計に基づく
+      - { id: 'secondaryschool-championship-2026-doubles-none-boys-title-won-1', relation: 'same-subject' }
 
