@@ -36,6 +36,10 @@ export const BRACKET_METRICS = {
   margin: 16,
   /** 左右の代表がぶつかる中央のあき */
   centerGap: 54,
+  /** 1 回戦の組の中、エントリーとその対戦相手との間に足す追加の縦あき */
+  entryGap: 6,
+  /** 1 回戦の組（2 エントリー）と次の組との間に足す追加の縦あき */
+  matchGap: 10,
 } as const;
 
 export type BracketSegment = { x1: number; y1: number; x2: number; y2: number; win: boolean };
@@ -64,6 +68,37 @@ export type BracketDrawing = {
 export type BracketNameOf = (entryNo: number) => { main: string; sub: string } | null;
 
 /**
+ * 1 回戦の枠（BracketNode）を上から積み上げて、片側ぶんの葉（名前の行）の中心 y を組み立てる。
+ *
+ * 不戦勝（`present` が片方だけ true）の枠は、**居ない側の 1 行ぶんを確保しない**。
+ * 以前は両側とも必ず 2 行ぶん確保していたため、シードの隣に実在しないエントリーの
+ * スペースが空いて見えた（2026-08 ユーザー指摘）。左右は別々に積み上げるので、
+ * 不戦勝の位置が左右で違うと対応する行の高さがずれることがあるが、線は各側の
+ * 実際の y だけで引くため描画上の問題にはならない。
+ */
+function leafYOf(nodes: BracketNode[], rowH: number, entryGap: number, matchGap: number, top: number): { ys: number[]; bottom: number } {
+  const ys: number[] = [];
+  let cursor = top;
+  nodes.forEach((n, i) => {
+    if (i > 0) cursor += matchGap;
+    const [p0, p1] = n.present;
+    if (p0 && p1) {
+      const y0 = cursor + rowH / 2;
+      cursor += rowH + entryGap;
+      const y1 = cursor + rowH / 2;
+      cursor += rowH;
+      ys.push(y0, y1);
+    } else {
+      // 片方（または両方）空席。実在する側だけに 1 行ぶんを使う。
+      const y = cursor + rowH / 2;
+      cursor += rowH;
+      ys.push(y, y);
+    }
+  });
+  return { ys, bottom: cursor };
+}
+
+/**
  * 上下それぞれの獲得ゲーム数。「4-2」と 1 つにまとめると常に勝者が左に来て
  * **どちらの組の点か読めない**ので、側ごとに返す。
  */
@@ -80,17 +115,14 @@ function scoresOf(n: BracketNode): { text: string; won: boolean }[] | null {
 
 /** 1 シートぶんの線と文字を組み立てる。 */
 export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, metrics: typeof BRACKET_METRICS = BRACKET_METRICS): BracketDrawing | null {
-  const { rowH, noW, nameW, colW, margin, centerGap } = metrics;
+  const { rowH, noW, nameW, colW, margin, centerGap, entryGap, matchGap } = metrics;
   const cols = sheet.left.length; // 中央を除いた片側のラウンド数
   const sideSlots = (sheet.left[0]?.length ?? 0) * 2;
   if (sideSlots === 0) return null;
 
-  const height = margin * 2 + sideSlots * rowH;
   const width = (margin + noW + nameW + cols * colW) * 2 + centerGap;
   const top = margin;
 
-  /** ラウンド r（-1 は名前の列）の第 k 枠の中心 y。 */
-  const yOf = (r: number, k: number) => top + (k * 2 ** (r + 1) + 2 ** r) * rowH;
   /** 左側のラウンド r の縦線 x。r=-1 は名前の右端。 */
   const xL = (r: number) => margin + noW + nameW + (r + 1) * colW;
   const xR = (r: number) => width - xL(r);
@@ -101,6 +133,7 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
 
   const drawSide = (columns: BracketNode[][], x: (r: number) => number, isLeft: boolean) => {
     const anchor: 'start' | 'end' = isLeft ? 'end' : 'start';
+    const leaf = leafYOf(columns[0] ?? [], rowH, entryGap, matchGap, top);
 
     // 両端のエントリー番号と選手名
     (columns[0] ?? [])
@@ -109,14 +142,14 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
         if (no == null) return;
         const v = nameOf(no);
         if (!v) return;
-        const y = yOf(-1, i);
+        const y = leaf.ys[i];
         const tx = isLeft ? x(-1) - 5 : x(-1) + 5;
         labels.push({ kind: 'entryNo', x: isLeft ? margin : width - margin, y: y - 1, text: String(no), anchor: isLeft ? 'start' : 'end', entryNo: no });
         labels.push({ kind: 'name', x: tx, y: y - 1, text: v.main, anchor, entryNo: no });
         if (v.sub) labels.push({ kind: 'team', x: tx, y: y + 8, text: v.sub, anchor, entryNo: no });
       });
 
-    let prevY = Array.from({ length: (columns[0]?.length ?? 0) * 2 }, (_, i) => yOf(-1, i));
+    let prevY = leaf.ys;
     /** 不戦勝で通しただけの区間。勝った時点で遡って太くする。 */
     let prevChain: number[][] = prevY.map(() => []);
     /** 直前の枠で勝って上がってきたか。負ける枠へ向かう区間も太くするために要る。 */
@@ -179,18 +212,19 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
       prevWon = nextWon;
     });
 
-    return { ys: prevY, chains: prevChain, wons: prevWon };
+    return { ys: prevY, chains: prevChain, wons: prevWon, leafBottom: leaf.bottom };
   };
 
   const leftSide = drawSide(sheet.left, xL, true);
   const rightSide = drawSide(sheet.right, xR, false);
+  const height = Math.max(leftSide.leafBottom, rightSide.leafBottom) + margin;
 
   let champion: BracketDrawing['champion'] = null;
   const c = sheet.center[0];
   if (c) {
     const cx = width / 2;
-    const ly = leftSide.ys[0] ?? yOf(cols - 1, 0);
-    const ry = rightSide.ys[0] ?? yOf(cols - 1, 0);
+    const ly = leftSide.ys[0] ?? top + rowH / 2;
+    const ry = rightSide.ys[0] ?? top + rowH / 2;
     const [pa, pb] = c.present;
     const leftWon = c.winner != null && c.winner === c.entries[0];
     const rightWon = c.winner != null && c.winner === c.entries[1];
