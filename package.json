@@ -57,6 +57,7 @@
     "story:verify": "node scripts/verify-story-text.mjs",
     "bracket:verify": "node scripts/verify-bracket-layout.mjs",
     "bracket:backfill-type": "node scripts/backfill-entry-type.mjs",
+    "bracket:draw": "node scripts/generate-knockout-draw.mjs",
     "og:tournaments": "python3 tools/sns-images/tournament_og.py",
     "bracket:verify:tree": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-bracket-tree.ts",
     "bracket:preview": "ts-node --project scripts/playerStats/tsconfig.json scripts/preview-bracket-sheets.ts",

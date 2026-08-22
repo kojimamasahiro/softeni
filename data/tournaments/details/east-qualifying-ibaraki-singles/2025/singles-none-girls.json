@@ -151,6 +151,18 @@
       "type": null
     }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      {"group":"C","rank":3},
+      {"group":"C","rank":1},
+      {"group":"D","rank":1},
+      {"group":"B","rank":2},
+      {"group":"D","rank":2},
+      {"group":"A","rank":2},
+      {"group":"C","rank":2}
+    ]
+  },
   "matches": [
     {
       "entries": [1, 8],

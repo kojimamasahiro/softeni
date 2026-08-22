@@ -145,6 +145,49 @@ entries の入力ミスを検出する。問題があれば終了コード1。�
 | `orphan-participant` | `participants` に居るのに、どの entry にも登場しない。**表記ゆれによる二重登録のサイン** |
 | `match-entry-not-found` | `matches[].entries` が存在しない entryNo（`null` 含む）を参照 |
 | `result-entry-not-found` | `results[].entryNo` が存在しない |
+| `bracket-slot-parity` | `entries[].type` から積んだ枠数が2の冪でない＝シード/足長の指定ずれ（warn）。**予選リーグを含む大会は対象外**（席順は `knockoutDraw` が持つため） |
+| `knockout-draw-missing` | 予選リーグ→決勝T形式（決勝Tの試合が2件以上）なのに `knockoutDraw` が無い（warn）。`npm run bracket:draw -- --apply` で生成できる。生成できない場合は決勝Tの試合記録が欠けている |
+| `knockout-draw-parity` | `knockoutDraw.slots` の枠数が2の冪でない（warn）。空席は `null` で埋める |
+| `knockout-draw-unresolved` | `knockoutDraw` の席が参照する (組, 組内順位) が `results[].roundrobin` に無い（warn）。予選リーグが終わる前は対象外 |
+
+### 決勝トーナメントの席順（`knockoutDraw`）
+
+**予選リーグ→決勝T形式の大会では、決勝Tの席は「エントリー」ではなく「予選リーグの組」に属する**
+（「A組1位の席」であって「◯番の組の席」ではない）。誰がそこに入るかはリーグが終わるまで
+決まらないので、`entries[].type` に席順を持たせる方式は成立しない
+（`entryNo` 順に積むと 90 大会中 17 大会が誤ったブラケットになる）。
+
+```json
+"knockoutDraw": {
+  "slots": [
+    {"group":"A","rank":1},
+    null,
+    {"group":"D","rank":2},
+    {"group":"E","rank":2}
+  ]
+}
+```
+
+- `slots` の並びがそのままブラケットの席順。長さは2の冪、`null` は空席（不戦勝）
+- 実際の `entryNo` は `results[].roundrobin.{group, rank}` を引いて解決する
+- 完了済み大会は `npm run bracket:draw -- --apply` で `matches` から生成できる。
+  書き込む前に「復元した席順で計算した合流ラウンドが knockout の全試合と一致するか」を
+  検算し、通らない大会には書き込まない
+- **`entries[].type` は予選リーグを含まない大会専用**。予選リーグ大会の `type` は席順として読まない
+
+**入力ツール（`tools/index.html`）は保存時に `knockoutDraw` を出力に含める**ので、
+新しく入力した大会に生成スクリプトを別途走らせる必要は無い。席順を起こす手順の実体は
+`tools/shared/knockout-draw.js`（Browser + Node 両対応の UMD）にあり、入力ツール
+（`normalize-core.js`）と生成スクリプトが同じモジュールを共有する。
+`entries` メタJSON（`type`）は予選リーグを挟む大会では不要。
+
+**決勝が1試合だけの大会にはドローを作らない**。リーグ→リーグ→優勝決定戦のような形式には
+ブラケットが無く、2枠のドローは席順の情報を持たないため。実例:
+`zennihon-university-ouza/2026/team-none-boys`（予選リーグ6組 → 準決勝リーグ2組 → 優勝決定戦）。
+なお `results[].roundrobin` は組を1つしか持てないので、**2段目のリーグの順位は記録されない**
+（試合そのものは `matches` に残る）。
+
+決定の経緯と実測は [ADR-015](../adr/ADR-015-knockout-draw-by-group.md)。
 
 なぜ必要か: 統計エンジンはこれらを「相方不明」として**黙って除外する**ため、
 サイトの表示を見ても気付けない。2026-07-19 に、選手ページのパートナー別集計が

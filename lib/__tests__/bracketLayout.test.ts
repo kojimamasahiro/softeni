@@ -14,7 +14,12 @@ import {
   roundLabelOf,
   splitBracketSheets,
 } from '../bracketLayout';
+import { packTournamentDetailData, unpackTournamentDetailData } from '../packedPageData';
 import { assert, summary, test } from '../playerStats/__tests__/harness';
+
+// 入力ツールと共有する UMD モジュール（tools/shared/）。型定義は無いので require で読む。
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const { buildKnockoutDraw } = require('../../tools/shared/knockout-draw.js');
 
 console.log('bracketLayout.test.ts');
 
@@ -36,6 +41,112 @@ test('seed/extra は bye を1つ挟み、packing は2組で1試合ぶんの席�
   assert.strictEqual(layout!.slotOf.get(1), 0); // seed は 0 番、1 番は bye
   assert.strictEqual(layout!.slotOf.get(2), 2);
   assert.strictEqual(layout!.slotOf.get(3), 3);
+});
+
+// ---- knockoutDraw（予選リーグ→決勝T。席は「組」に属する） ----
+// 詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+
+type Slot = { group: string; rank: number } | null;
+const drawDetail = (slots: Slot[], standings: { entryNo: number; group: string; rank: number }[]) =>
+  ({
+    entries: standings.map((s) => ({ entryNo: s.entryNo, type: null })),
+    knockoutDraw: { slots },
+    results: standings.map((s) => ({ entryNo: s.entryNo, roundrobin: { group: s.group, rank: s.rank } })),
+  }) as unknown as Parameters<typeof describeBracketLayout>[0];
+
+/** A組1位 / 空席 / B組2位 / C組1位 の 4 枠。「1位 vs 別組2位」のクロス配置。 */
+const DRAW: Slot[] = [{ group: 'A', rank: 1 }, null, { group: 'B', rank: 2 }, { group: 'C', rank: 1 }];
+const STANDINGS = [
+  { entryNo: 7, group: 'A', rank: 1 },
+  { entryNo: 3, group: 'B', rank: 2 },
+  { entryNo: 5, group: 'C', rank: 1 },
+];
+
+test('knockoutDraw があれば (組, 組内順位) を entryNo に解決して席順にする', () => {
+  const { layout, failure } = describeBracketLayout(drawDetail(DRAW, STANDINGS));
+  assert.strictEqual(failure, null);
+  assert.strictEqual(layout!.size, 4);
+  assert.strictEqual(layout!.slotOf.get(7), 0); // A組1位
+  assert.strictEqual(layout!.slotOf.get(3), 2); // B組2位
+  assert.strictEqual(layout!.slotOf.get(5), 3); // C組1位
+  assert.strictEqual(meetingRoundIndex(layout!, 3, 5), 0); // 隣接＝1回戦
+  assert.strictEqual(meetingRoundIndex(layout!, 7, 3), 1); // 空席側の A組1位 とは2回戦
+});
+
+test('knockoutDraw は entryNo 順の復元より優先される', () => {
+  // entryNo 順（3,5,7）に積むと 3v5 が1回戦・7 が seed になるが、ドローでは
+  // 7 が単独の山。席が「組」に属することを取り違えないための固定。
+  const { layout } = describeBracketLayout(drawDetail(DRAW, STANDINGS));
+  assert.strictEqual(layout!.slotOf.get(7), 0);
+  assert.notStrictEqual(meetingRoundIndex(layout!, 3, 7), 0);
+});
+
+test('予選リーグが終わっていなければ knockoutDraw があっても復元しない', () => {
+  // 席は決まっているが誰が入るか未確定。空の表を描かないよう理由付きで諦める。
+  const { layout, failure } = describeBracketLayout(drawDetail(DRAW, []));
+  assert.strictEqual(layout, null);
+  assert.strictEqual(failure, 'draw-unresolved');
+});
+
+test('knockoutDraw の枠数が2冪でなければ復元しない', () => {
+  const { layout, failure } = describeBracketLayout(drawDetail([{ group: 'A', rank: 1 }, null, { group: 'B', rank: 2 }], STANDINGS));
+  assert.strictEqual(layout, null);
+  assert.strictEqual(failure, 'draw-slot-parity');
+});
+
+test('knockoutDraw はページデータの pack/unpack を通っても席順を保つ', () => {
+  // ページに渡るのは packed 形式なので、そこに載せ忘れると本番だけ復元できなくなる
+  // （packed はホワイトリスト方式で、知らないキーは黙って落ちる）。
+  const source = { participants: [], matches: [], ...(drawDetail(DRAW, STANDINGS) as object) } as unknown as Parameters<typeof packTournamentDetailData>[0];
+  const roundTripped = unpackTournamentDetailData(packTournamentDetailData(source)) as unknown as Parameters<typeof describeBracketLayout>[0];
+
+  const { layout, failure } = describeBracketLayout(roundTripped);
+  assert.strictEqual(failure, null);
+  assert.strictEqual(layout!.size, 4);
+  assert.strictEqual(layout!.slotOf.get(7), 0);
+  assert.strictEqual(layout!.slotOf.get(3), 2);
+  assert.strictEqual(layout!.slotOf.get(5), 3);
+});
+
+test('matches → knockoutDraw → 席順 が一周する（入力ツールと同じ経路）', () => {
+  // tools/shared/knockout-draw.js は入力ツール（normalize-core.js）と
+  // scripts/generate-knockout-draw.mjs が共有する。ここで作ったドローを
+  // describeBracketLayout がそのまま読めることを固定しておく。
+  //
+  // 4枠の決勝T: [A1, 空席] [B2, C1] → 準決勝で A1 vs (B2/C1 の勝者)。
+  const matches = [
+    { entries: [3, 5], round: '準決勝', stage: 'knockout', winnerEntryNo: 5, matchId: 'm1', nextMatchId: 'm2' },
+    { entries: [7, 5], round: '決勝', stage: 'knockout', winnerEntryNo: 7, matchId: 'm2', nextMatchId: null },
+    { entries: [7, 8], round: null, stage: 'roundrobin', winnerEntryNo: 7, matchId: 'r1', nextMatchId: null },
+  ];
+  const results = STANDINGS.map((s) => ({ entryNo: s.entryNo, roundrobin: { group: s.group, rank: s.rank } }));
+
+  const built = buildKnockoutDraw({ matches, results }) as { draw?: { slots: unknown[] }; error?: string; skip?: string };
+  assert.strictEqual(built.error, undefined);
+  assert.strictEqual(built.draw!.slots.length, 4);
+
+  const { layout, failure } = describeBracketLayout({
+    entries: STANDINGS.map((s) => ({ entryNo: s.entryNo, type: null })),
+    knockoutDraw: built.draw,
+    results,
+  } as unknown as Parameters<typeof describeBracketLayout>[0]);
+  assert.strictEqual(failure, null);
+  assert.strictEqual(meetingRoundIndex(layout!, 3, 5), 0); // 準決勝を戦った2組は隣接
+  assert.strictEqual(meetingRoundIndex(layout!, 7, 5), 1); // 決勝で当たる
+});
+
+test('決勝1試合だけの大会にはドローを作らない（席順という概念が無い）', () => {
+  // 予選リーグ→準決勝リーグ→優勝決定戦のような形式。2枠のドローは情報を持たない。
+  // 実例: zennihon-university-ouza/2026/team-none-boys
+  const built = buildKnockoutDraw({
+    matches: [
+      { entries: [1, 16], round: '優勝決定戦', stage: 'knockout', winnerEntryNo: 1, matchId: 'm1', nextMatchId: null },
+      { entries: [1, 2], round: null, stage: 'roundrobin', winnerEntryNo: 1, matchId: 'r1', nextMatchId: null },
+    ],
+    results: [],
+  }) as { draw?: unknown; skip?: string };
+  assert.strictEqual(built.draw, undefined);
+  assert.ok(typeof built.skip === 'string');
 });
 
 test('meetingRoundIndex は合流ラウンドを返す（0=1回戦）', () => {

@@ -94,11 +94,23 @@ export interface TournamentResult {
   };
 }
 
+/**
+ * 決勝トーナメントのドロー（席順）。予選リーグ→決勝T形式の大会だけが持つ。
+ *
+ * 席は**エントリーではなく予選リーグの組に属する**ので (組, 組内順位) で書く。
+ * `slots` の並びがそのままブラケットの席順で、長さは2の冪、`null` は空席（不戦勝）。
+ * 詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+ */
+export interface KnockoutDraw {
+  slots: ({ group: string; rank: number } | null)[];
+}
+
 export interface TournamentDetailData {
   participants: TournamentParticipant[];
   entries: TournamentEntry[];
   matches: TournamentMatch[];
   results: TournamentResult[];
+  knockoutDraw?: KnockoutDraw | null;
 }
 
 export type MatchRow = {

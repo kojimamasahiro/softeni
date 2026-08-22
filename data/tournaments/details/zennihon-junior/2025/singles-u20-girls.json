@@ -267,6 +267,18 @@
       "type": "packing"
     }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      null,
+      {"group":"B","rank":1},
+      {"group":"C","rank":1},
+      {"group":"D","rank":1},
+      {"group":"E","rank":1},
+      {"group":"F","rank":1},
+      {"group":"G","rank":1}
+    ]
+  },
   "matches": [
     {
       "entries": [7, 8],

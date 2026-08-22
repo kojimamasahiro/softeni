@@ -215,6 +215,26 @@
     { "entryNo": 20, "playerIds": ["ルーセント_千葉県"], "type": "packing" },
     { "entryNo": 21, "playerIds": ["太平洋工業_岐阜県"], "type": "packing" }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      null,
+      {"group":"E","rank":2},
+      {"group":"F","rank":2},
+      {"group":"B","rank":1},
+      {"group":"D","rank":2},
+      {"group":"G","rank":2},
+      {"group":"C","rank":1},
+      {"group":"D","rank":1},
+      {"group":"A","rank":2},
+      {"group":"C","rank":2},
+      {"group":"E","rank":1},
+      {"group":"F","rank":1},
+      {"group":"B","rank":2},
+      {"group":"G","rank":1},
+      null
+    ]
+  },
   "matches": [
     {
       "entries": [15, 18],

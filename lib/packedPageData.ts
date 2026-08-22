@@ -83,12 +83,17 @@ type PackedResult = [
   roundrobinRank: number | null,
 ];
 
+/** 決勝Tのドロー1席。空席は null。詳細は docs/adr/ADR-015-knockout-draw-by-group.md */
+type PackedDrawSlot = [group: NullableStringId, rank: number] | null;
+
 export type PackedTournamentDetailData = {
   strings: string[];
   participants: PackedParticipant[];
   entries: PackedEntry[];
   matches: PackedMatch[];
   results: PackedResult[];
+  /** 予選リーグ→決勝T形式の大会だけが持つ。ブラケット復元の情報源なので落とせない */
+  knockoutDraw?: PackedDrawSlot[] | null;
 };
 
 function createStringTable() {
@@ -242,12 +247,19 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
     ];
   });
 
+  // 決勝Tのドロー。これが落ちると予選リーグ大会でブラケットを復元できなくなる
+  // （席順の情報源が entries[].type ではなくこちらのため）。
+  const knockoutDraw = detailData.knockoutDraw?.slots
+    ? detailData.knockoutDraw.slots.map((slot): PackedDrawSlot => (slot ? [table.add(slot.group), slot.rank] : null))
+    : null;
+
   return {
     strings: table.strings,
     participants,
     entries,
     matches,
     results,
+    ...(knockoutDraw ? { knockoutDraw } : {}),
   };
 }
 
@@ -323,10 +335,15 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
     },
   );
 
+  const knockoutDraw = packed.knockoutDraw
+    ? { slots: packed.knockoutDraw.map((slot) => (slot ? { group: readString(strings, slot[0]), rank: slot[1] } : null)) }
+    : null;
+
   return {
     participants,
     entries,
     matches,
     results,
+    ...(knockoutDraw ? { knockoutDraw } : {}),
   };
 }

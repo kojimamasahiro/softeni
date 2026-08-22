@@ -27,6 +27,18 @@
     {"entryNo":11,"playerIds":["テニ研_福島県"],"type":"packing"},
     {"entryNo":12,"playerIds":["インフィニティ水沢STC_岩手県"],"type":null}
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      {"group":"B","rank":2},
+      {"group":"A","rank":2},
+      {"group":"B","rank":1},
+      {"group":"C","rank":1},
+      {"group":"D","rank":2},
+      {"group":"C","rank":2},
+      {"group":"D","rank":1}
+    ]
+  },
   "matches": [
     {
       "entries": [3,6],

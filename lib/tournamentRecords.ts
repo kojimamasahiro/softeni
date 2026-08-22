@@ -83,6 +83,19 @@ type RawRank = { kind?: string; bestLevel?: number; round?: number };
 type RawResult = {
   entryNo: number;
   tournament?: { label?: string; rank?: RawRank } | null;
+  /** 予選リーグの成績。決勝 T の席を entryNo に解決するのに使う（`knockoutDraw`） */
+  roundrobin?: { group?: string; rank?: number } | null;
+};
+
+/**
+ * 決勝トーナメントのドロー（席順）。予選リーグ→決勝 T 形式の大会だけが持つ。
+ *
+ * 席は**エントリーではなく予選リーグの組に属する**ので (組, 組内順位) で書く。
+ * `slots` の並びがそのままブラケットの席順で、長さは 2 の冪、`null` は空席（不戦勝）。
+ * 詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+ */
+export type RawKnockoutDraw = {
+  slots: ({ group: string; rank: number } | null)[];
 };
 
 /** 1 試合ぶん（champion-defeat / perfect-title 検出に必要な最小フィールドのみ） */
@@ -101,6 +114,7 @@ export type RawDetail = {
   entries?: RawEntry[];
   results?: RawResult[];
   matches?: RawMatch[];
+  knockoutDraw?: RawKnockoutDraw | null;
 };
 
 // ---- 内部ヘルパ ----

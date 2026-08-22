@@ -13,6 +13,12 @@
 //   - こうして組んだブラケットで求めた対戦ラウンドは、
 //     **インターハイ 2026 男子ダブルスの実データ 128 試合と 100% 一致**した。
 //
+// 予選リーグ→決勝トーナメント形式の大会（2026-08-22 追加）:
+//   この形式では席は**エントリーではなく予選リーグの組に属する**（「A 組 1 位の席」）ので、
+//   `entries[].type` からは復元できない。実測で 90 大会中 17 大会が誤復元になった。
+//   席順は `knockoutDraw`（(組, 組内順位) の並び）を情報源にする。
+//   決定の経緯は docs/adr/ADR-015-knockout-draw-by-group.md。
+//
 // 限界:
 //   `type` が入っていない大会（入力ツールのシード対応が 2026-07-26 のため、それ以前の
 //   データには `null` が多い）では復元できない。その場合は null を返す（graceful）。
@@ -25,6 +31,7 @@
 //   入力側の検出は tools/shared/validate-entries.js の `bracket-slot-parity` ルール。
 //   残る 1 大会は隣接ペアの崩れ（枠数は 2 冪のまま）でデータ誤りだった。修正後は
 //   **復元適用 173 大会・18,901 試合で不一致 0 件**（`npm run bracket:verify`）。
+//   `knockoutDraw` 追加後は **374 大会・27,635 試合で不一致 0 件**（2026-08-22）。
 
 // 相対 import なのは、ts-node（scripts/ の検証・テスト）が `@/` エイリアスを解決しないため。
 // lib 内の他モジュール（newsArticle.ts 等）も相対で揃えている。
@@ -65,15 +72,62 @@ export type BracketLayoutFailure =
   /** seed / extra が 1 件も無い＝シード未入力の大会 */
   | 'no-seed-info'
   /** packing の並びが奇数個＝type の入力ミス。席が 1 つずれるので復元を諦める */
-  | 'slot-parity';
+  | 'slot-parity'
+  /** `knockoutDraw.slots` の枠数が 2 の冪でない＝ドローの入力ミス */
+  | 'draw-slot-parity'
+  /** `knockoutDraw` はあるが、まだ 1 席も埋まっていない（予選リーグが終わっていない） */
+  | 'draw-unresolved';
 
 export type BracketLayoutResult = { layout: BracketLayout; failure: null } | { layout: null; failure: BracketLayoutFailure };
 
 /**
- * `entries`（entryNo 昇順＝ドロー順）と `type` から席順を復元し、失敗時は理由も返す。
+ * 予選リーグ→決勝トーナメント大会の席順を `knockoutDraw` から組む。
+ *
+ * この形式の大会では、決勝 T の席は**エントリーではなく予選リーグの組に属する**
+ * （「A 組 1 位の席」であって「◯番の組の席」ではない）。誰がその席に入るかはリーグが
+ * 終わるまで決まらないので、`entries[].type` に席順を持たせる方式は原理的に成立しない。
+ * 詳細と実測は docs/adr/ADR-015-knockout-draw-by-group.md。
+ *
+ * `slots` は (組, 組内順位) の並びで、`results[].roundrobin` を引いて entryNo に解決する。
+ * まだ順位が確定していない席は空席のままになる（結果未入力の大会と同じ扱い）。
+ */
+function layoutFromKnockoutDraw(detail: RawDetail): BracketLayoutResult | null {
+  const slots = detail.knockoutDraw?.slots;
+  if (!Array.isArray(slots) || slots.length === 0) return null;
+
+  const size = slots.length;
+  if ((size & (size - 1)) !== 0) return { layout: null, failure: 'draw-slot-parity' };
+
+  const byGroupRank = new Map<string, number>();
+  for (const r of detail.results ?? []) {
+    const rr = r.roundrobin;
+    if (r.entryNo == null || !rr || rr.group == null || rr.rank == null) continue;
+    byGroupRank.set(`${rr.group}/${rr.rank}`, r.entryNo);
+  }
+
+  const slotOf = new Map<number, number>();
+  slots.forEach((s, idx) => {
+    if (!s) return;
+    const no = byGroupRank.get(`${s.group}/${s.rank}`);
+    if (no != null) slotOf.set(no, idx);
+  });
+  if (slotOf.size === 0) return { layout: null, failure: 'draw-unresolved' };
+
+  return { layout: { slotOf, size, totalRounds: Math.log2(size) }, failure: null };
+}
+
+/**
+ * 席順を復元し、失敗時は理由も返す。
  * 表示側は理由を使わないので、通常は `buildBracketLayout` を使えばよい。
+ *
+ * 情報源は 2 つあり、`knockoutDraw`（予選リーグ→決勝 T 大会）が優先。
+ * 無ければ `entries`（entryNo 昇順＝ドロー順）と `type` から復元する。
  */
 export function describeBracketLayout(detail: RawDetail | null): BracketLayoutResult {
+  if (detail) {
+    const fromDraw = layoutFromKnockoutDraw(detail);
+    if (fromDraw) return fromDraw;
+  }
   const entries = detail?.entries ?? [];
   if (entries.length === 0) return { layout: null, failure: 'no-entries' };
   const typed = entries as Array<{ entryNo: number; type?: string | null }>;

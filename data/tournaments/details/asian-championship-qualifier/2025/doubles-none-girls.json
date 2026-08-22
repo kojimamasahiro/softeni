@@ -801,6 +801,42 @@
       "type": "packing"
     }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      null,
+      {"group":"H","rank":2},
+      {"group":"G","rank":4},
+      {"group":"B","rank":1},
+      null,
+      {"group":"C","rank":1},
+      null,
+      {"group":"D","rank":1},
+      null,
+      {"group":"J","rank":2},
+      null,
+      {"group":"F","rank":2},
+      {"group":"I","rank":2},
+      {"group":"E","rank":1},
+      null,
+      {"group":"F","rank":1},
+      null,
+      {"group":"B","rank":2},
+      {"group":"E","rank":2},
+      {"group":"A","rank":2},
+      null,
+      {"group":"G","rank":1},
+      null,
+      {"group":"H","rank":1},
+      null,
+      {"group":"I","rank":1},
+      null,
+      {"group":"D","rank":2},
+      {"group":"C","rank":2},
+      {"group":"J","rank":1},
+      null
+    ]
+  },
   "matches": [
     {
       "entries": [30, 29],

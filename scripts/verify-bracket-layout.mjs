@@ -12,7 +12,14 @@
 //   書き直している（二重管理だが、検証は「独立に書いたものと一致するか」に意味がある）。
 //   ロジックを変えたら両方直すこと。
 //
-// 実測（2026-07-31 時点）:
+// 情報源が 2 つある（2026-08-22 追加）:
+//   予選リーグ→決勝 T 形式の大会は `knockoutDraw`（席は「予選リーグの組」に属する）、
+//   それ以外は `entries[].type`。詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+//
+// 実測（2026-08-22 時点）:
+//   復元適用 374 大会 / 一致 27,635 試合 / **不一致 0 件**。復元不可は 7 大会。
+//
+// 実測（2026-07-31 時点。`knockoutDraw` 導入前）:
 //   復元適用 173 大会 / 一致 18,901 試合 / **不一致 0 件**。
 //   ほかに復元不可が 142 大会（シード未入力 132・枠数の整合性エラー 10）。
 //   「1 回戦は隣接同士」は全データで例外なく成立している。
@@ -36,6 +43,33 @@ const walk = (dir) =>
     if (e.isDirectory()) return e.name === 'temp' ? [] : walk(p);
     return e.name.endsWith('.json') && !e.name.startsWith('og') ? [p] : [];
   });
+
+/**
+ * 予選リーグ→決勝 T 大会の席順を `knockoutDraw` から組む。
+ * lib/bracketLayout.ts の layoutFromKnockoutDraw と同じ手順。
+ */
+function layoutFromDraw(data) {
+  const slots = data?.knockoutDraw?.slots;
+  if (!Array.isArray(slots) || slots.length === 0) return null;
+  const size = slots.length;
+  if ((size & (size - 1)) !== 0) return { failure: 'draw-slot-parity', size };
+
+  const byGroupRank = new Map();
+  for (const r of Array.isArray(data.results) ? data.results : []) {
+    const rr = r?.roundrobin;
+    if (r?.entryNo == null || !rr || rr.group == null || rr.rank == null) continue;
+    byGroupRank.set(`${rr.group}/${rr.rank}`, r.entryNo);
+  }
+
+  const slotOf = new Map();
+  slots.forEach((s, idx) => {
+    if (!s) return;
+    const no = byGroupRank.get(`${s.group}/${s.rank}`);
+    if (no != null) slotOf.set(no, idx);
+  });
+  if (slotOf.size === 0) return { failure: 'draw-unresolved' };
+  return { slotOf, size, totalRounds: Math.log2(size) };
+}
 
 /** lib/bracketLayout.ts の describeBracketLayout と同じ手順。失敗時は { failure } を返す。 */
 function buildLayout(entries) {
@@ -100,11 +134,12 @@ for (const filePath of walk(DETAILS)) {
   const knockout = (Array.isArray(data.matches) ? data.matches : []).filter((m) => m && m.stage === 'knockout');
   if (knockout.length === 0) continue;
 
-  const layout = buildLayout(data.entries);
+  const layout = layoutFromDraw(data) ?? buildLayout(data.entries);
   const rel = path.relative(ROOT, filePath);
   if (layout.failure) {
     failureCounts.set(layout.failure, (failureCounts.get(layout.failure) ?? 0) + 1);
-    if (layout.failure === 'slot-parity') mismatches.push({ rel, reason: `枠数 ${layout.size} が2の冪でない`, count: null });
+    if (layout.failure === 'slot-parity' || layout.failure === 'draw-slot-parity')
+      mismatches.push({ rel, reason: `枠数 ${layout.size} が2の冪でない`, count: null });
     continue;
   }
   applied += 1;

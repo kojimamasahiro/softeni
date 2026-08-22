@@ -13,6 +13,24 @@
     root.NormalizeCore = factory();
   }
 })(typeof self !== 'undefined' ? self : this, function () {
+  /**
+   * knockout-draw.js（決勝Tのドローを matches から起こす共有モジュール）を取り出す。
+   * Node は require、ブラウザは <script> で読み込まれた window.KnockoutDraw。
+   * 読み込まれていなければ null を返し、`knockoutDraw` の生成だけを黙って諦める
+   * （このモジュール本来の正規化は止めない）。
+   */
+  function getKnockoutDrawModule() {
+    try {
+      if (typeof module === 'object' && module.exports && typeof require === 'function') {
+        return require('./knockout-draw.js');
+      }
+    } catch (e) {
+      return null;
+    }
+    var g = typeof self !== 'undefined' ? self : typeof globalThis !== 'undefined' ? globalThis : null;
+    return (g && g.KnockoutDraw) || null;
+  }
+
   // ラウンド名 → 深さ順序（昇順）。"1回戦" < "2回戦" < ... < 準々決勝 < 準決勝 < 決勝。
   function roundOrderOf(roundName) {
     if (!roundName) return -1;
@@ -1487,11 +1505,24 @@
         (a, b) => (Number(a.entryNo) || 0) - (Number(b.entryNo) || 0),
       );
     }
+
+    // 決勝Tのドロー（席順）。予選リーグ→決勝T形式の大会だけが持つ。
+    // 席は**エントリーではなく予選リーグの組に属する**ので、entries[].type では表せない。
+    // 詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+    // `results` を引いて (組, 組内順位) に直すので、results を並べた後に作ること。
+    const kd = getKnockoutDrawModule();
+    if (kd) {
+      const built = kd.buildKnockoutDraw(outObj);
+      if (built && built.draw) outObj.knockoutDraw = built.draw;
+      // skip（この形式ではない／決勝1試合のみ）は正常。error は入力側の問題なので
+      // validate-entries.js の knockout-draw-missing で気付けるようここでは黙る。
+    }
+
     return outObj;
   }
 
   // Build output with participants one object per line
-  function buildOutput({ participants, entries, matches, results }) {
+  function buildOutput({ participants, entries, matches, results, knockoutDraw }) {
     const parts = [];
     // no indentBlock helper needed anymore; results and entries printed one-object-per-line
     parts.push('{');
@@ -1514,6 +1545,23 @@
       parts.push(sorted.map((e) => '    ' + JSON.stringify(e)).join(',\n'));
     }
     parts.push('  ],');
+
+    // knockoutDraw: 1 席 1 行。scripts/generate-knockout-draw.mjs の formatDraw と同じ書式。
+    if (knockoutDraw && Array.isArray(knockoutDraw.slots)) {
+      parts.push('  "knockoutDraw": {');
+      parts.push('    "slots": [');
+      parts.push(
+        knockoutDraw.slots
+          .map((sl) =>
+            sl == null
+              ? '      null'
+              : '      {"group":' + JSON.stringify(sl.group) + ',"rank":' + sl.rank + '}',
+          )
+          .join(',\n'),
+      );
+      parts.push('    ]');
+      parts.push('  },');
+    }
 
     // matches: print each match as an object where `entries` and `scores` are single-line
     parts.push('  "matches": [');
@@ -1570,6 +1618,9 @@
     normalizeResults,
     serializeOutput,
     buildOutput,
+    // 依存の解決を外から確認できるようにしておく（読み込み順を間違えると
+    // knockoutDraw が黙って出なくなるため。テスト用）。
+    getKnockoutDrawModule,
     deriveEntryStanding,
     computeRankFromStanding,
     roundOrderOf,

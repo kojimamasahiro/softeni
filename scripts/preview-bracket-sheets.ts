@@ -43,6 +43,16 @@ const TARGETS: { label: string; note: string; file: string }[] = [
     note: '完了済み。16校の小さいドロー',
     file: 'data/tournaments/details/highschool-kyushu-block/2026/team-none-boys.json',
   },
+  {
+    label: 'ハイジャパ2021 男子ダブルス',
+    note: '予選リーグ→決勝T。席順は knockoutDraw（24組が32枠へ、全組1位通過）',
+    file: 'data/tournaments/details/highschool-japan-cup/2021/doubles-none-boys.json',
+  },
+  {
+    label: '全日本実業団2026 女子団体',
+    note: '予選リーグ→決勝T。1位通過と別組2位通過のクロス配置（12チームが16枠へ）',
+    file: 'data/tournaments/details/zennihon-business-group/2026/team-none-girls.json',
+  },
 ];
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);

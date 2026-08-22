@@ -35,6 +35,14 @@
     { "entryNo": 15, "playerIds": ["弘前_青森県"], "type": null },
     { "entryNo": 16, "playerIds": ["秋田令和_秋田県"], "type": null }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      {"group":"B","rank":1},
+      {"group":"C","rank":1},
+      {"group":"D","rank":1}
+    ]
+  },
   "matches": [
     {
       "entries": [1, 8],

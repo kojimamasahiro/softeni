@@ -51,3 +51,5 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-011](./ADR-011-player-statistics-engine.md) | 選手集計を Player Statistics Engine へ一本化する | Accepted |
 | [ADR-012](./ADR-012-llm-authored-insights-with-machine-verification.md) | サイト本文でのLLM利用を「機械照合を通ったものに限り可」とする | Accepted |
 | [ADR-013](./ADR-013-scoped-team-name-aliases.md) | チーム名 alias に大会スコープ（scope）を導入する | Accepted |
+| [ADR-014](./ADR-014-pathway-name-match.md) | 進路（中学→高校）の採用条件を「氏名一致＋年差5年以内」に緩和する | Accepted |
+| [ADR-015](./ADR-015-knockout-draw-by-group.md) | 決勝トーナメントの席順は「予選リーグの組」に持たせる（`knockoutDraw`） | Accepted |

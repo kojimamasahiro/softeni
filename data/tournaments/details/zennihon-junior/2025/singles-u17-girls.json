@@ -439,6 +439,26 @@
     { "entryNo": 36, "playerIds": ["家入_天_M's_山口県"], "type": "packing" },
     { "entryNo": 37, "playerIds": ["中山_萌_東北_宮城県"], "type": "packing" }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      null,
+      {"group":"B","rank":1},
+      {"group":"C","rank":1},
+      {"group":"D","rank":1},
+      {"group":"E","rank":1},
+      {"group":"F","rank":1},
+      null,
+      {"group":"G","rank":1},
+      null,
+      {"group":"H","rank":1},
+      {"group":"I","rank":1},
+      {"group":"J","rank":1},
+      {"group":"K","rank":1},
+      {"group":"L","rank":1},
+      null
+    ]
+  },
   "matches": [
     {
       "entries": [5, 9],

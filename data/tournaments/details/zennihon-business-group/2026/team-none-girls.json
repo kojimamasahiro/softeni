@@ -47,6 +47,26 @@
     { "entryNo": 21, "playerIds": ["ベスト_東京都"], "type": null },
     { "entryNo": 22, "playerIds": ["東洋観光_広島県"], "type": null }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {"group":"A","rank":1},
+      null,
+      {"group":"D","rank":2},
+      {"group":"E","rank":2},
+      {"group":"B","rank":1},
+      {"group":"F","rank":2},
+      {"group":"C","rank":1},
+      null,
+      {"group":"D","rank":1},
+      null,
+      {"group":"A","rank":2},
+      {"group":"E","rank":1},
+      {"group":"B","rank":2},
+      {"group":"C","rank":3},
+      {"group":"F","rank":1},
+      null
+    ]
+  },
   "matches": [
     {
       "entries": [12, 18],

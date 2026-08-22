@@ -128,6 +128,58 @@
       }
     }
 
+    // ---- 決勝トーナメントの席順 ----
+    //
+    // 情報源は大会の形式で 2 通りに分かれる。
+    //   (1) 予選リーグ→決勝 T … `knockoutDraw`（席は「組」に属する）
+    //   (2) 単純トーナメント   … `entries[].type`（席は「エントリー」に属する）
+    // 詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
+    const allMatches = Array.isArray(data.matches) ? data.matches : [];
+    const hasRoundRobin = allMatches.some((m) => m && m.stage === 'roundrobin');
+    const koMatches = allMatches.filter((m) => m && m.stage === 'knockout');
+    const draw = data.knockoutDraw;
+    const drawSlots = draw && Array.isArray(draw.slots) ? draw.slots : null;
+
+    // 決勝が 1 試合だけの大会（リーグ→リーグ→優勝決定戦 など）にはブラケットが無く、
+    // 席順という概念も無いので `knockoutDraw` は要らない。
+    // 実例: zennihon-university-ouza/2026/team-none-boys（予選リーグ→準決勝リーグ→優勝決定戦）。
+    if (hasRoundRobin && koMatches.length >= 2 && !drawSlots) {
+      // この形式の大会の席順は `entries[].type` では表せない（リーグが終わるまで誰が
+      // その席に入るか決まらないため）。`knockoutDraw` が無いと表が組めない。
+      add(
+        'knockout-draw-missing',
+        null,
+        '予選リーグ→決勝トーナメント形式だが knockoutDraw が無い。' + 'npm run bracket:draw -- --apply で matches から生成できる（できない場合は決勝Tの試合記録が欠けている）',
+        'warn',
+      );
+    }
+
+    if (drawSlots) {
+      const size = drawSlots.length;
+      if (size === 0 || (size & (size - 1)) !== 0) {
+        add('knockout-draw-parity', null, 'knockoutDraw.slots の枠数が2の冪でない（' + size + '枠）。空席は null で埋めること', 'warn');
+      }
+
+      // 席が参照する (組, 組内順位) を results から引けるか。
+      // リーグが終わる前は引けなくて当たり前なので、決着した決勝Tの試合がある大会だけ見る。
+      if (koMatches.some((m) => m && m.winnerEntryNo != null)) {
+        const known = new Set();
+        for (const r of Array.isArray(data.results) ? data.results : []) {
+          const rr = r && r.roundrobin;
+          if (rr && rr.group != null && rr.rank != null) known.add(rr.group + '/' + rr.rank);
+        }
+        const unresolved = [];
+        for (const s of drawSlots) {
+          if (!s) continue;
+          const key = s.group + '/' + s.rank;
+          if (!known.has(key)) unresolved.push(key);
+        }
+        if (unresolved.length > 0) {
+          add('knockout-draw-unresolved', null, 'knockoutDraw の席に対応する予選リーグの順位が results に無い: ' + unresolved.join(', '), 'warn');
+        }
+      }
+    }
+
     // entries[].type からブラケットの席順を復元できるか。
     //
     // 席順は entryNo 順に「seed/extra は本人＋bye で 2 枠、packing は 2 組で 2 枠」と
@@ -136,7 +188,11 @@
     // 表示側（lib/bracketLayout.ts）はずれを検出したら復元を諦めるので、症状は
     // 「前哨戦ブロックの『◯回戦で当たる』が大会の後半で丸ごと消える」という形で出る。
     // 2026-07-31 の全データ検証で 183 大会中 10 大会がこれに該当した。
-    if (entries.some((e) => e && (e.type === 'seed' || e.type === 'extra'))) {
+    //
+    // **予選リーグを含む大会は対象外**。この形式では entries に予選敗退組も残るうえ、
+    // 決勝Tの席順は entryNo のドロー順と無関係なので、type を積んでも意味のある枠数に
+    // ならない（2026-08-22 に 3 大会の誤検知として顕在化した）。席順は knockoutDraw が持つ。
+    if (!hasRoundRobin && entries.some((e) => e && (e.type === 'seed' || e.type === 'extra'))) {
       const typeByNo = new Map(entries.map((e) => [e && e.entryNo, e && e.type]));
       const nos = [...typeByNo.keys()].filter((n) => n != null).sort((a, b) => a - b);
       let slotCount = 0;
@@ -181,6 +237,9 @@
     'match-entry-not-found': '試合が存在しない組を参照',
     'result-entry-not-found': '結果が存在しない組を参照',
     'bracket-slot-parity': 'シード/足長の指定がずれている（枠数が2の冪でない）',
+    'knockout-draw-missing': '予選リーグ→決勝Tなのに決勝Tのドローが無い',
+    'knockout-draw-parity': '決勝Tのドローの枠数が2の冪でない',
+    'knockout-draw-unresolved': '決勝Tのドローが参照する予選リーグの順位が無い',
   };
 
   return {
