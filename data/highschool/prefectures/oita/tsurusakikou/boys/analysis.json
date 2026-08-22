@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鶴崎工",
+        "teamId": "tsurusakikou",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["濱村_泰雅_鶴崎工_大分県", "安達_飛鳥_鶴崎工_大分県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "濱村_泰雅_鶴崎工_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "安達_飛鳥_鶴崎工_大分県",
+      "appearances": 1
+    }
+  ]
+}

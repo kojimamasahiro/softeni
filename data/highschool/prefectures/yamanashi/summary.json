@@ -15,6 +15,17 @@
     "teamId": "koufushou",
     "prefecture": "山梨県",
     "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -136,6 +147,17 @@
     "teamId": "usui",
     "prefecture": "山梨県",
     "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -163,6 +185,30 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2024,
     "gender": "boys"
+  },
+  {
+    "team": "富士河口湖",
+    "teamId": "fujikawaguchiko",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["荒井_梨里_富士河口湖_山梨県", "小澤_もえ_富士河口湖_山梨県"]
+  },
+  {
+    "team": "富士河口湖",
+    "teamId": "fujikawaguchiko",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["若林_乃愛_富士河口湖_山梨県", "馬場_南_富士河口湖_山梨県"]
   },
   {
     "team": "甲斐清和",
@@ -393,6 +439,18 @@
     "playerIds": ["新井_里菜_甲斐清和_山梨県", "古屋_有里紗_甲斐清和_山梨県"]
   },
   {
+    "team": "甲府工",
+    "teamId": "koufukou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["田中_大誠_甲府工_山梨県", "山田_笑也_甲府工_山梨県"]
+  },
+  {
     "team": "甲府南",
     "teamId": "koufuminami",
     "prefecture": "山梨県",
@@ -475,6 +533,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["中込_栄治_甲府南_山梨県", "塩谷_佳司_甲府南_山梨県"]
+  },
+  {
+    "team": "甲府南",
+    "teamId": "koufuminami",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["武田_雄大_甲府南_山梨県", "天野_航成_甲府南_山梨県"]
   },
   {
     "team": "甲府南",
@@ -577,6 +647,66 @@
     "teamId": "koufushou",
     "prefecture": "山梨県",
     "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["千野_愛梨_甲府商_山梨県", "杉山_ひかる_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["田中_乃愛_甲府商_山梨県", "並木_瑚白_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["齋藤_愛夢_甲府商_山梨県", "三浦_真由_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["藤本_吏人_甲府商_山梨県", "田邊_暖人_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["小俣_輝琉亜_甲府商_山梨県", "佐藤_佑樹_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -667,6 +797,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["荒川_真遥_甲府昭和_山梨県", "秋山_実由子_甲府昭和_山梨県"]
+  },
+  {
+    "team": "甲府昭和",
+    "teamId": "koufushouwa",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["伊藤_奈那_甲府昭和_山梨県", "河西_真央_甲府昭和_山梨県"]
   },
   {
     "team": "甲府昭和",
@@ -1231,6 +1373,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["井上_道成_笛吹_山梨県", "五味_杏介_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["田中_奨悟_笛吹_山梨県", "廣瀨_駿乃輔_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["米山_英隆_笛吹_山梨県", "吉原_拓歩_笛吹_山梨県"]
   },
   {
     "team": "笛吹",

@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "長崎工",
+        "teamId": "nagasakikou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["嶋田_貴志_長崎工_長崎県", "松永_雄大_長崎工_長崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "嶋田_貴志_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "松永_雄大_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "奥村_慎也_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "楠田_悠紀_長崎工_長崎県",
+      "appearances": 1
+    }
+  ]
+}

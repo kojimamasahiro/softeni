@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "平商",
+        "teamId": "tairashou",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["遠藤_愛郁_平商_福島県", "田中_理沙_平商_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "遠藤_愛郁_平商_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "田中_理沙_平商_福島県",
+      "appearances": 1
+    }
+  ]
+}

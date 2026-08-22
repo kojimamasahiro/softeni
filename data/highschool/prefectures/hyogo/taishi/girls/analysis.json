@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "taishi",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["豆﨑_夢恩_太子_兵庫県", "唐田_結衣_太子_兵庫県"]
+        "playerIds": ["川畑_莉子_太子_兵庫県", "室井_梨那_太子_兵庫県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "豆﨑_夢恩_太子_兵庫県",
@@ -47,6 +47,18 @@
     },
     {
       "id": "唐田_結衣_太子_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "川畑_莉子_太子_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "室井_梨那_太子_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "竹平_妃織_太子_兵庫県",
       "appearances": 1
     }
   ]

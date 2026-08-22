@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北九州市立",
+        "teamId": "kitakyuushuushiritsu",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["芦田_柚月_北九州市立_福岡県", "西_幸奈_北九州市立_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "芦田_柚月_北九州市立_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "西_幸奈_北九州市立_福岡県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "富士河口湖",
+        "teamId": "fujikawaguchiko",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["若林_乃愛_富士河口湖_山梨県", "馬場_南_富士河口湖_山梨県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "荒井_梨里_富士河口湖_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "小澤_もえ_富士河口湖_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "若林_乃愛_富士河口湖_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "馬場_南_富士河口湖_山梨県",
+      "appearances": 1
+    }
+  ]
+}

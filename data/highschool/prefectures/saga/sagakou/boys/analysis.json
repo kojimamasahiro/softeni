@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 13
+    "team": 1,
+    "doubles": 14
   },
   "resultsByCategory": {
     "singles": {
@@ -36,10 +37,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 18,
   "topPlayers": [
     {
       "id": "西_駿介_佐賀工_佐賀県",

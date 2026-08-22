@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "日体大柏",
+        "teamId": "nittaidaikashiwa",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["浦田_駿_日体大柏_千葉県", "田邉_駿_日体大柏_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "浦田_駿_日体大柏_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "田邉_駿_日体大柏_千葉県",
+      "appearances": 1
+    }
+  ]
+}

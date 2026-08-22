@@ -39,6 +39,17 @@
     "prefectureId": "ehime",
     "result": "1回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
     "gender": "girls"
@@ -63,6 +74,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
     "gender": "boys"
   },
   {
@@ -280,6 +302,18 @@
     "teamId": "hijirikatarina",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["大奈路_美優_聖カタリナ_愛媛県", "豊田_彩織_聖カタリナ_愛媛県"]
+  },
+  {
+    "team": "聖カタリナ",
+    "teamId": "hijirikatarina",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -394,6 +428,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["﨑山​_聖_今治北_愛媛県", "菊川_かの_今治北_愛媛県"]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["山岡_鈴芽_今治北_愛媛県", "山岡_愛芽_今治北_愛媛県"]
   },
   {
     "team": "今治北",
@@ -528,6 +574,18 @@
     "playerIds": ["中野_愛菜_川之石_愛媛県", "宇都宮_礼_川之石_愛媛県"]
   },
   {
+    "team": "川之石",
+    "teamId": "kawayukiishi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["宇都宮_梨里_川之石_愛媛県", "木村_円香_川之石_愛媛県"]
+  },
+  {
     "team": "新田",
     "teamId": "nitta",
     "prefecture": "愛媛県",
@@ -634,6 +692,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["村上_亮資_新田_愛媛県", "大谷_和夢_新田_愛媛県"]
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["藏本_隼郁_新田_愛媛県", "上中_翔太_新田_愛媛県"]
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["児玉_大海_新田_愛媛県", "能瀬_雄斗_新田_愛媛県"]
   },
   {
     "team": "新田",
@@ -1198,6 +1280,90 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["白石_健_済美_愛媛県", "河野_敏也_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["安田_和奏_済美_愛媛県", "熊谷_美咲_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["尾崎_芽生_済美_愛媛県", "竹中_晴南_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["小倉_あまね_済美_愛媛県", "西田_光都希_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["吉山_純平_済美_愛媛県", "青野_翔_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["山口_晟弥_済美_愛媛県", "藤田_和成_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["北岡_聖大_済美_愛媛県", "奥藤_未生_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["真鍋_光生_済美_愛媛県", "片山_雄心_済美_愛媛県"]
   },
   {
     "team": "済美",

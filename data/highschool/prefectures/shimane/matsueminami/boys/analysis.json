@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松江南",
+        "teamId": "matsueminami",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["永原_遥太_松江南_島根県", "津田_知紀_松江南_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "永原_遥太_松江南_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "津田_知紀_松江南_島根県",
+      "appearances": 1
+    }
+  ]
+}

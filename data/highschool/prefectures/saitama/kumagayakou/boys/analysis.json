@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "熊谷工",
+        "teamId": "kumagayakou",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["高橋_卓摩_熊谷工_埼玉県", "飯野_竜生_熊谷工_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高橋_卓摩_熊谷工_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "飯野_竜生_熊谷工_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

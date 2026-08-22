@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "桜の聖母",
+        "teamId": "sakuranoseibo",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["角田_夏歩_桜の聖母_福島県", "齋藤_百優_桜の聖母_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "野地_明日香_桜の聖母_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "引地_佑菜_桜の聖母_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "角田_夏歩_桜の聖母_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_百優_桜の聖母_福島県",
+      "appearances": 1
+    }
+  ]
+}

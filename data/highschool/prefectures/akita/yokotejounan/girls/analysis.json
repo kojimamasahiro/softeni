@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "横手城南",
+        "teamId": "yokotejounan",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["鎌田_韻_横手城南_秋田県", "中川原_きあ_横手城南_秋田県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "鎌田_韻_横手城南_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "中川原_きあ_横手城南_秋田県",
+      "appearances": 1
+    }
+  ]
+}

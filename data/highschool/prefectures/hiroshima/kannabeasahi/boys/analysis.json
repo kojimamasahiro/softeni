@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 16,
   "byCategory": {
-    "doubles": 10,
+    "team": 1,
+    "doubles": 13,
     "singles": 2
   },
   "resultsByCategory": {
@@ -48,10 +49,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "神辺旭",
+        "teamId": "kannabeasahi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "飯田_幸誠_神辺旭_広島県",

@@ -1,50 +1,27 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 5,
   "byCategory": {
     "team": 1,
-    "doubles": 11,
-    "singles": 2
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
       "recentlyResult": null,
       "historicalBest": {
         "team": "北科大高",
         "teamId": "kitakaoodaka",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2023,
-        "gender": "boys",
-        "playerIds": ["根田_大地_北科大高_北海道"]
-      }
-    },
-    "doubles": {
-      "recentlyResult": {
-        "team": "北科大高",
-        "teamId": "kitakaoodaka",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2019,
         "gender": "boys",
-        "playerIds": ["西_拓郎_北科大高_北海道", "小杉_昂道_北科大高_北海道"]
-      },
-      "historicalBest": {
-        "team": "北科大高",
-        "teamId": "kitakaoodaka",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["西_拓郎_北科大高_北海道", "小杉_昂道_北科大高_北海道"]
+        "playerIds": ["増田_洋五豊_北科大高_北海道", "蝦名_海飛_北科大高_北海道"]
       }
     },
     "team": {
@@ -54,35 +31,35 @@
         "teamId": "kitakaoodaka",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2019,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "根田_大地_北科大高_北海道",
-      "appearances": 4
+      "id": "増田_洋五豊_北科大高_北海道",
+      "appearances": 1
     },
     {
-      "id": "西_拓郎_北科大高_北海道",
-      "appearances": 4
+      "id": "蝦名_海飛_北科大高_北海道",
+      "appearances": 1
     },
     {
-      "id": "小杉_昂道_北科大高_北海道",
-      "appearances": 3
+      "id": "後藤_駿斗_北科大高_北海道",
+      "appearances": 1
     },
     {
-      "id": "倉重_南海_北科大高_北海道",
-      "appearances": 2
+      "id": "新山_海人_北科大高_北海道",
+      "appearances": 1
     },
     {
-      "id": "西村_優_北科大高_北海道",
-      "appearances": 2
+      "id": "岩城_爽太_北科大高_北海道",
+      "appearances": 1
     }
   ]
 }

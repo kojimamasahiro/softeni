@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hamada",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["尾島_暖菜_浜田_島根県", "今田_智瀬_浜田_島根県"]
+        "playerIds": ["平田_智菜_浜田_島根県", "山根_うみ_浜田_島根県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "尾島_暖菜_浜田_島根県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "今田_智瀬_浜田_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "平田_智菜_浜田_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "山根_うみ_浜田_島根県",
       "appearances": 1
     }
   ]

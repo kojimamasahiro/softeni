@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "長府",
+        "teamId": "choufu",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["具志堅_愛美_長府_山口県", "市川_朋子_長府_山口県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "具志堅_愛美_長府_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "市川_朋子_長府_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "金山_愛海_長府_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "米原_あかり_長府_山口県",
+      "appearances": 1
+    }
+  ]
+}

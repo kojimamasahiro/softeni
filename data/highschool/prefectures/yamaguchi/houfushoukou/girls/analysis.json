@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 1,
+    "singles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "防府商工",
+        "teamId": "houfushoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2023,
+        "gender": "girls",
+        "playerIds": ["坂上_麻耶_防府商工高校_山口県"]
+      }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "防府商工",
+        "teamId": "houfushoukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["柴田_有璃_防府商工_山口県", "中尾_茉莉_防府商工_山口県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "柴田_有璃_防府商工_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "中尾_茉莉_防府商工_山口県",
+      "appearances": 1
+    }
+  ]
+}

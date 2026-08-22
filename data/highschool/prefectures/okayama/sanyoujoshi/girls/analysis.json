@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "山陽女子",
+        "teamId": "sanyoujoshi",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["井上_望愛_山陽女子_岡山県", "松下_日和_山陽女子_岡山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "長谷川_憂華_山陽女子_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "立花_さくら_山陽女子_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "井上_望愛_山陽女子_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "松下_日和_山陽女子_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "渡邉_紘加_山陽女子_岡山県",
+      "appearances": 1
+    }
+  ]
+}

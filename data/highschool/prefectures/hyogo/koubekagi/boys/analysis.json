@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "神戸科技",
+        "teamId": "koubekagi",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["入澤_紘也_神戸科技_兵庫県", "北田_渉_神戸科技_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "入澤_紘也_神戸科技_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "北田_渉_神戸科技_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "伊勢崎清明",
+        "teamId": "isesakiseimei",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["萩原_朱音_伊勢崎清明_群馬県", "関根_由子_伊勢崎清明_群馬県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "萩原_朱音_伊勢崎清明_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "関根_由子_伊勢崎清明_群馬県",
+      "appearances": 1
+    }
+  ]
+}

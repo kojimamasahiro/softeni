@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kouchiozu",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2019,
         "gender": "boys",
-        "playerIds": ["吉川_輝_高知小津_高知県", "武田_童雅_高知小津_高知県"]
+        "playerIds": ["土居_幹太_高知小津_高知県", "平井_要_高知小津_高知県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "土居_幹太_高知小津_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "平井_要_高知小津_高知県",
+      "appearances": 1
+    },
     {
       "id": "吉川_輝_高知小津_高知県",
       "appearances": 1

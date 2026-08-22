@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 14,
+    "team": 1,
+    "doubles": 16,
     "singles": 3
   },
   "resultsByCategory": {
@@ -49,20 +50,30 @@
         "teamId": "hokuriku",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["羽生_汐音_北陸_福井県", "佐々木_凛音_北陸_福井県"]
+        "playerIds": ["片山_瑠子_北陸_福井県", "八木_里菜_北陸_福井県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "北陸",
+        "teamId": "hokuriku",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
       "id": "枝川_陽向_北陸_福井県",

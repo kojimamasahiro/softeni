@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高知南",
+        "teamId": "kouchiminami",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["中尾_天菜香_高知南_高知県", "森島_凜_高知南_高知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "中尾_天菜香_高知南_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "森島_凜_高知南_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "山岡_由依_高知南_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "池内_愛佳_高知南_高知県",
+      "appearances": 1
+    }
+  ]
+}

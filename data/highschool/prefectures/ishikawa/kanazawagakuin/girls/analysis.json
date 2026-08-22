@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,27 +16,49 @@
         "teamId": "kanazawagakuin",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "予選敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
+        "tournamentId": "highschool-championship",
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["法花堂_古都_金沢学院_石川県", "棚田_すず_金沢学院_石川県"]
+        "playerIds": ["村上_麗吏_金沢学院_石川県", "西村_紺奈_金沢学院_石川県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "金沢学院",
+        "teamId": "kanazawagakuin",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "法花堂_古都_金沢学院_石川県",
+      "appearances": 2
+    },
+    {
+      "id": "村上_麗吏_金沢学院_石川県",
       "appearances": 1
     },
     {
-      "id": "棚田_すず_金沢学院_石川県",
+      "id": "西村_紺奈_金沢学院_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "多田_里胡奈_金沢学院_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "松本_多未_金沢学院_石川県",
       "appearances": 1
     }
   ]

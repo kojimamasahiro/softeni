@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "日大鶴ヶ丘",
+        "teamId": "nichidaitsurugaoka",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["伊郷_太貴_日大鶴ヶ丘_東京都", "木庭_直哉_日大鶴ヶ丘_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "伊郷_太貴_日大鶴ヶ丘_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "木庭_直哉_日大鶴ヶ丘_東京都",
+      "appearances": 1
+    }
+  ]
+}

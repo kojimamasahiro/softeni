@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "千葉黎明",
+        "teamId": "chibareimei",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["江澤_しずく_千葉黎明_千葉県", "原田_安奈_千葉黎明_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "江澤_しずく_千葉黎明_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "原田_安奈_千葉黎明_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_朱里_千葉黎明_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "松島_穂香_千葉黎明_千葉県",
+      "appearances": 1
+    }
+  ]
+}

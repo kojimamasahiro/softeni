@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -25,17 +26,39 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "東洋大牛久",
+        "teamId": "touyoudaiushiku",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "竹﨑_真莉亜_東洋大牛久_茨城県",
+      "id": "酒井_真彩_東洋大牛久_茨城県",
       "appearances": 1
     },
     {
-      "id": "遠藤_理衣_東洋大牛久_茨城県",
+      "id": "石井_はるか_東洋大牛久_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "三舛_千波_東洋大牛久_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "溝口_結彩_東洋大牛久_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "金子_怜_東洋大牛久_茨城県",
       "appearances": 1
     }
   ]

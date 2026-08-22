@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "諫早商",
+        "teamId": "isahayashou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["永友_佳穂_諫早商_長崎県", "山口_あかり_諫早商_長崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "立山_裕菜_諫早商_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "光井_美結_諫早商_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "永友_佳穂_諫早商_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "山口_あかり_諫早商_長崎県",
+      "appearances": 1
+    }
+  ]
+}

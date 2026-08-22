@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "本庄一",
+        "teamId": "honjouichi",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["砂金_優里_本庄一_埼玉県", "小林_優愛_本庄一_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "砂金_優里_本庄一_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_優愛_本庄一_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

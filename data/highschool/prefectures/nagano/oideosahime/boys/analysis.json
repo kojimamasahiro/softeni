@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,15 +22,34 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "OIDE長姫",
+        "teamId": "oideosahime",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["佐藤_諒真_OIDE長姫_長野県", "岡村_勇志_OIDE長姫_長野県"]
+      }
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "佐藤_諒真_OIDE長姫_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "岡村_勇志_OIDE長姫_長野県",
+      "appearances": 1
+    },
     {
       "id": "小林_健太_OIDE長姫_長野県",
       "appearances": 1

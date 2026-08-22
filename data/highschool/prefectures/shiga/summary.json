@@ -37,11 +37,33 @@
     "teamId": "ayaba",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2021,
     "gender": "boys"
+  },
+  {
+    "team": "八幡商業",
+    "teamId": "hachimanshougyou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
   },
   {
     "team": "甲西",
@@ -318,6 +340,42 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["有我_聡翼_綾羽_滋賀県", "田中_壱冴_綾羽_滋賀県"]
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["山下_粋之心_綾羽_滋賀県", "田崎_月夢_綾羽_滋賀県"]
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["谷村_慶吾_綾羽_滋賀県", "木戸_礼紀_綾羽_滋賀県"]
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["神田_唯人_綾羽_滋賀県", "永島_大空夢_綾羽_滋賀県"]
   },
   {
     "team": "綾羽",
@@ -636,6 +694,42 @@
     "teamId": "kousei",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["永野_未莉_甲西_滋賀県", "奥村_直歩_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["岩田_紗弥_甲西_滋賀県", "安部_夏音_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["立岡_あい_甲西_滋賀県", "吹上_花恋_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -738,6 +832,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["奥村_麻友_甲西_滋賀県", "木田_美映ミシェル_甲西_滋賀県"]
+  },
+  {
+    "team": "草津東",
+    "teamId": "kusatsuhigashi",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["武田_彩佳_草津東_滋賀県", "三家_明莉_草津東_滋賀県"]
   },
   {
     "team": "長浜北",
@@ -1152,6 +1258,42 @@
     "teamId": "ritsumeikanmoriyama",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["岸井_寛太_立命館守山_滋賀県", "保田_大地_立命館守山_滋賀県"]
+  },
+  {
+    "team": "立命館守山",
+    "teamId": "ritsumeikanmoriyama",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["瀬川_峻岸_立命館守山_滋賀県", "高岡_未来_立命館守山_滋賀県"]
+  },
+  {
+    "team": "立命館守山",
+    "teamId": "ritsumeikanmoriyama",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["高谷_陸人_立命館守山_滋賀県", "酒井_健太_立命館守山_滋賀県"]
+  },
+  {
+    "team": "立命館守山",
+    "teamId": "ritsumeikanmoriyama",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1256,6 +1398,18 @@
     "playerIds": ["森澤_伯_瀬田工業_滋賀県", "中嶋_悠也_瀬田工業_滋賀県"]
   },
   {
+    "team": "高島",
+    "teamId": "takashima",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["川嵜_結以_高島_滋賀県", "山本_美優_高島_滋賀県"]
+  },
+  {
     "team": "虎姫",
     "teamId": "torahime",
     "prefecture": "滋賀県",
@@ -1290,6 +1444,18 @@
     "year": 2025,
     "gender": "girls",
     "playerIds": ["羽坂_心春_虎姫_滋賀県", "羽坂_百花_虎姫_滋賀県"]
+  },
+  {
+    "team": "八日市",
+    "teamId": "youkaichi",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["青木_琴音_八日市_滋賀県", "米田_桃香_八日市_滋賀県"]
   },
   {
     "team": "綾羽",

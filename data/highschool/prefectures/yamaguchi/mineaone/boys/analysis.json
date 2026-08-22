@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "美祢青嶺",
+        "teamId": "mineaone",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["田中_勇作_美祢青嶺_山口県", "大庭_翔樹_美祢青嶺_山口県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "田中_勇作_美祢青嶺_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "大庭_翔樹_美祢青嶺_山口県",
+      "appearances": 1
+    }
+  ]
+}

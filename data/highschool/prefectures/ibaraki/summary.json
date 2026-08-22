@@ -105,6 +105,17 @@
     "prefectureId": "ibaraki",
     "result": "3回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -220,6 +231,17 @@
     "gender": "girls"
   },
   {
+    "team": "東洋大牛久",
+    "teamId": "touyoudaiushiku",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
+  },
+  {
     "team": "藤代紫水",
     "teamId": "fujishiroshisui",
     "prefecture": "茨城県",
@@ -242,6 +264,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["阿久津_黎_藤代紫水_茨城県", "佐々木_歩夢_藤代紫水_茨城県"]
+  },
+  {
+    "team": "日立北",
+    "teamId": "hitachikita",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["井上_寛登_日立北_茨城県", "岡野_理人_日立北_茨城県"]
   },
   {
     "team": "日立北",
@@ -602,6 +636,18 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["中川_実咲_鹿島学園高校_茨城県", "大﨑_千理子_鹿島学園高校_茨城県"]
+  },
+  {
+    "team": "鹿島学園",
+    "teamId": "kashimagakuen",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["飯田_幹也_鹿島学園_茨城県", "茂野_大河_鹿島学園_茨城県"]
   },
   {
     "team": "霞ヶ浦",
@@ -1040,6 +1086,42 @@
     "teamId": "kasumikeura",
     "prefecture": "茨城県",
     "prefectureId": "ibaraki",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["冨田_朝陽_霞ヶ浦_茨城県", "黒須_柾暉_霞ヶ浦_茨城県"]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["金山_勇波_霞ヶ浦_茨城県", "菅谷_峻大_霞ヶ浦_茨城県"]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["菊池_龍生_霞ヶ浦_茨城県", "菊池_俊_霞ヶ浦_茨城県"]
+  },
+  {
+    "team": "霞ヶ浦",
+    "teamId": "kasumikeura",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1376,6 +1458,18 @@
     "teamId": "mitojoshi",
     "prefecture": "茨城県",
     "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["三浦_さくら_水戸女子_茨城県", "山内_遥_水戸女子_茨城県"]
+  },
+  {
+    "team": "水戸女子",
+    "teamId": "mitojoshi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1463,9 +1557,45 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["堤_優斗_竜ヶ崎一_茨城県", "佐藤_孝太郎_竜ヶ崎一_茨城県"]
+  },
+  {
+    "team": "竜ヶ崎一",
+    "teamId": "ryuugasakiichi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls",
     "playerIds": ["酒井_菜々花_竜ヶ崎一_茨城県", "幸坂_理子_竜ヶ崎一_茨城県"]
+  },
+  {
+    "team": "下妻第一",
+    "teamId": "shimozumadaiichi",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["葛貫_亜優_下妻第一_茨城県", "佐山_杏_下妻第一_茨城県"]
+  },
+  {
+    "team": "下妻二",
+    "teamId": "shimozumani",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["田島_瑞希_下妻二_茨城県", "初澤_夢空_下妻二_茨城県"]
   },
   {
     "team": "多賀",
@@ -1502,6 +1632,42 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["真弓_愛海_多賀高校_茨城県", "千葉_えみり_多賀高校_茨城県"]
+  },
+  {
+    "team": "東洋大牛久",
+    "teamId": "touyoudaiushiku",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["酒井_真彩_東洋大牛久_茨城県", "石井_はるか_東洋大牛久_茨城県"]
+  },
+  {
+    "team": "東洋大牛久",
+    "teamId": "touyoudaiushiku",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["三舛_千波_東洋大牛久_茨城県", "溝口_結彩_東洋大牛久_茨城県"]
+  },
+  {
+    "team": "東洋大牛久",
+    "teamId": "touyoudaiushiku",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["金子_怜_東洋大牛久_茨城県", "小林_里帆_東洋大牛久_茨城県"]
   },
   {
     "team": "東洋大牛久",

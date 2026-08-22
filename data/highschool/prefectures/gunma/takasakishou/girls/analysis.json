@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 7
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -36,10 +37,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高崎商",
+        "teamId": "takasakishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "渡邉_妃菜乃_高崎商_群馬県",
@@ -54,11 +65,11 @@
       "appearances": 1
     },
     {
-      "id": "橋本_菜々子_高崎商_群馬県",
+      "id": "染谷_杏奈_高崎商_群馬県",
       "appearances": 1
     },
     {
-      "id": "北舘_萌_高崎商_群馬県",
+      "id": "保科_知里_高崎商_群馬県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,61 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "team": 1,
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["嵩原_咲輝_那覇西_沖縄県", "知念_伽奈_那覇西_沖縄県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "那覇西",
+        "teamId": "nahanishi",
+        "prefecture": "沖縄県",
+        "prefectureId": "okinawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "平田_マイラ_那覇西_沖縄県",
+      "appearances": 1
+    },
+    {
+      "id": "山田_李里子_那覇西_沖縄県",
+      "appearances": 1
+    },
+    {
+      "id": "嵩原_咲輝_那覇西_沖縄県",
+      "appearances": 1
+    },
+    {
+      "id": "知念_伽奈_那覇西_沖縄県",
+      "appearances": 1
+    }
+  ]
+}

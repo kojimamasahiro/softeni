@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2,
+    "doubles": 3,
     "singles": 1
   },
   "resultsByCategory": {
@@ -49,12 +49,12 @@
         "teamId": "matsumotoarikesaki",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["小林_彩花_松本蟻ケ崎_長野県", "牛越_香奈羽_松本蟻ケ崎_長野県"]
+        "playerIds": ["臼井_優月_松本蟻ケ崎_長野県", "原_美夢華_松本蟻ケ崎_長野県"]
       }
     },
     "team": {
@@ -62,7 +62,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "小林_彩花_松本蟻ケ崎_長野県",
@@ -71,6 +71,14 @@
     {
       "id": "牛越_香奈羽_松本蟻ケ崎_長野県",
       "appearances": 2
+    },
+    {
+      "id": "臼井_優月_松本蟻ケ崎_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "原_美夢華_松本蟻ケ崎_長野県",
+      "appearances": 1
     }
   ]
 }

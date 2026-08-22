@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "徳島商",
+        "teamId": "tokushimashou",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["香川_紗央理_徳島商_徳島県", "鎌田_七菜子_徳島商_徳島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "香川_紗央理_徳島商_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "鎌田_七菜子_徳島商_徳島県",
+      "appearances": 1
+    }
+  ]
+}

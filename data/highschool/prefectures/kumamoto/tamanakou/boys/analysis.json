@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tamanakou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2019,
         "gender": "boys",
-        "playerIds": ["村上_聖哉_玉名工_熊本県", "上村_陸_玉名工_熊本県"]
+        "playerIds": ["仲山_哲太_玉名工_熊本県", "村木_敬大_玉名工_熊本県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "村上_聖哉_玉名工_熊本県",
@@ -47,6 +47,14 @@
     },
     {
       "id": "上村_陸_玉名工_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "仲山_哲太_玉名工_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "村木_敬大_玉名工_熊本県",
       "appearances": 1
     }
   ]

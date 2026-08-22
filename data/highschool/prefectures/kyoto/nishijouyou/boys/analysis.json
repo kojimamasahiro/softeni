@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 15,
   "byCategory": {
-    "doubles": 9,
+    "team": 1,
+    "doubles": 11,
     "singles": 3
   },
   "resultsByCategory": {
@@ -48,10 +49,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "西城陽",
+        "teamId": "nishijouyou",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "山内_風我_西城陽_京都府",

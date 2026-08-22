@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "宮崎大宮",
+        "teamId": "miyazakidaimiya",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["新名_弘季_宮崎大宮_宮崎県", "児玉_将太郎_宮崎大宮_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "新名_弘季_宮崎大宮_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "児玉_将太郎_宮崎大宮_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

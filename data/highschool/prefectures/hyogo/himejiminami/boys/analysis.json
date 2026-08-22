@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "姫路南",
+        "teamId": "himejiminami",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["松下_竜大_姫路南_兵庫県", "濱岡_篤生_姫路南_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "松下_竜大_姫路南_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "濱岡_篤生_姫路南_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 5
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 12,
   "topPlayers": [
+    {
+      "id": "藤本_吏人_甲府商_山梨県",
+      "appearances": 2
+    },
+    {
+      "id": "田邊_暖人_甲府商_山梨県",
+      "appearances": 2
+    },
     {
       "id": "末永_光幸樹_甲府商_山梨県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "佐野_優達_甲府商_山梨県",
-      "appearances": 1
-    },
-    {
-      "id": "井上_航_甲府商_山梨県",
-      "appearances": 1
-    },
-    {
-      "id": "長谷部_太河_甲府商_山梨県",
       "appearances": 1
     }
   ]

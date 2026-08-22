@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 4,
+    "team": 1,
+    "doubles": 6,
     "singles": 3
   },
   "resultsByCategory": {
@@ -59,10 +60,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "延岡学園",
+        "teamId": "nobeokagakuen",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "片伯部_鈴菜_延岡学園_宮崎県",

@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "team": 1,
     "doubles": 1
   },
   "resultsByCategory": {
@@ -25,7 +26,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "埼玉平成",
+        "teamId": "saitamaheisei",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 2,

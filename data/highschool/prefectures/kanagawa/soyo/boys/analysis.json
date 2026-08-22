@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "soyo",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2019,
         "gender": "boys",
-        "playerIds": ["中静_瞬_相洋_神奈川県", "北村_拓夢_相洋_神奈川県"]
+        "playerIds": ["小宮_侑希_相洋_神奈川県", "和田_龍之_相洋_神奈川県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "小宮_侑希_相洋_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "和田_龍之_相洋_神奈川県",
+      "appearances": 1
+    },
     {
       "id": "中静_瞬_相洋_神奈川県",
       "appearances": 1

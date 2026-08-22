@@ -29,6 +29,17 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
+  },
+  {
+    "team": "秋田北",
+    "teamId": "akitakita",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "girls"
   },
@@ -41,6 +52,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "秋田北鷹",
+    "teamId": "akitakitataka",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
     "gender": "boys"
   },
   {
@@ -369,6 +391,42 @@
     "teamId": "akitakita",
     "prefecture": "秋田県",
     "prefectureId": "akita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["高貝_ここあ_秋田北_秋田県", "山内_愛乃_秋田北_秋田県"]
+  },
+  {
+    "team": "秋田北",
+    "teamId": "akitakita",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["高貝_ひかり_秋田北_秋田県", "北嶋_杏梨_秋田北_秋田県"]
+  },
+  {
+    "team": "秋田北",
+    "teamId": "akitakita",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["加藤_桃花_秋田北_秋田県", "菊地_澄佳_秋田北_秋田県"]
+  },
+  {
+    "team": "秋田北",
+    "teamId": "akitakita",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -525,6 +583,42 @@
     "teamId": "akitakitataka",
     "prefecture": "秋田県",
     "prefectureId": "akita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["小坂_朝陽_秋田北鷹_秋田県", "須藤_稜太_秋田北鷹_秋田県"]
+  },
+  {
+    "team": "秋田北鷹",
+    "teamId": "akitakitataka",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["竹村_陸人_秋田北鷹_秋田県", "浪岡_遊_秋田北鷹_秋田県"]
+  },
+  {
+    "team": "秋田北鷹",
+    "teamId": "akitakitataka",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["佐藤_大晴_秋田北鷹_秋田県", "岩間_大輝_秋田北鷹_秋田県"]
+  },
+  {
+    "team": "秋田北鷹",
+    "teamId": "akitakitataka",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -627,6 +721,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["畠山_梨央苗_秋田西_秋田県", "佐藤_優愛_秋田西_秋田県"]
+  },
+  {
+    "team": "秋田西",
+    "teamId": "akitanishi",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["星野_司苑_秋田西_秋田県", "金沢_もも_秋田西_秋田県"]
   },
   {
     "team": "秋田西",
@@ -1073,6 +1179,18 @@
     "playerIds": ["出雲_陽_秋田令和_秋田県", "畠山_蓮_秋田令和_秋田県"]
   },
   {
+    "team": "秋田和洋女子",
+    "teamId": "akitawayoujoshi",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["小茄子川_夏月_秋田和洋女子_秋田県", "加藤_優衣_秋田和洋女子_秋田県"]
+  },
+  {
     "team": "能代松陽",
     "teamId": "noshiroshouyou",
     "prefecture": "秋田県",
@@ -1095,6 +1213,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["船木_柊_能代松陽_秋田県", "工藤_稔_能代松陽_秋田県"]
+  },
+  {
+    "team": "能代松陽",
+    "teamId": "noshiroshouyou",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["高橋_龍之介_能代松陽_秋田県", "大塚_成_能代松陽_秋田県"]
   },
   {
     "team": "能代松陽",
@@ -1167,6 +1297,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["柏山_昇輝_大館鳳鳴_秋田県", "岩沢_陽飛_大館鳳鳴_秋田県"]
+  },
+  {
+    "team": "大館鳳鳴",
+    "teamId": "oodateootorimei",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["工藤_柊吾_大館鳳鳴_秋田県", "川又_涼_大館鳳鳴_秋田県"]
   },
   {
     "team": "大曲",
@@ -1269,6 +1411,18 @@
     "teamId": "oomagarikou",
     "prefecture": "秋田県",
     "prefectureId": "akita",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["相馬_駿祐_大曲工_秋田県", "藤城_拓馬_大曲工_秋田県"]
+  },
+  {
+    "team": "大曲工",
+    "teamId": "oomagarikou",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1299,6 +1453,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["髙栁_順成_大曲工_秋田県", "福田_和彦_大曲工_秋田県"]
+  },
+  {
+    "team": "横手城南",
+    "teamId": "yokotejounan",
+    "prefecture": "秋田県",
+    "prefectureId": "akita",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["鎌田_韻_横手城南_秋田県", "中川原_きあ_横手城南_秋田県"]
   },
   {
     "team": "横手清陵",

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "koufushouwa",
         "prefecture": "山梨県",
         "prefectureId": "yamanashi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["荒川_真遥_甲府昭和_山梨県", "秋山_実由子_甲府昭和_山梨県"]
+        "playerIds": ["伊藤_奈那_甲府昭和_山梨県", "河西_真央_甲府昭和_山梨県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "荒川_真遥_甲府昭和_山梨県",
@@ -39,11 +39,15 @@
       "appearances": 1
     },
     {
-      "id": "渡邉_芽唯_甲府昭和_山梨県",
+      "id": "伊藤_奈那_甲府昭和_山梨県",
       "appearances": 1
     },
     {
-      "id": "里吉_美月_甲府昭和_山梨県",
+      "id": "河西_真央_甲府昭和_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "渡邉_芽唯_甲府昭和_山梨県",
       "appearances": 1
     }
   ]

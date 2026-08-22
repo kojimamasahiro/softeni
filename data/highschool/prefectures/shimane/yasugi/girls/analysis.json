@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "yasugi",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["内田_彩也香_安来_島根県", "中村_智美_安来_島根県"]
+        "playerIds": ["野津_春那_安来_島根県", "加納_真希_安来_島根県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "野津_春那_安来_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "加納_真希_安来_島根県",
+      "appearances": 1
+    },
     {
       "id": "内田_彩也香_安来_島根県",
       "appearances": 1

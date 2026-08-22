@@ -70,6 +70,28 @@
     "teamId": "takasakishou",
     "prefecture": "群馬県",
     "prefectureId": "gunma",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls"
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -187,6 +209,18 @@
     "gender": "girls"
   },
   {
+    "team": "伊勢崎清明",
+    "teamId": "isesakiseimei",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["萩原_朱音_伊勢崎清明_群馬県", "関根_由子_伊勢崎清明_群馬県"]
+  },
+  {
     "team": "桐生市立商",
     "teamId": "kiryuushiritsushou",
     "prefecture": "群馬県",
@@ -269,6 +303,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["和地_真太朗_前橋商_群馬県", "石田_滉樹_前橋商_群馬県"]
+  },
+  {
+    "team": "前橋商",
+    "teamId": "maebashishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["佐川_健太_前橋商_群馬県", "高城_直弥_前橋商_群馬県"]
   },
   {
     "team": "前橋商",
@@ -541,6 +587,18 @@
     "prefectureId": "gunma",
     "result": "2回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["竹和_華_高崎女子_群馬県", "大塚_美優_高崎女子_群馬県"]
+  },
+  {
+    "team": "高崎女子",
+    "teamId": "takasakijoshi",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2026,
     "gender": "girls",
@@ -689,6 +747,66 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["後藤_類_高崎商_群馬県", "小澤_柊太_高崎商_群馬県"]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["染谷_杏奈_高崎商_群馬県", "保科_知里_高崎商_群馬県"]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["手島_唯花_高崎商_群馬県", "武田_萌愛実_高崎商_群馬県"]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["小林_大晟_高崎商_群馬県", "小林_快静_高崎商_群馬県"]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["佐藤_智仁_高崎商_群馬県", "狩野_佑貴_高崎商_群馬県"]
+  },
+  {
+    "team": "高崎商",
+    "teamId": "takasakishou",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["室岡_玲音_高崎商_群馬県", "北爪_琉登_高崎商_群馬県"]
   },
   {
     "team": "高崎商",
@@ -1169,6 +1287,54 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["中嶋_夏鈴_健大高崎_群馬県", "五十嵐_杏寿_健大高崎_群馬県"]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["川上_琴巳_健大高崎_群馬県", "岡安_明日香_健大高崎_群馬県"]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["角田_乃依瑠_健大高崎_群馬県", "竹澤_聡美_健大高崎_群馬県"]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["吉岡_藍_健大高崎_群馬県", "小林_友樹_健大高崎_群馬県"]
+  },
+  {
+    "team": "健大高崎",
+    "teamId": "takeshioodakasaki",
+    "prefecture": "群馬県",
+    "prefectureId": "gunma",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["片平_哲大_健大高崎_群馬県", "佐藤_潤也_健大高崎_群馬県"]
   },
   {
     "team": "健大高崎",

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "秋田和洋女子",
+        "teamId": "akitawayoujoshi",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["小茄子川_夏月_秋田和洋女子_秋田県", "加藤_優衣_秋田和洋女子_秋田県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小茄子川_夏月_秋田和洋女子_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_優衣_秋田和洋女子_秋田県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "坂出",
+        "teamId": "sakaide",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["河村_脩汰_坂出_香川県", "河村_真翔_坂出_香川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "河村_脩汰_坂出_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "河村_真翔_坂出_香川県",
+      "appearances": 1
+    }
+  ]
+}

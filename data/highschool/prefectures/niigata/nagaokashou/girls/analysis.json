@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "nagaokashou",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["森山_春菜_長岡商_新潟県", "佐藤_結菜_長岡商_新潟県"]
+        "playerIds": ["高橋_優那_長岡商_新潟県", "松嵜_凜_長岡商_新潟県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "森山_春菜_長岡商_新潟県",
@@ -47,6 +47,18 @@
     },
     {
       "id": "佐藤_結菜_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "高橋_優那_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "松嵜_凜_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "金箱_紗葵_長岡商_新潟県",
       "appearances": 1
     }
   ]

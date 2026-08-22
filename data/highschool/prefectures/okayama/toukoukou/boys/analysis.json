@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東岡工",
+        "teamId": "toukoukou",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["高橋_裕太朗_東岡工_岡山県", "安田_典広_東岡工_岡山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "石原_将隆_東岡工_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "米田_尚貴_東岡工_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "高橋_裕太朗_東岡工_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "安田_典広_東岡工_岡山県",
+      "appearances": 1
+    }
+  ]
+}

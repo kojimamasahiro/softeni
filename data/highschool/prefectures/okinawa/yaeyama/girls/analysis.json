@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 19,
+  "totalAppearances": 21,
   "byCategory": {
     "team": 2,
-    "doubles": 14,
+    "doubles": 16,
     "singles": 3
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "yaeyama",
         "prefecture": "沖縄県",
         "prefectureId": "okinawa",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["福本_安汝_八重山_沖縄県", "石垣_蒼_八重山_沖縄県"]
+        "playerIds": ["吉川_小百合_八重山_沖縄県", "高嶺_心萌_八重山_沖縄県"]
       }
     },
     "team": {
@@ -73,7 +73,7 @@
       }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
       "id": "福本_安汝_八重山_沖縄県",
@@ -84,15 +84,15 @@
       "appearances": 5
     },
     {
+      "id": "加那原_里奈_八重山_沖縄県",
+      "appearances": 3
+    },
+    {
       "id": "髙嶺_心萌_八重山_沖縄県",
       "appearances": 3
     },
     {
       "id": "髙嶺_彩羽_八重山_沖縄県",
-      "appearances": 2
-    },
-    {
-      "id": "下地_莉央_八重山_沖縄県",
       "appearances": 2
     }
   ]
