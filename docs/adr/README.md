@@ -53,3 +53,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-013](./ADR-013-scoped-team-name-aliases.md) | チーム名 alias に大会スコープ（scope）を導入する | Accepted |
 | [ADR-014](./ADR-014-pathway-name-match.md) | 進路（中学→高校）の採用条件を「氏名一致＋年差5年以内」に緩和する | Accepted |
 | [ADR-015](./ADR-015-knockout-draw-by-group.md) | 決勝トーナメントの席順は「予選リーグの組」に持たせる（`knockoutDraw`） | Accepted |
+| [ADR-016](./ADR-016-manual-adsense-units-over-auto-ads.md) | 広告は自動広告のページ内挿入をやめ、手動枠（AdUnit）で位置と高さを固定する | Accepted |

@@ -8,6 +8,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
+import AdUnit from '@/components/AdUnit';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
@@ -17,6 +18,7 @@ import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
+import { AD_SLOTS } from '@/lib/ads';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
 import { getPublishedInsight } from '@/lib/tournamentInsight';
@@ -264,6 +266,13 @@ export default function TournamentYearResultPage({
             </p>
           )}
         </section>
+
+        {/* 主力枠。リード文（開催地・日程・展望リンク）の直後＝ファーストビュー内に置く
+            （2026-08-23 変更。経緯は docs/adr/ADR-016 の追記）。年度・カテゴリ切り替えの
+            「後」だと 375x812 実測で top=628px となり枠の下半分が折り返し下に落ちたため、
+            切り替えUIの「前」にした。この下の読み物（注目ポイント・トーナメント表・
+            チーム別成績・試合結果一覧）は一切分断しない。 */}
+        <AdUnit slot={AD_SLOTS.tournamentResult} />
 
         {/* 年度・カテゴリ切り替え */}
         {linkCategories &&

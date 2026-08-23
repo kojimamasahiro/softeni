@@ -65,7 +65,7 @@
 
 ### 調査・提案（未整理。現行仕様の根拠には使わない）
 
-- [adsense-ui-proposal.md](./adsense-ui-proposal.md)（2026-06）
+- [adsense-ui-proposal.md](./adsense-ui-proposal.md)（2026-06。2026-08-23 に実装され Superseded。現行は [wiki/monetization.md](./wiki/monetization.md)「手動広告枠」）
 - [cloudflare-migration-analysis.md](./cloudflare-migration-analysis.md)（2026-06）
 - [highschool-pages.md](./highschool-pages.md)（2026-06。現行は [wiki/highschool.md](./wiki/highschool.md)）
 - [tournament_requirements.md](./tournament_requirements.md) / [tournament_bracket_logic.md](./tournament_bracket_logic.md)（2026-06）
