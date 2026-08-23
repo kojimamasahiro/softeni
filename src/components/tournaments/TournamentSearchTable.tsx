@@ -1,7 +1,7 @@
 // src/components/tournaments/TournamentSearchTable.tsx
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 // ─── 型定義 ─────────────────────────────────────────────────────────────
 export type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
@@ -28,6 +28,12 @@ type Props = {
   prefectures: { id: string; name: string }[];
   years: number[];
   generations: { id: string; label: string }[];
+  /**
+   * フィルターバーの直後・件数と年度ブロックの前に差し込む要素。広告枠の挿入に使う。
+   * 何を差し込むかは呼び出し側（ページ）が決め、この表は位置だけを提供する
+   * （表のロジックが広告を知らないようにするため）。
+   */
+  afterFilters?: ReactNode;
 };
 
 // ─── 定数 ────────────────────────────────────────────────────────────────
@@ -161,7 +167,7 @@ function FilterDropdown({ label, options, selected, onChange }: FilterDropdownPr
 }
 
 // ─── メインコンポーネント ──────────────────────────────────────────────────
-export default function TournamentSearchTable({ instances, prefectures, years, generations }: Props) {
+export default function TournamentSearchTable({ instances, prefectures, years, generations, afterFilters }: Props) {
   const router = useRouter();
 
   // フィルター状態
@@ -283,6 +289,8 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
           年・カテゴリ・地域で絞り込んで大会を探せます。 結果データが収録されている大会は「結果」列のリンクから直接参照できます。
         </p>
       </div>
+
+      {afterFilters}
 
       {/* ── 件数 ── */}
       <p className="text-sm text-text-muted mb-3">

@@ -27,10 +27,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 
+import AdUnit from '@/components/AdUnit';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import PlayerLiteLink from '@/components/PlayerLiteLink';
+import { AD_SLOTS } from '@/lib/ads';
 
 const PAGE_URL = 'https://softeni-pick.com/players/';
 
@@ -351,6 +353,12 @@ export default function PlayersPage({ featured, all }: PlayersPageProps) {
             )}
           </section>
         )}
+
+        {/* 主力枠。検索ボックスの直後・「出場数の多い選手」の前＝ファーストビュー内に置く
+            （2026-08-23 変更。原案の「ファーストビューには置かない」を視認性優先で覆した。
+            経緯は docs/adr/ADR-016 の追記）。検索という主目的の操作は上に残し、
+            その下の読み物（表・全選手リンク）は分断しない位置。 */}
+        <AdUnit slot={AD_SLOTS.playersIndex} />
 
         {/* 注目選手（出場数上位）。P1「データが主役」に沿って表形式にする。 */}
         <section className="mb-10">

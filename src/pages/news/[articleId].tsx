@@ -9,9 +9,11 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import AdUnit from '@/components/AdUnit';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { AD_SLOTS } from '@/lib/ads';
 import {
   buildNewsArticleView,
   collectArticleMentions,
@@ -448,6 +450,11 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         </p>
 
         {categories.length === 0 && <p className="text-sm text-gray-500">掲載データがありません。</p>}
+
+        {/* 主力枠。リード文の直後・最初のカテゴリ節の前＝ファーストビュー内に置く
+            （2026-08-23 変更。経緯は docs/adr/ADR-016 の追記）。本文（カテゴリ節）は
+            一切分断しない。掲載データが無い記事には出さない。 */}
+        {categories.length > 0 && <AdUnit slot={AD_SLOTS.newsArticle} />}
 
         {categories.map((c) => (
           <section key={c.categoryId} className="mb-8 border-t border-border pt-5">
