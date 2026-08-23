@@ -5,11 +5,13 @@ import path from 'path';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
+import AdUnit from '@/components/AdUnit';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import SubNav from '@/components/nav/SubNav';
 import TournamentSearchTable, { TournamentInstance, TournamentLevel } from '@/components/tournaments/TournamentSearchTable';
+import { AD_SLOTS } from '@/lib/ads';
 
 // 大会入口のサブナビ(すべて/主要/地域/地区)。4ページ共通(docs/ui M2-3・C-3)
 export const TOURNAMENTS_SUBNAV = [
@@ -162,7 +164,16 @@ export default function TournamentsIndexPage({ instances, prefectures, years, ge
         {/* 入口カード2枚は SubNav に統合(重複リンク回避・docs/ui M2-3) */}
         <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
 
-        <TournamentSearchTable instances={instances} prefectures={prefectures} years={years} generations={generations} />
+        {/* 主力枠。フィルターバーの直後・件数と年度ブロックの前＝ファーストビュー内に置く
+            （2026-08-23 変更。経緯は docs/adr/ADR-016 の追記）。絞り込みの操作と結果の間に
+            入るが、年度ブロックの一覧そのものは分断しない位置。 */}
+        <TournamentSearchTable
+          instances={instances}
+          prefectures={prefectures}
+          years={years}
+          generations={generations}
+          afterFilters={<AdUnit slot={AD_SLOTS.tournamentsIndex} />}
+        />
       </PageLayout>
     </>
   );
