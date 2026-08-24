@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import AdUnit from '@/components/AdUnit';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PlayerMajorResults from '@/components/PlayerMajorResults';
@@ -11,6 +12,7 @@ import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/Playe
 import PlayerStatisticsSections from '@/components/PlayerStatisticsSections';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PageLayout from '@/components/PageLayout';
+import { AD_SLOTS } from '@/lib/ads';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
@@ -261,6 +263,12 @@ export default function PlayerResultsPage({
             </p>
           )}
         </header>
+
+        {/* 主力枠。ヘッダー（h1・リード文・主要大会タイル・プロフィールリンク）の直後＝
+            ファーストビュー内に置く。この下の読み物（スタッツ・大会結果一覧）は分断しない。
+            フッター直上にも枠が出る（AppShell）が、このページは縦に長いので同一
+            ビューポートには並ばない。配置の原則は docs/wiki/monetization.md「手動広告枠」。 */}
+        <AdUnit slot={AD_SLOTS.playerResults} />
 
         {/* スタッツ（チップ＋詳細）は見出しを持たせず、旧・主要タイトルの位置にそのまま置く
             （2026-08-07: 主要タイトルは大会結果の中へ移設したため、その入れ替わりで

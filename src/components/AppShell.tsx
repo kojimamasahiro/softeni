@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode, useCallback, useEffect, useLayoutEffect, useState } from 'react';
 
+import AdUnit from '@/components/AdUnit';
 import ScrollToTop from '@/components/ScrollToTop';
 import SideNav from '@/components/nav/SideNav';
+import { AD_SLOTS, FOOTER_AD_MIN_CONTENT_CHARS, FOOTER_AD_PAGE_TYPES } from '@/lib/ads';
+import { getPageType } from '@/lib/analytics';
 import { getNavItems } from '@/lib/navigation';
 import { isScoreSiteMode, siteConfig } from '@/lib/siteConfig';
 
@@ -77,6 +80,18 @@ export default function AppShell({
   const pathname = (router.asPath || '/').split('?')[0].split('#')[0];
   const scoreMode = isScoreSiteMode();
   const navItems = getNavItems();
+  // 本文量がフッター枠の下限を満たしているか。サーバー側では本文量を知れないので、
+  // マウント後に <main> を実測する（中身の無いページに広告を出さないための歯止め。
+  // 経緯と閾値の根拠は lib/ads.ts の FOOTER_AD_MIN_CONTENT_CHARS）。
+  const [mainHasEnoughContent, setMainHasEnoughContent] = useState(false);
+  useEffect(() => {
+    const main = document.querySelector('main');
+    const chars = main ? (main.textContent ?? '').replace(/\s/g, '').length : 0;
+    setMainHasEnoughContent(chars >= FOOTER_AD_MIN_CONTENT_CHARS);
+  }, [pathname]);
+
+  // フッター直上の広告枠を出すか。score mode（別サイト）には出さない。
+  const showFooterAd = !scoreMode && mainHasEnoughContent && FOOTER_AD_PAGE_TYPES.has(getPageType(pathname));
 
   // PC サイドバーの開閉（localStorage で状態保持）。
   // SSR の既定は「開いた状態」。クライアントで保存値を描画前に反映する。
@@ -253,6 +268,18 @@ export default function AppShell({
         </header>
 
         <main className="min-w-0 flex-1">{children}</main>
+
+        {/* フッター直上の枠。ページごとに貼らず、ここ1箇所＋ページ種別の許可リストで
+            出し分ける（面を増やすときは lib/ads.ts の FOOTER_AD_PAGE_TYPES に1行足すだけ）。
+            判定はパスなので、`/matches/*` と `/beta/matches-results/*` のように実体が同じ
+            コンポーネントでも beta 側だけ除外できる。
+            本文の外（main の後）に置くので、どのページのレイアウトも押し下げない。 */}
+        {showFooterAd && (
+          <div className="mx-auto w-full max-w-3xl px-4">
+            <AdUnit slot={AD_SLOTS.footer} />
+          </div>
+        )}
+
         {footer}
       </div>
 
