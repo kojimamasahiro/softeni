@@ -121,8 +121,12 @@ dev で確認していて `/tournaments/local/osaka/` に広告が出ている�
 
 ## 残していること
 
-- `AD_SLOTS.playerResults` と `AD_SLOTS.footer` が空。管理画面でユニットを2つ作って
-  貼るまで、拡張分は1枚も配信されない。
+- ~~`AD_SLOTS.playerResults` と `AD_SLOTS.footer` が空~~ → 同日中にユーザーがユニットを
+  発行しID を反映済み（playerResults 3020710694 / footer 9754579357）。**全6ユニットが揃い、
+  デプロイすれば全面で配信が始まる。** 実機確認では選手結果ページで2枠とも
+  `data-adsbygoogle-status="done"`、`/teams/` と高校学校ページはフッター枠のみ、
+  `/privacy/`（558文字・許可リスト外）と `/tournaments/local/osaka/`（78文字・歯止め）は
+  0枠になることを確認した。
 - **下部アンカー広告とフッター枠の重なりが未確認**。モバイルのアンカーは `position: fixed`
   で最下部に貼り付くため、フッターまでスクロールすると「フッター枠280px + アンカー約50px」が
   同一画面に並ぶ（812pxの41%）。ローカルでは自動広告が配信されないので本番でしか見られない。

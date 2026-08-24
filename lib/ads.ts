@@ -43,13 +43,13 @@ export const AD_SLOTS = {
   /** /news/<articleId>/ 展望記事（リード文直後） */
   newsArticle: '4306103716',
   /** /players/<id>/results/ 選手結果ページ（ヘッダー直後） */
-  playerResults: '',
+  playerResults: '3020710694',
   /**
    * フッター直上の枠。**全ページ共通で1ユニット**（FOOTER_AD_PAGE_TYPES の全種別で使い回す）。
    * 種別ごとに分けていないので、フッター枠の収益はページ種別に分解できない。
    * 分解が必要になったら種別ごとにキーを足し、AppShell 側で出し分ければよい。
    */
-  footer: '',
+  footer: '9754579357',
 } as const satisfies Record<string, string>;
 
 export type AdSlotKey = keyof typeof AD_SLOTS;
