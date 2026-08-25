@@ -15,11 +15,13 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ClubTransitionSection from '@/components/Tournament/ClubTransitionSection';
 import TournamentContextBlocks, { type TournamentContextData } from '@/components/TournamentContextBlocks';
+import QualifierFinishersSection from '@/components/tournaments/QualifierFinishersSection';
 import RelatedTournamentsBlock, { type RelatedTournamentLink } from '@/components/tournaments/RelatedTournamentsBlock';
 import UpcomingTournamentSection, { type UpcomingTournamentData } from '@/components/tournaments/UpcomingTournamentSection';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
+import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
@@ -96,6 +98,9 @@ interface TournamentHubPageProps {
   upcoming: UpcomingTournamentData | null;
   // 予選会↔本大会の相互リンク。無ければ空配列。
   relatedLinks: RelatedTournamentLink[];
+  // 開催前の国際大会に出す「日本代表予選会の上位進出者」。該当しなければ null。
+  // docs/wiki/upcoming-tournaments-runbook.md S2。
+  qualifierFinishers: QualifierFinishersBlock | null;
 }
 
 export default function TournamentHubPage({
@@ -110,6 +115,7 @@ export default function TournamentHubPage({
   clubTransition,
   upcoming,
   relatedLinks,
+  qualifierFinishers,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
@@ -358,6 +364,8 @@ export default function TournamentHubPage({
         {upcoming && <UpcomingTournamentSection data={upcoming} />}
 
         <RelatedTournamentsBlock links={relatedLinks} />
+
+        {qualifierFinishers && <QualifierFinishersSection data={qualifierFinishers} />}
 
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
@@ -652,6 +660,35 @@ function loadIndexEntry(tournamentId: string): TournamentIndexEntry | null {
   return null;
 }
 
+/** tournamentId -> {label, generationId}。`getQualifierFinishers` へ渡す。 */
+function buildIndexById(): Map<string, { label: string; generationId: string }> {
+  const generationMap = loadGenerationMap();
+  const map = new Map<string, { label: string; generationId: string }>();
+  for (const tid of Object.keys(generationMap)) {
+    const entry = loadIndexEntry(tid);
+    if (!entry) continue;
+    map.set(tid, { label: entry.label, generationId: generationMap[tid] });
+  }
+  return map;
+}
+
+/** tournamentId -> 開催情報。`getQualifierFinishers` へ渡す。 */
+function buildInformationMap(): Map<string, TournamentInformationEntry[]> {
+  const dir = path.join(process.cwd(), 'data', 'tournaments', 'information');
+  const map = new Map<string, TournamentInformationEntry[]>();
+  if (!fs.existsSync(dir)) return map;
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.json')) continue;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf-8'));
+      if (Array.isArray(parsed)) map.set(file.replace(/\.json$/, ''), parsed as TournamentInformationEntry[]);
+    } catch {
+      // ignore
+    }
+  }
+  return map;
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const detailsRoot = path.join(process.cwd(), ...DETAILS_ROOT);
   const generationMap = loadGenerationMap();
@@ -936,6 +973,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
       clubTransition: getClubTransition(tournamentId),
       upcoming,
       relatedLinks: buildRelatedTournamentLinks(tournamentId),
+      // 予選会の上位進出者は、本大会がこれから開催されるときだけ出す
+      // （終わったあとは本大会の結果そのものが載るため役割を終える）。
+      qualifierFinishers: upcoming
+        ? await getQualifierFinishers({
+            mainTournamentId: tournamentId,
+            mainStartDate: upcoming.startDate,
+            informationMap: buildInformationMap(),
+            indexById: buildIndexById(),
+            playerNameToId,
+          })
+        : null,
     },
   };
 };
