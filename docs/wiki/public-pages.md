@@ -200,7 +200,9 @@
 |---|---|---|
 | 大会ハブ `/tournaments/[generation]/[tournamentId]` | 「開催前」ブロック（会期・開催地・実施種目・**会場**・公式情報）。`venues` の唯一の描画先 | `src/components/tournaments/UpcomingTournamentSection.tsx` |
 | 同上 | 「関連する大会」ブロック（予選会↔本大会の相互リンク） | `src/components/tournaments/RelatedTournamentsBlock.tsx` |
-| 大会一覧 `/tournaments/` | 「これから開催」ブロック（開催日**昇順**・最大5件） | `TournamentSearchTable.tsx` の `UpcomingHighlights` |
+| 大会一覧 `/tournaments/` | 「これから開催」ブロック（開催日**昇順**・最大3件） | `TournamentSearchTable.tsx` の `UpcomingHighlights` |
+| 選手結果ページ `/players/[id]/results` | 「これから開催される国際大会」ブロック（その予選会に出場している選手のみ） | `PlayerUpcomingInternational.tsx` / 判定は `lib/upcomingInternational.ts` |
+| 大会ハブ（開催前の国際大会） | 「日本代表予選会の上位進出者」節。優勝・準優勝・ベスト4を通算成績つきで出す | `QualifierFinishersSection.tsx` / 収集は `lib/qualifierFinishers.ts` |
 
 判定ルール:
 
@@ -244,8 +246,36 @@
 **既知の穴**: `/tournaments/major/` は「結果のある年度が1つ以上ある大会」だけを載せるため、
 **開催前だけの大会は出ない**（`asian-games` への内部リンクは `/tournaments/` と予選会ハブの2枚のみ）。
 
-**残作業**: ここまでは pull（探しに来た人が見つけられる）まで。push（関心が向いていない人へ届ける）は
-未着手で、順番つきの一覧を
+#### 選手ページへの push（2026-08-26 追加）
+
+大会ハブと大会一覧は pull（探しに来た人が見つけられる）だが、選手ページに出すのは **push**——
+選手を見に来た人へ国際大会を届ける。到達面は予選会出場者ぶんの選手ページで、
+アジア競技大会の場合 **103人全員**に出る（出場103人が全員 `count>=5` で選手ページを持つ）。
+
+- 対応付けは大会ハブと同じ**命名規約**（`{本大会ID}-qualifier`）。データにフィールドを増やさない
+- **書ける事実は2つだけ**——「予選会に出場した（＋成績）」「本大会がいつどこで開催される」。
+  **日本代表だとは書かない**（予選会はシングルスのみで、団体・混合の選考は別経路のため
+  当サイトのデータからは導出できない）
+- **予選会の「回」を絞る**。アジア競技大会は4年周期で `asian-games-qualifier` には
+  2022年度（前回＝杭州向け）と2025年度（今回＝愛知・名古屋向け）の2回が入っている。
+  絞らないと前回の予選会にしか出ていない選手にも今回の大会が出て、誤った含みが生まれる。
+  判定は「本大会の開始日より前に開催された予選会のうち最も新しい回」（`resolveQualifierEdition`）
+- 会期が終われば自動的に消える。テストは `npm run upcoming:test`
+
+#### 本大会ページの中身（2026-08-26 追加）
+
+結果がまだ無い本大会のページは実体が薄く、選手ページへのリンクが0本だった。
+予選会の**上位進出者**（優勝・準優勝・ベスト4）を通算成績つきで出し、選手ページへの導線にする。
+ベスト8以下は上位進出者と呼べないので落とす。男女あわせて8人ぶんのリンクが生える。
+
+- **代表選手だとは名乗らない**。断り文言は `PLACEMENT_DISCLAIMER` として1箇所に置き、
+  描画側が必ず併記する
+- 通算成績は **`getPlayerStatistics(id, { sections: ['career'] })`** から引く。
+  `lib/careerRecord.ts` の `getCareerRecordByFullName()` は
+  **プロフィール slug を持つ特集対象の選手（20人ほど）しか解決できない**ため、
+  任意の選手の成績には使えない（最初これを使って男子だけ成績が出る表示になった）
+
+**残作業**: 順番つきの一覧を
 [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md)に置いた。
 
 ### トップページ（`/`）の SEO 方針（2026-06 改善）
