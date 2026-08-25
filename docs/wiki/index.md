@@ -30,6 +30,7 @@
 - [SEO（カニバリ/重複制御）](./seo.md)
 - [高校SEO M4検証ランブック（GSC事後検証・2026年8月中旬に実行）](./highschool-seo-m4-verification.md)
 - [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md)
+- [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md)
 
 ## コンテンツ生成・ストーリー
 

@@ -187,6 +187,67 @@
 - `/matches/[matchId]`
 - `/matches/growth`
 
+### 開催前の大会を出す（2026-08-25 追加）
+
+結果DBとして積み上げてきた結果、当サイトは**過去形のページしか持っていなかった**。
+`information/*.json` に集めた `venues`（会場の構造化データ）が**どこにも描画されていなかった**のは
+実装漏れではなく、venue が載るべき「開催前の大会ページ」が無かったため
+（経緯: [raw/2026-07-26-idea-tournament-metadata-platform.md](../raw/2026-07-26-idea-tournament-metadata-platform.md) 追記6・7）。
+
+**新規URLは増やしていない**。既存の2面を更新して受ける。
+
+| 面 | 何を出すか | 実装 |
+|---|---|---|
+| 大会ハブ `/tournaments/[generation]/[tournamentId]` | 「開催前」ブロック（会期・開催地・実施種目・**会場**・公式情報）。`venues` の唯一の描画先 | `src/components/tournaments/UpcomingTournamentSection.tsx` |
+| 同上 | 「関連する大会」ブロック（予選会↔本大会の相互リンク） | `src/components/tournaments/RelatedTournamentsBlock.tsx` |
+| 大会一覧 `/tournaments/` | 「これから開催」ブロック（開催日**昇順**・最大5件） | `TournamentSearchTable.tsx` の `UpcomingHighlights` |
+
+判定ルール:
+
+- **開催前ブロック**は「`endDate >= 今日` かつ その年度の結果がまだ無い」information がある大会だけに出る。
+  「今日」は `lib/highschoolInProgress.ts` と同じく**ビルド時刻**（静的書き出しのため）。
+- 1年分も結果が無くこれから開催される大会（例: 2026年度のアジア競技大会）は、
+  **h1・title・description・本文を「歴代結果」から「日程・会場」へ切り替える**。
+  歴代を名乗ると中身と食い違い、かつこのとき実在する需要は「{大会名} 日程 / 会場」のほうであるため。
+- **予選会↔本大会の対応付けは `tournamentId` の命名規約**（`{本大会ID}-qualifier`）で行い、
+  データ側にフィールドを増やさない。本大会が未登録ならリンクが出ないだけで壊れず、
+  将来 `world-championship` 等を登録すれば自動で繋がる。
+- 「これから開催」のリンク先は**サイト内の大会ハブ**にする。カード側の導線は結果が無い大会だと
+  外部の公式サイトへ出てしまうが、ハブには開催前ブロックがあるためそちらへ寄せる。
+
+**「日程・会場」表示に切り替わる条件**（h1 / title / description / 本文の4点が同時に切り替わる）:
+
+1. その大会に**1年分も結果が無い**（`details/{tournamentId}/` にカテゴリJSONが1つも無い）
+2. かつ**開催前ブロックが出ている**（`endDate >= 今日` の information がある）
+
+つまり「結果ゼロ」かつ「未来の予定あり」の大会だけ。過去の結果がある大会（例: 天皇賜杯）は
+開催前ブロックは出るが h1 は「歴代一覧」のまま。大会が終わって結果が入れば条件1が崩れ、
+**自動的に歴代表示へ戻る**（手作業の切り戻しは不要）。
+
+**構造化データ**: 開催前ブロックが出る大会には、歴代の `ItemList` とは別に単体の `SportsEvent` を出す。
+日付・会場・住所が揃うのはこの形のときだけで、`venues` があれば `streetAddress` / `postalCode` /
+`addressLocality` まで入る（`buildEventPlaceFromVenue`）。**`organizer` は出さない**——
+既定値が Softeni Pick で、当サイトは主催者ではないため（`lib/sportsEventJsonLd.ts` の
+「虚偽の構造化データを避ける」方針）。
+
+**広告位置との関係**: 「これから開催」は `/tournaments/` の**広告枠より上**（フィルターバーの前）。
+`UPCOMING_LIMIT = 3` はこの制約から決まった数値で、5件だと枠がファーストビューから外れる
+（375×812 実測: 5件=枠下端904px / 3件=779px）。増やすときは測り直すこと。
+経緯は [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md) の 2026-08-25 追記。
+
+**運用（対応もれの検査）**: 開催前ブロックも「これから開催」も、information に行が無ければ
+**エラーにならず静かに出なくなる**。予選会↔本大会のリンクも命名規約に頼っており、
+本大会を別IDで登録すると黙って繋がらない。`npm run check:upcoming`
+（`scripts/check-upcoming-tournaments.mjs`）がこの3種の抜けを一覧にする。
+終了コードは常に0（運用の残タスク一覧であり、ビルドを止めるエラーではないため prebuild には入れない）。
+
+**既知の穴**: `/tournaments/major/` は「結果のある年度が1つ以上ある大会」だけを載せるため、
+**開催前だけの大会は出ない**（`asian-games` への内部リンクは `/tournaments/` と予選会ハブの2枚のみ）。
+
+**残作業**: ここまでは pull（探しに来た人が見つけられる）まで。push（関心が向いていない人へ届ける）は
+未着手で、順番つきの一覧を
+[開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md)に置いた。
+
 ### トップページ（`/`）の SEO 方針（2026-06 改善）
 
 実装: `src/pages/index.tsx`
