@@ -163,36 +163,6 @@ export default function TeamYearGenderPage({ info, results, year, gender, player
             }),
           }}
         />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: teamName,
-                  item: `https://softeni-pick.com/teams/${info.id}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: `${year}年度 ${genderLabel}`,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
       </Head>
 
       <PageLayout className="space-y-6">

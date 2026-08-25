@@ -47,18 +47,6 @@ export default function Home({ recentTournaments }: HomeProps) {
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'ホーム',
-          item: `${SITE_URL}/`,
-        },
-      ],
-    },
-    {
-      '@context': 'https://schema.org',
       '@type': 'ItemList',
       name: '最近追加された大会',
       itemListElement: recentTournaments.map((t, i) => ({

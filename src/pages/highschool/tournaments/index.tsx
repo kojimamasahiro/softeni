@@ -39,35 +39,6 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '高校',
-                  item: 'https://softeni-pick.com/highschool/boys/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: '全国大会の歴代記録',
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
               '@type': 'ItemList',
               name: '高校 全国大会の歴代記録',
               itemListElement: tournaments.map((t, index) => ({

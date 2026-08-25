@@ -86,29 +86,6 @@ export default function HighschoolGenderIndex({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: `高校${genderLabel}`,
-                  item: `https://softeni-pick.com/highschool/${gender}`,
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
               '@type': 'CollectionPage',
               name: `高校${genderLabel}ソフトテニス 全国大会成績・都道府県別一覧`,
               description: `高校${genderLabel}の全国大会成績を都道府県別に掲載し、学校ごとの主要大会実績を確認できる一覧ページです。`,

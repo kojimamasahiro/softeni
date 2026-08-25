@@ -196,36 +196,6 @@ export default function PlayerResultsPage({
             }),
           }}
         />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '選手一覧',
-                  item: 'https://softeni-pick.com/players/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: `${fullName} 試合結果`,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
       </Head>
 
       <PageLayout className="space-y-10">

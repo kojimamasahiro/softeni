@@ -215,21 +215,6 @@ export default function TournamentYearResultPage({
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: breadcrumbs.map((crumb, index) => ({
-                '@type': 'ListItem',
-                position: index + 1,
-                name: crumb.label,
-                item: `https://softeni-pick.com${crumb.href}`,
-              })),
-            }),
-          }}
-        />
 
         <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
       </Head>

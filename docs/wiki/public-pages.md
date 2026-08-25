@@ -123,7 +123,7 @@
 - SEO（カニバリ集中、2026-06）: 高校全国大会 ID（`getHsNationalSlugByTournamentId` が解決）に該当するハブは `noindex, follow` にし、検索面を `/highschool/tournaments/[tournament]` へ集中させる。該当時はページ上部に高校歴代ページへの誘導バナーを表示する。それ以外の大会のハブは従来どおり index 対象。詳細は [seo.md](./seo.md) #3
 - 実際に詳細データがある年度・種別のみをチップでリンク化し、年度降順で表示する。種別ラベルは `information/{tournamentId}.json` の `categories[].label` から解決する
 - 各詳細 JSON から優勝ペア（`results[].tournament.rank.kind === 'winner'` のエントリーの選手名・所属）を抽出し、「歴代優勝者」表を表示する
-- 構造化データは `CollectionPage` / `ItemList`（歴代優勝者）/ `BreadcrumbList` を出力する
+- 構造化データは `CollectionPage` / `ItemList`（歴代優勝者）/ `BreadcrumbList`（`Breadcrumb.tsx` 由来）を出力する
 - 大会一覧カード（`TournamentCard`）と年度別結果ページのパンくずからハブページへ内部リンクする。トップページの「最近追加された大会」カードのリンク先もこのハブページ（年度なし）とする（2026-06 変更。以前はカテゴリ別の年度別結果ページへリンクしていた）
 - 年度別結果ページ（`/tournaments/.../[gender]`）には `SportsEvent` 構造化データと冒頭の説明文を追加し、title / description を「結果・トーナメント表」を含む形に改善する
 - SEO（特集ページへの集中、2026-08-12）: `index.json` の `featurePath` を持つ大会（現状 STリーグのみ）のハブも
@@ -197,7 +197,7 @@
   - チームカードは外部「公式サイト」リンクを内包するため、`<a>` の入れ子を避けるストレッチドリンク方式（カード `relative` + 内部 `Link` に `after:absolute after:inset-0` + 外部 `<a>` を `relative` で前面）にする
 - **見出し階層**: `h1`（1個）→ セクション `h2` → カード `h3` に統一する。以前はカード内に `h2` が混在していた
 - **title / description**: ブランド名「Softeni Pick」と主要キーワード（ソフトテニス / 大会結果 / 選手成績 / 全国大会 / 全日本選手権 / インターハイ）を含めて一意化する
-- **構造化データ（JSON-LD）**: `Organization` / `WebSite` / `BreadcrumbList` / `ItemList`（最近追加された大会）を出力する。`WebPage` の `dateModified: new Date()`（ビルド日）は規約どおり撤去した（ビルド日は使わない）
+- **構造化データ（JSON-LD）**: `Organization` / `WebSite` / `ItemList`（最近追加された大会）を出力する（`BreadcrumbList` は `Breadcrumb.tsx` 側が出力）。`WebPage` の `dateModified: new Date()`（ビルド日）は規約どおり撤去した（ビルド日は使わない）
 
 ### canonical / OGP / サイト名
 
@@ -207,6 +207,29 @@
 
 - `lib/siteConfig.ts`
 - `src/components/MetaHead.tsx`
+
+### パンくずの構造化データ（BreadcrumbList）
+
+**`src/components/Breadcrumb.tsx` が `BreadcrumbList` JSON-LD の唯一の出力元。**
+ページ側で `BreadcrumbList` の JSON-LD を個別に書いてはいけない（可視パンくずと同じ
+`crumbs` から自動生成される）。
+
+- 各ページは `<Breadcrumbs crumbs={[...]} />` に階層を渡すだけでよく、可視パンくずと
+  JSON-LD が同じ配列から生成されるため両者がずれない
+- `crumb.href` は相対パス（`/players`）でも絶対 URL でも受け付ける。コンポーネント側で
+  絶対 URL 化し、`next.config.mjs` の `trailingSlash: true` に合わせて末尾スラッシュを付与するため、
+  `item` は canonical と同じ形になる
+- `BreadcrumbList` は「現在のページまでの祖先」を並べるもので、配下ページ（例: 選手ページから
+  その選手の結果ページ）を末尾に足さない
+
+経緯（2026-08-25）: 上記コンポーネントに加えて `src/pages/` 配下の 26 ファイルが同じ
+`BreadcrumbList` を独自に出力しており、全ページで JSON-LD が 2 個重複していた。
+ページ側の記述を削除してコンポーネントに一本化した。あわせて次の既存バグも解消した。
+
+- crumb に絶対 URL（`pageUrl`）を渡していた 3 ページ（`/tournaments/block/[blockId]`,
+  `/tournaments/local/[federationId]`, `/teams/[teamId]/[year]/[gender]`）で、
+  `item` が `https://softeni-pick.com/https://softeni-pick.com/...` になっていた
+- `/privacy` の可視パンくずのリンク先が `/players` になっていた
 
 ### 選手ページ（→ players-pages.md に分割）
 
@@ -226,11 +249,10 @@
 構造化データ（JSON-LD、別 `<Head>` で出力）:
 
 - `SportsEvent`：`sport: ソフトテニス` / `competitor`（両チーム）/ `startDate`（`match_date` 優先、なければ `created_at`。ビルド日は使わない）/ `superEvent`（掲載大会ページがある場合の大会）/ `location`（`court_name` がある場合）
-- `BreadcrumbList`：ホーム → 試合一覧 → （大会）→ 試合
 
-可視パンくず:
+可視パンくず / `BreadcrumbList`:
 
-- `src/components/Breadcrumb.tsx` を使い、JSON-LD の `BreadcrumbList` と同じ階層・順序で画面上にも表示する（このページは `PageLayout` 対象外のため個別に配置）。大会階層は掲載大会ページがある場合のみ挿入する
+- `src/components/Breadcrumb.tsx` に `crumbs` を渡し、可視パンくずと `BreadcrumbList` JSON-LD の両方を生成する（このページは `PageLayout` 対象外のため個別に配置）。階層は ホーム → 試合一覧 → （大会）→ 試合 で、大会階層は掲載大会ページがある場合のみ挿入する
 
 sitemap:
 

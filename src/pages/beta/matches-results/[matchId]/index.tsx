@@ -1152,48 +1152,13 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
     location: buildEventPlace(match.court_name),
   };
 
-  // 可視パンくず。JSON-LD の BreadcrumbList と同じ階層・順序に揃える。
+  // 可視パンくず。Breadcrumbs コンポーネントが BreadcrumbList の JSON-LD もここから生成する。
   const breadcrumbItems = [
     { label: 'ホーム', href: '/' },
     { label: '試合一覧', href: getPublicMatchesListPath() },
     ...(tournamentInfo && fullTournamentUrl ? [{ label: seoTournamentName, href: fullTournamentUrl }] : []),
     { label: seoMatchup, href: seoCanonicalUrl },
   ];
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'ホーム',
-        item: buildSiteUrl('/'),
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: '試合一覧',
-        item: buildSiteUrl(`${getPublicMatchesListPath()}/`),
-      },
-      ...(seoTournamentUrl
-        ? [
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: seoTournamentName,
-              item: seoTournamentUrl,
-            },
-          ]
-        : []),
-      {
-        '@type': 'ListItem',
-        position: seoTournamentUrl ? 4 : 3,
-        name: seoMatchup,
-        item: seoCanonicalUrl,
-      },
-    ],
-  };
 
   return (
     <>
@@ -1205,7 +1170,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
             __html: JSON.stringify(sportsEventJsonLd),
           }}
         />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       </Head>
       {/* PageLayout を適用(docs/ui M4・T5)。幅は既存レイアウト(動画フロート)に合わせ 6xl を維持 */}
       <PageLayout maxWidth="6xl">

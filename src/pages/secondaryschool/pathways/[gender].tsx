@@ -19,7 +19,6 @@
 // リンク先はすべて実在確認してから出す（デッドリンク防止）。
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -72,22 +71,6 @@ export default function SecondarySchoolPathways({ gender, groups, total, crossPr
         url={pageUrl}
         type="website"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
-                { '@type': 'ListItem', position: 2, name: '中学', item: 'https://softeni-pick.com/secondaryschool/' },
-                { '@type': 'ListItem', position: 3, name: `高校${genderLabel}の出身中学`, item: pageUrl },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout maxWidth="4xl">
         <Breadcrumbs

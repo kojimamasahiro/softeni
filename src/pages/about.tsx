@@ -1,5 +1,4 @@
 // src/pages/about.tsx
-import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -16,31 +15,6 @@ export default function About() {
         description="このサイトは、ソフトテニス競技者の試合結果や大会情報をまとめて発信するサイトです。"
         url="https://softeni-pick.com/about/"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'このサイトについて',
-                  item: 'https://softeni-pick.com/about/',
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout>
         <Breadcrumbs

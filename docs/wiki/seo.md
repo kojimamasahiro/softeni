@@ -335,7 +335,9 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
   解決は `getSchoolResolver()`（`summary.json` を唯一の正とする）に任せてデッドリンクを防いでいる。
   高校の県ページ側は中学ページが無い県を弾く（`teamCount > 0` を確認）
 - 構造化データ: 全ページに `BreadcrumbList` を持たせた（高校と同水準）。
-  県ページは `ItemList`、チームページは `SportsTeam` を併置している
+  県ページは `ItemList`、チームページは `SportsTeam` を併置している。
+  なお `BreadcrumbList` の JSON-LD は `src/components/Breadcrumb.tsx` が唯一の出力元で、
+  ページ側で個別に書かない（[public-pages.md #パンくずの構造化データ](./public-pages.md#パンくずの構造化データbreadcrumblist)）
 - **`/secondaryschool/pathways/` は男女別URL**（2026-08-12 決定）。
   カテゴリの他のページは男女をまとめているが、このページだけ分けている。
   **同じ内容を薄く割るのではなく、もともと別の内容を正しく分ける**ため:
