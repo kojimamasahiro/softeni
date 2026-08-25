@@ -30,7 +30,7 @@ import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFac
 //        重複idの方に紐付き、パートナー・対戦相手名がローマ字連結表示（例:
 //        「MIYAMAEKIHO」）になっていた。全再計算で誤った紐付けの facts を一掃する
 //        （2026-07-20）。
-export const ENGINE_VERSION = '1.6.0';
+export const ENGINE_VERSION = '1.7.0';
 
 function personRefFromParticipant(
   identity: Identity,
