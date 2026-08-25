@@ -106,6 +106,22 @@ export function loadTournamentData(filePath: string): TournamentDetailData | nul
     parsed = null;
   }
 
+  // 取り込み途中の空ファイル（`{}`）や、想定と違う形のJSONを弾く。
+  // 呼び出し側は軒並み `if (!tournamentData) continue;` で受けているので、null を返せば安全に飛ばせる。
+  //
+  // なぜ要るか（2026-08-26）: `data/tournaments/details/zennihon-workers/{2022,2023}/*.json` が
+  // 取り込み作業中のプレースホルダとして中身 `{}` のまま置かれており、
+  // `src/utils/team-data-aggregator.ts` が `for (const p of data.participants)` で
+  // **本番ビルド全体を落としていた**（`TypeError: a.participants is not iterable` →
+  // `Failed to collect page data for /teams/[teamId]/[year]/[gender]`）。
+  // `lib/playerStats/sourceAdapter.ts` は同じファイルを既に
+  // 「non-standard schema (unknown) skipped」として飛ばしており、こちらだけ防御が無かった。
+  // 部分的なデータ1つでビルド全体が落ちないよう、読み取りの choke point で揃える。
+  if (parsed && !Array.isArray((parsed as { participants?: unknown }).participants)) {
+    console.warn(`[tournament-data-loader] participants を持たないため読み飛ばし: ${filePath}`);
+    parsed = null;
+  }
+
   const descriptor = parsed ? parseDetailPath(filePath) : null;
   if (parsed && descriptor) {
     const abandonment = getTournamentAbandonment(descriptor.tournamentId, descriptor.year, descriptor.categoryId);
