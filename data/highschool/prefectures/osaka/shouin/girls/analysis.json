@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "樟蔭",
+        "teamId": "shouin",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["中西_紗花_樟蔭_大阪府", "三輪_珠紀_樟蔭_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中西_紗花_樟蔭_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "三輪_珠紀_樟蔭_大阪府",
+      "appearances": 1
+    }
+  ]
+}

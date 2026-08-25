@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -26,20 +27,30 @@
         "teamId": "noshiroshouyou",
         "prefecture": "秋田県",
         "prefectureId": "akita",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["高橋_龍之介_能代松陽_秋田県", "大塚_成_能代松陽_秋田県"]
+        "playerIds": ["田村_翔_能代松陽_秋田県", "近藤_祐太_能代松陽_秋田県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "能代松陽",
+        "teamId": "noshiroshouyou",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "髙沢_響_能代松陽_秋田県",

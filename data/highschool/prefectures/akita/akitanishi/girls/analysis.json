@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
+    "team": 1,
     "doubles": 6
   },
   "resultsByCategory": {
@@ -36,7 +37,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "秋田西",
+        "teamId": "akitanishi",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 7,

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大分上野丘",
+        "teamId": "ooitauenooka",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["工藤_雄貴_大分上野丘_大分県", "星野_秀太朗_大分上野丘_大分県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "工藤_雄貴_大分上野丘_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "星野_秀太朗_大分上野丘_大分県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 5,
   "byCategory": {
+    "team": 1,
+    "doubles": 3,
     "singles": 1
   },
   "resultsByCategory": {
@@ -32,13 +34,55 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大田原女子",
+        "teamId": "ootawarajoshi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["印南_結_大田原女子_栃木県", "五月女_愛_大田原女子_栃木県"]
+      }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大田原女子",
+        "teamId": "ootawarajoshi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "印南_結_大田原女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "五月女_愛_大田原女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "柴田_琳_大田原女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_織紗子_大田原女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "金子_真悠_大田原女子_栃木県",
+      "appearances": 1
+    }
+  ]
 }

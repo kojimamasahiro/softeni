@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "佐賀北",
+        "teamId": "sagakita",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["坂口_魁都_佐賀北_佐賀県", "平田_玲央_佐賀北_佐賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "坂口_魁都_佐賀北_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "平田_玲央_佐賀北_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

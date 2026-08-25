@@ -171,6 +171,17 @@
     "prefectureId": "fukuoka",
     "result": "2回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "girls"
@@ -314,6 +325,17 @@
     "prefectureId": "fukuoka",
     "result": "1回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "東福岡",
+    "teamId": "toufukuoka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2025,
     "gender": "boys"
@@ -365,6 +387,18 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["古見_一馬_青豊_福岡県", "佐伯_拓海_青豊_福岡県"]
+  },
+  {
+    "team": "青豊",
+    "teamId": "aoyutaka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["一丸_ほのか_青豊_福岡県", "渡邊_杏奈_青豊_福岡県"]
   },
   {
     "team": "筑紫台",
@@ -461,6 +495,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["大平_憲良_筑紫台_福岡県", "造隼_瑠星_筑紫台_福岡県"]
+  },
+  {
+    "team": "筑紫台",
+    "teamId": "chikushidai",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["玉ノ井_健人_筑紫台_福岡県", "安部_隼人_筑紫台_福岡県"]
   },
   {
     "team": "筑紫台",
@@ -935,12 +981,36 @@
     "teamId": "makotoosamu",
     "prefecture": "福岡県",
     "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["橋本_理央_誠修_福岡県", "池上_沙希_誠修_福岡県"]
+  },
+  {
+    "team": "誠修",
+    "teamId": "makotoosamu",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
     "playerIds": ["西村_麻央_誠修_福岡県", "板橋_杏奈_誠修_福岡県"]
+  },
+  {
+    "team": "三池工",
+    "teamId": "miikekou",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["相川_峻輔_三池工_福岡県", "辻_星哉_三池工_福岡県"]
   },
   {
     "team": "南筑",
@@ -1319,6 +1389,78 @@
     "teamId": "nakamuragakuenjoshi",
     "prefecture": "福岡県",
     "prefectureId": "fukuoka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["原口_美咲_中村学園女子_福岡県", "久保_菜月_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["川野_ななか_中村学園女子_福岡県", "武田_碧_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["岡田_舞_中村学園女子_福岡県", "石野_由佳_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["羽田_音和_中村学園女子_福岡県", "村上_亜優_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["中村_リコ_中村学園女子_福岡県", "永江_鈴香_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["谷水_鈴香_中村学園女子_福岡県", "隈元_文香_中村学園女子_福岡県"]
+  },
+  {
+    "team": "中村学園女子",
+    "teamId": "nakamuragakuenjoshi",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1481,6 +1623,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["平川_竜乃介_大牟田_福岡県", "谷村_洋斗_大牟田_福岡県"]
+  },
+  {
+    "team": "大牟田",
+    "teamId": "oomuta",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["梅村_啓伍_大牟田_福岡県", "林田_勇人_大牟田_福岡県"]
+  },
+  {
+    "team": "大牟田",
+    "teamId": "oomuta",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["奥村_丈_大牟田_福岡県", "末次_剛琉_大牟田_福岡県"]
   },
   {
     "team": "大牟田",
@@ -1733,6 +1899,54 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["山田_健人_東福岡_福岡県", "野口_颯太_東福岡_福岡県"]
+  },
+  {
+    "team": "東福岡",
+    "teamId": "toufukuoka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山口_耕佑_東福岡_福岡県", "盆子原_魁斗_東福岡_福岡県"]
+  },
+  {
+    "team": "東福岡",
+    "teamId": "toufukuoka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["濵地_拓巳_東福岡_福岡県", "金古_祐大_東福岡_福岡県"]
+  },
+  {
+    "team": "東福岡",
+    "teamId": "toufukuoka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中山_翔太_東福岡_福岡県", "高屋_晴希_東福岡_福岡県"]
+  },
+  {
+    "team": "東福岡",
+    "teamId": "toufukuoka",
+    "prefecture": "福岡県",
+    "prefectureId": "fukuoka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["富松_大勝_東福岡_福岡県", "山口_航輝_東福岡_福岡県"]
   },
   {
     "team": "東福岡",

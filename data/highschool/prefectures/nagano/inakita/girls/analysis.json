@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "伊那北",
+        "teamId": "inakita",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["中山_さや香_伊那北_長野県", "下平_彩乃_伊那北_長野県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中山_さや香_伊那北_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "下平_彩乃_伊那北_長野県",
+      "appearances": 1
+    }
+  ]
+}

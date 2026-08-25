@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "yamagatashiritsushou",
         "prefecture": "山形県",
         "prefectureId": "yamagata",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["小林_紗依_山形市立商_山形県", "小林_千紗_山形市立商_山形県"]
+        "playerIds": ["高梨_春花_山形市立商_山形県", "押野_朱音_山形市立商_山形県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "小林_紗依_山形市立商_山形県",
@@ -37,6 +37,14 @@
     {
       "id": "小林_千紗_山形市立商_山形県",
       "appearances": 2
+    },
+    {
+      "id": "高梨_春花_山形市立商_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "押野_朱音_山形市立商_山形県",
+      "appearances": 1
     }
   ]
 }

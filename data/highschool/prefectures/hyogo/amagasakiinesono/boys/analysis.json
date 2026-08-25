@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "尼崎稲園",
+        "teamId": "amagasakiinesono",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["森實_俊介_尼崎稲園_兵庫県", "加藤_大地_尼崎稲園_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "森實_俊介_尼崎稲園_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_大地_尼崎稲園_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 8,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -50,10 +50,10 @@
         "teamId": "tsuruga",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "boys",
         "playerIds": ["小林_裕仁郎_敦賀_福井県", "石森_崇大_敦賀_福井県"]
       }
@@ -84,15 +84,15 @@
       "appearances": 2
     },
     {
+      "id": "小林_裕仁郎_敦賀_福井県",
+      "appearances": 2
+    },
+    {
+      "id": "石森_崇大_敦賀_福井県",
+      "appearances": 2
+    },
+    {
       "id": "大浦_林斗_敦賀_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "金森_竣大_敦賀_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "森口_克明_敦賀_福井県",
       "appearances": 1
     }
   ]

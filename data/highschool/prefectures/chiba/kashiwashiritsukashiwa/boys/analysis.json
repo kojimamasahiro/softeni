@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "柏市立柏",
+        "teamId": "kashiwashiritsukashiwa",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["小林_航太_柏市立柏_千葉県", "鈴木_明広_柏市立柏_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小林_航太_柏市立柏_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_明広_柏市立柏_千葉県",
+      "appearances": 1
+    }
+  ]
+}

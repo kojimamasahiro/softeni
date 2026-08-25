@@ -11,6 +11,17 @@
     "gender": "girls"
   },
   {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
     "team": "高岡西・高岡",
     "teamId": "takaokanishikouoka",
     "prefecture": "富山県",
@@ -158,6 +169,17 @@
     "teamId": "takaokashou",
     "prefecture": "富山県",
     "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
@@ -251,6 +273,18 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
     "gender": "boys"
+  },
+  {
+    "team": "滑川",
+    "teamId": "namerikawa",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["岩崎_京右_滑川_富山県", "岩崎_江右_滑川_富山県"]
   },
   {
     "team": "南砺福野",
@@ -467,6 +501,54 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["上田_莉理華_高岡西_富山県", "大井_月葵_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["川崎_李_高岡西_富山県", "宮下_夏実_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["上田_莉理華_高岡西_富山県", "大井_月葵_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高木_彩花_高岡西_富山県", "橋本_華蓮_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["福井_鈴花_高岡西_富山県", "大村_中_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -1277,6 +1359,66 @@
     "teamId": "takaokashou",
     "prefecture": "富山県",
     "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["津沢_優羽_高岡商_富山県", "川縁_多映_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["吉川_綾香_高岡商_富山県", "藤森_真依_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["谷内_翔_高岡商_富山県", "角崎_豪則_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["尾山_仁哉_高岡商_富山県", "上田_悠馬_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["坪川_拓海_高岡商_富山県", "赤尾_來哉_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1703,6 +1845,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["金森_太優_富山工_富山県", "髙瀬_泰雅_富山工_富山県"]
+  },
+  {
+    "team": "富山工",
+    "teamId": "toyamakou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["生駒_泰貴_富山工_富山県", "池田_一期_富山工_富山県"]
+  },
+  {
+    "team": "富山工",
+    "teamId": "toyamakou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山崎_真樹_富山工_富山県", "近藤_颯希_富山工_富山県"]
   },
   {
     "team": "富山工",

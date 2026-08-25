@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "玉名工",
+        "teamId": "tamanakou",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["高椋_美怜_玉名工_熊本県", "池田_祐萌_玉名工_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高椋_美怜_玉名工_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "池田_祐萌_玉名工_熊本県",
+      "appearances": 1
+    }
+  ]
+}

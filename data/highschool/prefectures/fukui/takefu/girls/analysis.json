@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "takefu",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["近江_遥香_武生_福井県", "松村_恵麻_武生_福井県"]
+        "playerIds": ["慶家_紘子_武生_福井県", "酒井_美空_武生_福井県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "近江_遥香_武生_福井県",
@@ -47,6 +47,18 @@
     },
     {
       "id": "松村_恵麻_武生_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "慶家_紘子_武生_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "酒井_美空_武生_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_未来_武生_福井県",
       "appearances": 1
     }
   ]

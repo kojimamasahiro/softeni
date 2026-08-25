@@ -81,6 +81,17 @@
     "teamId": "bundaisuginami",
     "prefecture": "東京都",
     "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
@@ -173,6 +184,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "boys"
   },
   {
@@ -1008,6 +1030,66 @@
     "teamId": "bundaisuginami",
     "prefecture": "東京都",
     "prefectureId": "tokyo",
+    "result": "ベスト4",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["佐古_香織_文大杉並_東京都", "江頭_明凜_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["大西_愛香_文大杉並_東京都", "久保田_茜_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "優勝",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["小林_愛美_文大杉並_東京都", "原島_百合香_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["小松崎_茉代_文大杉並_東京都", "白崎_ひかる_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["菊池_生夢_文大杉並_東京都", "高松_沙也花_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1158,6 +1240,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["岡本_颯舞_豊南_東京都", "安川_和希_豊南_東京都"]
+  },
+  {
+    "team": "豊南",
+    "teamId": "honan",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["田中_大地_豊南_東京都", "高倉_慧_豊南_東京都"]
   },
   {
     "team": "豊南",
@@ -1464,6 +1558,42 @@
     "teamId": "komadai",
     "prefecture": "東京都",
     "prefectureId": "tokyo",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["櫻井_亮輔_駒大_東京都", "両角_仁志_駒大_東京都"]
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["木鋪_翼_駒大_東京都", "加藤_拓海_駒大_東京都"]
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["小宅_渉_駒大_東京都", "大川_嵐史_駒大_東京都"]
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1518,6 +1648,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["林_星汰_佼成学園_東京都", "三浦_瑠斗_佼成学園_東京都"]
+  },
+  {
+    "team": "佼成学園",
+    "teamId": "kouseigakuen",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["大辻_文彬_佼成学園_東京都", "高橋_海斗_佼成学園_東京都"]
+  },
+  {
+    "team": "国本学園",
+    "teamId": "kunimotogakuen",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["土屋_莉子_国本学園_東京都", "佐藤_梨乃_国本学園_東京都"]
   },
   {
     "team": "国本女子",
@@ -1664,6 +1818,30 @@
     "playerIds": ["佐藤_陸斗_武蔵野千代田_東京都", "金山_翔太_武蔵野千代田_東京都"]
   },
   {
+    "team": "武蔵野千代田",
+    "teamId": "musashinochiyoda",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["藤木_美玖_武蔵野千代田_東京都", "南_歩果_武蔵野千代田_東京都"]
+  },
+  {
+    "team": "武蔵野千代田",
+    "teamId": "musashinochiyoda",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["村井_祐子_武蔵野千代田_東京都", "八木_萌花_武蔵野千代田_東京都"]
+  },
+  {
     "team": "明法",
     "teamId": "myoubou",
     "prefecture": "東京都",
@@ -1804,6 +1982,18 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2019,
+    "gender": "boys",
+    "playerIds": ["伊郷_太貴_日大鶴ヶ丘_東京都", "木庭_直哉_日大鶴ヶ丘_東京都"]
+  },
+  {
+    "team": "日大鶴ヶ丘",
+    "teamId": "nichidaitsurugaoka",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "boys",
     "playerIds": ["伊郷_太貴_日大鶴ヶ丘_東京都", "木庭_直哉_日大鶴ヶ丘_東京都"]
   },
@@ -1950,6 +2140,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["髙田_淳貴_早稲田実_東京都", "飯干_開生_早稲田実_東京都"]
+  },
+  {
+    "team": "早稲田実",
+    "teamId": "wasedami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["渡邉_大凱_早稲田実_東京都", "吉田_樹_早稲田実_東京都"]
+  },
+  {
+    "team": "早稲田実",
+    "teamId": "wasedami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["松村_駿樹_早稲田実_東京都", "須賀_紀太_早稲田実_東京都"]
   },
   {
     "team": "早稲田実",

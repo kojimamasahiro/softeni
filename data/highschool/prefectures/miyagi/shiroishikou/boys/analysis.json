@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "白石工",
+        "teamId": "shiroishikou",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["細江_優壮_白石工_宮城県", "森_泰樹_白石工_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "細江_優壮_白石工_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "森_泰樹_白石工_宮城県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 18,
   "byCategory": {
-    "doubles": 11,
+    "team": 1,
+    "doubles": 14,
     "singles": 3
   },
   "resultsByCategory": {
@@ -38,20 +39,30 @@
         "teamId": "shoukei",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["原田_涼夏_尚絅_熊本県", "比嘉_美優_尚絅_熊本県"]
+        "playerIds": ["岩崎_凜花_尚絅_熊本県", "岩崎_琉海波_尚絅_熊本県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "尚絅",
+        "teamId": "shoukei",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "3回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "花田_娃子_尚絅_熊本県",
@@ -70,7 +81,7 @@
       "appearances": 2
     },
     {
-      "id": "岩崎_莉緒菜_尚絅_熊本県",
+      "id": "一倉_星菜_尚絅_熊本県",
       "appearances": 2
     }
   ]

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 2
+    "team": 1,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -25,25 +26,39 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "西陵",
+        "teamId": "seiryou",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "谷_隼汰_西陵_長崎県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "井上_翼_西陵_長崎県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "松本_隼翔_西陵_長崎県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "吉野_賢哉_西陵_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "山下_竜毅_西陵_長崎県",
       "appearances": 1
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tomiokahigashi",
         "prefecture": "徳島県",
         "prefectureId": "tokushima",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["幾野_百々_富岡東_徳島県", "脇岡_弥優_富岡東_徳島県"]
+        "playerIds": ["松田_菜穂_富岡東_徳島県", "柳本_真由_富岡東_徳島県"]
       }
     },
     "team": {
@@ -39,8 +39,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "松田_菜穂_富岡東_徳島県",
+      "appearances": 2
+    },
     {
       "id": "山川_実奈_富岡東_徳島県",
       "appearances": 1
@@ -55,10 +59,6 @@
     },
     {
       "id": "工藤_心結_富岡東_徳島県",
-      "appearances": 1
-    },
-    {
-      "id": "松田_菜穂_富岡東_徳島県",
       "appearances": 1
     }
   ]

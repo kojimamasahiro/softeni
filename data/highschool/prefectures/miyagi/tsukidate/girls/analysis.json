@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "築館",
+        "teamId": "tsukidate",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["星_莉菜_築館_宮城県", "佐藤_亜美_築館_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "星_莉菜_築館_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_亜美_築館_宮城県",
+      "appearances": 1
+    }
+  ]
+}

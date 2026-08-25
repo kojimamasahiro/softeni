@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松本工",
+        "teamId": "matsumotokou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["倉科_光希_松本工_長野県", "大池_悠斗_松本工_長野県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "倉科_光希_松本工_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "大池_悠斗_松本工_長野県",
+      "appearances": 1
+    }
+  ]
+}

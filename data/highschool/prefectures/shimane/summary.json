@@ -138,6 +138,17 @@
     "prefectureId": "shimane",
     "result": "3回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2023,
     "gender": "boys"
@@ -195,6 +206,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "大社",
+    "teamId": "taisha",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "girls"
   },
   {
@@ -268,6 +290,18 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["平田_智菜_浜田_島根県", "山根_うみ_浜田_島根県"]
+  },
+  {
+    "team": "浜田",
+    "teamId": "hamada",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["板本_真愛_浜田_島根県", "平田_智菜_浜田_島根県"]
   },
   {
     "team": "浜田",
@@ -694,6 +728,18 @@
     "teamId": "izumohokuryou",
     "prefecture": "島根県",
     "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["今岡_純也_出雲北陵_島根県", "日野坪_雄大_出雲北陵_島根県"]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1066,6 +1112,54 @@
     "teamId": "matsuekou",
     "prefecture": "島根県",
     "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中村_健太_松江工_島根県", "宮西_孝昌_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["真玉_大輔_松江工_島根県", "原田_拓真_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["鹿田_隼佑_松江工_島根県", "山口_総司_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["安部_冴太_松江工_島根県", "山本_陽斗_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1272,6 +1366,30 @@
     "prefectureId": "shimane",
     "result": "1回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["野津_麻亜未_松江南_島根県", "石飛_帆乃香_松江南_島根県"]
+  },
+  {
+    "team": "松江南",
+    "teamId": "matsueminami",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["永原_遥太_松江南_島根県", "津田_知紀_松江南_島根県"]
+  },
+  {
+    "team": "松江南",
+    "teamId": "matsueminami",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
@@ -1336,6 +1454,42 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["舟木_佳代_松江西_島根県", "柏村_萌_松江西_島根県"]
+  },
+  {
+    "team": "松江西",
+    "teamId": "matsuenishi",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["竹本_菜穂_松江西_島根県", "吉岡_笑里_松江西_島根県"]
+  },
+  {
+    "team": "松江西",
+    "teamId": "matsuenishi",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["山本_実沙_松江西_島根県", "柏村_萌_松江西_島根県"]
+  },
+  {
+    "team": "松江西",
+    "teamId": "matsuenishi",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["舟木_佳代_松江西_島根県", "岡田_朋華_松江西_島根県"]
   },
   {
     "team": "大田",
@@ -1456,6 +1610,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["瀬島_莉央_大社_島根県", "三上_陽芽_大社_島根県"]
+  },
+  {
+    "team": "大社",
+    "teamId": "taisha",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["山本_未步_大社_島根県", "本田_七海_大社_島根県"]
   },
   {
     "team": "大社",

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,27 +16,49 @@
         "teamId": "kusatsuhigashi",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["武田_彩佳_草津東_滋賀県", "三家_明莉_草津東_滋賀県"]
+        "playerIds": ["武田_彩佳_草津東_滋賀県", "中村_菜緒_草津東_滋賀県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "草津東",
+        "teamId": "kusatsuhigashi",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "武田_彩佳_草津東_滋賀県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "三家_明莉_草津東_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "中村_菜緒_草津東_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "河野_眞子_草津東_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "奥田_和香_草津東_滋賀県",
       "appearances": 1
     }
   ]

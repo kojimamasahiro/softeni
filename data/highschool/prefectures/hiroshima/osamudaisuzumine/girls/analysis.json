@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "team": 1,
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "修大鈴峯",
+        "teamId": "osamudaisuzumine",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["三好_遥佳_修大鈴峯_広島県", "竹谷_優維_修大鈴峯_広島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "修大鈴峯",
+        "teamId": "osamudaisuzumine",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "木村_公美_修大鈴峯_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "原_薫_修大鈴峯_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "三好_遥佳_修大鈴峯_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "竹谷_優維_修大鈴峯_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "児玉_菜央_修大鈴峯_広島県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 12,
   "byCategory": {
-    "team": 1,
-    "doubles": 7
+    "team": 2,
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -27,10 +27,10 @@
         "teamId": "moriokamakotosakura",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "girls",
         "playerIds": ["前角地_彩菜_盛岡誠桜_岩手県", "晴山_碧星_盛岡誠桜_岩手県"]
       }
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 18,
   "topPlayers": [
+    {
+      "id": "前角地_彩菜_盛岡誠桜_岩手県",
+      "appearances": 2
+    },
+    {
+      "id": "晴山_碧星_盛岡誠桜_岩手県",
+      "appearances": 2
+    },
     {
       "id": "川崎_遥_盛岡誠桜_岩手県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "吉田_美結_盛岡誠桜_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "小池_彩季_盛岡誠桜_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "前角地_彩菜_盛岡誠桜_岩手県",
       "appearances": 1
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hashimoto",
         "prefecture": "和歌山県",
         "prefectureId": "wakayama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["米坂_悠樹_橋本_和歌山県", "堀部_稔里_橋本_和歌山県"]
+        "playerIds": ["谷口_亮冴_橋本_和歌山県", "西尾_翔_橋本_和歌山県"]
       }
     },
     "team": {
@@ -28,8 +28,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
+    {
+      "id": "西尾_翔_橋本_和歌山県",
+      "appearances": 2
+    },
     {
       "id": "木下_覚登_橋本_和歌山県",
       "appearances": 1
@@ -40,10 +44,6 @@
     },
     {
       "id": "神奈川_峻輔_橋本_和歌山県",
-      "appearances": 1
-    },
-    {
-      "id": "西尾_翔_橋本_和歌山県",
       "appearances": 1
     },
     {

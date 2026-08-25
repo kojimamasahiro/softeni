@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "聖和学園",
+        "teamId": "seiwagakuen",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["臼井_優茉_聖和学園_宮城県", "斉藤_杏奈_聖和学園_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "臼井_優茉_聖和学園_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "斉藤_杏奈_聖和学園_宮城県",
+      "appearances": 1
+    }
+  ]
+}

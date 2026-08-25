@@ -83,6 +83,17 @@
     "prefectureId": "miyazaki",
     "result": "ベスト8",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "都城商",
+    "teamId": "miyakonojo",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "ベスト8",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -295,6 +306,17 @@
     "tournamentId": "highschool-championship",
     "year": 2019,
     "gender": "boys"
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
   },
   {
     "team": "都城商",
@@ -655,6 +677,54 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["富山_陽太_都城商_宮崎県", "吉良_倫太朗_都城商_宮崎県"]
+  },
+  {
+    "team": "都城商",
+    "teamId": "miyakonojo",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["林_昭道_都城商_宮崎県", "下原_聖矢_都城商_宮崎県"]
+  },
+  {
+    "team": "都城商",
+    "teamId": "miyakonojo",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["西岡_遼太郎_都城商_宮崎県", "海田_凜_都城商_宮崎県"]
+  },
+  {
+    "team": "都城商",
+    "teamId": "miyakonojo",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["西本_一雅_都城商_宮崎県", "森田_晴紀_都城商_宮崎県"]
+  },
+  {
+    "team": "都城商",
+    "teamId": "miyakonojo",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["田中_康文_都城商_宮崎県", "諫山_響_都城商_宮崎県"]
   },
   {
     "team": "都城商",
@@ -1167,6 +1237,30 @@
     "prefectureId": "miyazaki",
     "result": "1回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["松尾_礼奈_宮崎商_宮崎県", "安田_和泉_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["川崎_もも_宮崎商_宮崎県", "水野_智望_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
@@ -1423,6 +1517,18 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["上原_瑞稀_日南学園_宮崎県", "富山_未夢_日南学園_宮崎県"]
+  },
+  {
+    "team": "日南学園",
+    "teamId": "nichinangakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["片平_彩_日南学園_宮崎県", "山田_望来_日南学園_宮崎県"]
   },
   {
     "team": "日南学園",
@@ -1711,6 +1817,66 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["平山_綾一_延岡学園_宮崎県", "黒木_健至_延岡学園_宮崎県"]
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["松尾_音和_延岡学園_宮崎県", "一倉_純菜_延岡学園_宮崎県"]
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["惣島_咲帆_延岡学園_宮崎県", "小橋_蘭夢_延岡学園_宮崎県"]
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["戸田_怜花_延岡学園_宮崎県", "日高_結芽子_延岡学園_宮崎県"]
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["坂本_貫太_延岡学園_宮崎県", "下村_慶樹_延岡学園_宮崎県"]
+  },
+  {
+    "team": "延岡学園",
+    "teamId": "nobeokagakuen",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["安藤_魁斗_延岡学園_宮崎県", "日高_佑政_延岡学園_宮崎県"]
   },
   {
     "team": "聖心ウルスラ",

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 16,
   "byCategory": {
     "team": 3,
-    "doubles": 10,
+    "doubles": 12,
     "singles": 1
   },
   "resultsByCategory": {
@@ -39,12 +39,12 @@
         "teamId": "kumamotokou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "4回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["中村_翔太_熊本工_熊本県", "中川_作_熊本工_熊本県"]
+        "playerIds": ["境_颯汰_熊本工_熊本県", "霍田_薫_熊本工_熊本県"]
       }
     },
     "team": {
@@ -72,7 +72,7 @@
       }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
       "id": "中村_翔太_熊本工_熊本県",
@@ -83,15 +83,15 @@
       "appearances": 3
     },
     {
+      "id": "森田_悠斗_熊本工_熊本県",
+      "appearances": 2
+    },
+    {
       "id": "岡本_崇杜_熊本工_熊本県",
       "appearances": 2
     },
     {
       "id": "中川_作_熊本工_熊本県",
-      "appearances": 1
-    },
-    {
-      "id": "坂井_清春_熊本工_熊本県",
       "appearances": 1
     }
   ]

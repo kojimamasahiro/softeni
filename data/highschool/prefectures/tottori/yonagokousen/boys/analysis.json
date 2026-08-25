@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "米子高専",
+        "teamId": "yonagokousen",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["橋本_颯太_米子高専_鳥取県", "加藤_有真_米子高専_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "橋本_颯太_米子高専_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_有真_米子高専_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

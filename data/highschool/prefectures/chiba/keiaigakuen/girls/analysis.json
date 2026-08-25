@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "敬愛学園",
+        "teamId": "keiaigakuen",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["芝地_渚_敬愛学園_千葉県", "樋山_日記_敬愛学園_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "芝地_渚_敬愛学園_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "樋山_日記_敬愛学園_千葉県",
+      "appearances": 1
+    }
+  ]
+}

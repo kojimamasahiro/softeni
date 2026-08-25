@@ -33,6 +33,17 @@
     "gender": "girls"
   },
   {
+    "team": "金沢学院",
+    "teamId": "kanazawagakuin",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
     "team": "金沢学院大附",
     "teamId": "kanazawagakuindaifu",
     "prefecture": "石川県",
@@ -64,6 +75,17 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2024,
     "gender": "girls"
+  },
+  {
+    "team": "七尾",
+    "teamId": "nanao",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
   },
   {
     "team": "能登",
@@ -478,6 +500,54 @@
     "teamId": "kanazawagakuin",
     "prefecture": "石川県",
     "prefectureId": "ishikawa",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["田川_真衣_金沢学院_石川県", "中村_咲優菜_金沢学院_石川県"]
+  },
+  {
+    "team": "金沢学院",
+    "teamId": "kanazawagakuin",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["清水_琉風_金沢学院_石川県", "松本_多未_金沢学院_石川県"]
+  },
+  {
+    "team": "金沢学院",
+    "teamId": "kanazawagakuin",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["村崎_圭祐_金沢学院_石川県", "浦_巧弥_金沢学院_石川県"]
+  },
+  {
+    "team": "金沢学院",
+    "teamId": "kanazawagakuin",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["德野_真士_金沢学院_石川県", "藤井_理央_金沢学院_石川県"]
+  },
+  {
+    "team": "金沢学院",
+    "teamId": "kanazawagakuin",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -678,6 +748,18 @@
     "playerIds": ["久田_陸人_金沢学院大附_石川県", "畠中_雄大_金沢学院大附_石川県"]
   },
   {
+    "team": "金沢泉丘",
+    "teamId": "kanazawaizumigaoka",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["若林_純礼_金沢泉丘_石川県", "内潟_奈江_金沢泉丘_石川県"]
+  },
+  {
     "team": "金沢商",
     "teamId": "kanazawashou",
     "prefecture": "石川県",
@@ -726,6 +808,18 @@
     "playerIds": ["藤澤_理央馬_小松_石川県", "藤澤_蒼璃_小松_石川県"]
   },
   {
+    "team": "小松",
+    "teamId": "komatsu",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["平野_悠斗_小松_石川県", "岡山_諒吾_小松_石川県"]
+  },
+  {
     "team": "小松大谷",
     "teamId": "komatsuootani",
     "prefecture": "石川県",
@@ -748,6 +842,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["古橋_迅_小松大谷_石川県", "中_京介_小松大谷_石川県"]
+  },
+  {
+    "team": "小松市立",
+    "teamId": "komatsushiritsu",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["山田_夕瑞季_小松市立_石川県", "伴場_奈々_小松市立_石川県"]
   },
   {
     "team": "七尾",
@@ -808,6 +914,18 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["寺口_夢音_七尾_石川県", "鵜野_聖晃_七尾_石川県"]
+  },
+  {
+    "team": "七尾",
+    "teamId": "nanao",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["大森_海誠_七尾_石川県", "瀧下_斗真_七尾_石川県"]
   },
   {
     "team": "能登",
@@ -1696,6 +1814,54 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["飯田_航仁_能登_石川県", "飯田_仁人_能登_石川県"]
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["皆戸_彩夏_能登_石川県", "谷元_美紗_能登_石川県"]
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["牧_和音_能登_石川県", "宮村_優花_能登_石川県"]
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["道下_晟多_能登_石川県", "曽山_結心_能登_石川県"]
+  },
+  {
+    "team": "能登",
+    "teamId": "noto",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["寺本_隼_能登_石川県", "端山_羅行_能登_石川県"]
   },
   {
     "team": "能登",

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "team": 1
+    "team": 1,
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -10,7 +11,18 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "鳥羽",
+        "teamId": "toba",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["青松_淳眞_鳥羽_京都府", "森_愛韻_鳥羽_京都府"]
+      }
     },
     "team": {
       "recentlyResult": {
@@ -37,6 +49,15 @@
       }
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "青松_淳眞_鳥羽_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "森_愛韻_鳥羽_京都府",
+      "appearances": 1
+    }
+  ]
 }

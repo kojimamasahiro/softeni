@@ -1,24 +1,12 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 2,
-    "singles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "金沢学院",
-        "teamId": "kanazawagakuin",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2023,
-        "gender": "boys",
-        "playerIds": ["浦_利弥_金沢学院_石川県"]
-      }
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": null,
@@ -27,12 +15,12 @@
         "teamId": "kanazawagakuin",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "4回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["牧_海音_金沢学院_石川県", "玉岡_翔_金沢学院_石川県"]
+        "playerIds": ["德野_真士_金沢学院_石川県", "藤井_理央_金沢学院_石川県"]
       }
     },
     "team": {
@@ -40,26 +28,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "牧_海音_金沢学院_石川県",
+      "id": "村崎_圭祐_金沢学院_石川県",
       "appearances": 1
     },
     {
-      "id": "玉岡_翔_金沢学院_石川県",
+      "id": "浦_巧弥_金沢学院_石川県",
       "appearances": 1
     },
     {
-      "id": "木本_武尊_金沢学院_石川県",
+      "id": "德野_真士_金沢学院_石川県",
       "appearances": 1
     },
     {
-      "id": "坂本_大起_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "浦_利弥_金沢学院_石川県",
+      "id": "藤井_理央_金沢学院_石川県",
       "appearances": 1
     }
   ]

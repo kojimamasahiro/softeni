@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鳥取工",
+        "teamId": "tottorikou",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["小林_直矢_鳥取工_鳥取県", "山内_大夢_鳥取工_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小林_直矢_鳥取工_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "山内_大夢_鳥取工_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

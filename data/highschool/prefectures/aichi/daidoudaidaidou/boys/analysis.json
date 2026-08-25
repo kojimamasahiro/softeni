@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大同大大同",
+        "teamId": "daidoudaidaidou",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["上田_健斗_大同大大同_愛知県", "安藤_奏斗_大同大大同_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "上田_健斗_大同大大同_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "安藤_奏斗_大同大大同_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "奥村_健_大同大大同_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "小西_諒馬_大同大大同_愛知県",
+      "appearances": 1
+    }
+  ]
+}

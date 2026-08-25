@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "吾妻中央",
+        "teamId": "azumachuuou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["唐澤_ひなの_吾妻中央_群馬県", "信澤_愛優_吾妻中央_群馬県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "唐澤_ひなの_吾妻中央_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "信澤_愛優_吾妻中央_群馬県",
+      "appearances": 1
+    }
+  ]
+}

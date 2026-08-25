@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 4
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "touyoudaiushiku",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["竹﨑_真莉亜_東洋大牛久_茨城県", "遠藤_理衣_東洋大牛久_茨城県"]
+        "playerIds": ["金子_怜_東洋大牛久_茨城県", "小林_里帆_東洋大牛久_茨城県"]
       }
     },
     "team": {
@@ -39,26 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "三舛_千波_東洋大牛久_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "金子_怜_東洋大牛久_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "小林_里帆_東洋大牛久_茨城県",
+      "appearances": 2
+    },
     {
       "id": "酒井_真彩_東洋大牛久_茨城県",
       "appearances": 1
     },
     {
       "id": "石井_はるか_東洋大牛久_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "三舛_千波_東洋大牛久_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "溝口_結彩_東洋大牛久_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "金子_怜_東洋大牛久_茨城県",
       "appearances": 1
     }
   ]

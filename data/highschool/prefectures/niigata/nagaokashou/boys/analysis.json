@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,20 +27,30 @@
         "teamId": "nagaokashou",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "1回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["菊地_雄飛_長岡商_新潟県", "嶋岡_昊哉_長岡商_新潟県"]
+        "playerIds": ["吉村_泰成_長岡商_新潟県", "服部_太陽_長岡商_新潟県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長岡商",
+        "teamId": "nagaokashou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "菊地_雄飛_長岡商_新潟県",
@@ -47,6 +58,18 @@
     },
     {
       "id": "嶋岡_昊哉_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_隆之介_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "丸山_憧_長岡商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "吉村_泰成_長岡商_新潟県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "富士河口湖",
+        "teamId": "fujikawaguchiko",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["槌屋_秀弥_富士河口湖_山梨県", "長田_大輝_富士河口湖_山梨県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "槌屋_秀弥_富士河口湖_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "長田_大輝_富士河口湖_山梨県",
+      "appearances": 1
+    }
+  ]
+}

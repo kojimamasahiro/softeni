@@ -132,6 +132,17 @@
     "gender": "girls"
   },
   {
+    "team": "大田原女子",
+    "teamId": "ootawarajoshi",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
     "team": "宇都宮工",
     "teamId": "utsunomiyakou",
     "prefecture": "栃木県",
@@ -184,6 +195,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "宇都宮短大附",
+    "teamId": "utsunomiyatandaifu",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "boys"
   },
   {
@@ -739,6 +761,30 @@
     "teamId": "hakuouooashiri",
     "prefecture": "栃木県",
     "prefectureId": "tochigi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["大貫_真比呂_白鷗大足利_栃木県", "堀口_賀代_白鷗大足利_栃木県"]
+  },
+  {
+    "team": "白鷗大足利",
+    "teamId": "hakuouooashiri",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["大久保_由希_白鷗大足利_栃木県", "三好_夏未_白鷗大足利_栃木県"]
+  },
+  {
+    "team": "白鷗大足利",
+    "teamId": "hakuouooashiri",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
     "result": "ベスト8",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -867,6 +913,42 @@
     "playerIds": ["渡辺_晴陽_大田原_栃木県", "松田_和馬_大田原_栃木県"]
   },
   {
+    "team": "大田原女子",
+    "teamId": "ootawarajoshi",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["印南_結_大田原女子_栃木県", "五月女_愛_大田原女子_栃木県"]
+  },
+  {
+    "team": "大田原女子",
+    "teamId": "ootawarajoshi",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["柴田_琳_大田原女子_栃木県", "加藤_織紗子_大田原女子_栃木県"]
+  },
+  {
+    "team": "大田原女子",
+    "teamId": "ootawarajoshi",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["金子_真悠_大田原女子_栃木県", "藤田_寿理_大田原女子_栃木県"]
+  },
+  {
     "team": "作新学院",
     "teamId": "sakushingakuin",
     "prefecture": "栃木県",
@@ -967,6 +1049,18 @@
     "teamId": "utsunomiyabunhoshionna",
     "prefecture": "栃木県",
     "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["片山_ほの香_宇都宮文星女_栃木県", "村杉_陽菜_宇都宮文星女_栃木県"]
+  },
+  {
+    "team": "宇都宮文星女",
+    "teamId": "utsunomiyabunhoshionna",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1045,6 +1139,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["金原_遥人_宇都宮工_栃木県", "野口_椋平_宇都宮工_栃木県"]
+  },
+  {
+    "team": "宇都宮工",
+    "teamId": "utsunomiyakou",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["鈴木_耀平_宇都宮工_栃木県", "杉浦_岳_宇都宮工_栃木県"]
   },
   {
     "team": "宇都宮工",
@@ -1449,6 +1555,54 @@
     "prefectureId": "tochigi",
     "result": "2回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["坂寄_友紀_宇都宮短大附_栃木県", "高橋_俊貴_宇都宮短大附_栃木県"]
+  },
+  {
+    "team": "宇都宮短大附",
+    "teamId": "utsunomiyatandaifu",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["白田_杏生_宇都宮短大附_栃木県", "林_崇雅_宇都宮短大附_栃木県"]
+  },
+  {
+    "team": "宇都宮短大附",
+    "teamId": "utsunomiyatandaifu",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["武田_寿貴_宇都宮短大附_栃木県", "大森_柊_宇都宮短大附_栃木県"]
+  },
+  {
+    "team": "宇都宮短大附",
+    "teamId": "utsunomiyatandaifu",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["車田_佳紀_宇都宮短大附_栃木県", "村堀_詩苑_宇都宮短大附_栃木県"]
+  },
+  {
+    "team": "宇都宮短大附",
+    "teamId": "utsunomiyatandaifu",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "2回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "girls",
@@ -1561,6 +1715,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["鬼塚_一成_矢板中央_栃木県", "小野崎_夢真_矢板中央_栃木県"]
+  },
+  {
+    "team": "矢板中央",
+    "teamId": "yaitachuuou",
+    "prefecture": "栃木県",
+    "prefectureId": "tochigi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["大森_翼_矢板中央_栃木県", "大橋_龍太_矢板中央_栃木県"]
   },
   {
     "team": "矢板中央",

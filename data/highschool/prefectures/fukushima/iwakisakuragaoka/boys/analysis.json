@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "磐城桜が丘",
+        "teamId": "iwakisakuragaoka",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["佐藤_拓斗_磐城桜が丘_福島県", "高橋_修平_磐城桜が丘_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "佐藤_拓斗_磐城桜が丘_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "高橋_修平_磐城桜が丘_福島県",
+      "appearances": 1
+    }
+  ]
+}

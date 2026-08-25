@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
-    "team": 1,
-    "doubles": 4
+    "team": 2,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -31,16 +31,24 @@
         "teamId": "kanazawagakuin",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "松本_多未_金沢学院_石川県",
+      "appearances": 2
+    },
+    {
+      "id": "清水_琉風_金沢学院_石川県",
+      "appearances": 2
+    },
     {
       "id": "法花堂_古都_金沢学院_石川県",
       "appearances": 2
@@ -51,14 +59,6 @@
     },
     {
       "id": "西村_紺奈_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "多田_里胡奈_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "松本_多未_金沢学院_石川県",
       "appearances": 1
     }
   ]

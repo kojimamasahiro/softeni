@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "千葉南",
+        "teamId": "chibaminami",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["西川_悠真_千葉南_千葉県", "白井_貴大_千葉南_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西川_悠真_千葉南_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "白井_貴大_千葉南_千葉県",
+      "appearances": 1
+    }
+  ]
+}

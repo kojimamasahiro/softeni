@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "西舞鶴",
+        "teamId": "nishimaizuru",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["梅原_嵩矢_西舞鶴_京都府", "牛尾_龍_西舞鶴_京都府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "梅原_嵩矢_西舞鶴_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "牛尾_龍_西舞鶴_京都府",
+      "appearances": 1
+    }
+  ]
+}

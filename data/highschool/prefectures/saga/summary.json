@@ -121,6 +121,17 @@
     "gender": "boys"
   },
   {
+    "team": "塩工・嬉野",
+    "teamId": "shiokouureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
     "team": "嬉野",
     "teamId": "ureshino",
     "prefecture": "佐賀県",
@@ -215,6 +226,17 @@
     "prefectureId": "saga",
     "result": "2回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -287,6 +309,18 @@
     "playerIds": ["上村_耕新_唐津東_佐賀県", "園田_弘杜_唐津東_佐賀県"]
   },
   {
+    "team": "唐津東",
+    "teamId": "karatsuhigashi",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["小山_頼人_唐津東_佐賀県", "園田_弘杜_唐津東_佐賀県"]
+  },
+  {
     "team": "唐津工",
     "teamId": "karatsukou",
     "prefecture": "佐賀県",
@@ -347,6 +381,18 @@
     "playerIds": ["中川_雄貴_鹿島_佐賀県", "井上_康平_鹿島_佐賀県"]
   },
   {
+    "team": "鹿島",
+    "teamId": "kashima",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中川_雄貴_鹿島_佐賀県", "川原_佑樹_鹿島_佐賀県"]
+  },
+  {
     "team": "小城",
     "teamId": "ogi",
     "prefecture": "佐賀県",
@@ -369,6 +415,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["秀島_凛_小城_佐賀県", "藤瀬_愛梨_小城_佐賀県"]
+  },
+  {
+    "team": "佐賀北",
+    "teamId": "sagakita",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["坂口_魁都_佐賀北_佐賀県", "平田_玲央_佐賀北_佐賀県"]
   },
   {
     "team": "佐賀清和",
@@ -759,6 +817,66 @@
     "teamId": "sagakiyokazu",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["鍬本_あかり_佐賀清和_佐賀県", "能見_若奈_佐賀清和_佐賀県"]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["為藤_真夏_佐賀清和_佐賀県", "原_華菜子_佐賀清和_佐賀県"]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["宮原_あかり_佐賀清和_佐賀県", "山田_奈央_佐賀清和_佐賀県"]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["坂田_蘭朱_佐賀清和_佐賀県", "松下_もも_佐賀清和_佐賀県"]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["松山_絢音_佐賀清和_佐賀県", "北村_海音_佐賀清和_佐賀県"]
+  },
+  {
+    "team": "佐賀清和",
+    "teamId": "sagakiyokazu",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -903,6 +1021,18 @@
     "teamId": "sagakou",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["重松_蛍都_佐賀工_佐賀県", "平山_翔太_佐賀工_佐賀県"]
+  },
+  {
+    "team": "佐賀工",
+    "teamId": "sagakou",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -969,6 +1099,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["石井_大裕_佐賀工業高校_佐賀県", "高崎_幸樹_佐賀工業高校_佐賀県"]
+  },
+  {
+    "team": "塩工・嬉野",
+    "teamId": "shiokouureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["北島_紳_塩工・嬉野_佐賀県", "前川_太一_塩工・嬉野_佐賀県"]
+  },
+  {
+    "team": "塩工・嬉野",
+    "teamId": "shiokouureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["橋野_潤_塩工・嬉野_佐賀県", "前田_翼_塩工・嬉野_佐賀県"]
   },
   {
     "team": "塩工・嬉野新",
@@ -1557,6 +1711,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["小川_裕太郎_嬉野_佐賀県", "永石_優水_嬉野_佐賀県"]
+  },
+  {
+    "team": "嬉野",
+    "teamId": "ureshino",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["喜多_莉子_嬉野_佐賀県", "田中_星空_嬉野_佐賀県"]
   },
   {
     "team": "嬉野",

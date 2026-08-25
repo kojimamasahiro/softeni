@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "team": 1
+    "team": 1,
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -10,7 +11,18 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "上田染谷丘",
+        "teamId": "uedasomeyaoka",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["山本_和弥_上田染谷丘_長野県", "市村_基_上田染谷丘_長野県"]
+      }
     },
     "team": {
       "recentlyResult": {
@@ -37,6 +49,15 @@
       }
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山本_和弥_上田染谷丘_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "市村_基_上田染谷丘_長野県",
+      "appearances": 1
+    }
+  ]
 }

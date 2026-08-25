@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "karatsuhigashi",
         "prefecture": "佐賀県",
         "prefectureId": "saga",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["上村_耕新_唐津東_佐賀県", "園田_弘杜_唐津東_佐賀県"]
+        "playerIds": ["小山_頼人_唐津東_佐賀県", "園田_弘杜_唐津東_佐賀県"]
       }
     },
     "team": {
@@ -28,14 +28,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "園田_弘杜_唐津東_佐賀県",
+      "appearances": 2
+    },
     {
       "id": "上村_耕新_唐津東_佐賀県",
       "appearances": 1
     },
     {
-      "id": "園田_弘杜_唐津東_佐賀県",
+      "id": "小山_頼人_唐津東_佐賀県",
       "appearances": 1
     }
   ]

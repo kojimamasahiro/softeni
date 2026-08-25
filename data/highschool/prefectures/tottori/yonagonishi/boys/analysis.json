@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "米子西",
+        "teamId": "yonagonishi",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["勝部_智也_米子西_鳥取県", "木谷_彰_米子西_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "勝部_智也_米子西_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "木谷_彰_米子西_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

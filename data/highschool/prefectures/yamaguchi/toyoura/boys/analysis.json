@@ -1,49 +1,15 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 2,
-    "singles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "豊浦",
-        "teamId": "toyoura",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "primaryschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["植村_蒼空_豊浦_茨城県"]
-      },
-      "historicalBest": {
-        "team": "豊浦",
-        "teamId": "toyoura",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "予選敗退",
-        "category": "singles",
-        "tournamentId": "primaryschool-championship",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["植村_蒼空_豊浦_茨城県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "豊浦",
-        "teamId": "toyoura",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-primaryschool",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["植村_蒼空_豊浦_茨城県", "中島_陸登_古河ＳＴＣ_茨城県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "豊浦",
         "teamId": "toyoura",
@@ -51,10 +17,10 @@
         "prefectureId": "yamaguchi",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-primaryschool",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["植村_蒼空_豊浦_茨城県", "中島_陸登_古河ＳＴＣ_茨城県"]
+        "playerIds": ["井藤_壮琉_豊浦_山口県", "黒田_昇吾_豊浦_山口県"]
       }
     },
     "team": {
@@ -62,14 +28,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "植村_蒼空_豊浦_茨城県",
-      "appearances": 2
+      "id": "井藤_壮琉_豊浦_山口県",
+      "appearances": 1
     },
     {
-      "id": "菊池_凌央_豊浦_茨城県",
+      "id": "黒田_昇吾_豊浦_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "岩崎_冬弥_豊浦_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "辻村_勝_豊浦_山口県",
       "appearances": 1
     }
   ]

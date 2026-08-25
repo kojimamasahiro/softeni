@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "桜の聖母学院",
+        "teamId": "sakuranoseibogakuin",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["下川_さくら_桜の聖母学院_福島県", "野地_明日香_桜の聖母学院_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "角田_夏歩_桜の聖母学院_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_百優_桜の聖母学院_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "下川_さくら_桜の聖母学院_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "野地_明日香_桜の聖母学院_福島県",
+      "appearances": 1
+    }
+  ]
+}

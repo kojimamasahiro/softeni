@@ -83,6 +83,17 @@
     "prefectureId": "wakayama",
     "result": "3回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "和歌山北",
+    "teamId": "wakayamakita",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "3回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -206,6 +217,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "girls"
   },
   {
@@ -311,6 +333,18 @@
     "playerIds": ["米坂_悠樹_橋本_和歌山県", "堀部_稔里_橋本_和歌山県"]
   },
   {
+    "team": "橋本",
+    "teamId": "hashimoto",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["谷口_亮冴_橋本_和歌山県", "西尾_翔_橋本_和歌山県"]
+  },
+  {
     "team": "日高",
     "teamId": "hidaka",
     "prefecture": "和歌山県",
@@ -405,6 +439,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["加田_篤稀_田辺_和歌山県", "中本_昊希_田辺_和歌山県"]
+  },
+  {
+    "team": "田辺",
+    "teamId": "tanabe",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["井口_大輝_田辺_和歌山県", "井口_航輝_田辺_和歌山県"]
   },
   {
     "team": "田辺",
@@ -861,6 +907,54 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["田中_夢皐_和歌山北_和歌山県", "森本_励_和歌山北_和歌山県"]
+  },
+  {
+    "team": "和歌山北",
+    "teamId": "wakayamakita",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中野_智稀_和歌山北_和歌山県", "渡邊_成翔_和歌山北_和歌山県"]
+  },
+  {
+    "team": "和歌山北",
+    "teamId": "wakayamakita",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["弘末_相楽_和歌山北_和歌山県", "嶋田_惠太_和歌山北_和歌山県"]
+  },
+  {
+    "team": "和歌山北",
+    "teamId": "wakayamakita",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["濵田_祐_和歌山北_和歌山県", "小原_雅也_和歌山北_和歌山県"]
+  },
+  {
+    "team": "和歌山北",
+    "teamId": "wakayamakita",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["南澤_祥太_和歌山北_和歌山県", "夏見_眞也_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -1737,6 +1831,102 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["阪本_遥_和歌山信愛_和歌山県", "山中_菜々花_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高𣘺𣘺_友南_和歌山信愛_和歌山県", "源川_耀子_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["松井_玲奈_和歌山信愛_和歌山県", "川崎_海奈_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["塩路_千裕_和歌山信愛_和歌山県", "塩路_ほのか_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["大津_櫻_和歌山信愛_和歌山県", "川口_真歩_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["浅倉_衣里_和歌山信愛_和歌山県", "岡田_未来_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["青木_博子_和歌山信愛_和歌山県", "前本_真弥_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["多田_千夏_和歌山信愛_和歌山県", "岩崎_彩_和歌山信愛_和歌山県"]
+  },
+  {
+    "team": "和歌山信愛",
+    "teamId": "wakayamashinai",
+    "prefecture": "和歌山県",
+    "prefectureId": "wakayama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["永橋_夏鈴_和歌山信愛_和歌山県", "柿沼_明里_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",

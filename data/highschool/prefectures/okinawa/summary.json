@@ -88,6 +88,17 @@
     "gender": "boys"
   },
   {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
     "team": "那覇西",
     "teamId": "nahanishi",
     "prefecture": "沖縄県",
@@ -97,6 +108,17 @@
     "tournamentId": "highschool-championship",
     "year": 2019,
     "gender": "girls"
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
   },
   {
     "team": "八重山",
@@ -349,6 +371,18 @@
     "teamId": "chinen",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["諸見里_優太_知念_沖縄県", "宮平_怜_知念_沖縄県"]
+  },
+  {
+    "team": "知念",
+    "teamId": "chinen",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -367,6 +401,18 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["仲村_英泰_南風原_沖縄県", "森山_樹_南風原_沖縄県"]
+  },
+  {
+    "team": "南風原",
+    "teamId": "haebara",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["喜屋武_晴_南風原_沖縄県", "国吉_晃輔_南風原_沖縄県"]
   },
   {
     "team": "糸満",
@@ -547,6 +593,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["神里_桃花_糸満_沖縄県", "宮里_来瞳_糸満_沖縄県"]
+  },
+  {
+    "team": "北山",
+    "teamId": "kitayama",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["我喜屋_春華_北山_沖縄県", "與那嶺_寿枝_北山_沖縄県"]
   },
   {
     "team": "向陽",
@@ -961,6 +1019,30 @@
     "teamId": "nago",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["石𣘺𣘺_梨奈_名護_沖縄県", "金城_佳奈_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["儀部_龍星_名護_沖縄県", "大賀_晨平_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "予選敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1143,10 +1225,82 @@
     "prefectureId": "okinawa",
     "result": "2回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["嵩原_咲輝_那覇西_沖縄県", "知念_伽奈_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["金城_芽緯_那覇西_沖縄県", "當銘_柚_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山田_裕也_那覇西_沖縄県", "稲福_蓮音_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["富田_海_那覇西_沖縄県", "座波_晃大_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["西銘_千尋_那覇西_沖縄県", "久手堅_健太_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
     "playerIds": ["牧野_夏海_那覇西_沖縄県", "細川_大峨_那覇西_沖縄県"]
+  },
+  {
+    "team": "那覇商",
+    "teamId": "nahashou",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["日高_憂_那覇商_沖縄県", "大田_羽南_那覇商_沖縄県"]
   },
   {
     "team": "豊見城",
@@ -1411,6 +1565,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["屋嘉部_善行_八重山_沖縄県", "福本_聖己_八重山_沖縄県"]
+  },
+  {
+    "team": "八重山",
+    "teamId": "yaeyama",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["吉川_小百合_八重山_沖縄県", "前原_ひなの_八重山_沖縄県"]
   },
   {
     "team": "八重山",

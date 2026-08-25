@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "takamatsuchuuou",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["宮脇_僚汰_高松中央_香川県", "齊藤_圭亮_高松中央_香川県"]
+        "playerIds": ["竹治_公成_高松中央_香川県", "石原_瑞基_高松中央_香川県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "宮脇_僚汰_高松中央_香川県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "齊藤_圭亮_高松中央_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "竹治_公成_高松中央_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "石原_瑞基_高松中央_香川県",
       "appearances": 1
     }
   ]

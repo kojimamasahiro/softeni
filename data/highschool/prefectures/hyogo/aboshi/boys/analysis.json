@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "aboshi",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "1回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["手島_健太_網干_兵庫県", "小野_凌大_網干_兵庫県"]
+        "playerIds": ["明石_陽人_網干_兵庫県", "林_周佑_網干_兵庫県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "手島_健太_網干_兵庫県",
@@ -36,6 +36,18 @@
     },
     {
       "id": "小野_凌大_網干_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "藤原_志恩_網干_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "吉阪_俊輝_網干_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "明石_陽人_網干_兵庫県",
       "appearances": 1
     }
   ]

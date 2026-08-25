@@ -114,6 +114,17 @@
     "teamId": "hokuetsu",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "準優勝",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls"
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
@@ -184,6 +195,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "boys"
   },
   {
@@ -644,6 +666,54 @@
     "teamId": "hokuetsu",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["前山_愛_北越_新潟県", "水澤_奈央_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["田中_遥奈_北越_新潟県", "冨樫_春菜_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["大原_琉誠_北越_新潟県", "安中_龍志_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山本_涼翔_北越_新潟県", "石塚_舜_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -746,6 +816,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["吉原_唯々花_柏崎_新潟県", "飯田_愛菜_柏崎_新潟県"]
+  },
+  {
+    "team": "柏崎",
+    "teamId": "kashiwazaki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["田村_真奈実_柏崎_新潟県", "品川_明里_柏崎_新潟県"]
   },
   {
     "team": "巻",
@@ -914,6 +996,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["杉山_葉空_巻_新潟県", "丹野_温仁_巻_新潟県"]
+  },
+  {
+    "team": "巻",
+    "teamId": "maki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["小林_彩香_巻_新潟県", "阿部_真夕_巻_新潟県"]
   },
   {
     "team": "巻",
@@ -1108,6 +1202,66 @@
     "playerIds": ["金箱_紗葵_長岡商_新潟県", "池田_憂梨_長岡商_新潟県"]
   },
   {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["皆川_千乃_長岡商_新潟県", "小柳_夏音_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["金箱_紗葵_長岡商_新潟県", "松嵜_凜_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高橋_優那_長岡商_新潟県", "池田_憂梨_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["阿部_隆之介_長岡商_新潟県", "丸山_憧_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["吉村_泰成_長岡商_新潟県", "服部_太陽_長岡商_新潟県"]
+  },
+  {
     "team": "長岡商業",
     "teamId": "nagaokashougyou",
     "prefecture": "新潟県",
@@ -1286,6 +1440,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["樋口_綺_中越_新潟県", "平賀_衣奈_中越_新潟県"]
+  },
+  {
+    "team": "中越",
+    "teamId": "nakagoshi",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["星_悠斗_中越_新潟県", "山崎_龍斗_中越_新潟県"]
   },
   {
     "team": "新潟巻",
@@ -1576,6 +1742,18 @@
     "playerIds": ["高野_智矢_関根学園_新潟県", "秋山_雅翔_関根学園_新潟県"]
   },
   {
+    "team": "新発田",
+    "teamId": "shibata",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["佐藤_絵梨_新発田_新潟県", "堀川_千夏_新発田_新潟県"]
+  },
+  {
     "team": "新発田中央",
     "teamId": "shibatachuuou",
     "prefecture": "新潟県",
@@ -1586,6 +1764,18 @@
     "year": 2022,
     "gender": "boys",
     "playerIds": ["鈴木_翔大_新発田中央_新潟県", "桐生_青空_新発田中央_新潟県"]
+  },
+  {
+    "team": "新発田中央",
+    "teamId": "shibatachuuou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["堀_光志_新発田中央_新潟県", "近藤_和輝_新発田中央_新潟県"]
   },
   {
     "team": "帝京長岡",

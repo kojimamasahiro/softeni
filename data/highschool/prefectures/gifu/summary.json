@@ -61,6 +61,17 @@
     "prefectureId": "gifu",
     "result": "2回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -272,6 +283,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "鶯谷",
+    "teamId": "uguisudani",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "girls"
   },
   {
@@ -617,6 +639,78 @@
     "prefectureId": "gifu",
     "result": "2回戦敗退",
     "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山田_隼大_中京_岐阜県", "村田_俊介_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["西迫_敬人_中京_岐阜県", "前田_大喜_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["野田_太陽_中京_岐阜県", "早川_歩夢_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["三輪_大貴_中京_岐阜県", "大友_駿_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["牧野_郁也_中京_岐阜県", "柚原_一輝_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["松田_勲虎_中京_岐阜県", "児玉_翼_中京_岐阜県"]
+  },
+  {
+    "team": "中京",
+    "teamId": "chuukyou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
@@ -681,6 +775,18 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["横幕_日瑶里_岐阜総合学園_岐阜県", "河内_みやび_岐阜総合学園_岐阜県"]
+  },
+  {
+    "team": "岐阜総合学園",
+    "teamId": "gifusougougakuen",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["若井_莉紗_岐阜総合学園_岐阜県", "松井_莉香_岐阜総合学園_岐阜県"]
   },
   {
     "team": "県岐阜商",
@@ -1311,6 +1417,18 @@
     "teamId": "minokamo",
     "prefecture": "岐阜県",
     "prefectureId": "gifu",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["佐藤_玲緒_美濃加茂_岐阜県", "嶋崎_創太_美濃加茂_岐阜県"]
+  },
+  {
+    "team": "美濃加茂",
+    "teamId": "minokamo",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1367,6 +1485,18 @@
     "playerIds": ["大山_真衣_中津商_岐阜県", "深谷_菜月_中津商_岐阜県"]
   },
   {
+    "team": "中津商",
+    "teamId": "nakatsushou",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["片田_日奈子_中津商_岐阜県", "市岡_夕芽_中津商_岐阜県"]
+  },
+  {
     "team": "大垣北",
     "teamId": "oogakikita",
     "prefecture": "岐阜県",
@@ -1377,6 +1507,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["川田_真佳_大垣北_岐阜県", "松永_遙香_大垣北_岐阜県"]
+  },
+  {
+    "team": "多治見北",
+    "teamId": "tajimikita",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["加藤_晃基_多治見北_岐阜県", "土屋_慶一郎_多治見北_岐阜県"]
   },
   {
     "team": "多治見西",
@@ -1555,6 +1697,54 @@
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2019,
+    "gender": "girls",
+    "playerIds": ["河村_笑花_鶯谷_岐阜県", "永田_玲奈_鶯谷_岐阜県"]
+  },
+  {
+    "team": "鶯谷",
+    "teamId": "uguisudani",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["桐山_茉衣子_鶯谷_岐阜県", "木下_真歩_鶯谷_岐阜県"]
+  },
+  {
+    "team": "鶯谷",
+    "teamId": "uguisudani",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高木_このみ_鶯谷_岐阜県", "杉原_泉美_鶯谷_岐阜県"]
+  },
+  {
+    "team": "鶯谷",
+    "teamId": "uguisudani",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["渡邉_美野_鶯谷_岐阜県", "伊藤_花奈_鶯谷_岐阜県"]
+  },
+  {
+    "team": "鶯谷",
+    "teamId": "uguisudani",
+    "prefecture": "岐阜県",
+    "prefectureId": "gifu",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "girls",
     "playerIds": ["河村_笑花_鶯谷_岐阜県", "永田_玲奈_鶯谷_岐阜県"]
   },

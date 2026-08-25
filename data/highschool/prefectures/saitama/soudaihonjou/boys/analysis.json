@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "早大本庄",
+        "teamId": "soudaihonjou",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2018,
+        "gender": "boys",
+        "playerIds": ["宮下_皓志_早大本庄_埼玉県", "小林_太一_早大本庄_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "宮下_皓志_早大本庄_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_太一_早大本庄_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "𠮷𠮷江_隆一朗_早大本庄_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "小山_修_早大本庄_埼玉県",
+      "appearances": 1
+    }
+  ]
+}
