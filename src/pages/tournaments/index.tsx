@@ -141,15 +141,16 @@ export default function TournamentsIndexPage({ instances, prefectures, years, ge
         {/* 入口カード2枚は SubNav に統合(重複リンク回避・docs/ui M2-3) */}
         <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
 
-        {/* 主力枠。フィルターバーの直後・件数と年度ブロックの前＝ファーストビュー内に置く
-            （2026-08-23 変更。経緯は docs/adr/ADR-016 の追記）。絞り込みの操作と結果の間に
-            入るが、年度ブロックの一覧そのものは分断しない位置。 */}
+        {/* 主力枠。「これから開催」の直後・フィルターバーの前＝ファーストビュー内に置く
+            （2026-08-23 にファーストビュー内へ、2026-08-25 に「これから開催」を
+            フィルターより上へ出したのに合わせてこの位置へ。経緯は docs/adr/ADR-016 の追記）。
+            年度ブロックの一覧そのものは分断しない位置。 */}
         <TournamentSearchTable
           instances={instances}
           prefectures={prefectures}
           years={years}
           generations={generations}
-          afterFilters={<AdUnit slot={AD_SLOTS.tournamentsIndex} />}
+          adSlot={<AdUnit slot={AD_SLOTS.tournamentsIndex} />}
         />
       </PageLayout>
     </>

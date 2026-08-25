@@ -48,6 +48,39 @@ export interface TournamentInformationEntry {
    * `data/tournaments/details/` を持たない大会でも大会一覧から結果へ導線を張るために使う。
    */
   resultPath?: string;
+  /**
+   * 会場の構造化データ。大会と会場は 1:N（日別・種目別・複数市区町村）のため配列。
+   * フィールド定義と記載ルールは docs/wiki/data-model.md「大会の会場データ（`venues`）」が正。
+   */
+  venues?: TournamentVenue[];
+  /** 入力時のメモ（出典の誤りや、値を書かなかった理由）。**公開ページには出さない**。 */
+  note?: string;
+  /** 大会要項PDFのURL。取得できていなければ null。 */
+  guidelineUrl?: string | null;
+}
+
+/**
+ * 大会の会場1件。`data/tournaments/information/*.json` の `venues[]` に対応する。
+ * 必須は prefecture / city / name の3つで、残りは出典（要項PDF等）に記載があるときだけ入る。
+ * **推測で埋めない**（記載が無い・値が壊れている場合は省略し `note` に理由を残す）。
+ */
+export interface TournamentVenue {
+  prefecture: string;
+  city: string | null;
+  name: string | null;
+  aliases?: string[];
+  /** 出典の表記そのまま。`name` を修正したときだけ書く */
+  nameRaw?: string;
+  postalCode?: string;
+  /** 都道府県から書く。先頭が `prefecture` と一致するかで出典の誤記を検出できる */
+  address?: string;
+  tel?: string;
+  courts?: number;
+  /** 正規化語彙: クレー / ハード / 砂入り人工芝 / 木床フローリング */
+  surface?: string;
+  /** どの日・どの種目に使われたか。自由文 */
+  usage?: string;
+  note?: string;
 }
 
 export interface TournamentParticipant {

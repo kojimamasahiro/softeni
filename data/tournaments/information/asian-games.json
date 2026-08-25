@@ -1,0 +1,63 @@
+[
+  {
+    "year": 2026,
+    "location": "愛知県",
+    "startDate": "2026-09-18",
+    "endDate": "2026-09-23",
+    "venues": [
+      {
+        "prefecture": "愛知県",
+        "city": "名古屋市天白区",
+        "name": "名古屋市東山公園テニスセンター",
+        "aliases": [],
+        "postalCode": "468-0071",
+        "address": "愛知県名古屋市天白区天白町八事字裏山60-19",
+        "tel": "052-832-1115",
+        "usage": "ソフトテニス競技全種目",
+        "note": "コート面数・サーフェスは一次情報が確認できないため未記録（推測で埋めない方針）。会場はテニス競技と共用。大会準備のため一般利用は停止中"
+      }
+    ],
+    "guidelineUrl": null,
+    "source": "公益財団法人 日本オリンピック委員会",
+    "sourceUrl": "https://www.joc.or.jp/aichi_nagoya2026/softtennis.html",
+    "label": "第20回 アジア競技大会",
+    "note": "大会全体の会期は2026-09-19〜10-04だが、startDate/endDate はソフトテニス競技の日程（2026-09-18〜09-23、JOC表記では『予定』）。競技開始が総合開会式より前になるため大会全体の会期とずれる。種目は5種目（前回・杭州大会も5種目でJOCが『5種目中4種目で金メダル』と記載）",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子団体",
+        "category": "team",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子団体",
+        "category": "team",
+        "gender": "girls",
+        "age": "none"
+      },
+      {
+        "categoryId": "singles-none-boys",
+        "label": "男子シングルス",
+        "category": "singles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "singles-none-girls",
+        "label": "女子シングルス",
+        "category": "singles",
+        "gender": "girls",
+        "age": "none"
+      },
+      {
+        "categoryId": "doubles-none-mixed",
+        "label": "混合ダブルス",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "none"
+      }
+    ]
+  }
+]

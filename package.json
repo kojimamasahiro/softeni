@@ -51,6 +51,8 @@
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "check:entries": "node scripts/check-tournament-entries.mjs",
+    "check:upcoming": "node scripts/check-upcoming-tournaments.mjs",
+    "check:placements": "node scripts/check-duplicate-placements.mjs",
     "check:highschool-pipeline": "node scripts/check-highschool-pipeline-freshness.mjs",
     "highschool:pipeline": "bash scripts/highschool/run-pipeline.sh",
     "story:generate": "node scripts/generate-story-yaml.mjs",
