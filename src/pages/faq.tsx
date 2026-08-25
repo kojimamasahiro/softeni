@@ -19,29 +19,6 @@ export default function FAQ() {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'よくあるご質問',
-                  item: 'https://softeni-pick.com/faq/',
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
               '@type': 'FAQPage',
               mainEntity: [
                 {

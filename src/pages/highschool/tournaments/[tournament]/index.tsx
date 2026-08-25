@@ -514,41 +514,6 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
       <MetaHead title={metaTitle} description={metaDescription} url={pageUrl} type="article" />
 
       <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '高校',
-                  item: 'https://softeni-pick.com/highschool/boys/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: '全国大会の歴代記録',
-                  item: 'https://softeni-pick.com/highschool/tournaments/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  name: titleName,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
         {championRows.length > 0 && (
           <script
             type="application/ld+json"

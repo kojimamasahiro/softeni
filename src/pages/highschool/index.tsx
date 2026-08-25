@@ -3,7 +3,6 @@
 // 以前は /highschool/boys への meta refresh 振り分け(noindex)だったが、
 // 男子・女子・全国大会歴代記録への入口ページに変更(docs/ui M2-2・C-4)。
 // 男女の入口を対称にし、girls への到達を1段浅くする。
-import Head from 'next/head';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
@@ -44,21 +43,6 @@ export default function HighschoolIndex() {
         url={pageUrl}
         type="website"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
-                { '@type': 'ListItem', position: 2, name: '高校', item: pageUrl },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout maxWidth="4xl">
         <Breadcrumbs

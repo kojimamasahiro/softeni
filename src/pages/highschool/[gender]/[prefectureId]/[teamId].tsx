@@ -379,41 +379,6 @@ export default function TeamPage({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: `高校${genderLabel}`,
-                  item: `https://softeni-pick.com/highschool/${gender}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: prefectureName,
-                  item: `https://softeni-pick.com/highschool/${gender}/${prefectureId}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 4,
-                  name: teamName,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
               '@type': 'Article',
               headline: `${teamName} 高校${genderLabel} 全国大会成績・メンバー`,
               description: `${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを、インターハイを含む主要大会ごとに整理したページです。`,

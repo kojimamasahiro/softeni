@@ -64,20 +64,6 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
       <MetaHead title="高校ソフトテニス 強豪校ランキング(全国・都道府県別) | Softeni Pick" description={description} url={pageUrl} type="article" />
 
       <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
-                { '@type': 'ListItem', position: 2, name: '高校ソフトテニス', item: 'https://softeni-pick.com/highschool/' },
-                { '@type': 'ListItem', position: 3, name: '強豪校ランキング', item: pageUrl },
-              ],
-            }),
-          }}
-        />
         {board && (
           <script
             type="application/ld+json"

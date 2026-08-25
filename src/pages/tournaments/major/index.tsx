@@ -93,35 +93,6 @@ export default function TournamentListPage({ generationOrder, generationTitleMap
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: `大会一覧`,
-                  item: 'https://softeni-pick.com/tournaments/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: `主要大会結果`,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
       </Head>
 
       <PageLayout>

@@ -321,36 +321,6 @@ export default function PrefectureHighschoolPage({
 
       <Head>
         <script
-          title={`${prefectureName}の高校${genderLabel}ソフトテニス 全国大会成績・強豪校 | Softeni Pick`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: `高校${genderLabel}`,
-                  item: `https://softeni-pick.com/highschool/${gender}`,
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 3,
-                  name: prefectureName,
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
-        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

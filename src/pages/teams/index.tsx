@@ -8,7 +8,6 @@ import fs from 'fs';
 import path from 'path';
 
 import { GetStaticProps } from 'next';
-import Head from 'next/head';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
@@ -101,21 +100,6 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         url={pageUrl}
         type="website"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
-                { '@type': 'ListItem', position: 2, name: 'チーム一覧', item: pageUrl },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout maxWidth="4xl">
         <Breadcrumbs

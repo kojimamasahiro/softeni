@@ -1,6 +1,4 @@
 // src/pages/contact.tsx
-import Head from 'next/head';
-
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
@@ -13,31 +11,6 @@ export default function Contact() {
         description="Softeni Pickへのお問い合わせはこちらのフォームよりお願いいたします。"
         url="https://softeni-pick.com/contact/"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'お問い合わせ',
-                  item: 'https://softeni-pick.com/contact/',
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout>
         <Breadcrumbs

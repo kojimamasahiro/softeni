@@ -1,6 +1,4 @@
 // src/pages/privacy.tsx
-import Head from 'next/head';
-
 import MetaHead from '@/components/MetaHead';
 import Breadcrumbs from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
@@ -13,37 +11,12 @@ export default function PrivacyPolicy() {
         description="Softeni Pickのプライバシーポリシー。アクセス解析や広告に関する情報を掲載しています。"
         url="https://softeni-pick.com/privacy/"
       />
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: 'プライバシーポリシー',
-                  item: 'https://softeni-pick.com/privacy/',
-                },
-              ],
-            }),
-          }}
-        />
-      </Head>
 
       <PageLayout>
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: 'プライバシーポリシー', href: '/players' },
+            { label: 'プライバシーポリシー', href: '/privacy' },
           ]}
         />
 

@@ -126,29 +126,6 @@ export default function TournamentsIndexPage({ instances, prefectures, years, ge
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                {
-                  '@type': 'ListItem',
-                  position: 1,
-                  name: 'ホーム',
-                  item: 'https://softeni-pick.com/',
-                },
-                {
-                  '@type': 'ListItem',
-                  position: 2,
-                  name: '大会一覧',
-                  item: pageUrl,
-                },
-              ],
-            }),
-          }}
-        />
       </Head>
 
       <PageLayout maxWidth="4xl">

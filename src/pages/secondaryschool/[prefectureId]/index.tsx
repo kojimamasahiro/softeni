@@ -83,20 +83,6 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
             }),
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'BreadcrumbList',
-              itemListElement: [
-                { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://softeni-pick.com/' },
-                { '@type': 'ListItem', position: 2, name: '中学', item: 'https://softeni-pick.com/secondaryschool/' },
-                { '@type': 'ListItem', position: 3, name: prefecture.name, item: pageUrl },
-              ],
-            }),
-          }}
-        />
       </Head>
 
       <PageLayout maxWidth="4xl">
