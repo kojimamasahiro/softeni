@@ -50,6 +50,15 @@
     </p>
     <textarea id="advancersJson" style="height: 160px"></textarea>
 
+    <!-- キーボードショートカットヘルプボタン -->
+    <button
+      class="keyboard-help-button"
+      onclick="toggleHelp()"
+      title="キーボードショートカット (?)"
+    >
+      ?
+    </button>
+
     <script src="initialPlayer.js"></script>
     <script src="../shared/knockout-draw.js"></script>
     <script src="../shared/normalize-core.js"></script>
@@ -217,6 +226,463 @@
       }
       // ---------------------------------------
 
+      // ========================================
+      // キーボードショートカット: フォーカス管理
+      // ========================================
+      let currentFocus = {
+        group: null,
+        index: 0,
+        player: 'p1', // 'p1' or 'p2'
+      };
+      let isHelpVisible = false;
+
+      function getGroupKeys() {
+        return Object.keys(allGroupMatches);
+      }
+
+      function getMatchesForGroup(group) {
+        return allGroupMatches[group] || [];
+      }
+
+      // dir方向に、試合が1件以上あるグループのインデックスを探す（無ければ-1）
+      function findNonEmptyGroupIndex(groups, fromIdx, dir) {
+        let idx = fromIdx;
+        while (idx >= 0 && idx < groups.length) {
+          if (getMatchesForGroup(groups[idx]).length > 0) return idx;
+          idx += dir;
+        }
+        return -1;
+      }
+
+      function initFocus() {
+        const groups = getGroupKeys();
+        const idx = findNonEmptyGroupIndex(groups, 0, 1);
+        if (idx >= 0) {
+          currentFocus.group = groups[idx];
+          currentFocus.index = 0;
+          currentFocus.player = 'p1';
+        }
+      }
+
+      // フォーカスを視覚的に表示
+      function applyFocusVisuals() {
+        document.querySelectorAll('.match-result.focused').forEach((el) => {
+          el.classList.remove('focused');
+        });
+        document
+          .querySelectorAll('.player-score-row.focused')
+          .forEach((el) => {
+            el.classList.remove('focused');
+          });
+
+        if (currentFocus.group == null) return;
+        const card = document.querySelector(
+          `.match-result[data-match="${currentFocus.group}-${currentFocus.index}"]`,
+        );
+        if (card) {
+          card.classList.add('focused');
+          const row = card.querySelector(
+            `.player-score-row[data-player="${currentFocus.player}"]`,
+          );
+          if (row) row.classList.add('focused');
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+
+      function moveFocusTo(group, index, player) {
+        const matches = getMatchesForGroup(group);
+        if (index < 0 || index >= matches.length) return false;
+        currentFocus.group = group;
+        currentFocus.index = index;
+        currentFocus.player = player || 'p1';
+        applyFocusVisuals();
+        return true;
+      }
+
+      // 次の試合へ（グループ末尾なら次のグループの先頭、末端なら先頭へ循環）
+      function focusNextMatch() {
+        if (currentFocus.group == null) return;
+        const groups = getGroupKeys();
+        const gIdx = groups.indexOf(currentFocus.group);
+        const matches = getMatchesForGroup(currentFocus.group);
+        const nextIndex = currentFocus.index + 1;
+
+        if (nextIndex < matches.length) {
+          currentFocus.index = nextIndex;
+          currentFocus.player = 'p1';
+          applyFocusVisuals();
+          return;
+        }
+
+        const nextG = findNonEmptyGroupIndex(groups, gIdx + 1, 1);
+        const wrapG =
+          nextG >= 0 ? nextG : findNonEmptyGroupIndex(groups, 0, 1);
+        if (wrapG >= 0) {
+          currentFocus.group = groups[wrapG];
+          currentFocus.index = 0;
+          currentFocus.player = 'p1';
+        }
+        applyFocusVisuals();
+      }
+
+      // 前の試合へ（グループ先頭なら前のグループの末尾、先端なら末尾へ循環）
+      function focusPrevMatch() {
+        if (currentFocus.group == null) return;
+        const groups = getGroupKeys();
+        const gIdx = groups.indexOf(currentFocus.group);
+        const prevIndex = currentFocus.index - 1;
+
+        if (prevIndex >= 0) {
+          currentFocus.index = prevIndex;
+          currentFocus.player = 'p2';
+          applyFocusVisuals();
+          return;
+        }
+
+        const prevG = findNonEmptyGroupIndex(groups, gIdx - 1, -1);
+        const wrapG =
+          prevG >= 0
+            ? prevG
+            : findNonEmptyGroupIndex(groups, groups.length - 1, -1);
+        if (wrapG >= 0) {
+          const matches = getMatchesForGroup(groups[wrapG]);
+          currentFocus.group = groups[wrapG];
+          currentFocus.index = matches.length - 1;
+          currentFocus.player = 'p2';
+        }
+        applyFocusVisuals();
+      }
+
+      // 次の選手にフォーカス（Tab）
+      function focusNextPlayer() {
+        if (currentFocus.player === 'p1') {
+          currentFocus.player = 'p2';
+          applyFocusVisuals();
+        } else {
+          focusNextMatch();
+        }
+      }
+
+      // 前の選手にフォーカス（Shift+Tab）
+      function focusPrevPlayer() {
+        if (currentFocus.player === 'p2') {
+          currentFocus.player = 'p1';
+          applyFocusVisuals();
+        } else {
+          focusPrevMatch();
+        }
+      }
+
+      function focusMatchUp() {
+        if (currentFocus.group == null) return;
+        moveFocusTo(
+          currentFocus.group,
+          currentFocus.index - 1,
+          currentFocus.player,
+        );
+      }
+
+      function focusMatchDown() {
+        if (currentFocus.group == null) return;
+        moveFocusTo(
+          currentFocus.group,
+          currentFocus.index + 1,
+          currentFocus.player,
+        );
+      }
+
+      function focusPlayerLeft() {
+        currentFocus.player = 'p1';
+        applyFocusVisuals();
+      }
+
+      function focusPlayerRight() {
+        currentFocus.player = 'p2';
+        applyFocusVisuals();
+      }
+
+      function focusGroupPrev() {
+        const groups = getGroupKeys();
+        const gIdx = groups.indexOf(currentFocus.group);
+        const prevG = findNonEmptyGroupIndex(groups, gIdx - 1, -1);
+        if (prevG >= 0) moveFocusTo(groups[prevG], 0, 'p1');
+      }
+
+      function focusGroupNext() {
+        const groups = getGroupKeys();
+        const gIdx = groups.indexOf(currentFocus.group);
+        const nextG = findNonEmptyGroupIndex(groups, gIdx + 1, 1);
+        if (nextG >= 0) moveFocusTo(groups[nextG], 0, 'p1');
+      }
+
+      function focusFirstMatch() {
+        const groups = getGroupKeys();
+        const idx = findNonEmptyGroupIndex(groups, 0, 1);
+        if (idx >= 0) moveFocusTo(groups[idx], 0, 'p1');
+      }
+
+      function focusLastMatch() {
+        const groups = getGroupKeys();
+        const idx = findNonEmptyGroupIndex(groups, groups.length - 1, -1);
+        if (idx >= 0) {
+          const matches = getMatchesForGroup(groups[idx]);
+          moveFocusTo(groups[idx], matches.length - 1, 'p1');
+        }
+      }
+
+      // 現在フォーカス中の選手にスコアを設定
+      function setScoreForFocusedPlayer(score) {
+        if (currentFocus.group == null) return;
+        applyScore(
+          currentFocus.group,
+          currentFocus.index,
+          currentFocus.player,
+          score,
+        );
+        focusNextMatch();
+      }
+
+      // 現在フォーカス中の選手をリタイアにする
+      function retireFocusedPlayer() {
+        if (currentFocus.group == null) return;
+        applyRetire(currentFocus.group, currentFocus.index, currentFocus.player);
+        focusNextMatch();
+      }
+
+      // ヘルプパネルの表示/非表示
+      function toggleHelp() {
+        isHelpVisible = !isHelpVisible;
+        renderHelpPanel();
+      }
+
+      function renderHelpPanel() {
+        let existingOverlay = document.querySelector('.keyboard-help-overlay');
+        if (existingOverlay) existingOverlay.remove();
+
+        if (!isHelpVisible) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'keyboard-help-overlay';
+
+        const panel = document.createElement('div');
+        panel.className = 'keyboard-help-panel';
+
+        panel.innerHTML = `
+        <h2>キーボードショートカット</h2>
+
+        <div class="keyboard-help-section">
+          <h3>スコア入力</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">1 - 6</div>
+            <div class="keyboard-help-description">スコアを設定（1→0点、2→1点、3→2点、4→3点、5→4点、6→5点）</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">R</div>
+            <div class="keyboard-help-description">選択中の選手をリタイア扱いにする</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Tab</div>
+            <div class="keyboard-help-description">次の選手へ移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Shift + Tab</div>
+            <div class="keyboard-help-description">前の選手へ移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Enter</div>
+            <div class="keyboard-help-description">次の試合へ移動</div>
+          </div>
+        </div>
+
+        <div class="keyboard-help-section">
+          <h3>ナビゲーション</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">I / M</div>
+            <div class="keyboard-help-description">同じグループ内で試合を上下に移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">J / K</div>
+            <div class="keyboard-help-description">同じ試合内で選手を切り替え</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">PageUp / PageDown</div>
+            <div class="keyboard-help-description">グループ間を移動</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Home</div>
+            <div class="keyboard-help-description">最初の試合へジャンプ</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">End</div>
+            <div class="keyboard-help-description">最後の試合へジャンプ</div>
+          </div>
+        </div>
+
+        <div class="keyboard-help-section">
+          <h3>その他</h3>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">?</div>
+            <div class="keyboard-help-description">このヘルプを表示/非表示</div>
+          </div>
+          <div class="keyboard-help-item">
+            <div class="keyboard-help-key">Esc</div>
+            <div class="keyboard-help-description">ヘルプを閉じる</div>
+          </div>
+        </div>
+
+        <button class="keyboard-help-close">閉じる</button>
+      `;
+
+        overlay.appendChild(panel);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', (e) => {
+          if (
+            e.target === overlay ||
+            e.target.classList.contains('keyboard-help-close')
+          ) {
+            isHelpVisible = false;
+            renderHelpPanel();
+          }
+        });
+      }
+
+      // グローバルキーボードイベントリスナー
+      document.addEventListener('keydown', (e) => {
+        // 入力フィールドにフォーカスがある場合は無視
+        const activeElement = document.activeElement;
+        const isInputFocused =
+          activeElement.tagName === 'INPUT' ||
+          activeElement.tagName === 'TEXTAREA' ||
+          activeElement.isContentEditable;
+
+        // ヘルプ表示中はEscで閉じる
+        if (isHelpVisible && e.key === 'Escape') {
+          e.preventDefault();
+          isHelpVisible = false;
+          renderHelpPanel();
+          return;
+        }
+
+        // 通常の入力フィールドにフォーカスがある場合は、?とEsc以外は無視
+        if (isInputFocused && e.key !== '?' && e.key !== 'Escape') {
+          return;
+        }
+
+        // ? キーでヘルプ
+        if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+          e.preventDefault();
+          toggleHelp();
+          return;
+        }
+
+        // ヘルプ表示中はショートカットを無効化
+        if (isHelpVisible) return;
+
+        // 数字キー（1-6）でスコア入力（1→0点、2→1点、3→2点、4→3点、5→4点、6→5点）
+        if (
+          e.key >= '1' &&
+          e.key <= '6' &&
+          !e.shiftKey &&
+          !e.ctrlKey &&
+          !e.metaKey &&
+          !e.altKey
+        ) {
+          e.preventDefault();
+          setScoreForFocusedPlayer(Number(e.key) - 1);
+          return;
+        }
+
+        // Rキーでリタイア（Cmd/Ctrl+Rはブラウザのリロードを優先）
+        if ((e.key === 'r' || e.key === 'R') && !e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+          retireFocusedPlayer();
+          return;
+        }
+
+        // Tabキーで次の選手へ
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          if (e.shiftKey) {
+            focusPrevPlayer();
+          } else {
+            focusNextPlayer();
+          }
+          return;
+        }
+
+        // Enterキーで次の試合へ
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          focusNextMatch();
+          return;
+        }
+
+        // I/M/J/K キーでナビゲーション
+        if (e.key === 'i' || e.key === 'I' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          focusMatchUp();
+          return;
+        }
+
+        if (e.key === 'm' || e.key === 'M' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          focusMatchDown();
+          return;
+        }
+
+        if (e.key === 'j' || e.key === 'J' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          focusPlayerLeft();
+          return;
+        }
+
+        if (e.key === 'k' || e.key === 'K' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          focusPlayerRight();
+          return;
+        }
+
+        // PageUp/PageDownでグループ移動
+        if (e.key === 'PageUp') {
+          e.preventDefault();
+          focusGroupPrev();
+          return;
+        }
+
+        if (e.key === 'PageDown') {
+          e.preventDefault();
+          focusGroupNext();
+          return;
+        }
+
+        // Home/Endで最初/最後の試合へ
+        if (e.key === 'Home') {
+          e.preventDefault();
+          focusFirstMatch();
+          return;
+        }
+
+        if (e.key === 'End') {
+          e.preventDefault();
+          focusLastMatch();
+          return;
+        }
+
+        // Escapeでヘルプを閉じる
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          if (isHelpVisible) {
+            isHelpVisible = false;
+            renderHelpPanel();
+          }
+          return;
+        }
+      });
+      // ========================================
+      // キーボードショートカット機能ここまで
+      // ========================================
+
       // 1. 最初に matchesDiv に1回だけイベントを仕込む
       let eventRegistered = false;
 
@@ -266,12 +732,48 @@
         const p2Name = getDisplayName(match.p2);
 
         return `
-            <strong>試合 ${i + 1}</strong><br />
-            <div>${p1Name} vs ${p2Name}</div>
-            <div>${renderButtons('p1')} <span>← ${p1Name}</span></div>
-            <div>${renderButtons('p2')} <span>← ${p2Name}</span></div>
+            <strong>試合 ${i + 1}</strong>
+            <div class="score-container">
+              <div class="player-score-row" data-player="p1">
+                <span class="player-name">${p1Name}</span>
+                <div class="score-set">${renderButtons('p1')}</div>
+              </div>
+              <div class="player-score-row" data-player="p2">
+                <span class="player-name">${p2Name}</span>
+                <div class="score-set">${renderButtons('p2')}</div>
+              </div>
+            </div>
             <div>勝者: <span id='winner-${matchId}'>${match.winner === match.p1.id ? p1Name : match.winner === match.p2.id ? p2Name : '未定'}</span></div>
             `;
+      }
+
+      // マッチカードのDOMを再描画（フォーカス済みのcard自体のクラスは維持される）
+      function rerenderMatch(group, idx, match) {
+        const matchDiv = document.querySelector(
+          `.match-result[data-match="${group}-${idx}"]`,
+        );
+        if (matchDiv) matchDiv.innerHTML = renderMatchHtml(match, idx);
+      }
+
+      function applyScore(group, idx, side, score) {
+        const match = allGroupMatches[group] && allGroupMatches[group][idx];
+        if (!match) return;
+        match.scores[side] = score;
+        updateWinner(match);
+        rerenderMatch(group, idx, match);
+        updateJsonOutput();
+      }
+
+      function applyRetire(group, idx, side) {
+        const match = allGroupMatches[group] && allGroupMatches[group][idx];
+        if (!match) return;
+        const opponent = side === 'p1' ? 'p2' : 'p1';
+        match[side].retired = true;
+        match.scores[side] = 0;
+        match.scores[opponent] = initScore;
+        match.winner = match[opponent].id;
+        rerenderMatch(group, idx, match);
+        updateJsonOutput();
       }
 
       function handleScoreClick(e) {
@@ -279,27 +781,12 @@
         if (!target.dataset.match) return;
 
         const [group, idx] = target.dataset.match.split('-');
-        const match = allGroupMatches[group][parseInt(idx)];
-        const matchDiv = document.querySelector(
-          `.match-result[data-match="${group}-${idx}"]`,
-        );
+        const i = parseInt(idx);
 
         if (target.classList.contains('score-button')) {
-          const player = target.dataset.player;
-          const score = parseInt(target.dataset.score);
-          match.scores[player] = score;
-          updateWinner(match);
-          matchDiv.innerHTML = renderMatchHtml(match, idx);
-          updateJsonOutput();
+          applyScore(group, i, target.dataset.player, parseInt(target.dataset.score));
         } else if (target.classList.contains('retire-button')) {
-          const player = target.dataset.player;
-          const opponent = player === 'p1' ? 'p2' : 'p1';
-          match[player].retired = true;
-          match.scores[player] = 0;
-          match.scores[opponent] = initScore;
-          match.winner = match[opponent].id;
-          matchDiv.innerHTML = renderMatchHtml(match, idx);
-          updateJsonOutput();
+          applyRetire(group, i, target.dataset.player);
         }
       }
 
@@ -691,6 +1178,8 @@
       });
 
       displayMatches();
+      initFocus();
+      applyFocusVisuals();
       // 開催前（スコア未入力）でも entries/participants JSON を即座に見せる。
       updateJsonOutput();
     </script>
