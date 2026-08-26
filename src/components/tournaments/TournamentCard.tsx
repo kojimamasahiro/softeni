@@ -15,6 +15,16 @@ export type YearGroup = {
   year: number;
   links: CategoryLink[];
   externalResultUrl?: string | null;
+  /**
+   * まだ結果が無い年度に出す一言（例: 開催予定 2026年9月18日〜9月23日 愛知県）。
+   * 結果リンクが1つも無い年度でも、大会が一覧から消えないようにするために使う。
+   */
+  upcomingNote?: string | null;
+  /**
+   * 結果が `data/tournaments/details/` ではなくサイト内の特集ページにある場合の内部URL
+   * （STリーグ → `/st-league/2025/matches/`）。カテゴリチップの代わりに1本リンクを出す。
+   */
+  internalResultHref?: string | null;
 };
 
 export type TournamentBlock = {
@@ -65,6 +75,12 @@ export const TournamentCard = ({ tournament }: Props) => {
                 </a>
               )}
             </div>
+            {group.upcomingNote && <p className="text-sm text-text-secondary">{group.upcomingNote}</p>}
+            {group.internalResultHref && (
+              <Link href={group.internalResultHref} className="text-sm text-link hover:underline">
+                結果・順位表を見る →
+              </Link>
+            )}
             {group.links.length > 0 && (
               <ul className="flex flex-wrap gap-2">
                 {group.links.map((link) => (
