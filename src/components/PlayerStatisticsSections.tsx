@@ -1,7 +1,9 @@
 // src/components/PlayerStatisticsSections.tsx
 // results.tsx の「スタッツ」セクションのうち、<details>「詳細を見る」で畳む深掘り層。
-// SectionCard（h3）を7枚並べる: 対戦成績（全パートナー・全年度）/ 戦績ハイライト /
-// 年度別ランキング推移 / 大会別成績 / 対戦相手との通算成績（H2H）/ 所属別成績 / キャリア年表。
+// SectionCard（h3）を6枚並べる: 対戦成績（全パートナー・全年度）/ 戦績ハイライト /
+// 年度別ランキング推移 / 大会別成績 / 対戦相手との通算成績（H2H）/ 所属別成績。
+// キャリア年表（CareerTimeline）はこのコンポーネントからexportし、results.tsx側で
+// <details>の外＝常時表示として単独描画する（2026-08-26）。
 // 常時表示のチップ（PlayerSummaryStats.tsx）とは対になる関係で、自前の <h2> は持たない。
 // データはすべてビルド時前計算（getStaticProps → facade。対戦成績のみ toSummaryStats 経由）。
 // ランタイム集計なし。
@@ -48,10 +50,22 @@ const TIMELINE_KIND_LABEL: Record<string, string> = {
   'season-best': 'シーズン',
 };
 
-function SectionCard({ title, note, children }: { title: string; note?: string; children: React.ReactNode }) {
+function SectionCard({
+  title,
+  note,
+  titleClassName = 'mb-1 text-lg font-bold text-text',
+  children,
+}: {
+  title: string;
+  note?: string;
+  /** 見出しの文字サイズ等を上書きしたい場合に指定（例: CareerTimeline は
+   * PlayerMajorResults.tsx の見出しとサイズを揃えるため小さめを指定）。 */
+  titleClassName?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="mb-6 rounded-xl border border-border bg-surface p-4 shadow-sm">
-      <h3 className="mb-1 text-lg font-bold text-text">{title}</h3>
+      <h3 className={titleClassName}>{title}</h3>
       {note && <p className="mb-3 text-xs text-text-muted">{note}</p>}
       {children}
     </div>
@@ -410,21 +424,58 @@ function TeamTable({ rows }: { rows: TeamRow[] }) {
   );
 }
 
-function CareerTimeline({ events }: { events: TimelineEvent[] }) {
-  if (events.length === 0) return null;
-  const shown = events.slice(0, 30);
+const CAREER_TIMELINE_VISIBLE_COUNT = 3;
+const CAREER_TIMELINE_MAX_TOTAL = 30;
+
+function CareerTimelineItem({ event }: { event: TimelineEvent }) {
   return (
-    <SectionCard title="キャリア年表" note="収録大会から自動生成した主な出来事です。">
+    <li className="flex items-baseline gap-2 text-sm">
+      <span className="w-16 shrink-0 text-xs font-semibold text-text-muted">{event.year}年度</span>
+      <span className="shrink-0 rounded bg-bg-subtle px-1.5 py-0.5 text-xs text-text-secondary">{TIMELINE_KIND_LABEL[event.kind] ?? event.kind}</span>
+      <span className="text-gray-800 dark:text-gray-200">{event.label}</span>
+    </li>
+  );
+}
+
+// aggregateCareerTimeline（lib/playerStats/aggregators/careerTimeline.ts）は年の昇順
+// （古い→新しい）で返す。ここでは「直近」を優先表示したいので新しい→古いに反転する。
+export function CareerTimeline({ events }: { events: TimelineEvent[] }) {
+  if (events.length === 0) return null;
+  const sorted = [...events].reverse();
+  const capped = sorted.slice(0, CAREER_TIMELINE_MAX_TOTAL);
+  const recent = capped.slice(0, CAREER_TIMELINE_VISIBLE_COUNT);
+  const rest = capped.slice(CAREER_TIMELINE_VISIBLE_COUNT);
+  const omitted = sorted.length - capped.length;
+  return (
+    <SectionCard
+      title="キャリア年表"
+      note="収録大会から自動生成した主な出来事です。直近のものから表示しています。"
+      titleClassName="mb-2 text-xs font-bold tracking-wide text-text-secondary"
+    >
       <ol className="space-y-1.5">
-        {shown.map((e, i) => (
-          <li key={`${e.year}-${e.kind}-${i}`} className="flex items-baseline gap-2 text-sm">
-            <span className="w-16 shrink-0 text-xs font-semibold text-text-muted">{e.year}年度</span>
-            <span className="shrink-0 rounded bg-bg-subtle px-1.5 py-0.5 text-xs text-text-secondary">{TIMELINE_KIND_LABEL[e.kind] ?? e.kind}</span>
-            <span className="text-gray-800 dark:text-gray-200">{e.label}</span>
-          </li>
+        {recent.map((e, i) => (
+          <CareerTimelineItem key={`${e.year}-${e.kind}-${i}`} event={e} />
         ))}
-        {events.length > shown.length && <li className="text-xs text-text-muted">ほか{events.length - shown.length}件</li>}
       </ol>
+      {rest.length > 0 && (
+        <details className="group mt-1.5">
+          <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 text-xs text-text-secondary hover:text-text">
+            もっと見る（{rest.length}件）
+            <span aria-hidden className="text-text-muted group-open:hidden">
+              ▼
+            </span>
+            <span aria-hidden className="hidden text-text-muted group-open:inline">
+              ▲
+            </span>
+          </summary>
+          <ol className="mt-1.5 space-y-1.5">
+            {rest.map((e, i) => (
+              <CareerTimelineItem key={`${e.year}-${e.kind}-${i}`} event={e} />
+            ))}
+            {omitted > 0 && <li className="text-xs text-text-muted">ほか{omitted}件</li>}
+          </ol>
+        </details>
+      )}
     </SectionCard>
   );
 }
@@ -449,7 +500,6 @@ export default function PlayerStatisticsSections({ stats, linkablePlayerIds = []
       <TournamentTable rows={stats.byTournament} generationMap={tournamentGenerationMap} />
       <HeadToHeadTable rows={stats.headToHead} linkable={linkable} />
       <TeamTable rows={stats.byTeam} />
-      <CareerTimeline events={stats.careerTimeline} />
     </div>
   );
 }

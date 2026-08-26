@@ -9,7 +9,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
-import PlayerStatisticsSections from '@/components/PlayerStatisticsSections';
+import PlayerStatisticsSections, { CareerTimeline } from '@/components/PlayerStatisticsSections';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PlayerUpcomingInternational from '@/components/PlayerUpcomingInternational';
 import PageLayout from '@/components/PageLayout';
@@ -227,6 +227,11 @@ export default function PlayerResultsPage({
             {summarySentence}
             出場大会や成績、主な勝ち上がり情報を掲載しています。
           </p>
+          {/* キャリア年表は選手の経歴を俯瞰する年表であり、折りたたむと見落とされやすいため
+              常時表示にし、主要大会タイルより上に置く（2026-08-26）。直近3件のみ既定表示、
+              残りは <details> で展開（CareerTimeline コンポーネント側で制御）。 */}
+          {playerStatistics && <CareerTimeline events={playerStatistics.careerTimeline} />}
+
           {/* 主要大会の最高成績タイル（該当者のみ）。h1 直下ではなくリード文の直後に置く
               （2026-07-20 決定。文章の流れを保ちつつファーストビューには収まる位置）。
               カテゴリ別のベスト8以上、文言は通称 literal（インターハイ 等）。 */}
@@ -249,10 +254,11 @@ export default function PlayerResultsPage({
         {/* スタッツ（チップ＋詳細）は見出しを持たせず、旧・主要タイトルの位置にそのまま置く
             （2026-08-07: 主要タイトルは大会結果の中へ移設したため、その入れ替わりで
             スタッツの「h2 スタッツ」も撤去し見出し無しの平置きにした。試合ファクト由来の
-            集計という性質は変わらない: 常時表示はチップ（主なペア・直近年度）に絞り、
-            6ブロック（対戦成績（全パートナー・全年度）・戦績ハイライト・
-            年度別ランキング推移・大会別成績・H2H・所属別成績・キャリア年表）は
-            ページ長の大半を占めるため段階的開示（P3）で<details>「詳細を見る」に畳む）。 */}
+            集計という性質は変わらない: 常時表示はチップ（主なペア・直近年度）に絞り（キャリア年表は
+            2026-08-26 にヘッダー側・主要大会タイルの上へ移設済み）、残り6ブロック
+            （対戦成績（全パートナー・全年度）・戦績ハイライト・年度別ランキング推移・
+            大会別成績・H2H・所属別成績）はページ長の大半を占めるため段階的開示（P3）で
+            <details>「詳細を見る」に畳む）。 */}
         <section>
           {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}
 
