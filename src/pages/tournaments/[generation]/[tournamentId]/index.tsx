@@ -188,12 +188,35 @@ export default function TournamentHubPage({
   // 行見出し自体は性別のみ（例: 男子/女子）にして、グループ見出しと種目名が重複しないようにする。
   const championTable = (() => {
     const years = [...new Set(championRows.map((r) => r.year))].sort((a, b) => Number(b) - Number(a));
-    const rows = championCategoryGroups.map((group) => ({
-      categoryLabel: group.categoryLabel,
-      rowLabel: genderShortLabel(group.gender) ?? group.categoryLabel,
-      category: group.category,
-      cellsByYear: new Map(group.winners.map((r) => [r.year, r] as const)),
-    }));
+
+    // 短縮ラベル（男子/女子/混合）が同じグループ見出しの中で衝突するなら、そのグループは
+    // フルの種目名を使う。年齢区分のある大会（全日本社会人の 一般男子 / 男子35歳 / 男子45歳、
+    // 全日本シニアの各年齢など）は短縮すると「男子」が何行も並んで区別がつかなくなる
+    // （2026-08-26 修正。それまで一般・35歳・45歳がすべて「男子」で表示されていた）。
+    // 判定はグループ見出し（doubles/team/singles）ごとに行い、同じ見出しの中では
+    // 短縮とフルが混ざらないようにする。
+    const shortLabelCount = new Map<string, number>();
+    for (const group of championCategoryGroups) {
+      const short = genderShortLabel(group.gender);
+      if (!short) continue;
+      const key = `${group.category ?? ''}\t${short}`;
+      shortLabelCount.set(key, (shortLabelCount.get(key) ?? 0) + 1);
+    }
+    const categoryNeedsFullLabel = new Set<string>();
+    for (const [key, count] of shortLabelCount) {
+      if (count > 1) categoryNeedsFullLabel.add(key.split('\t')[0]);
+    }
+
+    const rows = championCategoryGroups.map((group) => {
+      const short = genderShortLabel(group.gender);
+      const useShort = short !== null && !categoryNeedsFullLabel.has(group.category ?? '');
+      return {
+        categoryLabel: group.categoryLabel,
+        rowLabel: useShort ? short : group.categoryLabel,
+        category: group.category,
+        cellsByYear: new Map(group.winners.map((r) => [r.year, r] as const)),
+      };
+    });
     return { years, rows };
   })();
 
