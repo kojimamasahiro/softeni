@@ -11,6 +11,7 @@ import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
 import PlayerStatisticsSections from '@/components/PlayerStatisticsSections';
 import PlayerSummaryStats from '@/components/PlayerSummaryStats';
+import PlayerUpcomingInternational from '@/components/PlayerUpcomingInternational';
 import PageLayout from '@/components/PageLayout';
 import { AD_SLOTS } from '@/lib/ads';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
@@ -18,6 +19,7 @@ import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitle
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
+import { buildUpcomingInternationalLinks, type UpcomingInternationalLink } from '@/lib/upcomingInternational';
 import { lookupPriorMeeting } from '@/lib/priorMeetings';
 import { getAllDetailRecords, loadInformationMap, loadNationalTournamentIds, loadTournamentIndex } from '@/lib/tournamentData';
 import { MatchResult } from '@/types/common';
@@ -46,6 +48,9 @@ type PlayerResultsProps = {
   scoreMatchLinks?: ScoreMatchLink[];
   // ショーケース対象（data/growth-featured.json）の場合の成長記録ページ slug。なければ null。
   growthShowcaseSlug?: string | null;
+  // これから開催される国際大会（その予選会に出場している場合のみ）。
+  // docs/wiki/upcoming-tournaments-runbook.md S1。
+  upcomingInternational?: UpcomingInternationalLink[];
   // SEO: 収録試合が薄く全国高校大会出場もない選手ページは noindex にする（インデックス枠の集中）。
   noindex?: boolean;
 };
@@ -68,6 +73,7 @@ export default function PlayerResultsPage({
   allPlayers,
   scoreMatchLinks = [],
   growthShowcaseSlug = null,
+  upcomingInternational = [],
   noindex = false,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
@@ -301,8 +307,11 @@ export default function PlayerResultsPage({
 
         {/* 他機能への導線（集計でも試合結果の生データでもない第3カテゴリ）。
             該当者のみ・畳まずコンパクトに表示する（2026-08-07 決定）。 */}
-        {(scoreMatchLinks.length > 0 || growthShowcaseSlug) && (
+        {(upcomingInternational.length > 0 || scoreMatchLinks.length > 0 || growthShowcaseSlug) && (
           <div className="space-y-3">
+            {/* 会期という締切があるので、この並びの先頭に置く */}
+            <PlayerUpcomingInternational fullName={fullName} links={upcomingInternational} />
+
             {scoreMatchLinks.length > 0 && (
               <section className="rounded-lg border border-success-border bg-success-bg p-4">
                 <h2 className="mb-2 text-base font-bold text-success">スコア詳細のある試合</h2>
@@ -1125,6 +1134,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
       scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
       growthShowcaseSlug,
+      // これから開催される国際大会。予選会に出場していて、かつ本大会に会期が
+      // 終わっていない開催情報があるときだけ入る（docs/wiki/upcoming-tournaments-runbook.md S1）。
+      // 「今日」は lib/highschoolInProgress.ts と同じくビルド時刻を使う（静的書き出しのため）。
+      upcomingInternational: buildUpcomingInternationalLinks({
+        playerTournaments,
+        tournamentIndex,
+        informationMap,
+        today: new Date().toISOString().slice(0, 10),
+      }),
     },
   };
 };

@@ -8,8 +8,9 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import UpcomingTournaments, { type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
-import { getAllDetailRecords, loadInformationMap } from '@/lib/tournamentData';
+import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
 const SITE_URL = 'https://softeni-pick.com';
@@ -25,9 +26,11 @@ interface RecentTournament {
 
 interface HomeProps {
   recentTournaments: RecentTournament[];
+  // 「これから開催」の候補。会期の判定は描画側（docs/wiki/upcoming-tournaments-runbook.md S3）。
+  upcomingTournaments: UpcomingTournamentItem[];
 }
 
-export default function Home({ recentTournaments }: HomeProps) {
+export default function Home({ recentTournaments, upcomingTournaments }: HomeProps) {
   const jsonLd = [
     {
       '@context': 'https://schema.org',
@@ -105,6 +108,13 @@ export default function Home({ recentTournaments }: HomeProps) {
               <h3 className="text-xl font-bold mb-1">STリーグ</h3>
               <p className="text-text-secondary text-sm">ソフトテニス実業団最高峰の戦い</p>
             </Link>
+          </section>
+
+          {/* これから開催（未来形）。すぐ下の「最近追加された大会」が過去形なので対にする。
+              トップページには広告のファーストビュー枠が無いため、大会一覧のような
+              件数の制約は無い（docs/wiki/monetization.md のファーストビュー枠は5面でトップは非対象）。 */}
+          <section className="max-w-4xl mx-auto mb-8 px-4">
+            <UpcomingTournaments items={upcomingTournaments} limit={5} headingId="top-upcoming-tournaments" />
           </section>
 
           {/* 最近追加された大会（カード形式） */}
@@ -326,9 +336,36 @@ export async function getStaticProps() {
     .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
     .slice(0, 4);
 
+  // --- これから開催 ---
+  // 会期が終わっていない information を候補として全部渡し、絞り込みと件数は描画側に任せる
+  // （「今日」を描画時に評価するので、再ビルドしなくても終わった大会が消える）。
+  const tournamentIndex = await loadTournamentIndex();
+  const generationById = new Map(tournamentIndex.map((t) => [t.tournamentId, t.generationId]));
+  const buildDate = new Date().toISOString().slice(0, 10);
+
+  const upcomingTournaments: UpcomingTournamentItem[] = [];
+  for (const [tournamentId, infos] of infoMap) {
+    for (const info of infos) {
+      if (!info.startDate || !info.endDate || info.endDate < buildDate) continue;
+      const generationId = generationById.get(tournamentId);
+      if (!generationId) continue;
+      upcomingTournaments.push({
+        tournamentId,
+        year: info.year,
+        label: info.label || tournamentId,
+        startDate: info.startDate,
+        endDate: info.endDate,
+        location: info.location ?? '',
+        href: getTournamentHubHref(generationId, tournamentId),
+      });
+    }
+  }
+  upcomingTournaments.sort((a, b) => a.startDate.localeCompare(b.startDate));
+
   return {
     props: {
       recentTournaments: tournaments,
+      upcomingTournaments,
     },
   };
 }

@@ -305,7 +305,7 @@
       "kind": "school",
       "prefecture": "東京都",
       "prefectureId": "tokyo",
-      "count": 88,
+      "count": 92,
       "years": [
         2021,
         2022,
@@ -848,12 +848,42 @@
           "tournamentLabel": "全国中学校体育大会",
           "short": "全中",
           "year": 2024,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": [
+            "野田 悠貴",
+            "林田 遼太郎"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2024,
           "categoryId": "team-none-boys",
           "category": "team",
           "gender": "boys",
           "label": "優勝",
           "score": 6,
           "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校体育大会",
+          "short": "全中",
+          "year": 2024,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "小沼 優希",
+            "宇田川 成寿"
+          ]
         },
         {
           "tournamentId": "secondaryschool-championship",
@@ -1214,6 +1244,7 @@
           "name": "宇田川 成寿",
           "years": [
             2023,
+            2024,
             2025
           ]
         },
@@ -1243,13 +1274,28 @@
           ]
         },
         {
-          "name": "伊藤 陽聖",
+          "name": "小沼 優希",
           "years": [
-            2023
+            2023,
+            2024
           ]
         },
         {
-          "name": "小沼 優希",
+          "name": "野田 悠貴",
+          "years": [
+            2023,
+            2024
+          ]
+        },
+        {
+          "name": "林田 遼太郎",
+          "years": [
+            2023,
+            2024
+          ]
+        },
+        {
+          "name": "伊藤 陽聖",
           "years": [
             2023
           ]
@@ -1259,18 +1305,6 @@
           "years": [
             2021,
             2022,
-            2023
-          ]
-        },
-        {
-          "name": "野田 悠貴",
-          "years": [
-            2023
-          ]
-        },
-        {
-          "name": "林田 遼太郎",
-          "years": [
             2023
           ]
         },

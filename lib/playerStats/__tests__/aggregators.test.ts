@@ -128,6 +128,15 @@ test('reachRates: 分母はノックアウト個人戦のみ（リーグ・団�
   assert.strictEqual(rr.semifinalReachRate, 1);
 });
 
+test('reachRates: 結果が確定していない出場（placement=unknown）は分母外', () => {
+  // 組み合わせだけ投入した開催前の大会。knockout の試合には出ているので
+  // isKnockoutSinglesDoublesMixed は true になるが、結果が無いので分母に入れない。
+  const entries = [entry({ placement: { kind: 'winner' }, reachedFinal: true, reachedSemifinal: true }), entry({ placement: { kind: 'unknown' } })];
+  const rr = aggregateReachRates(facts([], entries));
+  assert.strictEqual(rr.denominator, 1);
+  assert.strictEqual(rr.finalReachRate, 1);
+});
+
 test('headToHead: 対個人（doubles は相手2名それぞれに計上）', () => {
   const f = facts([
     match({

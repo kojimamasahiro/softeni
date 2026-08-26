@@ -53,6 +53,36 @@ export function buildEventPlace(venueName?: string | null, addressRegion?: strin
   };
 }
 
+/**
+ * `information` の `venues[]` から Place を作る。上の `buildEventPlace` と違い、
+ * **実際の住所・郵便番号を持つ**（要項PDF由来。docs/wiki/data-model.md「大会の会場データ」）。
+ *
+ * `buildEventPlace` が addressCountry だけなのは「詳細住所を持たない」前提で書かれたためで、
+ * `venues` が入っている大会ではその前提が崩れている。会場データがある場合はこちらを使う。
+ * 会場が複数ある大会は先頭（主会場）を使う。Place を配列にすると Google が
+ * location を解釈できないため。
+ */
+export function buildEventPlaceFromVenue(venue: {
+  name?: string | null;
+  address?: string | null;
+  postalCode?: string | null;
+  city?: string | null;
+  prefecture?: string | null;
+}) {
+  return {
+    '@type': 'Place',
+    ...(venue.name ? { name: venue.name } : {}),
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'JP',
+      ...(venue.prefecture ? { addressRegion: venue.prefecture } : {}),
+      ...(venue.city ? { addressLocality: venue.city } : {}),
+      ...(venue.address ? { streetAddress: venue.address } : {}),
+      ...(venue.postalCode ? { postalCode: venue.postalCode } : {}),
+    },
+  };
+}
+
 /** url 付きの Organization を作る（既定は Softeni Pick）。 */
 export function buildEventOrganizer(name: string = siteConfig.siteName, url: string = siteConfig.baseUrl) {
   return {

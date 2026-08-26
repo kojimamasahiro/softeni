@@ -60,41 +60,71 @@
   "entries": [
     {
       "entryNo": 1,
-      "playerIds": ["上松_俊貴_NTT西日本_広島県"],
+      "playerIds": [
+        "上松_俊貴_NTT西日本_広島県"
+      ],
       "type": null
     },
     {
       "entryNo": 8,
-      "playerIds": ["黒坂_卓矢_日本体育大学_日本学連"],
+      "playerIds": [
+        "黒坂_卓矢_日本体育大学_日本学連"
+      ],
       "type": null
     },
-    { "entryNo": 19, "playerIds": ["丸山_海斗_one team_大阪府"], "type": null },
+    {
+      "entryNo": 19,
+      "playerIds": [
+        "丸山_海斗_one team_大阪府"
+      ],
+      "type": null
+    },
     {
       "entryNo": 25,
-      "playerIds": ["長江_光一_NTT西日本_広島県"],
+      "playerIds": [
+        "長江_光一_NTT西日本_広島県"
+      ],
       "type": null
     },
     {
       "entryNo": 26,
-      "playerIds": ["植田_璃音_高田商_奈良県"],
+      "playerIds": [
+        "植田_璃音_高田商_奈良県"
+      ],
       "type": null
     },
     {
       "entryNo": 38,
-      "playerIds": ["広岡_宙_NTT西日本_広島県"],
+      "playerIds": [
+        "広岡_宙_NTT西日本_広島県"
+      ],
       "type": null
     },
     {
       "entryNo": 44,
-      "playerIds": ["矢野_颯人_NTT西日本_広島県"],
+      "playerIds": [
+        "矢野_颯人_NTT西日本_広島県"
+      ],
       "type": null
     },
-    { "entryNo": 45, "playerIds": ["上岡_俊介_Up Rise_京都府"], "type": null }
+    {
+      "entryNo": 45,
+      "playerIds": [
+        "上岡_俊介_Up Rise_京都府"
+      ],
+      "type": null
+    }
   ],
   "matches": [
     {
-      "entries": [1, 8],
-      "scores": { "1": 4, "8": 2 },
+      "entries": [
+        1,
+        8
+      ],
+      "scores": {
+        "1": 4,
+        "8": 2
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -105,8 +135,14 @@
       "matchId": "match-1"
     },
     {
-      "entries": [1, 19],
-      "scores": { "1": 4, "19": 0 },
+      "entries": [
+        1,
+        19
+      ],
+      "scores": {
+        "1": 4,
+        "19": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -117,8 +153,14 @@
       "matchId": "match-2"
     },
     {
-      "entries": [1, 25],
-      "scores": { "1": 4, "25": 1 },
+      "entries": [
+        1,
+        25
+      ],
+      "scores": {
+        "1": 4,
+        "25": 1
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -129,8 +171,14 @@
       "matchId": "match-3"
     },
     {
-      "entries": [8, 19],
-      "scores": { "8": 3, "19": 4 },
+      "entries": [
+        8,
+        19
+      ],
+      "scores": {
+        "8": 3,
+        "19": 4
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -141,8 +189,14 @@
       "matchId": "match-4"
     },
     {
-      "entries": [8, 25],
-      "scores": { "8": 4, "25": 0 },
+      "entries": [
+        8,
+        25
+      ],
+      "scores": {
+        "8": 4,
+        "25": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -153,8 +207,14 @@
       "matchId": "match-5"
     },
     {
-      "entries": [19, 25],
-      "scores": { "19": 4, "25": 3 },
+      "entries": [
+        19,
+        25
+      ],
+      "scores": {
+        "19": 4,
+        "25": 3
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
@@ -165,8 +225,14 @@
       "matchId": "match-6"
     },
     {
-      "entries": [26, 38],
-      "scores": { "26": 4, "38": 3 },
+      "entries": [
+        26,
+        38
+      ],
+      "scores": {
+        "26": 4,
+        "38": 3
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -177,8 +243,14 @@
       "matchId": "match-7"
     },
     {
-      "entries": [26, 44],
-      "scores": { "26": 1, "44": 4 },
+      "entries": [
+        26,
+        44
+      ],
+      "scores": {
+        "26": 1,
+        "44": 4
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -189,8 +261,14 @@
       "matchId": "match-8"
     },
     {
-      "entries": [26, 45],
-      "scores": { "26": 4, "45": 2 },
+      "entries": [
+        26,
+        45
+      ],
+      "scores": {
+        "26": 4,
+        "45": 2
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -201,8 +279,14 @@
       "matchId": "match-9"
     },
     {
-      "entries": [38, 44],
-      "scores": { "38": 0, "44": 4 },
+      "entries": [
+        38,
+        44
+      ],
+      "scores": {
+        "38": 0,
+        "44": 4
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -213,8 +297,14 @@
       "matchId": "match-10"
     },
     {
-      "entries": [38, 45],
-      "scores": { "38": 4, "45": 3 },
+      "entries": [
+        38,
+        45
+      ],
+      "scores": {
+        "38": 4,
+        "45": 3
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -225,8 +315,14 @@
       "matchId": "match-11"
     },
     {
-      "entries": [44, 45],
-      "scores": { "44": 4, "45": 1 },
+      "entries": [
+        44,
+        45
+      ],
+      "scores": {
+        "44": 4,
+        "45": 1
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "B",
@@ -241,42 +337,90 @@
     {
       "entryNo": 1,
       "tournament": null,
-      "roundrobin": { "group": "A", "rank": 1 }
+      "roundrobin": {
+        "group": "A",
+        "rank": 1
+      }
     },
     {
       "entryNo": 8,
-      "tournament": null,
-      "roundrobin": { "group": "A", "rank": 3 }
+      "tournament": {
+        "label": "ベスト8",
+        "rank": {
+          "kind": "best",
+          "bestLevel": 8
+        }
+      },
+      "roundrobin": {
+        "group": "A",
+        "rank": 3
+      }
     },
     {
       "entryNo": 19,
       "tournament": null,
-      "roundrobin": { "group": "A", "rank": 2 }
+      "roundrobin": {
+        "group": "A",
+        "rank": 2
+      }
     },
     {
       "entryNo": 25,
-      "tournament": null,
-      "roundrobin": { "group": "A", "rank": 4 }
+      "tournament": {
+        "label": "ベスト8",
+        "rank": {
+          "kind": "best",
+          "bestLevel": 8
+        }
+      },
+      "roundrobin": {
+        "group": "A",
+        "rank": 4
+      }
     },
     {
       "entryNo": 26,
       "tournament": null,
-      "roundrobin": { "group": "B", "rank": 2 }
+      "roundrobin": {
+        "group": "B",
+        "rank": 2
+      }
     },
     {
       "entryNo": 38,
-      "tournament": null,
-      "roundrobin": { "group": "B", "rank": 3 }
+      "tournament": {
+        "label": "ベスト8",
+        "rank": {
+          "kind": "best",
+          "bestLevel": 8
+        }
+      },
+      "roundrobin": {
+        "group": "B",
+        "rank": 3
+      }
     },
     {
       "entryNo": 44,
       "tournament": null,
-      "roundrobin": { "group": "B", "rank": 1 }
+      "roundrobin": {
+        "group": "B",
+        "rank": 1
+      }
     },
     {
       "entryNo": 45,
-      "tournament": null,
-      "roundrobin": { "group": "B", "rank": 4 }
+      "tournament": {
+        "label": "ベスト8",
+        "rank": {
+          "kind": "best",
+          "bestLevel": 8
+        }
+      },
+      "roundrobin": {
+        "group": "B",
+        "rank": 4
+      }
     }
   ]
 }

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
+import UpcomingTournaments, { getTodayInTokyo, type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
+
 // ─── 型定義 ─────────────────────────────────────────────────────────────
 export type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 
@@ -29,11 +31,15 @@ type Props = {
   years: number[];
   generations: { id: string; label: string }[];
   /**
-   * フィルターバーの直後・件数と年度ブロックの前に差し込む要素。広告枠の挿入に使う。
+   * 「これから開催」の直後・フィルターバーの前に差し込む要素。広告枠の挿入に使う。
    * 何を差し込むかは呼び出し側（ページ）が決め、この表は位置だけを提供する
    * （表のロジックが広告を知らないようにするため）。
+   *
+   * 2026-08-25 に「フィルターバーの直後」からここへ移した。「これから開催」を
+   * フィルターより上に出したことで、枠が後ろのままだとファーストビューから外れるため
+   * （ADR-016 追記「配置を触ったら 375×812 で枠上端を測り直すこと」）。
    */
-  afterFilters?: ReactNode;
+  adSlot?: ReactNode;
 };
 
 // ─── 定数 ────────────────────────────────────────────────────────────────
@@ -69,15 +75,6 @@ type TournamentStatus = {
   className: string;
 };
 
-function getTodayInTokyo(): string {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Tokyo',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-}
-
 function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null {
   if (inst.hasInternalResult && inst.firstCategoryPath) {
     return null;
@@ -99,6 +96,32 @@ function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null 
   return {
     label: '外部掲載',
     className: 'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700',
+  };
+}
+
+/**
+ * 「これから開催」に載せる最大件数。
+ *
+ * **3件なのは広告位置の制約から決まった数値**で、UI上の好みではない。
+ * このブロックはフィルターより上＝広告枠より上にあるため、高くすると広告枠（高さ280px）が
+ * ファーストビューから押し出される（ADR-016 追記）。375×812 の実測で、
+ * 5件だとブロック高314px・枠上端624px・枠下端904pxで**折り返しを超える**。
+ * 3件なら枠下端が779pxで収まる。増やすときは必ず測り直すこと。
+ *
+ * トップページには広告のファーストビュー枠が無いので、あちらは5件にしている。
+ */
+const UPCOMING_LIMIT = 3;
+
+/** 一覧の行を「これから開催」の項目へ写す。リンク先はサイト内の大会ハブ。 */
+function toUpcomingItem(inst: TournamentInstance): UpcomingTournamentItem {
+  return {
+    tournamentId: inst.tournamentId,
+    year: inst.year,
+    label: inst.label,
+    startDate: inst.startDate,
+    endDate: inst.endDate,
+    location: inst.location,
+    href: `/tournaments/${inst.generation}/${inst.tournamentId}/`,
   };
 }
 
@@ -167,7 +190,7 @@ function FilterDropdown({ label, options, selected, onChange }: FilterDropdownPr
 }
 
 // ─── メインコンポーネント ──────────────────────────────────────────────────
-export default function TournamentSearchTable({ instances, prefectures, years, generations, afterFilters }: Props) {
+export default function TournamentSearchTable({ instances, prefectures, years, generations, adSlot }: Props) {
   const router = useRouter();
 
   // フィルター状態
@@ -247,6 +270,11 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
 
   return (
     <div>
+      {/* 「これから開催」はフィルターより上＝絞り込みの外側に置くため、filtered ではなく全件から作る */}
+      <UpcomingTournaments items={instances.map(toUpcomingItem)} limit={UPCOMING_LIMIT} className="mb-4" />
+
+      {adSlot}
+
       {/* ── フィルターバー ── */}
       <div className="bg-surface border border-border rounded-xl p-4 mb-4 shadow-sm">
         <div className="flex flex-wrap items-center gap-2">
@@ -289,8 +317,6 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
           年・カテゴリ・地域で絞り込んで大会を探せます。 結果データが収録されている大会は「結果」列のリンクから直接参照できます。
         </p>
       </div>
-
-      {afterFilters}
 
       {/* ── 件数 ── */}
       <p className="text-sm text-text-muted mb-3">

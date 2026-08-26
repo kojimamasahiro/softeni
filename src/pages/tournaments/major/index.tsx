@@ -20,6 +20,18 @@ import { CategoryLink, TournamentBlock, TournamentCard, YearGroup } from '@/comp
 
 type GenerationKey = string;
 
+/** 開催予定の一言に使う日付表記（2026年9月18日〜9月23日）。 */
+function formatDateRange(startDate: string, endDate: string): string {
+  if (!startDate) return '';
+  const fmt = (d: string) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+    return m ? `${Number(m[2])}月${Number(m[3])}日` : d;
+  };
+  const year = startDate.slice(0, 4);
+  if (!endDate || endDate === startDate) return `${year}年${fmt(startDate)}`;
+  return `${year}年${fmt(startDate)}〜${fmt(endDate)}`;
+}
+
 type Props = {
   generationOrder: GenerationKey[];
   generationTitleMap: Record<GenerationKey, string>;
@@ -44,6 +56,8 @@ type TournamentIndex = {
   label: string;
   isMajorTitle: boolean;
   officialUrl: string;
+  /** 結果を専用ページに持つ大会の特集トップ（STリーグ → `/st-league/`） */
+  featurePath?: string;
 };
 
 type TournamentInfo = {
@@ -54,6 +68,9 @@ type TournamentInfo = {
   endDate: string;
   source: string;
   sourceUrl: string;
+  label?: string;
+  /** 結果がサイト内の特集ページにある場合の内部URL（STリーグ → `/st-league/2025/matches/`） */
+  resultPath?: string;
   categories: {
     categoryId: string;
     label: string;
@@ -108,8 +125,9 @@ export default function TournamentListPage({ generationOrder, generationTitleMap
           <h1 className="text-2xl font-bold mb-4">主要大会結果</h1>
           <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
           <p className="text-lg leading-relaxed mb-4">
-            こちらは、Softeni Pickが収録しているソフトテニスの大会結果一覧ページです。
+            こちらは、Softeni Pickが収録しているソフトテニスの大会一覧ページです。
             主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
+            これから開催される大会は、結果が出るまで日程と開催地を掲載します。
           </p>
           <p className="text-lg leading-relaxed">
             各大会のページでは、年度ごとの出場選手や試合結果、所属別の記録などを確認できます。 下記から世代（カテゴリ）ごとにご覧いただけます。
@@ -162,6 +180,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     };
   }
 
+  // 「今日」はビルド時刻。静的書き出しなので lib/highschoolInProgress.ts と揃える。
+  const today = new Date().toISOString().slice(0, 10);
+
   const tournaments = readJSONSafe(indexPath) as TournamentIndex[];
   const tournamentsByGeneration: Record<GenerationKey, TournamentBlock[]> = {} as Record<GenerationKey, TournamentBlock[]>;
 
@@ -193,9 +214,34 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
           });
         }
       }
+
       if (links.length > 0) {
         groups.push({ year, links });
+        continue;
       }
+
+      // ここから下は「カテゴリのリンクが1本も作れない年度」の扱い。
+      // 2026-08-26 まではこの年度を落とし、結果として `groups.length === 0` の大会が
+      // 一覧から丸ごと消えていた。実測で4大会が抜けており、うち **STリーグは結果があるのに
+      // 抜けていた**（結果が details ではなく `/st-league/` にあるため）。
+      // 開催前の大会も同じ理由で出ず、アジア競技大会が一覧に無かった。
+
+      // 1) 結果が特集ページにある（STリーグ）
+      if (info.resultPath) {
+        groups.push({ year, links: [], internalResultHref: info.resultPath });
+        continue;
+      }
+
+      // 2) まだ会期が終わっていない＝これから開催
+      if (info.endDate && info.endDate >= today) {
+        const range = formatDateRange(info.startDate, info.endDate);
+        groups.push({
+          year,
+          links: [],
+          upcomingNote: `開催予定 ${[range, info.location].filter(Boolean).join(' / ')}（結果は大会終了後に掲載）`,
+        });
+      }
+      // 3) それ以外（終わったのに結果が無い年度）は従来どおり出さない
     }
 
     if (groups.length > 0) {

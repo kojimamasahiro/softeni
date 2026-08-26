@@ -15,11 +15,15 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ClubTransitionSection from '@/components/Tournament/ClubTransitionSection';
 import TournamentContextBlocks, { type TournamentContextData } from '@/components/TournamentContextBlocks';
+import QualifierFinishersSection from '@/components/tournaments/QualifierFinishersSection';
+import RelatedTournamentsBlock, { type RelatedTournamentLink } from '@/components/tournaments/RelatedTournamentsBlock';
+import UpcomingTournamentSection, { type UpcomingTournamentData } from '@/components/tournaments/UpcomingTournamentSection';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
+import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
 import { getChampionMilestones } from '@/lib/milestones';
-import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
 import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings } from '@/lib/priorMeetings';
 import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
@@ -89,6 +93,14 @@ interface TournamentHubPageProps {
   // 「学校部活動と地域クラブの内訳」。allowlist 外の大会（= 経年比較が成立しない大会）は null。
   // docs/raw/2026-08-12-idea-juniorhigh-category-pages.md（候補3）
   clubTransition: ClubTransitionData | null;
+  // 「開催前」ブロック。まだ結果が無く会期が終わっていない年度がある大会のみ非 null。
+  // docs/raw/2026-07-26-idea-tournament-metadata-platform.md（追記6・追記7）
+  upcoming: UpcomingTournamentData | null;
+  // 予選会↔本大会の相互リンク。無ければ空配列。
+  relatedLinks: RelatedTournamentLink[];
+  // 開催前の国際大会に出す「日本代表予選会の上位進出者」。該当しなければ null。
+  // docs/wiki/upcoming-tournaments-runbook.md S2。
+  qualifierFinishers: QualifierFinishersBlock | null;
 }
 
 export default function TournamentHubPage({
@@ -101,6 +113,9 @@ export default function TournamentHubPage({
   featurePath,
   contextBlocks,
   clubTransition,
+  upcoming,
+  relatedLinks,
+  qualifierFinishers,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
@@ -173,12 +188,35 @@ export default function TournamentHubPage({
   // 行見出し自体は性別のみ（例: 男子/女子）にして、グループ見出しと種目名が重複しないようにする。
   const championTable = (() => {
     const years = [...new Set(championRows.map((r) => r.year))].sort((a, b) => Number(b) - Number(a));
-    const rows = championCategoryGroups.map((group) => ({
-      categoryLabel: group.categoryLabel,
-      rowLabel: genderShortLabel(group.gender) ?? group.categoryLabel,
-      category: group.category,
-      cellsByYear: new Map(group.winners.map((r) => [r.year, r] as const)),
-    }));
+
+    // 短縮ラベル（男子/女子/混合）が同じグループ見出しの中で衝突するなら、そのグループは
+    // フルの種目名を使う。年齢区分のある大会（全日本社会人の 一般男子 / 男子35歳 / 男子45歳、
+    // 全日本シニアの各年齢など）は短縮すると「男子」が何行も並んで区別がつかなくなる
+    // （2026-08-26 修正。それまで一般・35歳・45歳がすべて「男子」で表示されていた）。
+    // 判定はグループ見出し（doubles/team/singles）ごとに行い、同じ見出しの中では
+    // 短縮とフルが混ざらないようにする。
+    const shortLabelCount = new Map<string, number>();
+    for (const group of championCategoryGroups) {
+      const short = genderShortLabel(group.gender);
+      if (!short) continue;
+      const key = `${group.category ?? ''}\t${short}`;
+      shortLabelCount.set(key, (shortLabelCount.get(key) ?? 0) + 1);
+    }
+    const categoryNeedsFullLabel = new Set<string>();
+    for (const [key, count] of shortLabelCount) {
+      if (count > 1) categoryNeedsFullLabel.add(key.split('\t')[0]);
+    }
+
+    const rows = championCategoryGroups.map((group) => {
+      const short = genderShortLabel(group.gender);
+      const useShort = short !== null && !categoryNeedsFullLabel.has(group.category ?? '');
+      return {
+        categoryLabel: group.categoryLabel,
+        rowLabel: useShort ? short : group.categoryLabel,
+        category: group.category,
+        cellsByYear: new Map(group.winners.map((r) => [r.year, r] as const)),
+      };
+    });
     return { years, rows };
   })();
 
@@ -191,8 +229,24 @@ export default function TournamentHubPage({
     },
   ];
 
-  const title = `${label} 結果・歴代優勝/上位入賞者まとめ | ソフトテニス情報`;
-  const description = `ソフトテニス「${label}」の歴代大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。`;
+  // まだ1年分も結果が無く、これから開催される大会（例: 2026年度のアジア競技大会）は
+  // 「歴代結果」ではなく「日程・会場」を主語にする。歴代を名乗ると中身と食い違ううえ、
+  // このとき実在する検索需要は「{大会名} 日程」「{大会名} 会場」のほうであるため。
+  const upcomingOnly = yearGroups.length === 0 && upcoming ? upcoming : null;
+  const upcomingVenueNames = upcomingOnly ? upcomingOnly.venues.map((v) => v.name).filter((n): n is string => !!n) : [];
+
+  const title = upcomingOnly
+    ? `${label} ${upcomingOnly.year}年 日程・会場・実施種目 | ソフトテニス情報`
+    : `${label} 結果・歴代優勝/上位入賞者まとめ | ソフトテニス情報`;
+  const description = upcomingOnly
+    ? `ソフトテニス「${upcomingOnly.label}」の日程・会場・実施種目。${[
+        upcomingOnly.startDate ? `会期${upcomingOnly.startDate}〜${upcomingOnly.endDate ?? upcomingOnly.startDate}` : null,
+        upcomingOnly.location,
+        upcomingVenueNames[0] ?? null,
+      ]
+        .filter(Boolean)
+        .join(' / ')}。`
+    : `ソフトテニス「${label}」の歴代大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。`;
 
   return (
     <>
@@ -223,6 +277,43 @@ export default function TournamentHubPage({
             }),
           }}
         />
+        {/* 開催前の大会は「これから起きるイベント」なので、歴代の ItemList とは別に
+            単体の SportsEvent を出す。日付・会場・住所が揃っているのはこの形のときだけで、
+            `venues` があれば location に実住所を入れられる（buildEventPlace は
+            addressCountry だけの控えめな版）。 */}
+        {upcoming && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'SportsEvent',
+                name: `${upcoming.label}（ソフトテニス）`,
+                sport: 'ソフトテニス',
+                inLanguage: 'ja',
+                url: pageUrl,
+                ...sportsEventBaseFields,
+                ...resolveEventDates(upcoming.startDate, upcoming.endDate),
+                location: upcoming.venues[0]
+                  ? buildEventPlaceFromVenue({
+                      name: upcoming.venues[0].name,
+                      address: upcoming.venues[0].address,
+                      postalCode: upcoming.venues[0].postalCode,
+                      city: upcoming.venues[0].city,
+                      prefecture: upcoming.location,
+                    })
+                  : buildEventPlace(null, upcoming.location),
+                // organizer は出さない。buildEventOrganizer() の既定は Softeni Pick だが、
+                // 当サイトは主催者ではない。歴代の ItemList では既存挙動として残っているものの、
+                // これから開催される実イベントに主催者を偽って書くのは
+                // lib/sportsEventJsonLd.ts の方針（虚偽の構造化データを避ける）に反する。
+                // 主催者名を information に持つようになったら入れる。
+                ...(upcoming.categoryLabels.length > 0 ? { subEvent: upcoming.categoryLabels.map((c) => ({ '@type': 'SportsEvent', name: c })) } : {}),
+                description: `${upcoming.label}のソフトテニス競技の日程・会場・実施種目。`,
+              }),
+            }}
+          />
+        )}
         {championRows.length > 0 && (
           <script
             type="application/ld+json"
@@ -267,7 +358,7 @@ export default function TournamentHubPage({
       <PageLayout>
         <Breadcrumbs crumbs={breadcrumbs} />
 
-        <h1 className="text-2xl font-bold mb-4">{label} 大会結果（歴代一覧）</h1>
+        <h1 className="text-2xl font-bold mb-4">{upcomingOnly ? `${label} ${upcomingOnly.year}年 日程・会場` : `${label} 大会結果（歴代一覧）`}</h1>
 
         {hsNationalHref && (
           <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
@@ -293,14 +384,26 @@ export default function TournamentHubPage({
           </div>
         )}
 
+        {upcoming && <UpcomingTournamentSection data={upcoming} />}
+
+        <RelatedTournamentsBlock links={relatedLinks} />
+
+        {qualifierFinishers && <QualifierFinishersSection data={qualifierFinishers} />}
+
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
-            ソフトテニス「{label}
-            」の歴代の試合結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。
-            {yearRange ? `${yearRange}の大会結果を掲載中です。` : ''}
-            見たい年度・種別を選ぶと、各大会の詳細な結果ページに移動できます。
+            {upcomingOnly ? (
+              <>ソフトテニス「{upcomingOnly.label}」の日程・会場・実施種目をまとめています。 この大会の結果はまだ掲載していません（大会終了後に追加します）。</>
+            ) : (
+              <>
+                ソフトテニス「{label}
+                」の歴代の試合結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。
+                {yearRange ? `${yearRange}の大会結果を掲載中です。` : ''}
+                見たい年度・種別を選ぶと、各大会の詳細な結果ページに移動できます。
+              </>
+            )}
           </p>
-          {officialUrl && (
+          {officialUrl && !upcomingOnly && (
             <p className="text-sm text-text-secondary">
               公式サイト:{' '}
               <a href={officialUrl} className="text-link hover:underline" target="_blank" rel="noopener noreferrer">
@@ -398,7 +501,10 @@ export default function TournamentHubPage({
         {clubTransition && <ClubTransitionSection label={label} data={clubTransition} />}
 
         {yearGroups.length === 0 ? (
-          <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
+          // 開催前ブロックが「まだ結果が無い」ことを既に説明しているため、そこでは出さない
+          upcomingOnly ? null : (
+            <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
+          )
         ) : (
           <section className="mb-10">
             <h2 className="text-lg font-bold mb-3">年度別結果</h2>
@@ -575,6 +681,35 @@ function loadIndexEntry(tournamentId: string): TournamentIndexEntry | null {
     }
   }
   return null;
+}
+
+/** tournamentId -> {label, generationId}。`getQualifierFinishers` へ渡す。 */
+function buildIndexById(): Map<string, { label: string; generationId: string }> {
+  const generationMap = loadGenerationMap();
+  const map = new Map<string, { label: string; generationId: string }>();
+  for (const tid of Object.keys(generationMap)) {
+    const entry = loadIndexEntry(tid);
+    if (!entry) continue;
+    map.set(tid, { label: entry.label, generationId: generationMap[tid] });
+  }
+  return map;
+}
+
+/** tournamentId -> 開催情報。`getQualifierFinishers` へ渡す。 */
+function buildInformationMap(): Map<string, TournamentInformationEntry[]> {
+  const dir = path.join(process.cwd(), 'data', 'tournaments', 'information');
+  const map = new Map<string, TournamentInformationEntry[]>();
+  if (!fs.existsSync(dir)) return map;
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.json')) continue;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf-8'));
+      if (Array.isArray(parsed)) map.set(file.replace(/\.json$/, ''), parsed as TournamentInformationEntry[]);
+    } catch {
+      // ignore
+    }
+  }
+  return map;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -813,6 +948,46 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // --- 開催前ブロック ---
+  // 会期が終わっていない information があれば、会期・会場・種目・関連大会を出す。
+  // 結果DBであるこのサイトに唯一無かった「未来形の面」で、`venues` の最初の描画先でもある。
+  // 「今日」は lib/highschoolInProgress.ts と同じくビルド時刻を使う（静的書き出しのため）。
+  //
+  // **判定は `endDate >= 今日` だけ**。当初は「その年度の結果がまだ無い」も条件に入れていたが、
+  // これは `details/` にファイルがあるかを見ており、**組み合わせだけ投入した未開催の大会**まで
+  // 「結果あり」と扱ってブロックを消していた（2026-08-26 修正）。実際、直近の全日本社会人
+  // （2026-08-29 開幕・組み合わせ投入済み）でブロックが出ず、トップの「これから開催」から
+  // 「第54回 全日本社会人選手権大会」をたどっても、その回の会期も会場も出ない状態になっていた。
+  // 会期が終わっていない以上その大会は未開催なので、日程・会場を出すのが正しい。
+  // 会期が終われば条件から外れて自動的に消える。
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const upcomingEntry =
+    [...information].filter((e) => e.endDate && e.endDate >= todayIso).sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0] ??
+    null;
+
+  const upcoming: UpcomingTournamentData | null = upcomingEntry
+    ? {
+        year: upcomingEntry.year,
+        label: upcomingEntry.label || label,
+        startDate: upcomingEntry.startDate || null,
+        endDate: upcomingEntry.endDate || null,
+        location: upcomingEntry.location || null,
+        venues: (upcomingEntry.venues ?? []).map((v) => ({
+          name: v.name ?? null,
+          city: v.city ?? null,
+          address: v.address ?? null,
+          postalCode: v.postalCode ?? null,
+          tel: v.tel ?? null,
+          courts: v.courts ?? null,
+          surface: v.surface ?? null,
+          usage: v.usage ?? null,
+        })),
+        categoryLabels: (upcomingEntry.categories ?? []).map((c) => c.label),
+        officialUrl: upcomingEntry.sourceUrl || officialUrl || null,
+        hasStarted: Boolean(upcomingEntry.startDate && upcomingEntry.startDate <= todayIso),
+      }
+    : null;
+
   return {
     props: {
       generation,
@@ -824,6 +999,68 @@ export const getStaticProps: GetStaticProps = async (context) => {
       featurePath,
       contextBlocks,
       clubTransition: getClubTransition(tournamentId),
+      upcoming,
+      relatedLinks: buildRelatedTournamentLinks(tournamentId),
+      // 予選会の上位進出者は、本大会がこれから開催されるときだけ出す
+      // （終わったあとは本大会の結果そのものが載るため役割を終える）。
+      qualifierFinishers: upcoming
+        ? await getQualifierFinishers({
+            mainTournamentId: tournamentId,
+            mainStartDate: upcoming.startDate,
+            informationMap: buildInformationMap(),
+            indexById: buildIndexById(),
+            playerNameToId,
+          })
+        : null,
     },
   };
 };
+
+/**
+ * 予選会と本大会を相互リンクする。
+ *
+ * 対応付けは **tournamentId の命名規約** で行い、データ側にフィールドを増やさない。
+ * `index.json` の国際大会予選は3件すべて `{本大会ID}-qualifier` 形式
+ * （`world-championship-qualifier` / `asian-championship-qualifier` / `asian-games-qualifier`）で、
+ * 本大会が未登録なら単にリンクが出ないだけで壊れない。将来 `world-championship` 等を
+ * 登録したときも自動で繋がる。
+ */
+function buildRelatedTournamentLinks(tournamentId: string): RelatedTournamentLink[] {
+  const generationMap = loadGenerationMap();
+  const links: RelatedTournamentLink[] = [];
+  const todayIso = new Date().toISOString().slice(0, 10);
+
+  const push = (tid: string, description: string) => {
+    const gen = generationMap[tid];
+    if (!gen) return;
+    const entry = loadIndexEntry(tid);
+    if (!entry) return;
+
+    // 相手が開催前なら会期・開催地を説明に足す（「本番がいつどこであるか」がこの導線の主目的）
+    let suffix = '';
+    const infoPath = path.join(process.cwd(), 'data', 'tournaments', 'information', `${tid}.json`);
+    if (fs.existsSync(infoPath)) {
+      try {
+        const parsed = JSON.parse(fs.readFileSync(infoPath, 'utf-8')) as TournamentInformationEntry[];
+        const future = (Array.isArray(parsed) ? parsed : [])
+          .filter((e) => e.endDate && e.endDate >= todayIso)
+          .sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0];
+        if (future?.startDate) {
+          suffix = `（${future.startDate}〜${future.endDate ?? future.startDate}${future.location ? ` ${future.location}` : ''}）`;
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    links.push({ label: entry.label, href: `/tournaments/${gen}/${tid}/`, description: `${description}${suffix}` });
+  };
+
+  if (tournamentId.endsWith('-qualifier')) {
+    push(tournamentId.replace(/-qualifier$/, ''), 'この予選会の先にある本大会');
+  } else {
+    push(`${tournamentId}-qualifier`, '日本代表を決める予選会。出場選手の成績を掲載');
+  }
+
+  return links;
+}
