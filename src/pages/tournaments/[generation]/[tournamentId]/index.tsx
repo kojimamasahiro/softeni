@@ -926,16 +926,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   // --- 開催前ブロック ---
-  // まだ結果が無く（yearGroups に year が無い）、会期が終わっていない information があれば、
-  // 会期・会場・種目・関連大会を出す。結果DBであるこのサイトに唯一無かった「未来形の面」で、
-  // `venues` の最初の描画先でもある。
+  // 会期が終わっていない information があれば、会期・会場・種目・関連大会を出す。
+  // 結果DBであるこのサイトに唯一無かった「未来形の面」で、`venues` の最初の描画先でもある。
   // 「今日」は lib/highschoolInProgress.ts と同じくビルド時刻を使う（静的書き出しのため）。
+  //
+  // **判定は `endDate >= 今日` だけ**。当初は「その年度の結果がまだ無い」も条件に入れていたが、
+  // これは `details/` にファイルがあるかを見ており、**組み合わせだけ投入した未開催の大会**まで
+  // 「結果あり」と扱ってブロックを消していた（2026-08-26 修正）。実際、直近の全日本社会人
+  // （2026-08-29 開幕・組み合わせ投入済み）でブロックが出ず、トップの「これから開催」から
+  // 「第54回 全日本社会人選手権大会」をたどっても、その回の会期も会場も出ない状態になっていた。
+  // 会期が終わっていない以上その大会は未開催なので、日程・会場を出すのが正しい。
+  // 会期が終われば条件から外れて自動的に消える。
   const todayIso = new Date().toISOString().slice(0, 10);
-  const yearsWithResults = new Set(yearGroups.map((g) => g.year));
   const upcomingEntry =
-    [...information]
-      .filter((e) => e.endDate && e.endDate >= todayIso && !yearsWithResults.has(String(e.year)))
-      .sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0] ?? null;
+    [...information].filter((e) => e.endDate && e.endDate >= todayIso).sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0] ??
+    null;
 
   const upcoming: UpcomingTournamentData | null = upcomingEntry
     ? {
