@@ -200,7 +200,9 @@
 |---|---|---|
 | 大会ハブ `/tournaments/[generation]/[tournamentId]` | 「開催前」ブロック（会期・開催地・実施種目・**会場**・公式情報）。`venues` の唯一の描画先 | `src/components/tournaments/UpcomingTournamentSection.tsx` |
 | 同上 | 「関連する大会」ブロック（予選会↔本大会の相互リンク） | `src/components/tournaments/RelatedTournamentsBlock.tsx` |
-| 大会一覧 `/tournaments/` | 「これから開催」ブロック（開催日**昇順**・最大3件） | `TournamentSearchTable.tsx` の `UpcomingHighlights` |
+| 大会一覧 `/tournaments/` | 「これから開催」ブロック（開催日**昇順**・最大3件） | `UpcomingTournaments.tsx`（共有） |
+| トップ `/` | 同上（最大5件）。「最近追加された大会」の直前 | `UpcomingTournaments.tsx`（共有） |
+| 主要大会 `/tournaments/major/` | 開催前の大会と、結果が専用ページにある大会も一覧に出す | `TournamentCard.tsx` の `upcomingNote` / `internalResultHref` |
 | 選手結果ページ `/players/[id]/results` | 「これから開催される国際大会」ブロック（その予選会に出場している選手のみ） | `PlayerUpcomingInternational.tsx` / 判定は `lib/upcomingInternational.ts` |
 | 大会ハブ（開催前の国際大会） | 「日本代表予選会の上位進出者」節。優勝・準優勝・ベスト4を通算成績つきで出す | `QualifierFinishersSection.tsx` / 収集は `lib/qualifierFinishers.ts` |
 
@@ -237,14 +239,33 @@
 （375×812 実測: 5件=枠下端904px / 3件=779px）。増やすときは測り直すこと。
 経緯は [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md) の 2026-08-25 追記。
 
+**トップページには同じ制約が無い**。ファーストビュー枠は5面だけで
+（[monetization.md](./monetization.md) の表）、トップは対象外。フッター直上枠しか無く、
+それはページ最下部にクライアント側でマウントされるので上に節を足しても折り返しに影響しない。
+そのためトップは5件にしている。**面ごとに件数が違うのは意図的**で、コンポーネントは共有し
+`limit` だけ呼び出し側が決める。
+
+**「今日」は描画時に評価する**（`getTodayInTokyo()`）。ビルド時刻に固定すると、
+再ビルドまで終わった大会が「これから開催」に残るため。呼び出し側は候補を全部渡す。
+
+#### `/tournaments/major/` は「収録大会の一覧」（2026-08-26 修正）
+
+名前は「主要大会結果」だが `isMajorTitle` では絞っておらず、`index.json` の全大会を
+世代ごとに並べたページ。カテゴリのリンクが1本も作れない年度を落としていたため、
+**結果のある年度が1つも無い大会が丸ごと消えていた**（実測4大会。うち **STリーグは結果が
+`/st-league/` にあるだけで抜けていた**）。年度は次の3通りで出し分ける。
+
+1. `info.resultPath` がある → 「結果・順位表を見る」の内部リンク1本
+2. 会期が終わっていない → 「開催予定 {日程} / {開催地}（結果は大会終了後に掲載）」
+3. それ以外（終わったのに結果が無い年度） → 出さない
+
 **運用（対応もれの検査）**: 開催前ブロックも「これから開催」も、information に行が無ければ
 **エラーにならず静かに出なくなる**。予選会↔本大会のリンクも命名規約に頼っており、
 本大会を別IDで登録すると黙って繋がらない。`npm run check:upcoming`
 （`scripts/check-upcoming-tournaments.mjs`）がこの3種の抜けを一覧にする。
 終了コードは常に0（運用の残タスク一覧であり、ビルドを止めるエラーではないため prebuild には入れない）。
 
-**既知の穴**: `/tournaments/major/` は「結果のある年度が1つ以上ある大会」だけを載せるため、
-**開催前だけの大会は出ない**（`asian-games` への内部リンクは `/tournaments/` と予選会ハブの2枚のみ）。
+（2026-08-26 まであった「`/tournaments/major/` に開催前の大会が出ない」穴は上記で解消済み。）
 
 #### 選手ページへの push（2026-08-26 追加）
 
