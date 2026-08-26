@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
+import UpcomingTournaments, { getTodayInTokyo, type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
+
 // ─── 型定義 ─────────────────────────────────────────────────────────────
 export type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
 
@@ -73,15 +75,6 @@ type TournamentStatus = {
   className: string;
 };
 
-function getTodayInTokyo(): string {
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Tokyo',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-}
-
 function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null {
   if (inst.hasInternalResult && inst.firstCategoryPath) {
     return null;
@@ -113,63 +106,23 @@ function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null 
  * このブロックはフィルターより上＝広告枠より上にあるため、高くすると広告枠（高さ280px）が
  * ファーストビューから押し出される（ADR-016 追記）。375×812 の実測で、
  * 5件だとブロック高314px・枠上端624px・枠下端904pxで**折り返しを超える**。
- * 3件なら枠下端が812px以内に収まる。増やすときは必ず測り直すこと。
+ * 3件なら枠下端が779pxで収まる。増やすときは必ず測り直すこと。
+ *
+ * トップページには広告のファーストビュー枠が無いので、あちらは5件にしている。
  */
 const UPCOMING_LIMIT = 3;
 
-/**
- * 「これから開催」ブロック。会期が終わっていない大会を開催日の**昇順**で先頭に出す。
- *
- * 背景（docs/raw/2026-07-26-idea-tournament-metadata-platform.md 追記6）:
- * この一覧は年度降順のグループ表示なので、開催予定の大会は最新年度ブロックの中で
- * 過去の大会に埋もれる。「開催予定」バッジはあっても、探しに行かないと見つからない。
- * 独立ページは作らず（まず既存面で効果を見る方針）、この一覧の**フィルターより上**に置く。
- * フィルターの外側なので、絞り込み結果ではなく全件から作る（絞ると消えるのは挙動として不自然なため）。
- *
- * リンク先は**大会ハブページ（サイト内）**にする。カード側の導線は結果が無い大会だと
- * 外部の公式サイトへ出てしまうが、ハブには開催前ブロック（会期・会場・関連する予選会）が
- * あるため、そちらへ寄せる。
- *
- * 絞り込みの結果（filtered）から作るので、フィルタ操作と表示が食い違わない。
- */
-function UpcomingHighlights({ instances }: { instances: TournamentInstance[] }) {
-  const todayStr = getTodayInTokyo();
-
-  const upcoming = instances
-    .filter((i) => i.startDate && (i.endDate || i.startDate) >= todayStr)
-    .sort((a, b) => a.startDate.localeCompare(b.startDate))
-    .slice(0, UPCOMING_LIMIT);
-
-  if (upcoming.length === 0) return null;
-
-  return (
-    <section className="mb-4 rounded-xl border border-border bg-surface p-3 shadow-sm" aria-labelledby="upcoming-tournaments">
-      <h2 id="upcoming-tournaments" className="mb-1.5 text-sm font-bold">
-        これから開催
-      </h2>
-      <ul className="divide-y divide-border">
-        {upcoming.map((inst) => {
-          const started = inst.startDate <= todayStr;
-          return (
-            <li key={`${inst.tournamentId}-${inst.year}`} className="py-1.5 first:pt-0 last:pb-0">
-              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                <span className="text-sm font-semibold tabular-nums text-text-secondary">{formatDateRange(inst.startDate, inst.endDate)}</span>
-                <Link href={`/tournaments/${inst.generation}/${inst.tournamentId}/`} className="text-sm font-medium text-link hover:underline">
-                  {inst.label}
-                </Link>
-                {started && (
-                  <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                    開催中
-                  </span>
-                )}
-                {inst.location && <span className="text-xs text-text-muted">{inst.location}</span>}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </section>
-  );
+/** 一覧の行を「これから開催」の項目へ写す。リンク先はサイト内の大会ハブ。 */
+function toUpcomingItem(inst: TournamentInstance): UpcomingTournamentItem {
+  return {
+    tournamentId: inst.tournamentId,
+    year: inst.year,
+    label: inst.label,
+    startDate: inst.startDate,
+    endDate: inst.endDate,
+    location: inst.location,
+    href: `/tournaments/${inst.generation}/${inst.tournamentId}/`,
+  };
 }
 
 // ─── FilterDropdown コンポーネント ────────────────────────────────────────
@@ -318,7 +271,7 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
   return (
     <div>
       {/* 「これから開催」はフィルターより上＝絞り込みの外側に置くため、filtered ではなく全件から作る */}
-      <UpcomingHighlights instances={instances} />
+      <UpcomingTournaments items={instances.map(toUpcomingItem)} limit={UPCOMING_LIMIT} className="mb-4" />
 
       {adSlot}
 
