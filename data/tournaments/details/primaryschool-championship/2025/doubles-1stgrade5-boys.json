@@ -1048,9 +1048,9 @@
     },
     {
       "entries": [286, 311],
-      "scores": { "286": 3, "311": 0 },
+      "scores": { "286": 0, "311": 3 },
       "round": "準々決勝",
-      "winnerEntryNo": 286,
+      "winnerEntryNo": 311,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -1086,10 +1086,10 @@
       "prevMatchId": null
     },
     {
-      "entries": [286, 371],
-      "scores": { "286": 3, "371": 1 },
+      "entries": [311, 371],
+      "scores": { "311": 3, "371": 1 },
       "round": "準決勝",
-      "winnerEntryNo": 286,
+      "winnerEntryNo": 311,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -1099,10 +1099,10 @@
       "prevMatchId": null
     },
     {
-      "entries": [246, 286],
-      "scores": { "246": 2, "286": 3 },
+      "entries": [246, 311],
+      "scores": { "246": 2, "311": 3 },
       "round": "決勝",
-      "winnerEntryNo": 286,
+      "winnerEntryNo": 311,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -1248,7 +1248,10 @@
     },
     {
       "entryNo": 286,
-      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
+      "tournament": {
+        "label": "ベスト8",
+        "rank": { "kind": "best", "bestLevel": 8 }
+      },
       "roundrobin": null
     },
     {
@@ -1285,10 +1288,7 @@
     },
     {
       "entryNo": 311,
-      "tournament": {
-        "label": "ベスト8",
-        "rank": { "kind": "best", "bestLevel": 8 }
-      },
+      "tournament": { "label": "優勝", "rank": { "kind": "winner" } },
       "roundrobin": null
     },
     {
