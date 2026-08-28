@@ -346,11 +346,24 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 ## `verify-facts-golden.ts` の golden 値が陳腐化している（2026-08-28 記録）
 
 `npm run playerstats:verify` の1つめ `scripts/playerStats/verify-facts-golden.ts` が
-**curated 26人中14人で DIFF** になる。いずれも facts のほうが golden より試合数が多い方向。
+**14人で DIFF** になる。いずれも facts のほうが golden より試合数が多い方向。
 
-golden 値は同スクリプトにハードコードされており、最終更新は **2026-07-02**（`git log`）。
-その後のデータ投入で増えたぶんがそのまま差分になっている。つまり**エンジンの不具合ではなく
-fixture の陳腐化**で、実装が正しいことは `verify-golden-final.ts`
+**母数（2026-08-28 訂正）**: `CURATED_FIXTURES` は **26エントリ**だが、`slug` を持つのは **22件**で、
+ループ冒頭の `if (!fx.slug) continue;` が残り4件（id 35 / 122 / 125 / 69、いずれも `curated: false`）を
+飛ばす。したがって DIFF の実際の母数は **22**。旧記述の「26人中14人」は誤りではないが母数が緩い。
+
+**golden 値はハードコードされていない（2026-08-28 訂正）**。旧記述は「同スクリプトにハードコード、
+最終更新2026-07-02」としていたが誤り。`verify-facts-golden.ts:55-62` は
+`data/players/{slug}/analysis.json` を読み、その中身をそのまま golden として比較している。
+ハードコードされているのは `CURATED_FIXTURES` の id / slug / name だけで、数値は
+`data/players` のコミット内容に追随する。2026-07-02 に固まったのは**数値ではなく fixture 一覧**。
+
+この違いは対処法を変える。DIFF の正体は「再計算した facts vs **コミット済みの analysis.json**」であり、
+**本番ビルドが書き換えるファイルそのもの**なので、**再生成された analysis.json をコミットすれば
+verify は副作用として green になる**。2026-08-28 の実測では、ビルドが書き換えた analysis.json は
+14件で、**全件が `CURATED_FIXTURES` の中**（外は0件）だった＝DIFF 集合と同一。
+
+エンジンの不具合ではないことは `verify-golden-final.ts`
 （facts キャッシュ vs ソースからの再計算、76人で ok=76）が別途担保している。
 
 - `playerstats:verify` は **prebuild に入っていない**のでビルドは落ちない。
@@ -360,7 +373,13 @@ fixture の陳腐化**で、実装が正しいことは `verify-golden-final.ts`
   データが増えるたびに広がるので、放置すると verify が常に赤い状態になり
   「本物の退行に気付けない」検査になる
 
-やること: golden 値を現在の facts で貼り直すか、ハードコードをやめて
-「前回値との差分がしきい値を超えたら落とす」形に変えるかを決める。
+- **カバレッジの穴（2026-08-28 追加）**: `analysis.json` が実在するのは **23人**だが
+  `CURATED_FIXTURES` の slug 付きは 22件で、**`tsukamoto-hikaru` だけ検証対象外**。
+  ビルドは書き換えるのに verify は見ない状態にある。fixture 一覧に足すかは未決。
+  （逆方向＝slug があるのに `analysis.json` が無いケースは0件でクリーン）
+
+やること: 再生成された `analysis.json` をコミットして golden を現在値に合わせるか、
+`analysis.json` を golden に使うのをやめて「前回値との差分がしきい値を超えたら落とす」形に
+変えるかを決める。**前者は「値を貼り直す」作業ではなく、生成物をコミットするだけ**である点に注意。
 
 再発見の経緯: [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) 追記2
