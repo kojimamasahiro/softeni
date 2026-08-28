@@ -29,13 +29,8 @@ export type TournamentSearchNames = {
   headingName: string;
   /** 略称（「〜とは」の主語に使う）。無ければ null */
   primaryAlias: string | null;
-  /** 正式名称（`index.json` の label） */
+  /** サイト上の表記（`index.json` の label） */
   formalLabel: string;
-  /**
-   * `headingName` に正式名称が含まれていない＝どこかに正式名称を併記する必要があるか。
-   * 検索名で名乗る以上、正式名称は**置き換えるのではなく併記する**のが方針。
-   */
-  needsFormalLabelNote: boolean;
 };
 
 /**
@@ -52,10 +47,5 @@ export function buildTournamentSearchNames(label: string, searchLabel?: string |
 
   const headingName = alias ? `${alias}（${primaryName}）` : primaryName;
 
-  return {
-    headingName,
-    primaryAlias: alias,
-    formalLabel,
-    needsFormalLabelNote: !headingName.includes(formalLabel),
-  };
+  return { headingName, primaryAlias: alias, formalLabel };
 }

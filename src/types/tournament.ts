@@ -30,6 +30,14 @@ export interface TournamentIndexEntry {
    * `searchLabel` / `label` と重複する値は無視される（二重表記の防止）。
    */
   searchAliases?: string[];
+  /**
+   * 名称についての補足を1文で。`searchLabel` を主表記にすると正式名称が本文から消えるため、
+   * その関係を明示する受け皿。h1 直下と FAQ に出る。
+   *
+   * 例: 全中は「全国中学校体育大会のソフトテニス競技」であって、`label` の
+   * 「全国中学校大会」はサイト上の表記。この関係を書けるのはここだけ。
+   */
+  searchNote?: string;
 }
 
 export interface TournamentCategoryInfo {
