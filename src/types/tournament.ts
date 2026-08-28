@@ -15,6 +15,29 @@ export interface TournamentIndexEntry {
    * 特集ページとのカニバリを避けるため `noindex, follow` になる（高校全国大会と同じ扱い。docs/wiki/seo.md #3）。
    */
   featurePath?: string;
+  /**
+   * 検索で実際に使われる大会名。`label`（正式名称）と食い違う大会だけ設定する。
+   * 設定するとハブ・年度別結果ページの title / h1 / description がこちらを主表記にし、
+   * 正式名称は併記へ回る（置き換えではない）。未設定なら `label` をそのまま使い表示は変わらない。
+   *
+   * 例: 全中の正式名称「全国中学校体育大会」は全競技共通の名称で、
+   * ソフトテニスの利用者は「全国中学校ソフトテニス大会」で検索する。
+   * docs/wiki/seo.md「大会名の表記と検索語の乖離（missing literal）」
+   */
+  searchLabel?: string;
+  /**
+   * 略称・通称。先頭の 1 件が title / h1 に `略称（検索名）` の形で併記される。
+   * `searchLabel` / `label` と重複する値は無視される（二重表記の防止）。
+   */
+  searchAliases?: string[];
+  /**
+   * 名称についての補足を1文で。`searchLabel` を主表記にすると正式名称が本文から消えるため、
+   * その関係を明示する受け皿。h1 直下と FAQ に出る。
+   *
+   * 例: 全中は「全国中学校体育大会のソフトテニス競技」であって、`label` の
+   * 「全国中学校大会」はサイト上の表記。この関係を書けるのはここだけ。
+   */
+  searchNote?: string;
 }
 
 export interface TournamentCategoryInfo {

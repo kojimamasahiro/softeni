@@ -62,7 +62,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
     <>
       <MetaHead
         title={`${prefecture.name}の中学ソフトテニス | 全中・都道府県対抗の成績 | Softeni Pick`}
-        description={`${prefecture.name}の中学ソフトテニス。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した${teams.length}チームの戦績と、中学から高校への進路をまとめています。`}
+        description={`${prefecture.name}の中学ソフトテニス。全国中学校大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した${teams.length}チームの戦績と、中学から高校への進路をまとめています。`}
         url={pageUrl}
         type="website"
       />
@@ -96,7 +96,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
 
         <h1 className="text-2xl font-bold mb-2">{prefecture.name}の中学ソフトテニス</h1>
         <p className="mb-6 text-sm text-text-secondary">
-          {prefecture.name}から全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した{teams.length}
+          {prefecture.name}から全国中学校大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した{teams.length}
           チームの一覧です。チーム名から各チームの戦績と、その中学から高校への進路を見られます。
         </p>
 

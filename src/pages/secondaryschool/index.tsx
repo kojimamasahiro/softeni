@@ -34,7 +34,7 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
     <>
       <MetaHead
         title="中学ソフトテニス | 全中・都道府県対抗の成績と進路 | Softeni Pick"
-        description={`中学ソフトテニスの特集ページ。全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・各ブロック大会の成績を都道府県別・チーム別にまとめています。収録${teamTotal}チーム、中学から高校への進路${pathwayTotal}件を掲載。`}
+        description={`中学ソフトテニスの特集ページ。全国中学校大会（全中）・都道府県対抗全日本中学生大会・各ブロック大会の成績を都道府県別・チーム別にまとめています。収録${teamTotal}チーム、中学から高校への進路${pathwayTotal}件を掲載。`}
         url={pageUrl}
         type="website"
       />
@@ -49,15 +49,15 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
 
         <h1 className="text-2xl font-bold mb-2">中学ソフトテニス</h1>
         <p className="mb-6 text-sm text-text-secondary">
-          全国中学校体育大会（全中）・都道府県対抗全日本中学生大会・各地区のブロック大会の結果から、
-          都道府県ごとの成績と出場チームの戦績をまとめています。収録は{teamTotal}チーム。
+          全国中学校大会（全中）・都道府県対抗全日本中学生大会・各地区のブロック大会の結果から、 都道府県ごとの成績と出場チームの戦績をまとめています。収録は
+          {teamTotal}チーム。
           <strong className="font-semibold">部活動の地域移行にともない地域クラブの出場が増えている</strong>ため、
           このカテゴリでは学校とクラブを区別せず「チーム」として扱っています。
         </p>
 
         <div className="mb-8 grid gap-3 sm:grid-cols-2">
           <Link href={ZENCHU_HUB} className="flex flex-col gap-1 rounded-lg border border-border bg-surface p-4 transition-colors hover:bg-bg-subtle">
-            <h2 className="text-base font-semibold text-text">全国中学校体育大会（全中）の結果</h2>
+            <h2 className="text-base font-semibold text-text">全国中学校大会（全中）の結果</h2>
             <p className="text-xs text-text-muted">年度別の対戦表・優勝者と、学校部活動と地域クラブの内訳</p>
           </Link>
           {/* 進路一覧は男女別URLだが、入口では分けず男子へ送る（全中カードと同じ1枚のリンク）。

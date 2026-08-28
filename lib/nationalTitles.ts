@@ -163,7 +163,7 @@ export const NATIONAL_TITLE_TOURNAMENTS: NationalTitleTournamentMeta[] = [
   // ジュニア（中学・小学・U20 をひとまとめ）
   {
     tournamentId: 'secondaryschool-championship',
-    label: '全国中学校体育大会',
+    label: '全国中学校大会',
     shortLabel: '全国中学校大会',
     aliases: ['全中'],
     majorCategory: 'junior',
