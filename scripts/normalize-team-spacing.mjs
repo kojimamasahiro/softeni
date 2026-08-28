@@ -75,13 +75,6 @@ for (const f of files) {
   }
   if (!teamRepl.size && !idRepl.length) continue;
   let changed = 0;
-  const apply = (needle, repl) => {
-    const parts = text.split(needle);
-    if (parts.length > 1) {
-      changed += parts.length - 1;
-      text = parts.join(repl);
-    }
-  };
   const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   // "team" とコロンの間・コロンと値の間の空白（半角/全角/改行）はファイルごとに
   // 圧縮形式（"team":"x"）と整形形式（"team": "x"）が混在するため、区切りを
