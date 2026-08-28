@@ -324,3 +324,25 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 **この矛盾に依存していない**。順位データ自体は矛盾を抱えたまま残っている。
 
 経緯: [raw/2026-07-26-idea-tournament-metadata-platform.md](../raw/2026-07-26-idea-tournament-metadata-platform.md) 追記10
+
+## `verify-facts-golden.ts` の golden 値が陳腐化している（2026-08-28 記録）
+
+`npm run playerstats:verify` の1つめ `scripts/playerStats/verify-facts-golden.ts` が
+**curated 26人中14人で DIFF** になる。いずれも facts のほうが golden より試合数が多い方向。
+
+golden 値は同スクリプトにハードコードされており、最終更新は **2026-07-02**（`git log`）。
+その後のデータ投入で増えたぶんがそのまま差分になっている。つまり**エンジンの不具合ではなく
+fixture の陳腐化**で、実装が正しいことは `verify-golden-final.ts`
+（facts キャッシュ vs ソースからの再計算、76人で ok=76）が別途担保している。
+
+- `playerstats:verify` は **prebuild に入っていない**のでビルドは落ちない。
+  落ちるのは手で verify を回したときだけ
+- 2026-07-19 の時点では2人（funemizu-hayato / kurosaka-takuya）だった
+  （[raw/2026-07-19-cloudflare-build-time.md](../raw/2026-07-19-cloudflare-build-time.md) 追記2）。
+  データが増えるたびに広がるので、放置すると verify が常に赤い状態になり
+  「本物の退行に気付けない」検査になる
+
+やること: golden 値を現在の facts で貼り直すか、ハードコードをやめて
+「前回値との差分がしきい値を超えたら落とす」形に変えるかを決める。
+
+再発見の経緯: [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) 追記2

@@ -159,19 +159,28 @@ for f in $(find .next/server/pages -name '*.nft.json'); do
 done | sort -rn | head
 ```
 
-#### `data/players/_facts` が glob を膨らませる
+#### 生成物を `data/` の外に置く
 
-`data/` 20,172ファイルのうち **18,471が `data/players/_facts`**（playerStats の派生物・
-gitignore 対象・ビルドキャッシュから復元される）。nft が出す `data/**/*` と
-`data/players/**/*` はこれを毎回列挙する。`_facts` を `data/` の外へ移せばこの分は消える。
+playerStats の生成物（`_facts` は18,000ファイル超）は **リポジトリ直下の `.playerstats/`** に置く
+（2026-08-28 に `data/players/` 配下から移動）。nft が出す `data/**/*` と `data/players/**/*` は
+そこに置いたファイルを毎回列挙してしまうため。
+
+| glob | 移動前 | 移動後 |
+|---|---|---|
+| `data/players/**/*` | 18,526ファイル | 53ファイル |
+| `data/**/*` | 20,172ファイル | 1,699ファイル |
+
+**今後ビルド生成物を足すときも `data/` 配下には置かないこと。**
 
 詳細と実測: [docs/raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md)
 
 ### generate-facts の増分ビルドとビルドキャッシュ
 
-`data/players/_facts`（130MB / 18,485ファイル）・`_index`・`_manifest.json` は
+`.playerstats/_facts`（約138MB / 18,471ファイル）・`_index`・`_manifest.json` は
 `.gitignore` 対象のため、Cloudflare では clone 直後に存在せず `generate-facts` が
 毎回フルビルド（約2分）に落ちていた。ローカルでは増分（数秒〜10秒）が既定。
+（2026-08-28 以前は `data/players/` 配下にあった。上記「生成物を `data/` の外に置く」参照。
+移動でキャッシュのレイアウトが変わったため、移行後の初回だけ復元が拒否されフルビルドになる。）
 
 `scripts/playerStats/cache-sync.mjs` がこれらを `.next/cache/playerstats/` に退避し、
 次回ビルドで復元する。prebuild の先頭で `restore`、末尾で `save` を実行する。

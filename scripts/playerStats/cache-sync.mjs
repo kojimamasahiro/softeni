@@ -21,6 +21,13 @@
 //     従来どおりのフルビルドになる（= fail safe。遅くなるだけで誤ったデータは出ない）。
 //   - このスクリプトは何が起きてもビルドを落とさない（常に exit 0）。
 //
+// 置き場所（2026-08-28 に `data/players/` 配下から移動）:
+//   `_facts` は18,000ファイル超あり、`data/players/**` に置くと nft（output file tracing）が
+//   ビルド中に毎回それを列挙してしまう。リポジトリ直下の `.playerstats/` へ出した。
+//   詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+//   TARGETS の rel を変えたため、旧レイアウトのキャッシュは「不完全」と判定され、
+//   移行後の初回だけフルビルドに落ちる（= 想定内の fail safe）。
+//
 // 使い方: node scripts/playerStats/cache-sync.mjs restore | save
 
 import fs from 'fs';
@@ -33,9 +40,9 @@ const META_FILE = 'cache-meta.json';
 
 /** 同期対象。dir = ディレクトリ, file = 単体ファイル。 */
 const TARGETS = [
-  { kind: 'dir', rel: path.join('data', 'players', '_facts') },
-  { kind: 'dir', rel: path.join('data', 'players', '_index') },
-  { kind: 'file', rel: path.join('data', 'players', '_manifest.json') },
+  { kind: 'dir', rel: path.join('.playerstats', '_facts') },
+  { kind: 'dir', rel: path.join('.playerstats', '_index') },
+  { kind: 'file', rel: path.join('.playerstats', '_manifest.json') },
 ];
 
 const log = (msg) => console.log(`[cache-sync] ${msg}`);

@@ -19,7 +19,7 @@ import { playerKey } from '../../lib/playerStats/identity';
 import { readManifest, updateLastRun } from '../../lib/playerStats/manifest';
 import type { PlayerFacts } from '../../lib/playerStats/types';
 
-const FACTS_DIR = ['data', 'players', '_facts'];
+const FACTS_DIR = ['.playerstats', '_facts'];
 const RANKINGS_DIR = ['data', 'rankings'];
 
 function parseArgs(): { years: Set<number> | null; full: boolean } {

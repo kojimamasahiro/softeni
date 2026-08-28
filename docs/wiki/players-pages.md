@@ -206,12 +206,15 @@ HTML 側の利得は転送ではなく**パース・DOM 構築コスト**（要�
 - **生成スクリプト**（TS・`ts-node`。`scripts/playerStats/`）: `generate-facts.ts`（逆引き `_index/by-player.json` ＋ `_facts/{id}.json`）/
   `generate-rankings.ts`（`data/rankings/{year}-{discipline}.json`）/ `generate-public-json.ts`（`public/data/player-stats/{id}.json`）。
   `prebuild` に連結済み。中間・成果物（`_facts`/`_index`/`_manifest.json`/`rankings`/`public/data/player-stats`）は `.gitignore`。
+  **`_facts` / `_index` / `_manifest.json` の置き場はリポジトリ直下の `.playerstats/`**（2026-08-28 に
+  `data/players/` 配下から移動。`_facts` が18,000ファイル超あり、`data/players/**` に置くと
+  nft の output file tracing がビルド中に毎回列挙してしまうため。docs/wiki/deployment.md 参照）。
 - **既存資産の一本化（P6）**: `data/players/<slug>/analysis.json` は **エンジン Facts 由来で生成**（`lib/playerStats/legacyAnalysis.ts`）。
   旧 `scripts/generate-player-analysis.mjs` はこの生成器へ委譲する薄いラッパになり、独自の全大会スキャン集計は削除（二重ロジック解消）。
   外部 JSON 形は従来互換（curated 22 名で byte 一致を検証）。`careerRecord` の通算値はこの `analysis.json` を読むため transitively エンジン由来。
 - **利用文脈の配線（P5・非破壊）**: SSR `players/[id]/results.tsx` の `getStaticProps` が `playerStatistics` を追加提供（既存表示は維持）。
   記事供給は `lib/playerStats/articleMaterial.ts`。SEO 日付は `coverage`（実データ）由来。
-- **増分ビルド（P7・2026-07-02）**: `data/players/_manifest.json` に入力ファイルの contentHash
+- **増分ビルド（P7・2026-07-02）**: `.playerstats/_manifest.json` に入力ファイルの contentHash
   （`details/**` = catKey、`information/*` = `info:{tid}`、グローバル入力 = `globalHash`、`ranking-config.json` = `configHash`）を保持。
   `generate-facts` は既定で増分: 前回 manifest との diff → 逆引き索引の増分更新 → **変更大会に出場した選手だけ** `_facts` を再生成し、
   `lastRun`（`affectedPlayers`/`changedYears`/`configChanged`）を manifest に記録する。無変更ビルドは再計算ゼロ。

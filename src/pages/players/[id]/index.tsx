@@ -267,7 +267,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .filter((entry) => {
       const fullPath = path.join(playersPath, entry);
       // ディレクトリかつ information.json を持つ実プレイヤーフォルダのみ
-      // (_facts, _index などの内部データディレクトリを除外)
+      // （index.json / homonyms.json のようなファイルを除外する。なお playerStats の
+      //  生成物 _facts / _index は 2026-08-28 に .playerstats/ へ移動済み）
       return fs.statSync(fullPath).isDirectory() && fs.existsSync(path.join(fullPath, 'information.json'));
     })
     .map((dir) => ({

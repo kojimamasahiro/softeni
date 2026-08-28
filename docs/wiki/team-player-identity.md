@@ -260,12 +260,12 @@ node scripts/build-team-master.mjs              # teams.json + team-context.json
 node scripts/build-team-merge-candidates.mjs    # merge-candidates.json
 node scripts/build-team-review-html.mjs         # レビューHTML
 python3 scripts/build-player-homonyms.py        # homonyms.json
-npm run playerstats:facts                       # data/players/_facts の再生成（キャリア年表の元データ）
+npm run playerstats:facts                       # .playerstats/_facts の再生成（キャリア年表の元データ）
 node scripts/check-identity-health.mjs          # 未対応項目のヘルスチェック
 ```
 
 **`normalize-team-names` → `build-team-master` の順序は必須**（逆順・片方だけの実行は表示名が
-alias 側に振れる）。また `data/players/_facts/**` は選手ページのキャリア年表・所属推移の元データで、
+alias 側に振れる）。また `.playerstats/_facts/**` は選手ページのキャリア年表・所属推移の元データで、
 チーム名を焼き込んでいるため、名寄せ後は再生成しないと**画面上は分裂したまま**になる
 （`prebuild` でも生成されるが、ローカル確認時は明示的に実行すること）。
 

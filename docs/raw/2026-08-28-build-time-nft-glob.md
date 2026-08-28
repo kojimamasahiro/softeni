@@ -348,3 +348,121 @@ docs/wiki/deployment.md に反映したもの:
 まだ書き戻していないもの:
 
 - 対策 B は未実施のまま。Open Questions には既に nft の項目があるのでそこに含める
+
+---
+
+## 追記2: 対策 B を実施（playerStats 生成物を `data/` の外へ）
+
+### 置き場所
+
+`data/players/_facts` / `_index` / `_manifest.json` → **`.playerstats/_facts` / `_index` / `_manifest.json`**。
+
+リポジトリ直下にした理由は、nft が glob するのは `data/**` と `data/players/**` であって
+リポジトリ直下の隠しディレクトリではないため。`.gitignore` は4行を `.playerstats/` の1行にまとめた
+（`data/players/_agg/` は**コードから一切参照されておらず**、ディスク上にも存在しなかったので落とした。
+2026-07-01 の設計メモにある L2 集計キャッシュの構想が実装されなかった名残）。
+
+葉の名前（`_facts` 等）は**変えていない**。ドキュメントとログ文字列に多数出てくるため、
+親ディレクトリだけ移すほうが差分も誤りも少ない。
+
+パスは全てリテラルで書いた（配列 spread を使わない。追記1の nft の話と同じ理由）。
+
+### 変更したファイル
+
+コード7箇所:
+
+- `lib/playerStats/playerStatistics.ts`（facts キャッシュの読み出し）
+- `lib/playerStats/manifest.ts`（`MANIFEST_PATH`）
+- `lib/playerStats/reverseIndex.ts`（`REVERSE_INDEX_PATH`）
+- `scripts/playerStats/generate-facts.ts` / `generate-rankings.ts`（`FACTS_DIR`）
+- `scripts/playerStats/verify-golden-final.ts` / `generate-analysis.ts`
+- `scripts/playerStats/cache-sync.mjs`（`TARGETS`）
+
+そのほか `.gitignore`、`lib/players.ts` と `src/pages/players/[id]/index.tsx` の
+「`_facts` を除外している」というコメント（移動で意味が変わるため）。
+
+### 移行時の一度きりの副作用
+
+`cache-sync.mjs` の `TARGETS` の `rel` が変わったため、Cloudflare のビルドキャッシュに
+残っている**旧レイアウトのキャッシュは「不完全」と判定される**。restore が拒否され、
+移行後の初回ビルドだけ `generate-facts` がフルビルド（約2分）になる。
+これは既存の fail safe がそのまま働くだけで、2回目以降は元通り増分に戻る。
+
+### 効果（ローカル実測）
+
+| glob | 移動前 | 移動後 |
+|---|---|---|
+| `data/players/**/*` | 18,526ファイル / 601ms | **53ファイル / 10ms** |
+| `data/players/**/*/information.json` | 523ms | 10ms 未満 |
+| `data/**/*` | 20,172ファイル / 801ms | **1,699ファイル / 86ms** |
+| nft の glob 合計（ウォーム再計測） | 28.0秒 | **2.9秒** |
+
+glob 呼び出し回数は284回で変わらない（減らしたのは1回あたりのマッチ数）。
+ビルド全体は 79秒 → 71秒、exit 0、4,462 HTML で移動前と同数。
+
+### 検証
+
+- `npm run playerstats:facts`: 増分が効いている（14ファイル変更 → 2,691選手を再生成、11秒。
+  再実行で `no changes` 0.8秒）。manifest を新パスから読めていることの証拠
+- `cache-sync save` → `.playerstats` を退避 → `restore`: 18,473ファイルの md5 総和が**完全一致**
+- `npm run playerstats:test`: 33 passed, 0 failed
+- **`verify-golden-final`: 76選手（fixture 26 + ランダム50）で ok=76 / cacheMismatch=0 /
+  noCache=0**。`_facts` キャッシュが新パスから読めており、かつ内容がソースからの再計算と
+  一致していることを同時に示すのでこれが最も強い証拠
+- `/players/[id]/results` のビルド時間 1,570秒 → 1,402秒（合計）。キャッシュを見失っていたら
+  全選手の再計算になって激増するはずなので、ここでも読めていることが裏づけられる
+- `tsc --noEmit` パス。`npx eslint .` のエラーは既存6件のまま増減なし
+- 出力の目視: `/players/{1,5,100,500}/results` に通算成績が入っている、`/rankings` が生成されている
+
+### 既知の未解決（今回の変更とは無関係）
+
+`npm run playerstats:verify` の1つめ `verify-facts-golden.ts` が **26人中14人で DIFF**。
+いずれも facts のほうが golden より試合数が多い方向で、golden は同スクリプトに
+ハードコードされており最終更新が **2026-07-02**（`git log` で確認）。
+その後のデータ投入で増えたぶんが差分になっている。
+2026-07-19 の raw ノートで「golden fixture の陳腐化」として2件記録されていたものが、
+データ追加に伴って14件まで広がった形。**`playerstats:verify` は prebuild に入っていないので
+ビルドは落ちない。** golden の更新が必要だが、ビルド時間の話とは別問題なので今回は触っていない。
+
+## Compile Log（追記2分）
+
+docs/wiki/deployment.md に反映したもの:
+
+- 生成物の置き場が `.playerstats/`（`data/` の外）であることと、その理由
+- 「今後ビルド生成物を足すときも `data/` 配下には置かないこと」という一般則。
+  これが今回いちばん再利用価値がある
+- 移動前後の glob マッチ数の比較表（構造的な事実で、対策の効果を示す最小限の数値）
+- ビルドキャッシュのレイアウト変更で移行後の初回だけフルビルドになること（運用者が知る必要がある）
+
+docs/wiki/players-pages.md / team-player-identity.md に反映したもの:
+
+- `_facts` / `_index` / `_manifest.json` の新しいパス（手順書のコマンドを含む）
+
+docs/adr/ADR-011 の扱い:
+
+- **Decision 本文（26行目・28行目の `data/players/_manifest.json` 等）は書き換えていない。**
+  ADR は当時の意思決定の記録なので、実装が動いても本文は歴史として残す（AGENTS.md の ADR ルール）
+- 現状を指す **Related Files 節のパスだけ更新**し、移動した旨の1行を添えた
+
+意図的にどこにも書き戻さなかったもの:
+
+- 葉の名前を `_facts` のまま据え置いた判断 — 差分を小さくするための実務判断で、
+  一般則にはならない。この raw ノートに残せば足りる
+- `data/players/_agg/` を .gitignore から落とした件 — 未実装の構想の残骸で、
+  wiki に書くと逆に「あったもの」と誤解される
+- `docs/wiki/players-pages.md:374` の古い設計スケッチ（`scripts/generate-player-facts.mjs` 想定・
+  `_agg` を含む）— 存在しないスクリプト名を挙げている時点で計画メモと読めるため、
+  パスだけ直しても意味が無い。触っていない
+- `docs/ui/deliverables/01-inventory.md:215` の `data/players/(... _facts, _index)` —
+  当時の棚卸し成果物であり、現状ドキュメントではないので更新対象外とした
+- `verify-facts-golden` の陳腐化14件 — ビルド性能とは別問題。上に事実だけ記録した
+
+docs/wiki/open-questions.md に起票したもの:
+
+- `verify-facts-golden.ts` の golden 陳腐化（26人中14人）。2026-07-19 の raw ノートで
+  「起票すべき」とされたまま残っていたもの。データが増えるたびに広がるため、
+  放置すると verify が常時赤くなって本物の退行を隠す、という点まで書いた
+
+まだ書き戻していないもの:
+
+- なし

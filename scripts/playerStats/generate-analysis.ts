@@ -20,7 +20,7 @@ import type { PlayerFacts } from '../../lib/playerStats/types';
 
 function readCachedFacts(root: string, id: number): PlayerFacts | null {
   try {
-    const facts = JSON.parse(fs.readFileSync(path.join(root, 'data', 'players', '_facts', `${id}.json`), 'utf-8')) as PlayerFacts;
+    const facts = JSON.parse(fs.readFileSync(path.join(root, '.playerstats', '_facts', `${id}.json`), 'utf-8')) as PlayerFacts;
     return facts.engineVersion === ENGINE_VERSION ? facts : null;
   } catch {
     return null;
