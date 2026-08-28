@@ -13,6 +13,7 @@ import { getGenderLabel, HIGHSCHOOL_CATEGORY_PRIORITY, HIGHSCHOOL_TOURNAMENT_PRI
 import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
 import { getFeederSchools, type FeederSchool } from '@/lib/highschoolFeederSchools';
 import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
+import { getPlayerNameToId } from '@/lib/playersIndex';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
 import { getAllTournamentIndex, getTournamentInfo } from '@/utils/tournament-data-loader';
 
@@ -898,33 +899,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 選手ページ（/players/{id}/results）を持つ選手へのリンクマップを構築
   // pid 形式: "姓_名_チーム_県"。players/index.json と姓名一致でリンクする。
   const playerLinks: Record<string, number> = {};
-  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-  if (fs.existsSync(playersIndexPath)) {
-    try {
-      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
-        id: number;
-        lastName: string;
-        firstName: string;
-        count: number;
-      }>;
-      const nameToId = new Map<string, number>();
-      for (const p of playersIndex) {
-        if (p.count < 5) continue;
-        const key = `${p.lastName}::${p.firstName}`;
-        // 同姓同名は最初の ID を使う（players/index.tsx と同じ規約）
-        if (!nameToId.has(key)) nameToId.set(key, p.id);
+  {
+    const nameToId = getPlayerNameToId();
+    for (const entry of entriesWithMeta) {
+      for (const pid of entry.playerIds ?? []) {
+        if (playerLinks[pid] !== undefined) continue;
+        const parts = pid.split('_');
+        if (parts.length < 2) continue;
+        const id = nameToId.get(`${parts[0]}::${parts[1]}`);
+        if (id !== undefined) playerLinks[pid] = id;
       }
-      for (const entry of entriesWithMeta) {
-        for (const pid of entry.playerIds ?? []) {
-          if (playerLinks[pid] !== undefined) continue;
-          const parts = pid.split('_');
-          if (parts.length < 2) continue;
-          const id = nameToId.get(`${parts[0]}::${parts[1]}`);
-          if (id !== undefined) playerLinks[pid] = id;
-        }
-      }
-    } catch (err) {
-      console.error('failed to parse players index.json', err);
     }
   }
 

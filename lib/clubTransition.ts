@@ -146,8 +146,6 @@ const CLUB_TRANSITION_TOURNAMENTS: Record<string, { policyYear: number }> = {
   'secondaryschool-championship': { policyYear: 2023 },
 };
 
-const DETAILS_ROOT = ['data', 'tournaments', 'details'];
-
 /** モジュールスコープのキャッシュ（ビルド中に大会ハブが何度も呼ぶため） */
 const cache = new Map<string, ClubTransitionData | null>();
 
@@ -164,7 +162,11 @@ export function getClubTransition(tournamentId: string): ClubTransitionData | nu
     return null;
   }
 
-  const tidDir = path.join(process.cwd(), ...DETAILS_ROOT, tournamentId);
+  // nft（output file tracing）が静的解決できるよう、パスセグメントはリテラルで書く。
+  // `path.join(process.cwd(), ...ARRAY, 変数)` にすると nft が解決を諦め、
+  // リポジトリ全体を再帰 glob する（ビルドが数分遅くなる）。
+  // 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+  const tidDir = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId);
   if (!fs.existsSync(tidDir)) {
     cache.set(tournamentId, null);
     return null;

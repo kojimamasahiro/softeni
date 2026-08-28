@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { getPlayerNameToId } from '@/lib/playersIndex';
 import { countTeamMatches, shouldIndexTeamPage } from '@/lib/teamIndexing';
 import { aggregateStLeagueTeam, getAllStLeagueTeamIds, StLeagueTeamSummary } from '@/utils/st-league';
 // 型のみ（値の import は getStaticProps 内の動的 import に留め、クライアントバンドルに入れない）
@@ -448,35 +449,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // リンクできるよう、`if (stLeague)` のガードは掛けない。
   const playerLinks: Record<string, number> = {};
   {
-    const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-    if (fs.existsSync(playersIndexPath)) {
-      try {
-        const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
-          id: number;
-          lastName: string;
-          firstName: string;
-          count: number;
-        }>;
-        const nameToId = new Map<string, number>();
-        for (const p of playersIndex) {
-          if (p.count < 5) continue;
-          const key = `${p.lastName}::${p.firstName}`;
-          // 同姓同名は最初の ID を使う（players/index.tsx と同じ規約）
-          if (!nameToId.has(key)) nameToId.set(key, p.id);
-        }
-        const candidates: Array<{ lastName: string; firstName: string }> = [
-          ...(stLeague?.seasons ?? []).flatMap((season) => season.players),
-          ...Object.values(teamPlayers),
-        ];
-        for (const player of candidates) {
-          const key = `${player.lastName}::${player.firstName}`;
-          if (playerLinks[key] !== undefined) continue;
-          const id = nameToId.get(key);
-          if (id !== undefined) playerLinks[key] = id;
-        }
-      } catch (err) {
-        console.error('failed to parse players index.json', err);
-      }
+    const nameToId = getPlayerNameToId();
+    const candidates: Array<{ lastName: string; firstName: string }> = [
+      ...(stLeague?.seasons ?? []).flatMap((season) => season.players),
+      ...Object.values(teamPlayers),
+    ];
+    for (const player of candidates) {
+      const key = `${player.lastName}::${player.firstName}`;
+      if (playerLinks[key] !== undefined) continue;
+      const id = nameToId.get(key);
+      if (id !== undefined) playerLinks[key] = id;
     }
   }
 

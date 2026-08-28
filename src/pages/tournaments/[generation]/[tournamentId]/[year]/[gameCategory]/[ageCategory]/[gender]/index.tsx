@@ -24,6 +24,7 @@ import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressCha
 import { getPublishedInsight } from '@/lib/tournamentInsight';
 import { findPublishedPreviewForTournament } from '@/lib/newsArticle';
 import { PackedTournamentDetailData, packTournamentDetailData, unpackTournamentDetailData } from '@/lib/packedPageData';
+import { getPlayerIdToName, getPlayerNameToId } from '@/lib/playersIndex';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { buildSiteUrl } from '@/lib/siteConfig';
 import { getTournamentOgImage } from '@/lib/tournamentOgImage';
@@ -573,33 +574,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (!tournamentIndexEntry) {
     tournamentIndexEntry = loadIndexEntry(localIndexPath);
   }
-  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-  const playerIndexMap = new Map<string, number>();
-  const playerIdToNameMap = new Map<number, { lastName: string; firstName: string }>();
-  if (fs.existsSync(playersIndexPath)) {
-    try {
-      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
-        id: number;
-        lastName: string;
-        firstName: string;
-        count: number;
-      }>;
-      for (const p of playersIndex) {
-        if (!playerIdToNameMap.has(p.id)) {
-          playerIdToNameMap.set(p.id, { lastName: p.lastName, firstName: p.firstName });
-        }
-        if (p.count < 5) continue;
-
-        const key = `${p.lastName}::${p.firstName}`;
-        // If multiple IDs exist, the first one is used (similar to players/index.tsx)
-        if (!playerIndexMap.has(key)) {
-          playerIndexMap.set(key, p.id);
-        }
-      }
-    } catch (err) {
-      console.error('failed to parse players index.json', err);
-    }
-  }
+  const playerIndexMap = getPlayerNameToId();
+  const playerIdToNameMap = getPlayerIdToName();
   const infoPath = path.join(process.cwd(), 'data', 'tournaments', 'information', `${tournamentId}.json`);
   const infoWarnings: string[] = [];
   let infoForYear: TournamentInformationEntry | null = null;
