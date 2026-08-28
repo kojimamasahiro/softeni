@@ -130,7 +130,6 @@ const topN = (m, n) =>
     .slice(0, n)
     .map(([k]) => k);
 const teams = [];
-let nulled = 0;
 const review = [];
 const context = {};
 for (const key of [...tot.keys()].sort((a, b) => tot.get(b) - tot.get(a) || (a < b ? -1 : a > b ? 1 : 0))) {
@@ -152,7 +151,7 @@ for (const key of [...tot.keys()].sort((a, b) => tot.get(b) - tot.get(a) || (a <
     if (cov >= COV_MIN && share >= SHARE_MIN) {
       prefecture = mp;
       others = [...pc.entries()].filter(([k, c]) => k !== mp && c >= Math.max(2, mc * 0.25)).map(([k]) => k);
-    } else nulled++;
+    }
   }
   const id = teams.length + 1;
   const rec = { id, name, prefecture, count: total };

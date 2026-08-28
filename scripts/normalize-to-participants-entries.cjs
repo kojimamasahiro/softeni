@@ -37,7 +37,7 @@ if (argv[2]) {
     const srcDir = path.dirname(resolvedSrc);
     const srcBase = path.basename(src);
     entriesMetaPath = path.join(srcDir, '..', 'entries', srcBase);
-  } catch (err) {
+  } catch {
     // fallback to previous behavior on any error
     entriesMetaPath = path.join('..', 'entries', src);
   }
@@ -52,7 +52,7 @@ try {
   if (fs.existsSync(entriesMetaPath)) {
     entriesMeta = JSON.parse(fs.readFileSync(entriesMetaPath, 'utf8')) || [];
   }
-} catch (err) {
+} catch {
   // ignore if missing or parse error
 }
 
