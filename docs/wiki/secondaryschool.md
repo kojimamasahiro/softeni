@@ -276,6 +276,10 @@ npm run secondaryschool:build   # 索引と進路をまとめて生成
 
 - [highschool.md](./highschool.md) — 高校カテゴリ（横展開元。ただし構成は意図的に変えている）。学校ページの「出身中学」節もこちら
 - [seo.md](./seo.md) #13 — 中学カテゴリの重複マップ（`/teams` `/highschool` とも重複なし）
+- [seo.md](./seo.md)「大会名の表記と検索語の乖離（missing literal）」 — 全中ハブが「全中」
+  「全国中学校ソフトテニス大会」を literal で持たず主要クエリで SERP 圏外である件。
+  兄弟のブロック大会（`◯◯中学校ソフトテニス大会`）とは命名の型が違う。
+  経緯は [raw/2026-08-28](../raw/2026-08-28-idea-zenchu-abbreviation-seo.md)
 - [public-pages.md](./public-pages.md) — ルーティング全体と大会ハブの「学校部活動と地域クラブの内訳」節
 - [team-player-identity.md](./team-player-identity.md) — 名寄せの運用と alias の大会スコープ
 - [ADR-013](../adr/ADR-013-scoped-team-name-aliases.md) — 中高一貫校の略称を世代で分ける仕組み
