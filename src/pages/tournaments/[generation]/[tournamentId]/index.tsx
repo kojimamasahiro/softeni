@@ -25,6 +25,7 @@ import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/quali
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
+import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings } from '@/lib/priorMeetings';
 import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
 import { getCategoryLabel } from '@/lib/utils';
@@ -78,6 +79,10 @@ interface TournamentHubPageProps {
   generation: string;
   tournamentId: string;
   label: string;
+  /** 検索で使われる大会名。未設定なら label をそのまま使う。docs/wiki/seo.md「大会名の表記と検索語の乖離」 */
+  searchLabel: string | null;
+  /** 略称。先頭1件を title / h1 に併記する */
+  searchAliases: string[];
   officialUrl: string | null;
   yearGroups: YearGroup[];
   // 高校全国大会（インターハイ/ジャパンカップ）の場合のみスラッグが入る。
@@ -107,6 +112,8 @@ export default function TournamentHubPage({
   generation,
   tournamentId,
   label,
+  searchLabel,
+  searchAliases,
   officialUrl,
   yearGroups,
   hsNationalSlug,
@@ -118,6 +125,11 @@ export default function TournamentHubPage({
   qualifierFinishers,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
+
+  // 検索で使われる名前を title / h1 / description に literal で出す。
+  // searchLabel / searchAliases が未設定の大会では headingName === label となり、
+  // 出力は従来と 1 文字も変わらない。docs/wiki/seo.md「大会名の表記と検索語の乖離」
+  const { headingName, formalLabel, needsFormalLabelNote } = buildTournamentSearchNames(label, searchLabel, searchAliases);
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
 
   const years = yearGroups.map((g) => g.year);
@@ -236,8 +248,11 @@ export default function TournamentHubPage({
   const upcomingVenueNames = upcomingOnly ? upcomingOnly.venues.map((v) => v.name).filter((n): n is string => !!n) : [];
 
   const title = upcomingOnly
-    ? `${label} ${upcomingOnly.year}年 日程・会場・実施種目 | ソフトテニス情報`
-    : `${label} 結果・歴代優勝/上位入賞者まとめ | ソフトテニス情報`;
+    ? `${headingName} ${upcomingOnly.year}年 日程・会場・実施種目 | ソフトテニス情報`
+    : `${headingName} 結果・歴代優勝/上位入賞者まとめ | ソフトテニス情報`;
+  // 構造化データ用の別名リスト。正式名称と重複するものは除く。
+  const alternateNames = [searchLabel, ...searchAliases].filter((n): n is string => !!n && n !== label);
+
   const description = upcomingOnly
     ? `ソフトテニス「${upcomingOnly.label}」の日程・会場・実施種目。${[
         upcomingOnly.startDate ? `会期${upcomingOnly.startDate}〜${upcomingOnly.endDate ?? upcomingOnly.startDate}` : null,
@@ -246,7 +261,9 @@ export default function TournamentHubPage({
       ]
         .filter(Boolean)
         .join(' / ')}。`
-    : `ソフトテニス「${label}」の歴代大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。`;
+    : `ソフトテニス「${headingName}」の歴代大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。${
+        needsFormalLabelNote ? `正式名称は${formalLabel}です。` : ''
+      }`;
 
   return (
     <>
@@ -266,12 +283,14 @@ export default function TournamentHubPage({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'CollectionPage',
-              name: `${label} 結果（歴代一覧）`,
+              name: `${headingName} 結果（歴代一覧）`,
               inLanguage: 'ja',
               url: pageUrl,
               about: {
                 '@type': 'Thing',
                 name: `ソフトテニス ${label}`,
+                // 正式名称・検索名・略称が食い違う大会は、同一エンティティだと示すために別名を列挙する
+                ...(alternateNames.length > 0 && { alternateName: alternateNames }),
               },
               description,
             }),
@@ -358,7 +377,11 @@ export default function TournamentHubPage({
       <PageLayout>
         <Breadcrumbs crumbs={breadcrumbs} />
 
-        <h1 className="text-2xl font-bold mb-4">{upcomingOnly ? `${label} ${upcomingOnly.year}年 日程・会場` : `${label} 大会結果（歴代一覧）`}</h1>
+        <h1 className="text-2xl font-bold mb-4">{upcomingOnly ? `${headingName} ${upcomingOnly.year}年 日程・会場` : `${headingName} 大会結果（歴代一覧）`}</h1>
+
+        {/* 検索名で名乗る大会は、正式名称を置き換えるのではなく併記する（seo.md「大会名の表記と検索語の乖離」）。
+            全中のように正式名称が全競技共通（全国中学校体育大会）の場合、ここが唯一の正式名称の出どころになる。 */}
+        {needsFormalLabelNote && <p className="-mt-2 mb-4 text-sm text-text-secondary">正式名称は{formalLabel}（ソフトテニス競技）。</p>}
 
         {hsNationalHref && (
           <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
@@ -746,6 +769,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const indexEntry = loadIndexEntry(tournamentId);
   const label = indexEntry?.label ?? tournamentId;
+  const searchLabel = indexEntry?.searchLabel ?? null;
+  const searchAliases = indexEntry?.searchAliases ?? [];
   const officialUrl = indexEntry?.officialUrl || null;
 
   // information から年度ごとの開催情報・カテゴリラベルを取得
@@ -999,6 +1024,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       generation,
       tournamentId,
       label,
+      searchLabel,
+      searchAliases,
       officialUrl,
       yearGroups,
       hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),

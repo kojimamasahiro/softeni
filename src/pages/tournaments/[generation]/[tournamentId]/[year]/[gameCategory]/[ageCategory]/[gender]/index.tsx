@@ -33,6 +33,7 @@ import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBas
 import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
+import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
 
 type LinkCategory = {
@@ -57,6 +58,10 @@ interface TournamentYearResultPageProps {
   ageCategory: string;
   gender: string;
   label: string;
+  /** 検索で使われる大会名。未設定なら label。docs/wiki/seo.md「大会名の表記と検索語の乖離」 */
+  searchLabel?: string | null;
+  /** 略称。先頭1件を title / h1 に併記する */
+  searchAliases?: string[];
   categoryLabel: string;
   infoForYear: TournamentInformationEntry | null;
   detailDataPacked: PackedTournamentDetailData | null;
@@ -98,6 +103,8 @@ export default function TournamentYearResultPage({
   ageCategory,
   gender,
   label,
+  searchLabel = null,
+  searchAliases = [],
   categoryLabel,
   infoForYear,
   detailDataPacked,
@@ -117,6 +124,11 @@ export default function TournamentYearResultPage({
   ogImage = null,
 }: TournamentYearResultPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}/`;
+
+  // 検索で使われる名前を title / h1 に literal で出す。searchLabel / searchAliases が
+  // 未設定の大会では headingName === label となり、出力は従来と 1 文字も変わらない。
+  // docs/wiki/seo.md「大会名の表記と検索語の乖離（missing literal）」
+  const { headingName } = buildTournamentSearchNames(label, searchLabel, searchAliases);
 
   const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -169,8 +181,8 @@ export default function TournamentYearResultPage({
   return (
     <>
       <MetaHead
-        title={`${label} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果・トーナメント表 | ソフトテニス情報`}
-        description={`ソフトテニス「${label}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
+        title={`${headingName} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果・トーナメント表 | ソフトテニス情報`}
+        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
         {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
@@ -225,7 +237,7 @@ export default function TournamentYearResultPage({
 
         {/* h1 + 大会紹介文 */}
         <h1 className="text-2xl font-bold mb-4">
-          {label} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
+          {headingName} {year}年度 {categoryLabel ? `${categoryLabel} ` : ''}
           大会結果
         </h1>
 
@@ -823,6 +835,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         ageCategory,
         gender,
         label: tournamentIndexEntry?.label ?? '',
+        searchLabel: tournamentIndexEntry?.searchLabel ?? null,
+        searchAliases: tournamentIndexEntry?.searchAliases ?? [],
         categoryLabel: infoForYear?.categories?.find((cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`)?.label ?? '',
         infoForYear,
         detailDataPacked: detailData ? packTournamentDetailData(detailData) : null,
