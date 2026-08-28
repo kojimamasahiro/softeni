@@ -325,6 +325,24 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 
 経緯: [raw/2026-07-26-idea-tournament-metadata-platform.md](../raw/2026-07-26-idea-tournament-metadata-platform.md) 追記10
 
+## 大会 information の `location` 検算（2026-08-28 追加）
+
+全中2026の `location` が前年の値（`熊本県`）の複製で誤っていた件
+（[raw/2026-08-28-zenchu-2026-location-fix.md](../raw/2026-08-28-zenchu-2026-location-fix.md)）の残タスク。
+
+- **2023年以前の `location` は未検算**（Assumption）。機械照合に使った
+  `data/local-sources/jsta-yearly-events/` は2024年度以降しか存在しないため、
+  遡るには大会ごとの要項/公式サイトを個別に当たることになる。
+  優先度は低い判断: 2023年以前で「連続する年に同じ `location`」が出るのは
+  高校選抜2020-2023（愛知県）・STリーグ2023-2024（愛知県）等で、いずれも
+  固定会場の大会として説明がつく。ただし**一次情報での確認はしていない**。
+- 検算を `scripts/` に常設するか。今回は使い捨てスクリプトで回した。
+  `check:upcoming` と同じく「終了コード0の運用タスク一覧」として足す余地はある。
+- `surface` の実在値に **`人工クレー`** があり、
+  [data-model.md](./data-model.md) の現行語彙（`クレー` / `ハード` / `砂入り人工芝` /
+  `木床フローリング`）に載っていない。`クレー` へ寄せるか語彙に足すか未決。
+  確認: `grep -rho '"surface": "[^"]*"' data/tournaments/information/ | sort -u`
+
 ## `verify-facts-golden.ts` の golden 値が陳腐化している（2026-08-28 記録）
 
 `npm run playerstats:verify` の1つめ `scripts/playerStats/verify-facts-golden.ts` が
