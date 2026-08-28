@@ -1,5 +1,5 @@
 // lib/playerStats/manifest.ts
-// L4: 増分ビルド用 contentHash manifest（data/players/_manifest.json）。
+// L4: 増分ビルド用 contentHash manifest（.playerstats/_manifest.json）。
 // 大会ファイル（details/** ＝ catKey / information/* ＝ `info:{tid}`）の内容ハッシュを保持し、
 // 前回ビルドとの diff から「変更大会 → 影響選手」だけを再生成する（設計 §6.2）。
 //
@@ -14,7 +14,12 @@ import path from 'path';
 
 import { SourceAdapter } from './sourceAdapter';
 
-export const MANIFEST_PATH = ['data', 'players', '_manifest.json'];
+// 生成物の置き場をリポジトリ直下の `.playerstats/` にしている（以前は `data/players/` 配下）。
+// `data/players/**` は nft（output file tracing）がビルド中に何度も glob するため、
+// 18,000ファイル超の `_facts` をそこに置くとビルドが目に見えて遅くなる。
+// パスは配列 spread ではなくリテラルで書くこと（同じく nft のため）。
+// 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+export const MANIFEST_PATH = ['.playerstats', '_manifest.json'];
 
 /** 直近ビルドの変更内容（下流スクリプトが増分範囲の決定に使う）。 */
 export interface ManifestLastRun {

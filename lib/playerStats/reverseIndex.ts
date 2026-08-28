@@ -13,7 +13,12 @@ import { resolveAliasedPlayerId } from './participantAliases';
 import { SourceAdapter } from './sourceAdapter';
 import type { ReverseIndex } from './types';
 
-export const REVERSE_INDEX_PATH = ['data', 'players', '_index', 'by-player.json'];
+// 生成物の置き場をリポジトリ直下の `.playerstats/` にしている（以前は `data/players/` 配下）。
+// `data/players/**` は nft（output file tracing）がビルド中に何度も glob するため、
+// 18,000ファイル超の `_facts` をそこに置くとビルドが目に見えて遅くなる。
+// パスは配列 spread ではなくリテラルで書くこと（同じく nft のため）。
+// 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+export const REVERSE_INDEX_PATH = ['.playerstats', '_index', 'by-player.json'];
 
 /** details 全走査で逆引き索引を構築する（O(M)・1 回のみ）。 */
 export function buildReverseIndex(adapter: SourceAdapter, identity: Identity): ReverseIndex {

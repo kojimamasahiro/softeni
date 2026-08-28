@@ -77,7 +77,7 @@ function getFacts(engine: Engine, playerId: number, freshness: 'cache' | 'recomp
     const memo = factsCache.get(key);
     if (memo) return memo;
     // 成果物キャッシュ（_facts）
-    const filePath = path.join(engine.root, 'data', 'players', '_facts', `${playerId}.json`);
+    const filePath = path.join(engine.root, '.playerstats', '_facts', `${playerId}.json`);
     try {
       const cached = JSON.parse(fs.readFileSync(filePath, 'utf-8')) as PlayerFacts;
       if (cached.engineVersion === ENGINE_VERSION) {

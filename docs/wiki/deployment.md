@@ -76,7 +76,9 @@ teams 系の集計最適化により **22分41秒 → 8分53秒**（commit 00766
 | Generating static pages | 14分39秒 | 3分13秒 |
 | upload + deploy | 34秒 | 40秒 |
 
-出力は 3,717 HTML・7,945ファイル・379MB あるが、**アップロードは30秒台で問題ではない**。
+出力は 2026-08-28 時点で **4,450 HTML・9,743ファイル・397MB**（2026-07-19 は 3,717 HTML・
+7,945ファイル・379MB。約8か月分ではなく1か月強で +733ページ）。
+**アップロードは30秒台で問題ではない**。
 
 その後 `generate-facts` を増分化（下記）。詳細は
 docs/raw/2026-07-19-cloudflare-build-time.md。
@@ -99,15 +101,86 @@ docs/raw/2026-07-19-cloudflare-build-time.md。
 同種のキャッシュは `lib/tournamentData.ts`、`src/pages/players/[id]/results.tsx`、
 `src/pages/players/[id]/index.tsx` にも入っている。関連: docs/wiki/players-pages.md。
 
+`data/players/index.json`（約1.4MB / 18,500件）は **`lib/playersIndex.ts` 経由で読むこと**。
+`getPlayerIndex()` / `getPlayerNameToId()`（`姓::名` -> 数値id、count>=5・同姓同名は先勝ち）/
+`getPlayerIdToName()` を出しており、プロセス内で1回しか読まない。
+**返り値はプロセス内で共有される読み取り専用データ**で、書き換えてはならない。
+2026-08-28 以前は5ルートが個別に読み直しており、1ページあたり9.8msを払っていた。
+
 ただし**ページ生成には数百msの床がある**。getStaticProps を持たない純粋な静的ページでも
 1ページ約470msかかる（React の SSR レンダリング + フレームワークのオーバーヘッド）。
 1ページあたりが1秒を切っているルートは、データ取得を最適化しても頭打ちになる。
 
+### output file tracing（nft）のワイルドカード走査
+
+`next build` の compile フェーズでは `@vercel/nft` が「実行時に必要なファイル」を静的解析する
+（output file tracing）。**`output: 'export'` では trace 結果は誰も使わない**（静的HTMLしか
+配らないため）が、**Next 15.5 には tracing を止める設定が無い**。
+
+- `outputFileTracing: false` は config schema から削除済み
+- `outputFileTracingExcludes` は nft の実行**後**に適用されるので、走査自体は止まらない
+- `next-trace-entrypoints-plugin` の `traceIgnores` は `webpack-config.js` で `[]` 固定
+
+したがって**「走らせない」ことはできず、「走査範囲を狭める」しか手が無い**。
+
+#### ビルド時にデータを読むコードの書き方（重要）
+
+nft はパス式を静的に評価する。`process.cwd()` を直接書いた上でパス配列を spread すると、
+nft は `process.cwd()` だけ解決できて残りが不明になり、
+リポジトリ全体（`<project>` 直下からの再帰ワイルドカード）を glob してしまう。
+
+```ts
+// 悪い: リポジトリ全体が glob される
+const DATA_DIR = ['data', 'secondaryschool'];
+fs.readFileSync(path.join(process.cwd(), ...DATA_DIR, file), 'utf-8');
+
+// 良い: data/secondaryschool 配下だけに限定される
+fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-8');
+
+// さらに良い: 関数経由だと nft は解決を諦め、glob 自体が出ない
+fs.readFileSync(path.join(resolveRoot(), ...DATA_DIR, file), 'utf-8');
+```
+
+`readdirSync` でディレクトリを開いてから `readFileSync` する形でも同じことが起きる。
+**新しくビルド時データ読み取りを足すときは、この形になっていないか必ず確認すること。**
+
+2026-08-28 に既知の4箇所を修正済み（`lib/secondaryschool.ts`、`lib/clubTransition.ts`、
+`lib/qualifierFinishers.ts`、`src/pages/tournaments/[generation]/[tournamentId]/index.tsx`）。
+
+#### 全体 glob が復活したときの特定方法
+
+ビルド後の `.next/server/pages/**/*.nft.json` を開き、**明らかに無関係なパス**
+（`.venv/`、`.claude/`、`docs/` など）を含む trace ファイルを探す。それを出しているエントリが
+発生源。2026-08-28 はこの方法で、lib 3件を直しても残っていた4つめ（大会ハブページ）を特定した。
+
+```bash
+for f in $(find .next/server/pages -name '*.nft.json'); do
+  node -e "const d=require('$PWD/'+'$f');console.log((d.files||[]).filter(x=>/\.venv|\.claude|docs\//.test(x)).length, '$f')"
+done | sort -rn | head
+```
+
+#### 生成物を `data/` の外に置く
+
+playerStats の生成物（`_facts` は18,000ファイル超）は **リポジトリ直下の `.playerstats/`** に置く
+（2026-08-28 に `data/players/` 配下から移動）。nft が出す `data/**/*` と `data/players/**/*` は
+そこに置いたファイルを毎回列挙してしまうため。
+
+| glob | 移動前 | 移動後 |
+|---|---|---|
+| `data/players/**/*` | 18,526ファイル | 53ファイル |
+| `data/**/*` | 20,172ファイル | 1,699ファイル |
+
+**今後ビルド生成物を足すときも `data/` 配下には置かないこと。**
+
+詳細と実測: [docs/raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md)
+
 ### generate-facts の増分ビルドとビルドキャッシュ
 
-`data/players/_facts`（130MB / 18,485ファイル）・`_index`・`_manifest.json` は
+`.playerstats/_facts`（約138MB / 18,471ファイル）・`_index`・`_manifest.json` は
 `.gitignore` 対象のため、Cloudflare では clone 直後に存在せず `generate-facts` が
 毎回フルビルド（約2分）に落ちていた。ローカルでは増分（数秒〜10秒）が既定。
+（2026-08-28 以前は `data/players/` 配下にあった。上記「生成物を `data/` の外に置く」参照。
+移動でキャッシュのレイアウトが変わったため、移行後の初回だけ復元が拒否されフルビルドになる。）
 
 `scripts/playerStats/cache-sync.mjs` がこれらを `.next/cache/playerstats/` に退避し、
 次回ビルドで復元する。prebuild の先頭で `restore`、末尾で `save` を実行する。
@@ -173,6 +246,9 @@ SSGが最適であり、速報は数ページだけなので、全体を動的�
 - 2 ドメインを同じビルド成果物で配るか、別 build するか
 - 静的 export で使えない API Routes を本番でどこまで利用しているか
 - webpack compile の1分45秒を Turbopack（`next build --turbopack`）で短縮できるか（未検証）
+- nft のワイルドカード走査が Cloudflare 実機でどれだけのコストになっているか（2026-08-28 時点で
+  ローカル計測のみ。ローカルには `.venv` / `.claude/worktrees` / `out/` があるため絶対値が
+  過大に出る）。`process.cwd()` + spread を潰した前後でビルドログを比較すること
 
 解決済み:
 

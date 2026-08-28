@@ -55,7 +55,9 @@ Accepted。決定日: 2026-07-01（設計）、実装完了: 2026-07-02（P1–P
 
 - `lib/playerStats/`（エンジン本体。`manifest.ts` が増分、`playerStatistics.ts` が facade）
 - `scripts/playerStats/`（generate-facts / generate-rankings / generate-public-json / generate-analysis / verify-*）
-- `data/ranking-config.json` / `data/players/_manifest.json`（生成物）
+- `data/ranking-config.json` / `.playerstats/_manifest.json`（生成物）
+  - 2026-08-28: 生成物の置き場を `data/players/` 配下から `.playerstats/` へ移動した
+    （ビルド時の output file tracing 対策。Decision 本文は当時の記録として残す）
 - `docs/wiki/players-pages.md`「選手統計エンジン」節
 
 ## Open Questions

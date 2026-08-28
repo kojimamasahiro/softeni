@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import TeamsRanking from '@/components/TeamsRanking';
 import TeamsYearlySummary from '@/components/TeamsYearlySummary';
+import { getPlayerNameToId } from '@/lib/playersIndex';
 import { DivisionMeta, getDivisions, getStLeagueYears, LeagueMeta, loadLeagueMeta } from '@/utils/st-league';
 import { aggregateTeamResults, generateTeamInfo, normalizeJa, TeamInfo } from '@/utils/team-data-aggregator';
 import { calculatePlayerStats, calculateTeamYearlySummary, PlayerStats, YearlySummary } from '@/utils/team-stats-calculator';
@@ -275,33 +276,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 形式が一定しないため、id ではなく `${姓} ${名}` の姓名一致で解決する
   // （/teams/[teamId] と同じパターン。count>=5 のみ、同姓同名は先勝ち）。
   const playerLinks: Record<string, number> = {};
-  const playersIndexPath = path.join(process.cwd(), 'data', 'players', 'index.json');
-  if (fs.existsSync(playersIndexPath)) {
-    try {
-      const playersIndex = JSON.parse(fs.readFileSync(playersIndexPath, 'utf-8')) as Array<{
-        id: number;
-        lastName: string;
-        firstName: string;
-        count: number;
-      }>;
-      const nameToId = new Map<string, number>();
-      for (const p of playersIndex) {
-        if (p.count < 5) continue;
-        const key = `${p.lastName}::${p.firstName}`;
-        if (!nameToId.has(key)) nameToId.set(key, p.id);
+  {
+    const nameToId = getPlayerNameToId();
+    for (const team of [...boysTeams, ...girlsTeams]) {
+      for (const stat of team.stats) {
+        if (playerLinks[stat.id] !== undefined) continue;
+        const spaceIdx = stat.name.indexOf(' ');
+        if (spaceIdx < 0) continue;
+        const key = `${stat.name.slice(0, spaceIdx)}::${stat.name.slice(spaceIdx + 1)}`;
+        const id = nameToId.get(key);
+        if (id !== undefined) playerLinks[stat.id] = id;
       }
-      for (const team of [...boysTeams, ...girlsTeams]) {
-        for (const stat of team.stats) {
-          if (playerLinks[stat.id] !== undefined) continue;
-          const spaceIdx = stat.name.indexOf(' ');
-          if (spaceIdx < 0) continue;
-          const key = `${stat.name.slice(0, spaceIdx)}::${stat.name.slice(spaceIdx + 1)}`;
-          const id = nameToId.get(key);
-          if (id !== undefined) playerLinks[stat.id] = id;
-        }
-      }
-    } catch (err) {
-      console.error('failed to parse players index.json', err);
     }
   }
 

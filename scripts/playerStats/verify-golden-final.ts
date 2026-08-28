@@ -112,7 +112,7 @@ function main(): void {
     const fresh = buildFacts(id, adapter, identity, reverseIndex);
 
     // 1) キャッシュ突合（_facts はビルド成果物。生成済みなら再計算と一致すべき）
-    const cachePath = path.join(root, 'data', 'players', '_facts', `${id}.json`);
+    const cachePath = path.join(root, '.playerstats', '_facts', `${id}.json`);
     if (fs.existsSync(cachePath)) {
       const cachedText = fs.readFileSync(cachePath, 'utf-8');
       const freshText = JSON.stringify(fresh);

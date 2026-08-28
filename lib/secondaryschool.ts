@@ -90,11 +90,13 @@ interface IndexPayload {
   teams: SecondarySchoolTeam[];
 }
 
-const DATA_DIR = ['data', 'secondaryschool'];
-
 function readJson<T>(file: string, fallback: T): T {
   try {
-    return JSON.parse(fs.readFileSync(path.join(process.cwd(), ...DATA_DIR, file), 'utf-8')) as T;
+    // nft（output file tracing）が静的解決できるよう、パスセグメントはリテラルで書く。
+    // `path.join(process.cwd(), ...ARRAY, 変数)` にすると nft が解決を諦め、
+    // リポジトリ全体を再帰 glob する（ビルドが数分遅くなる）。
+    // 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+    return JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-8')) as T;
   } catch {
     return fallback;
   }

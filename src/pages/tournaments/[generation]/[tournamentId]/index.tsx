@@ -542,8 +542,6 @@ export default function TournamentHubPage({
   );
 }
 
-const DETAILS_ROOT = ['data', 'tournaments', 'details'];
-
 type ExtractedWinner = {
   display: string;
   /** 個人名の内訳（選手ページへのリンク用）。team カテゴリ（個人名が無い）では空配列。 */
@@ -713,7 +711,11 @@ function buildInformationMap(): Map<string, TournamentInformationEntry[]> {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const detailsRoot = path.join(process.cwd(), ...DETAILS_ROOT);
+  // nft（output file tracing）が静的解決できるよう、パスセグメントはリテラルで書く。
+  // `path.join(process.cwd(), ...ARRAY, 変数)` にすると nft が解決を諦め、
+  // リポジトリ全体を再帰 glob する（ビルドが数分遅くなる）。
+  // 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+  const detailsRoot = path.join(process.cwd(), 'data', 'tournaments', 'details');
   const generationMap = loadGenerationMap();
 
   const idsWithDetails = fs.existsSync(detailsRoot) ? fs.readdirSync(detailsRoot).filter((n) => fs.statSync(path.join(detailsRoot, n)).isDirectory()) : [];
@@ -774,7 +776,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const playerNameToId = getPlayerNameToIdMap();
 
   // details ディレクトリを走査し、実際にデータがある年度・種別のみリンク化
-  const tidDir = path.join(process.cwd(), ...DETAILS_ROOT, tournamentId);
+  // nft（output file tracing）が静的解決できるよう、パスセグメントはリテラルで書く。
+  // `path.join(process.cwd(), ...ARRAY, 変数)` にすると nft が解決を諦め、
+  // リポジトリ全体を再帰 glob する（ビルドが数分遅くなる）。
+  // 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+  const tidDir = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId);
   const yearGroups: YearGroup[] = [];
 
   if (fs.existsSync(tidDir)) {

@@ -1,6 +1,6 @@
 // scripts/playerStats/generate-facts.ts
-// 逆引き索引（data/players/_index/by-player.json）と _facts/{id}.json を生成する。
-// P7: contentHash manifest（data/players/_manifest.json）による増分が既定。
+// 逆引き索引（.playerstats/_index/by-player.json）と .playerstats/_facts/{id}.json を生成する。
+// P7: contentHash manifest（.playerstats/_manifest.json）による増分が既定。
 //   変更大会 → 逆引きで影響選手を求め、その選手だけ _facts を再生成する。
 //   無変更なら再計算ゼロ。engineVersion / グローバル入力の変更時のみ全再計算。
 // 実行: ts-node --project scripts/playerStats/tsconfig.json scripts/playerStats/generate-facts.ts
@@ -30,7 +30,7 @@ import { applyReverseIndexDelta, buildReverseIndex, readReverseIndex, writeRever
 import { SourceAdapter } from '../../lib/playerStats/sourceAdapter';
 import type { ReverseIndex } from '../../lib/playerStats/types';
 
-const FACTS_DIR = ['data', 'players', '_facts'];
+const FACTS_DIR = ['.playerstats', '_facts'];
 
 function parseArgs(): { ids: number[] | null; full: boolean } {
   let ids: number[] | null = null;

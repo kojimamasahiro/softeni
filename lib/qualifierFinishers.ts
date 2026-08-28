@@ -22,8 +22,6 @@ import type { TournamentInformationEntry } from '@/types/tournament';
 
 import { getPlayerStatistics } from './playerStats/playerStatistics';
 
-const DETAILS_ROOT = ['data', 'tournaments', 'details'];
-
 /** 描画側が必ず併記する断り。ここに置いて文言を1箇所にする。 */
 export const PLACEMENT_DISCLAIMER = '日本代表の選手は主催者・連盟の発表をご確認ください。当サイトのデータからは特定できません。';
 
@@ -88,7 +86,11 @@ export async function getQualifierFinishers(args: {
     .sort((a, b) => String(b.startDate ?? '').localeCompare(String(a.startDate ?? '')))[0];
   if (!edition) return null;
 
-  const yearDir = path.join(process.cwd(), ...DETAILS_ROOT, qualifierId, String(edition.year));
+  // nft（output file tracing）が静的解決できるよう、パスセグメントはリテラルで書く。
+  // `path.join(process.cwd(), ...ARRAY, 変数)` にすると nft が解決を諦め、
+  // リポジトリ全体を再帰 glob する（ビルドが数分遅くなる）。
+  // 詳細: docs/wiki/deployment.md「output file tracing（nft）のワイルドカード走査」
+  const yearDir = path.join(process.cwd(), 'data', 'tournaments', 'details', qualifierId, String(edition.year));
   if (!fs.existsSync(yearDir)) return null;
 
   // 性別 -> 上位進出者
