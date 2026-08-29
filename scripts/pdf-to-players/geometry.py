@@ -40,12 +40,18 @@ class Column:
 
 @dataclass
 class Row:
-    """検出した行。列indexごとのセル文字列を持つ。"""
+    """検出した行。列indexごとのセル文字列を持つ。
+
+    `char_boxes` は同じセルの文字を (x0, x1, 文字) で持ったもの。氏名が1列に
+    まとまった様式で姓名の境目を字間から決める（namesplit.py）ために要る。
+    セル文字列に潰してしまうと座標が失われるので、並行して持たせている。
+    """
 
     top: float
     side: str
     cells: dict[int, str]
     page: int = 0
+    char_boxes: dict[int, list[tuple[float, float, str]]] = field(default_factory=dict)
 
     def text(self) -> str:
         return ''.join(self.cells[k] for k in sorted(self.cells))
@@ -343,16 +349,17 @@ def group_rows(chars: list[dict], columns: list[Column], side: str, tolerance: f
 
     rows: list[Row] = []
     for g in groups:
-        cells: dict[int, list[tuple[float, str]]] = {}
+        cells: dict[int, list[tuple[float, float, str]]] = {}
         for c in sorted(g, key=lambda c: c['x0']):
             col = assign_column(c, columns)
             if col is not None:
-                cells.setdefault(col.index, []).append((c['x0'], c['text']))
+                cells.setdefault(col.index, []).append((c['x0'], c['x1'], c['text']))
         rows.append(
             Row(
                 top=min(c['top'] for c in g),
                 side=side,
-                cells={k: ''.join(t for _, t in sorted(v)).strip() for k, v in cells.items()},
+                cells={k: ''.join(t for _, _, t in sorted(v)).strip() for k, v in cells.items()},
+                char_boxes={k: sorted(v) for k, v in cells.items()},
             )
         )
     return [r for r in rows if r.text()]

@@ -34,6 +34,18 @@ class Profile:
     # 様式の性質。無いものを「要確認」に出さないための宣言。
     has_prefecture: bool = True   # 都道府県欄があるか
     splits_name: bool = True      # 姓と名が別々に書かれているか
+    # 氏名が1つの枠に入る様式か。均等割り付けの氏名は列検出でページごとに1〜3列へ
+    # 割れ方が変わり、たまたま2列に割れたページだけ「姓と名の列」と誤読される。
+    # 様式として分かっているなら、検出結果に関わらず氏名として扱い、
+    # 姓名の境目は字間から決める（namesplit.py）。
+    name_in_one_column: bool = False
+    # 都道府県欄が無い様式で、代わりに入れる所属連盟名。一般・学生カテゴリでは
+    # `prefecture` に `日本学連` のような連盟名が入るのが実データの慣習
+    # （data/tournaments/details/zennihon-championship/*）。
+    prefecture_default: str | None = None
+    # tempId の末尾に prefecture を足すか。既定の tempId は 姓_名_学校 の3項目だが、
+    # 実データには 姓_名_学校_都道府県 の4項目も416件ある。大会ごとにどちらか決まる。
+    tempid_includes_prefecture: bool = False
     note: str = ''
 
 
@@ -53,18 +65,67 @@ PROFILES: list[Profile] = [
     ),
     Profile(
         name='intercollegiate',
-        signature=['三笠宮賜杯', '全日本学生'],
-        gap=9.0,
+        # `全日本学生` はシングルス選手権にも含まれるので署名にできない。
+        # 男子は「三笠宮賜杯」、女子は「三笠宮妃賜杯」なので `三笠宮` で両方に当たる。
+        signature=['三笠宮'],
+        # エントリー番号が3桁になると数字が左へ伸び、氏名の左端との間が
+        # 男子で6.2pt・女子で4.7ptしか空かない。gapがこれより大きいと番号が氏名の列に
+        # 飲まれ、番号が「氏名」として拾われて件数が増える（男子p2以降・女子p3以降で
+        # 実際に起きた）。氏名の列が細かく割れる副作用は name_in_one_column が吸収する。
+        gap=4.0,
         y_tol=3.0,
         bracket_cut=True,
         category=None,  # 1ページ目が団体戦、3ページ目以降が個人戦なのでページごとに判定させる
         has_prefecture=False,
-        splits_name=False,
+        splits_name=True,
+        name_in_one_column=True,
+        prefecture_default='日本学連',
+        tempid_includes_prefecture=True,
         note=(
             'ブラケット表。**都道府県欄が無い**（所属は大学名）。'
-            '氏名は均等割り付けで姓名の境目が座標に無いため分割しない（姓に氏名がまとめて入る）。'
+            '氏名は1つの列に均等割り付けで入るが、割り付けは姓と名それぞれに掛かって'
+            'いるため境目の字間だけが広い。そこを境目として割る（namesplit.py）。'
             '所属は括弧つきで、ペアの2行の間の行に置かれる。'
             'エントリー番号もペアの2行目に来る。'
+            '都道府県の代わりに所属連盟「日本学連」を入れ、tempIdも4項目にする。'
+        ),
+    ),
+    Profile(
+        name='intercollegiate_singles',
+        # ダブルス（三笠宮賜杯）とは別大会。1ページに2段組で、
+        # 「番号 氏名(所属)」が1行に収まる。ブラケット表ではない。
+        signature=['全日本学生シングルス'],
+        gap=4.0,
+        y_tol=3.0,
+        bracket_cut=True,
+        category='singles',
+        has_prefecture=False,
+        name_in_one_column=True,
+        prefecture_default='日本学連',
+        tempid_includes_prefecture=True,
+        note=(
+            '2段組の一覧。1行に「番号 氏名(所属)」が収まる（ブラケット表ではない）。'
+            '**都道府県欄が無い**（所属は大学名）。氏名は1つの枠に均等割り付け。'
+            '所属名が長いと括弧が空になり、**すぐ下の行に所属名だけが溢れて置かれる**'
+            '（y_tol でその行を同じ行に取り込む）。'
+            '都道府県の代わりに所属連盟「日本学連」を入れ、tempIdも4項目にする。'
+        ),
+    ),
+    Profile(
+        name='university_team',
+        # 個人戦（三笠宮賜杯）とは別大会。同じ週に開かれるが様式も別で、
+        # 署名を共有させると片方の設定がもう片方を壊す。
+        signature=['文部科学大臣杯', '全日本大学対抗'],
+        gap=6.0,
+        y_tol=3.0,
+        bracket_cut=False,
+        category='team',
+        has_prefecture=False,
+        prefecture_default='日本学連',
+        note=(
+            'ブラケット表の団体戦。1行1チームで、**都道府県欄が無い**（大学名のみ）。'
+            '個人戦と違い氏名が無いので姓名分割は関係しない。'
+            '都道府県の代わりに所属連盟「日本学連」を入れる。'
         ),
     ),
 ]

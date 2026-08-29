@@ -27,7 +27,8 @@ LLMが要るのは「この列は姓か学校名か」の一点だけで、そ�
     python3 extract_tournament.py DRAW.pdf --pages 1 --llm
 
 主要オプション:
-    --category doubles|team   自動判定を上書きする
+    --category doubles|singles|team   自動判定を上書きする（シングルスは自動判定しないので必須）
+    --substitutions FILE      大会中の選手交代を上乗せする
     --gap / --y-tol           列・行の検出パラメータ（レイアウトが崩れるとき）
     --roles "0=entry,1=surname"  列の意味を手で指定する（最後の手段）
 """
@@ -36,6 +37,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 import sys
 from pathlib import Path
 
@@ -44,7 +46,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import checks  # noqa: E402
 import geometry  # noqa: E402
 import labeling  # noqa: E402
+import namesplit  # noqa: E402
 import profiles  # noqa: E402
+import substitutions  # noqa: E402
 import tuning  # noqa: E402
 from prefectures import looks_like_prefecture, normalize  # noqa: E402
 
@@ -85,13 +89,28 @@ def split_team_prefecture(team_raw: str, pref_raw: str) -> tuple[str, str]:
     return team_raw.strip(), ''
 
 
+def _cell_boxes(row, labels: dict[int, str], role: str) -> list[tuple[float, float, str]]:
+    """`cell()` と同じ列の中身を、文字の座標つきで取り出す。"""
+    boxes: list[tuple[float, float, str]] = []
+    for i, r in labels.items():
+        if r == role:
+            boxes.extend(getattr(row, 'char_boxes', {}).get(i, []))
+    return sorted(boxes)
+
+
 def to_int(s: str) -> int | None:
     s = s.strip().translate(str.maketrans('０１２３４５６７８９', '0123456789'))
     return int(s) if s.isdigit() else None
 
 
 def guess_category(labels: dict[int, str], rows) -> str:
-    """姓・名・氏名の列に実際の値が入っていれば個人戦、無ければ団体戦。"""
+    """姓・名・氏名の列に実際の値が入っていれば個人戦、無ければ団体戦。
+
+    **シングルスは自動判定しない。** ドロー表の見た目はダブルスと同じで、違いは
+    「1つの番号に何名ぶら下がるか」だけ。行のまとまり方が崩れているときも同じ形に
+    見えるので、機械が見分けると崩れをシングルスと誤認する。プロファイルか
+    `--category singles` で人が明示する。
+    """
     name_cols = [i for i, r in labels.items() if r in ('surname', 'firstname', 'name')]
     if not name_cols:
         return 'team'
@@ -115,8 +134,12 @@ def _trim_outside_rows(ordered, labels: dict[int, str], head_margin: float = 25.
     kept, dropped = [], []
     for page in sorted({getattr(r, 'page', 0) for r in ordered}):
         page_rows = [r for r in ordered if getattr(r, 'page', 0) == page]
+        # 「番号の列に何か入っている行」ではなく「**番号として読める**行」を数える。
+        # 見出しは大会名が列をまたぐので番号の列にも文字が入り、非空だけを条件にすると
+        # 見出しが本体の範囲に含まれてしまう（文部科学大臣杯の団体戦で、見出しが
+        # `部科学大臣杯全日` というチーム名として2件入っていた）。
         entry_tops = [
-            r.top for r in page_rows if any(r.cells.get(i, '').strip() for i in entry_cols)
+            r.top for r in page_rows if any(to_int(r.cells.get(i, '')) is not None for i in entry_cols)
         ]
         if not entry_tops:
             kept.extend(page_rows)
@@ -125,6 +148,58 @@ def _trim_outside_rows(ordered, labels: dict[int, str], head_margin: float = 25.
         for r in page_rows:
             (kept if lo <= r.top <= hi else dropped).append(r)
     return sorted(kept, key=lambda r: (getattr(r, 'page', 0), 0 if r.side == 'left' else 1, r.top)), dropped
+
+
+
+
+def apply_profile_defaults(entries: list[dict], profile) -> None:
+    """様式として決まっている値を、組み上がった entries に流し込む。
+
+    ドロー表に書いていない情報（学生の大会なら所属連盟）は座標からは取れない。
+    抽出の途中で混ぜると「PDFから読んだ値」と見分けがつかなくなるので、
+    **最後にまとめて**入れる。
+    """
+    if profile is None or not profile.prefecture_default:
+        return
+    for e in entries:
+        if e.get('category') == 'team':
+            # 団体戦は選手名を持たず、エントリー自体が所属を持つ。
+            e['prefecture'] = e.get('prefecture') or profile.prefecture_default
+            e['name'] = f"{e['team']}（{e['prefecture']}）"
+            continue
+        for player in e.get('information') or []:
+            player['prefecture'] = player['prefecture'] or profile.prefecture_default
+            parts = [player['lastName'], player['firstName'], player['team']]
+            if profile.tempid_includes_prefecture:
+                parts.append(player['prefecture'])
+            player['tempId'] = '_'.join(parts)
+
+
+def apply_role_overrides(labels: dict[int, str], trace: dict[int, str], profile, manual_roles: dict[int, str]) -> bool:
+    """検出した列の役割を、プロファイルと `--roles` で上書きする。上書きしたら True。
+
+    `main()` と回帰テストの両方から呼ぶ。片方だけに書くと、テストが本番と違う
+    経路を試すことになる。
+    """
+    changed = False
+
+    # 氏名が1つの枠に入る様式（プロファイルで宣言）は、列がいくつに割れても氏名として
+    # 扱う。均等割り付けの氏名はページによって1〜3列に割れ、2列に割れたページだけ
+    # 「姓の列と名の列」と誤読されて `木|村奏都` のようにずれる（インカレp2で実際に起きた）。
+    if profile is not None and profile.name_in_one_column:
+        for idx, role in list(labels.items()):
+            if role in ('surname', 'firstname'):
+                labels[idx] = 'name'
+                trace[idx] = 'プロファイル: 氏名は1つの枠（姓名は字間で分割）'
+                changed = True
+
+    # 人が列の役割を指定していれば最後に上書きする。
+    for idx, role in (manual_roles or {}).items():
+        if idx in labels:
+            labels[idx] = role
+            trace[idx] = '--roles で人が指定'
+            changed = True
+    return changed
 
 
 def build_entries(rows, labels: dict[int, str], category: str):
@@ -152,6 +227,7 @@ def build_entries(rows, labels: dict[int, str], category: str):
         last = cell(row, labels, 'surname')
         first = cell(row, labels, 'firstname')
         whole = cell(row, labels, 'name')
+        split_method = ''
 
         # 所属と都道府県が交互に入る列は、行ごとに中身で振り分ける。
         mixed = cell(row, labels, 'team_prefecture')
@@ -197,9 +273,13 @@ def build_entries(rows, labels: dict[int, str], category: str):
                 current['pending_pref'] = pref_raw.strip()
             continue
         if whole and not last:
-            # 姓名が1列にまとまっている場合。境界が無いので分割はせず、
-            # 姓だけ埋めて review_name_split に載せる（人が直す前提）。
-            last, first = whole.strip(), ''
+            # 姓名が1列にまとまっている場合。均等割り付けは姓と名それぞれに掛かって
+            # いるので、境目の字間だけがわずかに広い。そこを境目として割る
+            # （namesplit.py）。字間に信号が無い行だけ既存選手データに落とし、
+            # それでも決まらなければ分割しない（firstName が空のまま
+            # review_name_split に出て、人が見る）。
+            boxes = _cell_boxes(row, labels, 'name')
+            last, first, split_method = namesplit.split_name(whole, boxes, team=team_raw.strip())
 
         pref, _ = normalize(pref_raw)
         player = {
@@ -213,15 +293,21 @@ def build_entries(rows, labels: dict[int, str], category: str):
             # 新旧すべて3項目だった（docs/raw/2026-08-14-idea-local-llm-skill-replacement.md）。
             'tempId': f"{last.strip()}_{first.strip()}_{team_raw.strip()}",
         }
+        if split_method:
+            # 姓名をどの根拠で割ったか。出力する直前に落とす（レポートに出すためだけの印）。
+            player['_split'] = split_method
 
         # エントリー番号は「このエントリーの識別子」であって「ここから新しいエントリー」
         # という印ではない。番号がペアの1行目に来る様式（全中）と2行目に来る様式
         # （三笠宮賜杯）があり、後者で番号を見た瞬間に切ると全ペアが1人ずつに割れる。
         # 区切りは「2人そろったら次」を主とし、番号は**すでに番号を持つエントリーの
         # 番号と食い違ったとき**だけ区切りに使う。
+        # シングルスは1名で1エントリー。ダブルスの「2人そろったら次」を
+        # 「1人そろったら次」に読み替える。
+        per_entry = 1 if category == 'singles' else 2
         new_entry = (
             current is None
-            or len(current['information']) >= 2
+            or len(current['information']) >= per_entry
             or (no is not None and current_no is not None and no != current_no)
         )
         if not new_entry and current.get('pending_team') and not player['team']:
@@ -248,6 +334,15 @@ def build_entries(rows, labels: dict[int, str], category: str):
             for p in info:
                 p['team'] = p['team'] or team
                 p['prefecture'] = p['prefecture'] or pref
+                # 所属は氏名とは別の行に書かれるので、ここまで来ないと分からない。
+                # 字間でも姓名の辞書でも決まらなかった人だけ、**所属つきで**既存データを
+                # 引き直す。同姓同名の別人を避けられるうえ、過去に別の割り方で
+                # 登録されている同一人物にも当たる。
+                if not p['firstName'] and p['team']:
+                    found = namesplit.split_by_team_corpus(p['lastName'], p['team'])
+                    if found:
+                        p['lastName'], p['firstName'] = found
+                        p['_split'] = 'team_corpus'
                 p['tempId'] = f"{p['lastName']}_{p['firstName']}_{p['team']}"
 
     # id は行順で確定する（番号セルは縦位置がずれて拾えないことがあるため）。
@@ -266,9 +361,15 @@ def build_entries(rows, labels: dict[int, str], category: str):
             )
         else:
             info = e['information']
-            names = '・'.join(p['lastName'] for p in info if p['lastName'])
             team = info[0]['team'] if info else ''
-            result.append({'id': i, 'name': f'{names}（{team}）', 'information': info, 'category': 'doubles'})
+            if category == 'singles':
+                # シングルスは1名なので姓だけでは誰か分からない。既存データに合わせて
+                # 「姓 名（所属）」と姓名を空白で繋ぐ（tools/hjs-2026/01_mens_singles.json）。
+                p = info[0] if info else {}
+                label = ' '.join(x for x in (p.get('lastName'), p.get('firstName')) if x)
+            else:
+                label = '・'.join(p['lastName'] for p in info if p['lastName'])
+            result.append({'id': i, 'name': f'{label}（{team}）', 'information': info, 'category': category})
     return result, pdf_numbers
 
 
@@ -297,7 +398,11 @@ def main() -> int:
     ap.add_argument('pdf')
     ap.add_argument('--pages', help='例: 1 / 1-3 / 1,3,5（既定は全ページ）')
     ap.add_argument('--out', '-o', help='出力JSONのパス（省略時は標準出力に出さずレポートのみ）')
-    ap.add_argument('--category', choices=['doubles', 'team'], help='種目の自動判定を上書きする')
+    ap.add_argument('--category', choices=['doubles', 'singles', 'team'], help='種目の自動判定を上書きする')
+    ap.add_argument(
+        '--substitutions',
+        help='大会中の選手交代を書いたJSON。抽出結果に上乗せする（substitutions.py の説明を見ること）',
+    )
     ap.add_argument('--gap', type=float, help='列とみなす最小の空白幅(pt)。省略時は自動調整')
     ap.add_argument('--y-tol', type=float, help='同じ行とみなすY座標の許容誤差(pt)。省略時は自動調整')
     ap.add_argument('--roles', help='列の意味を手で指定する 例: "0=entry,1=surname,2=firstname"')
@@ -407,12 +512,7 @@ def main() -> int:
                 )
                 cols, rows, labels, trace = best.columns, best.rows, best.labels, best.trace
 
-        # 人が列の役割を指定していれば最後に上書きする。
-        if manual_roles:
-            for idx, role in manual_roles.items():
-                if idx in labels:
-                    labels[idx] = role
-                    trace[idx] = '--roles で人が指定'
+        if apply_role_overrides(labels, trace, profile, manual_roles):
             cat3 = category or guess_category(labels, rows)
             best.entries, best.pdf_numbers = build_entries(rows, labels, cat3)
             best.category = cat3
@@ -438,6 +538,39 @@ def main() -> int:
     # ページをまたいで id を振り直す。
     for i, e in enumerate(entries, start=1):
         e['id'] = i
+    # 交代は「抽出が終わったあと・様式の既定値を入れる前」に当てる。あとから当てると
+    # 交代で入った選手だけ prefecture や tempId の形が揃わない。
+    if args.substitutions:
+        try:
+            applied = substitutions.apply(entries, substitutions.load(args.substitutions))
+        except (substitutions.SubstitutionError, OSError, json.JSONDecodeError) as e:
+            print(f'交代ファイルを読めませんでした: {e}', file=sys.stderr)
+            return 5
+        print()
+        print(f'--- 選手交代を {len(applied)} 件 適用しました（{args.substitutions}）---')
+        for line in applied:
+            print(line)
+
+    apply_profile_defaults(entries, profile)
+
+    # 氏名が1列の様式で、姓名をどの根拠で割ったかの内訳。何をどこまで機械が決めたのかを
+    # 人に見せないと、`clean: true` を「全部確かめた」と読み違えられる。
+    split_methods = Counter(
+        p.pop('_split') for e in entries for p in e.get('information') or [] if '_split' in p
+    )
+    if split_methods:
+        labels_ja = {
+            'geometry': '字間（姓と名それぞれの均等割り付け）',
+            'team_corpus': '既存の選手データと一致（所属も一致）',
+            'corpus': '既存の選手データと一致（氏名のみ）',
+            'dictionary': '姓と名の辞書に1通りだけ一致',
+            'unsplit': '決められず未分割（firstName は空）',
+        }
+        print()
+        print('--- 姓名の分割 ---')
+        total = sum(split_methods.values())
+        for method, count in split_methods.most_common():
+            print(f'  {labels_ja.get(method, method)}: {count}名 / {total}名')
     report = checks.build_report(
         entries,
         category,

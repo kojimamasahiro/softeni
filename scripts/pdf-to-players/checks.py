@@ -101,7 +101,8 @@ def build_report(
             continue
 
         info = e.get('information') or []
-        if len(info) < 2:
+        # シングルスは1エントリー1名。ダブルスの「2人目が無い」は当てはまらない。
+        if category != 'singles' and len(info) < 2:
             report.entries_missing_2nd_player.append(e['id'])
         for p in info:
             if has_prefecture:
