@@ -28,6 +28,8 @@ SEO カニバリ整理は [seo.md](./seo.md)（#1 / #2）。データ構造は [
 
 注意（Assumption）: `data/players/index.json` には所属（team）が無いため id 解決は**姓名のみ**で行い、同姓同名は最初の id に寄せる。所属で曖昧性を解消したい照合（連覇判定など）は別途 `tournamentRecords` の `playerKey`（名前@所属）を使う。
 
+注意（重要）: この解決は `姓::名` の**完全一致**なので、取り込み由来で姓名の切り位置がぶれると（`谷|明日里` / `谷明|日里`）**同一人物が別 id になり、両方が `count>=5` を割って結果ページが消える**。2026-08-29 の全数調査で 147 件見つかり 141 件を修正した（結果ページが新たに立った選手 35 名）。検出・判断・適用の運用は [team-player-identity.md](./team-player-identity.md) の「姓名の分割ゆれ」節。
+
 ## 選手一覧ページ（`/players`）（2026-08-08 全面改修）
 
 検討経緯は [docs/raw/2026-08-08-idea-players-index-redesign.md](../raw/2026-08-08-idea-players-index-redesign.md)。
