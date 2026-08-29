@@ -1,0 +1,127 @@
+# 大会インサイト（結果ページの「注目ポイント」）
+
+年度別結果ページに出る、**過去の事実だけで書かれた読み物**。LLM が書いた散文を機械照合に
+通してから載せる、サイトで唯一の枠（[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)）。
+
+**この仕組みが守ろうとしているのは「誤った事実を公開しない」の一点。** ADR-005 が当初
+LLM を排除したのも、ADR-012 が解禁できたのも、どちらもこの理由。手順の各段はここに紐づく。
+
+> **kind の一覧・閾値の根拠・進行中モードの件数実測は
+> [`docs/story-yaml/README.md`](../story-yaml/README.md) が正。**
+> プロンプト本体は [`docs/story-yaml/PROMPT.md`](../story-yaml/PROMPT.md)。
+> このページはそこに書かれていない「サイト側の位置づけ・データの置き場・運用」を扱う。
+> 作業手順そのものは skill `tournament-insight` にある。
+
+## どこに出るか
+
+年度別結果ページの「注目ポイント」（`src/components/ResultContextBlocks.tsx`）。
+**新規URLは作らない**ので [ADR-010](../adr/ADR-010-retire-result-articles-consolidate-to-hub.md)
+（同一実体の二重ページ禁止）と抵触しない。
+
+同じ「注目ポイント」の枠には、テンプレート生成の文脈ブロック（連覇・初優勝・王者撃破・再戦）も
+並ぶ。そちらは決定的生成で LLM を使わない。詳細は
+[news-context-blocks.md](./news-context-blocks.md)。
+
+## データ
+
+`data/tournaments-insights` ではなく **`data/tournament-insights/<tournamentId>/<year>/<categoryId>.json`**（単数形）。
+
+```json
+{
+  "tournamentId": "zennihon-workers", "year": 2026, "categoryId": "doubles-over35-girls",
+  "state": "published",
+  "paragraphs": ["...", "..."],
+  "usedStoryIds": ["zennihon-workers-2026-doubles-over35-girls-watched-eliminated-1", "..."],
+  "scopeNote": "3回戦終了時点。成績は当サイト掲載大会分（2022年〜）の集計に基づきます。",
+  "writtenBy": "Claude",
+  "verifiedAt": "2026-08-29"
+}
+```
+
+| フィールド | 説明 |
+|---|---|
+| `state` | `published` / `draft` / `review`。**`published` だけが照合を強制される**（他はスキップ） |
+| `paragraphs` | 本文。段落の配列 |
+| `usedStoryIds` | 各段落の根拠にしたストーリーID。照合が警告を出したとき原因を辿るため |
+| `scopeNote` | 集計範囲。**進行中なら到達ラウンドを必ず書く**（「3回戦終了時点」） |
+| `writtenBy` | 執筆したモデル |
+| `verifiedAt` | 照合した日。**この値は信用されない**（下記） |
+
+## 4つの工程と担当
+
+| 工程 | 担当 | なぜ |
+|---|---|---|
+| 事実の抽出（`story:generate`） | スクリプト（決定的） | LLM に数えさせると間違える |
+| 読み物への編集 | LLM | テンプレ文では複数年の文脈が書けない |
+| 事実の検証（`story:verify`） | スクリプト（決定的） | 人のレビューは「もっともらしい誤り」を素通りする |
+| 公開判断 | 人 | 最終責任 |
+
+着手前に **`npm run check:orphans -- -t <tid> -y <year>`** を通すこと。
+「エントリーには居るのにどの試合にも現れない」組があると分母から落ちて誤った断定に繋がる。
+実際にこれで誤ったインサイトを公開・取り下げた前例がある
+（[data-import.md](./data-import.md) の bye 派生試合の欠落）。
+
+## 公開の強制
+
+prebuild が `scripts/check-tournament-insights.mjs` を走らせ、**`verifiedAt` の値を信用せず
+その場で照合し直す**。本文だけ書き換えて `verifiedAt` を残す事故を防ぐため
+（本文を改竄するとビルドが落ちることを確認済み）。
+
+## 照合が守ってくれない範囲
+
+検証できるのは **年×成績・連続年数・連覇・スコア・固有名詞**だけ。
+
+- **集計値は照合の対象外。** 「◯組が勝ち残っている」「勝ち残りが無くなった」は素通りする。
+  実際に「就実は勝ち残りが無くなった」は照合20件すべて OK のまま公開され、後から誤りが判明した。
+  この種の数値は**必ず生成YAMLの値をそのまま引く**こと。自分で数え直さない。
+- 抽出パターンが `(\d{4})年…` なので、**年を省いたり年と成績の間に語を挟むと黙って未検証になる**
+  （エラーにはならない）。`2023年ベスト8` は通り、`2023ベスト8` や
+  `2023年もこの種目で優勝` は漏れる。
+
+## 完了大会と進行中で書けることが違う
+
+順位（ベスト8以上）が確定するのは準々決勝以降で、それ以前は `rank.kind: 'ongoing'`
+（[ADR-007](../adr/ADR-007-in-progress-tournament-standing.md)）。男子ダブルスは315試合のうち
+順位が付くのが最後の7試合だけなので、**大会の98%の期間は経年kindが1つも計算できない**。
+
+進行中に語れるのは「誰が勝ち残っていて、誰が消えたか」だけ。順位・最終成績には触れず、
+「優勝候補」「有力」のような予想も書かない。
+
+**進行中に出した本文は、大会が終わったら書き直す。** `state` は `published` のまま差し替えれば
+よい（公開時にその場で照合し直されるので、照合の運用が二重になることはない）。
+インターハイ2026 がこの運用の実例で、女子ダブルスを3回戦終了時点で公開し、決勝後に差し替えている。
+
+## 現況（2026-08-29 時点・34件）
+
+| 大会 | 年 | 件数 | 備考 |
+|---|---|---|---|
+| `highschool-championship` | 2021〜2026 | 24 | 各年4種目（男女団体・男女ダブルス）。すべて確定後 |
+| `secondaryschool-championship` | 2026 | 4 | 確定後 |
+| `zennihon-workers` | 2026 | 6 | **進行中版**（種目ごとに2〜4回戦終了時点） |
+
+高校・中学以外では社会人が初。学生（インカレ）はまだ無い。
+
+## 落とし穴
+
+- **卒業で選手単位が枯れる。** 高校は3年で入れ替わるため前年ベスト8以上の選手が翌年ほぼ残らない
+  （インターハイ2026女子ダブルスは16人中3人）。学生カテゴリでは**学校を主語**にし、
+  ペア単位ではノイズになるので学校ごとに集約する（`watched-school-progress`）。
+- **混成ペアがあると「◯◯が優勝」と書けない。** 一般カテゴリには所属の異なる選手同士のペアが
+  実在する（天皇賜杯2022年優勝は稲門クラブとNTT西日本の混成）。生成側が
+  「◯◯所属の選手は」に切り替えるので、その表現の範囲に留める。
+- **年をまたぐ本文に所属を書かない。** 所属は変わる（丸山海斗は Up Rise → one team）。
+  所属は単年の事実にのみ添える。
+- **団体戦の主語は学校名。** 選手名で照合するとメンバーが毎年替わり再戦を1件も検出できない。
+- **主役は1組（1校）に絞る。** 複数の主語を並列に並べると年表になって記事にならない。
+
+## 関連
+
+- [`docs/story-yaml/README.md`](../story-yaml/README.md) — kind一覧・閾値の根拠（**仕様の正**）
+- [`docs/story-yaml/PROMPT.md`](../story-yaml/PROMPT.md) — プロンプト本体（完了版・進行中版）
+- [ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md) — LLM散文をサイトに載せる条件
+- [ADR-007](../adr/ADR-007-in-progress-tournament-standing.md) — 進行中大会の `ongoing`
+- [ADR-010](../adr/ADR-010-retire-result-articles-consolidate-to-hub.md) — 新規URLを作らない理由
+- [news-context-blocks.md](./news-context-blocks.md) — 同じ枠に並ぶテンプレート生成の文脈ブロック
+- [sns-story-platform.md](./sns-story-platform.md) — 設計の経緯（アイデアバックログ側）
+- [seo.md](./seo.md) #11 — 大会期間中の更新方針（速報クエリは狙わない）
+- 実施記録: [社会人2026 1日目](../raw/2026-08-29-zennihon-workers-2026-day1-insight.md)

@@ -6,9 +6,10 @@ scripts/venue-agent/test_regression.py と同じ。
 
 団体戦は、人が作った既存の正解データ（tools/tournament3/initialPlayer.js）と
 同じPDFから同じ結果が出るかを丸ごと突き合わせる。
-個人戦ダブルスは**リポジトリに元PDFが無い**ため、行データを直接組み立てて
-ロジック（ペアの束ね方・姓名分割の警告・tempIdの形）だけを固定する。
-実際のドロー表PDFが手に入ったら、団体戦と同じ丸ごと突合に差し替えること。
+個人戦ダブルスは fixtures/ のドロー表PDFで丸ごと突き合わせる。fixtures は
+リポジトリに入らない（.gitignore で *.pdf）ので、無ければ SKIP する。
+PDFに依らない部分（ペアの束ね方・姓名分割の判断・tempIdの形）は行データを
+直接組み立てて固定するので、fixtures が無い環境でも回る。
 """
 
 from __future__ import annotations
@@ -16,6 +17,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -24,9 +26,17 @@ sys.path.insert(0, str(HERE))
 import checks  # noqa: E402
 import geometry  # noqa: E402
 import labeling  # noqa: E402
+import namesplit  # noqa: E402
 import profiles  # noqa: E402
+import substitutions  # noqa: E402
 import tuning  # noqa: E402
-from extract_tournament import build_entries, guess_category, split_team_prefecture  # noqa: E402
+from extract_tournament import (  # noqa: E402
+    apply_profile_defaults,
+    apply_role_overrides,
+    build_entries,
+    guess_category,
+    split_team_prefecture,
+)
 from prefectures import normalize  # noqa: E402
 
 REPO = HERE.parent.parent
@@ -43,10 +53,11 @@ def check(name: str, cond: bool, detail: str = '') -> None:
 class FakeRow:
     """geometry.Row と同じ形の最小オブジェクト。PDF無しでロジックを試すため。"""
 
-    def __init__(self, top: float, cells: dict[int, str], side: str = 'left'):
+    def __init__(self, top: float, cells: dict[int, str], side: str = 'left', char_boxes: dict | None = None):
         self.top = top
         self.cells = cells
         self.side = side
+        self.char_boxes = char_boxes or {}
 
     def text(self) -> str:
         return ''.join(self.cells.values())
@@ -183,14 +194,16 @@ def extract_with_profile(pdf: Path, page: int):
     prof = profiles.detect(str(pdf))
     assert prof is not None
     cols, rows = geometry.build_table(str(pdf), page, gap=prof.gap, tolerance=prof.y_tol, bracket_cut=prof.bracket_cut)
-    labels, _ = labeling.resolve_labels(cols, rows, use_llm=False, model='')
-    for idx, role in prof.roles.items():
-        if idx in labels:
-            labels[idx] = role
+    labels, trace = labeling.resolve_labels(cols, rows, use_llm=False, model='')
+    apply_role_overrides(labels, trace, prof, prof.roles)
     cat = prof.category or guess_category(labels, rows)
     entries, numbers = build_entries(rows, labels, cat)
     for i, e in enumerate(entries, start=1):
         e['id'] = i
+    apply_profile_defaults(entries, prof)
+    # ページをまたいで検証したい呼び出し側のために、PDFの番号も残しておく
+    # （build_entries.dropped_rows と同じ渡し方）。
+    extract_with_profile.pdf_numbers = numbers
     report = checks.build_report(
         entries, cat, numbers if cat == 'team' else None,
         has_prefecture=prof.has_prefecture, splits_name=prof.splits_name,
@@ -214,7 +227,7 @@ def test_profiles() -> None:
     p = profiles.detect(str(inter))
     check('プロファイル: インカレを署名で見分ける', p is not None and p.name == 'intercollegiate', p.name if p else '-')
     check('プロファイル: インカレは都道府県欄が無いと宣言している', p.has_prefecture is False)
-    check('プロファイル: インカレは姓名を分割しないと宣言している', p.splits_name is False)
+    check('プロファイル: インカレは氏名が1つの枠に入ると宣言している', p.name_in_one_column is True)
 
     # 個人戦ページ（3ページ目）
     _, cat, entries, report = extract_with_profile(inter, 3)
@@ -222,9 +235,9 @@ def test_profiles() -> None:
     check('インカレp3: 72件（エントリー番号の最大71＋端数1）', len(entries) == 72, f'{len(entries)}件')
     first = entries[0]['information']
     check(
-        'インカレp3: 先頭のペアが正しい',
-        [x['lastName'] for x in first] == ['橋場柊一郎', '菊山太陽'],
-        str([x['lastName'] for x in first]),
+        'インカレp3: 先頭のペアが正しい（字間で姓名に割れる）',
+        [(x['lastName'], x['firstName']) for x in first] == [('橋場', '柊一郎'), ('菊山', '太陽')],
+        str([(x['lastName'], x['firstName']) for x in first]),
     )
     check('インカレp3: 所属（大学名）が両名に入る', all(x['team'] == '法政大学' for x in first), str([x['team'] for x in first]))
     check(
@@ -237,9 +250,9 @@ def test_profiles() -> None:
         f'{len(report.prefecture_not_in_dict)}件',
     )
     check(
-        'インカレp3: 姓名を分割しない様式なので分割の警告を出さない',
-        not report.review_name_split,
-        f'{len(report.review_name_split)}件',
+        'インカレp3: ほぼ全員が姓名に割れる（割れなかった分だけ要確認に出る）',
+        len(report.review_name_split) <= 2,
+        str(report.review_name_split),
     )
 
     # 団体戦ページ（1ページ目）
@@ -248,6 +261,319 @@ def test_profiles() -> None:
     check('インカレp1: 45チーム', len(entries1) == 45, f'{len(entries1)}件')
     check('インカレp1: 先頭のチーム名', entries1[0]['team'] == '早稲田大学', entries1[0]['team'])
     check('インカレp1: 検証レポートが clean', report1.clean, checks.format_report(report1))
+
+
+def test_intercollegiate_men_doubles() -> None:
+    """2026年インカレ男子ダブルスのドロー表（全8ページ・585エントリー）。
+
+    氏名が1つの枠に均等割り付けで入る様式。姓名の境目は字間から決める。
+    エントリー番号が3桁になるページ（p2以降）で番号の列が氏名の列に飲まれた事故と、
+    氏名の枠がたまたま2列に割れたページを「姓の列と名の列」と誤読した事故
+    （`木|村奏都`）の両方を、ここで押さえている。
+    """
+    pdf = HERE / 'fixtures' / 'intercollegiate-2026-men-doubles.pdf'
+    if not pdf.exists():
+        print('SKIP: fixtures/intercollegiate-2026-men-doubles.pdf が無い')
+        return
+
+    all_entries = []
+    for page in range(1, 9):
+        _, cat, entries, _ = extract_with_profile(pdf, page)
+        if page == 1:
+            check('インカレ男子D: 種目が doubles', cat == 'doubles', cat)
+        all_entries.extend(entries)
+    for i, e in enumerate(all_entries, start=1):
+        e['id'] = i
+
+    check('インカレ男子D: 585エントリー（PDFの番号1〜585と一致）', len(all_entries) == 585, f'{len(all_entries)}件')
+    check('インカレ男子D: 全件2名そろう', all(len(e['information']) == 2 for e in all_entries))
+
+    # id は行順で振る。PDFのエントリー番号と一致するはず（ページ→左→右の順）。
+    spot = {
+        1: [('川﨑', '康平'), ('黒坂', '卓矢')],
+        74: [('橋場', '柊一郎'), ('菊山', '太陽')],    # 3桁番号のページの先頭
+        111: [('木村', '奏都'), ('村松', '優')],       # 氏名の枠が2列に割れるページ
+        585: [('中村', '悠峰'), ('岡田', '侑也')],
+    }
+    for num, want in spot.items():
+        got = [(x['lastName'], x['firstName']) for x in all_entries[num - 1]['information']]
+        check(f'インカレ男子D: エントリー{num}が正しい', got == want, str(got))
+
+    check(
+        'インカレ男子D: 所属（大学名）が全員に入る',
+        all(x['team'] for e in all_entries for x in e['information']),
+    )
+    unsplit = [x['lastName'] for e in all_entries for x in e['information'] if not x['firstName']]
+    check(
+        'インカレ男子D: 姓名が割れなかったのは2名だけ（池澤渓人・武井心希）',
+        sorted(unsplit) == sorted(['池澤渓人', '武井心希']),
+        str(unsplit),
+    )
+
+
+def test_intercollegiate_women_doubles() -> None:
+    """2026年インカレ女子ダブルスのドロー表（全8ページ・332エントリー）。
+
+    男子と同じ様式に見えて**氏名の組み方が違う**。男子は姓と名それぞれに均等割り付けが
+    掛かるが、女子はほとんどの行が氏名全体を等間隔に置くため、字間から決められるのは
+    664名中42名しかない。残りは既存の選手データと辞書に落ちる。
+    「字間で決まらない様式でも通ること」をここで押さえている。
+    """
+    pdf = HERE / 'fixtures' / 'intercollegiate-2026-women-doubles.pdf'
+    if not pdf.exists():
+        print('SKIP: fixtures/intercollegiate-2026-women-doubles.pdf が無い')
+        return
+
+    all_entries = []
+    for page in range(1, 9):
+        _, cat, entries, _ = extract_with_profile(pdf, page)
+        all_entries.extend(entries)
+    for i, e in enumerate(all_entries, start=1):
+        e['id'] = i
+
+    check('インカレ女子D: 332エントリー（PDFの番号1〜332と一致）', len(all_entries) == 332, f'{len(all_entries)}件')
+    check('インカレ女子D: 全件2名そろう', all(len(e['information']) == 2 for e in all_entries))
+    check(
+        'インカレ女子D: 所属が全員に入る（ページ下部の番号だけの枠を拾わない）',
+        all(x['team'] for e in all_entries for x in e['information']),
+    )
+    spot = {
+        1: [('前田', '梨緒'), ('中谷', 'さくら')],
+        146: [('谷', '明日里'), ('岡原', '羽椛')],   # 谷明日里は既存データに2通りある（所属で決める）
+        332: [('天間', '美嘉'), ('高橋', 'ひかる')],
+    }
+    for num, want in spot.items():
+        got = [(x['lastName'], x['firstName']) for x in all_entries[num - 1]['information']]
+        check(f'インカレ女子D: エントリー{num}が正しい', got == want, str(got))
+
+    check(
+        'インカレ女子D: prefecture は所属連盟（日本学連）',
+        all(x['prefecture'] == '日本学連' for e in all_entries for x in e['information']),
+    )
+    check(
+        'インカレ女子D: tempId は 姓_名_学校_日本学連 の4項目',
+        all(x['tempId'].split('_')[-1] == '日本学連' and len(x['tempId'].split('_')) == 4
+            for e in all_entries for x in e['information']),
+        all_entries[0]['information'][0]['tempId'],
+    )
+
+
+def test_university_team() -> None:
+    """2026年 文部科学大臣杯全日本大学対抗選手権（男子団体・全2ページ・96チーム）。
+
+    三笠宮賜杯（個人戦）とは**別大会**で、同じ週に開かれるが様式も別。1行1チームで
+    都道府県欄が無い。見出しの大会名が番号の列にも掛かるため、表の本体を
+    「番号として読める行」で判定していないと見出しがチーム名として2件入る。
+    """
+    pdf = HERE / 'fixtures' / 'university-team-2026-boys.pdf'
+    if not pdf.exists():
+        print('SKIP: fixtures/university-team-2026-boys.pdf が無い')
+        return
+
+    prof = profiles.detect(str(pdf))
+    check('プロファイル: 大学対抗（団体）を署名で見分ける', prof is not None and prof.name == 'university_team', prof.name if prof else '-')
+
+    all_entries, all_numbers = [], []
+    for page in (1, 2):
+        _, cat, entries, _ = extract_with_profile(pdf, page)
+        check(f'大学対抗p{page}: 種目が team', cat == 'team', cat)
+        all_entries.extend(entries)
+        all_numbers.extend(extract_with_profile.pdf_numbers)
+    # idはページをまたいで振り直す。ページ単位で見るとp2のidが1始まりになり、
+    # PDFの番号(49-96)と食い違って当然なので、通しで検証する。
+    for i, e in enumerate(all_entries, start=1):
+        e['id'] = i
+    report = checks.build_report(all_entries, 'team', all_numbers, has_prefecture=False)
+    check('大学対抗: 検証レポートが clean（全2ページ通し）', report.clean, checks.format_report(report))
+
+    check('大学対抗: 96チーム（PDFの番号1〜96と一致）', len(all_entries) == 96, f'{len(all_entries)}件')
+    check(
+        '大学対抗: 見出しがチーム名として入らない',
+        not any('大臣杯' in e['team'] or '男子の部' in e['team'] for e in all_entries),
+        str([e['team'] for e in all_entries if '大臣杯' in e['team'] or '男子の部' in e['team']]),
+    )
+    spot = {1: '法政大学', 48: '明治大学', 49: '中央大学', 96: '日本体育大学'}
+    for num, want in spot.items():
+        check(f'大学対抗: エントリー{num}が {want}', all_entries[num - 1]['team'] == want, all_entries[num - 1]['team'])
+    check(
+        '大学対抗: prefecture は所属連盟（日本学連）で name にも入る',
+        all(e['prefecture'] == '日本学連' for e in all_entries) and all_entries[0]['name'] == '法政大学（日本学連）',
+        all_entries[0]['name'],
+    )
+    check('大学対抗: 情報欄（information）は持たない', all('information' not in e for e in all_entries))
+
+    # 女子は1ページ59チーム。見出しの除外がページ数に依らず効くことも見る。
+    pdf_g = HERE / 'fixtures' / 'university-team-2026-girls.pdf'
+    if not pdf_g.exists():
+        print('SKIP: fixtures/university-team-2026-girls.pdf が無い')
+        return
+    _, cat_g, entries_g, report_g = extract_with_profile(pdf_g, 1)
+    check('大学対抗女子: 種目が team', cat_g == 'team', cat_g)
+    check('大学対抗女子: 59チーム（PDFの番号1〜59と一致）', len(entries_g) == 59, f'{len(entries_g)}件')
+    check('大学対抗女子: 検証レポートが clean', report_g.clean, checks.format_report(report_g))
+    check(
+        '大学対抗女子: 見出しがチーム名として入らない',
+        not any('大臣杯' in e['team'] or '女子の部' in e['team'] for e in entries_g),
+        str([e['team'] for e in entries_g if '大臣杯' in e['team'] or '女子の部' in e['team']]),
+    )
+    for num, want in {1: '日本体育大学', 30: '國學院大學', 59: '明治大学'}.items():
+        check(f'大学対抗女子: エントリー{num}が {want}', entries_g[num - 1]['team'] == want, entries_g[num - 1]['team'])
+
+
+# ---------------------------------------------------------------- 選手交代
+
+
+def singles_entries() -> list[dict]:
+    def one(eid, last, first, team):
+        return {
+            'id': eid,
+            'name': f'{last} {first}（{team}）',
+            'information': [{'lastName': last, 'firstName': first, 'team': team,
+                             'prefecture': '日本学連', 'playerId': None,
+                             'tempId': f'{last}_{first}_{team}'}],
+            'category': 'singles',
+        }
+    return [one(1, '橋場', '柊一郎', '法政大学'), one(2, '保海', '祥真', '立命館大学')]
+
+
+def doubles_entries() -> list[dict]:
+    return [{
+        'id': 1,
+        'name': '柏・村上（東北）',
+        'information': [
+            {'lastName': '柏', 'firstName': '春花', 'team': '東北', 'prefecture': '宮城県',
+             'playerId': None, 'tempId': '柏_春花_東北'},
+            {'lastName': '村上', 'firstName': '芹', 'team': '東北', 'prefecture': '宮城県',
+             'playerId': None, 'tempId': '村上_芹_東北'},
+        ],
+        'category': 'doubles',
+    }]
+
+
+def test_substitutions() -> None:
+    entries = singles_entries()
+    applied = substitutions.apply(entries, [
+        {'id': 1, 'note': '欠場のため交代', 'players': [{'lastName': '山田', 'firstName': '太郎'}]},
+    ])
+    check('選手交代: 該当のエントリーだけ差し替わる',
+          entries[0]['information'][0]['lastName'] == '山田' and entries[1]['information'][0]['lastName'] == '保海',
+          str([e['information'][0]['lastName'] for e in entries]))
+    check('選手交代: エントリー番号（ドローの位置）は動かさない', [e['id'] for e in entries] == [1, 2])
+    check('選手交代: team を省くと元のエントリーの所属を引き継ぐ',
+          entries[0]['information'][0]['team'] == '法政大学', entries[0]['information'][0]['team'])
+    check('選手交代: name を作り直す', entries[0]['name'] == '山田 太郎（法政大学）', entries[0]['name'])
+    check('選手交代: tempId を作り直す', entries[0]['information'][0]['tempId'] == '山田_太郎_法政大学',
+          entries[0]['information'][0]['tempId'])
+    check('選手交代: 何を当てたかを説明として返す', len(applied) == 1 and '橋場 柊一郎' in applied[0] and '山田 太郎' in applied[0],
+          str(applied))
+
+    entries = doubles_entries()
+    substitutions.apply(entries, [{'id': 1, 'players': [
+        {'lastName': '柏', 'firstName': '春花'},
+        {'lastName': '後藤', 'firstName': '千尋', 'team': '文大杉並'},
+    ]}])
+    check('選手交代: ダブルスは片方だけの交代でも2名書く（残る側はそのまま）',
+          [(p['lastName'], p['team']) for p in entries[0]['information']] == [('柏', '東北'), ('後藤', '文大杉並')],
+          str([(p['lastName'], p['team']) for p in entries[0]['information']]))
+    check('選手交代: ダブルスの name は 姓・姓（学校名）', entries[0]['name'] == '柏・後藤（東北）', entries[0]['name'])
+
+    team_entries = [{'id': 1, 'name': 'A（広島県）', 'team': 'A', 'prefecture': '広島県', 'category': 'team'}]
+    substitutions.apply(team_entries, [{'id': 1, 'team': 'B'}])
+    check('選手交代: 団体戦はチーム名を差し替える',
+          team_entries[0]['team'] == 'B' and team_entries[0]['name'] == 'B（広島県）', str(team_entries[0]))
+
+
+def test_substitution_errors() -> None:
+    """書き方の誤りは黙って無視せず落ちること。
+
+    id を打ち間違えた交代が「当たったつもり」で消えるのがいちばん危ない。
+    """
+    cases = [
+        ('存在しないエントリー番号', singles_entries, [{'id': 99, 'players': [{'lastName': '山', 'firstName': '田'}]}]),
+        ('id が無い', singles_entries, [{'players': [{'lastName': '山', 'firstName': '田'}]}]),
+        ('人数が種目と合わない', singles_entries,
+         [{'id': 1, 'players': [{'lastName': '山', 'firstName': '田'}, {'lastName': '川', 'firstName': '田'}]}]),
+        ('players が無い', singles_entries, [{'id': 1}]),
+        ('lastName が空', singles_entries, [{'id': 1, 'players': [{'lastName': '', 'firstName': '田'}]}]),
+    ]
+    for label, make, subs in cases:
+        try:
+            substitutions.apply(make(), subs)
+            check(f'選手交代: {label} なら落ちる', False, '例外が出なかった')
+        except substitutions.SubstitutionError as e:
+            check(f'選手交代: {label} なら落ちる', True, str(e)[:60])
+
+    entries = singles_entries()
+    try:
+        substitutions.apply(entries, [
+            {'id': 1, 'players': [{'lastName': '山田', 'firstName': '太郎'}]},
+            {'id': 99, 'players': [{'lastName': '鈴木', 'firstName': '一郎'}]},
+        ])
+    except substitutions.SubstitutionError:
+        pass
+    check(
+        '選手交代: 途中で落ちても、CLIは出力を書かないので中途半端なJSONは残らない',
+        entries[0]['information'][0]['lastName'] == '山田',
+        '（entries自体は書き換わるが、呼び出し側が例外時に書き出さない）',
+    )
+
+
+def test_intercollegiate_singles() -> None:
+    """2026年 全日本学生シングルス選手権（男子・1ページ・92エントリー）。
+
+    ダブルス（三笠宮賜杯）とは別大会で、ブラケット表ではなく2段組の一覧。
+    **所属名が長いと括弧が空になり、すぐ下の行に所属名だけが溢れる**（6件）。
+    その行を同じ行に取り込めていないと所属が空になる。
+    """
+    pdf = HERE / 'fixtures' / 'intercollegiate-singles-2026-boys.pdf'
+    if not pdf.exists():
+        print('SKIP: fixtures/intercollegiate-singles-2026-boys.pdf が無い')
+        return
+
+    prof = profiles.detect(str(pdf))
+    check('プロファイル: 学生シングルスを署名で見分ける',
+          prof is not None and prof.name == 'intercollegiate_singles', prof.name if prof else '-')
+
+    _, cat, entries, report = extract_with_profile(pdf, 1)
+    check('学生S: 種目が singles', cat == 'singles', cat)
+    check('学生S: 92エントリー（PDFの番号1〜92と一致）', len(entries) == 92, f'{len(entries)}件')
+    check('学生S: 1エントリー1名', all(len(e['information']) == 1 for e in entries))
+    check('学生S: 検証レポートが clean', report.clean, checks.format_report(report))
+    spot = {
+        1: ('橋場', '柊一郎', '法政大学'),
+        3: ('叶田', '慎之介', '石川工業高等専門学校'),   # 所属が次の行に溢れる
+        43: ('小谷', '健', '関西外国語大学'),            # 同上（左段）
+        88: ('西牧', '幹起', '石川工業高等専門学校'),     # 同上（右段）
+        92: ('坂口', '生磨', '明治大学'),
+    }
+    for num, want in spot.items():
+        p = entries[num - 1]['information'][0]
+        check(f'学生S: エントリー{num}が正しい', (p['lastName'], p['firstName'], p['team']) == want,
+              str((p['lastName'], p['firstName'], p['team'])))
+    check('学生S: 所属が全員に入る（溢れた行を取りこぼさない）',
+          all(x['team'] for e in entries for x in e['information']))
+    check('学生S: name は 姓 名（所属）', entries[0]['name'] == '橋場 柊一郎（法政大学）', entries[0]['name'])
+
+    # 女子も同じプロファイルで通ること。ダブルスでは男子と女子で氏名の組み方が
+    # 違った（女子は字間が効かない）ので、シングルスでも確かめておく。
+    pdf_g = HERE / 'fixtures' / 'intercollegiate-singles-2026-girls.pdf'
+    if not pdf_g.exists():
+        print('SKIP: fixtures/intercollegiate-singles-2026-girls.pdf が無い')
+        return
+    _, cat_g, entries_g, report_g = extract_with_profile(pdf_g, 1)
+    check('学生S女子: 種目が singles', cat_g == 'singles', cat_g)
+    check('学生S女子: 84エントリー（PDFの番号1〜84と一致）', len(entries_g) == 84, f'{len(entries_g)}件')
+    check('学生S女子: 検証レポートが clean', report_g.clean, checks.format_report(report_g))
+    spot_g = {
+        1: ('天間', '美嘉', '日本体育大学'),
+        21: ('及川', '咲空', '東京女子体育大学'),   # 所属が次の行に溢れる
+        84: ('吉木', '理彩', '日本体育大学'),
+    }
+    for num, want in spot_g.items():
+        p = entries_g[num - 1]['information'][0]
+        check(f'学生S女子: エントリー{num}が正しい', (p['lastName'], p['firstName'], p['team']) == want,
+              str((p['lastName'], p['firstName'], p['team'])))
+    check('学生S女子: 全員が姓名に割れる', all(x['firstName'] for e in entries_g for x in e['information']))
 
 
 # ---------------------------------------------------------------- LLMによる修復ループ
@@ -427,6 +753,156 @@ def test_doubles_pairing() -> None:
     check('ダブルス: 正常なデータでは clean', report.clean, checks.format_report(report))
 
 
+def build_name_corpus(dirpath: Path) -> str:
+    """姓名の辞書を差し替えられるように、最小の data/ を作る。
+
+    本物の data/ を読ませると、リポジトリの選手が増減しただけでテストが動く。
+    """
+    pairs = [
+        ('金子', '大輝'),
+        ('佐藤', '晃太'),   # 金子晃太 は「氏名としては未登録・姓と名は既知」を作るため
+        ('榎', '竜太郎'),   # ↓と合わせて、既存データ側で割り方が割れている状態を作る
+        ('榎竜', '太郎'),
+        ('山', '田太郎'),   # ↓と合わせて、辞書に2通り当たる状態を作る
+        ('山田', '太郎'),
+        ('武', '蔵'),       # 武 と 武井 が両方とも姓として存在する
+        ('武井', '涼'),
+    ]
+    # 所属つき。同一人物が複数の割り方で登録されている実データの状況を再現する
+    # （過去のインカレ取り込みが `谷明|日里` `温品芽|叶子` のように入れている）。
+    with_team = [
+        ('谷', '明日里', '四国大学'),
+        ('谷', '明日里', '四国大学'),
+        ('谷明', '日里', '四国大学'),
+        ('温品', '芽叶子', '東海大学'),
+        ('温品', '芽叶子', '東海大学'),
+        ('温品芽', '叶子', '東海大学'),
+        ('伊東', '月', '白鴎大学'),   # ↓と同数にして「決めない」を作る
+        ('伊', '東月', '白鴎大学'),
+    ]
+    payload = [{'lastName': last, 'firstName': first} for last, first in pairs]
+    payload += [{'lastName': last, 'firstName': first, 'team': team} for last, first, team in with_team]
+    dirpath.mkdir(parents=True, exist_ok=True)
+    (dirpath / 'players.json').write_text(json.dumps(payload, ensure_ascii=False), encoding='utf-8')
+    return str(dirpath)
+
+# ---------------------------------------------------------------- 姓名の分割（氏名が1列の様式）
+
+
+def boxes(text: str, gaps: list[float], width: float = 8.0) -> list[tuple[float, float, str]]:
+    """字間を指定して (x0, x1, 文字) の並びを作る。実測値をそのまま書けるようにする。"""
+    out, x = [], 60.0
+    for i, ch in enumerate(text):
+        out.append((x, x + width, ch))
+        x += width + (gaps[i] if i < len(gaps) else 0)
+    return out
+
+
+def test_namesplit_geometry() -> None:
+    """均等割り付けは姓と名それぞれに掛かるので、境目の字間だけが広い。
+
+    字間はすべて2026年インカレ男子ダブルスのドロー表の実測値。
+    """
+    cases = [
+        ('松尾奏汰', [10.1, 18.2, 10.0], ('松尾', '奏汰')),
+        ('浅野梨空', [11.9, 14.5, 11.8], ('浅野', '梨空')),
+        ('榎祐希人', [14.6, 11.8, 11.8], ('榎', '祐希人')),      # 1+3
+        ('小田原晃太', [5.5, 5.5, 13.6, 5.5], ('小田原', '晃太')),  # 3+2
+        ('山岡昂太郎', [6.8, 9.5, 7.0, 6.8], ('山岡', '昂太郎')),   # 2+3
+        ('廣田将', [21.9, 24.4], ('廣田', '将')),                 # 2+1
+        ('平凛生', [24.4, 21.8], ('平', '凛生')),                 # 1+2
+    ]
+    for text, gaps, want in cases:
+        got = namesplit.split_by_geometry(boxes(text, gaps))
+        check(f'姓名分割: 字間で {text} を {want[0]}|{want[1]} に割る', got == want, str(got))
+
+
+def test_namesplit_no_signal() -> None:
+    """字間が均一な行は本当に境目が座標に無い。**推測で割らない**のが正しい。
+
+    ここで無理に argmax を採ると 牛尾彗吾 が `牛尾彗|吾` になる（実際に起きた）。
+    """
+    for text, gaps in (('牛尾彗吾', [12.7, 12.7, 12.8]), ('盛岡昴生', [12.8, 12.7, 12.7]), ('飯降脩', [23.2, 23.1])):
+        got = namesplit.split_by_geometry(boxes(text, gaps))
+        check(f'姓名分割: 字間が均一な {text} では決めない', got is None, str(got))
+
+    check(
+        '姓名分割: 2文字は字間の比較対象が無いので決めない',
+        namesplit.split_by_geometry(boxes('田中', [12.0])) is None,
+    )
+
+
+def test_namesplit_fallbacks(tmp_data) -> None:
+    """字間に信号が無いときだけ、既存の選手データと姓名の辞書に落とす。"""
+    check(
+        '姓名分割: 既存の選手データに同じ氏名があればその割り方を使う',
+        namesplit.split_by_corpus('金子大輝', tmp_data) == ('金子', '大輝'),
+        str(namesplit.split_by_corpus('金子大輝', tmp_data)),
+    )
+    check(
+        '姓名分割: 既存データで割り方が割れていたら決めない',
+        namesplit.split_by_corpus('榎竜太郎', tmp_data) is None,
+        str(namesplit.split_by_corpus('榎竜太郎', tmp_data)),
+    )
+    check(
+        '姓名分割: 姓と名の辞書に1通りだけ当たるならそれを使う',
+        namesplit.split_by_dictionary('金子晃太', tmp_data) == ('金子', '晃太'),
+        str(namesplit.split_by_dictionary('金子晃太', tmp_data)),
+    )
+    check(
+        '姓名分割: 辞書に2通り当たるなら決めない（山|田太郎 と 山田|太郎）',
+        namesplit.split_by_dictionary('山田太郎', tmp_data) is None,
+        str(namesplit.split_by_dictionary('山田太郎', tmp_data)),
+    )
+    check(
+        '姓名分割: 名が辞書に無ければ決めない（実データの 武井心希 はこれで残った）',
+        namesplit.split_by_dictionary('武井心希', tmp_data) is None,
+        str(namesplit.split_by_dictionary('武井心希', tmp_data)),
+    )
+    check(
+        '姓名分割: 同じ氏名・同じ所属の選手がいればその割り方に合わせる',
+        namesplit.split_by_team_corpus('谷明日里', '四国大学', tmp_data) == ('谷', '明日里'),
+        str(namesplit.split_by_team_corpus('谷明日里', '四国大学', tmp_data)),
+    )
+    check(
+        '姓名分割: 同一人物が複数の割り方で登録されていたら件数の多いほうを採る',
+        namesplit.split_by_team_corpus('温品芽叶子', '東海大学', tmp_data) == ('温品', '芽叶子'),
+        str(namesplit.split_by_team_corpus('温品芽叶子', '東海大学', tmp_data)),
+    )
+    check(
+        '姓名分割: 同数なら所属つきでも決めない',
+        namesplit.split_by_team_corpus('伊東月', '白鴎大学', tmp_data) is None,
+        str(namesplit.split_by_team_corpus('伊東月', '白鴎大学', tmp_data)),
+    )
+    check(
+        '姓名分割: 所属が違えば当てない（同姓同名の別人を避ける）',
+        namesplit.split_by_team_corpus('谷明日里', '別の大学', tmp_data) is None,
+        str(namesplit.split_by_team_corpus('谷明日里', '別の大学', tmp_data)),
+    )
+    last, first, method = namesplit.split_name('該当しない名前', [], None, tmp_data)
+    check(
+        '姓名分割: どれでも決まらなければ分割せず、名を空にして人に回す',
+        (last, first, method) == ('該当しない名前', '', 'unsplit'),
+        str((last, first, method)),
+    )
+
+
+def test_namesplit_in_pipeline() -> None:
+    """氏名が1列の様式が、entries の組み立てまで通るか。"""
+    labels = {0: 'entry', 1: 'name', 2: 'team'}
+    rows = [
+        FakeRow(10, {1: '松尾奏汰'}, char_boxes={1: boxes('松尾奏汰', [10.1, 18.2, 10.0])}),
+        FakeRow(14, {0: '1', 2: '九州産業大学'}),
+        FakeRow(18, {1: '清水直哉'}, char_boxes={1: boxes('清水直哉', [11.9, 14.5, 11.8])}),
+    ]
+    entries, _ = build_entries(rows, labels, 'doubles')
+    check('氏名1列: 1エントリーに束ねる', len(entries) == 1, f'{len(entries)}件')
+    info = entries[0]['information']
+    check('氏名1列: 姓と名に割れる', [(p['lastName'], p['firstName']) for p in info] == [('松尾', '奏汰'), ('清水', '直哉')], str(info))
+    check('氏名1列: name は 姓・姓（学校名）', entries[0]['name'] == '松尾・清水（九州産業大学）', entries[0]['name'])
+    check('氏名1列: tempId は 姓_名_学校', info[0]['tempId'] == '松尾_奏汰_九州産業大学', info[0]['tempId'])
+
+
 def test_doubles_problems() -> None:
     rows = [
         FakeRow(10, {0: '1', 1: '柏', 2: '春花', 3: '東北', 4: '宮城'}),  # 2人目が無い
@@ -469,6 +945,13 @@ def main() -> int:
     test_zenchu_team()
     print('\n--- 大会プロファイル（全中 / インカレ） ---')
     test_profiles()
+    test_intercollegiate_men_doubles()
+    test_intercollegiate_women_doubles()
+    test_university_team()
+    test_intercollegiate_singles()
+    print('\n--- 選手交代（大会中の差し替え） ---')
+    test_substitutions()
+    test_substitution_errors()
     print('\n--- LLMによる修復ループ（提案する側を差し替えて検証） ---')
     test_llm_repair_loop()
     print('\n--- 列の意味づけ ---')
@@ -479,6 +962,13 @@ def main() -> int:
     print('\n--- 個人戦ダブルス（合成データ・元PDFが無いため） ---')
     test_doubles_pairing()
     test_doubles_problems()
+    print('\n--- 姓名の分割（氏名が1つの枠に入る様式） ---')
+    test_namesplit_geometry()
+    test_namesplit_no_signal()
+    with tempfile.TemporaryDirectory() as tmp:
+        data_dir = build_name_corpus(Path(tmp) / 'data')
+        test_namesplit_fallbacks(data_dir)
+    test_namesplit_in_pipeline()
     print('\n--- id の検証 ---')
     test_id_problems()
 

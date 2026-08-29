@@ -45,6 +45,62 @@
     "location": "沖縄県",
     "startDate": "2024-09-10",
     "endDate": "2024-09-15",
+    "venues": [
+      {
+        "prefecture": "沖縄県",
+        "city": "沖縄市",
+        "name": "沖縄県総合運動公園テニスコート",
+        "aliases": [],
+        "nameRaw": "沖縄県総合運動公園テニスコート16面・レクリエーションドーム8面",
+        "postalCode": "904-2173",
+        "address": "沖縄県沖縄市比屋根5-3-1",
+        "courts": 16,
+        "usage": "男子会場",
+        "note": "要項は同一住所の2施設を1行にまとめて記載している。面数が施設ごとに書かれているため分けた"
+      },
+      {
+        "prefecture": "沖縄県",
+        "city": "沖縄市",
+        "name": "沖縄県総合運動公園レクリエーションドーム",
+        "aliases": [],
+        "nameRaw": "沖縄県総合運動公園テニスコート16面・レクリエーションドーム8面",
+        "postalCode": "904-2173",
+        "address": "沖縄県沖縄市比屋根5-3-1",
+        "courts": 8,
+        "usage": "男子会場"
+      },
+      {
+        "prefecture": "沖縄県",
+        "city": "宜野湾市",
+        "name": "宜野湾海浜公園テニスコート",
+        "aliases": [],
+        "postalCode": "901-2224",
+        "address": "沖縄県宜野湾市真志喜4-2-1",
+        "courts": 6,
+        "usage": "男子会場"
+      },
+      {
+        "prefecture": "沖縄県",
+        "city": "那覇市",
+        "name": "奥武山庭球場",
+        "aliases": [],
+        "postalCode": "900-0026",
+        "address": "沖縄県那覇市奥武山町44-1",
+        "courts": 13,
+        "usage": "女子会場"
+      },
+      {
+        "prefecture": "沖縄県",
+        "city": "那覇市",
+        "name": "漫湖公園市民庭球場",
+        "aliases": [],
+        "postalCode": "901-0151",
+        "address": "沖縄県那覇市鏡原町37-1",
+        "courts": 10,
+        "usage": "女子会場"
+      }
+    ],
+    "guidelineUrl": "https://www.jssta.jp/data_files/view/1392/mode:inline",
     "label": "第79回 全日本学生選手権大会",
     "source": "一般社団法人 日本学生ソフトテニス連盟",
     "sourceUrl": "https://www.jssta.jp/",
@@ -97,9 +153,56 @@
         "age": "none"
       },
       {
+        "categoryId": "doubles-none-girls",
+        "label": "女子ダブルス",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      },
+      {
         "categoryId": "singles-none-boys",
         "label": "男子シングルス",
         "category": "singles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "singles-none-girls",
+        "label": "女子シングルス",
+        "category": "singles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "informationId": "INF00014",
+    "year": 2026,
+    "location": "千葉県",
+    "startDate": "2026-09-04",
+    "endDate": "2026-09-09",
+    "venues": [
+      {
+        "prefecture": "千葉県",
+        "city": "長生郡白子町",
+        "name": "サニーインむかいテニスコート",
+        "aliases": [],
+        "nameRaw": "サニーインむかいテニスコート他",
+        "postalCode": "299-4215",
+        "address": "千葉県長生郡白子町中里4369",
+        "usage": "主会場",
+        "note": "令和8年熊本地震（2026-07-28）により熊本県での開催を断念し、2026-08-03付で開催地を千葉県長生郡白子町へ変更した（日程は当初どおり）。guidelineUrl は変更後の「変更要項」（PDFの作成日時 2026-08-03 21:26）。変更前の要項は https://www.jssta.jp/data_files/view/1571/mode:inline で、熊本県内の3会場（熊本県民総合運動公園庭球場30面／パークドーム熊本12面／植木中央公園運動施設テニスコート12面）を載せているが使用されない。変更要項の会場表記は「サニーインむかいテニスコート他」で、他の会場は名前が挙がっていない。面数・サーフェスも未発表のため記載していない。変更通知: https://www.jssta.jp/data_files/view/1581/mode:inline"
+      }
+    ],
+    "guidelineUrl": "https://jsta.or.jp/wp-content/uploads/2026/06/mode_inline.pdf",
+    "label": "第81回 全日本学生選手権大会",
+    "source": "一般社団法人 日本学生ソフトテニス連盟",
+    "sourceUrl": "https://www.jssta.jp/",
+    "categories": [
+      {
+        "categoryId": "doubles-none-boys",
+        "label": "男子ダブルス",
+        "category": "doubles",
         "gender": "boys",
         "age": "none"
       },
@@ -111,12 +214,20 @@
         "age": "none"
       },
       {
+        "categoryId": "singles-none-boys",
+        "label": "男子シングルス",
+        "category": "singles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
         "categoryId": "singles-none-girls",
         "label": "女子シングルス",
         "category": "singles",
         "gender": "girls",
         "age": "none"
       }
-    ]
+    ],
+    "note": "2026-07-28の令和8年熊本地震により開催地が熊本県から千葉県長生郡白子町へ変更された。data/local-sources/jsta-yearly-events/2026.json は日程一覧PDFの写しのため「熊本県熊本市」のままである（原本どおりなので書き換えていない）。"
   }
 ]
