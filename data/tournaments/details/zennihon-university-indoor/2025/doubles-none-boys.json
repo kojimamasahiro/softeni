@@ -346,6 +346,38 @@
       "matchId": "match-7"
     },
     {
+      "entries": [3, 6],
+      "scores": {
+        "6": 4,
+        "3": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 6,
+      "retired": true,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-14"
+    },
+    {
+      "entries": [3, 9],
+      "scores": {
+        "9": 4,
+        "3": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 9,
+      "retired": true,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-15"
+    },
+    {
       "entries": [4, 5],
       "scores": {
         "4": 1,
@@ -457,7 +489,7 @@
       "tournament": null,
       "roundrobin": {
         "group": "C",
-        "rank": null
+        "rank": 3
       }
     },
     {
