@@ -106,7 +106,7 @@
 
 ## 設計原則（確定）
 
-データ取得は完全手動入力のまま維持し、自動化するのは生成のみ（外部速報元の自動クロールはしない）。本文は LLM を使わず**テンプレートのみ**で決定的に生成する（誤り混入ゼロ・低コスト・鮮度シグナル安定）。**ただし2026-08-01の[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)で、大会インサイト（複数年にまたがる読み物）に限り、`scripts/verify-story-text.mjs` の機械照合を通った LLM 執筆の散文をサイト本文に載せてよいことになった**（公開条件は prebuild の `scripts/check-tournament-insights.mjs` が強制する）。バッジ・文脈ブロック本体は従来どおりテンプレートのみ。公開記事は **human-in-the-loop**（自動ドラフト→人が承認→公開）。既存ページへのブロック差し込みは決定的生成のためビルド時自動。
+データ取得は完全手動入力のまま維持し、自動化するのは生成のみ（外部速報元の自動クロールはしない）。本文は LLM を使わず**テンプレートのみ**で決定的に生成する（誤り混入ゼロ・低コスト・鮮度シグナル安定）。**ただし2026-08-01の[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)で、大会インサイト（複数年にまたがる読み物。現状仕様は [tournament-insights.md](./tournament-insights.md)）に限り、`scripts/verify-story-text.mjs` の機械照合を通った LLM 執筆の散文をサイト本文に載せてよいことになった**（公開条件は prebuild の `scripts/check-tournament-insights.mjs` が強制する）。バッジ・文脈ブロック本体は従来どおりテンプレートのみ。公開記事は **human-in-the-loop**（自動ドラフト→人が承認→公開）。既存ページへのブロック差し込みは決定的生成のためビルド時自動。
 
 ## パイプライン
 

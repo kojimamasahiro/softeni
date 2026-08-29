@@ -34,6 +34,7 @@
 
 ## コンテンツ生成・ストーリー
 
+- [大会インサイト（結果ページの「注目ポイント」）](./tournament-insights.md)
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md)
 - [希少イベント検知（この試合の名場面）](./rare-events.md)
 - [SNSストーリー生成基盤](./sns-story-platform.md)
