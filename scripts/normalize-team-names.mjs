@@ -258,7 +258,51 @@ function normalizeFile(file, resolveTeamAlias, ctx) {
   const dups = [...seen.entries()].filter(([, n]) => n > 1).map(([id]) => id);
 
   if (changed && !DRY_RUN) fs.writeFileSync(file, text, 'utf8');
-  return changed ? { changed, dups } : null;
+  return changed ? { changed, dups, teamRenames: [...teamRepl.entries()] } : null;
+}
+
+const INSIGHTS_DIR = path.join(ROOT, 'data', 'tournament-insights');
+
+/**
+ * 名寄せで改名したチームについて、旧名のまま残っている公開インサイトを列挙する（報告のみ）。
+ *
+ * なぜ必要か: 掲載データ側だけ改名すると、公開済みの本文が旧名のまま取り残される。
+ * scripts/verify-story-text.mjs の teamKey() が吸収するのは末尾の学校種別だけなので、
+ * 「王寺ユース」→「王寺ユースクラブ」のような差は照合が落ちる。prebuild まで気づけないと
+ * 原因が名寄せだと分からないので、改名した本人がその場で分かるようにする
+ * （2026-08-30 に実際に prebuild を止めた。docs/raw/2026-08-30-zennihon-championship-2019-pdf-entries-import.md）。
+ *
+ * **本文の自動書き換えはしない。** 別名には「東海」「柏崎」「村上」のような、姓や他チーム名の
+ * 部分文字列と衝突するものが多数あり、散文への機械置換は壊す方が大きい。人が直す。
+ */
+function reportStaleInsights(renames) {
+  if (!renames.size || !fs.existsSync(INSIGHTS_DIR)) return;
+  const hits = [];
+  const walk = (dir) => {
+    for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) walk(full);
+      else if (ent.name.endsWith('.json')) {
+        let d;
+        try {
+          d = JSON.parse(fs.readFileSync(full, 'utf8'));
+        } catch {
+          continue;
+        }
+        if (d.state !== 'published' || !Array.isArray(d.paragraphs)) continue;
+        const text = d.paragraphs.join('\n');
+        for (const [oldName, newName] of renames) {
+          // 新名の一部としての出現は数えない（「王寺ユースクラブ」の中の「王寺ユース」）
+          if (!text.split(newName).join('\u0000').includes(oldName)) continue;
+          hits.push({ file: path.relative(ROOT, full), oldName, newName });
+        }
+      }
+    }
+  };
+  walk(INSIGHTS_DIR);
+  if (!hits.length) return;
+  console.warn('\n⚠ 公開インサイトの本文が旧名のまま残っています（照合が落ちます。本文を更新してください）:');
+  for (const h of hits) console.warn(`  ${h.file}: 「${h.oldName}」-> 「${h.newName}」`);
 }
 
 function main() {
@@ -274,6 +318,7 @@ function main() {
   let totalFiles = 0;
   let totalChanges = 0;
   const dupWarnings = [];
+  const teamRenames = new Map(); // 旧名 -> 新名（この実行で実際に適用したもの）
 
   for (const file of files) {
     let res;
@@ -292,6 +337,7 @@ function main() {
     totalChanges += res.changed;
     console.log(`${DRY_RUN ? '[dry-run] ' : ''}${path.relative(ROOT, file)}: ${res.changed} 箇所置換`);
     if (res.dups && res.dups.length) dupWarnings.push({ file: path.relative(ROOT, file), dups: res.dups });
+    for (const [oldName, newName] of res.teamRenames ?? []) teamRenames.set(oldName, newName);
   }
 
   console.log(`\n${DRY_RUN ? '[dry-run] ' : ''}完了: ${totalFiles} ファイル / ${totalChanges} 箇所を置換`);
@@ -299,6 +345,7 @@ function main() {
     console.warn('\n⚠ 同一IDへ統合された参加者があります（要確認）:');
     for (const w of dupWarnings) console.warn(`  ${w.file}: ${w.dups.join(', ')}`);
   }
+  reportStaleInsights(teamRenames);
 }
 
 main();

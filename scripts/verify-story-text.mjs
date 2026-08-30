@@ -30,6 +30,67 @@ const teamKey = (s) => normalize(s).replace(/(高等学校|高校|中学校|中�
 
 const RANK_LABEL = { 100: '優勝', 90: '準優勝', 80: 'ベスト4', 70: 'ベスト8' };
 
+// ------------------------------------------------ 名寄せで置いていかれた本文の検出
+//
+// チーム名の名寄せ（scripts/normalize-team-names.mjs）を流すと掲載データ側の表記だけが
+// 変わり、公開済みの本文が旧名のまま取り残される。teamKey() が吸収するのは末尾の学校種別
+// （高校/高等学校/中学校/中学/大学）だけなので、「王寺ユース」→「王寺ユースクラブ」の
+// ような差は主語が引けなくなり、「主語を特定できず照合不能」としか出ずに原因へたどり着けない
+// （2026-08-30 に実際に prebuild を止め、特定に時間を要した）。
+// そこで、断片に「名寄せ済みの旧名」が含まれていたらそれを名指しする。
+//
+// 検査を通すために別名を主語として受け入れる、という方向は採らない。
+// チームページも大会結果も正準名で表示しているので、本文だけが存在しない名前を
+// 出し続けることになり、拾うべき不整合を黙らせるだけになる。
+const ALIAS_FILE = path.join(process.cwd(), 'data', 'tournaments', 'team-name-aliases.json');
+
+let aliasPairsCache = null;
+/** [旧名, 正準名] の一覧。teamKey() が吸収する接尾辞違いは、そもそも壊れないので除く。 */
+function teamAliasPairs() {
+  if (aliasPairsCache) return aliasPairsCache;
+  const out = [];
+  try {
+    const raw = JSON.parse(fs.readFileSync(ALIAS_FILE, 'utf8'));
+    for (const e of raw.teamAliases ?? []) {
+      for (const a of e.aliases ?? []) {
+        if (teamKey(a) === teamKey(e.canonical)) continue;
+        out.push([normalize(a), e.canonical]);
+      }
+    }
+  } catch {
+    // 対応表が無くても照合自体は動く。ヒントが出ないだけ。
+  }
+  // 長い別名を先に見る（「王寺ユース」と「王寺」が両方ある場合に具体的な方を出す）
+  out.sort((x, y) => y[0].length - x[0].length);
+  aliasPairsCache = out;
+  return aliasPairsCache;
+}
+
+/**
+ * 断片に「名寄せ済みの旧名」が含まれていれば { alias, canonical } を返す。
+ *
+ * 誤報を出さないために2つの条件を課す:
+ *   - **掲載データに実在する固有名詞は先に伏せる**。別名には「東海」「柏崎」「長浜」のような
+ *     短いものが534件中に混ざっており、伏せずに探すと「東海大学」の中の「東海」を拾う。
+ *     伏せたあとに残る名前＝どの実データにも無い名前だけが、取り残された旧名の候補になる。
+ *   - **正準名がこの大会・種目の掲載データに実在すること**。改名の相手が居ない別名は無関係。
+ */
+function staleAliasIn(segment, facts) {
+  if (!segment) return null;
+  let flat = normalize(segment);
+  // 長い名前から順に伏せる（「東海大学」を先に消してから「東海」を見る）
+  const present = [...facts.teams, ...facts.names].map(normalize).filter(Boolean).sort((a, b) => b.length - a.length);
+  for (const name of present) flat = flat.split(name).join('\u0000');
+  for (const [alias, canonical] of teamAliasPairs()) {
+    if (!flat.split(normalize(canonical)).join('\u0000').includes(alias)) continue;
+    const ck = teamKey(canonical);
+    if (![...facts.teams].some((t) => teamKey(t) === ck)) continue;
+    return { alias, canonical };
+  }
+  return null;
+}
+
+
 /** results[].tournament.rank -> 比較可能なスコア。ベスト8未満はドロー規模依存なので null。 */
 function rankScore(rank) {
   if (!rank) return null;
@@ -195,7 +256,7 @@ function extractClaims(text, facts) {
     // 助詞を挟む書き方を拾い漏らすと実際の誤りを見逃すため、年と成績の間の助詞を許容する
     // （「2024年も優勝」を取りこぼして誤りをすり抜けさせた実例があるため）。
     for (const m of flat.matchAll(/(\d{4})年(?:[はもにでandの、]|\s)*(優勝|準優勝|ベスト4|ベスト8)/g)) {
-      claims.push({ type: 'year-result', segIndex, owners, stale, year: Number(m[1]), result: m[2], raw: m[0] });
+      claims.push({ type: 'year-result', segIndex, segment: flat, owners, stale, year: Number(m[1]), result: m[2], raw: m[0] });
     }
     // (a2) 「YYYY年の◯◯大会△△は<主体>が優勝しました」形式。
     // (a) は年と成績が隣接する語順しか拾わないため、PROMPT.md が指示する書き出し
@@ -211,6 +272,7 @@ function extractClaims(text, facts) {
         claims.push({
           type: 'year-result',
           segIndex,
+          segment: flat,
           owners,
           stale,
           year: yearsInSegment[0],
@@ -235,15 +297,15 @@ function extractClaims(text, facts) {
         // 仮定であることを持ち回り、外れても ERROR ではなく WARN に落とす。
         else inferred = true;
       }
-      claims.push({ type: 'streak', segIndex, owners, stale, years: Number(m[1]), level, inferred, raw: m[0] });
+      claims.push({ type: 'streak', segIndex, segment: flat, owners, stale, years: Number(m[1]), level, inferred, raw: m[0] });
     }
     // (c) 「3連覇」
     for (const m of flat.matchAll(/(\d+)連覇/g)) {
-      claims.push({ type: 'repeat-title', segIndex, owners, stale, times: Number(m[1]), raw: m[0] });
+      claims.push({ type: 'repeat-title', segIndex, segment: flat, owners, stale, times: Number(m[1]), raw: m[0] });
     }
     // (d) 「5-4」
     for (const m of flat.matchAll(/(\d+)[-−](\d+)/g)) {
-      claims.push({ type: 'score', segIndex, owners, stale, text: `${m[1]}-${m[2]}`, raw: m[0] });
+      claims.push({ type: 'score', segIndex, segment: flat, owners, stale, text: `${m[1]}-${m[2]}`, raw: m[0] });
     }
     // (e) 本文に出てくる人名・学校名そのものの実在確認
     for (const s of present) claims.push({ type: 'name', segIndex, subject: s, raw: s });
@@ -351,7 +413,17 @@ function verify(claims, facts, maxYear) {
     }
 
     if (!claim.owners || claim.owners.length === 0) {
-      findings.push({ key, status: 'UNVERIFIED', message: `「${claim.raw}」`, detail: '主語を特定できず照合不能' });
+      // 主語が引けない原因の多くは「名寄せで掲載データ側だけ改名され、本文が旧名のまま」。
+      // 該当するなら旧名を名指しして、次の一手（本文の更新）が分かるようにする。
+      const stale = staleAliasIn(claim.segment, facts);
+      findings.push({
+        key,
+        status: 'UNVERIFIED',
+        message: `「${claim.raw}」`,
+        detail: stale
+          ? `主語を特定できず照合不能。本文の「${stale.alias}」は team-name-aliases.json で「${stale.canonical}」へ名寄せ済み（掲載データは改名後）。本文を正準名へ更新すること`
+          : '主語を特定できず照合不能',
+      });
       continue;
     }
 
