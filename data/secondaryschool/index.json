@@ -187,7 +187,7 @@
       "id": "nara",
       "name": "奈良県",
       "region": "近畿",
-      "teamCount": 7
+      "teamCount": 6
     },
     {
       "id": "wakayama",
@@ -14201,6 +14201,312 @@
       ]
     },
     {
+      "id": "oujiyouthclub",
+      "name": "王寺ユースクラブ",
+      "kind": "club",
+      "prefecture": "奈良県",
+      "prefectureId": "nara",
+      "count": 26,
+      "years": [
+        2024,
+        2025,
+        2026
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-kinki-block",
+        "zennihon-secondaryschool-club-pre",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校大会",
+        "short": "全中",
+        "year": 2026,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "優勝",
+        "score": 6,
+        "players": [
+          "北野 陽真",
+          "東郷 翔太"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": [
+            "北野 陽真",
+            "東郷 翔太"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": [
+            "那知上 晟生",
+            "勝村 蒼空"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "優勝",
+          "score": 6,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "準優勝",
+          "score": 5,
+          "players": [
+            "北野 陽真",
+            "東郷 翔太"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト4",
+          "score": 4.5,
+          "players": [
+            "那知上 晟生",
+            "勝村 蒼空"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "神林 翔太",
+            "岡部 蓮"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "眞﨑 哲平",
+            "川﨑 心翔"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "準優勝",
+          "score": 5,
+          "players": [
+            "北野 陽真"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "北野 陽真",
+            "東郷 翔太"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "那知上 晟生",
+            "東郷 翔太"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-club-pre",
+          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
+          "short": "クラブ選手権プレ",
+          "year": 2025,
+          "categoryId": "team-upper-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "那知上 晟生",
+            "勝村 蒼空"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-club-pre",
+          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
+          "short": "クラブ選手権プレ",
+          "year": 2025,
+          "categoryId": "team-qualifying-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": null,
+          "score": 0,
+          "players": []
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "準優勝",
+          "score": 5,
+          "players": [
+            "北野 陽真"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "岡部 蓮",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "勝村 蒼空",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "神林 翔太",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "川﨑 心翔",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "東郷 翔太",
+          "years": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "那知上 晟生",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "北野 陽真",
+          "years": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "眞﨑 哲平",
+          "years": [
+            2026
+          ]
+        }
+      ]
+    },
+    {
       "id": "shibukawasposhou",
       "name": "渋川スポ少",
       "kind": "club",
@@ -16758,6 +17064,349 @@
       ]
     },
     {
+      "id": "tsuchiuraclub",
+      "name": "土浦クラブ",
+      "kind": "club",
+      "prefecture": "茨城県",
+      "prefectureId": "ibaraki",
+      "count": 24,
+      "years": [
+        2024,
+        2025,
+        2026
+      ],
+      "genders": [
+        "boys",
+        "girls"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship",
+        "secondaryschool-kanto-block",
+        "zennihon-secondaryschool-club-pre",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-kanto-block",
+        "tournamentLabel": "関東中学校ソフトテニス大会",
+        "short": "ブロック",
+        "year": 2026,
+        "categoryId": "team-none-girls",
+        "category": "team",
+        "gender": "girls",
+        "label": "準優勝",
+        "score": 5,
+        "players": []
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-kanto-block",
+          "tournamentLabel": "関東中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "準優勝",
+          "score": 5,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "team-none-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-kanto-block",
+          "tournamentLabel": "関東中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "4回戦敗退",
+          "score": 1.2,
+          "players": [
+            "清水 優月",
+            "鈴木 雪花"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kanto-block",
+          "tournamentLabel": "関東中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "4回戦敗退",
+          "score": 1.2,
+          "players": [
+            "関山 柚花",
+            "石井 あや"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "関山 柚花",
+            "石井 あや"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kanto-block",
+          "tournamentLabel": "関東中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "三浦 真一",
+            "野口 瑛翔"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kanto-block",
+          "tournamentLabel": "関東中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "浅野 晴月",
+            "中崎 遥"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "関山 柚花",
+            "石井 あや"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "鈴木 雪花"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-club-pre",
+          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
+          "short": "クラブ選手権プレ",
+          "year": 2025,
+          "categoryId": "team-upper-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-club-pre",
+          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
+          "short": "クラブ選手権プレ",
+          "year": 2025,
+          "categoryId": "team-qualifying-girls",
+          "category": "team",
+          "gender": "girls",
+          "label": null,
+          "score": 0,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2024,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "4回戦敗退",
+          "score": 1.2,
+          "players": [
+            "髙野 ほなみ",
+            "草深 歩由奈"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "doubles-none-girls",
+          "category": "doubles",
+          "gender": "girls",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "林 楓恋",
+            "荒川 琴美"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "石井 あや"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-girls",
+          "category": "singles",
+          "gender": "girls",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": [
+            "小松﨑 麻友"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "関山 柚花",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "三浦 真一",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "清水 優月",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "石井 あや",
+          "years": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "浅野 晴月",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "中崎 遥",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "野口 瑛翔",
+          "years": [
+            2026
+          ]
+        },
+        {
+          "name": "鈴木 雪花",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "荒川 琴美",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "小松﨑 麻友",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "草深 歩由奈",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "林 楓恋",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "髙野 ほなみ",
+          "years": [
+            2024
+          ]
+        }
+      ]
+    },
+    {
       "id": "shizunaiclub",
       "name": "静内クラブ",
       "kind": "club",
@@ -18818,270 +19467,6 @@
       ]
     },
     {
-      "id": "oujiyouthclub",
-      "name": "王寺ユースクラブ",
-      "kind": "club",
-      "prefecture": "奈良県",
-      "prefectureId": "nara",
-      "count": 21,
-      "years": [
-        2024,
-        2025,
-        2026
-      ],
-      "genders": [
-        "boys"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship",
-        "secondaryschool-kinki-block",
-        "zennihon-secondaryschool-club-pre",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-kinki-block",
-        "tournamentLabel": "近畿中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "優勝",
-        "score": 6,
-        "players": [
-          "那知上 晟生",
-          "勝村 蒼空"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "優勝",
-          "score": 6,
-          "players": [
-            "那知上 晟生",
-            "勝村 蒼空"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "優勝",
-          "score": 6,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "準優勝",
-          "score": 5,
-          "players": [
-            "北野 陽真",
-            "東郷 翔太"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "神林 翔太",
-            "岡部 蓮"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "眞﨑 哲平",
-            "川﨑 心翔"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "singles-none-boys",
-          "category": "singles",
-          "gender": "boys",
-          "label": "準優勝",
-          "score": 5,
-          "players": [
-            "北野 陽真"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2025,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "北野 陽真",
-            "東郷 翔太"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "那知上 晟生",
-            "東郷 翔太"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-club-pre",
-          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
-          "short": "クラブ選手権プレ",
-          "year": 2025,
-          "categoryId": "team-upper-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2025,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "那知上 晟生",
-            "勝村 蒼空"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-club-pre",
-          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
-          "short": "クラブ選手権プレ",
-          "year": 2025,
-          "categoryId": "team-qualifying-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": null,
-          "score": 0,
-          "players": []
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-boys",
-          "category": "singles",
-          "gender": "boys",
-          "label": "準優勝",
-          "score": 5,
-          "players": [
-            "北野 陽真"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "岡部 蓮",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "勝村 蒼空",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "神林 翔太",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "川﨑 心翔",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "東郷 翔太",
-          "years": [
-            2024,
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "那知上 晟生",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "北野 陽真",
-          "years": [
-            2024,
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "眞﨑 哲平",
-          "years": [
-            2026
-          ]
-        }
-      ]
-    },
-    {
       "id": "soyo",
       "name": "相洋中学校",
       "kind": "school",
@@ -19365,322 +19750,6 @@
           "name": "三枝 由空",
           "years": [
             2025
-          ]
-        }
-      ]
-    },
-    {
-      "id": "tsuchiuraclub",
-      "name": "土浦クラブ",
-      "kind": "club",
-      "prefecture": "茨城県",
-      "prefectureId": "ibaraki",
-      "count": 21,
-      "years": [
-        2024,
-        2025,
-        2026
-      ],
-      "genders": [
-        "boys",
-        "girls"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship",
-        "secondaryschool-kanto-block",
-        "zennihon-secondaryschool-club-pre",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-kanto-block",
-        "tournamentLabel": "関東中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
-        "categoryId": "team-none-girls",
-        "category": "team",
-        "gender": "girls",
-        "label": "準優勝",
-        "score": 5,
-        "players": []
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-kanto-block",
-          "tournamentLabel": "関東中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "準優勝",
-          "score": 5,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-kanto-block",
-          "tournamentLabel": "関東中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "4回戦敗退",
-          "score": 1.2,
-          "players": [
-            "清水 優月",
-            "鈴木 雪花"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kanto-block",
-          "tournamentLabel": "関東中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "4回戦敗退",
-          "score": 1.2,
-          "players": [
-            "関山 柚花",
-            "石井 あや"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kanto-block",
-          "tournamentLabel": "関東中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "三浦 真一",
-            "野口 瑛翔"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kanto-block",
-          "tournamentLabel": "関東中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "浅野 晴月",
-            "中崎 遥"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "関山 柚花",
-            "石井 あや"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "singles-none-girls",
-          "category": "singles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "鈴木 雪花"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-club-pre",
-          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
-          "short": "クラブ選手権プレ",
-          "year": 2025,
-          "categoryId": "team-upper-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": []
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-club-pre",
-          "tournamentLabel": "全日本中学生クラブソフトテニス選手権プレ大会",
-          "short": "クラブ選手権プレ",
-          "year": 2025,
-          "categoryId": "team-qualifying-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": null,
-          "score": 0,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2024,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": []
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "4回戦敗退",
-          "score": 1.2,
-          "players": [
-            "髙野 ほなみ",
-            "草深 歩由奈"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "林 楓恋",
-            "荒川 琴美"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-girls",
-          "category": "singles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "石井 あや"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-girls",
-          "category": "singles",
-          "gender": "girls",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "小松﨑 麻友"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "関山 柚花",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "三浦 真一",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "清水 優月",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "石井 あや",
-          "years": [
-            2024,
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "浅野 晴月",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "中崎 遥",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "野口 瑛翔",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "鈴木 雪花",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "荒川 琴美",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "小松﨑 麻友",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "草深 歩由奈",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "林 楓恋",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "髙野 ほなみ",
-          "years": [
-            2024
           ]
         }
       ]
@@ -52876,108 +52945,6 @@
           "name": "山内 大駆",
           "years": [
             2025,
-            2026
-          ]
-        }
-      ]
-    },
-    {
-      "id": "oujiyouth",
-      "name": "王寺ユース",
-      "kind": "club",
-      "prefecture": "奈良県",
-      "prefectureId": "nara",
-      "count": 5,
-      "years": [
-        2026
-      ],
-      "genders": [
-        "boys"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-championship",
-        "tournamentLabel": "全国中学校大会",
-        "short": "全中",
-        "year": 2026,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "優勝",
-        "score": 6,
-        "players": [
-          "北野 陽真",
-          "東郷 翔太"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "優勝",
-          "score": 6,
-          "players": [
-            "北野 陽真",
-            "東郷 翔太"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "優勝",
-          "score": 6,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト4",
-          "score": 4.5,
-          "players": [
-            "那知上 晟生",
-            "勝村 蒼空"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "勝村 蒼空",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "東郷 翔太",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "那知上 晟生",
-          "years": [
-            2026
-          ]
-        },
-        {
-          "name": "北野 陽真",
-          "years": [
             2026
           ]
         }

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 3,
-    "doubles": 9,
+    "team": 5,
+    "doubles": 15,
     "singles": 1
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "kanazawagakuindaifu",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2019,
         "gender": "girls",
-        "playerIds": ["小酒_虹海_金沢学院大附_石川県", "服部_亜子_金沢学院大附_石川県"]
+        "playerIds": ["村上_麗吏_金沢学院大附_石川県", "西村_紺奈_金沢学院大附_石川県"]
       }
     },
     "team": {
@@ -75,14 +75,35 @@
         "teamId": "kanazawagakuindaifu",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
-        "tournamentId": "highschool-senbatsu",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2018,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 16,
+  "topPlayers": [
+    {
+      "id": "小酒_虹海_金沢学院大附_石川県",
+      "appearances": 4
+    },
+    {
+      "id": "服部_亜子_金沢学院大附_石川県",
+      "appearances": 4
+    },
+    {
+      "id": "金瀬戸_のよ_金沢学院大附_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "南条_舞咲_金沢学院大附_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "法花堂_古都_金沢学院大附_石川県",
+      "appearances": 3
+    }
+  ]
 }

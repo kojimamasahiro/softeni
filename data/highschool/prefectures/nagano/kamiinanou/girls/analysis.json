@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 2,
-    "doubles": 4
+    "doubles": 5,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "上伊那農",
+        "teamId": "kamiinanou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "girls",
+        "playerIds": ["宮下_優月_上伊那農_長野県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -53,6 +65,10 @@
   "uniquePlayers": 6,
   "topPlayers": [
     {
+      "id": "宮下_優月_上伊那農_長野県",
+      "appearances": 3
+    },
+    {
       "id": "田中_愛実_上伊那農_長野県",
       "appearances": 2
     },
@@ -61,15 +77,11 @@
       "appearances": 2
     },
     {
-      "id": "後町_海帆_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "鈴木_望夢_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
       "id": "小坂_菜月_上伊那農_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "後町_海帆_上伊那農_長野県",
       "appearances": 1
     }
   ]

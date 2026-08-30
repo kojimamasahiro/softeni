@@ -14,12 +14,12 @@
         "teamId": "sumagakuen",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "出場",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "zennihon-workers",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["松田_祐二_川崎重工明石_兵庫県", "宇治橋_慧_須磨学園高等学校_兵庫県"]
+        "playerIds": ["松田_祐二_川崎重工明石_兵庫県", "宇治橋_慧_須磨学園_兵庫県"]
       },
       "historicalBest": {
         "team": "須磨学園",
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "前田_梨緒_須磨学園_兵庫県",
@@ -47,6 +47,10 @@
     },
     {
       "id": "中谷_さくら_須磨学園_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "宇治橋_慧_須磨学園_兵庫県",
       "appearances": 1
     }
   ]

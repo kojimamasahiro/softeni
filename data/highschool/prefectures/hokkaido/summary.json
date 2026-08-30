@@ -61,6 +61,17 @@
     "prefectureId": "hokkaido",
     "result": "2回戦敗退",
     "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys"
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2022,
     "gender": "boys"
@@ -107,17 +118,6 @@
     "category": "team",
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
-    "gender": "boys"
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
     "gender": "boys"
   },
   {
@@ -846,8 +846,8 @@
     "playerIds": ["濱本_陽向_旭川実_北海道", "小林_無双_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "予選敗退",
@@ -855,11 +855,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["尾崎_瀬里奈_旭川実業_北海道", "垣内中_あさひ_旭川実業_北海道"]
+    "playerIds": ["尾崎_瀬里奈_旭川実_北海道", "垣内中_あさひ_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
@@ -867,11 +867,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["石井_莉乃_旭川実業_北海道", "山田_萌華_旭川実業_北海道"]
+    "playerIds": ["石井_莉乃_旭川実_北海道", "山田_萌華_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "予選敗退",
@@ -879,7 +879,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["鈴木_海斗_旭川実業_北海道", "加藤_滉介_旭川実業_北海道"]
+    "playerIds": ["鈴木_海斗_旭川実_北海道", "加藤_滉介_旭川実_北海道"]
   },
   {
     "team": "旭川工",
@@ -963,7 +963,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["田渕_旭川実業_北海道", "加藤_旭川実業_北海道"]
+    "playerIds": ["田渕_北海道_北海道", "加藤_北海道_北海道"]
   },
   {
     "team": "岩見沢東",
@@ -1036,6 +1036,30 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "zennihon-university",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["坂齊_翔和_北科大_日本学連", "久保_葵生_北科大_日本学連"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "出場",
+    "category": "doubles",
+    "tournamentId": "zennihon-university",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["鳥居_純_北科大_日本学連", "長谷川_遥己_北科大_日本学連"]
   },
   {
     "team": "北科大",
@@ -1174,6 +1198,66 @@
     "teamId": "kitakadai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["後藤_伊吹_北科大_北海道", "竹田_葵_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["増田_洋五豊_北科大_北海道", "蝦名_海飛_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["後藤_駿斗_北科大_北海道", "新山_海人_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["岩城_爽太_北科大_北海道", "中路_昂平_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["関_陸斗_北科大_北海道", "新谷_涼馬_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1192,6 +1276,78 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["岩城_爽太_北科大_北海道", "小笠原_祿_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高橋_咲楽_北科大_北海道", "北川_風花_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["坂上_帆風_北科大_北海道", "福田_涼乃_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["水口_颯太_北科大_北海道", "山根_竜馬_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["松尾_海音_北科大_北海道", "浜山_陽希_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["増田_洋五豊_北科大_北海道", "蝦名_海飛_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["下國_康生_北科大_北海道", "新谷_涼馬_北科大_北海道"]
   },
   {
     "team": "北科大",
@@ -1312,138 +1468,6 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["百目木_來杜_北科大_北海道", "秋山_想太_北科大_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["後藤_伊吹_北科大高_北海道", "竹田_葵_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["増田_洋五豊_北科大高_北海道", "蝦名_海飛_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["後藤_駿斗_北科大高_北海道", "新山_海人_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["岩城_爽太_北科大高_北海道", "中路_昂平_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["関_陸斗_北科大高_北海道", "新谷_涼馬_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["高橋_咲楽_北科大高_北海道", "北川_風花_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["坂上_帆風_北科大高_北海道", "福田_涼乃_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["水口_颯太_北科大高_北海道", "山根_竜馬_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["松尾_海音_北科大高_北海道", "浜山_陽希_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["増田_洋五豊_北科大高_北海道", "蝦名_海飛_北科大高_北海道"]
-  },
-  {
-    "team": "北科大高",
-    "teamId": "kitakaoodaka",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["下國_康生_北科大高_北海道", "新谷_涼馬_北科大高_北海道"]
   },
   {
     "team": "北見北斗",
@@ -3738,8 +3762,8 @@
     "playerIds": ["橘内_美心_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
@@ -3747,11 +3771,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["鈴木_海斗_旭川実業_北海道"]
+    "playerIds": ["鈴木_海斗_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
@@ -3759,11 +3783,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["松木_天人_旭川実業_北海道"]
+    "playerIds": ["松木_天人_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
@@ -3771,11 +3795,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["尾崎_瀬里奈_旭川実業_北海道"]
+    "playerIds": ["尾崎_瀬里奈_旭川実_北海道"]
   },
   {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
@@ -3783,7 +3807,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["山田_萌華_旭川実業_北海道"]
+    "playerIds": ["山田_萌華_旭川実_北海道"]
   },
   {
     "team": "旭川工",

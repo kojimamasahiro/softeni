@@ -20,7 +20,7 @@
         "tournamentId": "highschool-japan-cup",
         "year": 2021,
         "gender": "boys",
-        "playerIds": ["田渕_旭川実業_北海道", "加藤_旭川実業_北海道"]
+        "playerIds": ["田渕_北海道_北海道", "加藤_北海道_北海道"]
       }
     },
     "team": {
@@ -28,6 +28,15 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "田渕_北海道_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_北海道_北海道",
+      "appearances": 1
+    }
+  ]
 }
