@@ -57,6 +57,14 @@
 注意: ここは**頻度依存なので、データが増えると採用表記が入れ替わりうる**（NFKC等価ペアに限る）。
 表記を固定したい場合は alias 表に canonical として明示的に書くこと。
 
+**`prebuild` で自動実行される**（2026-08-30 追加）。人手不要・冪等なため、新規大会データを
+取り込んだ後に手動で回さなくても `npm run build` / `npm run prebuild` のたびに全角半角・
+スペース揺れが正準化される。実例: `zennihon-workers` 2026年の新規取り込みだけ `ＮＴＴ西日本`
+（全角）と入り、過去年の `NTT西日本`（半角）と表記が割れたため、
+`generate-story-yaml.mjs` の学校単位集計（`watched-school-progress`）がこのチームを
+「前年に記録がない」と誤判定し、大会インサイトの注目ポイントから丸ごと欠落した
+（4年連続優勝中の主力チームが記事に出ないという実害）。以後はビルドのたびに解消される。
+
 ## 異体字・旧字体の扱い（照合と表示の分離）
 
 NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`崎`、`學`≠`学`、`應`≠`応`）。
@@ -353,7 +361,7 @@ id の分割ではない点に注意（残課題の「アプリの選手解決�
 ```
 node scripts/normalize-name-splits.mjs          # 姓名の分割ゆれの正準化
 node scripts/normalize-prefectures.mjs          # 県の正準化
-node scripts/normalize-team-spacing.mjs         # 全角半角・スペース揺れの正準化
+node scripts/normalize-team-spacing.mjs         # 全角半角・スペース揺れの正準化（prebuildで自動実行済みだが明示実行しても無害・冪等）
 node scripts/normalize-team-names.mjs --scope=all  # alias をデータへ適用
 node scripts/build-team-master.mjs              # teams.json + team-context.json
 node scripts/build-team-merge-candidates.mjs    # merge-candidates.json
