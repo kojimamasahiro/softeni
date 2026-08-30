@@ -6,8 +6,8 @@
     {"id":"佐野_美由紀_teamコネクト_大阪府","lastName":"佐野","firstName":"美由紀","team":"teamコネクト","prefecture":"大阪府"},
     {"id":"近藤_佳奈_総社クラブ_岡山県","lastName":"近藤","firstName":"佳奈","team":"総社クラブ","prefecture":"岡山県"},
     {"id":"松若_理沙_ダンディズム_岡山県","lastName":"松若","firstName":"理沙","team":"ダンディズム","prefecture":"岡山県"},
-    {"id":"稲場_えり_Ｂ－ＪＯＫＥＲ_京都府","lastName":"稲場","firstName":"えり","team":"Ｂ－ＪＯＫＥＲ","prefecture":"京都府"},
-    {"id":"島田_藍_Ｂ－ＪＯＫＥＲ_京都府","lastName":"島田","firstName":"藍","team":"Ｂ－ＪＯＫＥＲ","prefecture":"京都府"},
+    {"id":"稲場_えり_B-JOKER_京都府","lastName":"稲場","firstName":"えり","team":"B-JOKER","prefecture":"京都府"},
+    {"id":"島田_藍_B-JOKER_京都府","lastName":"島田","firstName":"藍","team":"B-JOKER","prefecture":"京都府"},
     {"id":"深井_由香里_teamレジェンド_大阪府","lastName":"深井","firstName":"由香里","team":"teamレジェンド","prefecture":"大阪府"},
     {"id":"吉川_有可里_ＧＬＯＲＹ_大阪府","lastName":"吉川","firstName":"有可里","team":"ＧＬＯＲＹ","prefecture":"大阪府"},
     {"id":"福田_江里子_久留米クラブ_福岡県","lastName":"福田","firstName":"江里子","team":"久留米クラブ","prefecture":"福岡県"},
@@ -17,7 +17,7 @@
     {"id":"髙山_友梨_スカットクラブ_和歌山県","lastName":"髙山","firstName":"友梨","team":"スカットクラブ","prefecture":"和歌山県"},
     {"id":"山本_真央_たちばなクラブ_和歌山県","lastName":"山本","firstName":"真央","team":"たちばなクラブ","prefecture":"和歌山県"},
     {"id":"山口_真希子_Ｍａｒｓ_京都府","lastName":"山口","firstName":"真希子","team":"Ｍａｒｓ","prefecture":"京都府"},
-    {"id":"川本_彩加_ＫＥＮＫＯ_京都府","lastName":"川本","firstName":"彩加","team":"ＫＥＮＫＯ","prefecture":"京都府"},
+    {"id":"川本_彩加_KENKO_京都府","lastName":"川本","firstName":"彩加","team":"KENKO","prefecture":"京都府"},
     {"id":"佐々木_美樹_アドバンテージ福井_福井県","lastName":"佐々木","firstName":"美樹","team":"アドバンテージ福井","prefecture":"福井県"},
     {"id":"西_涼子_野々市クラブ_福井県","lastName":"西","firstName":"涼子","team":"野々市クラブ","prefecture":"福井県"},
     {"id":"伊藤_愛美_維吹_和歌山県","lastName":"伊藤","firstName":"愛美","team":"維吹","prefecture":"和歌山県"},
@@ -77,7 +77,7 @@
     {"id":"東谷_真衣_門真市連盟_大阪府","lastName":"東谷","firstName":"真衣","team":"門真市連盟","prefecture":"大阪府"},
     {"id":"中川_ひとみ_ＧＬＯＲＹ_大阪府","lastName":"中川","firstName":"ひとみ","team":"ＧＬＯＲＹ","prefecture":"大阪府"},
     {"id":"谷口_翔子_クレインズクラブ_京都府","lastName":"谷口","firstName":"翔子","team":"クレインズクラブ","prefecture":"京都府"},
-    {"id":"吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ_京都府","lastName":"吉﨑","firstName":"香奈絵","team":"Ｂ－ＪＯＫＥＲ","prefecture":"京都府"}
+    {"id":"吉﨑_香奈絵_B-JOKER_京都府","lastName":"吉﨑","firstName":"香奈絵","team":"B-JOKER","prefecture":"京都府"}
   ],
   "entries": [
     {"entryNo":1,"playerIds":["伊佐_久美子_杉並文化クラブ_東京都","稲垣_彩_千石クラブ_東京都"],"type":"seed"},
@@ -90,7 +90,7 @@
     {"entryNo":8,"playerIds":["瀬野_優梨恵_ＦＲＥＥＤＯＭ_鹿児島県","冨尾_英李_ＦＲＥＥＤＯＭ_鹿児島県"],"type":"extra"},
     {"entryNo":9,"playerIds":["勝部_直子_クレインズクラブ_京都府","波野_洋子_クレインズクラブ_京都府"],"type":"extra"},
     {"entryNo":10,"playerIds":["丸井_香菜_Ｌｅａｎｄｒａ_東京都","宮原_沙弥佳_千石クラブ_東京都"],"type":"seed"},
-    {"entryNo":11,"playerIds":["稲場_えり_Ｂ－ＪＯＫＥＲ_京都府","島田_藍_Ｂ－ＪＯＫＥＲ_京都府"],"type":"packing"},
+    {"entryNo":11,"playerIds":["稲場_えり_B-JOKER_京都府","島田_藍_B-JOKER_京都府"],"type":"packing"},
     {"entryNo":12,"playerIds":["近藤_佳奈_総社クラブ_岡山県","松若_理沙_ダンディズム_岡山県"],"type":"packing"},
     {"entryNo":13,"playerIds":["内山_結香_神栖レッドジャイコ_茨城県","石嶋_優子_神栖レッドジャイコ_茨城県"],"type":"extra"},
     {"entryNo":14,"playerIds":["伊勢_美奈美_ALPHA_和歌山県","竹本_依里_ＭＥＷＳ_和歌山県"],"type":"extra"},
@@ -107,7 +107,7 @@
     {"entryNo":25,"playerIds":["松野_美鈴_チーム我樹丸_沖縄県","山下_千恵_Gleam_沖縄県"],"type":"extra"},
     {"entryNo":26,"playerIds":["前田_綾子_井原テニスクラブ_岡山県","松川_のぞみ_今津クラブ_岡山県"],"type":"extra"},
     {"entryNo":27,"playerIds":["佐々木_美樹_アドバンテージ福井_福井県","西_涼子_野々市クラブ_福井県"],"type":"packing"},
-    {"entryNo":28,"playerIds":["山口_真希子_Ｍａｒｓ_京都府","川本_彩加_ＫＥＮＫＯ_京都府"],"type":"packing"},
+    {"entryNo":28,"playerIds":["山口_真希子_Ｍａｒｓ_京都府","川本_彩加_KENKO_京都府"],"type":"packing"},
     {"entryNo":29,"playerIds":["我妻_万美_杉並文化クラブ_東京都","豊田_朋恵_杉並文化クラブ_東京都"],"type":"seed"},
     {"entryNo":30,"playerIds":["河邊_寛子_愛媛アカエムクラブ_愛媛県","八木_朋美_GOAT_愛媛県"],"type":"seed"},
     {"entryNo":31,"playerIds":["林_麻理_杉並文化クラブ_東京都","前澤_明恵_所沢ペアートテニスクラブ_東京都"],"type":"packing"},
@@ -118,7 +118,7 @@
     {"entryNo":36,"playerIds":["伊藤_美希_日本製鉄クラブ_東京都","荒平_絢子_日本製鉄クラブ_東京都"],"type":"extra"},
     {"entryNo":37,"playerIds":["伊藤_藍子_神栖レッドジャイコ_茨城県","青木_奏子_神栖レッドジャイコ_茨城県"],"type":"packing"},
     {"entryNo":38,"playerIds":["豊田_紗織_守山クラブ_愛知県","河原崎_晶子_大成クラブ_愛知県"],"type":"packing"},
-    {"entryNo":39,"playerIds":["谷口_翔子_クレインズクラブ_京都府","吉﨑_香奈絵_Ｂ－ＪＯＫＥＲ_京都府"],"type":"seed"}
+    {"entryNo":39,"playerIds":["谷口_翔子_クレインズクラブ_京都府","吉﨑_香奈絵_B-JOKER_京都府"],"type":"seed"}
   ],
   "matches": [
     {
