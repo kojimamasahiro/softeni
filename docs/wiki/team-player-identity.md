@@ -25,6 +25,12 @@
 - `participants[].id`（`姓_名_team_都道府県`）と `entries[].playerIds` も追従。
 - 一括修復済みデータバグ: **primaryschool-championship 2024** は全3,244人が開催地の `秋田県`
   になっていた。他大会から各チームの実県を復元（2,226件）、復元不可は `null`（1,018件）。
+- 同型の修復（2026-08-31）: **zennihon-indoor 2025** も boys / girls 両ファイル計48人が全員
+  開催地の `秋田県` だった（2022〜2024 は正常）。他大会から**同一人物（姓・名・チーム）の県の
+  最頻値**で復元し、48人すべてが一意に決まった。経緯・残課題は
+  [2026-08-31-player-registered-name-change.md](../raw/2026-08-31-player-registered-name-change.md)。
+  **この型のバグは大会単位で再発するので、新規取り込み時は「1ファイル内の `prefecture` が
+  1種類しか無い」を疑うこと**（開催地が流し込まれた形）。
 
 ## チームマスタ `data/teams/teams.json`
 
