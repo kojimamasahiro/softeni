@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 12,
+  "byCategory": {
+    "team": 2,
+    "doubles": 10
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "修大附鈴峯",
+        "teamId": "osamudaifusuzumine",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "ベスト8",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["笠井_菜々子_修大附鈴峯_広島県", "奥田_結依_修大附鈴峯_広島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "修大附鈴峯",
+        "teamId": "osamudaifusuzumine",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "ベスト4",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 13,
+  "topPlayers": [
+    {
+      "id": "前島_夏希_修大附鈴峯_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "廣澤_真衣_修大附鈴峯_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "笠井_菜々子_修大附鈴峯_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "奥田_結依_修大附鈴峯_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "森本_彩鼓_修大附鈴峯_広島県",
+      "appearances": 2
+    }
+  ]
+}

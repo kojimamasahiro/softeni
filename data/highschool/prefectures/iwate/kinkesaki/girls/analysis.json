@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "金ケ崎",
+        "teamId": "kinkesaki",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["桂_夕貴_金ケ崎_岩手県", "及川_沙羅_金ケ崎_岩手県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "桂_夕貴_金ケ崎_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "及川_沙羅_金ケ崎_岩手県",
+      "appearances": 1
+    }
+  ]
+}

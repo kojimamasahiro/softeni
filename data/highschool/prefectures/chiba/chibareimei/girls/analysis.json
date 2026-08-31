@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -25,10 +26,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "千葉黎明",
+        "teamId": "chibareimei",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "江澤_しずく_千葉黎明_千葉県",
@@ -39,15 +50,15 @@
       "appearances": 2
     },
     {
+      "id": "花島_優香_千葉黎明_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_千夏_千葉黎明_千葉県",
+      "appearances": 1
+    },
+    {
       "id": "齋藤_朱里_千葉黎明_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "松島_穂香_千葉黎明_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "齋藤_汐里_千葉黎明_千葉県",
       "appearances": 1
     }
   ]

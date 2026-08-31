@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 1,
-    "doubles": 14,
+    "team": 2,
+    "doubles": 18,
     "singles": 1
   },
   "resultsByCategory": {
@@ -39,12 +39,12 @@
         "teamId": "fukuchiyamanarumi",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "4回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["津波古_莉央_福知山成美_京都府", "井田_まなか_福知山成美_京都府"]
+        "playerIds": ["神崎_一夏_福知山成美_京都府", "梅原_未来_福知山成美_京都府"]
       }
     },
     "team": {
@@ -62,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 28,
   "topPlayers": [
     {
       "id": "津波古_莉央_福知山成美_京都府",
@@ -73,15 +73,15 @@
       "appearances": 3
     },
     {
+      "id": "前_穂乃花_福知山成美_京都府",
+      "appearances": 3
+    },
+    {
       "id": "瓦井_ひより_福知山成美_京都府",
       "appearances": 2
     },
     {
       "id": "大西_桃果_福知山成美_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "前_穂乃花_福知山成美_京都府",
       "appearances": 2
     }
   ]

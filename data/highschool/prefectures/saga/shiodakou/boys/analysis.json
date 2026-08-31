@@ -1,0 +1,61 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "team": 2,
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "塩田工",
+        "teamId": "shiodakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["本田_修平_塩田工_佐賀県", "西田_知生_塩田工_佐賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "塩田工",
+        "teamId": "shiodakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "本田_修平_塩田工_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "西田_知生_塩田工_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "橋野_祐輝_塩田工_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "栗山_比呂_塩田工_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

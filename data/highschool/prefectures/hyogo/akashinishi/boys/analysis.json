@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "明石西",
+        "teamId": "akashinishi",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["後藤_青玄_明石西_兵庫県", "山岡_友紀_明石西_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "後藤_青玄_明石西_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "山岡_友紀_明石西_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

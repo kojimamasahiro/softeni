@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 3
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "takefu",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2016,
         "gender": "girls",
-        "playerIds": ["慶家_紘子_武生_福井県", "酒井_美空_武生_福井県"]
+        "playerIds": ["内田_千香子_武生_福井県", "三崎_ひかり_武生_福井県"]
       }
     },
     "team": {
@@ -39,26 +39,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "慶家_紘子_武生_福井県",
+      "appearances": 2
+    },
+    {
+      "id": "三崎_ひかり_武生_福井県",
+      "appearances": 2
+    },
+    {
+      "id": "酒井_美空_武生_福井県",
+      "appearances": 2
+    },
     {
       "id": "近江_遥香_武生_福井県",
       "appearances": 1
     },
     {
       "id": "松村_恵麻_武生_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "慶家_紘子_武生_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "酒井_美空_武生_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "山本_未来_武生_福井県",
       "appearances": 1
     }
   ]

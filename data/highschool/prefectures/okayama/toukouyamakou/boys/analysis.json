@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東岡山工",
+        "teamId": "toukouyamakou",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["平岡_龍一_東岡山工_岡山県", "木庭_玄太郎_東岡山工_岡山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "平岡_龍一_東岡山工_岡山県",
+      "appearances": 2
+    },
+    {
+      "id": "木庭_玄太郎_東岡山工_岡山県",
+      "appearances": 2
+    }
+  ]
+}

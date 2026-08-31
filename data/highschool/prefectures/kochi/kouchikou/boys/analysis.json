@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高知工",
+        "teamId": "kouchikou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["菅野_涼介_高知工_高知県", "古谷_諒_高知工_高知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "菅野_涼介_高知工_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "古谷_諒_高知工_高知県",
+      "appearances": 1
+    }
+  ]
+}

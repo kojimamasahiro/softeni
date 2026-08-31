@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 15,
   "byCategory": {
-    "team": 1,
-    "doubles": 9
+    "team": 3,
+    "doubles": 12
   },
   "resultsByCategory": {
     "singles": {
@@ -31,34 +31,34 @@
         "teamId": "sanyoujoshi",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2017,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "原田_愛果_山陽女子_岡山県",
+      "appearances": 3
+    },
+    {
       "id": "長谷川_憂華_山陽女子_岡山県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "立花_さくら_山陽女子_岡山県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "井上_望愛_山陽女子_岡山県",
-      "appearances": 2
+      "appearances": 3
     },
     {
-      "id": "松下_日和_山陽女子_岡山県",
-      "appearances": 2
-    },
-    {
-      "id": "渡邉_紘加_山陽女子_岡山県",
+      "id": "杉山_歌音_山陽女子_岡山県",
       "appearances": 2
     }
   ]

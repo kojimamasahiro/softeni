@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 4
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "shouwagakuin",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2016,
         "gender": "boys",
-        "playerIds": ["河村_颯希_昭和学院_千葉県", "大竹_公陽_昭和学院_千葉県"]
+        "playerIds": ["齋藤_利貴_昭和学院_千葉県", "橋本_誠人_昭和学院_千葉県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "河村_颯希_昭和学院_千葉県",
@@ -39,15 +39,15 @@
       "appearances": 2
     },
     {
+      "id": "西山_七海斗_昭和学院_千葉県",
+      "appearances": 2
+    },
+    {
+      "id": "藤木_敦也_昭和学院_千葉県",
+      "appearances": 2
+    },
+    {
       "id": "山﨑_介統_昭和学院_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "坂入_寿紀_昭和学院_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "原_大湖_昭和学院_千葉県",
       "appearances": 1
     }
   ]

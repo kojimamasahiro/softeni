@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "岩国",
+        "teamId": "iwakuni",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["松本_麻奈_岩国_山口県", "石本_真菜_岩国_山口県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "松本_麻奈_岩国_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "石本_真菜_岩国_山口県",
+      "appearances": 2
+    }
+  ]
+}

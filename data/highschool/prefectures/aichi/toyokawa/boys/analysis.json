@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 5
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "toyokawa",
         "prefecture": "愛知県",
         "prefectureId": "aichi",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2017,
         "gender": "boys",
-        "playerIds": ["太田_晃_豊川_愛知県", "磯部_銀_豊川_愛知県"]
+        "playerIds": ["平河_昇起_豊川_愛知県", "鈴木_翔伍_豊川_愛知県"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 13,
   "topPlayers": [
+    {
+      "id": "平河_昇起_豊川_愛知県",
+      "appearances": 2
+    },
+    {
+      "id": "鈴木_翔伍_豊川_愛知県",
+      "appearances": 2
+    },
     {
       "id": "亀山_正登_豊川_愛知県",
       "appearances": 2
@@ -51,14 +59,6 @@
     },
     {
       "id": "成瀬_朝希_豊川_愛知県",
-      "appearances": 1
-    },
-    {
-      "id": "太田_晃_豊川_愛知県",
-      "appearances": 1
-    },
-    {
-      "id": "磯部_銀_豊川_愛知県",
       "appearances": 1
     }
   ]

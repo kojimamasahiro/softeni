@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "河南",
+        "teamId": "kanan",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["井上_紗彩_河南_大阪府", "小岸_夢子_河南_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "井上_紗彩_河南_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "小岸_夢子_河南_大阪府",
+      "appearances": 1
+    }
+  ]
+}

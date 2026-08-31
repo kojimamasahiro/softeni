@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "三島学園知徳",
+        "teamId": "mishimagakuentomonori",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["加藤_開大_三島学園知徳_静岡県", "木本_秀斗_三島学園知徳_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "加藤_開大_三島学園知徳_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "木本_秀斗_三島学園知徳_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_雄大_三島学園知徳_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "小川_舜太_三島学園知徳_静岡県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "古川",
+        "teamId": "furukawa",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["千坂_亮智_古川_宮城県", "伊藤_文弥_古川_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "千坂_亮智_古川_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_文弥_古川_宮城県",
+      "appearances": 1
+    }
+  ]
+}

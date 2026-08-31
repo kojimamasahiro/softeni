@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 14,
   "byCategory": {
-    "team": 1,
-    "doubles": 8
+    "team": 3,
+    "doubles": 11
   },
   "resultsByCategory": {
     "singles": {
@@ -42,15 +42,15 @@
         "teamId": "uedachikuma",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2017,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
       "id": "山辺_勝也_上田千曲_長野県",
@@ -61,15 +61,15 @@
       "appearances": 2
     },
     {
+      "id": "川上_貴久_上田千曲_長野県",
+      "appearances": 2
+    },
+    {
       "id": "堀内_裕心_上田千曲_長野県",
       "appearances": 1
     },
     {
       "id": "髙橋_洸貴_上田千曲_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "金井_葵稔_上田千曲_長野県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "三国",
+        "teamId": "mikuni",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["加賀_友也_三国_福井県", "木村_真也_三国_福井県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "加賀_友也_三国_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "木村_真也_三国_福井県",
+      "appearances": 1
+    }
+  ]
+}

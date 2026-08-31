@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "都城東",
+        "teamId": "tomishirohigashi",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["待木_瑛鈴_都城東_宮崎県", "林_夏未_都城東_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "待木_瑛鈴_都城東_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "林_夏未_都城東_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

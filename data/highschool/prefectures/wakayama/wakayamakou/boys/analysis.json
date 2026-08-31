@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "和歌山工",
+        "teamId": "wakayamakou",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["高垣_颯_和歌山工_和歌山県", "榎_航生_和歌山工_和歌山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高垣_颯_和歌山工_和歌山県",
+      "appearances": 1
+    },
+    {
+      "id": "榎_航生_和歌山工_和歌山県",
+      "appearances": 1
+    }
+  ]
+}

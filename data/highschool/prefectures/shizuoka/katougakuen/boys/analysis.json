@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "加藤学園",
+        "teamId": "katougakuen",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["朝倉_楓也_加藤学園_静岡県", "中村_純也_加藤学園_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "望月_貴徳_加藤学園_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "吉野_利哉_加藤学園_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "三枝_優希_加藤学園_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "三枝_和輝_加藤学園_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "朝倉_楓也_加藤学園_静岡県",
+      "appearances": 1
+    }
+  ]
+}

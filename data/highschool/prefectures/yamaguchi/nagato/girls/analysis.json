@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
     "team": 1,
-    "doubles": 4,
+    "doubles": 6,
     "singles": 2
   },
   "resultsByCategory": {
@@ -72,8 +72,16 @@
       }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "秋山_亜美_長門_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "荻野_光莉_長門_山口県",
+      "appearances": 2
+    },
     {
       "id": "林_優奈_長門_山口県",
       "appearances": 2
@@ -84,14 +92,6 @@
     },
     {
       "id": "阿座上_凜_長門_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "横田_心_長門_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "平井_未央_長門_山口県",
       "appearances": 1
     }
   ]

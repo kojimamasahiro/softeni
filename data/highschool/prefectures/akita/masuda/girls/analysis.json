@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "増田",
+        "teamId": "masuda",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["高橋_琉羽_増田_秋田県", "沼澤_亜美_増田_秋田県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高橋_琉羽_増田_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "沼澤_亜美_増田_秋田県",
+      "appearances": 1
+    }
+  ]
+}

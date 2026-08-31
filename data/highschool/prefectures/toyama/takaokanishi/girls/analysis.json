@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 22,
   "byCategory": {
-    "team": 2,
-    "doubles": 7,
+    "team": 4,
+    "doubles": 17,
     "singles": 1
   },
   "resultsByCategory": {
@@ -43,34 +43,34 @@
         "teamId": "takaokanishi",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "2回戦敗退",
+        "result": "ベスト4",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2016,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
-      "id": "高木_彩花_高岡西_富山県",
-      "appearances": 2
-    },
-    {
       "id": "宮下_夏実_高岡西_富山県",
+      "appearances": 3
+    },
+    {
+      "id": "高木_彩花_高岡西_富山県",
+      "appearances": 3
+    },
+    {
+      "id": "德田_葉月_高岡西_富山県",
       "appearances": 2
     },
     {
-      "id": "上田_莉理華_高岡西_富山県",
+      "id": "山崎_結貴_高岡西_富山県",
       "appearances": 2
     },
     {
-      "id": "大井_月葵_高岡西_富山県",
-      "appearances": 2
-    },
-    {
-      "id": "小杉_菜月_高岡西_富山県",
+      "id": "湊_江吏子_高岡西_富山県",
       "appearances": 2
     }
   ]

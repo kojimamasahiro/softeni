@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小倉南",
+        "teamId": "kokuraminami",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["三宅_克樹_小倉南_福岡県", "中池_亘_小倉南_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "三宅_克樹_小倉南_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "中池_亘_小倉南_福岡県",
+      "appearances": 1
+    }
+  ]
+}

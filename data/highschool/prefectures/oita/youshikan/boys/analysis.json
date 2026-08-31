@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "楊志館",
+        "teamId": "youshikan",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["立脇_勇輝_楊志館_大分県", "渡辺_卓巳_楊志館_大分県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "立脇_勇輝_楊志館_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "渡辺_卓巳_楊志館_大分県",
+      "appearances": 1
+    }
+  ]
+}

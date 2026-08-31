@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 1
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "himejishou",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2016,
         "gender": "boys",
-        "playerIds": ["浅図_律樹_姫路商_兵庫県", "杉本_楽斗_姫路商_兵庫県"]
+        "playerIds": ["吉村_海太_姫路商_兵庫県", "小河_潤哉_姫路商_兵庫県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "浅図_律樹_姫路商_兵庫県",
@@ -47,6 +47,18 @@
     },
     {
       "id": "杉本_楽斗_姫路商_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "清水_宏一郎_姫路商_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "三木_智喬_姫路商_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "花井_輝_姫路商_兵庫県",
       "appearances": 1
     }
   ]

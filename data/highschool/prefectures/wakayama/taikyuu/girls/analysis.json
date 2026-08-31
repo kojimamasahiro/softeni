@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "耐久",
+        "teamId": "taikyuu",
+        "prefecture": "和歌山県",
+        "prefectureId": "wakayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["山野_文華_耐久_和歌山県", "楠間_久美_耐久_和歌山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山野_文華_耐久_和歌山県",
+      "appearances": 1
+    },
+    {
+      "id": "楠間_久美_耐久_和歌山県",
+      "appearances": 1
+    }
+  ]
+}

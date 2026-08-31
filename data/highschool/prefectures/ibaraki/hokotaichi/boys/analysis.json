@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鉾田一",
+        "teamId": "hokotaichi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["藤沼_優人_鉾田一_茨城県", "今泉_優汰_鉾田一_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "藤沼_優人_鉾田一_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "今泉_優汰_鉾田一_茨城県",
+      "appearances": 1
+    }
+  ]
+}

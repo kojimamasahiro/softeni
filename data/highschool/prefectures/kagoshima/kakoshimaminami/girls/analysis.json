@@ -1,0 +1,54 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鹿児島南",
+        "teamId": "kakoshimaminami",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["中崎_杏実_鹿児島南_鹿児島県", "岩元_愛花_鹿児島南_鹿児島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 6,
+  "topPlayers": [
+    {
+      "id": "中崎_杏実_鹿児島南_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "岩元_愛花_鹿児島南_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "赤島_奈央_鹿児島南_鹿児島県",
+      "appearances": 1
+    },
+    {
+      "id": "池_宏香_鹿児島南_鹿児島県",
+      "appearances": 1
+    },
+    {
+      "id": "黒岩_麻衣_鹿児島南_鹿児島県",
+      "appearances": 1
+    }
+  ]
+}

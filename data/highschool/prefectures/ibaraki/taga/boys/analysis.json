@@ -1,0 +1,44 @@
+{
+  "totalAppearances": 3,
+  "byCategory": {
+    "team": 1,
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "多賀",
+        "teamId": "taga",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["川越_朔_多賀高校_茨城県", "高橋_幸佑_多賀高校_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "多賀",
+        "teamId": "taga",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 0,
+  "topPlayers": []
+}

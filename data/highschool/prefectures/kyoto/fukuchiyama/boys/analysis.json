@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "福知山",
+        "teamId": "fukuchiyama",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["石井_一弥_福知山_京都府", "氷上_怜_福知山_京都府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石井_一弥_福知山_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "氷上_怜_福知山_京都府",
+      "appearances": 1
+    }
+  ]
+}

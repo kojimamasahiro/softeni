@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 12,
   "byCategory": {
     "team": 1,
-    "doubles": 8,
+    "doubles": 10,
     "singles": 1
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "honan",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2017,
         "gender": "boys",
-        "playerIds": ["小林_瑛_豊南_東京都", "内藤_蓮斗_豊南_東京都"]
+        "playerIds": ["高橋_空_豊南_東京都", "廣井_ノア_豊南_東京都"]
       }
     },
     "team": {
@@ -73,7 +73,7 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "高橋_佳佑_豊南_東京都",
@@ -92,8 +92,8 @@
       "appearances": 2
     },
     {
-      "id": "小泉_文果_豊南_東京都",
-      "appearances": 1
+      "id": "田中_大地_豊南_東京都",
+      "appearances": 2
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 18,
   "byCategory": {
-    "team": 2,
-    "doubles": 9
+    "team": 4,
+    "doubles": 14
   },
   "resultsByCategory": {
     "singles": {
@@ -27,12 +27,12 @@
         "teamId": "tamura",
         "prefecture": "福島県",
         "prefectureId": "fukushima",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2026,
+        "tournamentId": "highschool-championship",
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["渡邉_結奈_田村_福島県", "仙波_純佳_田村_福島県"]
+        "playerIds": ["森合_弥代_田村_福島県", "松藤_奈美_田村_福島県"]
       }
     },
     "team": {
@@ -50,7 +50,7 @@
       }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "先﨑_琉那_田村_福島県",
@@ -61,16 +61,16 @@
       "appearances": 2
     },
     {
-      "id": "渡邉_結奈_田村_福島県",
-      "appearances": 1
+      "id": "佐藤_幸捺_田村_福島県",
+      "appearances": 2
     },
     {
-      "id": "仙波_純佳_田村_福島県",
-      "appearances": 1
+      "id": "市川_美空_田村_福島県",
+      "appearances": 2
     },
     {
-      "id": "門馬_椿姫_田村_福島県",
-      "appearances": 1
+      "id": "高橋_萌々_田村_福島県",
+      "appearances": 2
     }
   ]
 }

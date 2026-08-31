@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "福山工",
+        "teamId": "fukuyamakou",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["西村_修一_福山工_広島県", "池田_雄哉_福山工_広島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西村_修一_福山工_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "池田_雄哉_福山工_広島県",
+      "appearances": 1
+    }
+  ]
+}

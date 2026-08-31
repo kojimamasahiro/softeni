@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "takase",
         "prefecture": "香川県",
         "prefectureId": "kagawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2017,
         "gender": "boys",
-        "playerIds": ["近藤_立騎_高瀬_香川県", "脇_建太_高瀬_香川県"]
+        "playerIds": ["香西_優輝_高瀬_香川県", "宮田_信彰_高瀬_香川県"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "香西_優輝_高瀬_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "宮田_信彰_高瀬_香川県",
+      "appearances": 1
+    },
     {
       "id": "近藤_立騎_高瀬_香川県",
       "appearances": 1
@@ -51,10 +59,6 @@
     },
     {
       "id": "吉田_真紘_高瀬_香川県",
-      "appearances": 1
-    },
-    {
-      "id": "入江_辰_高瀬_香川県",
       "appearances": 1
     }
   ]

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 7,
+    "team": 2,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -49,20 +50,30 @@
         "teamId": "matsuenishi",
         "prefecture": "島根県",
         "prefectureId": "shimane",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["石津_結麻_松江西_島根県", "木須井_心愛_松江西_島根県"]
+        "playerIds": ["遠藤_ひかる_松江西_島根県", "吉岡_笑里_松江西_島根県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "松江西",
+        "teamId": "matsuenishi",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "石津_結麻_松江西_島根県",
@@ -73,16 +84,16 @@
       "appearances": 2
     },
     {
+      "id": "吉岡_笑里_松江西_島根県",
+      "appearances": 2
+    },
+    {
+      "id": "竹本_菜穂_松江西_島根県",
+      "appearances": 2
+    },
+    {
       "id": "舟木_佳代_松江西_島根県",
       "appearances": 2
-    },
-    {
-      "id": "柏村_萌_松江西_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "藤田_望杏_松江西_島根県",
-      "appearances": 1
     }
   ]
 }

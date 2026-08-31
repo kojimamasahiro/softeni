@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tokuyama",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2016,
         "gender": "girls",
-        "playerIds": ["檜垣_凛々子_徳山_山口県", "眞﨑_香帆_徳山_山口県"]
+        "playerIds": ["濵田_紗帆_徳山_山口県", "枡田_いのり_徳山_山口県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "檜垣_凛々子_徳山_山口県",
@@ -47,6 +47,14 @@
     },
     {
       "id": "眞﨑_香帆_徳山_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "濵田_紗帆_徳山_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "枡田_いのり_徳山_山口県",
       "appearances": 1
     }
   ]

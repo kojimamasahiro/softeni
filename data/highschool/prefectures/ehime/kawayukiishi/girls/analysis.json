@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 10,
   "byCategory": {
-    "team": 1,
-    "doubles": 5
+    "team": 2,
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "kawayukiishi",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["西村_留莉_川之石_愛媛県", "今城_佳奈_川之石_愛媛県"]
+        "playerIds": ["井出_ひなの_川之石_愛媛県", "石原_侑佳_川之石_愛媛県"]
       }
     },
     "team": {
@@ -31,34 +31,34 @@
         "teamId": "kawayukiishi",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2017,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "佐々木_亜美_川之石_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "濵田_里帆_川之石_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "井出_ひなの_川之石_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "石原_侑佳_川之石_愛媛県",
+      "appearances": 2
+    },
+    {
       "id": "西村_留莉_川之石_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "今城_佳奈_川之石_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "中野_愛菜_川之石_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "宇都宮_礼_川之石_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "宇都宮_梨里_川之石_愛媛県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "米子南",
+        "teamId": "yonagominami",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["石田_ユニカ_米子南_鳥取県", "大谷_美来_米子南_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石田_ユニカ_米子南_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "大谷_美来_米子南_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

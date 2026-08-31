@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 4
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "murasakino",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2017,
         "gender": "boys",
-        "playerIds": ["嶋田_爽汰_紫野_京都府", "干場_蒼太_紫野_京都府"]
+        "playerIds": ["寺本_一裕_紫野_京都府", "上中_凜世_紫野_京都府"]
       }
     },
     "team": {
@@ -39,8 +39,20 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 13,
   "topPlayers": [
+    {
+      "id": "寺本_一裕_紫野_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "上中_凜世_紫野_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "見子_翔太_紫野_京都府",
+      "appearances": 2
+    },
     {
       "id": "嶋田_爽汰_紫野_京都府",
       "appearances": 2
@@ -48,18 +60,6 @@
     {
       "id": "干場_蒼太_紫野_京都府",
       "appearances": 2
-    },
-    {
-      "id": "中山_俊祐_紫野_京都府",
-      "appearances": 1
-    },
-    {
-      "id": "村上_朔太郎_紫野_京都府",
-      "appearances": 1
-    },
-    {
-      "id": "近藤_主稀_紫野_京都府",
-      "appearances": 1
     }
   ]
 }

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 6,
+    "team": 1,
+    "doubles": 8,
     "singles": 1
   },
   "resultsByCategory": {
@@ -59,11 +60,25 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "武蔵越生",
+        "teamId": "musashiogose",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 15,
   "topPlayers": [
+    {
+      "id": "平塚_成_武蔵越生_埼玉県",
+      "appearances": 2
+    },
     {
       "id": "寺門_共生_武蔵越生_埼玉県",
       "appearances": 2
@@ -77,11 +92,7 @@
       "appearances": 1
     },
     {
-      "id": "吉田_駿風_武蔵越生_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "遠藤_将矢_武蔵越生_埼玉県",
+      "id": "中島_翔大_武蔵越生_埼玉県",
       "appearances": 1
     }
   ]

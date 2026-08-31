@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "足利女子",
+        "teamId": "ashikagajoshi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["松野_綾音_足利女子_栃木県", "木村_笑里沙_足利女子_栃木県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "松野_綾音_足利女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "木村_笑里沙_足利女子_栃木県",
+      "appearances": 1
+    }
+  ]
+}

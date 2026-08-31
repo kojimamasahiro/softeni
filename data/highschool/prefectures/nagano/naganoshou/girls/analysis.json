@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
+    "team": 1,
     "doubles": 5
   },
   "resultsByCategory": {
@@ -25,7 +26,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長野商",
+        "teamId": "naganoshou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 8,

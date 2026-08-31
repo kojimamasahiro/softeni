@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "酒田南",
+        "teamId": "sakataminami",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["冨樫_大智_酒田南_山形県", "山本_魁_酒田南_山形県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "冨樫_大智_酒田南_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "山本_魁_酒田南_山形県",
+      "appearances": 1
+    }
+  ]
+}

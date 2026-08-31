@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高知岡豊",
+        "teamId": "kouchiokou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["大北_いつき_高知岡豊_高知県", "小原_理紗_高知岡豊_高知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "大北_いつき_高知岡豊_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "小原_理紗_高知岡豊_高知県",
+      "appearances": 1
+    }
+  ]
+}

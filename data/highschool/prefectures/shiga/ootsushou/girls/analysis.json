@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 8,
+  "byCategory": {
+    "team": 2,
+    "doubles": 6
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大津商",
+        "teamId": "ootsushou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["井上_佳奈_大津商_滋賀県", "石橋_和佳_大津商_滋賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大津商",
+        "teamId": "ootsushou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 7,
+  "topPlayers": [
+    {
+      "id": "三日月_鈴_大津商_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "木瀬_葉月_大津商_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "田中_沙奈_大津商_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "井上_佳奈_大津商_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "石橋_和佳_大津商_滋賀県",
+      "appearances": 2
+    }
+  ]
+}

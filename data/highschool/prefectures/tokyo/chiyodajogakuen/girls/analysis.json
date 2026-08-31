@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "千代田女学園",
+        "teamId": "chiyodajogakuen",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["遠藤_優香_千代田女学園_東京都", "島津_佳那_千代田女学園_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "遠藤_優香_千代田女学園_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "島津_佳那_千代田女学園_東京都",
+      "appearances": 2
+    }
+  ]
+}

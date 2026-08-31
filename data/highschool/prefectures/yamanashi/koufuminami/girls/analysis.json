@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "甲府南",
+        "teamId": "koufuminami",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["清水_啓音_甲府南_山梨県", "杉本_萌_甲府南_山梨県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "清水_啓音_甲府南_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "杉本_萌_甲府南_山梨県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 4,
+  "byCategory": {
+    "team": 1,
+    "doubles": 3
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "燕中等",
+        "teamId": "tsubamechuutou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["小林_将貴_燕中等_新潟県", "関根_伊吹_燕中等_新潟県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "燕中等",
+        "teamId": "tsubamechuutou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 5,
+  "topPlayers": [
+    {
+      "id": "小林_将貴_燕中等_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "関根_伊吹_燕中等_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_将大_燕中等_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "三浦_健寛_燕中等_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "廣川_潤_燕中等_新潟県",
+      "appearances": 1
+    }
+  ]
+}

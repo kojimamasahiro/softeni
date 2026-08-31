@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "摂津",
+        "teamId": "settsu",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["永井_智也_摂津_大阪府", "川西_良知_摂津_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "永井_智也_摂津_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "川西_良知_摂津_大阪府",
+      "appearances": 1
+    }
+  ]
+}

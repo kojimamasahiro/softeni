@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -36,11 +37,29 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "明誠学院",
+        "teamId": "meiseigakuin",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "宮地_悠斗_明誠学院_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "本名_将英_明誠学院_岡山県",
+      "appearances": 1
+    },
     {
       "id": "奥山_裕貴_明誠学院_岡山県",
       "appearances": 1
@@ -51,14 +70,6 @@
     },
     {
       "id": "本田_蒼偉_明誠学院_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "石田_幸久_明誠学院_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "藤井_聡人_明誠学院_岡山県",
       "appearances": 1
     }
   ]

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 5,
+    "team": 1,
+    "doubles": 9,
     "singles": 1
   },
   "resultsByCategory": {
@@ -59,10 +60,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "幡多農",
+        "teamId": "hatanou",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "宮﨑_恋_幡多農_高知県",
@@ -77,12 +88,12 @@
       "appearances": 2
     },
     {
-      "id": "小笠原_愛_幡多農_高知県",
-      "appearances": 1
+      "id": "大久保_雪乃_幡多農_高知県",
+      "appearances": 2
     },
     {
-      "id": "小田_真綾_幡多農_高知県",
-      "appearances": 1
+      "id": "坂口_愛里_幡多農_高知県",
+      "appearances": 2
     }
   ]
 }

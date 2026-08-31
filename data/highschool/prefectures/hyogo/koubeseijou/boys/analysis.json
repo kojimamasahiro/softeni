@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 21,
   "byCategory": {
-    "doubles": 16,
+    "team": 2,
+    "doubles": 18,
     "singles": 1
   },
   "resultsByCategory": {
@@ -48,10 +49,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "神戸星城",
+        "teamId": "koubeseijou",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 29,
+  "uniquePlayers": 32,
   "topPlayers": [
     {
       "id": "須澤_心晴_神戸星城_兵庫県",
@@ -66,12 +77,12 @@
       "appearances": 2
     },
     {
-      "id": "塩谷_晃平_神戸星城_兵庫県",
+      "id": "小石_裕我_神戸星城_兵庫県",
       "appearances": 2
     },
     {
-      "id": "橋爪_颯_神戸星城_兵庫県",
-      "appearances": 1
+      "id": "塩谷_晃平_神戸星城_兵庫県",
+      "appearances": 2
     }
   ]
 }

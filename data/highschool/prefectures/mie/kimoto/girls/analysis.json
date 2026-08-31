@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kimoto",
         "prefecture": "三重県",
         "prefectureId": "mie",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["大威_寧々_木本_三重県", "奥村_萌杏_木本_三重県"]
+        "playerIds": ["岡田_紗季_木本_三重県", "和田_桜子_木本_三重県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "大威_寧々_木本_三重県",
@@ -39,15 +39,15 @@
       "appearances": 1
     },
     {
+      "id": "岡田_紗季_木本_三重県",
+      "appearances": 1
+    },
+    {
+      "id": "和田_桜子_木本_三重県",
+      "appearances": 1
+    },
+    {
       "id": "崎_杏華_木本_三重県",
-      "appearances": 1
-    },
-    {
-      "id": "紙西_七菜_木本_三重県",
-      "appearances": 1
-    },
-    {
-      "id": "奥田_春奈_木本_三重県",
       "appearances": 1
     }
   ]

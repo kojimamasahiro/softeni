@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 3
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
+    {
+      "id": "大森_海誠_七尾_石川県",
+      "appearances": 3
+    },
+    {
+      "id": "瀧下_斗真_七尾_石川県",
+      "appearances": 2
+    },
     {
       "id": "鍋島_凛_七尾_石川県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "寺口_夢音_七尾_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "鵜野_聖晃_七尾_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "大森_海誠_七尾_石川県",
       "appearances": 1
     }
   ]

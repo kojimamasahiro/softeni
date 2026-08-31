@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "杏和",
+        "teamId": "anzuwa",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["藤原_蓮_杏和_愛知県", "高木_駿介_杏和_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "藤原_蓮_杏和_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "高木_駿介_杏和_愛知県",
+      "appearances": 1
+    }
+  ]
+}

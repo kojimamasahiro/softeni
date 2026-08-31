@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松江商",
+        "teamId": "matsueshou",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["花房_真由_松江商_島根県", "勝田_優香_松江商_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "花房_真由_松江商_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "勝田_優香_松江商_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "松本_瞳美_松江商_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "越野_美佑_松江商_島根県",
+      "appearances": 1
+    }
+  ]
+}

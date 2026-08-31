@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 24,
   "byCategory": {
-    "team": 3,
-    "doubles": 12,
+    "team": 4,
+    "doubles": 19,
     "singles": 1
   },
   "resultsByCategory": {
@@ -64,15 +64,15 @@
         "teamId": "kumamotokou",
         "prefecture": "熊本県",
         "prefectureId": "kumamoto",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2017,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 19,
+  "uniquePlayers": 29,
   "topPlayers": [
     {
       "id": "中村_翔太_熊本工_熊本県",
@@ -83,16 +83,16 @@
       "appearances": 3
     },
     {
-      "id": "森田_悠斗_熊本工_熊本県",
+      "id": "境_颯汰_熊本工_熊本県",
+      "appearances": 3
+    },
+    {
+      "id": "霍田_薫_熊本工_熊本県",
       "appearances": 2
     },
     {
-      "id": "岡本_崇杜_熊本工_熊本県",
+      "id": "下田_翔大_熊本工_熊本県",
       "appearances": 2
-    },
-    {
-      "id": "中川_作_熊本工_熊本県",
-      "appearances": 1
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "川崎市立橘",
+        "teamId": "kawasakishiritsutachibana",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["芝本_晴奈_川崎市立橘_神奈川県", "三野_友希_川崎市立橘_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "芝本_晴奈_川崎市立橘_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "三野_友希_川崎市立橘_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "杉田_来未_川崎市立橘_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "久米_夏子_川崎市立橘_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

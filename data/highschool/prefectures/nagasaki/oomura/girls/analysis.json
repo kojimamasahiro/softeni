@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 22,
+  "totalAppearances": 34,
   "byCategory": {
-    "team": 6,
-    "doubles": 16
+    "team": 8,
+    "doubles": 26
   },
   "resultsByCategory": {
     "singles": {
@@ -27,12 +27,12 @@
         "teamId": "oomura",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "5回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["小林_葵_大村_長崎県", "鳥巣_穂乃香_大村_長崎県"]
+        "playerIds": ["谷川_みなみ_大村_長崎県", "坂田_華乃子_大村_長崎県"]
       }
     },
     "team": {
@@ -60,7 +60,7 @@
       }
     }
   },
-  "uniquePlayers": 26,
+  "uniquePlayers": 41,
   "topPlayers": [
     {
       "id": "小林_葵_大村_長崎県",
@@ -75,12 +75,12 @@
       "appearances": 2
     },
     {
-      "id": "堤_幸穂_大村_長崎県",
+      "id": "谷川_みなみ_大村_長崎県",
       "appearances": 2
     },
     {
-      "id": "櫻田_友夏_大村_長崎県",
-      "appearances": 1
+      "id": "坂田_華乃子_大村_長崎県",
+      "appearances": 2
     }
   ]
 }

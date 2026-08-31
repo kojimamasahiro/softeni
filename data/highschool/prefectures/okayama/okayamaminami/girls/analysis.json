@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 3,
+    "team": 1,
+    "doubles": 5,
     "singles": 1
   },
   "resultsByCategory": {
@@ -49,20 +50,30 @@
         "teamId": "okayamaminami",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2016,
         "gender": "girls",
-        "playerIds": ["石井_さつき_岡山南_岡山県", "越宗_紗來_岡山南_岡山県"]
+        "playerIds": ["桐山_舞_岡山南_岡山県", "槇尾_成美_岡山南_岡山県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "岡山南",
+        "teamId": "okayamaminami",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "石井_さつき_岡山南_岡山県",
@@ -81,7 +92,7 @@
       "appearances": 1
     },
     {
-      "id": "津留_里咲_岡山南_岡山県",
+      "id": "桐山_舞_岡山南_岡山県",
       "appearances": 1
     }
   ]

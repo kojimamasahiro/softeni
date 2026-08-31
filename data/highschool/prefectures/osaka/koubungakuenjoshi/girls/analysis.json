@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,15 +22,34 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "好文学園女子",
+        "teamId": "koubungakuenjoshi",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["佐田_しずく_好文学園女子_大阪府", "松本_佳恋_好文学園女子_大阪府"]
+      }
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "佐田_しずく_好文学園女子_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "松本_佳恋_好文学園女子_大阪府",
+      "appearances": 1
+    },
     {
       "id": "浅野_つかさ_好文学園女子_大阪府",
       "appearances": 1

@@ -1,5 +1,16 @@
 [
   {
+    "team": "千葉黎明",
+    "teamId": "chibareimei",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls"
+  },
+  {
     "team": "敬愛学園",
     "teamId": "keiaigakuen",
     "prefecture": "千葉県",
@@ -59,6 +70,17 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -96,6 +118,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2018,
+    "gender": "boys"
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
     "gender": "boys"
   },
   {
@@ -235,6 +268,17 @@
     "teamId": "shouwagakuin",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls"
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-senbatsu",
@@ -326,6 +370,18 @@
     "teamId": "chibareimei",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["花島_優香_千葉黎明_千葉県", "齋藤_千夏_千葉黎明_千葉県"]
+  },
+  {
+    "team": "千葉黎明",
+    "teamId": "chibareimei",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -394,6 +450,18 @@
     "playerIds": ["江澤_しずく_千葉黎明_千葉県", "原田_安奈_千葉黎明_千葉県"]
   },
   {
+    "team": "千葉黎明",
+    "teamId": "chibareimei",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["佐藤_泰雅_千葉黎明_千葉県", "宮本_弦汰_千葉黎明_千葉県"]
+  },
+  {
     "team": "千葉聖心",
     "teamId": "chibaseishin",
     "prefecture": "千葉県",
@@ -404,6 +472,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["福岡_紗良_千葉聖心_千葉県", "山口_三結_千葉聖心_千葉県"]
+  },
+  {
+    "team": "千葉聖心",
+    "teamId": "chibaseishin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["高橋_南帆_千葉聖心_千葉県", "原口_史奈_千葉聖心_千葉県"]
   },
   {
     "team": "千葉聖心",
@@ -452,6 +532,18 @@
     "year": 2018,
     "gender": "boys",
     "playerIds": ["山田_雄斗_千葉商_千葉県", "百瀬_梨矩_千葉商_千葉県"]
+  },
+  {
+    "team": "一宮商",
+    "teamId": "ichinomiyashou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["瀧口_優香_一宮商_千葉県", "田中_まひる_一宮商_千葉県"]
   },
   {
     "team": "柏市立柏",
@@ -512,6 +604,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["渋谷_斗真_敬愛学園_千葉県", "千葉_陽太_敬愛学園_千葉県"]
+  },
+  {
+    "team": "敬愛学園",
+    "teamId": "keiaigakuen",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["土屋_啓悟_敬愛学園_千葉県", "関_基希_敬愛学園_千葉県"]
   },
   {
     "team": "敬愛学園",
@@ -1082,6 +1186,54 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["土佐_遼汰_木更津総合_千葉県", "伊藤_啓悟_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["山下_真央_木更津総合_千葉県", "高野_渉_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["平林_朋樹_木更津総合_千葉県", "中坂_正紀_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["平田_隼風_木更津総合_千葉県", "高杉_龍二_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1322,6 +1474,66 @@
     "teamId": "kisarazusougou",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["渡邊_雅也_木更津総合_千葉県", "伊藤_啓悟_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["小嶋_洋平_木更津総合_千葉県", "沼上_竜助_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["松井_大知_木更津総合_千葉県", "中坂_正紀_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["關_拓海_木更津総合_千葉県", "中村_圭佑_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["土佐_遼汰_木更津総合_千葉県", "齋藤_大樹_木更津総合_千葉県"]
+  },
+  {
+    "team": "木更津総合",
+    "teamId": "kisarazusougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
@@ -1424,6 +1636,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["藤田_悠未_国府台高校_千葉県", "高安_ひな紀_国府台高校_千葉県"]
+  },
+  {
+    "team": "幕張総合",
+    "teamId": "makuharisougou",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["高木_詩央里_幕張総合_千葉県", "中村_陽菜_幕張総合_千葉県"]
   },
   {
     "team": "成田",
@@ -1568,6 +1792,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["波多江_光咲_成田_千葉県", "増田_梨菜_成田_千葉県"]
+  },
+  {
+    "team": "日体大柏",
+    "teamId": "nittaidaikashiwa",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["我妻_晴也_日体大柏_千葉県", "宮本_情ノ介_日体大柏_千葉県"]
   },
   {
     "team": "日体大柏",
@@ -1958,6 +2194,90 @@
     "teamId": "shouwagakuin",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["樫山_亜美_昭和学院_千葉県", "安田_まどか_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["横山_瑞季_昭和学院_千葉県", "金田_麻希_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["中村_鈴花_昭和学院_千葉県", "齋藤_朱里_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["布施_陽香里_昭和学院_千葉県", "石倉_幸奈_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["齋木_菜々花_昭和学院_千葉県", "野_南美_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["手島_優斗_昭和学院_千葉県", "西山_七海斗_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["永田_愉吉_昭和学院_千葉県", "藤木_敦也_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2132,6 +2452,90 @@
     "year": 2018,
     "gender": "girls",
     "playerIds": ["藤本_奈々美_昭和学院_千葉県", "原_千晴_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["横山_瑞季_昭和学院_千葉県", "金田_麻希_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["樫山_亜美_昭和学院_千葉県", "芝崎_百香_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["藤木_麻衣_昭和学院_千葉県", "安田_まどか_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["坂本_瑞季_昭和学院_千葉県", "小張_美咲_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["肥後_輝_昭和学院_千葉県", "松尾_七海_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["齋藤_利貴_昭和学院_千葉県", "橋本_誠人_昭和学院_千葉県"]
+  },
+  {
+    "team": "昭和学院",
+    "teamId": "shouwagakuin",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["倉橋_凜_昭和学院_千葉県", "藤木_敦也_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -2378,6 +2782,18 @@
     "teamId": "uekusagakuendaifu",
     "prefecture": "千葉県",
     "prefectureId": "chiba",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["坂輪_知春_植草学園大附_千葉県", "飯塚_梨央_植草学園大附_千葉県"]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2432,6 +2848,18 @@
     "year": 2018,
     "gender": "girls",
     "playerIds": ["大森_茉結_植草学園大附_千葉県", "三関_琴波_植草学園大附_千葉県"]
+  },
+  {
+    "team": "植草学園大附",
+    "teamId": "uekusagakuendaifu",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["館_桃香_植草学園大附_千葉県", "宮本_菜月_植草学園大附_千葉県"]
   },
   {
     "team": "植草学園大附",

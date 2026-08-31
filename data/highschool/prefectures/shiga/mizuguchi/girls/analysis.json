@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "水口",
+        "teamId": "mizuguchi",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["廣瀬_優美_水口_滋賀県", "野村_ななみ_水口_滋賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "廣瀬_優美_水口_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "野村_ななみ_水口_滋賀県",
+      "appearances": 1
+    }
+  ]
+}

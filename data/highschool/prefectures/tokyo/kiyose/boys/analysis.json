@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -26,21 +27,35 @@
         "teamId": "kiyose",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2016,
         "gender": "boys",
-        "playerIds": ["結城_大和_清瀬_東京都", "安在_琉_清瀬_東京都"]
+        "playerIds": ["谷岡_凌太朗_清瀬_東京都", "鶴江_匠_清瀬_東京都"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "清瀬",
+        "teamId": "kiyose",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 15,
   "topPlayers": [
+    {
+      "id": "中内_純平_清瀬_東京都",
+      "appearances": 2
+    },
     {
       "id": "結城_大和_清瀬_東京都",
       "appearances": 1
@@ -55,10 +70,6 @@
     },
     {
       "id": "結城_純平_清瀬_東京都",
-      "appearances": 1
-    },
-    {
-      "id": "山縣_大輝_清瀬_東京都",
       "appearances": 1
     }
   ]

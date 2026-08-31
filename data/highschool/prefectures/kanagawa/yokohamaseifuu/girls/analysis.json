@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "横浜清風",
+        "teamId": "yokohamaseifuu",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["鈴木_舞桜_横浜清風_神奈川県", "川間_萌_横浜清風_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "鈴木_舞桜_横浜清風_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "川間_萌_横浜清風_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

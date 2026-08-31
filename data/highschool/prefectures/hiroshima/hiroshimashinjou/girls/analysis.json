@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hiroshimashinjou",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["大曲_優心梨_広島新庄_広島県", "山本_希美_広島新庄_広島県"]
+        "playerIds": ["矢式_海音_広島新庄_広島県", "高本_侑加_広島新庄_広島県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "矢式_海音_広島新庄_広島県",
+      "appearances": 2
+    },
+    {
+      "id": "高本_侑加_広島新庄_広島県",
+      "appearances": 2
+    },
     {
       "id": "大曲_優心梨_広島新庄_広島県",
       "appearances": 1

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 2
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -39,22 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
+      "id": "寺戸_神威_瀬田工_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "鈴木_悠太_瀬田工_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "清水_奏良_瀬田工_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "西田_啓太_瀬田工_滋賀県",
+      "appearances": 1
+    },
+    {
       "id": "黒川_誠斗_瀬田工_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "赤瀬_槙一_瀬田工_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "森澤_伯_瀬田工_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "中嶋_悠也_瀬田工_滋賀県",
       "appearances": 1
     }
   ]

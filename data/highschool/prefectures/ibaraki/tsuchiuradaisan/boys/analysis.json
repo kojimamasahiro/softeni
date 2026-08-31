@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "土浦第三",
+        "teamId": "tsuchiuradaisan",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["並木_健留_土浦第三_茨城県", "山下_堅也_土浦第三_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "並木_健留_土浦第三_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "山下_堅也_土浦第三_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "山口_貴倫_土浦第三_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "高野_蒼太_土浦第三_茨城県",
+      "appearances": 1
+    }
+  ]
+}

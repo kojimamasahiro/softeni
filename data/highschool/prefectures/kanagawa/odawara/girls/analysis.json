@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小田原",
+        "teamId": "odawara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["桒野_未来_小田原_神奈川県", "山田_歩実_小田原_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "桒野_未来_小田原_神奈川県",
+      "appearances": 2
+    },
+    {
+      "id": "山田_歩実_小田原_神奈川県",
+      "appearances": 2
+    }
+  ]
+}

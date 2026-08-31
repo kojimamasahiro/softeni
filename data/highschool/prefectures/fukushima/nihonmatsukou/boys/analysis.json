@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "二本松工",
+        "teamId": "nihonmatsukou",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["安喰_楓_二本松工_福島県", "武藤_勝幸_二本松工_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "安喰_楓_二本松工_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "武藤_勝幸_二本松工_福島県",
+      "appearances": 1
+    }
+  ]
+}

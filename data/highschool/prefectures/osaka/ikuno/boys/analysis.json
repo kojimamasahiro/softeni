@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "生野",
+        "teamId": "ikuno",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["渡邊_一弘_生野_大阪府", "山本_陸登_生野_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "渡邊_一弘_生野_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "山本_陸登_生野_大阪府",
+      "appearances": 1
+    }
+  ]
+}

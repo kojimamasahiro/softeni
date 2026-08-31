@@ -1,60 +1,26 @@
 {
   "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1,
-    "singles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "小城",
-        "teamId": "ogi",
-        "prefecture": "佐賀県",
-        "prefectureId": "saga",
-        "result": "4回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["森_旺亮_小城_佐賀県"]
-      },
-      "historicalBest": {
-        "team": "小城",
-        "teamId": "ogi",
-        "prefecture": "佐賀県",
-        "prefectureId": "saga",
-        "result": "4回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["森_旺亮_小城_佐賀県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "小城",
-        "teamId": "ogi",
-        "prefecture": "佐賀県",
-        "prefectureId": "saga",
-        "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["池田_晄_レグルス鹿島_佐賀県", "児玉_聖_小城_佐賀県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "小城",
         "teamId": "ogi",
         "prefecture": "佐賀県",
         "prefectureId": "saga",
-        "result": "2回戦敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
+        "tournamentId": "highschool-championship",
+        "year": 2017,
         "gender": "boys",
-        "playerIds": ["池田_晄_レグルス鹿島_佐賀県", "児玉_聖_小城_佐賀県"]
+        "playerIds": ["横尾_凌大_小城_佐賀県", "高塚_涼介_小城_佐賀県"]
       }
     },
     "team": {
@@ -62,14 +28,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "児玉_聖_小城_佐賀県",
+      "id": "横尾_凌大_小城_佐賀県",
       "appearances": 1
     },
     {
-      "id": "森_旺亮_小城_佐賀県",
+      "id": "高塚_涼介_小城_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "高見_健司_小城_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "大家_雅也_小城_佐賀県",
       "appearances": 1
     }
   ]

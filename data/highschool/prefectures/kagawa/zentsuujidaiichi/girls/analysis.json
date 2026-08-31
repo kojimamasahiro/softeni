@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "善通寺第一",
+        "teamId": "zentsuujidaiichi",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["香川_奈緒_善通寺第一_香川県", "平松_花純_善通寺第一_香川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "香川_奈緒_善通寺第一_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "平松_花純_善通寺第一_香川県",
+      "appearances": 1
+    }
+  ]
+}

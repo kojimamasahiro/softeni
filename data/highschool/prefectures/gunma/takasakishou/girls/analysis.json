@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 16,
   "byCategory": {
     "team": 1,
-    "doubles": 12
+    "doubles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -27,12 +27,12 @@
         "teamId": "takasakishou",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["渡邉_妃菜乃_高崎商_群馬県", "水野_沙姫_高崎商_群馬県"]
+        "playerIds": ["須田_葵衣_高崎商_群馬県", "奥澤_朋香_高崎商_群馬県"]
       }
     },
     "team": {
@@ -50,8 +50,12 @@
       }
     }
   },
-  "uniquePlayers": 20,
+  "uniquePlayers": 24,
   "topPlayers": [
+    {
+      "id": "染谷_杏奈_高崎商_群馬県",
+      "appearances": 3
+    },
     {
       "id": "渡邉_妃菜乃_高崎商_群馬県",
       "appearances": 2
@@ -61,16 +65,12 @@
       "appearances": 2
     },
     {
-      "id": "染谷_杏奈_高崎商_群馬県",
+      "id": "奥澤_朋香_高崎商_群馬県",
       "appearances": 2
     },
     {
       "id": "保科_知里_高崎商_群馬県",
       "appearances": 2
-    },
-    {
-      "id": "剱持_杏衣_高崎商_群馬県",
-      "appearances": 1
     }
   ]
 }

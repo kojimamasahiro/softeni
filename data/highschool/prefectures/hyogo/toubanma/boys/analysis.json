@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東播磨",
+        "teamId": "toubanma",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["岸本_遼馬_東播磨_兵庫県", "山下_翔太郎_東播磨_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "岸本_遼馬_東播磨_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "山下_翔太郎_東播磨_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "鳥居_孝弘_東播磨_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "新宮_慶馬_東播磨_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

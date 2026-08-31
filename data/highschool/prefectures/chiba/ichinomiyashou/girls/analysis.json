@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "一宮商",
+        "teamId": "ichinomiyashou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["瀧口_優香_一宮商_千葉県", "田中_まひる_一宮商_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "瀧口_優香_一宮商_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "田中_まひる_一宮商_千葉県",
+      "appearances": 1
+    }
+  ]
+}

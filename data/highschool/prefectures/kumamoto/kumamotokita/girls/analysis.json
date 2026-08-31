@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "熊本北",
+        "teamId": "kumamotokita",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["竹下_風佳_熊本北_熊本県", "日高_渚_熊本北_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "竹下_風佳_熊本北_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "日高_渚_熊本北_熊本県",
+      "appearances": 1
+    }
+  ]
+}

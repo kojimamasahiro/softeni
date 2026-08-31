@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "八代東",
+        "teamId": "yatsushirohigashi",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["中川_愛_八代東_熊本県", "小村_瀬奈_八代東_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中川_愛_八代東_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "小村_瀬奈_八代東_熊本県",
+      "appearances": 1
+    }
+  ]
+}

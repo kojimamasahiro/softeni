@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 3
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "吉村_泰成_長岡商_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "服部_太陽_長岡商_新潟県",
+      "appearances": 2
+    },
     {
       "id": "菊地_雄飛_長岡商_新潟県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "阿部_隆之介_長岡商_新潟県",
-      "appearances": 1
-    },
-    {
-      "id": "丸山_憧_長岡商_新潟県",
-      "appearances": 1
-    },
-    {
-      "id": "吉村_泰成_長岡商_新潟県",
       "appearances": 1
     }
   ]

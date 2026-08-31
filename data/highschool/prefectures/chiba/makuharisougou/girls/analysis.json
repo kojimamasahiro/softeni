@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "幕張総合",
+        "teamId": "makuharisougou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["高木_詩央里_幕張総合_千葉県", "中村_陽菜_幕張総合_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高木_詩央里_幕張総合_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "中村_陽菜_幕張総合_千葉県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "tonamikou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2016,
         "gender": "boys",
-        "playerIds": ["道海_歩夢_砺波工_富山県", "鈴木_尚人_砺波工_富山県"]
+        "playerIds": ["滝本_力_砺波工_富山県", "藤森_祐汰_砺波工_富山県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "道海_歩夢_砺波工_富山県",
@@ -36,6 +36,18 @@
     },
     {
       "id": "鈴木_尚人_砺波工_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "滝本_力_砺波工_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "藤森_祐汰_砺波工_富山県",
+      "appearances": 1
+    },
+    {
+      "id": "桃野_慎也_砺波工_富山県",
       "appearances": 1
     }
   ]

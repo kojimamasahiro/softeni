@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "gifukousen",
         "prefecture": "岐阜県",
         "prefectureId": "gifu",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2016,
         "gender": "boys",
-        "playerIds": ["川村_健太_岐阜高専_岐阜県", "小川_将司_岐阜高専_岐阜県"]
+        "playerIds": ["戸崎_洸平_岐阜高専_岐阜県", "松尾_泰我_岐阜高専_岐阜県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "川村_健太_岐阜高専_岐阜県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "小川_将司_岐阜高専_岐阜県",
+      "appearances": 1
+    },
+    {
+      "id": "戸崎_洸平_岐阜高専_岐阜県",
+      "appearances": 1
+    },
+    {
+      "id": "松尾_泰我_岐阜高専_岐阜県",
       "appearances": 1
     }
   ]
