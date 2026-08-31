@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -115,17 +116,36 @@ def detect_paren_columns(chars):
 
 
 def detect_name_grid(chars, x_hi, x_lo=0.0):
-    """氏名フィールドの7スロットのx0を実測する。"""
+    """氏名フィールドの等間隔スロットのx0を実測する。
+
+    スロット数は年度で違う（2019年度=7スロット、2018年度=5スロット）ので決め打ちしない。
+    ただし **出現数だけでスロットを選んではいけない**。埋まる行が少ないスロットがあり
+    （2019年度 p6 右ブロックの5番目）、頻度で切ると氏名欄が途中で切れて名が所属列へ流れる。
+    そこで「基準位置とピッチは高頻度の2本から取り、あとは文字が存在するかどうかで伸ばす」。
+    """
     xs = Counter(round(c["x0"], 1) for c in chars
                  if x_lo < c["x0"] < x_hi and is_name_char(c["text"]))
-    top = sorted(x for x, _ in xs.most_common(7))
-    if len(top) != 7:
-        raise RuntimeError(f"氏名スロットが7個ではありません: {top}")
-    pitch = (top[-1] - top[0]) / 6
-    for i, x in enumerate(top):
-        if abs(x - (top[0] + pitch * i)) > 1.0:
-            raise RuntimeError(f"氏名スロットが等間隔ではありません: {top}")
-    return top, pitch
+    if not xs:
+        raise RuntimeError("氏名フィールドを検出できませんでした")
+    peak = max(xs.values())
+    # 確実にスロットである位置（姓の1・2文字目は全行に出るので必ず高頻度になる）
+    core = sorted(x for x, n in xs.items() if n >= peak * 0.6)
+    if len(core) < 2:
+        raise RuntimeError(f"氏名スロットが少なすぎます: {core}")
+    base, pitch = core[0], core[1] - core[0]
+    if pitch <= 0:
+        raise RuntimeError(f"氏名スロットのピッチを取れません: {core}")
+    seen = sorted(xs)
+    grid = [base]
+    while True:
+        nxt = grid[-1] + pitch
+        hit = next((x for x in seen if abs(x - nxt) <= 1.0), None)
+        if hit is None or hit >= x_hi:
+            break
+        grid.append(hit)
+    if len(grid) < 3:
+        raise RuntimeError(f"氏名スロットが等間隔に並びません: {core}")
+    return grid, pitch
 
 
 def text_of(cs):
@@ -172,11 +192,105 @@ def merge_wrapped(lines, note):
     return out
 
 
-def split_name(slots):
-    """スロット番号→文字 の辞書から (姓, 名, 4文字姓か) を返す。"""
-    surname = "".join(slots[i] for i in (0, 1, 2, 3) if i in slots)
-    given = "".join(slots[i] for i in (4, 5, 6) if i in slots)
-    return surname, given, 3 in slots
+def load_name_vocabulary(reference_paths):
+    """既知の (姓, 名) / 姓 / 名 の語彙。姓名の境界が座標で決まらないときに使う。
+
+    出典は `data/tournaments/details/**`（取り込み済みの大会結果＝一次情報）。
+    `--reference` で隣接年度のステージング（tools/**.initialPlayers.json）も足せる。
+    高校生は3年で入れ替わるので、近い年度を足すほど当たる。
+
+    **誤った分割を語彙に入れない**のが肝。`data/players/name-split-aliases.json` に
+    人手判断で「誤り」と確定した分割が蓄積されており（`小茄子 / 川湊`）、これを入れると
+    `小茄子` が既知の姓として振る舞い、`小茄子川夏月` を `小茄子｜川夏月` と誤って割る。
+    """
+    blocked = set()
+    canonical = []
+    alias_path = os.path.join("data", "players", "name-split-aliases.json")
+    if os.path.exists(alias_path):
+        with open(alias_path, encoding="utf-8") as f:
+            table = json.load(f)
+        for e in table.get("entries", []):
+            canonical.append(tuple(e["canonical"]))
+            for a in e.get("aliases", []):
+                blocked.add(tuple(a))
+
+    pairs = Counter()
+
+    def add(ln, fn, n=1):
+        if ln and fn and (ln, fn) not in blocked:
+            pairs[(ln, fn)] += n
+
+    details = os.path.join("data", "tournaments", "details")
+    for root, _dirs, files in os.walk(details):
+        if os.path.basename(root) == "temp":
+            continue
+        for name in files:
+            if not name.endswith(".json"):
+                continue
+            try:
+                with open(os.path.join(root, name), encoding="utf-8") as f:
+                    d = json.load(f)
+            except (ValueError, OSError):
+                continue
+            if not isinstance(d, dict):
+                continue
+            for p in d.get("participants", []):
+                if isinstance(p, dict):
+                    add(p.get("lastName"), p.get("firstName"))
+    for c in canonical:
+        add(c[0], c[1], 5)
+    for path in reference_paths:
+        with open(path, encoding="utf-8") as f:
+            for e in json.load(f):
+                for x in e.get("information", []):
+                    add(x.get("lastName"), x.get("firstName"))
+
+    last, first = Counter(), Counter()
+    for (ln, fn), n in pairs.items():
+        last[ln] += n
+        first[fn] += n
+    return pairs, last, first
+
+
+def split_name(slots, size, vocab, overrides=None, used=None):
+    """スロット番号→文字 の辞書から (姓, 名, 判定の根拠) を返す。
+
+    `overrides` は人が確定させた分割（`--name-split`）。座標でも既知データでも決まらない
+    行があるため（フォントを縮めて詰め込んだ行はスロット分割自体が効かない）、
+    最後は人の判断を受け取れるようにしてある。
+
+    フィールドは「姓を左詰め・名を右詰めにし、中央のスロットを空ける」という組み方。
+    したがって **中央スロット** が境界になる。2019年度は7スロット（姓0-2 / 名4-6）、
+    2018年度は5スロット（姓0-1 / 名3-4）で、どちらも中央が空く。
+
+    中央スロットが埋まっている行は、**座標だけでは姓名の境界が決まらない**
+    （`小田島|俊介` と `加藤|健太郎` が同じ形になる。2018年度は714行中100行がこれ）。
+    その場合だけ既知の姓名で決める。決まらなければ姓2文字を仮に採り、要目視として返す。
+    """
+    full = "".join(slots[i] for i in sorted(slots))
+    if overrides and full in overrides:
+        if used is not None:
+            used.add(full)
+        return overrides[full][0], overrides[full][1], None
+
+    sep = (size - 1) // 2
+    head = "".join(slots[i] for i in sorted(slots) if i < sep)
+    tail = "".join(slots[i] for i in sorted(slots) if i > sep)
+    mid = slots.get(sep, "")
+    if not mid:
+        return head, tail, None
+
+    pairs, last, first = vocab
+    cands = [(head + mid, tail), (head, mid + tail)]
+    exact = [c for c in cands if pairs.get(c)]
+    if len(exact) == 1:
+        return exact[0][0], exact[0][1], None
+    # 姓・名それぞれの既知度で決める（姓の一致を重く見る。名は表記の幅が広いため）
+    score = [2 * (last.get(a, 0) > 0) + (first.get(b, 0) > 0) for a, b in cands]
+    if score[0] != score[1] and max(score) >= 2:
+        best = cands[score.index(max(score))]
+        return best[0], best[1], None
+    return cands[1][0], cands[1][1], f"{head}{mid}{tail}（{cands[1][0]}｜{cands[1][1]} と仮置き）"
 
 
 def normalize_prefecture(raw):
@@ -190,7 +304,7 @@ def normalize_prefecture(raw):
     return raw, False
 
 
-def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no):
+def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, overrides, used):
     """1ブロック（左または右の1列）を解析する。
 
     x_lo … このブロックの左端。右ブロックでは中央のスコア帯を跨がないための下限。
@@ -248,12 +362,18 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no):
         for pl in players:
             slots = {}
             for c in pl["chars"]:
+                if c["text"] == IDEOGRAPHIC_SPACE:
+                    continue
+                # 氏名が枠に入りきらない行はフォントを縮めて詰め込むので、文字が
+                # スロットの整数倍からずれる（2018年度 `ミヒニャック　瑠偉` は9文字を
+                # 5スロットに詰めており、最終スロットを超えた `偉` が落ちていた）。
+                # 氏名欄の中にある文字は捨てず、両端のスロットへ寄せる。
                 idx = int(round((c["x0"] - grid[0]) / pitch))
-                if c["text"] != IDEOGRAPHIC_SPACE and 0 <= idx <= 6:
-                    slots[idx] = slots.get(idx, "") + c["text"]
-            last, first, wide = split_name(slots)
-            if wide:
-                note(f"番号{row['number']}: 4文字姓として分割 {last}｜{first}（要目視）")
+                idx = min(max(idx, 0), len(grid) - 1)
+                slots[idx] = slots.get(idx, "") + c["text"]
+            last, first, unsure = split_name(slots, len(grid), vocab, overrides, used)
+            if unsure:
+                note(f"番号{row['number']}: 姓名の境界を既知データで決められない {unsure}")
             pref, ok = normalize_prefecture(pl["pref"] or row["pref"])
             if not ok:
                 note(f"番号{row['number']}: 都道府県辞書に無い {pref!r}")
@@ -263,20 +383,50 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no):
                 "prefecture": pref, "playerId": None,
                 "tempId": f"{last}_{first}_{team}",
             })
+        # 番号は普通は括弧行にあるが、ページによっては1人目の行に印字される
+        # （2018年度 女子 p16/p17 の右ブロックは括弧行より11pt上に出る）。
+        # エントリー単位の値なので、括弧行に無ければ選手の行から拾う。
+        number = row["number"] or players[0]["number"] or players[1]["number"]
+        if not number:
+            note(f"y={row['y']:.0f}: エントリー番号が見つからない "
+                 f"{info[0]['lastName']}・{info[1]['lastName']}")
         entries.append({
-            "number": int(row["number"]) if row["number"].isdigit() else None,
+            "number": int(number) if number.isdigit() else None,
             "information": info,
         })
     return entries
 
 
-def extract_page(page, page_no, warnings):
-    chars = list(page.chars)
+# ドロー表の下に付く再掲ブロックの見出し。ここから下は本体ではない。
+RECAP_HEADINGS = ("準々決勝", "準決勝", "決勝戦", "３位決定", "3位決定")
+
+
+def recap_cutoff(page):
+    """再掲ブロックの見出しのyを返す（無ければ無限大）。
+
+    2018年度は奇数ページの下部に「準々決勝戦」の再掲があり、本体と同じ列に組まれている。
+    番号まで振られているので、放っておくとエントリーとして拾われ重複する
+    （ページあたり左右2件）。見出しより下を捨てる。
+    """
+    best = float("inf")
+    for y, cs in make_lines(list(page.chars), tol=2.0):
+        text = "".join(c["text"] for c in cs)
+        if any(h in text for h in RECAP_HEADINGS):
+            best = min(best, y)
+    return best
+
+
+def extract_page(page, page_no, warnings, vocab, overrides, used):
+    # 再掲ブロックは**文字の段階で**落とす。アンカー（氏名行・括弧行）だけ落としても、
+    # 再掲の県・所属の行が生き残って直上のエントリーにくっつく
+    # （2018年度 p1 で「日本学連東京東京」のような連結になった）。
+    y_max = recap_cutoff(page)
+    chars = [c for c in page.chars if center(c) < y_max]
     (open_l, close_l), (open_r, close_r) = detect_paren_columns(chars)
     left = [c for c in chars if c["x0"] <= close_l]
     right = [c for c in chars if c["x0"] > close_l]
-    return (extract_block(left, open_l, close_l, 0.0, "left", warnings, page_no)
-            + extract_block(right, open_r, close_r, close_l, "right", warnings, page_no))
+    return (extract_block(left, open_l, close_l, 0.0, "left", warnings, page_no, vocab, overrides, used)
+            + extract_block(right, open_r, close_r, close_l, "right", warnings, page_no, vocab, overrides, used))
 
 
 def parse_pages(spec, total):
@@ -297,12 +447,32 @@ def main():
     ap.add_argument("pdf")
     ap.add_argument("--pages", help="例: 1-4 / 6,7,8,9")
     ap.add_argument("--out")
+    ap.add_argument("--reference", action="append", default=[],
+                    help="姓名の境界を決めるための既知データ（隣接年度の initialPlayers.json）。"
+                         "複数指定可。data/players/index.json は常に読む。")
+    ap.add_argument("--name-split", action="append", default=[], metavar="姓名=姓|名",
+                    help="姓名の境界を人手で指定する（例: --name-split 'ミヒニャック瑠偉=ミヒニャック|瑠偉'）。"
+                         "座標でも既知データでも決まらない行のための最後の手段。複数指定可。")
     args = ap.parse_args()
 
+    overrides = {}
+    for spec in args.name_split:
+        full, _, split = spec.partition("=")
+        ln, _, fn = split.partition("|")
+        if not (full and ln and fn):
+            raise SystemExit(f"--name-split の書式が不正です: {spec!r}（姓名=姓|名）")
+        overrides[full] = (ln, fn)
+    used = set()
+
+    vocab = load_name_vocabulary(args.reference)
     warnings, entries = [], []
     with pdfplumber.open(args.pdf) as pdf:
         for pno in parse_pages(args.pages, len(pdf.pages)):
-            entries.extend(extract_page(pdf.pages[pno - 1], pno, warnings))
+            entries.extend(extract_page(pdf.pages[pno - 1], pno, warnings, vocab, overrides, used))
+    for full in overrides:
+        # 使われなかった指定は、紙面が変わったか綴りが違う。黙って無視すると気づけない
+        if full not in used:
+            warnings.append(f"--name-split の指定が一度も一致しませんでした: {full}")
 
     entries.sort(key=lambda e: (e["number"] is None, e["number"]))
     result = []
