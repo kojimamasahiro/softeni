@@ -29,9 +29,18 @@ interface BracketMatchRow {
   result: 'win' | 'lose' | 'draw';
 }
 
+interface HighschoolTeamLink {
+  prefectureId: string;
+  teamId: string;
+}
+
 interface TournamentBracketProps {
   detailData: TournamentDetailData;
   gameCategory?: string;
+  /** 高校の部のとき 'boys' / 'girls'。学校ページへのリンクを出すかの判定に使う。 */
+  highschoolGender?: string | null;
+  /** `${team}::${prefecture}` → 学校ページの id。TeamResults と同じ表を受け取る。 */
+  highschoolTeamLinks?: Record<string, HighschoolTeamLink> | null;
   /**
    * 打ち切り大会のとき、最後に完了したラウンド名（例: "3回戦"）。それ以外は null。
    * 未実施の試合を「未入力」ではなく「中止」と明示するために使う。
@@ -408,7 +417,13 @@ function buildBracket(matches: TournamentMatch[]): {
   };
 }
 
-export default function TournamentBracket({ detailData, gameCategory, abandonedAfterRound = null }: TournamentBracketProps) {
+export default function TournamentBracket({
+  detailData,
+  gameCategory,
+  abandonedAfterRound = null,
+  highschoolGender = null,
+  highschoolTeamLinks = null,
+}: TournamentBracketProps) {
   const { participants, entries, matches } = detailData;
   const isAbandoned = Boolean(abandonedAfterRound);
   const shortOpponentNames = gameCategory !== undefined && gameCategory !== 'singles';
@@ -453,6 +468,24 @@ export default function TournamentBracket({ detailData, gameCategory, abandonedA
       );
     }
     return text;
+  };
+
+  // その組の所属校のうち、学校ページが実在するものだけリンクにする（デッドリンク禁止・07-components.md §4）。
+  // TeamResults と同じ `${team}::${prefecture}` の表を使うので、リンク先の判定はページ全体で 1 か所に揃う。
+  const highschoolLinksForEntry = (entry: TournamentEntry | undefined): { team: string; href: string }[] => {
+    if (!entry || !highschoolGender || !highschoolTeamLinks) return [];
+    const seen = new Set<string>();
+    const links: { team: string; href: string }[] = [];
+    for (const pid of entry.playerIds ?? []) {
+      const player = participants.find((p) => p.id === pid);
+      if (!player?.team) continue;
+      const key = `${player.team}::${player.prefecture ?? ''}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const link = highschoolTeamLinks[key];
+      if (link) links.push({ team: player.team, href: `/highschool/${highschoolGender}/${link.prefectureId}/${link.teamId}` });
+    }
+    return links;
   };
 
   /**
@@ -856,6 +889,7 @@ export default function TournamentBracket({ detailData, gameCategory, abandonedA
           const nameParts = buildEntryNameParts(participants, entry);
           const rows = buildMatchRowsForEntry(matches, entries, participants, entryNo, shortOpponentNames);
           const isSeedEntry = !!(entry?.type && typeof entry.type === 'string' && entry.type.includes('seed'));
+          const teamLinks = highschoolLinksForEntry(entry);
 
           return (
             <div
@@ -895,6 +929,19 @@ export default function TournamentBracket({ detailData, gameCategory, abandonedA
                     ✕
                   </button>
                 </div>
+
+                {teamLinks.length > 0 && (
+                  <p className="mb-3 text-sm">
+                    {teamLinks.map((t, i) => (
+                      <span key={t.href}>
+                        {i > 0 && <span className="text-text-muted">・</span>}
+                        <Link href={t.href} className="text-link hover:underline" onClick={() => setSelectedEntry(null)}>
+                          {t.team}の成績
+                        </Link>
+                      </span>
+                    ))}
+                  </p>
+                )}
 
                 <div className="w-full overflow-x-auto">
                   <table className="w-full table-fixed border-collapse text-left text-sm">

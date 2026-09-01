@@ -25,6 +25,17 @@ interface BracketSheetsProps {
 
 const ZOOM_STEPS = [0.8, 1, 1.3, 1.7] as const;
 
+/**
+ * SVG の text 幅の見積もり。半角は 0.5em・それ以外（CJK）は 1em として数える。
+ * 下線を引くのに幅が要るが、`getComputedTextLength()` はブラウザでしか使えず SSG で描けない。
+ * 実測（インターハイ2026 男子ダブルスの名前 10 件）ではこの見積もりが実値と完全に一致した。
+ */
+function estimateSvgTextWidth(text: string, fontSize: number): number {
+  let em = 0;
+  for (const ch of text) em += /[\u0020-\u007e\uff61-\uff9f]/.test(ch) ? 0.5 : 1;
+  return em * fontSize;
+}
+
 /** entryNo → 表示名。団体戦は participants に選手名が無く team だけ入る。 */
 function useNameOf(detailData: TournamentDetailData): BracketNameOf {
   return useMemo(() => {
@@ -150,18 +161,39 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
                 </text>
               );
             }
+            // タップできることが分かるように、サイト共通の「点線の下線＝選手へのリンク」を引く。
+            // hover だけだとモバイルで気付けず、トーナメント表が行き止まりになる。
+            // SVG は text-decoration-style を無視する（Chrome 実測で solid のまま）ので、
+            // text-decoration ではなく破線の line を自分で引いている。
+            // 色はこの図の固定パレット（team / entryNo と同じ #7b8794）に合わせる。
+            // 図全体が bg-white 固定でダークモードを持たないため、ここだけトークンを使うと反転する。
             const clickable = onSelectEntry && l.entryNo != null;
+            const underlineW = clickable ? estimateSvgTextWidth(l.text, 10) : 0;
+            const underlineX = l.anchor === 'end' ? l.x - underlineW : l.anchor === 'middle' ? l.x - underlineW / 2 : l.x;
             return (
-              <text
-                key={i}
-                {...common}
-                fontSize={10}
-                fill="#1f2933"
-                className={clickable ? 'cursor-pointer hover:underline' : undefined}
-                onClick={clickable ? () => onSelectEntry(l.entryNo!) : undefined}
-              >
-                {l.text}
-              </text>
+              <g key={i}>
+                <text
+                  {...common}
+                  fontSize={10}
+                  fill="#1f2933"
+                  className={clickable ? 'cursor-pointer' : undefined}
+                  onClick={clickable ? () => onSelectEntry(l.entryNo!) : undefined}
+                >
+                  {l.text}
+                </text>
+                {clickable && (
+                  <line
+                    x1={underlineX}
+                    y1={l.y + 2.5}
+                    x2={underlineX + underlineW}
+                    y2={l.y + 2.5}
+                    stroke="#7b8794"
+                    strokeWidth={0.7}
+                    strokeDasharray="1 1.5"
+                    pointerEvents="none"
+                  />
+                )}
+              </g>
             );
           })}
 
@@ -180,6 +212,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
       <p className="mt-2 text-xs text-gray-500">
         左右の端が出場者で、内側は勝ち上がりの線。太い線がその組の到達したところを示す。数字は左端・右端がエントリー番号、線の上が獲得ゲーム数（R は途中棄権）。
       </p>
+      <p className="mt-1 text-xs text-gray-500">名前をタップすると、その組の全対戦とスコア、選手ページ・学校ページへのリンクが開く。</p>
     </div>
   );
 }
