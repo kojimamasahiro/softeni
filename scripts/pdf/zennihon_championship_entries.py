@@ -57,6 +57,15 @@ PREF_BY_SHORT = {(p if p == "北海道" else p[:-1]): p for p in PREFECTURES}
 # 都道府県ではないが、この大会の「都道府県」欄に正規に現れる所属区分
 NON_PREFECTURE_AFFILIATIONS = {"日本学連", "学連", "日本連盟", "高体連", "中体連", "実業団"}
 
+# 都道府県名に現れる異体字。紙面のまま持つと47都道府県の辞書に当たらない。
+PREF_VARIANTS = str.maketrans({"冨": "富", "德": "徳"})
+
+# 氏名の異体字。紙面がどちらで刷られるかは年度で変わるため、**既存データに同一人物が
+# 別字で居るときだけ**そちらへ寄せる（姉妹年度と結合できることを優先する。
+# docs/wiki/data-import.md「スキャンPDF」節の異体字方針と同じ）。
+# 一律に正規化はしない。`岩﨑拓斗` `川﨑海奈` のように異体字が正しい人が実在する。
+NAME_VARIANTS = {"髙": "高", "黑": "黒", "﨑": "崎", "濵": "濱", "德": "徳", "眞": "真"}
+
 SCORE_CHARS = set("0123456789①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮")
 
 
@@ -152,42 +161,109 @@ def text_of(cs):
     return "".join(c["text"] for c in cs).strip()
 
 
-def merge_wrapped(lines, note):
-    """所属列で折り返された行を1つにまとめる。
+def merge_nakaguro(lines, note):
+    """都道府県欄で折り返された行をまとめる。
 
-    折り返しは稀（2019年度は延べ720人中1件＝`神戸松蔭女子学院大` + `学`）。
-    **座標だけでは折り返しと「隣のエントリーの所属」を区別できない**ことを実測で確認して
-    ある（行送り比 gap/size は 1.18 と 1.29 の2値しか無く、折り返しの1.18は
-    別エントリー同士の間隔と完全に同じ値）。そのため最後の判断は
-    「1文字だけの所属名は現実には無い」という意味的な条件に置く。取りこぼす方向に倒し、
-    結合したものは必ず警告に出して人が確認できるようにする。
+    2017年度は「都道府県・連盟」（`奈良・高体連`、`岐阜・高体連`、`宮城・中体連`）が
+    列幅に入りきらず2行に折り返される。所属欄の折り返しと違って**末尾の `・` が
+    続きがあることを示している**ので、そこを条件にできる（座標での推測が要らない）。
     """
     if len(lines) < 2:
         return lines
-    max_right = max(max(c["x1"] for c in cs) for _, cs in lines)
+    out = []
+    i = 0
+    while i < len(lines):
+        y, cs = lines[i]
+        while i + 1 < len(lines) and text_of(cs).endswith("・"):
+            nxt = lines[i + 1][1]
+            note(f"都道府県の折り返しを結合: {text_of(cs)}{text_of(nxt)}")
+            cs = cs + nxt
+            i += 1
+        out.append((sum(center(c) for c in cs) / len(cs), cs))
+        i += 1
+    return out
 
-    def size_of(cs):
-        return max(c["size"] for c in cs)
 
+def load_team_vocabulary():
+    """既知のチーム名（NFKC正規化形）。所属欄の折り返しを見分けるために使う。"""
+    import glob
+    def n(x):
+        return unicodedata.normalize("NFKC", x).replace(" ", "").replace("　", "").replace("･", "・")
+    out = set()
+    teams_path = os.path.join("data", "teams", "teams.json")
+    if os.path.exists(teams_path):
+        with open(teams_path, encoding="utf-8") as f:
+            for t in json.load(f):
+                out.add(n(t["name"]))
+    alias_path = os.path.join("data", "tournaments", "team-name-aliases.json")
+    if os.path.exists(alias_path):
+        with open(alias_path, encoding="utf-8") as f:
+            for e in json.load(f).get("teamAliases", []):
+                out.add(n(e["canonical"]))
+                for a in e.get("aliases", []):
+                    out.add(n(a))
+    for path in glob.glob(os.path.join("data", "tournaments", "details", "**", "*.json"), recursive=True):
+        try:
+            with open(path, encoding="utf-8") as f:
+                d = json.load(f)
+        except (ValueError, OSError):
+            continue
+        if not isinstance(d, dict):
+            continue
+        for pl in d.get("participants", []):
+            if isinstance(pl, dict) and pl.get("team"):
+                out.add(n(pl["team"]))
+    return out
+
+
+def merge_wrapped(lines, note, teams):
+    """所属欄で折り返された行を1つにまとめる。
+
+    **座標では折り返しと「隣のエントリーの所属」を区別できない**ことを実測で確認してある
+    （行送りも列幅の使い切りも、正当な隣接ペアと重なる。2017年度は幾何条件だけだと
+    60件が候補に挙がるが本物は6件）。そこで意味的な条件で決める:
+
+      1. 次の行が `・` で始まる（`青森県高体連` + `・教員クラブ`）
+      2. 直前の行が `附属` / `付属` で終わる（`東洋大学附属` + `牛久高校`）
+      3. 連結した文字列が既知のチーム名（`八戸工業大学` + `第一高校`、
+         `神戸松蔭女子学院大` + `学`）
+      4. 次の行が1文字（既知データに無い新チームの折り返しを取りこぼさないための保険）
+
+    誤結合には気づけないので、結合したものは必ず警告に出す。
+    """
+    if len(lines) < 2:
+        return lines
+    def key(x):
+        return unicodedata.normalize("NFKC", x).replace(" ", "").replace("　", "").replace("･", "・")
     out = []
     i = 0
     while i < len(lines):
         y, cs = lines[i]
         while i + 1 < len(lines):
-            nxt_y, nxt = lines[i + 1]
-            size = size_of(cs)
-            if (len(text_of(nxt)) == 1
-                    and abs(size_of(nxt) - size) <= 0.2
-                    and abs(nxt[0]["x0"] - cs[0]["x0"]) <= 0.5
-                    and 1.05 <= (nxt_y - y) / size <= 1.35
-                    and max(c["x1"] for c in cs) >= max_right - 1.5 * size):
-                note(f"所属名の折り返しを結合: "
-                     f"{''.join(c['text'] for c in cs)} + {''.join(c['text'] for c in nxt)}")
-                cs = cs + nxt
-                i += 1
-            else:
+            nxt = lines[i + 1][1]
+            head, tail = text_of(cs), text_of(nxt)
+            if not (tail.startswith("・")
+                    or head.endswith(("附属", "付属"))
+                    or key(head + tail) in teams
+                    or len(tail) == 1):
                 break
-        out.append((y, cs))
+            # 幾何の裏付け（同じ左端・直上の行が列幅をほぼ使い切っている）も課す
+            size = max(c["size"] for c in cs)
+            max_right = max(max(c["x1"] for c in ls) for _, ls in lines)
+            if (abs(nxt[0]["x0"] - cs[0]["x0"]) > 0.5
+                    or max(c["x1"] for c in cs) < max_right - 1.5 * size
+                    or lines[i + 1][0] - y > 1.6 * size):
+                break
+            note(f"所属名の折り返しを結合: {head} + {tail}")
+            # 行末・行頭の空白は組版の詰めもので名前の一部ではない
+            # （`東洋大学附属　` + `牛久高校` を素に繋ぐと中黒ならぬ全角空白が残る）
+            while cs and not cs[-1]["text"].strip():
+                cs = cs[:-1]
+            while nxt and not nxt[0]["text"].strip():
+                nxt = nxt[1:]
+            cs = cs + nxt
+            i += 1
+        out.append((sum(center(c) for c in cs) / len(cs), cs))
         i += 1
     return out
 
@@ -293,18 +369,60 @@ def split_name(slots, size, vocab, overrides=None, used=None):
     return cands[1][0], cands[1][1], f"{head}{mid}{tail}（{cands[1][0]}｜{cands[1][1]} と仮置き）"
 
 
+def fold_name_variant(last, first, vocab, note, apply_fold):
+    """紙面の異体字を、既存データに同一人物が居るときだけそちらへ寄せる。
+
+    2017年度は `髙橋柚圭` `黑木瑠璃華` `岡﨑聡太` のように異体字で刷られており、
+    そのままだと2018年度の `高橋柚圭` `黒木瑠璃華` `岡崎聡太` と別人になる。
+    ただし **一律の正規化はしない**——`岩﨑拓斗` `川﨑海奈` のように異体字が正しい人が
+    実在するため、「紙面の表記が既存に無く、かつ異体字を畳んだ表記がちょうど1つ既存にある」
+    ときだけ候補になる。
+
+    **既定では寄せず、候補を警告に出すだけ**にしてある。どちらの字を採るかは
+    データ全体に効く方針判断で、既に確定した年度の出力を黙って書き換えたくないため
+    （`--fold-name-variants` を渡したときだけ実際に寄せる）。
+    """
+    pairs = vocab[0]
+    if (last, first) in pairs:
+        return last, first
+    folded = ("".join(NAME_VARIANTS.get(c, c) for c in last),
+              "".join(NAME_VARIANTS.get(c, c) for c in first))
+    if folded == (last, first) or folded not in pairs:
+        return last, first
+    if apply_fold:
+        note(f"異体字を既存データの表記へ寄せた: {last}{first} -> {folded[0]}{folded[1]}")
+        return folded
+    note(f"異体字の候補（未適用。既存データには {folded[0]}{folded[1]} がある）: {last}{first}")
+    return last, first
+
+
 def normalize_prefecture(raw):
     raw = (raw or "").strip()
     if not raw:
         return None, False
+    # `奈良・高体連`（2017年度）や `近畿・滋賀県`（全中）のように2つの区分が
+    # 中黒で連結される様式がある。**都道府県の側を採る**。
+    # `participants[].prefecture` は正準な47都道府県を持つのが原則で、連盟は
+    # 「県が分からないときに県の代わりに入る値」という位置づけのため
+    # （docs/wiki/data-import.md「ルール: 都道府県は省略しない」）。
+    if "・" in raw:
+        for part in raw.split("・"):
+            part = part.strip()
+            if part in PREFECTURES or part in PREF_BY_SHORT:
+                return PREF_BY_SHORT.get(part, part), True
     if raw in NON_PREFECTURE_AFFILIATIONS or raw in PREFECTURES:
         return raw, True
     if raw in PREF_BY_SHORT:
         return PREF_BY_SHORT[raw], True
+    # 都道府県名の異体字（2017年度 男子76は `冨山`）。`scripts/normalize-prefectures.mjs` の
+    # Tier B（明示マップで一意復元）と同じ考え方だが、ステージングの時点で正しくしておく。
+    folded = raw.translate(PREF_VARIANTS)
+    if folded in PREFECTURES or folded in PREF_BY_SHORT:
+        return PREF_BY_SHORT.get(folded, folded), True
     return raw, False
 
 
-def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, overrides, used):
+def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, overrides, used, fold_variants, teams):
     """1ブロック（左または右の1列）を解析する。
 
     x_lo … このブロックの左端。右ブロックでは中央のスコア帯を跨がないための下限。
@@ -313,7 +431,10 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, 
         warnings.append(f"p{page_no} {side}: {msg}")
 
     grid, pitch = detect_name_grid(chars, open_x, x_lo)
-    name_lo, name_hi = grid[0] - 1.0, grid[-1] + pitch
+    # 氏名が枠に入りきらない行はフォントを縮めるため、両端がスロットから半文字ぶんはみ出す
+    # （2017年度 `ミヒニャック　瑠偉` の `ミ` はスロット0より1.3pt左にあり、余裕1.0ptでは落ちた）。
+    # 番号列・スコア列とは20pt以上離れているので、0.4スロットぶん広げても混ざらない。
+    name_lo, name_hi = grid[0] - pitch * 0.4, grid[-1] + pitch
     split_x = widest_gap([c for c in chars if open_x < c["x0"] < close_x], open_x, close_x)
 
     def picks(pred):
@@ -323,10 +444,10 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, 
         lambda c: name_lo <= c["x0"] < name_hi and is_name_char(c["text"])))
     paren_rows = make_lines(picks(
         lambda c: c["text"] in "(（" and abs(c["x0"] - open_x) < 1.0))
-    pref_lines = make_lines(picks(
-        lambda c: open_x <= c["x0"] < split_x and c["text"] not in PARENS))
+    pref_lines = merge_nakaguro(make_lines(picks(
+        lambda c: open_x <= c["x0"] < split_x and c["text"] not in PARENS)), note)
     team_lines = merge_wrapped(make_lines(picks(
-        lambda c: split_x <= c["x0"] <= close_x and c["text"] not in PARENS)), note)
+        lambda c: split_x <= c["x0"] <= close_x and c["text"] not in PARENS)), note, teams)
     num_lines = make_lines(picks(
         lambda c: c["text"].isdigit()
         and (c["x1"] <= name_lo if side == "left" else c["x0"] > close_x)))
@@ -372,6 +493,7 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, 
                 idx = min(max(idx, 0), len(grid) - 1)
                 slots[idx] = slots.get(idx, "") + c["text"]
             last, first, unsure = split_name(slots, len(grid), vocab, overrides, used)
+            last, first = fold_name_variant(last, first, vocab, note, fold_variants)
             if unsure:
                 note(f"番号{row['number']}: 姓名の境界を既知データで決められない {unsure}")
             pref, ok = normalize_prefecture(pl["pref"] or row["pref"])
@@ -416,7 +538,7 @@ def recap_cutoff(page):
     return best
 
 
-def extract_page(page, page_no, warnings, vocab, overrides, used):
+def extract_page(page, page_no, warnings, vocab, overrides, used, fold_variants, teams):
     # 再掲ブロックは**文字の段階で**落とす。アンカー（氏名行・括弧行）だけ落としても、
     # 再掲の県・所属の行が生き残って直上のエントリーにくっつく
     # （2018年度 p1 で「日本学連東京東京」のような連結になった）。
@@ -425,8 +547,8 @@ def extract_page(page, page_no, warnings, vocab, overrides, used):
     (open_l, close_l), (open_r, close_r) = detect_paren_columns(chars)
     left = [c for c in chars if c["x0"] <= close_l]
     right = [c for c in chars if c["x0"] > close_l]
-    return (extract_block(left, open_l, close_l, 0.0, "left", warnings, page_no, vocab, overrides, used)
-            + extract_block(right, open_r, close_r, close_l, "right", warnings, page_no, vocab, overrides, used))
+    return (extract_block(left, open_l, close_l, 0.0, "left", warnings, page_no, vocab, overrides, used, fold_variants, teams)
+            + extract_block(right, open_r, close_r, close_l, "right", warnings, page_no, vocab, overrides, used, fold_variants, teams))
 
 
 def parse_pages(spec, total):
@@ -450,6 +572,9 @@ def main():
     ap.add_argument("--reference", action="append", default=[],
                     help="姓名の境界を決めるための既知データ（隣接年度の initialPlayers.json）。"
                          "複数指定可。data/players/index.json は常に読む。")
+    ap.add_argument("--fold-name-variants", action="store_true",
+                    help="紙面の異体字を、既存データに同一人物が居る場合にその表記へ寄せる"
+                         "（既定は候補を警告に出すだけ）。")
     ap.add_argument("--name-split", action="append", default=[], metavar="姓名=姓|名",
                     help="姓名の境界を人手で指定する（例: --name-split 'ミヒニャック瑠偉=ミヒニャック|瑠偉'）。"
                          "座標でも既知データでも決まらない行のための最後の手段。複数指定可。")
@@ -465,10 +590,12 @@ def main():
     used = set()
 
     vocab = load_name_vocabulary(args.reference)
+    teams = load_team_vocabulary()
     warnings, entries = [], []
     with pdfplumber.open(args.pdf) as pdf:
         for pno in parse_pages(args.pages, len(pdf.pages)):
-            entries.extend(extract_page(pdf.pages[pno - 1], pno, warnings, vocab, overrides, used))
+            entries.extend(extract_page(pdf.pages[pno - 1], pno, warnings, vocab, overrides, used,
+                                        args.fold_name_variants, teams))
     for full in overrides:
         # 使われなかった指定は、紙面が変わったか綴りが違う。黙って無視すると気づけない
         if full not in used:

@@ -1,0 +1,4372 @@
+[
+  {
+    "id": 1,
+    "name": "内本・星野（早稲田大学）",
+    "information": [
+      {
+        "lastName": "内本",
+        "firstName": "隆文",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "内本_隆文_早稲田大学"
+      },
+      {
+        "lastName": "星野",
+        "firstName": "慎平",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "星野_慎平_早稲田大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 2,
+    "name": "櫻井・須藤（前橋商業高校）",
+    "information": [
+      {
+        "lastName": "櫻井",
+        "firstName": "恒暢",
+        "team": "前橋商業高校",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "櫻井_恒暢_前橋商業高校"
+      },
+      {
+        "lastName": "須藤",
+        "firstName": "魁土",
+        "team": "前橋商業高校",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "須藤_魁土_前橋商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 3,
+    "name": "中山・濵口（高知工科大学）",
+    "information": [
+      {
+        "lastName": "中山",
+        "firstName": "大翼",
+        "team": "高知工科大学",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "中山_大翼_高知工科大学"
+      },
+      {
+        "lastName": "濵口",
+        "firstName": "洋幸",
+        "team": "高知工科大学",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "濵口_洋幸_高知工科大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 4,
+    "name": "古賀・中尾（関西学院大学）",
+    "information": [
+      {
+        "lastName": "古賀",
+        "firstName": "勇哉",
+        "team": "関西学院大学",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "古賀_勇哉_関西学院大学"
+      },
+      {
+        "lastName": "中尾",
+        "firstName": "寛之",
+        "team": "親和銀行",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "中尾_寛之_親和銀行"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 5,
+    "name": "吉田・望月（しずおか信用金庫）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "悠人",
+        "team": "しずおか信用金庫",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "吉田_悠人_しずおか信用金庫"
+      },
+      {
+        "lastName": "望月",
+        "firstName": "敬太",
+        "team": "明電舎",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "望月_敬太_明電舎"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 6,
+    "name": "坂口・今井（東邦ガス）",
+    "information": [
+      {
+        "lastName": "坂口",
+        "firstName": "亮太",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "坂口_亮太_東邦ガス"
+      },
+      {
+        "lastName": "今井",
+        "firstName": "快幸",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "今井_快幸_東邦ガス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 7,
+    "name": "花岡・増田（高田商業高校）",
+    "information": [
+      {
+        "lastName": "花岡",
+        "firstName": "忠寿",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "花岡_忠寿_高田商業高校"
+      },
+      {
+        "lastName": "増田",
+        "firstName": "祐太",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "増田_祐太_高田商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 8,
+    "name": "高橋・産屋敷（東京ガス）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "拓未",
+        "team": "東京ガス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "高橋_拓未_東京ガス"
+      },
+      {
+        "lastName": "産屋敷",
+        "firstName": "恭兵",
+        "team": "東京ガス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "産屋敷_恭兵_東京ガス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 9,
+    "name": "平田・緒方（ＮＥＸＵＳクラブ）",
+    "information": [
+      {
+        "lastName": "平田",
+        "firstName": "啓輔",
+        "team": "ＮＥＸＵＳクラブ",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "平田_啓輔_ＮＥＸＵＳクラブ"
+      },
+      {
+        "lastName": "緒方",
+        "firstName": "勇門",
+        "team": "NEXUS",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "緒方_勇門_NEXUS"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 10,
+    "name": "川崎・久野（宇部興産）",
+    "information": [
+      {
+        "lastName": "川崎",
+        "firstName": "貴博",
+        "team": "宇部興産",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "川崎_貴博_宇部興産"
+      },
+      {
+        "lastName": "久野",
+        "firstName": "智規",
+        "team": "宇部興産",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "久野_智規_宇部興産"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 11,
+    "name": "品川・中本（福井県庁）",
+    "information": [
+      {
+        "lastName": "品川",
+        "firstName": "貴紀",
+        "team": "福井県庁",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "品川_貴紀_福井県庁"
+      },
+      {
+        "lastName": "中本",
+        "firstName": "圭哉",
+        "team": "福井県庁",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "中本_圭哉_福井県庁"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 12,
+    "name": "上岡・広岡（上宮高校）",
+    "information": [
+      {
+        "lastName": "上岡",
+        "firstName": "俊介",
+        "team": "上宮高校",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "上岡_俊介_上宮高校"
+      },
+      {
+        "lastName": "広岡",
+        "firstName": "宙",
+        "team": "上宮高校",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "広岡_宙_上宮高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 13,
+    "name": "堀・川野（ＴＯＤ）",
+    "information": [
+      {
+        "lastName": "堀",
+        "firstName": "貴裕",
+        "team": "ＴＯＤ",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "堀_貴裕_ＴＯＤ"
+      },
+      {
+        "lastName": "川野",
+        "firstName": "謙",
+        "team": "ＴＯＤ",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "川野_謙_ＴＯＤ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 14,
+    "name": "葛西・小野（庭球ＰＲＩＤＥ）",
+    "information": [
+      {
+        "lastName": "葛西",
+        "firstName": "瑛",
+        "team": "庭球ＰＲＩＤＥ",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "葛西_瑛_庭球ＰＲＩＤＥ"
+      },
+      {
+        "lastName": "小野",
+        "firstName": "俊樹",
+        "team": "日立市役所",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "小野_俊樹_日立市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 15,
+    "name": "中田・朴（ＨＩＮ－ＨＩＮ）",
+    "information": [
+      {
+        "lastName": "中田",
+        "firstName": "瑛",
+        "team": "ＨＩＮ－ＨＩＮ",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "中田_瑛_ＨＩＮ－ＨＩＮ"
+      },
+      {
+        "lastName": "朴",
+        "firstName": "相俊",
+        "team": "ＨＩＮ－ＨＩＮ",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "朴_相俊_ＨＩＮ－ＨＩＮ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 16,
+    "name": "磯貝・中大路（三重高校）",
+    "information": [
+      {
+        "lastName": "磯貝",
+        "firstName": "真吾",
+        "team": "三重高校",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "磯貝_真吾_三重高校"
+      },
+      {
+        "lastName": "中大路",
+        "firstName": "佑馬",
+        "team": "三重高校",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "中大路_佑馬_三重高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 17,
+    "name": "東條・焼田（関西外国語大学）",
+    "information": [
+      {
+        "lastName": "東條",
+        "firstName": "樹",
+        "team": "関西外国語大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "東條_樹_関西外国語大学"
+      },
+      {
+        "lastName": "焼田",
+        "firstName": "郁弥",
+        "team": "関西外国語大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "焼田_郁弥_関西外国語大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 18,
+    "name": "丸山・新田（鶴岡球心クラブ）",
+    "information": [
+      {
+        "lastName": "丸山",
+        "firstName": "崇",
+        "team": "鶴岡球心クラブ",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "丸山_崇_鶴岡球心クラブ"
+      },
+      {
+        "lastName": "新田",
+        "firstName": "龍麻",
+        "team": "真室川クラブ",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "新田_龍麻_真室川クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 19,
+    "name": "村谷・木津（新日鐵住金大分）",
+    "information": [
+      {
+        "lastName": "村谷",
+        "firstName": "直喜",
+        "team": "新日鐵住金大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "村谷_直喜_新日鐵住金大分"
+      },
+      {
+        "lastName": "木津",
+        "firstName": "大幸",
+        "team": "川澄化学工業",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "木津_大幸_川澄化学工業"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 20,
+    "name": "辻内・田上（伊都ソフトテニス協会）",
+    "information": [
+      {
+        "lastName": "辻内",
+        "firstName": "昭博",
+        "team": "伊都ソフトテニス協会",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "辻内_昭博_伊都ソフトテニス協会"
+      },
+      {
+        "lastName": "田上",
+        "firstName": "恵司",
+        "team": "伊都ソフトテニス協会",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "田上_恵司_伊都ソフトテニス協会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 21,
+    "name": "齋藤・川尻（札幌学院大学）",
+    "information": [
+      {
+        "lastName": "齋藤",
+        "firstName": "靖万",
+        "team": "札幌学院大学",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "齋藤_靖万_札幌学院大学"
+      },
+      {
+        "lastName": "川尻",
+        "firstName": "健太",
+        "team": "札幌学院大学",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "川尻_健太_札幌学院大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 22,
+    "name": "平田・高杉（木更津総合高校）",
+    "information": [
+      {
+        "lastName": "平田",
+        "firstName": "隼風",
+        "team": "木更津総合高校",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "平田_隼風_木更津総合高校"
+      },
+      {
+        "lastName": "高杉",
+        "firstName": "龍二",
+        "team": "木更津総合高校",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "高杉_龍二_木更津総合高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 23,
+    "name": "岡本・加藤（広島翔洋クラブ）",
+    "information": [
+      {
+        "lastName": "岡本",
+        "firstName": "光生",
+        "team": "広島翔洋クラブ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "岡本_光生_広島翔洋クラブ"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "顕成",
+        "team": "広島翔洋クラブ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "加藤_顕成_広島翔洋クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 24,
+    "name": "宮下・花田（姫路アニマルズ）",
+    "information": [
+      {
+        "lastName": "宮下",
+        "firstName": "裕司",
+        "team": "姫路アニマルズ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "宮下_裕司_姫路アニマルズ"
+      },
+      {
+        "lastName": "花田",
+        "firstName": "周弥",
+        "team": "姫路アニマルズ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "花田_周弥_姫路アニマルズ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 25,
+    "name": "松中・竹川（新星クラブ）",
+    "information": [
+      {
+        "lastName": "松中",
+        "firstName": "勇太",
+        "team": "新星クラブ",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "松中_勇太_新星クラブ"
+      },
+      {
+        "lastName": "竹川",
+        "firstName": "昌汰",
+        "team": "新星クラブ",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "竹川_昌汰_新星クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 26,
+    "name": "福吉・道向（鹿児島商業高校）",
+    "information": [
+      {
+        "lastName": "福吉",
+        "firstName": "祐介",
+        "team": "鹿児島商業高校",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "福吉_祐介_鹿児島商業高校"
+      },
+      {
+        "lastName": "道向",
+        "firstName": "勇成",
+        "team": "鹿児島商業高校",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "道向_勇成_鹿児島商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 27,
+    "name": "原田・瀬谷（Vandaいばらき）",
+    "information": [
+      {
+        "lastName": "原田",
+        "firstName": "龍平",
+        "team": "Vandaいばらき",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "原田_龍平_Vandaいばらき"
+      },
+      {
+        "lastName": "瀬谷",
+        "firstName": "優介",
+        "team": "Vandaいばらき",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "瀬谷_優介_Vandaいばらき"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 28,
+    "name": "草野・坂下（中京高校）",
+    "information": [
+      {
+        "lastName": "草野",
+        "firstName": "湧凱",
+        "team": "中京高校",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "草野_湧凱_中京高校"
+      },
+      {
+        "lastName": "坂下",
+        "firstName": "耕介",
+        "team": "中京高校",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "坂下_耕介_中京高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 29,
+    "name": "村田・山本（日本体育大学）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "匠",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "村田_匠_日本体育大学"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "貴大",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "山本_貴大_日本体育大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 30,
+    "name": "立木・平井（明治大学）",
+    "information": [
+      {
+        "lastName": "立木",
+        "firstName": "雅也",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "立木_雅也_明治大学"
+      },
+      {
+        "lastName": "平井",
+        "firstName": "裕之",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "平井_裕之_明治大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 31,
+    "name": "堺・三善（稲門クラブ）",
+    "information": [
+      {
+        "lastName": "堺",
+        "firstName": "満",
+        "team": "稲門クラブ",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "堺_満_稲門クラブ"
+      },
+      {
+        "lastName": "三善",
+        "firstName": "光伸",
+        "team": "スリクソン川口",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "三善_光伸_スリクソン川口"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 32,
+    "name": "守谷・ミヒニャック（田村高校）",
+    "information": [
+      {
+        "lastName": "守谷",
+        "firstName": "善太",
+        "team": "田村高校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "守谷_善太_田村高校"
+      },
+      {
+        "lastName": "ミヒニャック",
+        "firstName": "瑠偉",
+        "team": "田村高校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "ミヒニャック_瑠偉_田村高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 33,
+    "name": "高橋・高井（昭和ホールディングス大阪）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "央",
+        "team": "昭和ホールディングス大阪",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "高橋_央_昭和ホールディングス大阪"
+      },
+      {
+        "lastName": "高井",
+        "firstName": "翔宇",
+        "team": "履正社スポーツ専門学校",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "高井_翔宇_履正社スポーツ専門学校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 34,
+    "name": "池端・田村（北陸電力石川）",
+    "information": [
+      {
+        "lastName": "池端",
+        "firstName": "佑紀",
+        "team": "北陸電力石川",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "池端_佑紀_北陸電力石川"
+      },
+      {
+        "lastName": "田村",
+        "firstName": "陽寿介",
+        "team": "能美クラブ",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "田村_陽寿介_能美クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 35,
+    "name": "岩﨑・原（ＮＴＴ西日本）",
+    "information": [
+      {
+        "lastName": "岩﨑",
+        "firstName": "圭",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "岩﨑_圭_ＮＴＴ西日本"
+      },
+      {
+        "lastName": "原",
+        "firstName": "侑輝",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "原_侑輝_ＮＴＴ西日本"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 36,
+    "name": "花田・山田（京都市役所）",
+    "information": [
+      {
+        "lastName": "花田",
+        "firstName": "直弥",
+        "team": "京都市役所",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "花田_直弥_京都市役所"
+      },
+      {
+        "lastName": "山田",
+        "firstName": "拓未",
+        "team": "大神子病院",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "山田_拓未_大神子病院"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 37,
+    "name": "後藤・三輪（早稲田大学）",
+    "information": [
+      {
+        "lastName": "後藤",
+        "firstName": "佳佑",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "後藤_佳佑_早稲田大学"
+      },
+      {
+        "lastName": "三輪",
+        "firstName": "惇平",
+        "team": "同志社大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "三輪_惇平_同志社大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 38,
+    "name": "太田・菅原（JX金属 倉見）",
+    "information": [
+      {
+        "lastName": "太田",
+        "firstName": "努",
+        "team": "JX金属 倉見",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "太田_努_JX金属 倉見"
+      },
+      {
+        "lastName": "菅原",
+        "firstName": "貴之",
+        "team": "JX金属 倉見",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "菅原_貴之_JX金属 倉見"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 39,
+    "name": "林・新沼（東北高校）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "民生",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "林_民生_東北高校"
+      },
+      {
+        "lastName": "新沼",
+        "firstName": "舜大",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "新沼_舜大_東北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 40,
+    "name": "長川・夏見（三菱電機）",
+    "information": [
+      {
+        "lastName": "長川",
+        "firstName": "剣大",
+        "team": "三菱電機",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "長川_剣大_三菱電機"
+      },
+      {
+        "lastName": "夏見",
+        "firstName": "佳憲",
+        "team": "三菱電機",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "夏見_佳憲_三菱電機"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 41,
+    "name": "岩﨑・鈴木（碓氷安中クラブ）",
+    "information": [
+      {
+        "lastName": "岩﨑",
+        "firstName": "湧士",
+        "team": "碓氷安中クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "岩﨑_湧士_碓氷安中クラブ"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "亮太",
+        "team": "伊勢崎クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "鈴木_亮太_伊勢崎クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 42,
+    "name": "沖野・古田（愛知学院大学）",
+    "information": [
+      {
+        "lastName": "沖野",
+        "firstName": "天祐",
+        "team": "愛知学院大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "沖野_天祐_愛知学院大学"
+      },
+      {
+        "lastName": "古田",
+        "firstName": "裕亮",
+        "team": "愛知学院大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "古田_裕亮_愛知学院大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 43,
+    "name": "緒方・横江（美馬市体育協会）",
+    "information": [
+      {
+        "lastName": "緒方",
+        "firstName": "寛和",
+        "team": "美馬市体育協会",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "緒方_寛和_美馬市体育協会"
+      },
+      {
+        "lastName": "横江",
+        "firstName": "忠彦",
+        "team": "小津クラブ",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "横江_忠彦_小津クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 44,
+    "name": "十津川・秋元（市川市役所）",
+    "information": [
+      {
+        "lastName": "十津川",
+        "firstName": "将義",
+        "team": "市川市役所",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "十津川_将義_市川市役所"
+      },
+      {
+        "lastName": "秋元",
+        "firstName": "祐介",
+        "team": "市川市役所",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "秋元_祐介_市川市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 45,
+    "name": "宇野・藤田（青森県高体連・教員クラブ）",
+    "information": [
+      {
+        "lastName": "宇野",
+        "firstName": "吉正",
+        "team": "青森県高体連・教員クラブ",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "宇野_吉正_青森県高体連・教員クラブ"
+      },
+      {
+        "lastName": "藤田",
+        "firstName": "寛輝",
+        "team": "青森県高体連・教員クラブ",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "藤田_寛輝_青森県高体連・教員クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 46,
+    "name": "藤田・青木（斐川クラブ）",
+    "information": [
+      {
+        "lastName": "藤田",
+        "firstName": "大輝",
+        "team": "斐川クラブ",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "藤田_大輝_斐川クラブ"
+      },
+      {
+        "lastName": "青木",
+        "firstName": "佑風",
+        "team": "福山平成大学",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "青木_佑風_福山平成大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 47,
+    "name": "稲積・井口（氷見市協会）",
+    "information": [
+      {
+        "lastName": "稲積",
+        "firstName": "京之介",
+        "team": "氷見市協会",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "稲積_京之介_氷見市協会"
+      },
+      {
+        "lastName": "井口",
+        "firstName": "雄一",
+        "team": "スマッシュイグチクラブ",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "井口_雄一_スマッシュイグチクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 48,
+    "name": "水澤・村上（ＮＴＴ西日本）",
+    "information": [
+      {
+        "lastName": "水澤",
+        "firstName": "悠太",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "水澤_悠太_ＮＴＴ西日本"
+      },
+      {
+        "lastName": "村上",
+        "firstName": "雄人",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "村上_雄人_ＮＴＴ西日本"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 49,
+    "name": "三木・薄井（せせらぎクラブ）",
+    "information": [
+      {
+        "lastName": "三木",
+        "firstName": "英治",
+        "team": "せせらぎクラブ",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "三木_英治_せせらぎクラブ"
+      },
+      {
+        "lastName": "薄井",
+        "firstName": "博一",
+        "team": "せせらぎクラブ",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "薄井_博一_せせらぎクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 50,
+    "name": "坪井・斉藤（明治大学）",
+    "information": [
+      {
+        "lastName": "坪井",
+        "firstName": "雄太",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "坪井_雄太_明治大学"
+      },
+      {
+        "lastName": "斉藤",
+        "firstName": "大樹",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "斉藤_大樹_明治大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 51,
+    "name": "松久・黒田（大商鬼魄会）",
+    "information": [
+      {
+        "lastName": "松久",
+        "firstName": "大地",
+        "team": "大商鬼魄会",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "松久_大地_大商鬼魄会"
+      },
+      {
+        "lastName": "黒田",
+        "firstName": "龍司",
+        "team": "ＰＰＣ佐賀関製錬所",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "黒田_龍司_ＰＰＣ佐賀関製錬所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 52,
+    "name": "田中・濱名（川崎重工明石）",
+    "information": [
+      {
+        "lastName": "田中",
+        "firstName": "佑弥",
+        "team": "川崎重工明石",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "田中_佑弥_川崎重工明石"
+      },
+      {
+        "lastName": "濱名",
+        "firstName": "航史",
+        "team": "教友クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "濱名_航史_教友クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 53,
+    "name": "白井・伊比（アキム）",
+    "information": [
+      {
+        "lastName": "白井",
+        "firstName": "拓巳",
+        "team": "アキム",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "白井_拓巳_アキム"
+      },
+      {
+        "lastName": "伊比",
+        "firstName": "達彦",
+        "team": "アキム",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "伊比_達彦_アキム"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 54,
+    "name": "広光・杉尾（松葉クラブ）",
+    "information": [
+      {
+        "lastName": "広光",
+        "firstName": "謙太",
+        "team": "松葉クラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "広光_謙太_松葉クラブ"
+      },
+      {
+        "lastName": "杉尾",
+        "firstName": "卓馬",
+        "team": "大鹿印刷",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "杉尾_卓馬_大鹿印刷"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 55,
+    "name": "廣瀬・村上（松山大学）",
+    "information": [
+      {
+        "lastName": "廣瀬",
+        "firstName": "祥",
+        "team": "松山大学",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "廣瀬_祥_松山大学"
+      },
+      {
+        "lastName": "村上",
+        "firstName": "拓也",
+        "team": "松山大学",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "村上_拓也_松山大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 56,
+    "name": "泉山・伊藤（盛岡市役所）",
+    "information": [
+      {
+        "lastName": "泉山",
+        "firstName": "翔太",
+        "team": "盛岡市役所",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "泉山_翔太_盛岡市役所"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "健人",
+        "team": "見前ＳＴＣ",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "伊藤_健人_見前ＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 57,
+    "name": "飯沼・和知（ソフトテニス千葉クラブ）",
+    "information": [
+      {
+        "lastName": "飯沼",
+        "firstName": "鉄雄",
+        "team": "ソフトテニス千葉クラブ",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "飯沼_鉄雄_ソフトテニス千葉クラブ"
+      },
+      {
+        "lastName": "和知",
+        "firstName": "邦大",
+        "team": "東洋大学",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "和知_邦大_東洋大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 58,
+    "name": "小田・丸山（尾道高校）",
+    "information": [
+      {
+        "lastName": "小田",
+        "firstName": "龍翔",
+        "team": "尾道高校",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "小田_龍翔_尾道高校"
+      },
+      {
+        "lastName": "丸山",
+        "firstName": "章",
+        "team": "尾道高校",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "丸山_章_尾道高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 59,
+    "name": "大橋・後藤（大神子病院）",
+    "information": [
+      {
+        "lastName": "大橋",
+        "firstName": "拓実",
+        "team": "大神子病院",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "大橋_拓実_大神子病院"
+      },
+      {
+        "lastName": "後藤",
+        "firstName": "諒太",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "後藤_諒太_ワタキューセイモア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 60,
+    "name": "桂・高月（ヨネックス）",
+    "information": [
+      {
+        "lastName": "桂",
+        "firstName": "拓也",
+        "team": "ヨネックス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "桂_拓也_ヨネックス"
+      },
+      {
+        "lastName": "高月",
+        "firstName": "拓磨",
+        "team": "ヨネックス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "高月_拓磨_ヨネックス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 61,
+    "name": "林・濵岡（北陸電力福井支店）",
+    "information": [
+      {
+        "lastName": "林",
+        "firstName": "亮太",
+        "team": "北陸電力福井支店",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "林_亮太_北陸電力福井支店"
+      },
+      {
+        "lastName": "濵岡",
+        "firstName": "大地",
+        "team": "福井ＳＴクラブ",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "濵岡_大地_福井ＳＴクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 62,
+    "name": "中別府・池口（高田商業高校）",
+    "information": [
+      {
+        "lastName": "中別府",
+        "firstName": "凌",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "中別府_凌_高田商業高校"
+      },
+      {
+        "lastName": "池口",
+        "firstName": "季将",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "池口_季将_高田商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 63,
+    "name": "中川・名取（山梨大学）",
+    "information": [
+      {
+        "lastName": "中川",
+        "firstName": "一乃介",
+        "team": "山梨大学",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "中川_一乃介_山梨大学"
+      },
+      {
+        "lastName": "名取",
+        "firstName": "拓巳",
+        "team": "テニサー",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "名取_拓巳_テニサー"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 64,
+    "name": "倉橋・加藤（中京大学）",
+    "information": [
+      {
+        "lastName": "倉橋",
+        "firstName": "凜",
+        "team": "中京大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "倉橋_凜_中京大学"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "稜",
+        "team": "中京大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "加藤_稜_中京大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 65,
+    "name": "上田・松尾（綾小路クラブ）",
+    "information": [
+      {
+        "lastName": "上田",
+        "firstName": "哲也",
+        "team": "綾小路クラブ",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "上田_哲也_綾小路クラブ"
+      },
+      {
+        "lastName": "松尾",
+        "firstName": "誠",
+        "team": "綾小路クラブ",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "松尾_誠_綾小路クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 66,
+    "name": "濵田・大和崎（東大阪市協会）",
+    "information": [
+      {
+        "lastName": "濵田",
+        "firstName": "冬威",
+        "team": "東大阪市協会",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "濵田_冬威_東大阪市協会"
+      },
+      {
+        "lastName": "大和崎",
+        "firstName": "圭介",
+        "team": "東大阪市協会",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "大和崎_圭介_東大阪市協会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 67,
+    "name": "田島・高橋（高崎商業高校）",
+    "information": [
+      {
+        "lastName": "田島",
+        "firstName": "知征",
+        "team": "高崎商業高校",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "田島_知征_高崎商業高校"
+      },
+      {
+        "lastName": "高橋",
+        "firstName": "悠里",
+        "team": "高崎商業高校",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "高橋_悠里_高崎商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 68,
+    "name": "國松・新倉（魚沼クラブ）",
+    "information": [
+      {
+        "lastName": "國松",
+        "firstName": "貴洋",
+        "team": "魚沼クラブ",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "國松_貴洋_魚沼クラブ"
+      },
+      {
+        "lastName": "新倉",
+        "firstName": "裕二",
+        "team": "新潟トキめきクラブ",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "新倉_裕二_新潟トキめきクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 69,
+    "name": "櫛・大友（ウィナークラブ）",
+    "information": [
+      {
+        "lastName": "櫛",
+        "firstName": "雅彦",
+        "team": "ウィナークラブ",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "櫛_雅彦_ウィナークラブ"
+      },
+      {
+        "lastName": "大友",
+        "firstName": "聡明",
+        "team": "ウィナークラブ",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "大友_聡明_ウィナークラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 70,
+    "name": "森田・高田（浜松ホトニクス）",
+    "information": [
+      {
+        "lastName": "森田",
+        "firstName": "恒",
+        "team": "浜松ホトニクス",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "森田_恒_浜松ホトニクス"
+      },
+      {
+        "lastName": "高田",
+        "firstName": "修治",
+        "team": "浜松ホトニクス",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "高田_修治_浜松ホトニクス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 71,
+    "name": "長尾・松本（早稲田大学）",
+    "information": [
+      {
+        "lastName": "長尾",
+        "firstName": "景陽",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "長尾_景陽_早稲田大学"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "倫旺",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "松本_倫旺_早稲田大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 72,
+    "name": "阪本・林（高田商業高校）",
+    "information": [
+      {
+        "lastName": "阪本",
+        "firstName": "崚",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "阪本_崚_高田商業高校"
+      },
+      {
+        "lastName": "林",
+        "firstName": "湧太郎",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "林_湧太郎_高田商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 73,
+    "name": "佐藤・朝倉（鶴岡球心クラブ）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "潤",
+        "team": "鶴岡球心クラブ",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "佐藤_潤_鶴岡球心クラブ"
+      },
+      {
+        "lastName": "朝倉",
+        "firstName": "祐太",
+        "team": "鶴岡球心クラブ",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "朝倉_祐太_鶴岡球心クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 74,
+    "name": "川﨑・森田（都城商業高校）",
+    "information": [
+      {
+        "lastName": "川﨑",
+        "firstName": "浩希",
+        "team": "都城商業高校",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "川﨑_浩希_都城商業高校"
+      },
+      {
+        "lastName": "森田",
+        "firstName": "晴紀",
+        "team": "都城商業高校",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "森田_晴紀_都城商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 75,
+    "name": "飯田・中島（日本大学）",
+    "information": [
+      {
+        "lastName": "飯田",
+        "firstName": "浩晶",
+        "team": "日本大学",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "飯田_浩晶_日本大学"
+      },
+      {
+        "lastName": "中島",
+        "firstName": "賢也",
+        "team": "日立・日高",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "中島_賢也_日立・日高"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 76,
+    "name": "西田・徳川（ＹＫＫ）",
+    "information": [
+      {
+        "lastName": "西田",
+        "firstName": "慎",
+        "team": "ＹＫＫ",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "西田_慎_ＹＫＫ"
+      },
+      {
+        "lastName": "徳川",
+        "firstName": "開吏",
+        "team": "不二越",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "徳川_開吏_不二越"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 77,
+    "name": "吉田・山本（太平洋工業）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "雄紀",
+        "team": "太平洋工業",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "吉田_雄紀_太平洋工業"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "祐輝",
+        "team": "太平洋工業",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "山本_祐輝_太平洋工業"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 78,
+    "name": "山口・中原（マツダ）",
+    "information": [
+      {
+        "lastName": "山口",
+        "firstName": "大志",
+        "team": "マツダ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "山口_大志_マツダ"
+      },
+      {
+        "lastName": "中原",
+        "firstName": "寛海",
+        "team": "マツダ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "中原_寛海_マツダ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 79,
+    "name": "大井・東（谷河内倶楽部）",
+    "information": [
+      {
+        "lastName": "大井",
+        "firstName": "良輔",
+        "team": "谷河内倶楽部",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "大井_良輔_谷河内倶楽部"
+      },
+      {
+        "lastName": "東",
+        "firstName": "遼祐",
+        "team": "谷河内倶楽部",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "東_遼祐_谷河内倶楽部"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 80,
+    "name": "森谷・森川（亀城クラブ）",
+    "information": [
+      {
+        "lastName": "森谷",
+        "firstName": "康弘",
+        "team": "亀城クラブ",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "森谷_康弘_亀城クラブ"
+      },
+      {
+        "lastName": "森川",
+        "firstName": "樹",
+        "team": "壱庭会",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "森川_樹_壱庭会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 81,
+    "name": "花村・田村（粉河ＫＴＣ）",
+    "information": [
+      {
+        "lastName": "花村",
+        "firstName": "貴弘",
+        "team": "粉河ＫＴＣ",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "花村_貴弘_粉河ＫＴＣ"
+      },
+      {
+        "lastName": "田村",
+        "firstName": "彰英",
+        "team": "伊都ソフトテニス協会",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "田村_彰英_伊都ソフトテニス協会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 82,
+    "name": "幡谷・竹谷（杉戸中学校）",
+    "information": [
+      {
+        "lastName": "幡谷",
+        "firstName": "康平",
+        "team": "杉戸中学校",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "幡谷_康平_杉戸中学校"
+      },
+      {
+        "lastName": "竹谷",
+        "firstName": "航洋",
+        "team": "杉戸中学校",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "竹谷_航洋_杉戸中学校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 83,
+    "name": "北野・鈴木（東北高校）",
+    "information": [
+      {
+        "lastName": "北野",
+        "firstName": "亮介",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "北野_亮介_東北高校"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "竜弥",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "鈴木_竜弥_東北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 84,
+    "name": "瀬口・仲野（トヨタ自動車）",
+    "information": [
+      {
+        "lastName": "瀬口",
+        "firstName": "翔太",
+        "team": "トヨタ自動車",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "瀬口_翔太_トヨタ自動車"
+      },
+      {
+        "lastName": "仲野",
+        "firstName": "聖矢",
+        "team": "トヨタ自動車",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "仲野_聖矢_トヨタ自動車"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 85,
+    "name": "鈴木・下田（伊勢崎クラブ）",
+    "information": [
+      {
+        "lastName": "鈴木",
+        "firstName": "祐大",
+        "team": "伊勢崎クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "鈴木_祐大_伊勢崎クラブ"
+      },
+      {
+        "lastName": "下田",
+        "firstName": "和也",
+        "team": "前橋クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "下田_和也_前橋クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 86,
+    "name": "山本・宇野（龍谷大学）",
+    "information": [
+      {
+        "lastName": "山本",
+        "firstName": "大地",
+        "team": "龍谷大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "山本_大地_龍谷大学"
+      },
+      {
+        "lastName": "宇野",
+        "firstName": "勝太",
+        "team": "滋賀２１クラブ",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "宇野_勝太_滋賀２１クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 87,
+    "name": "櫻井・森本（クラレ岡山）",
+    "information": [
+      {
+        "lastName": "櫻井",
+        "firstName": "嘉記",
+        "team": "クラレ岡山",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "櫻井_嘉記_クラレ岡山"
+      },
+      {
+        "lastName": "森本",
+        "firstName": "遼太",
+        "team": "クラレ岡山",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "森本_遼太_クラレ岡山"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 88,
+    "name": "内海・滝本（蘭友クラブ）",
+    "information": [
+      {
+        "lastName": "内海",
+        "firstName": "大輔",
+        "team": "蘭友クラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "内海_大輔_蘭友クラブ"
+      },
+      {
+        "lastName": "滝本",
+        "firstName": "誠一",
+        "team": "歌志内市役所",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "滝本_誠一_歌志内市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 89,
+    "name": "河野・榊原（日本体育大学）",
+    "information": [
+      {
+        "lastName": "河野",
+        "firstName": "斗夢",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "河野_斗夢_日本体育大学"
+      },
+      {
+        "lastName": "榊原",
+        "firstName": "耕平",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "榊原_耕平_日本体育大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 90,
+    "name": "高山・高山（兼六クラブ）",
+    "information": [
+      {
+        "lastName": "高山",
+        "firstName": "泰英",
+        "team": "兼六クラブ",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "高山_泰英_兼六クラブ"
+      },
+      {
+        "lastName": "高山",
+        "firstName": "知之",
+        "team": "兼六クラブ",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "高山_知之_兼六クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 91,
+    "name": "寄川・仲村渠（JAおきなわ）",
+    "information": [
+      {
+        "lastName": "寄川",
+        "firstName": "直城",
+        "team": "JAおきなわ",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "寄川_直城_JAおきなわ"
+      },
+      {
+        "lastName": "仲村渠",
+        "firstName": "俊",
+        "team": "JAおきなわ",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "仲村渠_俊_JAおきなわ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 92,
+    "name": "狩俣・日下（富士通小山）",
+    "information": [
+      {
+        "lastName": "狩俣",
+        "firstName": "勇太",
+        "team": "富士通小山",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "狩俣_勇太_富士通小山"
+      },
+      {
+        "lastName": "日下",
+        "firstName": "泰希",
+        "team": "富士通小山",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "日下_泰希_富士通小山"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 93,
+    "name": "伊東・崎田（しらさぎクラブ）",
+    "information": [
+      {
+        "lastName": "伊東",
+        "firstName": "裕晃",
+        "team": "しらさぎクラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "伊東_裕晃_しらさぎクラブ"
+      },
+      {
+        "lastName": "崎田",
+        "firstName": "純平",
+        "team": "しらさぎクラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "崎田_純平_しらさぎクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 94,
+    "name": "大坂・杉山（美郷支部）",
+    "information": [
+      {
+        "lastName": "大坂",
+        "firstName": "一輝",
+        "team": "美郷支部",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "大坂_一輝_美郷支部"
+      },
+      {
+        "lastName": "杉山",
+        "firstName": "誠之",
+        "team": "横手市連盟",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "杉山_誠之_横手市連盟"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 95,
+    "name": "本倉・丸山（明治大学）",
+    "information": [
+      {
+        "lastName": "本倉",
+        "firstName": "健太郎",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "本倉_健太郎_明治大学"
+      },
+      {
+        "lastName": "丸山",
+        "firstName": "海斗",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "丸山_海斗_明治大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 96,
+    "name": "丸中・長江（ＮＴＴ西日本）",
+    "information": [
+      {
+        "lastName": "丸中",
+        "firstName": "大明",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "丸中_大明_ＮＴＴ西日本"
+      },
+      {
+        "lastName": "長江",
+        "firstName": "光一",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "長江_光一_ＮＴＴ西日本"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 97,
+    "name": "神之門・田沢（宝木クラブ）",
+    "information": [
+      {
+        "lastName": "神之門",
+        "firstName": "拓",
+        "team": "宝木クラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "神之門_拓_宝木クラブ"
+      },
+      {
+        "lastName": "田沢",
+        "firstName": "諒",
+        "team": "宝木クラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "田沢_諒_宝木クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 98,
+    "name": "竹添・古賀（関西外国語大学）",
+    "information": [
+      {
+        "lastName": "竹添",
+        "firstName": "幹倫",
+        "team": "関西外国語大学",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "竹添_幹倫_関西外国語大学"
+      },
+      {
+        "lastName": "古賀",
+        "firstName": "亮志",
+        "team": "関西学院大学",
+        "prefecture": "長崎県",
+        "playerId": null,
+        "tempId": "古賀_亮志_関西学院大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 99,
+    "name": "星・松田（東北高校）",
+    "information": [
+      {
+        "lastName": "星",
+        "firstName": "光一",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "星_光一_東北高校"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "直大",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "松田_直大_東北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 100,
+    "name": "石川・岩﨑（厚木市役所）",
+    "information": [
+      {
+        "lastName": "石川",
+        "firstName": "裕基",
+        "team": "厚木市役所",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "石川_裕基_厚木市役所"
+      },
+      {
+        "lastName": "岩﨑",
+        "firstName": "拓斗",
+        "team": "厚木市役所",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "岩﨑_拓斗_厚木市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 101,
+    "name": "荒武・内山（ワタキューセイモア）",
+    "information": [
+      {
+        "lastName": "荒武",
+        "firstName": "光",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "荒武_光_ワタキューセイモア"
+      },
+      {
+        "lastName": "内山",
+        "firstName": "睦基",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "内山_睦基_ワタキューセイモア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 102,
+    "name": "早川・鈴木（福井県庁）",
+    "information": [
+      {
+        "lastName": "早川",
+        "firstName": "和宏",
+        "team": "福井県庁",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "早川_和宏_福井県庁"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "琢巳",
+        "team": "福井県庁",
+        "prefecture": "福井県",
+        "playerId": null,
+        "tempId": "鈴木_琢巳_福井県庁"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 103,
+    "name": "北本・熊本（高田商業高校）",
+    "information": [
+      {
+        "lastName": "北本",
+        "firstName": "達己",
+        "team": "高田商業高校",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "北本_達己_高田商業高校"
+      },
+      {
+        "lastName": "熊本",
+        "firstName": "脩吾",
+        "team": "和歌山北高校",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "熊本_脩吾_和歌山北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 104,
+    "name": "藤村・中島（高知工科大学）",
+    "information": [
+      {
+        "lastName": "藤村",
+        "firstName": "拓弥",
+        "team": "高知工科大学",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "藤村_拓弥_高知工科大学"
+      },
+      {
+        "lastName": "中島",
+        "firstName": "悠輔",
+        "team": "高知工科大学",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "中島_悠輔_高知工科大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 105,
+    "name": "山田・内山（医療法人社団 心）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "就蔵",
+        "team": "医療法人社団 心",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "山田_就蔵_医療法人社団 心"
+      },
+      {
+        "lastName": "内山",
+        "firstName": "晃太",
+        "team": "医療法人社団 心",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "内山_晃太_医療法人社団 心"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 106,
+    "name": "仲島・桑原（東京経済大学）",
+    "information": [
+      {
+        "lastName": "仲島",
+        "firstName": "光",
+        "team": "東京経済大学",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "仲島_光_東京経済大学"
+      },
+      {
+        "lastName": "桑原",
+        "firstName": "丈",
+        "team": "ＯＫＩ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "桑原_丈_ＯＫＩ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 107,
+    "name": "三好・高村（関西外国語大学）",
+    "information": [
+      {
+        "lastName": "三好",
+        "firstName": "悠大",
+        "team": "関西外国語大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "三好_悠大_関西外国語大学"
+      },
+      {
+        "lastName": "高村",
+        "firstName": "悌紳",
+        "team": "関西外国語大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "高村_悌紳_関西外国語大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 108,
+    "name": "塩田・井口（高商ＯＢクラブ）",
+    "information": [
+      {
+        "lastName": "塩田",
+        "firstName": "顯",
+        "team": "高商ＯＢクラブ",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "塩田_顯_高商ＯＢクラブ"
+      },
+      {
+        "lastName": "井口",
+        "firstName": "雄介",
+        "team": "スマッシュイグチクラブ",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "井口_雄介_スマッシュイグチクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 109,
+    "name": "村田・井田（東ソー南陽）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "秀斗",
+        "team": "東ソー南陽",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "村田_秀斗_東ソー南陽"
+      },
+      {
+        "lastName": "井田",
+        "firstName": "聖哉",
+        "team": "東ソー南陽",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "井田_聖哉_東ソー南陽"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 110,
+    "name": "高橋・増田（北海道科学大学高校）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "臣",
+        "team": "北海道科学大学高校",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "高橋_臣_北海道科学大学高校"
+      },
+      {
+        "lastName": "増田",
+        "firstName": "達四郎",
+        "team": "北海道科学大学高校",
+        "prefecture": "高体連",
+        "playerId": null,
+        "tempId": "増田_達四郎_北海道科学大学高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 111,
+    "name": "清野・小野（八戸工業大学第一高校）",
+    "information": [
+      {
+        "lastName": "清野",
+        "firstName": "蓮",
+        "team": "八戸工業大学第一高校",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "清野_蓮_八戸工業大学第一高校"
+      },
+      {
+        "lastName": "小野",
+        "firstName": "大地",
+        "team": "八戸工業大学第一高校",
+        "prefecture": "青森県",
+        "playerId": null,
+        "tempId": "小野_大地_八戸工業大学第一高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 112,
+    "name": "寺下・堂野（能登町役場）",
+    "information": [
+      {
+        "lastName": "寺下",
+        "firstName": "洸平",
+        "team": "能登町役場",
+        "prefecture": "石川県",
+        "playerId": null,
+        "tempId": "寺下_洸平_能登町役場"
+      },
+      {
+        "lastName": "堂野",
+        "firstName": "貴寛",
+        "team": "アキム",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "堂野_貴寛_アキム"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 113,
+    "name": "松岡・田中（小平クラブ）",
+    "information": [
+      {
+        "lastName": "松岡",
+        "firstName": "裕次郎",
+        "team": "小平クラブ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "松岡_裕次郎_小平クラブ"
+      },
+      {
+        "lastName": "田中",
+        "firstName": "祐次郎",
+        "team": "日立・日高",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "田中_祐次郎_日立・日高"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 114,
+    "name": "菅野・名取（川口市役所）",
+    "information": [
+      {
+        "lastName": "菅野",
+        "firstName": "創世",
+        "team": "川口市役所",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "菅野_創世_川口市役所"
+      },
+      {
+        "lastName": "名取",
+        "firstName": "敬恩",
+        "team": "川口市役所",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "名取_敬恩_川口市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 115,
+    "name": "池田・島津（関西大学）",
+    "information": [
+      {
+        "lastName": "池田",
+        "firstName": "侑生",
+        "team": "関西大学",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "池田_侑生_関西大学"
+      },
+      {
+        "lastName": "島津",
+        "firstName": "勇佑",
+        "team": "関西大学",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "島津_勇佑_関西大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 116,
+    "name": "一ツ木・大野（鹿児島商業高校）",
+    "information": [
+      {
+        "lastName": "一ツ木",
+        "firstName": "開輝",
+        "team": "鹿児島商業高校",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "一ツ木_開輝_鹿児島商業高校"
+      },
+      {
+        "lastName": "大野",
+        "firstName": "響生",
+        "team": "鹿児島商業高校",
+        "prefecture": "鹿児島県",
+        "playerId": null,
+        "tempId": "大野_響生_鹿児島商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 117,
+    "name": "香川・中西（なかよしクラブ）",
+    "information": [
+      {
+        "lastName": "香川",
+        "firstName": "翔",
+        "team": "なかよしクラブ",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "香川_翔_なかよしクラブ"
+      },
+      {
+        "lastName": "中西",
+        "firstName": "達也",
+        "team": "亀城クラブ",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "中西_達也_亀城クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 118,
+    "name": "市橋・石川（三菱電機）",
+    "information": [
+      {
+        "lastName": "市橋",
+        "firstName": "拓樹",
+        "team": "三菱電機",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "市橋_拓樹_三菱電機"
+      },
+      {
+        "lastName": "石川",
+        "firstName": "直紀",
+        "team": "三菱電機",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "石川_直紀_三菱電機"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 119,
+    "name": "林田・柴田（ヨネックス）",
+    "information": [
+      {
+        "lastName": "林田",
+        "firstName": "和樹",
+        "team": "ヨネックス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "林田_和樹_ヨネックス"
+      },
+      {
+        "lastName": "柴田",
+        "firstName": "章平",
+        "team": "ヨネックス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "柴田_章平_ヨネックス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 120,
+    "name": "増田・九島（和歌山県庁）",
+    "information": [
+      {
+        "lastName": "増田",
+        "firstName": "健人",
+        "team": "和歌山県庁",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "増田_健人_和歌山県庁"
+      },
+      {
+        "lastName": "九島",
+        "firstName": "一馬",
+        "team": "ミズノ",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "九島_一馬_ミズノ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 121,
+    "name": "草野・小野（田村高校）",
+    "information": [
+      {
+        "lastName": "草野",
+        "firstName": "緋夏",
+        "team": "田村高校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "草野_緋夏_田村高校"
+      },
+      {
+        "lastName": "小野",
+        "firstName": "和磨",
+        "team": "田村高校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "小野_和磨_田村高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 122,
+    "name": "廣田・奥嶋（大神子病院）",
+    "information": [
+      {
+        "lastName": "廣田",
+        "firstName": "達也",
+        "team": "大神子病院",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "廣田_達也_大神子病院"
+      },
+      {
+        "lastName": "奥嶋",
+        "firstName": "純平",
+        "team": "今治市役所",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "奥嶋_純平_今治市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 123,
+    "name": "土佐・伊藤（木更津総合高校）",
+    "information": [
+      {
+        "lastName": "土佐",
+        "firstName": "遼汰",
+        "team": "木更津総合高校",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "土佐_遼汰_木更津総合高校"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "啓悟",
+        "team": "木更津総合高校",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "伊藤_啓悟_木更津総合高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 124,
+    "name": "庄司・林（Ｍ・１．１クラブ）",
+    "information": [
+      {
+        "lastName": "庄司",
+        "firstName": "智哉",
+        "team": "Ｍ・１．１クラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "庄司_智哉_Ｍ・１．１クラブ"
+      },
+      {
+        "lastName": "林",
+        "firstName": "優太",
+        "team": "同志社大学",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "林_優太_同志社大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 125,
+    "name": "麻生・早坂（東北福祉大学）",
+    "information": [
+      {
+        "lastName": "麻生",
+        "firstName": "裕也",
+        "team": "東北福祉大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "麻生_裕也_東北福祉大学"
+      },
+      {
+        "lastName": "早坂",
+        "firstName": "隆之介",
+        "team": "東北福祉大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "早坂_隆之介_東北福祉大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 126,
+    "name": "黒田・萱島（新日鐵住金大分）",
+    "information": [
+      {
+        "lastName": "黒田",
+        "firstName": "惣太郎",
+        "team": "新日鐵住金大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "黒田_惣太郎_新日鐵住金大分"
+      },
+      {
+        "lastName": "萱島",
+        "firstName": "創太",
+        "team": "新日鐵住金大分",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "萱島_創太_新日鐵住金大分"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 127,
+    "name": "加藤・荒山（岐阜しらさぎクラブ）",
+    "information": [
+      {
+        "lastName": "加藤",
+        "firstName": "達郎",
+        "team": "岐阜しらさぎクラブ",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "加藤_達郎_岐阜しらさぎクラブ"
+      },
+      {
+        "lastName": "荒山",
+        "firstName": "雅治",
+        "team": "岐阜県高校教員",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "荒山_雅治_岐阜県高校教員"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 128,
+    "name": "櫻田・木村（日立・日高）",
+    "information": [
+      {
+        "lastName": "櫻田",
+        "firstName": "啓介",
+        "team": "日立・日高",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "櫻田_啓介_日立・日高"
+      },
+      {
+        "lastName": "木村",
+        "firstName": "恭兵",
+        "team": "水戸白友会",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "木村_恭兵_水戸白友会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 129,
+    "name": "吉田・西田（高田商業高校）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "亮介",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "吉田_亮介_高田商業高校"
+      },
+      {
+        "lastName": "西田",
+        "firstName": "駿人",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "西田_駿人_高田商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 130,
+    "name": "大谷・岡崎（三重高校）",
+    "information": [
+      {
+        "lastName": "大谷",
+        "firstName": "陽登",
+        "team": "三重高校",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "大谷_陽登_三重高校"
+      },
+      {
+        "lastName": "岡崎",
+        "firstName": "聡太",
+        "team": "三重高校",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "岡崎_聡太_三重高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 131,
+    "name": "中平・米澤（明治大学）",
+    "information": [
+      {
+        "lastName": "中平",
+        "firstName": "慎吾",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "中平_慎吾_明治大学"
+      },
+      {
+        "lastName": "米澤",
+        "firstName": "要",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "米澤_要_明治大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 132,
+    "name": "鬼頭・塩嵜（山口教員クラブ）",
+    "information": [
+      {
+        "lastName": "鬼頭",
+        "firstName": "貴之",
+        "team": "山口教員クラブ",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "鬼頭_貴之_山口教員クラブ"
+      },
+      {
+        "lastName": "塩嵜",
+        "firstName": "弘騎",
+        "team": "和歌山県庁",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "塩嵜_弘騎_和歌山県庁"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 133,
+    "name": "藤田・神保（ベスト）",
+    "information": [
+      {
+        "lastName": "藤田",
+        "firstName": "真司",
+        "team": "ベスト",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "藤田_真司_ベスト"
+      },
+      {
+        "lastName": "神保",
+        "firstName": "正和",
+        "team": "東京ガス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "神保_正和_東京ガス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 134,
+    "name": "日下部・斎藤（山形中央高校）",
+    "information": [
+      {
+        "lastName": "日下部",
+        "firstName": "空良",
+        "team": "山形中央高校",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "日下部_空良_山形中央高校"
+      },
+      {
+        "lastName": "斎藤",
+        "firstName": "紘希",
+        "team": "山形中央高校",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "斎藤_紘希_山形中央高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 135,
+    "name": "加藤・星（伊勢崎クラブ）",
+    "information": [
+      {
+        "lastName": "加藤",
+        "firstName": "壮",
+        "team": "伊勢崎クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "加藤_壮_伊勢崎クラブ"
+      },
+      {
+        "lastName": "星",
+        "firstName": "雄樹",
+        "team": "伊勢崎クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "星_雄樹_伊勢崎クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 136,
+    "name": "石川・松山（中京大学）",
+    "information": [
+      {
+        "lastName": "石川",
+        "firstName": "知輝",
+        "team": "中京大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "石川_知輝_中京大学"
+      },
+      {
+        "lastName": "松山",
+        "firstName": "晃介",
+        "team": "中京大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "松山_晃介_中京大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 137,
+    "name": "溝端・宮田（日本体育大学）",
+    "information": [
+      {
+        "lastName": "溝端",
+        "firstName": "亮二",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "溝端_亮二_日本体育大学"
+      },
+      {
+        "lastName": "宮田",
+        "firstName": "裕章",
+        "team": "太平洋工業",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "宮田_裕章_太平洋工業"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 138,
+    "name": "緒方・荒木（ＫＳＴアカデミー）",
+    "information": [
+      {
+        "lastName": "緒方",
+        "firstName": "貴浩",
+        "team": "ＫＳＴアカデミー",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "緒方_貴浩_ＫＳＴアカデミー"
+      },
+      {
+        "lastName": "荒木",
+        "firstName": "翔",
+        "team": "苓北クラブ",
+        "prefecture": "熊本県",
+        "playerId": null,
+        "tempId": "荒木_翔_苓北クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 139,
+    "name": "的場・松田（昭和ホールディングス）",
+    "information": [
+      {
+        "lastName": "的場",
+        "firstName": "彬",
+        "team": "昭和ホールディングス",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "的場_彬_昭和ホールディングス"
+      },
+      {
+        "lastName": "松田",
+        "firstName": "祐二",
+        "team": "川崎重工明石",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "松田_祐二_川崎重工明石"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 140,
+    "name": "関口・加藤（滑川クラブ）",
+    "information": [
+      {
+        "lastName": "関口",
+        "firstName": "祥平",
+        "team": "滑川クラブ",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "関口_祥平_滑川クラブ"
+      },
+      {
+        "lastName": "加藤",
+        "firstName": "煕一",
+        "team": "滑川クラブ",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "加藤_煕一_滑川クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 141,
+    "name": "岩永・奥村（ＮＴＴ西日本中国）",
+    "information": [
+      {
+        "lastName": "岩永",
+        "firstName": "淳",
+        "team": "ＮＴＴ西日本中国",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "岩永_淳_ＮＴＴ西日本中国"
+      },
+      {
+        "lastName": "奥村",
+        "firstName": "陸矢",
+        "team": "綾小路クラブ",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "奥村_陸矢_綾小路クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 142,
+    "name": "中島・牧之瀬（飯田STA）",
+    "information": [
+      {
+        "lastName": "中島",
+        "firstName": "和志",
+        "team": "飯田STA",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "中島_和志_飯田STA"
+      },
+      {
+        "lastName": "牧之瀬",
+        "firstName": "和志",
+        "team": "飯田STA",
+        "prefecture": "長野県",
+        "playerId": null,
+        "tempId": "牧之瀬_和志_飯田STA"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 143,
+    "name": "安藤・内田（早稲田大学）",
+    "information": [
+      {
+        "lastName": "安藤",
+        "firstName": "優作",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "安藤_優作_早稲田大学"
+      },
+      {
+        "lastName": "内田",
+        "firstName": "理久",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "内田_理久_早稲田大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 144,
+    "name": "船水・林（ＮＴＴ西日本）",
+    "information": [
+      {
+        "lastName": "船水",
+        "firstName": "雄太",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "船水_雄太_ＮＴＴ西日本"
+      },
+      {
+        "lastName": "林",
+        "firstName": "大喜",
+        "team": "ＮＴＴ西日本",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "林_大喜_ＮＴＴ西日本"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 145,
+    "name": "金城・名嘉（クローズ名護）",
+    "information": [
+      {
+        "lastName": "金城",
+        "firstName": "博人",
+        "team": "クローズ名護",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "金城_博人_クローズ名護"
+      },
+      {
+        "lastName": "名嘉",
+        "firstName": "拓哉",
+        "team": "軟友会",
+        "prefecture": "沖縄県",
+        "playerId": null,
+        "tempId": "名嘉_拓哉_軟友会"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 146,
+    "name": "波塚・鮎澤（新潟トキめきクラブ）",
+    "information": [
+      {
+        "lastName": "波塚",
+        "firstName": "寿稀亜",
+        "team": "新潟トキめきクラブ",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "波塚_寿稀亜_新潟トキめきクラブ"
+      },
+      {
+        "lastName": "鮎澤",
+        "firstName": "貴博",
+        "team": "燕テニスクラブ",
+        "prefecture": "新潟県",
+        "playerId": null,
+        "tempId": "鮎澤_貴博_燕テニスクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 147,
+    "name": "柘植・村瀬（岡崎城西高校）",
+    "information": [
+      {
+        "lastName": "柘植",
+        "firstName": "省吾",
+        "team": "岡崎城西高校",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "柘植_省吾_岡崎城西高校"
+      },
+      {
+        "lastName": "村瀬",
+        "firstName": "伊織",
+        "team": "岡崎城西高校",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "村瀬_伊織_岡崎城西高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 148,
+    "name": "釜田・鈴木（せせらぎクラブ）",
+    "information": [
+      {
+        "lastName": "釜田",
+        "firstName": "昇",
+        "team": "せせらぎクラブ",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "釜田_昇_せせらぎクラブ"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "健",
+        "team": "JX金属 倉見",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "鈴木_健_JX金属 倉見"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 149,
+    "name": "原口・三木（日本体育大学）",
+    "information": [
+      {
+        "lastName": "原口",
+        "firstName": "峻一",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "原口_峻一_日本体育大学"
+      },
+      {
+        "lastName": "三木",
+        "firstName": "航",
+        "team": "日本体育大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "三木_航_日本体育大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 150,
+    "name": "荒尾・越智（宇部興産）",
+    "information": [
+      {
+        "lastName": "荒尾",
+        "firstName": "大輔",
+        "team": "宇部興産",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "荒尾_大輔_宇部興産"
+      },
+      {
+        "lastName": "越智",
+        "firstName": "大輔",
+        "team": "宇部興産",
+        "prefecture": "山口県",
+        "playerId": null,
+        "tempId": "越智_大輔_宇部興産"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 151,
+    "name": "稲継・伊藤（アスタ）",
+    "information": [
+      {
+        "lastName": "稲継",
+        "firstName": "大輝",
+        "team": "アスタ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "稲継_大輝_アスタ"
+      },
+      {
+        "lastName": "伊藤",
+        "firstName": "慎吾",
+        "team": "山瀬ＳＴＣ",
+        "prefecture": "秋田県",
+        "playerId": null,
+        "tempId": "伊藤_慎吾_山瀬ＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 152,
+    "name": "正木・星（大田原クラブ）",
+    "information": [
+      {
+        "lastName": "正木",
+        "firstName": "孝裕",
+        "team": "大田原クラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "正木_孝裕_大田原クラブ"
+      },
+      {
+        "lastName": "星",
+        "firstName": "森人",
+        "team": "大田原クラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "星_森人_大田原クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 153,
+    "name": "村田・足立（ワタキューセイモア）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "直樹",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "村田_直樹_ワタキューセイモア"
+      },
+      {
+        "lastName": "足立",
+        "firstName": "卓磨",
+        "team": "ワタキューセイモア",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "足立_卓磨_ワタキューセイモア"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 154,
+    "name": "小川・小宮山（日本大学工学部）",
+    "information": [
+      {
+        "lastName": "小川",
+        "firstName": "優人",
+        "team": "日本大学工学部",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "小川_優人_日本大学工学部"
+      },
+      {
+        "lastName": "小宮山",
+        "firstName": "健斗",
+        "team": "東京経済大学",
+        "prefecture": "山梨県",
+        "playerId": null,
+        "tempId": "小宮山_健斗_東京経済大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 155,
+    "name": "石井・難波（ＪＸTGエネルギー）",
+    "information": [
+      {
+        "lastName": "石井",
+        "firstName": "佑一",
+        "team": "ＪＸTGエネルギー",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "石井_佑一_ＪＸTGエネルギー"
+      },
+      {
+        "lastName": "難波",
+        "firstName": "洋行",
+        "team": "ＪＸTGエネルギー",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "難波_洋行_ＪＸTGエネルギー"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 156,
+    "name": "村上・津村（キナミスポーツ）",
+    "information": [
+      {
+        "lastName": "村上",
+        "firstName": "翔平",
+        "team": "キナミスポーツ",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "村上_翔平_キナミスポーツ"
+      },
+      {
+        "lastName": "津村",
+        "firstName": "康太",
+        "team": "キナミスポーツ",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "津村_康太_キナミスポーツ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 157,
+    "name": "徳永・森（東大阪市協会）",
+    "information": [
+      {
+        "lastName": "徳永",
+        "firstName": "晃平",
+        "team": "東大阪市協会",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "徳永_晃平_東大阪市協会"
+      },
+      {
+        "lastName": "森",
+        "firstName": "靖貴",
+        "team": "昭和ホールディングス大阪",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "森_靖貴_昭和ホールディングス大阪"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 158,
+    "name": "高橋・大関（アキム）",
+    "information": [
+      {
+        "lastName": "高橋",
+        "firstName": "慶次",
+        "team": "アキム",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "高橋_慶次_アキム"
+      },
+      {
+        "lastName": "大関",
+        "firstName": "秀一",
+        "team": "アキム",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "大関_秀一_アキム"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 159,
+    "name": "小川・木川（小金原クラブ）",
+    "information": [
+      {
+        "lastName": "小川",
+        "firstName": "佳祐",
+        "team": "小金原クラブ",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "小川_佳祐_小金原クラブ"
+      },
+      {
+        "lastName": "木川",
+        "firstName": "拓也",
+        "team": "小金原クラブ",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "木川_拓也_小金原クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 160,
+    "name": "溝上・望月（浜松ホトニクス）",
+    "information": [
+      {
+        "lastName": "溝上",
+        "firstName": "雄一郎",
+        "team": "浜松ホトニクス",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "溝上_雄一郎_浜松ホトニクス"
+      },
+      {
+        "lastName": "望月",
+        "firstName": "大輝",
+        "team": "ＥＡＳＴＣ",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "望月_大輝_ＥＡＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 161,
+    "name": "谷口・飯田（関西大学）",
+    "information": [
+      {
+        "lastName": "谷口",
+        "firstName": "睦",
+        "team": "関西大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "谷口_睦_関西大学"
+      },
+      {
+        "lastName": "飯田",
+        "firstName": "脩三",
+        "team": "関西大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "飯田_脩三_関西大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 162,
+    "name": "福井・大津（早稲田大学）",
+    "information": [
+      {
+        "lastName": "福井",
+        "firstName": "達輝",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "福井_達輝_早稲田大学"
+      },
+      {
+        "lastName": "大津",
+        "firstName": "悠平",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "大津_悠平_早稲田大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 163,
+    "name": "久山・大友（中京高校）",
+    "information": [
+      {
+        "lastName": "久山",
+        "firstName": "隆希",
+        "team": "中京高校",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "久山_隆希_中京高校"
+      },
+      {
+        "lastName": "大友",
+        "firstName": "駿",
+        "team": "中京高校",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "大友_駿_中京高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 164,
+    "name": "粒来・氏家（札幌学院大学）",
+    "information": [
+      {
+        "lastName": "粒来",
+        "firstName": "怜",
+        "team": "札幌学院大学",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "粒来_怜_札幌学院大学"
+      },
+      {
+        "lastName": "氏家",
+        "firstName": "涼",
+        "team": "苫小牧市役所",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "氏家_涼_苫小牧市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 165,
+    "name": "山田・南郷（見前ＳＴＣ）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "拓真",
+        "team": "見前ＳＴＣ",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "山田_拓真_見前ＳＴＣ"
+      },
+      {
+        "lastName": "南郷",
+        "firstName": "周英",
+        "team": "見前ＳＴＣ",
+        "prefecture": "岩手県",
+        "playerId": null,
+        "tempId": "南郷_周英_見前ＳＴＣ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 166,
+    "name": "矢野・濵田（西和中学校）",
+    "information": [
+      {
+        "lastName": "矢野",
+        "firstName": "颯人",
+        "team": "西和中学校",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "矢野_颯人_西和中学校"
+      },
+      {
+        "lastName": "濵田",
+        "firstName": "祐",
+        "team": "西和中学校",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "濵田_祐_西和中学校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 167,
+    "name": "篠原・小林（日体桜友会）",
+    "information": [
+      {
+        "lastName": "篠原",
+        "firstName": "秀典",
+        "team": "日体桜友会",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "篠原_秀典_日体桜友会"
+      },
+      {
+        "lastName": "小林",
+        "firstName": "幸司",
+        "team": "ミズノ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "小林_幸司_ミズノ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 168,
+    "name": "黒羽・向井（徳島抽栄会）",
+    "information": [
+      {
+        "lastName": "黒羽",
+        "firstName": "祥平",
+        "team": "徳島抽栄会",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "黒羽_祥平_徳島抽栄会"
+      },
+      {
+        "lastName": "向井",
+        "firstName": "俊貴",
+        "team": "京都市役所",
+        "prefecture": "京都府",
+        "playerId": null,
+        "tempId": "向井_俊貴_京都市役所"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 169,
+    "name": "日高・山口（東京ガス）",
+    "information": [
+      {
+        "lastName": "日高",
+        "firstName": "大貴",
+        "team": "東京ガス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "日高_大貴_東京ガス"
+      },
+      {
+        "lastName": "山口",
+        "firstName": "晃輝",
+        "team": "ベスト",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "山口_晃輝_ベスト"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 170,
+    "name": "福井・山本（不二越）",
+    "information": [
+      {
+        "lastName": "福井",
+        "firstName": "晴希",
+        "team": "不二越",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "福井_晴希_不二越"
+      },
+      {
+        "lastName": "山本",
+        "firstName": "楓太",
+        "team": "不二越",
+        "prefecture": "富山県",
+        "playerId": null,
+        "tempId": "山本_楓太_不二越"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 171,
+    "name": "山田・大賀（東邦ガス）",
+    "information": [
+      {
+        "lastName": "山田",
+        "firstName": "航平",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "山田_航平_東邦ガス"
+      },
+      {
+        "lastName": "大賀",
+        "firstName": "絋平",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "大賀_絋平_東邦ガス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 172,
+    "name": "櫻井・櫻井（碓氷安中クラブ）",
+    "information": [
+      {
+        "lastName": "櫻井",
+        "firstName": "康之",
+        "team": "碓氷安中クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "櫻井_康之_碓氷安中クラブ"
+      },
+      {
+        "lastName": "櫻井",
+        "firstName": "春樹",
+        "team": "碓氷安中クラブ",
+        "prefecture": "群馬県",
+        "playerId": null,
+        "tempId": "櫻井_春樹_碓氷安中クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 173,
+    "name": "奥村・峯松（立命館大学）",
+    "information": [
+      {
+        "lastName": "奥村",
+        "firstName": "勇介",
+        "team": "立命館大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "奥村_勇介_立命館大学"
+      },
+      {
+        "lastName": "峯松",
+        "firstName": "健太朗",
+        "team": "ＮＡＳＴＡ滋賀",
+        "prefecture": "滋賀県",
+        "playerId": null,
+        "tempId": "峯松_健太朗_ＮＡＳＴＡ滋賀"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 174,
+    "name": "山根・根本（高田商業高校）",
+    "information": [
+      {
+        "lastName": "山根",
+        "firstName": "稔平",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "山根_稔平_高田商業高校"
+      },
+      {
+        "lastName": "根本",
+        "firstName": "大地",
+        "team": "高田商業高校",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "根本_大地_高田商業高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 175,
+    "name": "村田・渡邊（羽黒高校）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "優",
+        "team": "羽黒高校",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "村田_優_羽黒高校"
+      },
+      {
+        "lastName": "渡邊",
+        "firstName": "直生",
+        "team": "羽黒高校",
+        "prefecture": "山形県",
+        "playerId": null,
+        "tempId": "渡邊_直生_羽黒高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 176,
+    "name": "岡田・河野（かみありクラブ）",
+    "information": [
+      {
+        "lastName": "岡田",
+        "firstName": "知之",
+        "team": "かみありクラブ",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "岡田_知之_かみありクラブ"
+      },
+      {
+        "lastName": "河野",
+        "firstName": "高幸",
+        "team": "かみありクラブ",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "河野_高幸_かみありクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 177,
+    "name": "渡部・高橋（松山大学）",
+    "information": [
+      {
+        "lastName": "渡部",
+        "firstName": "永朔",
+        "team": "松山大学",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "渡部_永朔_松山大学"
+      },
+      {
+        "lastName": "高橋",
+        "firstName": "直幹",
+        "team": "松山大学",
+        "prefecture": "愛媛県",
+        "playerId": null,
+        "tempId": "高橋_直幹_松山大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 178,
+    "name": "北野・星（西郷第一中学校）",
+    "information": [
+      {
+        "lastName": "北野",
+        "firstName": "敦貴",
+        "team": "西郷第一中学校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "北野_敦貴_西郷第一中学校"
+      },
+      {
+        "lastName": "星",
+        "firstName": "虎太朗",
+        "team": "西郷第一中学校",
+        "prefecture": "福島県",
+        "playerId": null,
+        "tempId": "星_虎太朗_西郷第一中学校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 179,
+    "name": "萩原・川淵（パナソニック）",
+    "information": [
+      {
+        "lastName": "萩原",
+        "firstName": "聖哉",
+        "team": "パナソニック",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "萩原_聖哉_パナソニック"
+      },
+      {
+        "lastName": "川淵",
+        "firstName": "泰直",
+        "team": "パナソニック",
+        "prefecture": "三重県",
+        "playerId": null,
+        "tempId": "川淵_泰直_パナソニック"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 180,
+    "name": "丸岡・金子（明治大学）",
+    "information": [
+      {
+        "lastName": "丸岡",
+        "firstName": "俊介",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "丸岡_俊介_明治大学"
+      },
+      {
+        "lastName": "金子",
+        "firstName": "大祐",
+        "team": "明治大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "金子_大祐_明治大学"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 181,
+    "name": "小泉・塩井（龍野クラブ）",
+    "information": [
+      {
+        "lastName": "小泉",
+        "firstName": "慧",
+        "team": "龍野クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "小泉_慧_龍野クラブ"
+      },
+      {
+        "lastName": "塩井",
+        "firstName": "誠也",
+        "team": "龍野クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "塩井_誠也_龍野クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 182,
+    "name": "大上・猪原（マツダ）",
+    "information": [
+      {
+        "lastName": "大上",
+        "firstName": "達也",
+        "team": "マツダ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "大上_達也_マツダ"
+      },
+      {
+        "lastName": "猪原",
+        "firstName": "雅道",
+        "team": "マツダ",
+        "prefecture": "広島県",
+        "playerId": null,
+        "tempId": "猪原_雅道_マツダ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 183,
+    "name": "水木・福田（東北高校）",
+    "information": [
+      {
+        "lastName": "水木",
+        "firstName": "瑠",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "水木_瑠_東北高校"
+      },
+      {
+        "lastName": "福田",
+        "firstName": "成海",
+        "team": "東北高校",
+        "prefecture": "宮城県",
+        "playerId": null,
+        "tempId": "福田_成海_東北高校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 184,
+    "name": "鹿島・内山（ヨネックス）",
+    "information": [
+      {
+        "lastName": "鹿島",
+        "firstName": "鉄平",
+        "team": "ヨネックス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "鹿島_鉄平_ヨネックス"
+      },
+      {
+        "lastName": "内山",
+        "firstName": "慶一",
+        "team": "都城商業高校ＯＢクラブ",
+        "prefecture": "宮崎県",
+        "playerId": null,
+        "tempId": "内山_慶一_都城商業高校ＯＢクラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 185,
+    "name": "小栗・安藤（東邦ガス）",
+    "information": [
+      {
+        "lastName": "小栗",
+        "firstName": "元貴",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "小栗_元貴_東邦ガス"
+      },
+      {
+        "lastName": "安藤",
+        "firstName": "圭祐",
+        "team": "東邦ガス",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "安藤_圭祐_東邦ガス"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 186,
+    "name": "南川・及川（三菱重工相模原）",
+    "information": [
+      {
+        "lastName": "南川",
+        "firstName": "隆",
+        "team": "三菱重工相模原",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "南川_隆_三菱重工相模原"
+      },
+      {
+        "lastName": "及川",
+        "firstName": "大和",
+        "team": "桜倶楽部",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "及川_大和_桜倶楽部"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 187,
+    "name": "戸畑・杉本（九州産業大）",
+    "information": [
+      {
+        "lastName": "戸畑",
+        "firstName": "勝喜",
+        "team": "九州産業大",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "戸畑_勝喜_九州産業大"
+      },
+      {
+        "lastName": "杉本",
+        "firstName": "慈",
+        "team": "綾小路クラブ",
+        "prefecture": "福岡県",
+        "playerId": null,
+        "tempId": "杉本_慈_綾小路クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 188,
+    "name": "大村・田中（上宮中学校）",
+    "information": [
+      {
+        "lastName": "大村",
+        "firstName": "圭志朗",
+        "team": "上宮中学校",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "大村_圭志朗_上宮中学校"
+      },
+      {
+        "lastName": "田中",
+        "firstName": "翔大",
+        "team": "上宮中学校",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "田中_翔大_上宮中学校"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 189,
+    "name": "吉田・廣田（土浦クラブ）",
+    "information": [
+      {
+        "lastName": "吉田",
+        "firstName": "真輝",
+        "team": "土浦クラブ",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "吉田_真輝_土浦クラブ"
+      },
+      {
+        "lastName": "廣田",
+        "firstName": "悠希",
+        "team": "土浦クラブ",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "廣田_悠希_土浦クラブ"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 190,
+    "name": "船水・上松（早稲田大学）",
+    "information": [
+      {
+        "lastName": "船水",
+        "firstName": "颯人",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "船水_颯人_早稲田大学"
+      },
+      {
+        "lastName": "上松",
+        "firstName": "俊貴",
+        "team": "早稲田大学",
+        "prefecture": "日本学連",
+        "playerId": null,
+        "tempId": "上松_俊貴_早稲田大学"
+      }
+    ],
+    "category": "doubles"
+  }
+]
