@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tottorinishi",
         "prefecture": "鳥取県",
         "prefectureId": "tottori",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["本庄_泰都_鳥取西_鳥取県", "本庄_晃都_鳥取西_鳥取県"]
+        "playerIds": ["諸山_哲平_鳥取西_鳥取県", "伊木_哲也_鳥取西_鳥取県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "本庄_泰都_鳥取西_鳥取県",
@@ -47,6 +47,14 @@
     },
     {
       "id": "本庄_晃都_鳥取西_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "諸山_哲平_鳥取西_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "伊木_哲也_鳥取西_鳥取県",
       "appearances": 1
     }
   ]

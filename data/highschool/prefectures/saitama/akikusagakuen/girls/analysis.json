@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "秋草学園",
+        "teamId": "akikusagakuen",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["大竹_小雪_秋草学園_埼玉県", "渡辺_遥_秋草学園_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "大竹_小雪_秋草学園_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "渡辺_遥_秋草学園_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

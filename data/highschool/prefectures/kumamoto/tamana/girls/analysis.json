@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "玉名",
+        "teamId": "tamana",
+        "prefecture": "熊本県",
+        "prefectureId": "kumamoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["三原_愛未_玉名_熊本県", "津留_有希子_玉名_熊本県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "三原_愛未_玉名_熊本県",
+      "appearances": 1
+    },
+    {
+      "id": "津留_有希子_玉名_熊本県",
+      "appearances": 1
+    }
+  ]
+}

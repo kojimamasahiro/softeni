@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -15,20 +16,30 @@
         "teamId": "goshogawarashou",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["木村_真琳_五所川原商_青森県", "珍田_未来_五所川原商_青森県"]
+        "playerIds": ["小山内_実来_五所川原商_青森県", "青山_ほのか_五所川原商_青森県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "五所川原商",
+        "teamId": "goshogawarashou",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "木村_真琳_五所川原商_青森県",
@@ -39,15 +50,15 @@
       "appearances": 2
     },
     {
-      "id": "一戸_瑠佳_五所川原商_青森県",
+      "id": "工藤_莉子_五所川原商_青森県",
       "appearances": 1
     },
     {
-      "id": "岩本_優菜_五所川原商_青森県",
+      "id": "長利_美里_五所川原商_青森県",
       "appearances": 1
     },
     {
-      "id": "高橋_菫_五所川原商_青森県",
+      "id": "小山内_実来_五所川原商_青森県",
       "appearances": 1
     }
   ]

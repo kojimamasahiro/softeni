@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "nozawakita",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["木村_琴_野沢北_長野県", "友野_恵_野沢北_長野県"]
+        "playerIds": ["小林_礼奈_野沢北_長野県", "安藤_菜乃香_野沢北_長野県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "小林_礼奈_野沢北_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "安藤_菜乃香_野沢北_長野県",
+      "appearances": 1
+    },
     {
       "id": "木村_琴_野沢北_長野県",
       "appearances": 1

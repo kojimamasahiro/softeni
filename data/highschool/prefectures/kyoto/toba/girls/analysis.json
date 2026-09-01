@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
     "team": 1,
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -49,8 +49,16 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "鈴木_南緒_鳥羽_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "北村_咲季_鳥羽_京都府",
+      "appearances": 1
+    },
     {
       "id": "青松_淳眞_鳥羽_京都府",
       "appearances": 1
@@ -61,10 +69,6 @@
     },
     {
       "id": "瀬尾_夢_鳥羽_京都府",
-      "appearances": 1
-    },
-    {
-      "id": "鈴木_南緒_鳥羽_京都府",
       "appearances": 1
     }
   ]

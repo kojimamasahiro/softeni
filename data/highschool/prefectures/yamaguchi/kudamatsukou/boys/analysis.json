@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "下松工",
+        "teamId": "kudamatsukou",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["柴田_雄大_下松工_山口県", "柏原_伊風己_下松工_山口県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "柴田_雄大_下松工_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "柏原_伊風己_下松工_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "原田_智徳_下松工_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "藤井_一輝_下松工_山口県",
+      "appearances": 1
+    }
+  ]
+}

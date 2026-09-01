@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "高知高専",
+        "teamId": "kouchikousen",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["福富_祐希_高知高専_高知県", "福田_裕太_高知高専_高知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "福富_祐希_高知高専_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "福田_裕太_高知高専_高知県",
+      "appearances": 1
+    }
+  ]
+}

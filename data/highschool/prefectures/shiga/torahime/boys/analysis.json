@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "team": 1,
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "虎姫",
+        "teamId": "torahime",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["西川_葵_虎姫_滋賀県", "井賀_雄介_虎姫_滋賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "虎姫",
+        "teamId": "torahime",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西川_葵_虎姫_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "井賀_雄介_虎姫_滋賀県",
+      "appearances": 1
+    }
+  ]
+}

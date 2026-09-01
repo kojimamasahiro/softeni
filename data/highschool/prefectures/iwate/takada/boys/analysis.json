@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "takada",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "予選敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "highschool-championship",
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["神之田_昴_高田_奈良県", "太田_康惺_高田_奈良県"]
+        "playerIds": ["橋本_海聖_高田_奈良県", "西島_功貴_高田_奈良県"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "橋本_海聖_高田_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "西島_功貴_高田_奈良県",
+      "appearances": 1
+    },
     {
       "id": "神之田_昴_高田_奈良県",
       "appearances": 1

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hitachikita",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["井上_寛登_日立北_茨城県", "岡野_理人_日立北_茨城県"]
+        "playerIds": ["有賀_友哉_日立北_茨城県", "廣瀬_拓也_日立北_茨城県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "有賀_友哉_日立北_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "廣瀬_拓也_日立北_茨城県",
+      "appearances": 1
+    },
     {
       "id": "井上_寛登_日立北_茨城県",
       "appearances": 1

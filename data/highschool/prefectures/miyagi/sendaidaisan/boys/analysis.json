@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "sendaidaisan",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["佐原_蒔人_仙台第三_宮城県", "宇都宮_匠_仙台第三_宮城県"]
+        "playerIds": ["大友_宣毅_仙台第三_宮城県", "佐藤_拓実_仙台第三_宮城県"]
       }
     },
     "team": {
@@ -28,11 +28,19 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "宇都宮_匠_仙台第三_宮城県",
       "appearances": 2
+    },
+    {
+      "id": "大友_宣毅_仙台第三_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_拓実_仙台第三_宮城県",
+      "appearances": 1
     },
     {
       "id": "佐原_蒔人_仙台第三_宮城県",

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 10
+    "team": 1,
+    "doubles": 12
   },
   "resultsByCategory": {
     "singles": {
@@ -36,10 +37,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "健大高崎",
+        "teamId": "takeshioodakasaki",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 19,
   "topPlayers": [
     {
       "id": "下田_好輝_健大高崎_群馬県",

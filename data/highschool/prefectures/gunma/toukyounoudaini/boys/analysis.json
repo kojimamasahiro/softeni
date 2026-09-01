@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東京農大二",
+        "teamId": "toukyounoudaini",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["菅家_孝太_東京農大二_群馬県", "間庭_悦矢_東京農大二_群馬県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "菅家_孝太_東京農大二_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "間庭_悦矢_東京農大二_群馬県",
+      "appearances": 1
+    }
+  ]
+}

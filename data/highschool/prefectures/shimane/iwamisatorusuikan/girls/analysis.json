@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 6
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -9,18 +9,7 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "石見智翠館",
-        "teamId": "iwamisatorusuikan",
-        "prefecture": "島根県",
-        "prefectureId": "shimane",
-        "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": ["尾門_杏_石見智翠館_島根県", "末田_寧々_石見智翠館_島根県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "石見智翠館",
         "teamId": "iwamisatorusuikan",
@@ -29,9 +18,9 @@
         "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["尾門_杏_石見智翠館_島根県", "末田_寧々_石見智翠館_島根県"]
+        "playerIds": ["下田_裕佳子_石見智翠館_島根県", "森山_菜央_石見智翠館_島根県"]
       }
     },
     "team": {
@@ -39,26 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "尾門_杏_石見智翠館_島根県",
-      "appearances": 3
+      "id": "下田_裕佳子_石見智翠館_島根県",
+      "appearances": 1
     },
     {
-      "id": "末田_寧々_石見智翠館_島根県",
-      "appearances": 3
-    },
-    {
-      "id": "吉岡_詩乃_石見智翠館_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "松谷_華琳_石見智翠館_島根県",
-      "appearances": 2
-    },
-    {
-      "id": "黒川_由羽希_石見智翠館_島根県",
+      "id": "森山_菜央_石見智翠館_島根県",
       "appearances": 1
     }
   ]

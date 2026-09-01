@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "touhokugakuin",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["守田_一帆_東北学院_宮城県", "飯渕_真大_東北学院_宮城県"]
+        "playerIds": ["菅原_丈_東北学院_宮城県", "後藤_聖葵_東北学院_宮城県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "守田_一帆_東北学院_宮城県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "飯渕_真大_東北学院_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "菅原_丈_東北学院_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "後藤_聖葵_東北学院_宮城県",
       "appearances": 1
     }
   ]

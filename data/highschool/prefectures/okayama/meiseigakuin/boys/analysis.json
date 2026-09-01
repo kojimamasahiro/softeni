@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -27,12 +27,12 @@
         "teamId": "meiseigakuin",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["藤井_聡人_明誠学院_岡山県", "坪井_裕希_明誠学院_岡山県"]
+        "playerIds": ["中島_啓輔_明誠学院_岡山県", "中島_悠輔_明誠学院_岡山県"]
       }
     },
     "team": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "中島_啓輔_明誠学院_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "中島_悠輔_明誠学院_岡山県",
+      "appearances": 1
+    },
     {
       "id": "宮地_悠斗_明誠学院_岡山県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "奥山_裕貴_明誠学院_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "酒井_航晴_明誠学院_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "本田_蒼偉_明誠学院_岡山県",
       "appearances": 1
     }
   ]

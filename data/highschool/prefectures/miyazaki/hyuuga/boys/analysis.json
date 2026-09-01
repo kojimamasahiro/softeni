@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "日向",
+        "teamId": "hyuuga",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["長友_祐人_日向_宮崎県", "寺田_侑世_日向_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "長友_祐人_日向_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "寺田_侑世_日向_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

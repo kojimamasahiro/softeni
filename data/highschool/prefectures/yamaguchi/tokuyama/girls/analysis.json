@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tokuyama",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["濵田_紗帆_徳山_山口県", "枡田_いのり_徳山_山口県"]
+        "playerIds": ["濵田_紗帆_徳山_山口県", "戸村_桃華_徳山_山口県"]
       }
     },
     "team": {
@@ -39,8 +39,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "濵田_紗帆_徳山_山口県",
+      "appearances": 2
+    },
     {
       "id": "檜垣_凛々子_徳山_山口県",
       "appearances": 1
@@ -50,7 +54,7 @@
       "appearances": 1
     },
     {
-      "id": "濵田_紗帆_徳山_山口県",
+      "id": "戸村_桃華_徳山_山口県",
       "appearances": 1
     },
     {

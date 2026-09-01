@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 3
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "uwashimahigashi",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["上口_涼平_宇和島東_愛媛県", "林_健太_宇和島東_愛媛県"]
+        "playerIds": ["上口_雅史_宇和島東_愛媛県", "若山_誠_宇和島東_愛媛県"]
       }
     },
     "team": {
@@ -28,26 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "林_健太_宇和島東_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "上口_雅史_宇和島東_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "若山_誠_宇和島東_愛媛県",
+      "appearances": 2
+    },
     {
       "id": "上口_涼平_宇和島東_愛媛県",
       "appearances": 2
     },
     {
-      "id": "清家_翔太_宇和島東_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "林_健太_宇和島東_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "上口_雅史_宇和島東_愛媛県",
-      "appearances": 1
-    },
-    {
-      "id": "若山_誠_宇和島東_愛媛県",
+      "id": "矢野_喬章_宇和島東_愛媛県",
       "appearances": 1
     }
   ]

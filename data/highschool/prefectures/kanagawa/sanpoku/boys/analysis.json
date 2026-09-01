@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "山北",
+        "teamId": "sanpoku",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["関_拓真_山北_神奈川県", "新保_壮馬_山北_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "関_拓真_山北_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "新保_壮馬_山北_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

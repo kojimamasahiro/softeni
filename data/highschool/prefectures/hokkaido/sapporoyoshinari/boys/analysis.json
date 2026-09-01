@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "sapporoyoshinari",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["松田_宏隆_札幌啓成_北海道", "矢部_彰吾_札幌啓成_北海道"]
+        "playerIds": ["武田_巧_札幌啓成_北海道", "松田_宏隆_札幌啓成_北海道"]
       }
     },
     "team": {
@@ -28,10 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "松田_宏隆_札幌啓成_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "武田_巧_札幌啓成_北海道",
       "appearances": 1
     },
     {

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "昭和",
+        "teamId": "shouwa",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["熊木_渉_昭和_東京都", "阿部_光佑_昭和_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "熊木_渉_昭和_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_光佑_昭和_東京都",
+      "appearances": 1
+    }
+  ]
+}

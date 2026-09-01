@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -25,11 +26,29 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "豊浦",
+        "teamId": "toyoura",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "田中_耕太郞_豊浦_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "岡本_芳幸_豊浦_山口県",
+      "appearances": 1
+    },
     {
       "id": "井藤_壮琉_豊浦_山口県",
       "appearances": 1
@@ -40,14 +59,6 @@
     },
     {
       "id": "岩崎_冬弥_豊浦_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "辻村_勝_豊浦_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "家田_悠_豊浦_山口県",
       "appearances": 1
     }
   ]

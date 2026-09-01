@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 8
+    "doubles": 11
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "shouwagakuin",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "5回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["齋藤_利貴_昭和学院_千葉県", "橋本_誠人_昭和学院_千葉県"]
+        "playerIds": ["齊藤_利貴_昭和学院_千葉県", "竹内_大地_昭和学院_千葉県"]
       }
     },
     "team": {
@@ -28,8 +28,12 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 12,
+  "uniquePlayers": 16,
   "topPlayers": [
+    {
+      "id": "藤木_敦也_昭和学院_千葉県",
+      "appearances": 3
+    },
     {
       "id": "河村_颯希_昭和学院_千葉県",
       "appearances": 2
@@ -39,16 +43,12 @@
       "appearances": 2
     },
     {
+      "id": "橋本_誠人_昭和学院_千葉県",
+      "appearances": 2
+    },
+    {
       "id": "西山_七海斗_昭和学院_千葉県",
       "appearances": 2
-    },
-    {
-      "id": "藤木_敦也_昭和学院_千葉県",
-      "appearances": 2
-    },
-    {
-      "id": "山﨑_介統_昭和学院_千葉県",
-      "appearances": 1
     }
   ]
 }

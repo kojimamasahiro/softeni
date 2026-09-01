@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松平",
+        "teamId": "matsudaira",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["清水_啓史_松平_愛知県", "鈴木_鉄平_松平_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "清水_啓史_松平_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_鉄平_松平_愛知県",
+      "appearances": 1
+    }
+  ]
+}

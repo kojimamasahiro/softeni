@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
+    "team": 1,
     "doubles": 2
   },
   "resultsByCategory": {
@@ -25,7 +26,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "土浦第三",
+        "teamId": "tsuchiuradaisan",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 4,

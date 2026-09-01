@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "naganohigashi",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["有賀_来_長野東_長野県", "堀内_飛瑛_長野東_長野県"]
+        "playerIds": ["中澤_佑哉_長野東_長野県", "林部_拓哉_長野東_長野県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "有賀_来_長野東_長野県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "堀内_飛瑛_長野東_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "中澤_佑哉_長野東_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "林部_拓哉_長野東_長野県",
       "appearances": 1
     }
   ]

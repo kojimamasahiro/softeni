@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -26,21 +27,39 @@
         "teamId": "taishi",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["川畑_莉子_太子_兵庫県", "室井_梨那_太子_兵庫県"]
+        "playerIds": ["大村_美喜_太子_兵庫県", "黒田_玲奈_太子_兵庫県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "太子",
+        "teamId": "taishi",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "大村_美喜_太子_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "黒田_玲奈_太子_兵庫県",
+      "appearances": 1
+    },
     {
       "id": "豆﨑_夢恩_太子_兵庫県",
       "appearances": 1
@@ -51,14 +70,6 @@
     },
     {
       "id": "川畑_莉子_太子_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "室井_梨那_太子_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "竹平_妃織_太子_兵庫県",
       "appearances": 1
     }
   ]

@@ -4,6 +4,17 @@
     "teamId": "takaokanishi",
     "prefecture": "富山県",
     "prefectureId": "toyama",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls"
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -150,6 +161,17 @@
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys"
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2026,
     "gender": "girls"
   },
@@ -317,6 +339,30 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
     "gender": "boys"
+  },
+  {
+    "team": "滑川",
+    "teamId": "namerikawa",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["横山_康大_滑川_富山県", "関口_雄介_滑川_富山県"]
+  },
+  {
+    "team": "滑川",
+    "teamId": "namerikawa",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["横山_健也_滑川_富山県", "山本_楓太_滑川_富山県"]
   },
   {
     "team": "滑川",
@@ -581,6 +627,54 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["坂下_遼成_高岡工芸_富山県", "山崎_鳳月_高岡工芸_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["早川_日向_高岡西_富山県", "長尾_沙耶_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["荒木_郁菜_高岡西_富山県", "桑名_優依_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["浅田_実那_高岡西_富山県", "村井_琴音_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["竹越_世奈_高岡西_富山県", "坂林_春菜_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -1325,6 +1419,66 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["丸山_慈央_高岡商_富山県", "堅田_愛都_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["石崎_詩_高岡商_富山県", "高田_ひかる_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["渋谷_真由子_高岡商_富山県", "宮原_彩佳_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["南部_天良_高岡商_富山県", "村牧_克城_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["齊藤_修也_高岡商_富山県", "徳川_開吏_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["中川_仁_高岡商_富山県", "川田_萩_高岡商_富山県"]
   },
   {
     "team": "高岡商",
@@ -2141,6 +2295,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["福井_天太_富山工_富山県", "赤坂_浩太_富山工_富山県"]
+  },
+  {
+    "team": "富山工",
+    "teamId": "toyamakou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["法才_峻也_富山工_富山県", "高橋_佑昂_富山工_富山県"]
   },
   {
     "team": "富山工",

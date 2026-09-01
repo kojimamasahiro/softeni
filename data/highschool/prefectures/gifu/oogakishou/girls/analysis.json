@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "大垣商",
+        "teamId": "oogakishou",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["石原_美紅_大垣商_岐阜県", "今井_美優_大垣商_岐阜県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石原_美紅_大垣商_岐阜県",
+      "appearances": 1
+    },
+    {
+      "id": "今井_美優_大垣商_岐阜県",
+      "appearances": 1
+    }
+  ]
+}

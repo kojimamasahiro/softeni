@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "東海大菅生",
+        "teamId": "toukaidaisugou",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["三上_大輝_東海大菅生_東京都", "稲葉_恭平_東海大菅生_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "三上_大輝_東海大菅生_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "稲葉_恭平_東海大菅生_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_祐希_東海大菅生_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "安田_怜音_東海大菅生_東京都",
+      "appearances": 1
+    }
+  ]
+}

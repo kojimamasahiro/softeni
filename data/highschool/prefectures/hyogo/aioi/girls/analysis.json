@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "相生",
+        "teamId": "aioi",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["鈴木_貴子_相生_兵庫県", "山名_美潮_相生_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "鈴木_貴子_相生_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "山名_美潮_相生_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "佐世保北",
+        "teamId": "sasebokita",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["江代_光甫_佐世保北_長崎県", "島津_凌_佐世保北_長崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "江代_光甫_佐世保北_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "島津_凌_佐世保北_長崎県",
+      "appearances": 1
+    }
+  ]
+}

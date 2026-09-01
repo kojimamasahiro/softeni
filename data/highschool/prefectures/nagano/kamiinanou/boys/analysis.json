@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kamiinanou",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["清水_皓太_上伊那農_長野県", "北原_快隼_上伊那農_長野県"]
+        "playerIds": ["古屋敷_治輝_上伊那農_長野県", "桜井_諒_上伊那農_長野県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "清水_皓太_上伊那農_長野県",
@@ -39,15 +39,15 @@
       "appearances": 1
     },
     {
+      "id": "古屋敷_治輝_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "桜井_諒_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
       "id": "笹谷_祐貴_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "伊東_知輝_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "橋本_凌_上伊那農_長野県",
       "appearances": 1
     }
   ]

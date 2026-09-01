@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "豊田東",
+        "teamId": "toyodahigashi",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["西宮_里都_豊田東_愛知県", "城内_美咲_豊田東_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西宮_里都_豊田東_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "城内_美咲_豊田東_愛知県",
+      "appearances": 1
+    }
+  ]
+}

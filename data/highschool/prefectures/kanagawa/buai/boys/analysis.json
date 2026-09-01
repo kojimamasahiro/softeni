@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "武相",
+        "teamId": "buai",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["益田_亮_武相_神奈川県", "龍澤_修太朗_武相_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "益田_亮_武相_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "龍澤_修太朗_武相_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "益田_圭_武相_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "安保_大弥_武相_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

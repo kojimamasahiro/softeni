@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "shizuokakenfujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2015,
         "gender": "girls",
-        "playerIds": ["奈良_皐_静岡県富士見_静岡県", "窪田_李音_静岡県富士見_静岡県"]
+        "playerIds": ["梅原_奈央_静岡県富士見_静岡県", "古郡_沙野_静岡県富士見_静岡県"]
       }
     },
     "team": {
@@ -28,14 +28,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
-      "id": "奈良_皐_静岡県富士見_静岡県",
+      "id": "木田_美玖_静岡県富士見_静岡県",
       "appearances": 1
     },
     {
-      "id": "窪田_李音_静岡県富士見_静岡県",
+      "id": "山田_朋美_静岡県富士見_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "梅原_奈央_静岡県富士見_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "古郡_沙野_静岡県富士見_静岡県",
       "appearances": 1
     }
   ]

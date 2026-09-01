@@ -7,6 +7,17 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls"
+  },
+  {
+    "team": "幡多農",
+    "teamId": "hatanou",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2016,
     "gender": "girls"
   },
@@ -63,6 +74,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "boys"
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
     "gender": "boys"
   },
   {
@@ -329,6 +351,30 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["西尾_彩_幡多農_高知県", "山本_華鈴_幡多農_高知県"]
+  },
+  {
+    "team": "幡多農",
+    "teamId": "hatanou",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["大塚_優海_幡多農_高知県", "佐竹_生和_幡多農_高知県"]
+  },
+  {
+    "team": "幡多農",
+    "teamId": "hatanou",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls",
     "playerIds": ["長者_瑠佳_幡多農_高知県", "岩村_芹菜_幡多農_高知県"]
@@ -398,12 +444,48 @@
     "teamId": "kouchikou",
     "prefecture": "高知県",
     "prefectureId": "kochi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["大石_智史_高知工_高知県", "瀬戸_恒汰_高知工_高知県"]
+  },
+  {
+    "team": "高知工",
+    "teamId": "kouchikou",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2016,
     "gender": "boys",
     "playerIds": ["菅野_涼介_高知工_高知県", "古谷_諒_高知工_高知県"]
+  },
+  {
+    "team": "高知高専",
+    "teamId": "kouchikousen",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["福富_祐希_高知高専_高知県", "福田_裕太_高知高専_高知県"]
+  },
+  {
+    "team": "高知南",
+    "teamId": "kouchiminami",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["中山_愛梨_高知南_高知県", "川上_詩乃_高知南_高知県"]
   },
   {
     "team": "高知南",
@@ -440,6 +522,18 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["大北_いつき_高知岡豊_高知県", "小原_理紗_高知岡豊_高知県"]
+  },
+  {
+    "team": "高知小津",
+    "teamId": "kouchiozu",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["西岡_拓真_高知小津_高知県", "上村_太萌_高知小津_高知県"]
   },
   {
     "team": "高知小津",
@@ -980,6 +1074,66 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["小笠原_健斗_明徳義塾_高知県", "佐渡_宝来_明徳義塾_高知県"]
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["小島_菜帆_明徳義塾_高知県", "大槻_日菜子_明徳義塾_高知県"]
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["井口_実優_明徳義塾_高知県", "生田_鈴乃_明徳義塾_高知県"]
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["矢野_晴也_明徳義塾_高知県", "小谷_浩輝_明徳義塾_高知県"]
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["上田_礼雄_明徳義塾_高知県", "石元_洸貴_明徳義塾_高知県"]
+  },
+  {
+    "team": "明徳義塾",
+    "teamId": "meitokugijuku",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["下村_勇哉_明徳義塾_高知県", "中島_大樹_明徳義塾_高知県"]
   },
   {
     "team": "明徳義塾",
@@ -2012,6 +2166,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["北原_涼葉_土佐女子_高知県", "西内_玲花_土佐女子_高知県"]
+  },
+  {
+    "team": "土佐女子",
+    "teamId": "tosajoshi",
+    "prefecture": "高知県",
+    "prefectureId": "kochi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["入野_優芽_土佐女子_高知県", "瀬戸_優里_土佐女子_高知県"]
   },
   {
     "team": "土佐女子",

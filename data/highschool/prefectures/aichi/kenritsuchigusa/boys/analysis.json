@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "県立千種",
+        "teamId": "kenritsuchigusa",
+        "prefecture": "愛知県",
+        "prefectureId": "aichi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["井上_将平_県立千種_愛知県", "カルデナス_健_県立千種_愛知県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "井上_将平_県立千種_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "カルデナス_健_県立千種_愛知県",
+      "appearances": 1
+    }
+  ]
+}

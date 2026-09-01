@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "親和",
+        "teamId": "shinwa",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["門脇_愛里_親和_兵庫県", "間島_美風_親和_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "門脇_愛里_親和_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "間島_美風_親和_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

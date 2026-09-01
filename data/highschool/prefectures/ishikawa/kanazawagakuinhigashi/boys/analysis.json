@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "金沢学院東",
+        "teamId": "kanazawagakuinhigashi",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["西田_慎_金沢学院東_石川県", "浦_佑弥_金沢学院東_石川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西田_慎_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "浦_佑弥_金沢学院東_石川県",
+      "appearances": 1
+    }
+  ]
+}

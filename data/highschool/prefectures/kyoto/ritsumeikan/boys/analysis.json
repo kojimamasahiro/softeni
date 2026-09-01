@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "ritsumeikan",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2015,
         "gender": "boys",
-        "playerIds": ["星野_将輝_立命館_京都府", "浜名_良祐_立命館_京都府"]
+        "playerIds": ["堀口_昂紘_立命館_京都府", "山口_哲生_立命館_京都府"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "星野_将輝_立命館_京都府",
@@ -37,6 +37,14 @@
     {
       "id": "浜名_良祐_立命館_京都府",
       "appearances": 2
+    },
+    {
+      "id": "堀口_昂紘_立命館_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "山口_哲生_立命館_京都府",
+      "appearances": 1
     }
   ]
 }

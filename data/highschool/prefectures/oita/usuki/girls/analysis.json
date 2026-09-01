@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "臼杵",
+        "teamId": "usuki",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "予選敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-mixed",
+        "year": 2025,
+        "gender": "mixed",
+        "playerIds": ["小野_由香子_臼杵_大分県", "磯部_幸彦_JX金属製錬佐賀関_大分県"]
+      },
+      "historicalBest": {
+        "team": "臼杵",
+        "teamId": "usuki",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["川村_茉由_臼杵_大分県", "石坂_夏美_臼杵_大分県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "小野_由香子_臼杵_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "川村_茉由_臼杵_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "石坂_夏美_臼杵_大分県",
+      "appearances": 1
+    }
+  ]
+}

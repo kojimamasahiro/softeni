@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 8
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 17,
   "topPlayers": [
+    {
+      "id": "谷岡_凌太朗_清瀬_東京都",
+      "appearances": 2
+    },
+    {
+      "id": "鶴江_匠_清瀬_東京都",
+      "appearances": 2
+    },
     {
       "id": "中内_純平_清瀬_東京都",
       "appearances": 2
@@ -62,14 +70,6 @@
     },
     {
       "id": "安在_琉_清瀬_東京都",
-      "appearances": 1
-    },
-    {
-      "id": "竹井_寛人_清瀬_東京都",
-      "appearances": 1
-    },
-    {
-      "id": "結城_純平_清瀬_東京都",
       "appearances": 1
     }
   ]

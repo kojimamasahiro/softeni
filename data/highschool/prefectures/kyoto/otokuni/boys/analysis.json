@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "乙訓",
+        "teamId": "otokuni",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["長尾_遼太_乙訓_京都府", "柴田_直輝_乙訓_京都府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "長尾_遼太_乙訓_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "柴田_直輝_乙訓_京都府",
+      "appearances": 1
+    }
+  ]
+}

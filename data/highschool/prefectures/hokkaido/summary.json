@@ -44,6 +44,17 @@
     "gender": "girls"
   },
   {
+    "team": "北海道尚志",
+    "teamId": "hokkaidoutakashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys"
+  },
+  {
     "team": "北科大",
     "teamId": "kitakadai",
     "prefecture": "北海道",
@@ -195,6 +206,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
     "gender": "girls"
   },
   {
@@ -1046,6 +1068,54 @@
     "playerIds": ["田渕_北海道_北海道", "加藤_北海道_北海道"]
   },
   {
+    "team": "北海道尚志",
+    "teamId": "hokkaidoutakashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["後藤_佑斗_北海道尚志_北海道", "天池_巧_北海道尚志_北海道"]
+  },
+  {
+    "team": "北海道尚志",
+    "teamId": "hokkaidoutakashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["山本_逸樹_北海道尚志_北海道", "桑田_峻輔_北海道尚志_北海道"]
+  },
+  {
+    "team": "北海道尚志",
+    "teamId": "hokkaidoutakashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["原_拓斗_北海道尚志_北海道", "木村_太一_北海道尚志_北海道"]
+  },
+  {
+    "team": "北海道尚志",
+    "teamId": "hokkaidoutakashi",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["安居_智輝_北海道尚志_北海道", "廣富_創太_北海道尚志_北海道"]
+  },
+  {
     "team": "岩見沢東",
     "teamId": "iwamizawahigashi",
     "prefecture": "北海道",
@@ -1680,6 +1750,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["宮浦_陽大_北見北斗_北海道", "前谷_碧人_北見北斗_北海道"]
+  },
+  {
+    "team": "北見柏陽",
+    "teamId": "kitamikashiwayou",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["丹野_航帆_北見柏陽_北海道", "秋山_達哉_北見柏陽_北海道"]
   },
   {
     "team": "北見柏陽",
@@ -2337,6 +2419,90 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["佐藤_日和_札幌龍谷学園_北海道", "高橋_紅羽_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["中村_珠寧_札幌龍谷学園_北海道", "中谷_菜帆_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["田中_美咲_札幌龍谷学園_北海道", "加藤_杏佳_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["中谷_果帆_札幌龍谷学園_北海道", "藤本_樹乃果_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["鏡_さやか_札幌龍谷学園_北海道", "島尻_楓_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["波多野_花_札幌龍谷学園_北海道", "千坂_菜摘_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["佐原_桃華_札幌龍谷学園_北海道", "畑山_礼緒菜_札幌龍谷学園_北海道"]
+  },
+  {
+    "team": "札幌龍谷学園",
+    "teamId": "sappororyuukokugakuen",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls",
     "playerIds": ["高橋_夏香_札幌龍谷学園_北海道", "加藤_杏佳_札幌龍谷学園_北海道"]
@@ -2634,6 +2800,18 @@
     "teamId": "sapporoyoshinari",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["武田_巧_札幌啓成_北海道", "松田_宏隆_札幌啓成_北海道"]
+  },
+  {
+    "team": "札幌啓成",
+    "teamId": "sapporoyoshinari",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2748,6 +2926,30 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["渡邊_哲平_苫小牧工_北海道", "櫻田_真生_苫小牧工_北海道"]
+  },
+  {
+    "team": "とわの森",
+    "teamId": "towanomori",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["正木_大河_とわの森_北海道", "大渕_憲斗_とわの森_北海道"]
+  },
+  {
+    "team": "とわの森",
+    "teamId": "towanomori",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["吉田_悠人_とわの森_北海道", "逢見_光_とわの森_北海道"]
   },
   {
     "team": "とわの森",
@@ -3504,6 +3706,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["長南_理大_とわの森三愛_北海道", "太田_遥来_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["渡辺_杏花_とわの森三愛_北海道", "菊池_百佳_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",

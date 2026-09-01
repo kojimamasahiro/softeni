@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 6
+    "team": 1,
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -36,11 +37,25 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "武生",
+        "teamId": "takefu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 12,
   "topPlayers": [
+    {
+      "id": "内田_千香子_武生_福井県",
+      "appearances": 2
+    },
     {
       "id": "慶家_紘子_武生_福井県",
       "appearances": 2
@@ -55,10 +70,6 @@
     },
     {
       "id": "近江_遥香_武生_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "松村_恵麻_武生_福井県",
       "appearances": 1
     }
   ]

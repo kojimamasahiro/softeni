@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "倉吉東",
+        "teamId": "kurayoshihigashi",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["津村_美里_倉吉東_鳥取県", "加藤_詩織_倉吉東_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "津村_美里_倉吉東_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_詩織_倉吉東_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "team": 1,
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "金沢学院東",
+        "teamId": "kanazawagakuinhigashi",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["高井_紀衣_金沢学院東_石川県", "西口_祥加_金沢学院東_石川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "金沢学院東",
+        "teamId": "kanazawagakuinhigashi",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "高井_紀衣_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "西口_祥加_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "橋本_茜_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "北川_萌佳_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "中野_侑花_金沢学院東_石川県",
+      "appearances": 1
+    }
+  ]
+}

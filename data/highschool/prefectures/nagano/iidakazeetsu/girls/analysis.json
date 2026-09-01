@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "飯田風越",
+        "teamId": "iidakazeetsu",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "girls",
+        "playerIds": ["泉澤_玲美_飯田風越_長野県", "熊谷_南緒_飯田風越_長野県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "泉澤_玲美_飯田風越_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "熊谷_南緒_飯田風越_長野県",
+      "appearances": 1
+    }
+  ]
+}

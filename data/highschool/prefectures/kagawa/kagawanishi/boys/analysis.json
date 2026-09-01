@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "香川西",
+        "teamId": "kagawanishi",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2015,
+        "gender": "boys",
+        "playerIds": ["秋山_海都_香川西_香川県", "金子_宥志_香川西_香川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "秋山_海都_香川西_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "金子_宥志_香川西_香川県",
+      "appearances": 1
+    }
+  ]
+}
