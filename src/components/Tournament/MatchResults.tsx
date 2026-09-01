@@ -15,18 +15,26 @@ interface Props {
   gameCategory: string;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
-  filter: 'all' | 'top8' | 'winners';
-  setFilter: (v: 'all' | 'top8') => void;
 }
 
+/** この結果ラベルが付いた組は、既定で（畳まずに）出す。 */
+const TOP_RESULT_LABELS = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
+
+/**
+ * 出場組がこれ以下の大会は畳まない。全 427 ファイルの実測で中央値 48 組・p75 は 104 組あり、
+ * 大きい大会では 300 組を超える一方、24 組以下も 22.7% ある。小さい大会まで畳むと
+ * 「開く」操作が増えるだけで、スクロール量は元から問題になっていない。
+ */
+const COLLAPSE_MIN_ENTRIES = 24;
+
+// 絞り込み（検索・上位/その他の振り分け）は呼び出し側で済ませてある。
+// ここは 1 組ぶんの見出しと、開いたときの対戦表だけを受け持つ。
 function MatchGroup({
   name,
   nameParts,
   entryNo,
   matchGroup,
   extraRows,
-  searchQuery,
-  filter,
   isSeed,
   resultLabel,
 }: {
@@ -35,29 +43,10 @@ function MatchGroup({
   entryNo: number;
   matchGroup: MatchRow[];
   extraRows?: MatchRow[];
-  searchQuery: string;
-  filter: 'all' | 'top8' | 'winners';
   isSeed?: boolean;
   resultLabel: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const nameLower = name.toLowerCase();
-  const queryLower = searchQuery.toLowerCase();
-  const matchesQuery = nameLower.includes(queryLower);
-  if (typeof name !== 'string' || typeof searchQuery !== 'string') return null;
-  const show = (() => {
-    if (!matchesQuery) return false;
-    if (filter === 'all') return true;
-    const top8Set = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
-    if (filter === 'top8') {
-      if (!resultLabel) return false;
-      return top8Set.some((tag) => resultLabel.includes(tag));
-    }
-    return true;
-  })();
-
-  if (!show) return null;
 
   return (
     <div className="mb-6 border border-border rounded-xl shadow-sm bg-surface">
@@ -166,7 +155,9 @@ function MatchGroup({
   );
 }
 
-export default function MatchResults({ detail, gameCategory, searchQuery, setSearchQuery, filter, setFilter }: Props) {
+export default function MatchResults({ detail, gameCategory, searchQuery, setSearchQuery }: Props) {
+  // 「その他の組」を開いているか。検索中は強制的に開く（検索語が下半分にしか無いことがあるため）。
+  const [showRest, setShowRest] = useState(false);
   const shouldUseShortOpponentName = gameCategory !== 'singles';
 
   const participantMap = useMemo(() => {
@@ -464,59 +455,93 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
 
   // getEntryName removed; use buildNameForEntry directly where needed
 
+  // 1 組ぶんの表示に必要なものをまとめてから、検索 → 上位/その他 の順に振り分ける。
+  // 振り分けを MatchGroup ではなくここでやるのは、「その他」を <details> に入れるため
+  // 件数を先に知る必要があるのと、0 件のときに文言を出せるようにするため。
+  const allItems = groupedNames.map((name) => {
+    const entry = (detail.entries ?? []).find((e) => buildNameForEntry(e) === name);
+    const entryNo = entry?.entryNo ?? -1;
+    const matchGroup = matchesByEntry.get(entryNo) ?? [];
+    // keep original matchGroup, and separately compute expandedRows
+    const extraRows = expandMatchGroup(entryNo, matchGroup);
+    const resultLabel = derivedResultByEntryNo[entryNo] ?? '';
+
+    return {
+      name,
+      nameParts: entry ? buildNamePartsForEntry(entry) : undefined,
+      entryNo,
+      matchGroup,
+      extraRows,
+      isSeed: derivedSeedEntryNos.has(Number(entryNo) ?? -1),
+      resultLabel,
+      isTop: TOP_RESULT_LABELS.some((tag) => resultLabel.includes(tag)),
+    };
+  });
+
+  const query = searchQuery.trim().toLowerCase();
+  const visibleItems = query ? allItems.filter((item) => item.name.toLowerCase().includes(query)) : allItems;
+  const collapsible = allItems.length > COLLAPSE_MIN_ENTRIES;
+  // 上位・その他とも並びはエントリー順（ユーザー確定）。detail.entries は全427ファイルで
+  // entryNo 昇順であることを確認済みなので、groupedNames の順をそのまま使えば足りる。
+  const topItems = collapsible ? visibleItems.filter((item) => item.isTop) : visibleItems;
+  const restItems = collapsible ? visibleItems.filter((item) => !item.isTop) : [];
+
+  // 検索中は「その他」を開いたままにする。ユーザーが自分で開閉したときだけ状態を持つ。
+  const restOpen = showRest || query.length > 0;
+
+  const renderItem = (item: (typeof allItems)[number]) => (
+    <MatchGroup
+      key={item.name}
+      name={item.name}
+      nameParts={item.nameParts}
+      entryNo={item.entryNo}
+      matchGroup={item.matchGroup}
+      extraRows={item.extraRows}
+      isSeed={item.isSeed}
+      resultLabel={item.resultLabel}
+    />
+  );
+
   return (
     <section className="mb-10">
       <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
 
-      <div className="mb-4 flex flex-wrap items-center gap-2">
+      <p className="mb-3 text-sm text-text-secondary">
+        1 組ずつの勝ち上がりとスコアです。
+        {collapsible &&
+          (topItems.length > 0
+            ? '既定では上位に入った組だけを出しています。ほかの組は検索するか、下の「その他の組」から開いてください。'
+            : '組数が多いので既定では畳んでいます。検索するか、下の「その他の組」から開いてください。')}
+      </p>
+
+      <div className="mb-4">
         <input
-          type="text"
+          type="search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="選手名や所属で検索"
-          className="h-9 px-3 py-1 text-sm border border-border-strong rounded shadow-sm dark:bg-gray-900 dark:text-white"
+          aria-label="対戦詳細を選手名や所属で検索"
+          className="h-9 w-full max-w-xs px-3 py-1 text-sm border border-border-strong rounded shadow-sm dark:bg-gray-900 dark:text-white"
         />
-
-        <button
-          onClick={() => setFilter('all')}
-          className={`h-9 px-3 text-sm rounded border ${filter === 'all' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
-        >
-          全て
-        </button>
-        <button
-          onClick={() => setFilter('top8')}
-          className={`h-9 px-3 text-sm rounded border ${filter === 'top8' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
-        >
-          ベスト8以上
-        </button>
       </div>
 
-      {groupedNames.map((name) => {
-        // try to find an entryNo by name
-        const entry = (detail.entries ?? []).find((e) => buildNameForEntry(e) === name);
-        const entryNo = entry?.entryNo ?? -1;
-        const matchGroup = matchesByEntry.get(entryNo) ?? [];
+      {visibleItems.length === 0 && <p className="mb-6 text-sm text-text-muted">「{searchQuery}」に一致する組はありませんでした。</p>}
 
-        // keep original matchGroup, and separately compute expandedRows
-        const expandedRows = expandMatchGroup(entryNo, matchGroup);
+      {topItems.map(renderItem)}
 
-        const resultLabel = derivedResultByEntryNo[entryNo];
-
-        return (
-          <MatchGroup
-            key={name}
-            name={name}
-            nameParts={entry ? buildNamePartsForEntry(entry) : undefined}
-            entryNo={entryNo}
-            matchGroup={matchGroup}
-            extraRows={expandedRows}
-            searchQuery={searchQuery}
-            filter={filter}
-            isSeed={derivedSeedEntryNos.has(Number(entryNo) ?? -1)}
-            resultLabel={resultLabel ?? ''}
-          />
-        );
-      })}
+      {restItems.length > 0 && (
+        <details
+          open={restOpen}
+          onToggle={(e) => {
+            // 検索によって開いた分は状態に持ち込まない（検索を消したら畳んだ状態へ戻す）。
+            if (query.length === 0) setShowRest((e.currentTarget as HTMLDetailsElement).open);
+          }}
+        >
+          {/* 中身がカードの列なので、ここを囲むとカードの二重になる。区切りは summary の1行だけにする。 */}
+          <summary className="cursor-pointer py-2 text-sm font-semibold text-link">その他の組（{restItems.length}組）を表示</summary>
+          <div className="pt-4">{restItems.map(renderItem)}</div>
+        </details>
+      )}
     </section>
   );
 }

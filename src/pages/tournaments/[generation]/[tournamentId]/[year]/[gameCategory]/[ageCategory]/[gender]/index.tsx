@@ -130,7 +130,6 @@ export default function TournamentYearResultPage({
   // docs/wiki/seo.md「大会名の表記と検索語の乖離（missing literal）」
   const { headingName } = buildTournamentSearchNames(label, searchLabel, searchAliases);
 
-  const [filter, setFilter] = useState<'all' | 'top8' | 'winners'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const detailData = useMemo(() => (detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null), [detailDataPacked]);
 
@@ -360,7 +359,15 @@ export default function TournamentYearResultPage({
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} insight={insight} />
 
         {/* トーナメント表 */}
-        {detailData && <TournamentBracket detailData={detailData} gameCategory={gameCategory} abandonedAfterRound={abandonment?.abandonedAfterRound ?? null} />}
+        {detailData && (
+          <TournamentBracket
+            detailData={detailData}
+            gameCategory={gameCategory}
+            abandonedAfterRound={abandonment?.abandonedAfterRound ?? null}
+            highschoolGender={generation === 'highschool' ? gender : null}
+            highschoolTeamLinks={highschoolTeamLinks}
+          />
+        )}
 
         {/* スコア詳細（ポイント分析つき試合） */}
         {scoreMatchLinks.length > 0 && (
@@ -417,14 +424,7 @@ export default function TournamentYearResultPage({
 
         {detailData && (
           <>
-            <MatchResults
-              detail={detailData}
-              gameCategory={gameCategory}
-              searchQuery={searchQuery}
-              setSearchQuery={setSearchQuery}
-              filter={filter}
-              setFilter={setFilter}
-            />
+            <MatchResults detail={detailData} gameCategory={gameCategory} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           </>
         )}
 

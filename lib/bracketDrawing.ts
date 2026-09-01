@@ -16,11 +16,19 @@
 //     2 回戦以降で負けた選手の線が前の枠の中点で途切れて宙に浮かないようにする。
 //     ただし**その試合が実際に行われている場合だけ**。未開催の試合へ太線を伸ばすと、
 //     勝ってもいないのに勝ち上がったように見える。
-//   - スコアは上下それぞれの獲得ゲーム数を、その側の横線の上に 1 つずつ。決勝だけは
-//     左右が同じ高さの 1 本になるので中央の左右に振り分ける。棄権は敗者側に「R」。
+//   - スコアは上下それぞれの獲得ゲーム数を、その側の横線の上に 1 つずつ。決勝は
+//     中央の左右に振り分ける。棄権は敗者側に「R」。
 //   - **決勝の横線だけは「勝った側のみ太く」**。他のラウンドと違い左右が同じ高さで
 //     ぶつかるため、両方太くすると 1 本の長い太線になりどちらが勝ったか読めなくなる。
 //     負けた側は細い線で中央まで残し、決勝まで来たことは示す。
+//   - **左右は描く前に高さを揃える**（2026-09-01 修正）。leafYOf が不戦勝の空席ぶんの行を
+//     確保しないため、不戦勝の位置が左右で違うと収束する高さがずれる（全1,002シート中
+//     461＝46.0%・最大 24.2px）。convergedYOf で両側の収束点を先に測り、**低い方の側を
+//     丸ごと下げてから描く**。上の「決勝は左右が同じ高さでぶつかる」という前提はこれで
+//     常に成り立つので、決勝の線・スコア・優勝の丸に特別扱いは要らない。
+//     揃えずに描こうとすると、決勝の横線が左右で別の高さになり、優勝の丸がどちらの線にも
+//     接しない宙ぶらりんの点になる。段差を線で吸収する方法も試したが、準決勝を勝った太線が
+//     元の高さで終わって突き出るため（縦線の終点が横線とずれる）採らなかった。
 //   - ラウンド名の見出しは出さない（列幅に対して長すぎて隣と重なる。紙のドロー表にも無い）。
 
 import type { BracketNode, BracketSheet } from './bracketLayout';
@@ -113,6 +121,29 @@ function scoresOf(n: BracketNode): { text: string; won: boolean }[] | null {
   }));
 }
 
+/**
+ * 片側が最後に 1 本へ収束する y を、描かずに求める。drawSide と同じ中点の漸化式。
+ *
+ * 左右で不戦勝の位置が違うと収束する高さがずれるので、描く前にこれで両側を測って
+ * **低い方の側を丸ごと下げ、決勝が左右同じ高さでぶつかるように揃える**。
+ * 揃えずに描くと決勝の横線が左右で別の高さになり、優勝の丸も片側の線にしか乗らない。
+ */
+function convergedYOf(columns: BracketNode[][], rowH: number, entryGap: number, matchGap: number, top: number): number | null {
+  if (columns.length === 0) return null;
+  let ys = leafYOf(columns[0] ?? [], rowH, entryGap, matchGap, top).ys;
+  for (const nodes of columns) {
+    const next: number[] = [];
+    nodes.forEach((n, k) => {
+      const ya = ys[2 * k];
+      const yb = ys[2 * k + 1];
+      const [pa, pb] = n.present;
+      next.push(pa && pb ? (ya + yb) / 2 : pa ? ya : pb ? yb : (ya + yb) / 2);
+    });
+    ys = next;
+  }
+  return ys[0] ?? null;
+}
+
 /** 1 シートぶんの線と文字を組み立てる。 */
 export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, metrics: typeof BRACKET_METRICS = BRACKET_METRICS): BracketDrawing | null {
   const { rowH, noW, nameW, colW, margin, centerGap, entryGap, matchGap } = metrics;
@@ -131,9 +162,9 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
   const labels: BracketLabel[] = [];
   const line = (x1: number, y1: number, x2: number, y2: number, win = false): number => segments.push({ x1, y1, x2, y2, win }) - 1;
 
-  const drawSide = (columns: BracketNode[][], x: (r: number) => number, isLeft: boolean) => {
+  const drawSide = (columns: BracketNode[][], x: (r: number) => number, isLeft: boolean, sideTop: number) => {
     const anchor: 'start' | 'end' = isLeft ? 'end' : 'start';
-    const leaf = leafYOf(columns[0] ?? [], rowH, entryGap, matchGap, top);
+    const leaf = leafYOf(columns[0] ?? [], rowH, entryGap, matchGap, sideTop);
 
     // 両端のエントリー番号と選手名
     (columns[0] ?? [])
@@ -215,8 +246,15 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
     return { ys: prevY, chains: prevChain, wons: prevWon, leafBottom: leaf.bottom };
   };
 
-  const leftSide = drawSide(sheet.left, xL, true);
-  const rightSide = drawSide(sheet.right, xR, false);
+  // 描く前に左右が収束する高さを測り、低い方を丸ごと下げて揃える。
+  // こうしないと決勝の横線が左右で別の高さになる（全1,002シート中461＝46.0%・最大24.2px）。
+  // 揃えてしまえば「決勝は左右が同じ高さでぶつかる」という以下の描き方の前提が常に成り立ち、
+  // 決勝の線・スコア・優勝の丸に特別扱いが要らなくなる。
+  const lyPre = convergedYOf(sheet.left, rowH, entryGap, matchGap, top);
+  const ryPre = convergedYOf(sheet.right, rowH, entryGap, matchGap, top);
+  const gap = lyPre != null && ryPre != null ? lyPre - ryPre : 0;
+  const leftSide = drawSide(sheet.left, xL, true, top + Math.max(0, -gap));
+  const rightSide = drawSide(sheet.right, xR, false, top + Math.max(0, gap));
   const height = Math.max(leftSide.leafBottom, rightSide.leafBottom) + margin;
 
   let champion: BracketDrawing['champion'] = null;
@@ -228,6 +266,7 @@ export function drawBracketSheet(sheet: BracketSheet, nameOf: BracketNameOf, met
     const [pa, pb] = c.present;
     const leftWon = c.winner != null && c.winner === c.entries[0];
     const rightWon = c.winner != null && c.winner === c.entries[1];
+    // 上で左右を揃えてあるので、両方居れば ly === ry。
     const yOut = pa && pb ? (ly + ry) / 2 : pa ? ly : ry;
 
     // 決勝の横線は**両側とも中央まで引くが、太いのは勝った側だけ**（2026-07-31 ユーザー決定）。
