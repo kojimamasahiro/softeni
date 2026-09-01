@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "関大一",
+        "teamId": "kandaiichi",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys",
+        "playerIds": ["清水_草太郎_関大一_大阪府", "口田_雄義_関大一_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "清水_草太郎_関大一_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "口田_雄義_関大一_大阪府",
+      "appearances": 1
+    }
+  ]
+}

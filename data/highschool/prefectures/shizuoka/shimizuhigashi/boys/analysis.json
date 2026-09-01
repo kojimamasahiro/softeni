@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "shimizuhigashi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["長澤_俊太_清水東_静岡県", "大西_璃空_清水東_静岡県"]
+        "playerIds": ["松永_健太_清水東_静岡県", "坂巻_裕太_清水東_静岡県"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "松永_健太_清水東_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "坂巻_裕太_清水東_静岡県",
+      "appearances": 1
+    },
     {
       "id": "長澤_俊太_清水東_静岡県",
       "appearances": 1

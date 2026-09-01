@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 1,
-    "doubles": 15
+    "team": 2,
+    "doubles": 19
   },
   "resultsByCategory": {
     "singles": {
@@ -42,15 +42,15 @@
         "teamId": "himejishou",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "team",
-        "tournamentId": "highschool-senbatsu",
-        "year": 2020,
+        "tournamentId": "highschool-championship",
+        "year": 2014,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 31,
   "topPlayers": [
     {
       "id": "頭島_羽奏_姫路商_兵庫県",
@@ -61,15 +61,15 @@
       "appearances": 3
     },
     {
+      "id": "小林_智佳_姫路商_兵庫県",
+      "appearances": 2
+    },
+    {
       "id": "北岡_朱莉_姫路商_兵庫県",
       "appearances": 2
     },
     {
-      "id": "飛岡_心実_姫路商_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "矢野_心優_姫路商_兵庫県",
+      "id": "三輪_里奈_姫路商_兵庫県",
       "appearances": 1
     }
   ]

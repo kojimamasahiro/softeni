@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "haebara",
         "prefecture": "沖縄県",
         "prefectureId": "okinawa",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["仲村_英泰_南風原_沖縄県", "森山_樹_南風原_沖縄県"]
+        "playerIds": ["上地_立希_南風原_沖縄県", "大田_朝成_南風原_沖縄県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "上地_立希_南風原_沖縄県",
+      "appearances": 1
+    },
+    {
+      "id": "大田_朝成_南風原_沖縄県",
+      "appearances": 1
+    },
     {
       "id": "富田_英寿_南風原_沖縄県",
       "appearances": 1
@@ -40,14 +48,6 @@
     },
     {
       "id": "仲村_英泰_南風原_沖縄県",
-      "appearances": 1
-    },
-    {
-      "id": "森山_樹_南風原_沖縄県",
-      "appearances": 1
-    },
-    {
-      "id": "喜屋武_晴_南風原_沖縄県",
       "appearances": 1
     }
   ]

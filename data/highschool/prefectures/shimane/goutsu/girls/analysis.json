@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "江津",
+        "teamId": "goutsu",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["山中_さな子_江津_島根県", "横山_彩花_江津_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "山中_さな子_江津_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "横山_彩花_江津_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "井佐子_千晴_江津_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "花田_茉優子_江津_島根県",
+      "appearances": 1
+    }
+  ]
+}

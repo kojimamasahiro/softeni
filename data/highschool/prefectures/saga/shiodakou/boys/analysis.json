@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "team": 3,
-    "doubles": 5
+    "team": 4,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -39,8 +39,12 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "小副川_忠希_塩田工_佐賀県",
+      "appearances": 2
+    },
     {
       "id": "本田_修平_塩田工_佐賀県",
       "appearances": 2
@@ -50,15 +54,11 @@
       "appearances": 2
     },
     {
+      "id": "山口_大樹_塩田工_佐賀県",
+      "appearances": 1
+    },
+    {
       "id": "喜多_晃平_塩田工_佐賀県",
-      "appearances": 1
-    },
-    {
-      "id": "江口_武志_塩田工_佐賀県",
-      "appearances": 1
-    },
-    {
-      "id": "藤井_侑也_塩田工_佐賀県",
       "appearances": 1
     }
   ]

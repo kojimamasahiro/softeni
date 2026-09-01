@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "nichinanshintoku",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["坂田_征司_日南振徳_宮崎県", "久冨_太誠_日南振徳_宮崎県"]
+        "playerIds": ["井手_悠馬_日南振徳_宮崎県", "岡本_希_日南振徳_宮崎県"]
       }
     },
     "team": {
@@ -28,14 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "坂田_征司_日南振徳_宮崎県",
+      "id": "徳丸_尚吾_日南振徳_宮崎県",
       "appearances": 1
     },
     {
-      "id": "久冨_太誠_日南振徳_宮崎県",
+      "id": "森_大地_日南振徳_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "井手_悠馬_日南振徳_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "岡本_希_日南振徳_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "坂田_征司_日南振徳_宮崎県",
       "appearances": 1
     }
   ]

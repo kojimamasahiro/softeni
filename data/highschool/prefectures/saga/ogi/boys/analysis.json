@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "ogi",
         "prefecture": "佐賀県",
         "prefectureId": "saga",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["横尾_凌大_小城_佐賀県", "高塚_涼介_小城_佐賀県"]
+        "playerIds": ["重本_昇臣_小城_佐賀県", "北島_武_小城_佐賀県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "重本_昇臣_小城_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "北島_武_小城_佐賀県",
+      "appearances": 1
+    },
     {
       "id": "横尾_凌大_小城_佐賀県",
       "appearances": 1
@@ -40,10 +48,6 @@
     },
     {
       "id": "高見_健司_小城_佐賀県",
-      "appearances": 1
-    },
-    {
-      "id": "大家_雅也_小城_佐賀県",
       "appearances": 1
     }
   ]

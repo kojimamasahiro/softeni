@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 2,
+    "team": 1,
+    "doubles": 3,
     "singles": 2
   },
   "resultsByCategory": {
@@ -27,24 +28,42 @@
         "teamId": "tokuyamakousen",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "1回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["木村_颯_徳山高専_山口県", "坂根_巧望_徳山高専_山口県"]
+        "playerIds": ["廣中_涼吾_徳山高専_山口県", "長嶺_晃樹_徳山高専_山口県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "徳山高専",
+        "teamId": "tokuyamakousen",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "木村_颯_徳山高専_山口県",
       "appearances": 3
+    },
+    {
+      "id": "廣中_涼吾_徳山高専_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "長嶺_晃樹_徳山高専_山口県",
+      "appearances": 1
     },
     {
       "id": "坂根_巧望_徳山高専_山口県",
@@ -52,10 +71,6 @@
     },
     {
       "id": "横田_智也_徳山高専_山口県",
-      "appearances": 1
-    },
-    {
-      "id": "柳_伊織_徳山高専_山口県",
       "appearances": 1
     }
   ]

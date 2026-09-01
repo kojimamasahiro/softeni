@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北上翔南",
+        "teamId": "kitakamishouminami",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["今野_桃香_北上翔南_岩手県", "千葉_未散_北上翔南_岩手県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "今野_桃香_北上翔南_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "千葉_未散_北上翔南_岩手県",
+      "appearances": 1
+    }
+  ]
+}

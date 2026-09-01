@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "久喜",
+        "teamId": "kuki",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["高澤_真菜_久喜_埼玉県", "井口_美緒_久喜_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高澤_真菜_久喜_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "井口_美緒_久喜_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

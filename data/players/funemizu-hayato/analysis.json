@@ -1,13 +1,13 @@
 {
-  "totalMatches": 133,
-  "wins": 114,
-  "losses": 19,
-  "totalWinRate": 0.857,
+  "totalMatches": 138,
+  "wins": 118,
+  "losses": 20,
+  "totalWinRate": 0.855,
   "games": {
-    "total": 725,
-    "won": 520,
-    "lost": 205,
-    "gameRate": 0.717
+    "total": 748,
+    "won": 537,
+    "lost": 211,
+    "gameRate": 0.718
   },
   "byPartner": {
     "12": {
@@ -110,20 +110,34 @@
     },
     "singles": {
       "matches": {
-        "total": 30,
-        "wins": 24,
-        "losses": 6,
+        "total": 35,
+        "wins": 28,
+        "losses": 7,
         "winRate": 0.8
       },
       "games": {
-        "total": 143,
-        "won": 99,
-        "lost": 44,
-        "gameRate": 0.692
+        "total": 166,
+        "won": 116,
+        "lost": 50,
+        "gameRate": 0.699
       }
     }
   },
   "byYear": {
+    "2014": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 23,
+        "won": 17,
+        "lost": 6,
+        "gameRate": 0.739
+      }
+    },
     "2022": {
       "matches": {
         "total": 29,

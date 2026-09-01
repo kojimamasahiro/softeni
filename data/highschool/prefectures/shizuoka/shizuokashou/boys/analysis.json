@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -36,11 +37,29 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "静岡商",
+        "teamId": "shizuokashou",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 17,
   "topPlayers": [
+    {
+      "id": "北堀_佑成_静岡商_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "堀川_涼太朗_静岡商_静岡県",
+      "appearances": 1
+    },
     {
       "id": "岡村_涼央_静岡商_静岡県",
       "appearances": 1
@@ -51,14 +70,6 @@
     },
     {
       "id": "萩原_佳汰_静岡商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "山本_颯也_静岡商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "鈴木_勝斗_静岡商_静岡県",
       "appearances": 1
     }
   ]

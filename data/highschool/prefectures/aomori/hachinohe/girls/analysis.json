@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "八戸",
+        "teamId": "hachinohe",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["高田_瑠海_八戸_青森県", "増田_千恵_八戸_青森県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高田_瑠海_八戸_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "増田_千恵_八戸_青森県",
+      "appearances": 1
+    }
+  ]
+}

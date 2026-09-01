@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
     "team": 1,
-    "doubles": 6,
+    "doubles": 8,
     "singles": 1
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "okayamaminami",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["桐山_舞_岡山南_岡山県", "槇尾_成美_岡山南_岡山県"]
+        "playerIds": ["多胡_美有紀_岡山南_岡山県", "難波_奈津美_岡山南_岡山県"]
       }
     },
     "team": {
@@ -73,8 +73,12 @@
       }
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 14,
   "topPlayers": [
+    {
+      "id": "難波_奈津美_岡山南_岡山県",
+      "appearances": 2
+    },
     {
       "id": "石井_さつき_岡山南_岡山県",
       "appearances": 2
@@ -84,15 +88,11 @@
       "appearances": 2
     },
     {
-      "id": "宮本_一沙_岡山南_岡山県",
+      "id": "後藤_道香_岡山南_岡山県",
       "appearances": 1
     },
     {
-      "id": "平﨑_瑠衣_岡山南_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "難波_奈津美_岡山南_岡山県",
+      "id": "香川_里歩_岡山南_岡山県",
       "appearances": 1
     }
   ]

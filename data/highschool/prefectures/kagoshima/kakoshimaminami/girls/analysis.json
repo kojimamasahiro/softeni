@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 11,
   "byCategory": {
-    "doubles": 6
+    "team": 1,
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -15,21 +16,39 @@
         "teamId": "kakoshimaminami",
         "prefecture": "鹿児島県",
         "prefectureId": "kagoshima",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["中崎_杏実_鹿児島南_鹿児島県", "岩元_愛花_鹿児島南_鹿児島県"]
+        "playerIds": ["中馬_黎菜_鹿児島南_鹿児島県", "松崎_千紘_鹿児島南_鹿児島県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "鹿児島南",
+        "teamId": "kakoshimaminami",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 16,
   "topPlayers": [
+    {
+      "id": "梅橋_麻里乃_鹿児島南_鹿児島県",
+      "appearances": 2
+    },
+    {
+      "id": "桑畑_佳奈_鹿児島南_鹿児島県",
+      "appearances": 2
+    },
     {
       "id": "中崎_杏実_鹿児島南_鹿児島県",
       "appearances": 2
@@ -39,15 +58,7 @@
       "appearances": 2
     },
     {
-      "id": "眞茅_優衣里_鹿児島南_鹿児島県",
-      "appearances": 1
-    },
-    {
-      "id": "栁田_春花_鹿児島南_鹿児島県",
-      "appearances": 1
-    },
-    {
-      "id": "梅橋_麻里乃_鹿児島南_鹿児島県",
+      "id": "假屋_美妃_鹿児島南_鹿児島県",
       "appearances": 1
     }
   ]

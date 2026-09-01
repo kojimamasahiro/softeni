@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "旭川西",
+        "teamId": "asahikawanishi",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["今成_菜摘_旭川西_北海道", "泉田_歩聖_旭川西_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "今成_菜摘_旭川西_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "泉田_歩聖_旭川西_北海道",
+      "appearances": 1
+    }
+  ]
+}

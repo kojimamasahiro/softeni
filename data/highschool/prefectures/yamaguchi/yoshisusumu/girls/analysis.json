@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
     "team": 1,
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "yoshisusumu",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["福谷_真由_慶進_山口県", "垣崎_友香_慶進_山口県"]
+        "playerIds": ["草谷_ニサ_慶進_山口県", "垣崎_友香_慶進_山口県"]
       }
     },
     "team": {
@@ -39,14 +39,22 @@
       }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "垣崎_友香_慶進_山口県",
+      "appearances": 2
+    },
+    {
       "id": "福谷_真由_慶進_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "草谷_ニサ_慶進_山口県",
       "appearances": 1
     },
     {
-      "id": "垣崎_友香_慶進_山口県",
+      "id": "井浦_野乃華_慶進_山口県",
       "appearances": 1
     }
   ]

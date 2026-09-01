@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北見緑陵",
+        "teamId": "kitamiryokuryou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys",
+        "playerIds": ["明田_渉_北見緑陵_北海道", "濵田_将平_北見緑陵_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "明田_渉_北見緑陵_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "濵田_将平_北見緑陵_北海道",
+      "appearances": 1
+    }
+  ]
+}

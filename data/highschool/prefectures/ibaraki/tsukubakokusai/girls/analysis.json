@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 2
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,31 +16,49 @@
         "teamId": "tsukubakokusai",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["加藤_百香_つくば国際_茨城県", "川島_ななみ_つくば国際_茨城県"]
+        "playerIds": ["梶間_祐花_つくば国際_茨城県", "新堀_朋香_つくば国際_茨城県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "つくば国際",
+        "teamId": "tsukubakokusai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "新堀_朋香_つくば国際_茨城県",
+      "appearances": 2
+    },
     {
       "id": "加藤_百香_つくば国際_茨城県",
       "appearances": 2
     },
     {
-      "id": "新堀_朋香_つくば国際_茨城県",
+      "id": "梶間_祐花_つくば国際_茨城県",
       "appearances": 1
     },
     {
-      "id": "川島_ななみ_つくば国際_茨城県",
+      "id": "上田_葵_つくば国際_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "久保宮_咲紀_つくば国際_茨城県",
       "appearances": 1
     }
   ]

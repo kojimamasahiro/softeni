@@ -150,6 +150,17 @@
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls"
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "girls"
   },
@@ -345,6 +356,17 @@
     "teamId": "yokohamasouei",
     "prefecture": "神奈川県",
     "prefectureId": "kanagawa",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys"
+  },
+  {
+    "team": "横浜創英",
+    "teamId": "yokohamasouei",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -396,6 +418,18 @@
     "gender": "boys"
   },
   {
+    "team": "厚木",
+    "teamId": "atsugi",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["菊地_莉彩子_厚木_神奈川県", "森村_優子_厚木_神奈川県"]
+  },
+  {
     "team": "武相",
     "teamId": "buai",
     "prefecture": "神奈川県",
@@ -430,6 +464,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["石山_秀虎_藤沢翔陵_神奈川県", "三浦_蓮磨_藤沢翔陵_神奈川県"]
+  },
+  {
+    "team": "秦野",
+    "teamId": "hadano",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["山本_蓮_秦野_神奈川県", "荻野_伊吹_秦野_神奈川県"]
   },
   {
     "team": "秦野",
@@ -562,6 +608,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["齋藤_桜優_秦野総合_神奈川県", "杉山_優菜_秦野総合_神奈川県"]
+  },
+  {
+    "team": "法政二",
+    "teamId": "houseini",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["水野_遼大_法政二_神奈川県", "大牧_由孟_法政二_神奈川県"]
   },
   {
     "team": "法政二",
@@ -742,6 +800,18 @@
     "year": 2025,
     "gender": "girls",
     "playerIds": ["石田_柚々子_川崎橘_神奈川県", "石渡_日湖_川崎橘_神奈川県"]
+  },
+  {
+    "team": "川崎橘",
+    "teamId": "kawasakitachibana",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["小野寺_健太_川崎橘_神奈川県", "矢向_夏季_川崎橘_神奈川県"]
   },
   {
     "team": "川崎橘",
@@ -1078,6 +1148,42 @@
     "year": 2025,
     "gender": "girls",
     "playerIds": ["溝井_美月_日大藤沢_神奈川県", "髙橋_萌楠_日大藤沢_神奈川県"]
+  },
+  {
+    "team": "日大藤沢",
+    "teamId": "nichidaifujisawa",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["大澤_なつみ_日大藤沢_神奈川県", "磯崎_茜_日大藤沢_神奈川県"]
+  },
+  {
+    "team": "日大藤沢",
+    "teamId": "nichidaifujisawa",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["森_瑞貴_日大藤沢_神奈川県", "三浦_遥香_日大藤沢_神奈川県"]
+  },
+  {
+    "team": "日大藤沢",
+    "teamId": "nichidaifujisawa",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["宇藤_明奈_日大藤沢_神奈川県", "石井_美有_日大藤沢_神奈川県"]
   },
   {
     "team": "日大藤沢",
@@ -1495,6 +1601,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["山口_翔太郎_小田原_神奈川県", "平野_太樹_小田原_神奈川県"]
+  },
+  {
+    "team": "小田原",
+    "teamId": "odawara",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "boys",
     "playerIds": ["若生_裕希_小田原_神奈川県", "久保田_凰心_小田原_神奈川県"]
@@ -1558,6 +1676,18 @@
     "year": 2016,
     "gender": "boys",
     "playerIds": ["平野_太樹_小田原_神奈川県", "中島_大_小田原_神奈川県"]
+  },
+  {
+    "team": "山北",
+    "teamId": "sanpoku",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["平島_拓馬_山北_神奈川県", "遠藤_克巳_山北_神奈川県"]
   },
   {
     "team": "山北",
@@ -1690,6 +1820,66 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["伊東_夢来_相洋_神奈川県", "西場_まこ_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["帆足_真鈴_相洋_神奈川県", "北原_衣織_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["鍋倉_由希_相洋_神奈川県", "和田_麻里_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["後藤_理子_相洋_神奈川県", "檜山_ちはる_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["山口_太陽_相洋_神奈川県", "原_碩亮_相洋_神奈川県"]
+  },
+  {
+    "team": "相洋",
+    "teamId": "soyo",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["坂本_将来_相洋_神奈川県", "北村_優樹_相洋_神奈川県"]
   },
   {
     "team": "相洋",
@@ -2548,6 +2738,18 @@
     "teamId": "tsurumine",
     "prefecture": "神奈川県",
     "prefectureId": "kanagawa",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["江波戸_咲季_鶴嶺_神奈川県", "宮下_茜_鶴嶺_神奈川県"]
+  },
+  {
+    "team": "鶴嶺",
+    "teamId": "tsurumine",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2650,6 +2852,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["大沢_風木_横浜創英高校_神奈川県", "松野_光希_横浜創英高校_神奈川県"]
+  },
+  {
+    "team": "横浜創英",
+    "teamId": "yokohamasouei",
+    "prefecture": "神奈川県",
+    "prefectureId": "kanagawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["押見_陸_横浜創英_神奈川県", "黒木_友輔_横浜創英_神奈川県"]
   },
   {
     "team": "横浜創英",

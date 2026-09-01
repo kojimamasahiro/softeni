@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "usuki",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["小野_由香子_臼杵_大分県", "磯部_幸彦_JX金属製錬佐賀関_大分県"]
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys",
+        "playerIds": ["遠藤_啓_臼杵_大分県", "藤野_誉也_臼杵_大分県"]
       }
     },
     "team": {
@@ -39,10 +39,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "小野_由香子_臼杵_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "遠藤_啓_臼杵_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "藤野_誉也_臼杵_大分県",
       "appearances": 1
     }
   ]

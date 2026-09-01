@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "八戸工",
+        "teamId": "hachinohekou",
+        "prefecture": "青森県",
+        "prefectureId": "aomori",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys",
+        "playerIds": ["柾谷_周_八戸工_青森県", "江刺_拓也_八戸工_青森県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "柾谷_周_八戸工_青森県",
+      "appearances": 1
+    },
+    {
+      "id": "江刺_拓也_八戸工_青森県",
+      "appearances": 1
+    }
+  ]
+}

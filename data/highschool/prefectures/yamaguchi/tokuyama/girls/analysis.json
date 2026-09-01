@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
+    "team": 1,
     "doubles": 3
   },
   "resultsByCategory": {
@@ -36,7 +37,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "徳山",
+        "teamId": "tokuyama",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 5,

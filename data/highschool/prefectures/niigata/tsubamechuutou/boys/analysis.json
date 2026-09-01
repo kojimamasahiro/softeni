@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
-    "team": 1,
-    "doubles": 5
+    "team": 2,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -39,8 +39,12 @@
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 7,
   "topPlayers": [
+    {
+      "id": "廣川_潤_燕中等_新潟県",
+      "appearances": 3
+    },
     {
       "id": "小林_将大_燕中等_新潟県",
       "appearances": 2
@@ -50,15 +54,11 @@
       "appearances": 2
     },
     {
-      "id": "廣川_潤_燕中等_新潟県",
-      "appearances": 2
-    },
-    {
       "id": "小林_将貴_燕中等_新潟県",
       "appearances": 2
     },
     {
-      "id": "関根_将弥_燕中等_新潟県",
+      "id": "廣川_陸_燕中等_新潟県",
       "appearances": 1
     }
   ]

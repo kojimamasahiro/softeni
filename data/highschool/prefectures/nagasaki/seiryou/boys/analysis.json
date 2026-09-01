@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 16,
   "byCategory": {
-    "team": 1,
-    "doubles": 11
+    "team": 2,
+    "doubles": 14
   },
   "resultsByCategory": {
     "singles": {
@@ -39,8 +39,12 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 22,
   "topPlayers": [
+    {
+      "id": "田嶋_皓介_西陵_長崎県",
+      "appearances": 2
+    },
     {
       "id": "入口_穣汰_西陵_長崎県",
       "appearances": 2
@@ -55,10 +59,6 @@
     },
     {
       "id": "井上_翼_西陵_長崎県",
-      "appearances": 2
-    },
-    {
-      "id": "松本_隼翔_西陵_長崎県",
       "appearances": 2
     }
   ]

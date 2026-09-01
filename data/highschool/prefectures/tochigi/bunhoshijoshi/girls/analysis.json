@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "文星女子",
+        "teamId": "bunhoshijoshi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "4回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["湯澤_聖菜_文星女子_栃木県", "関本_沙紀_文星女子_栃木県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "湯澤_聖菜_文星女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "関本_沙紀_文星女子_栃木県",
+      "appearances": 1
+    }
+  ]
+}

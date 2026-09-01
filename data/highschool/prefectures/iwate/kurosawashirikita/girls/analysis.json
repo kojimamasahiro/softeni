@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 20,
   "byCategory": {
-    "doubles": 14,
+    "team": 1,
+    "doubles": 17,
     "singles": 2
   },
   "resultsByCategory": {
@@ -49,20 +50,30 @@
         "teamId": "kurosawashirikita",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["菅原_愛未_黒沢尻北_岩手県", "髙橋_一花_黒沢尻北_岩手県"]
+        "playerIds": ["春山_海帆_黒沢尻北_岩手県", "菊地_はづき_黒沢尻北_岩手県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "黒沢尻北",
+        "teamId": "kurosawashirikita",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 19,
+  "uniquePlayers": 24,
   "topPlayers": [
     {
       "id": "菅原_愛未_黒沢尻北_岩手県",
@@ -77,11 +88,11 @@
       "appearances": 3
     },
     {
-      "id": "吉田_絢_黒沢尻北_岩手県",
+      "id": "山崎_華_黒沢尻北_岩手県",
       "appearances": 2
     },
     {
-      "id": "杉澤_梨_黒沢尻北_岩手県",
+      "id": "吉田_絢_黒沢尻北_岩手県",
       "appearances": 2
     }
   ]

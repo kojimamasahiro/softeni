@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "米子西",
+        "teamId": "yonagonishi",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["生田_有紀_米子西_鳥取県", "田中_杏佳_米子西_鳥取県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "生田_有紀_米子西_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "田中_杏佳_米子西_鳥取県",
+      "appearances": 1
+    }
+  ]
+}

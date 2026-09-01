@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "team": 1,
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -25,11 +26,29 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "水口",
+        "teamId": "mizuguchi",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "西塚_由季_水口_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_美鈴_水口_滋賀県",
+      "appearances": 1
+    },
     {
       "id": "古澤_優花_水口_滋賀県",
       "appearances": 1
@@ -40,10 +59,6 @@
     },
     {
       "id": "廣瀬_優美_水口_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "野村_ななみ_水口_滋賀県",
       "appearances": 1
     }
   ]

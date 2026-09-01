@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "岡山理大附",
+        "teamId": "okayamaridaifu",
+        "prefecture": "岡山県",
+        "prefectureId": "okayama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["西崎_望悠里_岡山理大附_岡山県", "加藤_あずさ_岡山理大附_岡山県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西崎_望悠里_岡山理大附_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_あずさ_岡山理大附_岡山県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "都城泉ヶ丘",
+        "teamId": "tomishiroizumigaoka",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["竹森_渚_都城泉ヶ丘_宮崎県", "中村_桂_都城泉ヶ丘_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "竹森_渚_都城泉ヶ丘_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "中村_桂_都城泉ヶ丘_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

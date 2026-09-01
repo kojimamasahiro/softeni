@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 1,
+    "team": 1,
+    "doubles": 3,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,31 +28,49 @@
         "teamId": "iwasenichidai",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["加倉井_尊_岩瀬日大_茨城県", "大崎_竣也_岩瀬日大_茨城県"]
+        "playerIds": ["宮内_健太_岩瀬日大_茨城県", "飯村_勇太_岩瀬日大_茨城県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "岩瀬日大",
+        "teamId": "iwasenichidai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
+      "id": "飯田_浩晶_岩瀬日大_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "中島_賢也_岩瀬日大_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "宮内_健太_岩瀬日大_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "飯村_勇太_岩瀬日大_茨城県",
+      "appearances": 1
+    },
+    {
       "id": "加倉井_尊_岩瀬日大_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "大崎_竣也_岩瀬日大_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "佐久間_啓輔_岩瀬日大_茨城県",
       "appearances": 1
     }
   ]

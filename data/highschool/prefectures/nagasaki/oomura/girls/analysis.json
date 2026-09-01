@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 40,
+  "totalAppearances": 44,
   "byCategory": {
     "team": 9,
-    "doubles": 31
+    "doubles": 35
   },
   "resultsByCategory": {
     "singles": {
@@ -60,8 +60,16 @@
       }
     }
   },
-  "uniquePlayers": 42,
+  "uniquePlayers": 47,
   "topPlayers": [
+    {
+      "id": "山口_あかり_大村_長崎県",
+      "appearances": 3
+    },
+    {
+      "id": "山口_紗英_大村_長崎県",
+      "appearances": 3
+    },
     {
       "id": "小林_葵_大村_長崎県",
       "appearances": 3
@@ -73,14 +81,6 @@
     {
       "id": "谷川_みなみ_大村_長崎県",
       "appearances": 3
-    },
-    {
-      "id": "坂田_華乃子_大村_長崎県",
-      "appearances": 3
-    },
-    {
-      "id": "鳥巣_穂乃香_大村_長崎県",
-      "appearances": 2
     }
   ]
 }

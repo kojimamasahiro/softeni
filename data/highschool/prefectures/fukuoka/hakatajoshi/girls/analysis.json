@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hakatajoshi",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["白石_夏希_博多女子_福岡県", "染川_愛_博多女子_福岡県"]
+        "playerIds": ["松崎_侑子_博多女子_福岡県", "一瀬_琴音_博多女子_福岡県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "松崎_侑子_博多女子_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "一瀬_琴音_博多女子_福岡県",
+      "appearances": 1
+    },
     {
       "id": "白石_夏希_博多女子_福岡県",
       "appearances": 1
@@ -40,14 +48,6 @@
     },
     {
       "id": "杉森_樹南_博多女子_福岡県",
-      "appearances": 1
-    },
-    {
-      "id": "吉野_芙有子_博多女子_福岡県",
-      "appearances": 1
-    },
-    {
-      "id": "林_杏華_博多女子_福岡県",
       "appearances": 1
     }
   ]

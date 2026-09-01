@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 74,
+  "totalAppearances": 82,
   "byCategory": {
-    "team": 13,
-    "doubles": 54,
+    "team": 14,
+    "doubles": 61,
     "singles": 7
   },
   "resultsByCategory": {
@@ -75,19 +75,27 @@
         "teamId": "chuukyou",
         "prefecture": "岐阜県",
         "prefectureId": "gifu",
-        "result": "3回戦敗退",
+        "result": "ベスト4",
         "category": "team",
-        "tournamentId": "highschool-senbatsu",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2014,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 71,
+  "uniquePlayers": 79,
   "topPlayers": [
     {
       "id": "森_友弥_中京_岐阜県",
       "appearances": 4
+    },
+    {
+      "id": "長谷川_稜真_中京_岐阜県",
+      "appearances": 3
+    },
+    {
+      "id": "吉川_真矢_中京_岐阜県",
+      "appearances": 3
     },
     {
       "id": "工藤_康治朗_中京_岐阜県",
@@ -95,14 +103,6 @@
     },
     {
       "id": "與川_賢樹_中京_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "髙橋_春馬_中京_岐阜県",
-      "appearances": 3
-    },
-    {
-      "id": "北島_空季_中京_岐阜県",
       "appearances": 3
     }
   ]

@@ -1,5 +1,16 @@
 [
   {
+    "team": "諫早商",
+    "teamId": "isahayashou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls"
+  },
+  {
     "team": "九州文化",
     "teamId": "kyuushuubunka",
     "prefecture": "長崎県",
@@ -304,6 +315,17 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys"
+  },
+  {
+    "team": "西陵",
+    "teamId": "seiryou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2018,
     "gender": "boys"
   },
@@ -530,6 +552,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["中島_翔悟_長崎工_長崎県", "古川_暢哉_長崎工_長崎県"]
+  },
+  {
+    "team": "長崎工",
+    "teamId": "nagasakikou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2015,
     "gender": "boys",
     "playerIds": ["山口_慧_長崎工_長崎県", "辻村_滉司_長崎工_長崎県"]
@@ -617,6 +651,30 @@
     "year": 2022,
     "gender": "boys",
     "playerIds": ["河村_瑠佳_長崎工業_長崎県", "中村_凛太郎_長崎工業_長崎県"]
+  },
+  {
+    "team": "長崎南山",
+    "teamId": "nagasakinanzan",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["藤川_毅児_長崎南山_長崎県", "米田_寛太_長崎南山_長崎県"]
+  },
+  {
+    "team": "長崎南山",
+    "teamId": "nagasakinanzan",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["平野_貴次_長崎南山_長崎県", "緒方_健人_長崎南山_長崎県"]
   },
   {
     "team": "長崎南山",
@@ -959,6 +1017,30 @@
     "teamId": "nagasakishou",
     "prefecture": "長崎県",
     "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["大山_望_長崎商_長崎県", "平田_えま_長崎商_長崎県"]
+  },
+  {
+    "team": "長崎商",
+    "teamId": "nagasakishou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["高崎_秋穂_長崎商_長崎県", "高崎_瑞穂_長崎商_長崎県"]
+  },
+  {
+    "team": "長崎商",
+    "teamId": "nagasakishou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1253,6 +1335,54 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["木村_海音_長崎商_長崎県", "西川_眞莉愛_長崎商_長崎県"]
+  },
+  {
+    "team": "大村",
+    "teamId": "oomura",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["山口_あかり_大村_長崎県", "山口_紗英_大村_長崎県"]
+  },
+  {
+    "team": "大村",
+    "teamId": "oomura",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["奥野_果歩_大村_長崎県", "高風_愛子_大村_長崎県"]
+  },
+  {
+    "team": "大村",
+    "teamId": "oomura",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["中村_真子_大村_長崎県", "坂本_愛咲美_大村_長崎県"]
+  },
+  {
+    "team": "大村",
+    "teamId": "oomura",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["大里_なな_大村_長崎県", "前田_千穂_大村_長崎県"]
   },
   {
     "team": "大村",
@@ -1925,6 +2055,42 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["山口_愛未_清峰_長崎県", "小林_凪夢_清峰_長崎県"]
+  },
+  {
+    "team": "西陵",
+    "teamId": "seiryou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["楠本_賢太_西陵_長崎県", "嶋田_康平_西陵_長崎県"]
+  },
+  {
+    "team": "西陵",
+    "teamId": "seiryou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["原_俊一郎_西陵_長崎県", "田嶋_皓介_西陵_長崎県"]
+  },
+  {
+    "team": "西陵",
+    "teamId": "seiryou",
+    "prefecture": "長崎県",
+    "prefectureId": "nagasaki",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["竹添_幹倫_西陵_長崎県", "武居_竜ノ介_西陵_長崎県"]
   },
   {
     "team": "西陵",

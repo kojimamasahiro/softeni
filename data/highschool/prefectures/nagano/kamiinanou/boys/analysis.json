@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -15,39 +16,49 @@
         "teamId": "kamiinanou",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["古屋敷_治輝_上伊那農_長野県", "桜井_諒_上伊那農_長野県"]
+        "playerIds": ["東條_樹_上伊那農_長野県", "埋橋_啓_上伊那農_長野県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "上伊那農",
+        "teamId": "kamiinanou",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "東條_樹_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "埋橋_啓_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "久保村_竜也_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "上田_誠汰_上伊那農_長野県",
+      "appearances": 1
+    },
+    {
       "id": "清水_皓太_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "北原_快隼_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "古屋敷_治輝_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "桜井_諒_上伊那農_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "笹谷_祐貴_上伊那農_長野県",
       "appearances": 1
     }
   ]

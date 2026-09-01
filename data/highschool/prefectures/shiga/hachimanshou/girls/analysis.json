@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hachimanshou",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["野口_紗希_八幡商_滋賀県", "高谷_綾女_八幡商_滋賀県"]
+        "playerIds": ["田中_愛理_八幡商_滋賀県", "高谷_綾女_八幡商_滋賀県"]
       }
     },
     "team": {
@@ -28,14 +28,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
-      "id": "野口_紗希_八幡商_滋賀県",
+      "id": "高谷_綾女_八幡商_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "田中_愛理_八幡商_滋賀県",
       "appearances": 1
     },
     {
-      "id": "高谷_綾女_八幡商_滋賀県",
+      "id": "野口_紗希_八幡商_滋賀県",
       "appearances": 1
     }
   ]

@@ -1,60 +1,26 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 2,
-    "singles": 1
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "河南",
-        "teamId": "kanan",
-        "prefecture": "大阪府",
-        "prefectureId": "osaka",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["勝部_太智_河南_島根県"]
-      },
-      "historicalBest": {
-        "team": "河南",
-        "teamId": "kanan",
-        "prefecture": "大阪府",
-        "prefectureId": "osaka",
-        "result": "2回戦敗退",
-        "category": "singles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2024,
-        "gender": "boys",
-        "playerIds": ["勝部_太智_河南_島根県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "河南",
-        "teamId": "kanan",
-        "prefecture": "大阪府",
-        "prefectureId": "osaka",
-        "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2025,
-        "gender": "boys",
-        "playerIds": ["栗原_拓真_羽須美中学校_島根県", "内田_琉稀弥_河南_島根県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "河南",
         "teamId": "kanan",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-secondaryschool-versus",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["栗原_拓真_羽須美中学校_島根県", "内田_琉稀弥_河南_島根県"]
+        "playerIds": ["上田_敦也_河南_大阪府", "元_陵也_河南_大阪府"]
       }
     },
     "team": {
@@ -62,18 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "内田_琉稀弥_河南_島根県",
+      "id": "上田_敦也_河南_大阪府",
       "appearances": 1
     },
     {
-      "id": "中林_冬芽_河南_島根県",
-      "appearances": 1
-    },
-    {
-      "id": "勝部_太智_河南_島根県",
+      "id": "元_陵也_河南_大阪府",
       "appearances": 1
     }
   ]

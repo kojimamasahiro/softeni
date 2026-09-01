@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "tsurumine",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2016,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["林_穂香_鶴嶺_神奈川県", "冨田_めぐみ_鶴嶺_神奈川県"]
+        "playerIds": ["江波戸_咲季_鶴嶺_神奈川県", "宮下_茜_鶴嶺_神奈川県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "江波戸_咲季_鶴嶺_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "宮下_茜_鶴嶺_神奈川県",
+      "appearances": 1
+    },
     {
       "id": "林_穂香_鶴嶺_神奈川県",
       "appearances": 1

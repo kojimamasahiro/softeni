@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 6,
+  "byCategory": {
+    "team": 1,
+    "doubles": 5
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鈴峯女子",
+        "teamId": "suzuminejoshi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls",
+        "playerIds": ["三隅_はすは_鈴峯女子_広島県", "中村_日菜子_鈴峯女子_広島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鈴峯女子",
+        "teamId": "suzuminejoshi",
+        "prefecture": "広島県",
+        "prefectureId": "hiroshima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 10,
+  "topPlayers": [
+    {
+      "id": "西永_りな_鈴峯女子_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "尾上_胡桃_鈴峯女子_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "三隅_はすは_鈴峯女子_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "中村_日菜子_鈴峯女子_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "岡本_優希乃_鈴峯女子_広島県",
+      "appearances": 1
+    }
+  ]
+}

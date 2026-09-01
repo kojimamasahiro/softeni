@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "鹿屋工",
+        "teamId": "kanoyakou",
+        "prefecture": "鹿児島県",
+        "prefectureId": "kagoshima",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys",
+        "playerIds": ["薗田_和也_鹿屋工_鹿児島県", "長谷川_真司_鹿屋工_鹿児島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "薗田_和也_鹿屋工_鹿児島県",
+      "appearances": 1
+    },
+    {
+      "id": "長谷川_真司_鹿屋工_鹿児島県",
+      "appearances": 1
+    }
+  ]
+}

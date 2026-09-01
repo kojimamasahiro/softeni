@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "marukoshuugakukan",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["吉池_綾_丸子修学館_長野県", "細川_実央_丸子修学館_長野県"]
+        "playerIds": ["吉池_綾_丸子修学館_長野県", "高桑_美南_丸子修学館_長野県"]
       }
     },
     "team": {
@@ -28,10 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "吉池_綾_丸子修学館_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "高桑_美南_丸子修学館_長野県",
       "appearances": 1
     },
     {

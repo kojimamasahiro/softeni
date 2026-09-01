@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -25,11 +26,29 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "楊志館",
+        "teamId": "youshikan",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2014,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "土谷_祐太_楊志館_大分県",
+      "appearances": 1
+    },
+    {
+      "id": "岩武_杏祐_楊志館_大分県",
+      "appearances": 1
+    },
     {
       "id": "立脇_勇輝_楊志館_大分県",
       "appearances": 1

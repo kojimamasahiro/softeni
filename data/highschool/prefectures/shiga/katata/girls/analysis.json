@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "katata",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["岩波_芽衣_堅田_滋賀県", "谷口_愛梨_堅田_滋賀県"]
+        "playerIds": ["大内_麻莉子_堅田_滋賀県", "角口_琴音_堅田_滋賀県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "大内_麻莉子_堅田_滋賀県",
+      "appearances": 1
+    },
+    {
+      "id": "角口_琴音_堅田_滋賀県",
+      "appearances": 1
+    },
     {
       "id": "岩波_芽衣_堅田_滋賀県",
       "appearances": 1

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
     "team": 1,
-    "doubles": 2
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "kansaichuuou",
         "prefecture": "奈良県",
         "prefectureId": "nara",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2014,
         "gender": "boys",
-        "playerIds": ["小林_歩輝_関西中央_奈良県", "井場_想大_関西中央_奈良県"]
+        "playerIds": ["幸田_真_関西中央_奈良県", "梶谷_司_関西中央_奈良県"]
       }
     },
     "team": {
@@ -39,22 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
+      "id": "幸田_真_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "梶谷_司_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "藤岡_亮輔_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "岡田_啓佑_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
       "id": "木村_圭吾_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "阪本_燿_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "小林_歩輝_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "井場_想大_関西中央_奈良県",
       "appearances": 1
     }
   ]

@@ -18,6 +18,28 @@
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls"
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys"
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "girls"
   },
@@ -286,6 +308,18 @@
     "gender": "boys"
   },
   {
+    "team": "青森北",
+    "teamId": "aomorikita",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["佐々木_和也_青森北_青森県", "三浦_拓_青森北_青森県"]
+  },
+  {
     "team": "青森明の星",
     "teamId": "aomorimeinohoshi",
     "prefecture": "青森県",
@@ -398,6 +432,18 @@
     "teamId": "goshogawarashou",
     "prefecture": "青森県",
     "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["小山内_実来_五所川原商_青森県", "青山_ほのか_五所川原商_青森県"]
+  },
+  {
+    "team": "五所川原商",
+    "teamId": "goshogawarashou",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -464,6 +510,30 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["木村_真琳_五所川原商_青森県", "高橋_菫_五所川原商_青森県"]
+  },
+  {
+    "team": "八戸",
+    "teamId": "hachinohe",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["高田_瑠海_八戸_青森県", "増田_千恵_八戸_青森県"]
+  },
+  {
+    "team": "八戸学院光星",
+    "teamId": "hachinohegakuinhikarihoshi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["風穴_莉子_八戸学院光星_青森県", "新堂_遥香_八戸学院光星_青森県"]
   },
   {
     "team": "八戸学院光星",
@@ -620,6 +690,78 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["滝沢_楓花_八戸学院光星_青森県", "中野渡_彩_八戸学院光星_青森県"]
+  },
+  {
+    "team": "八戸工",
+    "teamId": "hachinohekou",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["柾谷_周_八戸工_青森県", "江刺_拓也_八戸工_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["石塚_咲_八戸工大一_青森県", "東_恩珠_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["小向_穂乃伽_八戸工大一_青森県", "前田_風香_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["山村_和也_八戸工大一_青森県", "工藤_登生_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["小坂_洋介_八戸工大一_青森県", "山田_杏也_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["勝山_拓海_八戸工大一_青森県", "栗林_佑輔_八戸工大一_青森県"]
   },
   {
     "team": "八戸工大一",
@@ -1724,6 +1866,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["宮川_遼久_弘前_青森県", "小笠原_泰我_弘前_青森県"]
+  },
+  {
+    "team": "弘前実",
+    "teamId": "hirosakijitsu",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "girls",
+    "playerIds": ["豊巻_梨緒_弘前実_青森県", "西澤_瑠那_弘前実_青森県"]
+  },
+  {
+    "team": "弘前実",
+    "teamId": "hirosakijitsu",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2014,
+    "gender": "boys",
+    "playerIds": ["奈良岡_柊哉_弘前実_青森県", "伊藤_翼_弘前実_青森県"]
   },
   {
     "team": "弘前実",

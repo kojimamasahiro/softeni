@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "iida",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2024,
+        "year": 2014,
         "gender": "girls",
-        "playerIds": ["嶋垣_由愛_飯田_石川県", "大門_杏美_飯田_石川県"]
+        "playerIds": ["井田_真季_飯田_石川県", "橋本_遥_飯田_石川県"]
       }
     },
     "team": {
@@ -39,14 +39,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
-      "id": "嶋垣_由愛_飯田_石川県",
+      "id": "中社_惇美_飯田_石川県",
       "appearances": 1
     },
     {
-      "id": "大門_杏美_飯田_石川県",
+      "id": "穴田_吏乃_飯田_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "井田_真季_飯田_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "橋本_遥_飯田_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "嶋垣_由愛_飯田_石川県",
       "appearances": 1
     }
   ]
