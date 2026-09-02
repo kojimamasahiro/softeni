@@ -15,8 +15,20 @@ scripts/highschool/
 ├── 02result/         # 大会結果の抽出
 ├── 03list/           # 都道府県別サマリーの生成
 ├── 04summry/         # 都道府県ごとのサマリーファイル生成
-└── analysis/         # 学校別の分析データ生成
+├── analysis/         # 学校別の分析データ生成
+└── lib/              # 共有定義
+    ├── pipeline-sources.json  # 入力範囲（除外する大会）の唯一の定義
+    └── source-hash.mjs        # 元データの内容ハッシュ（鮮度チェック用）
 ```
+
+### 入力範囲は `lib/pipeline-sources.json` が唯一の定義
+
+パイプラインが読む大会の集合は、**02result/extract.py（除外リスト）と
+lib/source-hash.mjs（鮮度チェックのハッシュ対象）の両方**が使う。
+2026-09-02 まで extract.py 側にしか書かれておらず、ハッシュ側は `highschool-*` しか
+見ていなかったため、**全日本選手権・社会人などを取り込んでも鮮度チェックが緑のまま
+生成物が古くなる**状態だった（対象22大会のうち19大会がハッシュ対象外）。
+除外する大会を増やすときは、この JSON だけを編集すること。
 
 ## 実行順序
 
@@ -34,6 +46,7 @@ cd scripts/highschool/02result
 **処理内容:**
 
 - `data/tournaments/index.json` に載る大会のうち、`data/tournaments/details` に実体がある大会データを読み込み
+  （中学・小学**専用**の大会は除外。一覧は `lib/pipeline-sources.json`、除外理由は `extract.py` のコメント）
 - チーム名と都道府県のマッピングを構築
 - トーナメント結果とラウンドロビン結果を抽出
 - ラウンドロビンで敗退した選手も「予選敗退」として登録

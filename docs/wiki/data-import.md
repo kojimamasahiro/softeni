@@ -7,9 +7,16 @@
 ## package.json から確認できる主要コマンド
 
 - `npm run prebuild`
-  - `node scripts/generate-players-json.mjs`
-  - `node scripts/generate-player-analysis.mjs`
-  - `node scripts/generate-beta-matches-json.mjs`
+  - ビルド前の健全性チェック・正準化・生成物ビルドを直列に実行する（15段）。
+    全段の並びは [deployment.md](./deployment.md)「package.json scripts」節が正。
+  - このページで扱う取り込み系に効くのは、**先頭のゲート**
+    （`normalize-team-spacing.mjs` / `check-tournament-entries.mjs` /
+    `check-highschool-pipeline-freshness.mjs` / `check-name-splits.mjs --strict`）で、
+    取り込んだデータに不整合があるとここでビルドが止まる
+  - 主な生成: `generate-players-json.mjs` / `generate-players-lite.mjs` /
+    `generate-player-analysis.mjs` / `generate-beta-matches-json.mjs` /
+    `generate-match-reverse-index.mjs` / `generate-rare-events.mjs` /
+    `npm run playerstats:facts` / `npm run playerstats:rankings` / `npm run secondaryschool:build`
 - `npm run check:growth`
   - `node scripts/check-growth-analysis.mjs`
 
@@ -149,6 +156,8 @@ Deprecated:
 - `scripts/pdf/highschool_championship_entries.py`
   インターハイ（`highschool-championship`）の公式記録報告書PDFから、**エントリー（選手・チーム情報）
   のみ**を抽出する専用パーサ。2019年度レイアウトで検証済み。
+  座標ベース分割へ切り替えた経緯は
+  [raw/2026-08-20-interhigh-name-split-coordinate-fix.md](../raw/2026-08-20-interhigh-name-split-coordinate-fix.md)。
   - スコープを意図的にエントリーのみに限定している。理由: 個人戦の予選ラウンド（1回戦〜準々決勝前）は
     敗者側のゲーム数1桁のみが合流点付近に印字される形式で、勝者は表示されず、対戦カードの再掲も無い。
     赤色罫線（ブラケット線）のジオメトリを座標追跡しても、合流点では勝者側・敗者側どちらの入力線も
@@ -525,8 +534,17 @@ tool-bridge）を経由しない旧ツールのため未対応。2026-08-01、�
 - スクリプトは JSON を再シリアライズせず元テキストへピンポイント置換するため整形（インライン配列など）が保たれる。冪等で、`--dry-run` で事前確認できる
 - `temp/` 配下の中間生成物は対象外。データを再生成した場合は本スクリプトを再実行する
 - 別団体（例: `高田商ＯＢクラブ`＝OB団体）や別校（`大分`≠`大分商`、`高崎`≠`高崎商`）は対象に含めない。新しい揺れは対応表に追記して再実行する
-- 登録済みの学校名エイリアス（HJC適用済み）: 高田商 / 大分商 / 明豊 / 旭川工 / 北科大 / 焼津 / 高崎商
-- 判断保留（別校か同一校か未確定のため未登録）: `岐阜商` vs `県岐阜商`、`富士見` vs `静岡県富士見`
+- **登録数は 722 エントリ**（2026-09-02 実測）。旧記述はHJC着手時の7校＋保留2件を挙げていたが、
+  その後の全大会展開で桁が変わっており、一覧を wiki に置く意味が無くなった。**対応表そのものが正**
+  （`data/tournaments/team-name-aliases.json`。各エントリに `note` で判断根拠が書いてある）
+- かつて判断保留としていた `岐阜商` vs `県岐阜商`・`富士見` vs `静岡県富士見` は**いずれも登録済み**
+  （同一選手が年度をまたいで両表記で登場することを根拠に同一校と確定。`県岐阜商` は
+  市立岐阜商業＝`市岐商` とは別校である点も note に明記）
+- **インライン圧縮形式での置換漏れバグ（2026-07-17 発見・修正済み）**: 大会追加ツールが生成する
+  `"team":"高田商業"`（コロン後にスペースなし）形式では、`participants[].id` は正準へ再計算されるのに
+  `participants[].team` の固定文字列置換（`"team": "x"` スペースあり前提）だけが掛からず、
+  id と team が不一致のまま残っていた。team/prefecture 置換を id と同じ正規表現方式
+  （スペース有無両対応）に修正済み。`normalize-prefecture` 側の同種バグ（下記）と同じ型
 - 一回限りのデータ破損修復は `scripts/fix-hjc-2024-doubles.mjs`（2024男子ダブルスで和歌山勢の氏名・県名混入により参照切れ等が発生していたもの。氏名はドロー＝`entries` を一次情報として修復）。本スクリプト実行後に上記の正規化を流す
 
 #### ルール: 都道府県は省略しない

@@ -22,19 +22,14 @@ TOURNAMENTS_INDEX_PATH = str(SCRIPT_DIR / "../../../data/tournaments/index.json"
 # **全日本選手権・全日本シングルス・東西日本などは除外しない。** 高体連の高校生が
 # 正当に出場しており、「この高校の選手が全日本でベスト8」は高校ページに出すべき情報。
 # `zennihon-junior` も除外しない（u17/u20 は高校生。u14 で高校名に一致するのは実測0件）。
-EXCLUDED_TOURNAMENT_IDS = {
-    "secondaryschool-championship",          # 全国中学校体育大会（全中）
-    "zennihon-secondaryschool-versus",       # 都道府県対抗全日本中学生大会
-    "zennihon-secondaryschool-club-pre",     # 全日本中学生クラブ選手権プレ大会
-    "primaryschool-championship",            # 全国小学生大会
-    "zennihon-primaryschool",                # 全日本小学生大会
-} | {
-    f"secondaryschool-{block}-block"
-    for block in [
-        "hokkaido", "tohoku", "hokushinetsu", "kanto", "tokai",
-        "kinki", "chugoku", "shikoku", "kyushu",
-    ]
-}
+#
+# 一覧の実体は ../lib/pipeline-sources.json に置いてある（2026-09-02 に移動）。
+# 鮮度チェック（../lib/source-hash.mjs）が同じ集合をハッシュ対象にする必要があり、
+# 両方に書くと片方だけ育って気付けないため。
+PIPELINE_SOURCES_PATH = str(SCRIPT_DIR / "../lib/pipeline-sources.json")
+
+with open(PIPELINE_SOURCES_PATH, encoding="utf-8") as f:
+    EXCLUDED_TOURNAMENT_IDS = set(json.load(f)["excludedTournamentIds"])
 
 
 def load_target_tournaments():

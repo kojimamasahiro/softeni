@@ -145,3 +145,34 @@
 - [ADR-013](../adr/ADR-013-scoped-team-name-aliases.md) — alias への scope 導入
 - [2026-07-26-homonym-measurement.md](./2026-07-26-homonym-measurement.md) — 同姓同名（逆方向）の実測
 - [2026-08-29-name-split-audit.md](./2026-08-29-name-split-audit.md) — 姓名分割ゆれの運用
+
+---
+
+## Compile Log
+
+2026-09-02 の [LLM Wiki lint](./2026-09-02-llm-wiki-lint.md) で、このノートの残タスク
+「docs/wiki/team-player-identity.md への書き戻し」を実施した時点の記録。
+
+wiki に載せたもの:
+
+- 「改名」が既存3仕組み（`homonyms.json` / `name-split-aliases.json` / `team-name-aliases.json`）の
+  どれでも扱えない理由の対比表 → `wiki/team-player-identity.md`「選手の登録名変更（改名）」
+- 決めたこと3点（`scope` 必須 / アプリ層でなくデータ本体を書き換える / 正準は改名後）とその理由
+- 「検出は自動化できない・対応表の価値は判断を全系統へ効かせること」という結論
+- 林 湧太郎 ⇄ 林 佑太郎 の実例（count 22 → 24 になること）— 唯一の実例で、
+  `scope` を必須にする判断の根拠そのものなので残す価値がある
+- `神戸松陰大学`（陰）→ `神戸松蔭大学`（蔭）の未対応 alias → 同ページ「既知の残課題」
+- 未実装の残タスク → `wiki/open-questions.md`「ドキュメント運用」
+
+意図的に載せなかったもの:
+
+- 事実確認の表（出現件数・年の内訳）と NTT西日本 公式ページでの確認手順 — 一度きりの調査。
+  結論（現行登録名は `佑太郎`・名の誤字修正は不要）だけを wiki に持ち込んだ。
+- `scripts/normalize-player-names.mjs` の適用手順4ステップ — **未実装のため**。
+  wiki は現状仕様のページで、実装していない手順を書くと確定事項に見える。実装時に書き戻す。
+- 全日本インドア2025 の都道府県48人一括修正の詳細（復元方法・検証内容）— 同型のデータバグは
+  既に `wiki/team-player-identity.md` に `primaryschool-championship 2024` の例で載っており、
+  個別ケースの積み増しは読み手の判断を助けない。`神戸松陰大学` の件だけ未対応なので拾った。
+- `data/teams/teams.json` が再生成待ちである件 — 一時状態。alias 追加時に解消する。
+- `formerNames` の公開面対応 — 「curated 選手に改名が出てきたら」という条件付きの先送りで、
+  現時点で該当者がいない。wiki には決めたこと3の但し書きとして1行だけ残した。

@@ -1,10 +1,47 @@
 # Open Questions
 
-## ドキュメント運用（2026-08-12 lint で顕在化）
+このページは**未解決の問いだけ**を置く。解決したものは末尾の
+「[解決済み（記録）](#解決済み記録)」へ移し、1〜3行の結論と参照先だけ残す
+（2026-09-02 に整理。解決済みの節が本文中に居座り「未解決の一覧」として読めなくなっていたため）。
 
-`docs/raw/2026-08-12-llm-wiki-lint.md`（リポジトリ全体のヘルスチェック）の §5 より。
-機械的に直せるものは同 lint で修正済みで、ここには判断が要るものだけを残す。
+## ドキュメント運用（2026-08-12 lint → 2026-09-02 lint で更新）
 
+`docs/raw/2026-08-12-llm-wiki-lint.md` / `docs/raw/2026-09-02-llm-wiki-lint.md`
+（リポジトリ全体のヘルスチェック）の §5 より。機械的に直せるものは各 lint で修正済みで、
+ここには判断が要るものだけを残す。
+
+**2026-09-02 に解消したもの**（項目は落とし、経緯だけ残す）:
+
+- 解決済み Open Question の置き場 → 末尾に「[解決済み（記録）](#解決済み記録)」を新設し、
+  解決した6件を移した。以後、解決したものは本文から外してそこへ移す。
+- `docs/sql/*.sql` の適用追跡 → [docs/sql/APPLIED.md](../sql/APPLIED.md) を新設して解決。
+  ただし `receive-order.sql` の本番適用可否は**まだ「未確認」のまま**で、下に単独の項目として残す。
+- Compile Log 欠落26本の遡及 → AGENTS.md に適用開始日（2026-07-11）と
+  2026-08-01 以降のバックフィル済みを明記して打ち切り済み。**2026-08-13 以降に新規追加された
+  raw 36本のうち7本に Compile Log が無い**ため、下に運用の項目として残す。
+- CI スクリプト2本（`check-highschool-pipeline-freshness.mjs` / `check-orphan-entries.mjs`）の
+  docs 未言及 → 解消済み。
+
+現在の未解決:
+
+- **`docs/sql/receive-order.sql` を本番 Supabase に適用したかが未確認。** 未適用ならポイント入力の
+  レシーブ選手自動推定が働かない（`games.initial_receive_player_index` が常に null）。
+  確認して [APPLIED.md](../sql/APPLIED.md) に日付を入れる。
+- **Compile Log の運用が定着しきっていない。** 2026-08-13 以降の raw 36本中7本が未記入
+  （`2026-08-12-secondaryschool-{release-checklist,teamid-review}` / `2026-08-12-university-team-name-cleanup` /
+  `2026-08-13-player-name-variants-review` / `2026-08-15-m4-gsc-review` /
+  `2026-08-20-zennihon-workers-2022-general-boys-review` / `2026-08-31-player-registered-name-change`）。
+  うち作業リスト型（teamId 目視・要確認リスト）は wiki へ載せるものが元々無い可能性が高いので、
+  **「作業リスト型の raw には Compile Log を求めない」と AGENTS.md に例外を書くか、
+  「除外のみ1行」で必ず書かせるか**を決める。
+- **選手の登録名変更（改名）の対応表が未実装。**
+  `data/players/player-name-aliases.json` と `scripts/normalize-player-names.mjs` の実装、
+  林 湧太郎 → 林 佑太郎 の適用（`index.json` の count 22 → 24 を含む）が残っている。
+  設計は [team-player-identity.md](./team-player-identity.md)「選手の登録名変更（改名）」、
+  経緯は [raw/2026-08-31-player-registered-name-change.md](../raw/2026-08-31-player-registered-name-change.md)。
+- **`docs/wiki/idea-backlog.md` の「一言サマリ」が一言でなくなっている。** 1セルが数千字あり、
+  索引としての用（どこにあるかを1ページで把握する）を果たしていない。
+  文字数上限を決めて各エリアページへ寄せるか、索引の責務自体を見直すか。
 - **文部科学大臣杯全日本大学対抗選手権大会（インカレ団体戦）の `tournamentId` が未定義。**
   `data/tournaments/index.json` の generation `university` には
   `zennihon-university` / `zennihon-university-ouza` / `zennihon-university-indoor` はあるが、
@@ -12,14 +49,12 @@
   `tools/incare-2026/team-none-boys.initialPlayers.json` に変換済みなので、結果を
   `data/tournaments/details/` に入れる段階でIDを決める必要がある
   （[インカレの姓名分割](../raw/2026-08-29-intercollegiate-name-split.md) 追記2）。
-- `docs/sql/*.sql`（差分DDL）の本番適用状態を追跡する手段が無い。特に
-  `receive-order.sql` が未適用だとポイント入力の自動推定が動かない。適用ログを置くか、
-  migration ツールに寄せるか。
 - 2026-05-24 最終更新の4ページ（`backend.md` / `database.md` / `project-overview.md` /
   `score-analysis.md`）を「復元した初期メモ」から「現行仕様」へ昇格させるか、統合して
-  Deprecated にするか。実装との突き合わせでは内容はほぼ正しく、格付けだけが古い。
-- Compile Log が無い raw ノート26本（ルール成文化 2026-07-11 以降にコミットされたもの）を
-  遡って埋めるか、AGENTS.md に適用開始日を明記して打ち切るか。
+  Deprecated にするか。実装との突き合わせでは内容はほぼ正しく、格付けだけが古い
+  （2026-09-02 lint でも API エンドポイント11本が実装と全一致することを再確認。
+  ただし同 lint で `prebuild` の記述が3段のまま実態15段とずれていたのを修正しており、
+  「内容は正しい」は無条件ではない）。
 - wiki → raw の参照が「バッククォートのパス表記」と Markdown リンクで混在しており、
   到達性を機械チェックできない。どちらかに寄せるか。
 - 中断案件の「再開トリガー」を統一フォーマットで持たせる
@@ -55,14 +90,6 @@
   「同一エントリー内の 2 人の氏名を連結し直し、別の切り方なら双方の姓名が辞書に当たるか」を
   見れば検出できるはず。他に残っているかは未調査。
 
-### highschool パイプラインの鮮度チェックの守備範囲
-
-**highschool パイプラインの鮮度チェックのハッシュ対象が実際の入力より狭い**
-（`data/highschool/.pipeline-source-hash.json` は `highschool-*` のソースしか見ないが、
-`scripts/highschool/02result/extract.py` は全大会を読む）。`highschool-*` 以外の大会だけが
-更新されると、生成物が古いままチェックは緑になる。ハッシュ対象を広げるか、
-生成物の入力を `highschool-*` に絞るか。
-
 ## 全日本学生選抜インドア（zennihon-university-indoor）
 
 - 第59回(2025)の開催会場が公式公開情報から特定できず、`information` の `location` を空にしている。
@@ -82,23 +109,56 @@
 - score 側のヘッダー/フッターやブランド表現を分ける正式方針はあるか
 - `score` mode を Phase 2 で UGC 本拠地に転換する際の既存 score mode ラッパとの整合
 
-## 試合詳細の beta 昇格（検討中 2026-06）
+## 試合詳細の beta 昇格（設計 2026-06 → **実装済み 2026-07-02**）
 
-設計の詳細とドラフト仕様は docs/wiki/score-site-link.md に集約。主な決定:
+設計の詳細は [score-site-link.md](./score-site-link.md)。決定はすべて実装に入っている
+（2026-09-02 に確認）:
 
-- 掲載大会に紐づく試合は大会ページ配下のネスト URL（`/tournaments/.../matches/{UUID}`）で indexable にする
-- 野良試合は当面 `/beta/matches-results/*`（noindex）に残す
-- URL の ID は UUID 維持（slug 化しない）、50 件上限撤廃・追記型生成へ
-- 大会紐付けの誤りは削除→新規作成し直しで対応する
+- ネスト URL `/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/[matchId]`
+  のページが実在（2026-07-02 追加）。野良試合は `/beta/matches-results/*` のまま
+- 逆引き表は `public/data/beta-matches/reverse/by-tournament.json` / `by-player.json` の2本を
+  `scripts/generate-match-reverse-index.mjs`（`prebuild` 済み）が生成
+- 掲載試合は25件中24件に `siteLink` が付いている
 
-残る Open Question は score-site-link.md 末尾を参照。
+残る Open Question:
+
+- ~~逆引き表の置き場所とファイル分割（全選手1ファイルで足りるか）~~
+  → **足りている**（`by-player.json` が29KB / `by-tournament.json` が10KB、25試合時点）。
+  試合数が3桁になったら再評価する
+- 手入力フォールバック（野良）試合に後から `siteLink` を付与して掲載大会試合へ昇格させる導線を作るか
+  （現在 `siteLink` なしは1件）
+- **[score-site-link.md](./score-site-link.md) 自体がドラフトの文体のまま**（「本リリースでは急がない」
+  「移行スクリプトで一括付与する」等の未来形）。最終更新 2026-06-25 で、wiki 32ページ中もっとも古い。
+  実装済みの現状仕様として書き直すか、設計ドラフトとして明示するか
 
 ## score データモデル
 
+**2026-09-02 に実装から回答できたもの**（下記は Open Question から外した）:
+
+- **`matches.status` / `processing_status` の値と遷移**（`src/types/database.ts`・書き込み箇所を実測）
+  - `matches.status`: 型は `draft | in_progress | completed | archived` の4値。実際に書かれるのは
+    `draft`（作成時の一部）→ `in_progress`（試合作成・ゲーム追加時）→ `completed`（入力完了時）で、
+    **`archived` は読み書きとも0箇所＝死んだ値**。
+  - `processing_status`（動画レビューセッション）: 型は5値。実際は
+    `draft`（セッション作成）→ `reviewing`（セグメント登録・レビュー中）→ `committed`（確定時、
+    `lib/videoReview.ts`）の3値のみで、**`ready` / `processing` は未使用**。
+- **`points.result_type` の enum**: winner 7値（`smash_winner` / `volley_winner` / `passing_winner` /
+  `drop_winner` / `net_in_winner` / `service_ace` / `winner`）＋ error 7値（`net` / `out` /
+  `smash_error` / `volley_error` / `double_fault` / `receive_error` / `follow_error`）＋
+  旧データ用の `forced_error` / `unforced_error`。
+- **`edit_token` / `edit_token_hash` の撤去**: アプリ側（`src/**` / `lib/**` / `src/types/database.ts`）
+  からは**既に消えている**。残るのは `scripts/generate-beta-matches-json.mjs` の
+  `INTERNAL_FIELD_NAMES`（公開 JSON から落とす防御用の名前リスト）と、Supabase 側の実カラムだけ。
+
+残る Open Question:
+
 - score 機能の正式な source of truth は Supabase か、それとも生成済み JSON か
-- `edit_token` / `edit_token_hash` は ADR-003 で廃止方針（認証所有モデルへ移行）。撤去の段取りは未定
-- `matches.status` / `processing_status` の正式な状態遷移は何か
-- `points.result_type` の正式な enum 一覧はあるか
+- 上記の**死んだ値（`archived` / `ready` / `processing`）を型から落とすか**、将来使う予定として残すか
+- `result_type` の集合が**3箇所に重複定義**されている（`lib/matchLogic.ts`・
+  `lib/matchAnalysis/helpers.ts`・`src/pages/beta/matches-results/[matchId]/index.tsx`）。
+  `forced_error` / `unforced_error` を含むかが箇所ごとに違うので、一本化するか
+- Supabase の `edit_token` 列そのものをいつ落とすか（落とすなら `docs/sql/` に DDL と
+  [APPLIED.md](../sql/APPLIED.md) の行が要る）
 
 ## 公開/編集権限
 
@@ -166,29 +226,11 @@ UGC 統合とあわせて保留し、コンテンツ拡大とユーザー反響�
 - `match_video_sessions` / `match_point_candidates` の本番利用状況はどうなっているか
 - 動画レビュー候補を誰がどの手順で確定するか
 
-## 「全国大会」判定の二重基準（2026-07-20 追加 → 同日 解決）
+## 予選リーグ→決勝Tのデータ表現（積み残し）
 
-**解決済み**。選手ページの「全国」判定は `lib/nationalTitles.ts` のホワイトリスト（22大会）に
-統一した（`ENGINE_VERSION` 1.4.0）。「全国大会優勝」バッジ・SEO 文言に加えて、キャリア年表の
-「全国初出場」「全国初優勝」（`titles.firsts.firstNational*`）も同じ基準を使う。
-これにより、東日本選手権・西日本選手権（地域大会）が「全国初優勝」として年表に出る問題は解消した。
+本体（`bracket-slot-parity` の誤検知）は 2026-08-22 に `knockoutDraw` の導入で解決済み。
+経緯は末尾の[解決済み（記録）](#解決済み記録)。以下はそこから残った未解決事項。
 
-残る二重性は**意図的**: ランキングの tier 判定は引き続き広義 `isNational`
-（`generationId` が `international` / `international-qualifier` 以外）を使う。用途が
-「表示上の事実表明」ではなく「大会格の重み付け」であり、地域大会も国内大会として重みを持たせて
-よいため。詳細は [players-pages.md](./players-pages.md)「全国大会優勝の実績表示」。
-
-## ブラケット復元と決勝Tの席順（2026-08-22 解決）
-
-**解決済み。** 予選リーグ→決勝T形式の大会で `bracket-slot-parity` が誤検知していた件は、
-真因が「決勝Tの席をエントリー単位（`entries[].type`）で持っていたこと」だったと判明し、
-席を**予選リーグの組**に持たせる `knockoutDraw` を導入して解決した
-（[ADR-015](../adr/ADR-015-knockout-draw-by-group.md)、
-[調査メモ](../raw/2026-08-22-bracket-slot-parity-roundrobin-false-positive.md)）。
-復元適用 285 → 372 大会・突合 26,527 → 27,633 試合で不一致0件。
-入力ツール（`tools/index.html`）も保存時に `knockoutDraw` を出力するよう対応済み。
-
-残っている未解決事項:
 
 - **2段リーグ形式（予選リーグ→準決勝リーグ→優勝決定戦）の2段目の順位が記録されない。**
   `results[].roundrobin` は組を1つしか持てないため、`zennihon-university-ouza/2026/team-none-boys`
@@ -196,15 +238,21 @@ UGC 統合とあわせて保留し、コンテンツ拡大とユーザー反響�
   `roundrobin` を段ごとの配列にするかは、この形式が現状1大会だけなので保留。
 - 開催前・進行中の大会で未確定席をどう見せるか（「A組1位」と書くか空欄のままか）。
   データ上は開催前でも表を組めるようになったが、表示は未設計で現状は空席として描かれる。
-- 予選リーグ大会に残っている `entries[].type`（90ファイル中26ファイル）を消すか。
-  表示・検証はもう読まないが、投入ツール（`tools/tournament3` の `buildEntriesMeta`）が今も書いている。
+- 予選リーグ大会に残っている `entries[].type` を消すか。**2026-09-02 に再実測して2点訂正**:
+  - 件数は「90ファイル中26」ではなく、**予選リーグ／`knockoutDraw` を持つ112ファイルの全件**に
+    残っている。投入ツール（`tools/tournament3` の `buildEntriesMeta`）が書き続けているため、
+    放置すると増える一方（値の内訳は `packing` 18,018 / `extra` 10,634 / `seed` 5,890 / null 4,963）。
+  - **「表示・検証はもう読まない」は誤り**。`lib/bracketLayout.ts` は
+    ノックアウトのみの大会で今も `entries[].type` から席順を組む（`seed` / `extra` / `packing`）。
+    予選リーグ大会では `knockoutDraw` の経路が先に効くので実害は出ていないが、
+    同ファイルには「全件 `packing` かつ出場数が2冪だとパリティ検査をすり抜けて誤復元する」という
+    実例（`zennihon-senior/2025/doubles-over80-girls`）への防御コードが入っており、
+    **予選リーグ側の `type` を消せばこの防御そのものが不要になる**。
 
 ## 分析ロジック
 
 - 分析指標の採用基準は何か
 - 研究や現場知見に基づく裏付けをどこまで持たせるか
-- ~~`lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界を正式に定義するか~~
-  → 2026-08-12 に [score-analysis.md](./score-analysis.md)「責務境界」へ記述（1試合の中 / 複数試合をまたぐ）
 - 成長分析 JSON の更新タイミングと運用担当は誰か
 
 ## データ生成運用
@@ -235,11 +283,6 @@ UGC 統合とあわせて保留し、コンテンツ拡大とユーザー反響�
   （`st-league.md`「大会一覧との連携」）。details へ複製すると Player Statistics Engine に乗り
   選手ページにSTリーグ戦績を出せるが、tie の内訳が落ちる・カニバる・順位が二重管理になる。
   選手DB連携が主目的になった時点で再判断する。
-- （緩和済み 2026-08-11）**チームページのメンバー欠落**: `participants.json` のロースター収録が
-  年度・男女で偏るため、22チームでメンバー表示が皆無だった。大会成績側の選手を年度×性別で
-  統合する実装により16チームで解消。残る6チームは大会データが無いか、団体戦のチーム単位
-  エントリーしか無く選手を拾えない（`st-league.md`「『メンバー』クエリの受け皿」の既知の制約）。
-  元データ（公式PDF等）のロースター入力が進めばさらに埋まる。
 - `data/st-league/editions.json` の `promotionRelegation`（年度間の昇格・降格）は一部 Assumption。
   公式記録での裏取りが必要。NTT西日本の連覇数など個別記録の裏取りも同様。
 - 詳細は `docs/wiki/st-league.md` を参照。
@@ -327,35 +370,11 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 - 高校カテゴリの学校名表記揺れは、`data/tournaments/index.json` に載る大会を横断して、同年度・同姓同名選手が別学校名で出た場合に同一校として寄せる暫定ルールを採用している
 - 上記ルールは誤結合を許容した暫定運用であり、別校を同一校として結合するリスクがある
 - `scripts/highschool/03list/inferred-team-aliases.json` の確認頻度と、手動補正ルールの置き場所をどうするか
-- （対応済み）大会結果データの表示上の学校名・県名の揺れは、手動対応表 `data/tournaments/team-name-aliases.json` ＋ `scripts/normalize-team-names.mjs` で正準名へ統一する運用を追加した（誤結合を避けるため自動推定ではなく手動定義）。都道府県の接尾辞揺れ（例: 徳島→徳島県）はスクリプト内蔵の47都道府県マップで補完。適用範囲は `highschool-japan-cup`（HJC）。登録済みエイリアス: 高田商 / 大分商 / 明豊 / 旭川工 / 北科大 / 焼津 / 高崎商 / 県岐阜商 / 富士見。HJC 2024男子ダブルスの破損（県名混入・参照切れ）は `scripts/fix-hjc-2024-doubles.mjs` で修復済み。詳細は `docs/wiki/data-import.md`。
-- （対応済み）**normalize-team-names.mjs の置換漏れバグ（2026-07-17 発見・修正済み）**: 大会追加ツールが生成する選抜2024男子のようなインライン圧縮形式（`"team":"高田商業"`、コロン後にスペースなし）では、`participants[].id` は正準へ再計算されるのに `participants[].team` の固定文字列置換（`"team": "x"` スペースあり前提）だけ掛からず、id と team が不一致のまま残っていた。スクリプトの team/prefecture 置換を id と同じ正規表現方式（スペース有無両対応）に修正し、選抜2024男子の残置7校も修正済み。適用時は `--scope=highschool-senbatsu` 指定を忘れないこと（デフォルトはHJCのみ）
-- **対応表の適用範囲を広げるかの判断（2026-07-17）**: 選抜取り込みで対応表に別名を追加した結果、`--scope=all --dry-run` でインターハイ等の既存 details にも計648箇所の未適用揺れが検出される状態になった（例: doubles 系ファイル）。IH へ適用すると表示・選手ID・summary が広範に変わるため、差分内容を確認のうえ適用可否を判断する（未適用のままでも既存表示は現状維持）
-
-## アジア競技大会日本代表予選会2025 女子準決勝リーグ グループAの順位（2026-08-26 記録 → 同日解決）
-
-**解決済み。** 正しい順位は **宮前1位 / 長谷川2位 / 左近3位 / 浪岡4位**（ユーザーより提供）。
-ゲーム差でも三すくみになり、内部で得失点差による順位決定が行われたとのこと。
-`roundrobin.rank` を修正し（浪岡 2→4 / 長谷川 4→2）、両グループとも上位2名が進出する形に整合した。
-`npm run bracket:verify` は 376大会・28,385試合が一致／不一致0件。
-以下は記録として残す。
-
-### （記録）当時の矛盾
-
-`data/tournaments/details/asian-games-qualifier/2025/singles-semifinal-girls.json` の
-グループA順位は **宮前1位 / 浪岡2位 / 左近3位 / 長谷川4位** だが、決勝リーグへ進んだのは
-**宮前と長谷川**。上位2名が進む前提と食い違う（グループBは B1・B2 が進んでおり整合している）。
-
-グループAは宮前が3勝0敗、残る3名が1勝2敗の三すくみで、3者の直接対決は勝敗1-1・ゲーム7-7と
-**完全に同一**。全試合込みのゲーム差では浪岡 -1 / 左近 -3 / 長谷川 -3 となり、
-記録されている順位はこれと整合する。
-
-したがって「順位データが誤っている」か「決勝進出の決め方が上位2名ではない」かのどちらかで、
-**一次資料（要項・結果PDF）を見ないと確定できない**。
-
-最終成績の投入（2026-08-26）は、進出者を「決勝リーグの entries に居るか」で判定したため
-**この矛盾に依存していない**。順位データ自体は矛盾を抱えたまま残っている。
-
-経緯: [raw/2026-07-26-idea-tournament-metadata-platform.md](../raw/2026-07-26-idea-tournament-metadata-platform.md) 追記10
+- **`normalize-team-names.mjs` の既定スコープが `highschool-japan-cup` のままである点**（2026-09-02 確認）。
+  未適用の揺れは現在0件だが、それは誰かが `--scope=all` を明示して流した結果で、
+  既定で流すと HJC しか直らない。既定を `all` にするか、`prebuild` に組み込むか。
+  なお `normalize-team-spacing.mjs`（全角半角の正準化）は既に `prebuild` の先頭に入っている。
+  → 対応表の仕組み・登録済みエイリアス・過去の修正履歴は [data-import.md](./data-import.md) が正。
 
 ## 大会 information の `location` 検算（2026-08-28 追加）
 
@@ -370,19 +389,22 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
   固定会場の大会として説明がつく。ただし**一次情報での確認はしていない**。
 - 検算を `scripts/` に常設するか。今回は使い捨てスクリプトで回した。
   `check:upcoming` と同じく「終了コード0の運用タスク一覧」として足す余地はある。
-- `surface` の実在値に **`人工クレー`** があり、
-  [data-model.md](./data-model.md) の現行語彙（`クレー` / `ハード` / `砂入り人工芝` /
-  `木床フローリング`）に載っていない。`クレー` へ寄せるか語彙に足すか未決。
-  確認: `grep -rho '"surface": "[^"]*"' data/tournaments/information/ | sort -u`
+- `surface` の実在値と [data-model.md](./data-model.md) の語彙が食い違う。
+  **実測（2026-09-02）**: `砂入り人工芝` 21件 / `人工クレー` 6件 / `クレー` 1件の**3種類だけ**で、
+  語彙にある `ハード` と `木床フローリング` は**実データに1件も無い**。
+  `人工クレー` を `クレー` へ寄せるか語彙に足すか、`ハード` / `木床フローリング` を語彙に残すかを決める
+  （再実測: `grep -rho '"surface": "[^"]*"' data/tournaments/information/ | sort | uniq -c`）
 
 ## `verify-facts-golden.ts` の golden 値が陳腐化している（2026-08-28 記録）
 
 `npm run playerstats:verify` の1つめ `scripts/playerStats/verify-facts-golden.ts` が
 **14人で DIFF** になる。いずれも facts のほうが golden より試合数が多い方向。
 
-**母数（2026-08-28 訂正）**: `CURATED_FIXTURES` は **26エントリ**だが、`slug` を持つのは **22件**で、
-ループ冒頭の `if (!fx.slug) continue;` が残り4件（id 35 / 122 / 125 / 69、いずれも `curated: false`）を
-飛ばす。したがって DIFF の実際の母数は **22**。旧記述の「26人中14人」は誤りではないが母数が緩い。
+**母数（2026-09-02 再訂正）**: DIFF の母数が **22** である点は正しいが、理由の説明が誤っていた。
+`lib/playerStats/fixtures.ts` の `CURATED_FIXTURES` は **22エントリ（id 1..22）で全件 `slug` を持つ**。
+slug を持たない4件（id 35 / 122 / 125 / 69）は別の定数 `HIGH_VOLUME_FIXTURES` の側にあり、
+`verify-facts-golden.ts` はこれを読まない。したがってループ冒頭の `if (!fx.slug) continue;` は
+**一度も発火しない**。「26エントリのうち4件が飛ばされて22になる」という説明は誤り。
 
 **golden 値はハードコードされていない（2026-08-28 訂正）**。旧記述は「同スクリプトにハードコード、
 最終更新2026-07-02」としていたが誤り。`verify-facts-golden.ts:55-62` は
@@ -405,13 +427,89 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
   データが増えるたびに広がるので、放置すると verify が常に赤い状態になり
   「本物の退行に気付けない」検査になる
 
-- **カバレッジの穴（2026-08-28 追加）**: `analysis.json` が実在するのは **23人**だが
-  `CURATED_FIXTURES` の slug 付きは 22件で、**`tsukamoto-hikaru` だけ検証対象外**。
-  ビルドは書き換えるのに verify は見ない状態にある。fixture 一覧に足すかは未決。
-  （逆方向＝slug があるのに `analysis.json` が無いケースは0件でクリーン）
+- ~~**カバレッジの穴**: `tsukamoto-hikaru` だけ検証対象外~~
+  → **解決（2026-09-02）**。`lib/playerStats/fixtures.ts` の `CURATED_FIXTURES` に
+  `tsukamoto-hikaru`（塚本光琉・id 159）を追加し、**23件 = `analysis.json` 23人で一致**。
+  同じ足し忘れが再発しないよう、配列の JSDoc に「`analysis.json` を増やしたらここにも足す」
+  という注意書きと件数の確認方法を入れた。
 
 やること: 再生成された `analysis.json` をコミットして golden を現在値に合わせるか、
 `analysis.json` を golden に使うのをやめて「前回値との差分がしきい値を超えたら落とす」形に
 変えるかを決める。**前者は「値を貼り直す」作業ではなく、生成物をコミットするだけ**である点に注意。
 
+**現状（2026-09-02）**: 前者は事実上の運用になっている。2026-08-28 に
+`768918cc 選手の analysis.json を現在のデータで再生成する` でリセットされて以降、
+データ取り込みのたびに再生成された `analysis.json` が同じコミットに乗っている
+（8/28以降で10コミット）。つまり「DIFF が溜まり続ける」状態ではない。
+**残る判断は「この運用を明文化して終わりにするか、差分しきい値方式へ作り替えるか」**の1点。
+
 再発見の経緯: [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) 追記2
+
+---
+
+## 解決済み（記録）
+
+解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
+「なぜそう決めたか」の詳細は各リンク先が正。
+
+### 「全国大会」判定の二重基準（2026-07-20 追加 → 同日解決）
+
+選手ページの「全国」判定は `lib/nationalTitles.ts` のホワイトリスト（22大会）に統一
+（`ENGINE_VERSION` 1.4.0）。バッジ・SEO 文言・キャリア年表の「全国初出場/初優勝」がすべて同じ基準を使う。
+東日本・西日本選手権（地域大会）が「全国初優勝」として年表に出る問題は解消。
+**残る二重性は意図的**: ランキングの tier 判定は引き続き広義 `isNational`
+（`generationId` が `international` / `international-qualifier` 以外）を使う。用途が
+「表示上の事実表明」ではなく「大会格の重み付け」のため。
+→ [players-pages.md](./players-pages.md)「全国大会優勝の実績表示」
+
+### ブラケット復元と決勝Tの席順（2026-08-22 解決）
+
+真因は「決勝Tの席をエントリー単位（`entries[].type`）で持っていたこと」で、席を**予選リーグの組**に
+持たせる `knockoutDraw` を導入して解決。復元適用 285 → 372 大会・突合 26,527 → 27,633 試合で不一致0件。
+入力ツール（`tools/index.html`）も保存時に `knockoutDraw` を出力する。
+→ [ADR-015](../adr/ADR-015-knockout-draw-by-group.md) /
+[調査メモ](../raw/2026-08-22-bracket-slot-parity-roundrobin-false-positive.md)。
+積み残しは本文「予選リーグ→決勝Tのデータ表現（積み残し）」。
+
+### アジア競技大会日本代表予選会2025 女子準決勝リーグ グループAの順位（2026-08-26 記録 → 同日解決）
+
+正しい順位は **宮前1位 / 長谷川2位 / 左近3位 / 浪岡4位**（ユーザーより提供）。ゲーム差でも三すくみになり、
+内部で得失点差による順位決定が行われた。`roundrobin.rank` を修正し（浪岡 2→4 / 長谷川 4→2）、
+両グループとも上位2名が進出する形に整合。`npm run bracket:verify` は376大会・28,385試合が一致／不一致0件。
+→ 経緯は [raw/2026-07-26-idea-tournament-metadata-platform.md](../raw/2026-07-26-idea-tournament-metadata-platform.md) 追記10
+
+### STリーグ チームページのメンバー欠落（2026-08-11 緩和）
+
+`participants.json` のロースター収録が年度・男女で偏るため22チームでメンバー表示が皆無だった件は、
+大会成績側の選手を年度×性別で統合する実装により16チームで解消。残る6チームは大会データが無いか、
+団体戦のチーム単位エントリーしか無く選手を拾えない（元データのロースター入力が進めば埋まる）。
+→ [st-league.md](./st-league.md)「『メンバー』クエリの受け皿」
+
+### 高校カテゴリのチーム名対応表を全大会へ広げるか（2026-07-17 → 2026-09-02 解決）
+
+`--scope=all --dry-run` で648箇所あった未適用揺れは **0箇所**。全スコープ適用が進み、
+`normalize-team-spacing.mjs` が `prebuild` の先頭ゲートに入ったため、新規取り込みの揺れも次のビルドで潰れる。
+
+### highschool パイプラインの鮮度チェックの守備範囲（2026-09-02 解決）
+
+`prebuild` のゲート `check-highschool-pipeline-freshness.mjs` のハッシュ対象が
+`details/highschool*/` だけで、生成側の `02result/extract.py` が読む22大会のうち
+**19大会がハッシュ対象外**だった（件数の主力は `zennihon-university` 4,308 /
+`zennihon-workers` 3,642 / `zennihon-singles` 2,813 件）。全日本選手権や社会人を取り込んでも
+チェックは緑のまま生成物が古くなる状態。
+
+**対応**: 入力範囲の定義を `scripts/highschool/lib/pipeline-sources.json` に切り出し、
+`extract.py`（除外リスト）と `lib/source-hash.mjs`（ハッシュ対象）が**同じファイルを読む**ようにした。
+片方だけ育って気付けない、という再発の型を潰すのが狙い。
+ハッシュ対象は **13大会・122ファイル → 32大会・292ファイル**（01team が読む `highschool*` と
+02result が読む22大会の和集合）。
+
+**副産物**: 広げた直後にチェックが落ちたのでパイプラインを再実行したところ、
+`scripts/highschool/**` の中間生成物（`01team/teams.json` / `02result/results.json` /
+`03list/prefecture-summary.json`）が**1コミットぶん古いまま残っていた**ことが分かった。
+直前のコミットが `data/highschool/*`（サイトが読む側）だけを commit していたため。
+再生成した中間生成物は `data/highschool/*` と完全一致したので、**公開データに誤りは無い**。
+
+### `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界（2026-08-12 解決）
+
+「1試合の中 / 複数試合をまたぐ」で分割。→ [score-analysis.md](./score-analysis.md)「責務境界」
