@@ -44,6 +44,90 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "増田",
+        "firstName": "達四郎",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "高橋",
+        "firstName": "臣",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
+        "year": 2018,
+        "lastName": "北川",
+        "firstName": "風花",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
+        "year": 2018,
+        "lastName": "高橋",
+        "firstName": "咲楽",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
         "year": 2021,
         "lastName": "西村",
         "firstName": "優",
@@ -393,6 +477,37 @@
       }
     ],
     "minCommonLength": 1
+  },
+  {
+    "canonical": "とわの森三愛",
+    "aliases": [
+      "斐川クラブ",
+      "とわの森三愛"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "藤田",
+        "firstName": "大輝",
+        "aliases": [
+          "とわの森三愛",
+          "斐川クラブ"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "とわの森三愛"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "斐川クラブ"
+          }
+        ]
+      }
+    ],
+    "minCommonLength": 0
   },
   {
     "canonical": "早鞆",
