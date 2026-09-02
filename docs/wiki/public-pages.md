@@ -345,6 +345,9 @@
 
 ### パンくずの構造化データ（BreadcrumbList）
 
+経緯と解消した既存バグは
+[raw/2026-08-25-breadcrumb-jsonld-dedup.md](../raw/2026-08-25-breadcrumb-jsonld-dedup.md)。
+
 **`src/components/Breadcrumb.tsx` が `BreadcrumbList` JSON-LD の唯一の出力元。**
 ページ側で `BreadcrumbList` の JSON-LD を個別に書いてはいけない（可視パンくずと同じ
 `crumbs` から自動生成される）。

@@ -304,6 +304,45 @@ alias 表はもともと**文脈を持たない**ため、`--scope=all` で全�
 分割を座標から決める取り込み側の工夫は
 [raw/2026-08-29-intercollegiate-name-split.md](../raw/2026-08-29-intercollegiate-name-split.md)。
 
+## 選手の登録名変更（改名）— 設計のみ・未実装（2026-08-31）
+
+同一人物が**登録名そのものを変えている**ケース。姓名の分割ゆれ（切り位置）とも
+同姓同名（別人）とも別の軸で、既存の3つの仕組みではどれも扱えない。
+
+| 既存 | 何をするか | なぜ使えないか |
+|---|---|---|
+| `homonyms.json` | 同姓同名の**別人**を記録 | 逆方向 |
+| `name-split-aliases.json` | 姓名の**切り位置**ゆれ | 適用側が「alias姓+alias名 === canonical姓+canonical名」を assert するため、**文字が変わる改名は原理的に通せない** |
+| `team-name-aliases.json` | チーム名の改称・略称 | チーム専用 |
+
+実例: 高田商（奈良）の `林 湧太郎`（2017・2018 のインターハイ2件）と NTT西日本（広島）の
+`林 佑太郎`（2022〜2026 の22件）が同一人物。現行の登録名は `佑太郎` 側で、
+`data/players/index.json` に `林|湧太郎` は存在せず、高校時代の2件がどの選手ページにも
+紐づいていない。統合すると `count` 22 → 24 でキャリア年表が高校→実業団で繋がる。
+
+**決めたこと（2026-08-31・未実装）**:
+
+1. 対応表 `data/players/player-name-aliases.json` を新設し、**`scope` を必須にする**
+   （`team` / `prefecture` / 年レンジ）。チーム名 alias（[ADR-013](../adr/ADR-013-scoped-team-name-aliases.md)）では
+   `scope` は任意だが、人名は「別の場所に居る同名の別人」に当たる確率が高く、無条件適用は
+   `homonyms.json` が防ごうとしている誤マージを自分で作ることになるため。
+2. **アプリ層（id 解決）でのマージではなく、データ本体を書き換える。**
+   姓名の完全一致で人を引く箇所が独立に5系統ある（`participants[].id` / `index.json` の数値 id /
+   `playerKey` / 進路照合（[ADR-014](../adr/ADR-014-pathway-name-match.md)）/ story 照合）ため、
+   1箇所直しても残りが割れたままになる。チーム名・姓名分割と同じ形に揃える。
+   「人物別 id の払い出し」は 2026-07-26 に見送り済みで、その判断は動かさない。
+3. **正準は現行の登録名（＝改名後）に寄せる**。旧名は alias 表に残る。ただし公開面では
+   旧登録名を併記する（`information.json` の `formerNames`。curated 選手に改名が出てきたときに効く）。
+
+**検出は自動化できない**（このケースは同音異字＋所属・県・年がすべて変わっており、
+`homonyms.json` の検出器 D/E/F はいずれも原理的に引っかからない。読み仮名データも無い）。
+一次ソースは人の知識で、対応表の価値は「見つける」ことではなく
+**一度分かった判断を失わずに全系統へ効かせる**ことにある。
+
+未実装の残タスクは [open-questions.md](./open-questions.md)、
+経緯・適用手順の詳細は
+[raw/2026-08-31-player-registered-name-change.md](../raw/2026-08-31-player-registered-name-change.md)。
+
 ## 選手の別人判定 `data/players/homonyms.json`
 
 - 基本は氏名ベース id（`data/players/index.json`、team非依存）。同姓同名の別人だけ分割する。
@@ -485,5 +524,9 @@ category.includes('men')` のような**部分一致**で行っていたが、�
     `generationId: university`、18 件）。よって高校側の統合で大学を巻き込むことはない。
   - **保留 1 件**: `福誠` ⇄ `誠修`（福岡） — 改称の可能性が高いが未確認のため据え置き。
 - 岡崎紗奈の `焼津`(静岡) と `常磐大学高校`(茨城) が同一人物（転校）か別人かは未確定。
+- **`神戸松陰大学`（陰）は `神戸松蔭大学`（蔭）の異体字**（全データ中2件）。`米子松陰`→`米子松蔭`
+  と同型で、`team-name-aliases.json` への追加 → `normalize-team-names.mjs` →
+  `build-team-master.mjs` が要る。現状 `data/teams/teams.json` に id 3878 として独立エンティティで
+  残っている（本体は id 65 / count 150）。2026-08-31 に発見・未対応。
 - 姓名の分割ゆれのうち **6 件が判断保留**（五十鈴川造 / 満留璃菜 / 狼芹凪 / 森真帆香 /
   﨑羽瑠菜 / 﨑羽香菜）。[open-questions.md](./open-questions.md) 参照。

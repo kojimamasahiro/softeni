@@ -1,0 +1,25 @@
+{
+  "note": [
+    "高校ソフトテニス データパイプラインの入力範囲。02result/extract.py と",
+    "lib/source-hash.mjs（鮮度チェックのハッシュ対象）が同じ集合を見るための唯一の定義。",
+    "2026-09-02 新設: 以前は extract.py 側にだけ書かれており、ハッシュ側が highschool-* しか",
+    "見ていなかったため、全日本選手権・社会人などを取り込んでも鮮度チェックが緑のままだった。",
+    "除外の理由は 02result/extract.py の EXCLUDED_TOURNAMENT_IDS 付近のコメントを参照。"
+  ],
+  "excludedTournamentIds": [
+    "secondaryschool-championship",
+    "secondaryschool-chugoku-block",
+    "secondaryschool-hokkaido-block",
+    "secondaryschool-hokushinetsu-block",
+    "secondaryschool-kanto-block",
+    "secondaryschool-kinki-block",
+    "secondaryschool-kyushu-block",
+    "secondaryschool-shikoku-block",
+    "secondaryschool-tohoku-block",
+    "secondaryschool-tokai-block",
+    "primaryschool-championship",
+    "zennihon-primaryschool",
+    "zennihon-secondaryschool-versus",
+    "zennihon-secondaryschool-club-pre"
+  ]
+}

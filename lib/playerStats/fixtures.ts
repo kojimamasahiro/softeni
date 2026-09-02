@@ -12,7 +12,14 @@ export interface FixturePlayer {
   note?: string;
 }
 
-/** curated 選手（id 1..22）。全員 analysis.json を持つ。 */
+/**
+ * curated 選手。全員 `data/players/<slug>/analysis.json` を持ち、golden 突合の母数になる。
+ *
+ * **`analysis.json` を持つ選手を増やしたら、ここにも足すこと。** `verify-facts-golden.ts` は
+ * この配列しか見ないため、足し忘れるとビルドが書き換えるのに検証はしないファイルができる
+ * （2026-09-02 に `tsukamoto-hikaru` がその状態で見つかった）。
+ * 確認方法: `data/players` 配下の analysis.json の数と、この配列の件数が一致すること。
+ */
 export const CURATED_FIXTURES: FixturePlayer[] = [
   { id: 1, slug: 'ando-kesuke', name: '安藤圭祐', curated: true },
   { id: 2, slug: 'ando-yusaku', name: '安藤優作', curated: true },
@@ -36,6 +43,7 @@ export const CURATED_FIXTURES: FixturePlayer[] = [
   { id: 20, slug: 'ueoka-shunsuke', name: '上岡俊介', curated: true },
   { id: 21, slug: 'yano-soto', name: '矢野颯人', curated: true },
   { id: 22, slug: 'yonekawa-yuto', name: '米川結翔', curated: true },
+  { id: 159, slug: 'tsukamoto-hikaru', name: '塚本光琉', curated: true, note: '2026-09-02 追加。analysis.json はあったが fixture に無く検証対象外だった' },
 ];
 
 /** 出場が多い非 curated 選手（性能・線形性の観点）。 */

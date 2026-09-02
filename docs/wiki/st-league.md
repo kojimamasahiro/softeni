@@ -173,6 +173,7 @@ STリーグ側ロースターの収録が年度・男女で大きく偏る（実
 STリーグは `data/st-league/` の独立系統のため、従来は `/tournaments`（大会一覧）に一切出ていなかった。
 **結果本体は `/st-league/` に置いたまま、一覧には出す**方針で以下を追加した（結果データを
 `data/tournaments/details/` に複製する案は採らない。理由は下記）。
+経緯と不採用案の検討は [raw/2026-08-12-st-league-in-tournaments-list.md](../raw/2026-08-12-st-league-in-tournaments-list.md)。
 
 - `data/tournaments/index.json` に `st-league`（`generationId: "corporate"`、
   label「STリーグ（日本ソフトテニスリーグ）」）を追加。`featurePath: "/st-league/"` を持つ。

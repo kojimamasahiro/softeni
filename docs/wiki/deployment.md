@@ -32,9 +32,19 @@
 ### package.json scripts
 
 - `dev`: `next dev`
-- `prebuild`: players JSON と beta-matches JSON の生成
+- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-02 時点で15段）。
+  実体は `package.json` が正。大きくは次の3段:
+  1. **正準化・ゲート**: `normalize-team-spacing.mjs` → `check-tournament-entries.mjs` →
+     `check-tournament-insights.mjs` → `check-highschool-pipeline-freshness.mjs` →
+     `check-name-splits.mjs --strict`。**ここで落ちるとビルドが止まる**（意図的な門番。
+     `check-name-splits --strict` は 2026-08-29 に追加、`check-tournament-insights` は
+     [ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md) の公開条件を強制する）
+  2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（末尾で `save`。下記「ビルドキャッシュ」節）
+  3. **生成**: `generate-players-json` → `generate-players-lite` → `playerstats:facts` →
+     `generate-player-analysis` → `generate-beta-matches-json` → `generate-match-reverse-index` →
+     `generate-rare-events` → `playerstats:rankings` → `secondaryschool:build`
 - `build`: `next build`
-- `postbuild`: sitemap 生成とソート
+- `postbuild`: sitemap 生成とソート（`next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs`）
 
 #### sitemap の出力先（2026-08-05 修正）
 

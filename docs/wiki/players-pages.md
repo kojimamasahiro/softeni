@@ -371,6 +371,12 @@ SEO 文言は**優勝のみ**（ベスト8は検索需要が薄く、title に�
 
 設計の核（単一プリミティブ方式）:
 
+> **注（2026-09-02 lint）**: 以下は 2026-07-01 時点の設計スナップショットで、**ファイル名・
+> 置き場は実装と異なる**。現行は生成が `scripts/playerStats/generate-facts.ts`
+> （`npm run playerstats:facts`）、中間・成果物の置き場が**リポジトリ直下の `.playerstats/`**
+> （`_facts` / `_index` / `_manifest.json`。2026-08-28 に `data/players/` から移動）。
+> 設計の考え方（単一プリミティブ・2段目のグローバル計算・ビルド時前計算）はそのまま生きている。
+
 - 全機能は、選手 1 人ぶんの中間データ `PlayerMatchFact[]`（1 試合 1 件）と `PlayerEntryFact[]`（1 大会カテゴリ 1 件＝最終順位）へ、
   一度だけ前計算してから軽く畳み込む。個別機能ごとに `details/**` を走査し直さない。
 - 生成は prebuild スクリプト（`scripts/generate-player-facts.mjs` 想定）→ `data/players/_facts/{id}.json`（中間）→
