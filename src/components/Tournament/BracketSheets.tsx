@@ -93,7 +93,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
     <div className="w-full">
       {sheets.length > 1 && (
         <div className="mb-2 flex flex-wrap items-center gap-1.5" role="tablist" aria-label="トーナメント表の山（エントリー番号）">
-          <span className="text-xs text-gray-500">エントリー番号</span>
+          <span className="text-xs text-text-muted">エントリー番号</span>
           {sheets.map((s, i) => (
             <button
               key={s.index}
@@ -102,7 +102,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
               aria-selected={i === active}
               aria-label={s.entryNoRange && s.kind === 'qualifying' ? `エントリー番号 ${s.entryNoRange[0]} から ${s.entryNoRange[1]}` : s.label}
               onClick={() => setCurrent(i)}
-              className={`rounded border px-2.5 py-1 text-xs ${i === active ? 'border-gray-800 bg-gray-800 text-white' : 'border-gray-300 bg-white text-gray-700 hover:bg-gray-50'}`}
+              className={`rounded border px-2.5 py-1 text-xs ${i === active ? 'border-blue-600 bg-blue-600 text-white' : 'border-border bg-surface text-text-secondary hover:border-blue-400'}`}
             >
               {s.label}
             </button>
@@ -110,7 +110,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
         </div>
       )}
 
-      <div className="mb-2 flex items-center gap-1.5 text-xs text-gray-500">
+      <div className="mb-2 flex items-center gap-1.5 text-xs text-text-muted">
         <span>表示倍率</span>
         {ZOOM_STEPS.map((z) => (
           <button
@@ -118,7 +118,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
             type="button"
             onClick={() => setZoom(z)}
             aria-pressed={zoom === z}
-            className={`rounded border px-2 py-0.5 ${zoom === z ? 'border-gray-800 bg-gray-800 text-white' : 'border-gray-300 bg-white hover:bg-gray-50'}`}
+            className={`rounded border px-2 py-0.5 ${zoom === z ? 'border-blue-600 bg-blue-600 text-white' : 'border-border bg-surface text-text-secondary hover:border-blue-400'}`}
           >
             {Math.round(z * 100)}%
           </button>
@@ -132,31 +132,45 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
           height={drawing.height * zoom}
           role="img"
           aria-label={`${sheets[active].label}のトーナメント表`}
-          className="block border border-gray-200 bg-white"
+          className="block border border-border bg-surface"
         >
           {drawing.segments.map((s, i) => (
-            <line key={i} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke={s.win ? '#16324f' : '#aab4bf'} strokeWidth={s.win ? 2.2 : 1} />
+            <line
+              key={i}
+              x1={s.x1}
+              y1={s.y1}
+              x2={s.x2}
+              y2={s.y2}
+              stroke={s.win ? 'var(--color-primary)' : 'var(--color-border-strong)'}
+              strokeWidth={s.win ? 2.2 : 1}
+            />
           ))}
 
           {drawing.labels.map((l, i) => {
             const common = { x: l.x, y: l.y, textAnchor: l.anchor };
             if (l.kind === 'score') {
               return (
-                <text key={i} {...common} fontSize={7.5} fontWeight={l.win ? 700 : 400} fill={l.win ? '#16324f' : '#7b8794'}>
+                <text
+                  key={i}
+                  {...common}
+                  fontSize={7.5}
+                  fontWeight={l.win ? 700 : 400}
+                  fill={l.win ? 'var(--color-primary)' : 'var(--color-text-muted)'}
+                >
                   {l.text}
                 </text>
               );
             }
             if (l.kind === 'entryNo') {
               return (
-                <text key={i} {...common} fontSize={8} fill="#7b8794">
+                <text key={i} {...common} fontSize={8} fill="var(--color-text-muted)">
                   {l.text}
                 </text>
               );
             }
             if (l.kind === 'team') {
               return (
-                <text key={i} {...common} fontSize={8.5} fill="#7b8794">
+                <text key={i} {...common} fontSize={8.5} fill="var(--color-text-muted)">
                   {l.text}
                 </text>
               );
@@ -165,8 +179,8 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
             // hover だけだとモバイルで気付けず、トーナメント表が行き止まりになる。
             // SVG は text-decoration-style を無視する（Chrome 実測で solid のまま）ので、
             // text-decoration ではなく破線の line を自分で引いている。
-            // 色はこの図の固定パレット（team / entryNo と同じ #7b8794）に合わせる。
-            // 図全体が bg-white 固定でダークモードを持たないため、ここだけトークンを使うと反転する。
+            // 色は fill/stroke 属性のため Tailwind の dark: クラスが効かない。globals.css の
+            // --color-* トークン（prefers-color-scheme 連動）を var() で直接参照している。
             const clickable = onSelectEntry && l.entryNo != null;
             const underlineW = clickable ? estimateSvgTextWidth(l.text, 10) : 0;
             const underlineX = l.anchor === 'end' ? l.x - underlineW : l.anchor === 'middle' ? l.x - underlineW / 2 : l.x;
@@ -175,7 +189,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
                 <text
                   {...common}
                   fontSize={10}
-                  fill="#1f2933"
+                  fill="var(--color-text)"
                   className={clickable ? 'cursor-pointer' : undefined}
                   onClick={clickable ? () => onSelectEntry(l.entryNo!) : undefined}
                 >
@@ -187,7 +201,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
                     y1={l.y + 2.5}
                     x2={underlineX + underlineW}
                     y2={l.y + 2.5}
-                    stroke="#7b8794"
+                    stroke="var(--color-text-muted)"
                     strokeWidth={0.7}
                     strokeDasharray="1 1.5"
                     pointerEvents="none"
@@ -202,17 +216,17 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
               cx={drawing.champion.x}
               cy={drawing.champion.y}
               r={drawing.champion.decided ? 4 : 2.5}
-              fill={drawing.champion.decided ? '#16324f' : 'none'}
-              stroke={drawing.champion.decided ? undefined : '#aab4bf'}
+              fill={drawing.champion.decided ? 'var(--color-primary)' : 'none'}
+              stroke={drawing.champion.decided ? undefined : 'var(--color-border-strong)'}
             />
           )}
         </svg>
       </div>
 
-      <p className="mt-2 text-xs text-gray-500">
+      <p className="mt-2 text-xs text-text-muted">
         左右の端が出場者で、内側は勝ち上がりの線。太い線がその組の到達したところを示す。数字は左端・右端がエントリー番号、線の上が獲得ゲーム数（R は途中棄権）。
       </p>
-      <p className="mt-1 text-xs text-gray-500">名前をタップすると、その組の全対戦とスコア、選手ページ・学校ページへのリンクが開く。</p>
+      <p className="mt-1 text-xs text-text-muted">名前をタップすると、その組の全対戦とスコア、選手ページ・学校ページへのリンクが開く。</p>
     </div>
   );
 }
