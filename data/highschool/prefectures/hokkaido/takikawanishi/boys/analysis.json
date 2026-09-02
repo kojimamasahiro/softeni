@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 4,
+    "doubles": 5,
     "singles": 5
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "takikawanishi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2024,
+        "tournamentId": "zennihon-championship",
+        "year": 2018,
         "gender": "boys",
-        "playerIds": ["清水_蒼太_滝川西_北海道", "常盤_奏翔_滝川西_北海道"]
+        "playerIds": ["川島_秀万_滝川西_北海道", "三浦_充晴_Ｍ・１．１クラブ_北海道"]
       }
     },
     "team": {
@@ -73,7 +73,7 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "新井_樹_滝川西_北海道",
@@ -84,15 +84,15 @@
       "appearances": 2
     },
     {
+      "id": "川島_秀万_滝川西_北海道",
+      "appearances": 1
+    },
+    {
       "id": "清水_蒼太_滝川西_北海道",
       "appearances": 1
     },
     {
       "id": "福田_悠真_滝川西_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "冨田_青空_滝川西_北海道",
       "appearances": 1
     }
   ]

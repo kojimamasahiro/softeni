@@ -15,6 +15,7 @@
 import Link from 'next/link';
 
 import { PLACEMENT_DISCLAIMER, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
+import { SCOPE_NOTE_TOURNAMENTS } from '@/lib/uiText';
 
 function formatDate(d: string | null): string | null {
   if (!d) return null;
@@ -69,7 +70,7 @@ export default function QualifierFinishersSection({ data }: { data: QualifierFin
         ))}
       </div>
 
-      <p className="mt-2 text-xs text-text-muted">通算成績は当サイト掲載大会分の集計に基づく。</p>
+      <p className="mt-2 text-xs text-text-muted">{SCOPE_NOTE_TOURNAMENTS}</p>
     </section>
   );
 }

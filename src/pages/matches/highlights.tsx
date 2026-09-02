@@ -103,7 +103,7 @@ export default function RareEventHighlightsPage({ generatedAt, events, tournamen
             スコア記録した全試合のポイント列から検知した希少プレーの「現記録」です。新しい試合を記録して記録が塗り替えられると、このページも更新されます。
           </p>
           <p className="mt-1 text-xs text-text-muted">
-            ※{scopeNote}
+            ※ {scopeNote}
             {generatedDate ? `（${generatedDate}時点）` : ''}
           </p>
         </div>

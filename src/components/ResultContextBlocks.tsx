@@ -5,6 +5,8 @@
 // あわせて「再戦」（lib/priorMeetings.ts）も出す。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
 
+import { SCOPE_NOTE_MATCHES, SCOPE_NOTE_SHORT } from '@/lib/uiText';
+
 import MilestoneBadge from './MilestoneBadge';
 import type { ContextMilestone } from './TournamentContextBlocks';
 
@@ -83,7 +85,7 @@ export default function ResultContextBlocks({
               </li>
             ))}
           </ul>
-          {hasScopeNote && <p className="mt-1 text-[10px] opacity-70">※当サイト掲載分</p>}
+          {hasScopeNote && <p className="mt-1 text-[10px] opacity-70">{SCOPE_NOTE_SHORT}</p>}
         </>
       )}
 
@@ -122,7 +124,7 @@ export default function ResultContextBlocks({
               </li>
             ))}
           </ul>
-          <p className="mt-1 text-[10px] opacity-70">※当サイト掲載分の試合データによる</p>
+          <p className="mt-1 text-[10px] opacity-70">{SCOPE_NOTE_MATCHES}</p>
         </div>
       )}
     </section>

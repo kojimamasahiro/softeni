@@ -258,7 +258,7 @@ export default function TournamentYearResultPage({
           {previewArticleId && (
             <p className="mt-2 text-sm">
               <Link href={`/news/${previewArticleId}/`} className="text-link hover:underline">
-                {label} {year}年の展望・注目選手はこちら
+                {label} {year}年の展望・注目選手を読む
               </Link>
             </p>
           )}

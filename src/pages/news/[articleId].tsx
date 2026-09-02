@@ -27,6 +27,7 @@ import {
   type TitleDefenseWatch,
 } from '@/lib/newsArticle';
 import { buildSiteUrl, siteConfig } from '@/lib/siteConfig';
+import { SCOPE_NOTE_MATCHES, SCOPE_NOTE_TOURNAMENTS } from '@/lib/uiText';
 
 function formatDate(iso: string | undefined): string | null {
   if (!iso) return null;
@@ -239,7 +240,7 @@ function PriorMeetingsSection({ block }: { block: PriorMeetingsBlock }) {
           </ul>
         </details>
       )}
-      <p className="mt-1 text-[10px] opacity-70">※当サイト掲載分の試合データによる</p>
+      <p className="mt-1 text-[10px] opacity-70">{SCOPE_NOTE_MATCHES}</p>
     </div>
   );
 }
@@ -446,10 +447,12 @@ export default function NewsArticlePage({ view }: { view: NewsArticleView }) {
         )}
         <p className="mb-6 text-sm text-text-secondary">
           {description}
-          <span className="ml-1 text-xs text-text-muted">※成績・記録は当サイト掲載大会分の集計に基づきます。</span>
+          <span className="ml-1 text-xs text-text-muted">{SCOPE_NOTE_TOURNAMENTS}</span>
         </p>
 
-        {categories.length === 0 && <p className="text-sm text-gray-500">掲載データがありません。</p>}
+        {categories.length === 0 && (
+          <p className="text-sm text-text-muted">展望に使える種目のデータがありません。出場者と過去成績が揃った種目から順に追加します。</p>
+        )}
 
         {/* 主力枠。リード文の直後・最初のカテゴリ節の前＝ファーストビュー内に置く
             （2026-08-23 変更。経緯は docs/adr/ADR-016 の追記）。本文（カテゴリ節）は

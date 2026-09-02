@@ -1,27 +1,27 @@
 {
-  "totalMatches": 72,
-  "wins": 53,
-  "losses": 19,
-  "totalWinRate": 0.736,
+  "totalMatches": 84,
+  "wins": 62,
+  "losses": 22,
+  "totalWinRate": 0.738,
   "games": {
-    "total": 431,
-    "won": 272,
-    "lost": 159,
-    "gameRate": 0.631
+    "total": 516,
+    "won": 325,
+    "lost": 191,
+    "gameRate": 0.63
   },
   "byPartner": {
     "2": {
       "matches": {
-        "total": 63,
-        "wins": 48,
-        "losses": 15,
-        "winRate": 0.762
+        "total": 70,
+        "wins": 54,
+        "losses": 16,
+        "winRate": 0.771
       },
       "games": {
-        "total": 388,
-        "won": 247,
-        "lost": 141,
-        "gameRate": 0.637
+        "total": 437,
+        "won": 279,
+        "lost": 158,
+        "gameRate": 0.638
       }
     },
     "172": {
@@ -36,6 +36,20 @@
         "won": 17,
         "lost": 6,
         "gameRate": 0.739
+      }
+    },
+    "3278": {
+      "matches": {
+        "total": 5,
+        "wins": 3,
+        "losses": 2,
+        "winRate": 0.6
+      },
+      "games": {
+        "total": 36,
+        "won": 21,
+        "lost": 15,
+        "gameRate": 0.583
       }
     },
     "singles": {
@@ -54,6 +68,48 @@
     }
   },
   "byYear": {
+    "2017": {
+      "matches": {
+        "total": 3,
+        "wins": 2,
+        "losses": 1,
+        "winRate": 0.667
+      },
+      "games": {
+        "total": 22,
+        "won": 13,
+        "lost": 9,
+        "gameRate": 0.591
+      }
+    },
+    "2018": {
+      "matches": {
+        "total": 2,
+        "wins": 1,
+        "losses": 1,
+        "winRate": 0.5
+      },
+      "games": {
+        "total": 14,
+        "won": 8,
+        "lost": 6,
+        "gameRate": 0.571
+      }
+    },
+    "2019": {
+      "matches": {
+        "total": 7,
+        "wins": 6,
+        "losses": 1,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 49,
+        "won": 32,
+        "lost": 17,
+        "gameRate": 0.653
+      }
+    },
     "2022": {
       "matches": {
         "total": 17,

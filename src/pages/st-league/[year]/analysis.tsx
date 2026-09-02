@@ -258,7 +258,7 @@ function StatsPanel({
                 試合数 {getSortIcon('matches')}
               </th>
               <th className="py-3 px-4 text-center font-medium cursor-pointer hover:bg-bg-subtle select-none group" onClick={() => requestSort('wins')}>
-                勝率(勝-敗) {getSortIcon('wins')}
+                勝率（勝-敗） {getSortIcon('wins')}
               </th>
               <th
                 className="py-3 px-4 text-center font-medium text-xs text-gray-500 cursor-pointer hover:bg-bg-subtle select-none group"

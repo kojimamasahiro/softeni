@@ -154,9 +154,9 @@
     },
     {
       "entries": [14,15],
-      "scores": {"14":0,"15":2},
+      "scores": {"14":3,"15":0},
       "round": "1回戦",
-      "winnerEntryNo": 15,
+      "winnerEntryNo": 14,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -361,8 +361,8 @@
       "prevMatchId": "match-4"
     },
     {
-      "entries": [13,15],
-      "scores": {"13":2,"15":1},
+      "entries": [13,14],
+      "scores": {"13":2,"14":1},
       "round": "2回戦",
       "winnerEntryNo": 13,
       "retired": false,
@@ -726,8 +726,8 @@
     {"entryNo":11,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
     {"entryNo":12,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
     {"entryNo":13,"tournament":{"label":"ベスト4","rank":{"kind":"best","bestLevel":4}},"roundrobin":null},
-    {"entryNo":14,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
-    {"entryNo":15,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
+    {"entryNo":14,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},
+    {"entryNo":15,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
     {"entryNo":16,"tournament":{"label":"3回戦敗退","rank":{"kind":"round","round":3}},"roundrobin":null},
     {"entryNo":17,"tournament":{"label":"1回戦敗退","rank":{"kind":"round","round":1}},"roundrobin":null},
     {"entryNo":18,"tournament":{"label":"2回戦敗退","rank":{"kind":"round","round":2}},"roundrobin":null},

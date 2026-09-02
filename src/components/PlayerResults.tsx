@@ -59,7 +59,11 @@ type PlayerResultsProps = {
 
 export default function PlayerResults({ playerMatches, playerTournaments, majorTitlesData = [] }: PlayerResultsProps) {
   if (!playerMatches || playerMatches.length === 0) {
-    return <p>試合結果がありません。</p>;
+    return (
+      <p className="text-sm text-text-muted">
+        収録している試合結果がありません。この選手が出場した大会の対戦結果を収録すると、ここに大会別の勝ち上がりが並びます。
+      </p>
+    );
   }
 
   // Build a map of tournament info and results keyed by tournament key

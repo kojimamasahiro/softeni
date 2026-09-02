@@ -107,7 +107,13 @@ export default function BlockPage({ block, memberPrefectures, tournaments }: Pro
 
         <div className="space-y-8">
           {tournaments.length === 0 ? (
-            <p className="text-gray-500">現在登録されている大会はありません。</p>
+            <div className="rounded-lg border border-dashed border-border p-6 text-center">
+              <p className="text-sm">{block.name}地区の大会がありません。</p>
+              <p className="mt-1 text-xs text-text-muted">この地区の大会結果はまだ収録していません。結果を収録し次第、ここに大会が並びます。</p>
+              <Link href="/tournaments/block/" className="mt-3 inline-block text-sm text-link hover:underline">
+                他の地区を見る
+              </Link>
+            </div>
           ) : (
             tournaments.map((t) => <TournamentCard key={`${t.generation}-${t.id}`} tournament={t} />)
           )}

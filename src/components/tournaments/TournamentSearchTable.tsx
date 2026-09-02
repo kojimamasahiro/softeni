@@ -324,7 +324,13 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
       </p>
 
       {filtered.length === 0 ? (
-        <p className="text-center text-gray-400 dark:text-gray-500 py-10">該当する大会がありません</p>
+        <div className="py-10 text-center">
+          <p className="text-sm text-text-muted">条件に一致する大会がありません。</p>
+          <p className="mt-1 text-xs text-text-muted">絞り込みを組み合わせると該当が0件になることがあります。条件をひとつ外すか、まとめて解除してください。</p>
+          <button type="button" onClick={resetAll} className="mt-3 text-sm text-link hover:underline">
+            絞り込みを解除
+          </button>
+        </div>
       ) : (
         (() => {
           // 年度ごとにグルーピング（降順）

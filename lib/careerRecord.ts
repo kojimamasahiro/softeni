@@ -1,6 +1,6 @@
 // lib/careerRecord.ts
 // 文脈ブロック「career-record」生成（優先度A）。
-// 「当サイト掲載大会分の通算成績」を出す。既存資産を最大限再利用する:
+// 「当サイト収録大会分の通算成績」を出す。既存資産を最大限再利用する:
 //  - 通算成績: data/players/<slug>/analysis.json（generate-player-analysis.mjs 生成）
 //  - 優勝歴(titles): Step1 lib/tournamentRecords.ts の歴代優勝者を全大会走査し、
 //    優勝者名に主役名が含まれるかで抽出する
@@ -8,7 +8,7 @@
 // 設計: docs/raw/2026-06-21-career-record-logic.md / ADR-005。
 // fs を使うため getStaticProps またはビルドスクリプトからのみ import すること。
 //
-// 重要: 集計はすべて「当サイト掲載大会分」であり生涯記録ではない。
+// 重要: 集計はすべて「当サイト収録大会分」であり生涯記録ではない。
 // 出力に scope:'site-covered' と scopeNote を必ず付け、描画側で明示する。
 
 import fs from 'fs';
@@ -29,7 +29,7 @@ export type CareerTitle = {
 export type CareerRecordBlock = {
   blockType: 'career-record';
   subject: { slug: string; display: string; team: string | null };
-  /** 集計範囲が当サイト掲載分であることを示す。描画側で必ず明示する。 */
+  /** 集計範囲が当サイト収録分であることを示す。描画側で必ず明示する。 */
   scope: 'site-covered';
   scopeNote: string;
   totals: {
@@ -44,7 +44,7 @@ export type CareerRecordBlock = {
   latest?: { tournament: string; date: string; result: string };
 };
 
-const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
+const SCOPE_NOTE = '当サイト収録大会分の集計に基づきます。';
 
 const DETAILS_ROOT = ['data', 'tournaments', 'details'];
 const PLAYERS_ROOT = ['data', 'players'];

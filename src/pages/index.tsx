@@ -122,7 +122,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             <h2 className="text-xl font-bold mb-4">最近追加された大会</h2>
 
             <p className="text-text-secondary text-sm mb-6">
-              全日本選手権や高校の全国大会を中心に、最新の試合結果を随時掲載しています。過去の大会を後から追加した場合も、こちらに表示されます。
+              全日本選手権や高校の全国大会を中心に、最新の試合結果を随時掲載しています。過去の大会を後から追加した場合も、この一覧に表示されます。
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 mb-4">
@@ -140,7 +140,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
 
             <div className="text-right mb-10">
               <Link href="/tournaments" className="text-sm text-blue-500 hover:underline">
-                過去の大会一覧はこちら
+                大会一覧を見る
               </Link>
             </div>
           </section>
@@ -183,7 +183,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             {/* 一覧ページへのリンク */}
             <div className="text-right mb-10">
               <Link href="/players" className="text-sm text-blue-500 hover:underline">
-                掲載中の選手一覧はこちら
+                選手一覧を見る
               </Link>
             </div>
           </section>
@@ -193,7 +193,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             <h2 className="text-xl font-semibold mb-4">選手ランキング</h2>
 
             <p className="text-text-secondary text-sm mb-6">
-              掲載大会の成績から算出した年度別の選手ランキングです。男女別・種目別（シングルス/ダブルス）に上位選手を確認できます。
+              収録大会の成績から算出した年度別の選手ランキングです。男女別・種目別（シングルス/ダブルス）に上位選手を確認できます。
             </p>
 
             <Link href="/rankings" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">

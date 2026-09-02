@@ -120,7 +120,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
         <section className="mb-8">
           <h2 className="mb-2 text-lg font-bold">{prefecture.name}の高校ソフトテニス</h2>
           <p className="mb-3 text-sm text-text-secondary">
-            進学先を調べるときはこちら。インターハイ・ハイスクールジャパンカップ・全日本高校選抜での{prefecture.name}の成績を学校別にまとめています。
+            進学先を調べるときに使えます。インターハイ・ハイスクールジャパンカップ・全日本高校選抜での{prefecture.name}の成績を学校別にまとめています。
           </p>
           <div className="flex gap-2">
             <Link href={`/highschool/boys/${prefecture.id}/`} className="rounded-full bg-info-bg px-4 py-1.5 text-sm text-info transition hover:opacity-80">

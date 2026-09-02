@@ -153,7 +153,7 @@ export default function STLeagueAbout() {
             <div>
               <h3 className="font-bold text-lg mb-2">最高レベルの技術</h3>
               <p className="text-text-secondary text-sm leading-relaxed">
-                ナショナルチーム所属選手など、日本のトッププレイヤーが多数出場。 世界レベルのプレーを間近で見ることができます。
+                ナショナルチーム所属選手など、日本のトップ選手が多数出場。 世界レベルのプレーを間近で見ることができます。
               </p>
             </div>
             <div>

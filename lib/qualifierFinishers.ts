@@ -34,7 +34,7 @@ export type QualifierFinisher = {
   team: string | null;
   /** 選手ページを持つ場合の数値 id */
   playerId: number | null;
-  /** 当サイト掲載分の通算成績。選手ページを持たない場合などは null */
+  /** 当サイト収録分の通算成績。選手ページを持たない場合などは null */
   record: { matches: number; wins: number; losses: number; winRate: number } | null;
 };
 
@@ -174,7 +174,7 @@ export async function getQualifierFinishers(args: {
   };
 }
 
-/** 通算成績（当サイト掲載分）。引けなければ null。 */
+/** 通算成績（当サイト収録分）。引けなければ null。 */
 async function loadRecord(playerId: number): Promise<QualifierFinisher['record']> {
   try {
     const stats = await getPlayerStatistics(playerId, { sections: ['career'] });

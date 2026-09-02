@@ -1,13 +1,13 @@
 {
-  "totalMatches": 187,
-  "wins": 161,
-  "losses": 26,
-  "totalWinRate": 0.861,
+  "totalMatches": 202,
+  "wins": 173,
+  "losses": 29,
+  "totalWinRate": 0.856,
   "games": {
-    "total": 1038,
-    "won": 732,
-    "lost": 306,
-    "gameRate": 0.705
+    "total": 1149,
+    "won": 797,
+    "lost": 352,
+    "gameRate": 0.694
   },
   "byPartner": {
     "12": {
@@ -26,16 +26,16 @@
     },
     "16": {
       "matches": {
-        "total": 69,
-        "wins": 59,
-        "losses": 10,
-        "winRate": 0.855
+        "total": 75,
+        "wins": 64,
+        "losses": 11,
+        "winRate": 0.853
       },
       "games": {
-        "total": 411,
-        "won": 287,
-        "lost": 124,
-        "gameRate": 0.698
+        "total": 458,
+        "won": 313,
+        "lost": 145,
+        "gameRate": 0.683
       }
     },
     "19": {
@@ -80,6 +80,20 @@
         "gameRate": 0.593
       }
     },
+    "3586": {
+      "matches": {
+        "total": 9,
+        "wins": 7,
+        "losses": 2,
+        "winRate": 0.778
+      },
+      "games": {
+        "total": 64,
+        "won": 39,
+        "lost": 25,
+        "gameRate": 0.609
+      }
+    },
     "singles": {
       "matches": {
         "total": 27,
@@ -122,6 +136,48 @@
         "won": 32,
         "lost": 7,
         "gameRate": 0.821
+      }
+    },
+    "2017": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 30,
+        "won": 18,
+        "lost": 12,
+        "gameRate": 0.6
+      }
+    },
+    "2018": {
+      "matches": {
+        "total": 5,
+        "wins": 4,
+        "losses": 1,
+        "winRate": 0.8
+      },
+      "games": {
+        "total": 34,
+        "won": 21,
+        "lost": 13,
+        "gameRate": 0.618
+      }
+    },
+    "2019": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 47,
+        "won": 26,
+        "lost": 21,
+        "gameRate": 0.553
       }
     },
     "2022": {

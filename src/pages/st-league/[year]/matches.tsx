@@ -324,7 +324,7 @@ function MatchesPanel({ year, gender, divisionId, meta, divisions, matches, team
                     )}
                     {isExpanded && match.status !== 'finished' && (
                       <div className="border-t border-border bg-gray-50 dark:bg-gray-800/50 p-4 text-center text-sm text-gray-500">
-                        試合データはまだありません
+                        この対戦の試合データがありません。試合が終わり、結果を収録すると個別の勝敗とスコアが並びます。
                       </div>
                     )}
                     {divisionId === '1' && match.status === 'finished' && (
@@ -341,7 +341,9 @@ function MatchesPanel({ year, gender, divisionId, meta, divisions, matches, team
                 );
               })}
               {matchesInDiv.length === 0 && (
-                <div className="text-center py-10 bg-surface rounded-xl border border-dashed border-border text-gray-500">まだ試合情報がありません</div>
+                <div className="text-center py-10 bg-surface rounded-xl border border-dashed border-border text-sm text-gray-500">
+                  この部の試合情報がありません。日程が進み、結果を収録すると対戦カードが並びます。
+                </div>
               )}
             </div>
           </section>

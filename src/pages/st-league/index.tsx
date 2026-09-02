@@ -74,7 +74,7 @@ export default function STLeagueHub({ editions, overview, divisionOverview }: Pr
     <>
       <MetaHead
         title={pageTitle}
-        description="ソフトテニス実業団最高峰「STリーグ」(Ⅰ・Ⅱ部)の結果・順位表・出場チーム・選手データ。各年度の試合結果や昇格・降格(入替戦)情報をまとめています。"
+        description="ソフトテニス実業団最高峰「STリーグ」（Ⅰ・Ⅱ部）の結果・順位表・出場チーム・選手データ。各年度の試合結果や昇格・降格（入替戦）情報をまとめています。"
         url={pageUrl}
       />
       <Head>
@@ -206,7 +206,7 @@ export default function STLeagueHub({ editions, overview, divisionOverview }: Pr
                 </div>
               ))}
 
-              {editions.length === 0 && <p className="text-gray-500">開催年度の情報がありません。</p>}
+              {editions.length === 0 && <p className="text-sm text-text-muted">開催年度の情報がありません。各回の結果を収録し次第、ここに年度を並べます。</p>}
             </div>
           </section>
         </div>

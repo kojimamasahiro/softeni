@@ -141,9 +141,11 @@ export default function PlayerLiteLink({ id, name, className }: Props) {
             </div>
 
             {loading && <p className="py-6 text-center text-sm text-text-muted">読み込み中…</p>}
-            {error && <p className="py-6 text-center text-sm text-text-muted">情報を取得できませんでした。</p>}
+            {error && <p className="py-6 text-center text-sm text-text-muted">情報を取得できませんでした。通信状況を確認して、もう一度開いてみてください。</p>}
             {!loading && !error && data && data.tournaments.length === 0 && (
-              <p className="py-6 text-center text-sm text-text-muted">収録された出場大会がありません。</p>
+              <p className="py-6 text-center text-sm text-text-muted">
+                収録している出場大会がありません。この選手が出場した大会の結果を収録すると、ここに一覧が出ます。
+              </p>
             )}
 
             {!loading && !error && data && data.tournaments.length > 0 && (

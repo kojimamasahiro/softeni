@@ -15,6 +15,7 @@ import { useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import { SCOPE_NOTE_RANKING } from '@/lib/uiText';
 
 const TOP_N = 100;
 
@@ -73,7 +74,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
   const board = activeTab ? boards.find((b) => b.year === year && b.discipline === activeTab.discipline && b.gender === activeTab.gender) : undefined;
 
   const pageUrl = 'https://softeni-pick.com/rankings/';
-  const description = `ソフトテニス選手の年度別ダブルスランキング。当サイト掲載大会の成績から算出したシーズンポイント（年度の上位3大会合算）による男女別の順位表です。最新は${latestYear}年度。`;
+  const description = `ソフトテニス選手の年度別ダブルスランキング。当サイト収録大会の成績から算出したシーズンポイント（年度の上位3大会合算）による男女別の順位表です。最新は${latestYear}年度。`;
 
   return (
     <>
@@ -116,16 +117,14 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
         <header>
           <h1 className="text-2xl font-bold">ソフトテニス選手ランキング</h1>
           <p className="mt-2 text-sm text-text-secondary">
-            当サイト掲載大会の成績から算出した年度別ランキングです。ポイントは<strong>ダブルス</strong>の成績で、大会の格
+            当サイト収録大会の成績から算出した年度別ランキングです。ポイントは<strong>ダブルス</strong>の成績で、大会の格
             （主要大会・全国大会・地方大会）と最終成績から求め、
             <strong>年度の上位3大会のみを合算</strong>しています（上位{TOP_N}位まで掲載）。
           </p>
           <p className="mt-1 text-xs text-text-muted">
             ※ ポイントが同点の場合は、その年のシングルスの最高成績が上位の選手を上に並べています（シングルスはポイントには加算しません）。
           </p>
-          <p className="mt-1 text-xs text-text-muted">
-            ※ 当サイトに掲載されている大会のみが対象です。年度により収録大会数・母数が大きく異なるため、 年度をまたいだ順位の比較には適しません。
-          </p>
+          <p className="mt-1 text-xs text-text-muted">{SCOPE_NOTE_RANKING}</p>
         </header>
 
         {/* 年度切替 */}
@@ -213,7 +212,10 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
             </table>
           </section>
         ) : (
-          <p className="text-sm text-text-muted">この年度のランキングはありません。</p>
+          <div className="rounded-lg border border-border bg-surface p-6 text-center">
+            <p className="text-sm">{year}年度のランキングがありません。</p>
+            <p className="mt-1 text-xs text-text-muted">この年度は集計対象の大会をまだ収録していません。上の年度ボタンから別の年度を選んでください。</p>
+          </div>
         )}
 
         {/* 全年度・男女の上位3位（静的HTML）。タブ裏の順位表はクライアント描画で
@@ -257,7 +259,7 @@ export default function RankingsPage({ boards, latestYear }: RankingsPageProps) 
 
         <div className="text-right">
           <Link href="/players" className="text-sm text-link hover:underline">
-            選手一覧はこちら
+            選手一覧を見る
           </Link>
         </div>
       </PageLayout>

@@ -525,7 +525,15 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         />
       </div>
 
-      {visibleItems.length === 0 && <p className="mb-6 text-sm text-text-muted">「{searchQuery}」に一致する組はありませんでした。</p>}
+      {visibleItems.length === 0 && (
+        <div className="mb-6 text-sm">
+          <p>「{searchQuery}」に一致する組がありません。</p>
+          <p className="mt-1 text-xs text-text-muted">選手名は大会結果の表記で登録されています。姓だけ、または所属名だけでも試せます。</p>
+          <button type="button" onClick={() => setSearchQuery('')} className="mt-2 text-sm text-link hover:underline">
+            検索をクリア
+          </button>
+        </div>
+      )}
 
       {topItems.map(renderItem)}
 
