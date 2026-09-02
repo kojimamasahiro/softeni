@@ -1,10 +1,12 @@
 // src/components/TournamentContextBlocks.tsx
 // 大会ハブページに差し込む「文脈ブロック」表示。
-// milestone（連覇/初優勝など）と、優勝者の career-record（当サイト掲載分の通算成績・主要タイトル）を出す。
+// milestone（連覇/初優勝など）と、優勝者の career-record（当サイト収録分の通算成績・主要タイトル）を出す。
 // データ生成は getStaticProps 側（lib/milestones.ts / lib/careerRecord.ts）。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
 
 import Link from 'next/link';
+
+import { SCOPE_NOTE_MATCHES, SCOPE_NOTE_SHORT } from '@/lib/uiText';
 
 import MilestoneBadge from './MilestoneBadge';
 
@@ -81,7 +83,7 @@ export default function TournamentContextBlocks({ label, data }: { label: string
           ))}
         </ul>
       )}
-      {hasScopeLimitedMilestone && <p className="mb-4 -mt-2 text-[10px] opacity-70">※当サイト掲載分</p>}
+      {hasScopeLimitedMilestone && <p className="mb-4 -mt-2 text-[10px] opacity-70">{SCOPE_NOTE_SHORT}</p>}
 
       {hasRecords && (
         <div className="grid gap-3 sm:grid-cols-2">
@@ -95,7 +97,7 @@ export default function TournamentContextBlocks({ label, data }: { label: string
               </div>
               <p className="text-gray-700 dark:text-gray-200">
                 通算 {r.totals.matches}試合 {r.totals.wins}勝{r.totals.losses}
-                敗（勝率 {winPct(r.totals.winRate)}）<span className="ml-1 text-[10px] text-text-muted">※{r.scopeNote}</span>
+                敗（勝率 {winPct(r.totals.winRate)}）<span className="ml-1 text-[10px] text-text-muted">※ {r.scopeNote}</span>
               </p>
               {r.titles.length > 0 && (
                 <p className="mt-1 text-text-secondary">
@@ -135,7 +137,7 @@ export default function TournamentContextBlocks({ label, data }: { label: string
               </li>
             ))}
           </ul>
-          <p className="mt-1 text-[10px] text-text-muted">※当サイト掲載分の試合データによる</p>
+          <p className="mt-1 text-[10px] text-text-muted">{SCOPE_NOTE_MATCHES}</p>
         </div>
       )}
     </section>

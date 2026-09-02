@@ -43,7 +43,7 @@ import {
 import { getCategoryLabel } from './utils';
 
 export type MilestoneKind =
-  | 'first-title' // 初優勝（当サイト掲載範囲で）
+  | 'first-title' // 初優勝（当サイト収録範囲で）
   | 'repeat-title' // 連覇（2連覇以上）
   | 'perfect-title' // 無敗優勝（優勝までの全試合で相手の獲得数0。2026-07-30）
   | 'nth-title' // n回目の優勝（連覇でも初優勝でもない複数回優勝。「◯年ぶり」ギャップ情報を含む）
@@ -55,7 +55,7 @@ export type MilestoneKind =
 
 /**
  * confirmed: 同一大会内の対戦・連続年など、掲載範囲でも決定的に確定する事実。
- * scope-limited: 「初」「通算」など当サイト掲載範囲に依存する事実（描画側で要注記）。
+ * scope-limited: 「初」「通算」など当サイト収録範囲に依存する事実（描画側で要注記）。
  */
 export type MilestoneConfidence = 'confirmed' | 'scope-limited';
 
@@ -94,7 +94,7 @@ export type MilestoneBlock = {
   events: MilestoneEvent[];
 };
 
-const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
+const SCOPE_NOTE = '当サイト収録大会分の集計に基づきます。';
 
 /** 重要度（小さいほど上位）。並び順 docs/raw/2026-06-21-milestone-logic.md 準拠。 */
 const KIND_IMPORTANCE: Record<MilestoneKind, number> = {
@@ -438,7 +438,7 @@ export function getChampionMilestones(
   };
 }
 
-const DEFEAT_SCOPE_NOTE = '前回優勝は当サイト掲載大会分の判定に基づく';
+const DEFEAT_SCOPE_NOTE = '前回優勝は当サイト収録大会分の判定に基づきます。';
 
 /**
  * champion-defeat（王者撃破）イベントを抽出する。
@@ -523,7 +523,7 @@ export function getChampionDefeat(
   };
 }
 
-const UPSET_SCOPE_NOTE = '「格上」は当サイト掲載大会分から算出した実力指標に基づく判定';
+const UPSET_SCOPE_NOTE = '「格上」は当サイト収録大会分から算出した実力指標による判定です。';
 
 /**
  * giant-killing（金星）イベントを抽出する（2026-07-11、P4）。

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
@@ -95,7 +96,13 @@ export default function LocalFederationPage({ prefecture, federation, tournament
 
         <div className="space-y-8">
           {tournaments.length === 0 ? (
-            <p className="text-gray-500">現在登録されている大会はありません。</p>
+            <div className="rounded-lg border border-dashed border-border p-6 text-center">
+              <p className="text-sm">{prefecture.name}の大会がありません。</p>
+              <p className="mt-1 text-xs text-text-muted">この連盟の大会結果はまだ収録していません。結果を収録し次第、ここに大会が並びます。</p>
+              <Link href="/tournaments/local/" className="mt-3 inline-block text-sm text-link hover:underline">
+                他の都道府県を見る
+              </Link>
+            </div>
           ) : (
             tournaments.map((t) => <TournamentCard key={`${t.generation}-${t.id}`} tournament={t} />)
           )}

@@ -124,7 +124,7 @@ function defaultStats(facts: PlayerFacts, slug?: string | null): PlayerStatistic
       homonymRisk: facts.homonymRisk,
     },
     scope: 'site-covered',
-    scopeNote: '当サイト掲載大会分の集計に基づく（実戦のみ。不戦勝・途中棄権は除外）',
+    scopeNote: '当サイト収録大会分の集計に基づきます（実戦のみ。不戦勝・途中棄権は除外）。',
     coverage: {
       firstDate: dates[0] ?? null,
       lastDate: dates[dates.length - 1] ?? null,
@@ -286,7 +286,7 @@ export function toPlayerMeta(stats: PlayerStatistics): PlayerMeta {
   const teamPart = team ? `（${team}）` : '';
   const title = `${name}${teamPart} 戦績・プロフィール｜ソフトテニス`;
 
-  const parts: string[] = [`${name}${teamPart}の当サイト掲載大会分の戦績`];
+  const parts: string[] = [`${name}${teamPart}の当サイト収録大会分の戦績`];
   if (c.total > 0) {
     parts.push(`通算${c.total}戦${c.wins}勝${c.losses}敗（勝率${c.winRate}）`);
   }

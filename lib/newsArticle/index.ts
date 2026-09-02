@@ -42,7 +42,7 @@ function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, 
   if (record.type !== 'preview') {
     return `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
   }
-  const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト掲載データからまとめています。`;
+  const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト収録データからまとめています。`;
   const totalCards = categories.reduce((n, c) => n + (c.priorMeetings?.totalCards ?? 0), 0);
   if (totalCards === 0) return base;
   return `${base}直近の大会で既に対戦している${totalCards}件の顔合わせも掲載。`;

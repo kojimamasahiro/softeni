@@ -26,7 +26,7 @@ const DETAILS_DIR = path.join(ROOT, 'data', 'tournaments', 'details');
 const INDEX_PATH = path.join(ROOT, 'data', 'tournaments', 'index.json');
 const UPSETS_PATH = path.join(ROOT, 'data', 'ratings', 'upsets.json');
 
-const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
+const SCOPE_NOTE = '当サイト収録大会分の集計に基づきます。';
 
 // 閾値。実測（docs/raw/2026-08-01-idea-... 2.）で決めた値。
 const PLAYER_STREAK_MIN = 3; // 選手の連続ベスト8以上
@@ -277,7 +277,7 @@ function detect(tournamentId, categoryId, year, idx, upsets) {
       text: `${year}年の優勝は${winnerNames.join('・')}。決勝は${loserNames.join('・')}に${final.score}${
         semi ? `、準決勝は${semi.loser.split('|').join('・')}に${semi.score}` : ''
       }。${sameTeamFinal ? `決勝は${sameTeamFinal}同士の対戦。` : ''}${
-        isFirst ? '当サイト掲載範囲では初優勝。' : prevTitle ? `前回の優勝は${prevTitle}年。` : ''
+        isFirst ? '当サイト収録範囲では初優勝。' : prevTitle ? `前回の優勝は${prevTitle}年。` : ''
       }`,
       scopeNote: SCOPE_NOTE,
     });
@@ -310,7 +310,7 @@ function detect(tournamentId, categoryId, year, idx, upsets) {
       round: e.round ?? null,
       facts: { expectedWinProb: e.expectedWinProb },
       text: `${e.round ? `${e.round}で` : ''}${winners.join('・')}が、事前の実力指標で格上と算出されていた${losers.join('・')}を破った。`,
-      scopeNote: '「格上」は当サイト掲載大会分から算出した実力指標に基づく判定。数値は非公開。',
+      scopeNote: '「格上」は当サイト収録大会分から算出した実力指標による判定です。数値は非公開。',
       evidence: { source: 'data/ratings/upsets.json' },
     });
   }
@@ -740,7 +740,7 @@ function emit(meta, stories, recordsByCategory, { withRecords = true, asOfByCate
   L.push(`  tournamentId: ${q(meta.tournamentId)}`);
   L.push(`  year: ${meta.year}`);
   L.push(`  label: ${q(meta.label)}`);
-  L.push(`  scope: ${q(`当サイト掲載大会分（${meta.years.join('・')}年）から算出`)}`);
+  L.push(`  scope: ${q(`当サイト収録大会分（${meta.years.join('・')}年）から算出`)}`);
   if (asOfByCategory) {
     L.push('  inProgress: true');
     L.push('  asOf: # 種目ごとの「ここまで確定」ラウンド。これより先はまだ結果が入っていない');

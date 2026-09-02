@@ -675,7 +675,13 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         <ChampionSummary rows={championSummary} />
 
         {years.length === 0 ? (
-          <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
+          <div className="rounded-lg border border-dashed border-border p-6 text-center">
+            <p className="text-sm">掲載中の結果がありません。</p>
+            <p className="mt-1 text-xs text-text-muted">この大会の歴代記録はまだ収録していません。収録し次第、年度別・種目別に並べます。</p>
+            <Link href="/highschool/tournaments/" className="mt-3 inline-block text-sm text-link hover:underline">
+              他の全国大会を見る
+            </Link>
+          </div>
         ) : (
           <section>
             <h2 className="text-xl font-bold mb-1">年度別の記録</h2>

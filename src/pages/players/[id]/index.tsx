@@ -216,7 +216,7 @@ export default function PlayerInformation({ player, id, numericId, hasResultsPag
               </p>
             </div>
           ) : (
-            <p className="text-sm text-gray-500">最近の試合情報はまだありません。</p>
+            <p className="text-sm text-gray-500">最近の試合情報がありません。新しい大会の結果を収録すると、ここに直近の出場が表示されます。</p>
           )}
 
           {hasResultsPage ? (

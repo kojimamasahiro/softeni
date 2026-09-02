@@ -58,7 +58,10 @@ export default function GrowthHubPage({ items }: HubProps) {
               ))}
             </ul>
           ) : (
-            <div className="mt-8 rounded-lg border border-border p-6 text-center text-text-secondary">現在公開中の成長記録はありません。</div>
+            <div className="mt-8 rounded-lg border border-border p-6 text-center">
+              <p className="text-sm text-text-secondary">公開中の成長記録がありません。</p>
+              <p className="mt-1 text-xs text-text-muted">成長記録は、ポイント単位で記録した試合が一定数たまった選手から順に公開しています。</p>
+            </div>
           )}
 
           {/* score 導線プレースホルダ。score の方針が固まるまで配線しない（ADR-004）。 */}

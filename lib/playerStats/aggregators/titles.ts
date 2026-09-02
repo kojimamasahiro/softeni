@@ -1,6 +1,6 @@
 // lib/playerStats/aggregators/titles.ts
 // 通算優勝数 / 主要大会優勝数 / 大会別優勝 / 連覇 / n回目 / 全国初出場・初優勝。
-// winner entry（placement.kind==='winner'）を素に集計。scope=当サイト掲載分。
+// winner entry（placement.kind==='winner'）を素に集計。scope=当サイト収録分。
 
 import type { FirstEvent, NationalTitle, PlayerStatistics, TitleStreak } from '../../../src/types/playerStatistics';
 import { getNationalTitleMeta, isNationalTitleTournament } from '../../nationalTitles';

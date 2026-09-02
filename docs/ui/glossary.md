@@ -43,3 +43,16 @@
 | STリーグ回(ST league edition) | STリーグの1年度開催(第N回) | — | approved(D-008) |
 | 記録試合(recorded match) | ポイント単位で記録した試合(score/beta 面・Supabase) | ベータ試合, スコア試合 | approved(D-008) |
 | ゲーム(game) / ポイント(point) | 記録試合内のゲーム / 最小記録単位 | — | approved(D-008) |
+
+## UI 文言用語(2026-09-02 追加・draft)
+
+書き方のルール本体は [docs/wiki/ux-writing.md](../wiki/ux-writing.md)。R14 に従い、
+使用前に draft としてここへ登録する。
+
+| 用語 | 定義 | 表記ゆれ(使用禁止) | ステータス |
+|------|------|----------------------|------------|
+| 収録 | サイトがデータとして持っている範囲・母数。「収録大会」「収録試合数」「当サイト収録の〜」 | 掲載(母数の意味で) | draft(2026-09-02) |
+| 掲載 | そのページに表示している / 公開しているという行為・状態。「結果を掲載しています」「掲載中」「結果未掲載」 | 収録(表示の意味で) | draft(2026-09-02) |
+
+補足: 集計の断り書きは母数の話なので必ず「収録」側。共通文言は `lib/uiText.ts` の
+`SCOPE_NOTE_SHORT` / `SCOPE_NOTE_MATCHES` / `SCOPE_NOTE_TOURNAMENTS` / `SCOPE_NOTE_RANKING`。

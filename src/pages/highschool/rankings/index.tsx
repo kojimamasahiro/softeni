@@ -14,6 +14,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { buildPrefectureRankingBoards, buildSchoolRankingBoards, type PrefectureRankingBoard, type SchoolRankingBoard } from '@/lib/highschoolRanking';
+import { SCOPE_NOTE_RANKING } from '@/lib/uiText';
 
 const TOP_N = 100;
 
@@ -32,7 +33,7 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
   const minYear = board?.minYear ?? latestYear;
 
   const pageUrl = 'https://softeni-pick.com/highschool/rankings/';
-  const description = `高校ソフトテニスの強豪校ランキング(全国・都道府県別)。当サイト収録のインターハイ・ハイスクールジャパンカップ・全日本高校選抜の成績(${minYear}〜${latestYear}年)をポイント化した独自集計です。学校別の上位100校と、都道府県別のポイントランキングを男女別に掲載しています。`;
+  const description = `高校ソフトテニスの強豪校ランキング（全国・都道府県別）。当サイト収録のインターハイ・ハイスクールジャパンカップ・全日本高校選抜の成績（${minYear}〜${latestYear}年）をポイント化した独自集計です。学校別の上位100校と、都道府県別のポイントランキングを男女別に掲載しています。`;
 
   const prefTop3 = (gender: string) =>
     (prefBoards.find((b) => b.gender === gender)?.entries ?? [])
@@ -47,11 +48,11 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
     },
     {
       question: 'ポイントはどのように計算していますか？',
-      answer: `優勝10点・準優勝6点・ベスト4は4点・ベスト8は2点・その他の出場0.5点を基礎点とし、団体戦は2倍、個人戦(ダブルス・シングルス)は1倍で計算します。さらに年度の新しさで重み(直近から1.0/0.8/0.6、それ以前0.3)を掛けて合算しています。`,
+      answer: `優勝10点・準優勝6点・ベスト4は4点・ベスト8は2点・その他の出場0.5点を基礎点とし、団体戦は2倍、個人戦（ダブルス・シングルス）は1倍で計算します。さらに年度の新しさで重み（直近から1.0/0.8/0.6、それ以前0.3）を掛けて合算しています。`,
     },
     {
       question: '対象の大会はどれですか？',
-      answer: `当サイト収録分のインターハイ(全国高等学校総合体育大会)、ハイスクールジャパンカップ、全日本高校選抜が対象です(${minYear}〜${latestYear}年)。国体(国民スポーツ大会)は含まれません。データ追加にあわせて順次反映します。`,
+      answer: `当サイト収録分のインターハイ（全国高等学校総合体育大会）、ハイスクールジャパンカップ、全日本高校選抜が対象です（${minYear}〜${latestYear}年）。国体（国民スポーツ大会）は含まれません。データ追加にあわせて順次反映します。`,
     },
     {
       question: '高校ソフトテニスが強い都道府県はどこですか？',
@@ -61,7 +62,7 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
 
   return (
     <>
-      <MetaHead title="高校ソフトテニス 強豪校ランキング(全国・都道府県別) | Softeni Pick" description={description} url={pageUrl} type="article" />
+      <MetaHead title="高校ソフトテニス 強豪校ランキング（全国・都道府県別） | Softeni Pick" description={description} url={pageUrl} type="article" />
 
       <Head>
         {board && (
@@ -114,12 +115,12 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
         <header>
           <h1 className="text-2xl font-bold">高校ソフトテニス 強豪校ランキング</h1>
           <p className="mt-2 text-sm text-text-secondary">
-            当サイト収録の全国大会(インターハイ・ハイスクールジャパンカップ・全日本高校選抜、{minYear}〜{latestYear}
-            年)の成績をポイント化した、全国・男女別の独自ランキングです。 配点は<strong>優勝10・準優勝6・ベスト4 4・ベスト8 2・出場0.5</strong>を基礎点に、
-            <strong>団体戦2倍</strong>・年度の新しさで重み(直近から1.0/0.8/0.6、それ以前0.3)を掛けて合算しています。
+            当サイト収録の全国大会（インターハイ・ハイスクールジャパンカップ・全日本高校選抜、{minYear}〜{latestYear}
+            年）の成績をポイント化した、全国・男女別の独自ランキングです。配点は<strong>優勝10・準優勝6・ベスト4 4・ベスト8 2・出場0.5</strong>を基礎点に、
+            <strong>団体戦2倍</strong>・年度の新しさで重み（直近から1.0/0.8/0.6、それ以前0.3）を掛けて合算しています。
           </p>
           <p className="mt-1 text-xs text-text-muted">
-            ※ 公式ランキングではありません。当サイト収録大会のみが対象で、国体(国民スポーツ大会)は含まれません(データ追加にあわせて順次反映)。
+            {SCOPE_NOTE_RANKING}国体（国民スポーツ大会）はまだ含まれていません（データ追加にあわせて順次反映します）。
           </p>
         </header>
 
@@ -192,7 +193,10 @@ export default function HighschoolRankingsPage({ boards, prefBoards }: Props) {
             </table>
           </section>
         ) : (
-          <p className="text-sm text-text-muted">ランキングを算出できるデータがありません。</p>
+          <div className="rounded-lg border border-border bg-surface p-6 text-center">
+            <p className="text-sm">ランキングを算出できるデータがありません。</p>
+            <p className="mt-1 text-xs text-text-muted">対象の全国大会の成績をまだ収録していません。上のタブから男子・女子を切り替えてみてください。</p>
+          </div>
         )}
 
         {prefBoard && board && (

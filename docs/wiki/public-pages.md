@@ -463,6 +463,20 @@ LLM / AI クローラ向けにサイト概要と主要 URL を案内する `publ
 - `src/components/PageLayout.tsx`
 - `src/pages/_app.tsx`
 
+### UI 文言（2026-09-02 整備）
+
+公開ページに出す日本語の書き方は [ux-writing.md](./ux-writing.md) に集約した。
+文体・句点・記号（全角括弧・三点リーダ `…`・`※ ` の空き）・用語・空状態・リンクテキストの型。
+主な決定:
+
+- **収録＝母数、掲載＝表示** の使い分け。集計の断り書きは必ず「収録」側。
+  同義の断り文が6通りに割れていたので `lib/uiText.ts` の定数（`SCOPE_NOTE_*`）に集約した。
+  `lib/careerRecord.ts` / `lib/milestones.ts` / `lib/playerStats/**` の `scopeNote`、
+  `data/tournament-insights/**` の `scopeNote` も「収録」に揃えてある。
+- **空状態は「状況 → 理由 → 次の行動」**。「〜がありません」で終わらせない。
+  手本は `src/pages/players/index.tsx` の検索0件。
+- **「〜はこちら」をリンクにしない**。行き先を語で示す（「大会一覧を見る」）。
+
 ### ナビゲーション再設計方針（2026-06-22 決定 / 実装前）
 
 Draft（方針確定・実装前）。回遊（大会 ↔ 選手 ↔ 年度 ↔ チーム）を深めるため、

@@ -38,7 +38,7 @@ import type {
 
 /**
  * 今大会（対象年・種目）の出場者インデックス。前年データとの照合に使う。
- * すべて当サイト掲載のエントリーデータから決定的に算出する（LLM/curation 非依存）。
+ * すべて当サイト収録のエントリーデータから決定的に算出する（LLM/curation 非依存）。
  */
 type FieldIndex = {
   entryCount: number;
@@ -1094,7 +1094,7 @@ export function buildCategoryBlock(
       scopeNote: e.scopeNote ?? null,
     }));
   } else {
-    // プレビュー: 当サイト掲載のエントリー＋前年データを照合し、決定的に展望を構成する。
+    // プレビュー: 当サイト収録のエントリー＋前年データを照合し、決定的に展望を構成する。
     const field = buildFieldIndex(tournamentId, year, categoryId);
     const prevChampionEntry = hw.champions.find((c) => c.year === year - 1) ?? null;
     const prevDetail = readYearDetail(tournamentId, year - 1, categoryId);

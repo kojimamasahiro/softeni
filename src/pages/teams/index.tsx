@@ -96,7 +96,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
     <>
       <MetaHead
         title="チーム一覧 | ソフトテニス情報 Softeni Pick"
-        description="ソフトテニスのチーム(学校・実業団・クラブ)を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校は学校ページへのリンクつき。"
+        description="ソフトテニスのチーム（学校・実業団・クラブ）を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校は学校ページへのリンクつき。"
         url={pageUrl}
         type="website"
       />
@@ -111,8 +111,8 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
 
         <h1 className="text-2xl font-bold mb-2">チーム一覧</h1>
         <p className="text-sm text-text-muted dark:text-gray-400 mb-6">
-          大会結果に収録されているチーム(学校・実業団・クラブ)を検索できます。掲載は収録試合が2試合以上のチーム({totalCount.toLocaleString()}
-          件)。STリーグ出場チームはチームページ、高校は学校ページへのリンクがあります。
+          大会結果に収録されているチーム（学校・実業団・クラブ）を検索できます。掲載は収録試合が2試合以上のチーム（{totalCount.toLocaleString()}
+          件）。STリーグ出場チームはチームページ、高校は学校ページへのリンクがあります。
         </p>
 
         {/* 男女切替(収録データの性別で絞り込む) */}
@@ -140,7 +140,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="チーム名・都道府県で検索(例: 高田商業、長野県)"
+            placeholder="チーム名・都道府県で検索（例: 高田商業、長野県）"
             aria-label="チーム検索"
             className="w-full rounded-lg border border-border bg-surface px-4 py-2 text-sm text-text placeholder:text-gray-400 focus:border-blue-600 focus:outline-none dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
           />
@@ -149,7 +149,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         <p className="text-xs text-text-muted dark:text-gray-400 mb-2">
           {isSearching
             ? `検索結果: ${filtered.length.toLocaleString()}件`
-            : `${genderLabel ? `${genderLabel}の収録があるチーム ${scoped.length.toLocaleString()}件のうち、` : ''}収録試合数の上位 ${INITIAL_LIMIT} 件を表示中(検索で全件から絞り込めます)`}
+            : `${genderLabel ? `${genderLabel}の収録があるチーム ${scoped.length.toLocaleString()}件のうち、` : ''}収録試合数の上位 ${INITIAL_LIMIT} 件を表示中（検索で全件から絞り込めます）`}
         </p>
 
         <div className="overflow-x-auto rounded-lg border border-border dark:border-gray-700">
@@ -174,7 +174,10 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
               {isSearching && filtered.length === 0 && (
                 <tr>
                   <td colSpan={3} className="px-4 py-6 text-center text-sm text-text-muted dark:text-gray-400">
-                    該当するチームが見つかりませんでした
+                    「{query}」に一致するチームがありません。
+                    <span className="mt-1 block text-xs">
+                      チーム名は大会結果の表記で登録されています。略称（高田商業→高田商）や都道府県名だけでも試せます。
+                    </span>
                   </td>
                 </tr>
               )}
@@ -183,7 +186,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         </div>
 
         <p className="mt-4 text-xs text-text-muted dark:text-gray-400">
-          ※ 収録試合数は当サイトに掲載している大会結果に基づくもので、実際の出場数とは異なる場合があります。
+          ※ 収録試合数は当サイトが収録している大会結果に基づくもので、実際の出場数とは異なる場合があります。
         </p>
       </PageLayout>
     </>

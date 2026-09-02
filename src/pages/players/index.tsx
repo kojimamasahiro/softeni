@@ -286,7 +286,7 @@ export default function PlayersPage({ featured, all }: PlayersPageProps) {
             {!isSearching
               ? ''
               : isLoading
-                ? '検索データを読み込んでいます...'
+                ? '検索データを読み込んでいます…'
                 : `「${deferredQuery.trim()}」に一致する選手 ${results.length.toLocaleString()} 人`}
           </p>
         </div>
@@ -298,7 +298,7 @@ export default function PlayersPage({ featured, all }: PlayersPageProps) {
             {!isLoading && results.length === 0 ? (
               <div className="rounded-lg border border-border bg-surface p-6 text-center">
                 <p className="mb-2 text-sm">
-                  「<span className="font-medium">{deferredQuery.trim()}</span>」に一致する選手は見つかりませんでした。
+                  「<span className="font-medium">{deferredQuery.trim()}</span>」に一致する選手がありません。
                 </p>
                 <p className="mb-4 text-xs text-text-muted">
                   選手名は漢字で登録されています。ひらがな・カタカナ・ローマ字では一致しません。語を減らすか、所属や大会名だけで試してください。

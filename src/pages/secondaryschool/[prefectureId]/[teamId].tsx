@@ -199,7 +199,11 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
               </ul>
             </div>
           ))}
-          {team.results.length === 0 && <p className="text-sm text-text-muted">収録している成績がありません。</p>}
+          {team.results.length === 0 && (
+            <p className="text-sm text-text-muted">
+              収録している成績がありません。全中・都道府県対抗・地区大会の結果に名前が載ると、ここに年度別の成績が並びます。
+            </p>
+          )}
         </section>
 
         {members.length > 0 && (

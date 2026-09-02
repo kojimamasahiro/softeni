@@ -23,7 +23,7 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
     <>
       <MetaHead
         title="ソフトテニス 大会展望（前回王者・出場校）"
-        description="ソフトテニスの大会展望。前回王者の連覇・防衛、前回入賞者の再登場、出場校の勢力図などを当サイト掲載データからまとめています。確定した結果・優勝・歴代は各大会ページに掲載しています。"
+        description="ソフトテニスの大会展望。前回王者の連覇・防衛、前回入賞者の再登場、出場校の勢力図などを当サイト収録データからまとめています。確定した結果・優勝・歴代は各大会ページに掲載しています。"
         url={pageUrl}
         type="website"
         noindex={items.length === 0}
@@ -38,7 +38,13 @@ export default function NewsIndexPage({ items }: { items: NewsListItem[] }) {
         <h1 className="mb-4 text-2xl font-bold">大会展望</h1>
 
         {items.length === 0 ? (
-          <p className="text-sm text-gray-500">現在、公開中の記事はありません。</p>
+          <div className="rounded-md border border-border bg-surface p-6 text-center">
+            <p className="text-sm">公開中の大会展望がありません。</p>
+            <p className="mt-1 text-xs text-text-muted">大会展望は開催前に公開しています。過去の結果は大会一覧から確認できます。</p>
+            <Link href="/tournaments/" className="mt-3 inline-block text-sm text-link hover:underline">
+              大会一覧を見る
+            </Link>
+          </div>
         ) : (
           <ul className="space-y-2">
             {items.map((it) => (

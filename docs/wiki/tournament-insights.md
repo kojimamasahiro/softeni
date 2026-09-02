@@ -32,7 +32,7 @@ LLM を排除したのも、ADR-012 が解禁できたのも、どちらもこ�
   "state": "published",
   "paragraphs": ["...", "..."],
   "usedStoryIds": ["zennihon-workers-2026-doubles-over35-girls-watched-eliminated-1", "..."],
-  "scopeNote": "3回戦終了時点。成績は当サイト掲載大会分（2022年〜）の集計に基づきます。",
+  "scopeNote": "3回戦終了時点。成績は当サイト収録大会分（2022年〜）の集計に基づきます。",
   "writtenBy": "Claude",
   "verifiedAt": "2026-08-29"
 }
@@ -43,7 +43,7 @@ LLM を排除したのも、ADR-012 が解禁できたのも、どちらもこ�
 | `state` | `published` / `draft` / `review`。**`published` だけが照合を強制される**（他はスキップ） |
 | `paragraphs` | 本文。段落の配列 |
 | `usedStoryIds` | 各段落の根拠にしたストーリーID。照合が警告を出したとき原因を辿るため |
-| `scopeNote` | 集計範囲。**進行中なら到達ラウンドを必ず書く**（「3回戦終了時点」） |
+| `scopeNote` | 集計範囲。**進行中なら到達ラウンドを必ず書く**（「3回戦終了時点」）。語は「収録」（母数）で固定＝[ux-writing.md](./ux-writing.md) §4 |
 | `writtenBy` | 執筆したモデル |
 | `verifiedAt` | 照合した日。**この値は信用されない**（下記） |
 

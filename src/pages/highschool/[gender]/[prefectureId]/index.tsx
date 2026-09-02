@@ -580,7 +580,7 @@ export default function PrefectureHighschoolPage({
                   {(() => {
                     const sortedYears = Object.entries(team.results ?? {}).sort((a, b) => Number(b[0]) - Number(a[0]));
                     if (sortedYears.length === 0) {
-                      return <li className="text-sm text-gray-500">成績情報がありません</li>;
+                      return <li className="text-sm text-gray-500">収録している成績がありません</li>;
                     }
                     const visibleYears = sortedYears.slice(0, 3);
                     const hiddenYearCount = sortedYears.length - visibleYears.length;

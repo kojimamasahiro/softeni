@@ -581,7 +581,7 @@ export default function TeamPage({
                         となっています。
                       </p>
                     ) : (
-                      <p>直近3年間の大会では出場情報がありません。</p>
+                      <p>直近3年間の大会では出場情報がありません。それ以前の成績は下の一覧で確認できます。</p>
                     )}
                     {historicalBest && (
                       <p>
@@ -705,14 +705,14 @@ export default function TeamPage({
             </Link>
             <Link href="/tournaments/major" className="rounded-xl border border-border p-4 bg-surface hover:bg-bg-subtle transition">
               <p className="font-semibold">主要大会一覧</p>
-              <p className="text-sm text-text-secondary mt-1">大会単位で結果を追いたい場合はこちら</p>
+              <p className="text-sm text-text-secondary mt-1">大会単位で結果を追う</p>
             </Link>
           </div>
         </section>
 
         {/* 試合成績リスト（既存表示） */}
         {Object.keys(grouped).length === 0 ? (
-          <p className="text-gray-600">成績情報がありません。</p>
+          <p className="text-sm text-text-muted">収録している成績がありません。全国大会・主要大会の結果にこの学校名が載ると、ここに年度別の成績が並びます。</p>
         ) : (
           <div className="space-y-6">
             {Object.entries(grouped)

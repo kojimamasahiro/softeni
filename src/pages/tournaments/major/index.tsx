@@ -125,7 +125,7 @@ export default function TournamentListPage({ generationOrder, generationTitleMap
           <h1 className="text-2xl font-bold mb-4">主要大会結果</h1>
           <SubNav items={TOURNAMENTS_SUBNAV} label="大会の絞り込み" />
           <p className="text-lg leading-relaxed mb-4">
-            こちらは、Softeni Pickが収録しているソフトテニスの大会一覧ページです。
+            このページでは、Softeni Pickが収録しているソフトテニスの大会を一覧できます。
             主要な全日本大会をはじめ、インターハイ・選抜、ジュニアなども整理して掲載していきます。
             これから開催される大会は、結果が出るまで日程と開催地を掲載します。
           </p>

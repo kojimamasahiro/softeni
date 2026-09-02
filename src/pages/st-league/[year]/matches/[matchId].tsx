@@ -182,7 +182,9 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
         <section>
           <h2 className="text-sm font-bold text-text-muted mb-2 uppercase tracking-wider">個別対戦（ダブルス①・シングルス・ダブルス②）</h2>
           <div className="bg-surface rounded-xl shadow-sm border border-border divide-y divide-border">
-            {match.matches.length === 0 && <p className="p-4 text-sm text-gray-500">個別対戦の詳細データは未登録です。</p>}
+            {match.matches.length === 0 && (
+              <p className="p-4 text-sm text-gray-500">個別対戦の記録がありません。ダブルス①・シングルス・ダブルス②の勝敗は、収録し次第ここに並べます。</p>
+            )}
             {match.matches.map((d, i) => (
               <div key={i} className="flex items-center text-sm p-4">
                 <div className="w-10 font-bold text-gray-400 text-xs uppercase text-center">{d.type}</div>
@@ -238,7 +240,7 @@ export default function STLeagueMatchDetail({ year, gender, editionLabel, divisi
               <div key={team.teamId}>
                 <h3 className="text-xs font-bold text-text-muted mb-2">{team.name} の他の対戦</h3>
                 <div className="space-y-1.5">
-                  {list.length === 0 && <p className="text-xs text-gray-400">他の対戦はありません。</p>}
+                  {list.length === 0 && <p className="text-xs text-gray-400">この年度の他の対戦がありません。</p>}
                   {list.map((n) => (
                     <Link
                       key={n.slug}

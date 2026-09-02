@@ -420,7 +420,7 @@ export default function TournamentHubPage({
         {hsNationalHref && (
           <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
             <Link href={hsNationalHref} className="font-semibold text-link hover:underline">
-              {label} 歴代記録（優勝・準優勝・ベスト4／開催予定）はこちら →
+              {label} の歴代記録を見る（優勝・準優勝・ベスト4／開催予定）
             </Link>
             <p className="mt-1 text-text-secondary">
               種目別の歴代優勝サマリーや出場校の戦績まで、{label}
@@ -432,7 +432,7 @@ export default function TournamentHubPage({
         {featurePath && (
           <div className="mb-5 rounded-md border border-info-border bg-info-bg px-4 py-3 text-sm">
             <Link href={featurePath} className="font-semibold text-link hover:underline">
-              {label} の結果・順位表・出場チームはこちら →
+              {label} の結果・順位表・出場チームを見る
             </Link>
             <p className="mt-1 text-text-secondary">
               {label}
@@ -560,7 +560,13 @@ export default function TournamentHubPage({
         {yearGroups.length === 0 ? (
           // 開催前ブロックが「まだ結果が無い」ことを既に説明しているため、そこでは出さない
           upcomingOnly ? null : (
-            <p className="text-sm text-gray-500">現在、掲載中の結果データがありません。</p>
+            <div className="rounded-lg border border-dashed border-border p-6 text-center">
+              <p className="text-sm">掲載中の結果がありません。</p>
+              <p className="mt-1 text-xs text-text-muted">この大会の結果はまだ収録していません。収録し次第、年度別にここへ並べます。</p>
+              <Link href="/tournaments/" className="mt-3 inline-block text-sm text-link hover:underline">
+                他の大会を見る
+              </Link>
+            </div>
           )
         ) : (
           <section className="mb-10">

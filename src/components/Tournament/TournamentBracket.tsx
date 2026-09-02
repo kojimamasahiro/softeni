@@ -977,7 +977,7 @@ export default function TournamentBracket({
                       {rows.length === 0 && (
                         <tr>
                           <td colSpan={3} className="px-3 py-3 text-center text-text-muted">
-                            対戦記録がありません
+                            この組の対戦記録がありません
                           </td>
                         </tr>
                       )}

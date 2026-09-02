@@ -239,7 +239,7 @@ export default function PlayerResultsPage({
           {profileSlug && (
             <p className="mt-2 text-sm">
               <Link href={`/players/${profileSlug}/`} className="text-link hover:underline">
-                {fullName} 選手のプロフィール（身長・所属・ポジション）はこちら
+                {fullName} 選手のプロフィール（身長・所属・ポジション）を見る
               </Link>
             </p>
           )}
@@ -307,7 +307,7 @@ export default function PlayerResultsPage({
 
         <div className="text-right">
           <Link href="/tournaments" className="text-sm text-blue-600 hover:underline">
-            過去の大会一覧はこちら
+            大会一覧を見る
           </Link>
         </div>
 

@@ -191,7 +191,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
   })();
 
   if (detailData.length === 0) {
-    return <p className="text-center text-text-secondary mt-6 mb-6">大会結果はまだすべて揃っていません。判明次第、順次掲載していきます。</p>;
+    return <p className="mt-6 mb-6 text-center text-sm text-text-secondary">この種目の結果がまだ揃っていません。判明した分から順次掲載します。</p>;
   }
 
   return (

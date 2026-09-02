@@ -7,7 +7,7 @@ import type { MilestoneEvent } from '../../../src/types/playerStatistics';
 import type { PlayerFacts } from '../types';
 import { disciplineGenderLabel } from './util';
 
-const SCOPE_NOTE = '当サイト掲載大会分の集計に基づく';
+const SCOPE_NOTE = '当サイト収録大会分の集計に基づきます。';
 
 const genreGenderLabel = disciplineGenderLabel;
 

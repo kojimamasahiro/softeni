@@ -1,5 +1,5 @@
 // src/components/PlayerCareerHighlights.tsx
-// 選手プロフィールページに差し込む「主な戦績（当サイト掲載分）」。
+// 選手プロフィールページに差し込む「主な戦績（当サイト収録分）」。
 // career-record（通算成績・優勝歴）と milestone（連覇/初優勝）を選手視点で再利用する。
 // データ生成は getStaticProps 側（lib/careerRecord.ts / lib/milestones.ts）。
 // 設計: docs/wiki/news-context-blocks.md / ADR-005。
@@ -48,7 +48,7 @@ export default function PlayerCareerHighlights({ fullName, data }: { fullName: s
     <section className="mb-10">
       <h2 className="text-xl font-semibold mb-3">
         主な戦績
-        <span className="ml-2 text-xs font-normal text-text-muted">※{data.scopeNote}</span>
+        <span className="ml-2 text-xs font-normal text-text-muted">※ {data.scopeNote}</span>
       </h2>
 
       {hasMilestones && (
