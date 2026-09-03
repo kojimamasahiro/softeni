@@ -167,6 +167,24 @@ def _split_name(full: str) -> Tuple[str, str]:
     return full[:2], full[2:]
 
 
+def _dedupe_chars(chars: List[dict]) -> List[dict]:
+    """同じ位置・同じ文字が2重に描画されている場合に1つへまとめる。
+
+    2014年PDFの一部の選手名（毎ページ数名）は、同じグリフが(x0,top,text)まで完全一致で
+    2回描画されていた（`ncs`がDeviceRGB/DeviceGrayで1回ずつ、恐らく作成ソフト側の太字表現）。
+    そのまま行の文字を連結すると「猪猪本本拓拓己己」のように全角文字が1字ずつ二重化する。
+    2015年以降のPDFには存在しない（実測でdupe数0）ため、無害な防御として全ページに適用する。"""
+    seen = set()
+    out = []
+    for c in chars:
+        key = (round(c["x0"], 1), round(c["top"], 1), c["text"])
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(c)
+    return out
+
+
 def _row_chars(chars: List[dict], x0: float, x1: float) -> List[dict]:
     sel = [c for c in chars if x0 <= c["x0"] < x1]
     sel.sort(key=lambda c: c["x0"])
@@ -200,7 +218,7 @@ def parse_doubles_page(page, side_cfg: dict) -> List[Dict]:
     x_lo = min(v[0] for v in ranges)
     x_hi = max(v[1] for v in ranges)
     split_x = side_cfg["name_split_x"]
-    chars = [c for c in page.chars if x_lo <= c["x0"] < x_hi and c["top"] > 115]
+    chars = _dedupe_chars([c for c in page.chars if x_lo <= c["x0"] < x_hi and c["top"] > 115])
     rows = _rows_by_top(chars)
     tops = sorted(rows.keys())
 
@@ -301,14 +319,21 @@ TEAM_LEFT = {
 TEAM_RIGHT = {
     "team": (400, 483),
     "area": (486, 541),
-    "entry_no": (549, 570),
+    # entry_no は年度によって左端が数pt前後する（2015年PDFで実測547.2pt、
+    # 2016-2019年は552pt前後）。549を下限にすると2015年の1桁目「3」が
+    # 切り捨てられ「30」が「0」に化ける（entryNo重複の原因になった）ため、
+    # 実測より広めの544を下限にする。
+    "entry_no": (544, 570),
 }
 
 
 def parse_team_page(page, side_cfg: dict) -> List[Dict]:
     x_lo = min(v[0] for v in side_cfg.values())
     x_hi = max(v[1] for v in side_cfg.values())
-    chars = [c for c in page.chars if x_lo <= c["x0"] < x_hi and c["top"] > 115]
+    # ヘッダー除外のしきい値。2015年PDFはヘッダーが詰まっており、entryNo=1の行が
+    # top=114に来る（従来の115だと切り捨てられる）。ヘッダー最終行はどの年度でも
+    # top<=97.0程度のため、100まで下げても本体行を誤って含めない。
+    chars = _dedupe_chars([c for c in page.chars if x_lo <= c["x0"] < x_hi and c["top"] > 100])
     # 括弧 ( ) はそのまま area 列に含まれるため取り除く
     chars = [c for c in chars if c["text"] not in ("(", ")", "（", "）")]
     rows = _rows_by_top(chars)
@@ -323,9 +348,15 @@ def parse_team_page(page, side_cfg: dict) -> List[Dict]:
     return out
 
 
-def parse_team_overview_page(pdf, page_no: int) -> List[Dict]:
+def parse_team_overview_page(pdf, page_no: int, team_left: Optional[dict] = None, team_right: Optional[dict] = None) -> List[Dict]:
+    """`team_left`/`team_right` で TEAM_LEFT/TEAM_RIGHT を上書きできる。
+    団体戦概況ページの座標は年度によって数pt〜十数pt前後することがあり
+    （2014年は entry_no の列自体が2015年以降と別の位置にあった）、
+    全年度で使い回せる固定値が無い場合の逃げ道として用意している。"""
     page = pdf.pages[page_no - 1]
-    out = parse_team_page(page, TEAM_LEFT) + parse_team_page(page, TEAM_RIGHT)
+    left = team_left or TEAM_LEFT
+    right = team_right or TEAM_RIGHT
+    out = parse_team_page(page, left) + parse_team_page(page, right)
     out.sort(key=lambda e: e["entryNo"])
     return out
 
@@ -398,6 +429,16 @@ def build_team_json(entries: List[Dict]) -> Dict:
     return {"participants": participants, "entries": out_entries, "matches": [], "results": []}
 
 
+def _parse_col_spec(spec: str) -> dict:
+    """`entry_no=45-63,team=63-140,area=137-192` を dict に変換する。"""
+    out = {}
+    for part in spec.split(","):
+        key, rng = part.split("=")
+        lo, hi = rng.split("-")
+        out[key.strip()] = (float(lo), float(hi))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("pdf")
@@ -406,6 +447,14 @@ def main():
     ap.add_argument("--girls-doubles-pages", help="例: 56-63")
     ap.add_argument("--boys-team-page", type=int)
     ap.add_argument("--girls-team-page", type=int)
+    ap.add_argument(
+        "--team-left-cols",
+        help="団体戦ページ左段の列位置を上書き（既定はTEAM_LEFT）。"
+        "例: 'entry_no=45-63,team=63-140,area=137-192'。年度によって団体戦ページの"
+        "座標だけが数pt〜十数pt前後することがあり、それが原因でentryNoが読めない/"
+        "所属が欠けるときに使う。",
+    )
+    ap.add_argument("--team-right-cols", help="団体戦ページ右段の列位置を上書き（既定はTEAM_RIGHT）")
     ap.add_argument("--out", required=True, help="details/highschool-championship ディレクトリ")
     args = ap.parse_args()
 
@@ -413,6 +462,9 @@ def main():
 
     out_dir = os.path.join(args.out, str(args.year))
     os.makedirs(out_dir, exist_ok=True)
+
+    team_left = _parse_col_spec(args.team_left_cols) if args.team_left_cols else None
+    team_right = _parse_col_spec(args.team_right_cols) if args.team_right_cols else None
 
     jobs = []
     if args.boys_doubles_pages:
@@ -422,10 +474,10 @@ def main():
         girls_doubles = parse_doubles_pages(pdf, parse_page_range(args.girls_doubles_pages))
         jobs.append(("doubles-none-girls", build_doubles_json(girls_doubles)))
     if args.boys_team_page:
-        boys_team = parse_team_overview_page(pdf, args.boys_team_page)
+        boys_team = parse_team_overview_page(pdf, args.boys_team_page, team_left, team_right)
         jobs.append(("team-none-boys", build_team_json(boys_team)))
     if args.girls_team_page:
-        girls_team = parse_team_overview_page(pdf, args.girls_team_page)
+        girls_team = parse_team_overview_page(pdf, args.girls_team_page, team_left, team_right)
         jobs.append(("team-none-girls", build_team_json(girls_team)))
     for name, data in jobs:
         path = os.path.join(out_dir, f"{name}.json")

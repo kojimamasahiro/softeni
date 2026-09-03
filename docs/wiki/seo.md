@@ -408,6 +408,31 @@ Softeni Pick は同一データから複数の切り口でページを生成す�
   インデックスを間に合わせるには**2027年7月上旬までの投入**が必要。
 - 詳細: [raw/2026-08-28-idea-zenchu-abbreviation-seo.md](../raw/2026-08-28-idea-zenchu-abbreviation-seo.md)
 
+### インカレ（全日本学生選手権大会）にも同じ対策を適用（2026-09-03 追加）
+
+全中と同じ型の2件目の実例。SERPを実測したところ、「ソフトテニス インカレ 結果」の上位は
+ほぼ全てtitleに「インカレ」を literal で含む一方、当サイトの `label`「全日本学生選手権大会」
+は「ソフトテニス」「インカレ」のどちらも literal で0回だった。
+
+全中で作った `searchLabel`/`searchAliases`/`searchNote`（`data/tournaments/index.json`）＋
+`lib/tournamentSearchNames.ts` の仕組みは、この型のためだけに作られた汎用機構なので
+**コード変更なし・データ追加のみ**で再利用できた。
+
+- `zennihon-university`: `searchLabel: "全日本学生ソフトテニス選手権大会"`
+  （`label` に「ソフトテニス」が無い問題も同時に解消）、`searchAliases: ["インカレ"]`
+- `zennihon-university-ouza`（王座決定戦）: SERP上で大学対抗戦も「インカレ」と呼ばれている
+  ことを確認できたため `searchAliases: ["インカレ"]` のみ追加（`label` に既に「ソフトテニス」
+  が入っているため `searchLabel` は不要）
+- `zennihon-university-indoor`（学生選抜インドア）: SERP上で「インカレ」との紐付けが
+  見当たらず対象外
+
+ハブページ・年度別結果ページ双方でtitle/h1/description/FAQのJSON-LDが
+「インカレ（全日本学生ソフトテニス選手権大会）」表記に切り替わることを開発サーバーで確認済み。
+GSCでの順位・表示回数の実測は未実施（次のインデックス反映待ち）。「インカレ」も全中の
+「全中」と同様に競技横断語（他競技のインカレも同時期開催）なので、Trends単体は需要判断の
+根拠にしない（下記「計測の原則」）。
+詳細: [raw/2026-09-03-incare-search-alias-seo.md](../raw/2026-09-03-incare-search-alias-seo.md)
+
 ## 計測の原則（2026-08-28 追加）
 
 ### GSC の不在は需要の不在ではない
