@@ -123,6 +123,9 @@
     "tournamentId": "zennihon-university",
     "generationId": "university",
     "label": "全日本学生選手権大会",
+    "searchLabel": "全日本学生ソフトテニス選手権大会",
+    "searchAliases": ["インカレ"],
+    "searchNote": "日本学生ソフトテニス連盟が主催する学生ソフトテニス界最大の大会で、男子は三笠宮賜杯、女子は三笠宮妃賜杯として開催されます。大学ソフトテニス界では「インカレ」と通称されます。",
     "isMajorTitle": false,
     "officialUrl": "https://www.jssta.jp/result.html"
   },
@@ -130,6 +133,8 @@
     "tournamentId": "zennihon-university-ouza",
     "generationId": "university",
     "label": "全日本大学ソフトテニス王座決定戦",
+    "searchAliases": ["インカレ"],
+    "searchNote": "全日本学生選手権大会（インカレ）と同時期に開催される大学対抗戦です。",
     "isMajorTitle": false,
     "officialUrl": "https://www.jssta.jp/"
   },
