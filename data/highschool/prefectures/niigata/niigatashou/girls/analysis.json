@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "新潟商",
+        "teamId": "niigatashou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["皆川_明希_新潟商_新潟県", "金子_綾桂_新潟商_新潟県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "皆川_明希_新潟商_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "金子_綾桂_新潟商_新潟県",
+      "appearances": 1
+    }
+  ]
+}

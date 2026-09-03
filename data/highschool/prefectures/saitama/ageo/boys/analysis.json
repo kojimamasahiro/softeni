@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 6
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "ageo",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["鈴木_海里_上尾_埼玉県", "渡邉_悠真_上尾_埼玉県"]
+        "playerIds": ["矢部_佑樹_上尾_埼玉県", "長島_翔太郎_上尾_埼玉県"]
       }
     },
     "team": {
@@ -39,11 +39,19 @@
       }
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 13,
   "topPlayers": [
     {
       "id": "小林_泰智_上尾_埼玉県",
       "appearances": 2
+    },
+    {
+      "id": "矢部_佑樹_上尾_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "長島_翔太郎_上尾_埼玉県",
+      "appearances": 1
     },
     {
       "id": "松本_健貴_上尾_埼玉県",
@@ -51,14 +59,6 @@
     },
     {
       "id": "野崎_圭佑_上尾_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "鹿野内_渉_上尾_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "黒河_彰五_上尾_埼玉県",
       "appearances": 1
     }
   ]

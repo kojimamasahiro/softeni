@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kawaguchisougou",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["長_純平_川口総合_埼玉県", "井上_椋太_川口総合_埼玉県"]
+        "playerIds": ["内田_大貴_川口総合_埼玉県", "南_凌_川口総合_埼玉県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
       "id": "赤川_竜也_川口総合_埼玉県",
@@ -39,15 +39,15 @@
       "appearances": 2
     },
     {
+      "id": "内田_大貴_川口総合_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "南_凌_川口総合_埼玉県",
+      "appearances": 1
+    },
+    {
       "id": "田島_雄二_川口総合_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "丸山_健吾_川口総合_埼玉県",
-      "appearances": 1
-    },
-    {
-      "id": "中田_智也_川口総合_埼玉県",
       "appearances": 1
     }
   ]

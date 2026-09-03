@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "盛岡第二",
+        "teamId": "moriokadaini",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["大和田_千陽_盛岡第二_岩手県", "瀬川_はるか_盛岡第二_岩手県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "大和田_千陽_盛岡第二_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "瀬川_はるか_盛岡第二_岩手県",
+      "appearances": 1
+    }
+  ]
+}

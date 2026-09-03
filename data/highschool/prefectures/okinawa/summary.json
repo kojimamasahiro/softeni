@@ -4,6 +4,17 @@
     "teamId": "itoman",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "糸満",
+    "teamId": "itoman",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -31,6 +42,17 @@
     "tournamentId": "highschool-championship",
     "year": 2026,
     "gender": "girls"
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
   },
   {
     "team": "名護",
@@ -279,6 +301,18 @@
     "teamId": "chinen",
     "prefecture": "沖縄県",
     "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["與那嶺_寛大_知念_沖縄県", "平良_由紀也_知念_沖縄県"]
+  },
+  {
+    "team": "知念",
+    "teamId": "chinen",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -498,6 +532,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["上地_立希_南風原_沖縄県", "鬚川_修之郎_南風原_沖縄県"]
+  },
+  {
+    "team": "南風原",
+    "teamId": "haebara",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys",
     "playerIds": ["上地_立希_南風原_沖縄県", "大田_朝成_南風原_沖縄県"]
@@ -549,6 +595,30 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["玉城_みりあ_糸満高校_沖縄県", "伊芸_美由華_糸満高校_沖縄県"]
+  },
+  {
+    "team": "糸満",
+    "teamId": "itoman",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["上良_愛海_糸満_沖縄県", "金城_花林_糸満_沖縄県"]
+  },
+  {
+    "team": "糸満",
+    "teamId": "itoman",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["大城_真央_糸満_沖縄県", "平田_美里_糸満_沖縄県"]
   },
   {
     "team": "糸満",
@@ -738,6 +808,18 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["宮城_優紀_向陽_沖縄県", "前川_紗貴子_向陽_沖縄県"]
+  },
+  {
+    "team": "向陽",
+    "teamId": "kouyou",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys",
     "playerIds": ["堀川_俊成_向陽_和歌山県", "北東_則人_向陽_和歌山県"]
@@ -837,6 +919,78 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["松田_彬暉_名商工_沖縄県", "前田_礼_名商工_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["與那嶺_あすか_名護_沖縄県", "亀谷_優花_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["桃原_杏梨_名護_沖縄県", "堀川_葵_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["宮里_知成_名護_沖縄県", "宮里_政耶_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["新垣_昌史_名護_沖縄県", "上地_隼_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["勢理客_友寛_名護_沖縄県", "上原_万尚_名護_沖縄県"]
+  },
+  {
+    "team": "名護",
+    "teamId": "nago",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["比嘉_優人_名護_沖縄県", "翁長_廉_名護_沖縄県"]
   },
   {
     "team": "名護",
@@ -1461,6 +1615,18 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["細川_大峨_那覇西高校_高体連", "上門_幹武_那覇西高校_高体連"]
+  },
+  {
+    "team": "那覇西",
+    "teamId": "nahanishi",
+    "prefecture": "沖縄県",
+    "prefectureId": "okinawa",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["満名_加南子_那覇西_沖縄県", "馬越_遥香_那覇西_沖縄県"]
   },
   {
     "team": "那覇西",

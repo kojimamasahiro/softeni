@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "masudaseifuu",
         "prefecture": "岐阜県",
         "prefectureId": "gifu",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["川上_紗英_益田清風_岐阜県", "井元_美月_益田清風_岐阜県"]
+        "playerIds": ["伊藤_綾香_益田清風_岐阜県", "齋藤_暉_益田清風_岐阜県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "伊藤_綾香_益田清風_岐阜県",
+      "appearances": 1
+    },
+    {
+      "id": "齋藤_暉_益田清風_岐阜県",
+      "appearances": 1
+    },
     {
       "id": "川上_紗英_益田清風_岐阜県",
       "appearances": 1
@@ -40,10 +48,6 @@
     },
     {
       "id": "田中_沙和_益田清風_岐阜県",
-      "appearances": 1
-    },
-    {
-      "id": "中田_理奈子_益田清風_岐阜県",
       "appearances": 1
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 9,
   "byCategory": {
-    "team": 1,
-    "doubles": 3,
+    "team": 2,
+    "doubles": 6,
     "singles": 1
   },
   "resultsByCategory": {
@@ -28,12 +28,12 @@
         "teamId": "iwasenichidai",
         "prefecture": "茨城県",
         "prefectureId": "ibaraki",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["宮内_健太_岩瀬日大_茨城県", "飯村_勇太_岩瀬日大_茨城県"]
+        "playerIds": ["藤田_雅樹_岩瀬日大_茨城県", "中島_賢也_岩瀬日大_茨城県"]
       }
     },
     "team": {
@@ -51,26 +51,26 @@
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
       "id": "飯田_浩晶_岩瀬日大_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "中島_賢也_岩瀬日大_茨城県",
-      "appearances": 1
-    },
-    {
-      "id": "宮内_健太_岩瀬日大_茨城県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "飯村_勇太_岩瀬日大_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "中島_賢也_岩瀬日大_茨城県",
+      "appearances": 2
+    },
+    {
+      "id": "粕田_拓人_岩瀬日大_茨城県",
       "appearances": 1
     },
     {
-      "id": "加倉井_尊_岩瀬日大_茨城県",
+      "id": "櫻井_宏道_岩瀬日大_茨城県",
       "appearances": 1
     }
   ]

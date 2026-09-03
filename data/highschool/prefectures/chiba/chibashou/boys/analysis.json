@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "chibashou",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["片桐_広翔_千葉商_千葉県", "長田_拓也_千葉商_千葉県"]
+        "playerIds": ["鈴木_大志_千葉商_千葉県", "八木下_裕哉_千葉商_千葉県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "鈴木_大志_千葉商_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "八木下_裕哉_千葉商_千葉県",
+      "appearances": 1
+    },
     {
       "id": "片桐_広翔_千葉商_千葉県",
       "appearances": 1
@@ -40,10 +48,6 @@
     },
     {
       "id": "山田_雄斗_千葉商_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "百瀬_梨矩_千葉商_千葉県",
       "appearances": 1
     }
   ]

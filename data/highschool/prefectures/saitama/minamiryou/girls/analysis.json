@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "南稜",
+        "teamId": "minamiryou",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["板垣_夏葵_南稜_埼玉県", "三浦_菜留美_南稜_埼玉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "板垣_夏葵_南稜_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "三浦_菜留美_南稜_埼玉県",
+      "appearances": 1
+    }
+  ]
+}

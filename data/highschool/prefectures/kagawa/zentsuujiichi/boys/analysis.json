@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "善通寺一",
+        "teamId": "zentsuujiichi",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["森本_翔太_善通寺一_香川県", "野尻_大貴_善通寺一_香川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "森本_翔太_善通寺一_香川県",
+      "appearances": 1
+    },
+    {
+      "id": "野尻_大貴_善通寺一_香川県",
+      "appearances": 1
+    }
+  ]
+}

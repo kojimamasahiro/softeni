@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "三島",
+        "teamId": "mishima",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["望月_元貴_三島_静岡県", "尾前_亮磨_三島_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "望月_元貴_三島_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "尾前_亮磨_三島_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "岡本_哲明_三島_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "萩田_凌_三島_静岡県",
+      "appearances": 1
+    }
+  ]
+}

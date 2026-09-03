@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "杵島商",
+        "teamId": "kineshimashou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["志水_源政_杵島商_佐賀県", "川内_佐恭_杵島商_佐賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "志水_源政_杵島商_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "川内_佐恭_杵島商_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

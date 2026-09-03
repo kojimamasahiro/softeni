@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "伊勢原",
+        "teamId": "isehara",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["高野_一輝_伊勢原_神奈川県", "松田_諒_伊勢原_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高野_一輝_伊勢原_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "松田_諒_伊勢原_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

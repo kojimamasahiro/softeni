@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "aomorikita",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["佐々木_和也_青森北_青森県", "三浦_拓_青森北_青森県"]
+        "playerIds": ["佐々木_和也_青森北_青森県", "濱名_大樹_青森北_青森県"]
       }
     },
     "team": {
@@ -28,10 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
     {
       "id": "佐々木_和也_青森北_青森県",
+      "appearances": 2
+    },
+    {
+      "id": "濱名_大樹_青森北_青森県",
       "appearances": 1
     },
     {

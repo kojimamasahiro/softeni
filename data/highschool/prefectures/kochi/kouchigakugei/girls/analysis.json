@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 6,
   "byCategory": {
-    "team": 1,
-    "doubles": 1
+    "team": 2,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "kouchigakugei",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["片岡_なな子_高知学芸_高知県", "北添_詩乃_高知学芸_高知県"]
+        "playerIds": ["明神_未来_高知学芸_高知県", "下元_春香_高知学芸_高知県"]
       }
     },
     "team": {
@@ -39,14 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
-      "id": "片岡_なな子_高知学芸_高知県",
+      "id": "吉本_春香_高知学芸_高知県",
       "appearances": 1
     },
     {
-      "id": "北添_詩乃_高知学芸_高知県",
+      "id": "中居_夕夏_高知学芸_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "香川_郁実_高知学芸_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "山口_莉奈_高知学芸_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "明神_未来_高知学芸_高知県",
       "appearances": 1
     }
   ]

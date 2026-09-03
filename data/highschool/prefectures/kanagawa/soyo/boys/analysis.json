@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -25,10 +26,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "相洋",
+        "teamId": "soyo",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 13,
+  "uniquePlayers": 15,
   "topPlayers": [
     {
       "id": "原_碩亮_相洋_神奈川県",
@@ -39,15 +50,15 @@
       "appearances": 2
     },
     {
+      "id": "田代_健_相洋_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "金子_夏樹_相洋_神奈川県",
+      "appearances": 1
+    },
+    {
       "id": "坂本_将来_相洋_神奈川県",
-      "appearances": 1
-    },
-    {
-      "id": "北村_優樹_相洋_神奈川県",
-      "appearances": 1
-    },
-    {
-      "id": "野崎_優斗_相洋_神奈川県",
       "appearances": 1
     }
   ]

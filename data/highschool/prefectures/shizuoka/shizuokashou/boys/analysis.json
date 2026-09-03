@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 9
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -50,14 +50,18 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 18,
   "topPlayers": [
+    {
+      "id": "堀川_涼太朗_静岡商_静岡県",
+      "appearances": 2
+    },
     {
       "id": "北堀_佑成_静岡商_静岡県",
       "appearances": 2
     },
     {
-      "id": "堀川_涼太朗_静岡商_静岡県",
+      "id": "長倉_有史_静岡商_静岡県",
       "appearances": 1
     },
     {
@@ -66,10 +70,6 @@
     },
     {
       "id": "望月_琳_静岡商_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "萩原_佳汰_静岡商_静岡県",
       "appearances": 1
     }
   ]

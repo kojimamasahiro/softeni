@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "多久",
+        "teamId": "taku",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["中島_諒_多久_佐賀県", "田中_大樹_多久_佐賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "中島_諒_多久_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "田中_大樹_多久_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

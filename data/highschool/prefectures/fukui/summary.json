@@ -304,8 +304,30 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "武生",
+    "teamId": "takefu",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2015,
     "gender": "girls"
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
   },
   {
     "team": "敦賀",
@@ -400,6 +422,30 @@
     "year": 2019,
     "gender": "girls",
     "playerIds": ["中村_生芽_福井商_福井県", "山口_梨々香_福井商_福井県"]
+  },
+  {
+    "team": "福井商",
+    "teamId": "fukuishou",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["岩本_恵梨菜_福井商_福井県", "大南_友伽_福井商_福井県"]
+  },
+  {
+    "team": "福井商",
+    "teamId": "fukuishou",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["本庄_舞_福井商_福井県", "田中_友理_福井商_福井県"]
   },
   {
     "team": "福井商",
@@ -970,6 +1016,30 @@
     "teamId": "hokuriku",
     "prefecture": "福井県",
     "prefectureId": "fukui",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["南野_真衣耶_北陸_福井県", "坪田_愛美_北陸_福井県"]
+  },
+  {
+    "team": "北陸",
+    "teamId": "hokuriku",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["堀江_開_北陸_福井県", "西川_裕介_北陸_福井県"]
+  },
+  {
+    "team": "北陸",
+    "teamId": "hokuriku",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1348,6 +1418,42 @@
     "year": 2018,
     "gender": "boys",
     "playerIds": ["角方_裕哉_金津_福井県", "夏目_悠也_金津_福井県"]
+  },
+  {
+    "team": "金津",
+    "teamId": "kanetsu",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["松原_由奈_金津_福井県", "上田_祐歌_金津_福井県"]
+  },
+  {
+    "team": "金津",
+    "teamId": "kanetsu",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["平木_睦乃_金津_福井県", "五十嵐_穂月_金津_福井県"]
+  },
+  {
+    "team": "金津",
+    "teamId": "kanetsu",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["籬_明生_金津_福井県", "山腰_朋城_金津_福井県"]
   },
   {
     "team": "金津",
@@ -1978,6 +2084,18 @@
     "teamId": "takefu",
     "prefecture": "福井県",
     "prefectureId": "fukui",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["宮本_芽唯子_武生_福井県", "高原_李沙_武生_福井県"]
+  },
+  {
+    "team": "武生",
+    "teamId": "takefu",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2140,6 +2258,54 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["小林_裕仁郎_敦賀_福井県", "石森_崇大_敦賀_福井県"]
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["藤井_優斗_敦賀_福井県", "高木_大輔_敦賀_福井県"]
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["小林_健志郎_敦賀_福井県", "林_亮太_敦賀_福井県"]
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["清水_誠基_敦賀_福井県", "濵岡_大地_敦賀_福井県"]
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["高橋_淳也_敦賀_福井県", "和田_海修_敦賀_福井県"]
   },
   {
     "team": "敦賀",

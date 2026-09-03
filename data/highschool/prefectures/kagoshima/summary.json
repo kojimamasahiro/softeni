@@ -249,6 +249,17 @@
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
+    "team": "鹿児島",
+    "teamId": "kakoshima",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys"
   },
@@ -389,11 +400,34 @@
     "teamId": "kakoshimaminami",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "鹿児島南",
+    "teamId": "kakoshimaminami",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls"
+  },
+  {
+    "team": "吹上",
+    "teamId": "fukiage",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["相星_佑樹_吹上_鹿児島県", "川畑_潤哉_吹上_鹿児島県"]
   },
   {
     "team": "吹上",
@@ -406,6 +440,18 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["折田_宏希_吹上_鹿児島県", "西牟田_直樹_吹上_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["徳永_春華_指宿商_鹿児島県", "下高原_明梨_指宿商_鹿児島県"]
   },
   {
     "team": "指宿商",
@@ -718,6 +764,18 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["加_亜実佳_指宿商業_鹿児島県", "山本_花菜_指宿商業_鹿児島県"]
+  },
+  {
+    "team": "鹿児島商",
+    "teamId": "kagoshimashou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["矢野_智輝_鹿児島商_鹿児島県", "上之薗_吏恭_鹿児島商_鹿児島県"]
   },
   {
     "team": "鹿児島商",
@@ -1276,6 +1334,30 @@
     "teamId": "kakoshima",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["上床_誠矢_鹿児島_鹿児島県", "河野_昇平_鹿児島_鹿児島県"]
+  },
+  {
+    "team": "鹿児島",
+    "teamId": "kakoshima",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["寺迫_孝輝_鹿児島_鹿児島県", "篠原_秀樹_鹿児島_鹿児島県"]
+  },
+  {
+    "team": "鹿児島",
+    "teamId": "kakoshima",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1498,6 +1580,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["亀井_駿平_鹿児島_鹿児島県", "大久保_悠汰_鹿児島_鹿児島県"]
+  },
+  {
+    "team": "鹿児島実",
+    "teamId": "kakoshimajitsu",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["芝生_悠亮_鹿児島実_鹿児島県", "篠原_僚亨_鹿児島実_鹿児島県"]
   },
   {
     "team": "鹿児島実",
@@ -1996,6 +2090,30 @@
     "teamId": "kakoshimajoshi",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["新川_真帆_鹿児島女子_鹿児島県", "山田_さくら_鹿児島女子_鹿児島県"]
+  },
+  {
+    "team": "鹿児島女子",
+    "teamId": "kakoshimajoshi",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["新留_舞_鹿児島女子_鹿児島県", "菊地田_百香_鹿児島女子_鹿児島県"]
+  },
+  {
+    "team": "鹿児島女子",
+    "teamId": "kakoshimajoshi",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2284,6 +2402,18 @@
     "teamId": "kakoshimaminami",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["有島_恵莉佳_鹿児島南_鹿児島県", "柿山_瑠那_鹿児島南_鹿児島県"]
+  },
+  {
+    "team": "鹿児島南",
+    "teamId": "kakoshimaminami",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2424,6 +2554,42 @@
     "playerIds": ["濱上_翔吏_鹿児島南_鹿児島県", "福森_将太_鹿児島南_鹿児島県"]
   },
   {
+    "team": "鹿児島中央",
+    "teamId": "kakoshimanakaou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["吉元_公祐_鹿児島中央_鹿児島県", "前迫_祥一郎_鹿児島中央_鹿児島県"]
+  },
+  {
+    "team": "鹿屋女子",
+    "teamId": "kanoyajoshi",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["出口_瑞姫_鹿屋女子_鹿児島県", "中塩屋_璃歩_鹿屋女子_鹿児島県"]
+  },
+  {
+    "team": "鹿屋女子",
+    "teamId": "kanoyajoshi",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["山口_咲_鹿屋女子_鹿児島県", "島廻_采美_鹿屋女子_鹿児島県"]
+  },
+  {
     "team": "鹿屋女子",
     "teamId": "kanoyajoshi",
     "prefecture": "鹿児島県",
@@ -2482,6 +2648,30 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["吉木_理彩_指宿商業高校_鹿児島県"]
+  },
+  {
+    "team": "指宿商業",
+    "teamId": "ibusukishougyou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["南原_里音_指宿商業高校_鹿児島県"]
+  },
+  {
+    "team": "指宿商業",
+    "teamId": "ibusukishougyou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["豊巻_安里_指宿商業高校_鹿児島県"]
   },
   {
     "team": "指宿商業",

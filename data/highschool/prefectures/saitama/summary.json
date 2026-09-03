@@ -180,11 +180,33 @@
     "teamId": "musashiogose",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
+    "team": "武蔵越生",
+    "teamId": "musashiogose",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "boys"
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
   },
   {
     "team": "埼玉平成",
@@ -383,6 +405,18 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2021,
     "gender": "boys"
+  },
+  {
+    "team": "上尾",
+    "teamId": "ageo",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["矢部_佑樹_上尾_埼玉県", "長島_翔太郎_上尾_埼玉県"]
   },
   {
     "team": "上尾",
@@ -671,6 +705,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["山崎_のどか_星野_埼玉県", "小野寺_桃奈_星野_埼玉県"]
+  },
+  {
+    "team": "星野",
+    "teamId": "hoshino",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["株本_瑞香_星野_埼玉県", "猪野_あかり_星野_埼玉県"]
   },
   {
     "team": "星野",
@@ -1061,6 +1107,30 @@
     "teamId": "kawagoehigashi",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["高橋_佑二郎_川越東_埼玉県", "秋山_周平_川越東_埼玉県"]
+  },
+  {
+    "team": "川越東",
+    "teamId": "kawagoehigashi",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["伊藤_征杜_川越東_埼玉県", "近藤_駿也_川越東_埼玉県"]
+  },
+  {
+    "team": "川越東",
+    "teamId": "kawagoehigashi",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1277,6 +1347,30 @@
     "teamId": "kawaguchisougou",
     "prefecture": "埼玉県",
     "prefectureId": "saitama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["芥川_真穂_川口総合_埼玉県", "本田_五葉_川口総合_埼玉県"]
+  },
+  {
+    "team": "川口総合",
+    "teamId": "kawaguchisougou",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["内田_大貴_川口総合_埼玉県", "南_凌_川口総合_埼玉県"]
+  },
+  {
+    "team": "川口総合",
+    "teamId": "kawaguchisougou",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1355,6 +1449,18 @@
     "year": 2014,
     "gender": "girls",
     "playerIds": ["高澤_真菜_久喜_埼玉県", "井口_美緒_久喜_埼玉県"]
+  },
+  {
+    "team": "熊谷",
+    "teamId": "kumagaya",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["高井_椋也_熊谷_埼玉県", "中村_大希_熊谷_埼玉県"]
   },
   {
     "team": "熊谷",
@@ -1463,6 +1569,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["荻野_健吾_松山高校_埼玉県", "塚本_侑飛_松山高校_埼玉県"]
+  },
+  {
+    "team": "松山",
+    "teamId": "matsuyama",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["遠山_大輝_松山_埼玉県", "岡部_大輝_松山_埼玉県"]
+  },
+  {
+    "team": "松山",
+    "teamId": "matsuyama",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["福嶋_直輝_松山_埼玉県", "井山_裕太郎_松山_埼玉県"]
   },
   {
     "team": "松山",
@@ -1801,6 +1931,30 @@
     "playerIds": ["荻野_健吾_松山_埼玉県", "塚本_侑飛_松山_埼玉県"]
   },
   {
+    "team": "南稜",
+    "teamId": "minamiryou",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["板垣_夏葵_南稜_埼玉県", "三浦_菜留美_南稜_埼玉県"]
+  },
+  {
+    "team": "武蔵越生",
+    "teamId": "musashiogose",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["中島_偉吹_武蔵越生_埼玉県", "小野_勇希_武蔵越生_埼玉県"]
+  },
+  {
     "team": "武蔵越生",
     "teamId": "musashiogose",
     "prefecture": "埼玉県",
@@ -2063,6 +2217,42 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["加藤_優奈_埼玉平成_埼玉県", "遠藤_妃菜_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["村上_寛子_埼玉平成_埼玉県", "石井_舞_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["北山_花梨_埼玉平成_埼玉県", "田畑_侑里香_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["小野_夏海_埼玉平成_埼玉県", "小佐野_あかね_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -2687,6 +2877,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["中村_羚聖_昌平高校_埼玉県", "加藤_連_昌平高校_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["磯_もなほ_昌平_埼玉県", "鳥羽_日佳里_昌平_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["星野_祐奈_昌平_埼玉県", "八木_紫折_昌平_埼玉県"]
   },
   {
     "team": "昌平",
@@ -3331,6 +3545,42 @@
     "prefectureId": "saitama",
     "result": "1回戦敗退",
     "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["小林_さくら_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["嵐_美月_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["赤川_友里奈_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "埼玉平成",
+    "teamId": "saitamaheisei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "girls",
@@ -3359,6 +3609,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["庭田_咲月_埼玉平成_埼玉県"]
+  },
+  {
+    "team": "昌平",
+    "teamId": "shohei",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["瀬田_愛香_昌平高校_埼玉県"]
   },
   {
     "team": "昌平",

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "kanetsu",
         "prefecture": "福井県",
         "prefectureId": "fukui",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["木本_紗綾_金津_福井県", "本島_有紗_金津_福井県"]
+        "playerIds": ["松原_由奈_金津_福井県", "上田_祐歌_金津_福井県"]
       }
     },
     "team": {
@@ -39,26 +39,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "松原_由奈_金津_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "上田_祐歌_金津_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "平木_睦乃_金津_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "五十嵐_穂月_金津_福井県",
+      "appearances": 1
+    },
+    {
       "id": "洞口_友梨花_金津_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "北川_遥菜_金津_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "岸野_心海_金津_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "森川_可菜_金津_福井県",
-      "appearances": 1
-    },
-    {
-      "id": "大藏_優羽_金津_福井県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "羽衣学園",
+        "teamId": "hagoromogakuen",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["立石_奈々_羽衣学園_大阪府", "乾_夏実_羽衣学園_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "立石_奈々_羽衣学園_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "乾_夏実_羽衣学園_大阪府",
+      "appearances": 1
+    }
+  ]
+}

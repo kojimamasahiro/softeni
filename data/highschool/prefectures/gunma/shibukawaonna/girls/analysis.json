@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "渋川女",
+        "teamId": "shibukawaonna",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["秋塚_葉月_渋川女_群馬県", "武冨_晶紀_渋川女_群馬県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "秋塚_葉月_渋川女_群馬県",
+      "appearances": 1
+    },
+    {
+      "id": "武冨_晶紀_渋川女_群馬県",
+      "appearances": 1
+    }
+  ]
+}

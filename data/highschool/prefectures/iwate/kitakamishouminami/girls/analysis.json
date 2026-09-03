@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -25,18 +26,28 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "北上翔南",
+        "teamId": "kitakamishouminami",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 2,
   "topPlayers": [
     {
       "id": "今野_桃香_北上翔南_岩手県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "千葉_未散_北上翔南_岩手県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

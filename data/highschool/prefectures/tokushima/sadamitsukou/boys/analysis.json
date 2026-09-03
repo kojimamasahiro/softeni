@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "team": 1,
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "貞光工",
+        "teamId": "sadamitsukou",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["阿部_瑞紀_貞光工_徳島県", "計盛_将志_貞光工_徳島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "貞光工",
+        "teamId": "sadamitsukou",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "阿部_瑞紀_貞光工_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "計盛_将志_貞光工_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "宮本_一生_貞光工_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "大谷_広夢_貞光工_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "秋山_晃羽_貞光工_徳島県",
+      "appearances": 1
+    }
+  ]
+}

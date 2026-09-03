@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 12,
   "byCategory": {
     "team": 2,
-    "doubles": 9
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,12 @@
       }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 15,
   "topPlayers": [
+    {
+      "id": "豊巻_梨緒_弘前実_青森県",
+      "appearances": 2
+    },
     {
       "id": "三浦_爽来_弘前実_青森県",
       "appearances": 2
@@ -67,10 +71,6 @@
     {
       "id": "水木_恵唯_弘前実_青森県",
       "appearances": 2
-    },
-    {
-      "id": "豊巻_梨緒_弘前実_青森県",
-      "appearances": 1
     }
   ]
 }

@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 14
+    "doubles": 16,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高瀬",
+        "teamId": "takase",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["十河_まゆ_高瀬高校_香川県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,8 +51,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 18,
+  "uniquePlayers": 24,
   "topPlayers": [
+    {
+      "id": "西岡_ひかり_高瀬_香川県",
+      "appearances": 2
+    },
+    {
+      "id": "北畑_春菜_高瀬_香川県",
+      "appearances": 2
+    },
     {
       "id": "矢野_美子_高瀬_香川県",
       "appearances": 2
@@ -51,14 +71,6 @@
     },
     {
       "id": "森_美玖奈_高瀬_香川県",
-      "appearances": 2
-    },
-    {
-      "id": "河本_純奈_高瀬_香川県",
-      "appearances": 2
-    },
-    {
-      "id": "西岡_ことね_高瀬_香川県",
       "appearances": 2
     }
   ]

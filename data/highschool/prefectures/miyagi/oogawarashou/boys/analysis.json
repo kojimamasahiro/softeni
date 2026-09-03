@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "oogawarashou",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["光成_佑太_大河原商_宮城県", "柴崎_太芽_大河原商_宮城県"]
+        "playerIds": ["小畑_星也_大河原商_宮城県", "阿部_史弥_大河原商_宮城県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "小畑_星也_大河原商_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "阿部_史弥_大河原商_宮城県",
+      "appearances": 1
+    },
     {
       "id": "光成_佑太_大河原商_宮城県",
       "appearances": 1

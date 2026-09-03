@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 24,
   "byCategory": {
     "team": 1,
-    "doubles": 20
+    "doubles": 22,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "昌平",
+        "teamId": "shohei",
+        "prefecture": "埼玉県",
+        "prefectureId": "saitama",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["瀬田_愛香_昌平高校_埼玉県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -27,12 +39,12 @@
         "teamId": "shohei",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["八木_楓香_昌平_埼玉県", "磯_茉夢_昌平_埼玉県"]
+        "playerIds": ["磯_もなほ_昌平_埼玉県", "鳥羽_日佳里_昌平_埼玉県"]
       }
     },
     "team": {
@@ -50,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 23,
+  "uniquePlayers": 28,
   "topPlayers": [
     {
       "id": "川崎_愛実_昌平_埼玉県",

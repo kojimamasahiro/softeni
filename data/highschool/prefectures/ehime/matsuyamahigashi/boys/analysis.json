@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松山東",
+        "teamId": "matsuyamahigashi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["関谷_勇人_松山東_愛媛県", "堀田_隼矢_松山東_愛媛県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "河野_陽_松山東_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "堀内_崇史_松山東_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "関谷_勇人_松山東_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "堀田_隼矢_松山東_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

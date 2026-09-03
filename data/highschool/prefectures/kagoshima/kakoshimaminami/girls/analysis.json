@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 13,
   "byCategory": {
-    "team": 1,
-    "doubles": 10
+    "team": 2,
+    "doubles": 11
   },
   "resultsByCategory": {
     "singles": {
@@ -31,16 +31,20 @@
         "teamId": "kakoshimaminami",
         "prefecture": "鹿児島県",
         "prefectureId": "kagoshima",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 17,
   "topPlayers": [
+    {
+      "id": "柿山_瑠那_鹿児島南_鹿児島県",
+      "appearances": 2
+    },
     {
       "id": "梅橋_麻里乃_鹿児島南_鹿児島県",
       "appearances": 2
@@ -56,10 +60,6 @@
     {
       "id": "岩元_愛花_鹿児島南_鹿児島県",
       "appearances": 2
-    },
-    {
-      "id": "假屋_美妃_鹿児島南_鹿児島県",
-      "appearances": 1
     }
   ]
 }

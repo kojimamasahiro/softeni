@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -39,8 +39,16 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "戸羽_佑斗_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "西嶋_拓磨_関西中央_奈良県",
+      "appearances": 1
+    },
     {
       "id": "幸田_真_関西中央_奈良県",
       "appearances": 1
@@ -51,14 +59,6 @@
     },
     {
       "id": "藤岡_亮輔_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "岡田_啓佑_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "木村_圭吾_関西中央_奈良県",
       "appearances": 1
     }
   ]

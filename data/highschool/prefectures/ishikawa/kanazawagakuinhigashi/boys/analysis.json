@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kanazawagakuinhigashi",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["西田_慎_金沢学院東_石川県", "浦_佑弥_金沢学院東_石川県"]
+        "playerIds": ["村田_丞_金沢学院東_石川県", "増谷_吉洋_金沢学院東_石川県"]
       }
     },
     "team": {
@@ -28,11 +28,19 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 7,
   "topPlayers": [
     {
       "id": "浦_佑弥_金沢学院東_石川県",
       "appearances": 2
+    },
+    {
+      "id": "村田_丞_金沢学院東_石川県",
+      "appearances": 1
+    },
+    {
+      "id": "増谷_吉洋_金沢学院東_石川県",
+      "appearances": 1
     },
     {
       "id": "田谷_拓己_金沢学院東_石川県",
@@ -40,14 +48,6 @@
     },
     {
       "id": "新谷_将利_金沢学院東_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "竹内_将吾_金沢学院東_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "西田_慎_金沢学院東_石川県",
       "appearances": 1
     }
   ]

@@ -1,13 +1,13 @@
 {
-  "totalMatches": 189,
-  "wins": 154,
-  "losses": 34,
-  "totalWinRate": 0.815,
+  "totalMatches": 201,
+  "wins": 165,
+  "losses": 35,
+  "totalWinRate": 0.821,
   "games": {
-    "total": 1052,
-    "won": 718,
-    "lost": 334,
-    "gameRate": 0.683
+    "total": 1109,
+    "won": 763,
+    "lost": 346,
+    "gameRate": 0.688
   },
   "byPartner": {
     "8": {
@@ -110,16 +110,16 @@
     },
     "202": {
       "matches": {
-        "total": 1,
-        "wins": 0,
+        "total": 7,
+        "wins": 6,
         "losses": 1,
-        "winRate": 0
+        "winRate": 0.857
       },
       "games": {
-        "total": 9,
-        "won": 4,
-        "lost": 5,
-        "gameRate": 0.444
+        "total": 37,
+        "won": 28,
+        "lost": 9,
+        "gameRate": 0.757
       }
     },
     "203": {
@@ -150,6 +150,20 @@
         "gameRate": 0.71
       }
     },
+    "2928": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 29,
+        "won": 21,
+        "lost": 8,
+        "gameRate": 0.724
+      }
+    },
     "singles": {
       "matches": {
         "total": 59,
@@ -166,18 +180,32 @@
     }
   },
   "byYear": {
-    "2019": {
+    "2018": {
       "matches": {
-        "total": 1,
-        "wins": 0,
+        "total": 6,
+        "wins": 5,
         "losses": 1,
-        "winRate": 0
+        "winRate": 0.833
       },
       "games": {
-        "total": 9,
-        "won": 4,
-        "lost": 5,
-        "gameRate": 0.444
+        "total": 29,
+        "won": 21,
+        "lost": 8,
+        "gameRate": 0.724
+      }
+    },
+    "2019": {
+      "matches": {
+        "total": 7,
+        "wins": 6,
+        "losses": 1,
+        "winRate": 0.857
+      },
+      "games": {
+        "total": 37,
+        "won": 28,
+        "lost": 9,
+        "gameRate": 0.757
       }
     },
     "2021": {

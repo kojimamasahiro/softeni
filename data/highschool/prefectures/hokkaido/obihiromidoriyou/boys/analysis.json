@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -21,15 +22,34 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "帯広緑陽",
+        "teamId": "obihiromidoriyou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["中井_壱_帯広緑陽_北海道", "嶋_信彰_帯広緑陽_北海道"]
+      }
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "中井_壱_帯広緑陽_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "嶋_信彰_帯広緑陽_北海道",
+      "appearances": 1
+    },
     {
       "id": "猪股_陽_帯広緑陽_北海道",
       "appearances": 1

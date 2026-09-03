@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "神埼",
+        "teamId": "kanzaki",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["浦川_将希_神埼_佐賀県", "大久保_明法_神埼_佐賀県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "浦川_将希_神埼_佐賀県",
+      "appearances": 1
+    },
+    {
+      "id": "大久保_明法_神埼_佐賀県",
+      "appearances": 1
+    }
+  ]
+}

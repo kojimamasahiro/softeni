@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
+    "doubles": 1,
     "singles": 1
   },
   "resultsByCategory": {
@@ -32,15 +33,34 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "旭川商",
+        "teamId": "asahikawashou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["生田_花織_旭川商_北海道", "大浦_虹歩_旭川商_北海道"]
+      }
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "生田_花織_旭川商_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "大浦_虹歩_旭川商_北海道",
+      "appearances": 1
+    },
     {
       "id": "水口_結愛_旭川商_北海道",
       "appearances": 1

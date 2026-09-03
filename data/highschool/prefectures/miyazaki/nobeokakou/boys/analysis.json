@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "延岡工",
+        "teamId": "nobeokakou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["上野_晃平_延岡工_宮崎県", "上杉_啓一朗_延岡工_宮崎県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "上野_晃平_延岡工_宮崎県",
+      "appearances": 1
+    },
+    {
+      "id": "上杉_啓一朗_延岡工_宮崎県",
+      "appearances": 1
+    }
+  ]
+}

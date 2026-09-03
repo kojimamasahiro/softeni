@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "myoujou",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["児玉_拓海_明星_大阪府", "龍見_京壱_明星_大阪府"]
+        "playerIds": ["伊藤_翼_明星_大阪府", "田中_亮浩_明星_大阪府"]
       }
     },
     "team": {
@@ -39,11 +39,19 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "森島_丈詞_明星_大阪府",
       "appearances": 2
+    },
+    {
+      "id": "伊藤_翼_明星_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "田中_亮浩_明星_大阪府",
+      "appearances": 1
     },
     {
       "id": "小西_亮_明星_大阪府",
@@ -51,14 +59,6 @@
     },
     {
       "id": "児玉_拓海_明星_大阪府",
-      "appearances": 1
-    },
-    {
-      "id": "龍見_京壱_明星_大阪府",
-      "appearances": 1
-    },
-    {
-      "id": "中本_健一_明星_大阪府",
       "appearances": 1
     }
   ]

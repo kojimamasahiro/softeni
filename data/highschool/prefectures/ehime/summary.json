@@ -73,6 +73,17 @@
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "川之石",
+    "teamId": "kawayukiishi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls"
   },
@@ -86,6 +97,17 @@
     "tournamentId": "highschool-championship",
     "year": 2018,
     "gender": "girls"
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
   },
   {
     "team": "新田",
@@ -403,6 +425,42 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["青野_真菜_聖カタリナ_愛媛県", "浅野_陽子_聖カタリナ_愛媛県"]
+  },
+  {
+    "team": "聖カタリナ",
+    "teamId": "hijirikatarina",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["大澤_采夏_聖カタリナ_愛媛県", "白石_瑞稀_聖カタリナ_愛媛県"]
+  },
+  {
+    "team": "聖カタリナ",
+    "teamId": "hijirikatarina",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["増田_美希_聖カタリナ_愛媛県", "西山_仁美_聖カタリナ_愛媛県"]
+  },
+  {
+    "team": "聖カタリナ",
+    "teamId": "hijirikatarina",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls",
     "playerIds": ["村上_静香_聖カタリナ_愛媛県", "宮本_志緒里_聖カタリナ_愛媛県"]
@@ -502,6 +560,30 @@
     "year": 2014,
     "gender": "boys",
     "playerIds": ["渡邉_貴裕_今治東中学校_愛媛県", "楠_拓海_今治東中学校_愛媛県"]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["別宮_未紗_今治北_愛媛県", "桂_有沙_今治北_愛媛県"]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["尾崎_元_今治北_愛媛県", "諏訪_裕紀_今治北_愛媛県"]
   },
   {
     "team": "今治北",
@@ -904,6 +986,30 @@
     "teamId": "kawayukiishi",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["大野_千春_川之石_愛媛県", "山本_麻由_川之石_愛媛県"]
+  },
+  {
+    "team": "川之石",
+    "teamId": "kawayukiishi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["宇都宮_歩_川之石_愛媛県", "井上_笑吏奈_川之石_愛媛県"]
+  },
+  {
+    "team": "川之石",
+    "teamId": "kawayukiishi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1018,6 +1124,54 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["井出_ひなの_川之石_愛媛県", "石原_侑佳_川之石_愛媛県"]
+  },
+  {
+    "team": "北宇和",
+    "teamId": "kitauwa",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["廣瀬_真輝_北宇和_愛媛県", "森本_康斗_北宇和_愛媛県"]
+  },
+  {
+    "team": "松山東",
+    "teamId": "matsuyamahigashi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["河野_陽_松山東_愛媛県", "堀内_崇史_松山東_愛媛県"]
+  },
+  {
+    "team": "松山東",
+    "teamId": "matsuyamahigashi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["関谷_勇人_松山東_愛媛県", "堀田_隼矢_松山東_愛媛県"]
+  },
+  {
+    "team": "新居浜東",
+    "teamId": "niihamahigashi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["山内_一輝_新居浜東_愛媛県", "星加_大輝_新居浜東_愛媛県"]
   },
   {
     "team": "新居浜東",
@@ -1306,6 +1460,18 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["和氣_道宏_新田_愛媛県", "小倉_光生_新田_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["佐伯_彩華_済美_愛媛県", "村上_紗莉奈_済美_愛媛県"]
   },
   {
     "team": "済美",
@@ -2266,6 +2432,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["増本_考太郎_済美_愛媛県", "白井_瑠夏_済美_愛媛県"]
+  },
+  {
+    "team": "西条",
+    "teamId": "saijou",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["高木_亜沙里_西条_愛媛県", "関口_里奈_西条_愛媛県"]
+  },
+  {
+    "team": "西条",
+    "teamId": "saijou",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["宮本_新_西条_愛媛県", "明比_聡汰_西条_愛媛県"]
   },
   {
     "team": "西条",

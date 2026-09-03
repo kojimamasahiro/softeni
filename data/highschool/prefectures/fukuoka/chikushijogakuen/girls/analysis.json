@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "筑紫女学園",
+        "teamId": "chikushijogakuen",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["榎田_さとか_筑紫女学園_福岡県", "川崎_麻智_筑紫女学園_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "榎田_さとか_筑紫女学園_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "川崎_麻智_筑紫女学園_福岡県",
+      "appearances": 1
+    }
+  ]
+}

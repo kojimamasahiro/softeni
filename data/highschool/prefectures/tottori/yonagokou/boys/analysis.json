@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "yonagokou",
         "prefecture": "鳥取県",
         "prefectureId": "tottori",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2022,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["白井_幸誠_米子工_鳥取県", "中村_泰壱斗_米子工_鳥取県"]
+        "playerIds": ["下前_佳司_米子工_鳥取県", "澤口_史弥_米子工_鳥取県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "西田_一生_米子工_鳥取県",
@@ -39,11 +39,15 @@
       "appearances": 2
     },
     {
-      "id": "白井_幸誠_米子工_鳥取県",
+      "id": "下前_佳司_米子工_鳥取県",
       "appearances": 1
     },
     {
-      "id": "中村_泰壱斗_米子工_鳥取県",
+      "id": "澤口_史弥_米子工_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "南波_克弥_米子工_鳥取県",
       "appearances": 1
     }
   ]

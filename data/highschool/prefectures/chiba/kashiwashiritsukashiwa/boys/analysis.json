@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "team": 1,
-    "doubles": 3
+    "team": 2,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -31,16 +31,24 @@
         "teamId": "kashiwashiritsukashiwa",
         "prefecture": "千葉県",
         "prefectureId": "chiba",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "常深_翔太_柏市立柏_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "峯野_正寿_柏市立柏_千葉県",
+      "appearances": 1
+    },
     {
       "id": "渡邉_隆一郎_柏市立柏_千葉県",
       "appearances": 1
@@ -51,14 +59,6 @@
     },
     {
       "id": "村上_史高_柏市立柏_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "篠塚_智仁_柏市立柏_千葉県",
-      "appearances": 1
-    },
-    {
-      "id": "小林_航太_柏市立柏_千葉県",
       "appearances": 1
     }
   ]

@@ -7,6 +7,17 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
+    "team": "上伊那農",
+    "teamId": "kamiinanou",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys"
   },
@@ -30,6 +41,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2018,
+    "gender": "girls"
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
     "gender": "girls"
   },
   {
@@ -474,6 +496,42 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["城鳥_友里_上伊那農_長野県", "湯澤_みなみ_上伊那農_長野県"]
+  },
+  {
+    "team": "上伊那農",
+    "teamId": "kamiinanou",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["東條_樹_上伊那農_長野県", "埋橋_啓_上伊那農_長野県"]
+  },
+  {
+    "team": "上伊那農",
+    "teamId": "kamiinanou",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["池上_陽介_上伊那農_長野県", "中平_貴也_上伊那農_長野県"]
+  },
+  {
+    "team": "上伊那農",
+    "teamId": "kamiinanou",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls",
     "playerIds": ["小松_望_上伊那農_長野県", "加藤_祐希_上伊那農_長野県"]
@@ -825,6 +883,54 @@
     "year": 2025,
     "gender": "girls",
     "playerIds": ["南原_葵衣_松商学園_長野県", "土田_萌々_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["茅野_萌花_松商学園_長野県", "森_穂波_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["茅野_ひかり_松商学園_長野県", "松下_咲_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["坂井_佑紀_松商学園_長野県", "名取_里夏_松商学園_長野県"]
+  },
+  {
+    "team": "松商学園",
+    "teamId": "matsushougakuen",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["八木_未菜美_松商学園_長野県", "黒石_葵_松商学園_長野県"]
   },
   {
     "team": "松商学園",
@@ -1434,6 +1540,18 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["内山_恵太_長野俊英_長野県", "中村_克也_長野俊英_長野県"]
+  },
+  {
+    "team": "長野俊英",
+    "teamId": "naganoshunei",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls",
     "playerIds": ["茂原_美奈_長野俊英_長野県", "白井_沙也加_長野俊英_長野県"]
@@ -1782,6 +1900,30 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["樋口_晶彦_長野吉田_長野県", "大川_皓資_長野吉田_長野県"]
+  },
+  {
+    "team": "長野吉田",
+    "teamId": "naganoyoshida",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["塩入_綾祐_長野吉田_長野県", "中村_佑輔_長野吉田_長野県"]
+  },
+  {
+    "team": "長野吉田",
+    "teamId": "naganoyoshida",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["西澤_大貴_長野吉田_長野県", "竹田_真翔_長野吉田_長野県"]
@@ -1893,6 +2035,18 @@
     "year": 2014,
     "gender": "boys",
     "playerIds": ["小池_陽介_諏訪清陵_長野県", "花原_毅_諏訪清陵_長野県"]
+  },
+  {
+    "team": "須坂",
+    "teamId": "suzaka",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["内田_成美_須坂_長野県", "本藤_佑佳_須坂_長野県"]
   },
   {
     "team": "須坂",
@@ -2241,6 +2395,18 @@
     "year": 2019,
     "gender": "boys",
     "playerIds": ["金井_佑樹_上田千曲_長野県", "柳澤_智久_上田千曲_長野県"]
+  },
+  {
+    "team": "上田千曲",
+    "teamId": "uedachikuma",
+    "prefecture": "長野県",
+    "prefectureId": "nagano",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["平林_純希_上田千曲_長野県", "中村_雅人_上田千曲_長野県"]
   },
   {
     "team": "上田千曲",

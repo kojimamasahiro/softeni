@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,21 +16,39 @@
         "teamId": "choufu",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "3回戦敗退",
+        "result": "6回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["橋村_翔_長府_山口県", "中村_晄_長府_山口県"]
+        "playerIds": ["片山_諒_長府_山口県", "濱田_天成_長府_山口県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長府",
+        "teamId": "choufu",
+        "prefecture": "山口県",
+        "prefectureId": "yamaguchi",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "片山_諒_長府_山口県",
+      "appearances": 1
+    },
+    {
+      "id": "濱田_天成_長府_山口県",
+      "appearances": 1
+    },
     {
       "id": "橋村_翔_長府_山口県",
       "appearances": 1

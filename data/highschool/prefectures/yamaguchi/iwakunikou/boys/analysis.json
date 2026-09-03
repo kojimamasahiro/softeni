@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 2
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "iwakunikou",
         "prefecture": "山口県",
         "prefectureId": "yamaguchi",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["金子_裕一_岩国工_山口県", "陶山_克典_岩国工_山口県"]
+        "playerIds": ["宮下_航_岩国工_山口県", "陶山_克典_岩国工_山口県"]
       }
     },
     "team": {
@@ -28,22 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
-      "id": "金子_裕一_岩国工_山口県",
-      "appearances": 1
-    },
-    {
       "id": "陶山_克典_岩国工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "金子_裕一_岩国工_山口県",
+      "appearances": 2
+    },
+    {
+      "id": "宮下_航_岩国工_山口県",
       "appearances": 1
     },
     {
-      "id": "内藤_響_岩国工_山口県",
+      "id": "藤井_怜央斗_岩国工_山口県",
       "appearances": 1
     },
     {
-      "id": "岩永_翔貴_岩国工_山口県",
+      "id": "藤井_大斗輝_岩国工_山口県",
       "appearances": 1
     }
   ]

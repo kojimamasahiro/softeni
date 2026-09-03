@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 7,
   "byCategory": {
-    "team": 1,
-    "doubles": 2
+    "team": 2,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "youshikan",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["立脇_勇輝_楊志館_大分県", "渡辺_卓巳_楊志館_大分県"]
+        "playerIds": ["土谷_祐太_楊志館_大分県", "仲尾_佑輔_楊志館_大分県"]
       }
     },
     "team": {
@@ -39,22 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "土谷_祐太_楊志館_大分県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "岩武_杏祐_楊志館_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "仲尾_佑輔_楊志館_大分県",
       "appearances": 1
     },
     {
-      "id": "立脇_勇輝_楊志館_大分県",
+      "id": "川野_翔大_楊志館_大分県",
       "appearances": 1
     },
     {
-      "id": "渡辺_卓巳_楊志館_大分県",
+      "id": "工藤_洸弥_楊志館_大分県",
       "appearances": 1
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 8
+    "doubles": 10
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "nagasakikou",
         "prefecture": "長崎県",
         "prefectureId": "nagasaki",
-        "result": "2回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["清水_慧悟_長崎工_長崎県", "松崎_拓也_長崎工_長崎県"]
+        "playerIds": ["松下_金太郎_長崎工_長崎県", "平川_和樹_長崎工_長崎県"]
       }
     },
     "team": {
@@ -28,26 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 16,
+  "uniquePlayers": 20,
   "topPlayers": [
     {
+      "id": "林田_康佑_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "白濱_賢悟_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "松下_金太郎_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "平川_和樹_長崎工_長崎県",
+      "appearances": 1
+    },
+    {
       "id": "中島_翔悟_長崎工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "古川_暢哉_長崎工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "山口_慧_長崎工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "辻村_滉司_長崎工_長崎県",
-      "appearances": 1
-    },
-    {
-      "id": "清水_慧悟_長崎工_長崎県",
       "appearances": 1
     }
   ]

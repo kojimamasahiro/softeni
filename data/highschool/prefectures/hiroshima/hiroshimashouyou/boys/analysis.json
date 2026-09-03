@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 41,
+  "totalAppearances": 48,
   "byCategory": {
-    "team": 3,
-    "doubles": 36,
-    "singles": 2
+    "team": 4,
+    "doubles": 39,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -65,16 +65,28 @@
         "teamId": "hiroshimashouyou",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "2回戦敗退",
+        "result": "ベスト4",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2013,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 47,
+  "uniquePlayers": 49,
   "topPlayers": [
+    {
+      "id": "竹本_彪_広島翔洋_広島県",
+      "appearances": 4
+    },
+    {
+      "id": "西田_有汰_広島翔洋_広島県",
+      "appearances": 3
+    },
+    {
+      "id": "山本_和弥_広島翔洋_広島県",
+      "appearances": 3
+    },
     {
       "id": "大橋_直弥_広島翔洋_広島県",
       "appearances": 3
@@ -82,18 +94,6 @@
     {
       "id": "竹之内_陵平_広島翔洋_広島県",
       "appearances": 3
-    },
-    {
-      "id": "竹本_彪_広島翔洋_広島県",
-      "appearances": 3
-    },
-    {
-      "id": "平野_瑠衣_広島翔洋_広島県",
-      "appearances": 3
-    },
-    {
-      "id": "西田_有汰_広島翔洋_広島県",
-      "appearances": 2
     }
   ]
 }

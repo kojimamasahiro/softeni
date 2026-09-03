@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松尾",
+        "teamId": "matsuo",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["宮野_健太_松尾_千葉県", "平山_直輝_松尾_千葉県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "宮野_健太_松尾_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "平山_直輝_松尾_千葉県",
+      "appearances": 1
+    }
+  ]
+}

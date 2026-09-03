@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "山本学園",
+        "teamId": "yamamotogakuen",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["佐藤_桃花_山本学園_山形県", "小池_麻耶_山本学園_山形県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "佐藤_桃花_山本学園_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "小池_麻耶_山本学園_山形県",
+      "appearances": 1
+    }
+  ]
+}

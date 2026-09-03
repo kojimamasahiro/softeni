@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "nakamura",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["谷口_涼_中村_高知県", "東_侑希_中村_高知県"]
+        "playerIds": ["藤村_拓弥_中村_高知県", "東_侑希_中村_高知県"]
       }
     },
     "team": {
@@ -28,14 +28,22 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "谷口_涼_中村_高知県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "東_侑希_中村_高知県",
+      "appearances": 2
+    },
+    {
+      "id": "山岡_啓史_中村_高知県",
+      "appearances": 1
+    },
+    {
+      "id": "藤村_拓弥_中村_高知県",
       "appearances": 1
     }
   ]

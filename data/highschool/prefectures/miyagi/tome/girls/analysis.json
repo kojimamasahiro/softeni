@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "登米",
+        "teamId": "tome",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["石川_茜_登米_宮城県", "千葉_瑞穂_登米_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石川_茜_登米_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "千葉_瑞穂_登米_宮城県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
+    "team": 1,
     "doubles": 2
   },
   "resultsByCategory": {
@@ -25,7 +26,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "浜名",
+        "teamId": "hamana",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 4,

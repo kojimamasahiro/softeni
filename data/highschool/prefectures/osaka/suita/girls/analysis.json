@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "吹田",
+        "teamId": "suita",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["木原_杏樹_吹田_大阪府", "亀田_美咲子_吹田_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "木原_杏樹_吹田_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "亀田_美咲子_吹田_大阪府",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "murakami",
         "prefecture": "新潟県",
         "prefectureId": "niigata",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2017,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["網代_光祐_村上_新潟県", "遠山_伊央璃_村上_新潟県"]
+        "playerIds": ["風間_純_村上_新潟県", "伊藤_誠也_村上_新潟県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "網代_光祐_村上_新潟県",
@@ -39,11 +39,15 @@
       "appearances": 2
     },
     {
-      "id": "後藤_優介_村上_新潟県",
+      "id": "風間_純_村上_新潟県",
       "appearances": 1
     },
     {
-      "id": "高田_大聖_村上_新潟県",
+      "id": "伊藤_誠也_村上_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "後藤_優介_村上_新潟県",
       "appearances": 1
     }
   ]

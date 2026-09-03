@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "saijou",
         "prefecture": "愛媛県",
         "prefectureId": "ehime",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2021,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["田中_愛海_西条_愛媛県", "渡邊_きらら_西条_愛媛県"]
+        "playerIds": ["高木_亜沙里_西条_愛媛県", "関口_里奈_西条_愛媛県"]
       }
     },
     "team": {
@@ -28,14 +28,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
-      "id": "矢野_弥生_西条_愛媛県",
+      "id": "関口_里奈_西条_愛媛県",
+      "appearances": 2
+    },
+    {
+      "id": "高木_亜沙里_西条_愛媛県",
       "appearances": 1
     },
     {
-      "id": "関口_里奈_西条_愛媛県",
+      "id": "矢野_弥生_西条_愛媛県",
       "appearances": 1
     },
     {

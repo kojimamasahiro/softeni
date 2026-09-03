@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "松江南",
+        "teamId": "matsueminami",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["津田_知紀_松江南_島根県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,11 +43,11 @@
   "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "永原_遥太_松江南_島根県",
-      "appearances": 2
+      "id": "津田_知紀_松江南_島根県",
+      "appearances": 3
     },
     {
-      "id": "津田_知紀_松江南_島根県",
+      "id": "永原_遥太_松江南_島根県",
       "appearances": 2
     }
   ]

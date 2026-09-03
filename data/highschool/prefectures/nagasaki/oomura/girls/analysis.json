@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 46,
+  "totalAppearances": 53,
   "byCategory": {
     "team": 9,
-    "doubles": 37
+    "doubles": 41,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大村",
+        "teamId": "oomura",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["本村_未羽_大村_長崎県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -60,7 +72,7 @@
       }
     }
   },
-  "uniquePlayers": 47,
+  "uniquePlayers": 50,
   "topPlayers": [
     {
       "id": "谷川_みなみ_大村_長崎県",
@@ -75,11 +87,11 @@
       "appearances": 3
     },
     {
-      "id": "山口_あかり_大村_長崎県",
+      "id": "奥野_果歩_大村_長崎県",
       "appearances": 3
     },
     {
-      "id": "山口_紗英_大村_長崎県",
+      "id": "山口_あかり_大村_長崎県",
       "appearances": 3
     }
   ]

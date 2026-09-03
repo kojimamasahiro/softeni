@@ -1,5 +1,16 @@
 [
   {
+    "team": "貞光工",
+    "teamId": "sadamitsukou",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
     "team": "徳島科技",
     "teamId": "tokushimakagi",
     "prefecture": "徳島県",
@@ -196,6 +207,17 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2020,
     "gender": "boys"
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
   },
   {
     "team": "脇町",
@@ -448,6 +470,42 @@
     "teamId": "jouhoku",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["毛利_夏奈子_城北_徳島県", "田村_菜摘_城北_徳島県"]
+  },
+  {
+    "team": "城北",
+    "teamId": "jouhoku",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["今田_悠介_城北_徳島県", "前川_直哉_城北_徳島県"]
+  },
+  {
+    "team": "城北",
+    "teamId": "jouhoku",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["坂東_侑亮_城北_徳島県", "佐野_拓海_城北_徳島県"]
+  },
+  {
+    "team": "城北",
+    "teamId": "jouhoku",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -466,6 +524,54 @@
     "year": 2016,
     "gender": "boys",
     "playerIds": ["渡邊_公星_城北_徳島県", "西_洋平_城北_徳島県"]
+  },
+  {
+    "team": "貞光工",
+    "teamId": "sadamitsukou",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["阿部_瑞紀_貞光工_徳島県", "計盛_将志_貞光工_徳島県"]
+  },
+  {
+    "team": "貞光工",
+    "teamId": "sadamitsukou",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["宮本_一生_貞光工_徳島県", "大谷_広夢_貞光工_徳島県"]
+  },
+  {
+    "team": "貞光工",
+    "teamId": "sadamitsukou",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["秋山_晃羽_貞光工_徳島県", "森_遼太_貞光工_徳島県"]
+  },
+  {
+    "team": "貞光工",
+    "teamId": "sadamitsukou",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["中西_正哉_貞光工_徳島県", "根本_貴司_貞光工_徳島県"]
   },
   {
     "team": "徳島科技",
@@ -934,6 +1040,18 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["早水_愛果_徳商_徳島県", "堀江_彩愛_徳商_徳島県"]
+  },
+  {
+    "team": "富岡東",
+    "teamId": "tomiokahigashi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["前川_彩香_富岡東_徳島県", "橋本_愛可_富岡東_徳島県"]
   },
   {
     "team": "富岡東",
@@ -1666,6 +1784,54 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["田丸_遼_脇町_徳島県", "黒田_律_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["吉川_真由_脇町_徳島県", "三木_愛梨_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["生田_遥夏_脇町_徳島県", "片山_りの_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["足立_紗和子_脇町_徳島県", "奥村_奈由_脇町_徳島県"]
+  },
+  {
+    "team": "脇町",
+    "teamId": "wakimachi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["木村_理沙_脇町_徳島県", "中野_あすか_脇町_徳島県"]
   },
   {
     "team": "脇町",
@@ -2536,6 +2702,18 @@
     "teamId": "tomiokahigashi",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["校條_大成_富岡東高校_徳島県"]
+  },
+  {
+    "team": "富岡東",
+    "teamId": "tomiokahigashi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
     "result": "2回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
@@ -2566,6 +2744,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["髙井_凌凱_つるぎ_徳島県"]
+  },
+  {
+    "team": "つるぎ",
+    "teamId": "tsurugi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["早見_陸歩_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",

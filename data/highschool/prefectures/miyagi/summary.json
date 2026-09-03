@@ -7,6 +7,28 @@
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls"
   },
@@ -458,12 +480,48 @@
     "teamId": "oogawarashou",
     "prefecture": "宮城県",
     "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["小畑_星也_大河原商_宮城県", "阿部_史弥_大河原商_宮城県"]
+  },
+  {
+    "team": "大河原商",
+    "teamId": "oogawarashou",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys",
     "playerIds": ["光成_佑太_大河原商_宮城県", "柴崎_太芽_大河原商_宮城県"]
+  },
+  {
+    "team": "聖和学園",
+    "teamId": "seiwagakuen",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["伊藤_愛理_聖和学園_宮城県", "菅野_光希_聖和学園_宮城県"]
+  },
+  {
+    "team": "聖和学園",
+    "teamId": "seiwagakuen",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["伊藤_真彩_聖和学園_宮城県", "布施_希乃美_聖和学園_宮城県"]
   },
   {
     "team": "聖和学園",
@@ -560,6 +618,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["遠藤_理生_仙台第二_宮城県", "打矢_ひかり_仙台第二_宮城県"]
+  },
+  {
+    "team": "仙台第三",
+    "teamId": "sendaidaisan",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["福士_冴香_仙台第三_宮城県", "三宅_杏奈_仙台第三_宮城県"]
   },
   {
     "team": "仙台第三",
@@ -704,6 +774,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["安達_心菜_常盤木学園_宮城県", "伊藤_友萌_常盤木学園_宮城県"]
+  },
+  {
+    "team": "登米",
+    "teamId": "tome",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["石川_茜_登米_宮城県", "千葉_瑞穂_登米_宮城県"]
   },
   {
     "team": "東北",
@@ -1652,6 +1734,90 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["小吉_歩大_東北_宮城県", "桐山_柊介_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["仙台_茉莉花_東北_宮城県", "佐々木_花奈_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["吉田_美穂_東北_宮城県", "板垣_皆実_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["遠藤_和希_東北_宮城県", "田中_千瑛_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["白石_努_東北_宮城県", "阿部_蒼明_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["船水_颯人_東北_宮城県", "田口_将_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["吉沢_敦希_東北_宮城県", "小田桐_崇康_東北_宮城県"]
+  },
+  {
+    "team": "東北",
+    "teamId": "touhoku",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["佐藤_春生_東北_宮城県", "猪俣_拓樹_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -3812,6 +3978,30 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["水木_洸_東北_宮城県", "松田_拳弥_東北_宮城県"]
+  },
+  {
+    "team": "東北学院",
+    "teamId": "touhokugakuin",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["山崎_倫漠_東北学院_宮城県", "高橋_元希_東北学院_宮城県"]
+  },
+  {
+    "team": "東北学院",
+    "teamId": "touhokugakuin",
+    "prefecture": "宮城県",
+    "prefectureId": "miyagi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["阿部_裕樹_東北学院_宮城県", "菊地_一輝_東北学院_宮城県"]
   },
   {
     "team": "東北学院",

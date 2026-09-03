@@ -7,6 +7,17 @@
     "result": "3回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys"
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys"
   },
@@ -328,6 +339,17 @@
     "tournamentId": "highschool-senbatsu",
     "year": 2025,
     "gender": "boys"
+  },
+  {
+    "team": "山形城北",
+    "teamId": "yamagatajouhoku",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
   },
   {
     "team": "山形城北",
@@ -922,6 +944,78 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["佐藤_悠生_羽黒_山形県", "中村_瑞暉_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["今井_萌衣_羽黒_山形県", "上野_真子_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["劔持_彩_羽黒_山形県", "三浦_美登里_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["國松_健吾_羽黒_山形県", "田中_拓真_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["石塚_貴大_羽黒_山形県", "宮守_智也_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["西澤_洸紀_羽黒_山形県", "横山_佑介_羽黒_山形県"]
+  },
+  {
+    "team": "羽黒",
+    "teamId": "haguro",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["永澤_拓真_羽黒_山形県", "川井_悠矢_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -2527,6 +2621,54 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["松本_直樹_山形中央_山形県", "板垣_那哉_山形中央_山形県"]
+  },
+  {
+    "team": "山形中央",
+    "teamId": "yamagatachuuou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["阿部_駿貴_山形中央_山形県", "今井_零也_山形中央_山形県"]
+  },
+  {
+    "team": "山形中央",
+    "teamId": "yamagatachuuou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["松田_祐蔵_山形中央_山形県", "重野_希拓_山形中央_山形県"]
+  },
+  {
+    "team": "山形中央",
+    "teamId": "yamagatachuuou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "boys",
+    "playerIds": ["斎藤_佑介_山形中央_山形県", "佐藤_和摩_山形中央_山形県"]
+  },
+  {
+    "team": "山形中央",
+    "teamId": "yamagatachuuou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "boys",
     "playerIds": ["松田_祐蔵_山形中央_山形県", "重野_希拓_山形中央_山形県"]
@@ -2674,6 +2816,42 @@
     "year": 2022,
     "gender": "girls",
     "playerIds": ["高橋_和恵_山形城北高校_山形県", "三浦_洋美_Palaistra_群馬県"]
+  },
+  {
+    "team": "山形城北",
+    "teamId": "yamagatajouhoku",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["大沼_可奈_山形城北_山形県", "佐藤_果林_山形城北_山形県"]
+  },
+  {
+    "team": "山形城北",
+    "teamId": "yamagatajouhoku",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["小林_桃_山形城北_山形県", "大沼_礼奈_山形城北_山形県"]
+  },
+  {
+    "team": "山形城北",
+    "teamId": "yamagatajouhoku",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["黒澤_綾乃_山形城北_山形県", "成田_真帆_山形城北_山形県"]
   },
   {
     "team": "山形城北",
@@ -2983,6 +3161,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["鹿野_莉央_山形市立商_山形県", "小川_花苗_山形市立商_山形県"]
+  },
+  {
+    "team": "山形市立商",
+    "teamId": "yamagatashiritsushou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["渡辺_琉惺_山形市立商_山形県", "岡本_光貴_山形市立商_山形県"]
@@ -3144,6 +3334,18 @@
     "playerIds": ["小林_紗依_山形市商_山形県", "小林_千紗_山形市商_山形県"]
   },
   {
+    "team": "山本学園",
+    "teamId": "yamamotogakuen",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["佐藤_桃花_山本学園_山形県", "小池_麻耶_山本学園_山形県"]
+  },
+  {
     "team": "米沢中央",
     "teamId": "yonezawachuuou",
     "prefecture": "山形県",
@@ -3190,6 +3392,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["髙田_湊人_米沢中央_山形県", "安達_勇雅_米沢中央_山形県"]
+  },
+  {
+    "team": "米沢商",
+    "teamId": "yonezawashou",
+    "prefecture": "山形県",
+    "prefectureId": "yamagata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["横澤_茉実_米沢商_山形県", "勝見_明日香_米沢商_山形県"]
   },
   {
     "team": "米沢商",

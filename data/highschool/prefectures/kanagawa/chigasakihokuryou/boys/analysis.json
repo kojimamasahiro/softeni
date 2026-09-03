@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "茅ヶ崎北陵",
+        "teamId": "chigasakihokuryou",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["山本_広行_茅ヶ崎北陵_神奈川県", "加藤_豊_茅ヶ崎北陵_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山本_広行_茅ヶ崎北陵_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_豊_茅ヶ崎北陵_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

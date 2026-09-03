@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 9,
   "byCategory": {
-    "team": 1,
-    "doubles": 5
+    "team": 2,
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -39,8 +39,16 @@
       }
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 9,
   "topPlayers": [
+    {
+      "id": "花房_香穂_松江商_島根県",
+      "appearances": 2
+    },
+    {
+      "id": "原_莉央_松江商_島根県",
+      "appearances": 2
+    },
     {
       "id": "松本_瞳美_松江商_島根県",
       "appearances": 2
@@ -52,14 +60,6 @@
     {
       "id": "花房_真由_松江商_島根県",
       "appearances": 2
-    },
-    {
-      "id": "原_莉央_松江商_島根県",
-      "appearances": 1
-    },
-    {
-      "id": "花房_香穂_松江商_島根県",
-      "appearances": 1
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
     "team": 1,
-    "doubles": 4
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,16 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
+    {
+      "id": "小池_勇樹_享栄_愛知県",
+      "appearances": 1
+    },
+    {
+      "id": "水谷_真也_享栄_愛知県",
+      "appearances": 1
+    },
     {
       "id": "長屋_優斗_享栄_愛知県",
       "appearances": 1
@@ -62,14 +70,6 @@
     },
     {
       "id": "藤原_勇希_享栄_愛知県",
-      "appearances": 1
-    },
-    {
-      "id": "加藤_圭悟_享栄_愛知県",
-      "appearances": 1
-    },
-    {
-      "id": "神谷_優人_享栄_愛知県",
       "appearances": 1
     }
   ]

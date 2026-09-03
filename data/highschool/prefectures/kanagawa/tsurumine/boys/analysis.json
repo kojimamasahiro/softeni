@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "tsurumine",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "east-japan",
-        "year": 2025,
+        "tournamentId": "highschool-championship",
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["松田_悠生_鶴嶺_神奈川県", "淵野_宙英_鶴嶺_神奈川県"]
+        "playerIds": ["石原_一樹_鶴嶺_神奈川県", "河合_陸_鶴嶺_神奈川県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "松田_悠生_鶴嶺_神奈川県",
@@ -48,6 +48,14 @@
     {
       "id": "淵野_宙英_鶴嶺_神奈川県",
       "appearances": 2
+    },
+    {
+      "id": "石原_一樹_鶴嶺_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "河合_陸_鶴嶺_神奈川県",
+      "appearances": 1
     }
   ]
 }

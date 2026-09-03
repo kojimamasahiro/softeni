@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "日立一",
+        "teamId": "hitachiichi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["山邉_貴之_日立一_茨城県", "鈴木_靖崇_日立一_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山邉_貴之_日立一_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_靖崇_日立一_茨城県",
+      "appearances": 1
+    }
+  ]
+}

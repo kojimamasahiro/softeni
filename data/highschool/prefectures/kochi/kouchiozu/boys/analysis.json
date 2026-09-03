@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -15,39 +16,49 @@
         "teamId": "kouchiozu",
         "prefecture": "高知県",
         "prefectureId": "kochi",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2013,
         "gender": "boys",
-        "playerIds": ["土居_幹太_高知小津_高知県", "平井_要_高知小津_高知県"]
+        "playerIds": ["池本_大樹_高知小津_高知県", "池本_大輔_高知小津_高知県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高知小津",
+        "teamId": "kouchiozu",
+        "prefecture": "高知県",
+        "prefectureId": "kochi",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 14,
   "topPlayers": [
     {
-      "id": "竹下_竜平_高知小津_高知県",
+      "id": "渡部_幹也_高知小津_高知県",
       "appearances": 1
     },
     {
-      "id": "安藤_叡史_高知小津_高知県",
+      "id": "松尾_直人_高知小津_高知県",
       "appearances": 1
     },
     {
-      "id": "西岡_拓真_高知小津_高知県",
+      "id": "池本_大樹_高知小津_高知県",
       "appearances": 1
     },
     {
-      "id": "上村_太萌_高知小津_高知県",
+      "id": "池本_大輔_高知小津_高知県",
       "appearances": 1
     },
     {
-      "id": "土居_幹太_高知小津_高知県",
+      "id": "山下_敦義_高知小津_高知県",
       "appearances": 1
     }
   ]

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北宇和",
+        "teamId": "kitauwa",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["廣瀬_真輝_北宇和_愛媛県", "森本_康斗_北宇和_愛媛県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "廣瀬_真輝_北宇和_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "森本_康斗_北宇和_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

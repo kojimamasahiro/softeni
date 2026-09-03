@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "仙台第三",
+        "teamId": "sendaidaisan",
+        "prefecture": "宮城県",
+        "prefectureId": "miyagi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["福士_冴香_仙台第三_宮城県", "三宅_杏奈_仙台第三_宮城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "福士_冴香_仙台第三_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "三宅_杏奈_仙台第三_宮城県",
+      "appearances": 1
+    }
+  ]
+}

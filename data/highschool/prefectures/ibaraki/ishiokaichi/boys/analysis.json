@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "石岡一",
+        "teamId": "ishiokaichi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["赤津_祐太_石岡一_茨城県", "山下_裕也_石岡一_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "赤津_祐太_石岡一_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "山下_裕也_石岡一_茨城県",
+      "appearances": 1
+    }
+  ]
+}

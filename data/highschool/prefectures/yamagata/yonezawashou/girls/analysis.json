@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "米沢商",
+        "teamId": "yonezawashou",
+        "prefecture": "山形県",
+        "prefectureId": "yamagata",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["横澤_茉実_米沢商_山形県", "勝見_明日香_米沢商_山形県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "横澤_茉実_米沢商_山形県",
+      "appearances": 1
+    },
+    {
+      "id": "勝見_明日香_米沢商_山形県",
+      "appearances": 1
+    }
+  ]
+}

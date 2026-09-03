@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kawaguchisougou",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2013,
         "gender": "girls",
-        "playerIds": ["渡辺_久美子_川口総合_埼玉県", "川村_奈央_川口総合_埼玉県"]
+        "playerIds": ["芥川_真穂_川口総合_埼玉県", "本田_五葉_川口総合_埼玉県"]
       }
     },
     "team": {
@@ -28,8 +28,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "芥川_真穂_川口総合_埼玉県",
+      "appearances": 1
+    },
+    {
+      "id": "本田_五葉_川口総合_埼玉県",
+      "appearances": 1
+    },
     {
       "id": "渡辺_久美子_川口総合_埼玉県",
       "appearances": 1

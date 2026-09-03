@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 18,
+  "totalAppearances": 21,
   "byCategory": {
-    "team": 4,
-    "doubles": 14
+    "team": 5,
+    "doubles": 16
   },
   "resultsByCategory": {
     "singles": {
@@ -50,8 +50,12 @@
       }
     }
   },
-  "uniquePlayers": 21,
+  "uniquePlayers": 24,
   "topPlayers": [
+    {
+      "id": "吉田_涼太_能代松陽_秋田県",
+      "appearances": 2
+    },
     {
       "id": "伊藤_章騎_能代松陽_秋田県",
       "appearances": 2
@@ -66,10 +70,6 @@
     },
     {
       "id": "中村_亘希_能代松陽_秋田県",
-      "appearances": 2
-    },
-    {
-      "id": "田村_翔_能代松陽_秋田県",
       "appearances": 2
     }
   ]

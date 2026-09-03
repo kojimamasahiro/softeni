@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "津商",
+        "teamId": "tsushou",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["田中_延枝_津商_三重県", "伊藤_妃菜_津商_三重県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "田中_延枝_津商_三重県",
+      "appearances": 1
+    },
+    {
+      "id": "伊藤_妃菜_津商_三重県",
+      "appearances": 1
+    }
+  ]
+}

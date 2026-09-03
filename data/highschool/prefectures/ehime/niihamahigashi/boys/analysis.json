@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "新居浜東",
+        "teamId": "niihamahigashi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "boys",
+        "playerIds": ["山内_一輝_新居浜東_愛媛県", "星加_大輝_新居浜東_愛媛県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "山内_一輝_新居浜東_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "星加_大輝_新居浜東_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

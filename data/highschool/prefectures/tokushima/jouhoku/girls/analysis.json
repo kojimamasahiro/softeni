@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "城北",
+        "teamId": "jouhoku",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2013,
+        "gender": "girls",
+        "playerIds": ["毛利_夏奈子_城北_徳島県", "田村_菜摘_城北_徳島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "毛利_夏奈子_城北_徳島県",
+      "appearances": 1
+    },
+    {
+      "id": "田村_菜摘_城北_徳島県",
+      "appearances": 1
+    }
+  ]
+}

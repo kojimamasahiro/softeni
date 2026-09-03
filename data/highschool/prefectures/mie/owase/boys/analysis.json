@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "尾鷲",
+        "teamId": "owase",
+        "prefecture": "三重県",
+        "prefectureId": "mie",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "boys",
+        "playerIds": ["畑中_陽翔_尾鷲高校_三重県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,11 +43,11 @@
   "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "三鬼_英暉_尾鷲_三重県",
-      "appearances": 1
+      "id": "畑中_陽翔_尾鷲_三重県",
+      "appearances": 2
     },
     {
-      "id": "畑中_陽翔_尾鷲_三重県",
+      "id": "三鬼_英暉_尾鷲_三重県",
       "appearances": 1
     }
   ]
