@@ -1,8 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1,
-    "singles": 1
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -12,28 +11,17 @@
         "teamId": "takaokashougyou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
         "gender": "boys",
-        "playerIds": ["鳥井_亮貴_高岡商業_富山県"]
+        "playerIds": ["赤尾_來哉_高岡商業高校_富山県"]
       }
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "高岡商業",
-        "teamId": "takaokashougyou",
-        "prefecture": "富山県",
-        "prefectureId": "toyama",
-        "result": "予選敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
-        "gender": "boys",
-        "playerIds": ["前川_陸亜_高岡商業_富山県", "鳥井_亮貴_高岡商業_富山県"]
-      }
+      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,

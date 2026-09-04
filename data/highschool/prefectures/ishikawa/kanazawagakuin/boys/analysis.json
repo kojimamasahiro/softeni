@@ -1,50 +1,33 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 2
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
-    },
-    "doubles": {
       "recentlyResult": null,
       "historicalBest": {
         "team": "金沢学院",
         "teamId": "kanazawagakuin",
         "prefecture": "石川県",
         "prefectureId": "ishikawa",
-        "result": "2回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
         "year": 2018,
         "gender": "boys",
-        "playerIds": ["德野_真士_金沢学院_石川県", "藤井_理央_金沢学院_石川県"]
+        "playerIds": ["德野_真士_金沢学院高校_石川県"]
       }
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
-  "topPlayers": [
-    {
-      "id": "村崎_圭祐_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "浦_巧弥_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "德野_真士_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "藤井_理央_金沢学院_石川県",
-      "appearances": 1
-    }
-  ]
+  "uniquePlayers": 0,
+  "topPlayers": []
 }

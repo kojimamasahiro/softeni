@@ -1,8 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 2,
-    "singles": 2
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -14,26 +13,15 @@
         "prefectureId": "hokkaido",
         "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
         "gender": "girls",
-        "playerIds": ["尾崎_瀬里奈_旭川実業_北海道"]
+        "playerIds": ["蘓武_比奈_旭川実業高校_北海道"]
       }
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "旭川実業",
-        "teamId": "asahikawajitsugyou",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "1回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
-        "gender": "girls",
-        "playerIds": ["石井_莉乃_旭川実業_北海道", "山田_萌華_旭川実業_北海道"]
-      }
+      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,

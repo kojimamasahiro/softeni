@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 16,
+  "totalAppearances": 19,
   "byCategory": {
     "team": 2,
-    "doubles": 14
+    "doubles": 14,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "盛岡誠桜",
+        "teamId": "moriokamakotosakura",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["前角地_彩菜_盛岡誠桜高校_岩手県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -54,14 +66,14 @@
   "topPlayers": [
     {
       "id": "前角地_彩菜_盛岡誠桜_岩手県",
-      "appearances": 3
-    },
-    {
-      "id": "晴山_碧星_盛岡誠桜_岩手県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "晴山_輝星_盛岡誠桜_岩手県",
+      "appearances": 4
+    },
+    {
+      "id": "晴山_碧星_盛岡誠桜_岩手県",
       "appearances": 3
     },
     {

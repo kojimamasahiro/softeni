@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 8
+    "doubles": 8,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "草津東",
+        "teamId": "kusatsuhigashi",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["武田_彩佳_草津東高校_滋賀県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -46,15 +58,15 @@
       "appearances": 3
     },
     {
-      "id": "前出_菜奈_草津東_滋賀県",
-      "appearances": 2
-    },
-    {
       "id": "中村_菜緒_草津東_滋賀県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "武田_彩佳_草津東_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "前出_菜奈_草津東_滋賀県",
       "appearances": 2
     },
     {

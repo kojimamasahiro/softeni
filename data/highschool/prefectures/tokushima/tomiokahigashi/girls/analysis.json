@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 10
+    "doubles": 10,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "富岡東",
+        "teamId": "tomiokahigashi",
+        "prefecture": "徳島県",
+        "prefectureId": "tokushima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["西尾_妃夏乃_富岡東高校_徳島県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -42,23 +54,23 @@
   "uniquePlayers": 18,
   "topPlayers": [
     {
+      "id": "松田_菜穂_富岡東_徳島県",
+      "appearances": 3
+    },
+    {
       "id": "前川_彩香_富岡東_徳島県",
       "appearances": 2
     },
     {
-      "id": "松田_菜穂_富岡東_徳島県",
+      "id": "西尾_妃夏乃_富岡東_徳島県",
+      "appearances": 2
+    },
+    {
+      "id": "清_まりな_富岡東_徳島県",
       "appearances": 2
     },
     {
       "id": "橋本_愛可_富岡東_徳島県",
-      "appearances": 1
-    },
-    {
-      "id": "三枝_夢_富岡東_徳島県",
-      "appearances": 1
-    },
-    {
-      "id": "山川_実奈_富岡東_徳島県",
       "appearances": 1
     }
   ]

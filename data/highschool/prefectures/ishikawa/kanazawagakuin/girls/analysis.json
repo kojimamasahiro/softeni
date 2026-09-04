@@ -1,65 +1,33 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 1,
   "byCategory": {
-    "team": 2,
-    "doubles": 6
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "金沢学院",
+        "teamId": "kanazawagakuin",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["田川_真衣_金沢学院高校_石川県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "金沢学院",
-        "teamId": "kanazawagakuin",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "5回戦敗退",
-        "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2019,
-        "gender": "girls",
-        "playerIds": ["村上_麗吏_金沢学院_石川県", "西村_紺奈_金沢学院_石川県"]
-      }
+      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": {
-        "team": "金沢学院",
-        "teamId": "kanazawagakuin",
-        "prefecture": "石川県",
-        "prefectureId": "ishikawa",
-        "result": "3回戦敗退",
-        "category": "team",
-        "tournamentId": "highschool-championship",
-        "year": 2018,
-        "gender": "girls"
-      }
+      "historicalBest": null
     }
   },
-  "uniquePlayers": 9,
-  "topPlayers": [
-    {
-      "id": "松本_多未_金沢学院_石川県",
-      "appearances": 2
-    },
-    {
-      "id": "清水_琉風_金沢学院_石川県",
-      "appearances": 2
-    },
-    {
-      "id": "法花堂_古都_金沢学院_石川県",
-      "appearances": 2
-    },
-    {
-      "id": "村上_麗吏_金沢学院_石川県",
-      "appearances": 1
-    },
-    {
-      "id": "西村_紺奈_金沢学院_石川県",
-      "appearances": 1
-    }
-  ]
+  "uniquePlayers": 0,
+  "topPlayers": []
 }
