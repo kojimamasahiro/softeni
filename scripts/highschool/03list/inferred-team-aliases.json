@@ -8,6 +8,27 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "吉川",
+        "firstName": "航平",
+        "aliases": [
+          "つるぎ",
+          "つるぎ高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "つるぎ"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "つるぎ高校"
+          }
+        ]
+      },
+      {
         "year": 2019,
         "lastName": "早見",
         "firstName": "陸歩",
@@ -155,6 +176,78 @@
     ]
   },
   {
+    "canonical": "とわの森三愛",
+    "aliases": [
+      "とわの森三愛",
+      "とわの森三愛高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "佐藤",
+        "firstName": "竜斗",
+        "aliases": [
+          "とわの森三愛",
+          "とわの森三愛高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "とわの森三愛"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "とわの森三愛高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "納藤",
+        "firstName": "祐典",
+        "aliases": [
+          "とわの森三愛",
+          "とわの森三愛高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "とわの森三愛"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "とわの森三愛高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "高野",
+        "firstName": "結愛",
+        "aliases": [
+          "とわの森三愛",
+          "とわの森三愛高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "とわの森三愛"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "とわの森三愛高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "一関学院",
     "aliases": [
       "一関学院",
@@ -192,6 +285,126 @@
       "上尾ＩＭＵＡ"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "久保",
+        "firstName": "晴華",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "山本",
+        "firstName": "航世",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "田川",
+        "firstName": "美怜",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "福田",
+        "firstName": "麗優",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "竹田",
+        "firstName": "真樹",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "三重高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "大谷",
@@ -418,6 +631,27 @@
       },
       {
         "year": 2019,
+        "lastName": "北川",
+        "firstName": "ジャン瑠加",
+        "aliases": [
+          "三重",
+          "三重高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "三重高校"
+          }
+        ]
+      },
+      {
+        "year": 2019,
         "lastName": "原田",
         "firstName": "美結",
         "aliases": [
@@ -624,6 +858,79 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "上岡",
+        "firstName": "俊介",
+        "aliases": [
+          "上宮",
+          "上宮高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "上宮"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "上宮"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "上宮高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "中西",
+        "firstName": "夏輝",
+        "aliases": [
+          "上宮",
+          "上宮高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "上宮"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "上宮高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "広岡",
+        "firstName": "宙",
+        "aliases": [
+          "上宮",
+          "上宮高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "上宮"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "上宮"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "上宮高校"
+          }
+        ]
+      },
+      {
         "year": 2018,
         "lastName": "中西",
         "firstName": "夏輝",
@@ -795,6 +1102,58 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "久保",
+        "firstName": "菜月",
+        "aliases": [
+          "中村学園女子",
+          "中村学園女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "中村学園女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "中村学園女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "中村学園女子高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "原口",
+        "firstName": "美咲",
+        "aliases": [
+          "中村学園女子",
+          "中村学園女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "中村学園女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "中村学園女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "中村学園女子高校"
+          }
+        ]
+      },
+      {
         "year": 2018,
         "lastName": "久保",
         "firstName": "菜月",
@@ -936,6 +1295,78 @@
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-girls.json",
             "team": "中越高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "canonical": "今治北",
+    "aliases": [
+      "今治北",
+      "今治北高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "宗方",
+        "firstName": "眞子",
+        "aliases": [
+          "今治北",
+          "今治北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "今治北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "今治北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "森",
+        "firstName": "知子",
+        "aliases": [
+          "今治北",
+          "今治北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "今治北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "今治北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "瀬戸",
+        "firstName": "彩葉",
+        "aliases": [
+          "今治北",
+          "今治北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "今治北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "今治北高校"
           }
         ]
       }
@@ -1117,6 +1548,67 @@
             "tournamentId": "highschool-championship",
             "file": "doubles-none-girls.json",
             "team": "修大鈴峯"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "修道大附鈴峯女子高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "canonical": "修大附鈴峯",
+    "aliases": [
+      "修大附鈴峯",
+      "修道大附鈴峯女子高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "森本",
+        "firstName": "彩鼓",
+        "aliases": [
+          "修大附鈴峯",
+          "修道大附鈴峯女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "修大附鈴峯"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "修大附鈴峯"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "修道大附鈴峯女子高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "笠井",
+        "firstName": "菜々子",
+        "aliases": [
+          "修大附鈴峯",
+          "修道大附鈴峯女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "修大附鈴峯"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "修大附鈴峯"
           },
           {
             "tournamentId": "zennihon-singles",
@@ -2173,6 +2665,27 @@
       },
       {
         "year": 2017,
+        "lastName": "前山",
+        "firstName": "愛",
+        "aliases": [
+          "北越",
+          "北越高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "北越"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "北越高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
         "lastName": "水澤",
         "firstName": "奈央",
         "aliases": [
@@ -2188,6 +2701,11 @@
           {
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-girls.json",
+            "team": "北越高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
             "team": "北越高校"
           }
         ]
@@ -2210,6 +2728,11 @@
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-girls.json",
             "team": "北越高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "北越高校"
           }
         ]
       },
@@ -2230,6 +2753,11 @@
           {
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-girls.json",
+            "team": "北越高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
             "team": "北越高校"
           }
         ]
@@ -2487,6 +3015,58 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "松井",
+        "firstName": "玲奈",
+        "aliases": [
+          "和歌山信愛",
+          "和歌山信愛高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "和歌山信愛"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "和歌山信愛"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "和歌山信愛高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "浅倉",
+        "firstName": "衣里",
+        "aliases": [
+          "和歌山信愛",
+          "和歌山信愛高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "和歌山信愛"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "和歌山信愛"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "和歌山信愛高校"
+          }
+        ]
+      },
+      {
         "year": 2018,
         "lastName": "多田",
         "firstName": "千夏",
@@ -2589,6 +3169,53 @@
       "和歌山北高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "松山",
+        "firstName": "新",
+        "aliases": [
+          "和歌山北",
+          "和歌山北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "和歌山北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "和歌山北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "熊本",
+        "firstName": "脩吾",
+        "aliases": [
+          "和歌山北",
+          "和歌山北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "和歌山北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "和歌山北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "和歌山北高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "南澤",
@@ -3062,6 +3689,99 @@
     ]
   },
   {
+    "canonical": "大津商",
+    "aliases": [
+      "大津商",
+      "大津商業高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "三日月",
+        "firstName": "鈴",
+        "aliases": [
+          "大津商",
+          "大津商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "大津商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "大津商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "井上",
+        "firstName": "佳奈",
+        "aliases": [
+          "大津商",
+          "大津商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "大津商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "大津商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "田中",
+        "firstName": "沙奈",
+        "aliases": [
+          "大津商",
+          "大津商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "大津商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "大津商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "石橋",
+        "firstName": "和佳",
+        "aliases": [
+          "大津商",
+          "大津商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "大津商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "大津商業高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "大谷室蘭",
     "aliases": [
       "大谷室蘭",
@@ -3152,9 +3872,52 @@
     "aliases": [
       "学法石川",
       "石川高校",
+      "学法石川高校",
       "学校法人石川高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "國分",
+        "firstName": "豪留",
+        "aliases": [
+          "学法石川",
+          "学法石川高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "学法石川"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "学法石川高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "新沼",
+        "firstName": "稜大",
+        "aliases": [
+          "学法石川",
+          "学法石川高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "学法石川"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "学法石川高校"
+          }
+        ]
+      },
       {
         "year": 2019,
         "lastName": "名古谷",
@@ -3395,6 +4158,36 @@
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
             "team": "学校法人石川高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "canonical": "宇和島東",
+    "aliases": [
+      "宇和島東",
+      "宇和島東高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "上口",
+        "firstName": "涼平",
+        "aliases": [
+          "宇和島東",
+          "宇和島東高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "宇和島東"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "宇和島東高校"
           }
         ]
       }
@@ -4947,17 +5740,37 @@
     "aliases": [
       "就実",
       "就実高校",
-      "県就実高校",
       "就実高等学校"
     ],
     "reasons": [
       {
-        "year": 2018,
-        "lastName": "中野",
-        "firstName": "舞",
+        "year": 2017,
+        "lastName": "石井",
+        "firstName": "美々花",
         "aliases": [
           "就実",
-          "県就実高校"
+          "就実高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "就実"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "就実高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "藤原",
+        "firstName": "杏菜",
+        "aliases": [
+          "就実",
+          "就実高校"
         ],
         "evidence": [
           {
@@ -4973,7 +5786,33 @@
           {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
-            "team": "県就実高校"
+            "team": "就実高校"
+          }
+        ]
+      },
+      {
+        "year": 2018,
+        "lastName": "中野",
+        "firstName": "舞",
+        "aliases": [
+          "就実",
+          "就実高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "就実"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "就実"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "就実高校"
           }
         ]
       },
@@ -5138,6 +5977,200 @@
       "東北福祉大学"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "中野",
+        "firstName": "聖也",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "久乗",
+        "firstName": "大幸",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "南浦",
+        "firstName": "美優",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "小畑",
+        "firstName": "竣吾",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "山下",
+        "firstName": "翔",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "田中",
+        "firstName": "夏海",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "白石",
+        "firstName": "紗菜",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "石川",
+        "firstName": "恵伍",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "薄雲",
+        "firstName": "優香",
+        "aliases": [
+          "尽誠学園",
+          "尽誠学園高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "尽誠学園高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "片岡",
@@ -5771,6 +6804,110 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "原田",
+        "firstName": "愛果",
+        "aliases": [
+          "山陽女子",
+          "山陽女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "山陽女子高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "柴原",
+        "firstName": "香琳",
+        "aliases": [
+          "山陽女子",
+          "山陽女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "山陽女子高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "立花",
+        "firstName": "さくら",
+        "aliases": [
+          "山陽女子",
+          "山陽女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "山陽女子高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "長谷川",
+        "firstName": "憂華",
+        "aliases": [
+          "山陽女子",
+          "山陽女子高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "山陽女子"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "山陽女子高校"
+          }
+        ]
+      },
+      {
         "year": 2019,
         "lastName": "立花",
         "firstName": "さくら",
@@ -6160,6 +7297,57 @@
             "tournamentId": "highschool-japan-cup",
             "file": "singles-none-boys.json",
             "team": "岩手"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "canonical": "川之石",
+    "aliases": [
+      "川之石",
+      "川之石高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "井出",
+        "firstName": "ひなの",
+        "aliases": [
+          "川之石",
+          "川之石高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "川之石"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "川之石高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "佐々木",
+        "firstName": "亜美",
+        "aliases": [
+          "川之石",
+          "川之石高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "川之石"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "川之石高校"
           }
         ]
       }
@@ -7254,9 +8442,62 @@
     "canonical": "文大杉並",
     "aliases": [
       "文大杉並",
+      "文大杉並高校",
       "文化学園大学杉並高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "宮下",
+        "firstName": "こころ",
+        "aliases": [
+          "文大杉並",
+          "文大杉並高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "文大杉並"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "文大杉並"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "文大杉並高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "林田",
+        "firstName": "リコ",
+        "aliases": [
+          "文大杉並",
+          "文大杉並高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "文大杉並"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "文大杉並"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "文大杉並高校"
+          }
+        ]
+      },
       {
         "year": 2026,
         "lastName": "富永",
@@ -7315,7 +8556,8 @@
     "canonical": "とわの森三愛",
     "aliases": [
       "斐川クラブ",
-      "とわの森三愛"
+      "とわの森三愛",
+      "とわの森三愛高校"
     ],
     "reasons": [
       {
@@ -7324,6 +8566,7 @@
         "firstName": "大輝",
         "aliases": [
           "とわの森三愛",
+          "とわの森三愛高校",
           "斐川クラブ"
         ],
         "evidence": [
@@ -7336,6 +8579,11 @@
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
             "team": "斐川クラブ"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "とわの森三愛高校"
           }
         ]
       }
@@ -7419,9 +8667,31 @@
     "aliases": [
       "早稲田実",
       "早稲田実業高等部",
+      "都早稲田実業高校",
       "早稲田実業学校高等部"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "高倉",
+        "firstName": "和毅",
+        "aliases": [
+          "早稲田実",
+          "都早稲田実業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "早稲田実"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "都早稲田実業高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "松村",
@@ -7566,6 +8836,79 @@
       "昇陽高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "上野",
+        "firstName": "小町",
+        "aliases": [
+          "昇陽",
+          "昇陽高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "昇陽"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "昇陽"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "昇陽高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "吉田",
+        "firstName": "澪奈",
+        "aliases": [
+          "昇陽",
+          "昇陽高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "昇陽"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "昇陽"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "昇陽高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "緒方",
+        "firstName": "美有",
+        "aliases": [
+          "昇陽",
+          "昇陽高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "昇陽"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "昇陽高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "上野",
@@ -7839,6 +9182,48 @@
       "明豊高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "伊藤",
+        "firstName": "唯",
+        "aliases": [
+          "明豊",
+          "明豊高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "明豊"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "明豊高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "大塚",
+        "firstName": "瑠依",
+        "aliases": [
+          "明豊",
+          "明豊高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "明豊"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "明豊高校"
+          }
+        ]
+      },
       {
         "year": 2019,
         "lastName": "岩倉",
@@ -8146,6 +9531,220 @@
       "東北高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "今野",
+        "firstName": "愛美",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "佐々木",
+        "firstName": "愛",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "北野",
+        "firstName": "亮介",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "原田",
+        "firstName": "由文",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "小松",
+        "firstName": "芹奈",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "星",
+        "firstName": "光一",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "林",
+        "firstName": "民生",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "矢作",
+        "firstName": "舞彩",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "高橋",
+        "firstName": "羽杏奈",
+        "aliases": [
+          "東北",
+          "東北高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "東北"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "東北高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "北野",
@@ -8855,6 +10454,27 @@
       "松江工業高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "安部",
+        "firstName": "冴太",
+        "aliases": [
+          "松江工",
+          "松江工業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "松江工"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "松江工業高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "中村",
@@ -11305,6 +12925,48 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "冨岡",
+        "firstName": "愛樺",
+        "aliases": [
+          "盛岡誠桜",
+          "盛岡誠桜高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "盛岡誠桜"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "盛岡誠桜高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "晴山",
+        "firstName": "輝星",
+        "aliases": [
+          "盛岡誠桜",
+          "盛岡誠桜高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "盛岡誠桜"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "盛岡誠桜高校"
+          }
+        ]
+      },
+      {
         "year": 2018,
         "lastName": "前角地",
         "firstName": "彩菜",
@@ -11771,6 +13433,36 @@
     ]
   },
   {
+    "canonical": "穴水",
+    "aliases": [
+      "穴水",
+      "穴水高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "奥田",
+        "firstName": "伊織",
+        "aliases": [
+          "穴水",
+          "穴水高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "穴水"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "穴水高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "立命館守山",
     "aliases": [
       "立命館守山",
@@ -11888,6 +13580,57 @@
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
             "team": "筑波大学"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "canonical": "米子松蔭",
+    "aliases": [
+      "米子松蔭",
+      "米子松蔭高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "宮田",
+        "firstName": "夏実",
+        "aliases": [
+          "米子松蔭",
+          "米子松蔭高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "米子松蔭"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "米子松蔭高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "谷村",
+        "firstName": "早彩",
+        "aliases": [
+          "米子松蔭",
+          "米子松蔭高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "米子松蔭"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "米子松蔭高校"
           }
         ]
       }
@@ -12170,9 +13913,31 @@
     "canonical": "脇町",
     "aliases": [
       "脇町",
+      "脇町高校",
       "徳島県立脇町高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "大谷",
+        "firstName": "華南羽",
+        "aliases": [
+          "脇町",
+          "脇町高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "脇町"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "脇町高校"
+          }
+        ]
+      },
       {
         "year": 2025,
         "lastName": "島田",
@@ -12307,6 +14072,27 @@
       "花巻南高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "石山",
+        "firstName": "詩乃",
+        "aliases": [
+          "花巻南",
+          "花巻南高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "花巻南"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "花巻南高校"
+          }
+        ]
+      },
       {
         "year": 2026,
         "lastName": "菅木",
@@ -13104,6 +14890,36 @@
     ]
   },
   {
+    "canonical": "長岡商",
+    "aliases": [
+      "長岡商",
+      "長岡商業高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "吉村",
+        "firstName": "泰成",
+        "aliases": [
+          "長岡商",
+          "長岡商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "長岡商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "長岡商業高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "長崎商",
     "aliases": [
       "長崎商",
@@ -13408,7 +15224,7 @@
     "canonical": "須磨学園",
     "aliases": [
       "須磨学園",
-      "県須磨学園高校"
+      "須磨学園高校"
     ],
     "reasons": [
       {
@@ -13416,8 +15232,8 @@
         "lastName": "木瀬",
         "firstName": "晶絵",
         "aliases": [
-          "県須磨学園高校",
-          "須磨学園"
+          "須磨学園",
+          "須磨学園高校"
         ],
         "evidence": [
           {
@@ -13433,7 +15249,7 @@
           {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
-            "team": "県須磨学園高校"
+            "team": "須磨学園高校"
           }
         ]
       }
@@ -13552,6 +15368,48 @@
       "高岡商業高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "尾山",
+        "firstName": "仁哉",
+        "aliases": [
+          "高岡商",
+          "高岡商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高岡商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高岡商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "新保",
+        "firstName": "璃玖",
+        "aliases": [
+          "高岡商",
+          "高岡商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高岡商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高岡商業高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "谷内",
@@ -14104,6 +15962,27 @@
     ],
     "reasons": [
       {
+        "year": 2017,
+        "lastName": "宮武",
+        "firstName": "里菜",
+        "aliases": [
+          "高瀬",
+          "高瀬高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "高瀬"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "高瀬高校"
+          }
+        ]
+      },
+      {
         "year": 2019,
         "lastName": "十河",
         "firstName": "まゆ",
@@ -14133,6 +16012,27 @@
       "高田高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "仲川",
+        "firstName": "万葉",
+        "aliases": [
+          "高田",
+          "高田高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "高田"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "高田高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "仲川",
@@ -14258,6 +16158,214 @@
       "大和高田市立高田商業高校"
     ],
     "reasons": [
+      {
+        "year": 2017,
+        "lastName": "北本",
+        "firstName": "達己",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "吉田",
+        "firstName": "亮介",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "増田",
+        "firstName": "祐太",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "宮下",
+        "firstName": "菜々未",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "山根",
+        "firstName": "稔平",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "林",
+        "firstName": "湧太郎",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "根本",
+        "firstName": "大地",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "阪本",
+        "firstName": "崚",
+        "aliases": [
+          "高田商",
+          "高田商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "高田商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "高田商業高校"
+          }
+        ]
+      },
       {
         "year": 2018,
         "lastName": "下原",
@@ -14938,6 +17046,36 @@
     ]
   },
   {
+    "canonical": "高知小津",
+    "aliases": [
+      "高知小津",
+      "高知小津高校"
+    ],
+    "reasons": [
+      {
+        "year": 2017,
+        "lastName": "岡田",
+        "firstName": "あさひ",
+        "aliases": [
+          "高知小津",
+          "高知小津高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-girls.json",
+            "team": "高知小津"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-girls.json",
+            "team": "高知小津高校"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "canonical": "鹿児島",
     "aliases": [
       "鹿児島",
@@ -15013,6 +17151,11 @@
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
             "team": "鹿児島商業高校"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
+            "team": "鹿児島商業高校"
           }
         ]
       },
@@ -15033,6 +17176,27 @@
           {
             "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
+            "team": "鹿児島商業高校"
+          }
+        ]
+      },
+      {
+        "year": 2017,
+        "lastName": "竹之内",
+        "firstName": "春樹",
+        "aliases": [
+          "鹿児島商",
+          "鹿児島商業高校"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "鹿児島商"
+          },
+          {
+            "tournamentId": "zennihon-singles",
+            "file": "singles-none-boys.json",
             "team": "鹿児島商業高校"
           }
         ]

@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 15,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 3,
-    "doubles": 12
+    "doubles": 12,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "川之石",
+        "teamId": "kawayukiishi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["井出_ひなの_川之石高校_愛媛県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -43,7 +55,7 @@
   "topPlayers": [
     {
       "id": "井出_ひなの_川之石_愛媛県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "石原_侑佳_川之石_愛媛県",
@@ -51,7 +63,7 @@
     },
     {
       "id": "佐々木_亜美_川之石_愛媛県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "濵田_里帆_川之石_愛媛県",

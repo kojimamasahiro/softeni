@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 6
+    "doubles": 6,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "宇和島東",
+        "teamId": "uwashimahigashi",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["上口_涼平_宇和島東高校_愛媛県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,6 +43,10 @@
   "uniquePlayers": 8,
   "topPlayers": [
     {
+      "id": "上口_涼平_宇和島東_愛媛県",
+      "appearances": 3
+    },
+    {
       "id": "林_健太_宇和島東_愛媛県",
       "appearances": 2
     },
@@ -40,10 +56,6 @@
     },
     {
       "id": "若山_誠_宇和島東_愛媛県",
-      "appearances": 2
-    },
-    {
-      "id": "上口_涼平_宇和島東_愛媛県",
       "appearances": 2
     },
     {

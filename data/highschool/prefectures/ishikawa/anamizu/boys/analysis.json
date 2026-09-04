@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "穴水",
+        "teamId": "anamizu",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2017,
+        "gender": "boys",
+        "playerIds": ["奥田_伊織_穴水高校_石川県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,7 +44,7 @@
   "topPlayers": [
     {
       "id": "奥田_伊織_穴水_石川県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "岸本_吏玖_穴水_石川県",

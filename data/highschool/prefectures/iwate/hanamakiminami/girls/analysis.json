@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 18,
   "byCategory": {
     "team": 2,
     "doubles": 14,
-    "singles": 1
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "hanamakiminami",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "zennihon-singles",
+        "year": 2017,
         "gender": "girls",
-        "playerIds": ["菅木_春香_花巻南_岩手県"]
+        "playerIds": ["石山_詩乃_花巻南高校_岩手県"]
       }
     },
     "doubles": {
@@ -80,6 +80,10 @@
       "appearances": 3
     },
     {
+      "id": "石山_詩乃_花巻南_岩手県",
+      "appearances": 3
+    },
+    {
       "id": "佐久間_千裕_花巻南_岩手県",
       "appearances": 2
     },
@@ -89,10 +93,6 @@
     },
     {
       "id": "熊谷_純花_花巻南_岩手県",
-      "appearances": 2
-    },
-    {
-      "id": "菅原_綾乃_花巻南_岩手県",
       "appearances": 2
     }
   ]
