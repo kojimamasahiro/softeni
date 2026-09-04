@@ -503,7 +503,12 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, 
             info.append({
                 "lastName": last, "firstName": first, "team": team,
                 "prefecture": pref, "playerId": None,
-                "tempId": f"{last}_{first}_{team}",
+                # tempId は `姓_名_学校_都道府県` の4項目。**`tournament_results_common.build()` が
+                # `participants[].id` / `entries[].playerIds` に使う識別子と同じ形**にしてある
+                # （`tournament_results_common.py` の `_participants`）。details 側は tempId を
+                # 見ずにこの形を組み直すので、3項目のままだと tools/tournament3 で人が入力した
+                # 結果を書き出したときだけ識別子の形が変わり、同じ大会の年度間でずれる。
+                "tempId": f"{last}_{first}_{team}_{pref}",
             })
         # 番号は普通は括弧行にあるが、ページによっては1人目の行に印字される
         # （2018年度 女子 p16/p17 の右ブロックは括弧行より11pt上に出る）。
@@ -523,18 +528,38 @@ def extract_block(chars, open_x, close_x, x_lo, side, warnings, page_no, vocab, 
 RECAP_HEADINGS = ("準々決勝", "準決勝", "決勝戦", "３位決定", "3位決定")
 
 
+# 見出しの無い再掲を探す帯（ページ下端からの割合）と、括弧行の上の氏名行まで含めるための余白。
+RECAP_BAND = 0.8
+RECAP_MARGIN = 10.0
+
+
 def recap_cutoff(page):
-    """再掲ブロックの見出しのyを返す（無ければ無限大）。
+    """再掲ブロックの始まりのyを返す（無ければ無限大）。
 
     2018年度は奇数ページの下部に「準々決勝戦」の再掲があり、本体と同じ列に組まれている。
     番号まで振られているので、放っておくとエントリーとして拾われ重複する
     （ページあたり左右2件）。見出しより下を捨てる。
+
+    2016年度は全ページの下部に**見出しの無い**再掲（そのページの勝ち上がりペア）が付く。
+    氏名はページ中央に組まれ本体の氏名グリッドから外れるのでエントリーにはならないが、
+    番号や所属が本体の列に入り込み、直上のエントリーの所属を上書きする
+    （p1 で `原 侑輝` の所属が `47` になった）。**本体の括弧列から外れた括弧**が
+    ページ下部にあることで見分け、その氏名行ぶん上から捨てる。
     """
     best = float("inf")
     for y, cs in make_lines(list(page.chars), tol=2.0):
         text = "".join(c["text"] for c in cs)
         if any(h in text for h in RECAP_HEADINGS):
             best = min(best, y)
+    try:
+        opens = [o for o, _ in detect_paren_columns(list(page.chars))]
+    except RuntimeError:
+        return best
+    for c in page.chars:
+        if (c["text"] in "(（"
+                and center(c) > page.height * RECAP_BAND
+                and all(abs(c["x0"] - o) > 2.0 for o in opens)):
+            best = min(best, center(c) - RECAP_MARGIN)
     return best
 
 

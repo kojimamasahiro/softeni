@@ -358,8 +358,10 @@ def parse_draw_page_loser_only(page, last_round=6, pad=20, drop_last_row=False,
     mid = (band[0] + band[1]) / 2
     # ページ勝者の準決勝・決勝の本数が、ドローの下（最終行より下）の抜け線の脇に印字される。
     # 本ページの試合ではないので落とす。
+    tail = []
     if left or right:
         ybot = max(r[0] for r in left + right)
+        tail = [d for d in scores if ybot + 2 < d["cy"] <= ybot + 12]
         scores = [d for d in scores if d["cy"] <= ybot + 2]
     # ページ最終戦は左半分の勝者の線がページ中央まで来て突き合わさる。その線のyを取っておき、
     # 「余った1つ」の候補をその高さの近くに絞る（内側の列に複数の候補が残るため）。
@@ -401,6 +403,17 @@ def parse_draw_page_loser_only(page, last_round=6, pad=20, drop_last_row=False,
         if side == lose_side:
             sc = [d for d in sc if d is not fin]
         extra = len(sc) - sum(counts)
+        if extra < 0:
+            # 最終行の試合のスコアが、その行より下へずれて印字されることがある
+            # （2016年度 男子p3・女子p8 は4.1pt下）。ページ勝者の「その後」の本数も同じく
+            # 最終行の下に出るため（同ページで7.7pt下）、**下にあるという条件だけでは
+            # 区別できない**。足りないぶんだけ、最終行に近いものから順に戻す。
+            # 総当たりに委ねると「その後」の本数を試合のスコアとして消費する解が選ばれ、
+            # 敗者5本という有り得ない試合ができた（2016年度 男子p3で実際に発生）。
+            near = sorted((d for d in tail if (d["cx"] < mid) == (side == "L")),
+                          key=lambda d: d["cy"])
+            sc = sc + near[:sum(counts) - len(sc)]
+            extra = len(sc) - sum(counts)
         assert extra >= 0, f"{side}側のスコアが足りない ({len(sc)} < {sum(counts)})"
         sols = []
         for combo in itertools.combinations(range(len(sc)), extra):
@@ -444,7 +457,10 @@ def parse_final_page(page):
         lines[round((w["top"] + w["bottom"]) / 2)].append((w["x0"], w["text"]))
     heads = []
     def _norm(t):
-        return t.replace(" ", "").replace("【", "").replace("】", "")
+        # 見出しの書き方は年度で違う。2017-2019年度は `【準々決勝】`、
+        # 2016年度は `男子準々決勝` と性別が前置きされる。
+        t = t.replace(" ", "").replace("\u3000", "").replace("【", "").replace("】", "")
+        return t.removeprefix("男子").removeprefix("女子")
     for cy, items in lines.items():
         if _norm("".join(t for _, t in sorted(items))) in LATE:
             heads.append((cy, _norm("".join(t for _, t in sorted(items)))))

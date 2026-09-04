@@ -22,6 +22,11 @@
             "team": "三重"
           },
           {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
             "team": "三重高校"
@@ -64,6 +69,11 @@
             "team": "三重"
           },
           {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-boys.json",
             "team": "三重高校"
@@ -81,6 +91,11 @@
         "evidence": [
           {
             "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
             "team": "三重"
           },
@@ -190,6 +205,11 @@
             "team": "三重"
           },
           {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-girls.json",
+            "team": "三重"
+          },
+          {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-girls.json",
             "team": "三重高校"
@@ -211,6 +231,11 @@
             "team": "三重"
           },
           {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
             "tournamentId": "zennihon-singles",
             "file": "singles-none-boys.json",
             "team": "三重高校"
@@ -228,6 +253,11 @@
         "evidence": [
           {
             "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "三重"
+          },
+          {
+            "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
             "team": "三重"
           },
@@ -918,6 +948,48 @@
     ],
     "reasons": [
       {
+        "year": 2016,
+        "lastName": "坂本",
+        "firstName": "信治",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
+        "year": 2016,
+        "lastName": "森",
+        "firstName": "亜斗夢",
+        "aliases": [
+          "北海道科学大学高校",
+          "北科大"
+        ],
+        "evidence": [
+          {
+            "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北科大"
+          },
+          {
+            "tournamentId": "zennihon-championship",
+            "file": "doubles-none-boys.json",
+            "team": "北海道科学大学高校"
+          }
+        ]
+      },
+      {
         "year": 2017,
         "lastName": "増田",
         "firstName": "達四郎",
@@ -1299,6 +1371,11 @@
         "evidence": [
           {
             "tournamentId": "highschool-championship",
+            "file": "doubles-none-boys.json",
+            "team": "尽誠学園"
+          },
+          {
+            "tournamentId": "zennihon-championship",
             "file": "doubles-none-boys.json",
             "team": "尽誠学園"
           },
