@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 10,
+  "totalAppearances": 11,
   "byCategory": {
     "team": 1,
-    "doubles": 9
+    "doubles": 9,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "桜の聖母学院",
+        "teamId": "sakuranoseibogakuin",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2016,
+        "gender": "girls",
+        "playerIds": ["高橋_麻綾_桜の聖母学院高校_福島県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -42,12 +54,12 @@
   "uniquePlayers": 14,
   "topPlayers": [
     {
-      "id": "下川_さくら_桜の聖母学院_福島県",
+      "id": "高橋_麻綾_桜の聖母学院_福島県",
       "appearances": 3
     },
     {
-      "id": "高橋_麻綾_桜の聖母学院_福島県",
-      "appearances": 2
+      "id": "下川_さくら_桜の聖母学院_福島県",
+      "appearances": 3
     },
     {
       "id": "伹野_愛_桜の聖母学院_福島県",

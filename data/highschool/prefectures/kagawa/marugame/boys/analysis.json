@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 1,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "丸亀",
+        "teamId": "marugame",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2016,
+        "gender": "boys",
+        "playerIds": ["福井_達輝_丸亀高校_香川県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -32,7 +44,7 @@
   "topPlayers": [
     {
       "id": "福井_達輝_丸亀_香川県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "高田_晃平_丸亀_香川県",
