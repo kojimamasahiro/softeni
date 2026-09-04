@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "栃木女子",
+        "teamId": "tochigijoshi",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["石川_佳澄_栃木女子_栃木県", "山田_桃子_栃木女子_栃木県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "石川_佳澄_栃木女子_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "山田_桃子_栃木女子_栃木県",
+      "appearances": 1
+    }
+  ]
+}

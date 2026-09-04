@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kuji",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["吉田_昂平_久慈_岩手県", "粒来_啓太_久慈_岩手県"]
+        "playerIds": ["久慈_敦士_久慈_岩手県", "梅澤_大樹_久慈_岩手県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "吉田_昂平_久慈_岩手県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "粒来_啓太_久慈_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "久慈_敦士_久慈_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "梅澤_大樹_久慈_岩手県",
       "appearances": 1
     }
   ]

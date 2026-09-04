@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "盛岡女子",
+        "teamId": "moriokajoshi",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["ソ_ヨンヒ_盛岡女子_岩手県", "ナ_ダソム_盛岡女子_岩手県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "晴山_美雪_盛岡女子_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "安保_利里那_盛岡女子_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "ソ_ヨンヒ_盛岡女子_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "ナ_ダソム_盛岡女子_岩手県",
+      "appearances": 1
+    }
+  ]
+}

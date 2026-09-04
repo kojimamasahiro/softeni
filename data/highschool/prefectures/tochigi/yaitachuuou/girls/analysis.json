@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "yaitachuuou",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["磯_美怜_矢板中央_栃木県", "磯飛_彩乃_矢板中央_栃木県"]
+        "playerIds": ["中澤_美穂_矢板中央_栃木県", "磯飛_彩乃_矢板中央_栃木県"]
       }
     },
     "team": {
@@ -28,14 +28,18 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "磯飛_彩乃_矢板中央_栃木県",
+      "appearances": 2
+    },
     {
       "id": "磯_美怜_矢板中央_栃木県",
       "appearances": 1
     },
     {
-      "id": "磯飛_彩乃_矢板中央_栃木県",
+      "id": "中澤_美穂_矢板中央_栃木県",
       "appearances": 1
     }
   ]

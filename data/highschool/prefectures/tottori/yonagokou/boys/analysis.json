@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 5
+    "team": 1,
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -25,11 +26,25 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "米子工",
+        "teamId": "yonagokou",
+        "prefecture": "鳥取県",
+        "prefectureId": "tottori",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 11,
   "topPlayers": [
+    {
+      "id": "下前_佳司_米子工_鳥取県",
+      "appearances": 2
+    },
     {
       "id": "西田_一生_米子工_鳥取県",
       "appearances": 2
@@ -37,10 +52,6 @@
     {
       "id": "竹内_豪_米子工_鳥取県",
       "appearances": 2
-    },
-    {
-      "id": "下前_佳司_米子工_鳥取県",
-      "appearances": 1
     },
     {
       "id": "澤口_史弥_米子工_鳥取県",

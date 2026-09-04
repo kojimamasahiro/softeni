@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "nasuseihou",
         "prefecture": "栃木県",
         "prefectureId": "tochigi",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["福田_成崇_那須清峰_栃木県", "三本木_拓真_那須清峰_栃木県"]
+        "playerIds": ["佐藤_元樹_那須清峰_栃木県", "三本木_拓真_那須清峰_栃木県"]
       }
     },
     "team": {
@@ -28,14 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
+    {
+      "id": "三本木_拓真_那須清峰_栃木県",
+      "appearances": 2
+    },
     {
       "id": "福田_成崇_那須清峰_栃木県",
       "appearances": 1
     },
     {
-      "id": "三本木_拓真_那須清峰_栃木県",
+      "id": "岡野_拓実_那須清峰_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "益子_和也_那須清峰_栃木県",
+      "appearances": 1
+    },
+    {
+      "id": "佐藤_元樹_那須清峰_栃木県",
       "appearances": 1
     }
   ]

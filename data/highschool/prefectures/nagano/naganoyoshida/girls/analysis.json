@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 2
+    "team": 1,
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,20 +16,30 @@
         "teamId": "naganoyoshida",
         "prefecture": "長野県",
         "prefectureId": "nagano",
-        "result": "1回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2023,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["德嵩_桜希_長野吉田_長野県", "秀島_みゆき_長野吉田_長野県"]
+        "playerIds": ["三澤_真愉子_長野吉田_長野県", "堀内_桜_長野吉田_長野県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長野吉田",
+        "teamId": "naganoyoshida",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "德嵩_桜希_長野吉田_長野県",
@@ -37,6 +48,18 @@
     {
       "id": "秀島_みゆき_長野吉田_長野県",
       "appearances": 2
+    },
+    {
+      "id": "横地_莉奈_長野吉田_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "柳澤_栄子_長野吉田_長野県",
+      "appearances": 1
+    },
+    {
+      "id": "三澤_真愉子_長野吉田_長野県",
+      "appearances": 1
     }
   ]
 }

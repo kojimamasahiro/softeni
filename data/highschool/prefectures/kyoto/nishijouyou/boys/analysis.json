@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 31,
+  "totalAppearances": 35,
   "byCategory": {
-    "team": 4,
-    "doubles": 24,
+    "team": 5,
+    "doubles": 27,
     "singles": 3
   },
   "resultsByCategory": {
@@ -54,34 +54,34 @@
         "teamId": "nishijouyou",
         "prefecture": "京都府",
         "prefectureId": "kyoto",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2019,
+        "year": 2012,
         "gender": "boys"
       }
     }
   },
-  "uniquePlayers": 39,
+  "uniquePlayers": 42,
   "topPlayers": [
     {
       "id": "山内_風我_西城陽_京都府",
       "appearances": 6
     },
     {
+      "id": "大黒_暢佑_西城陽_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "中川_直也_西城陽_京都府",
+      "appearances": 2
+    },
+    {
+      "id": "北村_達夢_西城陽_京都府",
+      "appearances": 2
+    },
+    {
       "id": "南村_友喜_西城陽_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "高橋_晃治_西城陽_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "是常_遼_西城陽_京都府",
-      "appearances": 2
-    },
-    {
-      "id": "清見_悠仁_西城陽_京都府",
       "appearances": 2
     }
   ]

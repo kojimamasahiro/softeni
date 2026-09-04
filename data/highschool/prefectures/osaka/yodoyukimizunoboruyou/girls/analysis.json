@@ -1,0 +1,65 @@
+{
+  "totalAppearances": 5,
+  "byCategory": {
+    "team": 1,
+    "doubles": 4
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "淀之水昇陽",
+        "teamId": "yodoyukimizunoboruyou",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "6回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["河浪_佑_淀之水昇陽_大阪府", "泉谷_朋香_淀之水昇陽_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "淀之水昇陽",
+        "teamId": "yodoyukimizunoboruyou",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "ベスト8",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 8,
+  "topPlayers": [
+    {
+      "id": "藤木_陽奈_淀之水昇陽_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "シュレスタ_メガ_淀之水昇陽_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "河浪_佑_淀之水昇陽_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "泉谷_朋香_淀之水昇陽_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "横山_純奈_淀之水昇陽_大阪府",
+      "appearances": 1
+    }
+  ]
+}

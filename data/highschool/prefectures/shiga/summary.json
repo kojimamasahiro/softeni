@@ -77,6 +77,17 @@
     "gender": "boys"
   },
   {
+    "team": "八幡商",
+    "teamId": "hachimanshou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
+  },
+  {
     "team": "八幡商業",
     "teamId": "hachimanshougyou",
     "prefecture": "滋賀県",
@@ -130,6 +141,17 @@
     "tournamentId": "highschool-championship",
     "year": 2023,
     "gender": "girls"
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
   },
   {
     "team": "草津東",
@@ -541,6 +563,30 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["西川_大貴_綾羽_滋賀県", "谷口_譲_綾羽_滋賀県"]
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["服部_洋平_綾羽_滋賀県", "広部_貴翔_綾羽_滋賀県"]
+  },
+  {
+    "team": "綾羽",
+    "teamId": "ayaba",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "boys",
     "playerIds": ["澤井_悠樹_綾羽_滋賀県", "木戸_礼紀_綾羽_滋賀県"]
@@ -760,6 +806,54 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["野口_紗希_八幡商_滋賀県", "高谷_綾女_八幡商_滋賀県"]
+  },
+  {
+    "team": "八幡商",
+    "teamId": "hachimanshou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["西村_奈穂_八幡商_滋賀県", "野口_明里_八幡商_滋賀県"]
+  },
+  {
+    "team": "八幡商",
+    "teamId": "hachimanshou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["安積_絵里_八幡商_滋賀県", "東川_未侑_八幡商_滋賀県"]
+  },
+  {
+    "team": "八幡商",
+    "teamId": "hachimanshou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["武本_優果_八幡商_滋賀県", "植田_あゆみ_八幡商_滋賀県"]
+  },
+  {
+    "team": "八幡商",
+    "teamId": "hachimanshou",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["多端_美那未_八幡商_滋賀県", "弓場_加純_八幡商_滋賀県"]
   },
   {
     "team": "石山",
@@ -1090,6 +1184,42 @@
     "teamId": "kousei",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["吉田_亜依香_甲西_滋賀県", "青木_香央理_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["山中_章文_甲西_滋賀県", "三木_大_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["吉田_将一郎_甲西_滋賀県", "坂本_周平_甲西_滋賀県"]
+  },
+  {
+    "team": "甲西",
+    "teamId": "kousei",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1324,6 +1454,18 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["坪田_茜音_草津東_滋賀県", "大山_美帆_草津東_滋賀県"]
+  },
+  {
+    "team": "草津東",
+    "teamId": "kusatsuhigashi",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["森_明日佳_草津東_滋賀県", "北脇_優美_草津東_滋賀県"]
   },
   {
     "team": "草津東",
@@ -1966,6 +2108,18 @@
     "teamId": "ritsumeikanmoriyama",
     "prefecture": "滋賀県",
     "prefectureId": "shiga",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["樫田_悠平_立命館守山_滋賀県", "木村_清也_立命館守山_滋賀県"]
+  },
+  {
+    "team": "立命館守山",
+    "teamId": "ritsumeikanmoriyama",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2308,6 +2462,18 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["藤野_陽向_高島_滋賀県", "松澤_大和_高島_滋賀県"]
+  },
+  {
+    "team": "高島",
+    "teamId": "takashima",
+    "prefecture": "滋賀県",
+    "prefectureId": "shiga",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["篠原_哲也_高島_滋賀県", "奥村_拓磨_高島_滋賀県"]
   },
   {
     "team": "高島",

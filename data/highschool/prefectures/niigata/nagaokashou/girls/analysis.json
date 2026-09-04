@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 16,
   "byCategory": {
-    "doubles": 14
+    "team": 1,
+    "doubles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -36,7 +37,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長岡商",
+        "teamId": "nagaokashou",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
     }
   },
   "uniquePlayers": 18,
@@ -50,15 +61,15 @@
       "appearances": 3
     },
     {
+      "id": "武石_知佳_長岡商_新潟県",
+      "appearances": 2
+    },
+    {
+      "id": "武石_悠佳_長岡商_新潟県",
+      "appearances": 2
+    },
+    {
       "id": "高井_真緒_長岡商_新潟県",
-      "appearances": 2
-    },
-    {
-      "id": "長谷川_華己_長岡商_新潟県",
-      "appearances": 2
-    },
-    {
-      "id": "高橋_優那_長岡商_新潟県",
       "appearances": 2
     }
   ]

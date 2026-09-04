@@ -62,6 +62,17 @@
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls"
   },
@@ -228,6 +239,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2015,
+    "gender": "boys"
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "boys"
   },
   {
@@ -413,6 +435,18 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["滝口_真由_富士河口湖_山梨県", "河村_佳栄_富士河口湖_山梨県"]
+  },
+  {
+    "team": "日川",
+    "teamId": "hikawa",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["高山_敦至_日川_山梨県", "鈴木_和真_日川_山梨県"]
   },
   {
     "team": "甲斐清和",
@@ -641,6 +675,30 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["一瀬_樹里_甲斐清和_山梨県", "田草川_乃愛_甲斐清和_山梨県"]
+  },
+  {
+    "team": "甲斐清和",
+    "teamId": "kaikiyokazu",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["水野_路加_甲斐清和_山梨県", "望月_実和_甲斐清和_山梨県"]
+  },
+  {
+    "team": "甲斐清和",
+    "teamId": "kaikiyokazu",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["渡辺_結稀_甲斐清和_山梨県", "渡辺_美結_甲斐清和_山梨県"]
   },
   {
     "team": "甲斐清和",
@@ -938,6 +996,30 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["板橋_好紀_甲府南_山梨県", "清水_健介_甲府南_山梨県"]
+  },
+  {
+    "team": "甲府南",
+    "teamId": "koufuminami",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["繪上_翔_甲府南_山梨県", "長田_知士_甲府南_山梨県"]
+  },
+  {
+    "team": "甲府南",
+    "teamId": "koufuminami",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls",
     "playerIds": ["清水_啓音_甲府南_山梨県", "杉本_萌_甲府南_山梨県"]
@@ -1193,6 +1275,54 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["河合_愛奈_甲府商_山梨県", "山木_花_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["佐藤_瑠衣_甲府商_山梨県", "荻野_結衣_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["雨宮_志穂美_甲府商_山梨県", "三浦_実華_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["山田_優莉愛_甲府商_山梨県", "中村_瑞希_甲府商_山梨県"]
+  },
+  {
+    "team": "甲府商",
+    "teamId": "koufushou",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["千野_愛実_甲府商_山梨県", "角田_紗綾_甲府商_山梨県"]
   },
   {
     "team": "甲府商",
@@ -2213,6 +2343,30 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["望月_悠平_笛吹_山梨県", "加藤_祥_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["名取_拓己_笛吹_山梨県", "河西_賢人_笛吹_山梨県"]
+  },
+  {
+    "team": "笛吹",
+    "teamId": "usui",
+    "prefecture": "山梨県",
+    "prefectureId": "yamanashi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["笠井_俊輝_笛吹_山梨県", "小林_令_笛吹_山梨県"]
   },
   {
     "team": "笛吹",

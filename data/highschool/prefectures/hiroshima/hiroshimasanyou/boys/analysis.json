@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hiroshimasanyou",
         "prefecture": "広島県",
         "prefectureId": "hiroshima",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["佐々木_健志_広島山陽_広島県", "坪川_直樹_広島山陽_広島県"]
+        "playerIds": ["佐々木_健志_広島山陽_広島県", "谷本_悠_広島山陽_広島県"]
       }
     },
     "team": {
@@ -28,14 +28,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "佐々木_健志_広島山陽_広島県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "坪川_直樹_広島山陽_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "谷本_悠_広島山陽_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "中畑_聡一朗_広島山陽_広島県",
+      "appearances": 1
+    },
+    {
+      "id": "梶田_浩人_広島山陽_広島県",
       "appearances": 1
     }
   ]

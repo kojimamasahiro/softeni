@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 7
+    "team": 1,
+    "doubles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -25,18 +26,28 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "佼成学園",
+        "teamId": "kouseigakuen",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 14,
+  "uniquePlayers": 16,
   "topPlayers": [
     {
       "id": "峯村_想_佼成学園_東京都",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "大羽_諒祐_佼成学園_東京都",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "釘本_省悟_佼成学園_東京都",
@@ -47,7 +58,7 @@
       "appearances": 1
     },
     {
-      "id": "鈴木_喜温_佼成学園_東京都",
+      "id": "佐藤_颯人_佼成学園_東京都",
       "appearances": 1
     }
   ]

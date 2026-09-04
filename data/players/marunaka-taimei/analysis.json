@@ -1,13 +1,13 @@
 {
-  "totalMatches": 84,
-  "wins": 62,
-  "losses": 22,
-  "totalWinRate": 0.738,
+  "totalMatches": 88,
+  "wins": 65,
+  "losses": 23,
+  "totalWinRate": 0.739,
   "games": {
-    "total": 511,
-    "won": 309,
-    "lost": 202,
-    "gameRate": 0.605
+    "total": 538,
+    "won": 326,
+    "lost": 212,
+    "gameRate": 0.606
   },
   "byPartner": {
     "14": {
@@ -22,6 +22,20 @@
         "won": 81,
         "lost": 52,
         "gameRate": 0.609
+      }
+    },
+    "90": {
+      "matches": {
+        "total": 2,
+        "wins": 2,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 9,
+        "won": 8,
+        "lost": 1,
+        "gameRate": 0.889
       }
     },
     "125": {
@@ -110,32 +124,32 @@
     },
     "singles": {
       "matches": {
-        "total": 25,
-        "wins": 19,
-        "losses": 6,
-        "winRate": 0.76
+        "total": 27,
+        "wins": 20,
+        "losses": 7,
+        "winRate": 0.741
       },
       "games": {
-        "total": 132,
-        "won": 83,
-        "lost": 49,
-        "gameRate": 0.629
+        "total": 150,
+        "won": 92,
+        "lost": 58,
+        "gameRate": 0.613
       }
     }
   },
   "byYear": {
     "2016": {
       "matches": {
-        "total": 5,
-        "wins": 4,
-        "losses": 1,
-        "winRate": 0.8
+        "total": 7,
+        "wins": 5,
+        "losses": 2,
+        "winRate": 0.714
       },
       "games": {
-        "total": 30,
-        "won": 20,
-        "lost": 10,
-        "gameRate": 0.667
+        "total": 48,
+        "won": 29,
+        "lost": 19,
+        "gameRate": 0.604
       }
     },
     "2017": {
@@ -178,6 +192,20 @@
         "won": 28,
         "lost": 15,
         "gameRate": 0.651
+      }
+    },
+    "2021": {
+      "matches": {
+        "total": 2,
+        "wins": 2,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 9,
+        "won": 8,
+        "lost": 1,
+        "gameRate": 0.889
       }
     },
     "2022": {

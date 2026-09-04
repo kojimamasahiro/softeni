@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "九産大九産",
+        "teamId": "kyuusandaikyuusan",
+        "prefecture": "福岡県",
+        "prefectureId": "fukuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["井崎_勇次_九産大九産_福岡県", "土井_宏章_九産大九産_福岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "井崎_勇次_九産大九産_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "土井_宏章_九産大九産_福岡県",
+      "appearances": 1
+    }
+  ]
+}

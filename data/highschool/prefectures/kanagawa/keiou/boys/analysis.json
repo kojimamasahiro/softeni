@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "慶応",
+        "teamId": "keiou",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["青山_歩希_慶応_神奈川県", "松野_翔_慶応_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "青山_歩希_慶応_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "松野_翔_慶応_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1
+    "team": 1,
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -25,17 +26,31 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "延岡工",
+        "teamId": "nobeokakou",
+        "prefecture": "宮崎県",
+        "prefectureId": "miyazaki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "上杉_啓一朗_延岡工_宮崎県",
+      "appearances": 2
+    },
     {
       "id": "上野_晃平_延岡工_宮崎県",
       "appearances": 1
     },
     {
-      "id": "上杉_啓一朗_延岡工_宮崎県",
+      "id": "岩切_尚平_延岡工_宮崎県",
       "appearances": 1
     }
   ]

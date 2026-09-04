@@ -293,6 +293,17 @@
     "result": "ベスト4",
     "category": "team",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト4",
+    "category": "team",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "boys"
   },
@@ -407,6 +418,17 @@
     "gender": "boys"
   },
   {
+    "team": "淀之水昇陽",
+    "teamId": "yodoyukimizunoboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "ベスト8",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
+  },
+  {
     "team": "羽衣学園",
     "teamId": "hagoromogakuen",
     "prefecture": "大阪府",
@@ -429,6 +451,18 @@
     "year": 2014,
     "gender": "girls",
     "playerIds": ["福田_千紗_汎愛_大阪府", "阿部_成美_汎愛_大阪府"]
+  },
+  {
+    "team": "汎愛",
+    "teamId": "hanai",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["藤岡_里帆_汎愛_大阪府", "越智_鼓_汎愛_大阪府"]
   },
   {
     "team": "汎愛",
@@ -522,6 +556,18 @@
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["大月_亜衣_好文学園女子_大阪府", "川脇_明日香_好文学園女子_大阪府"]
+  },
+  {
+    "team": "好文学園女子",
+    "teamId": "koubungakuenjoshi",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "girls",
     "playerIds": ["佐田_しずく_好文学園女子_大阪府", "松本_佳恋_好文学園女子_大阪府"]
@@ -585,6 +631,18 @@
     "year": 2018,
     "gender": "boys",
     "playerIds": ["林_竜史_明星_大阪府", "難波_龍之_明星_大阪府"]
+  },
+  {
+    "team": "浪速",
+    "teamId": "naniwa",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["杉原_ゆうな_浪速_大阪府", "谷村_尚子_浪速_大阪府"]
   },
   {
     "team": "昇陽",
@@ -2403,6 +2461,18 @@
     "teamId": "shitennoutera",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["中平_樹里_四天王寺_大阪府", "川端_理沙_四天王寺_大阪府"]
+  },
+  {
+    "team": "四天王寺",
+    "teamId": "shitennoutera",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2529,6 +2599,18 @@
     "year": 2013,
     "gender": "girls",
     "playerIds": ["木原_杏樹_吹田_大阪府", "亀田_美咲子_吹田_大阪府"]
+  },
+  {
+    "team": "富田林",
+    "teamId": "tondabayashi",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["堀切_俊佑_富田林_大阪府", "小林_広大_富田林_大阪府"]
   },
   {
     "team": "東海大仰星",
@@ -3375,6 +3457,90 @@
     "teamId": "uenomiya",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["田中_翔_上宮_大阪府", "西村_拓未_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["法山_翔_上宮_大阪府", "和田_瑠史_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["樫本_泰直_上宮_大阪府", "掃部_裕介_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["加藤_峻大_上宮_大阪府", "爲田_哲平_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["井原_陽平_上宮_大阪府", "藤木_祐一郎_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["吉川_塁_上宮_大阪府", "山口_凱_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["高谷_弥_上宮_大阪府", "浅井_怜佑_上宮_大阪府"]
+  },
+  {
+    "team": "上宮",
+    "teamId": "uenomiya",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -3981,6 +4147,54 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["荻谷_侑磨_高田商_奈良県", "福田_喜大_上宮_大阪府"]
+  },
+  {
+    "team": "淀之水昇陽",
+    "teamId": "yodoyukimizunoboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["藤木_陽奈_淀之水昇陽_大阪府", "シュレスタ_メガ_淀之水昇陽_大阪府"]
+  },
+  {
+    "team": "淀之水昇陽",
+    "teamId": "yodoyukimizunoboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "6回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["河浪_佑_淀之水昇陽_大阪府", "泉谷_朋香_淀之水昇陽_大阪府"]
+  },
+  {
+    "team": "淀之水昇陽",
+    "teamId": "yodoyukimizunoboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["横山_純奈_淀之水昇陽_大阪府", "竹田_茜_淀之水昇陽_大阪府"]
+  },
+  {
+    "team": "淀之水昇陽",
+    "teamId": "yodoyukimizunoboruyou",
+    "prefecture": "大阪府",
+    "prefectureId": "osaka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["内藤_紗穂_淀之水昇陽_大阪府", "吉田_夏月_淀之水昇陽_大阪府"]
   },
   {
     "team": "好文学園女子",

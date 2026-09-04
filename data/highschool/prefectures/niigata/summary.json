@@ -103,6 +103,17 @@
     "teamId": "hokuetsu",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "ベスト8",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -279,11 +290,33 @@
     "teamId": "maki",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
+  },
+  {
+    "team": "巻",
+    "teamId": "maki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
     "gender": "boys"
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
   },
   {
     "team": "長岡商",
@@ -316,6 +349,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "boys"
+  },
+  {
+    "team": "小千谷",
+    "teamId": "ojiya",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "boys"
   },
   {
@@ -824,6 +868,66 @@
     "teamId": "hokuetsu",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["石井_菜絵_北越_新潟県", "依田_琴弓_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["田中_佑美_北越_新潟県", "矢川_友加奈_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["田辺_恵理_北越_新潟県", "岡村_葵_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["山本_千紘_北越_新潟県", "小林_すみれ_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["丸山_俊太_北越_新潟県", "川村_信人_北越_新潟県"]
+  },
+  {
+    "team": "北越",
+    "teamId": "hokuetsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1276,6 +1380,30 @@
     "playerIds": ["高松_直_北越_新潟県", "新部_日向翔_北越_新潟県"]
   },
   {
+    "team": "上越総合技術",
+    "teamId": "jouetsusougougijutsu",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["小池_凌磨_上越総合技術_新潟県", "丸山_晋弥_上越総合技術_新潟県"]
+  },
+  {
+    "team": "柏崎",
+    "teamId": "kashiwazaki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["近藤_翔太_柏崎_新潟県", "菱谷_広大_柏崎_新潟県"]
+  },
+  {
     "team": "柏崎",
     "teamId": "kashiwazaki",
     "prefecture": "新潟県",
@@ -1418,6 +1546,30 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["町澤_緯宙_巻_新潟県", "山本_虎太郎_巻_新潟県"]
+  },
+  {
+    "team": "巻",
+    "teamId": "maki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["田畑_芽吹_巻_新潟県", "袖山_悠生_巻_新潟県"]
+  },
+  {
+    "team": "巻",
+    "teamId": "maki",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["西澤_諒_巻_新潟県", "鈴木_健人_巻_新潟県"]
   },
   {
     "team": "巻",
@@ -1724,6 +1876,30 @@
     "teamId": "murakami",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["渡辺_美穂_村上_新潟県", "松浦_映理加_村上_新潟県"]
+  },
+  {
+    "team": "村上",
+    "teamId": "murakami",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["風間_純_村上_新潟県", "伊藤_誠也_村上_新潟県"]
+  },
+  {
+    "team": "村上",
+    "teamId": "murakami",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1862,6 +2038,18 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["高井_真緒_長岡商_新潟県", "長谷川_華己_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["武石_悠佳_長岡商_新潟県", "武石_知佳_長岡商_新潟県"]
   },
   {
     "team": "長岡商",
@@ -2303,6 +2491,18 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["今井_直樹_新潟西_新潟県", "阿部_貴輝_新潟西_新潟県"]
+  },
+  {
+    "team": "新潟西",
+    "teamId": "niigatanishi",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2026,
     "gender": "girls",
     "playerIds": ["外山_結菜_新潟西_新潟県", "川﨑_結乃_新潟西_新潟県"]
@@ -2464,6 +2664,18 @@
     "playerIds": ["皆川_明希_新潟商_新潟県", "金子_綾桂_新潟商_新潟県"]
   },
   {
+    "team": "小千谷",
+    "teamId": "ojiya",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["宮崎_友樹_小千谷_新潟県", "志田_智_小千谷_新潟県"]
+  },
+  {
     "team": "佐渡",
     "teamId": "sado",
     "prefecture": "新潟県",
@@ -2588,6 +2800,18 @@
     "teamId": "shibatachuuou",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["田村_希武_新発田中央_新潟県", "佐久間_優志_新発田中央_新潟県"]
+  },
+  {
+    "team": "新発田中央",
+    "teamId": "shibatachuuou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2702,6 +2926,18 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["三浦_健寛_燕中等_新潟県", "廣川_潤_燕中等_新潟県"]
+  },
+  {
+    "team": "燕中等",
+    "teamId": "tsubamechuutou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["根岸_悠_燕中等_新潟県", "笠原_実季_燕中等_新潟県"]
   },
   {
     "team": "燕中等",

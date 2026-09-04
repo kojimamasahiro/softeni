@@ -1,6 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
+    "team": 1,
     "doubles": 4
   },
   "resultsByCategory": {
@@ -25,7 +26,17 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "拓大紅陵",
+        "teamId": "tadkudaikouryou",
+        "prefecture": "千葉県",
+        "prefectureId": "chiba",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
   "uniquePlayers": 8,

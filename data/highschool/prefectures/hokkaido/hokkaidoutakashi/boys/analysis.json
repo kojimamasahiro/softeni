@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 17,
+  "totalAppearances": 24,
   "byCategory": {
-    "team": 3,
-    "doubles": 14
+    "team": 4,
+    "doubles": 20
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "hokkaidoutakashi",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
-        "result": "5回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["河野_斗夢_北海道尚志_北海道", "小柄_和輝_北海道尚志_北海道"]
+        "playerIds": ["永野_慎悟_北海道尚志_北海道", "榊原_耕平_北海道尚志_北海道"]
       }
     },
     "team": {
@@ -39,10 +39,14 @@
       }
     }
   },
-  "uniquePlayers": 22,
+  "uniquePlayers": 30,
   "topPlayers": [
     {
       "id": "河野_斗夢_北海道尚志_北海道",
+      "appearances": 2
+    },
+    {
+      "id": "原_芳生_北海道尚志_北海道",
       "appearances": 2
     },
     {
@@ -54,11 +58,7 @@
       "appearances": 2
     },
     {
-      "id": "小柄_和輝_北海道尚志_北海道",
-      "appearances": 2
-    },
-    {
-      "id": "後藤_佑斗_北海道尚志_北海道",
+      "id": "服部_健也_北海道尚志_北海道",
       "appearances": 2
     }
   ]

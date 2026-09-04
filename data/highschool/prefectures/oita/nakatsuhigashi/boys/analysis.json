@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 14,
+  "totalAppearances": 17,
   "byCategory": {
-    "doubles": 14
+    "team": 1,
+    "doubles": 16
   },
   "resultsByCategory": {
     "singles": {
@@ -26,21 +27,35 @@
         "teamId": "nakatsuhigashi",
         "prefecture": "大分県",
         "prefectureId": "oita",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["江藤_遼也_中津東_大分県", "永瀬_駿音_中津東_大分県"]
+        "playerIds": ["広光_謙太_中津東_大分県", "永松_睦貴_中津東_大分県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "中津東",
+        "teamId": "nakatsuhigashi",
+        "prefecture": "大分県",
+        "prefectureId": "oita",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 27,
   "topPlayers": [
+    {
+      "id": "永松_睦貴_中津東_大分県",
+      "appearances": 2
+    },
     {
       "id": "熊谷_香輝_中津東_大分県",
       "appearances": 2
@@ -56,10 +71,6 @@
     {
       "id": "中村_樹羅_中津東_大分県",
       "appearances": 2
-    },
-    {
-      "id": "湊_孝一_中津東_大分県",
-      "appearances": 1
     }
   ]
 }

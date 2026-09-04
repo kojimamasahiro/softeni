@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hanai",
         "prefecture": "大阪府",
         "prefectureId": "osaka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["福田_千紗_汎愛_大阪府", "阿部_成美_汎愛_大阪府"]
+        "playerIds": ["藤岡_里帆_汎愛_大阪府", "越智_鼓_汎愛_大阪府"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "福田_千紗_汎愛_大阪府",
@@ -36,6 +36,14 @@
     },
     {
       "id": "阿部_成美_汎愛_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "藤岡_里帆_汎愛_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "越智_鼓_汎愛_大阪府",
       "appearances": 1
     }
   ]

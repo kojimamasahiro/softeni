@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "富士",
+        "teamId": "fuji",
+        "prefecture": "静岡県",
+        "prefectureId": "shizuoka",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["窪田_翔_富士_静岡県", "望月_海_富士_静岡県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "窪田_翔_富士_静岡県",
+      "appearances": 1
+    },
+    {
+      "id": "望月_海_富士_静岡県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "浪速",
+        "teamId": "naniwa",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["杉原_ゆうな_浪速_大阪府", "谷村_尚子_浪速_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "杉原_ゆうな_浪速_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "谷村_尚子_浪速_大阪府",
+      "appearances": 1
+    }
+  ]
+}

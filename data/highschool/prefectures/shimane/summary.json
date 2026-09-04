@@ -59,6 +59,17 @@
     "teamId": "izumohokuryou",
     "prefecture": "島根県",
     "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
     "result": "1回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -316,6 +327,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2014,
+    "gender": "girls"
+  },
+  {
+    "team": "松江商",
+    "teamId": "matsueshou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "girls"
   },
   {
@@ -841,6 +863,30 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["藤田_大輝_出雲北陵_島根県", "三谷_大地_出雲北陵_島根県"]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["河上_公貴_出雲北陵_島根県", "嘉藤_啓太_出雲北陵_島根県"]
+  },
+  {
+    "team": "出雲北陵",
+    "teamId": "izumohokuryou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2017,
     "gender": "boys",
     "playerIds": ["今岡_純也_出雲北陵_島根県", "日野坪_雄大_出雲北陵_島根県"]
@@ -1096,6 +1142,18 @@
     "year": 2014,
     "gender": "girls",
     "playerIds": ["飯山_希望_出雲商_島根県", "河原_香穂_出雲商_島根県"]
+  },
+  {
+    "team": "出雲商",
+    "teamId": "izumoshou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["藤原_美咲_出雲商_島根県", "下江_美希_出雲商_島根県"]
   },
   {
     "team": "益田翔陽",
@@ -1444,6 +1502,54 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["河上_海貴_松江工_島根県", "浜田_直明_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["鳥谷_久_松江工_島根県", "加藤_英雄_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["松本_慎太朗_松江工_島根県", "藤井_康平_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["中尾_琢哉_松江工_島根県", "繁浪_泰斗_松江工_島根県"]
+  },
+  {
+    "team": "松江工",
+    "teamId": "matsuekou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["廣江_健太_松江工_島根県", "野外_雅治_松江工_島根県"]
   },
   {
     "team": "松江工",
@@ -1906,6 +2012,18 @@
     "teamId": "matsueminami",
     "prefecture": "島根県",
     "prefectureId": "shimane",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["石本_千夏_松江南_島根県", "舩木_友理香_松江南_島根県"]
+  },
+  {
+    "team": "松江南",
+    "teamId": "matsueminami",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2110,6 +2228,18 @@
     "teamId": "matsuenishi",
     "prefecture": "島根県",
     "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["大庭_巴枝_松江西_島根県", "柳楽_りな_松江西_島根県"]
+  },
+  {
+    "team": "松江西",
+    "teamId": "matsuenishi",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2236,6 +2366,42 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["多々納_瑞季_松江商_島根県", "花房_真由_松江商_島根県"]
+  },
+  {
+    "team": "松江商",
+    "teamId": "matsueshou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["坪倉_菜々_松江商_島根県", "白鹿_さくら_松江商_島根県"]
+  },
+  {
+    "team": "松江商",
+    "teamId": "matsueshou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["花房_香穂_松江商_島根県", "原_莉央_松江商_島根県"]
+  },
+  {
+    "team": "松江商",
+    "teamId": "matsueshou",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["渡辺_結衣_松江商_島根県", "井上_由紀子_松江商_島根県"]
   },
   {
     "team": "松江商",

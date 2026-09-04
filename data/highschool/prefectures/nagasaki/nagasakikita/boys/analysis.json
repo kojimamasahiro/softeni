@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "team": 1
+    "team": 1,
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -10,7 +11,18 @@
     },
     "doubles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "長崎北",
+        "teamId": "nagasakikita",
+        "prefecture": "長崎県",
+        "prefectureId": "nagasaki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["増崎_公史_長崎北_長崎県", "諫見_優育_長崎北_長崎県"]
+      }
     },
     "team": {
       "recentlyResult": null,
@@ -27,6 +39,15 @@
       }
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "増崎_公史_長崎北_長崎県",
+      "appearances": 1
+    },
+    {
+      "id": "諫見_優育_長崎北_長崎県",
+      "appearances": 1
+    }
+  ]
 }

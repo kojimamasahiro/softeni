@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "富田林",
+        "teamId": "tondabayashi",
+        "prefecture": "大阪府",
+        "prefectureId": "osaka",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["堀切_俊佑_富田林_大阪府", "小林_広大_富田林_大阪府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "堀切_俊佑_富田林_大阪府",
+      "appearances": 1
+    },
+    {
+      "id": "小林_広大_富田林_大阪府",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "能代商",
+        "teamId": "noshiroshou",
+        "prefecture": "秋田県",
+        "prefectureId": "akita",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["高坂_一慧_能代商_秋田県", "朝香_賢介_能代商_秋田県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "高坂_一慧_能代商_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "朝香_賢介_能代商_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "工藤_陽平_能代商_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "田村_真也_能代商_秋田県",
+      "appearances": 1
+    }
+  ]
+}

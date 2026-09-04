@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "白河",
+        "teamId": "shirakawa",
+        "prefecture": "福島県",
+        "prefectureId": "fukushima",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["矢田部_瑛_白河_福島県", "藤田_悠_白河_福島県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "矢田部_瑛_白河_福島県",
+      "appearances": 1
+    },
+    {
+      "id": "藤田_悠_白河_福島県",
+      "appearances": 1
+    }
+  ]
+}

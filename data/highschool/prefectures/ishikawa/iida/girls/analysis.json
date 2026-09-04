@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -36,18 +37,28 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "飯田",
+        "teamId": "iida",
+        "prefecture": "石川県",
+        "prefectureId": "ishikawa",
+        "result": "2回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "井田_真季_飯田_石川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "橋本_遥_飯田_石川県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "中社_惇美_飯田_石川県",

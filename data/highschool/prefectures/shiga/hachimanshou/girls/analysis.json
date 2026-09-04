@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 9,
   "byCategory": {
-    "doubles": 4
+    "team": 1,
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -25,10 +26,20 @@
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "八幡商",
+        "teamId": "hachimanshou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
     }
   },
-  "uniquePlayers": 5,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "高谷_綾女_八幡商_滋賀県",
@@ -40,11 +51,11 @@
     },
     {
       "id": "武本_優果_八幡商_滋賀県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "植田_あゆみ_八幡商_滋賀県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "田中_愛理_八幡商_滋賀県",

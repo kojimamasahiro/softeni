@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kokuraminami",
         "prefecture": "福岡県",
         "prefectureId": "fukuoka",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2015,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["得丸_楓_小倉南_福岡県", "入門_あかね_小倉南_福岡県"]
+        "playerIds": ["辻_優季恵_小倉南_福岡県", "迫内_彩菜_小倉南_福岡県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "得丸_楓_小倉南_福岡県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "入門_あかね_小倉南_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "辻_優季恵_小倉南_福岡県",
+      "appearances": 1
+    },
+    {
+      "id": "迫内_彩菜_小倉南_福岡県",
       "appearances": 1
     }
   ]

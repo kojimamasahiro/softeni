@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "琴丘",
+        "teamId": "kotooka",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["尾上_祐希_琴丘_兵庫県", "駒田_夏美_琴丘_兵庫県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "尾上_祐希_琴丘_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "駒田_夏美_琴丘_兵庫県",
+      "appearances": 1
+    }
+  ]
+}

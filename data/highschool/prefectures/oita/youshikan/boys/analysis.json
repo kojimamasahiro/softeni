@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 2,
-    "doubles": 5
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -39,10 +39,14 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 9,
   "topPlayers": [
     {
       "id": "土谷_祐太_楊志館_大分県",
+      "appearances": 2
+    },
+    {
+      "id": "工藤_洸弥_楊志館_大分県",
       "appearances": 2
     },
     {
@@ -55,10 +59,6 @@
     },
     {
       "id": "川野_翔大_楊志館_大分県",
-      "appearances": 1
-    },
-    {
-      "id": "工藤_洸弥_楊志館_大分県",
       "appearances": 1
     }
   ]

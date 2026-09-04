@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松山工",
+        "teamId": "matsuyamakou",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["小村_啓輔_松山工_愛媛県", "濱田_雅人_松山工_愛媛県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "小村_啓輔_松山工_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "濱田_雅人_松山工_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

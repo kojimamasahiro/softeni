@@ -14,9 +14,14 @@ tools/roundrobin へ貼り付けてスコア入力を進められる。
       {"id": entryNo, "name": "姓・姓（学校名）",
        "information": [{"lastName","firstName","team","prefecture","playerId":null,"tempId":"姓_名_学校"} x2],
        "category": "doubles"}
-    tempId は 姓_名_学校 の3項目（都道府県は含めない）。
+    tempId は 姓_名_学校_都道府県 の4項目（`--tempid-with-prefecture`）。
+    `data/tournaments/details/**` の participants[].id と揃える必要があるため、
+    **新規に作るときは必ず4項目にする**（3項目のファイルが tools/ に残っているのは経緯上の負債）。
   - 団体戦（category: "team"）:
       {"id": entryNo, "name": "学校名（都道府県）", "team": ..., "prefecture": ..., "category": "team"}
+  - 予選リーグ（総当たり）の大会は `--by-group` で `tools/roundrobin` の
+    `initialPlayersByGroup` 形式（グループ名 → エントリー配列のオブジェクト）にする。
+    グループは details の `results[].roundrobin.group` から採る。
 
 使い方:
   python3 scripts/pdf/details_to_initial_players.py \
@@ -81,6 +86,11 @@ def main():
     ap.add_argument("details_json", help="data/tournaments/details/**/*.json")
     ap.add_argument("--out", required=True)
     ap.add_argument(
+        "--by-group",
+        action="store_true",
+        help="results[].roundrobin.group でグループ分けした initialPlayersByGroup 形式で出す",
+    )
+    ap.add_argument(
         "--tempid-with-prefecture",
         action="store_true",
         help="tempIdを姓_名_学校_都道府県の4項目にする（既定は姓_名_学校の3項目）",
@@ -93,11 +103,31 @@ def main():
     is_team = all(p.get("lastName") is None for p in data["participants"]) if data["participants"] else False
     players = build_team(data) if is_team else build_doubles(data, args.tempid_with_prefecture)
 
+    if args.by_group:
+        group_of = {}
+        for r in data.get("results", []):
+            rr = r.get("roundrobin") or {}
+            if rr.get("group") is not None:
+                group_of[r["entryNo"]] = str(rr["group"])
+        missing = [p["id"] for p in players if p["id"] not in group_of]
+        if missing:
+            raise SystemExit(f"results[].roundrobin.group が無いエントリー: {missing}")
+        out = {}
+        for p in players:
+            out.setdefault(group_of[p["id"]], []).append(p)
+        # グループ名は数字なら数値順、そうでなければ辞書順
+        payload = dict(sorted(out.items(),
+                              key=lambda kv: (int(kv[0]) if kv[0].isdigit() else 10**9, kv[0])))
+        summary = f"{len(payload)} groups / {len(players)} entries"
+    else:
+        payload = players
+        summary = f"{len(players)} entries"
+
     with open(args.out, "w", encoding="utf-8") as f:
-        json.dump(players, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2)
         f.write("\n")
 
-    print(f"wrote {args.out}  {len(players)} entries ({'team' if is_team else 'doubles'})")
+    print(f"wrote {args.out}  {summary} ({'team' if is_team else 'doubles'})")
 
 
 if __name__ == "__main__":

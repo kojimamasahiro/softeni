@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "team": 1,
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小千谷",
+        "teamId": "ojiya",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["宮崎_友樹_小千谷_新潟県", "志田_智_小千谷_新潟県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "小千谷",
+        "teamId": "ojiya",
+        "prefecture": "新潟県",
+        "prefectureId": "niigata",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "宮崎_友樹_小千谷_新潟県",
+      "appearances": 1
+    },
+    {
+      "id": "志田_智_小千谷_新潟県",
+      "appearances": 1
+    }
+  ]
+}

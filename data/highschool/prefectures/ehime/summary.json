@@ -99,6 +99,17 @@
     "gender": "girls"
   },
   {
+    "team": "松山北",
+    "teamId": "matsuyamakita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
+  },
+  {
     "team": "新田",
     "teamId": "nitta",
     "prefecture": "愛媛県",
@@ -273,6 +284,17 @@
     "tournamentId": "highschool-championship",
     "year": 2015,
     "gender": "boys"
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls"
   },
   {
     "team": "済美",
@@ -550,6 +572,18 @@
     "playerIds": ["福宮_ほのか_聖カタリナ_愛媛県", "桃井_里菜_聖カタリナ_愛媛県"]
   },
   {
+    "team": "聖カタリナ女",
+    "teamId": "hijirikatarinaonna",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["西山_仁美_聖カタリナ女_愛媛県", "浅野_陽子_聖カタリナ女_愛媛県"]
+  },
+  {
     "team": "今治東中学校",
     "teamId": "imabarihigashinakagakkou",
     "prefecture": "愛媛県",
@@ -728,6 +762,30 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["正岡_公熙_今治北_愛媛県", "井出_慎之佑_今治北_愛媛県"]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["木村_若葉_今治北_愛媛県", "河野_叶未_今治北_愛媛県"]
+  },
+  {
+    "team": "今治北",
+    "teamId": "imabarikita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["曽我_真衣_今治北_愛媛県", "木村_ひかり_今治北_愛媛県"]
   },
   {
     "team": "今治北",
@@ -1058,6 +1116,18 @@
     "teamId": "kawayukiishi",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["宇都宮_歩_川之石_愛媛県", "井上_笑吏奈_川之石_愛媛県"]
+  },
+  {
+    "team": "川之石",
+    "teamId": "kawayukiishi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1160,6 +1230,42 @@
     "year": 2013,
     "gender": "boys",
     "playerIds": ["関谷_勇人_松山東_愛媛県", "堀田_隼矢_松山東_愛媛県"]
+  },
+  {
+    "team": "松山東",
+    "teamId": "matsuyamahigashi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["河野_陽_松山東_愛媛県", "堀内_崇史_松山東_愛媛県"]
+  },
+  {
+    "team": "松山北",
+    "teamId": "matsuyamakita",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["是澤_祐輝_松山北_愛媛県", "河野_宗一郎_松山北_愛媛県"]
+  },
+  {
+    "team": "松山工",
+    "teamId": "matsuyamakou",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["小村_啓輔_松山工_愛媛県", "濱田_雅人_松山工_愛媛県"]
   },
   {
     "team": "新居浜東",
@@ -1292,6 +1398,18 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["白川_航大_新田_愛媛県", "西川_政希_新田_愛媛県"]
+  },
+  {
+    "team": "新田",
+    "teamId": "nitta",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["芝田_尚季_新田_愛媛県", "横山_文吾_新田_愛媛県"]
   },
   {
     "team": "新田",
@@ -1958,6 +2076,30 @@
     "teamId": "saibi",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["庄司_未来_済美_愛媛県", "村上_紗莉奈_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["白方_奈帆子_済美_愛媛県", "白石_華奈子_済美_愛媛県"]
+  },
+  {
+    "team": "済美",
+    "teamId": "saibi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2510,6 +2652,18 @@
     "teamId": "saijou",
     "prefecture": "愛媛県",
     "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["戸田_拓希_西条_愛媛県", "山下_隼人_西条_愛媛県"]
+  },
+  {
+    "team": "西条",
+    "teamId": "saijou",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2576,6 +2730,18 @@
     "year": 2015,
     "gender": "boys",
     "playerIds": ["上口_雅史_宇和島東_愛媛県", "若山_誠_宇和島東_愛媛県"]
+  },
+  {
+    "team": "宇和島東",
+    "teamId": "uwashimahigashi",
+    "prefecture": "愛媛県",
+    "prefectureId": "ehime",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["口羽_雄吾_宇和島東_愛媛県", "宮本_竜輝_宇和島東_愛媛県"]
   },
   {
     "team": "宇和島東",

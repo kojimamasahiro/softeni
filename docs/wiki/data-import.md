@@ -388,6 +388,12 @@ Deprecated:
     種目ページの `getStaticPaths` は details の走査のみ）ので欠けるのは会場・日程・年度labelの
     表示だけだが、`TournamentInformationEntry` の `startDate`/`endDate` は必須（`string`）
     なので、**結果PDFに日程が書かれていない年度は推測で埋めず未了として残す**。
+    <br>ただし JSTA 主催・共催の大会なら、**年度別結果ページ
+    （`https://www.jsta.or.jp/result/result<西暦>`）に「回・開催地・日程・結果PDFのファイル名」が
+    一覧で載っている**ので、まずそこを当たる。手元のPDFのファイル名がそのまま載っているため、
+    日程・開催地だけでなく**年と回の同定にも使える**（ユーザーの申告した年が
+    実際と1年ずれていた例: [2026-09-04-zennihon-mixed-2021-results-from-pdf.md](../raw/2026-09-04-zennihon-mixed-2021-results-from-pdf.md)）。
+    PDFの内部メタデータ（`Title` / `CreationDate`）も年の同定の一次資料になる。
     <br>（2026-09-03 訂正: 以前ここに「information に年度が無いと公開ページに出ない」と
     書いてあったが実装はそうなっていない。→
     [2026-09-03-zenchu-2018-2019-results-from-pdf.md](../raw/2026-09-03-zenchu-2018-2019-results-from-pdf.md)）
@@ -460,6 +466,36 @@ Deprecated:
   （準々決勝以降に (3,0) が出た例はゼロ）。`team_win_score()` はこの規則を当てている。
   **Assumption**（→ [Assumption](#assumption)）。
   - 実施記録: [2026-09-03-zenchu-2018-2019-results-from-pdf.md](../raw/2026-09-03-zenchu-2018-2019-results-from-pdf.md)
+- `scripts/pdf/zennihon_mixed_results.py`
+  全日本ミックスダブルス選手権（`zennihon-mixed`）の**予選リーグ（総当たり）ページ**から
+  `matches` / `results` / `participants` / `entries` を作る。
+  2021年度（第2回, 一般, p1-8）で検証済み。
+  - `python3 scripts/pdf/zennihon_mixed_results.py <pdf> --pages 1-8 --knockout-page 9 --out <details.json>`
+  - **星取表はドロー表パーサの対象外。** 「行＝エントリー、列＝対戦相手」の Excel 表なので、
+    `zennihon_championship_results.py` のような幾何の追跡も
+    `tournament_results_common.py` の `build()`（ノックアウト専用）も要らない。
+    行と列を復元して丸数字／裸の数字／`R` を読むだけで済む。
+  - **落とし穴: 勝率・差・順位の x はブロックの人数でずれる。** 3人組と4人組で列幅の
+    割り付けが変わり、4人組では星取セルが右へ伸び、集計列が約30pt ずれる。
+    x を固定値で持つと**4人組のブロックだけ黙って0件になる**。
+    ヘッダ行の `勝率` と `差` の実座標からブロックごとにレンジを引き直すこと。
+  - ヘッダ行の `所 属` だけが別行に落ちるブロックがあるので、
+    **ヘッダの検出は `勝率` の有無だけ**で行う。全角数字（`３` `０`）も混じる（NFKCで吸収）。
+  - **検算は決勝トーナメントページの「Ｎブロック 1位」欄と突き合わせる**（`--knockout-page`）。
+    予選リーグ側とは完全に独立な経路で、順位だけでなく
+    **「どの選手2人がどのエントリーか」という行の対応付け**まで検証できる
+    （上下の選手行が1行ずれると必ず落ちる）。予選リーグ＋決勝Tの大会に広く効く。
+  - **勝率の分子＝星取セルの丸数字の数**は全件一致する良い検算になるが、
+    **分母は当てにしない**。2021年度は分母だけが誤っている記入が2件あった。
+  - **双方が `R`（両者棄権）の試合は勝者が決まらないので出力しない。**
+    丸数字の総数と出力した試合数を突き合わせておくと、落とした件数が明示的に残る。
+  - 実施記録: [2026-09-04-zennihon-mixed-2021-results-from-pdf.md](../raw/2026-09-04-zennihon-mixed-2021-results-from-pdf.md)
+
+  **予選リーグだけを取り込むときの出力の形**（決勝トーナメントを別途扱う場合を含む）:
+  `knockoutDraw` を持たず、`matches[].stage` は全件 `roundrobin`（`round` は `null`）、
+  `results[].tournament` は全件 `null` で `results[].roundrobin.{group,rank}` だけを入れる。
+  既存例は `primaryschool-championship/2025/*` と `zennihon-university-indoor/2025/*`。
+  `retired` は true のときだけ置く。
 - `scripts/pdf/zennihon_championship_entries.py`
   天皇賜杯・皇后賜杯 全日本選手権（`zennihon-championship`）のドロー表PDFからエントリーを抽出する。
   2019年度（第74回, `2019_A08_40.pdf`、テキストレイヤーあり）で検証済み。個人戦のみの大会。
@@ -674,7 +710,19 @@ Deprecated:
   `initialPlayers` 形式JSONへ変換する（tournament-pdf-to-players skill が定義する形式に準拠）。
   個人戦は姓・姓（学校名）形式の`name`と`information[]`（`tempId`は姓_名_学校の3項目）、団体戦は
   学校名（都道府県）形式の`name`を組み立てる。
-  `python3 scripts/pdf/details_to_initial_players.py <details.json> --out <initialPlayers.json>`
+  `python3 scripts/pdf/details_to_initial_players.py <details.json> --tempid-with-prefecture --out <initialPlayers.json>`
+  - **`tempId` は `姓_名_学校_都道府県` の4項目**（`--tempid-with-prefecture`）。
+    `data/tournaments/details/**` の `participants[].id` と同じ組み立てにしないと、
+    人が入力した結果を書き出す経路で同じ大会の年度間がずれる。
+    3項目のファイルが `tools/` に残っている（`highschool-championship-2012〜2017` / `west-japan-2026`）が、
+    **新規は必ず4項目**。
+  - **総当たり（予選リーグ）の大会は `--by-group`** を付けて
+    `tools/roundrobin` の `initialPlayersByGroup` 形式（グループ名 → エントリー配列）で出す。
+    グループは details の `results[].roundrobin.group` から採る。
+    先例: `tools/korea-cup-2026/09_womens_doubles_groups_A-L.json`。
+  - **氏名分割が要るかは様式次第。** 姓と名が別の語として別x座標に印字される様式
+    （全日本ミックスダブルスの星取表など）では分割処理そのものが不要で、
+    1文字の姓・名も紙面どおりに出る。長さヒューリスティックを持ち込まないこと。
 
 ### スキャンPDF（テキストレイヤー無し）のエントリー抽出
 

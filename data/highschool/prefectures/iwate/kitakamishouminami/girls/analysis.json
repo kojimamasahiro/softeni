@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 5,
   "byCategory": {
-    "team": 1,
-    "doubles": 2
+    "team": 2,
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -39,15 +39,19 @@
       }
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "千葉_未散_北上翔南_岩手県",
+      "appearances": 3
+    },
     {
       "id": "今野_桃香_北上翔南_岩手県",
       "appearances": 2
     },
     {
-      "id": "千葉_未散_北上翔南_岩手県",
-      "appearances": 2
+      "id": "佐々木_結衣_北上翔南_岩手県",
+      "appearances": 1
     }
   ]
 }

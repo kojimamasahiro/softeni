@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "京産大附",
+        "teamId": "kyousandaifu",
+        "prefecture": "京都府",
+        "prefectureId": "kyoto",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["近藤_良祐_京産大附_京都府", "坪内_優_京産大附_京都府"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "近藤_良祐_京産大附_京都府",
+      "appearances": 1
+    },
+    {
+      "id": "坪内_優_京産大附_京都府",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "土浦三",
+        "teamId": "tsuchiurasan",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["箱根_佳奈_土浦三_茨城県", "小林_奈々恵_土浦三_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "箱根_佳奈_土浦三_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "小林_奈々恵_土浦三_茨城県",
+      "appearances": 1
+    }
+  ]
+}

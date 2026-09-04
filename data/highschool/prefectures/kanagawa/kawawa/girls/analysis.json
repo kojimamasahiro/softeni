@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "川和",
+        "teamId": "kawawa",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["佐藤_美紗_川和_神奈川県", "山口_夏芽_川和_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "佐藤_美紗_川和_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "山口_夏芽_川和_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

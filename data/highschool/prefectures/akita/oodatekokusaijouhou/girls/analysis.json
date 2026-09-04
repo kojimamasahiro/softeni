@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "oodatekokusaijouhou",
         "prefecture": "秋田県",
         "prefectureId": "akita",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["虻川_実南_大館国際情報_秋田県", "釜谷_菜央_大館国際情報_秋田県"]
+        "playerIds": ["貝森_祐希_大館国際情報_秋田県", "玉木_夏海_大館国際情報_秋田県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 4,
+  "uniquePlayers": 6,
   "topPlayers": [
     {
       "id": "平泉_愛望_大館国際情報_秋田県",
@@ -50,11 +50,15 @@
       "appearances": 1
     },
     {
-      "id": "虻川_実南_大館国際情報_秋田県",
+      "id": "貝森_祐希_大館国際情報_秋田県",
       "appearances": 1
     },
     {
-      "id": "釜谷_菜央_大館国際情報_秋田県",
+      "id": "玉木_夏海_大館国際情報_秋田県",
+      "appearances": 1
+    },
+    {
+      "id": "虻川_実南_大館国際情報_秋田県",
       "appearances": 1
     }
   ]

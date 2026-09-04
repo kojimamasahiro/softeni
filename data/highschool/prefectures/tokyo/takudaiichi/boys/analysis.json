@@ -1,0 +1,50 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "拓大一",
+        "teamId": "takudaiichi",
+        "prefecture": "東京都",
+        "prefectureId": "tokyo",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["三戸_嘉貴_拓大一_東京都", "工藤_拓海_拓大一_東京都"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 4,
+  "topPlayers": [
+    {
+      "id": "田村_育也_拓大一_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "加藤_翔太_拓大一_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "三戸_嘉貴_拓大一_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "工藤_拓海_拓大一_東京都",
+      "appearances": 1
+    }
+  ]
+}

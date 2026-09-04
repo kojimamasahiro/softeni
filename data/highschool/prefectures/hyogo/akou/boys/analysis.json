@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "akou",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["安井_裕紀_赤穂_兵庫県", "岩本_大洋_赤穂_兵庫県"]
+        "playerIds": ["古川_尊生_赤穂_兵庫県", "安井_一真_赤穂_兵庫県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
     {
       "id": "安井_裕紀_赤穂_兵庫県",
@@ -36,6 +36,14 @@
     },
     {
       "id": "岩本_大洋_赤穂_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "古川_尊生_赤穂_兵庫県",
+      "appearances": 1
+    },
+    {
+      "id": "安井_一真_赤穂_兵庫県",
       "appearances": 1
     }
   ]

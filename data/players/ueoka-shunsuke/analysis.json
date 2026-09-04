@@ -1,27 +1,27 @@
 {
-  "totalMatches": 196,
-  "wins": 157,
-  "losses": 38,
+  "totalMatches": 201,
+  "wins": 161,
+  "losses": 39,
   "totalWinRate": 0.801,
   "games": {
-    "total": 1122,
-    "won": 742,
-    "lost": 380,
+    "total": 1155,
+    "won": 763,
+    "lost": 392,
     "gameRate": 0.661
   },
   "byPartner": {
     "6": {
       "matches": {
-        "total": 20,
-        "wins": 17,
-        "losses": 3,
-        "winRate": 0.85
+        "total": 23,
+        "wins": 19,
+        "losses": 4,
+        "winRate": 0.826
       },
       "games": {
-        "total": 123,
-        "won": 81,
-        "lost": 42,
-        "gameRate": 0.659
+        "total": 146,
+        "won": 94,
+        "lost": 52,
+        "gameRate": 0.644
       }
     },
     "12": {
@@ -54,16 +54,16 @@
     },
     "1233": {
       "matches": {
-        "total": 4,
-        "wins": 3,
+        "total": 6,
+        "wins": 5,
         "losses": 1,
-        "winRate": 0.75
+        "winRate": 0.833
       },
       "games": {
-        "total": 22,
-        "won": 13,
-        "lost": 9,
-        "gameRate": 0.591
+        "total": 32,
+        "won": 21,
+        "lost": 11,
+        "gameRate": 0.656
       }
     },
     "11784": {
@@ -112,16 +112,16 @@
   "byYear": {
     "2016": {
       "matches": {
-        "total": 9,
-        "wins": 7,
-        "losses": 2,
-        "winRate": 0.778
+        "total": 12,
+        "wins": 9,
+        "losses": 3,
+        "winRate": 0.75
       },
       "games": {
-        "total": 51,
-        "won": 33,
-        "lost": 18,
-        "gameRate": 0.647
+        "total": 74,
+        "won": 46,
+        "lost": 28,
+        "gameRate": 0.622
       }
     },
     "2017": {
@@ -164,6 +164,20 @@
         "won": 28,
         "lost": 18,
         "gameRate": 0.609
+      }
+    },
+    "2021": {
+      "matches": {
+        "total": 2,
+        "wins": 2,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 10,
+        "won": 8,
+        "lost": 2,
+        "gameRate": 0.8
       }
     },
     "2022": {

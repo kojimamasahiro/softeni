@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "日川",
+        "teamId": "hikawa",
+        "prefecture": "山梨県",
+        "prefectureId": "yamanashi",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["高山_敦至_日川_山梨県", "鈴木_和真_日川_山梨県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "高山_敦至_日川_山梨県",
+      "appearances": 1
+    },
+    {
+      "id": "鈴木_和真_日川_山梨県",
+      "appearances": 1
+    }
+  ]
+}

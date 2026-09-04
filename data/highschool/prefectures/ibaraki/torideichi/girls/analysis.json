@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "team": 1,
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "取手一",
+        "teamId": "torideichi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["加藤_有紗_取手一_茨城県", "野口_恵理_取手一_茨城県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "取手一",
+        "teamId": "torideichi",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "加藤_有紗_取手一_茨城県",
+      "appearances": 1
+    },
+    {
+      "id": "野口_恵理_取手一_茨城県",
+      "appearances": 1
+    }
+  ]
+}

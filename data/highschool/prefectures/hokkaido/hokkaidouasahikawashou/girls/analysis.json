@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "北海道旭川商",
+        "teamId": "hokkaidouasahikawashou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["生田_花織_北海道旭川商_北海道", "坂下_萌_北海道旭川商_北海道"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "生田_花織_北海道旭川商_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "坂下_萌_北海道旭川商_北海道",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kurashikikou",
         "prefecture": "岡山県",
         "prefectureId": "okayama",
-        "result": "2回戦敗退",
+        "result": "ベスト8",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2018,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["川畑_透士_倉敷工_岡山県", "三澤_悠斗_倉敷工_岡山県"]
+        "playerIds": ["石井_佑一_倉敷工_岡山県", "難波_洋行_倉敷工_岡山県"]
       }
     },
     "team": {
@@ -28,7 +28,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "櫻井_温記_倉敷工_岡山県",
@@ -39,15 +39,15 @@
       "appearances": 1
     },
     {
+      "id": "石井_佑一_倉敷工_岡山県",
+      "appearances": 1
+    },
+    {
+      "id": "難波_洋行_倉敷工_岡山県",
+      "appearances": 1
+    },
+    {
       "id": "山崎_滉紀_倉敷工_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "長尾_春樹_倉敷工_岡山県",
-      "appearances": 1
-    },
-    {
-      "id": "川畑_透士_倉敷工_岡山県",
       "appearances": 1
     }
   ]

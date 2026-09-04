@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "team": 1,
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松山北",
+        "teamId": "matsuyamakita",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "3回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys",
+        "playerIds": ["是澤_祐輝_松山北_愛媛県", "河野_宗一郎_松山北_愛媛県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "松山北",
+        "teamId": "matsuyamakita",
+        "prefecture": "愛媛県",
+        "prefectureId": "ehime",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "是澤_祐輝_松山北_愛媛県",
+      "appearances": 1
+    },
+    {
+      "id": "河野_宗一郎_松山北_愛媛県",
+      "appearances": 1
+    }
+  ]
+}

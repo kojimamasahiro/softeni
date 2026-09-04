@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "羽水",
+        "teamId": "hanemizu",
+        "prefecture": "福井県",
+        "prefectureId": "fukui",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["西_楓_羽水_福井県", "八力_幸_羽水_福井県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "西_楓_羽水_福井県",
+      "appearances": 1
+    },
+    {
+      "id": "八力_幸_羽水_福井県",
+      "appearances": 1
+    }
+  ]
+}

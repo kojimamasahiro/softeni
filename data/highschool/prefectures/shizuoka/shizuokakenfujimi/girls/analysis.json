@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 7,
   "byCategory": {
-    "team": 1,
-    "doubles": 3
+    "team": 2,
+    "doubles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -16,12 +16,12 @@
         "teamId": "shizuokakenfujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["泉_舞_静岡県富士見_静岡県", "伊藤_真巳_静岡県富士見_静岡県"]
+        "playerIds": ["佐野_由奈_静岡県富士見_静岡県", "梅原_千尋_静岡県富士見_静岡県"]
       }
     },
     "team": {
@@ -31,30 +31,30 @@
         "teamId": "shizuokakenfujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2013,
+        "year": 2012,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
+    {
+      "id": "泉_舞_静岡県富士見_静岡県",
+      "appearances": 2
+    },
+    {
+      "id": "伊藤_真巳_静岡県富士見_静岡県",
+      "appearances": 2
+    },
     {
       "id": "浦田_知春_静岡県富士見_静岡県",
       "appearances": 1
     },
     {
       "id": "梅原_奈央_静岡県富士見_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "泉_舞_静岡県富士見_静岡県",
-      "appearances": 1
-    },
-    {
-      "id": "伊藤_真巳_静岡県富士見_静岡県",
       "appearances": 1
     },
     {

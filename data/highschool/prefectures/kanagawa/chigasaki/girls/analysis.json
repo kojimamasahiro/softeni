@@ -1,0 +1,42 @@
+{
+  "totalAppearances": 1,
+  "byCategory": {
+    "doubles": 1
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": null,
+      "historicalBest": {
+        "team": "茅ヶ崎",
+        "teamId": "chigasaki",
+        "prefecture": "神奈川県",
+        "prefectureId": "kanagawa",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "girls",
+        "playerIds": ["御薗生_侑子_茅ヶ崎_神奈川県", "小川_楓香_茅ヶ崎_神奈川県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "御薗生_侑子_茅ヶ崎_神奈川県",
+      "appearances": 1
+    },
+    {
+      "id": "小川_楓香_茅ヶ崎_神奈川県",
+      "appearances": 1
+    }
+  ]
+}

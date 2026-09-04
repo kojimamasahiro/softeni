@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 1,
+    "doubles": 2,
     "singles": 1
   },
   "resultsByCategory": {
@@ -27,12 +27,12 @@
         "teamId": "urusurahidetomo",
         "prefecture": "宮城県",
         "prefectureId": "miyagi",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["東_咲綾乃_ウルスラ英智_宮城県", "畑中_奏美_ウルスラ英智_宮城県"]
+        "playerIds": ["小岩_楓_ウルスラ英智_宮城県", "畠山_遥_ウルスラ英智_宮城県"]
       }
     },
     "team": {
@@ -40,7 +40,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 5,
   "topPlayers": [
     {
       "id": "東_咲綾乃_ウルスラ英智_宮城県",
@@ -48,6 +48,14 @@
     },
     {
       "id": "畑中_奏美_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "小岩_楓_ウルスラ英智_宮城県",
+      "appearances": 1
+    },
+    {
+      "id": "畠山_遥_ウルスラ英智_宮城県",
       "appearances": 1
     },
     {

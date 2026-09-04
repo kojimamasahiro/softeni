@@ -1,7 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 6,
+    "team": 1,
+    "doubles": 8,
     "singles": 1
   },
   "resultsByCategory": {
@@ -49,20 +50,30 @@
         "teamId": "kousei",
         "prefecture": "滋賀県",
         "prefectureId": "shiga",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2014,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["大橋_輝士_甲西_滋賀県", "村山_克矢_甲西_滋賀県"]
+        "playerIds": ["吉田_将一郎_甲西_滋賀県", "坂本_周平_甲西_滋賀県"]
       }
     },
     "team": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "甲西",
+        "teamId": "kousei",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "1回戦敗退",
+        "category": "team",
+        "tournamentId": "highschool-championship",
+        "year": 2012,
+        "gender": "boys"
+      }
     }
   },
-  "uniquePlayers": 9,
+  "uniquePlayers": 11,
   "topPlayers": [
     {
       "id": "沢田_直紀_甲西_滋賀県",
@@ -73,16 +84,16 @@
       "appearances": 2
     },
     {
-      "id": "小林_蓮斗_甲西_滋賀県",
+      "id": "吉田_将一郎_甲西_滋賀県",
       "appearances": 2
     },
     {
-      "id": "出水_智徳_甲西_滋賀県",
-      "appearances": 1
+      "id": "坂本_周平_甲西_滋賀県",
+      "appearances": 2
     },
     {
-      "id": "吉田_将一郎_甲西_滋賀県",
-      "appearances": 1
+      "id": "小林_蓮斗_甲西_滋賀県",
+      "appearances": 2
     }
   ]
 }

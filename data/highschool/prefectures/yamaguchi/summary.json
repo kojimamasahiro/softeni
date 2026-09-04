@@ -11,6 +11,17 @@
     "gender": "boys"
   },
   {
+    "team": "長府",
+    "teamId": "choufu",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys"
+  },
+  {
     "team": "岩国商",
     "teamId": "iwakunishou",
     "prefecture": "山口県",
@@ -30,6 +41,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2022,
+    "gender": "girls"
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "girls"
   },
   {
@@ -416,6 +438,42 @@
     "teamId": "choufu",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["藏永_宗次郎_長府_山口県", "中村_翼_長府_山口県"]
+  },
+  {
+    "team": "長府",
+    "teamId": "choufu",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["岡_慶彦_長府_山口県", "山内_雅樹_長府_山口県"]
+  },
+  {
+    "team": "長府",
+    "teamId": "choufu",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["片山_諒_長府_山口県", "多原_将司_長府_山口県"]
+  },
+  {
+    "team": "長府",
+    "teamId": "choufu",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -632,6 +690,18 @@
     "teamId": "iwakunikou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["船本_睦_岩国工_山口県", "玉水_康貴_岩国工_山口県"]
+  },
+  {
+    "team": "岩国工",
+    "teamId": "iwakunikou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -818,6 +888,42 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["栗山_詩野_岩国商_山口県", "石川_歩実_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["黒田_奈巳_岩国商_山口県", "中垣_里菜_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["藤川_花菜_岩国商_山口県", "濱村_紗和_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["中尾_由佳_岩国商_山口県", "西口_沙希_岩国商_山口県"]
   },
   {
     "team": "岩国商",
@@ -2048,6 +2154,30 @@
     "teamId": "tokuyamashoukou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["岩本_彩希_徳山商工_山口県", "山根_絵莉_徳山商工_山口県"]
+  },
+  {
+    "team": "徳山商工",
+    "teamId": "tokuyamashoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["野村_茉央_徳山商工_山口県", "福永_彩華_徳山商工_山口県"]
+  },
+  {
+    "team": "徳山商工",
+    "teamId": "tokuyamashoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2384,6 +2514,30 @@
     "teamId": "ubekou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["黒河_浩行_宇部工_山口県", "中村_武士_宇部工_山口県"]
+  },
+  {
+    "team": "宇部工",
+    "teamId": "ubekou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "boys",
+    "playerIds": ["能見_一磨_宇部工_山口県", "中村_まなと_宇部工_山口県"]
+  },
+  {
+    "team": "宇部工",
+    "teamId": "ubekou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2522,6 +2676,18 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["福谷_真由_慶進_山口県", "垣崎_友香_慶進_山口県"]
+  },
+  {
+    "team": "慶進",
+    "teamId": "yoshisusumu",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["橋本_亜美_慶進_山口県", "草谷_ニサ_慶進_山口県"]
   },
   {
     "team": "防府商工",

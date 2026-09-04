@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 3
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -26,12 +26,12 @@
         "teamId": "yonagohigashi",
         "prefecture": "鳥取県",
         "prefectureId": "tottori",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2012,
         "gender": "boys",
-        "playerIds": ["廣澤_歩_米子東_鳥取県", "本田_夏幹_米子東_鳥取県"]
+        "playerIds": ["岡田_泰徳_米子東_鳥取県", "森川_圭二郎_米子東_鳥取県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 6,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "木嶋_祐輔_米子東_鳥取県",
@@ -50,15 +50,15 @@
       "appearances": 1
     },
     {
+      "id": "岡田_泰徳_米子東_鳥取県",
+      "appearances": 1
+    },
+    {
+      "id": "森川_圭二郎_米子東_鳥取県",
+      "appearances": 1
+    },
+    {
       "id": "保木本_佳祐_米子東_鳥取県",
-      "appearances": 1
-    },
-    {
-      "id": "吉川_聡一郎_米子東_鳥取県",
-      "appearances": 1
-    },
-    {
-      "id": "廣澤_歩_米子東_鳥取県",
       "appearances": 1
     }
   ]
