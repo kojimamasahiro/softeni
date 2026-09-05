@@ -20,6 +20,19 @@ type MajorTitlesPreparation = {
   recordsByTournamentId: Map<string, Array<{ year: string; detail: TournamentDetailData }>>;
 };
 
+/**
+ * 主要タイトル表に出す最も古い年（2026-09-06 追加。それ以前は収録の最古年＝2016 から出していた）。
+ *
+ * 2022 は**主要4大会（天皇賜杯・ミックス・シングルス・インドア）が毎年そろって収録されている
+ * 最初の年**。それより前は大会ごとに事情が違い、同じ `ー` が3つの別の意味になっていた:
+ * 全日本ミックスは2020年創設（第1回は中止）でそもそも存在せず、全日本インドアは
+ * 収録が2022年（第68回）からで未収録、天皇賜杯・シングルスだけが2016年から埋まっている。
+ *
+ * 2016〜2021 の成績が消えるわけではない: 選手ページの大会別結果カードと勲章カード
+ * （`lib/nationalTitles.ts` 系・対象24大会）、大会ハブの歴代優勝者には従来どおり出る。
+ */
+const MAJOR_TITLE_START_YEAR = 2022;
+
 const majorTitlePreparationCache = new Map<string, Promise<MajorTitlesPreparation>>();
 const playerMajorTitlesCache = new Map<string, Promise<MajorTitleData[]>>();
 
@@ -112,7 +125,9 @@ export const getMajorTitlesForPlayer = async (lastName: string, firstName: strin
         }
       }
 
-      const years = Array.from(yearGrouped.keys()).sort((a, b) => Number(b) - Number(a));
+      const years = Array.from(yearGrouped.keys())
+        .filter((y) => Number(y) >= MAJOR_TITLE_START_YEAR)
+        .sort((a, b) => Number(b) - Number(a));
       for (const year of years) {
         let resultStr: string | null = null;
         const details = yearGrouped.get(year) ?? [];
