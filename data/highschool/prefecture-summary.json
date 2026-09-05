@@ -5148,6 +5148,18 @@
     "prefectureId": "hokkaido",
     "result": "1回戦敗退",
     "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["蘓武_比奈_旭川実_北海道"]
+  },
+  {
+    "team": "旭川実",
+    "teamId": "asahikawajitsu",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
@@ -5308,18 +5320,6 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["山田_萌華_旭川実_北海道"]
-  },
-  {
-    "team": "旭川実業",
-    "teamId": "asahikawajitsugyou",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["蘓武_比奈_旭川実業高校_北海道"]
   },
   {
     "team": "旭川工",
@@ -5967,7 +5967,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["大井_珠莉_札幌龍谷学園高校_北海道"]
+    "playerIds": ["大井_珠莉_札幌龍谷学園_北海道"]
   },
   {
     "team": "札幌龍谷学園",
@@ -5979,7 +5979,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡本_蒼生_札幌龍谷学園高校_北海道"]
+    "playerIds": ["岡本_蒼生_札幌龍谷学園_北海道"]
   },
   {
     "team": "札幌龍谷学園",
@@ -6243,7 +6243,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["藤田_大輝_とわの森三愛高校_北海道"]
+    "playerIds": ["藤田_大輝_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -6255,7 +6255,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["納藤_祐典_とわの森三愛高校_北海道"]
+    "playerIds": ["納藤_祐典_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -6267,7 +6267,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["佐藤_竜斗_とわの森三愛高校_北海道"]
+    "playerIds": ["佐藤_竜斗_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -6279,7 +6279,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["高野_結愛_とわの森三愛高校_北海道"]
+    "playerIds": ["高野_結愛_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -6303,7 +6303,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["木間_涼太_とわの森三愛高校_北海道"]
+    "playerIds": ["木間_涼太_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -6315,7 +6315,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["羽田_優斗_とわの森三愛高校_北海道"]
+    "playerIds": ["羽田_優斗_とわの森三愛_北海道"]
   },
   {
     "team": "とわの森三愛",
@@ -9380,6 +9380,30 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["川村_実乃凛_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["佐藤_響_八戸工大一_青森県"]
+  },
+  {
+    "team": "八戸工大一",
+    "teamId": "hachinohekoudaiichi",
+    "prefecture": "青森県",
+    "prefectureId": "aomori",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高杉_かりん_八戸工大一_青森県"]
   },
   {
     "team": "八戸工大一",
@@ -12730,7 +12754,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["江原_茂_一関学院高校_岩手県"]
+    "playerIds": ["江原_茂_一関学院_岩手県"]
   },
   {
     "team": "一関学院",
@@ -12742,7 +12766,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["江原_茂_一関学院高校_岩手県"]
+    "playerIds": ["江原_茂_一関学院_岩手県"]
   },
   {
     "team": "一関学院",
@@ -12814,7 +12838,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["浅間_楓_岩手高校_岩手県"]
+    "playerIds": ["浅間_楓_岩手_岩手県"]
   },
   {
     "team": "岩手",
@@ -12874,7 +12898,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["大石_七羽_黒沢尻北高校_岩手県"]
+    "playerIds": ["大石_七羽_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -12886,7 +12910,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["小向_亜依_黒沢尻北高校_岩手県"]
+    "playerIds": ["小向_亜依_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -12898,7 +12922,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["伊藤_陽色_黒沢尻北高校_岩手県"]
+    "playerIds": ["伊藤_陽色_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -12910,7 +12934,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["小向_亜依_黒沢尻北高校_岩手県"]
+    "playerIds": ["小向_亜依_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -12922,7 +12946,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["日下_愛望_黒沢尻北高校_岩手県"]
+    "playerIds": ["日下_愛望_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -12934,7 +12958,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["鈴木_雄大_黒沢尻北高校_岩手県"]
+    "playerIds": ["鈴木_雄大_黒沢尻北_岩手県"]
   },
   {
     "team": "黒沢尻北",
@@ -13066,7 +13090,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["晴山_輝星_盛岡誠桜高校_岩手県"]
+    "playerIds": ["晴山_輝星_盛岡誠桜_岩手県"]
   },
   {
     "team": "盛岡誠桜",
@@ -13078,7 +13102,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["冨岡_愛樺_盛岡誠桜高校_岩手県"]
+    "playerIds": ["冨岡_愛樺_盛岡誠桜_岩手県"]
   },
   {
     "team": "盛岡誠桜",
@@ -13090,7 +13114,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["櫻井_美夢_盛岡誠桜高校_岩手県"]
+    "playerIds": ["櫻井_美夢_盛岡誠桜_岩手県"]
   },
   {
     "team": "盛岡誠桜",
@@ -13102,7 +13126,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["前角地_彩菜_盛岡誠桜高校_岩手県"]
+    "playerIds": ["前角地_彩菜_盛岡誠桜_岩手県"]
   },
   {
     "team": "盛岡誠桜",
@@ -13114,7 +13138,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["晴山_輝星_盛岡誠桜高校_岩手県"]
+    "playerIds": ["晴山_輝星_盛岡誠桜_岩手県"]
   },
   {
     "team": "盛岡誠桜",
@@ -13126,7 +13150,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["冨岡_愛樺_盛岡誠桜高校_岩手県"]
+    "playerIds": ["冨岡_愛樺_盛岡誠桜_岩手県"]
   },
   {
     "team": "高田",
@@ -18256,7 +18280,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["岡安_義貴_東北高校_宮城県"]
+    "playerIds": ["岡安_義貴_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18268,7 +18292,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["星_光一_東北高校_宮城県"]
+    "playerIds": ["星_光一_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18280,7 +18304,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["林_民生_東北高校_宮城県"]
+    "playerIds": ["林_民生_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18292,7 +18316,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["北野_亮介_東北高校_宮城県"]
+    "playerIds": ["北野_亮介_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18304,7 +18328,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["岡安_龍貴_東北高校_宮城県"]
+    "playerIds": ["岡安_龍貴_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18316,7 +18340,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["今野_愛美_東北高校_宮城県"]
+    "playerIds": ["今野_愛美_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18328,7 +18352,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["原田_由文_東北高校_宮城県"]
+    "playerIds": ["原田_由文_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18340,7 +18364,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["矢作_舞彩_東北高校_宮城県"]
+    "playerIds": ["矢作_舞彩_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18352,7 +18376,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["小松_芹奈_東北高校_宮城県"]
+    "playerIds": ["小松_芹奈_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18364,7 +18388,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["佐々木_愛_東北高校_宮城県"]
+    "playerIds": ["佐々木_愛_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18376,7 +18400,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["高橋_羽杏奈_東北高校_宮城県"]
+    "playerIds": ["高橋_羽杏奈_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18568,7 +18592,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["福田_成海_東北高校_宮城県"]
+    "playerIds": ["福田_成海_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18580,7 +18604,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["岡安_龍貴_東北高校_宮城県"]
+    "playerIds": ["岡安_龍貴_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18592,7 +18616,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["北野_亮介_東北高校_宮城県"]
+    "playerIds": ["北野_亮介_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18604,7 +18628,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["北野_敦貴_東北高校_宮城県"]
+    "playerIds": ["北野_敦貴_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18616,7 +18640,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["檜山_遥斗_東北高校_宮城県"]
+    "playerIds": ["檜山_遥斗_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18628,7 +18652,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["鈴木_竜弥_東北高校_宮城県"]
+    "playerIds": ["鈴木_竜弥_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18640,7 +18664,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["岡安_義貴_東北高校_宮城県"]
+    "playerIds": ["岡安_義貴_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18652,7 +18676,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["竹谷_航洋_東北高校_宮城県"]
+    "playerIds": ["竹谷_航洋_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18664,7 +18688,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["小倉_輝_東北高校_宮城県"]
+    "playerIds": ["小倉_輝_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18676,7 +18700,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["水木_瑠_東北高校_宮城県"]
+    "playerIds": ["水木_瑠_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18688,7 +18712,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["古山_祐也_東北高校_宮城県"]
+    "playerIds": ["古山_祐也_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18700,7 +18724,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["小野_心_東北高校_宮城県"]
+    "playerIds": ["小野_心_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18712,7 +18736,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["縄田_愛実_東北高校_宮城県"]
+    "playerIds": ["縄田_愛実_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18724,7 +18748,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["小林_世音_東北高校_宮城県"]
+    "playerIds": ["小林_世音_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18736,7 +18760,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["田村_紘_東北高校_宮城県"]
+    "playerIds": ["田村_紘_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18748,7 +18772,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["矢作_舞彩_東北高校_宮城県"]
+    "playerIds": ["矢作_舞彩_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18760,7 +18784,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["水木_瑠_東北高校_宮城県"]
+    "playerIds": ["水木_瑠_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18772,7 +18796,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["渡辺_奎吾_東北高校_宮城県"]
+    "playerIds": ["渡辺_奎吾_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18784,7 +18808,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["北野_亮介_東北高校_宮城県"]
+    "playerIds": ["北野_亮介_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18796,7 +18820,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["新沼_稜大_東北高校_宮城県"]
+    "playerIds": ["新沼_稜大_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18808,7 +18832,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["古山_祐也_東北高校_宮城県"]
+    "playerIds": ["古山_祐也_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18820,7 +18844,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["下平_健三郎_東北高校_宮城県"]
+    "playerIds": ["下平_健三郎_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18832,7 +18856,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["鈴木_竜弥_東北高校_宮城県"]
+    "playerIds": ["鈴木_竜弥_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18844,7 +18868,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["檜山_遥斗_東北高校_宮城県"]
+    "playerIds": ["檜山_遥斗_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18856,7 +18880,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["鈴木_瑞稀_東北高校_宮城県"]
+    "playerIds": ["鈴木_瑞稀_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18868,7 +18892,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["矢作_舞彩_東北高校_宮城県"]
+    "playerIds": ["矢作_舞彩_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18880,7 +18904,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["原田_由文_東北高校_宮城県"]
+    "playerIds": ["原田_由文_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -18892,7 +18916,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["片野_理音_東北高校_宮城県"]
+    "playerIds": ["片野_理音_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -25993,7 +26017,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["荒木_駿_羽黒高校_山形県"]
+    "playerIds": ["荒木_駿_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26005,7 +26029,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["齋藤_龍二_羽黒高校_山形県"]
+    "playerIds": ["齋藤_龍二_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26017,7 +26041,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["斎藤_大樹_羽黒高校_山形県"]
+    "playerIds": ["斎藤_大樹_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26029,7 +26053,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["澤田_吉広_羽黒高校_山形県"]
+    "playerIds": ["澤田_吉広_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26041,7 +26065,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["根本_拓哉_羽黒高校_山形県"]
+    "playerIds": ["根本_拓哉_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26053,7 +26077,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["旭_笑_羽黒高校_山形県"]
+    "playerIds": ["旭_笑_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26065,7 +26089,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["渡邊_直生_羽黒高校_山形県"]
+    "playerIds": ["渡邊_直生_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -26077,7 +26101,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["宮崎_悠登_羽黒高校_山形県"]
+    "playerIds": ["宮崎_悠登_羽黒_山形県"]
   },
   {
     "team": "羽黒",
@@ -29817,7 +29841,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["國分_豪留_学法石川高校_福島県"]
+    "playerIds": ["國分_豪留_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -29829,7 +29853,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["永山_浩史_学法石川高校_福島県"]
+    "playerIds": ["永山_浩史_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -29841,7 +29865,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["新沼_稜大_学法石川高校_福島県"]
+    "playerIds": ["新沼_稜大_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -32554,7 +32578,7 @@
     "tournamentId": "highschool-championship",
     "year": 2013,
     "gender": "girls",
-    "playerIds": ["長埜_茜_多賀_茨城県", "飯塚_麻衣_多賀_茨城県"]
+    "playerIds": ["長埜_茜_多賀高校_茨城県", "飯塚_麻衣_多賀高校_茨城県"]
   },
   {
     "team": "多賀",
@@ -39578,7 +39602,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["竹和_華_高崎女子高校_群馬県"]
+    "playerIds": ["竹和_華_高崎女子_群馬県"]
   },
   {
     "team": "高崎女子",
@@ -39590,7 +39614,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["竹和_華_高崎女子高校_群馬県"]
+    "playerIds": ["竹和_華_高崎女子_群馬県"]
   },
   {
     "team": "高崎女子",
@@ -43499,7 +43523,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["小林_さくら_埼玉平成高校_埼玉県"]
+    "playerIds": ["小林_さくら_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -43511,7 +43535,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["嵐_美月_埼玉平成高校_埼玉県"]
+    "playerIds": ["嵐_美月_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -43523,7 +43547,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["赤川_友里奈_埼玉平成高校_埼玉県"]
+    "playerIds": ["赤川_友里奈_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -43535,7 +43559,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["赤川_友里奈_埼玉平成高校_埼玉県"]
+    "playerIds": ["赤川_友里奈_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -43547,7 +43571,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["桑山_未来_埼玉平成高校_埼玉県"]
+    "playerIds": ["桑山_未来_埼玉平成_埼玉県"]
   },
   {
     "team": "埼玉平成",
@@ -45787,7 +45811,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["手塚_康介_木更津総合_岡山県", "石灘_蒼瑛_岡山理科大附高校_千葉県"]
+    "playerIds": ["手塚_康介_木更津総合_岡山県", "石灘_蒼瑛_岡山理大附_千葉県"]
   },
   {
     "team": "木更津総合",
@@ -47791,7 +47815,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["齋藤_大樹_木更津総合高校_千葉県"]
+    "playerIds": ["齋藤_大樹_木更津総合_千葉県"]
   },
   {
     "team": "木更津総合",
@@ -48019,7 +48043,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["吉野_南美_昭和学院高校_千葉県"]
+    "playerIds": ["吉野_南美_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -48031,7 +48055,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["藤本_奈々美_昭和学院高校_千葉県"]
+    "playerIds": ["藤本_奈々美_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -48043,7 +48067,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["原_千晴_昭和学院高校_千葉県"]
+    "playerIds": ["原_千晴_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -48055,7 +48079,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["中村_鈴花_昭和学院高校_千葉県"]
+    "playerIds": ["中村_鈴花_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -48067,7 +48091,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["石倉_幸奈_昭和学院高校_千葉県"]
+    "playerIds": ["石倉_幸奈_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -48079,7 +48103,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["齋木_菜々花_昭和学院高校_千葉県"]
+    "playerIds": ["齋木_菜々花_昭和学院_千葉県"]
   },
   {
     "team": "昭和学院",
@@ -51733,7 +51757,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["宮下_こころ_文大杉並高校_東京都"]
+    "playerIds": ["宮下_こころ_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51745,7 +51769,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["林田_リコ_文大杉並高校_東京都"]
+    "playerIds": ["林田_リコ_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51757,7 +51781,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["小林_愛美_文大杉並高校_東京都"]
+    "playerIds": ["小林_愛美_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51769,7 +51793,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["宮下_真緒_文大杉並高校_東京都"]
+    "playerIds": ["宮下_真緒_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51781,7 +51805,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["中村_彩乃_文大杉並高校_東京都"]
+    "playerIds": ["中村_彩乃_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51793,7 +51817,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["林田_リコ_文大杉並高校_東京都"]
+    "playerIds": ["林田_リコ_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51805,7 +51829,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["吉原_花海_文大杉並高校_東京都"]
+    "playerIds": ["吉原_花海_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -51817,7 +51841,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["上田_理央_文大杉並高校_東京都"]
+    "playerIds": ["上田_理央_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -62154,7 +62178,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["長尾_沙耶_高岡西高校_富山県"]
+    "playerIds": ["長尾_沙耶_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62166,7 +62190,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["早川_日向_高岡西高校_富山県"]
+    "playerIds": ["早川_日向_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62178,7 +62202,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["浅田_実那_高岡西高校_富山県"]
+    "playerIds": ["浅田_実那_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62190,7 +62214,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["荒木_郁菜_高岡西高校_富山県"]
+    "playerIds": ["荒木_郁菜_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62202,7 +62226,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["桑名_優依_高岡西高校_富山県"]
+    "playerIds": ["桑名_優依_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62214,7 +62238,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["竹越_世奈_高岡西高校_富山県"]
+    "playerIds": ["竹越_世奈_高岡西_富山県"]
   },
   {
     "team": "高岡西",
@@ -62275,6 +62299,30 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["清末_七生_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["尾山_仁哉_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["新保_璃玖_高岡商_富山県"]
   },
   {
     "team": "高岡商",
@@ -62359,6 +62407,66 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["高倉_都羽_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["赤尾_來哉_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["髙田_翼_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["谷内_翔_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["徳川_開吏_高岡商_富山県"]
+  },
+  {
+    "team": "高岡商",
+    "teamId": "takaokashou",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["南部_天良_高岡商_富山県"]
   },
   {
     "team": "高岡商",
@@ -62467,90 +62575,6 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["鳥井_亮貴_高岡商_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["尾山_仁哉_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["新保_璃玖_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["赤尾_來哉_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["髙田_翼_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["谷内_翔_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["徳川_開吏_高岡商業高校_富山県"]
-  },
-  {
-    "team": "高岡商業",
-    "teamId": "takaokashougyou",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["南部_天良_高岡商業高校_富山県"]
   },
   {
     "team": "富山工業",
@@ -65773,30 +65797,6 @@
     "playerIds": ["奥田_伊織_穴水高校_石川県"]
   },
   {
-    "team": "金沢学院",
-    "teamId": "kanazawagakuin",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["德野_真士_金沢学院高校_石川県"]
-  },
-  {
-    "team": "金沢学院",
-    "teamId": "kanazawagakuin",
-    "prefecture": "石川県",
-    "prefectureId": "ishikawa",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["田川_真衣_金沢学院高校_石川県"]
-  },
-  {
     "team": "金沢学院大附",
     "teamId": "kanazawagakuindaifu",
     "prefecture": "石川県",
@@ -65819,6 +65819,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["久田_陸人_金沢学院大附_石川県"]
+  },
+  {
+    "team": "金沢学院大附",
+    "teamId": "kanazawagakuindaifu",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["德野_真士_金沢学院大附_石川県"]
+  },
+  {
+    "team": "金沢学院大附",
+    "teamId": "kanazawagakuindaifu",
+    "prefecture": "石川県",
+    "prefectureId": "ishikawa",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["田川_真衣_金沢学院大附_石川県"]
   },
   {
     "team": "金沢学院大附",
@@ -66238,7 +66262,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["寺本_隼_能登高校_石川県"]
+    "playerIds": ["寺本_隼_能登_石川県"]
   },
   {
     "team": "能登",
@@ -66250,7 +66274,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["端山_羅行_能登高校_石川県"]
+    "playerIds": ["端山_羅行_能登_石川県"]
   },
   {
     "team": "能登",
@@ -66262,7 +66286,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["宮村_優花_能登高校_石川県"]
+    "playerIds": ["宮村_優花_能登_石川県"]
   },
   {
     "team": "能登",
@@ -66274,7 +66298,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["大澤_和馬_能登高校_石川県"]
+    "playerIds": ["大澤_和馬_能登_石川県"]
   },
   {
     "team": "能登",
@@ -66286,7 +66310,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["松岡_樹輝_能登高校_石川県"]
+    "playerIds": ["松岡_樹輝_能登_石川県"]
   },
   {
     "team": "能登",
@@ -66298,7 +66322,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["端山_都頼_能登高校_石川県"]
+    "playerIds": ["端山_都頼_能登_石川県"]
   },
   {
     "team": "能登",
@@ -78397,6 +78421,17 @@
     "teamId": "fujimi",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -78423,6 +78458,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "girls"
   },
   {
@@ -78632,28 +78678,6 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2026,
-    "gender": "girls"
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls"
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
     "gender": "girls"
   },
   {
@@ -79063,6 +79087,42 @@
     "teamId": "fujimi",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["浦田_知春_富士見_静岡県", "梅原_奈央_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["泉_舞_富士見_静岡県", "伊藤_真巳_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["奈良_彩_富士見_静岡県", "後藤_みほ_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -79189,6 +79249,30 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["梅原_奈央_富士見_静岡県", "古郡_沙野_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["泉_舞_富士見_静岡県", "伊藤_真巳_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["佐野_由奈_富士見_静岡県", "梅原_千尋_富士見_静岡県"]
   },
   {
     "team": "富士見",
@@ -80533,66 +80617,6 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["伊藤_万絋_静岡_静岡県", "中野_束冴_静岡_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["浦田_知春_静岡県富士見_静岡県", "梅原_奈央_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["泉_舞_静岡県富士見_静岡県", "伊藤_真巳_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["奈良_彩_静岡県富士見_静岡県", "後藤_みほ_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
-    "gender": "girls",
-    "playerIds": ["泉_舞_静岡県富士見_静岡県", "伊藤_真巳_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
-    "gender": "girls",
-    "playerIds": ["佐野_由奈_静岡県富士見_静岡県", "梅原_千尋_静岡県富士見_静岡県"]
   },
   {
     "team": "静岡市立",
@@ -85085,7 +85109,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["石川_知輝_岡崎城西高校_愛知県"]
+    "playerIds": ["石川_知輝_岡崎城西_愛知県"]
   },
   {
     "team": "岡崎城西",
@@ -85097,7 +85121,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["井本_綾乃_岡崎城西高校_愛知県"]
+    "playerIds": ["井本_綾乃_岡崎城西_愛知県"]
   },
   {
     "team": "岡崎城西",
@@ -85301,7 +85325,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["渡邉_陽花_豊田大谷高校_愛知県"]
+    "playerIds": ["渡邉_陽花_豊田大谷_愛知県"]
   },
   {
     "team": "豊田大谷",
@@ -89456,7 +89480,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["岡﨑_聡太_三重高校_三重県"]
+    "playerIds": ["岡﨑_聡太_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89468,7 +89492,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["山本_航世_三重高校_三重県"]
+    "playerIds": ["山本_航世_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89480,7 +89504,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["田川_美怜_三重高校_三重県"]
+    "playerIds": ["田川_美怜_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89492,7 +89516,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["久保_晴華_三重高校_三重県"]
+    "playerIds": ["久保_晴華_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89504,7 +89528,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["竹田_真樹_三重高校_三重県"]
+    "playerIds": ["竹田_真樹_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89516,7 +89540,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["福田_麗優_三重高校_三重県"]
+    "playerIds": ["福田_麗優_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89648,7 +89672,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["岸原_輝空_三重高校_三重県"]
+    "playerIds": ["岸原_輝空_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89660,7 +89684,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["北川_ジャン瑠加_三重高校_三重県"]
+    "playerIds": ["北川_ジャン瑠加_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89672,7 +89696,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["仲川_晴智_三重高校_三重県"]
+    "playerIds": ["仲川_晴智_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89684,7 +89708,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["原田_美結_三重高校_三重県"]
+    "playerIds": ["原田_美結_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89696,7 +89720,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["伊藤_光璃_三重高校_三重県"]
+    "playerIds": ["伊藤_光璃_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89708,7 +89732,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["藤城_みちる_三重高校_三重県"]
+    "playerIds": ["藤城_みちる_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89720,7 +89744,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["辻_李佳_三重高校_三重県"]
+    "playerIds": ["辻_李佳_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89732,7 +89756,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["浪岡_菜々美_三重高校_三重県"]
+    "playerIds": ["浪岡_菜々美_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89744,7 +89768,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["大友_紅実_三重高校_三重県"]
+    "playerIds": ["大友_紅実_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89756,7 +89780,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["宮下_史帆_三重高校_三重県"]
+    "playerIds": ["宮下_史帆_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89768,7 +89792,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["西_泰右_三重高校_三重県"]
+    "playerIds": ["西_泰右_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89780,7 +89804,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["大谷_陽登_三重高校_三重県"]
+    "playerIds": ["大谷_陽登_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89792,7 +89816,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["岡﨑_聡太_三重高校_三重県"]
+    "playerIds": ["岡﨑_聡太_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89804,7 +89828,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["髙橋_直広_三重高校_三重県"]
+    "playerIds": ["髙橋_直広_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89816,7 +89840,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["竹田_真樹_三重高校_三重県"]
+    "playerIds": ["竹田_真樹_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89828,7 +89852,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["花尻_風夏_三重高校_三重県"]
+    "playerIds": ["花尻_風夏_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89840,7 +89864,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["浪岡_菜々美_三重高校_三重県"]
+    "playerIds": ["浪岡_菜々美_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89852,7 +89876,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["藤城_みちる_三重高校_三重県"]
+    "playerIds": ["藤城_みちる_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89864,7 +89888,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["田川_美怜_三重高校_三重県"]
+    "playerIds": ["田川_美怜_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89876,7 +89900,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["内田_理久_三重高校_三重県"]
+    "playerIds": ["内田_理久_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89888,7 +89912,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["加藤_裕喜_三重高校_三重県"]
+    "playerIds": ["加藤_裕喜_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89900,7 +89924,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["西_泰右_三重高校_三重県"]
+    "playerIds": ["西_泰右_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89912,7 +89936,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["遠藤_爵由_三重高校_三重県"]
+    "playerIds": ["遠藤_爵由_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89924,7 +89948,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["橋本_旭陽_三重高校_三重県"]
+    "playerIds": ["橋本_旭陽_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89936,7 +89960,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["磯貝_真吾_三重高校_三重県"]
+    "playerIds": ["磯貝_真吾_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89948,7 +89972,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["田邉_雅人_三重高校_三重県"]
+    "playerIds": ["田邉_雅人_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89960,7 +89984,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["松永_花緒_三重高校_三重県"]
+    "playerIds": ["松永_花緒_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89972,7 +89996,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["土井_あんず_三重高校_三重県"]
+    "playerIds": ["土井_あんず_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89984,7 +90008,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["久保_晴華_三重高校_三重県"]
+    "playerIds": ["久保_晴華_三重_三重県"]
   },
   {
     "team": "三重",
@@ -89996,7 +90020,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["中別府_瑞希_三重高校_三重県"]
+    "playerIds": ["中別府_瑞希_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90008,7 +90032,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["藤城_きらり_三重高校_三重県"]
+    "playerIds": ["藤城_きらり_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90020,7 +90044,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["高橋_里奈_三重高校_三重県"]
+    "playerIds": ["高橋_里奈_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90032,7 +90056,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["福田_麗優_三重高校_三重県"]
+    "playerIds": ["福田_麗優_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90044,7 +90068,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["大貫_彩_三重高校_三重県"]
+    "playerIds": ["大貫_彩_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90056,7 +90080,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["清水_彩_三重高校_三重県"]
+    "playerIds": ["清水_彩_三重_三重県"]
   },
   {
     "team": "三重",
@@ -90068,7 +90092,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["竹田_真樹_三重高校_三重県"]
+    "playerIds": ["竹田_真樹_三重_三重県"]
   },
   {
     "team": "三重",
@@ -93276,7 +93300,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["高谷_陸人_立命館守山高校_滋賀県"]
+    "playerIds": ["高谷_陸人_立命館守山_滋賀県"]
   },
   {
     "team": "立命館守山",
@@ -96380,7 +96404,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["遠藤_かおる_福知山成美高校_京都府"]
+    "playerIds": ["遠藤_かおる_福知山成美_京都府"]
   },
   {
     "team": "福知山成美",
@@ -98933,7 +98957,7 @@
     "tournamentId": "highschool-championship",
     "year": 2013,
     "gender": "girls",
-    "playerIds": ["島田_紗稀穂_四天王寺_大阪府", "畑野_恵_四天王寺_大阪府"]
+    "playerIds": ["島田_紗稀穂_四天王寺高校_大阪府", "畑野_恵_四天王寺高校_大阪府"]
   },
   {
     "team": "四天王寺",
@@ -98945,7 +98969,7 @@
     "tournamentId": "highschool-championship",
     "year": 2013,
     "gender": "girls",
-    "playerIds": ["中平_樹里_四天王寺_大阪府", "川端_理沙_四天王寺_大阪府"]
+    "playerIds": ["中平_樹里_四天王寺高校_大阪府", "川端_理沙_四天王寺高校_大阪府"]
   },
   {
     "team": "四天王寺",
@@ -99101,7 +99125,7 @@
     "tournamentId": "highschool-championship",
     "year": 2012,
     "gender": "girls",
-    "playerIds": ["中平_樹里_四天王寺_大阪府", "川端_理沙_四天王寺_大阪府"]
+    "playerIds": ["中平_樹里_四天王寺高校_大阪府", "川端_理沙_四天王寺高校_大阪府"]
   },
   {
     "team": "四天王寺",
@@ -100913,7 +100937,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["吉田_澪奈_昇陽高校_大阪府"]
+    "playerIds": ["吉田_澪奈_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100925,7 +100949,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["上野_小町_昇陽高校_大阪府"]
+    "playerIds": ["上野_小町_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100937,7 +100961,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["緒方_美有_昇陽高校_大阪府"]
+    "playerIds": ["緒方_美有_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100949,7 +100973,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["矢野_亜日華_昇陽高校_大阪府"]
+    "playerIds": ["矢野_亜日華_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100961,7 +100985,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["高橋_朱里_昇陽高校_大阪府"]
+    "playerIds": ["高橋_朱里_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100973,7 +100997,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["蓮岡_若奈_昇陽高校_大阪府"]
+    "playerIds": ["蓮岡_若奈_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100985,7 +101009,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡田_麻那_昇陽高校_大阪府"]
+    "playerIds": ["岡田_麻那_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -100997,7 +101021,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["寺川_愛美_昇陽高校_大阪府"]
+    "playerIds": ["寺川_愛美_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101009,7 +101033,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["青松_淑佳_昇陽高校_大阪府"]
+    "playerIds": ["青松_淑佳_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101021,7 +101045,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["上野_小町_昇陽高校_大阪府"]
+    "playerIds": ["上野_小町_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101033,7 +101057,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["吉田_澪奈_昇陽高校_大阪府"]
+    "playerIds": ["吉田_澪奈_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101045,7 +101069,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["吉田_栞里_昇陽高校_大阪府"]
+    "playerIds": ["吉田_栞里_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101057,7 +101081,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["上野_小町_昇陽高校_大阪府"]
+    "playerIds": ["上野_小町_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101069,7 +101093,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["吉田_澪奈_昇陽高校_大阪府"]
+    "playerIds": ["吉田_澪奈_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101081,7 +101105,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["緒方_美有_昇陽高校_大阪府"]
+    "playerIds": ["緒方_美有_昇陽_大阪府"]
   },
   {
     "team": "昇陽",
@@ -101753,7 +101777,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["山中_柊冴_上宮高校_大阪府"]
+    "playerIds": ["山中_柊冴_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101765,7 +101789,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["広岡_宙_上宮高校_大阪府"]
+    "playerIds": ["広岡_宙_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101777,7 +101801,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["上岡_俊介_上宮高校_大阪府"]
+    "playerIds": ["上岡_俊介_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101789,7 +101813,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["赤川_修太_上宮高校_大阪府"]
+    "playerIds": ["赤川_修太_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101801,7 +101825,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["中西_夏輝_上宮高校_大阪府"]
+    "playerIds": ["中西_夏輝_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101849,7 +101873,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["丸尾_優太_上宮高校_大阪府"]
+    "playerIds": ["丸尾_優太_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101861,7 +101885,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["山中_柊冴_上宮高校_大阪府"]
+    "playerIds": ["山中_柊冴_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101873,7 +101897,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["大村_圭志朗_上宮高校_大阪府"]
+    "playerIds": ["大村_圭志朗_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101885,7 +101909,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["田中_翔大_上宮高校_大阪府"]
+    "playerIds": ["田中_翔大_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101897,7 +101921,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["中西_夏輝_上宮高校_大阪府"]
+    "playerIds": ["中西_夏輝_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101909,7 +101933,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["田中_駿平_上宮高校_大阪府"]
+    "playerIds": ["田中_駿平_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101921,7 +101945,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["大村_圭志朗_上宮高校_大阪府"]
+    "playerIds": ["大村_圭志朗_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101933,7 +101957,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["広岡_宙_上宮高校_大阪府"]
+    "playerIds": ["広岡_宙_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101945,7 +101969,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["北野_敏希_上宮高校_大阪府"]
+    "playerIds": ["北野_敏希_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101957,7 +101981,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["古石_祐大_上宮高校_大阪府"]
+    "playerIds": ["古石_祐大_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101969,7 +101993,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["中西_夏輝_上宮高校_大阪府"]
+    "playerIds": ["中西_夏輝_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -101981,7 +102005,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["上岡_俊介_上宮高校_大阪府"]
+    "playerIds": ["上岡_俊介_上宮_大阪府"]
   },
   {
     "team": "上宮",
@@ -105928,7 +105952,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["木瀬_晶絵_須磨学園高校_兵庫県"]
+    "playerIds": ["木瀬_晶絵_須磨学園_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -110375,6 +110399,126 @@
     "result": "3回戦敗退",
     "category": "singles",
     "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["北本_達己_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["林_湧太郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["増田_祐太_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["根本_大地_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["阪本_崚_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["下原_涼太_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["山根_稔平_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["吉田_亮介_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["大﨑_のどか_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["宮下_菜々未_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
     "year": 2026,
     "gender": "boys",
     "playerIds": ["前田_蒼生_高田商_奈良県"]
@@ -110474,6 +110618,642 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["中條_世蓮_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["森川_亮介_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["池口_季将_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["高木_智也_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["永江_孝二郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["前田_拓夢_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["西田_駿人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["菅野_晃太朗_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["武市_大輝_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["山本_大陸_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["内藤_慎思_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["矢野_颯人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["小宮山_建_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["中別府_凌_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["幡谷_康平_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["野田_楓麿_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["木原_恵菜_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["木原_那菜_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["山田_桃花_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["鈴木_美悠_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["中條_観杏_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["林_湧太郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["山本_大陸_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["矢野_颯人_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["増田_祐太_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["幡谷_康平_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中別府_凌_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["池口_季将_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["花岡_忠寿_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["下原_涼太_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["木原_恵菜_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["木原_那菜_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["山田_桃花_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["前川_楓佳_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["谷口_睦_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["梅原_睦矢_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["阪本_崚_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["吉田_亮介_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["山根_稔平_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["溝端_亮二_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["近藤_昴_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "5回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["北本_達己_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["根本_大地_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["米吉_陸_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["金子_大祐_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["三輪_惇平_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["大関_渉太郎_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["山本_絢野_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["前川_若菜_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["川口_咲耶_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["海堀_成美_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["吉岡_綾華_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["木村_萌音_高田商_奈良県"]
+  },
+  {
+    "team": "高田商",
+    "teamId": "takadashou",
+    "prefecture": "奈良県",
+    "prefectureId": "nara",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["大山_千尋_高田商_奈良県"]
   },
   {
     "team": "高田商",
@@ -110750,762 +111530,6 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["植田_璃音_高田商_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["北本_達己_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["林_湧太郎_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["増田_祐太_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["根本_大地_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["阪本_崚_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["下原_涼太_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["山根_稔平_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "boys",
-    "playerIds": ["吉田_亮介_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "girls",
-    "playerIds": ["大﨑_のどか_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2017,
-    "gender": "girls",
-    "playerIds": ["宮下_菜々未_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["森川_亮介_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["池口_季将_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["高木_智也_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["永江_孝二郎_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["前田_拓夢_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["西田_駿人_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["菅野_晃太朗_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["武市_大輝_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["山本_大陸_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["内藤_慎思_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["矢野_颯人_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["小宮山_建_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["中別府_凌_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["幡谷_康平_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "boys",
-    "playerIds": ["野田_楓麿_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["木原_恵菜_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["木原_那菜_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["山田_桃花_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["鈴木_美悠_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["中條_観杏_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["林_湧太郎_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["山本_大陸_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["矢野_颯人_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["増田_祐太_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["幡谷_康平_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["中別府_凌_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["池口_季将_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["花岡_忠寿_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["下原_涼太_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["木原_恵菜_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["木原_那菜_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["山田_桃花_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["前川_楓佳_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["谷口_睦_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["梅原_睦矢_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["阪本_崚_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["吉田_亮介_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["山根_稔平_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["溝端_亮二_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["近藤_昴_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "5回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["北本_達己_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["根本_大地_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["米吉_陸_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "ベスト8",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["金子_大祐_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "4回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["三輪_惇平_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "boys",
-    "playerIds": ["大関_渉太郎_高田商業高校_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["山本_絢野_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["前川_若菜_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["川口_咲耶_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["海堀_成美_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["吉岡_綾華_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["木村_萌音_高田商業_奈良県"]
-  },
-  {
-    "team": "高田商業",
-    "teamId": "takadashougyou",
-    "prefecture": "奈良県",
-    "prefectureId": "nara",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2016,
-    "gender": "girls",
-    "playerIds": ["大山_千尋_高田商業_奈良県"]
   },
   {
     "team": "橋本",
@@ -114934,7 +114958,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["松山_新_和歌山北高校_和歌山県"]
+    "playerIds": ["松山_新_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -114946,7 +114970,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["熊本_脩吾_和歌山北高校_和歌山県"]
+    "playerIds": ["熊本_脩吾_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -114982,7 +115006,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["中野_智稀_和歌山北高校_和歌山県"]
+    "playerIds": ["中野_智稀_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -114994,7 +115018,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["小原_雅也_和歌山北高校_和歌山県"]
+    "playerIds": ["小原_雅也_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115006,7 +115030,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["濵田_祐_和歌山北高校_和歌山県"]
+    "playerIds": ["濵田_祐_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115018,7 +115042,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["弘末_相楽_和歌山北高校_和歌山県"]
+    "playerIds": ["弘末_相楽_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115030,7 +115054,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["嶋田_惠太_和歌山北高校_和歌山県"]
+    "playerIds": ["嶋田_惠太_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115042,7 +115066,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["南澤_祥太_和歌山北高校_和歌山県"]
+    "playerIds": ["南澤_祥太_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115054,7 +115078,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["濵田_祐_和歌山北高校_和歌山県"]
+    "playerIds": ["濵田_祐_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115066,7 +115090,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["川口_諒馬_和歌山北高校_和歌山県"]
+    "playerIds": ["川口_諒馬_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115078,7 +115102,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["後呂岡_千弘_和歌山北高校_和歌山県"]
+    "playerIds": ["後呂岡_千弘_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115090,7 +115114,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["松山_新_和歌山北高校_和歌山県"]
+    "playerIds": ["松山_新_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115102,7 +115126,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["濵田_迅_和歌山北高校_和歌山県"]
+    "playerIds": ["濵田_迅_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115114,7 +115138,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["花村_貴弘_和歌山北高校_和歌山県"]
+    "playerIds": ["花村_貴弘_和歌山北_和歌山県"]
   },
   {
     "team": "和歌山北",
@@ -115414,7 +115438,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["浅倉_衣里_和歌山信愛高校_和歌山県"]
+    "playerIds": ["浅倉_衣里_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115426,7 +115450,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["多田_千夏_和歌山信愛高校_和歌山県"]
+    "playerIds": ["多田_千夏_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115438,7 +115462,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["松井_玲奈_和歌山信愛高校_和歌山県"]
+    "playerIds": ["松井_玲奈_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115486,7 +115510,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["大津_櫻_和歌山信愛高校_和歌山県"]
+    "playerIds": ["大津_櫻_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115498,7 +115522,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["多田_千夏_和歌山信愛高校_和歌山県"]
+    "playerIds": ["多田_千夏_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115510,7 +115534,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["石川_奈美_和歌山信愛高校_和歌山県"]
+    "playerIds": ["石川_奈美_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115522,7 +115546,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["浅倉_衣里_和歌山信愛高校_和歌山県"]
+    "playerIds": ["浅倉_衣里_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115534,7 +115558,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["多田_千夏_和歌山信愛高校_和歌山県"]
+    "playerIds": ["多田_千夏_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115546,7 +115570,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["松井_玲奈_和歌山信愛高校_和歌山県"]
+    "playerIds": ["松井_玲奈_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115558,7 +115582,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["下江_遥花_和歌山信愛高校_和歌山県"]
+    "playerIds": ["下江_遥花_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115570,7 +115594,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["貝瀬_ほのか_和歌山信愛高校_和歌山県"]
+    "playerIds": ["貝瀬_ほのか_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115582,7 +115606,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["古田_麻友_和歌山信愛高校_和歌山県"]
+    "playerIds": ["古田_麻友_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115594,7 +115618,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["浅倉_衣里_和歌山信愛高校_和歌山県"]
+    "playerIds": ["浅倉_衣里_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115606,7 +115630,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["中野_芹香_和歌山信愛高校_和歌山県"]
+    "playerIds": ["中野_芹香_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115618,7 +115642,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["松井_玲奈_和歌山信愛高校_和歌山県"]
+    "playerIds": ["松井_玲奈_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -115630,7 +115654,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["鎌田_知紗_和歌山信愛高校_和歌山県"]
+    "playerIds": ["鎌田_知紗_和歌山信愛_和歌山県"]
   },
   {
     "team": "和歌山信愛",
@@ -118779,7 +118803,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["宮田_夏実_米子松蔭高校_鳥取県"]
+    "playerIds": ["宮田_夏実_米子松蔭_鳥取県"]
   },
   {
     "team": "米子松蔭",
@@ -118791,7 +118815,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["谷村_早彩_米子松蔭高校_鳥取県"]
+    "playerIds": ["谷村_早彩_米子松蔭_鳥取県"]
   },
   {
     "team": "米子松蔭",
@@ -118803,7 +118827,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["上山_優歩_米子松蔭高校_鳥取県"]
+    "playerIds": ["上山_優歩_米子松蔭_鳥取県"]
   },
   {
     "team": "米子松蔭",
@@ -118899,7 +118923,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["梅原_由香_米子松蔭高校_鳥取県"]
+    "playerIds": ["梅原_由香_米子松蔭_鳥取県"]
   },
   {
     "team": "米子松蔭",
@@ -118911,7 +118935,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["坪倉_有沙_米子松蔭高校_鳥取県"]
+    "playerIds": ["坪倉_有沙_米子松蔭_鳥取県"]
   },
   {
     "team": "米子松蔭",
@@ -119552,18 +119576,6 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["尾門_駿_浜田_島根県", "津田_宙紀_浜田_島根県"]
-  },
-  {
-    "team": "石見智翠館",
-    "teamId": "iwamisatorusuikan",
-    "prefecture": "島根県",
-    "prefectureId": "shimane",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["森川_友菜_石見智翠館_島根県", "木村_加奈_石見智翠館_島根県"]
   },
   {
     "team": "出雲",
@@ -121493,6 +121505,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["森川_友菜_智翠館_島根県", "木村_加奈_智翠館_島根県"]
+  },
+  {
+    "team": "智翠館",
+    "teamId": "satorusuikan",
+    "prefecture": "島根県",
+    "prefectureId": "shimane",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2014,
     "gender": "girls",
     "playerIds": ["森川_友菜_智翠館_島根県", "木村_加奈_智翠館_島根県"]
@@ -122287,7 +122311,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["津田_知紀_松江南高校_島根県"]
+    "playerIds": ["津田_知紀_松江南_島根県"]
   },
   {
     "team": "松江南",
@@ -122299,7 +122323,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["津田_知紀_松江南高校_島根県"]
+    "playerIds": ["津田_知紀_松江南_島根県"]
   },
   {
     "team": "松江南",
@@ -122311,7 +122335,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["野津_乙笑_松江南高校_島根県"]
+    "playerIds": ["野津_乙笑_松江南_島根県"]
   },
   {
     "team": "松江南",
@@ -122323,7 +122347,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["津田_知紀_松江南高校_島根県"]
+    "playerIds": ["津田_知紀_松江南_島根県"]
   },
   {
     "team": "松江南",
@@ -122335,7 +122359,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["野津_痲亜未_松江南高校_島根県"]
+    "playerIds": ["野津_痲亜未_松江南_島根県"]
   },
   {
     "team": "松江南",
@@ -123415,9 +123439,33 @@
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["青木_晴弥_岡山理大附_岡山県", "本間_優作_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2018,
     "gender": "boys",
     "playerIds": ["中村_海斗_岡山理大附_高体連", "米澤_宗哉_岡山理大附_高体連"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "ベスト8",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["本倉_健太郎_岡山理大附_岡山県", "上松_俊貴_岡山理大附_岡山県"]
   },
   {
     "team": "岡山理大附",
@@ -124330,6 +124378,30 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["岩永_誠生_岡山理大附_岡山県", "仲村_一希_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["手塚_康介_木更津総合_岡山県", "石灘_蒼瑛_岡山理大附_千葉県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["佐藤_蒼真_岡山理大附_岡山県", "原田_圭_スマイリー_群馬県"]
   },
   {
     "team": "岡山操山",
@@ -125779,6 +125851,42 @@
     "result": "2回戦敗退",
     "category": "singles",
     "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["大鳥_琉稀_岡山理大附"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "5回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["青木_晴弥_岡山理大附"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["石灘_蒼瑛_岡山理大附"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
     "year": 2024,
     "gender": "boys",
     "playerIds": ["青木_晴弥_岡山理大附_岡山県"]
@@ -125866,6 +125974,42 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["今田_迅_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["佐藤_蒼真_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["植村_義高_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "6回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["上松_俊貴_岡山理大附_岡山県"]
   },
   {
     "team": "岡山理大附",
@@ -125964,6 +126108,30 @@
     "playerIds": ["小泉_瑠唯_岡山理大附_岡山県"]
   },
   {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["石灘_蒼瑛_岡山理大附_岡山県"]
+  },
+  {
+    "team": "岡山理大附",
+    "teamId": "okayamaridaifu",
+    "prefecture": "岡山県",
+    "prefectureId": "okayama",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-junior",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["佐藤_蒼真_岡山理大附_岡山県"]
+  },
+  {
     "team": "山陽学園",
     "teamId": "sanyougakuen",
     "prefecture": "岡山県",
@@ -126057,7 +126225,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["長谷川_憂華_山陽女子高校_岡山県"]
+    "playerIds": ["長谷川_憂華_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126069,7 +126237,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["原田_愛果_山陽女子高校_岡山県"]
+    "playerIds": ["原田_愛果_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126081,7 +126249,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["立花_さくら_山陽女子高校_岡山県"]
+    "playerIds": ["立花_さくら_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126093,7 +126261,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["柴原_香琳_山陽女子高校_岡山県"]
+    "playerIds": ["柴原_香琳_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126105,7 +126273,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["吉川_友菜_山陽女子高校_岡山県"]
+    "playerIds": ["吉川_友菜_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126117,7 +126285,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["立花_さくら_山陽女子高校_岡山県"]
+    "playerIds": ["立花_さくら_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126129,7 +126297,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["長谷川_憂華_山陽女子高校_岡山県"]
+    "playerIds": ["長谷川_憂華_山陽女子_岡山県"]
   },
   {
     "team": "山陽女子",
@@ -126141,7 +126309,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["柴原_香琳_山陽女子高校_岡山県"]
+    "playerIds": ["柴原_香琳_山陽女子_岡山県"]
   },
   {
     "team": "就実",
@@ -126381,7 +126549,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["石井_美々花_就実高校_岡山県"]
+    "playerIds": ["石井_美々花_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126393,7 +126561,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["藤原_杏菜_就実高校_岡山県"]
+    "playerIds": ["藤原_杏菜_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126417,7 +126585,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["藤原_麻央_就実高校_岡山県"]
+    "playerIds": ["藤原_麻央_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126429,7 +126597,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["石井_美々花_就実高等学校_岡山県"]
+    "playerIds": ["石井_美々花_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126441,7 +126609,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["吉本_珠李_就実高校_岡山県"]
+    "playerIds": ["吉本_珠李_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126453,7 +126621,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["奥田_妃奈_就実高校_岡山県"]
+    "playerIds": ["奥田_妃奈_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126465,7 +126633,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["奥田_妃奈_就実高校_岡山県"]
+    "playerIds": ["奥田_妃奈_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126477,7 +126645,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["中野_舞_就実高校_岡山県"]
+    "playerIds": ["中野_舞_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126489,7 +126657,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["藤原_麻央_就実高校_岡山県"]
+    "playerIds": ["藤原_麻央_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126501,7 +126669,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["中野_舞_就実高校_岡山県"]
+    "playerIds": ["中野_舞_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126513,7 +126681,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["山本_菜々子_就実高校_岡山県"]
+    "playerIds": ["山本_菜々子_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -126525,7 +126693,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["黒田_奈穂子_就実高校_岡山県"]
+    "playerIds": ["黒田_奈穂子_就実_岡山県"]
   },
   {
     "team": "就実",
@@ -130831,7 +130999,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["竹本_彪_広島翔洋高校_広島県"]
+    "playerIds": ["竹本_彪_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130843,7 +131011,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["宇都宮_洋太_広島翔洋高校_広島県"]
+    "playerIds": ["宇都宮_洋太_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130855,7 +131023,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["西田_有汰_広島翔洋高校_広島県"]
+    "playerIds": ["西田_有汰_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130867,7 +131035,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["渡部_綾香_広島翔洋高校_広島県"]
+    "playerIds": ["渡部_綾香_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130879,7 +131047,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡野_萌々子_広島翔洋高校_広島県"]
+    "playerIds": ["岡野_萌々子_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130891,7 +131059,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡野_若奈_広島翔洋高校_広島県"]
+    "playerIds": ["岡野_若奈_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -130903,7 +131071,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["岡野_若奈_広島翔洋高校_広島県"]
+    "playerIds": ["岡野_若奈_広島翔洋_広島県"]
   },
   {
     "team": "広島翔洋",
@@ -131311,7 +131479,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["佐藤_成美_清水ヶ丘高校_広島県"]
+    "playerIds": ["佐藤_成美_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -131323,7 +131491,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["箱崎_愁里_清水ヶ丘高校_広島県"]
+    "playerIds": ["箱崎_愁里_清水ヶ丘_広島県"]
   },
   {
     "team": "清水ヶ丘",
@@ -137333,7 +137501,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["吉川_航平_つるぎ高校_徳島県"]
+    "playerIds": ["吉川_航平_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -137345,7 +137513,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["早見_陸歩_つるぎ高校_徳島県"]
+    "playerIds": ["早見_陸歩_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -137357,7 +137525,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["前川_和輝_つるぎ高校_徳島県"]
+    "playerIds": ["前川_和輝_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -137369,7 +137537,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["妹尾_哲志_つるぎ高校_徳島県"]
+    "playerIds": ["妹尾_哲志_つるぎ_徳島県"]
   },
   {
     "team": "つるぎ",
@@ -137417,7 +137585,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["大谷_華南羽_脇町高校_徳島県"]
+    "playerIds": ["大谷_華南羽_脇町_徳島県"]
   },
   {
     "team": "脇町",
@@ -142213,7 +142381,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["野﨑_健太_尽誠学園高校_香川県"]
+    "playerIds": ["野﨑_健太_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142225,7 +142393,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["中野_聖也_尽誠学園高校_香川県"]
+    "playerIds": ["中野_聖也_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142237,7 +142405,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["小西_悠輝_尽誠学園高校_香川県"]
+    "playerIds": ["小西_悠輝_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142249,7 +142417,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["山下_翔_尽誠学園高校_香川県"]
+    "playerIds": ["山下_翔_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142261,7 +142429,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["石川_恵伍_尽誠学園高校_香川県"]
+    "playerIds": ["石川_恵伍_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142273,7 +142441,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["小畑_竣吾_尽誠学園高校_香川県"]
+    "playerIds": ["小畑_竣吾_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142285,7 +142453,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["久乗_大幸_尽誠学園高校_香川県"]
+    "playerIds": ["久乗_大幸_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142297,7 +142465,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["南浦_美優_尽誠学園高校_香川県"]
+    "playerIds": ["南浦_美優_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142309,7 +142477,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["有馬_小葉_尽誠学園高校_香川県"]
+    "playerIds": ["有馬_小葉_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142321,7 +142489,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["白石_紗菜_尽誠学園高校_香川県"]
+    "playerIds": ["白石_紗菜_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142333,7 +142501,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["田中_夏海_尽誠学園高校_香川県"]
+    "playerIds": ["田中_夏海_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142345,7 +142513,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["髙橋_柚圭_尽誠学園高校_香川県"]
+    "playerIds": ["髙橋_柚圭_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142357,7 +142525,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["薄雲_優香_尽誠学園高校_香川県"]
+    "playerIds": ["薄雲_優香_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142537,7 +142705,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["白川_雄己_尽誠学園高校_香川県"]
+    "playerIds": ["白川_雄己_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142549,7 +142717,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["片岡_晟紀_尽誠学園高校_香川県"]
+    "playerIds": ["片岡_晟紀_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142561,7 +142729,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["松原_幹_尽誠学園高校_香川県"]
+    "playerIds": ["松原_幹_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142573,7 +142741,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["四位_光太_尽誠学園高校_香川県"]
+    "playerIds": ["四位_光太_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142585,7 +142753,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["米川_結翔_尽誠学園高校_香川県"]
+    "playerIds": ["米川_結翔_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142597,7 +142765,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["石川_峻伍_尽誠学園高校_香川県"]
+    "playerIds": ["石川_峻伍_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142609,7 +142777,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["福島_久恵_尽誠学園高校_香川県"]
+    "playerIds": ["福島_久恵_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142621,7 +142789,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["河野_茜也香_尽誠学園高校_香川県"]
+    "playerIds": ["河野_茜也香_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142633,7 +142801,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["三島_彩音_尽誠学園高校_香川県"]
+    "playerIds": ["三島_彩音_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142645,7 +142813,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["山上_莉沙_尽誠学園高校_香川県"]
+    "playerIds": ["山上_莉沙_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142657,7 +142825,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["竹松_和加葉_尽誠学園高校_香川県"]
+    "playerIds": ["竹松_和加葉_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142669,7 +142837,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["室_智輝_尽誠学園高校_香川県"]
+    "playerIds": ["室_智輝_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142681,7 +142849,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["白川_雄己_尽誠学園高校_香川県"]
+    "playerIds": ["白川_雄己_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142693,7 +142861,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["片岡_晟紀_尽誠学園高校_香川県"]
+    "playerIds": ["片岡_晟紀_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142705,7 +142873,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["中野_聖也_尽誠学園高校_香川県"]
+    "playerIds": ["中野_聖也_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142717,7 +142885,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["白石_紗菜_尽誠学園高校_香川県"]
+    "playerIds": ["白石_紗菜_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142729,7 +142897,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["竹松_和加葉_尽誠学園高校_香川県"]
+    "playerIds": ["竹松_和加葉_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142741,7 +142909,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["薄雲_優香_尽誠学園高校_香川県"]
+    "playerIds": ["薄雲_優香_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142753,7 +142921,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["秋山_皆呼_尽誠学園高校_香川県"]
+    "playerIds": ["秋山_皆呼_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142765,7 +142933,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["石井_陸_尽誠学園高校_香川県"]
+    "playerIds": ["石井_陸_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142777,7 +142945,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["川上_史弥_尽誠学園高校_香川県"]
+    "playerIds": ["川上_史弥_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -142789,7 +142957,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["田中_夏海_尽誠学園高校_香川県"]
+    "playerIds": ["田中_夏海_尽誠学園_香川県"]
   },
   {
     "team": "尽誠学園",
@@ -153100,7 +153268,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["原口_美咲_中村学園女子高校_福岡県"]
+    "playerIds": ["原口_美咲_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153112,7 +153280,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["久保_菜月_中村学園女子高校_福岡県"]
+    "playerIds": ["久保_菜月_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153124,7 +153292,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["武藤_日菜_中村学園女子高校_福岡県"]
+    "playerIds": ["武藤_日菜_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153136,7 +153304,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["永江_鈴香_中村学園女子高校_福岡県"]
+    "playerIds": ["永江_鈴香_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153148,7 +153316,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["佐々木_夏_中村学園女子高校_福岡県"]
+    "playerIds": ["佐々木_夏_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153160,7 +153328,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡田_采華_中村学園女子高校_福岡県"]
+    "playerIds": ["岡田_采華_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153172,7 +153340,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岡田_舞_中村学園女子高校_福岡県"]
+    "playerIds": ["岡田_舞_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153184,7 +153352,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["久保_菜月_中村学園女子高校_福岡県"]
+    "playerIds": ["久保_菜月_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153196,7 +153364,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["原口_美咲_中村学園女子高校_福岡県"]
+    "playerIds": ["原口_美咲_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153208,7 +153376,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["大槻_莉子_中村学園女子高校_福岡県"]
+    "playerIds": ["大槻_莉子_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153220,7 +153388,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["森山_之乃華_中村学園女子高校_福岡県"]
+    "playerIds": ["森山_之乃華_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153232,7 +153400,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["横田_真央_中村学園女子高校_福岡県"]
+    "playerIds": ["横田_真央_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153244,7 +153412,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["酒井_葵衣_中村学園女子高校_福岡県"]
+    "playerIds": ["酒井_葵衣_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153256,7 +153424,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["黒木_夏穂_中村学園女子高校_福岡県"]
+    "playerIds": ["黒木_夏穂_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -153268,7 +153436,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["高木_祐里奈_中村学園女子高校_福岡県"]
+    "playerIds": ["高木_祐里奈_中村学園女子_福岡県"]
   },
   {
     "team": "中村学園女子",
@@ -159458,7 +159626,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["酒井_香菜子_大村高校_長崎県"]
+    "playerIds": ["酒井_香菜子_大村_長崎県"]
   },
   {
     "team": "大村",
@@ -159470,7 +159638,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["本村_未羽_大村高校_長崎県"]
+    "playerIds": ["本村_未羽_大村_長崎県"]
   },
   {
     "team": "大村",
@@ -159482,7 +159650,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["福田_千尋_大村高校_長崎県"]
+    "playerIds": ["福田_千尋_大村_長崎県"]
   },
   {
     "team": "大村",
@@ -159494,7 +159662,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["福田_千尋_大村高校_長崎県"]
+    "playerIds": ["福田_千尋_大村_長崎県"]
   },
   {
     "team": "大村",
@@ -159506,7 +159674,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["竹添_すみれ_大村高校_長崎県"]
+    "playerIds": ["竹添_すみれ_大村_長崎県"]
   },
   {
     "team": "大村工",
@@ -162380,6 +162548,18 @@
     "teamId": "kumamotokou",
     "prefecture": "熊本県",
     "prefectureId": "kumamoto",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["勇川_陽聖_熊本工_熊本県"]
+  },
+  {
+    "team": "熊本工",
+    "teamId": "kumamotokou",
+    "prefecture": "熊本県",
+    "prefectureId": "kumamoto",
     "result": "3回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
@@ -162409,7 +162589,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "boys",
-    "playerIds": ["石橋_仁_ルーテル学院高校_熊本県"]
+    "playerIds": ["石橋_仁_ルーテル学院_熊本県"]
   },
   {
     "team": "ルーテル学院",
@@ -165515,7 +165695,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["大塚_瑠依_明豊高校_大分県"]
+    "playerIds": ["大塚_瑠依_明豊_大分県"]
   },
   {
     "team": "明豊",
@@ -165527,7 +165707,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["伊藤_唯_明豊高校_大分県"]
+    "playerIds": ["伊藤_唯_明豊_大分県"]
   },
   {
     "team": "明豊",
@@ -165551,7 +165731,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岩倉_彩佳_明豊高校_大分県"]
+    "playerIds": ["岩倉_彩佳_明豊_大分県"]
   },
   {
     "team": "明豊",
@@ -172238,7 +172418,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["宇城_翔太_鹿児島高校_鹿児島県"]
+    "playerIds": ["宇城_翔太_鹿児島_鹿児島県"]
   },
   {
     "team": "鹿児島",
@@ -172250,7 +172430,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "boys",
-    "playerIds": ["岩城_俊介_鹿児島高校_鹿児島県"]
+    "playerIds": ["岩城_俊介_鹿児島_鹿児島県"]
   },
   {
     "team": "鹿児島",
@@ -172262,7 +172442,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "boys",
-    "playerIds": ["松山_雄磨_鹿児島高校_鹿児島県"]
+    "playerIds": ["松山_雄磨_鹿児島_鹿児島県"]
   },
   {
     "team": "鹿児島",

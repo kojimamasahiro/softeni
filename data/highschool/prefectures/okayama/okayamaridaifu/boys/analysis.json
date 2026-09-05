@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 106,
+  "totalAppearances": 118,
   "byCategory": {
     "team": 18,
-    "doubles": 72,
-    "singles": 16
+    "doubles": 76,
+    "singles": 24
   },
   "resultsByCategory": {
     "singles": {
@@ -83,8 +83,12 @@
       }
     }
   },
-  "uniquePlayers": 84,
+  "uniquePlayers": 86,
   "topPlayers": [
+    {
+      "id": "青木_晴弥_岡山理大附_岡山県",
+      "appearances": 6
+    },
     {
       "id": "足利_颯太_岡山理大附_岡山県",
       "appearances": 6
@@ -94,16 +98,12 @@
       "appearances": 6
     },
     {
+      "id": "佐藤_蒼真_岡山理大附_岡山県",
+      "appearances": 6
+    },
+    {
       "id": "佐藤_優真_岡山理大附_岡山県",
       "appearances": 5
-    },
-    {
-      "id": "青木_晴弥_岡山理大附_岡山県",
-      "appearances": 5
-    },
-    {
-      "id": "島谷_楽空_岡山理大附_岡山県",
-      "appearances": 4
     }
   ]
 }
