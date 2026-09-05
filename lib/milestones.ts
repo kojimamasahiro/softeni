@@ -173,22 +173,42 @@ function isPerfectTitle(tournamentId: string, categoryId: string, targetYear: nu
 }
 
 /**
- * 選手個人（playerKey）の連覇情報を返す。ペアが替わっても、その選手が連続開催で
+ * ある年の優勝者に「その選手本人」が含まれるかを判定する（個人戦用）。
+ *
+ * playerKey は「名前@所属」のため、進学・移籍で所属が変わると年度をまたいだ照合が
+ * 外れる（例: zennihon-mixed 2025 天間麗奈@東北 → 2026 天間麗奈@日本体育大学）。
+ * そのため playerKeys 一致に加えて players（フルネーム）でも突合する。
+ *
+ * この関数を連覇（repeat-title）判定と first/nth-title 判定の**両方**で使うこと。
+ * 片方だけが名前フォールバックを持つと、所属変更時に「連覇なのに nth-title」という
+ * 矛盾したラベル（例:「1年ぶり2回目の優勝」＝ギャップ1年、定義上それは連覇）が出る。
+ * 2026-09-05 の不具合はこの不整合が原因（docs/raw/2026-09-05-repeat-title-team-change.md）。
+ *
+ * 残リスク: 同一種目の優勝者に同姓同名の別人がいると誤って同一人物とみなす。
+ * 対象が「その大会・種目の歴代優勝者」という極めて狭い集合であること、および
+ * 既に first/nth-title が同じ割り切りで運用されていることから許容する。
+ */
+function championIncludesPlayer(c: ChampionEntry, key: string, name: string): boolean {
+  return c.playerKeys.includes(key) || c.players.includes(name);
+}
+
+/**
+ * 選手個人の連覇情報を返す。ペアが替わっても、その選手が連続開催で
  * 優勝していれば連覇とみなす（ダブルスを「選手個人」軸で判定するための関数）。
  * 対象年にその選手が優勝者に含まれない場合は null。
  */
-function computePlayerStreak(championsDesc: ChampionEntry[], targetYear: number, key: string): RepeatChampion | null {
+function computePlayerStreak(championsDesc: ChampionEntry[], targetYear: number, key: string, name: string): RepeatChampion | null {
   const asc = championsDesc.slice().sort((a, b) => a.year - b.year);
   const idx = asc.findIndex((c) => c.year === targetYear);
   if (idx < 0) return null;
-  if (!asc[idx].playerKeys.includes(key)) return null;
+  if (!championIncludesPlayer(asc[idx], key, name)) return null;
 
   let streak = 1;
   let since = asc[idx].year;
   for (let i = idx - 1; i >= 0; i--) {
     // 連続する開催年であることも条件にする（隔年・欠落は連覇を切る）
     if (asc[i + 1].year - asc[i].year !== 1) break;
-    if (!asc[i].playerKeys.includes(key)) break;
+    if (!championIncludesPlayer(asc[i], key, name)) break;
     streak += 1;
     since = asc[i].year;
   }
@@ -243,7 +263,7 @@ function buildIndividualMilestones(
     }
 
     // --- repeat-title（連覇）: 本人の連続優勝（confirmed） ---
-    const streak = computePlayerStreak(block.champions, targetYear, key);
+    const streak = computePlayerStreak(block.champions, targetYear, key, name);
     if (streak) {
       const streakLabel = `${streak.streak}連覇`;
       const shortLabel = `${cat}${streakLabel}（${streak.since}年〜）`;
@@ -263,10 +283,9 @@ function buildIndividualMilestones(
     }
 
     // --- first-title / nth-title ---
-    // playerKey は「名前@所属」形式のため、所属変更後の選手が別人と判定されないよう
-    // playerKeys による一致に加えて players（名前）でも突合する。
+    // 照合は連覇判定と同じ championIncludesPlayer を使う（所属変更フォールバック込み）。
     if (priorKnownYears.length > 0) {
-      const priorWins = priorKnownYears.filter((c) => c.playerKeys.includes(key) || c.players.includes(name));
+      const priorWins = priorKnownYears.filter((c) => championIncludesPlayer(c, key, name));
       if (priorWins.length === 0) {
         // first-title（初優勝）: 掲載範囲の過去年に優勝歴がない（scope-limited）
         events.push({
