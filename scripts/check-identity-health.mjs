@@ -7,6 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { teamCore } from './lib/team-core.mjs';
+import { clusterPlayerOverlapPairs, findPlayerOverlapPairs, MIN_SHARED_PLAYERS } from './lib/team-player-overlap.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DET = path.join(ROOT, 'data', 'tournaments', 'details');
@@ -238,6 +239,13 @@ for (const [, arr] of blocks) {
   }
 }
 
+// ---- チェックB2: 未統合の表記候補（選手共有シグナル）----
+// コア一致では拾えない語中の脱落（`岡山理大附` ⇔ `岡山理科大附高校`）を、
+// 「同一年度に同じ氏名の選手が2チームへ出ている」ことから検出する。
+// 定義は build-team-merge-candidates.mjs と共有（scripts/lib/team-player-overlap.mjs）。
+// 小学生・社会人の二重登録（クラブと市協会など）が偽陽性として混ざるため、常に人手レビュー扱い。
+const overlapClusters = clusterPlayerOverlapPairs(findPlayerOverlapPairs(ROOT, teams));
+
 // ---- チェックC: 同名別校の疑い ----
 const reviewPref = teams.filter((t) => t.reviewPrefectures);
 
@@ -317,6 +325,18 @@ line('[チーム] 別名のまま残る出場', aliasLeft, aliasLeft ? '→ norm
 line('[チーム] 自動OK可の未統合候補', candAuto, candAuto ? '→ apply-auto-merges.mjs' : '');
 line('[チーム] 要人手レビュー候補(同一大会同居等)', candReview, reviewEx.length ? '例: ' + reviewEx.slice(0, 4).join(' ｜ ') : '');
 line(
+  `[チーム] 未統合候補(選手共有・同年共起${MIN_SHARED_PLAYERS}名以上)`,
+  overlapClusters.length,
+  overlapClusters.length
+    ? '例: ' +
+        overlapClusters
+          .slice(0, 3)
+          .map((c) => c.members.map((m) => m.name).join(' / '))
+          .join(' ｜ ') +
+        ' → team-merge-review.html'
+    : '',
+);
+line(
   '[チーム] 同名別校の疑い(reviewPrefectures)',
   reviewPref.length,
   reviewPref
@@ -340,13 +360,17 @@ const total =
   aliasLeft +
   candAuto +
   candReview +
+  overlapClusters.length +
   reviewPref.length +
   newHomo.length +
   ageConflict.length +
   prefConflict.length +
   noFirstName.size;
 console.log(`\n合計 要対応シグナル: ${total}`);
-console.log('注: 「内部略称(理大/理科大)」は信号が無く本チェックでは検出不可。');
+console.log(
+  '注: 内部略称(理大/理科大 のような語中の脱落)はコア一致では拾えないため、選手共有シグナルで検出する。' +
+    'ただし同年に両表記へ出た選手が居ない表記揺れは、どちらのシグナルにも掛からず依然検出できない。',
+);
 console.log('注: 同姓同名の検出 D/E/F は下限。**同世代かつ同一都道府県**の同姓同名は 3 つとも信号が無く原理的に検出できない。');
 console.log('注: D/E/F の検出数は homonyms.json への登録漏れであり、登録しても players/index.json の id は分割されない（1 名前 = 1 id）。');
 process.exitCode = total > 0 ? 1 : 0;

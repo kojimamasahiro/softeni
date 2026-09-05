@@ -37,6 +37,17 @@
     "teamId": "fujimi",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls"
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -63,6 +74,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2023,
+    "gender": "girls"
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
     "gender": "girls"
   },
   {
@@ -272,28 +294,6 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2026,
-    "gender": "girls"
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls"
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
     "gender": "girls"
   },
   {
@@ -703,6 +703,42 @@
     "teamId": "fujimi",
     "prefecture": "静岡県",
     "prefectureId": "shizuoka",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["浦田_知春_富士見_静岡県", "梅原_奈央_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["泉_舞_富士見_静岡県", "伊藤_真巳_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2013,
+    "gender": "girls",
+    "playerIds": ["奈良_彩_富士見_静岡県", "後藤_みほ_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -829,6 +865,30 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["梅原_奈央_富士見_静岡県", "古郡_沙野_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["泉_舞_富士見_静岡県", "伊藤_真巳_富士見_静岡県"]
+  },
+  {
+    "team": "富士見",
+    "teamId": "fujimi",
+    "prefecture": "静岡県",
+    "prefectureId": "shizuoka",
+    "result": "5回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2012,
+    "gender": "girls",
+    "playerIds": ["佐野_由奈_富士見_静岡県", "梅原_千尋_富士見_静岡県"]
   },
   {
     "team": "富士見",
@@ -2173,66 +2233,6 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["伊藤_万絋_静岡_静岡県", "中野_束冴_静岡_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["浦田_知春_静岡県富士見_静岡県", "梅原_奈央_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["泉_舞_静岡県富士見_静岡県", "伊藤_真巳_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2013,
-    "gender": "girls",
-    "playerIds": ["奈良_彩_静岡県富士見_静岡県", "後藤_みほ_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
-    "gender": "girls",
-    "playerIds": ["泉_舞_静岡県富士見_静岡県", "伊藤_真巳_静岡県富士見_静岡県"]
-  },
-  {
-    "team": "静岡県富士見",
-    "teamId": "shizuokakenfujimi",
-    "prefecture": "静岡県",
-    "prefectureId": "shizuoka",
-    "result": "5回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2012,
-    "gender": "girls",
-    "playerIds": ["佐野_由奈_静岡県富士見_静岡県", "梅原_千尋_静岡県富士見_静岡県"]
   },
   {
     "team": "静岡市立",

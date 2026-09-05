@@ -376,6 +376,20 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
   なお `normalize-team-spacing.mjs`（全角半角の正準化）は既に `prebuild` の先頭に入っている。
   → 対応表の仕組み・登録済みエイリアス・過去の修正履歴は [data-import.md](./data-import.md) が正。
 
+## チーム名寄せ（2026-09-05 追加）
+
+- **インターハイ2012 男子ダブルス・埼玉県の `春日部` がどの高校か未確定**。
+  `春日部クラブ`（社会人）へ誤って寄らないよう alias に `scope` を付けたが、
+  素の `春日部` のまま残っている（春日部/春日部東/春日部工業 等の候補）。
+  当時の出場者は吉水悠・中村匡貴。→ [team-player-identity.md](./team-player-identity.md)「alias の大会スコープ」
+- **選手共有シグナルで挙がった104クラスタのレビュー**（[ADR-017](../adr/ADR-017-team-merge-signal-player-overlap.md)）。
+  `data/teams/team-merge-review.html` に「選手共有: N名」として並ぶ。自動OKには絶対に載らないので、
+  全件が人手判断待ち。うち55件は `scripts/highschool/03list/inferred-team-aliases.json` に既出。
+- そのうち**表記揺れではなく取り込み時の誤字**が混ざっている（`きのくに宿用金庫` / `きのくに用金庫`、
+  `岩見沢光陵中学校拠`）。これらは alias ではなく**元データの修正**が要る。
+- `inferred-team-aliases.json`（高校パイプライン）と `team-player-overlap.mjs`（本体）が
+  **同じ規則の二重実装**になっている。どちらに寄せるか。
+
 ## 大会 information の `location` 検算（2026-08-28 追加）
 
 全中2026の `location` が前年の値（`熊本県`）の複製で誤っていた件

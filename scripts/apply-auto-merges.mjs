@@ -2,6 +2,7 @@
 // 判定ロジックはレビューHTML(build-team-review-html.mjs)と同一:
 //   - 既定グループ: 出場大会のジャンル(小/中/高/大/成)で分割。一意でなければ名前段階で補完。
 //   - 自動OK: 同一グループ内で「同一大会(大会id+年)」に表記が同居しなければ自動OK。
+//   - ただし signal:"players"（選手共有シグナル）のクラスタは常に自動OKにしない（人手レビュー専用）。
 //   - 自動OKクラスタの各統合グループ(≥2)を {canonical:最多表記, aliases:残り} として追加。
 // 適用後は normalize-team-names.mjs + build-team-master.mjs の再実行が必要。
 import fs from 'fs';
@@ -37,6 +38,11 @@ function defaultGroups(members) {
   return keys.map((k) => idx[k]);
 }
 function autoOK(c) {
+  // 選手共有シグナル(signal:"players")は自動OKにしない。
+  // このシグナルの偽陽性は「同年に同じ選手が両方へ登録される別チーム」（小学生のクラブと
+  // 市協会、社会人のクラブと勤務先など）で、大会同居の有無では切り分けられないため、
+  // 名前の類似という裏付けが無いこのシグナルは常に人手レビューへ回す。
+  if (c.signal === 'players') return false;
   const groups = defaultGroups(c.members);
   const byG = {};
   c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));

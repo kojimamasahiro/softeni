@@ -45,7 +45,11 @@ function defaultGroups(members) {
 
 const data = clusters.map((c) => ({
   prefecture: c.prefecture,
+  signal: c.signal || 'core',
   core: c.core,
+  // 選手共有シグナルの根拠（見出しに出す）。コア一致クラスタでは undefined。
+  sharedPlayers: c.sharedPlayers,
+  years: c.years,
   members: c.members,
   groups: defaultGroups(c.members),
 }));
@@ -66,6 +70,8 @@ function instOf(m) {
 //  - どのグループ内でも同居が無ければ（＝表記揺れは別々の大会にしか出ない）自動OK。
 //  - ジャンルが違うメンバーは既定グループで分かれる＝統合されないので自動で別チーム扱い。
 const autoOK = clusters.map((c) => {
+  // signal:"players" は常に人手レビュー（理由は apply-auto-merges.mjs の autoOK を参照）。
+  if (c.signal === 'players') return false;
   const groups = defaultGroups(c.members);
   const byG = {};
   c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));
@@ -179,7 +185,10 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
     const card=document.createElement('div');card.className='card'+(s.reviewed?' rev':'');
     const head=document.createElement('div');head.className='chead';
     const badge=s.reviewed?('<span class="badge '+(AUTO[i]?'b-autook">自動OK':'b-done">確認済')+'</span>'):('<span class="badge '+(NEEDS[i]?'b-rev">要確認':'b-auto">ほぼ自明')+'</span>');
-    head.innerHTML='<span class="pref">'+(c.prefecture||'（県なし）')+'</span><span class="core">core: '+c.core+'</span>'+badge;
+    const sig=c.signal==='players'
+      ?'選手共有: '+c.sharedPlayers.length+'名 ('+c.sharedPlayers.slice(0,3).join('・')+(c.sharedPlayers.length>3?' 他':'')+') '+c.years.join(',')
+      :'core: '+c.core;
+    head.innerHTML='<span class="pref">'+(c.prefecture||'（県なし）')+'</span><span class="core">'+sig+'</span>'+badge;
     card.appendChild(head);
     const ents=aliasEntries(i);
     if(s.reviewed){ // 確認済は畳んで表示（レビュー対象から外す）

@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 25,
+  "totalAppearances": 32,
   "byCategory": {
-    "team": 4,
-    "doubles": 20,
+    "team": 6,
+    "doubles": 25,
     "singles": 1
   },
   "resultsByCategory": {
@@ -50,12 +50,12 @@
         "teamId": "fujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "4回戦敗退",
+        "result": "5回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2012,
         "gender": "girls",
-        "playerIds": ["小林_麻央_富士見_静岡県", "阿部_穂花_富士見_静岡県"]
+        "playerIds": ["佐野_由奈_富士見_静岡県", "梅原_千尋_富士見_静岡県"]
       }
     },
     "team": {
@@ -75,15 +75,15 @@
         "teamId": "fujimi",
         "prefecture": "静岡県",
         "prefectureId": "shizuoka",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "team",
         "tournamentId": "highschool-championship",
-        "year": 2025,
+        "year": 2012,
         "gender": "girls"
       }
     }
   },
-  "uniquePlayers": 24,
+  "uniquePlayers": 30,
   "topPlayers": [
     {
       "id": "小林_麻央_富士見_静岡県",
@@ -102,8 +102,8 @@
       "appearances": 3
     },
     {
-      "id": "大滝_瑠菜_富士見_静岡県",
-      "appearances": 2
+      "id": "梅原_奈央_富士見_静岡県",
+      "appearances": 3
     }
   ]
 }
