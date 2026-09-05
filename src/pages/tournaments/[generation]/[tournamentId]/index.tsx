@@ -25,6 +25,7 @@ import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/quali
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
+import { CANCELLED_LABEL, isCancelledEntry } from '@/lib/tournamentCancellation';
 import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 import { buildPriorMeetingIndex, countCoveredEntries, countPriorMeetings } from '@/lib/priorMeetings';
 import { getHistoricalWinners, readYearDetail } from '@/lib/tournamentRecords';
@@ -67,6 +68,27 @@ type CategoryLink = {
   abandonedAfterRound: string | null;
 };
 
+/**
+ * 中止（開催されなかった）年。結果が無いので `yearGroups` には入れず別に持つ。
+ * 回次が進んだまま中止になった年を年表から落とすと「未収録の年」と区別が付かないため、
+ * 年度別結果と歴代優勝者の表にだけ「中止」として並べる。
+ *
+ * **成績側（連覇・通算・statistics）には一切入れない**。1試合も行われていないので、
+ * `yearGroups` 由来の championRows・JSON-LD・文脈ブロックはこの年を知らないままにする
+ * （打ち切り＝`abandonedAfterRound` は成績が残るので扱いが違う）。
+ * docs/raw/2026-09-05-cancelled-tournament-editions.md
+ */
+type CancelledYear = {
+  year: string;
+  /** その回の表示名（例: "第75回 天皇賜杯・皇后賜杯 全日本選手権大会"）。無ければ null */
+  label: string | null;
+  /** 中止時点の開催**予定**地。実績ではない */
+  location: string | null;
+  /** 中止時点の開催**予定**日 */
+  startDate: string | null;
+  endDate: string | null;
+};
+
 type YearGroup = {
   year: string;
   location: string | null;
@@ -87,6 +109,8 @@ interface TournamentHubPageProps {
   searchNote: string | null;
   officialUrl: string | null;
   yearGroups: YearGroup[];
+  /** 中止の年（新しい年が先頭）。結果が無いので yearGroups とは別に持つ */
+  cancelledYears: CancelledYear[];
   // 高校全国大会（インターハイ/ジャパンカップ）の場合のみスラッグが入る。
   // このハブは /highschool/tournaments/[tournament] とカニバるため、
   // 高校全国大会では noindex,follow にして検索面を高校歴代ページへ集中させる。
@@ -119,6 +143,7 @@ export default function TournamentHubPage({
   searchNote,
   officialUrl,
   yearGroups,
+  cancelledYears,
   hsNationalSlug,
   featurePath,
   contextBlocks,
@@ -201,8 +226,19 @@ export default function TournamentHubPage({
   // category（doubles/team/singles）が切り替わる境目には見出し行を挟み、
   // 1つの表のまま「ダブルス」「団体戦」をグループとして見分けられるようにする。
   // 行見出し自体は性別のみ（例: 男子/女子）にして、グループ見出しと種目名が重複しないようにする。
+  // 中止の年は列（年度）としてだけ表に混ぜる。行（種目）側には出さない＝
+  // どの種目にも優勝者がいない年として、全セルが「中止」になる。
+  const cancelledYearSet = new Set(cancelledYears.map((c) => c.year));
+
+  // 年度別結果は「結果のある年」と「中止の年」を年度降順で1本に混ぜて並べる。
+  // 中止の年を落とすと回次（第N回）の飛びが説明できず、未収録の年と見分けが付かない。
+  const yearSections: { year: string; group: YearGroup | null; cancelled: CancelledYear | null }[] = [
+    ...yearGroups.map((g) => ({ year: g.year, group: g, cancelled: null })),
+    ...cancelledYears.map((c) => ({ year: c.year, group: null, cancelled: c })),
+  ].sort((a, b) => Number(b.year) - Number(a.year));
+
   const championTable = (() => {
-    const years = [...new Set(championRows.map((r) => r.year))].sort((a, b) => Number(b) - Number(a));
+    const years = [...new Set([...championRows.map((r) => r.year), ...cancelledYearSet])].sort((a, b) => Number(b) - Number(a));
 
     // 短縮ラベル（男子/女子/混合）が同じグループ見出しの中で衝突するなら、そのグループは
     // フルの種目名を使う。年齢区分のある大会（全日本社会人の 一般男子 / 男子35歳 / 男子45歳、
@@ -508,7 +544,9 @@ export default function TournamentHubPage({
                             const r = row.cellsByYear.get(year) ?? null;
                             return (
                               <td key={year} className="whitespace-nowrap px-4 py-2 text-center">
-                                {!r ? (
+                                {cancelledYearSet.has(year) ? (
+                                  <span className="text-xs text-text-muted">{CANCELLED_LABEL}</span>
+                                ) : !r ? (
                                   <span className="text-text-muted">ー</span>
                                 ) : r.winner ? (
                                   r.winnerPlayers && r.winnerPlayers.length > 0 ? (
@@ -557,7 +595,7 @@ export default function TournamentHubPage({
 
         {clubTransition && <ClubTransitionSection label={label} data={clubTransition} />}
 
-        {yearGroups.length === 0 ? (
+        {yearSections.length === 0 ? (
           // 開催前ブロックが「まだ結果が無い」ことを既に説明しているため、そこでは出さない
           upcomingOnly ? null : (
             <div className="rounded-lg border border-dashed border-border p-6 text-center">
@@ -571,27 +609,50 @@ export default function TournamentHubPage({
         ) : (
           <section className="mb-10">
             <h2 className="text-lg font-bold mb-3">年度別結果</h2>
-            {yearGroups.map((g) => (
-              <section className="mb-8" key={g.year}>
-                <h3 className="text-base font-semibold mb-1">{g.year}年度</h3>
-                {(g.location || g.startDate) && (
-                  <p className="mb-2 text-xs text-text-muted">
-                    {g.location ? `開催地:${g.location}` : ''}
-                    {g.location && g.startDate ? ' / ' : ''}
-                    {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
+            {yearSections.map(({ year, group: g, cancelled: c }) =>
+              c ? (
+                // 中止の年。日程・会場は「中止時点の開催予定」なので、実績と同じ書き方
+                // （「開催地:」「日程:」）はせず、予定であることを明示する。
+                <section className="mb-8" key={year}>
+                  <h3 className="text-base font-semibold mb-1">
+                    {year}年度
+                    <span className="ml-2 inline-flex items-center rounded-full border border-rose-200 bg-rose-50 px-2 py-0.5 text-xs font-normal text-rose-800 dark:border-rose-800 dark:bg-rose-900/30 dark:text-rose-300">
+                      {CANCELLED_LABEL}
+                    </span>
+                  </h3>
+                  <p className="text-xs text-text-muted">
+                    {c.label ? `${c.label}は中止となり、開催されませんでした。` : 'この年度の大会は中止となり、開催されませんでした。'}
                   </p>
-                )}
-                <ul className="flex flex-wrap gap-2">
-                  {g.categories.map((c) => (
-                    <li key={`${g.year}-${c.category}-${c.age}-${c.gender}`}>
-                      <Link href={c.href}>
-                        <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{c.label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
+                  {(c.location || c.startDate) && (
+                    <p className="mt-1 text-xs text-text-muted">
+                      {`開催予定:${c.startDate ? `${c.startDate}${c.endDate && c.endDate !== c.startDate ? `〜${c.endDate}` : ''}` : ''}`}
+                      {c.startDate && c.location ? ' / ' : ''}
+                      {c.location ?? ''}
+                    </p>
+                  )}
+                </section>
+              ) : g ? (
+                <section className="mb-8" key={year}>
+                  <h3 className="text-base font-semibold mb-1">{g.year}年度</h3>
+                  {(g.location || g.startDate) && (
+                    <p className="mb-2 text-xs text-text-muted">
+                      {g.location ? `開催地:${g.location}` : ''}
+                      {g.location && g.startDate ? ' / ' : ''}
+                      {g.startDate ? `日程:${g.startDate}${g.endDate ? `〜${g.endDate}` : ''}` : ''}
+                    </p>
+                  )}
+                  <ul className="flex flex-wrap gap-2">
+                    {g.categories.map((cat) => (
+                      <li key={`${g.year}-${cat.category}-${cat.age}-${cat.gender}`}>
+                        <Link href={cat.href}>
+                          <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{cat.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null,
+            )}
           </section>
         )}
 
@@ -1046,10 +1107,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 「第54回 全日本社会人選手権大会」をたどっても、その回の会期も会場も出ない状態になっていた。
   // 会期が終わっていない以上その大会は未開催なので、日程・会場を出すのが正しい。
   // 会期が終われば条件から外れて自動的に消える。
+  // 中止が決まっている年は「これから開催」ではないので候補から外す
+  // （日程・会場は中止時点の開催予定であって、これから起きる予定ではない）。
   const todayIso = new Date().toISOString().slice(0, 10);
   const upcomingEntry =
-    [...information].filter((e) => e.endDate && e.endDate >= todayIso).sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0] ??
-    null;
+    [...information]
+      .filter((e) => !isCancelledEntry(e) && e.endDate && e.endDate >= todayIso)
+      .sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')))[0] ?? null;
 
   const upcoming: UpcomingTournamentData | null = upcomingEntry
     ? {
@@ -1074,6 +1138,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     : null;
 
+  // 中止の年。details が無いので yearGroups には現れない＝そのままでは年表から消える。
+  // 回次（第N回）が進んだまま中止になった年を「未収録の年」と区別できるようにするため、
+  // 結果を持たない年として別に渡す（成績側には入れない）。
+  const cancelledYears: CancelledYear[] = information
+    .filter((e) => isCancelledEntry(e))
+    .sort((a, b) => b.year - a.year)
+    .map((e) => ({
+      year: String(e.year),
+      label: e.label || null,
+      location: e.location || null,
+      startDate: e.startDate || null,
+      endDate: e.endDate || null,
+    }));
+
   return {
     props: {
       generation,
@@ -1084,6 +1162,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       searchNote,
       officialUrl,
       yearGroups,
+      cancelledYears,
       hsNationalSlug: getHsNationalSlugByTournamentId(tournamentId),
       featurePath,
       contextBlocks,

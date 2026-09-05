@@ -80,6 +80,20 @@ export interface TournamentInformationEntry {
   note?: string;
   /** 大会要項PDFのURL。取得できていなければ null。 */
   guidelineUrl?: string | null;
+  /**
+   * 大会運営上の状態。'cancelled' は「開催されなかった（中止）」。
+   * 未設定＝開催された（既存データは全て未設定）。
+   *
+   * 回次（第N回）が進んだまま中止になった年（2020・2021 のコロナ禍など）を年表から
+   * 落とすと「まだ収録していない年」と区別が付かないため、結果を持たない年エントリとして残す。
+   * `location` / `startDate` / `endDate` は**中止時点の開催予定**であって実績ではない。
+   * `categories` は空配列にする（1種目も実施されていないため）。
+   *
+   * カテゴリ単位の `TournamentCategoryInfo.status: 'abandoned'`（途中打ち切り）とは別物。
+   * 打ち切りは途中まで実施されて成績が残るが、中止は1試合も行われていない。
+   * docs/raw/2026-09-05-cancelled-tournament-editions.md
+   */
+  status?: 'cancelled';
 }
 
 /**

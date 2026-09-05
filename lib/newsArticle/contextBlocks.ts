@@ -8,6 +8,7 @@ import { getChampionMilestones, getGiantKillings } from '../milestones';
 import { meetingRoundIndex, roundLabelOf } from '../bracketLayout';
 import { getBracketLayout } from '../bracketLayout.server';
 import { buildPriorMeetingIndex, meetingKey } from '../priorMeetings';
+import { isCancelledEntry } from '../tournamentCancellation';
 import {
   buildParticipantMap,
   getHistoricalWinners,
@@ -521,10 +522,17 @@ function readTournamentIndex(): TournamentIndexRow[] {
   return out;
 }
 
-/** 大会情報（開催日）を読む。年度ごとの startDate を持つ */
+/**
+ * 大会情報（開催日）を読む。年度ごとの startDate を持つ。
+ * **中止（`status:'cancelled'`）の回は除く**（開催されていないので「直近の他大会」になれない。
+ * 素通しにすると、直近大会の枠（最大2件）を1試合も行われていない回が埋めてしまう）。
+ * lib/tournamentCancellation.ts
+ */
 function readTournamentEditions(tournamentId: string): Array<{ year: number; startDate?: string }> {
-  const arr = readJson<Array<{ year: number; startDate?: string }>>(path.join(resolveRoot(), 'data', 'tournaments', 'information', `${tournamentId}.json`));
-  return Array.isArray(arr) ? arr : [];
+  const arr = readJson<Array<{ year: number; startDate?: string; status?: string }>>(
+    path.join(resolveRoot(), 'data', 'tournaments', 'information', `${tournamentId}.json`),
+  );
+  return Array.isArray(arr) ? arr.filter((e) => !isCancelledEntry(e)) : [];
 }
 
 /** categoryId（category-age-gender）→ 表示ラベル（例: 男子シングルス） */

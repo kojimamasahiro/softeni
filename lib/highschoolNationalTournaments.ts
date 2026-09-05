@@ -14,6 +14,7 @@ import {
   type HsNationalTournamentMeta,
   type HsNationalTournamentSlug,
 } from '@/lib/highschoolNationalTournamentMeta';
+import { isCancelledEntry } from '@/lib/tournamentCancellation';
 import { computeResultCoverage, formatResultCoverageBodyText, type ResultCoverageStatus } from '@/lib/tournamentCoverage';
 import type { TournamentInformationEntry } from '@/types/tournament';
 
@@ -135,6 +136,21 @@ export type UpcomingEdition = {
 };
 
 /**
+ * 中止（開催されなかった）回。結果が無いので `years` には現れず、そのままでは
+ * 年表から消える（＝未収録の年と区別が付かない）ため別に持つ。
+ * `location` / `startDate` / `endDate` は**中止時点の開催予定**であって実績ではない。
+ * docs/raw/2026-09-05-cancelled-tournament-editions.md
+ */
+export type CancelledEdition = {
+  year: number;
+  /** その回の表示名（例: "令和2年度 全国高等学校総合体育大会"）。無ければ null */
+  label: string | null;
+  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+};
+
+/**
  * 開催中（または組み合わせのみ掲載済み）の大会の、1 種目ぶんの掲載状況。
  *
  * 目的は SEO と回遊の両方。大会期間中は「{大会}{年}」系クエリの需要がピークになるが、
@@ -187,8 +203,10 @@ export type InProgressEdition = {
 export type TournamentRecords = HsNationalTournamentMeta & {
   years: YearRecord[];
   championSummary: ChampionSummaryRow[];
-  /** information にあり、まだ結果が無い開催予定（新しい年が先） */
+  /** information にあり、まだ結果が無い開催予定（新しい年が先）。中止の回は含まない */
   upcoming: UpcomingEdition[];
+  /** 中止の回（新しい年が先）。結果が無いので years とは別に持つ */
+  cancelled: CancelledEdition[];
   /**
    * 開催中（結果が一部のみ／組み合わせのみ）の大会。無ければ null。
    * `upcoming` とは排他ではない: 一部種目だけ優勝が確定した年は `years`
@@ -688,9 +706,11 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
   const yearsCovered = years.map((y) => y.year);
 
   // information にあるが結果（details）がまだ無い年 = 開催予定（または集計待ち）
+  // 中止の回は「開催予定」ではない。除外しないと、開催されなかった年が「開催予定」として
+  // 並び、SportsEvent の JSON-LD にも eventStatus:EventScheduled で出てしまう。
   const resultYears = new Set(yearsCovered);
   const upcoming: UpcomingEdition[] = information
-    .filter((e) => !resultYears.has(e.year))
+    .filter((e) => !resultYears.has(e.year) && !isCancelledEntry(e))
     .sort((a, b) => b.year - a.year)
     .map((e) => ({
       year: e.year,
@@ -700,6 +720,17 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
       categoryLabels: (e.categories ?? []).map((c) => c.label),
       source: e.source || null,
       sourceUrl: e.sourceUrl || null,
+    }));
+
+  const cancelled: CancelledEdition[] = information
+    .filter((e) => isCancelledEntry(e))
+    .sort((a, b) => b.year - a.year)
+    .map((e) => ({
+      year: e.year,
+      label: e.label || null,
+      location: e.location || null,
+      startDate: e.startDate || null,
+      endDate: e.endDate || null,
     }));
 
   // 開催中の大会は最新年度のものだけを扱う（過去年度に取り込み途中のものがあっても出さない）
@@ -734,6 +765,7 @@ export function getHsNationalTournamentRecords(slug: HsNationalTournamentSlug): 
     ...meta,
     years,
     championSummary,
+    cancelled,
     upcoming,
     inProgress,
     lastModified,

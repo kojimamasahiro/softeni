@@ -599,15 +599,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const parsed = JSON.parse(raw) as TournamentInformationEntry[];
       infoForYear = parsed.find((entry) => String(entry.year) === String(year)) ?? null;
 
+      // 年度・カテゴリ切り替えの候補は **結果ページが実在する種目だけ**にする。
+      // information には開催前の年（会期が未来）・中止の年・結果が特集ページ側にある年も入っており、
+      // information だけを見ると「ページが無い年度」への切り替えボタンが出て 404 になる
+      // （このルートの getStaticPaths は details/ を走査して paths を作り fallback:false のため）。
+      // 実例: 天皇賜杯2026（会期2026-11、結果未投入）へのボタンが 2025年度のページに出ていた。
+      // nft がパスを静的解決できるよう、セグメントはリテラルで書く（deployment.md）。
+      const detailsRootForLinks = path.join(process.cwd(), 'data', 'tournaments', 'details', tournamentId);
+      const hasResultPage = (entryYear: number, categoryId: string): boolean =>
+        fs.existsSync(path.join(detailsRootForLinks, String(entryYear), `${categoryId}.json`));
+
       linkCategories = parsed.flatMap((entry) =>
-        (entry.categories ?? []).map((cat) => ({
-          label: cat.label,
-          year: String(entry.year),
-          category: cat.category,
-          gender: cat.gender,
-          age: cat.age,
-          isCurrent: String(entry.year) === String(year) && cat.category === gameCategory && cat.gender === gender && cat.age === ageCategory,
-        })),
+        (entry.categories ?? [])
+          .filter((cat) => hasResultPage(entry.year, cat.categoryId))
+          .map((cat) => ({
+            label: cat.label,
+            year: String(entry.year),
+            category: cat.category,
+            gender: cat.gender,
+            age: cat.age,
+            isCurrent: String(entry.year) === String(year) && cat.category === gameCategory && cat.gender === gender && cat.age === ageCategory,
+          })),
       );
 
       if (!infoForYear) {

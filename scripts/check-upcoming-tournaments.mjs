@@ -41,8 +41,12 @@ for (const t of index) {
   infoById.set(t.tournamentId, Array.isArray(entries) ? entries : []);
 }
 
+// 中止（status:'cancelled'）の年は「これから開催」ではないので未来レコードとして数えない。
+// 会期前に中止が決まった回を数えると、次回の行を足し忘れていても [2] に出なくなる。
 const futureOf = (tid) =>
-  (infoById.get(tid) ?? []).filter((e) => e.endDate && e.endDate >= today).sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')));
+  (infoById.get(tid) ?? [])
+    .filter((e) => e.status !== 'cancelled' && e.endDate && e.endDate >= today)
+    .sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')));
 
 // ── 1. 予選会に対応する本大会が未登録 ──────────────────────────────────────
 const orphanQualifiers = index

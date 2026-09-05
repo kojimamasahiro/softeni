@@ -23,6 +23,7 @@ import {
   type TournamentRecords,
   type UpcomingEdition,
 } from '@/lib/highschoolNationalTournaments';
+import { CANCELLED_LABEL } from '@/lib/tournamentCancellation';
 
 type Props = {
   records: TournamentRecords;
@@ -293,10 +294,13 @@ function genderRowLabel(gender: string, fallback: string): string {
  * 種目=行 / 年度=列 の表で解いているので、**UIをそちらに揃えた**。
  * 年度が増えると右に伸びるため、1列目（種目）を `sticky` で固定して横スクロールさせる。
  */
-function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
+function ChampionSummary({ rows, cancelledYears }: { rows: ChampionSummaryRow[]; cancelledYears: number[] }) {
   if (rows.length === 0) return null;
 
-  const years = [...new Set(rows.flatMap((r) => r.byYear.map((c) => c.year)))].sort((a, b) => b - a);
+  // 中止の年は列（年度）としてだけ混ぜる。どの種目にも優勝者がいない年なので全セルが「中止」。
+  // 落とすと年表に穴が空き、「未収録の年」と区別が付かなくなる。
+  const cancelledSet = new Set(cancelledYears);
+  const years = [...new Set([...rows.flatMap((r) => r.byYear.map((c) => c.year)), ...cancelledSet])].sort((a, b) => b - a);
   const table = rows.map((r) => ({ ...r, cellsByYear: new Map(r.byYear.map((c) => [c.year, c] as const)) }));
 
   return (
@@ -334,6 +338,13 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
                   <tr className="border-t border-border">
                     <td className="sticky left-0 z-10 whitespace-nowrap bg-surface px-4 py-2 font-medium">{genderRowLabel(row.gender, row.label)}</td>
                     {years.map((year) => {
+                      if (cancelledSet.has(year)) {
+                        return (
+                          <td key={year} className="whitespace-nowrap px-4 py-2 text-center">
+                            <span className="text-xs text-text-muted">{CANCELLED_LABEL}</span>
+                          </td>
+                        );
+                      }
                       const cell = row.cellsByYear.get(year) ?? null;
                       if (!cell) {
                         return (
@@ -383,7 +394,8 @@ function ChampionSummary({ rows }: { rows: ChampionSummaryRow[] }) {
 }
 
 export default function HighschoolTournamentRecordsPage({ records }: Props) {
-  const { slug, label, shortLabel, aliases, officialUrl, description, years, championSummary, upcoming, inProgress, lastModified, yearsCovered } = records;
+  const { slug, label, shortLabel, aliases, officialUrl, description, years, championSummary, cancelled, upcoming, inProgress, lastModified, yearsCovered } =
+    records;
 
   const pageUrl = `https://softeni-pick.com/highschool/tournaments/${slug}/`;
   // yearRange は「歴代（優勝が確定している年）」の範囲。FAQ 等でそう名乗るのでここに開催中の年を混ぜない
@@ -416,6 +428,13 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
   const latestYear = yearsCovered.length ? Math.max(...yearsCovered) : null;
   const categoryCount = championSummary.length;
   // 開催中の年は InProgressSection が受け持つので、「開催予定」からは外す（同じ年を二重に出さない）
+  // 年度別の記録は「結果のある年」と「中止の年」を年度降順で1本に混ぜて並べる。
+  // 中止の年を落とすと、そこだけ年が飛んで未収録の年と見分けが付かない。
+  const yearSections: { year: number; record: (typeof years)[number] | null; cancelled: (typeof cancelled)[number] | null }[] = [
+    ...years.map((yr) => ({ year: yr.year, record: yr, cancelled: null })),
+    ...cancelled.map((cn) => ({ year: cn.year, record: null, cancelled: cn })),
+  ].sort((a, b) => b.year - a.year);
+
   const upcomingEditions = inProgress ? upcoming.filter((e) => e.year !== inProgress.year) : upcoming;
   const nextEdition = upcomingEditions[0] ?? null;
 
@@ -672,9 +691,9 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
 
         {lastModified && <p className="mb-8 -mt-4 text-xs text-gray-400 dark:text-gray-500">最終更新: {formatDateRange(lastModified, null)}</p>}
 
-        <ChampionSummary rows={championSummary} />
+        <ChampionSummary rows={championSummary} cancelledYears={cancelled.map((c) => c.year)} />
 
-        {years.length === 0 ? (
+        {yearSections.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-6 text-center">
             <p className="text-sm">掲載中の結果がありません。</p>
             <p className="mt-1 text-xs text-text-muted">この大会の歴代記録はまだ収録していません。収録し次第、年度別・種目別に並べます。</p>
@@ -687,53 +706,78 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
             <h2 className="text-xl font-bold mb-1">年度別の記録</h2>
             <p className="text-sm text-text-secondary mb-5">各年度の優勝〜ベスト4を種目別に掲載。新しい年度から並べています。</p>
             <div className="space-y-10">
-              {years.map((yr) => (
-                <section key={yr.year} className="scroll-mt-20" id={`y${yr.year}`}>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <h3 className="text-lg font-bold">
-                      {yr.year}年度 {shortLabel}
-                    </h3>
-                    {latestYear === yr.year && <span className="rounded-full bg-success-bg text-success px-2 py-0.5 text-xs font-semibold">最新</span>}
-                  </div>
-                  {(yr.location || yr.startDate) && (
-                    <p className="mb-3 text-xs text-text-muted">
-                      {yr.location ? `開催地: ${yr.location}` : ''}
-                      {yr.location && yr.startDate ? ' / ' : ''}
-                      {yr.startDate ? `日程: ${formatDateRange(yr.startDate, yr.endDate)}` : ''}
+              {yearSections.map(({ year, record: yr, cancelled: cn }) =>
+                cn ? (
+                  // 中止の回。日程・会場は「中止時点の開催予定」なので、実績と同じ
+                  // 「開催地:」「日程:」の書き方はしない。
+                  <section key={year} className="scroll-mt-20" id={`y${year}`}>
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <h3 className="text-lg font-bold">
+                        {year}年度 {shortLabel}
+                      </h3>
+                      <span className="rounded-full border border-rose-200 bg-rose-50 px-2 py-0.5 text-xs font-semibold text-rose-800 dark:border-rose-800 dark:bg-rose-900/30 dark:text-rose-300">
+                        {CANCELLED_LABEL}
+                      </span>
+                    </div>
+                    <p className="text-xs text-text-muted">
+                      {cn.label ? `${cn.label}は中止となり、開催されませんでした。` : 'この年度の大会は中止となり、開催されませんでした。'}
                     </p>
-                  )}
+                    {(cn.location || cn.startDate) && (
+                      <p className="mt-1 text-xs text-text-muted">
+                        {`開催予定: ${cn.startDate ? formatDateRange(cn.startDate, cn.endDate) : ''}`}
+                        {cn.startDate && cn.location ? ' / ' : ''}
+                        {cn.location ?? ''}
+                      </p>
+                    )}
+                  </section>
+                ) : yr ? (
+                  <section key={yr.year} className="scroll-mt-20" id={`y${yr.year}`}>
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <h3 className="text-lg font-bold">
+                        {yr.year}年度 {shortLabel}
+                      </h3>
+                      {latestYear === yr.year && <span className="rounded-full bg-success-bg text-success px-2 py-0.5 text-xs font-semibold">最新</span>}
+                    </div>
+                    {(yr.location || yr.startDate) && (
+                      <p className="mb-3 text-xs text-text-muted">
+                        {yr.location ? `開催地: ${yr.location}` : ''}
+                        {yr.location && yr.startDate ? ' / ' : ''}
+                        {yr.startDate ? `日程: ${formatDateRange(yr.startDate, yr.endDate)}` : ''}
+                      </p>
+                    )}
 
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    {yr.categories.map((cat) => (
-                      <div key={cat.categoryId} className="rounded-xl border border-border p-4 bg-surface">
-                        <div className="flex items-center justify-between gap-2 mb-3">
-                          <h4 className="font-semibold">{cat.label}</h4>
-                          <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
-                            対戦表を見る
-                          </Link>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {yr.categories.map((cat) => (
+                        <div key={cat.categoryId} className="rounded-xl border border-border p-4 bg-surface">
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <h4 className="font-semibold">{cat.label}</h4>
+                            <Link href={cat.bracketHref} className="text-xs text-link hover:underline whitespace-nowrap">
+                              対戦表を見る
+                            </Link>
+                          </div>
+                          <ul className="space-y-2">
+                            {cat.placements.map((p, idx) => (
+                              <li key={`${cat.categoryId}-${p.order}-${idx}`} className="flex items-start gap-2 text-sm">
+                                <span
+                                  className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${
+                                    RANK_BADGE_CLASS[p.rankLabel] ?? 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100'
+                                  }`}
+                                >
+                                  {p.rankLabel}
+                                </span>
+                                <span className="flex-1">
+                                  <PlacementName playerLinks={p.playerLinks} teamLinks={p.teamLinks} />
+                                  {p.prefectures.length > 0 && <span className="ml-1 text-xs text-text-muted">{p.prefectures.join('・')}</span>}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        <ul className="space-y-2">
-                          {cat.placements.map((p, idx) => (
-                            <li key={`${cat.categoryId}-${p.order}-${idx}`} className="flex items-start gap-2 text-sm">
-                              <span
-                                className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold whitespace-nowrap ${
-                                  RANK_BADGE_CLASS[p.rankLabel] ?? 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-100'
-                                }`}
-                              >
-                                {p.rankLabel}
-                              </span>
-                              <span className="flex-1">
-                                <PlacementName playerLinks={p.playerLinks} teamLinks={p.teamLinks} />
-                                {p.prefectures.length > 0 && <span className="ml-1 text-xs text-text-muted">{p.prefectures.join('・')}</span>}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
+                      ))}
+                    </div>
+                  </section>
+                ) : null,
+              )}
             </div>
           </section>
         )}

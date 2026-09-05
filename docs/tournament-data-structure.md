@@ -180,6 +180,27 @@ export interface TournamentCategoryInfo {
 ```
 
 > **注**: 実際のJSONファイルには `informationId` フィールドが含まれていますが、型定義には含まれていません。
+> また、上のコード片は必須フィールドのみで、実際には `label` / `venues` / `note` /
+> `guidelineUrl` / `resultPath` / `status` などの任意フィールドがある。**最新は必ず
+> [`src/types/tournament.ts`](../src/types/tournament.ts) を見ること。**
+
+#### 大会運営状態の語彙（`status`）
+
+「予定どおり実施されなかった」ことを表す語彙が2つあり、**粒度と意味が違う**。
+
+| フィールド | 値 | 意味 |
+|---|---|---|
+| `TournamentInformationEntry.status` | `'cancelled'` | その年が**中止**（1試合も行われていない）。`details/` は作らない。`categories` は空配列。`location`/`startDate`/`endDate` は中止時点の**開催予定**であって実績ではない |
+| `TournamentCategoryInfo.status` | `'abandoned'` | その種目が**途中で打ち切られた**（そこまでの成績は有効）。`abandonedAfterRound` に最後に完了したラウンド名を入れる |
+
+- 中止: `lib/tournamentCancellation.ts`（`isCancelledEntry`）/
+  [設計ノート](./raw/2026-09-05-cancelled-tournament-editions.md)
+  → 中止年は成績系（連覇・playerStats・歴代優勝者の JSON-LD）に**入れない**
+- 打ち切り: `lib/tournamentAbandonment.ts` /
+  [設計ノート](./raw/2026-07-26-abandoned-tournament-ui-design.md)
+  → 打ち切り年は**開催年として数え**、到達成績（ベスト8等）が集計に入る
+
+どちらも**理由は持たない**（断定できないため。入力メモは公開しない `note` に書く）。
 
 #### 使用例
 

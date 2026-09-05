@@ -60,7 +60,9 @@
     let isTeam = false;
     if (categoryId) {
       isSingles = categoryId.indexOf('singles') >= 0;
-      isTeam = categoryId.indexOf('team') >= 0;
+      // team: 従来の団体戦。versus: 大学対校戦などの対戦カード単位の団体戦（playerIds は1チーム分の1人）。
+      // どちらも playerIds が1人でも正常（[teamId]/[year]/[gender].tsx も両方を個人戦から除外している）。
+      isTeam = categoryId.indexOf('team') >= 0 || categoryId.indexOf('versus') >= 0;
     } else {
       const counts = new Map();
       for (const e of entries) {

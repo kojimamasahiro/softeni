@@ -859,7 +859,7 @@ entries の入力ミスを検出する。問題があれば終了コード1。�
 
 | ルール | 意味 |
 |---|---|
-| `pair-single-player` | ペア戦なのに `playerIds` が1人。カテゴリの付け間違いか相方の入力漏れ |
+| `pair-single-player` | ペア戦なのに `playerIds` が1人。カテゴリの付け間違いか相方の入力漏れ。categoryId（ファイル名）に `team` または `versus` を含む場合は対象外（1人1チームが正常な形のため） |
 | `duplicate-player-id` | `playerIds` に同一IDが重複。相方欄に本人をコピーした入力ミス |
 | `singles-multi-player` | シングルスなのに複数人 |
 | `unknown-participant` | `participants` に存在しない `playerId` を参照 |
