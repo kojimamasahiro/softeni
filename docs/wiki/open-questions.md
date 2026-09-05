@@ -390,6 +390,18 @@ wiki 反映は [players-pages.md](./players-pages.md)「選手データベース
 - `inferred-team-aliases.json`（高校パイプライン）と `team-player-overlap.mjs`（本体）が
   **同じ規則の二重実装**になっている。どちらに寄せるか。
 
+## milestone の不変条件を機械チェックするか（2026-09-05 追加）
+
+- `nth-title` の `gapYears === 1` は**定義上ありえない**（ギャップ1年＝連続開催の連続優勝＝連覇）。
+  実際に 2026-09-05 まで5件出ており、連覇判定と first/nth 判定の照合基準の非対称が原因だった
+  （修正済み。[raw/2026-09-05-repeat-title-team-change.md](../raw/2026-09-05-repeat-title-team-change.md)）。
+  この種の**自己矛盾するラベルを検出する不変条件チェック**を `scripts/check-*.mjs` 系に足すか。
+  候補の不変条件: `nth-title` は `gapYears >= 2`／同一選手に `repeat-title` と `first-title` が同時に出ない／
+  `repeat-title` の `since < year`。全468エディション総当たりで数秒なので CI に載せられる。
+- 併せて、`lib/milestones.ts` にはテストが無い（`lib/__tests__/` に milestone のケースが1本も無い）。
+  上記の総当たりチェックで代替するか、代表ケース（ペア替わり連覇・所属変更連覇・隔年開催）の
+  ユニットテストを置くか。
+
 ## 大会 information の `location` 検算（2026-08-28 追加）
 
 全中2026の `location` が前年の値（`熊本県`）の複製で誤っていた件
