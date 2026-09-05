@@ -1,4 +1,5 @@
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+import { CANCELLED_LABEL, isCancelledEntry } from '@/lib/tournamentCancellation';
 import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import type { TournamentDetailData, TournamentEntry, TournamentIndexEntry, TournamentInformationEntry, TournamentParticipant } from '@/types/tournament';
 
@@ -174,10 +175,16 @@ export const getMajorTitlesForPlayer = async (lastName: string, firstName: strin
           if (resultStr) break;
         }
 
-        // if not found in details, consult information for future scheduled
+        // if not found in details, consult information for cancellation / future scheduled
         if (!resultStr) {
           const infoForYear = infoEntries.find((it) => Number(it.year) === Number(year));
-          if (infoForYear && infoForYear.startDate) {
+          // 中止の年は**誰も出場していない**ので、既定の 'ー'（出場なし・記録なし）と
+          // 区別して「中止」と出す。この表は information 由来の年も列に入れる作りなので、
+          // 中止年を素通しにすると全選手の全種目が 'ー' になり出場していないのと同じ見え方になる。
+          // lib/tournamentCancellation.ts
+          if (isCancelledEntry(infoForYear)) {
+            resultStr = CANCELLED_LABEL;
+          } else if (infoForYear && infoForYear.startDate) {
             const sd = new Date(infoForYear.startDate);
             if (sd > now) {
               const label = formatStartDate(infoForYear.startDate) || infoForYear.startDate;
