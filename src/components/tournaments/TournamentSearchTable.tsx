@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 import UpcomingTournaments, { getTodayInTokyo, type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
+import { CANCELLED_LABEL } from '@/lib/tournamentCancellation';
 
 // ─── 型定義 ─────────────────────────────────────────────────────────────
 export type TournamentLevel = 'national' | 'block' | 'prefecture' | 'city' | 'open';
@@ -20,6 +21,13 @@ export type TournamentInstance = {
   prefectureId: string | null;
   level: TournamentLevel;
   categoryLabels: string[];
+  /**
+   * その年が中止（開催されなかった）。回次が進んだまま中止になった年を一覧から落とすと
+   * 「未収録」と区別が付かないため、結果を持たない行として並べる。
+   * startDate / endDate / location は中止時点の開催予定であって実績ではない。
+   * lib/tournamentCancellation.ts
+   */
+  cancelled: boolean;
   hasInternalResult: boolean;
   officialUrl: string | null;
   firstCategoryPath: string | null;
@@ -76,6 +84,14 @@ type TournamentStatus = {
 };
 
 function getTournamentStatus(inst: TournamentInstance): TournamentStatus | null {
+  // 中止は日付に関係なく最優先。会期前に中止が決まった大会を「開催予定」と出さないため。
+  if (inst.cancelled) {
+    return {
+      label: CANCELLED_LABEL,
+      className: 'bg-rose-50 text-rose-800 border border-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:border-rose-800',
+    };
+  }
+
   if (inst.hasInternalResult && inst.firstCategoryPath) {
     return null;
   }
@@ -271,7 +287,7 @@ export default function TournamentSearchTable({ instances, prefectures, years, g
   return (
     <div>
       {/* 「これから開催」はフィルターより上＝絞り込みの外側に置くため、filtered ではなく全件から作る */}
-      <UpcomingTournaments items={instances.map(toUpcomingItem)} limit={UPCOMING_LIMIT} className="mb-4" />
+      <UpcomingTournaments items={instances.filter((inst) => !inst.cancelled).map(toUpcomingItem)} limit={UPCOMING_LIMIT} className="mb-4" />
 
       {adSlot}
 
@@ -456,7 +472,8 @@ function MobileCard({ inst }: { inst: TournamentInstance }) {
       <div className="relative z-10 flex flex-wrap items-center gap-2">
         <LevelBadge level={inst.level} />
         <span className="inline-block bg-bg-subtle text-gray-700 dark:text-gray-200 text-xs px-2 py-0.5 rounded-full">{inst.generationLabel}</span>
-        <ResultCell inst={inst} />
+        {/* 中止は上の status バッジで既に出ているので、ここでは繰り返さない（表側は結果列だけなので出す） */}
+        {!inst.cancelled && <ResultCell inst={inst} />}
       </div>
     </div>
   );
@@ -468,6 +485,16 @@ function LevelBadge({ level }: { level: TournamentLevel }) {
 }
 
 function ResultCell({ inst }: { inst: TournamentInstance }) {
+  // 中止の年は結果も「公式ページで結果が見られる」導線も無いので、状態そのものを出す
+  // （空欄や「—」にすると未収録の年と見分けが付かない）。
+  if (inst.cancelled) {
+    return (
+      <span className="inline-flex items-center rounded-full border border-rose-200 bg-rose-50 px-2 py-0.5 text-xs text-rose-800 dark:border-rose-800 dark:bg-rose-900/30 dark:text-rose-300">
+        {CANCELLED_LABEL}
+      </span>
+    );
+  }
+
   if (inst.hasInternalResult && inst.firstCategoryPath) {
     return (
       <Link

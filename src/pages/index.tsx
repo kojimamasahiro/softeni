@@ -10,6 +10,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import UpcomingTournaments, { type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+import { isCancelledEntry } from '@/lib/tournamentCancellation';
 import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
 
@@ -346,6 +347,8 @@ export async function getStaticProps() {
   const upcomingTournaments: UpcomingTournamentItem[] = [];
   for (const [tournamentId, infos] of infoMap) {
     for (const info of infos) {
+      // 中止が決まっている年は「これから開催」ではない（lib/tournamentCancellation.ts）
+      if (isCancelledEntry(info)) continue;
       if (!info.startDate || !info.endDate || info.endDate < buildDate) continue;
       const generationId = generationById.get(tournamentId);
       if (!generationId) continue;

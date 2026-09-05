@@ -261,6 +261,10 @@ npm run check:upcoming
 一次ソースは `t_records/{年度}/{年度}_taikai_alle.pdf`（追記3）。作業用の断片は
 [venue-input-worksheet.md](../venue-input-worksheet.md)。
 
+**中止（`status: 'cancelled'`）の年は未来レコードとして数えない**（2026-09-05）。
+会期前に中止が決まった回を数えてしまうと、次回の行を足し忘れていても [2] に出なくなるため。
+中止の年の扱いは [public-pages](./public-pages.md)「中止（開催されなかった回）の見せ方」。
+
 ---
 
 ### S7. 未来大会の `venues` を補充する

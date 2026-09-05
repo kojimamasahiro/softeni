@@ -4,6 +4,7 @@
 import fs from 'fs';
 import path from 'path';
 
+import { isCancelledEntry } from '@/lib/tournamentCancellation';
 import type { TournamentCategoryInfo, TournamentIndexEntry, TournamentInformationEntry } from '@/types/tournament';
 
 export interface TournamentMeta {
@@ -246,7 +247,10 @@ export const getTournamentInfoSSR = async (tournamentId: string): Promise<Tourna
 
     const informationEntries = loadTournamentInformation(entry.tournamentId);
     const availableYears = getAllAvailableYears(entry.tournamentId, informationEntries);
-    const targetYear = lookup.explicitYear ?? informationEntries[0]?.year ?? availableYears[0] ?? null;
+    // 年の指定が無いときの既定年に**中止の年は選ばない**（結果も種目も無い年になってしまう）。
+    // information のファイル順の先頭を既定にする既存挙動は変えない。lib/tournamentCancellation.ts
+    const defaultYear = informationEntries.find((info) => !isCancelledEntry(info))?.year;
+    const targetYear = lookup.explicitYear ?? defaultYear ?? availableYears[0] ?? null;
 
     const yearInfo = (targetYear !== null ? (informationEntries.find((info) => info.year === targetYear) ?? null) : null) ?? null;
 

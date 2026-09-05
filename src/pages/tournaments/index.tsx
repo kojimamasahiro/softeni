@@ -12,6 +12,7 @@ import PageLayout from '@/components/PageLayout';
 import SubNav from '@/components/nav/SubNav';
 import TournamentSearchTable, { TournamentInstance, TournamentLevel } from '@/components/tournaments/TournamentSearchTable';
 import { AD_SLOTS } from '@/lib/ads';
+import { isCancelledEntry } from '@/lib/tournamentCancellation';
 
 // 大会入口のサブナビ(すべて/主要/地域/地区)。4ページ共通(docs/ui M2-3・C-3)
 export const TOURNAMENTS_SUBNAV = [
@@ -53,6 +54,11 @@ type TournamentInfo = {
   label?: string;
   sourceUrl?: string;
   categories: InfoCategory[];
+  /**
+   * 'cancelled' はその年が中止（開催されなかった）。日程・会場は中止時点の開催予定で、
+   * 結果は存在しない。lib/tournamentCancellation.ts
+   */
+  status?: 'cancelled';
   /**
    * 結果がサイト内の別ページにある大会（例: STリーグ→`/st-league/2025/matches/`）の内部URL。
    * `data/tournaments/details/` を持たないため通常の結果ページ導線が張れない大会でも、
@@ -200,13 +206,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const level = inferLevel(t.tournamentId, false);
 
     for (const info of infos) {
+      // 中止の年は1試合も行われていないので、結果への導線を一切作らない
+      // （日程・会場は開催予定であって実績ではない。lib/tournamentCancellation.ts）
+      const cancelled = isCancelledEntry(info);
       const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
-      const hasDetailFiles = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const hasDetailFiles = !cancelled && fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
       // 結果が details ではなくサイト内の特集ページにある大会（STリーグ等）は resultPath を優先する
-      const hasInternalResult = !!info.resultPath || hasDetailFiles;
+      const hasInternalResult = !cancelled && (!!info.resultPath || hasDetailFiles);
 
-      let firstCategoryPath: string | null = info.resultPath ?? null;
-      if (!firstCategoryPath) {
+      let firstCategoryPath: string | null = cancelled ? null : (info.resultPath ?? null);
+      if (!cancelled && !firstCategoryPath) {
         for (const cat of info.categories) {
           const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
           if (fs.existsSync(detailPath)) {
@@ -228,6 +237,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         prefectureId: prefNameToId[info.location] ?? null,
         level,
         categoryLabels: info.categories.map((c) => c.label),
+        cancelled,
         hasInternalResult,
         officialUrl: info.sourceUrl ?? t.officialUrl ?? null,
         firstCategoryPath,
@@ -244,13 +254,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     const level: TournamentLevel = t.areaId ? t.areaId : t.blockId ? 'block' : inferLevel(t.tournamentId, true);
 
     for (const info of infos) {
+      // 中止の年は1試合も行われていないので、結果への導線を一切作らない
+      // （日程・会場は開催予定であって実績ではない。lib/tournamentCancellation.ts）
+      const cancelled = isCancelledEntry(info);
       const detailDir = path.join(detailsDir, t.tournamentId, String(info.year));
-      const hasDetailFiles = fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
+      const hasDetailFiles = !cancelled && fs.existsSync(detailDir) && fs.readdirSync(detailDir).some((f) => f.endsWith('.json'));
       // 結果が details ではなくサイト内の特集ページにある大会（STリーグ等）は resultPath を優先する
-      const hasInternalResult = !!info.resultPath || hasDetailFiles;
+      const hasInternalResult = !cancelled && (!!info.resultPath || hasDetailFiles);
 
-      let firstCategoryPath: string | null = info.resultPath ?? null;
-      if (!firstCategoryPath) {
+      let firstCategoryPath: string | null = cancelled ? null : (info.resultPath ?? null);
+      if (!cancelled && !firstCategoryPath) {
         for (const cat of info.categories) {
           const detailPath = path.join(detailDir, `${cat.categoryId}.json`);
           if (fs.existsSync(detailPath)) {
@@ -274,6 +287,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         prefectureId: t.federationId ?? prefNameToId[info.location] ?? null,
         level,
         categoryLabels: info.categories.map((c) => c.label),
+        cancelled,
         hasInternalResult,
         officialUrl: info.sourceUrl ?? t.officialUrl ?? null,
         firstCategoryPath,
