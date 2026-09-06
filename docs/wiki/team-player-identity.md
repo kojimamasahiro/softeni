@@ -142,10 +142,21 @@ NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`
    - 進み具合は `data/teams/review-history.json` に時系列で残る
      （`npm run review:snapshot`。毎週 `review-snapshot` ワークフローが数字の動いた週だけ追記する）。
      候補件数と誤り率の推移が読める。
+   - **候補とチームマスタのIDは必ず揃えること**（2026-09-06 追加）。
+     `build-team-master.mjs` は位置でIDを振るので、alias を反映してマスタだけ作り直すと
+     `merge-candidates.json` の旧IDが**別チームを指す**ようになり、レビュー画面の文脈
+     （選手名・年・出場大会）が別チームのものになる（実測: 1,223メンバー中1,211がずれた）。
+     データは壊れず表示だけが静かに嘘になるので、`node scripts/check-team-id-alignment.mjs`
+     （`npm run check:team-id-alignment`）で検査する。ずれていたら
+     `node scripts/build-team-merge-candidates.mjs` で候補を作り直す。
+     サーバ方式（下記）は反映時に候補とレビュー画面まで自動で作り直すのでずれない。
+
 3. **反映**:
    - サーバ方式（保存ボタンで即反映・推奨）: `npm run team:review`
      （= レビューHTML生成 → `scripts/team-review-server.mjs`）→ `http://localhost:5173` でレビュー
-     →「確認済を反映」で台帳へ保存＋`apply-team-aliases.mjs` 経由で alias 反映＋マスタ再生成。
+     →「確認済を反映」で台帳へ保存＋`apply-team-aliases.mjs` 経由で alias 反映＋
+     **マスタ・候補・レビュー画面の再生成**（IDのずれを防ぐため候補まで作り直す）。
+     応答に残り件数が入るので、画面の案内に従ってページを再読み込みする。
      `POST /decisions` は台帳への記録だけを行う（alias は触らない）。
    - ファイル方式: 書き出した `team-alias-additions.json` を
      `node scripts/apply-team-aliases.mjs <file>`。

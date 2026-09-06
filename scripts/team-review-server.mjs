@@ -22,11 +22,13 @@ import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 import { applyAdditions } from './apply-team-aliases.mjs';
-import { readLedger, recordDecision, summarize, writeLedger } from './lib/review-ledger.mjs';
+import { clusterKey, readLedger, recordDecision, summarize, writeLedger } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = path.join(ROOT, 'data', 'teams', 'team-merge-review.html');
 const MASTER = path.join(ROOT, 'scripts', 'build-team-master.mjs');
+const CANDIDATES = path.join(ROOT, 'scripts', 'build-team-merge-candidates.mjs');
+const REVIEW_HTML = path.join(ROOT, 'scripts', 'build-team-review-html.mjs');
 const PORT = process.env.PORT || 5173;
 
 /** レビュー画面から届いた判断を台帳へ記録する。 */
@@ -39,6 +41,19 @@ function saveDecisions(decisions) {
   }
   writeLedger(ledger);
   return summarize(ledger);
+}
+
+/** 作り直した後の候補件数と、そのうち未判断の件数を数える。画面に出して再読み込みを促す。 */
+function countRemaining() {
+  try {
+    const clusters = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'));
+    const ledger = readLedger();
+    const keys = new Set(Object.keys(ledger.decisions));
+    const done = clusters.filter((c) => keys.has(clusterKey(c.members))).length;
+    return { clusters: clusters.length, done, todo: clusters.length - done };
+  } catch {
+    return null;
+  }
 }
 
 const server = http.createServer((req, res) => {
@@ -65,14 +80,23 @@ const server = http.createServer((req, res) => {
           return;
         }
         const result = applyAdditions(additions);
-        execFileSync('node', [MASTER], { stdio: 'ignore' }); // マスタ再生成
+        // マスタ→候補→レビュー画面の順に作り直す。
+        // マスタだけ作り直すと、build-team-master.mjs が `const id = teams.length + 1` と
+        // 位置でIDを振るせいで merge-candidates.json の旧IDが別チームを指すようになり、
+        // レビュー画面の文脈（選手名・年・出場大会）が**別チームのもの**になる
+        // （2026-09-06 実測: 819メンバー中707がずれた）。候補まで作り直せば揃う。
+        // 判断台帳はチーム名キーなので、候補を作り直しても判断は失われない。
+        execFileSync('node', [MASTER], { stdio: 'ignore' });
+        execFileSync('node', [CANDIDATES], { stdio: 'ignore' });
+        execFileSync('node', [REVIEW_HTML], { stdio: 'ignore' });
         console.log(
           `[apply] 適用 ${result.applied.length} / スキップ ${result.skipped.length} / 競合 ${result.conflicts.length}` +
             ` / 台帳 ${ledger.total}件（人 ${ledger.human}・統合 ${ledger.merge}・別チーム ${ledger.separate}` +
             `・自動OKを人が覆した ${ledger.autoOKOverturned}）`,
         );
+        const remaining = countRemaining();
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ ...result, ledger }));
+        res.end(JSON.stringify({ ...result, ledger, remaining }));
       } catch (e) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: String(e) }));
