@@ -67,12 +67,26 @@ function readAudit() {
 if (argv.includes('--draw')) {
   const n = Number(arg('--draw', '20'));
   const seed = Number(arg('--seed', String(Date.now() % 2147483647)));
+  const stratum = arg('--stratum', null); // 'merge' | 'separate' | null(=全体)
+  if (stratum && stratum !== 'merge' && stratum !== 'separate') {
+    console.error('--stratum は merge か separate。');
+    process.exit(2);
+  }
   const ledger = readLedger();
 
   // 母集団: 機械が決めて、人が一度も見ていないもの。
-  const pool = Object.entries(ledger.decisions)
+  //
+  // 層に分けて引けるようにしてある（2026-09-06 追加）。理由:
+  // 誤統合（別チームを1つにする・データが壊れる方向）は、機械が「統合」と判定したものでしか
+  // 起こり得ない。ところが母集団は「別チーム」判定に大きく偏っている（実測 統合52 / 別チーム391）ので、
+  // 全体から無作為に引くと危険な方向がほとんど標本に入らない。
+  // 実際、最初の80件の抽出では判断済み16件すべてが「別チーム」判定で、
+  // **誤統合は 0/0 ＝ 一度も検証されていなかった**のに「0件」と表示されていた。
+  // 危険な方向を測るには `--stratum merge` で明示的に引く必要がある。
+  const all = Object.entries(ledger.decisions)
     .filter(([, d]) => d.decidedBy === 'auto')
     .map(([key, d]) => ({ key, verdict: d.verdict, members: d.members, prefecture: d.prefecture ?? null }));
+  const pool = stratum ? all.filter((x) => x.verdict === stratum) : all;
 
   if (pool.length === 0) {
     console.log('母集団が空（機械だけで決めた判断が無い）。標本を引けない。');
@@ -105,12 +119,14 @@ if (argv.includes('--draw')) {
     drawnAt: new Date().toISOString(),
     seed,
     requested: n,
+    stratum: stratum ?? 'all',
     populationSize: pool.length,
     sample,
   });
   fs.writeFileSync(AUDIT, JSON.stringify(audit, null, 2) + '\n', 'utf8');
 
-  console.log(`母集団 ${pool.length} 件（機械が決めて人が見ていないもの）から ${take} 件を無作為抽出した。`);
+  const label = stratum ? `機械が「${stratum === 'merge' ? '統合' : '別チーム'}」と判定したもの` : '機械が決めて人が見ていないもの';
+  console.log(`母集団 ${pool.length} 件（${label}）から ${take} 件を無作為抽出した。`);
   console.log(`  seed=${seed}（同じ seed なら引き直せる）`);
   console.log(`  記録: ${path.relative(ROOT, AUDIT)}（第${audit.rounds.length}回）`);
   console.log('');
@@ -173,7 +189,8 @@ audit.rounds.forEach((round, i) => {
     }
   }
   const when = String(round.drawnAt).slice(0, 16).replace('T', ' ');
-  console.log(`    第${i + 1}回 ${when} seed=${round.seed}  標本${round.sample.length}件` + ` → 判断済 ${j}（覆し ${o}${o ? `・うち誤統合 ${w}` : ''}）`);
+  const st = round.stratum && round.stratum !== 'all' ? ` [${round.stratum}層]` : '';
+  console.log(`    第${i + 1}回 ${when} seed=${round.seed}${st}  標本${round.sample.length}件` + ` → 判断済 ${j}（覆し ${o}${o ? `・うち誤統合 ${w}` : ''}）`);
 });
 // 複数回引いてあっても、引いてから判断している限りプールしてよい（事前登録は保たれる）。
 // 逆に「結果を見てから回を選ぶ」ことができないよう、レポートは常に全回をまとめて集計する。
@@ -189,15 +206,34 @@ if (checked === 0) {
   process.exit(0);
 }
 
+// **分母を層ごとに分ける。** 誤統合は機械が「統合」と判定した標本でしか起こり得ず、
+// 「別チーム」判定を分母に入れると、検証していない安全性を検証したかのように見せてしまう。
+let mergeN = 0;
+let separateN = 0;
+for (const round of audit.rounds) {
+  for (const s of round.sample) {
+    const now = ledger.decisions[s.key];
+    if (!now || now.decidedBy !== 'human') continue;
+    if (s.machineVerdict === 'merge') mergeN++;
+    else separateN++;
+  }
+}
 const w = wilson(overturned, checked);
-const wWrong = wilson(wrongMerge, checked);
+const wWrong = wilson(wrongMerge, mergeN);
+const wMissed = wilson(missedMerge, separateN);
 console.log('');
 console.log(`  機械の判定を人が覆した: ${overturned} / ${checked}`);
 console.log(`  全体の誤り率: ${(w.p * 100).toFixed(1)}%（95%信頼区間 ${(w.low * 100).toFixed(1)}% 〜 ${(w.high * 100).toFixed(1)}%）`);
 console.log('');
-console.log('  向きの内訳（意味がまったく違うので分けて見る）:');
-console.log(`    誤統合 merge → separate : ${wrongMerge} 件  ← 別チームを1つにした。**データが壊れる方向**`);
-console.log(`    見逃し separate → merge : ${missedMerge} 件  ← 統合すべきものを残した。安全側`);
+console.log('  向きの内訳（意味も分母も違うので分けて見る）:');
+console.log(
+  `    誤統合 merge → separate : ${wrongMerge} / ${mergeN}  ← 別チームを1つにした。**データが壊れる方向**` +
+    (mergeN === 0 ? '（分母0＝一度も検証していない）' : `（${((wrongMerge / mergeN) * 100).toFixed(1)}%）`),
+);
+console.log(
+  `    見逃し separate → merge : ${missedMerge} / ${separateN}  ← 統合すべきものを残した。安全側` +
+    (separateN === 0 ? '（分母0）' : `（${((missedMerge / separateN) * 100).toFixed(1)}%）`),
+);
 if (details.length) {
   console.log('');
   console.log('  覆された例（最大5件）:');
@@ -209,20 +245,30 @@ console.log('');
 
 // 判定は**誤統合の率だけ**で行う。見逃しはデータを壊さないので、
 // 「自動OKを締める」根拠にはならない（締めても見逃しは減らない。むしろ増える）。
-if (wWrong.low > threshold) {
+if (mergeN === 0) {
+  console.log('判定: **誤統合は未測定**。');
+  console.log('  機械が「統合」と判定した標本を人が一度も判断していないので、分母が0。');
+  console.log('  「誤統合0件」は「起きていない」ではなく「**測っていない**」という意味。');
+  console.log('  データを壊す方向を測るには、その層から明示的に引くこと:');
+  console.log('    node scripts/audit-review-sample.mjs --draw 20 --stratum merge');
+} else if (wWrong.low > threshold) {
   console.log(`判定: **誤統合**の率の下限 ${(wWrong.low * 100).toFixed(1)}% が閾値 ${(threshold * 100).toFixed(1)}% を超えている。`);
   console.log('  → 自動OKの範囲を締めること（緩める方向の変更は独立した照合で裏を取るまで禁止）。');
   process.exit(1);
-}
-console.log(`判定: **誤統合**は ${wrongMerge}/${checked} 件で、率の上限は ${(wWrong.high * 100).toFixed(1)}%。`);
-if (wrongMerge === 0) {
-  console.log('  データを壊す方向の誤りは観測されていない。自動OKを締める根拠は無い。');
+} else {
+  console.log(`判定: **誤統合**は ${wrongMerge}/${mergeN} 件で、率の上限は ${(wWrong.high * 100).toFixed(1)}%。`);
+  if (wrongMerge === 0) {
+    console.log(`  データを壊す方向の誤りは、この ${mergeN} 件では観測されていない。自動OKを締める根拠は無い。`);
+    if (wWrong.high > threshold) {
+      console.log(`  ただし上限 ${(wWrong.high * 100).toFixed(1)}% は閾値 ${(threshold * 100).toFixed(1)}% より広い。断言するには標本が要る。`);
+    }
+  }
 }
 if (missedMerge > 0) {
-  const wm = wilson(missedMerge, checked);
+  const wm = wMissed;
   console.log('');
   console.log(
-    `注意: **見逃し**が ${missedMerge}/${checked} 件（${(wm.p * 100).toFixed(1)}%・95%区間 ${(wm.low * 100).toFixed(1)}%〜${(wm.high * 100).toFixed(1)}%）ある。`,
+    `注意: **見逃し**が ${missedMerge}/${separateN} 件（${(wm.p * 100).toFixed(1)}%・95%区間 ${(wm.low * 100).toFixed(1)}%〜${(wm.high * 100).toFixed(1)}%）ある。`,
   );
   console.log('  これはデータを壊さないが、自動判定が名寄せの仕事をしていないということ。');
   console.log('  対処は「自動OKを緩める」ではなく、**既定グループ分けの見直し**（同じ段階なのに');
