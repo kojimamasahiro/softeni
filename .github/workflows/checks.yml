@@ -1,0 +1,98 @@
+# データ健全性チェックの自動実行。
+#
+# なぜ要るか（docs/raw/2026-09-06-idea-autonomous-improvement-agent.md）:
+# Cloudflare Pages が push ごとに `prebuild` を回すので「走る場所」自体は既にあるが、
+# prebuild に置けるのは**ビルドを止めてよいゲートだけ**。
+# そのため検出器11本のうち7本＋テスト系10本が置き場を失って休眠していた。
+# 実際に2026-09-06 に休眠中の `verify-bracket-layout` を回したところ、
+# 2026-09-04 に取り込んだデータで250件の不一致が2日間気付かれずに残っていた。
+#
+# ここは prebuild と役割を分ける:
+#   - ゲート（gates）      … 落ちたら赤にする。デプロイは止めない（CF Pages とは独立）
+#   - 報告（report-only）  … 人の判断待ちを一覧する。常に成功扱いでサマリに出す
+#
+# 「キュー型」の検出器（identity-health / upcoming-tournaments）は設計上いつも
+# 未処理項目を返すためゲートにできない。これが休眠の構造的な原因だった。
+
+name: checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # 毎週月曜 09:00 JST（= 00:00 UTC）。push が無くても日付依存の項目を見るため。
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # ---- ゲート: 落ちたらこの workflow を赤にする ----
+      - name: 孤立エントリー（どの試合にも現れない組）
+        run: node scripts/check-orphan-entries.mjs
+
+      - name: 最終成績の二重計上
+        run: node scripts/check-duplicate-placements.mjs
+
+      - name: growth analysis の fixture
+        run: node scripts/check-growth-analysis.mjs
+
+      - name: bracket のレイアウト・描画テスト
+        run: npm run -s bracket:test
+
+      - name: analytics テスト
+        run: npm run -s analytics:test
+
+      - name: upcoming テスト
+        run: npm run -s upcoming:test
+
+      - name: 地域移行トラッカーの検証
+        run: npm run -s club:verify
+
+      # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
+      # TODO: verify-bracket-layout は 2026-09-06 時点で250件の不一致があり赤。
+      #       解消したらゲート側へ昇格させること（「締める方向」の変更は自由）。
+      - name: ブラケット復元の照合（報告のみ）
+        if: always()
+        run: |
+          {
+            echo '## ブラケット復元の照合'
+            echo '```'
+            node scripts/verify-bracket-layout.mjs 2>&1 | tail -25 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 識別・名寄せの要対応（報告のみ）
+        if: always()
+        run: |
+          {
+            echo '## 識別・名寄せの要対応シグナル'
+            echo '```'
+            node scripts/check-identity-health.mjs 2>&1 | tail -40 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 大会情報の残タスク（報告のみ）
+        if: always()
+        run: |
+          {
+            echo '## 大会情報の残タスク'
+            echo '```'
+            node scripts/check-upcoming-tournaments.mjs 2>&1 | tail -40 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
