@@ -108,6 +108,25 @@ const server = http.createServer((req, res) => {
   res.end('not found');
 });
 
+// 既に起動している場合は、生のスタックトレースではなく対処を出す。
+// レビューは同じサーバを開いたまま何度も回すので、二重起動は普通に起きる。
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`ポート ${PORT} は既に使われている。レビューサーバが既に起動している可能性が高い。`);
+    console.error('');
+    console.error('  そのまま使う場合   : ブラウザで http://localhost:' + PORT + ' を開く');
+    console.error('  （コードを変えたなら古いサーバは新しい実装を読んでいないので、止めて起動し直すこと）');
+    console.error('');
+    console.error('  止めて起動し直す場合:');
+    console.error(`    kill $(lsof -nP -iTCP:${PORT} -sTCP:LISTEN -t)`);
+    console.error('    npm run team:review');
+    console.error('');
+    console.error(`  別のポートで動かす場合: PORT=5174 npm run team:review`);
+    process.exit(1);
+  }
+  throw err;
+});
+
 server.listen(PORT, () => {
   console.log(`チームマージレビュー: http://localhost:${PORT}`);
   console.log('ブラウザで開いてレビュー→「確認済を反映」で自動取り込み。Ctrl+C で終了。');
