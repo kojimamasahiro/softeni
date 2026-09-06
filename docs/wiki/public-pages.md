@@ -295,6 +295,11 @@
   `information` は開催前・中止・未投入の年も持つため、これをページ一覧として使うと
   切り替えボタンが 404 を指す（`getStaticPaths` は `details/` から paths を作り `fallback: false`）。
   実例: 2025年度の天皇賜杯のページに「2026年度」ボタンが出ていた。
+- **開催前ブロックの「実施種目」ラベル**は、その年度・種目の `details/` ファイルが実在する
+  ときだけ年度別結果ページへのリンクにする（`yearGroups`＝`details/` の実走査結果と突き合わせて判定）。
+  上記と同じ理由（`getStaticPaths` は `details/` からしか paths を作らない）で、要項段階でまだ
+  組み合わせが無い種目までリンクにすると 404 になるため。実装は `UpcomingTournamentSection.tsx`
+  と呼び出し元 `pages/tournaments/[generation]/[tournamentId]/index.tsx`（2026-09-06）。
 - **予選会↔本大会の対応付けは `tournamentId` の命名規約**（`{本大会ID}-qualifier`）で行い、
   データ側にフィールドを増やさない。本大会が未登録ならリンクが出ないだけで壊れず、
   将来 `world-championship` 等を登録すれば自動で繋がる。

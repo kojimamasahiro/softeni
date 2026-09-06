@@ -9,7 +9,14 @@
 // venue が載るべき「開催前の大会ページ」が存在しなかったこと。このコンポーネントが
 // その面であり、venues の最初の描画先でもある。
 //
+// 実施種目のリンク: `categoryLabels` の各要素は details/ に実データがある種目だけ
+// `href` を持つ（呼び出し側 index.tsx が details ディレクトリの実走査結果＝yearGroups
+// と突き合わせて判定する）。href が無いもの（要項段階でまだ組み合わせが無い種目）は
+// リンクにすると 404 になるため、ただのバッジのまま出す。
+//
 // 表記ルール: 絵文字は使わない（AGENTS.md「UI の表記ルール」。eslint で強制）。
+
+import Link from 'next/link';
 
 /** 開催前ブロックで表示する会場1件。information の `venues[]` の表示に必要な項目だけを抜いたもの。 */
 export type UpcomingVenue = {
@@ -32,8 +39,8 @@ export type UpcomingTournamentData = {
   endDate: string | null;
   location: string | null;
   venues: UpcomingVenue[];
-  /** 実施種目のラベル（例: 男子団体 / 男子シングルス） */
-  categoryLabels: string[];
+  /** 実施種目。href はその年度・種目の結果ページが details/ に実在する場合のみ入る（無ければリンクにしない）。 */
+  categoryLabels: { label: string; href: string | null }[];
   officialUrl: string | null;
   /** すでに会期に入っているか（true なら「開催中」表記にする） */
   hasStarted: boolean;
@@ -82,11 +89,21 @@ export default function UpcomingTournamentSection({ data }: { data: UpcomingTour
           <>
             <dt className="font-semibold text-text-secondary">実施種目</dt>
             <dd className="flex flex-wrap gap-1.5">
-              {data.categoryLabels.map((c) => (
-                <span key={c} className="inline-block rounded-full bg-bg-subtle px-2 py-0.5 text-xs text-gray-700 dark:text-gray-200">
-                  {c}
-                </span>
-              ))}
+              {data.categoryLabels.map((c) =>
+                c.href ? (
+                  <Link
+                    key={c.label}
+                    href={c.href}
+                    className="inline-block rounded-full bg-bg-subtle px-2 py-0.5 text-xs text-link hover:underline dark:text-blue-300"
+                  >
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span key={c.label} className="inline-block rounded-full bg-bg-subtle px-2 py-0.5 text-xs text-gray-700 dark:text-gray-200">
+                    {c.label}
+                  </span>
+                ),
+              )}
             </dd>
           </>
         )}
