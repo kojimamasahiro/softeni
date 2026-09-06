@@ -137,6 +137,7 @@ main{max-width:980px;margin:16px auto;padding:0 16px;display:flex;flex-direction
 .b-rev{background:rgba(224,162,58,.15);color:var(--warn)}
 .b-done{background:rgba(51,196,129,.18);color:var(--ok)}
 .b-autook{background:rgba(79,140,255,.15);color:var(--acc)}
+.b-audit{background:rgba(220,90,160,.18);color:#f0a0cc}
 .mlist{display:flex;flex-direction:column;gap:6px}
 .mrow{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer;user-select:none}
 .mrow.ex .mname{text-decoration:line-through;opacity:.55}
@@ -193,6 +194,10 @@ function st(i){const k=KEYS[i];
     state[k]=(led&&Array.isArray(led.groups))
       ?{groups:led.groups.slice(),canon:led.canon||{},reviewed:true,touched:led.decidedBy==='human'}
       :{groups:CLUSTERS[i].groups.slice(),canon:{},reviewed:AUTO[i]===true};}
+  // 監査対象は「人が中身を見て判断する」のが目的なので、機械が決めただけの段階では
+  // 確認済み（畳んだ表示）にしない。人が一度でも触れば通常どおり確認済みのまま残る。
+  if(AUDIT.has(k)&&!state[k].touched){const led=LEDGER[k];
+    if(!led||led.decidedBy!=='human') state[k].reviewed=false;}
   return state[k];}
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderProg();}
 function ci(g){return ((g%6)+6)%6;}
@@ -228,7 +233,8 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
     if(filter==='audit'&&!AUDIT.has(KEYS[i]))return;
     const card=document.createElement('div');card.className='card'+(s.reviewed?' rev':'');
     const head=document.createElement('div');head.className='chead';
-    const badge=s.reviewed?('<span class="badge '+(AUTO[i]?'b-autook">自動OK':'b-done">確認済')+'</span>'):('<span class="badge '+(NEEDS[i]?'b-rev">要確認':'b-auto">ほぼ自明')+'</span>');
+    const badge=(s.reviewed?('<span class="badge '+(AUTO[i]?'b-autook">自動OK':'b-done">確認済')+'</span>'):('<span class="badge '+(NEEDS[i]?'b-rev">要確認':'b-auto">ほぼ自明')+'</span>'))
+      +(AUDIT.has(KEYS[i])?'<span class="badge b-audit">監査対象</span>':'');
     const sig=c.signal==='players'
       ?'選手共有: '+c.sharedPlayers.length+'名 ('+c.sharedPlayers.slice(0,3).join('・')+(c.sharedPlayers.length>3?' 他':'')+') '+c.years.join(',')
       :'core: '+c.core;
