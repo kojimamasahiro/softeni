@@ -168,6 +168,7 @@ small{color:var(--mut)}
     <button data-f="audit">監査対象</button>
     <button data-f="all">すべて</button>
   </div>
+  <button id="openall" title="表示中の畳まれたカードをまとめて開く／閉じる（判断は変えない）">表示中をすべて開く</button>
 </header>
 <main id="list"></main>
 <div class="foot">
@@ -227,14 +228,18 @@ function touch(i){st(i).touched=true;}
 function cycle(i,mi){const s=st(i);touch(i);const others=s.groups.filter((g,j)=>j!==mi&&g>=0);
   const maxOther=others.length?Math.max(...others):-1;let cur=s.groups[mi];
   if(cur<0)cur=0;else if(cur>=maxOther+1)cur=-1;else cur=cur+1;s.groups[mi]=cur;save();render();}
+// いま表示対象かどうか。render と「すべて開く」の両方から使う。
+function visible(i){const s=st(i);
+  if(filter==='todo'&&s.reviewed)return false;
+  if(filter==='auto'&&!AUTO[i])return false;
+  if(filter==='done'&&(!s.reviewed||AUTO[i]))return false;
+  if(filter==='review'&&(!NEEDS[i]||s.reviewed))return false;
+  // 監査対象: 無作為抽出した標本だけを出す。判断済みでも出す（結果を見返せるように）。
+  if(filter==='audit'&&!AUDIT.has(KEYS[i]))return false;
+  return true;}
 function render(){const root=document.getElementById('list');root.innerHTML='';
   CLUSTERS.forEach((c,i)=>{const s=st(i);
-    if(filter==='todo'&&s.reviewed)return;
-    if(filter==='auto'&&!AUTO[i])return;
-    if(filter==='done'&&(!s.reviewed||AUTO[i]))return;
-    if(filter==='review'&&(!NEEDS[i]||s.reviewed))return;
-    // 監査対象: 無作為抽出した標本だけを出す。判断済みでも出す（結果を見返せるように）。
-    if(filter==='audit'&&!AUDIT.has(KEYS[i]))return;
+    if(!visible(i))return;
     const card=document.createElement('div');card.className='card'+(s.reviewed?' rev':'');
     const head=document.createElement('div');head.className='chead';
     const badge=(s.reviewed?('<span class="badge '+(AUTO[i]?'b-autook">自動OK':'b-done">確認済')+'</span>'):('<span class="badge '+(NEEDS[i]?'b-rev">要確認':'b-auto">ほぼ自明')+'</span>'))
@@ -298,7 +303,15 @@ function buildOutput(){const additions=[],decisions=[];
       groups:s.groups.slice(),canon:s.canon||{},
       verdict:ents.length?'merge':'separate',merges:ents});});
   return {additions,decisions};}
+// 表示中で畳まれているものを一括で開閉する（判断は変えない）。
+document.getElementById('openall').onclick=()=>{
+  const idx=CLUSTERS.map((_,i)=>i).filter(i=>visible(i)&&st(i).reviewed);
+  const allOpen=idx.length>0&&idx.every(i=>OPEN.has(i));
+  idx.forEach(i=>allOpen?OPEN.delete(i):OPEN.add(i));
+  document.getElementById('openall').textContent=allOpen?'表示中をすべて開く':'表示中をすべて閉じる';
+  render();};
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;
+  OPEN.clear();document.getElementById('openall').textContent='表示中をすべて開く';
   document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));render();});
 document.getElementById('dl').onclick=async()=>{const o=buildOutput();const msg=document.getElementById('msg');
   if(!o.decisions.length){msg.textContent='確認済が0件です。「確認済にする」を押してから反映してください。';return;}
