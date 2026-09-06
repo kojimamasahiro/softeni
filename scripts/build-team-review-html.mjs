@@ -98,6 +98,13 @@ const keys = clusters.map((c) => clusterKey(c.members));
 const ledger = readLedger();
 const ledgerStats = summarize(ledger);
 
+// 抜き取り監査で引いた標本（scripts/audit-review-sample.mjs --draw）。
+// 「監査対象」フィルタで、この標本だけを順に判断できるようにする。
+const auditPath = path.join(ROOT, 'data', 'teams', 'review-audit.json');
+const auditKeys = fs.existsSync(auditPath)
+  ? new Set(JSON.parse(fs.readFileSync(auditPath, 'utf8')).rounds.flatMap((r) => r.sample.map((x) => x.key)))
+  : new Set();
+
 const html = `<!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>チーム名 マージレビュー</title>
@@ -148,6 +155,7 @@ small{color:var(--mut)}
     <button data-f="review">要確認のみ</button>
     <button data-f="auto">自動OK</button>
     <button data-f="done">手動確認済</button>
+    <button data-f="audit">監査対象</button>
     <button data-f="all">すべて</button>
   </div>
 </header>
@@ -164,6 +172,7 @@ const CTX=${JSON.stringify(CTX)};
 const AUTO=${JSON.stringify(autoOK)};
 const KEYS=${JSON.stringify(keys)};
 const LEDGER=${JSON.stringify(ledger.decisions)};
+const AUDIT=new Set(${JSON.stringify([...auditKeys])});
 const KEY='team-merge-review-v10';
 // state は**安定キー**（メンバーのteam id昇順）で持つ。候補が再生成されて並びが変わっても
 // 過去の判断を取り違えない。localStorage は作業用キャッシュで、正はリポジトリの
@@ -193,7 +202,10 @@ function ctxLine(id){const x=CTX[id]||{};const pl=(x.players||[]).slice(0,6).joi
   return (pl?'選手: '+pl:'選手情報なし')+(yr?' ・ '+yr:'')+(ev?' ・ '+ev:'');}
 function renderProg(){const total=CLUSTERS.length;let done=0,auto=0;
   for(let i=0;i<total;i++){if(st(i).reviewed){done++;if(AUTO[i])auto++;}}
-  document.getElementById('prog').textContent='反映対象 '+done+' / '+total+'（自動OK '+auto+'・残り未確認 '+(total-done)+'）';}
+  let aTodo=0,aAll=0;
+  for(let i=0;i<total;i++){if(AUDIT.has(KEYS[i])){aAll++;const d=LEDGER[KEYS[i]];if(!(d&&d.decidedBy==='human')&&!st(i).touched)aTodo++;}}
+  document.getElementById('prog').textContent='反映対象 '+done+' / '+total+'（自動OK '+auto+'・残り未確認 '+(total-done)+'）'
+    +(aAll?' ・ 監査対象 '+aAll+'件（未判断 '+aTodo+'）':'');}
 function touch(i){st(i).touched=true;}
 function cycle(i,mi){const s=st(i);touch(i);const others=s.groups.filter((g,j)=>j!==mi&&g>=0);
   const maxOther=others.length?Math.max(...others):-1;let cur=s.groups[mi];
@@ -204,6 +216,8 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
     if(filter==='auto'&&!AUTO[i])return;
     if(filter==='done'&&(!s.reviewed||AUTO[i]))return;
     if(filter==='review'&&(!NEEDS[i]||s.reviewed))return;
+    // 監査対象: 無作為抽出した標本だけを出す。判断済みでも出す（結果を見返せるように）。
+    if(filter==='audit'&&!AUDIT.has(KEYS[i]))return;
     const card=document.createElement('div');card.className='card'+(s.reviewed?' rev':'');
     const head=document.createElement('div');head.className='chead';
     const badge=s.reviewed?('<span class="badge '+(AUTO[i]?'b-autook">自動OK':'b-done">確認済')+'</span>'):('<span class="badge '+(NEEDS[i]?'b-rev">要確認':'b-auto">ほぼ自明')+'</span>');
