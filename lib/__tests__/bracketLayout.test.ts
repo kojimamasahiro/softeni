@@ -173,6 +173,39 @@ test('全件 packing でも出場数が2冪でなければ復元しない（予�
   assert.strictEqual(failure, 'no-seed-info');
 });
 
+test('preliminary（予選敗退）は席を消費せず、以降の席をずらさない', () => {
+  // 本戦 4 枠 ＋ 予選 1 試合。entryNo 2 と 3 が 1 席を争い、負けた 3 は本戦に居ない。
+  // 実データは zennihon-singles/2017 男子（257 名 → 予選 1 試合 → 本戦 256 枠）。
+  const { layout, failure } = describeBracketLayout(
+    detail([
+      { entryNo: 1, type: 'packing' },
+      { entryNo: 2, type: 'packing' },
+      { entryNo: 3, type: 'preliminary' },
+      { entryNo: 4, type: 'packing' },
+      { entryNo: 5, type: 'packing' },
+    ]),
+  );
+  assert.strictEqual(failure, null);
+  assert.strictEqual(layout!.size, 4); // 予選敗者を数えず 4 枠（5 枠に膨らませない）
+  assert.strictEqual(layout!.slotOf.get(1), 0);
+  assert.strictEqual(layout!.slotOf.get(2), 1);
+  assert.strictEqual(layout!.slotOf.get(4), 2); // 3 で 1 つずれない
+  assert.strictEqual(layout!.slotOf.get(5), 3);
+  assert.strictEqual(layout!.slotOf.has(3), false); // 本戦の席は持たない
+  assert.strictEqual(meetingRoundIndex(layout!, 1, 2), 0);
+  assert.strictEqual(meetingRoundIndex(layout!, 1, 4), 1);
+  assert.strictEqual(meetingRoundIndex(layout!, 2, 3), null); // 予選は本戦のラウンドでは表せない
+});
+
+test('preliminary を packing にすると復元を諦める（黙って席をずらさない）', () => {
+  // 「予選敗者も普通のエントリー」として全件 packing にすると、出場数 5 が 2 冪でないので
+  // bye 無しドローの条件を満たさず no-seed-info になる。
+  // 誤ったラウンドを断定するより復元を諦めるのが正しい（この検出が効いていることを固定する）。
+  const { layout, failure } = describeBracketLayout(detail([1, 2, 3, 4, 5].map((entryNo) => ({ entryNo, type: 'packing' }))));
+  assert.strictEqual(layout, null);
+  assert.strictEqual(failure, 'no-seed-info');
+});
+
 test('type が null なら復元しない（シード未入力の古いデータ）', () => {
   const { layout, failure } = describeBracketLayout(
     detail([

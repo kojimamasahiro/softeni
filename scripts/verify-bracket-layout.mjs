@@ -16,6 +16,15 @@
 //   予選リーグ→決勝 T 形式の大会は `knockoutDraw`（席は「予選リーグの組」に属する）、
 //   それ以外は `entries[].type`。詳細は docs/adr/ADR-015-knockout-draw-by-group.md。
 //
+// 実測（2026-09-06 時点）:
+//   復元適用 443 大会 / 一致 38,729 試合 / **不一致 0 件**。復元不可は 9 大会（no-seed-info のみ）。
+//   同日に不一致 250 件を解消した。内訳と調査は
+//   docs/raw/2026-09-06-bracket-verify-250-mismatches.md:
+//     - zennihon-singles/2017 男子 248 件 … 本戦の前に「予選」1 試合を持つ形式を
+//       `entries[].type` が表せていなかった。`preliminary` を追加して解決。
+//     - highschool-championship/2013 男子ダブルス 2 件 … 同じペアが entryNo 136 と 277 に
+//       二重登録され、277 の 2 試合が 136 の名義でも複製されていた（データ誤り）。
+//
 // 実測（2026-08-22 時点）:
 //   復元適用 374 大会 / 一致 27,635 試合 / **不一致 0 件**。復元不可は 7 大会。
 //
@@ -74,15 +83,18 @@ function layoutFromDraw(data) {
 /** lib/bracketLayout.ts の describeBracketLayout と同じ手順。失敗時は { failure } を返す。 */
 function buildLayout(entries) {
   if (!Array.isArray(entries) || entries.length === 0) return { failure: 'no-entries' };
+  // `preliminary`（予選で敗れ本戦の席を取れなかった組）は枠を消費しないので先に外す。
+  const draw = entries.filter((e) => e && e.type !== 'preliminary');
+  if (draw.length === 0) return { failure: 'no-entries' };
   // 全件 packing かつ出場数が 2 冪なら bye 無しのドロー。seed/extra が無くても復元できる。
   // 出場数の 2 冪チェックが無いと、予選リーグ→決勝 T の大会（全件 packing になる）を
   // 誤復元する。詳細は lib/bracketLayout.ts のコメント。
-  if (!entries.some((e) => e && (e.type === 'seed' || e.type === 'extra'))) {
-    const n = entries.length;
-    if (!(entries.every((e) => e && e.type === 'packing') && (n & (n - 1)) === 0)) return { failure: 'no-seed-info' };
+  if (!draw.some((e) => e.type === 'seed' || e.type === 'extra')) {
+    const n = draw.length;
+    if (!(draw.every((e) => e.type === 'packing') && (n & (n - 1)) === 0)) return { failure: 'no-seed-info' };
   }
 
-  const typeByNo = new Map(entries.map((e) => [e.entryNo, e.type ?? null]));
+  const typeByNo = new Map(draw.map((e) => [e.entryNo, e.type ?? null]));
   const nos = [...typeByNo.keys()].sort((a, b) => a - b);
 
   const slots = [];

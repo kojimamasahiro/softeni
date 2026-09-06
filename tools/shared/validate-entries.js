@@ -194,8 +194,12 @@
     // **予選リーグを含む大会は対象外**。この形式では entries に予選敗退組も残るうえ、
     // 決勝Tの席順は entryNo のドロー順と無関係なので、type を積んでも意味のある枠数に
     // ならない（2026-08-22 に 3 大会の誤検知として顕在化した）。席順は knockoutDraw が持つ。
+    //
+    // `preliminary`（予選＝1回戦より前の段で敗れ、本戦のドローに席を持たない組）は枠を
+    // 消費しないので、積む前に外す。実例は zennihon-singles/2017 男子（257名→予選1試合→本戦256枠）。
     if (!hasRoundRobin && entries.some((e) => e && (e.type === 'seed' || e.type === 'extra'))) {
-      const typeByNo = new Map(entries.map((e) => [e && e.entryNo, e && e.type]));
+      const drawEntries = entries.filter((e) => e && e.type !== 'preliminary');
+      const typeByNo = new Map(drawEntries.map((e) => [e.entryNo, e.type]));
       const nos = [...typeByNo.keys()].filter((n) => n != null).sort((a, b) => a - b);
       let slotCount = 0;
       let unpaired = null;

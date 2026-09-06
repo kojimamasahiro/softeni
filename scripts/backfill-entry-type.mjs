@@ -48,11 +48,14 @@ const pairKey = (a, b) => (a < b ? `${a}-${b}` : `${b}-${a}`);
 /** 現在の type で席順を復元できるか（lib/bracketLayout.ts と同じ判定）。 */
 function restorable(entries) {
   if (!entries?.length) return false;
-  if (!entries.some((e) => e.type === 'seed' || e.type === 'extra')) {
-    const n = entries.length;
-    if (!(entries.every((e) => e.type === 'packing') && (n & (n - 1)) === 0)) return false;
+  // `preliminary`（予選で敗れ本戦の席を取れなかった組）は枠を消費しない。
+  const draw = entries.filter((e) => e.type !== 'preliminary');
+  if (!draw.length) return false;
+  if (!draw.some((e) => e.type === 'seed' || e.type === 'extra')) {
+    const n = draw.length;
+    if (!(draw.every((e) => e.type === 'packing') && (n & (n - 1)) === 0)) return false;
   }
-  const byNo = new Map(entries.map((e) => [e.entryNo, e.type ?? null]));
+  const byNo = new Map(draw.map((e) => [e.entryNo, e.type ?? null]));
   const nos = [...byNo.keys()].sort((a, b) => a - b);
   let slots = 0;
   for (let i = 0; i < nos.length; ) {

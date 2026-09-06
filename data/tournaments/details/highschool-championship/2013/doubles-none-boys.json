@@ -1616,20 +1616,7 @@
       "stage": "knockout",
       "group": null,
       "matchId": "match-52",
-      "nextMatchId": "match-115",
-      "prevMatchIds": [],
-      "prevMatchId": null
-    },
-    {
-      "entries": [278,136],
-      "scores": {"136":4,"278":2},
-      "round": "1回戦",
-      "winnerEntryNo": 136,
-      "retired": false,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-53",
-      "nextMatchId": "match-115",
+      "nextMatchId": "match-173",
       "prevMatchIds": [],
       "prevMatchId": null
     },
@@ -2436,8 +2423,8 @@
       "group": null,
       "matchId": "match-115",
       "nextMatchId": "match-216",
-      "prevMatchIds": ["match-26","match-52","match-53"],
-      "prevMatchId": null
+      "prevMatchIds": ["match-26"],
+      "prevMatchId": "match-26"
     },
     {
       "entries": [139,140],
@@ -3168,19 +3155,6 @@
       "prevMatchId": "match-51"
     },
     {
-      "entries": [276,136],
-      "scores": {"136":1,"276":4},
-      "round": "2回戦",
-      "winnerEntryNo": 276,
-      "retired": false,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-172",
-      "nextMatchId": "match-245",
-      "prevMatchIds": [],
-      "prevMatchId": null
-    },
-    {
       "entries": [277,276],
       "scores": {"276":4,"277":1},
       "round": "2回戦",
@@ -3190,8 +3164,8 @@
       "group": null,
       "matchId": "match-173",
       "nextMatchId": "match-245",
-      "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchIds": ["match-52"],
+      "prevMatchId": "match-52"
     },
     {
       "entries": [279,280],
@@ -4126,7 +4100,7 @@
       "group": null,
       "matchId": "match-245",
       "nextMatchId": "match-281",
-      "prevMatchIds": ["match-172","match-173","match-174"],
+      "prevMatchIds": ["match-173","match-174"],
       "prevMatchId": null
     },
     {

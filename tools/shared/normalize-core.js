@@ -1142,9 +1142,19 @@
         return null; // No knockout matches, keep null
       }
 
+      // 「予選」（本戦の1回戦より前の段）は本戦のドローの外。
+      // 予選でしか戦っていない＝本戦の席を取れなかった組は、枠を消費しない
+      // `preliminary` になる（lib/bracketLayout.ts のコメント参照）。
+      // 予選を勝ち上がった組は本戦の席に入るので、予選の試合を除いて判定する。
+      const isPreliminaryRound = (r) => !!r && String(r).includes('予選');
+      const mainMatches = knockoutMatches.filter((m) => !isPreliminaryRound(m.round));
+      if (mainMatches.length === 0) {
+        return knockoutMatches.some((m) => isPreliminaryRound(m.round)) ? 'preliminary' : null;
+      }
+
       // Sort by round order to find first appearance
-      knockoutMatches.sort((a, b) => roundOrder(a.round) - roundOrder(b.round));
-      const firstMatch = knockoutMatches[0];
+      mainMatches.sort((a, b) => roundOrder(a.round) - roundOrder(b.round));
+      const firstMatch = mainMatches[0];
       const firstRound = firstMatch.round;
 
       // Check if starts from round 1 (1回戦)
@@ -1162,6 +1172,7 @@
         const opponentKnockoutMatches = matches.filter(
           (m) =>
             m.stage === 'knockout' &&
+            !isPreliminaryRound(m.round) &&
             Array.isArray(m.entries) &&
             m.entries.includes(opponentEntryNo),
         );
