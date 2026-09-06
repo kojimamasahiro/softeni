@@ -49,33 +49,25 @@ export function defaultGroups(members, context) {
  * `signal: "players"`（選手共有シグナル）は常に人手レビュー。
  */
 /**
- * 出場大会の裏付けが無い（genres が空）メンバーが、他のメンバーと同じグループに
- * 入っているか。入っていれば、**名前だけを根拠に統合しようとしている**ことになる。
+ * 自動OK判定。
  *
- * 2026-09-06 の抜き取り監査（事前登録・機械の判定は抽出時に計算）で、
- * この型の自動統合は **8件中4件が誤り（50%・下限21.5%）**だった:
- *   常磐大 / 常磐大学高校、国府台 / 国府台高校、
- *   岡山南 / 岡山南高校 / 岡山南高クラブ、北上ジュニア / 北上 / 北上中学校
- * いずれも片方が genres 空で、名前の段階（高/中）だけで同じグループにしていた。
+ * 2026-09-06 の経緯（同じ箇所で2回、判断が反転している）:
+ * 抜き取り監査で「裏付けの無い（genres 空の）メンバーを名前の段階だけで統合する型」が
+ * **8件中4件の誤統合**と出たため、その型を人手レビューへ回す実装を入れた。
+ * ところがその直後、**人が4件とも判断を merge へ改めた**（常磐大＝常磐大学高校、
+ * 国府台＝国府台高校 などで、統合が正しかった）。誤統合は 0/8 になり、
+ * 人手を46件増やす根拠が消えたので戻した。
  *
- * 一方、正しく統合できた例（大田原女子 / 大田原女子高校 など）も**構造は同一**で、
- * 手元の情報では区別できない。つまり**この型は機械が決められない**。
- * 誤統合はデータを壊し、見逃しは壊さないので、決められないものは人手へ回す。
+ * **この判断の根拠は merge層8件・上限32.4% でしかない。**
+ * 母集団49件のうち残り48件を判断すれば全数に近くなり、推定でなく確定値になる。
+ * それを待たずに動かしているので、結果次第では再び入れ直すこと。
+ *
+ * なお監査は「人の判断が機械の判定と独立」であることを前提にしているが、
+ * レビュー画面は機械の判定を初期状態として表示するため、**その前提は厳密には成り立たない**。
+ * 今回の反転も、監査結果を見た後の再判断だった。
  */
-function mergesWithoutEvidence(cluster, context) {
-  const groups = defaultGroups(cluster.members, context);
-  const size = {};
-  for (const g of groups) size[g] = (size[g] || 0) + 1;
-  return cluster.members.some((m, i) => {
-    const genres = (context[m.id] || {}).genres || [];
-    return genres.length === 0 && size[groups[i]] >= 2;
-  });
-}
-
 export function isAutoOK(cluster, context) {
   if (cluster.signal === 'players') return false;
-  // 裏付けの無い統合は自動で通さない（上記の監査結果による）。
-  if (mergesWithoutEvidence(cluster, context)) return false;
   const groups = defaultGroups(cluster.members, context);
   const byGroup = {};
   cluster.members.forEach((m, i) => (byGroup[groups[i]] = byGroup[groups[i]] || []).push(m));
