@@ -157,10 +157,35 @@ for (const round of audit.rounds) {
 console.log('抜き取り監査（自動判定の誤り率）');
 console.log(`  抽出回数: ${audit.rounds.length} / 標本合計: ${checked + pending} 件`);
 console.log(`  人が判断済み: ${checked} 件 / 未判断: ${pending} 件`);
+console.log('');
+console.log('  回ごとの内訳:');
+audit.rounds.forEach((round, i) => {
+  let j = 0;
+  let o = 0;
+  let w = 0;
+  for (const s of round.sample) {
+    const now = ledger.decisions[s.key];
+    if (!now || now.decidedBy !== 'human') continue;
+    j++;
+    if (now.verdict !== s.machineVerdict) {
+      o++;
+      if (s.machineVerdict === 'merge') w++;
+    }
+  }
+  const when = String(round.drawnAt).slice(0, 16).replace('T', ' ');
+  console.log(`    第${i + 1}回 ${when} seed=${round.seed}  標本${round.sample.length}件` + ` → 判断済 ${j}（覆し ${o}${o ? `・うち誤統合 ${w}` : ''}）`);
+});
+// 複数回引いてあっても、引いてから判断している限りプールしてよい（事前登録は保たれる）。
+// 逆に「結果を見てから回を選ぶ」ことができないよう、レポートは常に全回をまとめて集計する。
+console.log('');
+console.log('  ※ 複数回に分かれていても全回をまとめて集計する。引いてから判断している限り');
+console.log('    プールしてよく、「結果を見て回を選ぶ」ことを構造的に防ぐため。');
 
 if (checked === 0) {
   console.log('');
   console.log('まだ標本が判断されていないので未測定。レビュー画面の「監査対象」で判断すること。');
+  console.log('判断したつもりで0件のときは、画面で「確認済を反映」を押したか確認する');
+  console.log('（判断はブラウザに溜まっているだけで、反映するまで台帳に届かない）。');
   process.exit(0);
 }
 
