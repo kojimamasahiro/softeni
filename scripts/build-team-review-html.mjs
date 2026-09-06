@@ -138,6 +138,7 @@ main{max-width:980px;margin:16px auto;padding:0 16px;display:flex;flex-direction
 .b-done{background:rgba(51,196,129,.18);color:var(--ok)}
 .b-autook{background:rgba(79,140,255,.15);color:var(--acc)}
 .b-audit{background:rgba(220,90,160,.18);color:#f0a0cc}
+.hint{margin-left:auto;color:var(--mut);font-size:12px}
 .mlist{display:flex;flex-direction:column;gap:6px}
 .mrow{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:9px;padding:7px 10px;cursor:pointer;user-select:none}
 .mrow.ex .mname{text-decoration:line-through;opacity:.55}
@@ -188,6 +189,9 @@ const KEY='team-merge-review-v10';
 // data/teams/review-decisions.json（台帳）。
 let state=JSON.parse(localStorage.getItem(KEY)||'{}'); // {stableKey:{groups:[],canon:{},reviewed:bool}}
 let filter='todo';
+// 「確認済」で畳まれたカードを、判断を変えずに開いて中身を見るためだけの状態。
+// localStorage には保存しない（判断ではないので）。
+const OPEN=new Set();
 // 初期値の優先順: 台帳に判断があればそれ > 自動OKなら確認済 > 既定グループ分け。
 function st(i){const k=KEYS[i];
   if(!state[k]){const led=LEDGER[k];
@@ -241,7 +245,14 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
     head.innerHTML='<span class="pref">'+(c.prefecture||'（県なし）')+'</span><span class="core">'+sig+'</span>'+badge;
     card.appendChild(head);
     const ents=aliasEntries(i);
-    if(s.reviewed){ // 確認済は畳んで表示（レビュー対象から外す）
+    // 見出しをタップすると、確認済のまま開いて中身を見られる（判断は変えない）。
+    if(s.reviewed){
+      head.style.cursor='pointer';
+      head.title='タップで開く／閉じる（確認済のまま中身を見る）';
+      head.onclick=()=>{OPEN.has(i)?OPEN.delete(i):OPEN.add(i);render();};
+      head.innerHTML+='<span class="hint">'+(OPEN.has(i)?'▲ 閉じる':'▼ 開く')+'</span>';
+    }
+    if(s.reviewed&&!OPEN.has(i)){ // 確認済は既定で畳む（レビュー対象から外す）
       const prev=document.createElement('div');prev.className='prev';
       prev.innerHTML=ents.length?ents.map(e=>'畳む: <b>'+e.canonical+'</b> ← '+e.aliases.join(', ')).join('<br>'):'<i>畳むグループなし</i>';
       card.appendChild(prev);
@@ -265,7 +276,15 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
     const b1=document.createElement('button');b1.textContent='全部まとめる';b1.onclick=()=>{s.groups=c.members.map(()=>0);s.canon={};touch(i);save();render();};
     const b2=document.createElement('button');b2.textContent='初期分けに戻す';b2.onclick=()=>{s.groups=c.groups.slice();s.canon={};touch(i);save();render();};
     const b3=document.createElement('button');b3.className='primary';b3.textContent='確認済にする';b3.onclick=()=>{s.reviewed=true;touch(i);save();render();};
-    row.append(b1,b2,b3);card.appendChild(row);
+    row.append(b1,b2,b3);
+    if(s.reviewed){ // 開いて見ているだけの確認済カード
+      const b4=document.createElement('button');b4.textContent='閉じる（確認済のまま）';
+      b4.onclick=()=>{OPEN.delete(i);render();};
+      const b5=document.createElement('button');b5.textContent='確認済を解除';
+      b5.onclick=()=>{s.reviewed=false;OPEN.delete(i);save();render();};
+      row.append(b4,b5);
+    }
+    card.appendChild(row);
     root.appendChild(card);});
   renderProg();}
 // 確認済クラスタから、alias追加(additions)と判断台帳(decisions)の両方を作る。
