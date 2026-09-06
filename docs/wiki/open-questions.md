@@ -472,6 +472,14 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 再発見の経緯: [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) 追記2
 
+## パイプラインのスクリプト変更を鮮度チェックが見ていない（2026-09-06 追加）
+
+`check-highschool-pipeline-freshness.mjs` は**元データ**の内容ハッシュしか見ないので、
+`scripts/highschool/**` の python を直しても反応しない。スクリプトを変えれば生成物は
+変わりうるので、本来は再実行が要る。スクリプトの内容もハッシュに混ぜれば閉じられるが、
+今度は「コメントを直しただけで赤くなる」ノイズが増える。どちらを取るかは未決定。
+→ [調査メモ](../raw/2026-09-06-highschool-pipeline-freshness-false-positives.md)
+
 ## エントリーの二重登録と `nextMatchId` の壊れ（2026-09-06 追加）
 
 `npm run bracket:verify` の250件不一致を調査した副産物

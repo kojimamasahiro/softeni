@@ -13,6 +13,23 @@
     （`normalize-team-spacing.mjs` / `check-tournament-entries.mjs` /
     `check-highschool-pipeline-freshness.mjs` / `check-name-splits.mjs --strict`）で、
     取り込んだデータに不整合があるとここでビルドが止まる
+  - `check-highschool-pipeline-freshness.mjs` は「今の元データに対して
+    `npm run highschool:pipeline` が実行済みか」を、**元データのうちパイプラインが実際に読む
+    項目だけ**の内容ハッシュ（`data/highschool/.pipeline-source-hash.json`）で判定する。
+    読む項目は `participants[].team` / `participants[].prefecture` /
+    `entries[].entryNo` / `entries[].playerIds` / `results[].entryNo` /
+    `results[].tournament.label` / `results[].roundRobin|roundrobin.rank` と、
+    `index.json` の `(tournamentId, generationId)` / `pipeline-sources.json` だけ。
+    **`matches` や `entries[].type` は読んでいないので、そこだけの修正では赤くならない**
+    （2026-09-06 に射影化。それ以前はファイル全体のバイト列を見ていたため、
+    生成物が 1 バイトも変わらない修正でもビルドが落ち、空振りの再実行が必要だった）。
+    射影が一致して元データだけ変わった場合は `ℹ️` の行が出て緑のまま通る。
+    赤くなったら `npm run highschool:pipeline` を回し、
+    生成物と `data/highschool/.pipeline-source-hash.json` を同じコミットに乗せる。
+    **python 側（`01team` / `02result` / `03list`）が読む項目を増やしたら、
+    `scripts/highschool/lib/source-hash.mjs` の `projectDetail` も必ず更新すること**
+    （更新漏れは「元データが変わったのに緑のまま生成物が古い」という検出漏れになる）。
+    経緯は [調査メモ](../raw/2026-09-06-highschool-pipeline-freshness-false-positives.md)。
   - 主な生成: `generate-players-json.mjs` / `generate-players-lite.mjs` /
     `generate-player-analysis.mjs` / `generate-beta-matches-json.mjs` /
     `generate-match-reverse-index.mjs` / `generate-rare-events.mjs` /
