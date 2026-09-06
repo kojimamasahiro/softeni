@@ -27,10 +27,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { readLedger } from './lib/review-ledger.mjs';
+import { clusterKey, readLedger } from './lib/review-ledger.mjs';
+import { machineVerdict } from './lib/team-grouping.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const AUDIT = path.join(ROOT, 'data', 'teams', 'review-audit.json');
+const CANDIDATES = path.join(ROOT, 'data', 'teams', 'merge-candidates.json');
+const CONTEXT = path.join(ROOT, 'data', 'teams', 'team-context.json');
 const argv = process.argv.slice(2);
 
 function arg(name, fallback = null) {
@@ -108,18 +111,32 @@ if (argv.includes('--draw')) {
     .map((x) => ({ x, r: rand() }))
     .sort((a, b) => a.r - b.r)
     .map((o) => o.x);
-  const sample = shuffled.slice(0, take).map((x) => ({
-    key: x.key,
-    members: x.members,
-    prefecture: x.prefecture,
-    machineVerdict: x.verdict, // 引いた時点の機械の判定。後で人が上書きしても残る。
-  }));
+  // **機械の判定はその場で計算する。**
+  // 以前は台帳の verdict をそのまま使っていたが、台帳の値は反映のたびに上書きされ
+  // （実測で同じクラスタが14〜15回改訂）、IDがずれていた時期に書かれたものが混ざる。
+  // その結果「既に直っているバグ」を現在の誤り率として報告していた（誤統合 3/3 = 100%）。
+  // 実際に計算し直すと3件とも separate ＝ 人の判断と一致で、誤りは0件だった。
+  const candidates = fs.existsSync(CANDIDATES) ? JSON.parse(fs.readFileSync(CANDIDATES, 'utf8')) : [];
+  const context = fs.existsSync(CONTEXT) ? JSON.parse(fs.readFileSync(CONTEXT, 'utf8')) : {};
+  const byKey = new Map(candidates.map((c) => [clusterKey(c.members), c]));
+  const sample = shuffled.slice(0, take).map((x) => {
+    const cluster = byKey.get(x.key);
+    return {
+      key: x.key,
+      members: x.members,
+      prefecture: x.prefecture,
+      // 候補一覧に無い（既に統合されて消えた等）ものだけ台帳の値に落とす。
+      machineVerdict: cluster ? machineVerdict(cluster, context) : x.verdict,
+      verdictSource: cluster ? 'computed' : 'ledger',
+    };
+  });
 
   audit.rounds.push({
     drawnAt: new Date().toISOString(),
     seed,
     requested: n,
     stratum: stratum ?? 'all',
+    verdictSource: 'computed',
     populationSize: pool.length,
     sample,
   });
@@ -144,6 +161,13 @@ if (!audit.rounds.length) {
 }
 const ledger = readLedger();
 
+// 台帳から機械の判定を読んでいた回は集計に使えない。
+// 台帳の値は反映のたびに上書きされ、IDがずれていた時期のものが混ざるため、
+// 「既に直っているバグ」を現在の誤り率として報告してしまう（2026-09-06 に実際に起きた）。
+// 除外の基準は結果ではなく**取得方法**なので、都合のよい回を選ぶことにはならない。
+const usableRounds = audit.rounds.filter((r) => r.verdictSource === 'computed');
+const staleRounds = audit.rounds.filter((r) => r.verdictSource !== 'computed');
+
 let checked = 0;
 let overturned = 0;
 let pending = 0;
@@ -153,7 +177,7 @@ let pending = 0;
 let wrongMerge = 0;
 let missedMerge = 0;
 const details = [];
-for (const round of audit.rounds) {
+for (const round of usableRounds) {
   for (const s of round.sample) {
     const now = ledger.decisions[s.key];
     if (!now || now.decidedBy !== 'human') {
@@ -171,11 +195,21 @@ for (const round of audit.rounds) {
 }
 
 console.log('抜き取り監査（自動判定の誤り率）');
-console.log(`  抽出回数: ${audit.rounds.length} / 標本合計: ${checked + pending} 件`);
+if (staleRounds.length) {
+  console.log('');
+  console.log(`  ⚠ ${staleRounds.length} 回ぶんを集計から除外した（機械の判定を判断台帳から読んでいた回）。`);
+  console.log('    台帳の値は反映のたびに上書きされ、IDがずれていた時期のものが混ざるため、');
+  console.log('    「既に直っているバグ」を現在の誤り率として報告してしまう。');
+  console.log('    除外の基準は結果ではなく取得方法なので、都合のよい回を選ぶことにはならない。');
+  console.log('    使える標本を得るには引き直すこと: --draw 20 --stratum merge');
+  console.log('');
+}
+console.log(`  有効な抽出回数: ${usableRounds.length} / 標本合計: ${checked + pending} 件`);
 console.log(`  人が判断済み: ${checked} 件 / 未判断: ${pending} 件`);
 console.log('');
 console.log('  回ごとの内訳:');
 audit.rounds.forEach((round, i) => {
+  const stale = round.verdictSource !== 'computed';
   let j = 0;
   let o = 0;
   let w = 0;
@@ -189,7 +223,7 @@ audit.rounds.forEach((round, i) => {
     }
   }
   const when = String(round.drawnAt).slice(0, 16).replace('T', ' ');
-  const st = round.stratum && round.stratum !== 'all' ? ` [${round.stratum}層]` : '';
+  const st = (round.stratum && round.stratum !== 'all' ? ` [${round.stratum}層]` : '') + (stale ? ' ⚠除外' : '');
   console.log(`    第${i + 1}回 ${when} seed=${round.seed}${st}  標本${round.sample.length}件` + ` → 判断済 ${j}（覆し ${o}${o ? `・うち誤統合 ${w}` : ''}）`);
 });
 // 複数回引いてあっても、引いてから判断している限りプールしてよい（事前登録は保たれる）。
@@ -197,6 +231,68 @@ audit.rounds.forEach((round, i) => {
 console.log('');
 console.log('  ※ 複数回に分かれていても全回をまとめて集計する。引いてから判断している限り');
 console.log('    プールしてよく、「結果を見て回を選ぶ」ことを構造的に防ぐため。');
+
+// 除外した回でも**人の判断は有効**（人の答えは機械の値に依存しない）。
+// 古いのは機械側だけなので、現在のロジックで機械の判定を計算し直した参考値を出す。
+// ただしこれは事前登録された測定ではない（結果を見た後に判定を計算し直している）ので、
+// **参考値として明示し、判定には使わない**。
+if (staleRounds.length) {
+  const candidates = fs.existsSync(CANDIDATES) ? JSON.parse(fs.readFileSync(CANDIDATES, 'utf8')) : [];
+  const context = fs.existsSync(CONTEXT) ? JSON.parse(fs.readFileSync(CONTEXT, 'utf8')) : {};
+  const byKey = new Map(candidates.map((c) => [clusterKey(c.members), c]));
+  let n = 0;
+  let wrong = 0;
+  let missed = 0;
+  let mN = 0;
+  let sN = 0;
+  let gone = 0;
+  let goneMerged = 0;
+  for (const round of staleRounds) {
+    for (const smp of round.sample) {
+      const now = ledger.decisions[smp.key];
+      if (!now || now.decidedBy !== 'human') continue;
+      const cluster = byKey.get(smp.key);
+      if (!cluster) {
+        // 人が統合した結果、候補一覧から消えたもの。機械の現在の判定を計算できない。
+        // **消えるのは統合された側だけ**なので、無視すると見逃しが過小評価される。
+        gone++;
+        if (now.verdict === 'merge') goneMerged++;
+        continue;
+      }
+      const mv = machineVerdict(cluster, context);
+      n++;
+      if (mv === 'merge') mN++;
+      else sN++;
+      if (now.verdict !== mv) {
+        if (mv === 'merge') wrong++;
+        else missed++;
+      }
+    }
+  }
+  console.log('');
+  console.log('─── 参考値（事前登録されていないので判定には使わない）───');
+  console.log('  除外した回の人の判断を、**現在のロジックで計算し直した機械の判定**と突き合わせた:');
+  console.log(`    突き合わせできた: ${n} 件（候補から消えていて照合不能: ${gone} 件）`);
+  if (mN > 0) console.log(`    誤統合 merge → separate : ${wrong} / ${mN}（${((wrong / mN) * 100).toFixed(1)}%）`);
+  else console.log('    誤統合 merge → separate : 0 / 0（分母0）');
+  if (sN > 0) {
+    // 照合不能のうち「人が統合した」ものは、消えた理由がまさに統合だから消えている。
+    // 無視すれば最良、すべて見逃しに数えれば最悪。真の値はこの間にある。
+    const bestP = (missed / sN) * 100;
+    const worstP = ((missed + goneMerged) / (sN + goneMerged)) * 100;
+    console.log(`    見逃し separate → merge : ${missed} / ${sN}（${bestP.toFixed(1)}%）… **最良の場合**`);
+    if (goneMerged > 0) {
+      console.log(
+        `      照合不能 ${gone} 件のうち ${goneMerged} 件は人が「統合」と判断したもの。` + `統合されて候補から消えたので、**見逃しだった側だけが抜けている**。`,
+      );
+      console.log(`      それを全部見逃しに数えると ${missed + goneMerged} / ${sN + goneMerged}（${worstP.toFixed(1)}%）… **最悪の場合**`);
+      console.log(`      真の値はこの ${bestP.toFixed(1)}% 〜 ${worstP.toFixed(1)}% の間にある。幅が広すぎて使えない。`);
+    }
+  }
+  console.log('  この値は「結果を見た後に機械側を計算し直した」ものであり、さらに上記の偏りがある。');
+  console.log('  **修正の効果を知るには、修正後に新しく引き直すしかない**:');
+  console.log('    node scripts/audit-review-sample.mjs --draw 20');
+}
 
 if (checked === 0) {
   console.log('');
@@ -210,7 +306,7 @@ if (checked === 0) {
 // 「別チーム」判定を分母に入れると、検証していない安全性を検証したかのように見せてしまう。
 let mergeN = 0;
 let separateN = 0;
-for (const round of audit.rounds) {
+for (const round of usableRounds) {
   for (const s of round.sample) {
     const now = ledger.decisions[s.key];
     if (!now || now.decidedBy !== 'human') continue;
