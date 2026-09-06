@@ -26,27 +26,59 @@ import { fileURLToPath } from 'url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 export const LEDGER_PATH = path.join(ROOT, 'data', 'teams', 'review-decisions.json');
 
-export const LEDGER_VERSION = 1;
+export const LEDGER_VERSION = 2;
 
 /**
- * クラスタの安定キー。メンバーの team id の昇順連結。
- * 候補生成のたびに順序や件数が変わっても、同じ顔ぶれなら同じキーになる。
+ * クラスタの安定キー。メンバーの**チーム名**を正準化して昇順連結する。
+ *
+ * v1 では team id を使っていたが、これは誤りだった（2026-09-06 に実測して判明）。
+ * `build-team-master.mjs` は `const id = teams.length + 1` と**位置でIDを振る**ため、
+ * alias を反映してマスタを作り直すたびにIDが総入れ替わりになる。
+ * 実測: 再生成の前後で 5,520件中 5,220件のIDが移動し、候補を作り直すと
+ * 台帳426件の **idキー一致率は 0.0%**（名前キーなら 71.6%。残りは統合されて
+ * 候補から消えたもので、失われたわけではない）。
+ * つまり id キーは「再生成のたびに判断を捨てる」という、この台帳が直そうとした
+ * 問題そのものを再現していた。
+ *
+ * 名前は判断の対象そのものなので、識別子としてこれ以上に安定なものが無い。
+ * 表記ゆれの正準化（NFKC・空白除去）を挟み、`normalize-team-spacing` 等の
+ * 揺れ吸収でキーが変わらないようにする。
  */
 export function clusterKey(members) {
   return members
-    .map((m) => m.id)
-    .slice()
-    .sort((a, b) => a - b)
-    .join('-');
+    .map((m) => (typeof m === 'string' ? m : m.name))
+    .map((n) => String(n).normalize('NFKC').replace(/\s+/g, ''))
+    .sort()
+    .join('|');
 }
 
 export function emptyLedger() {
   return { version: LEDGER_VERSION, decisions: {} };
 }
 
+/**
+ * v1（team id キー）→ v2（チーム名キー）へ移行する。
+ * 各判断は `members` にチーム名を持っているので、そこから振り直せば失われない。
+ */
+export function migrateV1(raw) {
+  const decisions = {};
+  let collided = 0;
+  for (const entry of Object.values(raw.decisions || {})) {
+    if (!Array.isArray(entry.members) || entry.members.length === 0) continue;
+    const key = clusterKey(entry.members);
+    if (decisions[key]) collided++;
+    decisions[key] = entry;
+  }
+  if (collided > 0) {
+    console.warn(`[review-ledger] 移行中に同じ顔ぶれのクラスタが ${collided} 件重なった（後勝ち）。`);
+  }
+  return { version: LEDGER_VERSION, decisions };
+}
+
 export function readLedger() {
   if (!fs.existsSync(LEDGER_PATH)) return emptyLedger();
   const raw = JSON.parse(fs.readFileSync(LEDGER_PATH, 'utf8'));
+  if (raw.version === 1) return migrateV1(raw);
   if (raw.version !== LEDGER_VERSION) {
     throw new Error(`review-decisions.json の version が ${raw.version}（期待: ${LEDGER_VERSION}）。移行を書くまで読み込まない。`);
   }
