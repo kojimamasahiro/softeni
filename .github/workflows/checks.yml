@@ -42,6 +42,14 @@ jobs:
 
       - run: npm ci
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: scripts/requirements-test.txt
+
+      - run: pip install -r scripts/requirements-test.txt
+
       # ---- ゲート: 落ちたらこの workflow を赤にする ----
       - name: 孤立エントリー（どの試合にも現れない組）
         run: node scripts/check-orphan-entries.mjs
@@ -63,6 +71,17 @@ jobs:
 
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
+
+      # fixtures の PDF は .gitignore（`*.pdf`）で追跡していないので、CI では
+      # PDF に依る項目が自動 SKIP される。カバーできるのは 144 項目中 75（52%）。
+      # 残りを CI で見たければ fixtures の扱いを決める必要がある。
+      - name: PDF→エントリー抽出の回帰テスト
+        run: python3 test_regression.py
+        working-directory: scripts/pdf-to-players
+
+      - name: 会場データ検査の回帰テスト
+        run: python3 test_regression.py
+        working-directory: scripts/venue-agent
 
       - name: ブラケット復元の照合
         run: node scripts/verify-bracket-layout.mjs

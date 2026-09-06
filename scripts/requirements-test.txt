@@ -1,0 +1,18 @@
+# scripts/pdf-to-players と scripts/venue-agent の回帰テストに必要な依存だけ。
+#
+# なぜ要るか（docs/raw/2026-09-06-idea-autonomous-improvement-agent.md）:
+# 依存定義がリポジトリに無いせいで、この2つの回帰テストは CI に載せられなかった。
+# PDF取り込み系を自律化の出発点にすると決めた以上、そこが自動実行されていないのは穴。
+#
+# 実測した3rdパーティ依存はこの2つだけ（残りは標準ライブラリとローカルモジュール）。
+# テストは pytest ではなく `python3 test_regression.py` で回す（RUNBOOK.md / README.md の記載どおり）
+# ので pytest は要らない。
+#
+# 対象外: scripts/pdf/ はより広い依存（pandas / scipy / numpy / Pillow / pymupdf /
+# namedivider）を使うが、回帰テストが無いため今回は固定しない。
+#
+# 検証: Python 3.13.4（リポジトリの .venv と同じ）で
+#   scripts/pdf-to-players  75/75 passed（fixtures 無し。手元では 144/144）
+#   scripts/venue-agent      5/5  passed
+pdfplumber==0.11.10
+requests==2.34.2
