@@ -13,6 +13,23 @@
     （`normalize-team-spacing.mjs` / `check-tournament-entries.mjs` /
     `check-highschool-pipeline-freshness.mjs` / `check-name-splits.mjs --strict`）で、
     取り込んだデータに不整合があるとここでビルドが止まる
+  - `check-highschool-pipeline-freshness.mjs` は「今の元データに対して
+    `npm run highschool:pipeline` が実行済みか」を、**元データのうちパイプラインが実際に読む
+    項目だけ**の内容ハッシュ（`data/highschool/.pipeline-source-hash.json`）で判定する。
+    読む項目は `participants[].team` / `participants[].prefecture` /
+    `entries[].entryNo` / `entries[].playerIds` / `results[].entryNo` /
+    `results[].tournament.label` / `results[].roundRobin|roundrobin.rank` と、
+    `index.json` の `(tournamentId, generationId)` / `pipeline-sources.json` だけ。
+    **`matches` や `entries[].type` は読んでいないので、そこだけの修正では赤くならない**
+    （2026-09-06 に射影化。それ以前はファイル全体のバイト列を見ていたため、
+    生成物が 1 バイトも変わらない修正でもビルドが落ち、空振りの再実行が必要だった）。
+    射影が一致して元データだけ変わった場合は `ℹ️` の行が出て緑のまま通る。
+    赤くなったら `npm run highschool:pipeline` を回し、
+    生成物と `data/highschool/.pipeline-source-hash.json` を同じコミットに乗せる。
+    **python 側（`01team` / `02result` / `03list`）が読む項目を増やしたら、
+    `scripts/highschool/lib/source-hash.mjs` の `projectDetail` も必ず更新すること**
+    （更新漏れは「元データが変わったのに緑のまま生成物が古い」という検出漏れになる）。
+    経緯は [調査メモ](../raw/2026-09-06-highschool-pipeline-freshness-false-positives.md)。
   - 主な生成: `generate-players-json.mjs` / `generate-players-lite.mjs` /
     `generate-player-analysis.mjs` / `generate-beta-matches-json.mjs` /
     `generate-match-reverse-index.mjs` / `generate-rare-events.mjs` /
@@ -326,6 +343,16 @@ Deprecated:
     **その値は仮定なので根拠を必ず残す**（個人戦ダブルスは4本先取／5本先取など種目で違う）。
   - **予選リーグを含む大会は対象外**（決勝トーナメントの枠がリーグ順位で決まり entryNo の
     ドロー順と対応しないため、枠数からの逆算が成立しない）。
+  - **本戦の前に「予選」を1試合だけ置く形式も対象外**（2026-09-06 追記）。この形式では
+    予選の敗者が本戦のドローに席を持たず `type` が `preliminary` になるが、
+    `entry_types` は枠数が2の冪にならず assert、`link_matches` は `"予選"` が
+    `ROUND_ORDER` に無く ValueError で落ちる（黙って壊れはしない）。
+    実例は `zennihon-singles/2017/singles-none-boys`。
+  - `check(data)` は**このモジュールを通した場合しか走らない**。入力ツール
+    （`tools/tournament3`）から入れたデータは同じ自己検査を受けないため、
+    「試合数がエントリー数−1と合わない」「勝者が次戦に現れない」が素通りする
+    （2026-09-06 に highschool-championship/2013 男子ダブルスで実際に起きた。
+    [調査メモ](../raw/2026-09-06-bracket-verify-250-mismatches.md)）。
   - 切り出し時に天皇杯2017-2019の6ファイルがバイト単位で一致、インターハイ2014も
     `matches`/`results` が完全一致することを確認済み（差は学校名の正規化のみ）。
   - **details を書いたら `node scripts/normalize-team-names.mjs --scope=<大会ID>` を必ず通す。**
@@ -866,7 +893,7 @@ entries の入力ミスを検出する。問題があれば終了コード1。�
 | `orphan-participant` | `participants` に居るのに、どの entry にも登場しない。**表記ゆれによる二重登録のサイン** |
 | `match-entry-not-found` | `matches[].entries` が存在しない entryNo（`null` 含む）を参照 |
 | `result-entry-not-found` | `results[].entryNo` が存在しない |
-| `bracket-slot-parity` | `entries[].type` から積んだ枠数が2の冪でない＝シード/足長の指定ずれ（warn）。**予選リーグを含む大会は対象外**（席順は `knockoutDraw` が持つため） |
+| `bracket-slot-parity` | `entries[].type` から積んだ枠数が2の冪でない＝シード/足長の指定ずれ（warn）。**予選リーグを含む大会は対象外**（席順は `knockoutDraw` が持つため）。`type: 'preliminary'`（本戦前の予選で敗れ本戦の席を持たない組）は枠を数えない |
 | `knockout-draw-missing` | 予選リーグ→決勝T形式（決勝Tの試合が2件以上）なのに `knockoutDraw` が無い（warn）。`npm run bracket:draw -- --apply` で生成できる。生成できない場合は決勝Tの試合記録が欠けている |
 | `knockout-draw-parity` | `knockoutDraw.slots` の枠数が2の冪でない（warn）。空席は `null` で埋める |
 | `knockout-draw-unresolved` | `knockoutDraw` の席が参照する (組, 組内順位) が `results[].roundrobin` に無い（warn）。予選リーグが終わる前は対象外 |

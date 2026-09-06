@@ -64,19 +64,10 @@ jobs:
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 
-      # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
-      # TODO: verify-bracket-layout は 2026-09-06 時点で250件の不一致があり赤。
-      #       解消したらゲート側へ昇格させること（「締める方向」の変更は自由）。
-      - name: ブラケット復元の照合（報告のみ）
-        if: always()
-        run: |
-          {
-            echo '## ブラケット復元の照合'
-            echo '```'
-            node scripts/verify-bracket-layout.mjs 2>&1 | tail -25 || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+      - name: ブラケット復元の照合
+        run: node scripts/verify-bracket-layout.mjs
 
+      # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
       - name: 識別・名寄せの要対応（報告のみ）
         if: always()
         run: |

@@ -273,7 +273,7 @@ export interface TournamentParticipant {
 export interface TournamentEntry {
   entryNo: number; // エントリー番号
   playerIds: string[]; // 参加者ID配列（ダブルスは2人、シングルスは1人）
-  type?: string; // エントリータイプ（"seed", "packing", "extra"）
+  type?: string; // エントリータイプ（"seed", "packing", "extra", "preliminary"）
 }
 
 export interface TournamentMatch {
@@ -459,14 +459,25 @@ export interface TournamentParticipant {
 - **seed**: シード。1回戦が不戦勝で、2回戦から登場する
 - **packing**: 一般エントリー。1回戦から戦う
 - **extra**: 通称「足長」。1回戦が不戦勝だが、2回戦の相手も不戦勝上がり（＝シードの下ではない）
+- **preliminary**: 本戦の1回戦より前の「予選」で敗れ、**本戦のドローに席を持たない**組。
+  席順を組むときは数えない（数えると以降の席が1つずつずれる）。予選を勝ち上がった側は
+  本戦の席に入るので普通の `packing` になる。実例は `zennihon-singles/2017/singles-none-boys`
+  （257名 → 予選1試合 → 本戦256枠）で、全データ中この1ファイルだけ（2026-09-06 時点）
 - **null**: タイプ指定なし（予選リーグ参加者、判定不能な場合）
+
+「予選リーグ（`stage: "roundrobin"`）」と「本戦前の予選（`round: "予選"` の1試合）」は別物。
+前者の参加者は `null` で、決勝Tの席は `knockoutDraw` が持つ（[ADR-015](./adr/ADR-015-knockout-draw-by-group.md)）。
 
 判定は 2 箇所にあり、**同じ規約**である必要がある。
 
 | どこ | いつ | 判定方法 |
 |---|---|---|
 | `tools/tournament3/index.html` の `buildEntriesMeta()` | 入力ツールで出力するとき | **1回戦の枠組みだけ**から決める。第 i 試合が実対戦なら両者 `packing`、bye なら隣の第 `i^1` 試合が実対戦かで `seed` / `extra` |
-| `tools/shared/normalize-core.js` の `calculateEntryType()` | `entriesMeta` が無いとき（既存データ・外部取り込み） | **実対戦の初出ラウンド**から決める。1回戦なら `packing`、2回戦で相手が1回戦からなら `seed`、相手も2回戦からなら `extra` |
+| `tools/shared/normalize-core.js` の `calculateEntryType()` | `entriesMeta` が無いとき（既存データ・外部取り込み） | **実対戦の初出ラウンド**から決める。1回戦なら `packing`、2回戦で相手が1回戦からなら `seed`、相手も2回戦からなら `extra`。`round: "予選"` の試合は本戦の外なので除外し、それしか無ければ `preliminary` |
+
+**`buildEntriesMeta()`（入力ツール）は `preliminary` を出せない**（1回戦の枠組みしか見ないため、
+本戦前の予選があると枠がずれる）。この形式の大会を新規に入力する場合は手当てが要る
+（[open-questions](./wiki/open-questions.md)）。
 
 **開催前は前者しか使えない**。2回戦の枠が未確定（1回戦の勝者が決まっていない）なので、
 後者の方式ではシードの相手が bye のままになり `type` が `null` に落ちる（2026-07-26 の不具合）。

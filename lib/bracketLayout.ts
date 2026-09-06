@@ -19,6 +19,17 @@
 //   席順は `knockoutDraw`（(組, 組内順位) の並び）を情報源にする。
 //   決定の経緯は docs/adr/ADR-015-knockout-draw-by-group.md。
 //
+// 本戦の前に「予選」を 1 試合だけ持つ大会（2026-09-06 追加）:
+//   出場数が 2 冪をわずかに超える大会は、bye を増やす代わりに**本戦より前の段（予選）**で
+//   1 席を争わせることがある。実例は zennihon-singles/2017 男子で、257 名を
+//   「予選 1 試合（entryNo 2 vs 3）→ 本戦 256 枠」で捌いている。
+//   このとき予選の敗者は**本戦のドローに席を持たない**ので、`seed`/`extra`/`packing` の
+//   どれでも表せない（`packing` にすると以降の席が 1 つずつずれる）。
+//   `type: 'preliminary'` で「席を消費しないエントリー」として印を付け、席順を組む前に外す。
+//   予選の勝者は本戦の席に入るので、普通に `packing`（隣接する組との 1 回戦）になる。
+//   復元した席順に予選敗者は現れないため、`meetingRoundIndex` はそのエントリーで null を返す
+//   （本戦のブラケットに居ないので「◯回戦で当たる」は原理的に定まらない）。
+//
 // 限界:
 //   `type` が入っていない大会（入力ツールのシード対応が 2026-07-26 のため、それ以前の
 //   データには `null` が多い）では復元できない。その場合は null を返す（graceful）。
@@ -32,6 +43,7 @@
 //   残る 1 大会は隣接ペアの崩れ（枠数は 2 冪のまま）でデータ誤りだった。修正後は
 //   **復元適用 173 大会・18,901 試合で不一致 0 件**（`npm run bracket:verify`）。
 //   `knockoutDraw` 追加後は **374 大会・27,635 試合で不一致 0 件**（2026-08-22）。
+//   `preliminary` 追加とデータ修正後は **443 大会・38,729 試合で不一致 0 件**（2026-09-06）。
 
 // 相対 import なのは、ts-node（scripts/ の検証・テスト）が `@/` エイリアスを解決しないため。
 // lib 内の他モジュール（newsArticle.ts 等）も相対で揃えている。
@@ -131,6 +143,11 @@ export function describeBracketLayout(detail: RawDetail | null): BracketLayoutRe
   const entries = detail?.entries ?? [];
   if (entries.length === 0) return { layout: null, failure: 'no-entries' };
   const typed = entries as Array<{ entryNo: number; type?: string | null }>;
+  // `preliminary`（予選＝1 回戦より前の段で敗れ、本戦のドローに席を持たないエントリー）は
+  // 枠を消費しないので、席順を組む前に外す。実例は zennihon-singles/2017 男子で、
+  // 257 名を「予選 1 試合 → 本戦 256 枠」で捌いている（詳細は下の脚注）。
+  const draw = typed.filter((e) => e.type !== 'preliminary');
+  if (draw.length === 0) return { layout: null, failure: 'no-entries' };
   // seed / extra が 1 件も無い場合、次の 2 通りを区別する必要がある。
   //   (a) 出場数がちょうど 2 冪で bye が 1 つも要らないドロー（全員が 1 回戦を戦う）。
   //       これは正しく「seed も extra も無い」のであって、復元できる。実測 36 大会・
@@ -144,13 +161,13 @@ export function describeBracketLayout(detail: RawDetail | null): BracketLayoutRe
   // いけない。実例: zennihon-senior/2025/doubles-over80-girls は 31 組・全件 packing で、
   // 素朴に組むと padding 込みで 32 枠＝2 冪になり**パリティ検査をすり抜けて誤復元する**。
   // 出場数そのもの（31）を見れば 2 冪でないと分かる。
-  if (!typed.some((e) => e.type === 'seed' || e.type === 'extra')) {
-    const n = typed.length;
-    const byeless = typed.every((e) => e.type === 'packing') && (n & (n - 1)) === 0;
+  if (!draw.some((e) => e.type === 'seed' || e.type === 'extra')) {
+    const n = draw.length;
+    const byeless = draw.every((e) => e.type === 'packing') && (n & (n - 1)) === 0;
     if (!byeless) return { layout: null, failure: 'no-seed-info' };
   }
 
-  const byNo = new Map(typed.map((e) => [e.entryNo, e.type ?? null]));
+  const byNo = new Map(draw.map((e) => [e.entryNo, e.type ?? null]));
   const nos = [...byNo.keys()].sort((a, b) => a - b);
 
   const slots: (number | null)[] = [];

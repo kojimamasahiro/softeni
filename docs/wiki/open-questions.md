@@ -472,6 +472,40 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 再発見の経緯: [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) 追記2
 
+## パイプラインのスクリプト変更を鮮度チェックが見ていない（2026-09-06 追加）
+
+`check-highschool-pipeline-freshness.mjs` は**元データ**の内容ハッシュしか見ないので、
+`scripts/highschool/**` の python を直しても反応しない。スクリプトを変えれば生成物は
+変わりうるので、本来は再実行が要る。スクリプトの内容もハッシュに混ぜれば閉じられるが、
+今度は「コメントを直しただけで赤くなる」ノイズが増える。どちらを取るかは未決定。
+→ [調査メモ](../raw/2026-09-06-highschool-pipeline-freshness-false-positives.md)
+
+## エントリーの二重登録と `nextMatchId` の壊れ（2026-09-06 追加）
+
+`npm run bracket:verify` の250件不一致を調査した副産物
+（[調査メモ](../raw/2026-09-06-bracket-verify-250-mismatches.md)）。
+
+- **`highschool-championship/2013/doubles-none-boys` の entryNo 136 の組が誰なのか分からない。**
+  同じ `playerIds`（`長友_祐人_日向_宮崎県 / 寺田_侑世_日向_宮崎県`）が entryNo 136 と 277 の
+  2 席に入っている。複製されていた試合2件は削除して整合を取ったが、**136 の側の氏名は
+  元資料（2013 インターハイ男子ダブルスのドロー表）が無いと復元できない**。
+  このままだとこの組の選手ページで 2013 の「2回戦敗退」が2件計上される。
+  Assumption: 誤っているのは 136 の側（複製された試合が 277 の対戦相手を持っていたため）。
+- **同種の異常が他に3件ある（未対応）。** どちらの走査も現状どの検出器にも入っていないので、
+  次に起きても気付けない。ルール化するかは未決定。
+  - `entries[].playerIds` の重複: `zennihon-university/2025/singles-none-boys.json`
+  - `nextMatchId` の先に勝者が居ない: `highschool-shikoku-block/2026/doubles-none-girls.json` /
+    `east-japan/2025/doubles-none-girls.json`
+- **`tournament_results_common.check()` が入力ツール経路に掛かっていない。**
+  2013 の3症状（試合数がエントリー数−1と合わない／勝者が次戦に現れない／同一ラウンドに
+  同じ entryNo）はすべてこの `check()` の既存ルールで捕まるが、Python の PDF パイプラインを
+  通ったときしか走らない。入力ツール（`tools/tournament3`）から入れたデータにも同じ検査を
+  掛けるか（`validate-entries.js` 側へ移すか、全データ走査の検出器を1本足すか）は未決定。
+- **入力ツールが本戦前の「予選」形式を出力できない。** `tools/tournament3` の
+  `buildEntriesMeta()` は1回戦の枠組みだけを見るので、本戦前に予選があると枠がずれ、
+  `type: 'preliminary'` を出せない。既存データではこの形式は
+  `zennihon-singles/2017/singles-none-boys` の1件だけなので手当てを保留している。
+
 ---
 
 ## 解決済み（記録）
