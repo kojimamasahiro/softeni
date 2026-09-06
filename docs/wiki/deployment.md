@@ -115,6 +115,25 @@ namedivider）を使うが、回帰テストが無いため固定していない
 
 経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
 
+### review-snapshot ワークフロー（`.github/workflows/review-snapshot.yml`・2026-09-06 追加）
+
+`checks.yml` と**別ファイルに分けてある**。`checks.yml` は `permissions: contents: read` のままで、
+**リポジトリへ書き戻す仕事だけ**をこちらに置き `contents: write` を与えている
+（ゲートを回すだけのワークフローに push 権限を持たせないため）。
+
+- 毎週月曜 09:30 JST（`checks.yml` の30分後）＋手動実行。
+- `node scripts/record-review-snapshot.mjs` が
+  `data/teams/review-history.json` にレビューの進み具合を追記する。
+- **数字が動いたときだけコミットする**（動いていない日を書き足すと、情報は増えず
+  コミットと本番ビルドだけが増えるため）。
+- コミットメッセージに `[skip ci]` を入れて Cloudflare Pages のビルドを飛ばす想定。
+  **初回の実運用で実際に飛んでいるか確認すること**（未検証）。
+
+書き戻す対象は「**再生成できない記録**」に限る。過去に `sitemap.yml`（2025-05-02 追加・
+2日で無効化・2025-10-24 削除）が生成物をコミットして戻す設計で廃れており、その教訓は
+「書き戻すな」ではなく「生成物を書き戻すな」だと整理した。
+経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
+
 ### ビルド時間の内訳（2026-07-19 実測）
 
 teams 系の集計最適化により **22分41秒 → 8分53秒**（commit 0076636 → 2f34553）。

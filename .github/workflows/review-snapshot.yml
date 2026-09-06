@@ -1,0 +1,66 @@
+# レビューの進み具合を時系列でリポジトリに残す。
+#
+# なぜ checks.yml と分けるか（docs/raw/2026-09-06-idea-autonomous-improvement-agent.md）:
+# checks.yml は `permissions: contents: read` のままにしておきたい。
+# ゲートを回すだけのワークフローに push 権限を持たせる理由が無く、
+# 権限は必要なものだけに絞るべきなので、書き戻す仕事だけをここに分離する。
+#
+# 何を書き戻すか:
+# 「再生成できない記録」に限る。sitemap.yml（2025-05-02〜2025-05-04、2日で無効化）の
+# 先例が示したのは「書き戻すな」ではなく「**生成物を書き戻すな**」だった。
+# ここで残すのは merge-candidates の件数と、上書きで消える判断の推移で、
+# どちらも後から復元できない。
+#
+# **数字が動いたときだけコミットする**（record-review-snapshot.mjs が判定）。
+# 動いていない日に書き足しても情報が増えず、コミットと本番ビルドだけが増えるため。
+
+name: review-snapshot
+
+on:
+  schedule:
+    # 毎週月曜 09:30 JST（= 00:30 UTC）。checks.yml（00:00 UTC）の後ろにずらす。
+    - cron: '30 0 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: review-snapshot
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: スナップショットを記録（変化があれば追記）
+        run: node scripts/record-review-snapshot.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: 変化があればコミットする
+        run: |
+          if git diff --quiet -- data/teams/review-history.json; then
+            echo "変化なし。コミットしない。" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/teams/review-history.json
+          # [skip ci] は Cloudflare Pages のビルドを飛ばすため（データではなく記録の追加なので
+          # 本番を作り直す必要がない）。初回の実運用で実際に飛んでいるか確認すること。
+          git commit -m "レビューの進み具合を記録する [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            echo "push に失敗。やり直す ($i/3)"
+            sleep 5
+          done
+          exit 1
