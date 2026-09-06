@@ -97,8 +97,22 @@ if (argv.includes('--draw')) {
   }
 
   const audit = readAudit();
-  // 既に引いた分は除く（同じものを二重に監査しない）
-  const drawn = new Set(audit.rounds.flatMap((r) => r.sample.map((s) => s.key)));
+  // 二重に監査しないよう、既に引いた分は除く。ただし**除外の対象は2種類だけ**にする:
+  //   1. 集計に使える回（verdictSource: 'computed'）で引いたもの
+  //   2. 使えない回で引いたが、**人が既に判断してしまった**もの
+  //      （人の答えが分かった後に機械の判定を計算し直すことになり、事前登録が崩れるため）
+  // 使えない回で引いたが未判断のものは、機械の判定を計算し直せば清潔なので引き直してよい。
+  // ここを一律に除外していたため、merge層は母集団49件のうち48件が塞がれ、
+  // 20件要求しても1件しか引けなかった（2026-09-06 に実際に起きた）。
+  const drawn = new Set();
+  for (const r of audit.rounds) {
+    const usable = r.verdictSource === 'computed';
+    for (const smp of r.sample) {
+      const now = ledger.decisions[smp.key];
+      const judged = now && now.decidedBy === 'human';
+      if (usable || judged) drawn.add(smp.key);
+    }
+  }
   const available = pool.filter((x) => !drawn.has(x.key));
   if (available.length === 0) {
     console.log('母集団は全て抽出済み。新しく引けるものが無い。');
