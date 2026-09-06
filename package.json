@@ -89,7 +89,8 @@
     "team:review": "node scripts/build-team-review-html.mjs && node scripts/team-review-server.mjs",
     "review:snapshot": "node scripts/record-review-snapshot.mjs",
     "check:team-id-alignment": "node scripts/check-team-id-alignment.mjs",
-    "review:audit": "node scripts/audit-review-sample.mjs"
+    "review:audit": "node scripts/audit-review-sample.mjs",
+    "check:search-misses": "node scripts/check-search-misses.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",
