@@ -208,6 +208,22 @@ TODO コメントを削除した（`if: always()` のサマリ出力をやめ、
 `npm run check:entries` は警告 0 件のまま、`npm run bracket:test` は 33+7 件すべて成功
 （`preliminary` の単体テストを 2 件追加）。
 
+### 落とし穴: highschool-* の details を触るとパイプラインのマーカー更新が要る
+
+最初の push で Cloudflare Pages / Vercel の両方が落ちた。原因は
+`scripts/check-highschool-pipeline-freshness.mjs`（prebuild のゲート）で、
+`data/tournaments/details/highschool-*` の**内容ハッシュ**と
+`data/highschool/.pipeline-source-hash.json` を突き合わせるため、
+2013 のファイルを直した時点で不一致になっていた。
+
+紛らわしいのは、**パイプラインの生成物そのものは 1 バイトも変わらない**こと
+（このパイプラインは `entries` / `results` を集計するもので、今回直したのは `matches` だけ）。
+それでも `npm run highschool:pipeline` の再実行とマーカーのコミットは必要になる。
+`data/tournaments/details/highschool-*` を触ったら、結果に影響が無さそうでも回すこと。
+
+なお `npm run prebuild` は `public/data/beta-matches/**` の `generatedAt` も書き換えるが、
+これは中身の変わらないタイムスタンプ差分なのでコミットしていない。
+
 ## Compile Log（2026-09-06）
 
 書き戻したもの:
