@@ -258,7 +258,8 @@ document.getElementById('dl').onclick=async()=>{const o=buildOutput();const msg=
   try{const r=await fetch('/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)});
     if(!r.ok)throw new Error('server');const res=await r.json();
     msg.textContent='反映: alias 適用 '+res.applied.length+' / スキップ '+res.skipped.length+' / 競合 '+res.conflicts.length+(res.conflicts.length?'（競合は取り込まず）':'')
-      +' ・ 台帳 '+res.ledger.total+'件（人 '+res.ledger.human+'・統合 '+res.ledger.merge+'・別チーム '+res.ledger.separate+'）に保存。';
+      +' ・ 台帳 '+res.ledger.total+'件（人 '+res.ledger.human+'・統合 '+res.ledger.merge+'・別チーム '+res.ledger.separate+'）に保存。'
+      +(res.remaining?' ・ 候補を作り直した（'+res.remaining.clusters+'件・未判断 '+res.remaining.todo+'件）。ページを再読み込みしてください。':'');
   }catch(e){const blob=new Blob([JSON.stringify(o,null,2)],{type:'application/json'});
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='team-review-output.json';a.click();
     msg.textContent='（サーバ未起動）確認済 '+o.decisions.length+' 件を team-review-output.json に保存。npm run team:review で起動すれば台帳へ直接保存されます（http://localhost:5173）。';}};

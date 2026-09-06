@@ -87,6 +87,19 @@ jobs:
         run: node scripts/verify-bracket-layout.mjs
 
       # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
+      # TODO: コミット済みの merge-candidates.json は main の teams.json と 1,211件ずれている
+      #       （レビュー作業の結果が未コミットのため）。整合した候補がコミットされたら
+      #       ゲート側へ昇格させること（「締める方向」の変更は自由）。
+      - name: マージ候補とチームマスタのID照合（報告のみ）
+        if: always()
+        run: |
+          {
+            echo '## マージ候補とチームマスタのID照合'
+            echo '```'
+            node scripts/check-team-id-alignment.mjs 2>&1 | head -25 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: 識別・名寄せの要対応（報告のみ）
         if: always()
         run: |
