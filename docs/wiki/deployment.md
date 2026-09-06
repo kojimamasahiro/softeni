@@ -97,9 +97,21 @@ Cloudflare Pages と**役割を分けている**。CF は push 契機でビル�
 リポジトリは PUBLIC なので Actions の実行時間は無料。
 `permissions: contents: read` で、現時点では**リポジトリへの書き戻しはしない**。
 
-対象外（依存が未固定のため見送り）: Python の回帰テスト
-（`scripts/pdf-to-players/test_regression.py` 103件・`scripts/venue-agent/test_regression.py` 5件）。
-CI に載せるには `requirements.txt` 等の追加が先。
+**Python の回帰テストも 2026-09-06 に追加**（当初は依存が未固定で見送っていた）。
+依存は `scripts/requirements-test.txt` に固定（`pdfplumber` / `requests` の2つだけ。
+テストは pytest でなく `python3 test_regression.py` で回すので pytest は不要）。
+CI の Python は **3.13**（リポジトリの `.venv` と同じ）。
+
+- `scripts/pdf-to-players/test_regression.py` … **75/75**
+- `scripts/venue-agent/test_regression.py` … **5/5**
+
+**カバレッジの制限**: fixtures の PDF は `.gitignore`（`*.pdf`）で追跡していないため、
+PDF に依る項目は CI で自動 SKIP される。**カバーできるのは 144 項目中 75（52%）**
+（手元では fixtures 2本があるので 144/144。ただし手元でも 4本は欠けている）。
+残りを CI で見るには fixtures の扱いを決める必要がある。
+
+対象外: `scripts/pdf/` はより広い依存（pandas / scipy / numpy / Pillow / pymupdf /
+namedivider）を使うが、回帰テストが無いため固定していない。
 
 経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
 
