@@ -14,6 +14,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { clusterKey, readLedger, summarize } from './lib/review-ledger.mjs';
+import { defaultGroups as sharedGroups, isAutoOK } from './lib/team-grouping.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const clusters = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'));
@@ -22,40 +23,9 @@ const teamsArr = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'te
 const idAliases = {};
 for (const t of teamsArr) idAliases[t.id] = t.aliases || [];
 
-// 初期グループ分け（賢いデフォルト）: 学校段階/クラブで分け、本体名は優勢な学校段階へ寄せる。
-function level(n) {
-  if (/中学/.test(n)) return '中';
-  if (/高校|高等学校/.test(n)) return '高';
-  if (/大学/.test(n)) return '大';
-  if (/小学|スポーツ少年団|スポ少|ジュニア/.test(n)) return '小';
-  if (/クラブ|ＯＢ|OB|役場|電力|協会|ＳＴＣ|STC|JSC/.test(n)) return 'ク';
-  return null;
-}
-// メンバーのジャンル（出場大会から判定した段階: 小/中/高/大/社/シ）。一意に決まらなければ null。
-function memGenre(m) {
-  const gs = (contextAll[m.id] || {}).genres || [];
-  return gs.length === 1 ? gs[0] : null;
-}
-// 既定グループ: 出場大会のジャンルで分ける（小/中/高/大/社/シが違えば別グループ）。
-// ジャンルが一意でない（高校と中学の両方に出る等）メンバーは名前ベースで補完し、無ければ単独。
-//
-// 2026-09-06 修正: 以前は出場大会由来を 'G:高'、名前由来を 'N:高' と**別の接頭辞**にしていた。
-// 同じ「高校」を意味するのに文字列が違うため、片方だけジャンルを持つクラスタは必ず分割された
-// （例:「大田原女子」ジャンル[高] と「大田原女子高校」ジャンル[] が別グループ）。
-// 抜き取り監査の実測で、標本14件中7件がこの型の**見逃し**（統合すべきものを残した）で、
-// 逆向きの誤統合は0件だった。さらに、自動OK 350件のうち実際に統合が起きていたのは**1件だけ**
-// ＝自動判定が99.7%空回りしていた。段階が同じなら由来を問わず同じキーにする。
-// 同一大会での同居チェック（下の autoOK）は触っていないので、安全弁はそのまま。
-function defaultGroups(members) {
-  const keys = members.map((m, i) => {
-    const stage = memGenre(m) ?? level(m.name);
-    return stage != null ? 'S:' + stage : 'bare' + i;
-  });
-  const uniq = [...new Set(keys)];
-  const idx = {};
-  uniq.forEach((k, i) => (idx[k] = i));
-  return keys.map((k) => idx[k]);
-}
+// グループ分けと自動OK判定は scripts/lib/team-grouping.mjs が正。
+// 監査（audit-review-sample.mjs）が同じ判定を使う必要があり、実装が2箇所にあると必ずずれるため。
+const defaultGroups = (members) => sharedGroups(members, contextAll);
 
 const data = clusters.map((c) => ({
   prefecture: c.prefecture,
@@ -74,32 +44,8 @@ for (const c of clusters)
     const x = contextAll[m.id];
     if (x) CTX[m.id] = { players: x.players, years: x.years, events: x.events, genres: x.genres };
   }
-function instOf(m) {
-  return new Set((contextAll[m.id] || {}).inst || []);
-}
 
-// 自動OK判定（大会の共起ベース）:
-//  - 既定グループ（ジャンル/段階で分割）で統合される＝同一グループ内のメンバー同士を見て、
-//    2つの表記が「同一大会(大会id+年)」に同居していれば別チームの疑い→人手レビュー。
-//  - どのグループ内でも同居が無ければ（＝表記揺れは別々の大会にしか出ない）自動OK。
-//  - ジャンルが違うメンバーは既定グループで分かれる＝統合されないので自動で別チーム扱い。
-const autoOK = clusters.map((c) => {
-  // signal:"players" は常に人手レビュー（理由は apply-auto-merges.mjs の autoOK を参照）。
-  if (c.signal === 'players') return false;
-  const groups = defaultGroups(c.members);
-  const byG = {};
-  c.members.forEach((m, i) => (byG[groups[i]] = byG[groups[i]] || []).push(m));
-  for (const g in byG) {
-    const ms = byG[g];
-    for (let i = 0; i < ms.length; i++)
-      for (let j = i + 1; j < ms.length; j++) {
-        const a = instOf(ms[i]),
-          b = instOf(ms[j]);
-        for (const x of a) if (b.has(x)) return false; // 同一大会で表記揺れが同居→要確認
-      }
-  }
-  return true;
-});
+const autoOK = clusters.map((c) => isAutoOK(c, contextAll));
 
 // 安定キー（メンバーの team id 順）。候補の並びが変わっても判断が追随する。
 const keys = clusters.map((c) => clusterKey(c.members));
