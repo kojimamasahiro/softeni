@@ -72,6 +72,11 @@ jobs:
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 
+      # 2026-09-06 にレビュー結果をコミットして候補とマスタが整合したのでゲートへ昇格。
+      # （それまでは1,211件ずれていたため報告のみに置いていた）
+      - name: マージ候補とチームマスタのID照合
+        run: node scripts/check-team-id-alignment.mjs
+
       # fixtures の PDF は .gitignore（`*.pdf`）で追跡していないので、CI では
       # PDF に依る項目が自動 SKIP される。カバーできるのは 144 項目中 75（52%）。
       # 残りを CI で見たければ fixtures の扱いを決める必要がある。
@@ -87,19 +92,6 @@ jobs:
         run: node scripts/verify-bracket-layout.mjs
 
       # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
-      # TODO: コミット済みの merge-candidates.json は main の teams.json と 1,211件ずれている
-      #       （レビュー作業の結果が未コミットのため）。整合した候補がコミットされたら
-      #       ゲート側へ昇格させること（「締める方向」の変更は自由）。
-      - name: マージ候補とチームマスタのID照合（報告のみ）
-        if: always()
-        run: |
-          {
-            echo '## マージ候補とチームマスタのID照合'
-            echo '```'
-            node scripts/check-team-id-alignment.mjs 2>&1 | head -25 || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-
       - name: 識別・名寄せの要対応（報告のみ）
         if: always()
         run: |
