@@ -140,16 +140,29 @@ let filter='todo';
 // localStorage には保存しない（判断ではないので）。
 const OPEN=new Set();
 // 初期値の優先順: 台帳に判断があればそれ > 自動OKなら確認済 > 既定グループ分け。
+// 監査対象は「人が中身を見て判断する」のが目的なので、機械が決めただけの段階では
+// 確認済み（畳んだ表示）にしない。**初期化のときだけ**適用する。
+// st() が呼ばれるたびに適用すると、「確認済にする」の処理
+// （s.reviewed=true → touch(i) → st(i)）の途中で reviewed が false に戻され、
+// 「未確認なのに触った」状態が保存されてしまう（リロードすると確認済みが消える）。
+function openIfAudit(k,st0){
+  if(!AUDIT.has(k)||st0.touched) return st0;
+  const led=LEDGER[k];
+  if(!led||led.decidedBy!=='human') st0.reviewed=false;
+  return st0;}
 function st(i){const k=KEYS[i];
   if(!state[k]){const led=LEDGER[k];
-    state[k]=(led&&Array.isArray(led.groups))
+    state[k]=openIfAudit(k,(led&&Array.isArray(led.groups))
       ?{groups:led.groups.slice(),canon:led.canon||{},reviewed:true,touched:led.decidedBy==='human'}
-      :{groups:CLUSTERS[i].groups.slice(),canon:{},reviewed:AUTO[i]===true};}
-  // 監査対象は「人が中身を見て判断する」のが目的なので、機械が決めただけの段階では
-  // 確認済み（畳んだ表示）にしない。人が一度でも触れば通常どおり確認済みのまま残る。
-  if(AUDIT.has(k)&&!state[k].touched){const led=LEDGER[k];
-    if(!led||led.decidedBy!=='human') state[k].reviewed=false;}
+      :{groups:CLUSTERS[i].groups.slice(),canon:{},reviewed:AUTO[i]===true});}
   return state[k];}
+// localStorage に既にある分にも一度だけ同じ補正をかける（版ごとに1回）。
+const OPENED_KEY=KEY+':audit-opened';
+if(localStorage.getItem(OPENED_KEY)!=='1'){
+  KEYS.forEach((k)=>{if(state[k]) openIfAudit(k,state[k]);});
+  localStorage.setItem(OPENED_KEY,'1');
+  localStorage.setItem(KEY,JSON.stringify(state));
+}
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderProg();}
 function ci(g){return ((g%6)+6)%6;}
 function canonOf(i,g){const s=st(i);if(s.canon[g]!=null)return s.canon[g];
