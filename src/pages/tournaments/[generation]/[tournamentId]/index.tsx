@@ -396,7 +396,7 @@ export default function TournamentHubPage({
                 // これから開催される実イベントに主催者を偽って書くのは
                 // lib/sportsEventJsonLd.ts の方針（虚偽の構造化データを避ける）に反する。
                 // 主催者名を information に持つようになったら入れる。
-                ...(upcoming.categoryLabels.length > 0 ? { subEvent: upcoming.categoryLabels.map((c) => ({ '@type': 'SportsEvent', name: c })) } : {}),
+                ...(upcoming.categoryLabels.length > 0 ? { subEvent: upcoming.categoryLabels.map((c) => ({ '@type': 'SportsEvent', name: c.label })) } : {}),
                 description: `${upcoming.label}のソフトテニス競技の日程・会場・実施種目。`,
               }),
             }}
@@ -1132,7 +1132,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
           surface: v.surface ?? null,
           usage: v.usage ?? null,
         })),
-        categoryLabels: (upcomingEntry.categories ?? []).map((c) => c.label),
+        // href は details/ に実データがある種目だけ付ける（yearGroups は details ディレクトリの
+        // 実走査結果＝getStaticPaths が実際に生成するページと同じ判定基準）。
+        // 要項段階でまだ組み合わせが無い種目までリンクにすると 404 になるため。
+        categoryLabels: (upcomingEntry.categories ?? []).map((c) => {
+          const yearGroup = yearGroups.find((g) => g.year === String(upcomingEntry.year));
+          const match = yearGroup?.categories.find((cl) => cl.category === c.category && cl.age === c.age && cl.gender === c.gender);
+          return { label: c.label, href: match?.href ?? null };
+        }),
         officialUrl: upcomingEntry.sourceUrl || officialUrl || null,
         hasStarted: Boolean(upcomingEntry.startDate && upcomingEntry.startDate <= todayIso),
       }
