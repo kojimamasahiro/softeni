@@ -131,6 +131,11 @@ const ledger = readLedger();
 let checked = 0;
 let overturned = 0;
 let pending = 0;
+// 覆しは向きで意味がまったく違うので分けて数える。
+//   merge → separate  … **誤統合**。別チームを1つにしてしまった。データが壊れる方向。
+//   separate → merge  … **見逃し**。統合すべきものを残した。安全側だが、名寄せの仕事をしていない。
+let wrongMerge = 0;
+let missedMerge = 0;
 const details = [];
 for (const round of audit.rounds) {
   for (const s of round.sample) {
@@ -142,6 +147,8 @@ for (const round of audit.rounds) {
     checked++;
     if (now.verdict !== s.machineVerdict) {
       overturned++;
+      if (s.machineVerdict === 'merge') wrongMerge++;
+      else missedMerge++;
       details.push({ members: s.members, machine: s.machineVerdict, human: now.verdict });
     }
   }
@@ -158,9 +165,14 @@ if (checked === 0) {
 }
 
 const w = wilson(overturned, checked);
+const wWrong = wilson(wrongMerge, checked);
 console.log('');
 console.log(`  機械の判定を人が覆した: ${overturned} / ${checked}`);
-console.log(`  誤り率: ${(w.p * 100).toFixed(1)}%（95%信頼区間 ${(w.low * 100).toFixed(1)}% 〜 ${(w.high * 100).toFixed(1)}%）`);
+console.log(`  全体の誤り率: ${(w.p * 100).toFixed(1)}%（95%信頼区間 ${(w.low * 100).toFixed(1)}% 〜 ${(w.high * 100).toFixed(1)}%）`);
+console.log('');
+console.log('  向きの内訳（意味がまったく違うので分けて見る）:');
+console.log(`    誤統合 merge → separate : ${wrongMerge} 件  ← 別チームを1つにした。**データが壊れる方向**`);
+console.log(`    見逃し separate → merge : ${missedMerge} 件  ← 統合すべきものを残した。安全側`);
 if (details.length) {
   console.log('');
   console.log('  覆された例（最大5件）:');
@@ -169,13 +181,26 @@ if (details.length) {
   }
 }
 console.log('');
-if (w.low > threshold) {
-  console.log(`判定: 誤り率の下限 ${(w.low * 100).toFixed(1)}% が閾値 ${(threshold * 100).toFixed(1)}% を超えている。`);
+
+// 判定は**誤統合の率だけ**で行う。見逃しはデータを壊さないので、
+// 「自動OKを締める」根拠にはならない（締めても見逃しは減らない。むしろ増える）。
+if (wWrong.low > threshold) {
+  console.log(`判定: **誤統合**の率の下限 ${(wWrong.low * 100).toFixed(1)}% が閾値 ${(threshold * 100).toFixed(1)}% を超えている。`);
   console.log('  → 自動OKの範囲を締めること（緩める方向の変更は独立した照合で裏を取るまで禁止）。');
   process.exit(1);
 }
-console.log(`判定: 誤り率の下限 ${(w.low * 100).toFixed(1)}% は閾値 ${(threshold * 100).toFixed(1)}% 以下。締める必要は無い。`);
-if (w.high > threshold) {
-  console.log(`  ただし上限は ${(w.high * 100).toFixed(1)}% で、標本 ${checked} 件では判断がつかない。緩めるなら標本を増やすこと。`);
+console.log(`判定: **誤統合**は ${wrongMerge}/${checked} 件で、率の上限は ${(wWrong.high * 100).toFixed(1)}%。`);
+if (wrongMerge === 0) {
+  console.log('  データを壊す方向の誤りは観測されていない。自動OKを締める根拠は無い。');
+}
+if (missedMerge > 0) {
+  const wm = wilson(missedMerge, checked);
+  console.log('');
+  console.log(
+    `注意: **見逃し**が ${missedMerge}/${checked} 件（${(wm.p * 100).toFixed(1)}%・95%区間 ${(wm.low * 100).toFixed(1)}%〜${(wm.high * 100).toFixed(1)}%）ある。`,
+  );
+  console.log('  これはデータを壊さないが、自動判定が名寄せの仕事をしていないということ。');
+  console.log('  対処は「自動OKを緩める」ではなく、**既定グループ分けの見直し**（同じ段階なのに');
+  console.log('  別グループになっていないか）。緩める方向の安全弁はそのまま残すこと。');
 }
 process.exit(0);
