@@ -28,8 +28,19 @@ export type ResultCoverageStatus =
 
 export interface ResultCoverage {
   status: ResultCoverageStatus;
-  /** 決勝T(stage:'knockout')の総試合数 */
+  /**
+   * 決勝Tの**想定総試合数**（決勝までに行われる試合数）。表示・進捗率はこちらを使う。
+   * 算出根拠が無い大会では `knockoutMatchRecords` と同じ値になる（`expectedTotalSource` 参照）。
+   */
   totalKnockoutMatches: number;
+  /**
+   * データに**存在する** `stage:'knockout'` の試合レコード数。
+   * 試合を実施したぶんだけ追記していく大会では進行に応じて増えるので、
+   * 「全◯試合」の分母には使えない（2026-09-06 修正の要点）。
+   */
+  knockoutMatchRecords: number;
+  /** 想定総試合数の根拠。'records' は算出できずレコード数で代用したことを示す */
+  expectedTotalSource: 'draw' | 'entries' | 'records';
   /** 決勝Tのうち勝者が確定している試合数 */
   decidedKnockoutMatches: number;
   /** decidedKnockoutMatches / totalKnockoutMatches（totalが0ならnull） */
@@ -71,11 +82,49 @@ interface CoverageResultInput {
       kind?: string;
     } | null;
   } | null;
+  /** 予選リーグの成績。1件でもあれば「予選リーグ→決勝T」形式と判断する */
+  roundrobin?: unknown;
 }
 
 interface CoverageDetailDataInput {
   matches?: CoverageMatchInput[] | null;
   results?: CoverageResultInput[] | null;
+  /** 想定総試合数の算出に使う（純トーナメントなら「エントリー数 − 1」） */
+  entries?: unknown[] | null;
+  /** 予選リーグ→決勝T大会の席順。非 null の席数が決勝Tの参加数（ADR-015） */
+  knockoutDraw?: { slots?: (unknown | null)[] | null } | null;
+}
+
+/**
+ * 決勝までの**想定総試合数**を求める。求められなければ null。
+ *
+ * シングルエリミネーションの試合数は不戦勝の有無に関係なく「参加数 − 1」で決まる
+ * （毎試合ちょうど1組が敗退し、優勝の1組だけが残るため）。したがって参加数さえ分かれば、
+ * 試合レコードが1件も無くても総試合数は確定する。
+ *
+ * 参加数の取り方が2通りあるのは大会形式が2通りあるため:
+ * - `knockoutDraw` がある大会（予選リーグ→決勝T）は、`entries` にリーグだけの組も含むので
+ *   `entries` を数えると多すぎる。決勝Tの席（非 null の `slots`）を数える。
+ *   席は (組, 組内順位) で定義されているので、リーグが終わる前でも席数は確定している。
+ * - 純トーナメントは `entries` がそのまま参加数。
+ *
+ * 予選リーグを含むのに `knockoutDraw` が無い大会は根拠が無いので null を返す
+ * （誤った分母を出すより、従来どおりレコード数で代用するほうがまだ安全）。
+ */
+function estimateExpectedKnockoutMatches(detailData: CoverageDetailDataInput | null | undefined): { total: number; source: 'draw' | 'entries' } | null {
+  const slots = detailData?.knockoutDraw?.slots;
+  if (Array.isArray(slots)) {
+    const seats = slots.filter((s) => s != null).length;
+    if (seats >= 2) return { total: seats - 1, source: 'draw' };
+    return null;
+  }
+
+  const hasRoundRobin = (detailData?.matches ?? []).some((m) => m?.stage === 'roundrobin') || (detailData?.results ?? []).some((r) => r?.roundrobin != null);
+  if (hasRoundRobin) return null;
+
+  const entryCount = (detailData?.entries ?? []).length;
+  if (entryCount >= 2) return { total: entryCount - 1, source: 'entries' };
+  return null;
 }
 
 // tools/shared/normalize-core.js の roundOrderOf と同じ並び替えロジック。
@@ -97,6 +146,8 @@ function roundOrderOf(roundName: string | null | undefined): number {
 const EMPTY_UNSUPPORTED: ResultCoverage = {
   status: 'unsupported',
   totalKnockoutMatches: 0,
+  knockoutMatchRecords: 0,
+  expectedTotalSource: 'records',
   decidedKnockoutMatches: 0,
   progressRatio: null,
   deepestDecidedRoundLabel: null,
@@ -124,8 +175,16 @@ export function computeResultCoverage(
   }
 
   const decided = knockoutMatches.filter((m) => isDecided(m));
-  const totalKnockoutMatches = knockoutMatches.length;
+  const knockoutMatchRecords = knockoutMatches.length;
   const decidedKnockoutMatches = decided.length;
+
+  // 分母は「決勝までの想定総試合数」。試合レコード数（= 実施ぶんだけ追記される大会では
+  // 進行に応じて増える）を分母にすると、全日本学生2026 女子ダブルス（332エントリー・
+  // 決勝まで331試合）で「全76試合」＝1回戦の数になり、%も実際より高く出ていた（2026-09-06 修正）。
+  // 3位決定戦のようにレコードが想定を上回る場合はレコード数を採る。
+  const estimated = estimateExpectedKnockoutMatches(detailData);
+  const totalKnockoutMatches = estimated ? Math.max(estimated.total, knockoutMatchRecords) : knockoutMatchRecords;
+  const expectedTotalSource: 'draw' | 'entries' | 'records' = estimated ? estimated.source : 'records';
   const progressRatio = totalKnockoutMatches > 0 ? decidedKnockoutMatches / totalKnockoutMatches : null;
 
   let deepestDecidedRoundLabel: string | null = null;
@@ -170,6 +229,8 @@ export function computeResultCoverage(
   return {
     status,
     totalKnockoutMatches,
+    knockoutMatchRecords,
+    expectedTotalSource,
     decidedKnockoutMatches,
     progressRatio,
     deepestDecidedRoundLabel,

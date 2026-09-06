@@ -49,6 +49,7 @@ Accepted。決定日: 2026-06-26。現状仕様: `docs/tournament-data-structure
 - `src/components/Tournament/ResultCoverageNotice.tsx`: 結果ページ H1 直下に1行表示。`completed` / `unsupported` では非表示。
 - `src/pages/tournaments/.../[gender]/index.tsx`: 本文バナーに加え、`MetaHead` の `description` にも同内容を追記（Googleは指定した meta description をそのまま使うとは限らず、本文中に同趣旨の文言があった方が検索結果に反映されやすいため、本文とメタの両方に出す設計にした）。
 - スコープ: 個人戦 + 団体戦の**決勝トーナメントのみ**。予選リーグ（`stage:'roundrobin'`）は進捗の測り方が別物（ラウンド深度でなくグループ内消化数・順位確定）になるため対象外（下記 Open Questions へ）。
+- **2026-09-06 修正: 「全◯試合」の分母を想定総試合数に変更**。それまでは `matches` に**存在する** knockout レコード数を分母にしていたため、実施ぶんだけ追記していく大会では分母が進行と一緒に増え、決勝までの総試合数にならなかった（全日本学生2026 女子ダブルスは332エントリー＝決勝まで331試合なのに「全76試合」＝1回戦の数を表示していた）。現在は**「決勝Tの参加数 − 1」**（シングルエリミネーションの試合数は不戦勝の有無に関係なくこの式で決まる）を分母にし、参加数は `knockoutDraw` があれば非 null の席数、無ければ `entries` の数から採る。予選リーグ併用で `knockoutDraw` が無い大会は算出根拠が無いので従来どおりレコード数で代用する。`ResultCoverage.totalKnockoutMatches` の意味が「レコード数」から「想定総試合数」に変わり、レコード数は `knockoutMatchRecords`、根拠は `expectedTotalSource` として別フィールドになった。`status` 判定は不変。経緯: [2026-09-06-coverage-denominator-fix.md](../raw/2026-09-06-coverage-denominator-fix.md)
 
 ## Open Questions
 

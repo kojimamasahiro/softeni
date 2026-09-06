@@ -72,6 +72,37 @@ next build（output: 'export'）が public/ を out/ にコピー
 
 詳細: [docs/raw/2026-08-05-seo-audit.md](../raw/2026-08-05-seo-audit.md) A-1
 
+### GitHub Actions（`.github/workflows/checks.yml`・2026-09-06 追加）
+
+Cloudflare Pages と**役割を分けている**。CF は push 契機でビルドし、`prebuild` の先頭5段が
+ゲートとして働く（落ちるとデプロイが止まる）。しかし **prebuild に置けるのはゲートだけ**なので、
+合否が付かない「人の判断待ち一覧」型の検出器は置き場が無く休眠していた
+（2026-09-06 時点で検出器11本中7本＋テスト系10本が自動実行されていなかった）。
+
+| | Cloudflare Pages | GitHub Actions |
+|---|---|---|
+| 契機 | push のみ | push / PR / **cron（毎週月 09:00 JST）** / 手動 |
+| 置けるもの | ゲートのみ（失敗＝デプロイ停止） | **ゲートと報告を分離**。報告はデプロイに影響しない |
+| 結果 | ビルドログ | ジョブサマリ |
+
+- **ゲート（落ちたら赤）**: `check-orphan-entries` / `check-duplicate-placements` /
+  `check-growth-analysis` / `bracket:test` / `analytics:test` / `upcoming:test` / `club:verify`
+  — ローカル実測で合計3秒。
+- **報告のみ（赤にしない）**: `verify-bracket-layout` / `check-identity-health` /
+  `check-upcoming-tournaments` — `$GITHUB_STEP_SUMMARY` へ出力。
+
+`verify-bracket-layout` は 2026-09-06 時点で**250件の不一致があり赤**のため、赤いCIを常態化
+させないよう報告側に置いている。解消したらゲートへ昇格させること。
+
+リポジトリは PUBLIC なので Actions の実行時間は無料。
+`permissions: contents: read` で、現時点では**リポジトリへの書き戻しはしない**。
+
+対象外（依存が未固定のため見送り）: Python の回帰テスト
+（`scripts/pdf-to-players/test_regression.py` 103件・`scripts/venue-agent/test_regression.py` 5件）。
+CI に載せるには `requirements.txt` 等の追加が先。
+
+経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
+
 ### ビルド時間の内訳（2026-07-19 実測）
 
 teams 系の集計最適化により **22分41秒 → 8分53秒**（commit 0076636 → 2f34553）。
