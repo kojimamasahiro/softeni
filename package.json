@@ -86,7 +86,8 @@
     "juniorhigh:measure": "node scripts/measure-juniorhigh-scale.mjs",
     "secondaryschool:build": "node scripts/build-secondaryschool-index.mjs && node scripts/build-secondaryschool-pathways.mjs",
     "secondaryschool:teamid-todo": "node scripts/build-secondaryschool-teamid-todo.mjs",
-    "team:review": "node scripts/build-team-review-html.mjs && node scripts/team-review-server.mjs"
+    "team:review": "node scripts/build-team-review-html.mjs && node scripts/team-review-server.mjs",
+    "review:snapshot": "node scripts/record-review-snapshot.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.78.0",

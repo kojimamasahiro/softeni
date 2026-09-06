@@ -133,6 +133,9 @@ NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`
    - 台帳には「**統合しない**」という否定の判断も `verdict: "separate"` として残す。
      あわせて機械が何を提案していたか（`proposedAutoOK`）と誰が決めたか（`decidedBy`）も持つので、
      **「自動OKにしたが人が覆した」件数＝自動判定の誤り率**が後から数えられる。
+   - 進み具合は `data/teams/review-history.json` に時系列で残る
+     （`npm run review:snapshot`。毎週 `review-snapshot` ワークフローが数字の動いた週だけ追記する）。
+     候補件数と誤り率の推移が読める。
 3. **反映**:
    - サーバ方式（保存ボタンで即反映・推奨）: `npm run team:review`
      （= レビューHTML生成 → `scripts/team-review-server.mjs`）→ `http://localhost:5173` でレビュー
