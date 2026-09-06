@@ -124,11 +124,20 @@ NFKC は**字体差を畳まない**（`鄉`≠`郷`、`髙`≠`高`、`﨑`≠`
      同一グループ内で2表記が「同一大会(大会id+年)」に同居していれば要確認、そうでなければ自動OK。
    - 段階ジャンルは大会から判定（`team-context.json` の genres）。**社会人とシニアは同じ成人
      カテゴリに統合**（同一人物が両方に出るため）。
-   - 「確認済にする」を押したものだけが反映対象。判断は localStorage に保存。
+   - 「確認済にする」を押したものだけが反映対象。
+   - **判断は `data/teams/review-decisions.json`（判断台帳）に保存する**（2026-09-06 追加）。
+     localStorage は作業用キャッシュで、正は台帳のほう。台帳はクラスタを
+     **メンバーの team id 昇順**（`scripts/lib/review-ledger.mjs` の `clusterKey`）で識別するので、
+     **候補一覧をいつ作り直してもよい**（旧実装は配列インデックス保持だったため、再生成すると
+     判断を取り違えるか捨てるかしかなく、「レビュー中は候補を作り直さない」運用でしのいでいた）。
+   - 台帳には「**統合しない**」という否定の判断も `verdict: "separate"` として残す。
+     あわせて機械が何を提案していたか（`proposedAutoOK`）と誰が決めたか（`decidedBy`）も持つので、
+     **「自動OKにしたが人が覆した」件数＝自動判定の誤り率**が後から数えられる。
 3. **反映**:
-   - サーバ方式（保存ボタンで即反映）: `node scripts/team-review-server.mjs` →
-     `http://localhost:5173` でレビュー →「確認済を反映」で `apply-team-aliases.mjs` 経由で
-     alias 反映＋マスタ再生成。
+   - サーバ方式（保存ボタンで即反映・推奨）: `npm run team:review`
+     （= レビューHTML生成 → `scripts/team-review-server.mjs`）→ `http://localhost:5173` でレビュー
+     →「確認済を反映」で台帳へ保存＋`apply-team-aliases.mjs` 経由で alias 反映＋マスタ再生成。
+     `POST /decisions` は台帳への記録だけを行う（alias は触らない）。
    - ファイル方式: 書き出した `team-alias-additions.json` を
      `node scripts/apply-team-aliases.mjs <file>`。
    - 自動OK一括: `node scripts/apply-auto-merges.mjs`（自動OKクラスタの統合を一括反映）。
@@ -435,7 +444,7 @@ node scripts/normalize-team-spacing.mjs         # 全角半角・スペース揺
 node scripts/normalize-team-names.mjs --scope=all  # alias をデータへ適用
 node scripts/build-team-master.mjs              # teams.json + team-context.json
 node scripts/build-team-merge-candidates.mjs    # merge-candidates.json
-node scripts/build-team-review-html.mjs         # レビューHTML
+npm run team:review                             # レビューHTML生成＋サーバ起動（判断は台帳へ）
 python3 scripts/build-player-homonyms.py        # homonyms.json
 npm run playerstats:facts                       # .playerstats/_facts の再生成（キャリア年表の元データ）
 node scripts/check-identity-health.mjs          # 未対応項目のヘルスチェック

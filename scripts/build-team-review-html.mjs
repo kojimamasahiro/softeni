@@ -2,12 +2,18 @@
 // 出力: data/teams/team-merge-review.html（ブラウザで開いてクリック判断→JSON書き出し）。
 //  - 各メンバーに選手名・年代・主な大会の文脈を表示（チーム名だけで判断できない時の手がかり）。
 //  - 「確認済にする」を押したものだけを出力・反映対象にする。
-//  - 判断はブラウザ(localStorage)に保存。リロードしても確認済・グループ分けは保持される。
+//  - 判断は data/teams/review-decisions.json（判断台帳）に保存する。localStorage は作業用キャッシュ。
+//    台帳はクラスタを**メンバーの team id** で識別するので、候補を再生成して並びが変わっても
+//    過去の判断が追随する（旧実装は配列インデックス保持で、再生成のたびに取り違えるか捨てるかだった）。
+//  - 「統合しない」という否定の判断も台帳に残す（機械の自動OK判定の誤り率を測る素になる）。
 //  - 確認済はレビュー対象から外れる（畳んで表示／「未確認のみ」で非表示）。
-// 使い方: node scripts/build-team-review-html.mjs
+// 使い方: npm run team:review （サーバ経由で台帳へ直接保存）
+//         node scripts/build-team-review-html.mjs （HTMLの生成のみ）
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+import { clusterKey, readLedger, summarize } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const clusters = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'));
@@ -87,6 +93,11 @@ const autoOK = clusters.map((c) => {
   return true;
 });
 
+// 安定キー（メンバーの team id 順）。候補の並びが変わっても判断が追随する。
+const keys = clusters.map((c) => clusterKey(c.members));
+const ledger = readLedger();
+const ledgerStats = summarize(ledger);
+
 const html = `<!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>チーム名 マージレビュー</title>
@@ -144,18 +155,28 @@ small{color:var(--mut)}
 <div class="foot">
   <button class="primary" id="dl">確認済を反映</button>
   <button id="copy">確認済をコピー</button>
-  <small id="msg">同ジャンルの純粋な表記揺れは「自動OK」で既定の反映対象。要確認(中高別校/本体↔クラブ/別ジャンル)だけ手で判断→「確認済にする」。チップでグループ分け（同色＝同一／×＝除外、3つ以上可）、★＝代表名。判断は自動保存。「確認済を反映」でサーバへ即取り込み（未起動ならファイル保存）。</small>
+  <small id="msg">同ジャンルの純粋な表記揺れは「自動OK」で既定の反映対象。要確認(中高別校/本体↔クラブ/別ジャンル)だけ手で判断→「確認済にする」。チップでグループ分け（同色＝同一／×＝除外、3つ以上可）、★＝代表名。「確認済を反映」で判断台帳(review-decisions.json)へ保存＋alias取り込み。統合しない判断も記録される。</small>
 </div>
 <script>
 const CLUSTERS=${JSON.stringify(data)};
 const NEEDS=${JSON.stringify(needsReview)};
 const CTX=${JSON.stringify(CTX)};
 const AUTO=${JSON.stringify(autoOK)};
-const KEY='team-merge-review-v9';
-let state=JSON.parse(localStorage.getItem(KEY)||'{}'); // {idx:{groups:[],canon:{},reviewed:bool}}
+const KEYS=${JSON.stringify(keys)};
+const LEDGER=${JSON.stringify(ledger.decisions)};
+const KEY='team-merge-review-v10';
+// state は**安定キー**（メンバーのteam id昇順）で持つ。候補が再生成されて並びが変わっても
+// 過去の判断を取り違えない。localStorage は作業用キャッシュで、正はリポジトリの
+// data/teams/review-decisions.json（台帳）。
+let state=JSON.parse(localStorage.getItem(KEY)||'{}'); // {stableKey:{groups:[],canon:{},reviewed:bool}}
 let filter='todo';
-// 自動OKクラスタは既定で確認済（＝反映対象）。手で編集すれば解除できる。
-function st(i){if(!state[i])state[i]={groups:CLUSTERS[i].groups.slice(),canon:{},reviewed:AUTO[i]===true};return state[i];}
+// 初期値の優先順: 台帳に判断があればそれ > 自動OKなら確認済 > 既定グループ分け。
+function st(i){const k=KEYS[i];
+  if(!state[k]){const led=LEDGER[k];
+    state[k]=(led&&Array.isArray(led.groups))
+      ?{groups:led.groups.slice(),canon:led.canon||{},reviewed:true,touched:led.decidedBy==='human'}
+      :{groups:CLUSTERS[i].groups.slice(),canon:{},reviewed:AUTO[i]===true};}
+  return state[k];}
 function save(){localStorage.setItem(KEY,JSON.stringify(state));renderProg();}
 function ci(g){return ((g%6)+6)%6;}
 function canonOf(i,g){const s=st(i);if(s.canon[g]!=null)return s.canon[g];
@@ -173,7 +194,8 @@ function ctxLine(id){const x=CTX[id]||{};const pl=(x.players||[]).slice(0,6).joi
 function renderProg(){const total=CLUSTERS.length;let done=0,auto=0;
   for(let i=0;i<total;i++){if(st(i).reviewed){done++;if(AUTO[i])auto++;}}
   document.getElementById('prog').textContent='反映対象 '+done+' / '+total+'（自動OK '+auto+'・残り未確認 '+(total-done)+'）';}
-function cycle(i,mi){const s=st(i);const others=s.groups.filter((g,j)=>j!==mi&&g>=0);
+function touch(i){st(i).touched=true;}
+function cycle(i,mi){const s=st(i);touch(i);const others=s.groups.filter((g,j)=>j!==mi&&g>=0);
   const maxOther=others.length?Math.max(...others):-1;let cur=s.groups[mi];
   if(cur<0)cur=0;else if(cur>=maxOther+1)cur=-1;else cur=cur+1;s.groups[mi]=cur;save();render();}
 function render(){const root=document.getElementById('list');root.innerHTML='';
@@ -205,32 +227,43 @@ function render(){const root=document.getElementById('list');root.innerHTML='';
         '<div class="mbody"><div class="mname">'+(isCan?'★ ':'')+m.name+' <span class="cnt">×'+m.count+'</span></div>'+
         '<div class="mctx">'+ctxLine(m.id)+'</div></div>';
       row.title='クリック: グループ変更（A→B→…→新グループ→除外）。Shift+クリック: 代表名(★)に設定';
-      row.onclick=(e)=>{if(e.shiftKey){if(s.groups[mi]>=0){s.canon[s.groups[mi]]=mi;}save();render();return;}cycle(i,mi);};
+      row.onclick=(e)=>{if(e.shiftKey){if(s.groups[mi]>=0){s.canon[s.groups[mi]]=mi;}touch(i);save();render();return;}cycle(i,mi);};
       list.appendChild(row);});
     card.appendChild(list);
     const prev=document.createElement('div');prev.className='prev';
     prev.innerHTML=ents.length?ents.map(e=>'畳む: <b>'+e.canonical+'</b> ← '+e.aliases.join(', ')).join('<br>'):'<i>畳むグループなし（全て別チーム/除外）</i>';
     card.appendChild(prev);
     const row=document.createElement('div');row.className='row2';
-    const b1=document.createElement('button');b1.textContent='全部まとめる';b1.onclick=()=>{s.groups=c.members.map(()=>0);s.canon={};save();render();};
-    const b2=document.createElement('button');b2.textContent='初期分けに戻す';b2.onclick=()=>{s.groups=c.groups.slice();s.canon={};save();render();};
-    const b3=document.createElement('button');b3.className='primary';b3.textContent='確認済にする';b3.onclick=()=>{s.reviewed=true;save();render();};
+    const b1=document.createElement('button');b1.textContent='全部まとめる';b1.onclick=()=>{s.groups=c.members.map(()=>0);s.canon={};touch(i);save();render();};
+    const b2=document.createElement('button');b2.textContent='初期分けに戻す';b2.onclick=()=>{s.groups=c.groups.slice();s.canon={};touch(i);save();render();};
+    const b3=document.createElement('button');b3.className='primary';b3.textContent='確認済にする';b3.onclick=()=>{s.reviewed=true;touch(i);save();render();};
     row.append(b1,b2,b3);card.appendChild(row);
     root.appendChild(card);});
   renderProg();}
-function buildOutput(){const out=[];CLUSTERS.forEach((c,i)=>{if(st(i).reviewed)aliasEntries(i).forEach(e=>out.push(e));});return out;}
+// 確認済クラスタから、alias追加(additions)と判断台帳(decisions)の両方を作る。
+// 「統合しない」= verdict:'separate' も必ず1件として残す（機械の誤り率を測る素になる）。
+function buildOutput(){const additions=[],decisions=[];
+  CLUSTERS.forEach((c,i)=>{const s=st(i);if(!s.reviewed)return;
+    const ents=aliasEntries(i);ents.forEach(e=>additions.push(e));
+    decisions.push({key:KEYS[i],prefecture:c.prefecture||null,signal:c.signal,
+      members:c.members.map(m=>m.name),proposedAutoOK:AUTO[i]===true,
+      decidedBy:s.touched?'human':(AUTO[i]===true?'auto':'human'),
+      groups:s.groups.slice(),canon:s.canon||{},
+      verdict:ents.length?'merge':'separate',merges:ents});});
+  return {additions,decisions};}
 document.querySelectorAll('.filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;
   document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));render();});
 document.getElementById('dl').onclick=async()=>{const o=buildOutput();const msg=document.getElementById('msg');
-  if(!o.length){msg.textContent='確認済が0件です。「確認済にする」を押してから反映してください。';return;}
+  if(!o.decisions.length){msg.textContent='確認済が0件です。「確認済にする」を押してから反映してください。';return;}
   try{const r=await fetch('/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(o)});
     if(!r.ok)throw new Error('server');const res=await r.json();
-    msg.textContent='サーバへ反映: 適用 '+res.applied.length+' / スキップ '+res.skipped.length+' / 競合 '+res.conflicts.length+(res.conflicts.length?'（競合は取り込まず）':'')+' ・ マスタ再生成済。';
+    msg.textContent='反映: alias 適用 '+res.applied.length+' / スキップ '+res.skipped.length+' / 競合 '+res.conflicts.length+(res.conflicts.length?'（競合は取り込まず）':'')
+      +' ・ 台帳 '+res.ledger.total+'件（人 '+res.ledger.human+'・統合 '+res.ledger.merge+'・別チーム '+res.ledger.separate+'）に保存。';
   }catch(e){const blob=new Blob([JSON.stringify(o,null,2)],{type:'application/json'});
-    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='team-alias-additions.json';a.click();
-    msg.textContent='（サーバ未起動）確認済 '+o.length+' 件を team-alias-additions.json に保存。node scripts/apply-team-aliases.mjs team-alias-additions.json で取り込めます。';}};
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='team-review-output.json';a.click();
+    msg.textContent='（サーバ未起動）確認済 '+o.decisions.length+' 件を team-review-output.json に保存。npm run team:review で起動すれば台帳へ直接保存されます（http://localhost:5173）。';}};
 document.getElementById('copy').onclick=async()=>{const o=buildOutput();await navigator.clipboard.writeText(JSON.stringify(o,null,2));
-  document.getElementById('msg').textContent='確認済 '+o.length+' 件をコピーしました。';};
+  document.getElementById('msg').textContent='確認済 '+o.decisions.length+' 件をコピーしました。';};
 render();
 </script></body></html>`;
 
@@ -245,4 +278,10 @@ console.log(
   needsReview.filter(Boolean).length,
   '/ 文脈付きチーム',
   Object.keys(CTX).length,
+);
+console.log(
+  '判断台帳:',
+  `${ledgerStats.total}件（人 ${ledgerStats.human}・自動 ${ledgerStats.auto}` +
+    ` / 統合 ${ledgerStats.merge}・別チーム ${ledgerStats.separate}` +
+    ` / 自動OKを人が覆した ${ledgerStats.autoOKOverturned}）`,
 );

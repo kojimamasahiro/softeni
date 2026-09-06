@@ -7,19 +7,39 @@
 //   → 表示された http://localhost:5173 をブラウザで開く
 //   → レビューして「確認済を反映」を押すと、その場で alias 反映＆マスタ再生成
 //
-// 注: 反映は確認済クラスタのみ。候補一覧(merge-candidates)は会話中は作り直さない
-//     （番号がずれるため）。セッション終了後に再生成してください。
+// 注: 反映は確認済クラスタのみ。
+//
+// 2026-09-06: 判断台帳(data/teams/review-decisions.json)への保存を追加した。
+// それまで判断はブラウザの localStorage にしか無く、しかも配列インデックスで持っていたため
+// 「候補一覧(merge-candidates)は会話中は作り直さない（番号がずれるため）」という制約があった。
+// 台帳はメンバーの team id でクラスタを識別するので、**候補をいつ作り直してもよい**。
+// あわせて「統合しない」という否定の判断も残す（機械の自動OK判定の誤り率を測る素になる）。
+// 経緯: docs/raw/2026-09-06-idea-autonomous-improvement-agent.md
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
+
 import { applyAdditions } from './apply-team-aliases.mjs';
+import { readLedger, recordDecision, summarize, writeLedger } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HTML = path.join(ROOT, 'data', 'teams', 'team-merge-review.html');
 const MASTER = path.join(ROOT, 'scripts', 'build-team-master.mjs');
 const PORT = process.env.PORT || 5173;
+
+/** レビュー画面から届いた判断を台帳へ記録する。 */
+function saveDecisions(decisions) {
+  const ledger = readLedger();
+  const at = new Date().toISOString();
+  for (const d of decisions || []) {
+    if (!d || !d.key) continue;
+    recordDecision(ledger, { ...d, decidedAt: d.decidedAt || at });
+  }
+  writeLedger(ledger);
+  return summarize(ledger);
+}
 
 const server = http.createServer((req, res) => {
   if (req.method === 'GET' && (req.url === '/' || req.url.startsWith('/index'))) {
@@ -27,17 +47,32 @@ const server = http.createServer((req, res) => {
     res.end(fs.readFileSync(HTML));
     return;
   }
-  if (req.method === 'POST' && req.url === '/apply') {
+  if (req.method === 'POST' && (req.url === '/apply' || req.url === '/decisions')) {
+    const onlyDecisions = req.url === '/decisions';
     let body = '';
     req.on('data', (c) => (body += c));
     req.on('end', () => {
       try {
-        const additions = JSON.parse(body || '[]');
+        const parsed = JSON.parse(body || '{}');
+        // 旧形式（additions の配列そのもの）も受ける。
+        const additions = Array.isArray(parsed) ? parsed : parsed.additions || [];
+        const decisions = Array.isArray(parsed) ? [] : parsed.decisions || [];
+        const ledger = saveDecisions(decisions);
+        if (onlyDecisions) {
+          console.log(`[decisions] 台帳 ${ledger.total}件（人 ${ledger.human}・統合 ${ledger.merge}・別チーム ${ledger.separate}）`);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ ok: true, ledger }));
+          return;
+        }
         const result = applyAdditions(additions);
         execFileSync('node', [MASTER], { stdio: 'ignore' }); // マスタ再生成
-        console.log(`[apply] 適用 ${result.applied.length} / スキップ ${result.skipped.length} / 競合 ${result.conflicts.length}`);
+        console.log(
+          `[apply] 適用 ${result.applied.length} / スキップ ${result.skipped.length} / 競合 ${result.conflicts.length}` +
+            ` / 台帳 ${ledger.total}件（人 ${ledger.human}・統合 ${ledger.merge}・別チーム ${ledger.separate}` +
+            `・自動OKを人が覆した ${ledger.autoOKOverturned}）`,
+        );
         res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(result));
+        res.end(JSON.stringify({ ...result, ledger }));
       } catch (e) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: String(e) }));
