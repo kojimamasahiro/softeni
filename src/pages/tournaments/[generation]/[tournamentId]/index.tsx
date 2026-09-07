@@ -15,12 +15,14 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ClubTransitionSection from '@/components/Tournament/ClubTransitionSection';
 import TournamentContextBlocks, { type TournamentContextData } from '@/components/TournamentContextBlocks';
+import DelegationSection from '@/components/tournaments/DelegationSection';
 import QualifierFinishersSection from '@/components/tournaments/QualifierFinishersSection';
 import RelatedTournamentsBlock, { type RelatedTournamentLink } from '@/components/tournaments/RelatedTournamentsBlock';
 import UpcomingTournamentSection, { type UpcomingTournamentData } from '@/components/tournaments/UpcomingTournamentSection';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
+import { getDelegationBlock, type DelegationBlock } from '@/lib/delegation';
 import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
@@ -131,6 +133,7 @@ interface TournamentHubPageProps {
   relatedLinks: RelatedTournamentLink[];
   // 開催前の国際大会に出す「日本代表予選会の上位進出者」。該当しなければ null。
   // docs/wiki/upcoming-tournaments-runbook.md S2。
+  delegation: DelegationBlock | null;
   qualifierFinishers: QualifierFinishersBlock | null;
 }
 
@@ -150,6 +153,7 @@ export default function TournamentHubPage({
   clubTransition,
   upcoming,
   relatedLinks,
+  delegation,
   qualifierFinishers,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
@@ -481,7 +485,9 @@ export default function TournamentHubPage({
 
         <RelatedTournamentsBlock links={relatedLinks} />
 
-        {qualifierFinishers && <QualifierFinishersSection data={qualifierFinishers} />}
+        {/* 公式の代表名簿がある大会では名簿を出し、予選会の上位進出者は出さない
+            （上位4人には代表に選ばれていない選手が混ざるため）。lib/delegation.ts 参照。 */}
+        {delegation ? <DelegationSection data={delegation} /> : qualifierFinishers && <QualifierFinishersSection data={qualifierFinishers} />}
 
         <section className="mb-6 px-1">
           <p className="mb-2 text-sm text-gray-700 dark:text-gray-200">
@@ -1145,6 +1151,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }
     : null;
 
+  // 公式発表された日本代表選手団（data/tournaments/delegations/）。
+  // これから開催される回に対応するものだけを引くので、過去の回の名簿が今回に紐づくことはない。
+  const delegation = upcomingEntry ? await getDelegationBlock({ tournamentId, edition: upcomingEntry, playerNameToId: getPlayerNameToIdMap() }) : null;
+
   // 中止の年。details が無いので yearGroups には現れない＝そのままでは年表から消える。
   // 回次（第N回）が進んだまま中止になった年を「未収録の年」と区別できるようにするため、
   // 結果を持たない年として別に渡す（成績側には入れない）。
@@ -1176,17 +1186,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
       clubTransition: getClubTransition(tournamentId),
       upcoming,
       relatedLinks: buildRelatedTournamentLinks(tournamentId),
+      // 公式発表された日本代表選手団。本大会がこれから開催されるときだけ出す。
+      delegation,
       // 予選会の上位進出者は、本大会がこれから開催されるときだけ出す
       // （終わったあとは本大会の結果そのものが載るため役割を終える）。
-      qualifierFinishers: upcoming
-        ? await getQualifierFinishers({
-            mainTournamentId: tournamentId,
-            mainStartDate: upcoming.startDate,
-            informationMap: buildInformationMap(),
-            indexById: buildIndexById(),
-            playerNameToId,
-          })
-        : null,
+      // 代表名簿があるならそちらが正なので、予選会ブロックは計算もしない。
+      qualifierFinishers:
+        upcoming && !delegation
+          ? await getQualifierFinishers({
+              mainTournamentId: tournamentId,
+              mainStartDate: upcoming.startDate,
+              informationMap: buildInformationMap(),
+              indexById: buildIndexById(),
+              playerNameToId,
+            })
+          : null,
     },
   };
 };

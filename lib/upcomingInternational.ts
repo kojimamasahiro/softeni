@@ -11,9 +11,11 @@
 // データ側にフィールドを増やさない。本大会が未登録なら何も出ないだけで壊れない
 // （検出は `npm run check:upcoming`）。
 //
-// **代表選手だとは名乗らない。** 予選会はシングルスのみで団体・混合の選考は別経路のため、
-// 当サイトのデータから日本代表は導出できない（runbook「やらないと決めたこと」）。
-// 出せるのは「予選会に出場した」「本大会がいつどこで開催される」の2つの事実だけ。
+// **当サイトのデータから日本代表は導出しない。** 予選会はシングルスのみで団体・混合の選考は
+// 別経路のため、予選会の成績からは代表が決まらない（runbook「やらないと決めたこと」）。
+// 予選会だけを根拠にするときに書けるのは「予選会に出場した」「本大会がいつどこで開催される」の
+// 2つの事実だけ。**外部の公式発表（`delegations`）が渡されたときに限り**「日本代表に選出された」
+// と書ける。これは当サイトの推定ではなく転記なので、出典を必ず併記する（runbook S9）。
 //
 // fs を触らない純関数にしてあるのは、呼び出し側（選手ページの getStaticProps）が
 // 既に読み込んでいる tournamentIndex / informationMap をそのまま渡せるようにするため。
@@ -29,6 +31,22 @@ export type PlayerTournamentLike = {
   link?: string | null;
 };
 
+/**
+ * 公式発表された代表名簿1件ぶん（`本大会ID -> これ`）。
+ *
+ * fs を触らないための形。実体の読み込みは lib/delegation.ts が持ち、
+ * ここは「誰が入っているか」だけを受け取る。`members` のキーは `姓::名`、
+ * 値は information の `categories[].categoryId`。
+ */
+export type DelegationMembership = {
+  /** 名簿が対応する開催年。これから開催される回と一致するときだけ使う */
+  year: number;
+  source: string;
+  sourceUrl: string;
+  announcedOn: string | null;
+  members: Map<string, string[]>;
+};
+
 export type UpcomingInternationalLink = {
   mainTournamentId: string;
   /** その年度の大会名（例: 第20回 アジア競技大会） */
@@ -39,12 +57,23 @@ export type UpcomingInternationalLink = {
   location: string | null;
   /** 主会場の施設名。`venues` が無ければ null */
   venueName: string | null;
-  /** 予選会の大会名（例: アジア競技大会日本代表予選会） */
-  qualifierLabel: string;
-  qualifierYear: number;
+  /** 予選会の大会名（例: アジア競技大会日本代表予選会）。予選会に出ていなければ null */
+  qualifierLabel: string | null;
+  qualifierYear: number | null;
   qualifierHref: string | null;
   /** 予選会での成績。判定できなければ null（「出場」とだけ書く） */
   placementLabel: string | null;
+  /**
+   * 公式発表の代表名簿に載っている場合のみ非 null。
+   * 当サイトの推定ではないので、描画側は出典（`source` / `sourceUrl`）を必ず併記する。
+   */
+  delegation: {
+    /** 出場種目の表示ラベル（例: 男子シングルス）。解決できない categoryId は落とす */
+    categoryLabels: string[];
+    source: string;
+    sourceUrl: string;
+    announcedOn: string | null;
+  } | null;
   /** すでに会期に入っているか */
   hasStarted: boolean;
 };
@@ -83,8 +112,12 @@ export function buildUpcomingInternationalLinks(args: {
   informationMap: Map<string, TournamentInformationEntry[]>;
   /** YYYY-MM-DD。呼び出し側から渡す（テスト可能にするため） */
   today: string;
+  /** この選手の氏名。代表名簿との照合にだけ使う。省略すると名簿は参照しない */
+  playerName?: { lastName: string; firstName: string } | null;
+  /** 本大会ID -> 公式発表された代表名簿。省略可（従来どおり予選会だけで判定する） */
+  delegations?: Map<string, DelegationMembership> | null;
 }): UpcomingInternationalLink[] {
-  const { playerTournaments, tournamentIndex, informationMap, today } = args;
+  const { playerTournaments, tournamentIndex, informationMap, today, playerName, delegations } = args;
 
   const indexById = new Map(tournamentIndex.map((t) => [t.tournamentId, t]));
 
@@ -116,16 +149,28 @@ export function buildUpcomingInternationalLinks(args: {
     best.set(mainId, { entry: pt, qualifierId, year, strength });
   }
 
+  // 予選会に出ていなくても、公式名簿に載っていればブロックを出す。
+  // 2026年のアジア競技大会は代表10人全員が予選会にも出ているのでここでは増えないが、
+  // 予選会を経ずに選ばれる大会・種目（団体・混合）が今後あり得るため、名簿側を独立の入口にする。
+  const nameKey = playerName ? `${playerName.lastName}::${playerName.firstName}` : null;
+  const mainIds = new Set(best.keys());
+  if (nameKey && delegations) {
+    for (const [mainId, d] of delegations) {
+      if (d.members.has(nameKey) && indexById.has(mainId)) mainIds.add(mainId);
+    }
+  }
+
   const links: UpcomingInternationalLink[] = [];
 
-  for (const [mainId, picked] of best) {
+  for (const mainId of mainIds) {
     const mainEntry = indexById.get(mainId);
     if (!mainEntry) continue;
 
     const upcoming = resolveUpcomingMain(mainId, informationMap, today);
     if (!upcoming) continue;
 
-    const qualifierEntry = indexById.get(picked.qualifierId);
+    const picked = best.get(mainId) ?? null;
+    const qualifierEntry = picked ? indexById.get(picked.qualifierId) : undefined;
     const venue = (upcoming.venues ?? [])[0];
 
     links.push({
@@ -136,10 +181,11 @@ export function buildUpcomingInternationalLinks(args: {
       endDate: upcoming.endDate || null,
       location: upcoming.location || null,
       venueName: venue?.name ?? null,
-      qualifierLabel: qualifierEntry?.label ?? picked.qualifierId,
-      qualifierYear: picked.year,
-      qualifierHref: picked.entry.link ?? null,
-      placementLabel: displayablePlacement(picked.entry.finalResult),
+      qualifierLabel: picked ? (qualifierEntry?.label ?? picked.qualifierId) : null,
+      qualifierYear: picked?.year ?? null,
+      qualifierHref: picked?.entry.link ?? null,
+      placementLabel: picked ? displayablePlacement(picked.entry.finalResult) : null,
+      delegation: resolveDelegation(mainId, upcoming, nameKey, delegations),
       hasStarted: Boolean(upcoming.startDate && upcoming.startDate <= today),
     });
   }
@@ -147,6 +193,36 @@ export function buildUpcomingInternationalLinks(args: {
   // 会期が近い順
   links.sort((a, b) => String(a.startDate ?? '').localeCompare(String(b.startDate ?? '')));
   return links;
+}
+
+/**
+ * この選手が、これから開催される回の代表名簿に載っているかを解決する。
+ *
+ * 名簿の `year` が**これから開催される回の年と一致するときだけ**採る。
+ * 4年周期の大会では前回の名簿が残るため、年で切らないと過去の代表を今回として出してしまう。
+ */
+function resolveDelegation(
+  mainId: string,
+  upcoming: TournamentInformationEntry,
+  nameKey: string | null,
+  delegations: Map<string, DelegationMembership> | null | undefined,
+): UpcomingInternationalLink['delegation'] {
+  if (!nameKey || !delegations) return null;
+
+  const d = delegations.get(mainId);
+  if (!d || d.year !== upcoming.year) return null;
+
+  const categoryIds = d.members.get(nameKey);
+  if (!categoryIds) return null;
+
+  const labelById = new Map((upcoming.categories ?? []).map((c) => [c.categoryId, c.label]));
+
+  return {
+    categoryLabels: categoryIds.map((id) => labelById.get(id)).filter((l): l is string => Boolean(l)),
+    source: d.source,
+    sourceUrl: d.sourceUrl,
+    announcedOn: d.announcedOn,
+  };
 }
 
 /**
