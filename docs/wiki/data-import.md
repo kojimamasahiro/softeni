@@ -608,6 +608,14 @@ Deprecated:
     貼って人が入力した結果を書き出す経路だけ**は tempId がそのまま識別子になり、
     同じ大会の年度間で形がずれる。`tools/` 側にはまだ3項目のファイルが残っている
     （`highschool-championship-2012〜2017`、`west-japan-2026`）。
+  - **団体戦エントリーは `校名_都道府県` の2項目**（選手名を持たないため4項目のうち
+    姓・名が落ちた形）。`participants[].prefecture` を **null のままにしない**こと。
+    null だと都道府県別集計（`fieldOverview.prefectureCount`）やトーナメント表の所属表示が
+    空になり、他大会の同じ学校と別チーム扱いになる。大学連盟の大会は都道府県ではなく
+    **`日本学連`** を入れる（`normalize-prefectures.mjs` が「都道府県ではないが保持する
+    連盟名」として既に知っている値。他に `学連` / `高体連` / `中体連` / `日本連盟`）。
+    実例と手当て: [raw/2026-09-07-ouza-2026-prefecture-and-incare-alias.md](../raw/2026-09-07-ouza-2026-prefecture-and-incare-alias.md)
+    （`zennihon-university-ouza` 2026 が全件 `prefecture: null` ＋ `id` が校名だけだった）。
 
 - `scripts/pdf/zenshakai_entries.py`
   全日本社会人（`zennihon-workers`）の公式記録PDFから、エントリーのみを抽出する専用パーサ。
