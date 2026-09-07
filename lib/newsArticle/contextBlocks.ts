@@ -61,6 +61,11 @@ type FieldIndex = {
   prefectureCount: Map<string, number>;
   /** 所属校別エントリー数 */
   teamCount: Map<string, number>;
+  /**
+   * この種目の性別（categoryId 由来。boys/girls/mixed など）。判定不能なら null。
+   * 団体戦の照合キー（buildMatchKeyBody）に混ぜ、男女で同名の学校が同一キーに潰れるのを防ぐ。
+   */
+  gender: string | null;
 };
 
 /** 当年・種目の detail.results 1 件 → 途中経過/敗退の表示情報。判定不能なら null */
@@ -158,13 +163,28 @@ function resolvePlayerId(fullName: string): number | null {
   return getPlayerIdMap().get(normPart(fullName)) ?? null;
 }
 
+/**
+ * ペア/校の照合キー本体（氏名 or 校名のソート結合）。teamMatchKey と buildFieldIndex の
+ * championKey 生成で共有する（式を二重管理すると片方だけ直し忘れる事故が起きるため）。
+ *
+ * 団体戦（氏名を持たないエントリー）は校名だけのキーになり、男女両方のチームを持つ学校で
+ * 男子チームと女子チームが同一キーに潰れる。そのため団体戦に限り gender をプレフィックスする
+ * （例: `girls::日本体育大学`）。個人/ペアは氏名を含み実質一意なので gender は使わない。
+ */
+function buildMatchKeyBody(names: string[], teams: string[], gender: string | null): string | null {
+  const namesSorted = names.map(normPart).sort();
+  const teamsSorted = teams.map((t) => normPart(normalizeTeam(t))).sort();
+  // 個人/ペア: 氏名を含むので必ず非空（'@' を含む）
+  if (namesSorted.length > 0) return `${namesSorted.join('|')}@${teamsSorted.join('|')}`;
+  const base = teamsSorted.join('|');
+  if (!base) return null;
+  return gender ? `${gender}::${base}` : base;
+}
+
 /** ペア/校の照合キー（正規化所属で構築。championKey と同じ思想） */
-function teamMatchKey(c: ChampionEntry): string | null {
+function teamMatchKey(c: ChampionEntry, gender: string | null): string | null {
   if (!c.display) return null;
-  const teams = c.teams.map((t) => normPart(normalizeTeam(t))).sort();
-  const names = c.players.map((n) => normPart(n)).sort();
-  const base = names.length > 0 ? `${names.join('|')}@${teams.join('|')}` : teams.join('|');
-  return base || null;
+  return buildMatchKeyBody(c.players, c.teams, gender);
 }
 
 /** 対象年・種目のエントリーから出場者インデックスを構築する */
@@ -172,6 +192,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
   const detail = readYearDetail(tournamentId, year, categoryId);
   if (!detail || !detail.entries || detail.entries.length === 0) return null;
   const pmap = buildParticipantMap(detail);
+  const gender = categoryPathParts(categoryId)?.gender ?? null;
 
   const playerKeySet = new Set<string>();
   const championKeySet = new Set<string>();
@@ -214,9 +235,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
     const distinctTeams = new Set(teams.map((t) => normPart(t)));
     const rosterTeam = names.length > 0 && distinctTeams.size === 1 && teams[0] ? cleanDisplay(teams[0]) : null;
     entryRosterByNo.set(e.entryNo, { players: roster, team: rosterTeam });
-    const namesSorted = names.map(normPart).sort();
-    const teamsSorted = teams.map(normPart).sort();
-    const ck = names.length > 0 ? `${namesSorted.join('|')}@${teamsSorted.join('|')}` : teamsSorted.join('|');
+    const ck = buildMatchKeyBody(names, teams, gender);
     if (ck) {
       championKeySet.add(ck);
       if (!championKeyToEntryNo.has(ck)) championKeyToEntryNo.set(ck, e.entryNo);
@@ -247,6 +266,7 @@ function buildFieldIndex(tournamentId: string, year: number, categoryId: string)
     standingByEntryNo,
     prefectureCount,
     teamCount,
+    gender,
   };
 }
 
@@ -279,7 +299,7 @@ function resolvePairFate(c: ChampionEntry, field: FieldIndex | null): PairFate {
   if (!field) return { status: 'absent', prevPlayers: [], currentEntries: [] };
   const isTeam = c.players.length === 0;
   if (isTeam) {
-    const ck = teamMatchKey(c);
+    const ck = teamMatchKey(c, field.gender);
     const entryNo = ck ? field.championKeyToEntryNo.get(ck) : undefined;
     if (entryNo == null) return { status: 'absent', prevPlayers: [], currentEntries: [] };
     return {
@@ -425,7 +445,7 @@ function buildReturningFormerChampions(champions: ChampionEntry[], field: FieldI
     if (!c.display) continue;
     const fate = resolvePairFate(c, field);
     if (fate.status === 'absent') continue;
-    const key = teamMatchKey(c) ?? c.display;
+    const key = teamMatchKey(c, field.gender) ?? c.display;
     const cur = byKey.get(key);
     if (cur) {
       cur.years.push(c.year);
@@ -648,6 +668,9 @@ export function buildRecentAchieverIndex(previewTournamentId: string, previewYea
       const pmap = buildParticipantMap(detail);
       const entryByNo = new Map(detail.entries.map((e) => [e.entryNo, e] as const));
       const categoryLabel = categoryDisplayLabel(cid);
+      // 直近大会側の性別。団体戦のキーに混ぜないと、男女両方のチームを持つ学校で
+      // 男子の実績が女子カテゴリの索引を上書きしてしまう（逆も同じ）。
+      const cidGender = categoryPathParts(cid)?.gender ?? null;
       for (const r of detail.results) {
         const placement = bestPlacement(r.tournament?.rank);
         if (!placement) continue;
@@ -657,9 +680,10 @@ export function buildRecentAchieverIndex(previewTournamentId: string, previewYea
         if (!ce.display) continue;
 
         if (ce.players.length === 0) {
-          // 団体戦: 校単位（teamMatchKey）で1キー。個人の playerKeyToEntryNo とは
-          // 別の名前空間（championKeyToEntryNo）で突合するため、個人戦プレビューには出ない。
-          const key = teamMatchKey(ce);
+          // 団体戦: 校単位（teamMatchKey）で1キー（性別プレフィックス付き）。個人の
+          // playerKeyToEntryNo とは別の名前空間（championKeyToEntryNo）で突合するため、
+          // 個人戦プレビューには出ない。
+          const key = teamMatchKey(ce, cidGender);
           if (!key) continue;
           const info: RecentAchievementInfo = {
             subjectKind: 'team',
