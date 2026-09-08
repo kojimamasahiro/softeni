@@ -7,7 +7,7 @@
 // どれかが静かに壊れると、出るべき選手に出ない／終わった大会が出続ける。
 
 import { assert, summary, test } from '../playerStats/__tests__/harness';
-import { buildUpcomingInternationalLinks, placementStrength, type PlayerTournamentLike } from '../upcomingInternational';
+import { buildUpcomingInternationalLinks, placementStrength, type DelegationMembership, type PlayerTournamentLike } from '../upcomingInternational';
 import type { TournamentInformationEntry } from '../../src/types/tournament';
 
 console.log('upcomingInternational.test.ts');
@@ -32,9 +32,15 @@ function info(over: Partial<TournamentInformationEntry> = {}): TournamentInforma
   } as TournamentInformationEntry;
 }
 
+const CATEGORIES = [
+  { categoryId: 'singles-none-boys', label: '男子シングルス', category: 'singles', gender: 'boys', age: 'none' },
+  { categoryId: 'doubles-none-mixed', label: '混合ダブルス', category: 'doubles', gender: 'mixed', age: 'none' },
+  { categoryId: 'team-none-boys', label: '男子団体', category: 'team', gender: 'boys', age: 'none' },
+] as TournamentInformationEntry['categories'];
+
 // 予選会は2回ぶん入っている: 2022年度=前回(杭州)向け / 2025年度=今回(愛知・名古屋)向け
 const INFO = new Map<string, TournamentInformationEntry[]>([
-  ['asian-games', [info()]],
+  ['asian-games', [info({ categories: CATEGORIES })]],
   [
     'asian-games-qualifier',
     [
@@ -125,6 +131,109 @@ test('予選会側の開催情報が無ければ年度で絞らない', () => {
     today: '2026-08-26',
   });
   assert.strictEqual(links.length, 1);
+});
+
+// --- 公式発表の代表名簿（runbook S9） -------------------------------------------------
+
+function delegations(over: Partial<DelegationMembership> = {}): Map<string, DelegationMembership> {
+  return new Map([
+    [
+      'asian-games',
+      {
+        year: 2026,
+        source: 'JOC',
+        sourceUrl: 'https://example.invalid/joc/',
+        announcedOn: '2026-07-15',
+        members: new Map([['上松::俊貴', ['singles-none-boys', 'doubles-none-mixed', 'team-none-boys']]]),
+        ...over,
+      },
+    ],
+  ]);
+}
+
+test('名簿に載っていれば delegation が入り、種目ラベルが解決される', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [{ tournamentId: 'asian-games-qualifier', year: 2025, finalResult: '優勝', link: '/x/' }],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations(),
+  });
+  assert.strictEqual(links.length, 1);
+  assert.deepStrictEqual(links[0].delegation?.categoryLabels, ['男子シングルス', '混合ダブルス', '男子団体']);
+  assert.strictEqual(links[0].delegation?.source, 'JOC');
+  assert.strictEqual(links[0].delegation?.announcedOn, '2026-07-15');
+  // 予選会の情報も従来どおり残る（導線として使うため）
+  assert.strictEqual(links[0].qualifierYear, 2025);
+});
+
+test('名簿に載っていない選手には delegation が入らない（予選会ブロックのまま）', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [{ tournamentId: 'asian-games-qualifier', year: 2025, finalResult: '優勝' }],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    playerName: { lastName: '矢野', firstName: '颯人' },
+    delegations: delegations(),
+  });
+  assert.strictEqual(links.length, 1);
+  assert.strictEqual(links[0].delegation, null);
+  assert.strictEqual(links[0].placementLabel, '優勝');
+});
+
+test('名簿の年が今回の回と違えば無視する（4年前の代表を今回に紐づけない）', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [{ tournamentId: 'asian-games-qualifier', year: 2025, finalResult: '優勝' }],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations({ year: 2022 }),
+  });
+  assert.strictEqual(links.length, 1);
+  assert.strictEqual(links[0].delegation, null);
+});
+
+test('予選会に出ていなくても名簿だけでブロックが出る', () => {
+  // 団体・混合は予選会を経ずに選ばれ得るので、名簿は予選会と独立の入口にしてある
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations(),
+  });
+  assert.strictEqual(links.length, 1);
+  assert.strictEqual(links[0].qualifierLabel, null);
+  assert.strictEqual(links[0].qualifierYear, null);
+  assert.strictEqual(links[0].placementLabel, null);
+  assert.strictEqual(links[0].delegation?.source, 'JOC');
+});
+
+test('氏名を渡さなければ名簿は参照しない（従来の呼び出しと同じ結果）', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [{ tournamentId: 'asian-games-qualifier', year: 2025, finalResult: '優勝' }],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    delegations: delegations(),
+  });
+  assert.strictEqual(links.length, 1);
+  assert.strictEqual(links[0].delegation, null);
+});
+
+test('会期が過ぎれば名簿があってもブロックは消える', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-24',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations(),
+  });
+  assert.strictEqual(links.length, 0);
 });
 
 test('placementStrength: 優勝 > 準優勝 > ベスト4 > ベスト8 > 回戦敗退 > 予選順位 > 不明', () => {

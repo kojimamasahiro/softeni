@@ -14,6 +14,7 @@ import PlayerSummaryStats from '@/components/PlayerSummaryStats';
 import PlayerUpcomingInternational from '@/components/PlayerUpcomingInternational';
 import PageLayout from '@/components/PageLayout';
 import { AD_SLOTS } from '@/lib/ads';
+import { buildDelegationLookup } from '@/lib/delegation';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
@@ -1140,14 +1141,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       majorTitlesData: await getMajorTitlesForPlayer(idx.lastName, idx.firstName),
       scoreMatchLinks: getScoreMatchLinksForPlayer(playerId),
       growthShowcaseSlug,
-      // これから開催される国際大会。予選会に出場していて、かつ本大会に会期が
-      // 終わっていない開催情報があるときだけ入る（docs/wiki/upcoming-tournaments-runbook.md S1）。
+      // これから開催される国際大会。予選会に出場している **または公式発表の代表名簿に載っている**
+      // 選手で、かつ本大会に会期が終わっていない開催情報があるときだけ入る
+      // （docs/wiki/upcoming-tournaments-runbook.md S1・S9）。
       // 「今日」は lib/highschoolInProgress.ts と同じくビルド時刻を使う（静的書き出しのため）。
       upcomingInternational: buildUpcomingInternationalLinks({
         playerTournaments,
         tournamentIndex,
         informationMap,
         today: new Date().toISOString().slice(0, 10),
+        playerName: { lastName: idx.lastName, firstName: idx.firstName },
+        delegations: buildDelegationLookup(),
       }),
     },
   };

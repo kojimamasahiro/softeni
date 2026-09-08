@@ -20,6 +20,8 @@ import path from 'path';
 const ROOT = process.cwd();
 const INDEX_PATH = path.join(ROOT, 'data', 'tournaments', 'index.json');
 const INFO_DIR = path.join(ROOT, 'data', 'tournaments', 'information');
+const DELEGATION_DIR = path.join(ROOT, 'data', 'tournaments', 'delegations');
+const PLAYERS_INDEX_PATH = path.join(ROOT, 'data', 'players', 'index.json');
 
 const today = new Date().toISOString().slice(0, 10);
 
@@ -85,6 +87,51 @@ for (const t of index) {
   }
 }
 
+// ── 4. 代表名簿（delegations）の健全性 ─────────────────────────────────────
+// 名簿は外部の公式発表を人が転記したデータで、当サイトのデータからは導出できない。
+// そのため **転記ミスは自動では直らない**。ここで見るのは3点:
+//   a) 名簿の year に対応する information レコードがあるか（無いと名簿は一切出ない）
+//   b) categoryIds が information の categories に居るか（居ないと種目ラベルが黙って消える）
+//   c) 選手名が data/players/index.json で解決できるか（解決できないと選手ページへ繋がらない）
+// c は氏名の表記ゆれ（PDFの読み取り誤り等）を捕まえる網でもある。
+const playersIndex = readJson(PLAYERS_INDEX_PATH) ?? [];
+const playerNames = new Set(playersIndex.filter((p) => (p.count ?? 0) >= 5).map((p) => `${p.lastName}::${p.firstName}`));
+
+const delegationIssues = [];
+const delegationFiles = fs.existsSync(DELEGATION_DIR) ? fs.readdirSync(DELEGATION_DIR).filter((f) => f.endsWith('.json')) : [];
+
+for (const file of delegationFiles) {
+  const d = readJson(path.join(DELEGATION_DIR, file));
+  if (!d || !Array.isArray(d.members)) {
+    delegationIssues.push({ file, issue: 'JSON として読めない、または members が配列でない' });
+    continue;
+  }
+  if (!ids.has(d.tournamentId)) {
+    delegationIssues.push({ file, issue: `tournamentId "${d.tournamentId}" が index.json に無い` });
+    continue;
+  }
+
+  const edition = (infoById.get(d.tournamentId) ?? []).find((e) => e.year === d.year);
+  if (!edition) {
+    delegationIssues.push({ file, issue: `${d.year}年の information レコードが無い（名簿が一切出ない）` });
+    continue;
+  }
+  if (!(edition.endDate && edition.endDate >= today)) {
+    delegationIssues.push({ file, issue: `${d.year}年の会期は終了済み（名簿は自動的に出なくなっている）` });
+  }
+
+  const categoryIds = new Set((edition.categories ?? []).map((c) => c.categoryId));
+  for (const m of d.members) {
+    const name = `${m.lastName}${m.firstName}`;
+    for (const cid of m.categoryIds ?? []) {
+      if (!categoryIds.has(cid)) delegationIssues.push({ file, issue: `${name}: categoryId "${cid}" が information の categories に無い` });
+    }
+    if (!playerNames.has(`${m.lastName}::${m.firstName}`)) {
+      delegationIssues.push({ file, issue: `${name}: 選手ページに解決できない（表記ゆれ、または収録5大会未満）` });
+    }
+  }
+}
+
 // ── 出力 ───────────────────────────────────────────────────────────────
 const line = (s = '') => console.log(s);
 
@@ -116,6 +163,14 @@ for (const x of incompleteFuture) {
   line(`    - ${x.start} ${x.tournamentId}  欠け: ${x.missing.join(', ')}（${x.label}）`);
 }
 if (incompleteFuture.length === 0) line('    （なし）');
+line();
+
+line(`[4] 代表名簿（delegations）の問題: ${delegationIssues.length} 件 / 名簿 ${delegationFiles.length} 件`);
+line('    → 名簿は公式発表の転記なので自動では直らない。選手ページへのリンク切れは氏名の表記ゆれを疑う');
+for (const x of delegationIssues) {
+  line(`    - ${x.file}: ${x.issue}`);
+}
+if (delegationIssues.length === 0) line('    （なし）');
 line();
 
 line('※ 終了コードは常に 0。これは運用の残タスク一覧であり、ビルドを止めるエラーではない。');

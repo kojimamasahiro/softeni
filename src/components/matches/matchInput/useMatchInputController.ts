@@ -19,6 +19,20 @@ import type { YouTubeRangePlayerHandle } from '../../../components/YouTubeRangeP
 import type { Game, Match, Point } from '../../../types/database';
 import { EMPTY_POINT_DATA, type ManualServingPlayer, type MatchMetadataState, type PointDataState, type ServingPlayerInfo } from './types';
 
+/**
+ * サーブ系の結果タイプ（サービスエース／ダブルフォルト）を解除するときに戻す値。
+ * 選択時に自動推定で入った項目だけを消し、動画時刻やサーブチームなど
+ * その選択とは無関係な入力は残す。
+ */
+const CLEARED_SERVE_RESULT = {
+  result_type: '',
+  winner_team: '',
+  winner_player: '',
+  loser_player: '',
+  double_fault: false,
+  rally_count: 0,
+} satisfies Partial<PointDataState>;
+
 // next/router 経由の useCallback ラッパー。元実装の挙動をそのまま維持している。
 function useCallback(callback: () => Promise<void>, dependencies: (string | string[] | undefined)[]) {
   return reactUseCallback(callback, dependencies);
@@ -1101,10 +1115,18 @@ export const useMatchInputController = () => {
    * サーブ系の入力アクション。
    * ボタンとキーボードショートカットの両方から呼ぶため、コントローラ側に置いて一本化している。
    * 具体的な値は `inferPointData` に任せ、ここでは「何をリセットするか」だけを決める。
+   *
+   * サービスエース／ダブルフォルトは1stフォルトと同じくトグル。
+   * 選択中にもう一度押すと、その選択で自動設定された内容ごと解除して未選択に戻す
+   * （誤タップを取り消すのに、別の結果を選び直す必要がないようにするため）。
    */
   const selectServiceAce = () => {
-    setPointData((current) =>
-      inferPointData(
+    setPointData((current) => {
+      if (current.result_type === 'service_ace') {
+        return inferPointData({ ...current, ...CLEARED_SERVE_RESULT }, pointInferenceContext);
+      }
+
+      return inferPointData(
         {
           ...current,
           result_type: 'service_ace',
@@ -1116,13 +1138,18 @@ export const useMatchInputController = () => {
           rally_count: 0,
         },
         pointInferenceContext,
-      ),
-    );
+      );
+    });
   };
 
   const selectDoubleFault = () => {
-    setPointData((current) =>
-      inferPointData(
+    setPointData((current) => {
+      if (current.result_type === 'double_fault') {
+        // ダブルフォルト中は1stフォルトのトグルが押せない（＝自動でONにした値）ので、一緒に解除する
+        return inferPointData({ ...current, ...CLEARED_SERVE_RESULT, first_serve_fault: false }, pointInferenceContext);
+      }
+
+      return inferPointData(
         {
           ...current,
           result_type: 'double_fault',
@@ -1133,8 +1160,8 @@ export const useMatchInputController = () => {
           rally_count: 0,
         },
         pointInferenceContext,
-      ),
-    );
+      );
+    });
   };
 
   const toggleFirstServeFault = () => {

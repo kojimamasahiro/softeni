@@ -1,0 +1,111 @@
+{
+  "tournamentId": "asian-games",
+  "year": 2026,
+  "label": "ソフトテニス競技 日本代表選手団",
+  "announcedOn": "2026-07-15",
+  "source": "公益財団法人 日本オリンピック委員会",
+  "sourceUrl": "https://www.joc.or.jp/",
+  "note": "出典はJOCが公開した日本代表選手団の名簿（ソフトテニス競技、提出日2026-07-15）。所属は名簿の表記をそのまま採り、サイト内の他ページで使っている略称（NTT西日本 / どんぐり北広島 など）へは寄せていない。生年月日・年齢は名簿にあるが個人情報のため取り込まない。監督・トレーナーの4名も名簿にあるが、選手と違って当サイトの選手データと突き合わせて表記を検証できないため取り込まない（docs/raw/2026-07-26-idea-tournament-metadata-platform.md 追記18）。混合ダブルスのペア構成は名簿に無い（種目の割り当てのみ）。",
+  "members": [
+    {
+      "lastName": "上松",
+      "firstName": "俊貴",
+      "kanaLast": "ウエマツ",
+      "kanaFirst": "トシキ",
+      "gender": "boys",
+      "affiliation": "NTT西日本株式会社",
+      "schoolYear": null,
+      "categoryIds": ["singles-none-boys", "doubles-none-mixed", "team-none-boys"]
+    },
+    {
+      "lastName": "内本",
+      "firstName": "隆文",
+      "kanaLast": "ウチモト",
+      "kanaFirst": "タカフミ",
+      "gender": "boys",
+      "affiliation": "NTT西日本株式会社",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "黒坂",
+      "firstName": "卓矢",
+      "kanaLast": "クロサカ",
+      "kanaFirst": "タクヤ",
+      "gender": "boys",
+      "affiliation": "日本体育大学",
+      "schoolYear": "日本体育大学4年",
+      "categoryIds": ["singles-none-boys", "team-none-boys"]
+    },
+    {
+      "lastName": "広岡",
+      "firstName": "宙",
+      "kanaLast": "ヒロオカ",
+      "kanaFirst": "ソラ",
+      "gender": "boys",
+      "affiliation": "NTT西日本株式会社",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "丸山",
+      "firstName": "海斗",
+      "kanaLast": "マルヤマ",
+      "kanaFirst": "カイト",
+      "gender": "boys",
+      "affiliation": "公益財団法人佐賀県スポーツ協会",
+      "schoolYear": null,
+      "categoryIds": ["doubles-none-mixed", "team-none-boys"]
+    },
+    {
+      "lastName": "宮前",
+      "firstName": "希帆",
+      "kanaLast": "ミヤマエ",
+      "kanaFirst": "キホ",
+      "gender": "girls",
+      "affiliation": "ワタキューセイモア株式会社",
+      "schoolYear": null,
+      "categoryIds": ["singles-none-girls", "team-none-girls"]
+    },
+    {
+      "lastName": "岩倉",
+      "firstName": "彩佳",
+      "kanaLast": "イワクラ",
+      "kanaFirst": "アヤカ",
+      "gender": "girls",
+      "affiliation": "一般財団法人どんぐり財団",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "天間",
+      "firstName": "麗奈",
+      "kanaLast": "テンマ",
+      "kanaFirst": "レナ",
+      "gender": "girls",
+      "affiliation": "日本体育大学",
+      "schoolYear": "日本体育大学1年",
+      "categoryIds": ["singles-none-girls", "doubles-none-mixed", "team-none-girls"]
+    },
+    {
+      "lastName": "中谷",
+      "firstName": "さくら",
+      "kanaLast": "ナカタニ",
+      "kanaFirst": "サクラ",
+      "gender": "girls",
+      "affiliation": "明治大学",
+      "schoolYear": "明治大学3年",
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "前田",
+      "firstName": "梨緒",
+      "kanaLast": "マエダ",
+      "kanaFirst": "リオ",
+      "gender": "girls",
+      "affiliation": "明治大学",
+      "schoolYear": "明治大学3年",
+      "categoryIds": ["doubles-none-mixed", "team-none-girls"]
+    }
+  ]
+}
