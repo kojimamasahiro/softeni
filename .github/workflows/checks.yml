@@ -69,6 +69,9 @@ jobs:
       - name: upcoming テスト
         run: npm run -s upcoming:test
 
+      - name: 選手ページの所属歴メタデータ テスト
+        run: npm run -s career:test
+
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 
