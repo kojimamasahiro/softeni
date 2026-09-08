@@ -18,6 +18,7 @@ import { buildDelegationLookup } from '@/lib/delegation';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
+import { careerAffiliationNodes, careerAffiliations, careerAffiliationsDescriptionPhrase, composeDescriptionTail } from '@/lib/playerCareerAffiliations';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
 import { buildUpcomingInternationalLinks, type UpcomingInternationalLink } from '@/lib/upcomingInternational';
@@ -146,15 +147,23 @@ export default function PlayerResultsPage({
   const nationalTitlePhrase = nationalTitleTitlePhrase(nationalTitles);
   const nationalDescriptionPhrase = nationalTitleDescriptionPhrase(nationalTitles);
 
+  // 所属歴（最新の所属は displayName に出ているので除く）。description と JSON-LD で同じ集合を使う。
+  // 代表所属を最新以外へ差し替える案は不採用（最新のみで固定・2026-09-09 ユーザー判断）。
+  const careerTeams = careerAffiliations(playerStatistics?.byTeam, team);
+
   // description は先頭が truncate されにくいので、実績は通算成績より前に置く。
-  const summarySentence = [
-    `${displayName}のソフトテニス試合結果・戦績。`,
-    nationalDescriptionPhrase ?? '',
-    latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
-    totalMatches > 0 ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${winRatePct !== null ? `（勝率${winRatePct}%）` : ''}。` : '',
-    engineStatsPhrase,
+  // 末尾の2要素（主なペア / 所属歴）は全角120字の予算内で composeDescriptionTail が取捨する。
+  const summarySentence = composeDescriptionTail(
+    [
+      `${displayName}のソフトテニス試合結果・戦績。`,
+      nationalDescriptionPhrase ?? '',
+      latestResultPhrase ? `直近は${latestResultPhrase}。` : '',
+      totalMatches > 0 ? `収録試合は通算${totalMatches}試合${wins}勝${losses}敗${winRatePct !== null ? `（勝率${winRatePct}%）` : ''}。` : '',
+      engineStatsPhrase,
+    ].join(''),
     mainPartnerName ? `主なペアは${mainPartnerName}。` : '',
-  ].join('');
+    careerAffiliationsDescriptionPhrase(careerTeams),
+  );
 
   // 通称（インターハイ 等）を title に literal で出し、「{選手名} インターハイ 優勝」系の
   // クエリに寄せる。正式名称だけでは通称クエリに一致しないため（docs/wiki/seo.md #3）。
@@ -193,6 +202,16 @@ export default function PlayerResultsPage({
                 // Assumption: Google 側の専用リッチリザルトがあるかは未確認だが、
                 // エンティティ理解の材料にはなる想定（低コスト・低リスクのため実施）。
                 ...(nationalTitles.length > 0 && { award: nationalTitleAwards(nationalTitles) }),
+                // 過去の所属（出身校・実業団）。affiliation は最新の1件しか持たないため、
+                // 経歴側をここで補う。alumniOf / memberOf も award と同じく効果は測れない
+                // （Assumption）。詳細は lib/playerCareerAffiliations.ts。
+                ...(() => {
+                  const { alumniOf, memberOf } = careerAffiliationNodes(careerTeams);
+                  return {
+                    ...(alumniOf.length > 0 && { alumniOf }),
+                    ...(memberOf.length > 0 && { memberOf }),
+                  };
+                })(),
                 url: pageUrl,
               },
               publisher: {
