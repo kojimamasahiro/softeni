@@ -512,10 +512,16 @@ GSC「イベント」拡張レポートで `SportsEvent` の推奨項目不足�
   ブランド配色を流用）。**ローカル生成してPNGをコミットする**（`news_og.py` と同じ方針。
   本番ビルドに画像生成の依存を増やさない）。128色パレット化で 12MB / 311枚。
   RGBのままだと3倍近くになり git に重い。
-  - **`python3` 直打ちと `npm run og:tournaments` は動かない**（2026-09-09 確認）。
-    Pillow は `.venv` にしか入っておらず `ModuleNotFoundError: No module named 'PIL'` になる。
-    `npm run og:tournaments` の中身は `python3 tools/sns-images/tournament_og.py` のままなので、
-    使うなら `source .venv/bin/activate` してから。
+  - **`npm run og:tournaments` でよい**（2026-09-09 修正）。中身が `python3 …` だった頃は
+    `ModuleNotFoundError: No module named 'PIL'` で必ず落ちていた（Pillow は本番ビルドで
+    使わないのでルートの `requirements.txt` に入れておらず、`.venv` にしか無い）。
+    現在は `tools/sns-images/run.sh` が「Pillow の入った python」を選んで実行する
+    （`SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3`）。見つからなければ
+    `pip install -r requirements-dev.txt` を案内して終了する。
+    引数は `npm run og:tournaments -- --apply --only <tid>/<year>/<cat>` の形で渡す。
+  - **`--only` 無しの実行も直した**（同日）。`only_parts` が `None` のまま `len()` に渡されて
+    `TypeError` になっており、docstring と本節が案内していた「生成対象を一覧」が
+    **2026-08-02 以降ずっと動いていなかった**。
   - 一部だけ作り直すときは `--only <tid>` / `<tid>/<year>` / `<tid>/<year>/<categoryId>`。
     索引は既存とマージされるので他の大会は消えない。
     **`tournamentId` は前方一致**なので `--only zennihon-university` は

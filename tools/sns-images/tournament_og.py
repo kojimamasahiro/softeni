@@ -245,9 +245,11 @@ def main():
     ap.add_argument('--only', help='限定フィルタ。tournamentId / tournamentId/year / tournamentId/year/category の形式で指定')
     args = ap.parse_args()
 
-    # --only フィルタをパース
-    only_parts = args.only.split('/') if args.only else None
-    only_tid = only_parts[0] if only_parts else None
+    # --only フィルタをパース。--only 省略時は only_parts が空リストになるので全件が対象。
+    # （2026-09-09 修正: ここは None を返していて `len(None)` で TypeError になり、
+    #  --only 無しの実行＝docstring と wiki が案内している「生成対象を一覧」が動かなかった）
+    only_parts = args.only.split('/') if args.only else []
+    only_tid = only_parts[0] if len(only_parts) > 0 else None
     only_year = only_parts[1] if len(only_parts) > 1 else None
     only_cat = only_parts[2] if len(only_parts) > 2 else None
 

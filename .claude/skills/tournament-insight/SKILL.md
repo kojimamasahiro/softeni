@@ -176,14 +176,16 @@ prebuild がこれを走らせ、**`verifiedAt` の値を信用せずその場�
 
 ```bash
 # dry-run（何件対象になるかだけ見る）
-.venv/bin/python tools/sns-images/tournament_og.py --only <tid>/<year>/<categoryId>
+npm run og:tournaments -- --only <tid>/<year>/<categoryId>
 # 生成して書き込む
-.venv/bin/python tools/sns-images/tournament_og.py --apply --only <tid>/<year>/<categoryId>
+npm run og:tournaments -- --apply --only <tid>/<year>/<categoryId>
 ```
 
-- **`python3` 直打ちと `npm run og:tournaments` は落ちる。** Pillow は `.venv` にしか
-  入っていないので `ModuleNotFoundError: No module named 'PIL'` になる。
-  `.venv/bin/python` を使うか、先に `source .venv/bin/activate` する
+- `npm run og:tournaments` は `tools/sns-images/run.sh` 経由で「Pillow の入った python」を
+  選ぶ（`SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3`）。無ければ
+  `pip install -r requirements-dev.txt` を案内して止まる。
+  **`python3 tools/sns-images/tournament_og.py` を直接叩かないこと**——Pillow は本番ビルドで
+  使わないのでルートの `requirements.txt` に入れておらず、`.venv` にしか無い
 - **`--only` の `tournamentId` は前方一致。** `--only zennihon-university` は
   `zennihon-university-indoor` / `zennihon-university-ouza` まで巻き込む。
   `<tid>/<year>/<categoryId>` と種目まで書いて絞ること

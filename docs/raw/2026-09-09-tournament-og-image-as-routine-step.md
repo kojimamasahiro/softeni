@@ -106,3 +106,90 @@ frontmatter の description にも OGP を含む旨を追記（発火語とし�
 | dry-run が26件になった内訳 | 採らない（この raw に残す）。前方一致の注意だけ wiki に採用 | 内訳は一時点の値。durable なのは「前方一致だから絞れ」の一点 |
 | `package.json` の `og:tournaments` を直さなかった判断 | 採らない（この raw に残す）。「落ちる」事実だけ wiki に採用 | 判断の理由は raw で足りる。wiki の読者に必要なのは「使うな／こう使え」だけ |
 | versus（対抗戦）の OGP が全年度で未生成であること | 採らない（この raw に残す） | 依頼の範囲外で未着手。着手するなら別途 |
+
+---
+
+## 追記（同日）: skill をリポジトリへ移し、`npm run og:tournaments` も直した
+
+ユーザーから「repo内に移してほしい / ogの方も治せそうであれば直してほしい」。
+
+### skill の移動
+
+個人 skill 側の4件を `.claude/skills/` へ移した（内容は変えず、`diff -r` で同一を確認してから
+個人側を削除）。以降、skill の変更は PR に載る。
+
+| skill | 移動前 | 移動後 |
+|---|---|---|
+| `tournament-insight` | 個人 skill ディレクトリ | `.claude/skills/tournament-insight/` |
+| `tournament-pdf-to-players` | 同上 | `.claude/skills/tournament-pdf-to-players/` |
+| `tournament-venue-data` | 同上 | `.claude/skills/tournament-venue-data/` |
+| `idea-backlog` | 同上 | `.claude/skills/idea-backlog/` |
+
+個人 skill 側に残したのは汎用のもの（docx / pdf / pptx / xlsx / skill-creator / morning /
+schedule / consolidate-memory / import-memory / explain-usage / llm-wiki-definition /
+setup-claude / setup-cowork）。これらはプロジェクトに依存しない。
+
+### `npm run og:tournaments` の修正
+
+`tools/sns-images/run.sh` を足し、npm script をそこ経由にした。
+
+```
+"og:tournaments": "bash tools/sns-images/run.sh tools/sns-images/tournament_og.py"
+```
+
+`run.sh` は `SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3` の順に
+python を選び、`import PIL` が通らなければ導入方法を案内して終了する。
+`.venv` のパスを npm script に焼かなかったのは、venv を別の場所に置く環境で壊れるため。
+
+あわせて Pillow を **`requirements-dev.txt`** に固定した（`Pillow==11.3.0`）。
+ルートの `requirements.txt` に足さなかったのは、そこに書いたものが
+Cloudflare Pages の本番ビルドで毎回 pip install されるため（ファイル冒頭のコメントの通り）。
+
+### 直したついでに見つかった別のバグ
+
+修正後に `npm run og:tournaments`（引数なし）を叩いたら、今度は python 側で落ちた。
+
+```python
+only_parts = args.only.split('/') if args.only else None
+only_tid = only_parts[0] if only_parts else None
+only_year = only_parts[1] if len(only_parts) > 1 else None   # ← None を len() に渡している
+```
+
+```
+TypeError: object of type 'NoneType' has no len()
+```
+
+**`--only` 無しの実行が 2026-08-02 からずっと壊れていた。** docstring と
+[public-pages.md](../wiki/public-pages.md) が「生成対象を一覧（書き込まない）」として
+案内している使い方がこれで、`--only` を付けた実行だけが生きていた。
+`only_parts` を `[]` にして修正。
+
+**Pillow が無くて即落ちしていたので、その先の TypeError まで到達していなかった。**
+2つ目のバグは1つ目のバグに隠れていたことになる。
+
+### 修正後に見えたこと: OGP画像が119件不足している
+
+引数なし dry-run が通るようになって初めて全体像が見えた。
+
+```
+生成対象: 456 件 / 対象外（決勝が未確定）: 20 件
+```
+
+一方 `data/tournaments/og-images.json` は **337件**。
+**決勝が確定しているのに OGP画像を持っていない種目が 119 件ある**（既定の summary カードに
+フォールバックしている）。`--only` 無しの実行が壊れていた間、全件生成が回せなかったのが
+効いていると思われる。
+
+今回は生成していない（依頼の範囲外・PNG 119枚≒5MB がコミットに乗るため）。
+→ [open-questions](../wiki/open-questions.md)
+
+## Compile Log（追記分）
+
+| 項目 | 扱い | 理由 |
+|---|---|---|
+| `npm run og:tournaments` が使えるようになったこと・`run.sh` の python 選択順・引数の渡し方 | wiki `public-pages.md` の OGP 節と skill 工程5を**書き換え**（「落ちる」と書いた直後なので訂正が要る） | 直前の記述が誤りになったため。放置すると使えるコマンドを避け続けることになる |
+| Pillow を `requirements-dev.txt` に分けた理由（本番ビルドが `requirements.txt` を pip install する） | `tools/sns-images/README.md` に採用 | 依存の置き場所の判断はツール群の README が正 |
+| `--only` 無しが 2026-08-02 から壊れていたこと | wiki `public-pages.md` に1行だけ採用 | 「昔の記述どおりに動かなかった」ことを残さないと、直った今も避けられ続ける |
+| OGP画像が119件不足していること | `open-questions.md` に新項目として採用 | 未着手の作業で、着手判断（PNG 5MB をコミットするか）が要る |
+| skill 4件の移動先と、個人側に残した汎用 skill の一覧 | 採らない（この raw に残す）。open-questions の該当項目を「解決」に更新 | 移動そのものは1回きりの作業。durable なのは「プロジェクト skill は `.claude/skills/`」という置き場所の規約だけで、それは既に実体で表現されている |
+| 2つ目のバグが1つ目に隠れていたという構造 | 採らない（この raw に残す） | 教訓として面白いが、wiki に一般則として書けるほどの再現性が無い |

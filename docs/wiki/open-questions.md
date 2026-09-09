@@ -574,6 +574,29 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 → [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
 
+## OGP画像が119件不足している（2026-09-09 追加）
+
+`tools/sns-images/tournament_og.py` の `--only` 無し実行が 2026-08-02 から
+`TypeError` で壊れていた（同日修正）。直した直後の dry-run:
+
+```
+生成対象: 456 件 / 対象外（決勝が未確定）: 20 件
+```
+
+一方 `data/tournaments/og-images.json` は **337件**。
+**決勝が確定しているのに OGP画像を持たない種目が119件**あり、既定の summary カードに
+フォールバックしている。全件生成が回せない期間が長かったのが効いていると思われる。
+
+着手するかの判断材料: PNG 119枚で概ね 5MB がコミットに乗る（128色パレット化で1枚≒45KB）。
+既存337枚で12MB なので、リポジトリのサイズとしては同じ桁の増加。
+
+```bash
+npm run og:tournaments                      # dry-run で件数を確認
+npm run og:tournaments -- --apply           # 全件生成（既存は内容ハッシュが同じなら同名で不変）
+```
+
+→ [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
