@@ -11,9 +11,22 @@ import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
 import { attachInternalLinkTracking, trackConsentChoice } from '@/lib/analytics';
 import { CONSENT_EXEMPT_TIME_ZONE, isConsentExemptRegion } from '@/lib/consentRegion';
+import { isDevelopment } from '@/lib/env';
+
+/**
+ * 開発環境では GA4 を読み込まない（＝計測を一切送らない）。
+ *
+ * dev の閲覧が本番プロパティに混ざると実トラフィックの分析が汚れる。日本からのアクセスは
+ * 同意なしで granted になった（lib/consentRegion.ts）ので、開発機がまさにその条件に当たり、
+ * 以前より混ざりやすい。
+ *
+ * 同意まわりの挙動を dev で確認したいときだけ、`.env.local` に
+ * `NEXT_PUBLIC_GA_IN_DEV=true` を置いて一時的に有効化する。
+ */
+const GA_ENABLED_IN_DEV = process.env.NEXT_PUBLIC_GA_IN_DEV === 'true';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+  const GA_ID = !isDevelopment() || GA_ENABLED_IN_DEV ? process.env.NEXT_PUBLIC_GA_ID : undefined;
 
   const [hasConsent, setHasConsent] = useState(false);
   const router = useRouter();
@@ -73,7 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* GA ID があるときだけ読み込む */}
+      {/* GA ID があるときだけ読み込む（dev は上の GA_ID で undefined になる） */}
       {GA_ID && (
         <>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

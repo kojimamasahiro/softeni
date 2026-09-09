@@ -290,6 +290,13 @@ PV 実績と突き合わせて差し替えた。原案の面は PV 上位では�
 ## 計測
 
 - `src/pages/_app.tsx` で Google Analytics (GA4, Consent Mode v2) を読込
+- **開発環境（`next dev`）では GA4 を読み込まない**（2026-09-09〜）。`isDevelopment()`（`lib/env.ts`）で
+  `GA_ID` を `undefined` にしており、`gtag.js` も inline スクリプトも `dataLayer` も生成されない。
+  dev の閲覧が本番プロパティに混ざると実トラフィックの分析が汚れるため。日本は同意なしで
+  granted になったので、開発機がまさにその条件に当たり以前より混ざりやすい。
+  - 同意まわりの挙動を dev で確認したいときだけ `.env.local` に `NEXT_PUBLIC_GA_IN_DEV=true` を置く
+  - **Cloudflare Pages のプレビューデプロイは本番ビルド**（`NODE_ENV=production`）なので、
+    この gate では止まらない。プレビューを使っているなら別途対処が要る（未対応）
 - Cookie 同意 UI は `src/components/CookieConsent.tsx`
 - **同意の扱いは地域で分かれる**（2026-09-09〜、[ADR-018](../adr/ADR-018-consent-by-region.md)）
   - 日本（端末TZが `Asia/Tokyo`）: **バナーを出さず** `ad_storage` / `analytics_storage` とも granted。
