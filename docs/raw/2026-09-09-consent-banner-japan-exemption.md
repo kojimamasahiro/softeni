@@ -126,6 +126,30 @@ EEA / 英国 / スイス:
   レイアウト確認（[ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md) の主題）が
   dev でできなくなる。トレードオフがあるので今回は触っていない。
 
+---
+
+## 追記2（同日）: Idea Backlog 側の該当項目を修正
+
+GA4 のログを前提にしていたアイデアを洗い、影響のあるものだけ更新した。
+
+**更新した**
+
+- `docs/raw/2026-09-06-idea-user-problem-discovery.md` — 追記2。信号の棚卸しで「×」だった
+  セッション単位の指標が日本については読めるようになったこと、および
+  **溜まっている 2026-08-09〜09-09 のクエリには自分の dev ブラウジングが混ざっているので
+  `hostname` で `localhost` を除外して読むこと**。後者はこのアイデアの手順1（検索クエリを
+  頻度順に読む）を直撃するので、実行前に知っている必要がある。
+- `docs/raw/2026-08-15-idea-highschool-school-page-cross-links.md` — 追記。主指標
+  （モジュールCTR）の設計は変えないこと、副指標の信頼度が上がる一方で前提指標だった
+  同意率が事実上使えなくなること、**ベースラインは 2026-09-09 より後の期間から取ること**。
+- エリアページ（`public-pages.md` / `highschool.md`）の該当行と、
+  `idea-backlog.md` の索引サマリを同期。
+
+**更新しなかった**
+
+- `docs/raw/2026-09-06-idea-live-streams.md` — GA4 への言及はあるが「PV・RPM の絶対値は
+  管理画面にしかない」という文脈だけで、同意状態にも dev 混入にも依存しない。
+
 ## Compile Log
 
 docs/wiki への反映と、意図的に落としたもの。
@@ -139,6 +163,9 @@ docs/wiki への反映と、意図的に落としたもの。
 - 認定 CMP の積み残し → `docs/wiki/open-questions.md`
 - dev で GA4 を読み込まないこと・逃げ道の env 変数・プレビューデプロイが対象外であること
   → `docs/wiki/monetization.md`「計測」節
+- Idea Backlog 側で前提が変わる2件（ユーザーの課題発見 / 学校ページの回遊強化）
+  → 各 raw に追記し、`public-pages.md` / `highschool.md` の行と `idea-backlog.md` の索引を同期。
+  詳細は上の「追記2」。
 
 **落とした**
 
