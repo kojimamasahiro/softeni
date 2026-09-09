@@ -3,6 +3,8 @@
 
 内容は**ベスト16のトーナメント表**。ベスト16→8→4→決勝の4ラウンドを、公開ページの
 トーナメント表と同じ「両端に名前・内側は線だけ・勝者の線が太い」描き方で 1 枚にする。
+上部にサイト名バーは置かず、**下に余白を確保する**（X がカードの左下にタイトルを重ねるため。
+2026-09-09 変更。詳細は `render()` の docstring）。
 
 なぜベスト16までなのか:
   OGカードはタイムライン上で幅350〜600px程度に縮小される。1200x630 にベスト64（縦32行）を
@@ -47,9 +49,11 @@ import re
 import subprocess
 import sys
 
+from PIL import Image  # noqa: E402
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from snslib import (  # noqa: E402
-    GRAY, LINE, NAVY, WHITE, YELLOW,
+    GRAY, LINE, NAVY, YELLOW,
     entry_label, font, fit_font, new_canvas, participants_map, text_w,
 )
 
@@ -220,31 +224,96 @@ def draw_bracket(draw, tree, pmap, entries_by_no, top, bottom):
     draw.ellipse([cx - 7, (ly + ry) / 2 - 7, cx + 7, (ly + ry) / 2 + 7], fill=YELLOW)
 
 
-def draw_brand_bar(draw):
-    """上部にサイト名だけのバーを出す（2026-07-31 ユーザー決定）。
+# 旧「サイト名バー」の高さ（ネイビー 52px + 下線のイエロー 5px）。
+# バー自体は 2026-09-09 に廃止したが、**その高さぶんを下の余白に振り替えて**いるので
+# 定数として残す。トーナメント表の縦幅（bottom - top）はバーがあった頃と同じになる。
+BRAND_BAR_H = 52 + 5
 
-    大会名・年・種目は**画像に入れない**。X はカードの下にページタイトル
-    （「{大会名} {年}年 {種目} 結果・トーナメント表 | ソフトテニス情報」）を必ず表示するので、
-    画像にも入れると同じ情報が 2 回出る。サイト名だけを上に置き、残りの縦をすべて
-    トーナメント表に使う。footer は廃止（サイト名を上へ移したため）。
+# トーナメント表の上下マージン。バーがあった頃はバー直下から 26px 空けていた。
+TOP_MARGIN = 26
+BOTTOM_MARGIN = 22
+
+# ブランドマーク（SP + ラケット）。既定 OG カードから**マークだけ**を切り出して使う。
+# `public/og/twitter-card-summary.png` は 192x192 で、上にマーク・下に「Softeni Pick」の
+# ワードマークが入っている。インクのある行を数えると 18〜144（マーク）と 153〜170
+# （ワードマーク）の2ブロックに分かれるので、前者だけを取る。
+# ワードマークを入れないのは、X がカードの左下に出すタイトルと文字が二重になるため。
+BRAND_LOGO_PATH = os.path.join(ROOT, 'public', 'og', 'twitter-card-summary.png')
+BRAND_MARK_BOX = (36, 18, 164, 145)   # マークだけの外接矩形（128x127）
+BRAND_MARK_BG = (239, 239, 235)       # 元画像の地の色
+BRAND_MARK_SIZE = 38                  # 貼り付ける一辺
+BRAND_MARK_RIGHT = 24                 # 右マージン。トーナメント表の左右マージンに合わせる
+BRAND_MARK_BOTTOM = 20                # 下マージン
+
+
+_BRAND_MARK_CACHE = {}
+
+
+def brand_mark(size=BRAND_MARK_SIZE):
+    """ブランドマークを RGBA で返す。読めなければ None（画像生成自体は止めない）。
+
+    元画像は地が (239,239,235) の不透明 PNG なので、そのまま貼ると**キャンバスの地
+    (250,250,248) との差が四角い枠として見えてしまう**。地の色からの距離をアルファに
+    変換して切り抜く。距離ベースなのはアンチエイリアスの縁を残すため
+    （二値マスクにすると縮小時にギザつく）。
     """
-    h = 52
-    draw.rectangle([0, 0, W, h], fill=NAVY)
-    draw.rectangle([0, h, W, h + 5], fill=YELLOW)
-    draw.ellipse([28, h // 2 - 9, 28 + 18, h // 2 + 9], fill=YELLOW)
-    f = font(24, bold=True)
-    draw.text((56, h // 2 - 15), 'softeni-pick.com', font=f, fill=WHITE)
-    return h + 5
+    # アルファ生成が 16,256 px の Python ループなので、456 枚ぶん回すと無駄が大きい。
+    # サイズごとに 1 回だけ作って使い回す。
+    if size in _BRAND_MARK_CACHE:
+        return _BRAND_MARK_CACHE[size]
+    try:
+        src = Image.open(BRAND_LOGO_PATH).convert('RGB').crop(BRAND_MARK_BOX)
+    except Exception:
+        _BRAND_MARK_CACHE[size] = None
+        return None
+    alpha = Image.new('L', src.size)
+    sp, ap = src.load(), alpha.load()
+    for y in range(src.size[1]):
+        for x in range(src.size[0]):
+            r, g, b = sp[x, y]
+            d = abs(r - BRAND_MARK_BG[0]) + abs(g - BRAND_MARK_BG[1]) + abs(b - BRAND_MARK_BG[2])
+            ap[x, y] = 255 if d >= 120 else int(d * 255 / 120)
+    out = src.convert('RGBA')
+    out.putalpha(alpha)
+    mark = out.resize((size, size), Image.LANCZOS)
+    _BRAND_MARK_CACHE[size] = mark
+    return mark
+
+
+def paste_brand_mark(img):
+    """右下にブランドマークだけを置く（2026-09-09 追加）。
+
+    X はカードの**左下**にタイトルを重ねる。タイトルが長いと右端近くまで伸びることが
+    あるので、**文字は置かず**マークだけを右下に小さく置く。サイト名バーを廃止して
+    画像から出所が消えていたのを、文字と衝突しない形で戻すもの。
+    """
+    mark = brand_mark()
+    if mark is None:
+        return
+    img.paste(mark, (W - BRAND_MARK_RIGHT - mark.size[0], H - BRAND_MARK_BOTTOM - mark.size[1]), mark)
 
 
 def render(data):
+    """1200x630 に決勝までの4ラウンドを描く。
+
+    レイアウト（2026-09-09 変更）:
+      - **上部のサイト名バーを廃止した。** 2026-07-31 に「サイト名だけを上に置き、残りの縦を
+        すべて表に使う」としていたが、X のカードは**画像の左下にタイトルを重ねて表示する**ため、
+        下に何も無いと表の一番下の行がタイトルに隠れる。
+      - バーの高さ（57px）ぶんを**そのまま下の余白へ振り替え**、表全体を 57px 上へ寄せた。
+        `bottom - top` はバーがあった頃と同じなので、**表の縮尺・行間は変わらない**。
+      - サイト名の**文字**は置かない。代わりに**右下にブランドマークだけ**を置く
+        （`paste_brand_mark`）。X のタイトルは左下から始まり、長いと右端近くまで伸びるので、
+        文字を足すと二重になったり重なったりする。
+    """
     img, draw = new_canvas(W, H)
     tree = build_tree(data['matches'])
     if not tree:
         return None
-    top = draw_brand_bar(draw) + 26
-    bottom = H - 22
+    top = TOP_MARGIN
+    bottom = H - BOTTOM_MARGIN - BRAND_BAR_H
     draw_bracket(draw, tree, participants_map(data), {e['entryNo']: e for e in data['entries']}, top, bottom)
+    paste_brand_mark(img)
     return img
 
 
