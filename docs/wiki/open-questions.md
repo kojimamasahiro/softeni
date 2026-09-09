@@ -622,6 +622,25 @@ npm run og:tournaments -- --apply           # 全件生成（既存は内容ハ�
 
 → [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
 
+## EEA/UK に対する Google 認定 CMP（2026-09-09 追加）
+
+2026-09-09 に同意を地域で分け、日本はバナー非表示・EEA/UK/スイスは従来どおり事前同意、
+という形にした（[ADR-018](../adr/ADR-018-consent-by-region.md)）。
+
+このとき、**以前から未対応だった論点が輪郭のはっきりした形で残った**。AdSense を配信して
+いる以上、Google の EU ユーザーの同意ポリシー上、EEA/UK の訪問者には **Google 認定 CMP**
+（TCF v2.2 対応）が必要で、`src/components/CookieConsent.tsx` の自作バナーはこれを満たさない。
+
+- 本決定で新たに生じた問題ではない（全ユーザーにバナーを出していた時点で既に同じ状態）。
+- ただし今回で「バナーが残るのは EEA/UK/スイスだけ」と範囲がはっきりしたので、
+  対応するなら区切りとしては良い。
+- **未確認**: そもそも当サイトの EEA/UK からのトラフィックがどの程度あるのか（GA4 の
+  地域レポートで確認できる）。ごく少数なら、認定 CMP を入れるより
+  「EEA/UK には広告を出さない」ほうが安く済む可能性がある。まずここを測る。
+
+関連: [monetization.md](./monetization.md)「プライバシー・法務」、
+[raw/2026-09-09-consent-banner-japan-exemption.md](../raw/2026-09-09-consent-banner-japan-exemption.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
