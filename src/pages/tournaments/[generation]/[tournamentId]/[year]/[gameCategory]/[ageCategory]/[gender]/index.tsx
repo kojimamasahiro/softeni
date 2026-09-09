@@ -128,7 +128,7 @@ export default function TournamentYearResultPage({
   // 検索で使われる名前を title / h1 に literal で出す。searchLabel / searchAliases が
   // 未設定の大会では headingName === label となり、出力は従来と 1 文字も変わらない。
   // docs/wiki/seo.md「大会名の表記と検索語の乖離（missing literal）」
-  const { headingName } = buildTournamentSearchNames(label, searchLabel, searchAliases);
+  const { headingName, titleLeadName } = buildTournamentSearchNames(label, searchLabel, searchAliases);
 
   const [searchQuery, setSearchQuery] = useState('');
   const detailData = useMemo(() => (detailDataPacked ? unpackTournamentDetailData(detailDataPacked) : null), [detailDataPacked]);
@@ -143,6 +143,12 @@ export default function TournamentYearResultPage({
   // meta description・本文とも変化なし。
   const resultCoverage = useMemo(() => computeResultCoverage(detailData, abandonment), [detailData, abandonment]);
   const coverageMetaSuffix = formatResultCoverageMetaSuffix(resultCoverage);
+
+  // title の後半に置く語。「組み合わせ」は実需クエリ（「{大会} {年} 組み合わせ」は
+  // Google の関連検索に出る）だが、当サイトの title・description には literal で 0 回だった。
+  // 「トーナメント表」は同義語であって検索語ではない（2026-09-09 実測）。
+  // 結果が 1 件も入っていない種目で「結果」を名乗らないのは #11 の開示ルールと同じ扱い。
+  const titleFocus = resultCoverage.status === 'not_recorded' ? '組み合わせ' : '結果・組み合わせ';
 
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
@@ -177,11 +183,14 @@ export default function TournamentYearResultPage({
     href: `/tournaments/${generation}/${tournamentId}/${year}/${gameCategory}/${ageCategory}/${gender}`,
   });
 
+  // title は短い名前で始める。`headingName`（インカレで 22 全角）を頭に置くと、
+  // 表示枠 28〜32 全角に対して「2026」が 22.5 全角目・「結果」が枠外という状態になる
+  // （2026-09-09 実測: 53 全角）。正式名称は h1・本文・JSON-LD 側で literal を確保する。
   return (
     <>
       <MetaHead
-        title={`${headingName} ${year}年${categoryLabel ? ` ${categoryLabel}` : ''} 結果・トーナメント表 | ソフトテニス情報`}
-        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・トーナメント表・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
+        title={`${titleLeadName}${year}${categoryLabel ? ` ${categoryLabel}` : ''} ${titleFocus} | ソフトテニス情報`}
+        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・組み合わせ（トーナメント表）・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
         {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}

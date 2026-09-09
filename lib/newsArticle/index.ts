@@ -17,6 +17,7 @@
 //   index.ts（本ファイル） … 上記を束ねて記事ビューを組み立てるエントリーポイント
 
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 
 import { buildRecentAchieverIndex, buildCategoryBlock, type RecentAchievementInfo } from './contextBlocks';
 import { listCategoryIds, tournamentMetaOf } from './recordIO';
@@ -25,10 +26,18 @@ import type { NewsArticleRecord, NewsArticleView, NewsCategoryBlock } from './ty
 export * from './types';
 export * from './recordIO';
 
-function defaultTitle(record: NewsArticleRecord, tournamentLabel: string): string {
-  return record.type === 'preview'
-    ? `${tournamentLabel} ${record.year} 展望・連覇/前回王者・出場校`
-    : `${tournamentLabel} ${record.year} 結果・優勝・歴代まとめ`;
+/**
+ * 記事タイトル。
+ *
+ * `tournamentLabel`（= index.json の label）をそのまま使うと、検索する側が打つ語が
+ * タイトルに 1 度も出ない。インカレの展望記事は 6,081 字のユニークな本文を持ちながら
+ * 「インカレ」が**ページ全体で 0 回**だった（2026-09-09 実測）。
+ * ハブ・年度別ページと同じ `titleLeadName`（略称 → 検索名 → label）で始める。
+ * 正式名称は description と本文の内部リンクで literal を確保している。
+ * docs/wiki/seo.md「大会名の表記と検索語の乖離（missing literal）」
+ */
+function defaultTitle(record: NewsArticleRecord, titleLeadName: string): string {
+  return record.type === 'preview' ? `${titleLeadName}${record.year} 展望・前回王者・出場校` : `${titleLeadName}${record.year} 結果・優勝・歴代まとめ`;
 }
 
 /**
@@ -38,11 +47,11 @@ function defaultTitle(record: NewsArticleRecord, tournamentLabel: string): strin
  * （[seo.md](../docs/wiki/seo.md) #8「farm が構造的に持てない DB 由来の文脈で差別化」）。
  * 算出できない大会では従来文のまま（分岐 1 箇所で戻せる）。
  */
-function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, categories: NewsCategoryBlock[]): string {
+function defaultDescription(record: NewsArticleRecord, headingName: string, categories: NewsCategoryBlock[]): string {
   if (record.type !== 'preview') {
-    return `ソフトテニス「${tournamentLabel}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
+    return `ソフトテニス「${headingName}」${record.year}年の結果。優勝者・連覇/初優勝などの記録を歴代データと合わせてまとめています。`;
   }
-  const base = `ソフトテニス「${tournamentLabel}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト収録データからまとめています。`;
+  const base = `ソフトテニス「${headingName}」${record.year}年の展望。前回王者の連覇挑戦・前回入賞者の再登場・出場規模・歴代優勝者を当サイト収録データからまとめています。`;
   const totalCards = categories.reduce((n, c) => n + (c.priorMeetings?.totalCards ?? 0), 0);
   if (totalCards === 0) return base;
   return `${base}直近の大会で既に対戦している${totalCards}件の顔合わせも掲載。`;
@@ -50,7 +59,9 @@ function defaultDescription(record: NewsArticleRecord, tournamentLabel: string, 
 
 /** 記事レコードから描画用ビューを組み立てる */
 export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView {
-  const { label: tournamentLabel, generationId } = tournamentMetaOf(record.tournamentId);
+  const { label: tournamentLabel, searchLabel, searchAliases, generationId } = tournamentMetaOf(record.tournamentId);
+  // 検索名は未設定の大会では label と同一になり、出力は従来と 1 文字も変わらない（オプトイン）。
+  const { headingName, titleLeadName } = buildTournamentSearchNames(tournamentLabel, searchLabel, searchAliases);
   const categoryIds = record.categoryId && record.categoryId.length > 0 ? [record.categoryId] : listCategoryIds(record.tournamentId, record.year);
 
   // 直近大会の好成績者インデックスは種目に依存しないので記事単位で 1 回だけ構築する。
@@ -71,8 +82,8 @@ export function buildNewsArticleView(record: NewsArticleRecord): NewsArticleView
     tournamentLabel,
     generation: generationId,
     hubHref,
-    title: record.title || defaultTitle(record, tournamentLabel),
-    description: record.description || defaultDescription(record, tournamentLabel, categories),
+    title: record.title || defaultTitle(record, titleLeadName),
+    description: record.description || defaultDescription(record, headingName, categories),
     categories,
   };
 }

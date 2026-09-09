@@ -135,6 +135,12 @@ interface TournamentHubPageProps {
   // docs/wiki/upcoming-tournaments-runbook.md S2。
   delegation: DelegationBlock | null;
   qualifierFinishers: QualifierFinishersBlock | null;
+  /**
+   * ビルド時の西暦。title に最新収録年を出すかの判定にだけ使う。
+   * コンポーネント側で `new Date()` を呼ぶと SSG 出力とクライアント描画が
+   * 年またぎでずれる（hydration mismatch）ため、getStaticProps で確定させる。
+   */
+  buildYear: number;
 }
 
 export default function TournamentHubPage({
@@ -155,13 +161,14 @@ export default function TournamentHubPage({
   relatedLinks,
   delegation,
   qualifierFinishers,
+  buildYear,
 }: TournamentHubPageProps) {
   const pageUrl = `https://softeni-pick.com/tournaments/${generation}/${tournamentId}/`;
 
   // 検索で使われる名前を title / h1 / description に literal で出す。
   // searchLabel / searchAliases が未設定の大会では headingName === label となり、
   // 出力は従来と 1 文字も変わらない。docs/wiki/seo.md「大会名の表記と検索語の乖離」
-  const { headingName, primaryAlias } = buildTournamentSearchNames(label, searchLabel, searchAliases);
+  const { headingName, titleLeadName, primaryAlias } = buildTournamentSearchNames(label, searchLabel, searchAliases);
   const hsNationalHref = hsNationalSlug ? `/highschool/tournaments/${hsNationalSlug}` : null;
 
   const years = yearGroups.map((g) => g.year);
@@ -290,9 +297,20 @@ export default function TournamentHubPage({
   const upcomingOnly = yearGroups.length === 0 && upcoming ? upcoming : null;
   const upcomingVenueNames = upcomingOnly ? upcomingOnly.venues.map((v) => v.name).filter((n): n is string => !!n) : [];
 
+  // 「{大会名} {年}」は「{大会名} 結果」と並ぶ実需クエリだが、ハブの title には年が 1 度も
+  // 出ていなかった。年を名乗る年度別ページは内部リンクが 1〜2 桁しか無く（インカレ 2026 は
+  // 11〜69 枚）、869 枚を集めるハブだけが年を持たない状態で、「インカレ 2026」の受け皿が
+  // どのページにも無かった（2026-09-09 実測）。最新収録年をハブ title に literal で出す。
+  // 収録が古い大会で年を出すと「そこで止まっている」表示になるだけなので、
+  // 前年以降のときだけ出す。docs/wiki/seo.md「大会名の表記と検索語の乖離」
+  const titleYear = latestYear && Number(latestYear) >= buildYear - 1 ? latestYear : '';
+
+  // title は短い名前で始める。`headingName`（インカレで 22 全角）を頭に置くと
+  // 表示枠 28〜32 全角の中に「結果」も年も入らない（seo.md「title の字数超過」）。
+  // 正式名称は h1・description・JSON-LD の alternateName 側で literal を確保している。
   const title = upcomingOnly
-    ? `${headingName} ${upcomingOnly.year}年 日程・会場・実施種目 | ソフトテニス情報`
-    : `${headingName} 結果・歴代優勝/上位入賞者まとめ | ソフトテニス情報`;
+    ? `${titleLeadName}${upcomingOnly.year} 日程・会場・実施種目 | ソフトテニス情報`
+    : `${titleLeadName}${titleYear} 結果・歴代優勝者 | ソフトテニス情報`;
   // FAQ は**検索名を設定した大会だけ**に出す。全ハブに定型文を撒くと
   // 「同じフレーズの機械的な反復」になり、seo.md #2 追記が避けた薄い重複を量産するため。
   const faqItems =
@@ -320,7 +338,7 @@ export default function TournamentHubPage({
       ]
         .filter(Boolean)
         .join(' / ')}。`
-    : `ソフトテニス「${headingName}」の歴代大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。${searchNote ?? ''}`;
+    : `ソフトテニス「${headingName}」の${titleYear ? `${titleYear}年大会と` : ''}歴代の大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。${searchNote ?? ''}`;
 
   return (
     <>
@@ -1173,6 +1191,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       generation,
       tournamentId,
+      // ビルド日の西暦。title に最新収録年を出すかの判定に使う（コンポーネント側で
+      // new Date() を呼ぶと年またぎで hydration mismatch になる）。
+      buildYear: new Date().getFullYear(),
       label,
       searchLabel,
       searchAliases,

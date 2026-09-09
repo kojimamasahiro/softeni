@@ -27,6 +27,17 @@ export type TournamentSearchNames = {
    * 例: `全中（全国中学校ソフトテニス大会）`。未設定の大会では label と同一。
    */
   headingName: string;
+  /**
+   * title の先頭に置く短い名前。略称があれば略称（例: `インカレ`）、無ければ検索名／label。
+   *
+   * 日本語 SERP のタイトル表示枠は概ね 28〜32 全角しかない。`headingName` は
+   * 「略称（正式名称）」の形なので長くなりやすく（インカレで 22 全角）、これを先頭に置くと
+   * **年・種目・「結果」がすべて枠外に落ちる**（2026-09-09 実測: 年度別ページ 53 全角・
+   * 「2026」が 22.5 全角目）。title は短い名前で始め、正式名称は h1 / description /
+   * JSON-LD の alternateName 側で literal を確保する。
+   * 高校ハブで先に採った手法と同じ（seo.md #3 追記4・2026-08-06）。
+   */
+  titleLeadName: string;
   /** 略称（「〜とは」の主語に使う）。無ければ null */
   primaryAlias: string | null;
   /** サイト上の表記（`index.json` の label） */
@@ -47,5 +58,5 @@ export function buildTournamentSearchNames(label: string, searchLabel?: string |
 
   const headingName = alias ? `${alias}（${primaryName}）` : primaryName;
 
-  return { headingName, primaryAlias: alias, formalLabel };
+  return { headingName, titleLeadName: alias || primaryName, primaryAlias: alias, formalLabel };
 }

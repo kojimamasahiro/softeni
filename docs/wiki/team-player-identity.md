@@ -307,6 +307,30 @@ alias 表はもともと**文脈を持たない**ため、`--scope=all` で全�
 経緯と全数の対応表は
 [raw/2026-08-12-university-team-name-cleanup.md](../raw/2026-08-12-university-team-name-cleanup.md)。
 
+### 略称そのものが高校と大学で衝突する（2026-09-09 追加）
+
+`scope` が要る3パターンは**alias 表に載る略称**の話だったが、**チームマスタの canonical
+そのものが衝突する**型もある。`data/teams/teams.json` の `kitakadai` は `name: "北科大"`
+（＝北海道科学大学高校）だが、**北海道科学大学（大学）も現場では「北科大」と書かれる**。
+
+インカレ2026 男子ダブルスの4選手が `team: "北科大"` で入っていたため、
+高校パイプラインが**大学の出場を高校（北科大高）の実績として集計していた**
+（`prefecture` が `日本学連` でも高校側に寄る）。2026-09-09 に大学側を
+`北海道科学大学` に直して解消（`data/highschool/prefecture-summary.json` から
+該当2ペア・4選手が落ち、`kitakadai` の `totalAppearances` 63→61 / `uniquePlayers` 56→52）。
+
+- **alias 表では防げない**。素の表記がマスタの canonical と完全一致するので、
+  alias の `scope` を付ける機会がそもそも無い
+- 対処は**大学側を正式名称で入れる**こと（略称のほうを直さない）。
+  高校側の canonical を変えると高校大会の全データが影響を受ける
+- 全数確認: `北科大` の残りの出現（`east-japan` 2025 / `zennihon-championship` 2019）は
+  いずれも `prefecture: "北海道"` の高校生の出場で、誤帰属ではない
+- **同型を探すときの目安**: 大学のチーム名は `participants[].prefecture` が
+  `日本学連` / `学連` になる。**`prefecture` が `日本学連` なのに `teams.json`（高校マスタ）に
+  同名がある**参加者を洗えば、この型は機械的に列挙できる（未実装）
+
+→ [raw/2026-09-09-incare-2026-doubles-results-import.md](../raw/2026-09-09-incare-2026-doubles-results-import.md)
+
 ## 姓名の分割ゆれ `data/players/name-split-aliases.json`（2026-08-29 追加）
 
 チーム名とは別に、**姓と名の切り位置**もぶれる。大会 PDF では氏名が 1 つの文字列として
