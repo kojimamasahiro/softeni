@@ -55,3 +55,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-015](./ADR-015-knockout-draw-by-group.md) | 決勝トーナメントの席順は「予選リーグの組」に持たせる（`knockoutDraw`） | Accepted |
 | [ADR-016](./ADR-016-manual-adsense-units-over-auto-ads.md) | 広告は自動広告のページ内挿入をやめ、手動枠（AdUnit）で位置と高さを固定する | Accepted |
 | [ADR-017](./ADR-017-team-merge-signal-player-overlap.md) | チーム名寄せの候補検出に「選手共有」シグナルを足す | Accepted |
+| [ADR-018](./ADR-018-consent-by-region.md) | Cookie 同意を地域で分け、日本は公表ベース（バナー非表示）にする | Accepted |

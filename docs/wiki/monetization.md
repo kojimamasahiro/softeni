@@ -291,9 +291,17 @@ PV 実績と突き合わせて差し替えた。原案の面は PV 上位では�
 
 - `src/pages/_app.tsx` で Google Analytics (GA4, Consent Mode v2) を読込
 - Cookie 同意 UI は `src/components/CookieConsent.tsx`
-- 同意前は `ad_storage` / `analytics_storage` を denied（cookieless ping は送信される＝advanced consent mode 相当）
-- 同意後に granted へ更新
-- 再訪ユーザーの同意は inline スクリプト内で `localStorage` を同期読みし、**初回 page_view より前**に復元する（hydration 後に復元すると初回PVが denied 計測になるため）
+- **同意の扱いは地域で分かれる**（2026-09-09〜、[ADR-018](../adr/ADR-018-consent-by-region.md)）
+  - 日本（端末TZが `Asia/Tokyo`）: **バナーを出さず** `ad_storage` / `analytics_storage` とも granted。
+    日本はオプトイン同意が法令上の要件ではなく、外部送信は `src/pages/privacy.tsx` の
+    「4. 外部送信について」で公表している（電気通信事業法の外部送信規律）。
+    **この公表とバナー非表示はセットで、片方だけ変えてはならない。**
+  - それ以外（EEA/UK/スイスを含む）: 従来どおりバナーを出し、同意前は denied のまま
+    （cookieless ping は送信される＝advanced consent mode 相当）、同意後に granted へ更新
+  - 過去に「拒否する」を押した人（`localStorage.cookieConsent === 'false'`）は**地域に関わらず** denied を維持
+- 地域判定は `lib/consentRegion.ts` の `isConsentExemptRegion()`。手段がタイムゾーンである理由と
+  その限界（外れたときは必ず「バナーを出す」側に倒れる）は同ファイルのコメントが正
+- 同意状態は inline スクリプト内で `localStorage` とタイムゾーンを同期読みし、**初回 page_view より前**に確定する（hydration 後に確定すると初回PVが denied 計測になるため）
 - `wait_for_update: 500` / `url_passthrough` / `ads_data_redaction` を設定し、同意確定待ち・クッキー不可時の計測ロスを軽減
 - SPA 遷移は `gtag('config')` 再実行ではなく `gtag('event','page_view')` で送信（二重計上・セッション分断の回避）
 - クッキーは `SameSite=Lax;Secure`（同一ドメイン first-party 用途のため Lax）
@@ -307,6 +315,9 @@ PV 実績と突き合わせて差し替えた。原案の面は PV 上位では�
 |---|---|---|---|
 | `internal_link_click` | `module` / `from_type` / `to_type` | `lib/analytics.ts` の `attachInternalLinkTracking()`（`_app.tsx` から `<main>` に委譲リスナーを1つ張る） | 主指標「モジュールCTR」の分子 |
 | `consent_accept` / `consent_decline` | なし | `_app.tsx` の `handleAccept` / `handleDecline` | 同意率（セッション系指標の解釈に必須） |
+
+- **2026-09-09 以降、`consent_accept` / `consent_decline` は日本では発生しない**（バナーを出さないため）。
+  以後の同意率は「非免除地域で、かつバナーを操作した人の中での比率」であり、**変更前の数値と地続きではない**。
 
 - **同意状態に関わらず送る**。未同意でも cookieless ping でイベントは GA4 に届くため、
   イベント数どうしの比（CTR）はセッション結合の成否に影響されない。これが主指標を
@@ -327,13 +338,21 @@ PV 実績と突き合わせて差し替えた。原案の面は PV 上位では�
 ### 計測精度に関する注意（2026-06）
 
 - GA4 は client-side 計測のため、広告ブロッカー・Safari ITP・同意 denied により**実トラフィックより常に少なく出る**（一般に10〜40%）。これは実装では完全には解消できない。
+  - ただし「同意 denied」分については、2026-09-09 の地域別同意（[ADR-018](../adr/ADR-018-consent-by-region.md)）で
+    日本からのアクセスが granted になったため、日本ではこの要因はほぼ消えた。広告ブロッカーと ITP は残る。
 - なお GA4 の `_ga` は **first-party クッキー**であり、ブラウザの「サードパーティクッキー許可」設定では精度は改善しない。
 - 実数に近い基準値が必要な場合は、Cloudflare 配信を活かして **Cloudflare Web Analytics（cookieless・ブロックされにくい）** を併用し GA4 と突き合わせるのが有効（要 Open Question / 別途導入判断）。
 
 ## プライバシー・法務
 
 - `src/pages/privacy.tsx` に広告・アクセス解析の説明あり
-- ここには「Google AdSense などを利用予定」との文言がある
+- 2026-09-09 に「4. 外部送信について」（電気通信事業法の外部送信規律に基づく公表。送信先・
+  利用目的・送信される情報を `EXTERNAL_TRANSMISSIONS` の表で掲載）と「5. Cookie の利用と
+  停止方法」（地域ごとの扱いとオプトアウト手段）を追加した。
+  **送信先サービスを増減させたら `EXTERNAL_TRANSMISSIONS` の更新が必須。**
+- **未対応**: AdSense を配信しているため、Google の EU ユーザーの同意ポリシー上、EEA/UK には
+  Google 認定 CMP が必要で、自作バナーは本来これを満たさない（2026-09-09 以前からの未対応事項）。
+  [open-questions.md](./open-questions.md) 参照。
 
 ## score機能の新規収益化検討（2026-07-11〜）
 

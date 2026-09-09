@@ -1,6 +1,8 @@
 // src/components/CookieConsent.tsx
 import { useEffect, useState } from 'react';
 
+import { isConsentExemptRegion } from '@/lib/consentRegion';
+
 type Props = {
   onAccept: () => void;
   onDecline?: () => void;
@@ -10,6 +12,11 @@ const CookieConsent = ({ onAccept, onDecline }: Props) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // 免除地域（日本）にはバナーを出さない。同意状態の付与自体は _app.tsx の
+    // gtag 初期化 inline スクリプトが初回 page_view より前に済ませている。
+    // 根拠と判定の限界は lib/consentRegion.ts を参照。
+    if (isConsentExemptRegion()) return;
+
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
       setVisible(true);

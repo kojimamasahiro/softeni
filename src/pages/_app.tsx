@@ -10,6 +10,7 @@ import AppShell from '@/components/AppShell';
 import CookieConsent from '@/components/CookieConsent';
 import Footer from '@/components/Footer';
 import { attachInternalLinkTracking, trackConsentChoice } from '@/lib/analytics';
+import { CONSENT_EXEMPT_TIME_ZONE, isConsentExemptRegion } from '@/lib/consentRegion';
 
 export default function App({ Component, pageProps }: AppProps) {
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -22,7 +23,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
     // 同意状態の「復元」は inline スクリプト側で初回 page_view より前に行う。
     // ここではバナー表示の制御のみを担当する（計測には影響させない）。
-    if (localStorage.getItem('cookieConsent') === 'true') {
+    // 免除地域（日本）はバナーを出さないので、同意済みと同じ扱いにする。
+    if (isConsentExemptRegion() || localStorage.getItem('cookieConsent') === 'true') {
       setHasConsent(true);
     }
 
@@ -88,16 +90,31 @@ export default function App({ Component, pageProps }: AppProps) {
                 wait_for_update: 500
               });
 
-              // 再訪ユーザーは初回 page_view より前に同意を復元する。
+              // 同意状態は初回 page_view より前にここで確定させる。
               // これをしないと「同意済みなのに初回PVだけ denied 計測」になる。
+              //
+              // granted にするのは次のいずれか:
+              //   (a) 免除地域（日本）からのアクセス — 日本ではオプトイン同意が要件ではなく、
+              //       外部送信は /privacy の「外部送信について」で公表している。
+              //       判定の根拠と限界は lib/consentRegion.ts のコメントが正。
+              //   (b) 過去にバナーで「同意する」を押した再訪ユーザー
+              // ただし過去に「拒否する」を押した人の選択は地域に関わらず優先する。
+              var consentExempt = false;
               try {
-                if (localStorage.getItem('cookieConsent') === 'true') {
-                  gtag('consent', 'update', {
-                    ad_storage: 'granted',
-                    analytics_storage: 'granted'
-                  });
-                }
+                consentExempt = Intl.DateTimeFormat().resolvedOptions().timeZone === '${CONSENT_EXEMPT_TIME_ZONE}';
               } catch (e) {}
+
+              var storedConsent = null;
+              try {
+                storedConsent = localStorage.getItem('cookieConsent');
+              } catch (e) {}
+
+              if (storedConsent !== 'false' && (consentExempt || storedConsent === 'true')) {
+                gtag('consent', 'update', {
+                  ad_storage: 'granted',
+                  analytics_storage: 'granted'
+                });
+              }
 
               // クッキー不可の環境でも計測ロスを抑える設定。
               gtag('set', 'url_passthrough', true);
