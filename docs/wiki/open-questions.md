@@ -543,6 +543,85 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 → [raw/2026-09-09-incare-2026-serp-position-and-title-budget.md](../raw/2026-09-09-incare-2026-serp-position-and-title-budget.md)
 
+## プロジェクトの skill が2箇所に分かれている（2026-09-09 追加 → 同日解決）
+
+**解決**: 個人 skill 側にあった4つを `.claude/skills/` へ移した（選択肢 a）。
+`tournament-insight` / `tournament-pdf-to-players` / `tournament-venue-data` / `idea-backlog`。
+いずれも `data/tournaments/**` や `docs/wiki/**` を直接指す**このリポジトリ専用**の手順書で、
+汎用 skill（docx / pdf / xlsx / skill-creator 等）とは性質が違う。
+移動後に個人 skill 側は削除した（同名が2箇所にあると発火が曖昧になるため）。
+以降は skill の変更が PR に載り、他のマシン・他の人にも届く。
+
+以下は経緯の記録。
+
+### 当時の状況
+
+同じプロジェクト向けの skill が、リポジトリの内と外に分かれている。
+
+| skill | 実体 | git |
+|---|---|---|
+| `tournament-pdf-to-results` | `.claude/skills/tournament-pdf-to-results/` | 追跡されている |
+| `tournament-insight` / `tournament-pdf-to-players` / `tournament-venue-data` / `idea-backlog` | `~/Library/Application Support/Claude/.../skills-plugin/.../skills/` | 追跡されていない |
+
+**実害が出ている**: 2026-09-09 に `tournament-insight` へ工程5（決着した種目の OGP 画像生成）と
+工程3の注意（照合の主語引き継ぎ）を足したが、これは**このマシンにしか無い**。
+他のマシン・他の人・PR のレビューからは見えない。手順書としては
+[tournament-insights.md](./tournament-insights.md) が「作業手順そのものは skill にある」と
+明記しているので、参照先が版管理されていないことになる。
+
+選択肢: (a) 全部 `.claude/skills/` へ移してリポジトリで版管理する、
+(b) 個人 skill のままにして wiki 側に手順を寄せる、(c) 現状維持。**未判断**。
+
+→ [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
+
+## OGP画像の再生成がフォント環境に依存する（2026-09-09 追加）
+
+`snslib.py` はフォントを `/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc` 等の
+**システムパスから解決**する。そのため OS・ライブラリの更新でグリフの描画が変わり、
+**データが1文字も変わっていなくても再生成すると別ハッシュ＝別ファイル**になる。
+
+2026-09-09 の全件 `--apply` では **337枚中313枚**が差し替え対象になった。
+画素差は 10.1%、ただし並べて見た内容（名前・スコア・線）は完全に同一。
+このときは既存337枚を git から復元し、新規119枚だけを採用した。
+
+決定的に再現したいならフォントをリポジトリに置くか生成をコンテナ化する必要があるが、
+**現状そこまでの必要があるかは未判断**。当面は「全件再生成しない・足りないぶんだけ足す」で回る。
+
+→ [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
+
+## OGP画像が119件不足している（2026-09-09 追加 → 同日解決）
+
+**解決**: 119枚を生成して索引を 337 → 456 件にした。決勝が確定している種目は
+すべて OGP画像を持つ状態になった（未生成の20件は決勝が未確定で、既定の summary カードで正しい）。
+内訳はインターハイ24・全中18・全日本社会人12・全日本シングルス8・全日本選手権8・
+インカレ8（対抗戦2種目を含む）・中学の地区大会36・ほか。
+
+以下は経緯の記録。
+
+### 当時の状況
+
+
+`tools/sns-images/tournament_og.py` の `--only` 無し実行が 2026-08-02 から
+`TypeError` で壊れていた（同日修正）。直した直後の dry-run:
+
+```
+生成対象: 456 件 / 対象外（決勝が未確定）: 20 件
+```
+
+一方 `data/tournaments/og-images.json` は **337件**。
+**決勝が確定しているのに OGP画像を持たない種目が119件**あり、既定の summary カードに
+フォールバックしている。全件生成が回せない期間が長かったのが効いていると思われる。
+
+着手するかの判断材料: PNG 119枚で概ね 5MB がコミットに乗る（128色パレット化で1枚≒45KB）。
+既存337枚で12MB なので、リポジトリのサイズとしては同じ桁の増加。
+
+```bash
+npm run og:tournaments                      # dry-run で件数を確認
+npm run og:tournaments -- --apply           # 全件生成（既存は内容ハッシュが同じなら同名で不変）
+```
+
+→ [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。

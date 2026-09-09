@@ -1,10 +1,23 @@
 # sns-images: X投稿用画像の自動生成ツール
 
 大会データ（`data/tournaments/details/**`）からX投稿用の画像を生成する。
-依存は Pillow のみ（`.venv` にインストール済み）。
+依存は Pillow のみ。**本番ビルド（Cloudflare Pages）ではこれらのツールを走らせない**ので、
+ルートの `requirements.txt`（本番で毎回 pip install される）ではなく
+`requirements-dev.txt` に分けてある。
 
 ```bash
-source .venv/bin/activate  # または python3 を直接
+python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+source .venv/bin/activate
+```
+
+venv を有効化せずに実行したいときは `tools/sns-images/run.sh` を挟む。
+`SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3` の順に
+「Pillow の入った python」を選び、見つからなければ導入方法を案内して終了する。
+
+```bash
+npm run og:tournaments -- --changed           # 更新された種目を一覧（書き込まない）
+npm run og:tournaments -- --apply --changed   # 更新された種目だけ生成する（通常はこれ）
+bash tools/sns-images/run.sh tools/sns-images/tournament_og.py --apply --only <tid>/<year>/<cat>
 ```
 
 ## 0. 集客特化 1日目投稿（ハイスクールジャパンカップ向け）

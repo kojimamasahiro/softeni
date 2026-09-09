@@ -24,10 +24,18 @@
 設計の親: docs/raw/2026-06-22-news-ogp-image-design.md
 トーナメント表の描き方: lib/bracketDrawing.ts / docs/wiki/public-pages.md
 
-使い方:
-  python tools/sns-images/tournament_og.py                 # 生成対象を一覧（書き込まない）
-  python tools/sns-images/tournament_og.py --apply         # 生成して書き込む
-  python tools/sns-images/tournament_og.py --apply --only highschool-championship
+使い方（`npm run og:tournaments -- <args>` でもよい。python の選び方は tools/sns-images/run.sh）:
+  tournament_og.py                              # 生成対象を一覧（書き込まない）
+  tournament_og.py --changed                    # 更新された種目だけを一覧
+  tournament_og.py --apply --changed            # 更新された種目だけ生成する（通常はこれ）
+  tournament_og.py --apply --only highschool-championship/2026/doubles-none-boys
+  tournament_og.py --apply --all                # 全種目。下記の理由で通常は使わない
+
+**`--apply` に `--changed` / `--only` / `--all` のいずれも付けないとエラーで止まる。**
+理由: フォントを OS のシステムパスから解決しているため、**データが1文字も変わっていなくても
+再生成すると別ビットマップ＝別ハッシュ＝別ファイル**になる。2026-09-09 の実測では全件 --apply で
+337枚中313枚が差し替え対象になった（画素差 10.1%、並べて見た内容は完全に同一）。
+見た目の変わらない差分を12MBぶん積むだけなので、対象の明示を必須にしている。
 """
 import argparse
 import glob
@@ -36,6 +44,7 @@ import io
 import json
 import os
 import re
+import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -239,15 +248,93 @@ def render(data):
     return img
 
 
+def _git(*argv):
+    """git を呼んで stdout を返す。失敗したら None（git が無い / ref が無い環境でも落とさない）。"""
+    try:
+        out = subprocess.run(['git', *argv], cwd=ROOT, capture_output=True, text=True, check=False)
+    except FileNotFoundError:
+        return None
+    return out.stdout if out.returncode == 0 else None
+
+
+def changed_categories(base):
+    """`data/tournaments/details/**` のうち更新されたものを {(tid, year, cat)} で返す。
+
+    「更新があった大会だけ」を機械的に決めるための入口。対象は
+      - 未コミットの変更（`git status`）
+      - `base`（既定 origin/main）から現在のブランチまでの変更（`git diff base...HEAD`）
+    の和。取り込み→コミット→後日インサイト→OGP、という順で作業しても拾えるように
+    2つを足している。
+
+    なぜ必要か（2026-09-09）:
+      レンダリングはシステムフォントに依存するので、**データが1文字も変わっていなくても
+      再生成すると別ハッシュ＝別ファイルになる**。実測で 337 枚中 313 枚が差し替わった
+      （画素差 10.1%、内容は完全に同一）。全件 --apply は見た目の変わらない churn を
+      12MB ぶん積むだけなので、更新された種目だけに絞る手段が要る。
+      詳細は docs/wiki/public-pages.md「大会 年度別結果ページの OGP 画像」。
+    """
+    rel = os.path.relpath(DETAILS, ROOT)
+    paths = set()
+
+    status = _git('status', '--porcelain', '--', rel)
+    if status:
+        for line in status.splitlines():
+            # `XY <path>` / リネームは `XY <old> -> <new>`
+            entry = line[3:].strip()
+            if ' -> ' in entry:
+                entry = entry.split(' -> ', 1)[1]
+            paths.add(entry.strip('"'))
+
+    diff = _git('diff', '--name-only', f'{base}...HEAD', '--', rel) if base else None
+    if diff is None and base:
+        # base が解決できない（fetch していない / 単独クローン）。未コミット分だけで続行する。
+        print(f'  警告: `{base}` を解決できないため、未コミットの変更だけを対象にします', file=sys.stderr)
+    elif diff:
+        paths.update(line.strip() for line in diff.splitlines() if line.strip())
+
+    out = set()
+    for pth in paths:
+        parts = pth.split('/')
+        if len(parts) < 3 or not parts[-1].endswith('.json'):
+            continue
+        out.add((parts[-3], parts[-2], parts[-1][:-5]))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--apply', action='store_true', help='PNG と索引を書き込む')
     ap.add_argument('--only', help='限定フィルタ。tournamentId / tournamentId/year / tournamentId/year/category の形式で指定')
+    ap.add_argument('--changed', action='store_true',
+                    help='data/tournaments/details/** が更新された種目だけを対象にする（未コミット分 + --base からの差分）')
+    ap.add_argument('--base', default='origin/main', help='--changed の比較先。既定 origin/main')
+    ap.add_argument('--all', action='store_true',
+                    help='全種目を対象に --apply する。既存の画像もフォント差で差し替わるので、意図するときだけ付ける')
     args = ap.parse_args()
 
-    # --only フィルタをパース
-    only_parts = args.only.split('/') if args.only else None
-    only_tid = only_parts[0] if only_parts else None
+    # 全件 --apply は既存画像をほぼ全部差し替える（フォントの解決結果が環境で変わるため。
+    # 2026-09-09 実測で 337 枚中 313 枚）。事故を防ぐため、書き込み時は対象の明示を必須にする。
+    if args.apply and not (args.only or args.changed or args.all):
+        print(
+            '--apply には --changed / --only / --all のいずれかが必要です。\n'
+            '  --changed  更新された種目だけ（通常はこれ）\n'
+            '  --only     tournamentId[/year[/category]] で明示\n'
+            '  --all      全種目。既存画像もフォント差で差し替わるので、意図するときだけ\n'
+            '対象の確認だけなら --apply を外して dry-run してください。',
+            file=sys.stderr)
+        return 2
+
+    changed = changed_categories(args.base) if args.changed else None
+    if changed is not None:
+        print(f'--changed: 更新された種目 {len(changed)} 件を対象にします')
+        for tid, year, cat in sorted(changed):
+            print(f'    {tid}/{year}/{cat}')
+
+    # --only フィルタをパース。--only 省略時は only_parts が空リストになるので全件が対象。
+    # （2026-09-09 修正: ここは None を返していて `len(None)` で TypeError になり、
+    #  --only 無しの実行＝docstring と wiki が案内している「生成対象を一覧」が動かなかった）
+    only_parts = args.only.split('/') if args.only else []
+    only_tid = only_parts[0] if len(only_parts) > 0 else None
     only_year = only_parts[1] if len(only_parts) > 1 else None
     only_cat = only_parts[2] if len(only_parts) > 2 else None
 
@@ -257,6 +344,8 @@ def main():
     for path in sorted(glob.glob(os.path.join(DETAILS, '*', '*', '*.json'))):
         tid, year, fname = path.split(os.sep)[-3:]
         cat = fname[:-5]
+        if changed is not None and (tid, year, cat) not in changed:
+            continue
         if only_tid and not tid.startswith(only_tid):
             continue
         if only_year and year != only_year:
@@ -316,4 +405,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main() の戻り値を終了コードにする。--apply のガードが 2 を返しても、
+    # sys.exit を通さないと 0 で終わってエラーが呼び出し側から見えない。
+    sys.exit(main() or 0)

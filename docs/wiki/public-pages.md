@@ -508,15 +508,53 @@ GSC「イベント」拡張レポートで `SportsEvent` の推奨項目不足�
   「その組が直前に勝った試合」を辿るだけなので、**予選リーグを含む大会でも生成でき**、
   ラウンド名の表記ゆれ（決勝を「4回戦」と書く大会）にも影響されない。316大会中**311件**で生成。
   残りは決勝が未確定で、既定の summary カードにフォールバックする。
-- 生成: `python tools/sns-images/tournament_og.py --apply`（Pillow、`snslib.py` のブランド配色を流用）。
-  **ローカル生成してPNGをコミットする**（`news_og.py` と同じ方針。本番ビルドに画像生成の依存を
-  増やさない）。128色パレット化で 12MB / 311枚。RGBのままだと3倍近くになり git に重い。
+- 生成: `.venv/bin/python tools/sns-images/tournament_og.py --apply`（Pillow、`snslib.py` の
+  ブランド配色を流用）。**ローカル生成してPNGをコミットする**（`news_og.py` と同じ方針。
+  本番ビルドに画像生成の依存を増やさない）。128色パレット化で 12MB / 311枚。
+  RGBのままだと3倍近くになり git に重い。
+  - **`npm run og:tournaments` でよい**（2026-09-09 修正）。中身が `python3 …` だった頃は
+    `ModuleNotFoundError: No module named 'PIL'` で必ず落ちていた（Pillow は本番ビルドで
+    使わないのでルートの `requirements.txt` に入れておらず、`.venv` にしか無い）。
+    現在は `tools/sns-images/run.sh` が「Pillow の入った python」を選んで実行する
+    （`SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3`）。見つからなければ
+    `pip install -r requirements-dev.txt` を案内して終了する。
+    引数は `npm run og:tournaments -- --apply --only <tid>/<year>/<cat>` の形で渡す。
+  - **`--only` 無しの実行も直した**（同日）。`only_parts` が `None` のまま `len()` に渡されて
+    `TypeError` になっており、docstring と本節が案内していた「生成対象を一覧」が
+    **2026-08-02 以降ずっと動いていなかった**。
+  - **通常は `--changed`**（2026-09-09 追加）。`data/tournaments/details/**` の更新から対象を
+    機械的に決める。**未コミットの変更**（`git status`）＋ **`--base`（既定 `origin/main`）から
+    ブランチまでの差分**の和なので、取り込み→コミット→後日 OGP という順でも拾える。
+    対象は実行時に一覧表示される。
+  - **`--apply` は `--changed` / `--only` / `--all` のどれかが無いとエラーで止まる。**
+    全件再生成が既存をほぼ全部差し替える（下記）ため、対象の明示を必須にしている。
+    `--all` が従来の全件。
+  - 手で絞るときは `--only <tid>` / `<tid>/<year>` / `<tid>/<year>/<categoryId>`。
+    索引は既存とマージされるので他の大会は消えない。
+    **`tournamentId` は前方一致**なので `--only zennihon-university` は
+    `zennihon-university-indoor` / `-ouza` も巻き込む。種目まで指定して絞ること。
+  - **決勝が未確定の種目は生成されない**（`render()` が None を返し「対象外（決勝が未確定）」に
+    計上される）。したがって**大会の決着後に走らせる工程**になる。手順は skill `tournament-insight`
+    の工程5。
 - 索引は `data/tournaments/og-images.json`。**details JSON には書き戻さない**（matches の忠実な
   記録のままにしたいので、画像の有無という表示都合を混ぜない）。ページ側は
   `lib/tournamentOgImage.ts` が索引を読み、あれば `MetaHead` に `image` /
   `imageWidth=1200` / `imageHeight=630` / `twitterCardType='summary_large_image'` を渡す。
 - ファイル名に内容ハッシュを付けているので、データ修正→再生成で別名になりキャッシュを踏まない。
   古いPNGは再生成時に掃除される。
+- **全件 `--apply` は既存の画像もほぼ全部差し替える**（2026-09-09 実測: 337枚中 **313枚**）。
+  フォントを `/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc` 等の**システムパスから解決**して
+  いるため（`snslib.py` の `_FONT_CANDIDATES_*`）、OS やライブラリの更新でグリフの描画が変わり、
+  **中身が同じでもハッシュが変わる**。画素差を実測したところ 10.1% のピクセルが変化していたが、
+  並べて見た内容（名前・スコア・線）は完全に同一だった。
+  - つまり全件再生成の差分は**大半が意味の無い churn**。1枚45KB前後なので、
+    313枚の差し替えは12MB前後の履歴を積むだけで見た目は変わらない。
+  - **`--changed` を通していればこの問題は起きない**（更新された種目しか触らないため）。
+    2026-09-09 の119枚追加は `--changed` を実装する前だったので、全件生成してから
+    「既存キーの再レンダ分」を捨てて索引をマージし直した（既存337枚は git から復元）。
+    コミット前に `git status` を見て、**既存 PNG の削除・差し替えが0件**であることを確かめる。
+  - 逆に、**フォント環境を揃えないと決定的な再現はできない**。再現性が要るなら
+    フォントをリポジトリに置くか生成をコンテナ化する必要があるが、未対応。
 - 対象は年度別結果ページのみ。大会ハブ・選手ページは従来どおり既定の summary カード
   （2026-06-22 の設計メモの結論を、トーナメント表ができたこの1面についてだけ更新した）。
 

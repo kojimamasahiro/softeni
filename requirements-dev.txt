@@ -1,0 +1,8 @@
+# ローカル専用の依存。**本番ビルドでは使わない**ので requirements.txt とは分けている
+# （Cloudflare Pages はルートの requirements.txt を検出して毎回 pip install するため、
+#  そちらに足すと本番ビルドの依存が増える）。
+#
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+#
+# tools/sns-images/* （OGP画像・SNS投稿画像の生成）が使う。
+Pillow==11.3.0
