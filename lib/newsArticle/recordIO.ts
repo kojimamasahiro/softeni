@@ -25,12 +25,20 @@ export function readJson<T>(filePath: string): T | null {
 
 export function tournamentMetaOf(tournamentId: string): {
   label: string;
+  /** 検索で使われる大会名。未設定なら null。docs/wiki/seo.md「大会名の表記と検索語の乖離」 */
+  searchLabel: string | null;
+  /** 略称。未設定なら空配列 */
+  searchAliases: string[];
   generationId: string;
 } {
-  const idx = readJson<Array<{ tournamentId: string; label?: string; generationId?: string }>>(path.join(resolveRoot(), 'data', 'tournaments', 'index.json'));
+  const idx = readJson<Array<{ tournamentId: string; label?: string; searchLabel?: string; searchAliases?: string[]; generationId?: string }>>(
+    path.join(resolveRoot(), 'data', 'tournaments', 'index.json'),
+  );
   const hit = idx?.find((t) => t.tournamentId === tournamentId);
   return {
     label: hit?.label ?? tournamentId,
+    searchLabel: hit?.searchLabel ?? null,
+    searchAliases: hit?.searchAliases ?? [],
     generationId: hit?.generationId ?? '',
   };
 }

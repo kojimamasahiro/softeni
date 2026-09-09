@@ -508,6 +508,41 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 ---
 
+## 大会の略称マスタが3つに分かれている（2026-09-09 追加）
+
+同じ「大会の通称・検索名」を持つマスタが3つある。
+
+| マスタ | 対象 | 使う場所 |
+|---|---|---|
+| `data/tournaments/index.json` の `searchLabel` / `searchAliases` | 汎用ルートの大会 | 大会ハブ・年度別結果・展望/結果記事の title / h1 / description |
+| `lib/highschoolNationalTournamentMeta.ts` の `aliases` | 高校全国大会 | `/highschool/tournaments/[tournament]` |
+| `lib/nationalTitles.ts` の `aliases` | 全国大会（優勝判定用） | 選手ページの勲章カード・「全国大会優勝」SEO 文言 |
+
+分けた理由は `lib/tournamentSearchNames.ts` 冒頭に記録済み（対象集合が違う）だが、
+**実害が出はじめている**。2026-09-09 に展望/結果記事の title を `searchLabel` 経由に
+切り替えたところ、`index.json` 側が空の高校全国大会だけが取り残され、
+`/news/highschool-championship-2026/` の title は「全国高等学校総合体育大会2026 展望…」の
+ままで「インターハイ」literal を持たない。
+
+選択肢: (a) 高校全国大会にも `index.json` の `searchLabel`/`searchAliases` を入れて
+二重管理する、(b) 高校マスタを `index.json` 側へ寄せる、(c) news ルートだけ
+高校マスタも引く。**未判断**。
+
+→ [seo.md](./seo.md)「title の字数超過（大会ページ）と「インカレ 2026」の順位」、
+[raw/2026-09-09-incare-2026-serp-position-and-title-budget.md](../raw/2026-09-09-incare-2026-serp-position-and-title-budget.md)
+
+## 汎用ハブへの「開催中モード」移植（2026-09-09 追加）
+
+会期中に title / h1 / description を「{通称}{年} 結果・途中経過」インテントへ切り替える仕組み
+（[seo.md](./seo.md) #11・2026-08-01）は `/highschool/tournaments/[tournament]` 専用で、
+汎用ハブ `/tournaments/[generation]/[tournamentId]/` には入っていない。
+インカレ・全中・全日本選手権・全日本社会人など**汎用ルートの大会は全部この恩恵を受けていない**。
+
+2026-09-09 に汎用ハブへ「最新収録年」を literal で入れる対策までは実施したが、
+会期中の途中経過インテントへの切替は未実装。期限は次に会期を迎える汎用ルートの大会の前。
+
+→ [raw/2026-09-09-incare-2026-serp-position-and-title-budget.md](../raw/2026-09-09-incare-2026-serp-position-and-title-budget.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
