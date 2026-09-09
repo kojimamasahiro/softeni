@@ -15,8 +15,9 @@ venv を有効化せずに実行したいときは `tools/sns-images/run.sh` を
 「Pillow の入った python」を選び、見つからなければ導入方法を案内して終了する。
 
 ```bash
+npm run og:tournaments -- --changed           # 更新された種目を一覧（書き込まない）
+npm run og:tournaments -- --apply --changed   # 更新された種目だけ生成する（通常はこれ）
 bash tools/sns-images/run.sh tools/sns-images/tournament_og.py --apply --only <tid>/<year>/<cat>
-npm run og:tournaments -- --apply --only <tid>/<year>/<cat>   # OGP画像はこれでよい
 ```
 
 ## 0. 集客特化 1日目投稿（ハイスクールジャパンカップ向け）

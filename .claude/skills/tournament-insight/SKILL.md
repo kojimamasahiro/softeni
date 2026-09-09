@@ -174,24 +174,40 @@ prebuild がこれを走らせ、**`verifiedAt` の値を信用せずその場�
 **インサイトを完了版で出せる条件と同じ**なので、公開と同じタイミングで生成する。
 進行中の種目では生成されないので、この工程は「試合が終わっているときだけ」走る。
 
+**対象は「更新があった大会」だけに絞る。`--changed` を使う。**
+
 ```bash
-# dry-run（何件対象になるかだけ見る）
-npm run og:tournaments -- --only <tid>/<year>/<categoryId>
-# 生成して書き込む
-npm run og:tournaments -- --apply --only <tid>/<year>/<categoryId>
+# 1. 何が対象になるか確認する（書き込まない）
+npm run og:tournaments -- --changed
+# 2. 生成して書き込む
+npm run og:tournaments -- --apply --changed
 ```
 
+`--changed` は `data/tournaments/details/**` の更新から対象を機械的に決める。
+**未コミットの変更**（`git status`）＋ **`--base`（既定 `origin/main`）からブランチまでの差分**
+の和なので、取り込み→コミット→後日インサイト→OGP という順で作業しても拾える。
+対象は実行時に一覧表示されるので、**目で見て今回の作業と一致することを確認してから `--apply`**。
+
+- **全種目を対象にする `--apply` は避ける。** レンダリングは OS のシステムフォントに
+  依存しているので、**データが1文字も変わっていなくても再生成すると別ハッシュ＝別ファイル**に
+  なる。2026-09-09 の実測では全件 `--apply` で**337枚中313枚**が差し替え対象になった
+  （画素差 10.1%、並べて見た内容は完全に同一）。見た目の変わらない差分を12MBぶん積むだけ。
+  この事故を防ぐため、`--apply` は `--changed` / `--only` / `--all` のどれかが無いと
+  エラーで止まる（`--all` が全種目。意図するときだけ）
+- 手で絞りたいときは `--only <tid>/<year>/<categoryId>`。
+  **`tournamentId` は前方一致**なので `--only zennihon-university` は
+  `zennihon-university-indoor` / `-ouza` まで巻き込む。種目まで書くこと
 - `npm run og:tournaments` は `tools/sns-images/run.sh` 経由で「Pillow の入った python」を
   選ぶ（`SNS_IMAGES_PYTHON` > 有効化済み venv > `.venv` > `python3`）。無ければ
   `pip install -r requirements-dev.txt` を案内して止まる。
   **`python3 tools/sns-images/tournament_og.py` を直接叩かないこと**——Pillow は本番ビルドで
   使わないのでルートの `requirements.txt` に入れておらず、`.venv` にしか無い
-- **`--only` の `tournamentId` は前方一致。** `--only zennihon-university` は
-  `zennihon-university-indoor` / `zennihon-university-ouza` まで巻き込む。
-  `<tid>/<year>/<categoryId>` と種目まで書いて絞ること
 - 生成物は `public/og/tournaments/<tid>-<year>-<cat>-<hash8>.png` と索引
   `data/tournaments/og-images.json`（既存索引にマージされる）。**両方コミットする**
   ——本番ビルドに画像生成の依存を増やさない方針のため、PNG は git に載せる
+- **コミット前に `git status` を見る。** `--changed` を通していれば追加は今回の種目分だけで、
+  既存 PNG の削除・差し替えは 0 件になるはず。差し替えが出ていたら対象の絞り込みが
+  効いていないので、そのままコミットしない
 - **決勝が未確定の種目には生成されない。** `render()` が None を返し、出力の
   「対象外（決勝が未確定）」に計上される。ページ側は `lib/tournamentOgImage.ts` が
   索引を引き、無ければ既定の summary カードへフォールバックする
