@@ -543,7 +543,18 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 → [raw/2026-09-09-incare-2026-serp-position-and-title-budget.md](../raw/2026-09-09-incare-2026-serp-position-and-title-budget.md)
 
-## プロジェクトの skill が2箇所に分かれている（2026-09-09 追加）
+## プロジェクトの skill が2箇所に分かれている（2026-09-09 追加 → 同日解決）
+
+**解決**: 個人 skill 側にあった4つを `.claude/skills/` へ移した（選択肢 a）。
+`tournament-insight` / `tournament-pdf-to-players` / `tournament-venue-data` / `idea-backlog`。
+いずれも `data/tournaments/**` や `docs/wiki/**` を直接指す**このリポジトリ専用**の手順書で、
+汎用 skill（docx / pdf / xlsx / skill-creator 等）とは性質が違う。
+移動後に個人 skill 側は削除した（同名が2箇所にあると発火が曖昧になるため）。
+以降は skill の変更が PR に載り、他のマシン・他の人にも届く。
+
+以下は経緯の記録。
+
+### 当時の状況
 
 同じプロジェクト向けの skill が、リポジトリの内と外に分かれている。
 
