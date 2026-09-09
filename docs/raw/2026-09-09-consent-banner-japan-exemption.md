@@ -95,6 +95,37 @@ EEA / 英国 / スイス:
 - タイムゾーン判定を後から Cloudflare の国判定で補強する案（同期判定で暫定決定 → 非同期で
   訂正）は、複雑さに見合わないと判断して見送り。必要になったら再検討。
 
+## 追記（同日）: dev から計測を送らないようにする
+
+バナー廃止の直後に「dev は送られないようにしたい」。日本が同意なしで granted になったことで、
+**開発機がまさにその条件に当たる**ため、以前より本番プロパティに混ざりやすくなっていた。
+
+`src/pages/_app.tsx` で `isDevelopment()`（`lib/env.ts`・既存ヘルパー）を使い、開発環境では
+`GA_ID` を `undefined` にした。`{GA_ID && ...}` の既存構造にそのまま乗るので、`gtag.js` の
+読み込みも inline スクリプトも `page_view` / `internal_link_click` の送信もまとめて止まる。
+
+同意まわりを dev で確認する手段は残す必要がある（今日の検証がまさにそれだった）ので、
+`NEXT_PUBLIC_GA_IN_DEV=true` を `.env.local` に置いたときだけ有効化できる逃げ道を付けた。
+`.env.example` に注記済み。
+
+検証（`next dev`）:
+
+- 既定: `gtag-init` 無し / `googletagmanager` の script 無し / `window.dataLayer` 無し /
+  `window.gtag` undefined / googletagmanager・google-analytics へのネットワークリクエスト 0件
+- `NEXT_PUBLIC_GA_IN_DEV=true`: `gtag.js` と inline スクリプトが復活し、
+  `consent default: denied` → `update: granted` まで通る（確認後 `.env.local` は元に戻した）
+
+### この追記の積み残し
+
+- **Cloudflare Pages のプレビューデプロイ**は本番ビルド（`NODE_ENV=production`）で
+  `wrangler.toml` の `[vars]` から `NEXT_PUBLIC_GA_ID` が入るため、**この gate では止まらない**。
+  プレビューを使っているなら、inline スクリプト側で `location.hostname` を見る等の対処が要る。
+  プレビューデプロイを実際に使っているかどうかを確認していないので、対処は入れていない。
+- **AdSense スクリプトは dev でも読み込まれたまま**（`adsbygoogle.js` の `<script>` は DOM にある）。
+  localhost からの読み込みは無効なトラフィックと見なされうる一方、止めると広告枠の
+  レイアウト確認（[ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md) の主題）が
+  dev でできなくなる。トレードオフがあるので今回は触っていない。
+
 ## Compile Log
 
 docs/wiki への反映と、意図的に落としたもの。
@@ -106,6 +137,8 @@ docs/wiki への反映と、意図的に落としたもの。
 - 同意率の分母が変わること・ベースラインを取る順序 → `docs/wiki/circulation-verification.md`
 - セッション系指標が日本では読めるようになったこと → `docs/wiki/public-pages.md`
 - 認定 CMP の積み残し → `docs/wiki/open-questions.md`
+- dev で GA4 を読み込まないこと・逃げ道の env 変数・プレビューデプロイが対象外であること
+  → `docs/wiki/monetization.md`「計測」節
 
 **落とした**
 
@@ -116,3 +149,6 @@ docs/wiki への反映と、意図的に落としたもの。
   現状仕様の理解には要らない。ADR の Alternatives から本ノートを参照する形にした。
 - サイト内オプトアウト UI の案 → まだ着手判断をしていないので Open Questions にも上げず、
   raw の積み残しに留める。
+- dev の検証ログ（各ケースで何が無かったか）→ 一度きりの手元確認なので raw に留める。
+- AdSense を dev で止めるかのトレードオフ → 判断していないので wiki には書かない。
+  決めたら `monetization.md` か ADR-016 側の話になる。
