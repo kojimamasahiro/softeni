@@ -508,9 +508,21 @@ GSC「イベント」拡張レポートで `SportsEvent` の推奨項目不足�
   「その組が直前に勝った試合」を辿るだけなので、**予選リーグを含む大会でも生成でき**、
   ラウンド名の表記ゆれ（決勝を「4回戦」と書く大会）にも影響されない。316大会中**311件**で生成。
   残りは決勝が未確定で、既定の summary カードにフォールバックする。
-- 生成: `python tools/sns-images/tournament_og.py --apply`（Pillow、`snslib.py` のブランド配色を流用）。
-  **ローカル生成してPNGをコミットする**（`news_og.py` と同じ方針。本番ビルドに画像生成の依存を
-  増やさない）。128色パレット化で 12MB / 311枚。RGBのままだと3倍近くになり git に重い。
+- 生成: `.venv/bin/python tools/sns-images/tournament_og.py --apply`（Pillow、`snslib.py` の
+  ブランド配色を流用）。**ローカル生成してPNGをコミットする**（`news_og.py` と同じ方針。
+  本番ビルドに画像生成の依存を増やさない）。128色パレット化で 12MB / 311枚。
+  RGBのままだと3倍近くになり git に重い。
+  - **`python3` 直打ちと `npm run og:tournaments` は動かない**（2026-09-09 確認）。
+    Pillow は `.venv` にしか入っておらず `ModuleNotFoundError: No module named 'PIL'` になる。
+    `npm run og:tournaments` の中身は `python3 tools/sns-images/tournament_og.py` のままなので、
+    使うなら `source .venv/bin/activate` してから。
+  - 一部だけ作り直すときは `--only <tid>` / `<tid>/<year>` / `<tid>/<year>/<categoryId>`。
+    索引は既存とマージされるので他の大会は消えない。
+    **`tournamentId` は前方一致**なので `--only zennihon-university` は
+    `zennihon-university-indoor` / `-ouza` も巻き込む。種目まで指定して絞ること。
+  - **決勝が未確定の種目は生成されない**（`render()` が None を返し「対象外（決勝が未確定）」に
+    計上される）。したがって**大会の決着後に走らせる工程**になる。手順は skill `tournament-insight`
+    の工程5。
 - 索引は `data/tournaments/og-images.json`。**details JSON には書き戻さない**（matches の忠実な
   記録のままにしたいので、画像の有無という表示都合を混ぜない）。ページ側は
   `lib/tournamentOgImage.ts` が索引を読み、あれば `MetaHead` に `image` /

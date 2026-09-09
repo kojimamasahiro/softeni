@@ -543,6 +543,26 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 
 → [raw/2026-09-09-incare-2026-serp-position-and-title-budget.md](../raw/2026-09-09-incare-2026-serp-position-and-title-budget.md)
 
+## プロジェクトの skill が2箇所に分かれている（2026-09-09 追加）
+
+同じプロジェクト向けの skill が、リポジトリの内と外に分かれている。
+
+| skill | 実体 | git |
+|---|---|---|
+| `tournament-pdf-to-results` | `.claude/skills/tournament-pdf-to-results/` | 追跡されている |
+| `tournament-insight` / `tournament-pdf-to-players` / `tournament-venue-data` / `idea-backlog` | `~/Library/Application Support/Claude/.../skills-plugin/.../skills/` | 追跡されていない |
+
+**実害が出ている**: 2026-09-09 に `tournament-insight` へ工程5（決着した種目の OGP 画像生成）と
+工程3の注意（照合の主語引き継ぎ）を足したが、これは**このマシンにしか無い**。
+他のマシン・他の人・PR のレビューからは見えない。手順書としては
+[tournament-insights.md](./tournament-insights.md) が「作業手順そのものは skill にある」と
+明記しているので、参照先が版管理されていないことになる。
+
+選択肢: (a) 全部 `.claude/skills/` へ移してリポジトリで版管理する、
+(b) 個人 skill のままにして wiki 側に手順を寄せる、(c) 現状維持。**未判断**。
+
+→ [raw/2026-09-09-tournament-og-image-as-routine-step.md](../raw/2026-09-09-tournament-og-image-as-routine-step.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
