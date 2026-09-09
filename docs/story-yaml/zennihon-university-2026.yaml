@@ -1,0 +1,427 @@
+# 自動生成（scripts/generate-story-yaml.mjs）。手で編集しないこと。
+# LLMへの指示: この事実だけを使うこと。新しい数値・事実・評価を作らない、または推測しないこと。
+#   選手名・学校名・年はそのまま使うこと。scopeNote と notes.absence は必ず反映すること。
+#   related で結ばれたストーリーは同じ筋の可能性が高いので、1つの段落にまとめてよい。
+
+tournament:
+  tournamentId: 'zennihon-university'
+  year: 2026
+  label: 全日本学生選手権大会 2026
+  scope: 当サイト収録大会分（2023・2024・2025・2026年）から算出
+
+stories:
+  - id: 'zennihon-university-2026-doubles-none-boys-title-won-1'
+    category: 成長
+    kind: 'title-won'
+    categoryId: 'doubles-none-boys'
+    priority: 1
+    subject:
+      players: [川﨑康平, 黒坂卓矢]
+      subjectKeys: [川﨑康平, 黒坂卓矢]
+      opponents: [安達宣, 植田璃音]
+    round: 決勝
+    facts:
+      runnerUp: 安達宣・植田璃音
+      finalScore: '5-2'
+      titleCount: 1
+      isFirstTitle: true
+      semifinalOpponent: 安部蓮生・野口快
+      semifinalScore: '5-4'
+    text: '2026年の優勝は川﨑康平・黒坂卓矢。決勝は安達宣・植田璃音に5-2、準決勝は安部蓮生・野口快に5-4。当サイト収録範囲では初優勝。'
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-best8-streak-1', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-doubles-none-boys-best8-streak-2', relation: counterpart }
+  - id: 'zennihon-university-2026-doubles-none-girls-title-won-1'
+    category: 継続
+    kind: 'title-won'
+    categoryId: 'doubles-none-girls'
+    priority: 1
+    subject:
+      players: [中谷さくら, 前田梨緒]
+      subjectKeys: [中谷さくら, 前田梨緒]
+      opponents: [吉木理彩, 岩田愛美]
+    round: 決勝
+    facts:
+      runnerUp: 吉木理彩・岩田愛美
+      finalScore: '5-4'
+      titleCount: 2
+      isFirstTitle: false
+      repeatFrom: 2
+      previousTitleYear: 2025
+      semifinalOpponent: 江口咲礼紗・西村ひよ
+      semifinalScore: '5-0'
+    text: '2026年の優勝は中谷さくら・前田梨緒。決勝は吉木理彩・岩田愛美に5-4、準決勝は江口咲礼紗・西村ひよに5-0。前回の優勝は2025年。'
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-girls-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-doubles-none-girls-best8-streak-3', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-girls-pair-rematch-1'
+    category: 再会
+    kind: 'pair-rematch'
+    categoryId: 'doubles-none-girls'
+    priority: 5
+    subject:
+      players: [向山せら, 松岡琴美, 岩元望美, 本間友里那]
+      subjectKeys: [向山せら, 松岡琴美, 岩元望美, 本間友里那]
+    facts:
+      priorYear: 2025
+      priorRound: 5回戦
+      currentRound: 5回戦
+      revenge: false
+    text: 5回戦の向山せら・松岡琴美対岩元望美・本間友里那は、2025年5回戦と同じ顔合わせ。向山せら・松岡琴美が再び勝った。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-doubles-none-boys-best8-streak-1'
+    category: 継続
+    kind: 'best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 6
+    subject:
+      players: [黒坂卓矢]
+      subjectKeys: [黒坂卓矢]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年優勝 / 2024年ベスト4 / 2025年優勝 / 2026年優勝
+    text: 黒坂卓矢は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-title-won-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-boys-best8-streak-2'
+    category: 継続
+    kind: 'best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 6
+    subject:
+      players: [安達宣]
+      subjectKeys: [安達宣]
+    facts:
+      streakYears: 3
+      since: 2024
+      resultsByYear: 2024年準優勝 / 2025年ベスト4 / 2026年準優勝
+    text: 安達宣は3年連続でベスト8以上に入っている（2024年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-doubles-none-girls-best8-streak-1'
+    category: 継続
+    kind: 'best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 6
+    subject:
+      players: [天間美嘉]
+      subjectKeys: [天間美嘉]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年ベスト4 / 2025年準優勝 / 2026年ベスト4
+    text: 天間美嘉は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-doubles-none-girls-best8-streak-2'
+    category: 継続
+    kind: 'best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 6
+    subject:
+      players: [前田梨緒]
+      subjectKeys: [前田梨緒]
+    facts:
+      streakYears: 3
+      since: 2024
+      resultsByYear: 2024年準優勝 / 2025年優勝 / 2026年優勝
+    text: 前田梨緒は3年連続でベスト8以上に入っている（2024年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-girls-title-won-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-girls-best8-streak-3'
+    category: 継続
+    kind: 'best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 6
+    subject:
+      players: [中谷さくら]
+      subjectKeys: [中谷さくら]
+    facts:
+      streakYears: 3
+      since: 2024
+      resultsByYear: 2024年準優勝 / 2025年優勝 / 2026年優勝
+    text: 中谷さくらは3年連続でベスト8以上に入っている（2024年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-girls-title-won-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-girls-self-best-1'
+    category: 成長
+    kind: 'self-best'
+    categoryId: 'doubles-none-girls'
+    priority: 7
+    subject:
+      players: [江口咲礼紗]
+      subjectKeys: [江口咲礼紗]
+    facts:
+      before: ベスト8
+      after: ベスト4
+      resultsByYear: 2024年ベスト8 / 2026年ベスト4
+    text: 江口咲礼紗は、これまでの最高ベスト8を上回るベスト4となった。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-doubles-none-boys-streak-stopped-1'
+    category: 衰退
+    kind: 'streak-stopped'
+    categoryId: 'doubles-none-boys'
+    priority: 8
+    subject:
+      players: [片岡暁紀]
+      subjectKeys: [片岡暁紀]
+    facts:
+      streakYears: 3
+      through: 2025
+      resultsByYear: 2023年優勝 / 2024年ベスト4 / 2025年優勝
+    text: 片岡暁紀は2025年まで3年連続でベスト8以上だったが、2026年は出場記録がない。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    notes:
+      absence: 2026年の出場記録なし（理由はデータからは判断できない）
+  - id: 'zennihon-university-2026-singles-none-boys-streak-stopped-1'
+    category: 衰退
+    kind: 'streak-stopped'
+    categoryId: 'singles-none-boys'
+    priority: 8
+    subject:
+      players: [橋場柊一郎]
+      subjectKeys: [橋場柊一郎]
+    facts:
+      streakYears: 3
+      through: 2025
+      resultsByYear: 2023年優勝 / 2024年準優勝 / 2025年優勝
+    text: 橋場柊一郎は2025年まで3年連続でベスト8以上だったが、2026年はベスト8に届かなかった。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [早稲田]
+      subjectKeys: [早稲田]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト8 / 2024年準優勝 / 2025年ベスト4 / 2026年準優勝
+    text: 早稲田は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-5', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-boys'
+    priority: 9
+    subject:
+      teams: [日本体育]
+      subjectKeys: [日本体育]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年優勝 / 2024年ベスト4 / 2025年優勝 / 2026年優勝
+    text: 日本体育は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 9
+    subject:
+      teams: [國學院大學]
+      subjectKeys: [國學院大學]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年優勝 / 2024年優勝 / 2025年ベスト8 / 2026年ベスト8
+    text: 國學院大學は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-2', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'doubles-none-girls'
+    priority: 9
+    subject:
+      teams: [日本体育]
+      subjectKeys: [日本体育]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年ベスト4 / 2025年準優勝 / 2026年準優勝
+    text: 日本体育は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-1', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-boys'
+    priority: 9
+    subject:
+      teams: [日本体育]
+      subjectKeys: [日本体育]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト8 / 2024年ベスト4 / 2025年準優勝 / 2026年優勝
+    text: 日本体育は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-3', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-boys'
+    priority: 9
+    subject:
+      teams: [法政]
+      subjectKeys: [法政]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年準優勝 / 2025年優勝 / 2026年ベスト8
+    text: 法政は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-boys'
+    priority: 9
+    subject:
+      teams: [中央]
+      subjectKeys: [中央]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年準優勝 / 2024年ベスト4 / 2025年ベスト4 / 2026年ベスト4
+    text: 中央は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+  - id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-4'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-boys'
+    priority: 9
+    subject:
+      teams: [明治]
+      subjectKeys: [明治]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年優勝 / 2024年ベスト8 / 2025年ベスト4 / 2026年ベスト8
+    text: 明治は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-5'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-boys'
+    priority: 9
+    subject:
+      teams: [早稲田]
+      subjectKeys: [早稲田]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年優勝 / 2025年ベスト8 / 2026年ベスト4
+    text: 早稲田は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-1'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-girls'
+    priority: 9
+    subject:
+      teams: [明治]
+      subjectKeys: [明治]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年ベスト4 / 2025年準優勝 / 2026年準優勝
+    text: 明治は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-4', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-2'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-girls'
+    priority: 9
+    subject:
+      teams: [國學院大學]
+      subjectKeys: [國學院大學]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年ベスト4 / 2024年ベスト4 / 2025年ベスト4 / 2026年ベスト8
+    text: 國學院大學は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-1', relation: 'same-subject' }
+  - id: 'zennihon-university-2026-versus-none-girls-school-best8-streak-3'
+    category: 継続
+    kind: 'school-best8-streak'
+    categoryId: 'versus-none-girls'
+    priority: 9
+    subject:
+      teams: [日本体育]
+      subjectKeys: [日本体育]
+    facts:
+      streakYears: 4
+      since: 2023
+      resultsByYear: 2023年優勝 / 2024年優勝 / 2025年優勝 / 2026年優勝
+    text: 日本体育は4年連続でベスト8以上に入っている（2023年〜）。
+    scopeNote: 当サイト収録大会分の集計に基づきます。
+    related:
+      - { id: 'zennihon-university-2026-doubles-none-boys-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-doubles-none-girls-school-best8-streak-2', relation: 'same-subject' }
+      - { id: 'zennihon-university-2026-versus-none-boys-school-best8-streak-1', relation: 'same-subject' }
+
+# ストーリーにはしないが一覧として出す事実（LLMの執筆は不要。そのままリスト表示する）
+records:
+  doubles-none-boys:
+    firstBest8:
+      - { name: 川﨑康平, result: 優勝, appearedBefore: true }
+      - { name: 野口快, result: ベスト4, appearedBefore: true }
+      - { name: 安部蓮生, result: ベスト4, appearedBefore: true }
+      - { name: 植田璃音, result: 準優勝, appearedBefore: false }
+      - { name: 清水駿, result: ベスト8, appearedBefore: true }
+      - { name: 宮田成将, result: ベスト8, appearedBefore: true }
+      - { name: 水木洸, result: ベスト4, appearedBefore: false }
+      - { name: 森良輔, result: ベスト4, appearedBefore: true }
+      - { name: 岩田皓平, result: ベスト8, appearedBefore: true }
+      - { name: 平井啓吾, result: ベスト8, appearedBefore: true }
+  doubles-none-girls:
+    firstBest8:
+      - { name: 市川こいと, result: ベスト8, appearedBefore: false }
+      - { name: 佐藤紗空, result: ベスト8, appearedBefore: false }
+      - { name: 西村ひよ, result: ベスト4, appearedBefore: false }
+      - { name: 吉木理彩, result: 準優勝, appearedBefore: true }
+      - { name: 岩田愛美, result: 準優勝, appearedBefore: true }
+      - { name: 髙橋果鈴, result: ベスト8, appearedBefore: true }
+      - { name: 下田雪乃, result: ベスト8, appearedBefore: true }
+      - { name: 天野莉子, result: ベスト8, appearedBefore: false }
+      - { name: 佐々木真凜, result: ベスト8, appearedBefore: false }
+  singles-none-boys:
+    firstBest8:
+      [] # 該当なし
+  singles-none-girls:
+    firstBest8:
+      [] # 該当なし
+  versus-none-boys:
+    firstBest8:
+      [] # 該当なし
+  versus-none-girls:
+    firstBest8:
+      [] # 該当なし
