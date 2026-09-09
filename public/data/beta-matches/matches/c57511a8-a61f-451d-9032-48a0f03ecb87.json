@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-09-09T09:07:56.712Z",
+  "match": {
+    "id": "c57511a8-a61f-451d-9032-48a0f03ecb87",
+    "tournament_name": "zennihon-workers-2026",
+    "team_a": "1 内本 隆文 (NTT西日本) [広島県] / 上松 俊貴 (NTT西日本) [広島県]",
+    "team_b": "398 上岡 俊介 (Up Rise) [京都府] / 丸山 海斗 (one team) [京都府]",
+    "best_of": 7,
+    "created_at": "2026-09-07T15:30:47.073499",
+    "tournament_generation": "corporate",
+    "tournament_gender": "boys",
+    "tournament_category": "doubles",
+    "round_name": "決勝",
+    "tournament_year": 2026,
+    "game_type": "doubles",
+    "team_a_entry_number": "1",
+    "team_a_player1_last_name": "内本",
+    "team_a_player1_first_name": "隆文",
+    "team_a_player1_team_name": "NTT西日本",
+    "team_a_player1_region": "広島県",
+    "team_a_player2_last_name": "上松",
+    "team_a_player2_first_name": "俊貴",
+    "team_a_player2_team_name": "NTT西日本",
+    "team_a_player2_region": "広島県",
+    "team_b_entry_number": "398",
+    "team_b_player1_last_name": "上岡",
+    "team_b_player1_first_name": "俊介",
+    "team_b_player1_team_name": "Up Rise",
+    "team_b_player1_region": "京都府",
+    "team_b_player2_last_name": "丸山",
+    "team_b_player2_first_name": "海斗",
+    "team_b_player2_team_name": "one team",
+    "team_b_player2_region": "京都府",
+    "teams": {
+      "A": {
+        "players": [
+          {
+            "region": "広島県",
+            "last_name": "内本",
+            "team_name": "NTT西日本",
+            "first_name": "隆文"
+          },
+          {
+            "region": "広島県",
+            "last_name": "上松",
+            "team_name": "NTT西日本",
+            "first_name": "俊貴"
+          }
+        ],
+        "entry_number": "1"
+      },
+      "B": {
+        "players": [
+          {
+            "region": "京都府",
+            "last_name": "上岡",
+            "team_name": "Up Rise",
+            "first_name": "俊介"
+          },
+          {
+            "region": "京都府",
+            "last_name": "丸山",
+            "team_name": "one team",
+            "first_name": "海斗"
+          }
+        ],
+        "entry_number": "398"
+      }
+    },
+    "tournament_id": "zennihon-workers",
+    "match_date": "2026-08-30",
+    "court_name": null,
+    "status": "in_progress",
+    "completed_at": null,
+    "opponent_level": "unknown",
+    "youtube_video_id": "vKEWxIgxcbE",
+    "youtube_url": "https://www.youtube.com/watch?v=vKEWxIgxcbE",
+    "youtube_embed_allowed": true,
+    "games": [
+      {
+        "id": "7a259cce-8557-43ef-845d-0351d09922e7",
+        "match_id": "c57511a8-a61f-451d-9032-48a0f03ecb87",
+        "game_number": 1,
+        "winner_team": null,
+        "points_a": 0,
+        "points_b": 0,
+        "created_at": "2026-09-07T15:30:47.440721",
+        "initial_serve_team": "B",
+        "initial_serve_player_index": 0,
+        "initial_receive_player_index": 0,
+        "points": []
+      }
+    ],
+    "siteLink": {
+      "tournamentPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys",
+      "entryNos": [
+        1,
+        398
+      ]
+    }
+  }
+}
