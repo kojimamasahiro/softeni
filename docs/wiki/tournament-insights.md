@@ -96,6 +96,19 @@ prebuild が `scripts/check-tournament-insights.mjs` を走らせ、**`verifiedA
   - **最終ゲートは `check-tournament-insights.mjs`**（種目単位で照合し直す）であって
     `story:verify` の全種目実行ではない。公開前に必ずこちらを通す
   - 全種目実行で `未検証` が1件でも出たら、その文を**単一種目で verify し直す**
+- **公開ゲートは `未検証` も不合格として扱う。** `verify-story-text.mjs` は
+  MISMATCH だけでなく **UNVERIFIED が1件でもあれば終了コード1**を返し、
+  `check-tournament-insights.mjs` は非0をそのまま「照合に失敗」にする。
+  対話的に `story:verify` を叩いたときの `WARN` は「人が判断する」余地があるが、
+  **prebuild のゲートに人の判断は入らない**ので、公開する本文は
+  単一種目で `未検証 0` にする必要がある。
+- **他種目の事実をスコア付きで書くと公開できない。** ゲートは `-c <その記事の種目>` 単独で
+  照合するため、シングルスの記事に書いたダブルス決勝のスコアは
+  「該当する試合が見つからない」＝`未検証` になって落ちる。
+  インカレ2026 男子シングルスで実際に踏んだ（`スコア 5-2（黒坂卓矢・川﨑康平・植田璃音）`）。
+  **同一大会の別種目に触れたいときはスコアを書かず、対戦の事実と勝者だけにする**
+  （`そちらは川﨑康平・黒坂卓矢が勝っていました` に直して解消）。
+  年×成績の表現も同様に、その種目の成績でなければ落ちる。
 
 ## 完了大会と進行中で書けることが違う
 
@@ -125,18 +138,17 @@ prebuild が `scripts/check-tournament-insights.mjs` を走らせ、**`verifiedA
 完了後は `title-won` / `pair-rematch` / `best8-streak` / `self-best` の12件になった）。
 差し替えは常に書き直しになる。
 
-## 現況（2026-09-09 時点・36件）
+## 現況（2026-09-10 時点・38件）
 
 | 大会 | 年 | 件数 | 備考 |
 |---|---|---|---|
 | `highschool-championship` | 2021〜2026 | 24 | 各年4種目（男女団体・男女ダブルス）。すべて確定後 |
 | `secondaryschool-championship` | 2026 | 4 | 確定後 |
 | `zennihon-workers` | 2026 | 6 | `doubles-none-boys` のみ**確定後**（2026-08-30 差し替え）。残り5種目は**進行中版**（2〜4回戦終了時点）|
-| `zennihon-university` | 2026 | 2 | `doubles-none-boys` / `doubles-none-girls`。ともに確定後（2026-09-09）|
+| `zennihon-university` | 2026 | 4 | `doubles-none-boys` / `doubles-none-girls`（2026-09-09）、`singles-none-boys` / `singles-none-girls`（2026-09-10）。すべて確定後 |
 
-高校・中学以外では社会人・学生（インカレ）。インカレはシングルス2種目が
-2026-09-09 時点で進行中のため、確定後に追加する余地がある
-（対抗戦2種目は確定済みだが未着手）。
+高校・中学以外では社会人・学生（インカレ）。インカレはシングルス2種目を
+2026-09-10 に確定後版で追加した（対抗戦2種目は確定済みだが未着手）。
 
 ## 落とし穴
 
@@ -185,4 +197,6 @@ prebuild が `scripts/check-tournament-insights.mjs` を走らせ、**`verifiedA
 - [sns-story-platform.md](./sns-story-platform.md) — 設計の経緯（アイデアバックログ側）
 - [seo.md](./seo.md) #11 — 大会期間中の更新方針（速報クエリは狙わない）
 - 実施記録: [社会人2026 1日目](../raw/2026-08-29-zennihon-workers-2026-day1-insight.md) /
-  [社会人2026 男子ダブルス確定版](../raw/2026-08-30-zennihon-workers-2026-boys-final-insight.md)
+  [社会人2026 男子ダブルス確定版](../raw/2026-08-30-zennihon-workers-2026-boys-final-insight.md) /
+  [インカレ2026 ダブルス](../raw/2026-09-09-incare-2026-doubles-insight.md) /
+  [インカレ2026 シングルス＋OGP](../raw/2026-09-10-incare-2026-singles-insight.md)
