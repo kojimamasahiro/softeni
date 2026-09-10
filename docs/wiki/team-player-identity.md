@@ -410,9 +410,24 @@ alias 表はもともと**文脈を持たない**ため、`--scope=all` で全�
 
 - **`data/players/index.json` を `extract-players.mjs` で丸ごと再生成しない**。
   同スクリプトは既存行を消さず、閾値未満の名前も既定（`minOccur=1`）で新規採番するため、
-  2026-08-29 時点では現データにあって index に無い 5,523 名を一気に採番してしまう。
+  現データにあって index に無い名前を一気に採番してしまう。
+  対象は**増え続けている**ので、取り込みが進むほど誤爆の規模が大きくなる。
+
+  | 時点 | 一括採番されてしまう人数 |
+  |---|---|
+  | 2026-08-29 | 5,523 |
+  | 2026-09-11（インカレ2022取り込み後）| **11,618**（18,543 → 30,161 行）|
+
   `normalize-name-splits.mjs` が**該当する名前の `count` だけ**を更新するので、そちらを使う。
   誤分割側の行は `count: 0` で残るが、`count>=5` でしか参照されないので無害。
+- **分割を直したとき、index の行は「改名」でよい**（2026-09-11 追加）。
+  `normalize-name-splits.mjs` は `count` しか触らないため、
+  誤分割の行（例 `磯美|咲希`）が残り、正しい分割（`磯|美咲希`）の行は存在しないままになる。
+  正しい分割の行が**まだ無ければ**、誤分割の行の `lastName` / `firstName` を書き換えて
+  `count` を実データで数え直すのが素直（**id を保てる**）。
+  正しい分割の行が**既にある**なら改名すると重複するので、誤分割の行は消すか `count: 0` で残す。
+  どちらにせよ**行単位の手編集**で足り、`extract-players.mjs` を回す理由にはならない。
+  1行1エントリの整形を崩さないよう、JSON を読み書きし直すのではなく**文字列置換**で直すこと。
 - `data/tournaments/details/**/highschool-*` を書き換えたら
   `npm run highschool:pipeline` の再実行が要る（`data/highschool/**` の `playerIds` にも
   誤分割 id が焼き込まれている）。
@@ -426,6 +441,8 @@ alias 表はもともと**文脈を持たない**ため、`--scope=all` で全�
 [raw/2026-08-29-name-split-audit.md](../raw/2026-08-29-name-split-audit.md)、
 分割を座標から決める取り込み側の工夫は
 [raw/2026-08-29-intercollegiate-name-split.md](../raw/2026-08-29-intercollegiate-name-split.md)。
+`extract-players.mjs` の誤爆と index 行の改名の実例は
+[raw/2026-09-11-incare-name-split-fix-four-players.md](../raw/2026-09-11-incare-name-split-fix-four-players.md)。
 
 ## 選手の登録名変更（改名）— 設計のみ・未実装（2026-08-31）
 
