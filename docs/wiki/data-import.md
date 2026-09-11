@@ -1195,7 +1195,15 @@ tool-bridge）を経由しない旧ツールのため未対応。2026-08-01、�
 - 状態: **対策済（コリアカップ2026・日本選手63名中27名を解決済み）／残 36 名は unresolved**（2026-07-20時点、`data/tournaments/participant-aliases.json` 実データで確認）。連盟発表等で漢字が判明した選手から `aliases` に追記していく
 - 実装: `data/tournaments/participant-aliases.json`、`lib/playerStats/participantAliases.ts`
 
-## 地方大会候補検知
+## 地方大会候補検知（Deprecated・2026-09-12 停止）
+
+**2026-09-12 に運用を停止した。** 未仕分けのまま残っていた候補 583 件ごと
+`data/local-sources/detected-documents.json` を削除し、既定では巡回しない。
+理由（出口が 1 種類しか無いまま入口だけ広げていた）と実測値は
+[tournaments-local.md](./tournaments-local.md) の「候補検知フロー（Deprecated）」と
+[ADR-001](../adr/ADR-001-local-source-detection-store.md) を参照。
+スクリプトは残してあり、走らせればストアは再生成される（無くても落ちない）。
+以下は停止時点の仕様の記録。
 
 ### `scripts/crawl-local-tournaments.mjs`
 
@@ -1203,7 +1211,7 @@ tool-bridge）を経由しない旧ツールのため未対応。2026-08-01、�
 
 - `data/local-sources/prefecture-sources.json` の都道府県公式サイトを巡回
 - HTML から結果資料らしきリンクを抽出
-- `data/local-sources/detected-documents.json` に候補を蓄積
+- `data/local-sources/detected-documents.json` に候補を蓄積（**このファイルは削除済み**）
 - `data/local-sources/ignored-documents.json` にある URL は保存しない
 
 設定メモ:

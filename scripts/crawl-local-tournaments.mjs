@@ -164,7 +164,9 @@ function shouldKeepCandidateForFiscalYear(candidate, fiscalYear) {
 async function main() {
   const options = parseArgs(process.argv.slice(2));
   const prefectureSources = readJson(prefectureSourcesPath);
-  const detectedDocuments = readJson(detectedDocumentsPath);
+  // 2026-09-12: 未仕分けの583件ごと detected-documents.json を削除したため、ファイルが無い状態を正とする。
+  // （このクローラーを走らせれば新しいストアが作られる。経緯は ADR-001 / docs/raw/2026-09-06-idea-autonomous-improvement-agent.md 追記20）
+  const detectedDocuments = fs.existsSync(detectedDocumentsPath) ? readJson(detectedDocumentsPath) : [];
   const ignoredDocuments = readJson(ignoredDocumentsPath);
 
   ensurePrefectureSlugs(prefectureSources);

@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted
+Deprecated（2026-09-12。理由は末尾の「2026-09-12 追記」を参照。Context / Decision / Alternatives は当時の記録として残す）
 
 ## Context
 
@@ -45,5 +45,24 @@ Accepted
 
 ## Open Questions
 
-- `accepted` 候補をどの手順で `information/*.json` に反映するか
-- 既存 `local_index.json` の大会との半自動紐付けをどこまで行うか
+- ~~`accepted` 候補をどの手順で `information/*.json` に反映するか~~（2026-09-12 に運用停止で決着）
+- ~~既存 `local_index.json` の大会との半自動紐付けをどこまで行うか~~（同上・失効）
+
+## 2026-09-12 追記: 運用停止
+
+`detected-documents.json` を削除し、本 ADR の運用を停止した（Status: Deprecated）。
+
+この分離（候補検知と公開反映を別ストアにする）という決定自体は誤りではなかったが、
+**人手を挟む前提のまま、出口の受け皿を 1 種類（インターハイ予選）しか作らなかった**ため、
+検知は動き続け、反映は一度も動かないまま止まった。実測は次の通り。
+
+- 583 件が `status: "new"` のまま 2026-06-13 以降放置（`accepted` 0 / `appliedAt` 0）
+- 反映先が決まる `qualifierType` を持つのは 20 件のみ。残り 563 件は仕分けても入れる先が無い
+- `eventType` が `unknown` のものが 531 件、`contentType` も unknown が 361 件
+
+教訓として残すこと: **検知の設計より先に、出口（どのデータにどう入るか）を決めること。**
+出口が 1 種類しか無いなら、検知もその 1 種類に絞る。
+
+再開する場合は本 ADR を復活させるのではなく、出口から設計し直した新しい ADR を書く。
+関連: [raw 2026-09-06 追記20](../raw/2026-09-06-idea-autonomous-improvement-agent.md)、
+[tournaments-local.md](../wiki/tournaments-local.md)

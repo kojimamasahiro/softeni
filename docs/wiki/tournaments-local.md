@@ -38,10 +38,11 @@
   実際に結果表示へ出せるカテゴリ詳細
 - `data/local-sources/prefecture-sources.json`
   地方大会候補巡回の都道府県別 source URL
-- `data/local-sources/detected-documents.json`
-  巡回で見つけた候補リンクの確認用ストア
+- `data/local-sources/detected-documents.json`（**Deprecated・2026-09-12 にファイルごと削除**）
+  巡回で見つけた候補リンクの確認用ストアだった。583件が一度も仕分けされないまま
+  2026-06-13 以降放置され、2026-09-12 に削除した（後述「候補検知フロー（Deprecated）」）
 - `data/local-sources/ignored-documents.json`
-  恒久 deny list
+  恒久 deny list（空のまま維持）
 
 関連:
 
@@ -139,11 +140,11 @@ source of truth:
 候補検知用の別ストア:
 
 - 巡回元 URL 管理
-  `data/local-sources/prefecture-sources.json`
+  `data/local-sources/prefecture-sources.json`（維持）
 - 新規候補の一時保管
-  `data/local-sources/detected-documents.json`
+  `data/local-sources/detected-documents.json`（**Deprecated・2026-09-12 削除**）
 - 恒久的に無視する URL
-  `data/local-sources/ignored-documents.json`
+  `data/local-sources/ignored-documents.json`（維持・空）
 
 ### 基本ルール
 
@@ -153,7 +154,8 @@ source of truth:
 - 内部結果を公開できるカテゴリは `details/**` を追加する
 - UI は `details` の有無で内部結果リンクを出し、`sourceUrl` の有無で年度単位の外部結果導線を出す
 - 候補検知ストアの内容は、そのまま公開ページには使わない
-- `detected-documents.json` の `accepted` は確認済み候補を意味するだけで、公開反映済みは意味しない
+- ~~`detected-documents.json` の `accepted` は確認済み候補を意味するだけで、公開反映済みは意味しない~~
+  （Deprecated: 2026-09-12 にストアを削除したため、`accepted` を使う運用自体が停止中）
 
 ### 推奨運用フロー
 
@@ -162,20 +164,42 @@ source of truth:
 3. 内部結果未整備でも `sourceUrl` があれば県別ページに掲載する
 4. 後から `details/**` を追加したカテゴリは、自動的に内部結果リンクへ昇格する
 
-候補検知の補助フロー:
+### 候補検知フロー（Deprecated・2026-09-12 停止）
+
+かつての補助フローは次の通りだった。
 
 1. `node scripts/crawl-local-tournaments.mjs` で都道府県サイトを巡回する
 2. 当年度または年度不明で、かつ要項・案内系ではなく PDF / Excel 直リンクでもない候補だけを `data/local-sources/detected-documents.json` に保存する
 3. 採用候補を `accepted` にしても、公開ページにはまだ反映されない
 4. 掲載するものだけ、人手で `information/{tournamentId}.json` の `sourceUrl` に反映する
 
-補足:
+補足: `--min-confidence` で保存対象の下限スコアを調整できた。
 
-- `--min-confidence` で保存対象の下限スコアを調整できる
+**停止した理由（2026-09-12 に実測）**:
 
-### 定型予選大会(高校総体予選など)の半自動反映
+- 2026-05-24〜06-12 に検出した 583 件が、6 月以降一度も仕分けされずに残っていた
+  （`status` は全件 `new`、`accepted` 0 件、`appliedAt` 0 件）。クローラーも 2026-06-12 以降走っていない
+- 内訳を数えると、人手不足というより**出口が無い**状態だった。
+  `inferred.eventType` が `unknown` なのが 583 件中 531 件、
+  反映先が決まる `qualifierType` を持つものは **20 件のみ**（すべて interhigh）。
+  残り 563 件は仕分けても入れる先が無い
+- `contentType` は unknown 361 / html 200 / pdf 19 / image 3 で、
+  実際のタイトルも「index.html」「会員登録・審判・技術等級」「強化委員会のページ」など
+  ナビゲーションページが多く混じっていた
+- 583 件のうち、公開データの `sourceUrl` に既に入っていた URL は 2 件だけだった
 
-県単位で毎年開催される定型予選大会は、候補検知から公開反映までを半自動化している。
+**現在の扱い**: ストアは削除済み。`crawl-local-tournaments.mjs` と
+`apply-accepted-qualifiers.mjs` は残してあるが、既定では走らせない
+（走らせればストアは再生成される。両スクリプトはファイルが無くても動くようにしてある）。
+再開するなら、入口（検出条件）ではなく**出口（どの `tournamentId` に何を入れるか）から設計し直す**こと。
+経緯は [ADR-001](../adr/ADR-001-local-source-detection-store.md) と
+[raw 2026-09-06 追記20](../raw/2026-09-06-idea-autonomous-improvement-agent.md)。
+
+### 定型予選大会(高校総体予選など)の半自動反映（Deprecated・2026-09-12 休止）
+
+県単位で毎年開催される定型予選大会は、候補検知から公開反映までを半自動化していた。
+入力元の `detected-documents.json` を 2026-09-12 に削除したため、現在この経路は入力が無く、
+`apply-accepted-qualifiers.mjs` を実行しても対象 0 件で終わる（スクリプト自体は残す）。
 
 - 候補検知時に「高校総体 / インターハイ / 全国高等学校総合体育大会」等のパターンで `inferred.qualifierType: "interhigh"` を付与する(`scripts/normalize-local-tournament-candidate.mjs`)
 - 該当時は confidence に +0.1 する

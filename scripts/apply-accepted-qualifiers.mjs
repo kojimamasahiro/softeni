@@ -110,7 +110,9 @@ function pickBestDocument(docs) {
 function main() {
   const options = parseArgs(process.argv.slice(2));
 
-  const documents = readJson(options.documentsPath);
+  // 2026-09-12: detected-documents.json は削除済み（未仕分けの583件ごと）。
+  // 入力が無ければ対象0件として静かに終わる（ADR-001 / raw 2026-09-06 追記20）。
+  const documents = fs.existsSync(options.documentsPath) ? readJson(options.documentsPath) : [];
   const prefectures = readJson(path.join(dataDir, 'prefectures.json'));
   const localIndexPath = path.join(tournamentsDir, 'local_index.json');
   const localIndex = readJson(localIndexPath);

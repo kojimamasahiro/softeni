@@ -19,7 +19,7 @@
 - `data/tournaments/details/**`
 - `data/tournaments/delegations/*.json`
 - `data/local-sources/prefecture-sources.json`
-- `data/local-sources/detected-documents.json`
+- ~~`data/local-sources/detected-documents.json`~~（2026-09-12 削除）
 - `data/local-sources/ignored-documents.json`
 
 識別・名寄せ用データ:
@@ -41,16 +41,14 @@
 - 公式発表された代表選手団: `delegations/*.json`
 - 地方大会巡回元 URL: `data/local-sources/prefecture-sources.json`
 
-地方大会候補検知ストア:
+地方大会候補検知ストア（Deprecated・2026-09-12 停止）:
 
-- `detected-documents.json`
-  巡回で見つけた候補リンクの確認用ストア
+- ~~`detected-documents.json`~~
+  巡回で見つけた候補リンクの確認用ストア。**2026-09-12 に未仕分けの 583 件ごと削除**。
+  停止理由は [tournaments-local.md](./tournaments-local.md)「候補検知フロー（Deprecated）」と
+  [ADR-001](../adr/ADR-001-local-source-detection-store.md) を参照
 - `ignored-documents.json`
-  `prefectureSlug + normalizedUrl` 完全一致で除外する恒久 deny list
-
-注意:
-
-- `detected-documents.json` の `accepted` は確認済み候補を意味するだけで、公開データ反映済みは意味しない
+  `prefectureSlug + normalizedUrl` 完全一致で除外する恒久 deny list（空のまま維持）
 
 ### 代表名簿（`delegations`）（2026-09-08 追加）
 
@@ -281,8 +279,10 @@ details のスキーマが entries（ペア/チーム）単位で**種目の割�
   2024・2025・2026年度が存在。**手動転記**（自動パーサ未実装）。市区町村レベルまで。
 - 施設名・住所・面数・サーフェスは各大会の**要項PDF**（`{年度}_{分類コード}_10.pdf`）の「4. 会場」節。
 - `data/local-sources/venue-candidates.json`
-  上記と `information` を突き合わせたレビュー用候補ストア。`detected-documents.json` と同型で、
-  人が `status` を確定してから `information` へ書き戻す。**日付だけの照合は同日開催の別大会と
+  上記と `information` を突き合わせたレビュー用候補ストア。`detected-documents.json`（2026-09-12 削除）と
+  同型で、人が `status` を確定してから `information` へ書き戻す。
+  **この形式は「人が仕分けないと何も進まない」ため、`detected-documents.json` は 583 件を溜めて停止した。
+  こちらを育てる場合は同じ轍を踏まないこと**（出口を先に決める）。**日付だけの照合は同日開催の別大会と
   誤マッチするため、大会名の類似度を併用する**（誤マッチは confidence 0.5前後に落ちて分離できる）。
 
 **この照合は `venues` の候補出しだけでなく、既存 `location` の検算にも使える。**
