@@ -1,0 +1,57 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "横田クラブ",
+        "teamId": "yokotakurabu",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-workers",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["坪倉_諒樹_横田クラブ_島根県", "岸本_佑輝_横田クラブ_島根県"]
+      },
+      "historicalBest": {
+        "team": "横田クラブ",
+        "teamId": "yokotakurabu",
+        "prefecture": "島根県",
+        "prefectureId": "shimane",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-workers",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["坪倉_諒樹_横田クラブ_島根県", "岸本_佑輝_横田クラブ_島根県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 3,
+  "topPlayers": [
+    {
+      "id": "岸本_佑輝_横田クラブ_島根県",
+      "appearances": 2
+    },
+    {
+      "id": "矢壁_諒樹_横田クラブ_島根県",
+      "appearances": 1
+    },
+    {
+      "id": "坪倉_諒樹_横田クラブ_島根県",
+      "appearances": 1
+    }
+  ]
+}

@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 8,
+  "totalAppearances": 12,
   "byCategory": {
-    "doubles": 8
+    "doubles": 9,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "宇都宮文星女",
+        "teamId": "utsunomiyabunhoshionna",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["菅井_優亜_宇都宮文星女_栃木県"]
+      },
+      "historicalBest": {
+        "team": "宇都宮文星女",
+        "teamId": "utsunomiyabunhoshionna",
+        "prefecture": "栃木県",
+        "prefectureId": "tochigi",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2026,
+        "gender": "girls",
+        "playerIds": ["菅井_優亜_宇都宮文星女_栃木県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -39,26 +62,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 11,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
-      "id": "荒川_みのり_宇都宮文星女_栃木県",
-      "appearances": 3
+      "id": "近藤_さくら_宇都宮文星女_栃木県",
+      "appearances": 4
     },
     {
-      "id": "近藤_さくら_宇都宮文星女_栃木県",
-      "appearances": 3
+      "id": "荒川_みのり_宇都宮文星女_栃木県",
+      "appearances": 4
     },
     {
       "id": "五月女_心海_宇都宮文星女_栃木県",
+      "appearances": 3
+    },
+    {
+      "id": "菅井_優亜_宇都宮文星女_栃木県",
       "appearances": 2
     },
     {
       "id": "岸波_優菜_宇都宮文星女_栃木県",
-      "appearances": 1
-    },
-    {
-      "id": "齋藤_向日葵_宇都宮文星女_栃木県",
       "appearances": 1
     }
   ]

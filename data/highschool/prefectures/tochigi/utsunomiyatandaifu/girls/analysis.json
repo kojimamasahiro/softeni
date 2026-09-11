@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 26,
   "byCategory": {
     "team": 1,
-    "doubles": 18,
-    "singles": 1
+    "doubles": 22,
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -15,7 +15,7 @@
         "prefectureId": "tochigi",
         "result": "1回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2022,
         "gender": "girls",
         "playerIds": ["螺良_萌々_宇都宮短大附_栃木県"]
@@ -62,27 +62,27 @@
       }
     }
   },
-  "uniquePlayers": 20,
+  "uniquePlayers": 22,
   "topPlayers": [
     {
-      "id": "廣谷_流凛_宇都宮短大附_栃木県",
-      "appearances": 4
+      "id": "螺良_萌々_宇都宮短大附_栃木県",
+      "appearances": 6
     },
     {
-      "id": "螺良_萌々_宇都宮短大附_栃木県",
-      "appearances": 4
+      "id": "廣谷_流凛_宇都宮短大附_栃木県",
+      "appearances": 5
     },
     {
       "id": "秋田_紅美子_宇都宮短大附_栃木県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "大岡_魅来乃_宇都宮短大附_栃木県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "新井_花依_宇都宮短大附_栃木県",
-      "appearances": 3
+      "appearances": 4
     }
   ]
 }

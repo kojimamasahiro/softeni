@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 71,
+  "totalAppearances": 79,
   "byCategory": {
     "team": 14,
-    "doubles": 48,
-    "singles": 9
+    "doubles": 53,
+    "singles": 12
   },
   "resultsByCategory": {
     "singles": {
@@ -24,12 +24,12 @@
         "teamId": "hachinohekoudaiichi",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
         "tournamentId": "zennihon-singles",
-        "year": 2026,
+        "year": 2023,
         "gender": "girls",
-        "playerIds": ["廣﨑_未来_八戸工大一_青森県"]
+        "playerIds": ["大西_真可珀_八戸工大一_青森県"]
       }
     },
     "doubles": {
@@ -83,26 +83,26 @@
       }
     }
   },
-  "uniquePlayers": 54,
+  "uniquePlayers": 57,
   "topPlayers": [
     {
       "id": "佐藤_光_八戸工大一_青森県",
-      "appearances": 7
+      "appearances": 8
     },
     {
       "id": "畠山_真碧_八戸工大一_青森県",
-      "appearances": 5
-    },
-    {
-      "id": "高杉_かりん_八戸工大一_青森県",
-      "appearances": 4
+      "appearances": 7
     },
     {
       "id": "大西_真可珀_八戸工大一_青森県",
-      "appearances": 4
+      "appearances": 6
     },
     {
       "id": "粒來_夏帆_八戸工大一_青森県",
+      "appearances": 5
+    },
+    {
+      "id": "真下_弥々_八戸工大一_青森県",
       "appearances": 4
     }
   ]

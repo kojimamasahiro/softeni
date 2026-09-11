@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 7,
+  "totalAppearances": 9,
   "byCategory": {
     "team": 1,
-    "doubles": 6
+    "doubles": 8
   },
   "resultsByCategory": {
     "singles": {
@@ -18,10 +18,10 @@
         "prefectureId": "shiga",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2021,
+        "tournamentId": "highschool-japan-cup",
+        "year": 2022,
         "gender": "boys",
-        "playerIds": ["黒川_誠斗_瀬田工_滋賀県", "赤瀬_槙一_瀬田工_滋賀県"]
+        "playerIds": ["中村_海晴_瀬田工_滋賀県", "燈中_柚樹_瀬田工_滋賀県"]
       }
     },
     "team": {
@@ -39,7 +39,7 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "寺戸_神威_瀬田工_滋賀県",
@@ -50,15 +50,15 @@
       "appearances": 2
     },
     {
+      "id": "森澤_伯_瀬田工_滋賀県",
+      "appearances": 2
+    },
+    {
+      "id": "中嶋_悠也_瀬田工_滋賀県",
+      "appearances": 2
+    },
+    {
       "id": "有吉_謙汰_瀬田工_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "平林_達樹_瀬田工_滋賀県",
-      "appearances": 1
-    },
-    {
-      "id": "清水_奏良_瀬田工_滋賀県",
       "appearances": 1
     }
   ]

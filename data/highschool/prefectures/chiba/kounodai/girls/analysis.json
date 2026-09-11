@@ -19,7 +19,7 @@
         "tournamentId": "east-japan",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["藤田_悠未_国府台高校_千葉県", "高安_ひな紀_国府台高校_千葉県"]
+        "playerIds": ["藤田_悠未_国府台_千葉県", "高安_ひな紀_国府台_千葉県"]
       },
       "historicalBest": {
         "team": "国府台",
@@ -31,7 +31,7 @@
         "tournamentId": "east-japan",
         "year": 2026,
         "gender": "girls",
-        "playerIds": ["藤田_悠未_国府台高校_千葉県", "高安_ひな紀_国府台高校_千葉県"]
+        "playerIds": ["藤田_悠未_国府台_千葉県", "高安_ひな紀_国府台_千葉県"]
       }
     },
     "team": {
@@ -39,6 +39,15 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 0,
-  "topPlayers": []
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "藤田_悠未_国府台_千葉県",
+      "appearances": 1
+    },
+    {
+      "id": "高安_ひな紀_国府台_千葉県",
+      "appearances": 1
+    }
+  ]
 }

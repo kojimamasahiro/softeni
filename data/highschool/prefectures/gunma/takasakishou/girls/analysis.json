@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 21,
+  "totalAppearances": 24,
   "byCategory": {
     "team": 1,
-    "doubles": 20
+    "doubles": 23
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "takasakishou",
         "prefecture": "群馬県",
         "prefectureId": "gunma",
-        "result": "予選敗退",
+        "result": "1回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "zennihon-championship",
+        "year": 2024,
         "gender": "girls",
-        "playerIds": ["宮﨑_葵_高崎商_群馬県", "織田_愛生_高崎商_群馬県"]
+        "playerIds": ["林_紗悠乃_健大高崎_群馬県", "小林_きらら_高崎商_群馬県"]
       },
       "historicalBest": {
         "team": "高崎商",
@@ -54,22 +54,22 @@
   "topPlayers": [
     {
       "id": "染谷_杏奈_高崎商_群馬県",
+      "appearances": 4
+    },
+    {
+      "id": "奥澤_朋香_高崎商_群馬県",
       "appearances": 3
     },
     {
-      "id": "手島_唯花_高崎商_群馬県",
+      "id": "保科_知里_高崎商_群馬県",
+      "appearances": 3
+    },
+    {
+      "id": "小林_きらら_高崎商_群馬県",
       "appearances": 2
     },
     {
-      "id": "武田_萌愛実_高崎商_群馬県",
-      "appearances": 2
-    },
-    {
-      "id": "佐藤_奈々子_高崎商_群馬県",
-      "appearances": 2
-    },
-    {
-      "id": "渡邉_妃菜乃_高崎商_群馬県",
+      "id": "須田_葵衣_高崎商_群馬県",
       "appearances": 2
     }
   ]

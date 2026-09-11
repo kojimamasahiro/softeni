@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 3,
   "byCategory": {
-    "doubles": 2
+    "doubles": 2,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "市尼崎",
+        "teamId": "ichiamagasaki",
+        "prefecture": "兵庫県",
+        "prefectureId": "hyogo",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2018,
+        "gender": "girls",
+        "playerIds": ["府中_優香_市尼崎_兵庫県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -31,6 +43,10 @@
   "uniquePlayers": 4,
   "topPlayers": [
     {
+      "id": "府中_優香_市尼崎_兵庫県",
+      "appearances": 2
+    },
+    {
       "id": "安田_理子_市尼崎_兵庫県",
       "appearances": 1
     },
@@ -40,10 +56,6 @@
     },
     {
       "id": "加櫓_美怜_市尼崎_兵庫県",
-      "appearances": 1
-    },
-    {
-      "id": "府中_優香_市尼崎_兵庫県",
       "appearances": 1
     }
   ]

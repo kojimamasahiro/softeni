@@ -1923,7 +1923,7 @@
     "tournamentId": "east-japan",
     "year": 2026,
     "gender": "boys",
-    "playerIds": ["高橋_佳佑_豊南高校_東京都", "橋本_光希_豊南高校_東京都"]
+    "playerIds": ["高橋_佳佑_豊南_東京都", "橋本_光希_豊南_東京都"]
   },
   {
     "team": "豊南",
@@ -2272,6 +2272,30 @@
     "year": 2016,
     "gender": "boys",
     "playerIds": ["谷岡_凌太朗_清瀬_東京都", "鶴江_匠_清瀬_東京都"]
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["加藤_僚一郎_駒大_東京都", "寺田_壮甫_駒大_東京都"]
+  },
+  {
+    "team": "駒大",
+    "teamId": "komadai",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["浪井_雅司_駒大_東京都", "保坂_悟_駒大_東京都"]
   },
   {
     "team": "駒大",
@@ -3346,6 +3370,18 @@
     "teamId": "wasedami",
     "prefecture": "東京都",
     "prefectureId": "tokyo",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["小沼_優希_早稲田実_東京都", "赤金_泰河_早稲田実_東京都"]
+  },
+  {
+    "team": "早稲田実",
+    "teamId": "wasedami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -3784,6 +3820,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["小林_瑛_豊南_東京都"]
+  },
+  {
+    "team": "早稲田実",
+    "teamId": "wasedami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["高倉_和毅_早稲田実_東京都"]
   },
   {
     "team": "早稲田実",

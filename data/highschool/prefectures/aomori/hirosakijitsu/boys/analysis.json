@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 31,
+  "totalAppearances": 39,
   "byCategory": {
     "team": 3,
-    "doubles": 24,
-    "singles": 4
+    "doubles": 31,
+    "singles": 5
   },
   "resultsByCategory": {
     "singles": {
@@ -40,7 +40,7 @@
         "prefectureId": "aomori",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2026,
         "gender": "boys",
         "playerIds": ["北山_悠月_弘前実_青森県", "三浦_瑠騎亜_弘前実_青森県"]
@@ -83,7 +83,7 @@
       }
     }
   },
-  "uniquePlayers": 32,
+  "uniquePlayers": 40,
   "topPlayers": [
     {
       "id": "樋口_拓海_弘前実_青森県",
@@ -91,18 +91,18 @@
     },
     {
       "id": "山賀_滉己_弘前実_青森県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "北山_悠月_弘前実_青森県",
+      "appearances": 4
+    },
+    {
+      "id": "三浦_瑠騎亜_弘前実_青森県",
       "appearances": 3
     },
     {
-      "id": "伊藤_翼_弘前実_青森県",
-      "appearances": 2
-    },
-    {
-      "id": "奈良岡_柊哉_弘前実_青森県",
+      "id": "三上_結太_弘前実_青森県",
       "appearances": 2
     }
   ]

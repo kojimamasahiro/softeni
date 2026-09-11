@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 2,
-    "doubles": 11
+    "doubles": 15
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "hirosakijitsu",
         "prefecture": "青森県",
         "prefectureId": "aomori",
-        "result": "1回戦敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2025,
+        "tournamentId": "east-japan",
+        "year": 2026,
         "gender": "girls",
-        "playerIds": ["小田桐_心愛_弘前実_青森県", "佐々木_莉奈_弘前実_青森県"]
+        "playerIds": ["吉田_栞奈_弘前実_青森県", "佐々木_莉奈_弘前実_青森県"]
       },
       "historicalBest": {
         "team": "弘前実",
@@ -50,26 +50,26 @@
       }
     }
   },
-  "uniquePlayers": 17,
+  "uniquePlayers": 20,
   "topPlayers": [
+    {
+      "id": "工藤_涼香_弘前実_青森県",
+      "appearances": 4
+    },
+    {
+      "id": "水木_恵唯_弘前実_青森県",
+      "appearances": 3
+    },
+    {
+      "id": "佐々木_莉奈_弘前実_青森県",
+      "appearances": 2
+    },
     {
       "id": "豊巻_梨緒_弘前実_青森県",
       "appearances": 2
     },
     {
       "id": "三浦_爽来_弘前実_青森県",
-      "appearances": 2
-    },
-    {
-      "id": "小田桐_心愛_弘前実_青森県",
-      "appearances": 2
-    },
-    {
-      "id": "工藤_涼香_弘前実_青森県",
-      "appearances": 2
-    },
-    {
-      "id": "水木_恵唯_弘前実_青森県",
       "appearances": 2
     }
   ]

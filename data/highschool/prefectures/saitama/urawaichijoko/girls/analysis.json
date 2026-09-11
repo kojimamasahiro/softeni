@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
     "doubles": 1,
-    "singles": 1
+    "singles": 3
   },
   "resultsByCategory": {
     "singles": {
@@ -13,7 +13,7 @@
         "prefectureId": "saitama",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
         "playerIds": ["吉田_零_浦和一女子_埼玉県"]
@@ -25,7 +25,7 @@
         "prefectureId": "saitama",
         "result": "2回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2026,
         "gender": "girls",
         "playerIds": ["吉田_零_浦和一女子_埼玉県"]
@@ -66,11 +66,11 @@
   "topPlayers": [
     {
       "id": "吉田_零_浦和一女子_埼玉県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "渡邉_百音_浦和一女子_埼玉県",
-      "appearances": 1
+      "appearances": 2
     }
   ]
 }

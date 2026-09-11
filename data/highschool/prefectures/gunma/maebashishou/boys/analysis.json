@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 27,
+  "totalAppearances": 29,
   "byCategory": {
     "team": 2,
-    "doubles": 25
+    "doubles": 26,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "前橋商",
+        "teamId": "maebashishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["水落_礼翔_前橋商_群馬県"]
+      },
+      "historicalBest": {
+        "team": "前橋商",
+        "teamId": "maebashishou",
+        "prefecture": "群馬県",
+        "prefectureId": "gunma",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["水落_礼翔_前橋商_群馬県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -54,11 +77,15 @@
   "topPlayers": [
     {
       "id": "櫻井_恒暢_前橋商_群馬県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "高城_直弥_前橋商_群馬県",
       "appearances": 3
+    },
+    {
+      "id": "須藤_魁土_前橋商_群馬県",
+      "appearances": 2
     },
     {
       "id": "石田_滉樹_前橋商_群馬県",
@@ -66,10 +93,6 @@
     },
     {
       "id": "阿部_港斗_前橋商_群馬県",
-      "appearances": 2
-    },
-    {
-      "id": "掛川_巧大_前橋商_群馬県",
       "appearances": 2
     }
   ]

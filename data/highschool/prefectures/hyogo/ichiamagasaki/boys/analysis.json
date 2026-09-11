@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 37,
+  "totalAppearances": 43,
   "byCategory": {
     "team": 9,
-    "doubles": 24,
-    "singles": 4
+    "doubles": 25,
+    "singles": 9
   },
   "resultsByCategory": {
     "singles": {
@@ -12,24 +12,24 @@
         "teamId": "ichiamagasaki",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["栗岡_優志_市尼崎_兵庫県"]
+        "playerIds": ["岩田_悠聖_市尼崎"]
       },
       "historicalBest": {
         "team": "市尼崎",
         "teamId": "ichiamagasaki",
         "prefecture": "兵庫県",
         "prefectureId": "hyogo",
-        "result": "2回戦敗退",
+        "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["栗岡_優志_市尼崎_兵庫県"]
+        "playerIds": ["岩田_悠聖_市尼崎"]
       }
     },
     "doubles": {
@@ -83,11 +83,11 @@
       }
     }
   },
-  "uniquePlayers": 34,
+  "uniquePlayers": 36,
   "topPlayers": [
     {
       "id": "岩田_悠聖_市尼崎_兵庫県",
-      "appearances": 4
+      "appearances": 5
     },
     {
       "id": "栗岡_優志_市尼崎_兵庫県",

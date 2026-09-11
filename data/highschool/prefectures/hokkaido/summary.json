@@ -396,17 +396,6 @@
     "gender": "boys"
   },
   {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys"
-  },
-  {
     "team": "とわの森三愛",
     "teamId": "towanomorisanai",
     "prefecture": "北海道",
@@ -503,6 +492,17 @@
     "category": "team",
     "tournamentId": "highschool-championship",
     "year": 2021,
+    "gender": "boys"
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
     "gender": "boys"
   },
   {
@@ -1540,6 +1540,30 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-university",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["坂齊_翔和_北科大_日本学連", "久保_葵生_北科大_日本学連"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-university",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["鳥居_純_北科大_日本学連", "長谷川_遥己_北科大_日本学連"]
   },
   {
     "team": "北科大",
@@ -3618,102 +3642,6 @@
     "playerIds": ["渡邊_哲平_苫小牧工_北海道", "櫻田_真生_苫小牧工_北海道"]
   },
   {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2015,
-    "gender": "boys",
-    "playerIds": ["正木_大河_とわの森_北海道", "大渕_憲斗_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2015,
-    "gender": "boys",
-    "playerIds": ["吉田_悠人_とわの森_北海道", "逢見_光_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["藤田_大輝_とわの森_北海道", "亀田_隆介_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["中嶋_拓海_とわの森_北海道", "笹谷_拓海_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["磯部_心_とわの森_北海道", "大渕_健太_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "boys",
-    "playerIds": ["成田_和真_とわの森_北海道", "柴田_健太_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["野﨑_康輝_とわの森_北海道", "内川_拓海_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["荒川_裕貴_とわの森_北海道", "半澤_寧大_とわの森_北海道"]
-  },
-  {
     "team": "とわの森三愛",
     "teamId": "towanomorisanai",
     "prefecture": "北海道",
@@ -4522,6 +4450,30 @@
     "teamId": "towanomorisanai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["正木_大河_とわの森三愛_北海道", "大渕_憲斗_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "boys",
+    "playerIds": ["吉田_悠人_とわの森三愛_北海道", "逢見_光_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -4858,6 +4810,54 @@
     "teamId": "towanomorisanai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["藤田_大輝_とわの森三愛_北海道", "亀田_隆介_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["中嶋_拓海_とわの森三愛_北海道", "笹谷_拓海_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["磯部_心_とわの森三愛_北海道", "大渕_健太_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["成田_和真_とわの森三愛_北海道", "柴田_健太_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -5068,6 +5068,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["山田_泰宝_とわの森三愛_北海道", "岩間_吉平_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["野﨑_康輝_とわの森三愛_北海道", "内川_拓海_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["荒川_裕貴_とわの森三愛_北海道", "半澤_寧大_とわの森三愛_北海道"]
   },
   {
     "team": "旭川明成",
@@ -6150,30 +6174,6 @@
     "playerIds": ["西_健太_苫小牧工_北海道"]
   },
   {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["野﨑_康輝_とわの森_北海道"]
-  },
-  {
-    "team": "とわの森",
-    "teamId": "towanomori",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["荒川_裕貴_とわの森_北海道"]
-  },
-  {
     "team": "とわの森三愛",
     "teamId": "towanomorisanai",
     "prefecture": "北海道",
@@ -6520,5 +6520,29 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["森川_智巴_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["野﨑_康輝_とわの森三愛_北海道"]
+  },
+  {
+    "team": "とわの森三愛",
+    "teamId": "towanomorisanai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["荒川_裕貴_とわの森三愛_北海道"]
   }
 ]

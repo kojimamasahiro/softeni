@@ -70,6 +70,17 @@
     "teamId": "takaokanishi",
     "prefecture": "富山県",
     "prefectureId": "toyama",
+    "result": "1回戦敗退",
+    "category": "team",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls"
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
     "result": "2回戦敗退",
     "category": "team",
     "tournamentId": "highschool-championship",
@@ -88,19 +99,8 @@
     "gender": "girls"
   },
   {
-    "team": "高岡西・高岡",
-    "teamId": "takaokanishikouoka",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "1回戦敗退",
-    "category": "team",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls"
-  },
-  {
-    "team": "高岡西・高岡",
-    "teamId": "takaokanishikouoka",
+    "team": "高岡西",
+    "teamId": "takaokanishi",
     "prefecture": "富山県",
     "prefectureId": "toyama",
     "result": "1回戦敗退",
@@ -1119,6 +1119,30 @@
     "teamId": "takaokanishi",
     "prefecture": "富山県",
     "prefectureId": "toyama",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": ["鍋谷_真菜子_高岡西_富山県", "青江_美南_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2021,
+    "gender": "girls",
+    "playerIds": ["小杉_菜月_高岡西_富山県", "金瀬_萌_高岡西_富山県"]
+  },
+  {
+    "team": "高岡西",
+    "teamId": "takaokanishi",
+    "prefecture": "富山県",
+    "prefectureId": "toyama",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1245,30 +1269,6 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["小杉_菜月_高岡西_富山県", "金瀬_萌_高岡西_富山県"]
-  },
-  {
-    "team": "高岡西・高岡",
-    "teamId": "takaokanishikouoka",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": ["鍋谷_真菜子_高岡西・高岡_富山県", "青江_美南_高岡西・高岡_富山県"]
-  },
-  {
-    "team": "高岡西・高岡",
-    "teamId": "takaokanishikouoka",
-    "prefecture": "富山県",
-    "prefectureId": "toyama",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2021,
-    "gender": "girls",
-    "playerIds": ["小杉_菜月_高岡西・高岡_富山県", "金瀬_萌_高岡西・高岡_富山県"]
   },
   {
     "team": "高岡商",

@@ -903,6 +903,18 @@
     "teamId": "himejishou",
     "prefecture": "兵庫県",
     "prefectureId": "hyogo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["小林_智佳_姫路商_兵庫県", "沖汐_彩香_姫路商_兵庫県"]
+  },
+  {
+    "team": "姫路商",
+    "teamId": "himejishou",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1095,6 +1107,30 @@
     "teamId": "himejishou",
     "prefecture": "兵庫県",
     "prefectureId": "hyogo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["大上_渚_姫路商_兵庫県", "三輪_真子_姫路商_兵庫県"]
+  },
+  {
+    "team": "姫路商",
+    "teamId": "himejishou",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["肥塚_瑞希_姫路商_兵庫県", "橋口_夏奈_姫路商_兵庫県"]
+  },
+  {
+    "team": "姫路商",
+    "teamId": "himejishou",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1151,44 +1187,8 @@
     "playerIds": ["頭島_羽奏_姫路商_兵庫県", "岡本_和心_姫路商_兵庫県"]
   },
   {
-    "team": "姫路商業",
-    "teamId": "himejishougyou",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2015,
-    "gender": "girls",
-    "playerIds": ["小林_智佳_姫路商業_兵庫県", "沖汐_彩香_姫路商業_兵庫県"]
-  },
-  {
-    "team": "姫路商業",
-    "teamId": "himejishougyou",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["大上_渚_姫路商業_兵庫県", "三輪_真子_姫路商業_兵庫県"]
-  },
-  {
-    "team": "姫路商業",
-    "teamId": "himejishougyou",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "3回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["肥塚_瑞希_姫路商業_兵庫県", "橋口_夏奈_姫路商業_兵庫県"]
-  },
-  {
-    "team": "姫路商業",
-    "teamId": "himejishougyou",
+    "team": "姫路商",
+    "teamId": "himejishou",
     "prefecture": "兵庫県",
     "prefectureId": "hyogo",
     "result": "予選敗退",
@@ -1196,7 +1196,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["八木_渚_姫路商業_兵庫県", "柴原_佳依_姫路商業_兵庫県"]
+    "playerIds": ["八木_渚_姫路商_兵庫県", "柴原_佳依_姫路商_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -1497,6 +1497,18 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["中塚_善晴_市尼崎_兵庫県", "實重_公惺_市尼崎_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["實重_遼_市尼崎_兵庫県", "後山_睦斗_市尼崎_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -2301,18 +2313,6 @@
     "year": 2015,
     "gender": "girls",
     "playerIds": ["門脇_愛里_親和_兵庫県", "間島_美風_親和_兵庫県"]
-  },
-  {
-    "team": "市立尼崎",
-    "teamId": "shiritsuamagasaki",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2026,
-    "gender": "boys",
-    "playerIds": ["實重_遼_市立尼崎_兵庫県", "後山_睦斗_市立尼崎_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -3260,7 +3260,7 @@
     "tournamentId": "zennihon-senior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本高等学校_兵庫県"]
+    "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本_兵庫県"]
   },
   {
     "team": "太子",
@@ -3497,6 +3497,66 @@
     "prefectureId": "hyogo",
     "result": "2回戦敗退",
     "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["栗岡_優志_市尼崎"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["岩田_悠聖_市尼崎"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["岩田_悠聖_市尼崎_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["府中_優香_市尼崎_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["曽我_祥吾_市尼崎_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "2回戦敗退",
+    "category": "singles",
     "tournamentId": "highschool-japan-cup",
     "year": 2022,
     "gender": "boys",
@@ -3525,6 +3585,18 @@
     "year": 2024,
     "gender": "boys",
     "playerIds": ["岩田_悠聖_市尼崎_兵庫県"]
+  },
+  {
+    "team": "市尼崎",
+    "teamId": "ichiamagasaki",
+    "prefecture": "兵庫県",
+    "prefectureId": "hyogo",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["村上_陽向_市尼崎_兵庫県"]
   },
   {
     "team": "市尼崎",
@@ -3585,18 +3657,6 @@
     "year": 2023,
     "gender": "boys",
     "playerIds": ["岩井_亮樹_神戸星城_兵庫県"]
-  },
-  {
-    "team": "市立尼崎",
-    "teamId": "shiritsuamagasaki",
-    "prefecture": "兵庫県",
-    "prefectureId": "hyogo",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2026,
-    "gender": "boys",
-    "playerIds": ["村上_陽向_市立尼崎_兵庫県"]
   },
   {
     "team": "須磨学園",
@@ -3896,7 +3956,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["山東_舞由_太子高校_兵庫県"]
+    "playerIds": ["山東_舞由_太子_兵庫県"]
   },
   {
     "team": "太子",
@@ -3908,6 +3968,6 @@
     "tournamentId": "zennihon-singles",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["大村_美喜_太子高校_兵庫県"]
+    "playerIds": ["大村_美喜_太子_兵庫県"]
   }
 ]

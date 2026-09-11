@@ -22,17 +22,29 @@
 //
 // 終了コード: --report で「誤り率の下限が閾値を超えた」ときだけ 1（既定の閾値は 0.05）。
 // それ以外は 0。まだ判断が揃っていない場合も 0（未測定は失敗ではない）。
+//
+// 2026-09-11: --draw の母集団を「台帳から過去に決まったもの」ではなく「まだ台帳に無い、
+// これから自動適用されようとしているもの」に変えた（追記15の欠陥1）。
+// 理由: 機械が「統合」と判定したクラスタは、レビュー画面や apply-auto-merges.mjs が
+// 適用すると人が見る前に merge-candidates.json から消える。台帳に載った時点（＝
+// decidedBy:'auto' として記録された時点）で既に適用済みなので、そこから引いても
+// 手遅れだった（実測: merge層48件が1件も画面に出なかった）。
+// いまは「まだ誰も判断しておらず、台帳にも無い」段階で引き、引かれた標本は
+// scripts/lib/review-ledger.mjs の heldAuditKeys() により、人が判断するまで
+// あらゆる自動適用経路（apply-auto-merges.mjs／レビュー画面の一括反映）で保留される。
 
 import fs from 'fs';
 import path from 'path';
+import { execFileSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
-import { clusterKey, readLedger } from './lib/review-ledger.mjs';
-import { machineVerdict } from './lib/team-grouping.mjs';
+import { clusterKey, heldAuditKeys, readLedger } from './lib/review-ledger.mjs';
+import { isAutoOK, machineVerdict } from './lib/team-grouping.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const AUDIT = path.join(ROOT, 'data', 'teams', 'review-audit.json');
 const CANDIDATES = path.join(ROOT, 'data', 'teams', 'merge-candidates.json');
+const REVIEW_HTML = path.join(ROOT, 'scripts', 'build-team-review-html.mjs');
 const CONTEXT = path.join(ROOT, 'data', 'teams', 'team-context.json');
 const argv = process.argv.slice(2);
 
@@ -76,74 +88,43 @@ if (argv.includes('--draw')) {
     process.exit(2);
   }
   const ledger = readLedger();
+  const audit = readAudit();
+  const candidates = fs.existsSync(CANDIDATES) ? JSON.parse(fs.readFileSync(CANDIDATES, 'utf8')) : [];
+  const context = fs.existsSync(CONTEXT) ? JSON.parse(fs.readFileSync(CONTEXT, 'utf8')) : {};
 
-  // 母集団: 機械が決めて、人が一度も見ていないもの。
+  // 母集団: 「機械が自動適用しようとしていて、まだ誰も判断しておらず、台帳にも無い」クラスタ。
   //
-  // 層に分けて引けるようにしてある（2026-09-06 追加）。理由:
-  // 誤統合（別チームを1つにする・データが壊れる方向）は、機械が「統合」と判定したものでしか
-  // 起こり得ない。ところが母集団は「別チーム」判定に大きく偏っている（実測 統合52 / 別チーム391）ので、
-  // 全体から無作為に引くと危険な方向がほとんど標本に入らない。
-  // 実際、最初の80件の抽出では判断済み16件すべてが「別チーム」判定で、
-  // **誤統合は 0/0 ＝ 一度も検証されていなかった**のに「0件」と表示されていた。
-  // 危険な方向を測るには `--stratum merge` で明示的に引く必要がある。
-  const all = Object.entries(ledger.decisions)
-    .filter(([, d]) => d.decidedBy === 'auto')
-    .map(([key, d]) => ({ key, verdict: d.verdict, members: d.members, prefecture: d.prefecture ?? null }));
+  // 2026-09-11: 以前は台帳の decidedBy:'auto' な記録から引いていたが、**その記録自体が
+  // 「既に適用された後」にしか作られない**（apply-auto-merges.mjs / レビュー画面の一括反映は
+  // 台帳登録と alias 適用を同じ操作で行う）ため、引いた時点で手遅れだった
+  // （追記15の欠陥1。実測: merge層48件が1件も画面に出なかった）。
+  // ここで先に引いて review-audit.json に載せておけば、以後の自動適用経路は
+  // heldAuditKeys() でこのキーを見送るので、**適用される前に**人の目に届く。
+  const held = heldAuditKeys(audit.rounds, ledger.decisions);
+  const all = candidates
+    .filter((c) => isAutoOK(c, context))
+    .map((c) => ({ key: clusterKey(c.members), cluster: c, verdict: machineVerdict(c, context) }))
+    .filter((x) => !ledger.decisions[x.key] && !held.has(x.key));
   const pool = stratum ? all.filter((x) => x.verdict === stratum) : all;
 
   if (pool.length === 0) {
-    console.log('母集団が空（機械だけで決めた判断が無い）。標本を引けない。');
+    console.log('母集団が空（機械が自動適用しようとしていて未判断のクラスタが無い）。標本を引けない。');
     process.exit(0);
   }
 
-  const audit = readAudit();
-  // 二重に監査しないよう、既に引いた分は除く。ただし**除外の対象は2種類だけ**にする:
-  //   1. 集計に使える回（verdictSource: 'computed'）で引いたもの
-  //   2. 使えない回で引いたが、**人が既に判断してしまった**もの
-  //      （人の答えが分かった後に機械の判定を計算し直すことになり、事前登録が崩れるため）
-  // 使えない回で引いたが未判断のものは、機械の判定を計算し直せば清潔なので引き直してよい。
-  // ここを一律に除外していたため、merge層は母集団49件のうち48件が塞がれ、
-  // 20件要求しても1件しか引けなかった（2026-09-06 に実際に起きた）。
-  const drawn = new Set();
-  for (const r of audit.rounds) {
-    const usable = r.verdictSource === 'computed';
-    for (const smp of r.sample) {
-      const now = ledger.decisions[smp.key];
-      const judged = now && now.decidedBy === 'human';
-      if (usable || judged) drawn.add(smp.key);
-    }
-  }
-  const available = pool.filter((x) => !drawn.has(x.key));
-  if (available.length === 0) {
-    console.log('母集団は全て抽出済み。新しく引けるものが無い。');
-    process.exit(0);
-  }
-
-  const take = Math.min(n, available.length);
+  const take = Math.min(n, pool.length);
   const rand = rng(seed);
-  const shuffled = available
+  const shuffled = pool
     .map((x) => ({ x, r: rand() }))
     .sort((a, b) => a.r - b.r)
     .map((o) => o.x);
-  // **機械の判定はその場で計算する。**
-  // 以前は台帳の verdict をそのまま使っていたが、台帳の値は反映のたびに上書きされ
-  // （実測で同じクラスタが14〜15回改訂）、IDがずれていた時期に書かれたものが混ざる。
-  // その結果「既に直っているバグ」を現在の誤り率として報告していた（誤統合 3/3 = 100%）。
-  // 実際に計算し直すと3件とも separate ＝ 人の判断と一致で、誤りは0件だった。
-  const candidates = fs.existsSync(CANDIDATES) ? JSON.parse(fs.readFileSync(CANDIDATES, 'utf8')) : [];
-  const context = fs.existsSync(CONTEXT) ? JSON.parse(fs.readFileSync(CONTEXT, 'utf8')) : {};
-  const byKey = new Map(candidates.map((c) => [clusterKey(c.members), c]));
-  const sample = shuffled.slice(0, take).map((x) => {
-    const cluster = byKey.get(x.key);
-    return {
-      key: x.key,
-      members: x.members,
-      prefecture: x.prefecture,
-      // 候補一覧に無い（既に統合されて消えた等）ものだけ台帳の値に落とす。
-      machineVerdict: cluster ? machineVerdict(cluster, context) : x.verdict,
-      verdictSource: cluster ? 'computed' : 'ledger',
-    };
-  });
+  const sample = shuffled.slice(0, take).map((x) => ({
+    key: x.key,
+    members: x.cluster.members.map((m) => m.name),
+    prefecture: x.cluster.prefecture ?? null,
+    machineVerdict: x.verdict,
+    verdictSource: 'computed',
+  }));
 
   audit.rounds.push({
     drawnAt: new Date().toISOString(),
@@ -156,12 +137,19 @@ if (argv.includes('--draw')) {
   });
   fs.writeFileSync(AUDIT, JSON.stringify(audit, null, 2) + '\n', 'utf8');
 
-  const label = stratum ? `機械が「${stratum === 'merge' ? '統合' : '別チーム'}」と判定したもの` : '機械が決めて人が見ていないもの';
+  // レビューHTMLを作り直し、引いたばかりの標本を「監査対象」として即座に保留状態にする。
+  // 作り直さないと、サーバがまだ古い review-audit.json を読み込んだ画面を配信し続け、
+  // 引いた標本がうっかり自動適用の対象に含まれてしまう（build-team-review-html.mjs の
+  // AUDIT 集合はビルド時点の review-audit.json のスナップショットのため）。
+  execFileSync('node', [REVIEW_HTML], { stdio: 'ignore' });
+
+  const label = stratum ? `機械が「${stratum === 'merge' ? '統合' : '別チーム'}」と判定したもの` : '機械が自動適用しようとしていて未判断のもの';
   console.log(`母集団 ${pool.length} 件（${label}）から ${take} 件を無作為抽出した。`);
   console.log(`  seed=${seed}（同じ seed なら引き直せる）`);
   console.log(`  記録: ${path.relative(ROOT, AUDIT)}（第${audit.rounds.length}回）`);
+  console.log(`  標本は判断されるまで自動適用されない（apply-auto-merges.mjs・レビュー画面の一括反映の両方が対象）。`);
   console.log('');
-  console.log('次: レビュー画面の「監査対象」フィルタでこの標本だけを判断し、');
+  console.log('次: レビュー画面（npm run team:review）の「監査対象」フィルタでこの標本だけを判断し、');
   console.log('    node scripts/audit-review-sample.mjs --report で誤り率を出す。');
   process.exit(0);
 }

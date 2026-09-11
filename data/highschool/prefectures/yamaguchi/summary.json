@@ -1218,6 +1218,18 @@
     "teamId": "nanyoukou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["松田_蒼生_南陽工_山口県", "中川_健太_南陽工_山口県"]
+  },
+  {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -1860,6 +1872,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["田中_樹龍_下関工科_山口県", "古谷_勇人_下関工科_山口県"]
+  },
+  {
+    "team": "新南陽",
+    "teamId": "shinnanyou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-mixed",
+    "year": 2025,
+    "gender": "mixed",
+    "playerIds": ["大隅_勝_長門大津クラブ_山口県", "野村_喜代美_新南陽_山口県"]
   },
   {
     "team": "新南陽",
@@ -2699,7 +2723,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["坂上_麻耶_防府商工高校_山口県"]
+    "playerIds": ["坂上_麻耶_防府商工_山口県"]
   },
   {
     "team": "防府商工",
@@ -2711,7 +2735,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["吉永_友梨_防府商工高校_山口県"]
+    "playerIds": ["吉永_友梨_防府商工_山口県"]
   },
   {
     "team": "岩国商",
@@ -2760,6 +2784,30 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["林_優奈_長門_山口県"]
+  },
+  {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["山本_梨湖_南陽工_山口県"]
+  },
+  {
+    "team": "南陽工",
+    "teamId": "nanyoukou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["高井_七海_南陽工_山口県"]
   },
   {
     "team": "南陽工",

@@ -125,3 +125,25 @@ export function summarize(ledger) {
     autoOKOverturned: overturned.length,
   };
 }
+
+/**
+ * 抜き取り監査で引かれたが、まだ人が判断していない（decidedBy:'human' の記録が無い）クラスタの
+ * キー集合。
+ *
+ * なぜ要るか（docs/raw/2026-09-06-idea-autonomous-improvement-agent.md 追記15・追記16）:
+ * 機械が「統合」と判定したクラスタは、そのままだと人が見る前に alias 適用され
+ * `merge-candidates.json` から消える。**これが起きると誤統合を原理的に監査できない**
+ * （実測: merge層の標本48件が1件も画面に出なかった）。
+ * この集合に入っているキーは、機械が自動OKと判定していても**適用を保留**しなければならない
+ * （`apply-auto-merges.mjs` 等、統合を自動適用するすべての経路が使うこと）。
+ */
+export function heldAuditKeys(rounds, decisions) {
+  const held = new Set();
+  for (const r of rounds || []) {
+    for (const s of r.sample || []) {
+      const now = decisions[s.key];
+      if (!now || now.decidedBy !== 'human') held.add(s.key);
+    }
+  }
+  return held;
+}

@@ -1780,6 +1780,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["姉川_勝哉_佐賀工_佐賀県", "横田_祥伍_佐賀工_佐賀県"]
+  },
+  {
+    "team": "佐賀工",
+    "teamId": "sagakou",
+    "prefecture": "佐賀県",
+    "prefectureId": "saga",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["西_駿介_佐賀工_佐賀県", "石井_礼都_佐賀工_佐賀県"]
@@ -1821,20 +1833,8 @@
     "playerIds": ["西_駿介_佐賀工_佐賀県", "石井_礼都_佐賀工_佐賀県"]
   },
   {
-    "team": "佐賀工業高校",
-    "teamId": "sagakougyou",
-    "prefecture": "佐賀県",
-    "prefectureId": "saga",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2022,
-    "gender": "boys",
-    "playerIds": ["姉川_勝哉_佐賀工業高校_佐賀県", "横田_祥伍_佐賀工業高校_佐賀県"]
-  },
-  {
-    "team": "佐賀工業高校",
-    "teamId": "sagakougyou",
+    "team": "佐賀工",
+    "teamId": "sagakou",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
     "result": "予選敗退",
@@ -1842,7 +1842,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["石井_大裕_佐賀工業高校_佐賀県", "高崎_幸樹_佐賀工業高校_佐賀県"]
+    "playerIds": ["石井_大裕_佐賀工_佐賀県", "高崎_幸樹_佐賀工_佐賀県"]
   },
   {
     "team": "塩田工",
@@ -2949,8 +2949,8 @@
     "playerIds": ["辻田_萌乃佳_佐賀清和_佐賀県"]
   },
   {
-    "team": "佐賀工業高校",
-    "teamId": "sagakougyou",
+    "team": "佐賀工",
+    "teamId": "sagakou",
     "prefecture": "佐賀県",
     "prefectureId": "saga",
     "result": "3回戦敗退",
@@ -2958,7 +2958,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "boys",
-    "playerIds": ["石井_大裕_佐賀工業高校_佐賀県"]
+    "playerIds": ["石井_大裕_佐賀工_佐賀県"]
   },
   {
     "team": "嬉野",

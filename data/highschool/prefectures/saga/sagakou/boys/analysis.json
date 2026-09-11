@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 26,
+  "totalAppearances": 29,
   "byCategory": {
     "team": 2,
-    "doubles": 24
+    "doubles": 26,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "佐賀工",
+        "teamId": "sagakou",
+        "prefecture": "佐賀県",
+        "prefectureId": "saga",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "highschool-japan-cup",
+        "year": 2021,
+        "gender": "boys",
+        "playerIds": ["石井_大裕_佐賀工_佐賀県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -65,12 +77,12 @@
       "appearances": 3
     },
     {
-      "id": "大島_樹_佐賀工_佐賀県",
-      "appearances": 2
+      "id": "姉川_勝哉_佐賀工_佐賀県",
+      "appearances": 3
     },
     {
-      "id": "石丸_賢次_佐賀工_佐賀県",
-      "appearances": 2
+      "id": "石井_大裕_佐賀工_佐賀県",
+      "appearances": 3
     }
   ]
 }

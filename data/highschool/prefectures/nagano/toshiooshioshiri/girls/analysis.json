@@ -1,13 +1,36 @@
 {
-  "totalAppearances": 9,
+  "totalAppearances": 12,
   "byCategory": {
     "team": 1,
-    "doubles": 8
+    "doubles": 9,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["永井_美羽_都市大塩尻_長野県"]
+      },
+      "historicalBest": {
+        "team": "都市大塩尻",
+        "teamId": "toshiooshioshiri",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["永井_美羽_都市大塩尻_長野県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -64,22 +87,22 @@
   "topPlayers": [
     {
       "id": "黒岩_陽夏_都市大塩尻_長野県",
-      "appearances": 3
-    },
-    {
-      "id": "上條_愛弥_都市大塩尻_長野県",
-      "appearances": 2
-    },
-    {
-      "id": "酒田_莉帆_都市大塩尻_長野県",
-      "appearances": 2
+      "appearances": 4
     },
     {
       "id": "宮本_菜々子_都市大塩尻_長野県",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "永井_美羽_都市大塩尻_長野県",
+      "appearances": 3
+    },
+    {
+      "id": "武重_希空_都市大塩尻_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "上條_愛弥_都市大塩尻_長野県",
       "appearances": 2
     }
   ]

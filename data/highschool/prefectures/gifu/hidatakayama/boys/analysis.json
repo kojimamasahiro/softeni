@@ -1,0 +1,53 @@
+{
+  "totalAppearances": 2,
+  "byCategory": {
+    "doubles": 2
+  },
+  "resultsByCategory": {
+    "singles": {
+      "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "飛騨高山",
+        "teamId": "hidatakayama",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-workers",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["青木_康朗_飛騨高山_岐阜県", "宮代_章史_飛騨高山_岐阜県"]
+      },
+      "historicalBest": {
+        "team": "飛騨高山",
+        "teamId": "hidatakayama",
+        "prefecture": "岐阜県",
+        "prefectureId": "gifu",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "zennihon-workers",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["青木_康朗_飛騨高山_岐阜県", "宮代_章史_飛騨高山_岐阜県"]
+      }
+    },
+    "team": {
+      "recentlyResult": null,
+      "historicalBest": null
+    }
+  },
+  "uniquePlayers": 2,
+  "topPlayers": [
+    {
+      "id": "宮代_章史_飛騨高山_岐阜県",
+      "appearances": 2
+    },
+    {
+      "id": "青木_康朗_飛騨高山_岐阜県",
+      "appearances": 2
+    }
+  ]
+}

@@ -1,13 +1,25 @@
 {
-  "totalAppearances": 11,
+  "totalAppearances": 17,
   "byCategory": {
     "team": 3,
-    "doubles": 8
+    "doubles": 8,
+    "singles": 6
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "大津商",
+        "teamId": "ootsushou",
+        "prefecture": "滋賀県",
+        "prefectureId": "shiga",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2017,
+        "gender": "girls",
+        "playerIds": ["田中_沙奈_大津商_滋賀県"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -39,26 +51,26 @@
       }
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 10,
   "topPlayers": [
     {
       "id": "井上_佳奈_大津商_滋賀県",
-      "appearances": 3
+      "appearances": 4
     },
     {
       "id": "石橋_和佳_大津商_滋賀県",
+      "appearances": 4
+    },
+    {
+      "id": "三日月_鈴_大津商_滋賀県",
+      "appearances": 3
+    },
+    {
+      "id": "田中_沙奈_大津商_滋賀県",
       "appearances": 3
     },
     {
       "id": "嶋田_弥和_大津商_滋賀県",
-      "appearances": 2
-    },
-    {
-      "id": "三日月_鈴_大津商_滋賀県",
-      "appearances": 2
-    },
-    {
-      "id": "木瀬_葉月_大津商_滋賀県",
       "appearances": 2
     }
   ]
