@@ -322,7 +322,9 @@ line(
 line('[参照] playerIds 参照切れ', brokenRefs, brokenEx.join(' / '));
 line('[参照] participant id 重複', dupIds, dupEx.join(' / '));
 line('[チーム] 別名のまま残る出場', aliasLeft, aliasLeft ? '→ normalize-team-names.mjs --scope=all' : '');
-line('[チーム] 自動OK可の未統合候補', candAuto, candAuto ? '→ apply-auto-merges.mjs' : '');
+// 2026-09-12: 機械の自動統合は廃止し、人が見たものだけを適用する運用にした。
+// ここで apply-auto-merges.mjs を勧めると、レビューを飛ばして統合する手順を案内することになる。
+line('[チーム] 未統合候補（機械は自動OK可と判定）', candAuto, candAuto ? '→ npm run team:review で人が判断する' : '');
 line('[チーム] 要人手レビュー候補(同一大会同居等)', candReview, reviewEx.length ? '例: ' + reviewEx.slice(0, 4).join(' ｜ ') : '');
 line(
   `[チーム] 未統合候補(選手共有・同年共起${MIN_SHARED_PLAYERS}名以上)`,

@@ -94,12 +94,55 @@ export function writeLedger(ledger) {
   return out;
 }
 
+/** 判断の中身（人が決めたこと）が同じか。decidedAt / revisions / decidedBy は比べない。 */
+function sameDecision(a, b) {
+  return (
+    a.verdict === b.verdict &&
+    JSON.stringify(a.groups ?? null) === JSON.stringify(b.groups ?? null) &&
+    JSON.stringify(a.canon ?? null) === JSON.stringify(b.canon ?? null) &&
+    JSON.stringify(a.merges ?? null) === JSON.stringify(b.merges ?? null)
+  );
+}
+
 /**
  * 判断を1件取り込む。既存があれば上書きし、firstDecidedAt は最初の値を保つ
  * （「いつ最初に判断したか」と「最後に見直したか」を両方残すため）。
+ *
+ * 2026-09-12 に2つの不変条件を足した（欠陥4とその兄弟。raw 追記19・追記21）:
+ *
+ * 1. **中身が同じ再送信は記録しない。** レビュー画面の「確認済を反映」は、触っていない
+ *    クラスタも含めて画面上の全件を毎回送る設計になっている。そのままだと無関係な
+ *    クラスタの decidedAt が書き換わり revisions が増え続ける。実測では
+ *    2026-09-12 のコミットで 358 件の revisions が一斉に +1 され、`revisions:25` が
+ *    264 件並んでいた（人が25回迷ったのではなく、ボタンが25回押されただけ）。
+ *    この汚染で「いつ・何回判断したか」は測定に使えなくなっていた。
+ * 2. **human を auto へ下げない。** ブラウザの localStorage が古いと、既に人が確認した
+ *    クラスタを `touched:false` のまま再送信し、decidedBy が human → auto へ巻き戻る
+ *    （2026-09-11 に実データで41件発生）。抜き取り監査であれ全件レビューであれ、
+ *    「誰が決めたか」は台帳の土台なので、下げる方向の更新は受け付けない。
+ *
+ * クライアント側（build-team-review-html.mjs）を直すだけでは、古いタブや古いキャッシュから
+ * の送信を防げない。**サーバ側の不変条件として持つ**のが要点。
  */
 export function recordDecision(ledger, entry) {
   const prev = ledger.decisions[entry.key];
+
+  if (prev) {
+    const downgrade = prev.decidedBy === 'human' && entry.decidedBy !== 'human';
+    if (sameDecision(prev, entry)) {
+      // 中身が同じ。auto → human の昇格（人が見て同意した）だけ反映し、それ以外は何もしない。
+      if (prev.decidedBy !== 'human' && entry.decidedBy === 'human') {
+        ledger.decisions[entry.key] = { ...prev, decidedBy: 'human', decidedAt: entry.decidedAt };
+      }
+      return ledger;
+    }
+    if (downgrade) {
+      // 中身が違ううえに decidedBy を下げようとしている＝人の判断を機械/古い状態が
+      // 上書きしようとしている。受け付けない。
+      return ledger;
+    }
+  }
+
   ledger.decisions[entry.key] = {
     ...entry,
     firstDecidedAt: prev?.firstDecidedAt || entry.decidedAt,
