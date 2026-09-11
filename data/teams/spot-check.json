@@ -1,0 +1,419 @@
+{
+  "rounds": [
+    {
+      "drawnAt": "2026-09-11T23:58:40.477Z",
+      "seed": 20260912,
+      "stratum": "merge",
+      "populationSize": 49,
+      "sample": [
+        {
+          "key": "長岡商業|長岡商業高校",
+          "members": [
+            "長岡商業",
+            "長岡商業高校"
+          ],
+          "prefecture": "新潟県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "長岡商業",
+              "aliases": [
+                "長岡商業高校"
+              ],
+              "note": "新潟県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "防府商工|防府商工高校",
+          "members": [
+            "防府商工",
+            "防府商工高校"
+          ],
+          "prefecture": "山口県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "防府商工",
+              "aliases": [
+                "防府商工高校"
+              ],
+              "note": "山口県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "仙北STC|仙北クラブ|仙北スポ少|仙北スポ少大",
+          "members": [
+            "仙北スポ少",
+            "仙北STC",
+            "仙北クラブ",
+            "仙北スポ少大"
+          ],
+          "prefecture": "秋田県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "仙北STC",
+              "aliases": [
+                "仙北クラブ"
+              ],
+              "note": "秋田県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "三春STC|三春中学校",
+          "members": [
+            "三春STC",
+            "三春中学校"
+          ],
+          "prefecture": "福島県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "三春STC",
+              "aliases": [
+                "三春中学校"
+              ],
+              "note": "福島県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "綾瀬|綾瀬テニスクラブ",
+          "members": [
+            "綾瀬",
+            "綾瀬テニスクラブ"
+          ],
+          "prefecture": "神奈川県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "綾瀬",
+              "aliases": [
+                "綾瀬テニスクラブ"
+              ],
+              "note": "神奈川県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "式下中|式下中学校",
+          "members": [
+            "式下中",
+            "式下中学校"
+          ],
+          "prefecture": "奈良県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "式下中",
+              "aliases": [
+                "式下中学校"
+              ],
+              "note": "奈良県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "洲本|洲本ジュニアクラブ|洲本高等学校",
+          "members": [
+            "洲本",
+            "洲本ジュニアクラブ",
+            "洲本高等学校"
+          ],
+          "prefecture": "兵庫県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "洲本",
+              "aliases": [
+                "洲本高等学校"
+              ],
+              "note": "兵庫県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "松原市連盟|松原市連盟ジュニア",
+          "members": [
+            "松原市連盟",
+            "松原市連盟ジュニア"
+          ],
+          "prefecture": "大阪府",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "松原市連盟",
+              "aliases": [
+                "松原市連盟ジュニア"
+              ],
+              "note": "大阪府"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "富岡ST|富岡STクラブ",
+          "members": [
+            "富岡ST",
+            "富岡STクラブ"
+          ],
+          "prefecture": "群馬県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "富岡ST",
+              "aliases": [
+                "富岡STクラブ"
+              ],
+              "note": "群馬県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "松阪|松阪クラブ|松阪ジュニアクラブ",
+          "members": [
+            "松阪ジュニアクラブ",
+            "松阪",
+            "松阪クラブ"
+          ],
+          "prefecture": "三重県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "松阪ジュニアクラブ",
+              "aliases": [
+                "松阪クラブ"
+              ],
+              "note": "三重県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "沼田|沼田クラブ|沼田ジュニア",
+          "members": [
+            "沼田ジュニア",
+            "沼田クラブ",
+            "沼田"
+          ],
+          "prefecture": "群馬県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "沼田ジュニア",
+              "aliases": [
+                "沼田"
+              ],
+              "note": "群馬県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "妻ヶ丘中|妻ヶ丘中学校",
+          "members": [
+            "妻ヶ丘中学校",
+            "妻ヶ丘中"
+          ],
+          "prefecture": "宮崎県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "妻ヶ丘中学校",
+              "aliases": [
+                "妻ヶ丘中"
+              ],
+              "note": "宮崎県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "V・ファーレン長崎|V・ファーレン長崎クラブ",
+          "members": [
+            "V・ファーレン長崎",
+            "V・ファーレン長崎クラブ"
+          ],
+          "prefecture": "長崎県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "V・ファーレン長崎",
+              "aliases": [
+                "V・ファーレン長崎クラブ"
+              ],
+              "note": "長崎県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "松平|松平中学校",
+          "members": [
+            "松平",
+            "松平中学校"
+          ],
+          "prefecture": "愛知県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "松平",
+              "aliases": [
+                "松平中学校"
+              ],
+              "note": "愛知県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "木脇|木脇中|木脇中学校",
+          "members": [
+            "木脇",
+            "木脇中",
+            "木脇中学校"
+          ],
+          "prefecture": "宮崎県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "木脇",
+              "aliases": [
+                "木脇中"
+              ],
+              "note": "宮崎県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "飛騨高山|飛騨高山クラブ",
+          "members": [
+            "飛騨高山",
+            "飛騨高山クラブ"
+          ],
+          "prefecture": "岐阜県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "飛騨高山",
+              "aliases": [
+                "飛騨高山クラブ"
+              ],
+              "note": "岐阜県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "南方|南方JST",
+          "members": [
+            "南方JST",
+            "南方"
+          ],
+          "prefecture": "宮城県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "南方JST",
+              "aliases": [
+                "南方"
+              ],
+              "note": "宮城県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "東出雲スポ少|東出雲中学校",
+          "members": [
+            "東出雲スポ少",
+            "東出雲中学校"
+          ],
+          "prefecture": "島根県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "東出雲スポ少",
+              "aliases": [
+                "東出雲中学校"
+              ],
+              "note": "島根県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "七尾|七尾ジュニアクラブ|七尾中学校",
+          "members": [
+            "七尾",
+            "七尾ジュニアクラブ",
+            "七尾中学校"
+          ],
+          "prefecture": "石川県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "七尾ジュニアクラブ",
+              "aliases": [
+                "七尾中学校"
+              ],
+              "note": "石川県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        },
+        {
+          "key": "NEXUS|NEXUSクラブ",
+          "members": [
+            "NEXUS",
+            "NEXUSクラブ"
+          ],
+          "prefecture": "福岡県",
+          "machineVerdict": "merge",
+          "machineMerges": [
+            {
+              "canonical": "NEXUS",
+              "aliases": [
+                "NEXUSクラブ"
+              ],
+              "note": "福岡県"
+            }
+          ],
+          "answer": null,
+          "note": ""
+        }
+      ]
+    }
+  ]
+}
