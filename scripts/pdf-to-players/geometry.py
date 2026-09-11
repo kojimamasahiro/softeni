@@ -316,11 +316,24 @@ def assign_column(c: dict, columns: list[Column], tolerance: float = 0.0) -> Col
     return nearest
 
 
-def group_rows(chars: list[dict], columns: list[Column], side: str, tolerance: float = 3.0) -> list[Row]:
+def group_rows(
+    chars: list[dict], columns: list[Column], side: str, tolerance: float = 3.0, x_tolerance: float = 4.0
+) -> list[Row]:
     """Y座標で行にまとめ、各文字を列に割り当てる。
 
     行の判定はフォントサイズで許容誤差を変える。小さい文字が混ざる欄では
     同じ行が2行に割れてペアが崩れるため（master.py が踏んでいた問題）。
+
+    `x_tolerance` は「どの列にも重ならない文字を、これだけ近ければ隣の列に寄せる」幅
+    （2026-09-12 追加。`tolerance` はY方向なので別に持つ）。
+
+    なぜ要るか: `detect_columns` は「その縦位置に文字を置く行が閾値以上あるか」で列を作る。
+    3文字姓は稀（全中2024のp4右段では32エントリー中2件）なので、真ん中の文字が来る位置は
+    閾値（`max(2, 全行数×0.04)`＝ページ4なら5.16行）に届かず**列が作られない**。
+    その結果、重なる列が無い文字として捨てられていた。実測の被害:
+    `五十畑→五畑` `鍜冶田→鍜田` `小野寺→小寺`（全中2024・公開データ側が正しかった）。
+    左段が壊れないのは列が広め（x 90-106）に検出され2文字ぶんを吸収するためで、
+    様式の違いではなく検出のたまたまの差だった。
     """
     if not chars:
         return []
@@ -351,7 +364,11 @@ def group_rows(chars: list[dict], columns: list[Column], side: str, tolerance: f
     for g in groups:
         cells: dict[int, list[tuple[float, float, str]]] = {}
         for c in sorted(g, key=lambda c: c['x0']):
-            col = assign_column(c, columns)
+            # 許容は「その文字の幅の半分」を基本にする（全角12.3ptなら約6pt）。
+            # 列の端は1pt刻みの集計で丸まるうえ、列の右端は「多くの行が文字を置く範囲」なので、
+            # 稀にしか出ない末尾の1文字（例: 全中2024 p6 の `仙台白百合学園中学校` の `校`、
+            # 列は x405-500 なのに文字は x504.9）は必ず範囲外に出る。
+            col = assign_column(c, columns, tolerance=max(x_tolerance, (c['x1'] - c['x0']) / 2))
             if col is not None:
                 cells.setdefault(col.index, []).append((c['x0'], c['x1'], c['text']))
         rows.append(

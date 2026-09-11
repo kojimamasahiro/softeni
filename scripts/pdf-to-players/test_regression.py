@@ -146,6 +146,20 @@ def test_zenchu_doubles() -> None:
         check(f'全中p{page}: ペアが全件2名そろう', all(len(e['information']) == 2 for e in entries))
         check(f'全中p{page}: 再掲枠を重複として検出', len(report.duplicate_players) == 1, str(report.duplicate_players))
 
+    # 右段の3文字姓（2026-09-12 追加）。
+    # 合成データの「3文字姓が壊れない（松野下）」では再現しない型なので、実PDFの行で押さえる。
+    # 右段は姓の列が x≈363-371 と x≈387-394 の2本に分かれ、その間（x≈374）に来る3文字目は
+    # 「その位置に文字を置く行」が閾値に届かず列が作られないため、どの列にも重ならず
+    # 捨てられていた（五十畑→五畑・鍜冶田→鍜田・小野寺→小寺）。
+    # 公開済みデータと突き合わせて発見した（docs/raw/2026-09-06-idea-autonomous-improvement-agent.md 追記21）。
+    long_surnames = {3: [('五十畑', '咲和')], 4: [('鍜冶田', '芽依'), ('小野寺', '咲柚')]}
+    for page, pairs in long_surnames.items():
+        _, entries, _ = extract_page(pdf, page)
+        people = [(p['lastName'], p['firstName']) for e in entries for p in e['information']]
+        for last, first in pairs:
+            got = [p for p in people if p[1] == first]
+            check(f'全中p{page}: 右段の3文字姓が落ちない（{last}{first}）', (last, first) in people, str(got))
+
 
 def test_zenchu_team() -> None:
     """全中2024の団体戦ページ（p5-6）。個人戦とはさらに別の構造。
