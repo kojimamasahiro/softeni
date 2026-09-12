@@ -206,7 +206,11 @@ function visible(i){const s=st(i);
   // 初期状態で reviewed=true になるため「未確認のみ」からは消えてしまい、
   // 「自動OK」フィルタには人が判断済みのものも混ざる。どちらでもこの母集団は出せなかった。
   // 台帳に記録が無いもの（本当に新規）もここに出す。
-  if(filter==='machine'){const d=LEDGER[KEYS[i]];if(d&&d.decidedBy==='human')return false;if(s.touched)return false;}
+  // 判定は**台帳の decidedBy だけ**で行う。画面側の状態（touched / reviewed）を混ぜないこと:
+  //   - touched を条件にすると、グループを触った瞬間にカードが一覧から消えて作業できない
+  //   - reviewed を条件にすると、自動OKは初期化時に reviewed=true になるため大半が最初から消える
+  // 押しても消えず、「確認済を反映」で台帳に人の判断が入ってから（再生成後に）一覧が縮む。
+  if(filter==='machine'){const d=LEDGER[KEYS[i]];if(d&&d.decidedBy==='human')return false;}
   if(filter==='review'&&(!NEEDS[i]||s.reviewed))return false;
   // 監査対象: 無作為抽出した標本だけを出す。判断済みでも出す（結果を見返せるように）。
   if(filter==='audit'&&!AUDIT.has(KEYS[i]))return false;
