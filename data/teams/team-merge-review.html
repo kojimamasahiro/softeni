@@ -49,6 +49,7 @@ small{color:var(--mut)}
     <button data-f="todo" class="on">未確認のみ</button>
     <button data-f="review">要確認のみ</button>
     <button data-f="auto">自動OK</button>
+    <button data-f="machine">機械のみ（未確認）</button>
     <button data-f="done">手動確認済</button>
     <button data-f="audit">監査対象</button>
     <button data-f="all">すべて</button>
@@ -131,6 +132,12 @@ function visible(i){const s=st(i);
   if(filter==='todo'&&s.reviewed)return false;
   if(filter==='auto'&&!AUTO[i])return false;
   if(filter==='done'&&(!s.reviewed||AUTO[i]))return false;
+  // 「機械のみ（未確認）」: 機械だけが決めていて人が一度も見ていないもの（2026-09-12 追加）。
+  // 判定は**台帳の decidedBy**で行う。画面の reviewed とは別物で、自動OKのクラスタは
+  // 初期状態で reviewed=true になるため「未確認のみ」からは消えてしまい、
+  // 「自動OK」フィルタには人が判断済みのものも混ざる。どちらでもこの母集団は出せなかった。
+  // 台帳に記録が無いもの（本当に新規）もここに出す。
+  if(filter==='machine'){const d=LEDGER[KEYS[i]];if(d&&d.decidedBy==='human')return false;if(s.touched)return false;}
   if(filter==='review'&&(!NEEDS[i]||s.reviewed))return false;
   // 監査対象: 無作為抽出した標本だけを出す。判断済みでも出す（結果を見返せるように）。
   if(filter==='audit'&&!AUDIT.has(KEYS[i]))return false;
