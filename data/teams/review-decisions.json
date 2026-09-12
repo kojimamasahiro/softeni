@@ -241,7 +241,7 @@
         "Next"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
@@ -250,7 +250,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -858,17 +858,25 @@
         "スフィーダクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        1
+        0
       ],
       "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "スフィーダテニスクラブ",
+          "aliases": [
+            "スフィーダクラブ"
+          ],
+          "note": "岡山県"
+        }
+      ],
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "スマイリー|スマイリーSTC": {
       "prefecture": "群馬県",
@@ -1870,46 +1878,6 @@
       "decidedAt": "2026-09-11T16:06:47.271Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 24
-    },
-    "二ツ井|二ツ井ジ��ニア": {
-      "prefecture": "秋田県",
-      "signal": "core",
-      "members": [
-        "二ツ井ジュニア",
-        "二ツ井"
-      ],
-      "proposedAutoOK": true,
-      "decidedBy": "auto",
-      "groups": [
-        0,
-        1
-      ],
-      "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-06T11:58:19.678Z",
-      "firstDecidedAt": "2026-09-06T11:58:19.678Z",
-      "revisions": 0
-    },
-    "二ツ井|二ツ井���ュニア": {
-      "prefecture": "秋田県",
-      "signal": "core",
-      "members": [
-        "二ツ井ジュニア",
-        "二ツ井"
-      ],
-      "proposedAutoOK": true,
-      "decidedBy": "auto",
-      "groups": [
-        0,
-        1
-      ],
-      "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-06T11:01:01.743Z",
-      "firstDecidedAt": "2026-09-06T11:01:01.743Z",
-      "revisions": 0
     },
     "二本松クラブ|二本松ジュニア": {
       "prefecture": "福島県",
@@ -4481,7 +4449,7 @@
         "大谷中"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -4489,7 +4457,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -5520,20 +5488,28 @@
         "小千谷中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        1,
+        3,
         2,
         3,
         4
       ],
       "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "小千谷ジュニア",
+          "aliases": [
+            "小千谷ジュニアクラブ"
+          ],
+          "note": "新潟県"
+        }
+      ],
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "小城|小城中": {
       "prefecture": "佐賀県",
@@ -6190,17 +6166,25 @@
         "川口市勤労者テニスクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        1
+        0
       ],
       "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "川口市勤労者クラブ",
+          "aliases": [
+            "川口市勤労者テニスクラブ"
+          ],
+          "note": "埼玉県"
+        }
+      ],
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "川島STC|川島クラブ": {
       "prefecture": "埼玉県",
@@ -6397,34 +6381,6 @@
       "decidedAt": "2026-09-06T04:33:10.944Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 1
-    },
-    "平野���フトテニス連盟|平野連盟": {
-      "prefecture": "大阪府",
-      "signal": "players",
-      "members": [
-        "平野連盟",
-        "平野ソフトテニス連盟"
-      ],
-      "proposedAutoOK": false,
-      "decidedBy": "human",
-      "groups": [
-        0,
-        0
-      ],
-      "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "平野連盟",
-          "aliases": [
-            "平野ソフトテニス連盟"
-          ],
-          "note": "大阪府"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:29:46.112Z",
-      "firstDecidedAt": "2026-09-06T04:29:46.112Z",
-      "revisions": 0
     },
     "広島|広島中学校": {
       "prefecture": "埼玉県",
@@ -7086,26 +7042,6 @@
       "decidedBy": "human",
       "groups": [
         0,
-        1
-      ],
-      "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-06T10:49:55.740Z",
-      "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 9
-    },
-    "指宿商��|指宿商業高校": {
-      "prefecture": "鹿児島県",
-      "signal": "core",
-      "members": [
-        "指宿商業高校",
-        "指宿商業"
-      ],
-      "proposedAutoOK": true,
-      "decidedBy": "human",
-      "groups": [
-        0,
         0
       ],
       "canon": {},
@@ -7119,9 +7055,10 @@
           "note": "鹿児島県"
         }
       ],
-      "decidedAt": "2026-09-06T10:59:08.282Z",
-      "firstDecidedAt": "2026-09-06T10:59:08.282Z",
-      "revisions": 0
+      "decidedAt": "2026-09-12T05:55:16.264Z",
+      "firstDecidedAt": "2026-09-06T04:09:20.467Z",
+      "revisions": 10,
+      "note": "2026-09-12: 台帳の不整合（別チームと統合が併存）を解消。人の判断で同じチームに揃えた。"
     },
     "敦賀|敦賀クラブ|敦賀スポーツ少年団": {
       "prefecture": "福井県",
@@ -8978,7 +8915,7 @@
         "津山峰南テニスクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -8986,7 +8923,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -13221,7 +13158,7 @@
         "高槻ソフトテニスクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -13229,7 +13166,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T05:53:18.730Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },

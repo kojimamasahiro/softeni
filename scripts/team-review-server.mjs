@@ -64,9 +64,16 @@ const server = http.createServer((req, res) => {
   }
   if (req.method === 'POST' && (req.url === '/apply' || req.url === '/decisions')) {
     const onlyDecisions = req.url === '/decisions';
-    let body = '';
-    req.on('data', (c) => (body += c));
+    // チャンクは Buffer のまま集めてから一度に文字列化する。
+    // `body += c` と書くとチャンクごとに toString() されるため、**マルチバイト文字が
+    // チャンク境界をまたぐと壊れる**（UTF-8 の途中で切れて U+FFFD になる）。
+    // 実害: 判断台帳に `指宿商��|指宿商業高校` `滑川|滑川ジュニアク��ブ` のような
+    // 壊れたキーが作られ、同じクラスタの判断が二重に登録される（2026-09-12 に6件確認、
+    // うち2件はこの日の反映で新たに作られた）。ペイロードが大きいほど起きやすい。
+    const chunks = [];
+    req.on('data', (c) => chunks.push(Buffer.isBuffer(c) ? c : Buffer.from(c)));
     req.on('end', () => {
+      const body = Buffer.concat(chunks).toString('utf8');
       try {
         const parsed = JSON.parse(body || '{}');
         // 旧形式（additions の配列そのもの）も受ける。
