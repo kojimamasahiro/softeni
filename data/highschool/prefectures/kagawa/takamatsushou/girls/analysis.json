@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 10,
   "byCategory": {
-    "doubles": 4
+    "doubles": 8,
+    "singles": 2
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "高松商",
+        "teamId": "takamatsushou",
+        "prefecture": "香川県",
+        "prefectureId": "kagawa",
+        "result": "2回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2022,
+        "gender": "girls",
+        "playerIds": ["増田_菜々_高松商_香川県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -28,10 +40,10 @@
         "prefectureId": "kagawa",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2016,
+        "tournamentId": "zennihon-championship",
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["瀧本_彩香_高松商_香川県", "大谷_天海_高松商_香川県"]
+        "playerIds": ["増田_菜々_高松商_香川県", "三宅_真央_高松商_香川県"]
       }
     },
     "team": {
@@ -39,15 +51,15 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 8,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
       "id": "増田_菜々_高松商_香川県",
-      "appearances": 1
+      "appearances": 5
     },
     {
       "id": "三宅_真央_高松商_香川県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "西井_沙羅香_高松商_香川県",
@@ -58,7 +70,7 @@
       "appearances": 1
     },
     {
-      "id": "瀧本_彩香_高松商_香川県",
+      "id": "中川_莉沙_高松商_香川県",
       "appearances": 1
     }
   ]

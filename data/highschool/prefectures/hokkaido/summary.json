@@ -1513,6 +1513,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "zennihon-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["高橋_臣_北科大_北海道", "増田_達四郎_北科大_高体連"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2019,
     "gender": "boys",
     "playerIds": ["後藤_駿斗_北科大_北海道", "新山_海人_北科大_北海道"]
@@ -1534,12 +1546,72 @@
     "teamId": "kitakadai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高橋_咲楽_北科大_北海道", "北川_風花_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["坂本_信治_北科大_北海道", "森_亜斗夢_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["森谷_太一_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["百目木_來杜_北科大_北海道", "秋山_想太_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["川田_泰成_北科大_北海道", "勝俣_力飛_北科大_北海道"]
   },
   {
     "team": "北科大",
@@ -5370,30 +5442,6 @@
     "playerIds": ["古園_由彩_千歳_北海道"]
   },
   {
-    "team": "北海道科学大",
-    "teamId": "hokkaidoukagakudai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["西村_優_北海道科学大_北海道"]
-  },
-  {
-    "team": "北海道科学大",
-    "teamId": "hokkaidoukagakudai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["金山_空斗_北海道科学大_北海道"]
-  },
-  {
     "team": "岩見沢東",
     "teamId": "iwamizawahigashi",
     "prefecture": "北海道",
@@ -5428,6 +5476,54 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["北畠_千佳子_北広島_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["西_拓郎_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["西_拓郎_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["増田_洋五豊_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["竹田_麻佑_北科大_北海道"]
   },
   {
     "team": "北科大",
@@ -5536,6 +5632,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["森谷_太一_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["西村_優_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["金山_空斗_北科大_北海道"]
   },
   {
     "team": "北見北斗",

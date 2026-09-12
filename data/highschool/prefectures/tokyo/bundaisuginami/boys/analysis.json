@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 4,
   "byCategory": {
-    "doubles": 2
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "bundaisuginami",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["前田_光貴_文大杉並_東京都", "宍倉_希_文大杉並_東京都"]
+        "playerIds": ["前田_光貴_文大杉並_東京都", "後藤_維月文_文大杉並_東京都"]
       },
       "historicalBest": {
         "team": "文大杉並",
         "teamId": "bundaisuginami",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
         "tournamentId": "highschool-championship",
-        "year": 2026,
+        "year": 2025,
         "gender": "boys",
-        "playerIds": ["前田_光貴_文大杉並_東京都", "宍倉_希_文大杉並_東京都"]
+        "playerIds": ["前田_光貴_文大杉並_東京都", "後藤_維月文_文大杉並_東京都"]
       }
     },
     "team": {
@@ -39,18 +39,26 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 6,
   "topPlayers": [
+    {
+      "id": "前田_光貴_文大杉並_東京都",
+      "appearances": 2
+    },
     {
       "id": "宍倉_希_文大杉並_東京都",
       "appearances": 2
     },
     {
-      "id": "前田_光貴_文大杉並_東京都",
+      "id": "後藤_維月文_文大杉並_東京都",
       "appearances": 1
     },
     {
-      "id": "小路_常晃_文大杉並_東京都",
+      "id": "山崎_周真_文大杉並_東京都",
+      "appearances": 1
+    },
+    {
+      "id": "宍倉_希文_文大杉並_東京都",
       "appearances": 1
     }
   ]
