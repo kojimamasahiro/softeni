@@ -1,12 +1,35 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 8,
   "byCategory": {
-    "doubles": 2
+    "doubles": 4,
+    "singles": 4
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": null,
-      "historicalBest": null
+      "recentlyResult": {
+        "team": "盛岡三",
+        "teamId": "moriokasan",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["田中_もも_盛岡三_岩手県"]
+      },
+      "historicalBest": {
+        "team": "盛岡三",
+        "teamId": "moriokasan",
+        "prefecture": "岩手県",
+        "prefectureId": "iwate",
+        "result": "3回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["田中_もも_盛岡三_岩手県"]
+      }
     },
     "doubles": {
       "recentlyResult": {
@@ -43,19 +66,19 @@
   "topPlayers": [
     {
       "id": "田中_もも_盛岡三_岩手県",
-      "appearances": 1
-    },
-    {
-      "id": "大吹_風_盛岡三_岩手県",
-      "appearances": 1
+      "appearances": 6
     },
     {
       "id": "本間_優衣_盛岡三_岩手県",
-      "appearances": 1
+      "appearances": 2
     },
     {
       "id": "谷地_茜音_盛岡三_岩手県",
-      "appearances": 1
+      "appearances": 2
+    },
+    {
+      "id": "大吹_風_盛岡三_岩手県",
+      "appearances": 2
     }
   ]
 }

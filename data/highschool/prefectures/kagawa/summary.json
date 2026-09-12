@@ -3485,7 +3485,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県", "佐々木_高松商業_香川県_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県", "佐々木_高松商業_香川県_香川県"]
   },
   {
     "team": "香川西",
@@ -3600,6 +3600,18 @@
     "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["増田_菜々_高松商_香川県", "三宅_真央_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -3627,6 +3639,30 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["中川_莉沙_高松商_香川県", "大石_玲菜_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["忰山_奈美_高松商_香川県", "笠谷_理佳_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2016,
     "gender": "girls",
     "playerIds": ["瀧本_彩香_高松商_香川県", "大谷_天海_高松商_香川県"]
@@ -3644,44 +3680,8 @@
     "playerIds": ["中井_心菜_高松商_香川県", "中川_鈴菜_高松商_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業高校_香川県", "三宅_真央_高松商業高校_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2015,
-    "gender": "girls",
-    "playerIds": ["中川_莉沙_高松商業_香川県", "大石_玲菜_高松商業_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["忰山_奈美_高松商業_香川県", "笠谷_理佳_高松商業_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "予選敗退",
@@ -3689,7 +3689,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県", "佐々木_高松商業_香川県_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県", "佐々木_高松商業_香川県_香川県"]
   },
   {
     "team": "高瀬",
@@ -5708,8 +5708,8 @@
     "playerIds": ["福井_達輝_丸亀_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "2回戦敗退",
@@ -5717,11 +5717,11 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業高校_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "2回戦敗退",
@@ -5729,7 +5729,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県"]
   },
   {
     "team": "高瀬",

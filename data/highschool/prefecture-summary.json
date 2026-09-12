@@ -1513,6 +1513,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "zennihon-championship",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["高橋_臣_北科大_北海道", "増田_達四郎_北科大_高体連"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
     "year": 2019,
     "gender": "boys",
     "playerIds": ["後藤_駿斗_北科大_北海道", "新山_海人_北科大_北海道"]
@@ -1534,12 +1546,72 @@
     "teamId": "kitakadai",
     "prefecture": "北海道",
     "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["高橋_咲楽_北科大_北海道", "北川_風花_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["坂本_信治_北科大_北海道", "森_亜斗夢_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["竹村_純生_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["森谷_太一_北科大_北海道", "松田_快晴_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["百目木_來杜_北科大_北海道", "秋山_想太_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["川田_泰成_北科大_北海道", "勝俣_力飛_北科大_北海道"]
   },
   {
     "team": "北科大",
@@ -5370,30 +5442,6 @@
     "playerIds": ["古園_由彩_千歳_北海道"]
   },
   {
-    "team": "北海道科学大",
-    "teamId": "hokkaidoukagakudai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["西村_優_北海道科学大_北海道"]
-  },
-  {
-    "team": "北海道科学大",
-    "teamId": "hokkaidoukagakudai",
-    "prefecture": "北海道",
-    "prefectureId": "hokkaido",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2021,
-    "gender": "boys",
-    "playerIds": ["金山_空斗_北海道科学大_北海道"]
-  },
-  {
     "team": "岩見沢東",
     "teamId": "iwamizawahigashi",
     "prefecture": "北海道",
@@ -5428,6 +5476,54 @@
     "year": 2021,
     "gender": "girls",
     "playerIds": ["北畠_千佳子_北広島_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["西_拓郎_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["西_拓郎_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["増田_洋五豊_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["竹田_麻佑_北科大_北海道"]
   },
   {
     "team": "北科大",
@@ -5536,6 +5632,30 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["森谷_太一_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["西村_優_北科大_北海道"]
+  },
+  {
+    "team": "北科大",
+    "teamId": "kitakadai",
+    "prefecture": "北海道",
+    "prefectureId": "hokkaido",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2021,
+    "gender": "boys",
+    "playerIds": ["金山_空斗_北科大_北海道"]
   },
   {
     "team": "北見北斗",
@@ -12169,42 +12289,6 @@
     "playerIds": ["大和田_千陽_盛岡第二_岩手県", "瀬川_はるか_盛岡第二_岩手県"]
   },
   {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["本間_優衣_盛岡第三_岩手県", "谷地_茜音_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2026,
-    "gender": "boys",
-    "playerIds": ["伊藤_心_盛岡第三_岩手県", "生平_瑛人_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県", "大吹_風_盛岡第三_岩手県"]
-  },
-  {
     "team": "盛岡女子",
     "teamId": "moriokajoshi",
     "prefecture": "岩手県",
@@ -12581,6 +12665,30 @@
     "teamId": "moriokasan",
     "prefecture": "岩手県",
     "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["本間_優衣_盛岡三_岩手県", "谷地_茜音_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["伊藤_心_盛岡三_岩手県", "生平_瑛人_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -12611,6 +12719,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["伊藤_心人_盛岡三_岩手県", "生平_瑛_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県", "大吹_風_盛岡三_岩手県"]
   },
   {
     "team": "盛岡市立",
@@ -13333,54 +13453,6 @@
     "playerIds": ["渡邉_夏姫_水沢_岩手県"]
   },
   {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
     "team": "盛岡工",
     "teamId": "moriokakou",
     "prefecture": "岩手県",
@@ -13463,6 +13535,54 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["冨岡_愛樺_盛岡誠桜_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
   },
   {
     "team": "高田",
@@ -17632,7 +17752,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_宮崎県", "中山_萌_東北_宮城県"]
+    "playerIds": ["山口_優菜_宮崎商_宮崎県", "中山_萌_東北_宮城県"]
   },
   {
     "team": "東北",
@@ -17668,7 +17788,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商業高校_宮崎県"]
+    "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商_宮崎県"]
   },
   {
     "team": "東北",
@@ -23065,7 +23185,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2024,
     "gender": "boys",
-    "playerIds": ["村田_優_羽黒_山形県", "菅谷_峻大_形市スポーツ協会クラブ_山形県"]
+    "playerIds": ["村田_優_羽黒_山形県", "菅谷_峻大_山形市スポーツ協会クラブ_山形県"]
   },
   {
     "team": "羽黒",
@@ -27388,6 +27508,18 @@
     "teamId": "gakuhouishikawa",
     "prefecture": "福島県",
     "prefectureId": "fukushima",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-senbatsu",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["大武_姫菜_学法石川", "大武_夢菜_学法石川"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "east-japan",
@@ -27502,6 +27634,18 @@
     "year": 2026,
     "gender": "girls",
     "playerIds": ["都竹_叶愛_学法石川_福島県", "馬上_世愛_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["柚木_翔太_会津球友会_福島県", "永山_健太_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -30091,6 +30235,42 @@
     "result": "3回戦敗退",
     "category": "singles",
     "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["中村_和樹_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["相山_幸希奈_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["佐藤_日香莉_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
     "year": 2025,
     "gender": "boys",
     "playerIds": ["渡邉_智隼_学法石川"]
@@ -30163,6 +30343,30 @@
     "result": "2回戦敗退",
     "category": "singles",
     "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["宮本_絢菜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["佐藤_日香莉_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
     "playerIds": ["國分_豪留_学法石川_福島県"]
@@ -30190,6 +30394,90 @@
     "year": 2017,
     "gender": "boys",
     "playerIds": ["新沼_稜大_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "ベスト8",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["大武_夢菜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "4回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["大武_姫菜_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["城内_心和_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["永山_浩史_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["鎌田_美樹_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["名古谷_愛美_学法石川_福島県"]
+  },
+  {
+    "team": "学法石川",
+    "teamId": "gakuhouishikawa",
+    "prefecture": "福島県",
+    "prefectureId": "fukushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "boys",
+    "playerIds": ["永山_浩史_学法石川_福島県"]
   },
   {
     "team": "学法石川",
@@ -31121,6 +31409,18 @@
     "teamId": "iwasenichidai",
     "prefecture": "茨城県",
     "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["大久保_俊貴_岩瀬日大_茨城県", "小久保_樹_岩瀬日大_茨城県"]
+  },
+  {
+    "team": "岩瀬日大",
+    "teamId": "iwasenichidai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -31247,6 +31547,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["川田_桃叶_岩瀬日大_茨城県", "齋藤_綾乃_岩瀬日大_茨城県"]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["大図_果凛_常磐大_茨城県", "佐藤_もえ_常磐大_茨城県"]
   },
   {
     "team": "常磐大",
@@ -33599,6 +33911,42 @@
     "year": 2021,
     "gender": "boys",
     "playerIds": ["佐久間_啓輔_岩瀬日大_茨城県"]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["鈴木_純奈_常磐大_茨城県"]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["岡崎_紗奈_常磐大_茨城県"]
+  },
+  {
+    "team": "常磐大",
+    "teamId": "joubandai",
+    "prefecture": "茨城県",
+    "prefectureId": "ibaraki",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["大図_果暖_常磐大_茨城県"]
   },
   {
     "team": "常磐大",
@@ -38345,8 +38693,8 @@
     "playerIds": ["武田_豊_前橋商_群馬県", "中島_魁成_前橋商_群馬県"]
   },
   {
-    "team": "沼田ジュニア",
-    "teamId": "numatajunia",
+    "team": "沼田",
+    "teamId": "numata",
     "prefecture": "群馬県",
     "prefectureId": "gunma",
     "result": "2回戦敗退",
@@ -38354,7 +38702,7 @@
     "tournamentId": "highschool-championship",
     "year": 2022,
     "gender": "boys",
-    "playerIds": ["砂山_温斗_沼田ジュニア_群馬県", "金井_琉偉_沼田ジュニア_群馬県"]
+    "playerIds": ["砂山_温斗_沼田_群馬県", "金井_琉偉_沼田_群馬県"]
   },
   {
     "team": "渋川",
@@ -42542,18 +42890,6 @@
     "playerIds": ["小村_卓巳_熊谷工_埼玉県", "石川_真也_熊谷工_埼玉県"]
   },
   {
-    "team": "蔵越生",
-    "teamId": "kuraogose",
-    "prefecture": "埼玉県",
-    "prefectureId": "saitama",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": ["本間_瑛大_蔵越生_埼玉県", "志村_響武_蔵越生_埼玉県"]
-  },
-  {
     "team": "松山",
     "teamId": "matsuyama",
     "prefecture": "埼玉県",
@@ -43044,6 +43380,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["鈴木_真歩_武蔵越生_埼玉県", "門倉_来和_武蔵越生_埼玉県"]
+  },
+  {
+    "team": "武蔵越生",
+    "teamId": "musashiogose",
+    "prefecture": "埼玉県",
+    "prefectureId": "saitama",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["本間_瑛大_武蔵越生_埼玉県", "志村_響武_武蔵越生_埼玉県"]
   },
   {
     "team": "武蔵越生",
@@ -45274,18 +45622,6 @@
     "gender": "girls"
   },
   {
-    "team": "愛学園",
-    "teamId": "aigakuen",
-    "prefecture": "千葉県",
-    "prefectureId": "chiba",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2023,
-    "gender": "boys",
-    "playerIds": ["稲見_虎佑_愛学園_千葉県", "市川_翼敬_愛学園_千葉県"]
-  },
-  {
     "team": "千葉南",
     "teamId": "chibaminami",
     "prefecture": "千葉県",
@@ -45704,6 +46040,18 @@
     "year": 2025,
     "gender": "boys",
     "playerIds": ["渋谷_斗真_敬愛学園_千葉県", "千葉_陽太_敬愛学園_千葉県"]
+  },
+  {
+    "team": "敬愛学園",
+    "teamId": "keiaigakuen",
+    "prefecture": "千葉県",
+    "prefectureId": "chiba",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2023,
+    "gender": "boys",
+    "playerIds": ["稲見_虎佑_敬愛学園_千葉県", "市川_翼敬_敬愛学園_千葉県"]
   },
   {
     "team": "敬愛学園",
@@ -50279,6 +50627,18 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2025,
+    "gender": "boys",
+    "playerIds": ["前田_光貴_文大杉並_東京都", "後藤_維月文_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2024,
     "gender": "girls",
     "playerIds": ["平山_杏吏_文大杉並_東京都", "卜部_菜乃_文大杉並_東京都"]
@@ -50354,6 +50714,18 @@
     "year": 2024,
     "gender": "girls",
     "playerIds": ["内田_雫月_文大杉並_東京都", "髙橋_彩月_文大杉並_東京都"]
+  },
+  {
+    "team": "文大杉並",
+    "teamId": "bundaisuginami",
+    "prefecture": "東京都",
+    "prefectureId": "tokyo",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2024,
+    "gender": "boys",
+    "playerIds": ["山崎_周真_文大杉並_東京都", "宍倉_希文_文大杉並_東京都"]
   },
   {
     "team": "文大杉並",
@@ -52562,30 +52934,6 @@
     "year": 2018,
     "gender": "boys",
     "playerIds": ["伊郷_太貴_日大鶴ヶ丘_東京都", "木庭_直哉_日大鶴ヶ丘_東京都"]
-  },
-  {
-    "team": "大杉並",
-    "teamId": "oosuginami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2025,
-    "gender": "boys",
-    "playerIds": ["前田_光貴_大杉並_東京都", "後藤_維月文_大杉並_東京都"]
-  },
-  {
-    "team": "大杉並",
-    "teamId": "oosuginami",
-    "prefecture": "東京都",
-    "prefectureId": "tokyo",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": ["山崎_周真_大杉並_東京都", "宍倉_希文_大杉並_東京都"]
   },
   {
     "team": "専大附",
@@ -58850,6 +59198,18 @@
     "teamId": "nagaokashou",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["山岸_里緒_新潟西高校_新潟県", "岡元_優花_長岡商_新潟県"]
+  },
+  {
+    "team": "長岡商",
+    "teamId": "nagaokashou",
+    "prefecture": "新潟県",
+    "prefectureId": "niigata",
     "result": "3回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -59098,18 +59458,6 @@
     "playerIds": ["菊池_翔生_長岡商_新潟県", "佐々木_駿_長岡商_新潟県"]
   },
   {
-    "team": "長岡商業",
-    "teamId": "nagaokashougyou",
-    "prefecture": "新潟県",
-    "prefectureId": "niigata",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["山岸_里緒_新潟西高校_新潟県", "岡元_優花_長岡商業_新潟県"]
-  },
-  {
     "team": "中越",
     "teamId": "nakagoshi",
     "prefecture": "新潟県",
@@ -59323,7 +59671,7 @@
     "tournamentId": "east-japan",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山岸_里緒_新潟西高校_新潟県", "岡元_優花_長岡商業_新潟県"]
+    "playerIds": ["山岸_里緒_新潟西高校_新潟県", "岡元_優花_長岡商_新潟県"]
   },
   {
     "team": "新潟西",
@@ -60190,8 +60538,8 @@
     "playerIds": ["石山_実来_巻_新潟県"]
   },
   {
-    "team": "長岡商業",
-    "teamId": "nagaokashougyou",
+    "team": "長岡商",
+    "teamId": "nagaokashou",
     "prefecture": "新潟県",
     "prefectureId": "niigata",
     "result": "1回戦敗退",
@@ -60199,7 +60547,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2017,
     "gender": "boys",
-    "playerIds": ["吉村_泰成_長岡商業_新潟県"]
+    "playerIds": ["吉村_泰成_長岡商_新潟県"]
   },
   {
     "team": "新潟工",
@@ -70161,6 +70509,18 @@
     "prefectureId": "fukui",
     "result": "1回戦敗退",
     "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "boys",
+    "playerIds": ["吉田_捷人_敦賀高校_福井県", "林_亮太_北陸電力福井_福井県"]
+  },
+  {
+    "team": "敦賀",
+    "teamId": "tsuruga",
+    "prefecture": "福井県",
+    "prefectureId": "fukui",
+    "result": "1回戦敗退",
+    "category": "doubles",
     "tournamentId": "highschool-championship",
     "year": 2013,
     "gender": "boys",
@@ -78022,18 +78382,6 @@
     "year": 2018,
     "gender": "girls",
     "playerIds": ["若井_莉紗_岐阜総合学園_岐阜県", "松井_莉香_岐阜総合学園_岐阜県"]
-  },
-  {
-    "team": "飛騨高山",
-    "teamId": "hidatakayama",
-    "prefecture": "岐阜県",
-    "prefectureId": "gifu",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-workers",
-    "year": 2024,
-    "gender": "boys",
-    "playerIds": ["宮代_章史_飛騨高山_岐阜県", "青木_康朗_飛騨高山_岐阜県"]
   },
   {
     "team": "飛騨高山",
@@ -100880,8 +101228,8 @@
     "playerIds": ["木原_杏樹_吹田_大阪府", "亀田_美咲子_吹田_大阪府"]
   },
   {
-    "team": "富田林クラブ",
-    "teamId": "tondabayashikurabu",
+    "team": "富田林",
+    "teamId": "tondabayashi",
     "prefecture": "大阪府",
     "prefectureId": "osaka",
     "result": "3回戦敗退",
@@ -100889,7 +101237,7 @@
     "tournamentId": "highschool-championship",
     "year": 2012,
     "gender": "boys",
-    "playerIds": ["堀切_俊佑_富田林クラブ_大阪府", "小林_広大_富田林クラブ_大阪府"]
+    "playerIds": ["堀切_俊佑_富田林_大阪府", "小林_広大_富田林_大阪府"]
   },
   {
     "team": "富田林クラブ",
@@ -107080,7 +107428,7 @@
     "tournamentId": "zennihon-senior",
     "year": 2025,
     "gender": "boys",
-    "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本_兵庫県"]
+    "playerIds": ["間嶋_孝史_教友クラブ_兵庫県", "高松_信之_洲本高等学校_兵庫県"]
   },
   {
     "team": "太子",
@@ -131582,6 +131930,42 @@
     "teamId": "osamudaifusuzumine",
     "prefecture": "広島県",
     "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["前島_夏希_修大附鈴峯_広島県", "福田_茉畝_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["梶原_萌乃_修大附鈴峯_広島県", "松井_佳野_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "3回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["笠井_菜々子_修大附鈴峯_広島県", "森本_彩鼓_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
     "result": "5回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -131756,6 +132140,18 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["吉田_里奈_修大附鈴峯_広島県", "成田_愛梨_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大協創",
+    "teamId": "osamudaikyousou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["浅見_今日子_修大協創_広島県", "濱島_怜奈_修大協創_広島県"]
   },
   {
     "team": "修大協創",
@@ -133174,6 +133570,78 @@
     "playerIds": ["松本_雅久_尾道_広島県"]
   },
   {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["森本_彩鼓_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["笠井_菜々子_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["武市_明香里_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大附鈴峯",
+    "teamId": "osamudaifusuzumine",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["笠井_菜々子_修大附鈴峯_広島県"]
+  },
+  {
+    "team": "修大協創",
+    "teamId": "osamudaikyousou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["濱島_怜奈_修大協創_広島県"]
+  },
+  {
+    "team": "修大協創",
+    "teamId": "osamudaikyousou",
+    "prefecture": "広島県",
+    "prefectureId": "hiroshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["行田_夏菜子_修大協創_広島県"]
+  },
+  {
     "team": "修大協創",
     "teamId": "osamudaikyousou",
     "prefecture": "広島県",
@@ -133990,6 +134458,78 @@
     "year": 2016,
     "gender": "boys",
     "playerIds": ["内藤_響_岩国工_山口県", "岩永_翔貴_岩国工_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["高橋_瑚子_岩国商_高体連", "粟野_杏菜_岩国商_高体連"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["川﨑_彩弓_岩国商_山口県", "川口_みゆき_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["山田_葉七_岩国商_山口県", "川口_みゆき_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["原田_佳奈_岩国商_山口県", "中村_希歩_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["川﨑_彩弓_岩国商_山口県", "原田_里奈_岩国商_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2016,
+    "gender": "girls",
+    "playerIds": ["長島_穂乃花_岩国商_山口県", "桑原_沙也加_岩国商_山口県"]
   },
   {
     "team": "岩国商",
@@ -135160,18 +135700,6 @@
     "teamId": "shinnanyou",
     "prefecture": "山口県",
     "prefectureId": "yamaguchi",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2025,
-    "gender": "mixed",
-    "playerIds": ["大隅_勝_長門大津クラブ_山口県", "野村_喜代美_新南陽_山口県"]
-  },
-  {
-    "team": "新南陽",
-    "teamId": "shinnanyou",
-    "prefecture": "山口県",
-    "prefectureId": "yamaguchi",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -136018,6 +136546,18 @@
     "year": 2023,
     "gender": "girls",
     "playerIds": ["吉永_友梨_防府商工_山口県"]
+  },
+  {
+    "team": "岩国商",
+    "teamId": "iwakunishou",
+    "prefecture": "山口県",
+    "prefectureId": "yamaguchi",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["高橋_瑚子_岩国商_山口県"]
   },
   {
     "team": "岩国商",
@@ -139224,12 +139764,60 @@
     "teamId": "tokushimakagi",
     "prefecture": "徳島県",
     "prefectureId": "tokushima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "boys",
+    "playerIds": ["藤井_晃生_徳島科技_徳島県"]
+  },
+  {
+    "team": "徳島科技",
+    "teamId": "tokushimakagi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
     "result": "1回戦敗退",
     "category": "singles",
     "tournamentId": "zennihon-singles",
     "year": 2023,
     "gender": "boys",
     "playerIds": ["柴_誠太郎_徳島科技_徳島県"]
+  },
+  {
+    "team": "徳島科技",
+    "teamId": "tokushimakagi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2017,
+    "gender": "boys",
+    "playerIds": ["原田_我来_徳島科技_徳島県"]
+  },
+  {
+    "team": "徳島科技",
+    "teamId": "tokushimakagi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["福井_学_徳島科技_徳島県"]
+  },
+  {
+    "team": "徳島科技",
+    "teamId": "tokushimakagi",
+    "prefecture": "徳島県",
+    "prefectureId": "tokushima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "boys",
+    "playerIds": ["北川_晃輝_徳島科技_徳島県"]
   },
   {
     "team": "富岡東",
@@ -143029,7 +143617,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県", "佐々木_高松商業_香川県_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県", "佐々木_高松商業_香川県_香川県"]
   },
   {
     "team": "香川西",
@@ -143144,6 +143732,18 @@
     "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["増田_菜々_高松商_香川県", "三宅_真央_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -143171,6 +143771,30 @@
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
+    "year": 2015,
+    "gender": "girls",
+    "playerIds": ["中川_莉沙_高松商_香川県", "大石_玲菜_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["忰山_奈美_高松商_香川県", "笠谷_理佳_高松商_香川県"]
+  },
+  {
+    "team": "高松商",
+    "teamId": "takamatsushou",
+    "prefecture": "香川県",
+    "prefectureId": "kagawa",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-championship",
     "year": 2016,
     "gender": "girls",
     "playerIds": ["瀧本_彩香_高松商_香川県", "大谷_天海_高松商_香川県"]
@@ -143188,44 +143812,8 @@
     "playerIds": ["中井_心菜_高松商_香川県", "中川_鈴菜_高松商_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業高校_香川県", "三宅_真央_高松商業高校_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2015,
-    "gender": "girls",
-    "playerIds": ["中川_莉沙_高松商業_香川県", "大石_玲菜_高松商業_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
-    "prefecture": "香川県",
-    "prefectureId": "kagawa",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["忰山_奈美_高松商業_香川県", "笠谷_理佳_高松商業_香川県"]
-  },
-  {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "予選敗退",
@@ -143233,7 +143821,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県", "佐々木_高松商業_香川県_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県", "佐々木_高松商業_香川県_香川県"]
   },
   {
     "team": "高瀬",
@@ -145252,8 +145840,8 @@
     "playerIds": ["福井_達輝_丸亀_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "2回戦敗退",
@@ -145261,11 +145849,11 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業高校_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県"]
   },
   {
-    "team": "高松商業",
-    "teamId": "takamatsushougyou",
+    "team": "高松商",
+    "teamId": "takamatsushou",
     "prefecture": "香川県",
     "prefectureId": "kagawa",
     "result": "2回戦敗退",
@@ -145273,7 +145861,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["増田_菜々_高松商業_香川県"]
+    "playerIds": ["増田_菜々_高松商_香川県"]
   },
   {
     "team": "高瀬",
@@ -157597,7 +158185,7 @@
     "tournamentId": "zennihon-mixed",
     "year": 2026,
     "gender": "mixed",
-    "playerIds": ["松尾_航希_嬉野_日本連盟", "結城_和華_宮崎商業高校_日本連盟"]
+    "playerIds": ["松尾_航希_嬉野_日本連盟", "結城_和華_宮崎商_日本連盟"]
   },
   {
     "team": "嬉野",
@@ -163789,7 +164377,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2023,
     "gender": "girls",
-    "playerIds": ["久原_梨夢_尚絅高校_熊本県", "久川_憂納_濟々黌_熊本県"]
+    "playerIds": ["久原_梨夢_尚絅_熊本県", "久川_憂納_濟々黌_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163801,7 +164389,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2017,
     "gender": "girls",
-    "playerIds": ["上田_愛莉_尚絅高校_熊本県", "芝_優香_尚絅高校_熊本県"]
+    "playerIds": ["上田_愛莉_尚絅_熊本県", "芝_優香_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163813,7 +164401,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["一倉_星菜_尚絅高校_熊本県", "岩﨑_琉海波_尚絅高校_熊本県"]
+    "playerIds": ["一倉_星菜_尚絅_熊本県", "岩﨑_琉海波_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163825,7 +164413,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["一倉_星菜_尚絅高校_熊本県", "園田_涼乃_尚絅高校_熊本県"]
+    "playerIds": ["一倉_星菜_尚絅_熊本県", "園田_涼乃_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163837,7 +164425,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["岩﨑_凛花_尚絅高校_熊本県", "岩﨑_琉海波_尚絅高校_熊本県"]
+    "playerIds": ["岩﨑_凛花_尚絅_熊本県", "岩﨑_琉海波_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163849,7 +164437,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["猪古_雛里_尚絅高校_熊本県", "溝江_伊桜_尚絅高校_熊本県"]
+    "playerIds": ["猪古_雛里_尚絅_熊本県", "溝江_伊桜_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163861,7 +164449,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["上田_愛莉_尚絅高校_熊本県", "芝_優香_尚絅高校_熊本県"]
+    "playerIds": ["上田_愛莉_尚絅_熊本県", "芝_優香_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -163873,7 +164461,7 @@
     "tournamentId": "zennihon-championship",
     "year": 2016,
     "gender": "girls",
-    "playerIds": ["大河原_優_尚絅高校_熊本県", "上田_麗湖_尚絅高校_熊本県"]
+    "playerIds": ["大河原_優_尚絅_熊本県", "上田_麗湖_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -164569,7 +165157,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2022,
     "gender": "girls",
-    "playerIds": ["花田_娃子_尚絅高校_熊本県"]
+    "playerIds": ["花田_娃子_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -164581,7 +165169,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["一倉_星菜_尚絅高校_熊本県"]
+    "playerIds": ["一倉_星菜_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -164593,7 +165181,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2019,
     "gender": "girls",
-    "playerIds": ["岩﨑_琉海波_尚絅高校_熊本県"]
+    "playerIds": ["岩﨑_琉海波_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -164605,7 +165193,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["岩﨑_凛花_尚絅高校_熊本県"]
+    "playerIds": ["岩﨑_凛花_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -164617,7 +165205,7 @@
     "tournamentId": "zennihon-singles",
     "year": 2018,
     "gender": "girls",
-    "playerIds": ["猪古_雛里_尚絅高校_熊本県"]
+    "playerIds": ["猪古_雛里_尚絅_熊本県"]
   },
   {
     "team": "尚絅",
@@ -169357,6 +169945,126 @@
     "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["甲斐_愛実瑠_宮崎商_宮崎県", "山口_優菜_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["増田_くるみ_宮崎商_宮崎県", "上米良_凛乃_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["瀬戸口_快_宮崎商_宮崎県", "小田_妃莉_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["山下_鈴加_宮崎商_宮崎県", "岩浦_桜子_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["松尾_礼奈_宮崎商_宮崎県", "安田_和泉_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["安田_和泉_宮崎商_宮崎県", "山下_鈴加_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2018,
+    "gender": "girls",
+    "playerIds": ["川崎_もも_宮崎商_宮崎県", "松永_葵_宮崎商業高校ＯＧクラブ_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "4回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-mixed",
+    "year": 2025,
+    "gender": "mixed",
+    "playerIds": ["川﨑_康平_日本体育大学", "山口_優菜_宮崎商"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-mixed",
+    "year": 2026,
+    "gender": "mixed",
+    "playerIds": ["松尾_航希_嬉野_日本連盟", "結城_和華_宮崎商_日本連盟"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-mixed",
+    "year": 2026,
+    "gender": "mixed",
+    "playerIds": ["坂口_生磨_明治大学_日本学連", "山口_優菜_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
     "result": "4回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -169965,128 +170673,8 @@
     "playerIds": ["三枝_柚葵_宮崎商_宮崎県", "結城_和華_宮崎商_宮崎県"]
   },
   {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["甲斐_愛実瑠_宮崎商業高校_宮崎県", "山口_優菜_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["増田_くるみ_宮崎商業高校_宮崎県", "上米良_凛乃_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": ["瀬戸口_快_宮崎商業高校_宮崎県", "小田_妃莉_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["山下_鈴加_宮崎商業高校_宮崎県", "岩浦_桜子_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["松尾_礼奈_宮崎商業高校_宮崎県", "安田_和泉_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["安田_和泉_宮崎商業高校_宮崎県", "山下_鈴加_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2018,
-    "gender": "girls",
-    "playerIds": ["川崎_もも_宮崎商業高校_宮崎県", "松永_葵_宮崎商業高校ＯＧクラブ_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "4回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2025,
-    "gender": "mixed",
-    "playerIds": ["川﨑_康平_日本体育大学", "山口_優菜_宮崎商業高校"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2026,
-    "gender": "mixed",
-    "playerIds": ["松尾_航希_嬉野_日本連盟", "結城_和華_宮崎商業高校_日本連盟"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-mixed",
-    "year": 2026,
-    "gender": "mixed",
-    "playerIds": ["坂口_生磨_明治大学_日本学連", "山口_優菜_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
     "result": "予選敗退",
@@ -170094,11 +170682,11 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["中馬_青瑠_宮崎商業_宮崎県", "岩浦_里佳_宮崎商業_宮崎県"]
+    "playerIds": ["中馬_青瑠_宮崎商_宮崎県", "岩浦_里佳_宮崎商_宮崎県"]
   },
   {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
     "result": "準優勝",
@@ -170106,11 +170694,11 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_宮崎県", "中山_萌_東北_宮城県"]
+    "playerIds": ["山口_優菜_宮崎商_宮崎県", "中山_萌_東北_宮城県"]
   },
   {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
     "result": "優勝",
@@ -170118,7 +170706,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商業高校_宮崎県"]
+    "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商_宮崎県"]
   },
   {
     "team": "日南",
@@ -171193,6 +171781,138 @@
     "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["三枝_柚葵_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["工藤_蒼生_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["結城_和華_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["山口_優菜_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2025,
+    "gender": "girls",
+    "playerIds": ["三枝_美葵_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["山口_優菜_宮崎商_日本連盟"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["結城_和華_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["山口_優菜_宮崎商_日本連盟"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["瀬戸口_椛_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["三枝_柚葵_宮崎商_宮崎県"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
+    "result": "予選敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-senbatsu",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["山口_優菜_宮崎商"]
+  },
+  {
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
+    "prefecture": "宮崎県",
+    "prefectureId": "miyazaki",
     "result": "1回戦敗退",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
@@ -171249,140 +171969,8 @@
     "playerIds": ["山口_優菜_宮崎商_宮崎県"]
   },
   {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["三枝_柚葵_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["工藤_蒼生_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["結城_和華_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2025,
-    "gender": "girls",
-    "playerIds": ["三枝_美葵_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_日本連盟"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["結城_和華_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_日本連盟"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["瀬戸口_椛_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["三枝_柚葵_宮崎商業高校_宮崎県"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
-    "prefecture": "宮崎県",
-    "prefectureId": "miyazaki",
-    "result": "予選敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-senbatsu",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校"]
-  },
-  {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
     "result": "準優勝",
@@ -171390,11 +171978,11 @@
     "tournamentId": "zennihon-junior",
     "year": 2025,
     "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_宮崎県"]
+    "playerIds": ["山口_優菜_宮崎商_宮崎県"]
   },
   {
-    "team": "宮崎商業",
-    "teamId": "miyazakishougyou",
+    "team": "宮崎商",
+    "teamId": "miyazakishou",
     "prefecture": "宮崎県",
     "prefectureId": "miyazaki",
     "result": "ベスト8",
@@ -171402,7 +171990,7 @@
     "tournamentId": "zennihon-junior",
     "year": 2024,
     "gender": "girls",
-    "playerIds": ["山口_優菜_宮崎商業高校_宮崎県"]
+    "playerIds": ["山口_優菜_宮崎商_宮崎県"]
   },
   {
     "team": "日南学園",
@@ -171969,6 +172557,30 @@
     "teamId": "ibusukishou",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["吉木_理彩_指宿商_鹿児島県", "山本_花菜_指宿商_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "zennihon-championship",
+    "year": 2017,
+    "gender": "girls",
+    "playerIds": ["加_奈乃佳_指宿商_鹿児島県", "寺迫_杏菜_指宿商_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "1回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -172253,32 +172865,8 @@
     "playerIds": ["冨迫_心美_指宿商_鹿児島県", "平川_茉歩_指宿商_鹿児島県"]
   },
   {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["吉木_理彩_指宿商業高校_鹿児島県", "山本_花菜_指宿商業高校_鹿児島県"]
-  },
-  {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "zennihon-championship",
-    "year": 2017,
-    "gender": "girls",
-    "playerIds": ["加_奈乃佳_指宿商業高校_鹿児島県", "寺迫_杏菜_指宿商業高校_鹿児島県"]
-  },
-  {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
+    "team": "指宿商",
+    "teamId": "ibusukishou",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
     "result": "2回戦敗退",
@@ -172286,7 +172874,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["加_亜実佳_指宿商業高校_鹿児島県", "山本_花菜_指宿商業高校_鹿児島県"]
+    "playerIds": ["加_亜実佳_指宿商_鹿児島県", "山本_花菜_指宿商_鹿児島県"]
   },
   {
     "team": "鹿児島商",
@@ -174381,6 +174969,42 @@
     "teamId": "ibusukishou",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["吉木_理彩_指宿商_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["南原_里音_指宿商_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2019,
+    "gender": "girls",
+    "playerIds": ["豊巻_安里_指宿商_鹿児島県"]
+  },
+  {
+    "team": "指宿商",
+    "teamId": "ibusukishou",
+    "prefecture": "鹿児島県",
+    "prefectureId": "kagoshima",
     "result": "準優勝",
     "category": "singles",
     "tournamentId": "highschool-japan-cup",
@@ -174401,44 +175025,8 @@
     "playerIds": ["東瀬戸_彩夏_指宿商_鹿児島県"]
   },
   {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["吉木_理彩_指宿商業高校_鹿児島県"]
-  },
-  {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["南原_里音_指宿商業高校_鹿児島県"]
-  },
-  {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
-    "prefecture": "鹿児島県",
-    "prefectureId": "kagoshima",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2019,
-    "gender": "girls",
-    "playerIds": ["豊巻_安里_指宿商業高校_鹿児島県"]
-  },
-  {
-    "team": "指宿商業",
-    "teamId": "ibusukishougyou",
+    "team": "指宿商",
+    "teamId": "ibusukishou",
     "prefecture": "鹿児島県",
     "prefectureId": "kagoshima",
     "result": "1回戦敗退",
@@ -174446,7 +175034,7 @@
     "tournamentId": "highschool-japan-cup",
     "year": 2021,
     "gender": "girls",
-    "playerIds": ["加_亜実佳_指宿商業高校_鹿児島県"]
+    "playerIds": ["加_亜実佳_指宿商_鹿児島県"]
   },
   {
     "team": "鹿児島商",

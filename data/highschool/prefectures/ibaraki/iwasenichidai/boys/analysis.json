@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 13,
+  "totalAppearances": 14,
   "byCategory": {
     "team": 3,
-    "doubles": 9,
+    "doubles": 10,
     "singles": 1
   },
   "resultsByCategory": {
@@ -22,7 +22,18 @@
       }
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "岩瀬日大",
+        "teamId": "iwasenichidai",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "gender": "boys",
+        "playerIds": ["大久保_俊貴_岩瀬日大_茨城県", "小久保_樹_岩瀬日大_茨城県"]
+      },
       "historicalBest": {
         "team": "岩瀬日大",
         "teamId": "iwasenichidai",
@@ -51,7 +62,7 @@
       }
     }
   },
-  "uniquePlayers": 15,
+  "uniquePlayers": 17,
   "topPlayers": [
     {
       "id": "飯田_浩晶_岩瀬日大_茨城県",
@@ -70,7 +81,7 @@
       "appearances": 2
     },
     {
-      "id": "粕田_拓人_岩瀬日大_茨城県",
+      "id": "大久保_俊貴_岩瀬日大_茨城県",
       "appearances": 1
     }
   ]

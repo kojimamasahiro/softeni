@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 2,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 2
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
@@ -9,18 +9,7 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": {
-        "team": "新南陽",
-        "teamId": "shinnanyou",
-        "prefecture": "山口県",
-        "prefectureId": "yamaguchi",
-        "result": "予選敗退",
-        "category": "doubles",
-        "tournamentId": "zennihon-mixed",
-        "year": 2025,
-        "gender": "mixed",
-        "playerIds": ["大隅_勝_長門大津クラブ_山口県", "野村_喜代美_新南陽_山口県"]
-      },
+      "recentlyResult": null,
       "historicalBest": {
         "team": "新南陽",
         "teamId": "shinnanyou",
@@ -39,12 +28,8 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 3,
+  "uniquePlayers": 2,
   "topPlayers": [
-    {
-      "id": "野村_喜代美_新南陽_山口県",
-      "appearances": 1
-    },
     {
       "id": "本田_詩織_新南陽_山口県",
       "appearances": 1

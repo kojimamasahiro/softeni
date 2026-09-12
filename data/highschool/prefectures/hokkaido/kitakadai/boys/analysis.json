@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 63,
+  "totalAppearances": 73,
   "byCategory": {
     "team": 9,
-    "doubles": 45,
-    "singles": 9
+    "doubles": 50,
+    "singles": 14
   },
   "resultsByCategory": {
     "singles": {
@@ -14,7 +14,7 @@
         "prefectureId": "hokkaido",
         "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "boys",
         "playerIds": ["西_拓郎_北科大_北海道"]
@@ -26,7 +26,7 @@
         "prefectureId": "hokkaido",
         "result": "3回戦敗退",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
+        "tournamentId": "zennihon-singles",
         "year": 2024,
         "gender": "boys",
         "playerIds": ["西_拓郎_北科大_北海道"]
@@ -83,18 +83,18 @@
       }
     }
   },
-  "uniquePlayers": 56,
+  "uniquePlayers": 57,
   "topPlayers": [
     {
       "id": "西_拓郎_北科大_北海道",
+      "appearances": 9
+    },
+    {
+      "id": "松田_快晴_北科大_北海道",
       "appearances": 7
     },
     {
       "id": "竹村_純生_北科大_北海道",
-      "appearances": 6
-    },
-    {
-      "id": "松田_快晴_北科大_北海道",
       "appearances": 6
     },
     {
@@ -103,7 +103,7 @@
     },
     {
       "id": "西村_優_北科大_北海道",
-      "appearances": 4
+      "appearances": 5
     }
   ]
 }

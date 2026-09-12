@@ -1,9 +1,9 @@
 {
-  "totalAppearances": 74,
+  "totalAppearances": 100,
   "byCategory": {
     "team": 17,
-    "doubles": 52,
-    "singles": 5
+    "doubles": 65,
+    "singles": 18
   },
   "resultsByCategory": {
     "singles": {
@@ -12,10 +12,10 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "2回戦敗退",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "girls",
         "playerIds": ["山口_優菜_宮崎商_宮崎県"]
       },
@@ -24,10 +24,10 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "2回戦敗退",
+        "result": "準優勝",
         "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2026,
+        "tournamentId": "zennihon-junior",
+        "year": 2025,
         "gender": "girls",
         "playerIds": ["山口_優菜_宮崎商_宮崎県"]
       }
@@ -38,24 +38,24 @@
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "6回戦敗退",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2026,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "girls",
-        "playerIds": ["甲斐_愛実瑠_宮崎商_宮崎県", "山口_優菜_宮崎商_宮崎県"]
+        "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商_宮崎県"]
       },
       "historicalBest": {
         "team": "宮崎商",
         "teamId": "miyazakishou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "6回戦敗退",
+        "result": "優勝",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2026,
+        "tournamentId": "zennihon-junior",
+        "year": 2024,
         "gender": "girls",
-        "playerIds": ["甲斐_愛実瑠_宮崎商_宮崎県", "山口_優菜_宮崎商_宮崎県"]
+        "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商_宮崎県"]
       }
     },
     "team": {
@@ -83,27 +83,27 @@
       }
     }
   },
-  "uniquePlayers": 57,
+  "uniquePlayers": 60,
   "topPlayers": [
     {
       "id": "山口_優菜_宮崎商_宮崎県",
-      "appearances": 8
+      "appearances": 15
     },
     {
       "id": "上米良_凛乃_宮崎商_宮崎県",
+      "appearances": 6
+    },
+    {
+      "id": "三枝_柚葵_宮崎商_宮崎県",
+      "appearances": 6
+    },
+    {
+      "id": "瀬戸口_快_宮崎商_宮崎県",
       "appearances": 5
     },
     {
       "id": "中馬_青瑠_宮崎商_宮崎県",
-      "appearances": 4
-    },
-    {
-      "id": "庄司_梨乃_宮崎商_宮崎県",
-      "appearances": 4
-    },
-    {
-      "id": "瀬戸口_快_宮崎商_宮崎県",
-      "appearances": 4
+      "appearances": 5
     }
   ]
 }

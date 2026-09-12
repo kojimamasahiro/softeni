@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -14,24 +14,24 @@
         "teamId": "moriokasan",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["伊藤_心人_盛岡三_岩手県", "生平_瑛_盛岡三_岩手県"]
+        "playerIds": ["伊藤_心_盛岡三_岩手県", "生平_瑛人_盛岡三_岩手県"]
       },
       "historicalBest": {
         "team": "盛岡三",
         "teamId": "moriokasan",
         "prefecture": "岩手県",
         "prefectureId": "iwate",
-        "result": "1回戦敗退",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2026,
         "gender": "boys",
-        "playerIds": ["伊藤_心人_盛岡三_岩手県", "生平_瑛_盛岡三_岩手県"]
+        "playerIds": ["伊藤_心_盛岡三_岩手県", "生平_瑛人_盛岡三_岩手県"]
       }
     },
     "team": {
@@ -39,8 +39,16 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 4,
   "topPlayers": [
+    {
+      "id": "伊藤_心_盛岡三_岩手県",
+      "appearances": 1
+    },
+    {
+      "id": "生平_瑛人_盛岡三_岩手県",
+      "appearances": 1
+    },
     {
       "id": "伊藤_心人_盛岡三_岩手県",
       "appearances": 1

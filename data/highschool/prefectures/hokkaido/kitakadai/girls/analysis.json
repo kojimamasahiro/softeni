@@ -1,12 +1,24 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 4
+    "doubles": 5,
+    "singles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
-      "historicalBest": null
+      "historicalBest": {
+        "team": "北科大",
+        "teamId": "kitakadai",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "singles",
+        "tournamentId": "zennihon-singles",
+        "year": 2019,
+        "gender": "girls",
+        "playerIds": ["竹田_麻佑_北科大_北海道"]
+      }
     },
     "doubles": {
       "recentlyResult": null,
@@ -28,10 +40,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 7,
+  "uniquePlayers": 8,
   "topPlayers": [
     {
       "id": "高橋_咲楽_北科大_北海道",
+      "appearances": 3
+    },
+    {
+      "id": "北川_風花_北科大_北海道",
       "appearances": 2
     },
     {
@@ -44,10 +60,6 @@
     },
     {
       "id": "竹田_葵_北科大_北海道",
-      "appearances": 1
-    },
-    {
-      "id": "北川_風花_北科大_北海道",
       "appearances": 1
     }
   ]

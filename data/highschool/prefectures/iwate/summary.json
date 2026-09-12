@@ -2319,42 +2319,6 @@
     "playerIds": ["大和田_千陽_盛岡第二_岩手県", "瀬川_はるか_盛岡第二_岩手県"]
   },
   {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2026,
-    "gender": "girls",
-    "playerIds": ["本間_優衣_盛岡第三_岩手県", "谷地_茜音_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "doubles",
-    "tournamentId": "east-japan",
-    "year": 2026,
-    "gender": "boys",
-    "playerIds": ["伊藤_心_盛岡第三_岩手県", "生平_瑛人_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "予選敗退",
-    "category": "doubles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県", "大吹_風_盛岡第三_岩手県"]
-  },
-  {
     "team": "盛岡女子",
     "teamId": "moriokajoshi",
     "prefecture": "岩手県",
@@ -2731,6 +2695,30 @@
     "teamId": "moriokasan",
     "prefecture": "岩手県",
     "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "girls",
+    "playerIds": ["本間_優衣_盛岡三_岩手県", "谷地_茜音_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "2回戦敗退",
+    "category": "doubles",
+    "tournamentId": "east-japan",
+    "year": 2026,
+    "gender": "boys",
+    "playerIds": ["伊藤_心_盛岡三_岩手県", "生平_瑛人_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
     "result": "2回戦敗退",
     "category": "doubles",
     "tournamentId": "highschool-championship",
@@ -2761,6 +2749,18 @@
     "year": 2026,
     "gender": "boys",
     "playerIds": ["伊藤_心人_盛岡三_岩手県", "生平_瑛_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "予選敗退",
+    "category": "doubles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県", "大吹_風_盛岡三_岩手県"]
   },
   {
     "team": "盛岡市立",
@@ -3483,54 +3483,6 @@
     "playerIds": ["渡邉_夏姫_水沢_岩手県"]
   },
   {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "3回戦敗退",
-    "category": "singles",
-    "tournamentId": "zennihon-singles",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "2回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2022,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2024,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
-    "team": "盛岡第三",
-    "teamId": "moriokadaisan",
-    "prefecture": "岩手県",
-    "prefectureId": "iwate",
-    "result": "1回戦敗退",
-    "category": "singles",
-    "tournamentId": "highschool-japan-cup",
-    "year": 2023,
-    "gender": "girls",
-    "playerIds": ["田中_もも_盛岡第三_岩手県"]
-  },
-  {
     "team": "盛岡工",
     "teamId": "moriokakou",
     "prefecture": "岩手県",
@@ -3613,6 +3565,54 @@
     "year": 2016,
     "gender": "girls",
     "playerIds": ["冨岡_愛樺_盛岡誠桜_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "3回戦敗退",
+    "category": "singles",
+    "tournamentId": "zennihon-singles",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "2回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2022,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2024,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
+  },
+  {
+    "team": "盛岡三",
+    "teamId": "moriokasan",
+    "prefecture": "岩手県",
+    "prefectureId": "iwate",
+    "result": "1回戦敗退",
+    "category": "singles",
+    "tournamentId": "highschool-japan-cup",
+    "year": 2023,
+    "gender": "girls",
+    "playerIds": ["田中_もも_盛岡三_岩手県"]
   },
   {
     "team": "高田",
