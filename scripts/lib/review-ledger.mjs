@@ -56,6 +56,55 @@ export function emptyLedger() {
   return { version: LEDGER_VERSION, decisions: {} };
 }
 
+/** clusterKey と同じ正規化（1名分）。 */
+const canonName = (n) => String(typeof n === 'string' ? n : n.name)
+  .normalize('NFKC')
+  .replace(/\s+/g, '');
+
+/**
+ * クラスタの判断を引き当てる。完全一致が無ければ、**顔ぶれが減る前の記録から
+ * ペア単位で引き継ぐ**。
+ *
+ * なぜ要るか（2026-09-12 実測）:
+ * 台帳のキーはメンバー名の連結なので、**クラスタの顔ぶれが変わるとキーが変わり、
+ * 人の判断が孤児になる**。統合を戻したり、別の統合でメンバーが消えたりすると起きる。
+ * 実例: `仙北STC|仙北クラブ|仙北スポ少|仙北スポ少大`（人が「別チーム」と判断）から
+ * `仙北スポ少大` が消えると `仙北STC|仙北クラブ|仙北スポ少` になり、
+ * **未判断として再登場して機械が「統合」を提案していた**（長野も同型。375件中2件）。
+ * 自動統合を廃止していなければ、人が「別」と決めたものが黙って再統合されていた。
+ *
+ * 判断の実体は「どのメンバーとどのメンバーが同じか」というペアの集合なので、
+ * 上位集合の記録があれば、生き残ったメンバーのペアだけを取り出せば一意に決まる。
+ * 引き継いだ記録には `inheritedFrom` を付けて出所を追えるようにする。
+ */
+export function findDecision(members, decisions) {
+  const key = clusterKey(members);
+  if (decisions[key]) return { ...decisions[key], key };
+
+  const names = members.map(canonName);
+  let best = null;
+  for (const [k, d] of Object.entries(decisions)) {
+    const rec = (d.members || []).map(canonName);
+    if (rec.length <= names.length) continue;
+    if (!names.every((n) => rec.includes(n))) continue;
+    // より近い（余分なメンバーが少ない）記録を優先する
+    if (!best || rec.length < best.rec.length) best = { k, d, rec };
+  }
+  if (!best) return null;
+
+  const raw = names.map((n) => (best.d.groups || [])[best.rec.indexOf(n)]);
+  const uniq = [...new Set(raw)];
+  const groups = raw.map((g) => uniq.indexOf(g));
+  const counts = {};
+  for (const g of groups) counts[g] = (counts[g] || 0) + 1;
+  const verdict = Object.values(counts).some((n) => n >= 2) ? 'merge' : 'separate';
+  // 統合の中身は、生き残ったメンバーだけで成立するものに限る
+  const survive = new Set(names);
+  const merges = (best.d.merges || []).filter((m) => [m.canonical, ...(m.aliases || [])].every((x) => survive.has(canonName(x))));
+
+  return { ...best.d, key, members: members.map((m) => (typeof m === 'string' ? m : m.name)), groups, verdict, merges, inheritedFrom: best.k };
+}
+
 /**
  * v1（team id キー）→ v2（チーム名キー）へ移行する。
  * 各判断は `members` にチーム名を持っているので、そこから振り直せば失われない。

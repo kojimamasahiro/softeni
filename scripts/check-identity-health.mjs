@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 
 import { teamCore } from './lib/team-core.mjs';
 import { clusterPlayerOverlapPairs, findPlayerOverlapPairs, MIN_SHARED_PLAYERS } from './lib/team-player-overlap.mjs';
+import { findDecision, readLedger } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DET = path.join(ROOT, 'data', 'tournaments', 'details');
@@ -118,6 +119,8 @@ function scopedAliasLeft(teamName, tournamentId, generation, prefecture) {
   );
 }
 const teams = read(path.join(ROOT, 'data', 'teams', 'teams.json'), []);
+// 判断台帳。人が既に判断したクラスタを「要対応」として数え続けないために見る（2026-09-12 追加）。
+const ledger = readLedger();
 const ctx = read(path.join(ROOT, 'data', 'teams', 'team-context.json'), {});
 const homo = read(path.join(ROOT, 'data', 'players', 'homonyms.json'), []);
 const homoNames = new Set(homo.map((o) => o.lastName + '\t' + o.firstName));
@@ -231,6 +234,12 @@ for (const [, arr] of blocks) {
         }
     }
     if (!hasMerge) continue; // 全メンバーが別グループ＝確定分離。対応不要。
+    // 人が既に判断したクラスタは「要対応」ではない（2026-09-12 追加）。
+    // 台帳のキーはメンバー名の連結なので、顔ぶれが変わると完全一致では引けない。
+    // findDecision() が上位集合の記録からペア単位で引き継ぐ（仙北・長野で実際に起きた）。
+    // 機械だけが決めた記録（decidedBy:'auto'）は「誰も見ていない」ので、引き続き数える。
+    const decided = findDecision(members, ledger.decisions);
+    if (decided && decided.decidedBy === 'human') continue;
     if (ok) candAuto++;
     else {
       candReview++;

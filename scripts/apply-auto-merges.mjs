@@ -24,7 +24,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { applyAdditions } from './apply-team-aliases.mjs';
-import { clusterKey, readLedger } from './lib/review-ledger.mjs';
+import { clusterKey, findDecision, readLedger } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const clusters = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'teams', 'merge-candidates.json'), 'utf8'));
@@ -57,7 +57,10 @@ let machineOnly = 0;
 
 for (const c of clusters) {
   const key = clusterKey(c.members);
-  const d = ledger.decisions[key];
+  // 完全一致が無くても、顔ぶれが減る前の記録から引き継ぐ（review-ledger.mjs の findDecision）。
+  // これをしないと、統合を戻してメンバーが変わったクラスタが「未判断」に見え、
+  // 人が「別チーム」と決めたものを機械が再び統合候補として扱ってしまう。
+  const d = findDecision(c.members, ledger.decisions);
   if (!d) {
     undecided++;
     continue;

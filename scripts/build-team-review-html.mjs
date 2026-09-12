@@ -13,7 +13,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { clusterKey, readLedger, summarize } from './lib/review-ledger.mjs';
+import { clusterKey, findDecision, readLedger, summarize } from './lib/review-ledger.mjs';
 import { defaultGroups as sharedGroups, isAutoOK } from './lib/team-grouping.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -50,6 +50,14 @@ const autoOK = clusters.map((c) => isAutoOK(c, contextAll));
 // 安定キー（メンバーの team id 順）。候補の並びが変わっても判断が追随する。
 const keys = clusters.map((c) => clusterKey(c.members));
 const ledger = readLedger();
+// 台帳のキーはメンバー名の連結なので、**クラスタの顔ぶれが変わるとキーが変わり人の判断が孤児になる**
+// （2026-09-12 実測: 375件中2件。仙北・長野が「未判断」として再登場し、機械が統合を提案していた）。
+// findDecision() が上位集合の記録からペア単位で引き継ぐので、画面には引き継いだ判断を初期値として渡す。
+const ledgerForClusters = {};
+clusters.forEach((c, i) => {
+  const d = findDecision(c.members, ledger.decisions);
+  if (d) ledgerForClusters[keys[i]] = d;
+});
 const ledgerStats = summarize(ledger);
 
 // 抜き取り監査で引いた標本（scripts/audit-review-sample.mjs --draw）。
@@ -128,7 +136,7 @@ const NEEDS=${JSON.stringify(needsReview)};
 const CTX=${JSON.stringify(CTX)};
 const AUTO=${JSON.stringify(autoOK)};
 const KEYS=${JSON.stringify(keys)};
-const LEDGER=${JSON.stringify(ledger.decisions)};
+const LEDGER=${JSON.stringify(ledgerForClusters)};
 const AUDIT=new Set(${JSON.stringify([...auditKeys])});
 const KEY='team-merge-review-v10';
 // state は**安定キー**（メンバーのteam id昇順）で持つ。候補が再生成されて並びが変わっても
