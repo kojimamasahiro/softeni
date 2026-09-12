@@ -37,6 +37,16 @@ const arg = (name, fallback = null) => {
 const git = (args) => execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024 });
 
 /**
+ * チーム名の比較キー。normalize-team-names.mjs / build-team-master.mjs と同じ規則。
+ *
+ * 生の文字列で比べると**全角と半角で取り逃がす**。2026-09-12 に実際に外した:
+ * 台帳と alias 表は半角の `松山STC` / `今治五十鈴ジュニアSTC` を持つのに、
+ * データ本体は全角の `松山ＳＴＣ` / `今治五十鈴ジュニアＳＴＣ` で入っており、
+ * 「該当者が見つからない」として2クラスタを黙って素通りしていた。
+ */
+const normTeam = (s) => (s == null ? s : String(s).normalize('NFKC').replace(/[ 　]/g, '').replace(/[･•]/g, '・'));
+
+/**
  * その名前が details から消えた（＝統合が適用された）コミット。
  *
  * 検索語は**引用符込み**（`"南方"`）にする。素の `南方` で引くと `南方JST` の中にも当たり、
@@ -100,31 +110,27 @@ for (const { canonical, alias } of pairs) {
     let text = fs.readFileSync(abs, 'utf8');
     const j = JSON.parse(text);
     let n = 0;
+    const esc = (s) => JSON.stringify(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     for (const old of people) {
       // 統合後は canonical を名乗っているはず。姓名と県で本人を特定する。
+      // team の比較は NFKC 正規化して行う（データ側が全角、台帳側が半角のことがある）。
       const now = (j.participants || []).find(
-        (p) => p.lastName === old.lastName && p.firstName === old.firstName && (p.prefecture ?? null) === (old.prefecture ?? null) && p.team === canonical,
+        (p) =>
+          p.lastName === old.lastName &&
+          p.firstName === old.firstName &&
+          (p.prefecture ?? null) === (old.prefecture ?? null) &&
+          normTeam(p.team) === normTeam(canonical),
       );
       if (!now) continue;
       const oldId = now.id;
       const newId = old.id ?? `${old.lastName}_${old.firstName}_${alias}_${old.prefecture ?? ''}`;
       // id は 姓_名_チーム_都道府県。id ごと置換すれば playerIds / matches の参照も一緒に直る。
       text = text.split(JSON.stringify(oldId)).join(JSON.stringify(newId));
-      // team 欄（id とは別に持っている）
-      const teamPat = `"team": ${JSON.stringify(canonical)}`;
-      if (text.includes(teamPat)) {
-        // 同じファイルに canonical を名乗る別人が居ることがあるので、id を直した後に
-        // その人の team だけを直す。JSON を作り直して該当箇所だけ置換する。
-        const j2 = JSON.parse(text);
-        const target = (j2.participants || []).find((p) => p.id === newId);
-        if (target && target.team === canonical) {
-          const before = JSON.stringify({ id: newId, lastName: old.lastName, firstName: old.firstName, team: canonical });
-          void before;
-          // participants の該当オブジェクト内の team だけを置換する（id で位置を特定）
-          const re = new RegExp(`("id":\\s*${JSON.stringify(newId).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]{0,200}?"team":\\s*)${JSON.stringify(canonical).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
-          if (re.test(text)) text = text.replace(re, `$1${JSON.stringify(alias)}`);
-        }
-      }
+      // team 欄（id とは別に持っている）。**実際に入っている文字列**を対象にする
+      // （想定した canonical と全角半角が違うことがあるため）。
+      // 同じファイルに同名のチームを名乗る別人が居ることがあるので、id で位置を特定してから置換する。
+      const re = new RegExp(`("id":\\s*${esc(newId)}[\\s\\S]{0,200}?"team":\\s*)${esc(now.team)}`);
+      if (re.test(text)) text = text.replace(re, `$1${JSON.stringify(alias)}`);
       n++;
       restoredPeople++;
     }

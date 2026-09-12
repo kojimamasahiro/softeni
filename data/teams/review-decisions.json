@@ -290,7 +290,7 @@
         "RISEクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -306,7 +306,7 @@
           "note": "静岡県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -626,7 +626,7 @@
         "さくらそう"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -642,7 +642,7 @@
           "note": "埼玉県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -770,7 +770,7 @@
         "カトレアクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -786,7 +786,7 @@
           "note": "福岡県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -2052,25 +2052,18 @@
         "今治五十鈴クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "今治五十鈴ジュニアSTC",
-          "aliases": [
-            "今治五十鈴クラブ"
-          ],
-          "note": "愛媛県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.718Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "今治北|今治北高校": {
       "prefecture": "愛媛県",
@@ -2333,25 +2326,18 @@
         "佐賀ジュニア"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "佐賀クラブ",
-          "aliases": [
-            "佐賀ジュニア"
-          ],
-          "note": "佐賀県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.717Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "佐賀工|佐賀工業高校": {
       "prefecture": "佐賀県",
@@ -3505,25 +3491,18 @@
         "吉岡クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "吉岡",
-          "aliases": [
-            "吉岡クラブ"
-          ],
-          "note": "群馬県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.717Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "向原|向原JST": {
       "prefecture": "東京都",
@@ -4045,25 +4024,18 @@
         "多良"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "多良ジュニア",
-          "aliases": [
-            "多良"
-          ],
-          "note": "佐賀県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.716Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "夢前|夢前中学校": {
       "prefecture": "兵庫県",
@@ -5426,25 +5398,18 @@
         "富田林"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "富田林クラブ",
-          "aliases": [
-            "富田林"
-          ],
-          "note": "大阪府"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.718Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "寒河江クラブ|寒河江ジュニアクラブ": {
       "prefecture": "山形県",
@@ -5771,7 +5736,7 @@
         "山形第二中"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -5787,7 +5752,7 @@
           "note": "山形県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -6055,7 +6020,7 @@
         "岩国商業高等学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -6071,7 +6036,7 @@
           "note": "山口県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -7167,25 +7132,18 @@
         "新南陽クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "新南陽",
-          "aliases": [
-            "新南陽クラブ"
-          ],
-          "note": "山口県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.716Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "新宮STC|新宮スポ少": {
       "prefecture": "和歌山県",
@@ -7543,7 +7501,7 @@
         "春日部NCクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -7559,7 +7517,7 @@
           "note": "埼玉県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:29:46.112Z",
       "revisions": 1
     },
@@ -8193,27 +8151,20 @@
         "松山ソフトテニスクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
         2,
-        2
+        3
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "松山STC",
-          "aliases": [
-            "松山ソフトテニスクラブ"
-          ],
-          "note": "愛媛県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.717Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "松山|松山高校": {
       "prefecture": "埼玉県",
@@ -8421,26 +8372,19 @@
         "柏崎ジュニア"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0,
-        1
+        1,
+        2
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "柏崎",
-          "aliases": [
-            "柏崎クラブ"
-          ],
-          "note": "新潟県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.718Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "桑名STC|桑名ジュニアクラブ": {
       "prefecture": "三重県",
@@ -8578,25 +8522,18 @@
         "横田"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "横田クラブ",
-          "aliases": [
-            "横田"
-          ],
-          "note": "島根県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.719Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "橋本|橋本ジュニアクラブ": {
       "prefecture": "和歌山県",
@@ -9106,25 +9043,18 @@
         "浜岡クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "浜岡クラブジュニア",
-          "aliases": [
-            "浜岡クラブ"
-          ],
-          "note": "静岡県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.719Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "浜松商|浜松商業高校": {
       "prefecture": "静岡県",
@@ -9352,7 +9282,7 @@
         "淡路ジュニアクラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -9368,7 +9298,7 @@
           "note": "兵庫県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -9613,7 +9543,7 @@
         "濟々黌高校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -9629,7 +9559,7 @@
           "note": "熊本県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -10372,7 +10302,7 @@
         "真岡女子高校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         0
@@ -10388,7 +10318,7 @@
           "note": "栃木県"
         }
       ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "decidedAt": "2026-09-12T04:12:59.748Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 2
     },
@@ -10400,25 +10330,18 @@
         "石和クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "石和",
-          "aliases": [
-            "石和クラブ"
-          ],
-          "note": "山梨県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.719Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "砧南ジュニア|砧南中学校": {
       "prefecture": "東京都",
@@ -11931,25 +11854,18 @@
         "近大和歌山中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "近大和歌山",
-          "aliases": [
-            "近大和歌山中学校"
-          ],
-          "note": "和歌山県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.717Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "近畿大学高専|近畿大高専": {
       "prefecture": "三重県",
@@ -12303,25 +12219,18 @@
         "錦城"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "錦城中",
-          "aliases": [
-            "錦城"
-          ],
-          "note": "石川県"
-        }
-      ],
-      "decidedAt": "2026-09-06T04:33:10.944Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:12:59.717Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 2
+      "revisions": 3,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "長井|長井スポーツ少年団": {
       "prefecture": "山形県",

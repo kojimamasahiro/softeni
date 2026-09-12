@@ -43685,138 +43685,6 @@
       ]
     },
     {
-      "id": "kindaiwakayama",
-      "name": "近大和歌山",
-      "kind": "unknown",
-      "prefecture": "和歌山県",
-      "prefectureId": "wakayama",
-      "count": 9,
-      "years": [
-        2024,
-        2025,
-        2026
-      ],
-      "genders": [
-        "boys"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship",
-        "secondaryschool-kinki-block",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-kinki-block",
-        "tournamentLabel": "近畿中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "ベスト8",
-        "score": 4,
-        "players": [
-          "安達 愛斗",
-          "谷口 真悠"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": [
-            "安達 愛斗",
-            "谷口 真悠"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-kinki-block",
-          "tournamentLabel": "近畿中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "ベスト8",
-          "score": 4,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2026,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "安達 愛斗",
-            "谷口 真悠"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2025,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "安達 愛斗",
-            "谷口 真悠"
-          ]
-        },
-        {
-          "tournamentId": "zennihon-secondaryschool-versus",
-          "tournamentLabel": "都道府県対抗全日本中学生大会",
-          "short": "県対抗",
-          "year": 2024,
-          "categoryId": "singles-none-boys",
-          "category": "singles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "谷口 真悠"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "安達 愛斗",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "谷口 真悠",
-          "years": [
-            2024,
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "秋山 健太郎",
-          "years": [
-            2024
-          ]
-        }
-      ]
-    },
-    {
       "id": "chuuou",
       "name": "江別市立中央中学校",
       "kind": "school",
@@ -46105,144 +45973,6 @@
         },
         {
           "name": "山岡 衣織",
-          "years": [
-            2018
-          ]
-        }
-      ]
-    },
-    {
-      "id": "kinjou",
-      "name": "錦城中",
-      "kind": "school",
-      "prefecture": "石川県",
-      "prefectureId": "ishikawa",
-      "count": 8,
-      "years": [
-        2018,
-        2023,
-        2024
-      ],
-      "genders": [
-        "boys"
-      ],
-      "tournamentIds": [
-        "secondaryschool-championship"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-championship",
-        "tournamentLabel": "全国中学校大会",
-        "short": "全中",
-        "year": 2024,
-        "categoryId": "doubles-none-boys",
-        "category": "doubles",
-        "gender": "boys",
-        "label": "3回戦敗退",
-        "score": 1.15,
-        "players": [
-          "藤澤 理央馬",
-          "古本 竜吾"
-        ]
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2024,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "藤澤 理央馬",
-            "古本 竜吾"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2024,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": [
-            "藤澤 理央馬",
-            "藤澤 蒼璃"
-          ]
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2023,
-          "categoryId": "team-none-boys",
-          "category": "team",
-          "gender": "boys",
-          "label": "1回戦敗退",
-          "score": 1.05,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-championship",
-          "tournamentLabel": "全国中学校大会",
-          "short": "全中",
-          "year": 2018,
-          "categoryId": "doubles-none-boys",
-          "category": "doubles",
-          "gender": "boys",
-          "label": "2回戦敗退",
-          "score": 1.1,
-          "players": [
-            "川崎谷 凌",
-            "藤澤 玲空"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "古本 竜吾",
-          "years": [
-            2024
-          ]
-        },
-        {
-          "name": "藤澤 理央馬",
-          "years": [
-            2023,
-            2024
-          ]
-        },
-        {
-          "name": "藤澤 蒼璃",
-          "years": [
-            2023
-          ]
-        },
-        {
-          "name": "川崎谷 凌",
-          "years": [
-            2018
-          ]
-        },
-        {
-          "name": "藤澤 玲空",
           "years": [
             2018
           ]
@@ -51052,6 +50782,122 @@
           "name": "田林 克憲",
           "years": [
             2023
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kindaiwakayama",
+      "name": "近大和歌山",
+      "kind": "unknown",
+      "prefecture": "和歌山県",
+      "prefectureId": "wakayama",
+      "count": 7,
+      "years": [
+        2024,
+        2025,
+        2026
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-kinki-block",
+        "zennihon-secondaryschool-versus"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-kinki-block",
+        "tournamentLabel": "近畿中学校ソフトテニス大会",
+        "short": "ブロック",
+        "year": 2026,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "ベスト8",
+        "score": 4,
+        "players": [
+          "安達 愛斗",
+          "谷口 真悠"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": [
+            "安達 愛斗",
+            "谷口 真悠"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-kinki-block",
+          "tournamentLabel": "近畿中学校ソフトテニス大会",
+          "short": "ブロック",
+          "year": 2026,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "ベスト8",
+          "score": 4,
+          "players": []
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2025,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "安達 愛斗",
+            "谷口 真悠"
+          ]
+        },
+        {
+          "tournamentId": "zennihon-secondaryschool-versus",
+          "tournamentLabel": "都道府県対抗全日本中学生大会",
+          "short": "県対抗",
+          "year": 2024,
+          "categoryId": "singles-none-boys",
+          "category": "singles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "谷口 真悠"
+          ]
+        }
+      ],
+      "members": [
+        {
+          "name": "安達 愛斗",
+          "years": [
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "谷口 真悠",
+          "years": [
+            2024,
+            2025,
+            2026
+          ]
+        },
+        {
+          "name": "秋山 健太郎",
+          "years": [
+            2024
           ]
         }
       ]
@@ -56138,6 +55984,116 @@
           "name": "髙山 果歩",
           "years": [
             2022
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kinjou",
+      "name": "錦城中",
+      "kind": "school",
+      "prefecture": "石川県",
+      "prefectureId": "ishikawa",
+      "count": 6,
+      "years": [
+        2023,
+        2024
+      ],
+      "genders": [
+        "boys"
+      ],
+      "tournamentIds": [
+        "secondaryschool-championship"
+      ],
+      "best": {
+        "tournamentId": "secondaryschool-championship",
+        "tournamentLabel": "全国中学校大会",
+        "short": "全中",
+        "year": 2024,
+        "categoryId": "doubles-none-boys",
+        "category": "doubles",
+        "gender": "boys",
+        "label": "3回戦敗退",
+        "score": 1.15,
+        "players": [
+          "藤澤 理央馬",
+          "古本 竜吾"
+        ]
+      },
+      "results": [
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2024,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "3回戦敗退",
+          "score": 1.15,
+          "players": [
+            "藤澤 理央馬",
+            "古本 竜吾"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2024,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "2回戦敗退",
+          "score": 1.1,
+          "players": []
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "doubles-none-boys",
+          "category": "doubles",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": [
+            "藤澤 理央馬",
+            "藤澤 蒼璃"
+          ]
+        },
+        {
+          "tournamentId": "secondaryschool-championship",
+          "tournamentLabel": "全国中学校大会",
+          "short": "全中",
+          "year": 2023,
+          "categoryId": "team-none-boys",
+          "category": "team",
+          "gender": "boys",
+          "label": "1回戦敗退",
+          "score": 1.05,
+          "players": []
+        }
+      ],
+      "members": [
+        {
+          "name": "古本 竜吾",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "name": "藤澤 理央馬",
+          "years": [
+            2023,
+            2024
+          ]
+        },
+        {
+          "name": "藤澤 蒼璃",
+          "years": [
+            2023
           ]
         }
       ]
