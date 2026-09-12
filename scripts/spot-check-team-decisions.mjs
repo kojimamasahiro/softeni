@@ -70,6 +70,26 @@ function buildContext() {
   return byName;
 }
 
+/** 点検票の1件を表示する。判断の材料（誰が・いつ・どの大会に出たか）まで出す。 */
+function renderItem(s, no, byName) {
+  const mark = s.answer ? `  ← 回答済み: ${s.answer === 'ok' ? '正しい' : '誤り'}${s.note ? `（${s.note}）` : ''}` : '';
+  console.log(`[${no}] 機械の判断: ${s.machineVerdict === 'merge' ? '**統合**（同じチーム）' : '別チーム（統合しない）'}  ${s.prefecture ?? ''}${mark}`);
+  for (const name of s.members) {
+    const hit = byName.get(name);
+    const c = hit?.ctx;
+    const players = c?.players?.slice(0, 4).join('・') ?? '';
+    const events = c?.events?.slice(0, 3).join(', ') ?? '';
+    const years = c?.years ? `${c.years[0]}〜${c.years[c.years.length - 1]}` : '';
+    console.log(`      ${name}${hit ? `（出場${hit.team.count}件` + (years ? ` / ${years}` : '') + '）' : '（統合済みでマスタに無し）'}`);
+    if (players) console.log(`         選手: ${players}`);
+    if (events) console.log(`         大会: ${events}`);
+  }
+  if (s.machineVerdict === 'merge' && (s.machineMerges || []).length) {
+    for (const m of s.machineMerges) console.log(`      → 統合後の名前: ${m.canonical}（${(m.aliases || []).join(' / ')} を寄せた）`);
+  }
+  console.log('');
+}
+
 // ---- draw ----
 if (argv.includes('--draw')) {
   const n = Number(arg('--draw', '20'));
@@ -121,24 +141,7 @@ if (argv.includes('--draw')) {
   console.log('統合＝これらは同じチーム、別チーム＝別のチームとして残す、という意味です。');
   console.log('');
   const offset = out.rounds.slice(0, -1).reduce((a, r) => a + r.sample.length, 0);
-  sample.forEach((s, i) => {
-    const no = offset + i + 1;
-    console.log(`[${no}] 機械の判断: ${s.machineVerdict === 'merge' ? '**統合**（同じチーム）' : '別チーム（統合しない）'}  ${s.prefecture ?? ''}`);
-    for (const name of s.members) {
-      const hit = byName.get(name);
-      const c = hit?.ctx;
-      const players = c?.players?.slice(0, 4).join('・') ?? '';
-      const events = c?.events?.slice(0, 3).join(', ') ?? '';
-      const years = c?.years ? `${c.years[0]}〜${c.years[c.years.length - 1]}` : '';
-      console.log(`      ${name}${hit ? `（出場${hit.team.count}件` + (years ? ` / ${years}` : '') + '）' : '（統合済みでマスタに無し）'}`);
-      if (players) console.log(`         選手: ${players}`);
-      if (events) console.log(`         大会: ${events}`);
-    }
-    if (s.machineVerdict === 'merge' && s.machineMerges.length) {
-      for (const m of s.machineMerges) console.log(`      → 統合後の名前: ${m.canonical}（${(m.aliases || []).join(' / ')} を寄せた）`);
-    }
-    console.log('');
-  });
+  sample.forEach((s, i) => renderItem(s, offset + i + 1, byName));
   console.log('答えの記録:');
   console.log('  node scripts/spot-check-team-decisions.mjs --answer 1=ok --answer 2=ng --note 2="別の学校"');
   process.exit(0);
@@ -173,6 +176,27 @@ if (argv.includes('--answer') || argv.includes('--note')) {
   writeOut(out);
   const answered = flat.filter((s) => s.answer).length;
   console.log(`${changed}件を記録した。回答済み ${answered} / ${flat.length}`);
+  process.exit(0);
+}
+
+// ---- sheet: 点検票をもう一度出す（範囲指定可: --sheet 11-20 / --sheet 3） ----
+if (argv.includes('--sheet')) {
+  const all = readOut().rounds.flatMap((r) => r.sample);
+  if (!all.length) {
+    console.log('まだ標本が無い。--draw N --stratum merge で引くこと。');
+    process.exit(0);
+  }
+  const spec = arg('--sheet', null);
+  let from = 1;
+  let to = all.length;
+  if (spec && /^\d+(-\d+)?$/.test(spec)) {
+    const [a, b] = spec.split('-').map(Number);
+    from = a;
+    to = b ?? a;
+  }
+  const byName = buildContext();
+  for (let i = from; i <= Math.min(to, all.length); i++) renderItem(all[i - 1], i, byName);
+  console.log('答えの記録: node scripts/spot-check-team-decisions.mjs --answer 1=ok --answer 2=ng --note 2="別の学校"');
   process.exit(0);
 }
 
