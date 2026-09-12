@@ -43,7 +43,7 @@
       "id": "akita",
       "name": "秋田県",
       "region": "東北",
-      "teamCount": 6
+      "teamCount": 5
     },
     {
       "id": "yamagata",
@@ -61291,9 +61291,9 @@
       ]
     },
     {
-      "id": "nanaojuniorclub",
-      "name": "七尾ジュニアクラブ",
-      "kind": "club",
+      "id": "nanao",
+      "name": "七尾中学校",
+      "kind": "school",
       "prefecture": "石川県",
       "prefectureId": "ishikawa",
       "count": 5,
@@ -61951,82 +61951,6 @@
         {
           "name": "長田 力樹",
           "years": [
-            2026
-          ]
-        }
-      ]
-    },
-    {
-      "id": "senbokustc",
-      "name": "仙北STC",
-      "kind": "club",
-      "prefecture": "秋田県",
-      "prefectureId": "akita",
-      "count": 5,
-      "years": [
-        2025,
-        2026
-      ],
-      "genders": [
-        "girls"
-      ],
-      "tournamentIds": [
-        "secondaryschool-tohoku-block",
-        "zennihon-secondaryschool-versus"
-      ],
-      "best": {
-        "tournamentId": "secondaryschool-tohoku-block",
-        "tournamentLabel": "東北中学校ソフトテニス大会",
-        "short": "ブロック",
-        "year": 2026,
-        "categoryId": "team-none-girls",
-        "category": "team",
-        "gender": "girls",
-        "label": "ベスト4",
-        "score": 4.5,
-        "players": []
-      },
-      "results": [
-        {
-          "tournamentId": "secondaryschool-tohoku-block",
-          "tournamentLabel": "東北中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "team-none-girls",
-          "category": "team",
-          "gender": "girls",
-          "label": "ベスト4",
-          "score": 4.5,
-          "players": []
-        },
-        {
-          "tournamentId": "secondaryschool-tohoku-block",
-          "tournamentLabel": "東北中学校ソフトテニス大会",
-          "short": "ブロック",
-          "year": 2026,
-          "categoryId": "doubles-none-girls",
-          "category": "doubles",
-          "gender": "girls",
-          "label": "3回戦敗退",
-          "score": 1.15,
-          "players": [
-            "齊藤 陽理",
-            "高橋 梨桜"
-          ]
-        }
-      ],
-      "members": [
-        {
-          "name": "高橋 梨桜",
-          "years": [
-            2025,
-            2026
-          ]
-        },
-        {
-          "name": "齊藤 陽理",
-          "years": [
-            2025,
             2026
           ]
         }
