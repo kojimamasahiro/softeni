@@ -80,6 +80,11 @@ jobs:
       - name: マージ候補とチームマスタのID照合
         run: node scripts/check-team-id-alignment.mjs
 
+      # 2026-09-12 追加。機械だけで決めた統合49件から20件を人が点検したところ誤統合が11件（55%）で、
+      # 原因は「名前より出場大会のジャンルを優先していた」こと。人の判断をそのまま固定してある。
+      - name: チーム名寄せの既定グループ分け
+        run: node scripts/lib/team-grouping.test.mjs
+
       # fixtures の PDF は .gitignore（`*.pdf`）で追跡していないので、CI では
       # PDF に依る項目が自動 SKIP される。カバーできるのは 144 項目中 75（52%）。
       # 残りを CI で見たければ fixtures の扱いを決める必要がある。
