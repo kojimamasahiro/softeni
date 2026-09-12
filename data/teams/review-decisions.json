@@ -1320,7 +1320,7 @@
         "三重高クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -1328,7 +1328,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -1368,7 +1368,7 @@
         "上宮中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -1376,7 +1376,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -2105,6 +2105,28 @@
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
+    "仙北STC|仙北クラブ|仙北スポ少": {
+      "prefecture": "秋田県",
+      "signal": "core",
+      "members": [
+        "仙北スポ少",
+        "仙北STC",
+        "仙北クラブ"
+      ],
+      "proposedAutoOK": true,
+      "decidedBy": "human",
+      "groups": [
+        0,
+        1,
+        2
+      ],
+      "canon": {},
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:36:38.351Z",
+      "firstDecidedAt": "2026-09-12T04:36:38.351Z",
+      "revisions": 0
+    },
     "仙北STC|仙北クラブ|仙北スポ少|仙北スポ少大": {
       "prefecture": "秋田県",
       "signal": "core",
@@ -2386,6 +2408,34 @@
       "decidedAt": "2026-09-11T16:06:47.271Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
+    },
+    "修大協創|広島修道大学ひろしま協創高校": {
+      "prefecture": "広島県",
+      "signal": "players",
+      "members": [
+        "修大協創",
+        "広島修道大学ひろしま協創高校"
+      ],
+      "proposedAutoOK": false,
+      "decidedBy": "human",
+      "groups": [
+        0,
+        0
+      ],
+      "canon": {},
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "修大協創",
+          "aliases": [
+            "広島修道大学ひろしま協創高校"
+          ],
+          "note": "広島県"
+        }
+      ],
+      "decidedAt": "2026-09-12T04:36:38.351Z",
+      "firstDecidedAt": "2026-09-12T04:36:38.351Z",
+      "revisions": 0
     },
     "修大協創|広島修道大学ひろしま協創高等学校": {
       "prefecture": "広島県",
@@ -4278,7 +4328,7 @@
         "大牟田クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
@@ -4287,7 +4337,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:48:01.830Z",
       "firstDecidedAt": "2026-09-06T04:29:46.112Z",
       "revisions": 25
     },
@@ -4547,7 +4597,7 @@
         "奈良育英中"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -4555,7 +4605,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -4647,7 +4697,7 @@
         "嬉野クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -4655,7 +4705,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -4697,17 +4747,25 @@
         "学法石川クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        1
+        0
       ],
       "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "学法石川",
+          "aliases": [
+            "学法石川クラブ"
+          ],
+          "note": "福島県"
+        }
+      ],
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "学法石川|石川高校": {
       "prefecture": "福島県",
@@ -5553,17 +5611,25 @@
         "尚絅高校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
-        1
+        0
       ],
       "canon": {},
-      "verdict": "separate",
-      "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "merge",
+      "merges": [
+        {
+          "canonical": "尚絅",
+          "aliases": [
+            "尚絅高校"
+          ],
+          "note": "熊本県"
+        }
+      ],
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "尼崎ジュニアクラブ|尼崎高校": {
       "prefecture": "兵庫県",
@@ -5688,7 +5754,7 @@
         "山形城北高校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -5696,7 +5762,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:48:01.830Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -5806,7 +5872,7 @@
         "山陽女子中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -5814,7 +5880,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:48:01.830Z",
       "firstDecidedAt": "2026-09-06T04:58:00.981Z",
       "revisions": 23
     },
@@ -5826,7 +5892,7 @@
         "山陽学園中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -5834,7 +5900,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -7112,7 +7178,7 @@
         "文大杉並中学校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -7120,7 +7186,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -7814,7 +7880,7 @@
         "東北高校クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
@@ -7823,7 +7889,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -7971,7 +8037,7 @@
         "東海クラブ"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -7979,7 +8045,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -8174,7 +8240,7 @@
         "松山高校"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -8182,7 +8248,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -8583,7 +8649,7 @@
         "武生"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -8591,7 +8657,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -10848,7 +10914,7 @@
         "笛吹高"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -10856,7 +10922,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -10868,7 +10934,7 @@
         "筑西STC"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -10876,7 +10942,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -11245,7 +11311,7 @@
         "能登スポーツ少年団"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -11253,7 +11319,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
@@ -12364,6 +12430,26 @@
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 4
     },
+    "長崎南山|長崎南山中学校": {
+      "prefecture": "長崎県",
+      "signal": "core",
+      "members": [
+        "長崎南山",
+        "長崎南山中学校"
+      ],
+      "proposedAutoOK": true,
+      "decidedBy": "auto",
+      "groups": [
+        0,
+        1
+      ],
+      "canon": {},
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:36:38.351Z",
+      "firstDecidedAt": "2026-09-12T04:36:38.351Z",
+      "revisions": 0
+    },
     "長崎商|長崎商業高校": {
       "prefecture": "長崎県",
       "signal": "players",
@@ -12435,6 +12521,28 @@
       "decidedAt": "2026-09-11T16:06:47.271Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
+    },
+    "長野|長野ジュニアクラブ|長野高校": {
+      "prefecture": "長野県",
+      "signal": "core",
+      "members": [
+        "長野",
+        "長野ジュニアクラブ",
+        "長野高校"
+      ],
+      "proposedAutoOK": true,
+      "decidedBy": "human",
+      "groups": [
+        0,
+        1,
+        2
+      ],
+      "canon": {},
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T04:36:38.351Z",
+      "firstDecidedAt": "2026-09-12T04:36:38.351Z",
+      "revisions": 0
     },
     "長野日大|長野日大高校": {
       "prefecture": "長野県",
@@ -12593,18 +12701,18 @@
         "霞ヶ浦高"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
-        2
+        -1
       ],
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:38:42.766Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 26
+      "revisions": 27
     },
     "静内クラブ|静内少年団": {
       "prefecture": "北海道",
@@ -13484,7 +13592,7 @@
         "龍野"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1,
@@ -13493,7 +13601,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T04:48:01.830Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     }
