@@ -5524,22 +5524,15 @@
       "decidedBy": "human",
       "groups": [
         0,
-        0
+        1
       ],
       "canon": {},
-      "verdict": "merge",
-      "merges": [
-        {
-          "canonical": "小城",
-          "aliases": [
-            "小城中"
-          ],
-          "note": "佐賀県"
-        }
-      ],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "verdict": "separate",
+      "merges": [],
+      "decidedAt": "2026-09-12T06:07:45.563Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
-      "revisions": 24
+      "revisions": 25,
+      "note": "2026-09-12 の抜き取り点検で誤統合と判断（小中高／学校とクラブは別）。"
     },
     "小山|小山クラブ": {
       "prefecture": "栃木県",
@@ -9844,7 +9837,7 @@
         "玉島STC"
       ],
       "proposedAutoOK": true,
-      "decidedBy": "auto",
+      "decidedBy": "human",
       "groups": [
         0,
         1
@@ -9852,7 +9845,7 @@
       "canon": {},
       "verdict": "separate",
       "merges": [],
-      "decidedAt": "2026-09-11T16:06:47.271Z",
+      "decidedAt": "2026-09-12T06:07:45.590Z",
       "firstDecidedAt": "2026-09-06T04:09:20.467Z",
       "revisions": 26
     },
