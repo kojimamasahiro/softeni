@@ -27,11 +27,13 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { clusterKey, readLedger } from './lib/review-ledger.mjs';
+import { clusterKey, readLedger, recordDecision, writeLedger } from './lib/review-ledger.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'data', 'teams', 'spot-check.json');
 const argv = process.argv.slice(2);
+/** --commit-answers を試すときの空撃ち。台帳は後から直せないので先に見られるようにする。 */
+const DRY_ANSWERS = argv.includes('--dry-run');
 const arg = (name, fallback = null) => {
   const i = argv.indexOf(name);
   return i >= 0 && argv[i + 1] ? argv[i + 1] : fallback;
@@ -176,6 +178,45 @@ if (argv.includes('--answer') || argv.includes('--note')) {
   writeOut(out);
   const answered = flat.filter((s) => s.answer).length;
   console.log(`${changed}件を記録した。回答済み ${answered} / ${flat.length}`);
+  process.exit(0);
+}
+
+// ---- commit-answers: 点検の答えを判断台帳へ書き込む ----
+//
+// なぜ要るか: 点検票（spot-check.json）は測定の記録であって、名寄せの運用が読む場所ではない。
+// 運用が見るのは判断台帳（review-decisions.json）で、そこに `decidedBy:"human"` が入って
+// 初めて「人が見た」扱いになる。入れないと、機械は同じクラスタを何度でも提案し直す。
+//
+// 「別チーム」の答えは undo-team-merge.mjs が統合を戻すときに記録するが、
+// **「同一（機械の判断で正しい）」の答えはどこにも入らない**。しかもそれらは統合済みで
+// merge-candidates から消えているため、レビュー画面からも触れない（2026-09-12 実測: 9件すべて）。
+// ここが唯一の入り口になる。
+if (argv.includes('--commit-answers')) {
+  const all = readOut().rounds.flatMap((r) => r.sample);
+  const ledger = readLedger();
+  const at = new Date().toISOString();
+  let upgraded = 0;
+  let already = 0;
+  let missing = 0;
+  for (const s of all) {
+    if (!s.answer) continue;
+    const d = ledger.decisions[s.key];
+    if (!d) {
+      missing++;
+      continue;
+    }
+    if (d.decidedBy === 'human') {
+      already++;
+      continue;
+    }
+    // 中身は機械の記録のままで、「人が見て同意した」という事実だけを足す。
+    // recordDecision の不変条件（同内容なら auto → human の昇格だけ反映）に乗る。
+    recordDecision(ledger, { ...d, key: s.key, decidedBy: 'human', decidedAt: at });
+    upgraded++;
+  }
+  if (!DRY_ANSWERS) writeLedger(ledger);
+  console.log(`${DRY_ANSWERS ? '[dry-run] ' : ''}台帳へ記録: ${upgraded}件（既に人の判断: ${already}件 / 台帳に無い: ${missing}件）`);
+  console.log('※ 「別チーム」の答えは undo-team-merge.mjs 側で記録済み。ここでは主に「同一」の答えが入る。');
   process.exit(0);
 }
 
