@@ -77,7 +77,20 @@ for (const c of clusters) {
   humanMerge++;
   // 統合の中身は**人の判断として記録されたもの**を使う。機械の既定グループで作り直さない
   // （人がグループを組み替えている場合、機械側で作り直すとその判断を無視することになる）。
-  for (const e of d.merges || []) additions.push(e);
+  //
+  // absorbCanonical: 別名にしたい名前が既に別グループの正準名でも、そのグループごと吸収する。
+  // ここは**人が判断したものしか通らない経路**なので有効にしてよい（2026-09-12 追加）。
+  // これが無いと「既存canonicalをaliasにしようとした」で弾かれ、実測で19組すべてが
+  // 永久に反映されないままだった。
+  for (const e of d.merges || []) {
+    // 同じ判断の中で canonical と別グループに置かれた名前は、吸収の巻き込みでも入れない。
+    // 人が「これは別チーム」と言った名前が、相手グループの配下にいるという理由だけで
+    // 統合されるのを防ぐ（2026-09-12 に修道大附鈴峯女子中学校で実際に起きた）。
+    const gi = (d.members || []).indexOf(e.canonical);
+    const g = gi >= 0 ? (d.groups || [])[gi] : null;
+    const forbid = g == null ? [] : (d.members || []).filter((_, i) => (d.groups || [])[i] !== g);
+    additions.push({ ...e, absorbCanonical: true, forbid });
+  }
 }
 
 console.log('人の判断の反映（機械の自動統合は 2026-09-12 に廃止）');

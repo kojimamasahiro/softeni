@@ -24,13 +24,67 @@ export function applyAdditions(additions) {
 
   const applied = [],
     skipped = [],
-    conflicts = [];
+    conflicts = [],
+    // 別グループを吸収した記録（absorbCanonical 指定時のみ発生する）。
+    // 正準名が1つ減るので、呼び出し側が結果を目視できるように返す。
+    absorbed = [];
   for (const add of additions || []) {
     const canon = add.canonical;
     if (!canon || !Array.isArray(add.aliases)) {
       skipped.push({ canonical: canon, reason: '形式不正' });
       continue;
     }
+    // 別名にしようとしている名前が、それ自体で別グループの正準名になっている場合は
+    // **そのグループごと吸収する**（2026-09-12 追加）。
+    //
+    // なぜ要るか: 人が「A と B は同じチーム」と判断しても、B が既に正準名だと
+    // 「既存canonicalをaliasにしようとした」で弾かれ、判断が永久に反映されない。
+    // 実測で**人の統合判断19組すべてがこれで落ちていた**（適用0・競合19）。
+    // 例: 台帳「学法石川 ← 石川高校」に対し、対応表には
+    //     `石川高校 ← [石川高等学校, 学校法人石川高校]` が既にあった。
+    // 吸収すると `学法石川 ← [石川高校, 石川高等学校, 学校法人石川高校]` になる。
+    //
+    // どちらを正準名にするかは**呼び出し側が決めたもの（add.canonical）に従う**。
+    // 判断台帳の canonical は最頻出の表記なので、サイトの表示名が変わらず差分も最小になる。
+    if (!add.absorbCanonical) {
+      // 従来どおり競合として弾く（既定）。
+    } else {
+      // forbid: 人が「別グループ」と判断した名前。吸収の巻き込みで一緒に入れてはならない。
+      //
+      // なぜ要るか（2026-09-12 に実際にやらかした）: 吸収は相手グループの別名を全部引き取るため、
+      // 人が明示的に除外した名前まで混入する。`修大附鈴峯` に高校2表記だけを統合したはずが、
+      // 吸収元の配下にいた `修道大附鈴峯女子中学校` が一緒に移り、中学校の出場9名が
+      // 高校側へ吸収された（データ本体まで書き換わった）。
+      const forbid = new Set(add.forbid || []);
+      for (const a of add.aliases) {
+        if (a === canon) continue;
+        const victim = byCanon.get(a);
+        if (!victim) continue;
+        if (forbid.has(a)) continue;
+        const move = (victim.aliases || []).filter((x) => x !== canon && !forbid.has(x));
+        const keep = (victim.aliases || []).filter((x) => forbid.has(x));
+        for (const x of move) {
+          add.aliases.push(x);
+          aliasOwner.delete(x);
+        }
+        if (keep.length) {
+          // 禁止された別名は宙に浮かせず、別グループとして残す
+          victim.canonical = keep[0];
+          victim.aliases = keep.slice(1);
+          byCanon.delete(a);
+          byCanon.set(keep[0], victim);
+          for (const x of keep) aliasOwner.delete(x);
+        } else {
+          const i = doc.teamAliases.indexOf(victim);
+          if (i >= 0) doc.teamAliases.splice(i, 1);
+          byCanon.delete(a);
+        }
+        aliasOwner.delete(a);
+        absorbed.push({ into: canon, from: a, moved: move.length, kept: keep.length });
+      }
+      add.aliases = [...new Set(add.aliases)];
+    }
+
     // 競合チェック
     const bad = [];
     for (const a of add.aliases) {
@@ -65,7 +119,7 @@ export function applyAdditions(additions) {
     if (added) applied.push({ canonical: canon, added });
   }
   fs.writeFileSync(ALIAS, JSON.stringify(doc, null, 2) + '\n', 'utf8');
-  return { applied, skipped, conflicts };
+  return { applied, skipped, conflicts, absorbed };
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
