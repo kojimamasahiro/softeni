@@ -77,6 +77,16 @@ function rankScore(rank) {
   return 0;
 }
 
+/**
+ * 都道府県の実績に載せる成績か（ベスト8以上）。
+ * ベスト8未満（「3回戦敗退」など）は県の最高成績として出さない（2026-09-13 ユーザー決定）。
+ */
+function isTop8(rank) {
+  if (!rank) return false;
+  if (rank.kind === 'winner' || rank.kind === 'runnerup') return true;
+  return rank.kind === 'best' && (rank.bestLevel ?? 99) <= 8;
+}
+
 /** pykakasi でローマ字読みをまとめて引く。結果は永続キャッシュする（中学版と同じ）。 */
 function toRomajiBulk(names) {
   const cache = readJson(ROMAJI_CACHE_FILE, {});
@@ -183,10 +193,18 @@ function main() {
 
   /** key `name\tprefName` -> 団体集計 */
   const teams = new Map();
+  /** 県名 -> ベスト8以上の実績。docs/wiki/primaryschool.md「都道府県の全国大会での成績」 */
+  const achievementsByPrefName = new Map();
+  /** 大会ID -> 結果を収録している年度 */
+  const yearsByTournament = new Map();
+  let achievementsWithoutPref = 0;
   for (const tour of TOURNAMENTS) {
     const dir = path.join(DET, tour.id);
     if (!fs.existsSync(dir)) continue;
     for (const year of fs.readdirSync(dir).filter((y) => /^\d{4}$/.test(y))) {
+      const years = yearsByTournament.get(tour.id) ?? new Set();
+      years.add(Number(year));
+      yearsByTournament.set(tour.id, years);
       for (const file of fs.readdirSync(path.join(dir, year)).filter((f) => f.endsWith('.json'))) {
         const data = readJson(path.join(dir, year, file), null);
         if (!data || !Array.isArray(data.participants)) continue;
@@ -238,6 +256,28 @@ function main() {
           const pids = entry.playerIds ?? [];
           const teamNames = [...new Set(pids.map((i) => teamByPid.get(i)).filter(Boolean))];
           const prefNames = [...new Set(pids.map((i) => prefByPid.get(i)).filter(Boolean))];
+
+          // 都道府県の実績（ベスト8以上）。県代表として出場する大会なので、所属が混成のペアでも
+          // 県は1つに定まる（2026-09-13 実測で定まらないエントリーは0件）。団体の成績と違い混成ペアも数える
+          if (isTop8(r.tournament?.rank)) {
+            if (prefNames.length === 1) {
+              const list = achievementsByPrefName.get(prefNames[0]) ?? [];
+              list.push({
+                tournamentId: tour.id,
+                year: Number(year),
+                categoryId,
+                category,
+                gender,
+                label: r.tournament?.label ?? null,
+                score: rankScore(r.tournament?.rank),
+                players: pids.map((i) => ({ name: nameByPid.get(i) ?? null, team: teamByPid.get(i) || null })),
+              });
+              achievementsByPrefName.set(prefNames[0], list);
+            } else {
+              achievementsWithoutPref += 1;
+            }
+          }
+
           // 所属が1つに定まるときだけ団体の成績にする。
           // 全日本小学生はペアの所属一致が71%で、残り29%の混成ペアは団体の成績にしない
           if (teamNames.length !== 1) continue;
@@ -348,10 +388,35 @@ function main() {
     teamCount: out.filter((t) => t.prefectureId === p.id).length,
   }));
 
+  // 都道府県の全国大会での成績（ベスト8以上）。**県をまたいで並べたり比べたりはしない**。
+  // prefectures[] に入れないのは、47県を並べる入口ページの props に載せないため
+  const achievementTournaments = TOURNAMENTS.filter((t) => yearsByTournament.has(t.id)).map((t) => ({
+    id: t.id,
+    label: labelById.get(t.id) ?? t.label,
+    years: [...yearsByTournament.get(t.id)].sort((a, b) => a - b),
+  }));
+  const achievementsByPrefecture = {};
+  for (const p of prefectures) {
+    achievementsByPrefecture[p.id] = (achievementsByPrefName.get(p.name) ?? []).sort(
+      (a, b) => b.score - a.score || b.year - a.year || a.categoryId.localeCompare(b.categoryId),
+    );
+  }
+
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.writeFileSync(
     path.join(OUT_DIR, 'index.json'),
-    JSON.stringify({ threshold: THRESHOLD, tournamentIds: TOURNAMENTS.map((t) => t.id), prefectures: prefOut, teams: out }, null, 2) + '\n',
+    JSON.stringify(
+      {
+        threshold: THRESHOLD,
+        tournamentIds: TOURNAMENTS.map((t) => t.id),
+        prefectures: prefOut,
+        teams: out,
+        achievementTournaments,
+        achievementsByPrefecture,
+      },
+      null,
+      2,
+    ) + '\n',
     'utf8',
   );
   if (!fs.existsSync(OVERRIDE_FILE)) fs.writeFileSync(OVERRIDE_FILE, '{}\n', 'utf8');
@@ -361,6 +426,11 @@ function main() {
   console.log(`  団体 ${out.length}件（閾値 ${THRESHOLD}）`);
   console.log(`  都道府県 ${47 - empty.length}/47 に掲載団体あり（0件: ${empty.map((p) => p.name).join('・') || 'なし'}）`);
   console.log(`  総ページ数の見込み: ${1 + prefOut.length + out.length}`);
+  const prefsWithAchievements = Object.values(achievementsByPrefecture).filter((l) => l.length > 0).length;
+  console.log(
+    `  都道府県の実績（ベスト8以上）: ${Object.values(achievementsByPrefecture).reduce((n, l) => n + l.length, 0)}件 / ${prefsWithAchievements}県` +
+      (achievementsWithoutPref ? `（県が1つに定まらず除外: ${achievementsWithoutPref}件）` : ''),
+  );
   console.log(`  teamId 最長 ${Math.max(...out.map((t) => t.id.length))}文字 / 平均 ${Math.round(out.reduce((n, t) => n + t.id.length, 0) / out.length)}文字`);
   console.log(`  読みの上書きを適用: ${overrideApplied.length}件\n    ${overrideApplied.join('\n    ')}`);
   if (collisions.length) console.log(`  県内で衝突したため作り直したもの（${collisions.length}件）:\n    ${collisions.join('\n    ')}`);

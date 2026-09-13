@@ -18,6 +18,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import type { AchievementGroup } from '../src/types/prefectureAchievements';
+
 export type TeamKind = 'school' | 'club' | 'unknown';
 
 /** 1件の大会成績 */
@@ -70,6 +72,28 @@ export interface SecondarySchoolPrefecture {
   teamCount: number;
 }
 
+/**
+ * 都道府県の全国大会での成績（ベスト8以上）1件。生成は scripts/build-secondaryschool-index.mjs。
+ * 県代表・県内チームとして出場した記録で、所属が混成のペアも含む（団体の成績と違う）。
+ */
+export interface SecondaryPrefectureAchievement {
+  tournamentId: string;
+  year: number;
+  categoryId: string;
+  category: string;
+  gender: string;
+  label: string | null;
+  score: number;
+  /** 団体戦は name が null（チーム名だけ） */
+  players: { name: string | null; team: string | null }[];
+}
+
+export interface SecondaryAchievementTournament {
+  id: string;
+  label: string;
+  years: number[];
+}
+
 export interface PathwayRecord {
   player: string;
   jhsLastYear: number;
@@ -88,6 +112,10 @@ interface IndexPayload {
   scoreableTournamentIds: string[];
   prefectures: SecondarySchoolPrefecture[];
   teams: SecondarySchoolTeam[];
+  /** 都道府県の実績に使う大会（全中・都道府県対抗）と収録年度（古い index.json には無い） */
+  achievementTournaments?: SecondaryAchievementTournament[];
+  /** prefectureId -> ベスト8以上の実績（成績上位順 → 年度降順） */
+  achievementsByPrefecture?: Record<string, SecondaryPrefectureAchievement[]>;
 }
 
 function readJson<T>(file: string, fallback: T): T {
@@ -298,4 +326,40 @@ export function describeResult(r: SecondarySchoolResult): string {
   const cat = r.category === 'team' ? '団体' : r.category === 'singles' ? 'シングルス' : 'ダブルス';
   const gender = r.gender === 'boys' ? '男子' : r.gender === 'girls' ? '女子' : '';
   return [r.short, `${r.year}`, `${gender}${cat}`, r.label].filter(Boolean).join(' ');
+}
+
+function disciplineLabel(category: string, gender: string): string {
+  const cat = category === 'team' ? '団体' : category === 'singles' ? 'シングルス' : 'ダブルス';
+  const g = gender === 'boys' ? '男子' : gender === 'girls' ? '女子' : '';
+  return `${g}${cat}`;
+}
+
+/**
+ * 都道府県ページの「全国大会での成績（ベスト8以上）」。大会ごとに分けて返す。
+ * **県をまたいだ比較はしない**（このデータを横に並べて順位にしないこと）。
+ * 選手・チームへのリンクは実在するページだけ張る（デッドリンク防止）。
+ */
+export function getPrefectureAchievementGroups(prefectureId: string): AchievementGroup[] {
+  const index = getIndex();
+  const entries = index.achievementsByPrefecture?.[prefectureId] ?? [];
+  const teamHref = new Map(getTeamsByPrefecture(prefectureId).map((t) => [t.name, `/secondaryschool/${prefectureId}/${t.id}/`] as const));
+  return (index.achievementTournaments ?? []).map((t) => ({
+    tournamentId: t.id,
+    label: t.label,
+    years: t.years,
+    rows: entries
+      .filter((e) => e.tournamentId === t.id)
+      .map((e, i) => ({
+        key: `${e.year}-${e.categoryId}-${e.label ?? ''}-${i}`,
+        year: e.year,
+        discipline: disciplineLabel(e.category, e.gender),
+        label: e.label ?? '',
+        players: e.players.map((p) => ({
+          name: p.name,
+          playerId: p.name ? resolvePlayerId(p.name) : null,
+          team: p.team,
+          teamHref: p.team ? (teamHref.get(p.team) ?? null) : null,
+        })),
+      })),
+  }));
 }
