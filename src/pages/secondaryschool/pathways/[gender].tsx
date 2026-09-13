@@ -76,7 +76,7 @@ export default function SecondarySchoolPathways({ gender, groups, total, crossPr
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '中学', href: '/secondaryschool' },
+            { label: '中学生', href: '/secondaryschool' },
             { label: `高校${genderLabel}の出身中学`, href: `/secondaryschool/pathways/${gender}` },
           ]}
         />

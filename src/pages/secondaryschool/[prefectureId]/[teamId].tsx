@@ -100,7 +100,7 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '中学', href: '/secondaryschool' },
+            { label: '中学生', href: '/secondaryschool' },
             { label: team.prefecture, href: `/secondaryschool/${team.prefectureId}` },
             { label: team.name, href: `/secondaryschool/${team.prefectureId}/${team.id}` },
           ]}
