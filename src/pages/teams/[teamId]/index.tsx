@@ -156,6 +156,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, ro
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
+            { label: 'チーム一覧', href: '/teams' },
             { label: teamName, href: `/teams/${info.id}` },
           ]}
         />

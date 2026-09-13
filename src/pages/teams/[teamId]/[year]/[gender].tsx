@@ -170,6 +170,7 @@ export default function TeamYearGenderPage({ info, results, year, gender, player
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
+            { label: 'チーム一覧', href: '/teams' },
             { label: teamName, href: `/teams/${info.id}` },
             { label: `${year}年度 ${genderLabel}`, href: pageUrl },
           ]}

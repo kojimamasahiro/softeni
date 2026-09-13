@@ -203,12 +203,12 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </Link>
           </section>
 
-          {/* 小学生・中学生・高校生・大学生カテゴリへのリンク。並びはナビと同じ学齢順（lib/navigation.ts） */}
+          {/* 小学生・中学生・高校生・大学生カテゴリへのリンク。見出し・並びはサイドナビ「カテゴリから探す」と揃える（lib/navigation.ts） */}
           <section className="mb-12 px-4">
-            <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
+            <h2 className="text-xl font-semibold mb-4">カテゴリから探す</h2>
 
             <p className="text-text-secondary text-sm mb-6">
-              全国大会での成績を属性別にまとめています。都道府県ごとにも確認できるので、出身地や気になる地域の情報もチェックしてみてください。
+              全国大会での成績をカテゴリ別にまとめています。都道府県ごとにも確認できるので、出身地や気になる地域の情報もチェックしてみてください。
             </p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -246,53 +246,17 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </div>
           </section>
 
-          {/* 所属別成績 */}
+          {/* チーム一覧へのリンク。2026-09-14 に「所属別成績」（日本体育大学・ワタキューセイモアの2枚を手で選んでいた）を置き換えた。
+              チームページは大学38校・STリーグ約60チームに増え、2つだけ並べる理由が無くなったため */}
           <section className="mb-12 px-4">
-            <h2 className="text-xl font-semibold mb-4">所属別成績</h2>
+            <h2 className="text-xl font-semibold mb-4">チーム</h2>
 
-            <p className="text-text-secondary text-sm mb-6">
-              所属ごとに選手の年間成績や大会別の記録をまとめています。所属単位での活躍や個人の成績なども確認できます。
-            </p>
+            <p className="text-text-secondary text-sm mb-6">大会結果に収録されている学校・実業団・クラブを、名前や都道府県で検索できます。</p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[
-                {
-                  teamId: 'nssu',
-                  name: '日本体育大学',
-                  official: 'https://nittai-softtennis.com/',
-                },
-                {
-                  teamId: 'watakyu',
-                  name: 'ワタキューセイモア',
-                  official: 'https://www.watakyu-sports.jp/softtennis/',
-                },
-              ].map((team) => (
-                <div key={team.teamId} className="relative border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-                  <h3 className="text-lg font-bold mb-1">
-                    <Link href={`/teams/${team.teamId}`} className="after:absolute after:inset-0">
-                      {team.name}
-                    </Link>
-                  </h3>
-                  <a href={team.official} target="_blank" rel="noopener noreferrer" className="relative inline-flex items-center text-sm text-info underline">
-                    公式サイト
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="ml-1 h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                      <polyline points="15 3 21 3 21 9" />
-                      <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-            </div>
+            <Link href="/teams" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
+              <h3 className="text-lg font-bold mb-1">チーム一覧</h3>
+              <p className="text-text-secondary text-sm">大学・実業団のチームページや、高校・中学生・小学生のカテゴリのページへ移動できます</p>
+            </Link>
           </section>
         </div>
       </PageLayout>
