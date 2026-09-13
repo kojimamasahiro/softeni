@@ -5,7 +5,7 @@
 //
 // | 用途 | 判定フィールド | 含む | 除く |
 // |---|---|---|---|
-// | 勲章カード（ベスト8以上をカテゴリ別に表示） | `majorCategory !== null` | ジュニア/高校/大学/総合/国際大会/シニア | **社会人**・東西日本・国際予選 |
+// | 勲章カード（ベスト8以上をカテゴリ別に表示） | `majorCategory !== null` | 小学生/中学生/ジュニア/高校生/大学/総合/国際大会/シニア | **社会人**・東西日本・国際予選 |
 // | 「全国大会優勝」SEO・`titles.national`・`firstNational*` | `nationalTitle === true` | 国内の全国大会（**社会人を含む**） | **国際大会**・東西日本・国際予選 |
 //
 // ずれているのは意図的（2026-07-20 ユーザー決定）。理由は `NationalTitleTournamentMeta`
@@ -32,21 +32,38 @@
  * 勲章カードのカテゴリ。選手のキャリア進行順に並べる（格付けではない）。
  *
  * `index.json` の `generationId` をそのまま使わないのは、①`junior` に小学・中学・U20 が
- * 同居していて 1 カテゴリにまとめたい、②`corporate`（社会人）と `international-qualifier`
- * （国際予選）はカテゴリを与えない、という 2 つの理由から（2026-07-20 ユーザー決定）。
+ * 同居している、②`corporate`（社会人）と `international-qualifier`（国際予選）はカテゴリを
+ * 与えない、という 2 つの理由から（2026-07-20 ユーザー決定）。
+ *
+ * 当初は①を 1 カテゴリ（ジュニア）にまとめていたが、2026-09-13 に中学生・小学生カテゴリの
+ * ページができたのに合わせ、高校と同じく**中学生・小学生を独立したタイルに分けた**（ユーザー決定）。
+ * `junior` は U20 の全日本ジュニア選手権だけが残る。中学・高校どちらの大会でもないので、
+ * 他カテゴリに混ぜず「ジュニア」のまま置く。
  */
-export type MajorCategoryId = 'junior' | 'highschool' | 'university' | 'general' | 'international' | 'senior';
+export type MajorCategoryId = 'primaryschool' | 'secondaryschool' | 'junior' | 'highschool' | 'university' | 'general' | 'international' | 'senior';
 
 /**
- * 表示順。**キャリアの新しい側から並べる**（シニア → 国際大会 → 総合 → 大学 → 高校 → ジュニア）。
+ * 表示順。**キャリアの新しい側から並べる**（シニア → 国際大会 → 総合 → 大学 → 高校生 → ジュニア → 中学生 → 小学生）。
+ * ジュニア（U20）は高校生・中学生の年代にまたがるので、その間に置く。
  * 直近・上位カテゴリの実績を先に見せるため（2026-07-20 ユーザー決定で進行順から反転）。
  * 格付けの順位ではない。
  */
-export const MAJOR_CATEGORY_ORDER: MajorCategoryId[] = ['senior', 'international', 'general', 'university', 'highschool', 'junior'];
+export const MAJOR_CATEGORY_ORDER: MajorCategoryId[] = [
+  'senior',
+  'international',
+  'general',
+  'university',
+  'highschool',
+  'junior',
+  'secondaryschool',
+  'primaryschool',
+];
 
 export const MAJOR_CATEGORY_LABEL: Record<MajorCategoryId, string> = {
+  primaryschool: '小学生',
+  secondaryschool: '中学生',
   junior: 'ジュニア',
-  highschool: '高校',
+  highschool: '高校生',
   university: '大学',
   general: '総合',
   international: '国際大会',
@@ -160,38 +177,46 @@ export const NATIONAL_TITLE_TOURNAMENTS: NationalTitleTournamentMeta[] = [
     majorCategory: 'highschool',
     nationalTitle: true,
   },
-  // ジュニア（中学・小学・U20 をひとまとめ）
+  // 中学生
   {
     tournamentId: 'secondaryschool-championship',
     label: '全国中学校大会',
     shortLabel: '全国中学校大会',
     aliases: ['全中'],
-    majorCategory: 'junior',
+    majorCategory: 'secondaryschool',
     nationalTitle: true,
   },
   {
     tournamentId: 'zennihon-secondaryschool-versus',
     label: '都道府県対抗全日本中学生大会',
     shortLabel: '都道府県対抗全日本中学生大会',
-    majorCategory: 'junior',
+    majorCategory: 'secondaryschool',
     nationalTitle: true,
   },
   {
     tournamentId: 'zennihon-secondaryschool-club',
     label: '全日本中学生クラブソフトテニス選手権',
     shortLabel: '全日本中学生クラブ選手権',
-    majorCategory: 'junior',
+    majorCategory: 'secondaryschool',
     nationalTitle: true,
   },
   {
     tournamentId: 'zennihon-secondaryschool-club-pre',
     label: '全日本中学生クラブソフトテニス選手権プレ大会',
     shortLabel: '全日本中学生クラブ選手権プレ大会',
-    majorCategory: 'junior',
+    majorCategory: 'secondaryschool',
     nationalTitle: true,
   },
-  { tournamentId: 'zennihon-primaryschool', label: '全日本小学生選手権大会', shortLabel: '全日本小学生選手権', majorCategory: 'junior', nationalTitle: true },
-  { tournamentId: 'primaryschool-championship', label: '全国小学生大会', shortLabel: '全国小学生大会', majorCategory: 'junior', nationalTitle: true },
+  // 小学生
+  {
+    tournamentId: 'zennihon-primaryschool',
+    label: '全日本小学生選手権大会',
+    shortLabel: '全日本小学生選手権',
+    majorCategory: 'primaryschool',
+    nationalTitle: true,
+  },
+  { tournamentId: 'primaryschool-championship', label: '全国小学生大会', shortLabel: '全国小学生大会', majorCategory: 'primaryschool', nationalTitle: true },
+  // ジュニア（U20）
   { tournamentId: 'zennihon-junior', label: '全日本ジュニア選手権大会', shortLabel: '全日本ジュニア選手権', majorCategory: 'junior', nationalTitle: true },
   // シニア
   { tournamentId: 'zennihon-senior', label: '全日本シニア選手権大会', shortLabel: '全日本シニア選手権', majorCategory: 'senior', nationalTitle: true },
