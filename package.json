@@ -86,6 +86,7 @@
     "club:verify": "ts-node --project scripts/playerStats/tsconfig.json scripts/verify-club-transition.ts",
     "juniorhigh:measure": "node scripts/measure-juniorhigh-scale.mjs",
     "primaryschool:pathways": "node scripts/build-primaryschool-pathways.mjs",
+    "primaryschool:teamid-todo": "node scripts/build-primaryschool-teamid-todo.mjs",
     "primaryschool:measure": "node scripts/measure-primaryschool-scale.mjs",
     "secondaryschool:build": "node scripts/build-secondaryschool-index.mjs && node scripts/build-secondaryschool-pathways.mjs",
     "secondaryschool:teamid-todo": "node scripts/build-secondaryschool-teamid-todo.mjs",
