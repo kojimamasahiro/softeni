@@ -189,6 +189,20 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </div>
           </section>
 
+          {/* チーム一覧へのリンク。2026-09-14 に「所属別成績」（日本体育大学・ワタキューセイモアの2枚を手で選んでいた）を置き換えた。
+              チームページは大学38校・STリーグ約60チームに増え、2つだけ並べる理由が無くなったため。
+              並びはサイドナビ「成績・記録を調べる」（大会→選手→チーム→ランキング）に揃え、選手ランキングの上に置く */}
+          <section className="mb-12 px-4">
+            <h2 className="text-xl font-semibold mb-4">チーム</h2>
+
+            <p className="text-text-secondary text-sm mb-6">大会結果に収録されている学校・実業団・クラブを、名前や都道府県で検索できます。</p>
+
+            <Link href="/teams" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
+              <h3 className="text-lg font-bold mb-1">チーム一覧</h3>
+              <p className="text-text-secondary text-sm">大学・実業団のチームページや、高校・中学生・小学生のカテゴリのページへ移動できます</p>
+            </Link>
+          </section>
+
           {/* 選手ランキングへのリンク */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">選手ランキング</h2>
@@ -244,19 +258,6 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
                 </Link>
               ))}
             </div>
-          </section>
-
-          {/* チーム一覧へのリンク。2026-09-14 に「所属別成績」（日本体育大学・ワタキューセイモアの2枚を手で選んでいた）を置き換えた。
-              チームページは大学38校・STリーグ約60チームに増え、2つだけ並べる理由が無くなったため */}
-          <section className="mb-12 px-4">
-            <h2 className="text-xl font-semibold mb-4">チーム</h2>
-
-            <p className="text-text-secondary text-sm mb-6">大会結果に収録されている学校・実業団・クラブを、名前や都道府県で検索できます。</p>
-
-            <Link href="/teams" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-              <h3 className="text-lg font-bold mb-1">チーム一覧</h3>
-              <p className="text-text-secondary text-sm">大学・実業団のチームページや、高校・中学生・小学生のカテゴリのページへ移動できます</p>
-            </Link>
           </section>
         </div>
       </PageLayout>
