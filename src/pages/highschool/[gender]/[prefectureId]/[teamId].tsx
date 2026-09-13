@@ -11,6 +11,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getGenderLabel, HIGHSCHOOL_CATEGORY_PRIORITY, HIGHSCHOOL_TOURNAMENT_PRIORITY, isVisibleGender } from '@/lib/highschool';
 import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
+import { getBlockTournamentMembers } from '@/lib/highschoolBlockMembers';
 import { getFeederSchools, type FeederSchool } from '@/lib/highschoolFeederSchools';
 import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getPlayerNameToId } from '@/lib/playersIndex';
@@ -83,6 +84,11 @@ type Props = {
   feederSchools: FeederSchool[];
   /** この学校の選手の進学先大学（高校 → 大学の進路データ）。docs/wiki/university.md */
   universityDestinations: UniversityDestination[];
+  /**
+   * 地区大会（ブロック大会）にだけ出場した選手の pid（`姓_名_学校名_都道府県` 形式）。年度別メンバーにだけ足す。
+   * 成績サマリー等には地区大会を混ぜない（lib/highschoolBlockMembers.ts）
+   */
+  blockMembers: { year: number; pid: string }[];
   /** 開催中の全国大会での、この学校の出場状況（docs/wiki/seo.md #11） */
   inProgressScopes: InProgressScope[];
 };
@@ -195,6 +201,7 @@ export default function TeamPage({
   alumni,
   feederSchools,
   universityDestinations,
+  blockMembers,
   inProgressScopes,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
@@ -227,27 +234,31 @@ export default function TeamPage({
   // 複製される）。pid の3番目のセグメント（学校名）が現在のチーム名と一致する
   // 選手だけを「このチームのメンバー」として数える。試合結果一覧（下部）側は
   // 相方の情報も含めて表示したいので、そちらはフィルタしない。
+  //
+  // 地区大会（ブロック大会）の出場選手（blockMembers）も同じ規則で足す（2026-09-14）。
   const membersByYear = (() => {
     const byYear = new Map<number, Map<string, { pid: string }>>();
-    for (const entry of entries) {
-      for (const pid of entry.playerIds ?? []) {
-        const parts = pid.split('_');
-        if (parts.length < 2) continue;
-        if (parts.length >= 3 && parts[2] !== teamName) continue;
-        const name = `${parts[0]} ${parts[1]}`;
-        let yearMap = byYear.get(entry.year);
-        if (!yearMap) {
-          yearMap = new Map();
-          byYear.set(entry.year, yearMap);
-        }
-        const existing = yearMap.get(name);
-        if (!existing) {
-          yearMap.set(name, { pid });
-        } else if (playerLinks[existing.pid] === undefined && playerLinks[pid] !== undefined) {
-          existing.pid = pid;
-        }
+    const addMember = (year: number, pid: string) => {
+      const parts = pid.split('_');
+      if (parts.length < 2) return;
+      if (parts.length >= 3 && parts[2] !== teamName) return;
+      const name = `${parts[0]} ${parts[1]}`;
+      let yearMap = byYear.get(year);
+      if (!yearMap) {
+        yearMap = new Map();
+        byYear.set(year, yearMap);
       }
+      const existing = yearMap.get(name);
+      if (!existing) {
+        yearMap.set(name, { pid });
+      } else if (playerLinks[existing.pid] === undefined && playerLinks[pid] !== undefined) {
+        existing.pid = pid;
+      }
+    };
+    for (const entry of entries) {
+      for (const pid of entry.playerIds ?? []) addMember(entry.year, pid);
     }
+    for (const m of blockMembers) addMember(m.year, m.pid);
     return [...byYear.entries()]
       .sort((a, b) => b[0] - a[0])
       .map(([year, members]) => ({
@@ -255,6 +266,9 @@ export default function TeamPage({
         members: [...members.entries()].map(([name, { pid }]) => ({ name, pid })).sort((a, b) => a.name.localeCompare(b.name, 'ja')),
       }));
   })();
+  // 最新年のメンバー。「◯◯高校 ソフトテニス メンバー 2026」のような年つき検索に向けて
+  // description・FAQ・ページ上部のリンクに年と人数を出す（title は字数に余裕が無いので入れない）
+  const latestMembers = membersByYear[0] ?? null;
 
   const faqItems = [
     ...(currentScope
@@ -273,10 +287,9 @@ export default function TeamPage({
     },
     {
       question: `${teamName}のソフトテニス部のメンバーは確認できますか？`,
-      answer:
-        membersByYear.length > 0
-          ? `収録している全国大会・主要大会の結果に掲載された${teamName}の選手を、年度別のメンバー一覧として掲載しています。個人の試合結果ページがある選手は選手名から移動できます。なお、大会結果に掲載された選手のみのため、全部員の名簿ではありません。`
-          : `${teamName}のメンバーは、収録済みの大会結果に選手名が掲載され次第、年度別の一覧として確認できるようになります。`,
+      answer: latestMembers
+        ? `収録している全国大会・主要大会・地区大会の結果に掲載された${teamName}の選手を、年度別のメンバー一覧として掲載しています（最新は${latestMembers.year}年の${latestMembers.members.length}名）。個人の試合結果ページがある選手は選手名から移動できます。なお、大会結果に掲載された選手のみのため、全部員の名簿ではありません。`
+        : `${teamName}のメンバーは、収録済みの大会結果に選手名が掲載され次第、年度別の一覧として確認できるようになります。`,
     },
     {
       question: 'インターハイの成績も確認できますか？',
@@ -378,8 +391,12 @@ export default function TeamPage({
           currentScope
             ? `${teamName}の高校${genderLabel}が出場する${currentScope.shortLabel}${currentScope.year}（${currentScope.label}${
                 currentScope.location ? `・${currentScope.location}` : ''
-              }）の${currentWord}を掲載。${currentScope.schools[0]?.categories.map((c) => c.label).join('・')}の勝ち上がりと対戦表へのリンク、あわせて過去の全国大会成績と年度別メンバーも確認できます。`
-            : `${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`
+              }）の${currentWord}を掲載。${currentScope.schools[0]?.categories.map((c) => c.label).join('・')}の勝ち上がりと対戦表へのリンク、あわせて過去の全国大会成績と年度別メンバー${
+                latestMembers ? `（${latestMembers.year}年は${latestMembers.members.length}名）` : ''
+              }も確認できます。`
+            : latestMembers
+              ? `${teamName}の高校${genderLabel}の出場メンバー（${latestMembers.year}年は${latestMembers.members.length}名）と全国大会成績を掲載。メンバーは地区大会・全国大会の出場選手を年度別に、成績はインターハイなど主要大会の結果を種目別に整理しています。`
+              : `${teamName}の高校${genderLabel}の全国大会成績と年度別の出場メンバーを掲載。ソフトテニスの全国高等学校総合体育大会や高校総体を含む主要大会の結果を年度別・種目別に整理しています。`
         }
         url={pageUrl}
         type="article"
@@ -452,6 +469,15 @@ export default function TeamPage({
           について、全国高等学校総合体育大会、高校総体、ハイスクールジャパンカップ、
           選抜大会などソフトテニス主要大会での成績と出場メンバーを年度別・種目別にまとめています。
         </p>
+
+        {/* メンバー節はページ下部にあるので、上部から直接飛べるようにする（2026-09-14） */}
+        {latestMembers && (
+          <p className="-mt-3 mb-6 text-sm">
+            <a href="#members" className="text-link hover:underline">
+              {latestMembers.year}年のメンバー（{latestMembers.members.length}名）を見る
+            </a>
+          </p>
+        )}
 
         {currentScope && <InProgressSchoolSection scope={currentScope} teamName={teamName} genderLabel={genderLabel} progressWord={currentWord} />}
 
@@ -527,12 +553,13 @@ export default function TeamPage({
         </section>
 
         {membersByYear.length > 0 && (
-          <section className="mb-8">
+          <section id="members" className="mb-8 scroll-mt-20">
             <h2 className="text-xl font-semibold mb-3">
               {teamName} ソフトテニス{genderLabel}の年度別メンバー
             </h2>
             <p className="text-sm text-text-secondary mb-4">
-              収録している全国大会・主要大会の結果に掲載された選手を年度別にまとめています。 大会結果に掲載された選手のみのため、全部員の名簿ではありません。
+              収録している全国大会・主要大会・地区大会（ブロック大会）の結果に掲載された選手を年度別にまとめています。
+              大会結果に掲載された選手のみのため、全部員の名簿ではありません。
             </p>
             <div className="space-y-4">
               {membersByYear.map(({ year, members }) => (
@@ -967,6 +994,22 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // 地区大会（ブロック大会）の出場選手。年度別メンバーにだけ足す（lib/highschoolBlockMembers.ts）。
+  // pid は summary と同じ `姓_名_学校名_都道府県` 形式にして、ページ側の同一人物判定・リンク解決に乗せる
+  const blockMembers = getBlockTournamentMembers(teamName, prefecture.name, gender).map((m) => ({
+    year: m.year,
+    pid: `${m.lastName}_${m.firstName}_${teamName}_${prefecture.name}`,
+  }));
+  {
+    const nameToId = getPlayerNameToId();
+    for (const m of blockMembers) {
+      if (playerLinks[m.pid] !== undefined) continue;
+      const [lastName, firstName] = m.pid.split('_');
+      const id = nameToId.get(`${lastName}::${firstName}`);
+      if (id !== undefined) playerLinks[m.pid] = id;
+    }
+  }
+
   // 主な卒業生（Phase 2）。要件は docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md
   const alumni = getSchoolAlumni(process.cwd(), teamName, gender);
 
@@ -993,6 +1036,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       alumni,
       feederSchools,
       universityDestinations,
+      blockMembers,
       inProgressScopes,
     },
   };
