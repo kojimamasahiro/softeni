@@ -27,6 +27,7 @@
 - [Highschool Pages（高校カテゴリ）](./highschool.md)
 - [Primary School Pages（小学生カテゴリ）](./primaryschool.md)
 - [Secondary School Pages（中学カテゴリ）](./secondaryschool.md)
+- [University Pages（大学カテゴリ・高校→大学の進路）](./university.md)
 - [Tournaments Local](./tournaments-local.md)
 - [STリーグ](./st-league.md)
 - [SEO（カニバリ/重複制御）](./seo.md)

@@ -44,6 +44,9 @@ type Props = {
   // SEO: 収録試合が薄いチームページは noindex にする（インデックス枠の集中）。
   // 判定は getStaticProps 側（lib/teamIndexing.ts）。docs/wiki/seo.md #12。
   noindex?: boolean;
+  // 大学のチームページのみ: 大学カテゴリの「出身高校」一覧へのリンク（docs/wiki/university.md）。
+  // 高校→大学の進路に出ていない性別は null。
+  universityPathways?: Record<'boys' | 'girls', { href: string; playerCount: number } | null> | null;
 };
 
 const GENDER_LABEL: Record<'boys' | 'girls', string> = {
@@ -51,7 +54,7 @@ const GENDER_LABEL: Record<'boys' | 'girls', string> = {
   girls: '女子',
 };
 
-export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, roster, playerLinks, noindex = false }: Props) {
+export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, roster, playerLinks, noindex = false, universityPathways = null }: Props) {
   const teamName = info.name;
   const pageUrl = `https://softeni-pick.com/teams/${info.id}/`;
 
@@ -153,6 +156,7 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, ro
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
+            { label: 'チーム一覧', href: '/teams' },
             { label: teamName, href: `/teams/${info.id}` },
           ]}
         />
@@ -167,6 +171,25 @@ export default function TeamResultsPage({ info, stats, hasSubPages, stLeague, ro
             大会ごとの記録などを確認できます。
           </p>
         </section>
+
+        {/* 大学のみ: 大学カテゴリの出身高校一覧への導線（/university/pathways/[gender]/ の見出しへ直接飛ぶ） */}
+        {universityPathways && (universityPathways.boys || universityPathways.girls) && (
+          <section className="rounded-lg border border-border bg-surface p-4 text-sm">
+            <h2 className="mb-1 font-semibold">{teamName}の選手の出身高校</h2>
+            <p className="mb-2 text-text-secondary">高校の全国大会の出場記録から、どの高校の出身かを追跡できた選手の一覧です。</p>
+            <p className="flex flex-wrap gap-x-4 gap-y-1">
+              {(['boys', 'girls'] as const).map((g) => {
+                const link = universityPathways[g];
+                if (!link) return null;
+                return (
+                  <Link key={g} href={link.href} className="text-link hover:underline">
+                    {GENDER_LABEL[g]}（{link.playerCount}名）
+                  </Link>
+                );
+              })}
+            </p>
+          </section>
+        )}
 
         {/* STリーグでの成績 */}
         {hasStLeague && (
@@ -380,9 +403,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // tournament の年度別下層ページが生成される対象か（mapping キーのみ）。
   const mappingsPath = path.join(process.cwd(), 'data/teams/team-name-mappings.json');
   let hasSubPages = false;
+  let mappedNames: string[] = [];
   if (fs.existsSync(mappingsPath)) {
-    const keys = Object.keys(JSON.parse(fs.readFileSync(mappingsPath, 'utf-8')) as Record<string, string[]>);
-    hasSubPages = keys.includes(teamId);
+    const mappings = JSON.parse(fs.readFileSync(mappingsPath, 'utf-8')) as Record<string, string[]>;
+    hasSubPages = teamId in mappings;
+    mappedNames = mappings[teamId] ?? [];
   }
 
   const stLeague = aggregateStLeagueTeam(teamId);
@@ -478,6 +503,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 大会 + STリーグ の収録試合が TEAM_INDEX_MIN_MATCHES 未満なら noindex, follow。
   // follow なので年度別ページ・選手ページ・STリーグ側への内部リンクは評価を流す。
   // sitemap からの除外は postbuild（scripts/filter-noindex-from-sitemap.mjs）が自動追従する。
+  // 大学のみ: 高校→大学の進路に出ていれば、大学カテゴリの出身高校一覧へのリンクを出す。
+  // 大学かどうかは進路データに名前があるかで判定する（実業団などは当たらない）
+  const { getUniversityPathwayLinks } = await import('@/lib/university');
+  const pathwayLinks = mappedNames.length > 0 ? getUniversityPathwayLinks(mappedNames) : null;
+  const universityPathways = pathwayLinks && (pathwayLinks.boys || pathwayLinks.girls) ? pathwayLinks : null;
+
   return {
     props: {
       info: { id: teamId, name },
@@ -487,6 +518,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       roster,
       playerLinks,
       noindex: !shouldIndexTeamPage(matchCount),
+      universityPathways,
     },
   };
 };
