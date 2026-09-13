@@ -10,6 +10,9 @@
 // 「その他」として前面に出てしまい、しかも導入文の「区別せず扱っています」と食い違う。
 // 分類の本来の用途は全中ハブの地域移行トラッカーで、そちらは無傷。
 // ここでは**分かるときだけ小さなラベルで添える**（unknown は何も出さない）。
+//
+// 2026-09-13 に「全国大会での成績（ベスト8以上）」節を足した。県別ポイントの復活ではなく、
+// 全中・都道府県対抗それぞれで県内の記録を列挙するだけ（県同士は比べない。ブロック大会は含めない）。
 // 仕様: docs/wiki/secondaryschool.md
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
@@ -19,9 +22,11 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
+import PrefectureAchievements from '@/components/PrefectureAchievements';
 import {
   describeResult,
   getPrefecture,
+  getPrefectureAchievementGroups,
   getPrefectures,
   getTeamsByPrefecture,
   getThreshold,
@@ -29,14 +34,16 @@ import {
   type SecondarySchoolPrefecture,
   type SecondarySchoolTeam,
 } from '@/lib/secondaryschool';
+import type { AchievementGroup } from '@/types/prefectureAchievements';
 
 interface Props {
   prefecture: SecondarySchoolPrefecture;
   teams: SecondarySchoolTeam[];
   threshold: number;
+  achievementGroups: AchievementGroup[];
 }
 
-export default function SecondarySchoolPrefecturePage({ prefecture, teams, threshold }: Props) {
+export default function SecondarySchoolPrefecturePage({ prefecture, teams, threshold, achievementGroups }: Props) {
   const pageUrl = `https://softeni-pick.com/secondaryschool/${prefecture.id}/`;
   const renderTeams = (list: SecondarySchoolTeam[]) => (
     <ul className="grid gap-2 sm:grid-cols-2">
@@ -62,7 +69,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
     <>
       <MetaHead
         title={`${prefecture.name}の中学ソフトテニス | 全中・都道府県対抗の成績 | Softeni Pick`}
-        description={`${prefecture.name}の中学ソフトテニス。全国中学校大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した${teams.length}チームの戦績と、中学から高校への進路をまとめています。`}
+        description={`${prefecture.name}の中学ソフトテニス。全国中学校大会（全中）・都道府県対抗全日本中学生大会での${prefecture.name}のベスト8以上の成績、ブロック大会を含めて出場した${teams.length}チームの戦績、中学から高校への進路をまとめています。`}
         url={pageUrl}
         type="website"
       />
@@ -99,6 +106,12 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
           {prefecture.name}から全国中学校大会（全中）・都道府県対抗全日本中学生大会・ブロック大会に出場した{teams.length}
           チームの一覧です。チーム名から各チームの戦績と、その中学から高校への進路を見られます。
         </p>
+
+        <PrefectureAchievements
+          prefectureName={prefecture.name}
+          groups={achievementGroups}
+          note={`全国中学校大会（全中）と都道府県対抗全日本中学生大会で、${prefecture.name}のチーム・選手がベスト8以上に入った記録を大会ごとにまとめています。ブロック大会は含めていません。所属の異なるペアも、${prefecture.name}の選手どうしであれば${prefecture.name}の成績に含めています。`}
+        />
 
         <section className="mb-8">
           <h2 className="mb-3 text-lg font-bold">収録チーム（{teams.length}）</h2>
@@ -159,6 +172,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       prefecture,
       teams: getTeamsByPrefecture(prefectureId),
       threshold: getThreshold(),
+      achievementGroups: getPrefectureAchievementGroups(prefectureId),
     },
   };
 };

@@ -126,7 +126,7 @@ export interface NationalTitle {
 }
 
 /** 勲章カードのカテゴリ（`lib/nationalTitles.ts` の `MajorCategoryId` と同値）。 */
-export type MajorCategoryId = 'junior' | 'highschool' | 'university' | 'general' | 'international' | 'senior';
+export type MajorCategoryId = 'primaryschool' | 'secondaryschool' | 'junior' | 'highschool' | 'university' | 'general' | 'international' | 'senior';
 
 /**
  * 主要大会でのベスト8以上の成績 1 件（勲章カード用）。
@@ -154,7 +154,7 @@ export interface MajorResultEntry {
 /** カテゴリ 1 つぶんの主要大会実績（勲章カード 1 枚に対応）。 */
 export interface MajorCategoryResult {
   category: MajorCategoryId;
-  /** 表示ラベル（ジュニア / 高校 / 大学 / 総合 / 国際大会 / シニア） */
+  /** 表示ラベル（小学生 / 中学生 / ジュニア / 高校生 / 大学 / 総合 / 国際大会 / シニア） */
   categoryLabel: string;
   /** このカテゴリの最高成績（同順位なら年度が新しい方）。カード表面に出す */
   best: MajorResultEntry;
@@ -283,7 +283,7 @@ export interface PlayerStatistics {
 
   /**
    * 主要大会のカテゴリ別ベスト8以上（勲章カード）。
-   * `MAJOR_CATEGORY_ORDER`（ジュニア→高校→大学→総合→国際大会→シニア）順。
+   * `MAJOR_CATEGORY_ORDER`（シニア→国際大会→総合→大学→高校生→ジュニア→中学生→小学生）順。
    * 該当のないカテゴリは要素ごと存在しない（記録が無いカテゴリを出さないのは仕様）。
    */
   majorResults: MajorCategoryResult[];

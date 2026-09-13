@@ -229,16 +229,37 @@ test('majorResults: ベスト8以上をカテゴリ別に集約し、最高成�
     entry({ tournamentId: 'zennihon-championship', year: 2026, placement: { kind: 'roundLoss', round: 2 }, date: '2026-10-01' }),
   ];
   const r = aggregateMajorResults(facts([], entries));
-  // カテゴリ順は senior→international→general→university→highschool→junior 固定
+  // カテゴリ順は senior→international→general→university→highschool→junior→secondaryschool→primaryschool 固定
   // （キャリアの新しい側から。2026-07-20 に進行順から反転）
   assert.strictEqual(r.length, 2);
   assert.strictEqual(r[0].category, 'university');
   assert.strictEqual(r[0].best.placementLabel, 'ベスト8');
   assert.strictEqual(r[1].category, 'highschool');
-  assert.strictEqual(r[1].categoryLabel, '高校');
+  assert.strictEqual(r[1].categoryLabel, '高校生');
   assert.strictEqual(r[1].best.placementLabel, '優勝');
   assert.strictEqual(r[1].entries.length, 2); // 優勝 → ベスト4 の順
   assert.strictEqual(r[1].entries[1].placementLabel, 'ベスト4');
+});
+
+test('majorResults: 中学生・小学生はジュニア（U20）と別タイルにする', () => {
+  const entries = [
+    entry({ tournamentId: 'zennihon-primaryschool', year: 2019, placement: { kind: 'winner' }, date: '2019-07-01' }),
+    entry({ tournamentId: 'secondaryschool-championship', year: 2022, placement: { kind: 'best', bestLevel: 4 }, date: '2022-08-01' }),
+    entry({ tournamentId: 'zennihon-secondaryschool-versus', year: 2021, placement: { kind: 'runnerup' }, date: '2021-12-01' }),
+    entry({ tournamentId: 'zennihon-junior', year: 2023, placement: { kind: 'best', bestLevel: 8 }, date: '2023-08-01' }),
+    entry({ tournamentId: 'highschool-championship', year: 2024, placement: { kind: 'best', bestLevel: 8 }, date: '2024-08-01' }),
+  ];
+  const r = aggregateMajorResults(facts([], entries));
+  assert.deepStrictEqual(
+    r.map((c) => [c.category, c.categoryLabel, c.best.placementLabel]),
+    [
+      ['highschool', '高校生', 'ベスト8'],
+      ['junior', 'ジュニア', 'ベスト8'],
+      ['secondaryschool', '中学生', '準優勝'], // 全中ベスト4 と 県対抗準優勝 → 準優勝
+      ['primaryschool', '小学生', '優勝'],
+    ],
+  );
+  assert.strictEqual(r[2].entries.length, 2);
 });
 
 test('majorResults: 社会人・東西日本・国際予選はカードを出さない / 国際大会は出す', () => {
