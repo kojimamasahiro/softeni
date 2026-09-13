@@ -89,7 +89,7 @@ export default function SecondarySchoolPrefecturePage({ prefecture, teams, thres
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '中学', href: '/secondaryschool' },
+            { label: '中学生', href: '/secondaryschool' },
             { label: prefecture.name, href: `/secondaryschool/${prefecture.id}` },
           ]}
         />

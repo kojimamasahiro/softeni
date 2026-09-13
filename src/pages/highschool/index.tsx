@@ -48,7 +48,7 @@ export default function HighschoolIndex() {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '高校', href: '/highschool' },
+            { label: '高校生', href: '/highschool' },
           ]}
         />
 

@@ -43,7 +43,7 @@ export default function SecondarySchoolIndex({ prefectures, threshold, teamTotal
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '中学', href: '/secondaryschool' },
+            { label: '中学生', href: '/secondaryschool' },
           ]}
         />
 

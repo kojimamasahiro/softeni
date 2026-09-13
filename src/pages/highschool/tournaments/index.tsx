@@ -56,7 +56,7 @@ export default function HighschoolTournamentsIndex({ tournaments }: Props) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '高校', href: '/highschool/boys/' },
+            { label: '高校生', href: '/highschool/boys/' },
             { label: '全国大会の歴代記録', href: '/highschool/tournaments/' },
           ]}
         />
