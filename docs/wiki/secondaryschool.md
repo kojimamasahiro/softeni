@@ -275,9 +275,10 @@
 
 - 高校版（`lib/highschoolFeederSchools.ts`）と違い**性別で分けない**。
   中学のチームページが男女を1枚にまとめているため
-- **掲載閾値で絞らない**。小学生カテゴリのチームページ（Step 2）がまだ無いのが直接の理由だが、
-  絞ると節から選手が消える（閾値5で絞るとレコードの19%・節が付くチームの35枚が落ちる）。
-  クラブ名へのリンクは `data/primaryschool/index.json` が生成されたら自動で付く
+- **掲載閾値で絞らない**。絞ると節から選手が消えるため（閾値5で絞るとレコードの19%・
+  節が付くチームの35枚が落ちる）。クラブ名へのリンクは小学生カテゴリの団体ページが
+  実在するときだけ張る（2026-09-13 に [primaryschool.md](./primaryschool.md) が入り、
+  出身クラブ延べ587件のうち**438件＝75%**にリンクが付いた。残りは掲載閾値未満で名前だけ）
 - 中学と県が違う出身クラブには県名を添える（越境が見えるようにするため）。実測で88件
 
 
@@ -308,8 +309,8 @@ npm run secondaryschool:build   # 索引と進路をまとめて生成
   経緯は [raw/2026-08-28](../raw/2026-08-28-idea-zenchu-abbreviation-seo.md)
 - [public-pages.md](./public-pages.md) — ルーティング全体と大会ハブの「学校部活動と地域クラブの内訳」節
 - [team-player-identity.md](./team-player-identity.md) — 名寄せの運用と alias の大会スコープ
-- [raw/2026-09-12-idea-primaryschool-category.md](../raw/2026-09-12-idea-primaryschool-category.md) —
-  小学生カテゴリ。チームページの「出身クラブ」節の供給元
+- [primaryschool.md](./primaryschool.md) — 小学生カテゴリ。チームページの「出身クラブ」節の供給元。
+  進路は 小 → 中 → 高 と3段で繋がっている
 - [ADR-013](../adr/ADR-013-scoped-team-name-aliases.md) — 中高一貫校の略称を世代で分ける仕組み
 
 ## 未対応・課題

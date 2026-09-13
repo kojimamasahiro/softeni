@@ -136,6 +136,20 @@
   年度が2つ未満で推移として読めない大会は自動的に null）。詳細は下記「学校部活動と地域クラブの内訳」
 - 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`、`src/components/tournaments/TournamentCard.tsx`、`src/components/Tournament/ClubTransitionSection.tsx`
 
+小学生カテゴリ（`/primaryschool`、2026-09-13 追加）:
+
+- `/primaryschool/`（入口・1枚）／ `/primaryschool/[prefectureId]/`（47枚）／
+  `/primaryschool/[prefectureId]/[teamId]/`（298枚）の計346ページ
+- 対象大会は**全日本小学生選手権のみ**。性別を URL に入れず（男女両方に出る団体が88%）、
+  大会軸のページも順位づけの節も持たない（ADR-010）。詳細は [primaryschool.md](./primaryschool.md)
+- 公開ページの文言は「小学校」ではなく**「小学生」**。掲載団体はほぼ全部がクラブ・少年団で、
+  `小学校` で終わる団体は0件
+- 団体ページの「進路（小学→中学）」と、中学チームページの「出身クラブ」は同じデータの表裏。
+  これで **小 → 中 → 高の3段接続**が成立する
+- 生成は `npm run primaryschool:build`（prebuild に組み込み済み）
+- 実装: `src/pages/primaryschool/**`、`lib/primaryschool.ts`、`lib/secondaryschoolFeederClubs.ts`、
+  `scripts/build-primaryschool-index.mjs`、`scripts/build-primaryschool-pathways.mjs`
+
 中学カテゴリ（`/secondaryschool`、2026-08-12 追加）:
 
 - `/secondaryschool/`（入口・1枚）／ `/secondaryschool/[prefectureId]/`（47枚）／
