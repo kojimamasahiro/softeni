@@ -32,6 +32,8 @@ export type PageType =
   | 'jhs_team'
   | 'jhs_pref'
   | 'jhs_top'
+  | 'univ_pathways'
+  | 'univ_top'
   | 'teams_index'
   | 'team_year'
   | 'team_hub'
@@ -63,6 +65,8 @@ const PAGE_TYPE_RULES: ReadonlyArray<readonly [RegExp, PageType]> = [
   [/^\/secondaryschool\/pathways\//, 'jhs_pathways'],
   [/^\/secondaryschool\/[^/]+\/[^/]+\/$/, 'jhs_team'],
   [/^\/secondaryschool\/[^/]+\/$/, 'jhs_pref'],
+  [/^\/university\/$/, 'univ_top'],
+  [/^\/university\/pathways\//, 'univ_pathways'],
   [/^\/teams\/$/, 'teams_index'],
   [/^\/teams\/[^/]+\/\d{4}\//, 'team_year'],
   [/^\/teams\/[^/]+\/$/, 'team_hub'],

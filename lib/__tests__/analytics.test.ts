@@ -31,6 +31,8 @@ test('主要なページ種別を判定できる', () => {
     ['/secondaryschool/pathways/boys/', 'jhs_pathways'],
     ['/secondaryschool/yamagata/nagaikita/', 'jhs_team'],
     ['/secondaryschool/yamagata/', 'jhs_pref'],
+    ['/university/', 'univ_top'],
+    ['/university/pathways/girls/', 'univ_pathways'],
     ['/teams/', 'teams_index'],
     ['/teams/nttnishinihon/', 'team_hub'],
     ['/teams/nttnishinihon/2025/boys/', 'team_year'],

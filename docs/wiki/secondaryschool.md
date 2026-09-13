@@ -286,6 +286,7 @@
 
 **逆引き（高校ページ→出身中学）も同じデータから作る**（`lib/highschoolFeederSchools.ts`、2026-08-12 追加）。
 `/highschool/[gender]/[prefectureId]/[teamId]` に「{高校名}の選手の出身中学」節を出す。
+**2026-09-13 に「{高校名}の選手の進路」節の h3「出身中学」へ移した**（隣に「進学先大学」を並べる案A。[university.md](./university.md)）。
 新規URLは作らない。実測で**111グループ（高校×性別）**に付く。
 
 - 高校の学校ページは**男女別**なので、進路レコードに `highschoolGender` を持たせて出し分ける。

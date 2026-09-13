@@ -42,6 +42,14 @@
 - **`docs/wiki/idea-backlog.md` の「一言サマリ」が一言でなくなっている。** 1セルが数千字あり、
   索引としての用（どこにあるかを1ページで把握する）を果たしていない。
   文字数上限を決めて各エリアページへ寄せるか、索引の責務自体を見直すか。
+- **改称した大学を1校にまとめるか。** `神戸松蔭女子学院大学` / `神戸松蔭大学`（2025年改称）、
+  `神戸親和女子大学` / `神戸親和大学` が `/university/` と大学別の出身高校一覧で別々に並んでいる。
+  どちらの表記も正しいので名寄せ（alias）では寄せていない。表示だけ「旧称」として束ねるか、
+  改称をエンティティとして扱う仕組みを作るか（[university.md](./university.md)「既知の課題」）。
+  2026-09-14: `/teams/kobe-shoin-univ/` では mapping で2表記を束ねた。進路データ（出身高校一覧）側は未解決。
+- **高校→大学の進路で、氏名一致のみの採用が96%を占める。** 推定誤マッチ約20件を個別に特定する手段が無い。
+  同じ高校から同じ大学へ複数人、などの相互裏付けで `basis` を細かくできるか
+  （[raw/2026-09-13-university-pathways-verification.md](../raw/2026-09-13-university-pathways-verification.md)）。
 - **文部科学大臣杯全日本大学対抗選手権大会（インカレ団体戦）の `tournamentId` が未定義。**
   `data/tournaments/index.json` の generation `university` には
   `zennihon-university` / `zennihon-university-ouza` / `zennihon-university-indoor` はあるが、

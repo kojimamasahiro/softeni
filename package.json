@@ -46,7 +46,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/normalize-team-spacing.mjs && node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs && node scripts/check-highschool-pipeline-freshness.mjs && node scripts/check-name-splits.mjs --strict && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save && npm run secondaryschool:build && npm run primaryschool:build",
+    "prebuild": "node scripts/normalize-team-spacing.mjs && node scripts/check-tournament-entries.mjs && node scripts/check-tournament-insights.mjs && node scripts/check-highschool-pipeline-freshness.mjs && node scripts/check-name-splits.mjs --strict && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save && npm run secondaryschool:build && npm run primaryschool:build && npm run university:pathways",
     "playerstats:cache-sync": "node scripts/playerStats/cache-sync.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
     "check:growth": "node scripts/check-growth-analysis.mjs",
@@ -91,6 +91,7 @@
     "primaryschool:measure": "node scripts/measure-primaryschool-scale.mjs",
     "secondaryschool:build": "node scripts/build-secondaryschool-index.mjs && node scripts/build-secondaryschool-pathways.mjs",
     "secondaryschool:teamid-todo": "node scripts/build-secondaryschool-teamid-todo.mjs",
+    "university:pathways": "node scripts/build-university-pathways.mjs",
     "team:review": "node scripts/build-team-review-html.mjs && node scripts/team-review-server.mjs",
     "review:snapshot": "node scripts/record-review-snapshot.mjs",
     "check:team-id-alignment": "node scripts/check-team-id-alignment.mjs",

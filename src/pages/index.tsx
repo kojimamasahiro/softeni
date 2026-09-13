@@ -203,7 +203,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </Link>
           </section>
 
-          {/* 高校・中学カテゴリへのリンク */}
+          {/* 小学生・中学生・高校生・大学生カテゴリへのリンク。並びはナビと同じ学齢順（lib/navigation.ts） */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">属性別成績</h2>
 
@@ -212,14 +212,37 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </p>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Link href="/highschool/boys" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-                <h3 className="text-lg font-bold mb-1">高校カテゴリ</h3>
-                <p className="text-text-secondary text-sm">インターハイなど高校全国大会の成績を都道府県・学校別に掲載</p>
-              </Link>
-              <Link href="/secondaryschool" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-                <h3 className="text-lg font-bold mb-1">中学カテゴリ</h3>
-                <p className="text-text-secondary text-sm">全中など中学全国大会の成績を都道府県・チーム別に掲載。中学から高校への進路も</p>
-              </Link>
+              {[
+                {
+                  href: '/primaryschool',
+                  title: '小学生',
+                  description: '全日本小学生選手権の成績を都道府県・チーム別に掲載。小学生から中学への進路も',
+                },
+                {
+                  href: '/secondaryschool',
+                  title: '中学生',
+                  description: '全中など中学全国大会の成績を都道府県・チーム別に掲載。中学から高校への進路も',
+                },
+                {
+                  href: '/highschool',
+                  title: '高校生',
+                  description: 'インターハイなど高校全国大会の成績を都道府県・学校別に掲載',
+                },
+                {
+                  href: '/university',
+                  title: '大学生',
+                  description: 'インカレなど大学全国大会の結果と、大学別の出身高校を掲載',
+                },
+              ].map((category) => (
+                <Link
+                  key={category.href}
+                  href={category.href}
+                  className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle"
+                >
+                  <h3 className="text-lg font-bold mb-1">{category.title}</h3>
+                  <p className="text-text-secondary text-sm">{category.description}</p>
+                </Link>
+              ))}
             </div>
           </section>
 

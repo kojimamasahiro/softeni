@@ -30,12 +30,14 @@ export type NavGroup = {
 // 補足: `大会`(/tournaments) は世代別（国際/総合/大学/高校/ジュニア/シニア/実業団）を
 // すべて内包する総合入口。`高校`・`中学`・`STリーグ` はそのうちの一部を SEO・独自データの
 // 都合で個別に切り出した「特集ハブ」であり、学校種別の網羅分類ではない。
-// そのため大学に同等項目は無く、特集として明示することで非対称を意図的に見せる。
+// 特集として明示することで、網羅分類ではないことを見せている。
 // 中学（/secondaryschool、2026-08-12 追加）は高校と構成が違う。性別で分けず、
 // 大会軸のページも持たない（全中は大会ハブに寄せる）。docs/wiki/secondaryschool.md
-// 小学生（/primaryschool、2026-09-13 追加）は中学と同じ構成。並びは 小学生 → 中学生 → 高校生 と
-// 学齢順にしてある（進路が 小 → 中 → 高 の向きに繋がっているため）。docs/wiki/primaryschool.md
-// ラベルは「小学生」に揃えて全カテゴリを「〜生」表記にしている（2026-09-13）。
+// 小学生（/primaryschool、2026-09-13 追加）は中学と同じ構成。docs/wiki/primaryschool.md
+// 大学生（/university、2026-09-13 追加）は地域軸が無いので都道府県・チームのツリーを持たず、
+// 「高校 → 大学」の進路（大学別の出身高校）が中身。docs/wiki/university.md
+// 並びは 小学生 → 中学生 → 高校生 → 大学生 と学齢順にしてある（進路が 小 → 中 → 高 → 大 の向きに繋がっているため）。
+// ラベルは全カテゴリを「〜生」表記にしている（2026-09-13）。
 const SOFTENI_GROUPS: NavGroup[] = [
   {
     label: '成績・記録を調べる',
@@ -56,6 +58,7 @@ const SOFTENI_GROUPS: NavGroup[] = [
       // /highschool は入口ページ(男子/女子/歴代記録への案内。docs/ui M2-2・C-4)。
       // 以前の boys 直指し+meta refresh は廃止した。
       { label: '高校生', href: '/highschool', matchPrefix: '/highschool' },
+      { label: '大学生', href: '/university', matchPrefix: '/university' },
       { label: 'STリーグ', href: '/st-league', matchPrefix: '/st-league' },
     ],
   },

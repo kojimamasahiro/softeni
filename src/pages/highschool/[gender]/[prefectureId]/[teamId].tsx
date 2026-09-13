@@ -14,6 +14,7 @@ import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
 import { getFeederSchools, type FeederSchool } from '@/lib/highschoolFeederSchools';
 import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
 import { getPlayerNameToId } from '@/lib/playersIndex';
+import { getUniversityDestinations, type UniversityDestination } from '@/lib/university';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
 import { getAllTournamentIndex, getTournamentInfo } from '@/utils/tournament-data-loader';
 
@@ -80,6 +81,8 @@ type Props = {
   alumni: AlumniEntry[];
   /** この学校の選手の出身中学（中学カテゴリの進路データの逆引き）。docs/wiki/secondaryschool.md */
   feederSchools: FeederSchool[];
+  /** この学校の選手の進学先大学（高校 → 大学の進路データ）。docs/wiki/university.md */
+  universityDestinations: UniversityDestination[];
   /** 開催中の全国大会での、この学校の出場状況（docs/wiki/seo.md #11） */
   inProgressScopes: InProgressScope[];
 };
@@ -191,6 +194,7 @@ export default function TeamPage({
   playerLinks = {},
   alumni,
   feederSchools,
+  universityDestinations,
   inProgressScopes,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
@@ -295,6 +299,17 @@ export default function TeamPage({
               .join(
                 '、',
               )}などが${teamName}に所属して全国大会に出場し、卒業後も大学・社会人の大会で活躍しています。詳しくはページ内の「主な卒業生」をご覧ください。`,
+          },
+        ]
+      : []),
+    ...(universityDestinations.length > 0
+      ? [
+          {
+            question: `${teamName}の選手はどの大学に進学していますか？`,
+            answer: `当サイト収録の大会結果では、${universityDestinations
+              .slice(0, 3)
+              .map((d) => d.university)
+              .join('、')}などへの進学が確認できます。高校と大学の全国大会の出場記録を氏名で突き合わせたもので、詳しくはページ内の「進路」をご覧ください。`,
           },
         ]
       : []),
@@ -627,12 +642,86 @@ export default function TeamPage({
           </div>
         )}
 
+        {/* 「進路」節（2026-09-13・案A）。出身中学と進学先大学は同じ進路データの前後なので1節にまとめ、
+            実績で絞った「主な卒業生」とは分けて残す。docs/raw/2026-08-14-highschool-pathway-sections-design.md */}
+        {(feederSchools.length > 0 || universityDestinations.length > 0) && (
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-3">{teamName}の選手の進路</h2>
+            <p className="text-sm text-text-secondary mb-4">
+              当サイト収録の全国大会の出場記録から、{teamName}の選手がどの中学から来て、どの大学へ進んだかをまとめています。
+            </p>
+
+            {feederSchools.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-2">出身中学</h3>
+                <p className="text-sm text-text-secondary mb-3">
+                  中学の全国大会（全国中学校体育大会・都道府県対抗全日本中学生大会・各地区のブロック大会）に出場したあと、
+                  {teamName}で高校の全国大会に出場した選手です。中学名から各チームの戦績ページへ移動できます。
+                </p>
+                <ul className="space-y-2 text-sm">
+                  {feederSchools.map((f) => (
+                    <li key={`feeder-${f.team}`}>
+                      {f.href ? (
+                        <Link href={f.href} className="text-link hover:underline font-semibold">
+                          {f.team}
+                        </Link>
+                      ) : (
+                        <span className="font-semibold">{f.team}</span>
+                      )}
+                      <span className="text-text-secondary"> — {f.players.map((p) => `${p.name}（${p.highschoolFirstYear}年〜）`).join('・')}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-sm">
+                  {/* 進路一覧も男女別URLなので、同じ性別のページへ送る */}
+                  <Link href={`/secondaryschool/pathways/${gender}/`} className="text-link hover:underline">
+                    他の高校{genderLabel}の出身中学も見る
+                  </Link>
+                </p>
+              </div>
+            )}
+
+            {universityDestinations.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-2">進学先大学</h3>
+                <p className="text-sm text-text-secondary mb-3">
+                  {teamName}で高校の全国大会に出場したあと、大学の全国大会（全日本学生選手権・全日本大学王座決定戦・全日本学生選抜インドア）に出場した選手です。
+                  大学名から、その大学の選手の出身高校一覧へ移動できます。
+                </p>
+                <ul className="space-y-2 text-sm">
+                  {universityDestinations.map((d) => (
+                    <li key={`univ-${d.university}`}>
+                      <Link href={d.href} className="text-link hover:underline font-semibold">
+                        {d.university}
+                      </Link>
+                      <span className="text-text-secondary"> — {d.players.map((p) => `${p.name}（${p.universityFirstYear}年〜）`).join('・')}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-sm">
+                  <Link href={`/university/pathways/${gender}/`} className="text-link hover:underline">
+                    他の大学{genderLabel}の出身高校も見る
+                  </Link>
+                </p>
+              </div>
+            )}
+
+            <p className="text-xs text-text-muted">
+              ※ 氏名の一致で追跡しています。中学で最後に出場した年から5年以内に高校の全国大会へ、
+              高校で最後に出場した年から4年以内に大学の全国大会へ出場した同姓同名の選手を同一人物とみなしているため、
+              同姓同名の別人が含まれている可能性があります。前後の全国大会に出場していない選手は表示されません。
+            </p>
+          </section>
+        )}
+
         {alumni.length > 0 && (
           <section className="mb-8">
             <h2 className="text-xl font-semibold mb-3">{teamName}の主な卒業生</h2>
             <p className="text-sm text-text-secondary mb-3">
               当サイト収録の大会結果で、{teamName}
-              に所属して高校全国大会に出場し、卒業後も大学・社会人の大会での実績が確認できる選手です。選手名から個人の試合結果ページへ移動できます。
+              に所属して高校全国大会に出場し、卒業後に全日本の大会でベスト8以上・STリーグ出場・国際大会出場のいずれかの実績がある選手を選んでいます。
+              {universityDestinations.length > 0 && '進学先の一覧は上の「進路」にあります。'}
+              選手名から個人の試合結果ページへ移動できます。
             </p>
             <ul className="space-y-2 text-sm">
               {alumni.map((a) => (
@@ -654,40 +743,6 @@ export default function TeamPage({
             <p className="mt-2 text-xs text-text-muted">
               ※ 収録大会の結果から機械的に集計しています。転校・中退などは判定できないため、正確には「当サイト収録大会に{teamName}
               所属で出場した選手」の一覧です。所属は収録大会で最後に確認できたものです。
-            </p>
-          </section>
-        )}
-
-        {feederSchools.length > 0 && (
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-3">{teamName}の選手の出身中学</h2>
-            <p className="text-sm text-text-secondary mb-3">
-              中学の全国大会（全国中学校体育大会・都道府県対抗全日本中学生大会・各地区のブロック大会）に出場したあと、
-              {teamName}で高校の全国大会に出場した選手です。中学名から各チームの戦績ページへ移動できます。
-            </p>
-            <ul className="space-y-2 text-sm">
-              {feederSchools.map((f) => (
-                <li key={`feeder-${f.team}`}>
-                  {f.href ? (
-                    <Link href={f.href} className="text-link hover:underline font-semibold">
-                      {f.team}
-                    </Link>
-                  ) : (
-                    <span className="font-semibold">{f.team}</span>
-                  )}
-                  <span className="text-text-secondary"> — {f.players.map((p) => `${p.name}（${p.highschoolFirstYear}年〜）`).join('・')}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-2 text-xs text-text-muted">
-              ※ 氏名の一致で追跡しています。中学で最後に出場した年から5年以内に高校の全国大会へ出場した同姓同名の選手を
-              同一人物とみなしているため、同姓同名の別人が含まれている可能性があります。 中学時代に収録大会へ出場していない選手は表示されません。
-            </p>
-            <p className="mt-2 text-sm">
-              {/* 進路一覧も男女別URLなので、同じ性別のページへ送る */}
-              <Link href={`/secondaryschool/pathways/${gender}/`} className="text-link hover:underline">
-                他の高校{genderLabel}の出身中学も見る
-              </Link>
             </p>
           </section>
         )}
@@ -918,6 +973,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 出身中学の逆引き（中学カテゴリの進路データを高校名で引き直したもの）
   const feederSchools = getFeederSchools(teamName, prefecture.name, gender);
 
+  // 進学先大学（高校 → 大学の進路データ）。出身中学と合わせて「進路」節に出す（案A）
+  const universityDestinations = getUniversityDestinations(teamName, prefecture.name, gender);
+
   // 開催中の全国大会での出場状況（docs/wiki/seo.md #11）
   const inProgressScopes = getSchoolInProgress(teamName, prefecture.name, gender);
 
@@ -934,6 +992,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       playerLinks,
       alumni,
       feederSchools,
+      universityDestinations,
       inProgressScopes,
     },
   };

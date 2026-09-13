@@ -1,8 +1,10 @@
 // src/pages/teams/index.tsx
 // チーム一覧(セクション入口・ページタイプ T2)。
 // 検索対象はチームマスタの count>=2(D-014)。
-// 詳細ページへのリンクは (1) STリーグ集計ページ (2) 高校の学校ページ の順に解決する
-// (TeamLink 規則・07-components.md §4)。高校は (校名, 都道府県) 照合で引く。
+// 詳細ページへのリンクは (1) チームページ（STリーグ集計 / team-name-mappings.json）を最優先し、
+// 無ければ (2) 高校の学校ページ (3) 中学生・小学生のチームページ を**すべて**出す
+// (TeamLink 規則・07-components.md §4。小中は 2026-09-14 追加)。学校系は (校名, 都道府県) 照合で引く。
+// 同名で複数カテゴリに当たる行（小中両方のクラブ、高校と同名の中学など）はカテゴリ名つきのリンクを並べる。
 // 男女切替は teams.json の boysCount/girlsCount による(scripts/build-team-master.mjs)。
 import fs from 'fs';
 import path from 'path';
@@ -30,6 +32,14 @@ type HighschoolRef = {
   g?: 1;
 };
 
+/** 中学生・小学生のチームページ(/[category]/[prefectureId]/[teamId])への参照。男女共通の1枚 */
+type JuniorRef = {
+  /** チームページの teamId(文字列 slug) */
+  t: string;
+  /** 都道府県 id */
+  p: string;
+};
+
 type TeamRow = {
   /** チーム名(マスタの最頻出表記) */
   n: string;
@@ -37,7 +47,7 @@ type TeamRow = {
   p: string | null;
   /** 収録試合数 */
   c: number;
-  /** STリーグ teamId(集計ページが実在する場合のみ) */
+  /** /teams/[teamId] の teamId(STリーグ集計か team-name-mappings.json でページが実在する場合のみ) */
   s?: string;
   /** 男子の収録数(0 のときは省略) */
   b?: number;
@@ -47,6 +57,10 @@ type TeamRow = {
   m?: 1;
   /** 高校の学校ページ */
   h?: HighschoolRef;
+  /** 中学生のチームページ */
+  j?: JuniorRef;
+  /** 小学生のチームページ */
+  e?: JuniorRef;
 };
 
 type GenderFilter = 'all' | 'boys' | 'girls';
@@ -96,7 +110,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
     <>
       <MetaHead
         title="チーム一覧 | ソフトテニス情報 Softeni Pick"
-        description="ソフトテニスのチーム（学校・実業団・クラブ）を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校は学校ページへのリンクつき。"
+        description="ソフトテニスのチーム（学校・実業団・クラブ）を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校・中学生・小学生はカテゴリのページへのリンクつき。"
         url={pageUrl}
         type="website"
       />
@@ -112,7 +126,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         <h1 className="text-2xl font-bold mb-2">チーム一覧</h1>
         <p className="text-sm text-text-muted dark:text-gray-400 mb-6">
           大会結果に収録されているチーム（学校・実業団・クラブ）を検索できます。掲載は収録試合が2試合以上のチーム（{totalCount.toLocaleString()}
-          件）。STリーグ出場チームはチームページ、高校は学校ページへのリンクがあります。
+          件）。STリーグ出場チームなどはチームページ、高校・中学生・小学生はそれぞれのカテゴリのページへのリンクがあります。
         </p>
 
         {/* 男女切替(収録データの性別で絞り込む) */}
@@ -194,10 +208,14 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
 }
 
 /**
- * チーム名セル。リンク先の優先順位は (1) STリーグ集計ページ (2) 高校の学校ページ (3) リンクなし
- * （`docs/ui/deliverables/07-components.md` の TeamLink 規則）。
- * 高校は男女で URL が分かれるため、男女切替が「すべて」のときだけ校名の後ろに
- * 男子・女子リンクを併記し、性別を選んでいるときは校名自体をその性別のページへリンクする。
+ * チーム名セル（`docs/ui/deliverables/07-components.md` の TeamLink 規則）。
+ * (1) チームページ（/teams/[teamId]）があればチーム名をそこへリンクして終わり。
+ * 無ければ (2) 高校の学校ページ (3) 中学生 (4) 小学生 のうち存在するものを**すべて**出す。
+ *
+ * - リンク先が1つで、ラベルが要らないとき（性別選択中の高校・中学生のみ・小学生のみ）はチーム名自体をリンクにする
+ * - それ以外はチーム名の後ろにラベルつきリンクを並べる。高校は男女で URL が分かれるので
+ *   「すべて」表示では男子・女子を併記する。小中と並ぶときは高校側を「高校男子」「高校」のように区別する
+ * - 中学生・小学生のページは男女共通なので、男女切替に関係なく同じリンクを出す
  */
 function TeamCell({ row, gender }: { row: TeamRow; gender: GenderFilter }) {
   if (row.s) {
@@ -208,35 +226,47 @@ function TeamCell({ row, gender }: { row: TeamRow; gender: GenderFilter }) {
     );
   }
 
+  const hasJunior = Boolean(row.j || row.e);
+  // label が null のリンクは「チーム名自体をリンクにしてよい」もの
+  const links: { label: string | null; href: string }[] = [];
+
   const hs = row.h;
   if (hs) {
     if (gender !== 'all') {
-      const available = gender === 'boys' ? hs.b : hs.g;
-      if (available) {
-        return (
-          <Link href={`/highschool/${gender}/${hs.p}/${hs.t}`} className="text-link hover:underline dark:text-blue-300">
-            {row.n}
-          </Link>
-        );
-      }
+      if (gender === 'boys' ? hs.b : hs.g) links.push({ label: hasJunior ? '高校' : null, href: `/highschool/${gender}/${hs.p}/${hs.t}` });
     } else {
-      const genders = (['boys', 'girls'] as const).filter((g) => (g === 'boys' ? hs.b : hs.g));
-      if (genders.length > 0) {
-        return (
-          <span className="text-text dark:text-gray-100">
-            {row.n}
-            {genders.map((g) => (
-              <Link key={g} href={`/highschool/${g}/${hs.p}/${hs.t}`} className="ml-2 text-xs text-link hover:underline dark:text-blue-300">
-                {g === 'boys' ? '男子' : '女子'}
-              </Link>
-            ))}
-          </span>
-        );
+      for (const g of ['boys', 'girls'] as const) {
+        if (!(g === 'boys' ? hs.b : hs.g)) continue;
+        const genderWord = g === 'boys' ? '男子' : '女子';
+        links.push({ label: hasJunior ? `高校${genderWord}` : genderWord, href: `/highschool/${g}/${hs.p}/${hs.t}` });
       }
     }
   }
+  if (row.j) links.push({ label: '中学生', href: `/secondaryschool/${row.j.p}/${row.j.t}` });
+  if (row.e) links.push({ label: '小学生', href: `/primaryschool/${row.e.p}/${row.e.t}` });
 
-  return <span className="text-text dark:text-gray-100">{row.n}</span>;
+  if (links.length === 0) return <span className="text-text dark:text-gray-100">{row.n}</span>;
+
+  // 行き先が1つだけで、高校の男女ラベルが要らない場合は名前をリンクにする（大半の行はこれ）
+  const single = links.length === 1 && (links[0].label === null || links[0].label === '中学生' || links[0].label === '小学生');
+  if (single) {
+    return (
+      <Link href={links[0].href} className="text-link hover:underline dark:text-blue-300">
+        {row.n}
+      </Link>
+    );
+  }
+
+  return (
+    <span className="text-text dark:text-gray-100">
+      {row.n}
+      {links.map((l) => (
+        <Link key={l.href} href={l.href} className="ml-2 text-xs text-link hover:underline dark:text-blue-300">
+          {l.label ?? '学校ページ'}
+        </Link>
+      ))}
+    </span>
+  );
 }
 
 // ─── データ取得 ───────────────────────────────────────────────────────────
@@ -292,6 +322,23 @@ function buildHighschoolIndex(): Map<string, HighschoolRef> {
   return index;
 }
 
+/**
+ * 中学生・小学生のチームページを (チーム名, 都道府県) で引ける索引を作る。
+ * 生成物は data/{secondaryschool,primaryschool}/index.json（ページがあるチームだけが入っている）。
+ */
+function buildJuniorIndex(category: 'secondaryschool' | 'primaryschool'): Map<string, JuniorRef> {
+  const index = new Map<string, JuniorRef>();
+  try {
+    const { teams } = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', category, 'index.json'), 'utf-8')) as {
+      teams: { id: string; name: string; prefectureId: string }[];
+    };
+    for (const t of teams) index.set(`${normalizeJa(t.name)}::${t.prefectureId}`, { t: t.id, p: t.prefectureId });
+  } catch {
+    // 索引が無ければリンクしない
+  }
+  return index;
+}
+
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const teamsPath = path.join(process.cwd(), 'data', 'teams', 'teams.json');
   const master = JSON.parse(fs.readFileSync(teamsPath, 'utf-8')) as TeamMasterEntry[];
@@ -308,6 +355,17 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         for (const name of team.name) nameToStId.set(name, team.teamId);
       }
     });
+  }
+
+  // team-name-mappings.json のキーにも /teams/[teamId] が生成される（getStaticPaths と同じ）。
+  // STリーグに出ていない日本体育大学（nssu）がこれで一覧からリンクされる。STリーグの対応を優先する
+  try {
+    const mappings = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'teams', 'team-name-mappings.json'), 'utf-8')) as Record<string, string[]>;
+    for (const [teamId, names] of Object.entries(mappings)) {
+      for (const name of names) if (!nameToStId.has(name)) nameToStId.set(name, teamId);
+    }
+  } catch {
+    // mappings が無ければ STリーグのみ
   }
 
   const resolveStId = (entry: TeamMasterEntry): string | undefined => {
@@ -334,6 +392,18 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     return undefined;
   };
 
+  const juniorIndexes = { j: buildJuniorIndex('secondaryschool'), e: buildJuniorIndex('primaryschool') };
+  const resolveJunior = (entry: TeamMasterEntry, key: 'j' | 'e'): JuniorRef | undefined => {
+    if (!entry.prefecture) return undefined;
+    const prefId = prefIds.get(entry.prefecture);
+    if (!prefId) return undefined;
+    for (const name of [entry.name, ...(entry.aliases ?? [])]) {
+      const ref = juniorIndexes[key].get(`${normalizeJa(name)}::${prefId}`);
+      if (ref) return ref;
+    }
+    return undefined;
+  };
+
   // D-014: count>=2 のみ掲載。収録試合数の多い順
   const teams: TeamRow[] = master
     .filter((t) => t.count >= 2)
@@ -341,6 +411,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     .map((t) => {
       const s = resolveStId(t);
       const h = resolveHighschool(t);
+      const j = resolveJunior(t, 'j');
+      const e = resolveJunior(t, 'e');
       const boys = t.boysCount ?? 0;
       const girls = t.girlsCount ?? 0;
       return {
@@ -353,6 +425,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
         // ミックスにしか出ていない(男女の判定材料が無い)チームの目印
         ...(boys === 0 && girls === 0 && (t.mixedCount ?? 0) > 0 ? { m: 1 as const } : {}),
         ...(h ? { h } : {}),
+        ...(j ? { j } : {}),
+        ...(e ? { e } : {}),
       };
     });
 
