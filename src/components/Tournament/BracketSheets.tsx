@@ -150,13 +150,7 @@ export default function BracketSheets({ detailData, onSelectEntry }: BracketShee
             const common = { x: l.x, y: l.y, textAnchor: l.anchor };
             if (l.kind === 'score') {
               return (
-                <text
-                  key={i}
-                  {...common}
-                  fontSize={7.5}
-                  fontWeight={l.win ? 700 : 400}
-                  fill={l.win ? 'var(--color-primary)' : 'var(--color-text-muted)'}
-                >
+                <text key={i} {...common} fontSize={7.5} fontWeight={l.win ? 700 : 400} fill={l.win ? 'var(--color-primary)' : 'var(--color-text-muted)'}>
                   {l.text}
                 </text>
               );

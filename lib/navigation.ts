@@ -33,6 +33,8 @@ export type NavGroup = {
 // そのため大学に同等項目は無く、特集として明示することで非対称を意図的に見せる。
 // 中学（/secondaryschool、2026-08-12 追加）は高校と構成が違う。性別で分けず、
 // 大会軸のページも持たない（全中は大会ハブに寄せる）。docs/wiki/secondaryschool.md
+// 小学生（/primaryschool、2026-09-13 追加）は中学と同じ構成。並びは 小学生 → 中学 → 高校 と
+// 学齢順にしてある（進路が 小 → 中 → 高 の向きに繋がっているため）。docs/wiki/primaryschool.md
 const SOFTENI_GROUPS: NavGroup[] = [
   {
     label: '成績・記録を調べる',
@@ -48,10 +50,11 @@ const SOFTENI_GROUPS: NavGroup[] = [
   {
     label: '特集',
     items: [
+      { label: '小学生', href: '/primaryschool', matchPrefix: '/primaryschool' },
+      { label: '中学', href: '/secondaryschool', matchPrefix: '/secondaryschool' },
       // /highschool は入口ページ(男子/女子/歴代記録への案内。docs/ui M2-2・C-4)。
       // 以前の boys 直指し+meta refresh は廃止した。
       { label: '高校', href: '/highschool', matchPrefix: '/highschool' },
-      { label: '中学', href: '/secondaryschool', matchPrefix: '/secondaryschool' },
       { label: 'STリーグ', href: '/st-league', matchPrefix: '/st-league' },
     ],
   },

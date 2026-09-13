@@ -15,6 +15,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getSchoolResolver } from '@/lib/highschoolNationalTournaments';
+import { getFeederClubs, type FeederClub } from '@/lib/secondaryschoolFeederClubs';
 import {
   describeResult,
   getAllTeams,
@@ -35,6 +36,8 @@ interface Props {
   pathways: (PathwayRecord & { playerId: number | null; highschoolHref: string | null })[];
   members: (NamedLink & { years: number[] })[];
   resultPlayers: Record<string, NamedLink[]>;
+  /** この中学の選手の出身小学生クラブ（小学生カテゴリの進路データの逆引き） */
+  feederClubs: FeederClub[];
 }
 
 function PlayerNames({ players }: { players: NamedLink[] }) {
@@ -57,7 +60,7 @@ function PlayerNames({ players }: { players: NamedLink[] }) {
   );
 }
 
-export default function SecondarySchoolTeamPage({ team, pathways, members, resultPlayers }: Props) {
+export default function SecondarySchoolTeamPage({ team, pathways, members, resultPlayers, feederClubs }: Props) {
   const pageUrl = `https://softeni-pick.com/secondaryschool/${team.prefectureId}/${team.id}/`;
   const kindLabel = teamKindLabel(team.kind);
   const yearRange = team.years.length
@@ -174,6 +177,32 @@ export default function SecondarySchoolTeamPage({ team, pathways, members, resul
           </section>
         )}
 
+        {feederClubs.length > 0 && (
+          <section className="mb-8">
+            <h2 className="mb-2 text-lg font-bold">{team.name}の選手の出身クラブ</h2>
+            <p className="mb-3 text-sm text-text-secondary">全日本小学生選手権大会に出場したあと、{team.name}で中学の収録大会に出場した選手です。</p>
+            <ul className="space-y-2 text-sm">
+              {feederClubs.map((f) => (
+                <li key={`feeder-${f.team}`}>
+                  {f.href ? (
+                    <Link href={f.href} className="font-semibold text-link hover:underline">
+                      {f.team}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold">{f.team}</span>
+                  )}
+                  {f.prefecture && f.prefecture !== team.prefecture && <span className="ml-1 text-xs text-text-muted">{f.prefecture}</span>}
+                  <span className="text-text-secondary"> — {f.players.map((p) => `${p.name}（${p.secondaryschoolFirstYear}年〜）`).join('・')}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              氏名の一致で追跡しています。小学生の大会で最後に出場した年から6年以内に中学の収録大会へ出場した同姓同名の選手を
+              同一人物とみなしているため、同姓同名の別人が含まれている可能性があります。小学生のときに全日本小学生選手権へ出場していない選手は表示されません。
+            </p>
+          </section>
+        )}
+
         <section className="mb-8">
           <h2 className="mb-3 text-lg font-bold">大会成績（{team.results.length}件）</h2>
           {byYear.map((year) => (
@@ -274,6 +303,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
       pathways: getPathways(team).map((p) => ({ ...p, playerId: resolvePlayerId(p.player), highschoolHref: resolveHighschool(p) })),
       members: team.members.map((m) => ({ name: m.name, years: m.years, playerId: resolvePlayerId(m.name) })),
       resultPlayers,
+      // 出身クラブの逆引き（小学生カテゴリの進路データを中学名で引き直したもの）
+      feederClubs: getFeederClubs(team.name, team.prefecture),
     },
   };
 };

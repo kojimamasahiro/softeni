@@ -136,6 +136,20 @@
   年度が2つ未満で推移として読めない大会は自動的に null）。詳細は下記「学校部活動と地域クラブの内訳」
 - 実装: `src/pages/tournaments/[generation]/[tournamentId]/index.tsx`、`src/components/tournaments/TournamentCard.tsx`、`src/components/Tournament/ClubTransitionSection.tsx`
 
+小学生カテゴリ（`/primaryschool`、2026-09-13 追加）:
+
+- `/primaryschool/`（入口・1枚）／ `/primaryschool/[prefectureId]/`（47枚）／
+  `/primaryschool/[prefectureId]/[teamId]/`（298枚）の計346ページ
+- 対象大会は**全日本小学生選手権のみ**。性別を URL に入れず（男女両方に出る団体が88%）、
+  大会軸のページも順位づけの節も持たない（ADR-010）。詳細は [primaryschool.md](./primaryschool.md)
+- 公開ページの文言は「小学校」ではなく**「小学生」**。掲載団体はほぼ全部がクラブ・少年団で、
+  `小学校` で終わる団体は0件
+- 団体ページの「進路（小学→中学）」と、中学チームページの「出身クラブ」は同じデータの表裏。
+  これで **小 → 中 → 高の3段接続**が成立する
+- 生成は `npm run primaryschool:build`（prebuild に組み込み済み）
+- 実装: `src/pages/primaryschool/**`、`lib/primaryschool.ts`、`lib/secondaryschoolFeederClubs.ts`、
+  `scripts/build-primaryschool-index.mjs`、`scripts/build-primaryschool-pathways.mjs`
+
 中学カテゴリ（`/secondaryschool`、2026-08-12 追加）:
 
 - `/secondaryschool/`（入口・1枚）／ `/secondaryschool/[prefectureId]/`（47枚）／
@@ -177,6 +191,13 @@
   末尾 `中` の38件にカタカナ・ラテンの混入は0件、学校マーカー持ちでカタカナ3連を含むのは
   `苫小牧市立ウトナイ中学校` の1件のみ（学校マーカーが先に効くので誤判定にならない）
 - UI では判定不能件数を年度ごとに併記し、「地域クラブ数は下限」と明示する。数字が実態より確かなものに見えないようにするため
+- **`club:verify` の単調増加チェックは制度変更後（2023年度以降）だけに要求する**（2026-09-13 に範囲を狭めた）。
+  制度変更前はクラブ数が1団体で固定（2018 中之条クラブ / 2019 日野クラブ / 2021・2022 各1）で、
+  比率は 1/N すなわち分母だけが動く。実際 2018→2019 は **1/130=0.769% → 1/134=0.746% と下がる**が、
+  これは全中の出場団体数が増えただけで地域移行が後退したわけではない。
+  2026-09-03 に2018・2019年度を投入した時点からこの判定は落ち続けていた。
+  主張したいトレンド（2023年度以降の 10.3% → 25.2% → 36.8% → 54.0%）は狭めた判定で守られ、
+  制度変更の前後で跳ねたことは別の判定「前の最大 < 後の最小」が引き続き守っている
 - Assumption: `男塾` `半田球友` のように名称からは判別できないクラブが unknown に残っている。下限であることの許容範囲として扱う
 - データ品質メモ: 中学の大会データに `四天王寺高校` という高校名の団体が混入している（中高一貫校の表記ゆれと見られる）。
   学校であることは確かなのでクラブ側に倒さないよう `高校` を学校マーカーに含めてある
