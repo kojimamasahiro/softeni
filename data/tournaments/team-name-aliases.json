@@ -492,6 +492,35 @@
       "note": "東京都"
     },
     {
+      "canonical": "千歳クラブ",
+      "aliases": [
+        "千歳"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "primaryschool-",
+          "zennihon-primaryschool"
+        ],
+        "prefecture": [
+          "東京都"
+        ]
+      },
+      "note": "東京都 2026-09-13: 小学生カテゴリの検討で検出。青山航大・宮澤菜々子の2名が 千歳クラブ(2023) / 千歳ジュニア(2024) / 千歳(2024) のすべてに出ており同一団体（ADR-017 の選手重なり）。北海道千歳市の別の「千歳」（ハイジャパ2022・古園由彩）を巻き込まないよう、大会系統と県で限定する（野木と同型）。"
+    },
+    {
+      "canonical": "千歳クラブ",
+      "aliases": [
+        "千歳ジュニア"
+      ],
+      "scope": {
+        "tournamentPrefix": [
+          "primaryschool-",
+          "zennihon-primaryschool"
+        ]
+      },
+      "note": "東京都 2026-09-13: 上と同じ団体の3つ目の表記。全国小学生大会2024の行は prefecture が null（あの回の県欠落）なので県スコープでは一致しない。「千歳ジュニア」は他県・他カテゴリに現れないため大会系統のスコープだけで足りる。"
+    },
+    {
       "canonical": "中京",
       "aliases": [
         "中京高校"
