@@ -619,3 +619,25 @@ teamId 最長 29文字 / 平均 15文字
 **`docs/wiki/tournaments-local.md` と `data-import.md` は更新していない。**
 小学生の県大会（秋田・宮城インドア等）は対象外にしただけで、取り込み方も掲載も変えていないため。
 
+
+---
+
+## teamId 目視の完了と2件の修正（2026-09-13）
+
+**B 区分149件はユーザーが確認し、問題なしと判断した。** 未確認として残っているものは無い。
+新しい団体が増えたときは `npm run primaryschool:teamid-todo` で差分が出る。
+
+Step 2 で挙げた2件を修正した。原因は**上書きの値が「地名列の読み」であって
+地名の漢字部分ではない**ことを取りこぼしていたため。
+
+| 団体 | 地名列 | 誤 | 正 | 結果 |
+|---|---|---|---|---|
+| 七城オネスティー（熊本） | `七城オネスティー` | `shichijou` | `shichijouonesuteii` | `/primaryschool/kumamoto/shichijouonesuteii/` |
+| 洋野NSTC（岩手） | `洋野N` | `hirono` | `hironon` | `/primaryschool/iwate/hirononstc/` |
+
+`洋野N` の `N` は地名の一部ではないが、地名列の抽出（末尾の `STC` だけを剥がす）が
+そこで止まるため、読みにも含める必要がある。同型は `横浜PSC`（地名列 `横浜P`）
+`羽合STスポ少`（`羽合ST`）`白石ST協会`（`白石ST`）などがあり、こちらは上書き無しで
+正しく出ている（`yokohamapsc` / `hawaistsuposhou` / `shiroishistkyoukai`）。
+
+再生成後も **298団体・県内スラッグ衝突0組・最長29文字**で変わらない。
