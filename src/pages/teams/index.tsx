@@ -110,7 +110,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
     <>
       <MetaHead
         title="チーム一覧 | ソフトテニス情報 Softeni Pick"
-        description="ソフトテニスのチーム（学校・実業団・クラブ）を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校・中学生・小学生はカテゴリのページへのリンクつき。"
+        description="ソフトテニスのチーム（学校・実業団・クラブ）を名前・都道府県・男女で検索できます。STリーグ出場チームは年度別成績ページ、高校生・中学生・小学生はカテゴリのページへのリンクつき。"
         url={pageUrl}
         type="website"
       />
@@ -126,7 +126,7 @@ export default function TeamsIndexPage({ teams, totalCount }: Props) {
         <h1 className="text-2xl font-bold mb-2">チーム一覧</h1>
         <p className="text-sm text-text-muted dark:text-gray-400 mb-6">
           大会結果に収録されているチーム（学校・実業団・クラブ）を検索できます。掲載は収録試合が2試合以上のチーム（{totalCount.toLocaleString()}
-          件）。STリーグ出場チームなどはチームページ、高校・中学生・小学生はそれぞれのカテゴリのページへのリンクがあります。
+          件）。STリーグ出場チームなどはチームページ、高校生・中学生・小学生はそれぞれのカテゴリのページへのリンクがあります。
         </p>
 
         {/* 男女切替(収録データの性別で絞り込む) */}

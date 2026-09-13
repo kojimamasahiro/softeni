@@ -57,6 +57,7 @@ export default function UpcomingTournaments({
   items,
   limit,
   headingId,
+  headingSize = 'compact',
   className = '',
 }: {
   /** 候補（絞り込み前）。会期の判定はこのコンポーネントが描画時に行う */
@@ -65,6 +66,11 @@ export default function UpcomingTournaments({
   limit: number;
   /** 同一ページに複数置く場合に id が衝突しないようにする */
   headingId?: string;
+  /**
+   * 見出しの見せ方。compact は枠の中に小さく出す（大会一覧。ファーストビューの件数制約があるため）。
+   * section は枠の外に他のセクション見出しと同じ大きさで出す（トップ。2026-09-14）
+   */
+  headingSize?: 'compact' | 'section';
   className?: string;
 }) {
   const todayStr = getTodayInTokyo();
@@ -77,32 +83,47 @@ export default function UpcomingTournaments({
 
   if (upcoming.length === 0) return null;
 
+  const list = (
+    <ul className="divide-y divide-border">
+      {upcoming.map((inst) => {
+        const started = inst.startDate <= todayStr;
+        return (
+          <li key={`${inst.tournamentId}-${inst.year}`} className="py-1.5 first:pt-0 last:pb-0">
+            <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              <span className="text-sm font-semibold tabular-nums text-text-secondary">{formatDateRange(inst.startDate, inst.endDate)}</span>
+              <Link href={inst.href} className="text-sm font-medium text-link hover:underline">
+                {inst.label}
+              </Link>
+              {started && (
+                <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
+                  開催中
+                </span>
+              )}
+              {inst.location && <span className="text-xs text-text-muted">{inst.location}</span>}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
+  if (headingSize === 'section') {
+    return (
+      <section className={className} aria-labelledby={id}>
+        <h2 id={id} className="text-xl font-bold mb-4">
+          これから開催
+        </h2>
+        <div className="rounded-xl border border-border bg-surface p-3 shadow-sm">{list}</div>
+      </section>
+    );
+  }
+
   return (
     <section className={`rounded-xl border border-border bg-surface p-3 shadow-sm ${className}`} aria-labelledby={id}>
       <h2 id={id} className="mb-1.5 text-sm font-bold">
         これから開催
       </h2>
-      <ul className="divide-y divide-border">
-        {upcoming.map((inst) => {
-          const started = inst.startDate <= todayStr;
-          return (
-            <li key={`${inst.tournamentId}-${inst.year}`} className="py-1.5 first:pt-0 last:pb-0">
-              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                <span className="text-sm font-semibold tabular-nums text-text-secondary">{formatDateRange(inst.startDate, inst.endDate)}</span>
-                <Link href={inst.href} className="text-sm font-medium text-link hover:underline">
-                  {inst.label}
-                </Link>
-                {started && (
-                  <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:border-amber-800 dark:bg-amber-900/30 dark:text-amber-300">
-                    開催中
-                  </span>
-                )}
-                {inst.location && <span className="text-xs text-text-muted">{inst.location}</span>}
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      {list}
     </section>
   );
 }

@@ -101,22 +101,16 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
 
         {/* 試合結果・大会リンク */}
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">ソフトテニス情報</h2>
-
-          {/* STリーグへのリンク */}
-          <section className="max-w-4xl mx-auto mb-8 px-4">
-            <Link href="/st-league" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle mb-4">
-              <h3 className="text-xl font-bold mb-1">STリーグ</h3>
-              <p className="text-text-secondary text-sm">ソフトテニス実業団最高峰の戦い</p>
-            </Link>
-          </section>
+          {/* 2026-09-14 まではここに「ソフトテニス情報」の見出しと STリーグのカードを置いていた（2025-12 の STリーグ公開時から）。
+              サイドナビでは STリーグは「カテゴリから探す」の一項目なので、下のカテゴリ一覧へ移した。
+              空になる「ソフトテニス情報」の見出しも外し、最初の区切りを「これから開催」にしている */}
 
           {/* これから開催（未来形）。すぐ下の「最近追加された大会」が過去形なので対にする。
               トップページには広告のファーストビュー枠が無いため、大会一覧のような
               件数の制約は無い（docs/wiki/monetization.md のファーストビュー枠は5面でトップは非対象）。 */}
-          <section className="max-w-4xl mx-auto mb-8 px-4">
-            <UpcomingTournaments items={upcomingTournaments} limit={5} headingId="top-upcoming-tournaments" />
-          </section>
+          <div className="max-w-4xl mx-auto mb-12 px-4">
+            <UpcomingTournaments items={upcomingTournaments} limit={5} headingId="top-upcoming-tournaments" headingSize="section" />
+          </div>
 
           {/* 最近追加された大会（カード形式） */}
           <section className="max-w-4xl mx-auto mb-12 px-4">
@@ -193,13 +187,13 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
               チームページは大学38校・STリーグ約60チームに増え、2つだけ並べる理由が無くなったため。
               並びはサイドナビ「成績・記録を調べる」（大会→選手→チーム→ランキング）に揃え、選手ランキングの上に置く */}
           <section className="mb-12 px-4">
-            <h2 className="text-xl font-semibold mb-4">チーム</h2>
+            <h2 className="text-xl font-semibold mb-4">チームを探す</h2>
 
             <p className="text-text-secondary text-sm mb-6">大会結果に収録されている学校・実業団・クラブを、名前や都道府県で検索できます。</p>
 
             <Link href="/teams" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
               <h3 className="text-lg font-bold mb-1">チーム一覧</h3>
-              <p className="text-text-secondary text-sm">大学・実業団のチームページや、高校・中学生・小学生のカテゴリのページへ移動できます</p>
+              <p className="text-text-secondary text-sm">名前・都道府県・男女で絞り込めます。成績ページのあるチームはそこへ移動できます</p>
             </Link>
           </section>
 
@@ -217,7 +211,7 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </Link>
           </section>
 
-          {/* 小学生・中学生・高校生・大学生カテゴリへのリンク。見出し・並びはサイドナビ「カテゴリから探す」と揃える（lib/navigation.ts） */}
+          {/* 小学生・中学生・高校生・大学生・STリーグへのリンク。見出し・並びはサイドナビ「カテゴリから探す」と揃える（lib/navigation.ts） */}
           <section className="mb-12 px-4">
             <h2 className="text-xl font-semibold mb-4">カテゴリから探す</h2>
 
@@ -246,6 +240,11 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
                   href: '/university',
                   title: '大学生',
                   description: 'インカレなど大学全国大会の結果と、大学別の出身高校を掲載',
+                },
+                {
+                  href: '/st-league',
+                  title: 'STリーグ',
+                  description: '実業団リーグの年度別の順位表・歴代優勝・出場チームを掲載',
                 },
               ].map((category) => (
                 <Link
