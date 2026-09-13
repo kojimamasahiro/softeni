@@ -59,9 +59,18 @@ function readJson(p, fallback) {
   }
 }
 
-/** 成績の序列（大きいほど上位）。中学版 `rankScore` と同じ規約。 */
+/**
+ * 成績の序列（大きいほど上位）。
+ *
+ * **優勝・準優勝は `kind: 'winner' / 'runnerup'` で入っている**（`place` ではない）。
+ * 当初はこの2つを拾っておらず0点になり、優勝した団体の代表成績が
+ * 「3回戦敗退」になっていた（298団体中8件。2026-09-13 修正）。
+ * 中学版 `RANK_ORDER` は最初から winner/runnerup を持っていたので影響なし。
+ */
 function rankScore(rank) {
   if (!rank) return 0;
+  if (rank.kind === 'winner') return 1000;
+  if (rank.kind === 'runnerup') return 999;
   if (rank.kind === 'place') return 1000 - (rank.place ?? 99);
   if (rank.kind === 'best') return 900 - (rank.bestLevel ?? 99);
   if (rank.kind === 'round') return 100 + (rank.round ?? 0);
