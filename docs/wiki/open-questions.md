@@ -652,6 +652,25 @@ npm run og:tournaments -- --apply           # 全件生成（既存は内容ハ�
 関連: [monetization.md](./monetization.md)「プライバシー・法務」、
 [raw/2026-09-09-consent-banner-japan-exemption.md](../raw/2026-09-09-consent-banner-japan-exemption.md)
 
+## トップページのよく見られているページ（2026-09-14 追加）
+
+GA4 の CSV を手で取り込む形で実装した（[public-pages.md](./public-pages.md)「トップページのよく見られているページ」）。
+
+- ~~実物の GA4 CSV でまだ試していない~~ → 2026-09-14 に実物で取り込み、期間行の形の違いを直した
+- **検索窓の入力が `page_view` として数えられている。** `/players/` の検索は 400ms ごとに `?q=` を shallow に
+  書き換え、`_app.tsx` の `routeChangeComplete` がそのたびに `page_view` を送る。2026-08-17〜09-13 の表示回数の
+  **36.6%（19,883 / 54,333）** がこれ。一方で `scripts/check-search-misses.mjs`（検索の取りこぼし調査）はこの
+  `page_view` を入力にしているので、単に送るのをやめると検索語が取れなくなる。
+  案: shallow な `?q=` 更新は `page_view` ではなく `search`（`search_term`）イベントで送る。回遊検証の数字との連続性も含めて要判断
+- **選手ページの URL に `?q=` が付く経路が未特定。** 実物で `/players/4898/results/?q=...` が46回（中身は別の選手名を
+  1文字ずつ入力したもの）。ローカルで「検索 → 結果ページ → 戻る」をたどっても URL は正しく、再現しない。
+  トップページの集計では除外済み（`lib/popularPages.ts`）
+- **週1の自動化（GA4 Data API ＋ GitHub Actions）をやるか。** 手動運用を試してから判断する（ユーザー判断 2026-09-14）。
+  やる場合はサービスアカウント・数値のプロパティID・Secret が要り、このリポジトリで初めて外部 API の Secret を持つ。
+  ADR を書くかもそのとき決める
+
+経緯: [raw/2026-09-14-idea-top-popular-pages-ga4.md](../raw/2026-09-14-idea-top-popular-pages-ga4.md)
+
 ## 解決済み（記録）
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。

@@ -67,6 +67,8 @@
     "analytics:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/analytics.test.ts",
     "upcoming:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/upcomingInternational.test.ts",
     "career:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerCareerAffiliations.test.ts",
+    "popular:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/popularPages.test.ts",
+    "popular:import": "ts-node --project scripts/playerStats/tsconfig.json scripts/import-popular-pages.ts",
     "rare-events:generate": "node scripts/generate-rare-events.mjs",
     "rare-events:report": "node scripts/rare-events-report.mjs",
     "rare-events:discover": "node scripts/rare-events-discover.mjs",
