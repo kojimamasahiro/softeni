@@ -101,7 +101,9 @@ data/st-league/
 - `/teams/[teamId]` は従来 `team-name-mappings.json` のキーのみ生成していたが、上記により**STリーグ出場チーム
   にも生成**し、「STリーグでの成績」セクション（年度別の所属部・W-L・順位・優勝、
   各年度→`/st-league/{year}/matches`）を描画する。集計は `aggregateStLeagueTeam(teamId)`（st-league.ts）。
-- トップ「所属別成績」枠（日体大・ワタキューセイモア＋外部公式リンク）とグローバルナビは現状維持。
+- ~~トップ「所属別成績」枠（日体大・ワタキューセイモア＋外部公式リンク）とグローバルナビは現状維持。~~
+  **Deprecated（2026-09-14）**: 「所属別成績」枠は廃止してチーム一覧カードに置き換えた。トップの STリーグのカードも
+  「カテゴリから探す」の中へ移した（[public-pages.md](./public-pages.md)「トップページ（`/`）の並び」）
 - STリーグ各ページのチーム名は `/teams/[teamId]` へリンクする（順位表＝matches、見出し＝teams、
   対戦詳細ヘッダー＝matches/[matchId]）。
 - **404 回避**: tournament の年度別下層 `/teams/[teamId]/[year]/[gender]` は mapping キーのチームしか
