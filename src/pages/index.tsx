@@ -10,6 +10,7 @@ import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import UpcomingTournaments, { type UpcomingTournamentItem } from '@/components/tournaments/UpcomingTournaments';
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
+import { loadPopularPages, type PopularPages } from '@/lib/popularPagesData';
 import { isCancelledEntry } from '@/lib/tournamentCancellation';
 import { getAllDetailRecords, loadInformationMap, loadTournamentIndex } from '@/lib/tournamentData';
 import { PlayerInfo } from '@/types/index';
@@ -29,9 +30,20 @@ interface HomeProps {
   recentTournaments: RecentTournament[];
   // 「これから開催」の候補。会期の判定は描画側（docs/wiki/upcoming-tournaments-runbook.md S3）。
   upcomingTournaments: UpcomingTournamentItem[];
+  // GA4 の閲覧数の上位（data/popular-pages.json・手で取り込む。docs/wiki/public-pages.md）
+  popularPages: PopularPages;
 }
 
-export default function Home({ recentTournaments, upcomingTournaments }: HomeProps) {
+/** YYYY-MM-DD → 「2026年8月17日」。SSG とクライアントで同じ文字列にするためロケール整形を使わない */
+function formatIsoDate(iso: string): string {
+  const [y, m, d] = iso.split('-');
+  return `${y}年${Number(m)}月${Number(d)}日`;
+}
+
+export default function Home({ recentTournaments, upcomingTournaments, popularPages }: HomeProps) {
+  const popularPeriod = popularPages.period
+    ? `${formatIsoDate(popularPages.period.startDate)}〜${formatIsoDate(popularPages.period.endDate)}の閲覧数をもとにしています。`
+    : '';
   const jsonLd = [
     {
       '@context': 'https://schema.org',
@@ -144,33 +156,18 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
           <section className="max-w-4xl mx-auto mb-12 px-4">
             <h2 className="text-xl font-bold mb-4">よく見られている選手</h2>
 
-            <p className="text-text-secondary text-sm mb-6">本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。</p>
+            <p className="text-text-secondary text-sm mb-6">本サイトにてよく見られている選手です。選手ごとに大会の成績を確認できます。{popularPeriod}</p>
 
+            {/* 2026-09-14 までは3人を手で選んで固定していた。今は GA4 の閲覧数の上位（足りなければその3人で埋める） */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-              {[
-                {
-                  id: '19',
-                  name: '上松 俊樹',
-                  team: 'NTT西日本',
-                },
-                {
-                  id: '20',
-                  name: '上岡 俊介',
-                  team: 'Up Rise',
-                },
-                {
-                  id: '12',
-                  name: '丸山 海斗',
-                  team: 'one team',
-                },
-              ].map((player) => (
+              {popularPages.players.map((player) => (
                 <Link
-                  key={player.id}
-                  href={`/players/${player.id}/results`}
+                  key={player.href}
+                  href={player.href}
                   className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle"
                 >
-                  <h3 className="text-lg font-bold mb-1">{player.name}</h3>
-                  <p className="text-sm text-text-secondary">{player.team}</p>
+                  <h3 className="text-lg font-bold mb-1">{player.title}</h3>
+                  <p className="text-sm text-text-secondary">{player.subtitle}</p>
                 </Link>
               ))}
             </div>
@@ -183,18 +180,35 @@ export default function Home({ recentTournaments, upcomingTournaments }: HomePro
             </div>
           </section>
 
-          {/* チーム一覧へのリンク。2026-09-14 に「所属別成績」（日本体育大学・ワタキューセイモアの2枚を手で選んでいた）を置き換えた。
-              チームページは大学38校・STリーグ約60チームに増え、2つだけ並べる理由が無くなったため。
+          {/* よく見られているチーム（カード形式）。「よく見られている選手」と同じ形にする。
+              経緯: 2026-09-14 朝に「所属別成績」（日本体育大学・ワタキューセイモアの2枚を手で選んでいた）を
+              「チームを探す」（チーム一覧へのカード1枚）に置き換え、同日夕方にこの形へ置き換えた。
               並びはサイドナビ「成績・記録を調べる」（大会→選手→チーム→ランキング）に揃え、選手ランキングの上に置く */}
-          <section className="mb-12 px-4">
-            <h2 className="text-xl font-semibold mb-4">チームを探す</h2>
+          <section className="max-w-4xl mx-auto mb-12 px-4">
+            <h2 className="text-xl font-bold mb-4">よく見られているチーム</h2>
 
-            <p className="text-text-secondary text-sm mb-6">大会結果に収録されている学校・実業団・クラブを、名前や都道府県で検索できます。</p>
+            <p className="text-text-secondary text-sm mb-6">
+              本サイトにてよく見られているチーム・学校です。チームごとに大会の成績を確認できます。{popularPeriod}
+            </p>
 
-            <Link href="/teams" className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
-              <h3 className="text-lg font-bold mb-1">チーム一覧</h3>
-              <p className="text-text-secondary text-sm">名前・都道府県・男女で絞り込めます。成績ページのあるチームはそこへ移動できます</p>
-            </Link>
+            {/* GA4 の閲覧数の上位。学校ページも含む。データが無ければカードは出さず、一覧へのリンクだけ残す */}
+            {popularPages.teams.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+                {popularPages.teams.map((team) => (
+                  <Link key={team.href} href={team.href} className="block border border-border rounded-xl p-4 shadow bg-surface transition hover:bg-bg-subtle">
+                    <h3 className="text-lg font-bold mb-1">{team.title}</h3>
+                    <p className="text-sm text-text-secondary">{team.subtitle}</p>
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {/* 一覧ページへのリンク */}
+            <div className="text-right mb-10">
+              <Link href="/teams" className="text-sm text-blue-500 hover:underline">
+                チーム一覧を見る
+              </Link>
+            </div>
           </section>
 
           {/* 選手ランキングへのリンク */}
@@ -356,6 +370,7 @@ export async function getStaticProps() {
     props: {
       recentTournaments: tournaments,
       upcomingTournaments,
+      popularPages: loadPopularPages(3),
     },
   };
 }
