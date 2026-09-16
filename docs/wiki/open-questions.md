@@ -47,13 +47,6 @@
 - **高校→大学の進路で、氏名一致のみの採用が96%を占める。** 推定誤マッチ約20件を個別に特定する手段が無い。
   同じ高校から同じ大学へ複数人、などの相互裏付けで `basis` を細かくできるか
   （[raw/2026-09-13-university-pathways-verification.md](../raw/2026-09-13-university-pathways-verification.md)）。
-- **文部科学大臣杯全日本大学対抗選手権大会（インカレ団体戦）の `tournamentId` が未定義。**
-  `data/tournaments/index.json` の generation `university` には
-  `zennihon-university` / `zennihon-university-ouza` / `zennihon-university-indoor` はあるが、
-  大学対抗選手権に当たるIDが無い。2026年の組み合わせは
-  `tools/incare-2026/team-none-boys.initialPlayers.json` に変換済みなので、結果を
-  `data/tournaments/details/` に入れる段階でIDを決める必要がある
-  （[インカレの姓名分割](../raw/2026-08-29-intercollegiate-name-split.md) 追記2）。
 - 2026-05-24 最終更新の4ページ（`backend.md` / `database.md` / `project-overview.md` /
   `score-analysis.md`）を「復元した初期メモ」から「現行仕様」へ昇格させるか、統合して
   Deprecated にするか。実装との突き合わせでは内容はほぼ正しく、格付けだけが古い
@@ -558,6 +551,11 @@ verify は副作用として green になる**。2026-08-28 の実測では、�
 いずれも `data/tournaments/**` や `docs/wiki/**` を直接指す**このリポジトリ専用**の手順書で、
 汎用 skill（docx / pdf / xlsx / skill-creator 等）とは性質が違う。
 移動後に個人 skill 側は削除した（同名が2箇所にあると発火が曖昧になるため）。
+**2026-09-17 訂正**: 個人 skill 側の4つは**まだ残っている**
+（`~/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/.../skills/`。
+セッションの skill 一覧にも `idea-backlog` と `anthropic-skills:idea-backlog` が並んで出る）。
+削除後にアカウント側から再同期された可能性がある（**Assumption**）。リポジトリ版だけを直すと、
+古い版が発火しうる。個人 skill 側をアカウントの設定から消すかは未判断。
 以降は skill の変更が PR に載り、他のマシン・他の人にも届く。
 
 以下は経緯の記録。
@@ -686,6 +684,13 @@ GA4 の CSV を手で取り込む形で実装した（[public-pages.md](./public
 
 解決した問いは本文から外し、結論と参照先だけをここに残す（2026-09-02 新設）。
 「なぜそう決めたか」の詳細は各リンク先が正。
+
+### インカレ団体戦の `tournamentId`（2026-08-29 追加 → 2026-09-17 解決を確認）
+
+別IDは作らず、選手権と同じ `zennihon-university` の対抗戦カテゴリ `versus-none-{boys,girls}` として
+2022〜2026年度が投入済みだった（2026-09-07「インカレ過去」で投入、抽出は `scripts/pdf/zennihon_university_results.py`）。
+Open Question の側だけが更新されていなかった。→ [data-import.md](./data-import.md) /
+[raw/2026-09-09-incare-2026-doubles-results-import.md](../raw/2026-09-09-incare-2026-doubles-results-import.md)
 
 ### Idea Backlog 索引の「一言サマリ」が長すぎる（2026-09-02 追加 → 2026-09-17 解決）
 

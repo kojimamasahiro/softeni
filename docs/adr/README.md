@@ -38,7 +38,7 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 
 | ADR | タイトル | Status |
 |---|---|---|
-| [ADR-001](./ADR-001-local-source-detection-store.md) | 地方大会候補検知ストアを公開データから分離する | Accepted |
+| [ADR-001](./ADR-001-local-source-detection-store.md) | 地方大会候補検知ストアを公開データから分離する | Deprecated（2026-09-12） |
 | [ADR-002](./ADR-002-st-league-division-model.md) | STリーグの階層（division）データモデル | Accepted |
 | [ADR-003](./ADR-003-score-media-tool-separation.md) | score の「閲覧公開（メディア）」と「ツール公開（UGC）」の分離方針 | Accepted（高レベル方針） |
 | [ADR-004](./ADR-004-growth-analysis-visibility-consent.md) | 成長分析の公開境界と同意レベル（段階公開モデル） | Draft |

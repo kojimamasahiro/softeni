@@ -49,3 +49,9 @@ open-questions.md「ドキュメント運用」の未解決項目
   - 消す前に確かめた語句の一覧 … 作業の手順で、wiki に残す価値が無い
   - 行ごとの旧サマリの内容 … git 履歴にあり、エリアページと raw が正
   - プラグイン版スキルとの差 … 既存の open-questions の項目で扱っており、重複する
+
+## 追記（同日・drift チェック）
+
+「残したこと」に書いた「open-questions.md の skill の置き場の項目と同じ問題」は不正確だった。
+その項目は「2026-09-09 解決・個人 skill 側は削除済み」となっていたが、個人 skill 側は残っていた。
+open-questions.md の同項目に訂正を追記した（[2026-09-17-docs-drift-review.md](./2026-09-17-docs-drift-review.md)）。
