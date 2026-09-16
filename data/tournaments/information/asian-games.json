@@ -20,43 +20,71 @@
     "guidelineUrl": null,
     "source": "公益財団法人 日本オリンピック委員会",
     "sourceUrl": "https://www.joc.or.jp/aichi_nagoya2026/softtennis.html",
+    "scheduleSource": "第20回アジア競技大会 公式リザルトサイト",
+    "scheduleSourceUrl": "https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18",
+    "scheduleCheckedOn": "2026-09-16",
     "label": "第20回 アジア競技大会",
-    "note": "大会全体の会期は2026-09-19〜10-04だが、startDate/endDate はソフトテニス競技の日程（2026-09-18〜09-23、JOC表記では『予定』）。競技開始が総合開会式より前になるため大会全体の会期とずれる。種目は5種目（前回・杭州大会も5種目でJOCが『5種目中4種目で金メダル』と記載）",
+    "note": "大会全体の会期は2026-09-19〜10-04だが、startDate/endDate はソフトテニス競技の日程（2026-09-18〜09-23。JOC表記では『予定』、公式リザルトサイトでも全試合が Planned 表示＝2026-09-16確認）。競技開始が総合開会式より前になるため大会全体の会期とずれる。種目は5種目（前回・杭州大会も5種目でJOCが『5種目中4種目で金メダル』と記載）。種目別の schedule は公式リザルトサイトの日別日程から転記（2026-09-16確認）。9/18は団体A組の第2試合までしか載っておらず、9/19は日付タブ自体が無いため、団体B〜D組の残り試合の日程は不明（推測で埋めない。docs/wiki/open-questions.md）。団体の schedule は予選初日〜決勝日の範囲として書いた",
     "categories": [
       {
         "categoryId": "team-none-boys",
         "label": "男子団体",
         "category": "team",
         "gender": "boys",
-        "age": "none"
+        "age": "none",
+        "schedule": {
+          "startDate": "2026-09-18",
+          "endDate": "2026-09-20",
+          "finalTime": "17:15"
+        }
       },
       {
         "categoryId": "team-none-girls",
         "label": "女子団体",
         "category": "team",
         "gender": "girls",
-        "age": "none"
-      },
-      {
-        "categoryId": "singles-none-boys",
-        "label": "男子シングルス",
-        "category": "singles",
-        "gender": "boys",
-        "age": "none"
-      },
-      {
-        "categoryId": "singles-none-girls",
-        "label": "女子シングルス",
-        "category": "singles",
-        "gender": "girls",
-        "age": "none"
+        "age": "none",
+        "schedule": {
+          "startDate": "2026-09-18",
+          "endDate": "2026-09-20",
+          "finalTime": "14:00"
+        }
       },
       {
         "categoryId": "doubles-none-mixed",
         "label": "混合ダブルス",
         "category": "doubles",
         "gender": "mixed",
-        "age": "none"
+        "age": "none",
+        "schedule": {
+          "startDate": "2026-09-21",
+          "endDate": "2026-09-21",
+          "finalTime": "17:00"
+        }
+      },
+      {
+        "categoryId": "singles-none-boys",
+        "label": "男子シングルス",
+        "category": "singles",
+        "gender": "boys",
+        "age": "none",
+        "schedule": {
+          "startDate": "2026-09-22",
+          "endDate": "2026-09-23",
+          "finalTime": "15:45"
+        }
+      },
+      {
+        "categoryId": "singles-none-girls",
+        "label": "女子シングルス",
+        "category": "singles",
+        "gender": "girls",
+        "age": "none",
+        "schedule": {
+          "startDate": "2026-09-22",
+          "endDate": "2026-09-23",
+          "finalTime": "13:30"
+        }
       }
     ]
   }

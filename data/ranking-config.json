@@ -27,7 +27,7 @@
       "lucent-tokyo-indoor": "major",
       "yonex-hokkaido-international": "national"
     },
-    "excludeTournaments": ["international-korea-cup", "international-hiroshima-peacecup"],
+    "excludeTournaments": ["international-korea-cup", "international-hiroshima-peacecup", "asian-games"],
     "rating": {
       "_note": "副指標の Elo 系レーティング。enabled=true は「生成を行う」の意（scripts/ranking/generate-ratings.mjs → data/ratings/current.json）。公開ページへの表示は未接続（内部利用のみ、2026-07-11決定）。kByTier はバックテスト較正済み（K/scale比0.16がBrier最良。docs/raw/2026-07-11-ranking-calibration-harness-plan.md §8・§10）。",
       "enabled": true,

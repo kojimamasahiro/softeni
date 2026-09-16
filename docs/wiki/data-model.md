@@ -86,6 +86,41 @@ details のスキーマが entries（ペア/チーム）単位で**種目の割�
 `categoryId` が `information` にあるか、対応する開催情報があるかを見る。
 用途と表示仕様は [public-pages.md](./public-pages.md)「公式発表された代表名簿」。
 
+### 種目別の競技日程（`schedule`）（2026-09-17 追加）
+
+`information` の `categories[].schedule` ＋ 年度レコードの `scheduleSource` / `scheduleSourceUrl` / `scheduleCheckedOn`。
+**主催者が種目ごとの日程を出している開催前・開催中の大会だけ**に書く（最初の実例は asian-games/2026）。
+
+```json
+"scheduleSource": "第20回アジア競技大会 公式リザルトサイト",
+"scheduleSourceUrl": "https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18",
+"scheduleCheckedOn": "2026-09-16",
+"categories": [
+  { "categoryId": "team-none-boys", ..., "schedule": { "startDate": "2026-09-18", "endDate": "2026-09-20", "finalTime": "17:15" } }
+]
+```
+
+| | 意味 |
+|---|---|
+| `schedule.startDate` / `endDate` | その種目の最初の試合日〜決勝日。1日で終わるなら同じ値 |
+| `schedule.finalTime` | 決勝の開始予定時刻（`HH:MM`、**会場の現地時刻**）。出典に無ければ省略 |
+| `scheduleSource` / `scheduleSourceUrl` | 出典。**無いと日程は一切表示しない**（併記できないため） |
+| `scheduleCheckedOn` | 出典を確認した日。主催者の日程は変わり得るので「いつ時点か」を表示する |
+
+規約:
+
+- **予定の転記であって実績ではない**。表示は「（予定）」と出典・確認日を必ず併記する
+- **推測で埋めない**。出典に無い日（例: 2026年アジア大会の9/19）は書かず、`note` に理由を残す。
+  範囲（`startDate`〜`endDate`）は「最初の試合日〜決勝日」であって、その間の毎日試合があるとは限らない
+- 日単位の細かい進行（何組が何時から）は持たない。持つのは「いつ見ればいいか」が分かる粒度まで
+- 出典を `categories[]` ごとではなく年度レコードに1つ持つのは、種目ごとに出典が違う例がまだ無いため
+  （**Assumption**。違う例が出たら種目側へ移す）
+
+表示: 大会ハブの開催前ブロック（種目別の日程表、`SportsEvent.subEvent` の日付）と、代表選手の
+選手ページ（その選手の出場種目の日程だけ）。整形は `lib/categorySchedule.ts`。
+検査は `npm run check:upcoming` の **[5]**（出典・確認日の有無、日付・時刻の形、会期からのはみ出し）。
+経緯: [raw/2026-09-17-asian-games-schedule.md](../raw/2026-09-17-asian-games-schedule.md)
+
 ### 段階で分割された大会の最終成績（2026-08-26 追加）
 
 1つの大会を、進行段階ごとに複数の `categoryId` へ分けて取り込むことがある。

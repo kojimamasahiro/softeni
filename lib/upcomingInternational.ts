@@ -22,6 +22,8 @@
 
 import type { TournamentInformationEntry } from '@/types/tournament';
 
+import { buildCategorySchedule, type CategoryScheduleRow } from './categorySchedule';
+
 /** 判定に使う、その選手の大会出場1件ぶん。`PlayerTournament` の必要な部分だけ。 */
 export type PlayerTournamentLike = {
   tournamentId?: string;
@@ -73,6 +75,16 @@ export type UpcomingInternationalLink = {
     source: string;
     sourceUrl: string;
     announcedOn: string | null;
+    /**
+     * 出場種目の日程（主催者発表の予定の転記）。information に種目別日程が無ければ null。
+     * 出典は名簿（JOC）とは別なので、`source` とは分けて持つ。並びは日程順
+     */
+    schedule: {
+      rows: CategoryScheduleRow[];
+      source: string;
+      sourceUrl: string;
+      checkedOn: string | null;
+    } | null;
   } | null;
   /** すでに会期に入っているか */
   hasStarted: boolean;
@@ -217,11 +229,17 @@ function resolveDelegation(
 
   const labelById = new Map((upcoming.categories ?? []).map((c) => [c.categoryId, c.label]));
 
+  // 日程は「その選手の出場種目」だけに絞る。名簿に無い種目の日程を並べると出場するように読めるため
+  const schedule = buildCategorySchedule(upcoming);
+  const own = new Set(categoryIds);
+  const rows = schedule ? schedule.rows.filter((r) => own.has(r.categoryId)) : [];
+
   return {
     categoryLabels: categoryIds.map((id) => labelById.get(id)).filter((l): l is string => Boolean(l)),
     source: d.source,
     sourceUrl: d.sourceUrl,
     announcedOn: d.announcedOn,
+    schedule: schedule && rows.length > 0 ? { rows, source: schedule.source, sourceUrl: schedule.sourceUrl, checkedOn: schedule.checkedOn } : null,
   };
 }
 

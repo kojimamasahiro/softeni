@@ -20,6 +20,7 @@ import QualifierFinishersSection from '@/components/tournaments/QualifierFinishe
 import RelatedTournamentsBlock, { type RelatedTournamentLink } from '@/components/tournaments/RelatedTournamentsBlock';
 import UpcomingTournamentSection, { type UpcomingTournamentData } from '@/components/tournaments/UpcomingTournamentSection';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
+import { buildCategorySchedule } from '@/lib/categorySchedule';
 import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition';
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getDelegationBlock, type DelegationBlock } from '@/lib/delegation';
@@ -418,7 +419,15 @@ export default function TournamentHubPage({
                 // これから開催される実イベントに主催者を偽って書くのは
                 // lib/sportsEventJsonLd.ts の方針（虚偽の構造化データを避ける）に反する。
                 // 主催者名を information に持つようになったら入れる。
-                ...(upcoming.categoryLabels.length > 0 ? { subEvent: upcoming.categoryLabels.map((c) => ({ '@type': 'SportsEvent', name: c.label })) } : {}),
+                // 種目別の日程があれば subEvent に日付を載せる（主催者発表の予定の転記。時刻は持たせない）
+                ...(upcoming.categoryLabels.length > 0
+                  ? {
+                      subEvent: upcoming.categoryLabels.map((c) => {
+                        const row = upcoming.schedule?.rows.find((r) => r.label === c.label);
+                        return { '@type': 'SportsEvent', name: c.label, ...(row ? resolveEventDates(row.startDate, row.endDate) : {}) };
+                      }),
+                    }
+                  : {}),
                 description: `${upcoming.label}のソフトテニス競技の日程・会場・実施種目。`,
               }),
             }}
@@ -1165,6 +1174,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           return { label: c.label, href: match?.href ?? null };
         }),
         officialUrl: upcomingEntry.sourceUrl || officialUrl || null,
+        schedule: buildCategorySchedule(upcomingEntry),
         hasStarted: Boolean(upcomingEntry.startDate && upcomingEntry.startDate <= todayIso),
       }
     : null;

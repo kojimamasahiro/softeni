@@ -54,6 +54,22 @@ export interface TournamentCategoryInfo {
   status?: 'abandoned';
   /** status==='abandoned' のとき、最後に完了したラウンド名（例: "3回戦"）。 */
   abandonedAfterRound?: string;
+  /**
+   * 種目別の競技日程（開催前・開催中の大会で、主催者が種目ごとの日程を出している場合だけ）。
+   * 出典は同じ年度の `TournamentInformationEntry.scheduleSource` / `scheduleSourceUrl`。
+   * **予定**であって実績ではない。推測で埋めない（出典に無い日は書かない）。
+   * docs/wiki/data-model.md「種目別の競技日程（`schedule`）」
+   */
+  schedule?: TournamentCategorySchedule;
+}
+
+export interface TournamentCategorySchedule {
+  /** その種目の最初の試合日（YYYY-MM-DD） */
+  startDate: string;
+  /** その種目の決勝日（YYYY-MM-DD）。1日で終わるなら startDate と同じ */
+  endDate: string;
+  /** 決勝の開始予定時刻（HH:MM、**会場の現地時刻**）。出典に無ければ省略 */
+  finalTime?: string;
 }
 
 export interface TournamentInformationEntry {
@@ -94,6 +110,11 @@ export interface TournamentInformationEntry {
    * docs/raw/2026-09-05-cancelled-tournament-editions.md
    */
   status?: 'cancelled';
+  /** `categories[].schedule` の出典名（例: 大会公式リザルトサイト）。schedule を書いたら必須 */
+  scheduleSource?: string;
+  scheduleSourceUrl?: string;
+  /** 出典を確認した日（YYYY-MM-DD）。主催者の日程は変わり得るので「いつ時点か」を併記する */
+  scheduleCheckedOn?: string;
 }
 
 /**

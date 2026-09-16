@@ -7,6 +7,7 @@
 // どれかが静かに壊れると、出るべき選手に出ない／終わった大会が出続ける。
 
 import { assert, summary, test } from '../playerStats/__tests__/harness';
+import { buildCategorySchedule, formatScheduleDates } from '../categorySchedule';
 import { buildUpcomingInternationalLinks, placementStrength, type DelegationMembership, type PlayerTournamentLike } from '../upcomingInternational';
 import type { TournamentInformationEntry } from '../../src/types/tournament';
 
@@ -234,6 +235,78 @@ test('会期が過ぎれば名簿があってもブロックは消える', () =>
     delegations: delegations(),
   });
   assert.strictEqual(links.length, 0);
+});
+
+// --- 種目別の競技日程（runbook S10） ---------------------------------------------------
+
+const SCHEDULED_CATEGORIES = [
+  { ...CATEGORIES[0], schedule: { startDate: '2026-09-22', endDate: '2026-09-23', finalTime: '15:45' } },
+  { ...CATEGORIES[1], schedule: { startDate: '2026-09-21', endDate: '2026-09-21', finalTime: '17:00' } },
+  { ...CATEGORIES[2], schedule: { startDate: '2026-09-18', endDate: '2026-09-20', finalTime: '17:15' } },
+  {
+    categoryId: 'singles-none-girls',
+    label: '女子シングルス',
+    category: 'singles',
+    gender: 'girls',
+    age: 'none',
+    schedule: { startDate: '2026-09-22', endDate: '2026-09-23', finalTime: '13:30' },
+  },
+] as TournamentInformationEntry['categories'];
+
+const SCHEDULE_SOURCE = { scheduleSource: '公式リザルト', scheduleSourceUrl: 'https://example.invalid/results/', scheduleCheckedOn: '2026-09-16' };
+
+test('formatScheduleDates: 曜日つき・同月は終了側の月を省く・月またぎは書く・1日なら単日', () => {
+  assert.strictEqual(formatScheduleDates('2026-09-18', '2026-09-20'), '9月18日（金）〜20日（日）');
+  assert.strictEqual(formatScheduleDates('2026-09-21', '2026-09-21'), '9月21日（月）');
+  assert.strictEqual(formatScheduleDates('2026-09-30', '2026-10-01'), '9月30日（水）〜10月1日（木）');
+});
+
+test('buildCategorySchedule: 日程順に並ぶ／出典が無ければ出さない／schedule の無い種目は落とす', () => {
+  const s = buildCategorySchedule(info({ categories: SCHEDULED_CATEGORIES, ...SCHEDULE_SOURCE }));
+  assert.deepStrictEqual(
+    s?.rows.map((r) => r.label),
+    ['男子団体', '混合ダブルス', '女子シングルス', '男子シングルス'],
+  );
+  assert.strictEqual(s?.checkedOn, '2026-09-16');
+  // 出典が無い日程は併記できないので出さない
+  assert.strictEqual(buildCategorySchedule(info({ categories: SCHEDULED_CATEGORIES })), null);
+  // schedule を持つ種目が無ければ null
+  assert.strictEqual(buildCategorySchedule(info({ categories: CATEGORIES, ...SCHEDULE_SOURCE })), null);
+  // 時刻の形が壊れていれば時刻だけ落とす
+  const broken = buildCategorySchedule(
+    info({ categories: [{ ...CATEGORIES[1], schedule: { startDate: '2026-09-21', endDate: '2026-09-21', finalTime: '17時' } }], ...SCHEDULE_SOURCE }),
+  );
+  assert.strictEqual(broken?.rows[0].finalTime, null);
+});
+
+test('選手ページの日程は、その選手の出場種目だけに絞られる', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [],
+    tournamentIndex: INDEX,
+    informationMap: new Map([['asian-games', [info({ categories: SCHEDULED_CATEGORIES, ...SCHEDULE_SOURCE })]]]),
+    today: '2026-09-16',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations(),
+  });
+  const rows = links[0].delegation?.schedule?.rows ?? [];
+  // 女子シングルスは上松の出場種目ではないので出ない
+  assert.deepStrictEqual(
+    rows.map((r) => r.label),
+    ['男子団体', '混合ダブルス', '男子シングルス'],
+  );
+  assert.strictEqual(links[0].delegation?.schedule?.source, '公式リザルト');
+});
+
+test('種目別日程が無い大会では delegation.schedule は null（従来表示のまま）', () => {
+  const links = buildUpcomingInternationalLinks({
+    playerTournaments: [],
+    tournamentIndex: INDEX,
+    informationMap: INFO,
+    today: '2026-09-08',
+    playerName: { lastName: '上松', firstName: '俊貴' },
+    delegations: delegations(),
+  });
+  assert.strictEqual(links[0].delegation?.schedule, null);
 });
 
 test('placementStrength: 優勝 > 準優勝 > ベスト4 > ベスト8 > 回戦敗退 > 予選順位 > 不明', () => {
