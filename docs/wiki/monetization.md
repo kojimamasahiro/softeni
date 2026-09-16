@@ -369,6 +369,11 @@ score機能を一般ユーザーの練習試合でも使える形に広げる際
 
 ## 発展候補アイデア一覧（Idea Backlog）
 
+- **AdSense手動広告枠**（2026-08-22 起票 → 2026-08-23 実装 → 2026-08-25 全面展開）: 自動広告の
+  ページ内挿入をやめて手動枠へ移した。仕様は本ページ「[Web 広告](#web-広告)」、判断は
+  [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md)。残りは同節「残タスク」（本番での
+  アンカー重なり・CLS確認）。検討経緯は
+  [raw/2026-08-22-idea-adsense-manual-ad-units.md](../raw/2026-08-22-idea-adsense-manual-ad-units.md)。
 - **Core Web Vitals改善**（2026-08-20、発散フェーズ）: AMP導入の代替案として出てきた
   アイデア。AMPは2021年以降SEO優位性がほぼ消滅・本サイトのUI（テーブル中心）とは相性が
   悪いため非推奨と判断し、代わりに既存ページのCore Web Vitals改善（画像最適化・不要JS
