@@ -181,7 +181,7 @@ export interface TournamentCategoryInfo {
 
 > **注**: 実際のJSONファイルには `informationId` フィールドが含まれていますが、型定義には含まれていません。
 > また、上のコード片は必須フィールドのみで、実際には `label` / `venues` / `note` /
-> `guidelineUrl` / `resultPath` / `status` などの任意フィールドがある。**最新は必ず
+> `guidelineUrl` / `resultPath` / `status` / `scheduleSource`（＋`categories[].schedule`）などの任意フィールドがある。**最新は必ず
 > [`src/types/tournament.ts`](../src/types/tournament.ts) を見ること。**
 
 #### 大会運営状態の語彙（`status`）

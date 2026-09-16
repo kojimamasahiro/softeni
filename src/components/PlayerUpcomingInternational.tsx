@@ -46,6 +46,7 @@ export default function PlayerUpcomingInternational({ fullName, links }: { fullN
         const dateRange = formatDateRange(l.startDate, l.endDate);
         const place = [l.location, l.venueName].filter(Boolean).join(' ');
         const announced = formatAnnouncedOn(l.delegation?.announcedOn ?? null);
+        const scheduleCheckedOn = formatAnnouncedOn(l.delegation?.schedule?.checkedOn ?? null);
 
         return (
           <section key={l.mainTournamentId} className="rounded-lg border border-border bg-surface p-4">
@@ -74,6 +75,28 @@ export default function PlayerUpcomingInternational({ fullName, links }: { fullN
                   </a>
                   {announced ? `（${announced}発表）` : ''}
                 </p>
+                {l.delegation.schedule && (
+                  <div className="mb-2">
+                    <ul className="divide-y divide-border rounded-md border border-border text-sm">
+                      {l.delegation.schedule.rows.map((r) => (
+                        <li key={r.categoryId} className="grid gap-x-3 px-3 py-1.5 sm:grid-cols-[7rem_1fr]">
+                          <span className="font-medium">{r.label}</span>
+                          <span className="text-text-secondary">
+                            {r.dateLabel}
+                            {r.finalTime && <span className="ml-2 whitespace-nowrap tabular-nums text-xs text-text-muted">決勝 {r.finalTime}〜</span>}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="mt-1 text-xs text-text-muted">
+                      日程は予定（時刻は会場の現地時刻）。出典:{' '}
+                      <a href={l.delegation.schedule.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-link hover:underline">
+                        {l.delegation.schedule.source}
+                      </a>
+                      {scheduleCheckedOn ? `（${scheduleCheckedOn}時点）` : ''}
+                    </p>
+                  </div>
+                )}
                 {/* 名簿がある場合は予選会の成績を併記しない。団体・混合は予選会を経ずに選ばれるため、
                     成績を並べると選考の根拠であるかのように読めてしまう。導線としてのリンクだけ残す。 */}
                 {l.qualifierLabel && l.qualifierHref && (

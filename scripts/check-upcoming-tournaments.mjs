@@ -132,6 +132,35 @@ for (const file of delegationFiles) {
   }
 }
 
+// ── 5. 種目別日程（categories[].schedule）の健全性 ──────────────────────────
+// 日程は主催者発表の転記で、会期中に変わり得る。表示側は形の壊れた値を黙って落とすので、
+// ここで「落とされている／会期とずれている」を拾う。未来の回だけを見る（終わった回は表示されない）。
+const TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const scheduleIssues = [];
+for (const t of index) {
+  for (const e of futureOf(t.tournamentId)) {
+    const scheduled = (e.categories ?? []).filter((c) => c.schedule);
+    if (scheduled.length === 0) continue;
+    const where = `${t.tournamentId}/${e.year}`;
+    if (!e.scheduleSource || !e.scheduleSourceUrl) scheduleIssues.push({ where, issue: 'scheduleSource / scheduleSourceUrl が無い（日程が一切表示されない）' });
+    if (!e.scheduleCheckedOn) scheduleIssues.push({ where, issue: 'scheduleCheckedOn が無い（いつ時点の日程か出せない）' });
+    for (const c of scheduled) {
+      const { startDate, endDate, finalTime } = c.schedule;
+      if (!DATE_RE.test(startDate ?? '') || !DATE_RE.test(endDate ?? '')) {
+        scheduleIssues.push({ where, issue: `${c.categoryId}: 日付が YYYY-MM-DD でない（表示されない）` });
+        continue;
+      }
+      if (startDate > endDate) scheduleIssues.push({ where, issue: `${c.categoryId}: startDate > endDate` });
+      if ((e.startDate && startDate < e.startDate) || (e.endDate && endDate > e.endDate)) {
+        scheduleIssues.push({ where, issue: `${c.categoryId}: 会期 ${e.startDate}〜${e.endDate} の外にはみ出している` });
+      }
+      if (finalTime !== undefined && !TIME_RE.test(finalTime))
+        scheduleIssues.push({ where, issue: `${c.categoryId}: finalTime "${finalTime}" が HH:MM でない（時刻だけ表示されない）` });
+    }
+  }
+}
+
 // ── 出力 ───────────────────────────────────────────────────────────────
 const line = (s = '') => console.log(s);
 
@@ -171,6 +200,14 @@ for (const x of delegationIssues) {
   line(`    - ${x.file}: ${x.issue}`);
 }
 if (delegationIssues.length === 0) line('    （なし）');
+line();
+
+line(`[5] 種目別日程（schedule）の問題: ${scheduleIssues.length} 件`);
+line('    → 主催者の日程は変わり得る。会期中は出典を見直し、scheduleCheckedOn を更新する');
+for (const x of scheduleIssues) {
+  line(`    - ${x.where}: ${x.issue}`);
+}
+if (scheduleIssues.length === 0) line('    （なし）');
 line();
 
 line('※ 終了コードは常に 0。これは運用の残タスク一覧であり、ビルドを止めるエラーではない。');

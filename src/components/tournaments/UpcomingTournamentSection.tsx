@@ -18,6 +18,8 @@
 
 import Link from 'next/link';
 
+import type { CategorySchedule } from '@/lib/categorySchedule';
+
 /** 開催前ブロックで表示する会場1件。information の `venues[]` の表示に必要な項目だけを抜いたもの。 */
 export type UpcomingVenue = {
   name: string | null;
@@ -42,6 +44,8 @@ export type UpcomingTournamentData = {
   /** 実施種目。href はその年度・種目の結果ページが details/ に実在する場合のみ入る（無ければリンクにしない）。 */
   categoryLabels: { label: string; href: string | null }[];
   officialUrl: string | null;
+  /** 種目別の競技日程（主催者発表の予定の転記）。無ければ null で、表ごと出さない */
+  schedule: CategorySchedule | null;
   /** すでに会期に入っているか（true なら「開催中」表記にする） */
   hasStarted: boolean;
 };
@@ -55,6 +59,68 @@ function formatDateRange(start: string | null, end: string | null): string {
   const year = start.slice(0, 4);
   if (!end || end === start) return `${year}年${fmt(start)}`;
   return `${year}年${fmt(start)}〜${fmt(end)}`;
+}
+
+function formatCheckedOn(d: string | null): string | null {
+  if (!d) return null;
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+  return m ? `${m[1]}年${Number(m[2])}月${Number(m[3])}日` : d;
+}
+
+/**
+ * 種目別の日程表。主催者発表の「予定」なので、見出しと注記で予定であることと
+ * 出典・確認日を必ず併記する（当サイトの推定と読まれないように）。
+ */
+function ScheduleTable({ schedule }: { schedule: CategorySchedule }) {
+  const checkedOn = formatCheckedOn(schedule.checkedOn);
+  return (
+    <div className="mb-3">
+      <h3 className="mb-1.5 text-sm font-semibold text-text-secondary">種目別の日程（予定）</h3>
+      <div className="overflow-x-auto rounded-lg border border-border">
+        <table className="w-full text-sm">
+          <thead className="bg-bg-subtle text-xs text-text-muted">
+            <tr>
+              <th scope="col" className="px-2 py-1.5 sm:px-3 text-left font-semibold">
+                種目
+              </th>
+              <th scope="col" className="px-2 py-1.5 sm:px-3 text-left font-semibold">
+                日程
+              </th>
+              <th scope="col" className="px-2 py-1.5 sm:px-3 text-left font-semibold whitespace-nowrap">
+                決勝開始
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {schedule.rows.map((r) => (
+              <tr key={r.categoryId}>
+                <th scope="row" className="px-2 py-1.5 sm:px-3 text-left font-medium whitespace-nowrap">
+                  {r.label}
+                </th>
+                <td className="px-2 py-1.5 sm:px-3 text-text-secondary">
+                  {/* 狭い幅では「〜」の後でだけ折り返す（「（金）」の途中で割れないように） */}
+                  {r.dateLabel.split('〜').map((part, i, all) => (
+                    <span key={part} className="inline-block whitespace-nowrap">
+                      {part}
+                      {i < all.length - 1 ? '〜' : ''}
+                    </span>
+                  ))}
+                </td>
+                <td className="px-2 py-1.5 sm:px-3 tabular-nums text-text-secondary whitespace-nowrap">{r.finalTime ?? '―'}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-1 text-xs text-text-muted">
+        時刻は会場の現地時刻での開始予定。出典:{' '}
+        <a href={schedule.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-link hover:underline">
+          {schedule.source}
+        </a>
+        {checkedOn ? `（${checkedOn}時点）` : ''}。変更されることがあるため、最新の情報は出典を確認してください。
+      </p>
+    </div>
+  );
 }
 
 export default function UpcomingTournamentSection({ data }: { data: UpcomingTournamentData }) {
@@ -108,6 +174,8 @@ export default function UpcomingTournamentSection({ data }: { data: UpcomingTour
           </>
         )}
       </dl>
+
+      {data.schedule && <ScheduleTable schedule={data.schedule} />}
 
       {data.venues.length > 0 && (
         <div className="mb-3">
