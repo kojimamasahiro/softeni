@@ -674,7 +674,8 @@ alias 側に振れる）。また `.playerstats/_facts/**` は選手ページの
 - playerIds 参照切れ / id 重複 → 該当レコードを手動修復。
 - 別名のまま残る出場 → `normalize-team-names.mjs --scope=all` を実行。
 - 未統合候補（機械は自動OK可と判定）→ `npm run team:review` で人が判断する
-  （2026-09-12: 自動統合は廃止。`apply-auto-merges.mjs` は人の判断を反映するだけになった）。
+  （2026-09-12: 自動統合は廃止。`apply-auto-merges.mjs` は人の判断を反映するだけになった。
+  [ADR-019](../adr/ADR-019-team-merge-human-only.md)）。
 - 要人手レビュー候補（同一大会同居等）→ レビューHTMLで同一/別を判断。
 - **未統合候補（選手共有・同年共起2名以上）**（2026-09-05 追加）→ レビューHTMLで同一/別を判断。
   自動OKには絶対に載らない（[ADR-017](../adr/ADR-017-team-merge-signal-player-overlap.md)）。
@@ -820,7 +821,8 @@ PDF取り込みで**名前の一部が落ちたまま公開データに入る**�
 
 ## 既定グループ分けの規則（2026-09-12 改定）
 
-**名前から読める段階を、出場大会のジャンルより優先する**（`level(name) ?? memGenre(member, context)`）。
+**名前から読める段階を、出場大会のジャンルより優先する**（`level(name) ?? memGenre(member, context)`。
+判断の記録は [ADR-019](../adr/ADR-019-team-merge-human-only.md)）。
 
 改定の根拠は実測。機械だけで決めた統合49件から20件を無作為抽出して人が点検したところ、
 **誤統合が11件（55.0%・95%区間 34.2〜74.2%）**あった（抽出と点検票は `scripts/spot-check-team-decisions.mjs`。

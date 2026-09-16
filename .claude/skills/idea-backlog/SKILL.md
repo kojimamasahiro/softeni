@@ -153,7 +153,8 @@ rewriting history, consistent with this repo's "raw is append-only" convention.
 
 If the update changes the idea's status in a way that's visible from the outside (e.g. 発散
 フェーズ → 実装済み, or a milestone completes), update the row in the area page's Idea Backlog
-table too — and if that shift is significant enough that the one-line summary in
+table too (rewrite its 状況 cell in place — the same "status only" rule applies there: status with date,
+a one-line purpose, and what remains, ≤200 chars; measurements and reasoning go to the raw file) — and if that shift is significant enough that the one-line summary in
 `docs/wiki/idea-backlog.md` would now read as stale or misleading, update that summary as well.
 Small in-progress detail changes don't need to ripple all the way up; a status/phase change that
 would mislead someone skimming just the top-level index does. When you do update it, replace
