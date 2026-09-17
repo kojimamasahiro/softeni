@@ -37,6 +37,18 @@ answered in chat and forgotten.
   "not yet reviewed", and do not retrofit one unless you are actually re-compiling the note.
   Exception: notes dated 2026-08-01 onward were backfilled on 2026-08-12
   (see docs/raw/2026-08-12-llm-wiki-lint.md).
+- Keep each docs/wiki page within **12,000 characters** (check: `node scripts/check-wiki-size.mjs`).
+  Every session that reads the wiki pays for its length, and pages that grew by appended
+  "追記（YYYY-MM-DD）" paragraphs reached 40,000–68,000 characters. The wiki holds the
+  **current spec only**: behavior, rules, thresholds, one-line decisions with links, and
+  rejected facts (one line, to prevent re-investigation). Dated history, measurements, and
+  verification logs go to docs/raw. When a page exceeds the budget, compress it with
+  docs/prompts/slim-wiki-page.md (the full pre-compression text is archived verbatim to
+  `docs/raw/YYYY-MM-DD-wiki-archive-<page>.md`). When updating a page, rewrite the relevant
+  section in place instead of appending a dated paragraph.
+- Each compressed wiki page starts with an `適用範囲` line (汎用 / 学校スポーツ共通 /
+  ソフトテニス固有 / 混在) so that parts reusable for other sports can be told apart
+  (see docs/raw/2026-09-18-idea-multi-sport-expansion.md).
 - When adding a new docs/wiki page, cross-link it: add it to docs/wiki/index.md and add at least
   one link from an existing related page. Wiki pages that aren't interconnected are effectively
   invisible to future compile passes.
@@ -63,7 +75,8 @@ answered in chat and forgotten.
 
 Before implementing any feature or modifying behavior:
 
-- Read related docs/wiki and docs/adr files.
+- Read related docs/wiki and docs/adr files. Wiki pages hold the current spec; open the
+  linked docs/raw archive only when you need the history or measurements behind it.
 - Check for existing architecture decisions and constraints.
 - Check for deprecated or draft specifications.
 - Do not assume missing requirements.

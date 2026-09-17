@@ -73,6 +73,7 @@
 | AIが自律的にサービスを改善する仕組み（検知・検証の全体委譲） | **方向決着・一部実装**（2026-09-06〜）。検知と検証をAIに任せ、方向の判断は人が持つ。CI（`checks.yml`）と判断台帳まで実装。チーム名寄せは全件人手レビューへ（[ADR-019](../adr/ADR-019-team-merge-human-only.md)）、抜き取り監査はPDF取り込みへ移す | [アイデア](../raw/2026-09-06-idea-autonomous-improvement-agent.md) |
 | AIとの共同探索と探索プロセスの属人性 | 発散フェーズ・中断中（2026-07-11）。中心の問い=「AIは人間の探索の属人性をどこまで減らせるか（品質の底上げ、答えの均一化でなく）」。消化状態の追跡はミクロ層として下位に位置付け。**再開はrawファイル末尾の「再開ポイント」（未回答の問い3つ）から** | [アイデア](../raw/2026-07-11-idea-ai-co-exploration-context.md) |
 | skillのローカルLLM代替（Claude不在時） | **一部実装**（2026-08-14〜）。Claude 不在時に skill をローカルで回す。venue-data・pdf-to-players は実装済み（LLMはほぼ不要）。本命の insight は照合の網の拡張が先。モデル選定は保留 | [アイデア](../raw/2026-08-14-idea-local-llm-skill-replacement.md)、[インカレの姓名分割](../raw/2026-08-29-intercollegiate-name-split.md) |
+| wiki の圧縮（読み込みコストの削減） | **一部実施**（2026-09-18〜）。wiki を現在の仕様だけにして毎回の LLM コストを下げる。seo.md は圧縮済み、予算超過の残り9ページ（手順は [slim-wiki-page.md](../prompts/slim-wiki-page.md)） | [作業ノート](../raw/2026-09-18-wiki-slimming.md) |
 
 ## 姓名の分割ゆれ（2026-08-29 棚卸し）
 

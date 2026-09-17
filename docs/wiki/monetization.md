@@ -379,6 +379,10 @@ score機能を一般ユーザーの練習試合でも使える形に広げる際
   悪いため非推奨と判断し、代わりに既存ページのCore Web Vitals改善（画像最適化・不要JS
   削減など）でモバイル表示速度を上げる方が投資対効果が良いという結論。詳細は
   [raw/2026-08-20-idea-core-web-vitals-improvement.md](../raw/2026-08-20-idea-core-web-vitals-improvement.md)。
+- **同じ仕組みを他競技へ広げる**（2026-09-18、発散フェーズ）: 固定費の大半が Claude の利用料なので、
+  取り込み〜公開の仕組みを他競技にも使い、ほぼ同じ費用で広告の載るページを増やす。
+  下地として wiki に適用範囲の印を付けた。残りは対象競技の需要・競合・データ入手性の調査。
+  [raw/2026-09-18-idea-multi-sport-expansion.md](../raw/2026-09-18-idea-multi-sport-expansion.md)。
 
 ## Assumption
 
