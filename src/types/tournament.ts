@@ -188,6 +188,12 @@ export interface TeamMatchDetail {
   scoreB: number | null;
   playersA: TeamMatchPlayer[];
   playersB: TeamMatchPlayer[];
+  /**
+   * ゲームごとのポイント（`[A のポイント, B のポイント]` を実施順に）。
+   * 元資料にゲームごとの記録がある大会だけが持つ（インターハイ。高校選抜は本数までしか印字されない）。
+   * そのゲームを取ったのは**多いほう**（同点は無い）。デュースが続くと 10 以上になる。
+   */
+  games?: [number, number][];
 }
 
 /**
