@@ -631,7 +631,78 @@
       "matchId": "match-41",
       "nextMatchId": "match-45",
       "prevMatchIds": ["match-33", "match-34"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "赤間", "firstName": "音寧" },
+            { "lastName": "浅野", "firstName": "琉愛" }
+          ],
+          "playersB": [
+            { "lastName": "三枝", "firstName": "柚葵" },
+            { "lastName": "結城", "firstName": "和華" }
+          ],
+          "games": [
+            [6, 4],
+            [4, 6],
+            [3, 5],
+            [3, 5],
+            [4, 1],
+            [6, 4],
+            [6, 8]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "柏", "firstName": "春花" },
+            { "lastName": "村上", "firstName": "芹" }
+          ],
+          "playersB": [
+            { "lastName": "甲斐", "firstName": "愛実瑠" },
+            { "lastName": "山口", "firstName": "優菜" }
+          ],
+          "games": [
+            [4, 2],
+            [6, 4],
+            [5, 3],
+            [6, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "中山", "firstName": "萌" },
+            { "lastName": "根岸", "firstName": "ゆず" }
+          ],
+          "playersB": [
+            { "lastName": "瀬戸口", "firstName": "椛" },
+            { "lastName": "水谷", "firstName": "静流" }
+          ],
+          "games": [
+            [4, 2],
+            [2, 4],
+            [4, 1],
+            [4, 0],
+            [3, 5],
+            [3, 5],
+            [7, 9]
+          ]
+        }
+      ]
     },
     {
       "entries": [15, 19],
@@ -644,7 +715,77 @@
       "matchId": "match-42",
       "nextMatchId": "match-45",
       "prevMatchIds": ["match-35", "match-36"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "中嶋", "firstName": "夏鈴" },
+            { "lastName": "五十嵐", "firstName": "杏寿" }
+          ],
+          "playersB": [
+            { "lastName": "中島", "firstName": "ひめ" },
+            { "lastName": "起田", "firstName": "亜旺" }
+          ],
+          "games": [
+            [5, 3],
+            [5, 3],
+            [7, 5],
+            [2, 4],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "藤澤", "firstName": "陽奈子" },
+            { "lastName": "加藤", "firstName": "結衣" }
+          ],
+          "playersB": [
+            { "lastName": "大野", "firstName": "柚芽" },
+            { "lastName": "市村", "firstName": "花" }
+          ],
+          "games": [
+            [3, 5],
+            [4, 2],
+            [4, 2],
+            [1, 4],
+            [2, 4],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "黒澤", "firstName": "祐菜" },
+            { "lastName": "小池", "firstName": "ありさ" }
+          ],
+          "playersB": [
+            { "lastName": "小野", "firstName": "愛莉" },
+            { "lastName": "松田", "firstName": "悠那" }
+          ],
+          "games": [
+            [3, 5],
+            [5, 3],
+            [0, 4],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [30, 31],
@@ -657,7 +798,78 @@
       "matchId": "match-43",
       "nextMatchId": "match-46",
       "prevMatchIds": ["match-37", "match-38"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "渡邉", "firstName": "佳穂" },
+            { "lastName": "生井", "firstName": "結愛" }
+          ],
+          "playersB": [
+            { "lastName": "金野", "firstName": "莉来" },
+            { "lastName": "渡邊", "firstName": "れあ" }
+          ],
+          "games": [
+            [2, 4],
+            [2, 4],
+            [10, 8],
+            [1, 4],
+            [4, 2],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "螺良", "firstName": "寧々" },
+            { "lastName": "阿久津", "firstName": "美優" }
+          ],
+          "playersB": [
+            { "lastName": "栁川", "firstName": "凜" },
+            { "lastName": "富永", "firstName": "紗妃" }
+          ],
+          "games": [
+            [4, 2],
+            [1, 4],
+            [5, 3],
+            [4, 2],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "三浦", "firstName": "夕依" },
+            { "lastName": "福地", "firstName": "奈津美" }
+          ],
+          "playersB": [
+            { "lastName": "後藤", "firstName": "千尋" },
+            { "lastName": "泉屋", "firstName": "咲穂" }
+          ],
+          "games": [
+            [3, 5],
+            [2, 4],
+            [5, 3],
+            [5, 3],
+            [1, 4],
+            [8, 6],
+            [2, 7]
+          ]
+        }
+      ]
     },
     {
       "entries": [37, 48],
@@ -670,7 +882,74 @@
       "matchId": "match-44",
       "nextMatchId": "match-46",
       "prevMatchIds": ["match-39", "match-40"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "中嶋", "firstName": "恋暖" },
+            { "lastName": "久保", "firstName": "日葵" }
+          ],
+          "playersB": [
+            { "lastName": "金井", "firstName": "涼" },
+            { "lastName": "横田", "firstName": "桃" }
+          ],
+          "games": [
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [4, 6],
+            [5, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "西村", "firstName": "京栞" },
+            { "lastName": "片山", "firstName": "伊織" }
+          ],
+          "playersB": [
+            { "lastName": "竹村", "firstName": "瑠稀愛" },
+            { "lastName": "三村", "firstName": "優陽" }
+          ],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [4, 2],
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [3, 7]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 0,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "鹿野", "firstName": "叶恵" },
+            { "lastName": "諏佐", "firstName": "杏" }
+          ],
+          "playersB": [
+            { "lastName": "竹平", "firstName": "碧純" },
+            { "lastName": "野中", "firstName": "萌花" }
+          ],
+          "games": [
+            [0, 4],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [7, 15],
@@ -683,7 +962,74 @@
       "matchId": "match-45",
       "nextMatchId": "match-47",
       "prevMatchIds": ["match-41", "match-42"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "甲斐", "firstName": "愛実瑠" },
+            { "lastName": "山口", "firstName": "優菜" }
+          ],
+          "playersB": [
+            { "lastName": "中嶋", "firstName": "夏鈴" },
+            { "lastName": "五十嵐", "firstName": "杏寿" }
+          ],
+          "games": [
+            [4, 6],
+            [4, 1],
+            [6, 4],
+            [4, 1],
+            [3, 5],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 2,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "瀬戸口", "firstName": "椛" },
+            { "lastName": "水谷", "firstName": "静流" }
+          ],
+          "playersB": [
+            { "lastName": "藤澤", "firstName": "陽奈子" },
+            { "lastName": "加藤", "firstName": "結衣" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 6],
+            [5, 7],
+            [8, 6]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "三枝", "firstName": "柚葵" },
+            { "lastName": "結城", "firstName": "和華" }
+          ],
+          "playersB": [
+            { "lastName": "黒澤", "firstName": "祐菜" },
+            { "lastName": "小池", "firstName": "ありさ" }
+          ],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [4, 0],
+            [4, 1]
+          ]
+        }
+      ]
     },
     {
       "entries": [31, 48],
@@ -696,7 +1042,79 @@
       "matchId": "match-46",
       "nextMatchId": "match-47",
       "prevMatchIds": ["match-43", "match-44"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "栁川", "firstName": "凜" },
+            { "lastName": "富永", "firstName": "紗妃" }
+          ],
+          "playersB": [
+            { "lastName": "竹村", "firstName": "瑠稀愛" },
+            { "lastName": "三村", "firstName": "優陽" }
+          ],
+          "games": [
+            [7, 5],
+            [1, 4],
+            [4, 1],
+            [1, 4],
+            [0, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 3,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "金野", "firstName": "莉来" },
+            { "lastName": "渡邊", "firstName": "れあ" }
+          ],
+          "playersB": [
+            { "lastName": "金井", "firstName": "涼" },
+            { "lastName": "横田", "firstName": "桃" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 2],
+            [5, 7],
+            [5, 3],
+            [4, 2],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "後藤", "firstName": "千尋" },
+            { "lastName": "泉屋", "firstName": "咲穂" }
+          ],
+          "playersB": [
+            { "lastName": "竹平", "firstName": "碧純" },
+            { "lastName": "野中", "firstName": "萌花" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 1],
+            [2, 4],
+            [1, 4],
+            [4, 2],
+            [4, 0],
+            [1, 7]
+          ]
+        }
+      ]
     },
     {
       "entries": [7, 48],
@@ -709,7 +1127,73 @@
       "matchId": "match-47",
       "nextMatchId": null,
       "prevMatchIds": ["match-45", "match-46"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 1,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "甲斐", "firstName": "愛実瑠" },
+            { "lastName": "山口", "firstName": "優菜" }
+          ],
+          "playersB": [
+            { "lastName": "竹村", "firstName": "瑠稀愛" },
+            { "lastName": "三村", "firstName": "優陽" }
+          ],
+          "games": [
+            [7, 9],
+            [4, 6],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "瀬戸口", "firstName": "椛" },
+            { "lastName": "水谷", "firstName": "静流" }
+          ],
+          "playersB": [
+            { "lastName": "金井", "firstName": "涼" },
+            { "lastName": "横田", "firstName": "桃" }
+          ],
+          "games": [
+            [4, 1],
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "三枝", "firstName": "柚葵" },
+            { "lastName": "結城", "firstName": "和華" }
+          ],
+          "playersB": [
+            { "lastName": "竹平", "firstName": "碧純" },
+            { "lastName": "野中", "firstName": "萌花" }
+          ],
+          "games": [
+            [1, 4],
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [2, 4]
+          ]
+        }
+      ]
     }
   ],
   "results": [

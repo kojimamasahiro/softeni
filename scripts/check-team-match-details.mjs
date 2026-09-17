@@ -91,6 +91,24 @@ for (const { file, data } of files) {
       } else if (sub.status === 'not_played') {
         if (sub.winner !== null || !noScore) problems.push(`${at}: not_played なのに winner か本数がある`);
       }
+      if (Array.isArray(sub.games)) {
+        // ゲームごとのポイント（インターハイ）。本数と数え直しが合うかまで見る
+        let wonA = 0;
+        let wonB = 0;
+        for (const [gi, g] of sub.games.entries()) {
+          if (!Array.isArray(g) || g.length !== 2 || !g.every((v) => Number.isInteger(v) && v >= 0)) {
+            problems.push(`${at}: games[${gi}] が [数, 数] でない ${JSON.stringify(g)}`);
+            continue;
+          }
+          if (g[0] === g[1]) problems.push(`${at}: games[${gi}] が同点 ${g[0]}-${g[1]}（取った側が決まらない）`);
+          else if (g[0] > g[1]) wonA += 1;
+          else wonB += 1;
+        }
+        if (sub.status !== 'not_played' && (wonA !== sub.scoreA || wonB !== sub.scoreB)) {
+          problems.push(`${at}: 本数 ${sub.scoreA}-${sub.scoreB} がゲームごとのポイントの数え直し ${wonA}-${wonB} と合わない`);
+        }
+        if (sub.status === 'not_played' && sub.games.length > 0) problems.push(`${at}: not_played なのに games がある`);
+      }
       if (sub.winner === 'A') winsA += 1;
       if (sub.winner === 'B') winsB += 1;
 

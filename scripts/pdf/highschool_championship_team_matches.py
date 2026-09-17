@@ -1,0 +1,243 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""インターハイ（全国高等学校総合体育大会）の団体戦の記録PDF → 対戦ごとの記録（ADR-020）。
+
+既存の `data/tournaments/details/highschool-championship/<年>/team-none-{boys,girls}.json` の
+各試合へ `matches`（ペア・本数・**ゲームごとのポイント**）を差し込む。高校選抜と違い、
+**詳細があるのはベスト8以降だけ**（1〜3回戦は学校単位の本数しか印字されない）。
+
+## この様式の見極め（令和8年度 女子団体で検証）
+
+- テキストPDF。ページ構成は **p1 入賞校一覧 / p2 トーナメント表 / p3・p4 準々決勝 / p5 準決勝 / p6 決勝**。
+  年度でページ数は変わるので `--pages` で渡す。詳細ページは1ページに最大2試合。
+- 1試合 = 見出し行（**左右の端にエントリー番号**・学校名・都道府県・学校単位の本数）＋ 3対戦。
+  **エントリー番号が印字されているので、details の試合とは番号で直接対応する**
+  （高校選抜のように位置や選手の重なりから推測しなくてよい）。
+- 1対戦 = ゲーム行が最大7行（左のポイント・「－」・右のポイント）。**丸数字がそのゲームを取った側**。
+  行の中ほどに両ペアの氏名（姓と名が別の語。「・」は無い）と、対戦の本数（丸数字＝その対戦の勝者）。
+- **打ち切りの印字はあてにしない**。「打ち切り」と書かれる対戦とそうでない対戦がある
+  （準決勝で 3-3 のまま印字のみ）。**勝者は本数の丸数字の有無で決める**。
+- ポイントは10以上になる（実測 `⑩ － 8`）。丸数字の10〜20も読む（`team_match_details.CIRCLED`）。
+
+列のx座標（pt・A4縦）:
+  左 姓112 / 名146 | 左 本数223-226 | 左ポイント270-279 | 「－」293 | 右ポイント316-325 | 右 本数360-364 | 右 姓425 / 名459
+
+## 検算
+
+- 見出しの学校単位の本数 ＝ details の `scores`
+- 対戦の勝ち数 ＝ details の `scores`
+- **印字された本数 ＝ ゲームごとのポイントから数え直した本数**（この様式だけで効く強い検算）
+- 同じ選手が2校に割り当てられない
+
+## 使い方
+
+    python3 scripts/pdf/highschool_championship_team_matches.py PDF --pages 3-6 \
+        --details data/tournaments/details/highschool-championship/2026/team-none-girls.json [--write]
+    npx prettier --write data/tournaments/details/highschool-championship/2026/team-none-girls.json
+    npm run check:team-match-details
+
+`--write` が無ければ表示だけ。検算に1件でも引っかかれば書き込まない。冪等。
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import subprocess
+import sys
+import unicodedata
+from collections import defaultdict
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from team_match_details import individual_index, player_ref, score_of, write_details  # noqa: E402
+
+COLS = {
+    'left_last': (100, 141),
+    'left_first': (141, 180),
+    'left_games': (210, 240),
+    'left_point': (260, 285),
+    'dash': (288, 305),
+    'right_point': (310, 332),
+    'right_games': (352, 375),
+    'right_last': (415, 456),
+    'right_first': (456, 512),
+}
+RUBBER_GAP = 15.0  # 同じ対戦のゲーム行は約10pt間隔、対戦の間は30pt以上あく
+TYPES = ['D1', 'D2', 'D3']
+
+
+def words(pdf, page):
+    html = subprocess.run(['pdftotext', '-bbox', '-f', str(page), '-l', str(page), pdf, '-'],
+                          capture_output=True, text=True, check=True).stdout
+    width = float(re.search(r'<page width="([\d.]+)"', html).group(1))
+    ws = [dict(x=(float(a) + float(c)) / 2, x0=float(a), y=(float(b) + float(d)) / 2, t=e)
+          for a, b, c, d, e in re.findall(
+              r'<word xMin="([\d.]+)" yMin="([\d.]+)" xMax="([\d.]+)" yMax="([\d.]+)">([^<]*)</word>', html)]
+    return width, ws
+
+
+def in_col(w, col):
+    lo, hi = COLS[col]
+    return lo <= w['x'] < hi
+
+
+def pick(ws, col, y0, y1):
+    return sorted([w for w in ws if in_col(w, col) and y0 <= w['y'] <= y1], key=lambda w: w['y'])
+
+
+def headers(ws, width):
+    """見出し行 = 左端のエントリー番号と、同じ行の右端のエントリー番号"""
+    out = []
+    for w in ws:
+        if w['t'].isdigit() and w['x0'] < 75:
+            right = [v for v in ws if v['t'].isdigit() and v['x0'] > width - 75 and abs(v['y'] - w['y']) < 3]
+            if right:
+                out.append((w['y'], int(w['t']), int(right[0]['t'])))
+    return sorted(out)
+
+
+def rubber_groups(ws):
+    dashes = sorted([w for w in ws if w['t'] == '－' and in_col(w, 'dash')], key=lambda w: w['y'])
+    groups, cur = [], []
+    for d in dashes:
+        if cur and d['y'] - cur[-1]['y'] > RUBBER_GAP:
+            groups.append(cur)
+            cur = []
+        cur.append(d)
+    if cur:
+        groups.append(cur)
+    return groups
+
+
+def pair_names(ws, last_col, first_col, y0, y1):
+    """姓と名は別の語で、同じ行に並ぶ（「・」は無い）"""
+    firsts = pick(ws, first_col, y0, y1)
+    names = []
+    for ln in pick(ws, last_col, y0, y1):
+        fn = next((f for f in firsts if abs(f['y'] - ln['y']) < 2), None)
+        names.append(unicodedata.normalize('NFKC', f"{ln['t']} {fn['t']}" if fn else ln['t']))
+    return names
+
+
+def parse_page(pdf, page):
+    width, ws = words(pdf, page)
+    hs = headers(ws, width)
+    groups = rubber_groups(ws)
+    out = []
+    for i, (hy, a, b) in enumerate(hs):
+        next_y = hs[i + 1][0] if i + 1 < len(hs) else 10_000
+        lg = pick(ws, 'left_games', hy - 4, hy + 4)
+        rg = pick(ws, 'right_games', hy - 4, hy + 4)
+        subs = []
+        for g in [g for g in groups if hy < g[0]['y'] < next_y]:
+            y0, y1 = g[0]['y'] - 6, g[-1]['y'] + 6
+            games = []
+            for d in g:
+                lp = next((w for w in ws if in_col(w, 'left_point') and abs(w['y'] - d['y']) < 3), None)
+                rp = next((w for w in ws if in_col(w, 'right_point') and abs(w['y'] - d['y']) < 3), None)
+                if lp is None and rp is None:
+                    continue  # 行だけあって実施されなかったゲーム
+                games.append((score_of(lp['t']) if lp else None, score_of(rp['t']) if rp else None))
+            sub_l = pick(ws, 'left_games', y0, y1)
+            sub_r = pick(ws, 'right_games', y0, y1)
+            subs.append(dict(
+                playersA=pair_names(ws, 'left_last', 'left_first', y0, y1),
+                playersB=pair_names(ws, 'right_last', 'right_first', y0, y1),
+                gamesA=score_of(sub_l[0]['t']) if sub_l else None,
+                gamesB=score_of(sub_r[0]['t']) if sub_r else None,
+                points=games,
+            ))
+        out.append(dict(page=page, entryA=a, entryB=b,
+                        scoreA=score_of(lg[0]['t'])[0] if lg else None,
+                        scoreB=score_of(rg[0]['t'])[0] if rg else None,
+                        subs=subs))
+    return out
+
+
+def to_detail(index, sub, school_a, school_b, idx):
+    """ADR-020 の TeamMatchDetail へ。勝者は本数の丸数字で決まる"""
+    winner = 'A' if sub['gamesA'] and sub['gamesA'][1] else 'B' if sub['gamesB'] and sub['gamesB'][1] else None
+    status = 'completed' if winner else ('unfinished' if sub['points'] else 'not_played')
+    return {
+        'type': TYPES[index],
+        'status': status,
+        'winner': winner,
+        'scoreA': sub['gamesA'][0] if sub['gamesA'] else None,
+        'scoreB': sub['gamesB'][0] if sub['gamesB'] else None,
+        'playersA': [player_ref(n, school_a, idx) for n in sub['playersA']],
+        'playersB': [player_ref(n, school_b, idx) for n in sub['playersB']],
+        'games': [[p[0][0] if p[0] else None, p[1][0] if p[1] else None] for p in sub['points']],
+    }
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument('pdf')
+    ap.add_argument('--pages', required=True, help='詳細ページの範囲。例: 3-6')
+    ap.add_argument('--details', required=True)
+    ap.add_argument('--write', action='store_true')
+    args = ap.parse_args()
+
+    lo, _, hi = args.pages.partition('-')
+    details_path = Path(args.details)
+    details = json.load(open(details_path, encoding='utf-8'))
+    school = {e['entryNo']: e['playerIds'][0].split('_')[0] for e in details['entries']}
+    by_pair = {tuple(sorted(m['entries'])): m for m in details['matches']}
+    idx = individual_index()
+
+    problems, owner, counts = [], defaultdict(set), defaultdict(int)
+    for page in range(int(lo), int(hi or lo) + 1):
+        for m in parse_page(args.pdf, page):
+            db = by_pair.get(tuple(sorted((m['entryA'], m['entryB']))))
+            label = f"p{page} {school.get(m['entryA'], m['entryA'])}({m['entryA']}) 対 {school.get(m['entryB'], m['entryB'])}({m['entryB']})"
+            if not db:
+                problems.append(f'{label}: details に該当の試合が無い')
+                continue
+            flip = db['entries'][0] != m['entryA']  # details と左右が逆なら入れ替える
+            want = (db['scores'][str(m['entryA'])], db['scores'][str(m['entryB'])])
+            if (m['scoreA'], m['scoreB']) != want:
+                problems.append(f"{label}: 見出しの本数 {(m['scoreA'], m['scoreB'])} / details {want}")
+            if len(m['subs']) != 3:
+                problems.append(f'{label}: 対戦が {len(m["subs"])} 件（3件のはず）')
+
+            subs = [to_detail(k, s, school[m['entryA']], school[m['entryB']], idx) for k, s in enumerate(m['subs'])]
+            print(f"{label} {db['round']} {m['scoreA']}-{m['scoreB']}")
+            for k, (s, raw) in enumerate(zip(subs, m['subs'])):
+                counted = [sum(1 for p in raw['points'] if p[side] and p[side][1]) for side in (0, 1)]
+                if counted != [s['scoreA'], s['scoreB']]:
+                    problems.append(f'{label} 第{k + 1}対戦: 本数 {[s["scoreA"], s["scoreB"]]} / ゲームから数え直すと {counted}')
+                for side, players in (('playersA', s['playersA']), ('playersB', s['playersB'])):
+                    if len(players) != 2:
+                        problems.append(f'{label} 第{k + 1}対戦: {side} が {len(players)} 人')
+                    for p in players:
+                        counts['記録あり' if 'lastName' in p else '名前だけ'] += 1
+                        owner[p.get('name') or p['lastName'] + p['firstName']].add(m['entryA'] if side == 'playersA' else m['entryB'])
+                counts[s['status']] += 1
+                fmt = lambda ps: '・'.join(p.get('name') or p['lastName'] + p['firstName'] for p in ps)
+                pts = ' '.join(f'{g[0]}-{g[1]}' for g in s['games'])
+                print(f"    {s['type']} {s['status']:10} {fmt(s['playersA']):20} {s['scoreA']}-{s['scoreB']} {fmt(s['playersB']):20} | {pts}")
+            wins = [sum(1 for s in subs if s['winner'] == side) for side in ('A', 'B')]
+            if tuple(wins) != want:
+                problems.append(f'{label}: 対戦の勝ち数 {tuple(wins)} / details {want}')
+            if flip:
+                subs = [dict(s, winner={'A': 'B', 'B': 'A'}.get(s['winner']), scoreA=s['scoreB'], scoreB=s['scoreA'],
+                             playersA=s['playersB'], playersB=s['playersA'],
+                             games=[[g[1], g[0]] for g in s['games']]) for s in subs]
+            db['matches'] = subs
+
+    clash = {p: sorted(school.get(n, n) for n in s) for p, s in owner.items() if len(s) > 1}
+    if clash:
+        problems.append(f'2校に割り当てられた選手: {clash}')
+    print('\n対戦の状態:', {k: counts[k] for k in ('completed', 'unfinished', 'not_played')},
+          '/ 選手（延べ）: 記録あり', counts['記録あり'], '名前だけ', counts['名前だけ'])
+
+    if problems:
+        print('\n'.join(['書き込みを中止:'] + problems), file=sys.stderr)
+        sys.exit(1)
+    if args.write:
+        write_details(details_path, details)
+
+
+if __name__ == '__main__':
+    main()
