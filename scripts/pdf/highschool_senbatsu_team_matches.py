@@ -46,7 +46,6 @@ docs/adr/ADR-020-team-match-rubber-details.md。
 from __future__ import annotations
 
 import argparse
-import glob
 import json
 import re
 import subprocess
@@ -55,11 +54,9 @@ import unicodedata
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DETAILS_ROOT = ROOT / 'data' / 'tournaments' / 'details'
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from team_match_details import individual_index, key_of, player_ref, score_of, write_details  # noqa: E402
 
-CIRCLED = {c: i for i, c in enumerate('⓪①②③④⑤⑥⑦⑧⑨')}
-CIRCLED.update({c: i + 1 for i, c in enumerate('➀➁➂➃➄➅➆➇➈')})
 PREFS = ('北海道 青森 岩手 宮城 秋田 山形 福島 茨城 栃木 群馬 埼玉 千葉 東京 神奈川 新潟 富山 石川 福井 山梨 '
          '長野 岐阜 静岡 愛知 三重 滋賀 京都 大阪 兵庫 奈良 和歌山 鳥取 島根 岡山 広島 山口 徳島 香川 愛媛 '
          '高知 福岡 佐賀 長崎 熊本 大分 宮崎 鹿児島 沖縄').split()
@@ -67,15 +64,6 @@ SPECIAL = set('・･－()（）')
 DOUBLES_TYPES = ['D1', 'D2', 'D3']
 POS_TOL = 4.0
 MERGE_GAP = 4.5
-
-
-def score_of(tok):
-    """'④' -> (4, True) / '2' -> (2, False) / それ以外 -> None"""
-    if tok in CIRCLED:
-        return CIRCLED[tok], True
-    if tok.isdigit():
-        return int(tok), False
-    return None
 
 
 def read_words(pdf, page):
@@ -177,10 +165,6 @@ def wins(blk):
     return (sum(1 for r in blk if r['ls'] and r['ls'][1]), sum(1 for r in blk if r['rs'] and r['rs'][1]))
 
 
-def key_of(name):
-    return re.sub(r'\s+', '', unicodedata.normalize('NFKC', name))
-
-
 def players_of(blk, side):
     return {key_of(p) for r in blk for p in r[side]}
 
@@ -240,33 +224,6 @@ def assign(details, rows, blocks, width):
         if best is not None and best[0][0] > 0:
             take(m, best[1])
     return chosen
-
-
-def individual_index():
-    """(氏名キー, 学校) -> (姓, 名)。個人戦の出場記録から作る"""
-    idx = {}
-    for f in glob.glob(str(DETAILS_ROOT / '**' / '*.json'), recursive=True):
-        name = Path(f).name
-        if not name.startswith(('doubles', 'singles')):
-            continue
-        try:
-            d = json.load(open(f, encoding='utf-8'))
-        except (json.JSONDecodeError, UnicodeDecodeError):
-            continue
-        if not isinstance(d, dict):
-            continue
-        for p in d.get('participants', []):
-            ln, fn = (p.get('lastName') or '').strip(), (p.get('firstName') or '').strip()
-            if ln and fn and p.get('team'):
-                idx.setdefault((key_of(ln + fn), key_of(p['team'])), (ln, fn))
-    return idx
-
-
-def player_ref(name, school, idx):
-    hit = idx.get((key_of(name), key_of(school)))
-    if hit:
-        return {'lastName': hit[0], 'firstName': hit[1]}
-    return {'name': name}
 
 
 def rubber_detail(no, r, school_a, school_b, idx):
@@ -351,59 +308,6 @@ def main():
         print('\n'.join(['書き込みを中止:'] + errors), file=sys.stderr)
         sys.exit(1)
     if args.write:
-        details_path.write_text(insert_sub_matches(details_path.read_text(encoding='utf-8'), details), encoding='utf-8')
-        print('wrote', details_path, '（整形は npx prettier --write で）')
+        write_details(details_path, details)
 
 
-def _close_of(text, pos, opener):
-    """pos の直後から、深さ1の opener が閉じる位置（閉じ括弧の添字）を返す。文字列の中は数えない"""
-    closer = {'{': '}', '[': ']'}[opener]
-    depth, i, in_str = 1, pos, False
-    while i < len(text):
-        c = text[i]
-        if in_str:
-            if c == '\\':
-                i += 1
-            elif c == '"':
-                in_str = False
-        elif c == '"':
-            in_str = True
-        elif c in '{[':
-            depth += 1
-        elif c in '}]':
-            depth -= 1
-            if depth == 0:
-                if c != closer:
-                    sys.exit(f'括弧が合わない（{pos}）')
-                return i
-        i += 1
-    sys.exit('閉じ括弧が見つからない')
-
-
-def insert_sub_matches(text, details):
-    """既存の整形を崩さないよう、各試合の末尾に "matches" だけを差し込む（再実行時は置き換える）。
-
-    ファイル全体を json.dumps し直すと、Prettier が元の改行位置を手がかりに折り返しを
-    決めるため、触っていない entries まで数千行の差分になる。
-    """
-    for m in details['matches']:
-        if 'matches' not in m:
-            continue
-        key = '"matchId": ' + json.dumps(m['matchId'], ensure_ascii=False) + ','
-        at = text.find(key)
-        if at < 0:
-            sys.exit(f'{m["matchId"]} の位置が見つからない')
-        close = _close_of(text, at, '{')  # 試合オブジェクトの閉じ括弧
-        body = text[at:close]
-        old = re.search(r',\s*"matches": \[', body)
-        if old:
-            arr_close = _close_of(body, old.end(), '[')
-            body = body[:old.start()] + body[arr_close + 1:]
-        tail = re.search(r'\s*$', body)
-        sub = json.dumps(m['matches'], ensure_ascii=False)
-        body = body[:tail.start()] + ',\n      "matches": ' + sub + body[tail.start():]
-        text = text[:at] + body + text[close:]
-    return text
-
-if __name__ == '__main__':
-    main()

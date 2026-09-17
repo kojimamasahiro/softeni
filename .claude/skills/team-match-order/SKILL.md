@@ -57,11 +57,20 @@ npm run check:team-match-details
 
 **まず「その大会の公式記録にオーダーが載っているか」を確かめる。** 載っていない大会のほうが多い。
 
-| 大会 | 状況 |
-|---|---|
-| 高校選抜（JSTA 記録） | **全試合**にある。対応済み |
-| インターハイ（公式記録報告書） | **ベスト8以降だけ**。ゲームごとのポイント（`4 - ⑥`）まである。**未対応** |
-| 全中・インカレ（ドローPDF） | 敗者の本数だけ。オーダーは無い。別資料の有無は未確認 |
+| 大会 | 状況 | スクリプト |
+|---|---|---|
+| 高校選抜（JSTA 記録） | **全試合**にある（本数まで） | `highschool_senbatsu_team_matches.py` |
+| インターハイ（公式記録） | **ベスト8以降だけ**。ゲームごとのポイントつき | `highschool_championship_team_matches.py` |
+| 全中・インカレ（ドローPDF） | 敗者の本数だけ。オーダーは無い。別資料の有無は未確認 | — |
+
+インターハイはこう使う（詳細ページの範囲は年度で変わるので、先に `pdftotext -layout` で目視する）:
+
+```bash
+python3 scripts/pdf/highschool_championship_team_matches.py PDF --pages 3-6 \
+    --details data/tournaments/details/highschool-championship/<年>/team-none-girls.json --write
+npx prettier --write data/tournaments/details/highschool-championship/<年>/team-none-girls.json
+npm run check:team-match-details
+```
 
 新しい様式に当たるときは、既存スクリプトを**コピーして足す**（共通化は2つ目が通ってから）。
 `scripts/pdf/highschool_senbatsu_team_matches.py` の docstring に様式の見極めが全部書いてある。
@@ -74,9 +83,9 @@ npm run check:team-match-details
    位置だけで決めると準々決勝の塊を別の試合と取り違える。実際に起きた）。
 4. **左右がどちらの学校か**（高校選抜は左＝エントリー番号の小さい学校。**全塊で成立するか必ず確かめる**）。
 
-`matches` に入れる形（`type` / `status` / `winner` / `scoreA` / `scoreB` / `playersA` / `playersB`）は
-ADR-020 が正。ゲームごとのポイントを持つ様式（インターハイ）は**器がまだ無い**ので、
-持ち方を決めるところから（ADR-020 の Open Questions）。
+`matches` に入れる形（`type` / `status` / `winner` / `scoreA` / `scoreB` / `playersA` / `playersB`、
+ゲームごとのポイントがあれば `games`）は ADR-020 が正。共通部分（差し込み・選手の結び付け・丸数字）は
+`scripts/pdf/team_match_details.py` にある。
 
 ## 検算（ここが本体）
 
@@ -88,6 +97,8 @@ ADR-020 が正。ゲームごとのポイントを持つ様式（インターハ
   形・親との一致・姓名の実在・2校への重複を見る。
 - **学校の2試合目以降で、前の試合と選手が重なるか**。高校選抜 2025 では 34/34 だった。
   極端に低ければ塊の対応が崩れている。
+- **ゲームごとのポイントがある様式では、ポイントから数え直した本数＝印字された本数**。
+  いちばん強い検算で、インターハイでは丸数字の10以上（`⑩`）の読み落としをこれで見つけた。
 
 ## 選手の結び付け
 
@@ -106,6 +117,9 @@ ADR-020 が正。ゲームごとのポイントを持つ様式（インターハ
 - **`--write` の後は必ず `npx prettier --write`**。差し込んだ部分は1行のまま。
 - **入力ツール（`tools/`）で details を作り直すと `matches` は消える**。ツールはこの項目を知らない。
   作り直したらこのスキルをもう一度通す。
+- **「打ち切り」の印字をあてにしない**。インターハイは印字がある対戦と、`3-3` のまま印字が無い対戦がある。
+  勝者は**本数の丸数字の有無**で決める。
+- **ポイントは10以上になる**（デュース）。丸数字の10〜20を読めていないと本数が合わずに止まる。
 - **打ち切り・未実施を「無かったこと」にしない**。スコアが空なら `not_played`（ペアだけ出ている）、
   丸数字の無い途中の本数なら `unfinished`。どちらも X で聞かれる「誰が出る予定だったか」の答えになる。
 - **姓名の分割を直したら `node scripts/normalize-name-splits.mjs` を流す**。
