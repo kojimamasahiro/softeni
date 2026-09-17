@@ -168,7 +168,34 @@ export interface TournamentMatch {
   nextMatchId: string | null;
   prevMatchIds: string[];
   prevMatchId: string | null;
+  /** 団体戦の対戦ごとの記録（オーダー）。元資料にある大会・試合だけが持つ。詳細は docs/adr/ADR-020-team-match-rubber-details.md */
+  matches?: TeamMatchDetail[];
 }
+
+/**
+ * 団体戦の1対戦。形は STリーグの `MatchDetail`（src/utils/st-league.ts）に揃え、
+ * 打ち切り・未実施と、個人戦の記録が無い選手を表せるように広げている。
+ * A は親の `entries[0]`、B は `entries[1]`。
+ */
+export interface TeamMatchDetail {
+  type: 'D1' | 'D2' | 'D3' | 'S';
+  /** completed: 決着 / unfinished: 途中で打ち切り（途中の本数を持つ）/ not_played: 未実施 */
+  status: 'completed' | 'unfinished' | 'not_played';
+  /** completed のときだけ 'A' か 'B'。それ以外は null */
+  winner: 'A' | 'B' | null;
+  /** not_played のときは null */
+  scoreA: number | null;
+  scoreB: number | null;
+  playersA: TeamMatchPlayer[];
+  playersB: TeamMatchPlayer[];
+}
+
+/**
+ * 個人戦の出場記録がある選手は姓・名（選手ページと同じ識別）、無い選手は名前だけ。
+ * 名前だけの選手は participants に足さない（選手一覧で採番されないようにするため）。
+ * `playerId` はデータには持たず、ページ生成時に姓・名から解決して付ける（participants と同じ）。
+ */
+export type TeamMatchPlayer = { lastName: string; firstName: string; playerId?: number } | { name: string; playerId?: number };
 
 export interface TournamentResult {
   entryNo: number;
@@ -221,4 +248,18 @@ export type MatchRow = {
   games: { won: string; lost: string };
   /** 組み合わせだけで未実施（勝者もスコアも無い）。スコア欄を「0-0」ではなく「未実施」にする */
   unplayed?: boolean;
+  /** 団体戦の対戦ごとの記録（ADR-020）を、この行の組から見た向きに並べたもの。記録が無ければ undefined */
+  teamMatches?: TeamMatchRow[];
+};
+
+/** 団体戦の1対戦を、ある組から見た向きにしたもの（MatchResults の表示用） */
+export type TeamMatchRow = {
+  type: TeamMatchDetail['type'];
+  status: TeamMatchDetail['status'];
+  /** completed のときだけ win / lose */
+  result: 'win' | 'lose' | null;
+  gamesWon: number | null;
+  gamesLost: number | null;
+  own: { name: string; playerId?: number }[];
+  opponent: { name: string; playerId?: number }[];
 };

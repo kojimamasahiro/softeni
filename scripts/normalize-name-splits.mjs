@@ -87,6 +87,21 @@ function fixFile(file, aliasMap) {
     const newId = [newLn, newFn, p.team ?? '', p.prefecture ?? ''].filter(Boolean).join('_');
     if (p.id && p.id !== newId) idRepl.push({ oldId: p.id, newId });
   }
+  // 団体戦の対戦ごとの記録（matches[].matches[].playersA/B、ADR-020）も姓・名で選手を指す。
+  // participants には居ないので、ここで拾わないと分割修正から取り残される。
+  // 置換は下の lastName/firstName 隣接パターンで participants と同じく処理される。
+  for (const m of Array.isArray(data.matches) ? data.matches : []) {
+    for (const sub of Array.isArray(m.matches) ? m.matches : []) {
+      for (const p of [...(sub.playersA ?? []), ...(sub.playersB ?? [])]) {
+        if (typeof p?.lastName !== 'string' || typeof p?.firstName !== 'string') continue;
+        const key = `${p.lastName}\t${p.firstName}`;
+        const hit = aliasMap.get(key);
+        if (!hit || seenNames.has(key)) continue;
+        seenNames.add(key);
+        nameRepl.push({ oldLn: p.lastName, oldFn: p.firstName, newLn: hit[0], newFn: hit[1] });
+      }
+    }
+  }
   if (!nameRepl.length) return null;
 
   let changed = 0;

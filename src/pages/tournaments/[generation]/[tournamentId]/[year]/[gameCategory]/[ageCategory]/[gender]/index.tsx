@@ -692,6 +692,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
           }
         }
       }
+
+      // 団体戦の対戦ごとの記録（ADR-020）の選手も、participants と同じ姓・名の照合でリンク先を付ける。
+      // 名前だけの選手（個人戦の記録が無い）はリンクしない。
+      for (const m of detailData?.matches ?? []) {
+        for (const sub of m.matches ?? []) {
+          for (const p of [...sub.playersA, ...sub.playersB]) {
+            if ('lastName' in p) {
+              const pid = playerIndexMap.get(`${p.lastName}::${p.firstName}`);
+              if (pid !== undefined) p.playerId = pid;
+            }
+          }
+        }
+      }
     } catch (err) {
       detailsWarnings.push(`details JSON parse error: ${detailsPath} - ${String(err)}`);
     }

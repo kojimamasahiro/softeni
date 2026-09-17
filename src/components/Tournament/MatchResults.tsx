@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 
 import { isUnplayedMatch } from '@/lib/playerStats/placement';
-import { MatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
+import { MatchRow, TeamMatchPlayer, TeamMatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
 import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
 type NamePart = {
@@ -16,6 +16,85 @@ interface Props {
   gameCategory: string;
   searchQuery: string;
   setSearchQuery: (v: string) => void;
+}
+
+/**
+ * 団体戦の対戦ごとの記録（ADR-020）を、side 側の組から見た向きに並べ替える。
+ * 記録が無い試合は undefined（行の下に何も出さない）。
+ */
+function orientTeamMatches(match: TournamentMatch, side: 'A' | 'B'): TeamMatchRow[] | undefined {
+  if (!match.matches?.length) return undefined;
+  // ページに届く時点では「姓 名」の1文字列（lib/packedPageData.ts）。日本語名は詰めて表示する
+  const displayName = (p: TeamMatchPlayer) => {
+    if (!('name' in p)) return joinPlayerName(p.lastName, p.firstName);
+    const [last, ...rest] = p.name.trim().split(/\s+/);
+    return joinPlayerName(last, rest.join(''));
+  };
+  const toPlayers = (players: TeamMatchPlayer[]) => players.map((p) => ({ name: displayName(p), playerId: p.playerId }));
+  return match.matches.map((sub) => {
+    const mine = side === 'A';
+    return {
+      type: sub.type,
+      status: sub.status,
+      result: sub.winner === null ? null : sub.winner === side ? 'win' : 'lose',
+      gamesWon: mine ? sub.scoreA : sub.scoreB,
+      gamesLost: mine ? sub.scoreB : sub.scoreA,
+      own: toPlayers(mine ? sub.playersA : sub.playersB),
+      opponent: toPlayers(mine ? sub.playersB : sub.playersA),
+    };
+  });
+}
+
+function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
+  return (
+    <>
+      {/* 狭い画面では2人の間で折り返し、1人の名前の途中では折り返さない */}
+      {players.map((p, i) => (
+        <span key={i} className="inline-block whitespace-nowrap">
+          {i > 0 && '・'}
+          {p.playerId ? (
+            <Link href={`/players/${p.playerId}/results`} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">
+              {p.name}
+            </Link>
+          ) : (
+            p.name
+          )}
+        </span>
+      ))}
+    </>
+  );
+}
+
+/** 試合の行の下に出す、対戦ごとのペアと本数。左がこの組、右が相手（STリーグの対戦詳細と同じ並び） */
+function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
+  return (
+    <ul className="divide-y divide-border bg-bg-subtle">
+      {rows.map((r, i) => (
+        <li key={i} className="flex items-center gap-2 px-4 py-1.5 text-xs">
+          <span className="w-14 shrink-0 text-text-muted">第{i + 1}対戦</span>
+          <span className={`flex-1 min-w-0 text-right break-words ${r.result === 'win' ? 'font-bold text-text' : 'text-text-secondary'}`}>
+            <TeamMatchPlayers players={r.own} />
+          </span>
+          <span className="shrink-0 w-16 text-center">
+            {r.status === 'not_played' ? (
+              <span className="text-text-muted">未実施</span>
+            ) : (
+              <>
+                <span className="inline-block px-1.5 py-0.5 border border-border-strong rounded font-mono">
+                  {r.gamesWon}-{r.gamesLost}
+                </span>
+                {r.result && <span className="sr-only">{r.result === 'win' ? '勝ち' : '負け'}</span>}
+                {r.status === 'unfinished' && <span className="block text-text-muted">打ち切り</span>}
+              </>
+            )}
+          </span>
+          <span className={`flex-1 min-w-0 text-left break-words ${r.result === 'lose' ? 'font-bold text-text' : 'text-text-secondary'}`}>
+            <TeamMatchPlayers players={r.opponent} />
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 /** この結果ラベルが付いた組は、既定で（畳まずに）出す。 */
@@ -124,7 +203,7 @@ function MatchGroup({
                   )}
                   <tbody>
                     {rows.map((m: MatchRow, i: number) => {
-                      return (
+                      return [
                         <tr key={i} className="border-t border-border">
                           <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
                           <td className="px-4 py-2 break-words text-left">
@@ -142,8 +221,15 @@ function MatchGroup({
                           <td className="px-4 py-2 text-left">
                             {m.unplayed ? <span className="text-text-muted">未実施</span> : `${m.games.won}-${m.games.lost}`}
                           </td>
-                        </tr>
-                      );
+                        </tr>,
+                        m.teamMatches ? (
+                          <tr key={`${i}-team`}>
+                            <td colSpan={3} className="p-0">
+                              <TeamMatchList rows={m.teamMatches} />
+                            </td>
+                          </tr>
+                        ) : null,
+                      ];
                     })}
                   </tbody>
                 </table>
@@ -323,6 +409,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games: a === prevWinner ? { won: scoreA, lost: scoreB } : { won: scoreB, lost: scoreA },
         unplayed,
+        teamMatches: orientTeamMatches(nm, a === prevWinner ? 'A' : 'B'),
       };
 
       extra.push(row);
@@ -371,6 +458,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: m.winnerEntryNo === a ? 'win' : m.winnerEntryNo === b ? 'lose' : 'draw',
         games: { won: scoreA, lost: scoreB },
         unplayed,
+        teamMatches: orientTeamMatches(m, 'A'),
       };
       const rowB: MatchRow = {
         matchId: m.matchId,
@@ -382,6 +470,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: m.winnerEntryNo === b ? 'win' : m.winnerEntryNo === a ? 'lose' : 'draw',
         games: { won: scoreB, lost: scoreA },
         unplayed,
+        teamMatches: orientTeamMatches(m, 'B'),
       };
 
       if (typeof a === 'number') map.set(a, [...(map.get(a) ?? []), rowA]);
@@ -484,6 +573,8 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
     };
   });
 
+  const hasTeamMatches = (detail.matches ?? []).some((m) => (m.matches?.length ?? 0) > 0);
+
   const query = searchQuery.trim().toLowerCase();
   const visibleItems = query ? allItems.filter((item) => item.name.toLowerCase().includes(query)) : allItems;
   const collapsible = allItems.length > COLLAPSE_MIN_ENTRIES;
@@ -519,6 +610,11 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
             ? '既定では上位に入った組だけを出しています。ほかの組は検索するか、下の「その他の組」から開いてください。'
             : '組数が多いので既定では畳んでいます。検索するか、下の「その他の組」から開いてください。')}
       </p>
+      {hasTeamMatches && (
+        <p className="mb-3 text-xs text-text-muted">
+          ※ 公式記録に対戦ごとの記録がある試合は、各対戦の出場ペアと本数も載せています。左がその組、右が対戦相手です。
+        </p>
+      )}
 
       <div className="mb-4">
         <input
