@@ -1,0 +1,244 @@
+{
+  "participants": [
+    {
+      "id": "天間_麗奈_日本体育大学_日本学連",
+      "lastName": "天間",
+      "firstName": "麗奈",
+      "team": "日本体育大学",
+      "prefecture": "日本学連"
+    },
+    {
+      "id": "CHAUDHARY_Georgia_ネパール",
+      "lastName": "CHAUDHARY",
+      "firstName": "Georgia",
+      "team": "ネパール",
+      "prefecture": null
+    },
+    {
+      "id": "ERDEMBILEG_Namuunkhuslen_モンゴル",
+      "lastName": "ERDEMBILEG",
+      "firstName": "Namuunkhuslen",
+      "team": "モンゴル",
+      "prefecture": null
+    },
+    {
+      "id": "宮前_希帆_ワタキューセイモア_京都府",
+      "lastName": "宮前",
+      "firstName": "希帆",
+      "team": "ワタキューセイモア",
+      "prefecture": "京都府"
+    },
+    {
+      "id": "ZAIDI_Eraj_パキスタン",
+      "lastName": "ZAIDI",
+      "firstName": "Eraj",
+      "team": "パキスタン",
+      "prefecture": null
+    },
+    {
+      "id": "SANOSA_Christy_フィリピン",
+      "lastName": "SANOSA",
+      "firstName": "Christy",
+      "team": "フィリピン",
+      "prefecture": null
+    }
+  ],
+  "entries": [
+    {
+      "entryNo": 1,
+      "playerIds": [
+        "天間_麗奈_日本体育大学_日本学連"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 2,
+      "playerIds": [
+        "CHAUDHARY_Georgia_ネパール"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 3,
+      "playerIds": [
+        "ERDEMBILEG_Namuunkhuslen_モンゴル"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 4,
+      "playerIds": [
+        "宮前_希帆_ワタキューセイモア_京都府"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 5,
+      "playerIds": [
+        "ZAIDI_Eraj_パキスタン"
+      ],
+      "type": null
+    },
+    {
+      "entryNo": 6,
+      "playerIds": [
+        "SANOSA_Christy_フィリピン"
+      ],
+      "type": null
+    }
+  ],
+  "matches": [
+    {
+      "entries": [
+        1,
+        2
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-1"
+    },
+    {
+      "entries": [
+        2,
+        3
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-2"
+    },
+    {
+      "entries": [
+        1,
+        3
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "A",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-3"
+    },
+    {
+      "entries": [
+        4,
+        5
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "F",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-4"
+    },
+    {
+      "entries": [
+        5,
+        6
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "F",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-5"
+    },
+    {
+      "entries": [
+        4,
+        6
+      ],
+      "scores": {},
+      "round": null,
+      "stage": "roundrobin",
+      "group": "F",
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-6"
+    }
+  ],
+  "results": [
+    {
+      "entryNo": 1,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 2,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 3,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 4,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 5,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    },
+    {
+      "entryNo": 6,
+      "tournament": {
+        "label": "出場",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": null
+    }
+  ]
+}
