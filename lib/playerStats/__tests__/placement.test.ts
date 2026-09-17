@@ -1,5 +1,5 @@
 // lib/playerStats/__tests__/placement.test.ts
-import { normalizeRoundOrder, parseCategoryId, resolvePlacement } from '../placement';
+import { isUnplayedMatch, normalizeRoundOrder, parseCategoryId, resolvePlacement } from '../placement';
 import { playerKey } from '../identity';
 import { assert, summary, test } from './harness';
 
@@ -13,6 +13,17 @@ test('resolvePlacement maps rank kinds (bestLevel, roundLoss, groupOnly, unknown
   assert.deepStrictEqual(resolvePlacement({ tournament: null }), {
     kind: 'unknown',
   });
+});
+
+test('isUnplayedMatch: 勝者もスコアも無い試合だけが未実施', () => {
+  assert.strictEqual(isUnplayedMatch({ winnerEntryNo: null, scores: {} }), true);
+  assert.strictEqual(isUnplayedMatch({ winnerEntryNo: undefined }), true);
+  assert.strictEqual(isUnplayedMatch({ winnerEntryNo: 3, scores: {} }), false);
+  assert.strictEqual(isUnplayedMatch({ entries: [3, 4], winnerEntryNo: 3, scores: {} }), false);
+  // ページ用の圧縮形式は勝者なしを -1 にする
+  assert.strictEqual(isUnplayedMatch({ entries: [3, 4], winnerEntryNo: -1, scores: {} }), true);
+  // 勝者が無くてもスコアがあれば実施済み（記録の欠け）として扱う
+  assert.strictEqual(isUnplayedMatch({ winnerEntryNo: null, scores: { '1': 2, '2': 1 } }), false);
 });
 
 test('normalizeRoundOrder is monotonic (回戦 < 準々 < 準決 < 決勝)', () => {

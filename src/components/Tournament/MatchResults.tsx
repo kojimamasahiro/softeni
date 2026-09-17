@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
 
+import { isUnplayedMatch } from '@/lib/playerStats/placement';
 import { MatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
 import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
@@ -139,7 +140,7 @@ function MatchGroup({
                             )}
                           </td>
                           <td className="px-4 py-2 text-left">
-                            {m.games.won}-{m.games.lost}
+                            {m.unplayed ? <span className="text-text-muted">未実施</span> : `${m.games.won}-${m.games.lost}`}
                           </td>
                         </tr>
                       );
@@ -297,6 +298,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
 
       const scoreA = String(nm.scores?.[String(a)] ?? nm.scores?.[a] ?? '0');
       const scoreB = String(nm.scores?.[String(b)] ?? nm.scores?.[b] ?? '0');
+      const unplayed = isUnplayedMatch(nm);
 
       const opponentEntry =
         typeof opponent === 'number'
@@ -320,6 +322,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         // result from the perspective of prevWinner
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games: a === prevWinner ? { won: scoreA, lost: scoreB } : { won: scoreB, lost: scoreA },
+        unplayed,
       };
 
       extra.push(row);
@@ -341,6 +344,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       const [a, b] = m.entries ?? [];
       const scoreA = String(m.scores?.[String(a)] ?? m.scores?.[a] ?? '0');
       const scoreB = String(m.scores?.[String(b)] ?? m.scores?.[b] ?? '0');
+      const unplayed = isUnplayedMatch(m);
 
       const entryB =
         typeof b === 'number'
@@ -366,6 +370,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         opponentPlayerIds: entryB ? buildOpponentPlayerIds(entryB) : undefined,
         result: m.winnerEntryNo === a ? 'win' : m.winnerEntryNo === b ? 'lose' : 'draw',
         games: { won: scoreA, lost: scoreB },
+        unplayed,
       };
       const rowB: MatchRow = {
         matchId: m.matchId,
@@ -376,6 +381,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         opponentPlayerIds: entryA ? buildOpponentPlayerIds(entryA) : undefined,
         result: m.winnerEntryNo === b ? 'win' : m.winnerEntryNo === a ? 'lose' : 'draw',
         games: { won: scoreB, lost: scoreA },
+        unplayed,
       };
 
       if (typeof a === 'number') map.set(a, [...(map.get(a) ?? []), rowA]);

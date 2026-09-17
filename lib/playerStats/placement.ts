@@ -92,3 +92,20 @@ export function parseCategoryId(fileNameOrId: string): ParsedCategory | null {
     ageRaw: age,
   };
 }
+
+/**
+ * まだ行われていない試合か（組み合わせだけ入っていて、勝者もスコアも無い）。
+ *
+ * 大会前に組み合わせだけを入れる運用（docs/wiki/data-import.md「ドロー入力」）と、
+ * 段階分割で実施されなかった枠（アジア競技大会日本代表予選会2025の準々決勝など）がこの形になる。
+ * 集計に入れると勝敗の無い試合が「引き分け」として試合数に数えられ、勝率が下がる。
+ * 勝者が無くてもスコアがある試合（途中棄権の記録など）は実施済みとして扱う。
+ */
+export function isUnplayedMatch(m: { entries?: unknown[] | null; winnerEntryNo?: unknown; scores?: Record<string, unknown> | null }): boolean {
+  // 勝者は「対戦者のどちらか」のときだけ有効。ページへ渡す圧縮形式（lib/packedPageData.ts）は
+  // 勝者なしを -1 に置き換えるため、数値かどうかだけでは判定できない
+  const w = m.winnerEntryNo;
+  const hasWinner = typeof w === 'number' && (!Array.isArray(m.entries) || m.entries.includes(w));
+  if (hasWinner) return false;
+  return Object.keys(m.scores ?? {}).length === 0;
+}
