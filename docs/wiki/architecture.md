@@ -48,6 +48,22 @@
 - `src/pages/matches/[matchId]/index.tsx`
 - `src/pages/matches/growth/index.tsx`
 
+## レンダリングの決定性（SSR とクライアントで同じ結果になること）
+
+公開ページは SSR（ビルド）とブラウザの両方で同じコンポーネントを実行するため、
+**描画結果が実行環境に依存する書き方をしない**。ずれると hydration error になる。
+
+- 並び替えの比較は `localeCompare(x, 'ja')` のように **locale を必ず明示する**。
+  ロケール未指定だと Node は `en-US`、ブラウザは `ja` を既定にするため、漢字の照合順序が変わる。
+  成績順（`resultPriority()` は 優勝/準優勝/ベスト4/ベスト8 の4段階しかない）のように
+  同点が常に発生する並びでは、この同点処理がそのまま表示順になる。
+- リストの React `key` は、グルーピングに使ったキーと同じ粒度で一意にする。
+  高校の部はチームを `team::prefecture` でまとめるので、チーム名だけを key にすると
+  都道府県違いの同名校で衝突する。
+- 日時・乱数・`navigator` など環境依存の値を描画に直接使わない。
+
+経緯と実測は [docs/raw/2026-09-18-team-results-hydration-locale.md](../raw/2026-09-18-team-results-hydration-locale.md)。
+
 ## データ層
 
 ### 静的 JSON

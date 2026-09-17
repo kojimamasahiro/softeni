@@ -39,7 +39,11 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
     members: Member[];
   };
 
-  const sortedTeams: TeamBucket[] = (() => {
+  // buckets のキー（高校の部は team::prefecture、それ以外は team）を保持したもの。
+  // チーム名だけだと都道府県違いの同名校（例: 高田 / 奈良県・岩手県）で React の key が衝突する。
+  type SortedTeam = TeamBucket & { key: string };
+
+  const sortedTeams: SortedTeam[] = (() => {
     const buckets: Record<string, TeamBucket> = {};
 
     for (const detail of detailData ?? []) {
@@ -173,18 +177,21 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
     }
 
     // 各チームのメンバーを成績順でソートし、チーム自体も最良成績でソート
-    const arr = Object.values(buckets).map((b) => {
+    // 並び順の同点は必ず locale を明示して比較する。locale 未指定の localeCompare は
+    // 実行環境の既定ロケール（Node は en-US、ブラウザは ja）に従うため、SSR と
+    // クライアントで順序が変わり hydration mismatch になる。
+    const arr = Object.entries(buckets).map(([key, b]) => {
       const members = b.members.slice().sort((a, b2) => {
-        return a.resultOrder - b2.resultOrder || a.displayParts[0].text.localeCompare(b2.displayParts[0].text);
+        return a.resultOrder - b2.resultOrder || a.displayParts[0].text.localeCompare(b2.displayParts[0].text, 'ja');
       });
-      return { ...b, members };
+      return { ...b, key, members };
     });
 
     arr.sort((a, b) => {
       const aBest = a.members.length > 0 ? a.members[0].resultOrder : 99;
       const bBest = b.members.length > 0 ? b.members[0].resultOrder : 99;
       if (aBest !== bBest) return aBest - bBest;
-      return a.team.localeCompare(b.team);
+      return a.team.localeCompare(b.team, 'ja') || a.key.localeCompare(b.key, 'ja');
     });
 
     return arr;
@@ -196,7 +203,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
 
   return (
     <section className="mb-10">
-      {sortedTeams.map(({ team, prefecture, members }) => {
+      {sortedTeams.map(({ key: bucketKey, team, prefecture, members }) => {
         const highschoolTeamLink = highschoolGender && highschoolTeamLinks ? highschoolTeamLinks[getHighschoolTeamLookupKey(team, prefecture ?? null)] : null;
         const grouped = members.reduce(
           (acc, m) => {
@@ -216,7 +223,7 @@ export default function TeamResults({ detailData, highschoolGender = null, highs
           .sort((a, b) => a.resultOrder - b.resultOrder);
 
         return (
-          <div key={team} className="mb-6 rounded-lg border border-border bg-surface shadow-sm">
+          <div key={bucketKey} className="mb-6 rounded-lg border border-border bg-surface shadow-sm">
             <div className="px-4 py-3 border-b border-border">
               {highschoolGender && highschoolTeamLink ? (
                 <Link
