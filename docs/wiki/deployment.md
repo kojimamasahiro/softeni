@@ -32,9 +32,10 @@
 ### package.json scripts
 
 - `dev`: `next dev`
-- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-17 時点で18段）。
+- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-18 時点で19段）。
   実体は `package.json` が正。大きくは次の3段:
   1. **正準化・ゲート**: `normalize-team-spacing.mjs` → `check-tournament-entries.mjs` →
+     `check-team-match-details.mjs`（2026-09-18 追加。[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）→
      `check-tournament-insights.mjs` → `check-highschool-pipeline-freshness.mjs` →
      `check-name-splits.mjs --strict`。**ここで落ちるとビルドが止まる**（意図的な門番。
      `check-name-splits --strict` は 2026-08-29 に追加、`check-tournament-insights` は
@@ -75,7 +76,7 @@ next build（output: 'export'）が public/ を out/ にコピー
 
 ### GitHub Actions（`.github/workflows/checks.yml`・2026-09-06 追加）
 
-Cloudflare Pages と**役割を分けている**。CF は push 契機でビルドし、`prebuild` の先頭5段が
+Cloudflare Pages と**役割を分けている**。CF は push 契機でビルドし、`prebuild` の先頭6段が
 ゲートとして働く（落ちるとデプロイが止まる）。しかし **prebuild に置けるのはゲートだけ**なので、
 合否が付かない「人の判断待ち一覧」型の検出器は置き場が無く休眠していた
 （2026-09-06 時点で検出器11本中7本＋テスト系10本が自動実行されていなかった）。

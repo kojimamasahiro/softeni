@@ -457,7 +457,9 @@ alias 表はもともと**文脈を持たない**ため、`--scope=all` で全�
    `{ canonical: [姓, 名], aliases: [[誤った姓, 誤った名], …], reason }` として蓄積する。
 3. **適用** `scripts/normalize-name-splits.mjs`（冪等・`--dry-run` 可）:
    `participants[].lastName` / `firstName` / `id` と、それを参照する
-   `playerIds` / `pair` を書き換える。`normalize-team-names.mjs` と同じくテキストへ
+   `playerIds` / `pair` を書き換える。団体戦の対戦ごとの記録（`matches[].matches[].playersA/B`、
+   [ADR-020](../adr/ADR-020-team-match-rubber-details.md)）の姓・名も対象（2026-09-18〜）。
+   取り残すと `check-team-match-details.mjs` が prebuild を止める。`normalize-team-names.mjs` と同じくテキストへ
    ピンポイント置換して整形を壊さない。`lastName` と `firstName` は**隣接ペアとして
    まとめてマッチ**させる（姓だけ一致する別人への誤爆を構造的に防ぐ）。
    続けて `data/players/index.json` の **該当氏名の `count` だけ**を数え直し、

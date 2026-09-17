@@ -1,4 +1,12 @@
-import type { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant, TournamentResult } from '@/types';
+import type {
+  TeamMatchDetail,
+  TeamMatchPlayer,
+  TournamentDetailData,
+  TournamentEntry,
+  TournamentMatch,
+  TournamentParticipant,
+  TournamentResult,
+} from '@/types';
 
 type StringId = number;
 type NullableStringId = StringId | null;
@@ -70,7 +78,31 @@ type PackedMatch = [
   group: NullableStringId,
   matchId: NullableStringId,
   nextMatchId: NullableStringId,
+  /** 団体戦の対戦ごとの記録（ADR-020）。持たない試合は要素ごと省く */
+  teamMatches?: PackedTeamMatch[] | null,
 ];
+
+/** 選手は表示名とリンク先だけ詰める（姓・名の区別は表示に要らない） */
+type PackedTeamMatchPlayer = [displayName: StringId, playerId: number | null];
+
+type PackedTeamMatch = [
+  type: StringId,
+  status: StringId,
+  /** 0: なし / 1: A / 2: B */
+  winner: 0 | 1 | 2,
+  scoreA: number | null,
+  scoreB: number | null,
+  playersA: PackedTeamMatchPlayer[],
+  playersB: PackedTeamMatchPlayer[],
+];
+
+/**
+ * 表示名は「姓 名」（半角スペース区切り）で詰め、連結は表示側（joinPlayerName）に任せる。
+ * 名前だけの選手は PDF の区切りのまま（区切りが無ければ1語）。
+ */
+function teamMatchPlayerName(p: TeamMatchPlayer): string {
+  return 'name' in p ? p.name.trim() : `${p.lastName} ${p.firstName}`;
+}
 
 type PackedResult = [
   entryNo: number,
@@ -213,7 +245,7 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
       return typeof score === 'number' ? score : null;
     });
 
-    return [
+    const packed: PackedMatch = [
       entries,
       scores,
       table.add(match.round),
@@ -223,6 +255,24 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
       table.add(match.matchId),
       table.add(match.nextMatchId),
     ];
+    // 記録がある試合にだけ足す（団体戦以外のページの転送量を増やさない）
+    if (match.matches?.length) {
+      const packPlayer = (p: TeamMatchPlayer): PackedTeamMatchPlayer => [table.add(teamMatchPlayerName(p)) as StringId, p.playerId ?? null];
+      packed.push(
+        match.matches.map(
+          (sub): PackedTeamMatch => [
+            table.add(sub.type) as StringId,
+            table.add(sub.status) as StringId,
+            sub.winner === 'A' ? 1 : sub.winner === 'B' ? 2 : 0,
+            sub.scoreA,
+            sub.scoreB,
+            sub.playersA.map(packPlayer),
+            sub.playersB.map(packPlayer),
+          ],
+        ),
+      );
+    }
+    return packed;
   });
 
   const results = (detailData.results ?? []).map((result): PackedResult => {
@@ -282,7 +332,12 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
     ...(type !== null ? { type: readString(strings, type) } : {}),
   }));
 
-  const matches: TournamentMatch[] = packed.matches.map(([entries, packedScores, round, winnerEntryNo, stage, group, matchId, nextMatchId]) => {
+  const unpackPlayer = ([name, playerId]: PackedTeamMatchPlayer): TeamMatchPlayer => ({
+    name: readString(strings, name),
+    ...(playerId !== null ? { playerId } : {}),
+  });
+
+  const matches: TournamentMatch[] = packed.matches.map(([entries, packedScores, round, winnerEntryNo, stage, group, matchId, nextMatchId, teamMatches]) => {
     const scores: Record<string, number> = {};
     entries.forEach((entryNo, index) => {
       const score = packedScores[index];
@@ -303,6 +358,21 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
       nextMatchId: readNullableString(strings, nextMatchId),
       prevMatchIds: [],
       prevMatchId: null,
+      ...(teamMatches
+        ? {
+            matches: teamMatches.map(
+              ([type, status, winner, scoreA, scoreB, playersA, playersB]): TeamMatchDetail => ({
+                type: readString(strings, type) as TeamMatchDetail['type'],
+                status: readString(strings, status) as TeamMatchDetail['status'],
+                winner: winner === 1 ? 'A' : winner === 2 ? 'B' : null,
+                scoreA,
+                scoreB,
+                playersA: playersA.map(unpackPlayer),
+                playersB: playersB.map(unpackPlayer),
+              }),
+            ),
+          }
+        : {}),
     };
   });
 

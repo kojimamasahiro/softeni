@@ -7,10 +7,10 @@
 ## package.json から確認できる主要コマンド
 
 - `npm run prebuild`
-  - ビルド前の健全性チェック・正準化・生成物ビルドを直列に実行する（15段）。
+  - ビルド前の健全性チェック・正準化・生成物ビルドを直列に実行する（段数は deployment.md 参照）。
     全段の並びは [deployment.md](./deployment.md)「package.json scripts」節が正。
   - このページで扱う取り込み系に効くのは、**先頭のゲート**
-    （`normalize-team-spacing.mjs` / `check-tournament-entries.mjs` /
+    （`normalize-team-spacing.mjs` / `check-tournament-entries.mjs` / `check-team-match-details.mjs` /
     `check-highschool-pipeline-freshness.mjs` / `check-name-splits.mjs --strict`）で、
     取り込んだデータに不整合があるとここでビルドが止まる
   - `check-highschool-pipeline-freshness.mjs` は「今の元データに対して
@@ -1048,6 +1048,33 @@ entries の入力ミスを検出する。問題があれば終了コード1。�
 | `knockout-draw-missing` | 予選リーグ→決勝T形式（決勝Tの試合が2件以上）なのに `knockoutDraw` が無い（warn）。`npm run bracket:draw -- --apply` で生成できる。生成できない場合は決勝Tの試合記録が欠けている |
 | `knockout-draw-parity` | `knockoutDraw.slots` の枠数が2の冪でない（warn）。空席は `null` で埋める |
 | `knockout-draw-unresolved` | `knockoutDraw` の席が参照する (組, 組内順位) が `results[].roundrobin` に無い（warn）。予選リーグが終わる前は対象外 |
+
+### 団体戦の対戦ごとの記録（オーダー）の取り込み
+
+仕様は [data-model.md](./data-model.md) の「団体戦の対戦ごとの記録」と [ADR-020](../adr/ADR-020-team-match-rubber-details.md)。
+
+- `scripts/pdf/highschool_senbatsu_team_matches.py`: 全日本高校選抜の **JSTA 記録 PDF**（`t_records/<年>/<年>_B17_40.pdf`、
+  Excel 様式・p1 男子 / p2 女子）から、既存の `highschool-senbatsu/<年>/team-none-*.json` の各試合へ `matches` を差し込む。
+  ```
+  python3 scripts/pdf/highschool_senbatsu_team_matches.py PDF --page 1 \
+      --details data/tournaments/details/highschool-senbatsu/2025/team-none-boys.json --write
+  npx prettier --write data/tournaments/details/highschool-senbatsu/2025/team-none-*.json
+  npm run check:team-match-details
+  ```
+  - **ファイル全体を書き直さず、各試合の末尾に差し込む**（全体を再シリアライズすると Prettier の折り返しが変わり、
+    触っていない entries まで数千行の差分になる）。再実行すると既存の記録を置き換える（冪等）。
+  - 塊（3対戦）と試合の対応: **両校とも初戦の試合**は塊が2校のエントリー行の中間（±4pt）にあるので位置で決める。
+    それ以外は**これまでの試合の選手と重なる塊**を選ぶ。3回戦以降の塊は中間に来ず、位置だけで決めると取り違える（2025女子で実際に起きた）。
+  - 書き込み前に「塊の勝ち数＝既存の本数」「同じ選手が2校に割り当てられない」を確かめ、崩れたら止まる。
+  - 学校単位の本数の行（「東北 1 － ② 高田商」）は「・」が無いので捨てる。年度によって1文字ずつの語になる（2022女子）ので、近い1文字をつなぐ。
+  - 選手の結び付けは「同じ氏名・同じ学校の個人戦の出場記録」。学校名の表記が違う（`近大高専` / `近畿大学高専`）と結び付かず名前だけになる。
+    チームの統合は人が判断する（ADR-019）ので、スクリプトでは吸収しない。
+  - **既存データとの食い違いで止まる**ので、本数の検算にもなる。2022 年度で2件見つかり、公式記録どおりに直した
+    （2026-09-18。男子 match-16 金津-三重 0-2→0-3、女子 match-26 県岐阜商-文大杉並 2-1→2-0。勝者は変わらない）。
+    詳細は [raw/2026-09-17-x-posts-user-problem-findings.md](../raw/2026-09-17-x-posts-user-problem-findings.md)。
+  - 投入済み: 高校選抜 2022・2025（JSTA 記録。2022 は `t_records/2022/2022_B17_40.pdf`）。
+- インターハイの記録（ベスト8以降・ゲームごとのポイント付き）は様式が違い、未対応。
+- 一連の手順はスキル `team-match-order`（`.claude/skills/`）にまとめてある。別の年度・別の大会へ広げるときはそこから読む。
 
 ### 決勝トーナメントの席順（`knockoutDraw`）
 

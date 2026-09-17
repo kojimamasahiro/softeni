@@ -378,6 +378,21 @@ details のスキーマが entries（ペア/チーム）単位で**種目の割�
 - 団体戦かどうかの判定は `src/utils/playerName.ts` の `isTeamFormatPlayers()` に集約する。**`lastName === null` で判定してはいけない**: `lib/packedPageData.ts` の `unpackTournamentDetailData()` が `readString()` を通して `null` を `''` に変換するため、ページ側に届く時点で `null` ではなくなっている。これを踏むと個人戦扱いになり、空の選手名＋括弧つきチーム名（`（東北）`）で表示される（2026-08 修正）。
 - 適用箇所は対戦詳細（`MatchResults` のエントリー見出しと対戦相手名）とトーナメント表（`TournamentBracket`）。`BracketSheets` と大会トップの優勝者表示は元々「姓名が空なら団体戦」と偽値で判定している。
 
+団体戦の対戦ごとの記録（オーダー）（2026-09-18〜、[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）:
+
+- 試合オブジェクトに任意の `matches`（対戦の配列）を持てる。型は `src/types/tournament.ts` の `TeamMatchDetail`。
+  形は STリーグの `MatchDetail` に揃え、`type`（`D1` `D2` `D3` / `S`）・`winner`・`scoreA`・`scoreB`・`playersA`・`playersB`。
+  **A は親の `entries[0]`、B は `entries[1]`**。
+- `status` で3種類を区別する: `completed`（決着。winner あり）／`unfinished`（打ち切り。winner は null、途中の本数あり）／
+  `not_played`（未実施。winner・本数とも null、ペアだけある）。
+- 選手は、同じ氏名・同じ学校の個人戦の出場記録があれば `{ lastName, firstName }`、無ければ `{ name }`（名前だけ）。
+  **名前だけの選手は `participants` に足さない**（選手一覧で採番されないように）。
+- 勝者の数は親の `scores` と一致させる。検査は `npm run check:team-match-details`（prebuild）。
+- 持っているのは元資料にある試合だけ。現在は**高校選抜 2022・2025 の男女全140試合**。
+- 表示は大会結果ページの「対戦詳細」（[public-pages.md](./public-pages.md)）。`lib/packedPageData.ts` が記録のある試合にだけ詰めて渡す。
+- **選手の成績集計（Player Statistics Engine）には入れない**（STリーグと同じ扱い。ADR-020 の追記）。
+- **入力ツールで details を作り直すと消える**。取り込み（`scripts/pdf/highschool_senbatsu_team_matches.py`）を再実行する。
+
 ### score 公開 JSON
 
 - `public/data/beta-matches/meta.json`
@@ -431,3 +446,4 @@ score 機能の動的データ（`matches` / `games` / `points` / `match_video_s
 | 全中（全国中学校ソフトテニス大会）ブロック大会の掲載 | **投入済み**（2026-08-11、9ブロック）。高校地区大会と同型で登録。「中学専用カテゴリは作らない」は2026-08-12に上書き（下の行） | [アイデア](../raw/2026-08-08-idea-zenchu-block-tournament-data.md) |
 | 中学カテゴリの公開ページ（/highschool 型の横展開） | **実装済み**（2026-08-12）。`/secondaryschool/`。チーム単位の設計と中学→高校の進路。残は `npm run build` 完走とGSC効果測定。仕様は [secondaryschool.md](./secondaryschool.md) | [アイデア・実測](../raw/2026-08-12-idea-juniorhigh-category-pages.md) |
 | 小学生カテゴリの公開ページ（/secondaryschool 型の横展開） | **実装済み**（2026-09-13）。`/primaryschool/`（全日本小学生選手権のみ）と小学→中学の進路。残は `npm run build` 完走とGSC効果測定。仕様は [primaryschool.md](./primaryschool.md) | [アイデア・実測](../raw/2026-09-12-idea-primaryschool-category.md) |
+| 団体戦のオーダー（対戦ごとのペアと本数） | **一部実装**（2026-09-18）。X で繰り返し聞かれるオーダーに答える。高校選抜 2022・2025 を投入し、対戦詳細に表示。残はインターハイ（ベスト8以降）・他年度 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |
