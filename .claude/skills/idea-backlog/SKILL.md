@@ -130,7 +130,12 @@ as the template — and because this is a new area, also add a new row for it to
 `docs/wiki/idea-backlog.md`'s index table (area name, link to the page, one-line summary).
 
 Then sync `docs/wiki/idea-backlog.md`: update that area's one-line summary so it reflects the
-idea you just added (or add the row if the area is new, per above). This is the step that's
+idea you just added (or add the row if the area is new, per above). Keep the summary genuinely one-line: each
+idea is just `アイデア名（状況。残りがあれば一言）`, joined with ` / ` — no numbers, rationale,
+history, or dated "**YYYY-MM-DD: …**" additions (those belong in the area page table and the raw
+file). Aim for ≤40 chars per idea and ≤400 chars per row. When an idea's status changes, rewrite
+its parenthetical in place instead of appending. (Appending is how this index once grew to
+9,000-char cells and stopped working as an index — see the 使い方 section of that page.) This is the step that's
 easiest to forget because the "real" work already feels done once the raw file and area page
 are written — but skipping it is exactly how the index drifts out of date and stops being
 trustworthy for Step 1 next time.
@@ -148,7 +153,9 @@ rewriting history, consistent with this repo's "raw is append-only" convention.
 
 If the update changes the idea's status in a way that's visible from the outside (e.g. 発散
 フェーズ → 実装済み, or a milestone completes), update the row in the area page's Idea Backlog
-table too — and if that shift is significant enough that the one-line summary in
+table too (rewrite its 状況 cell in place — the same "status only" rule applies there: status with date,
+a one-line purpose, and what remains, ≤200 chars; measurements and reasoning go to the raw file) — and if that shift is significant enough that the one-line summary in
 `docs/wiki/idea-backlog.md` would now read as stale or misleading, update that summary as well.
 Small in-progress detail changes don't need to ripple all the way up; a status/phase change that
-would mislead someone skimming just the top-level index does.
+would mislead someone skimming just the top-level index does. When you do update it, replace
+that idea's `（状況）` in place — never append a new dated sentence to the cell.

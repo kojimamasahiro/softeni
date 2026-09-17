@@ -38,7 +38,7 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 
 | ADR | タイトル | Status |
 |---|---|---|
-| [ADR-001](./ADR-001-local-source-detection-store.md) | 地方大会候補検知ストアを公開データから分離する | Accepted |
+| [ADR-001](./ADR-001-local-source-detection-store.md) | 地方大会候補検知ストアを公開データから分離する | Deprecated（2026-09-12） |
 | [ADR-002](./ADR-002-st-league-division-model.md) | STリーグの階層（division）データモデル | Accepted |
 | [ADR-003](./ADR-003-score-media-tool-separation.md) | score の「閲覧公開（メディア）」と「ツール公開（UGC）」の分離方針 | Accepted（高レベル方針） |
 | [ADR-004](./ADR-004-growth-analysis-visibility-consent.md) | 成長分析の公開境界と同意レベル（段階公開モデル） | Draft |
@@ -56,3 +56,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-016](./ADR-016-manual-adsense-units-over-auto-ads.md) | 広告は自動広告のページ内挿入をやめ、手動枠（AdUnit）で位置と高さを固定する | Accepted |
 | [ADR-017](./ADR-017-team-merge-signal-player-overlap.md) | チーム名寄せの候補検出に「選手共有」シグナルを足す | Accepted |
 | [ADR-018](./ADR-018-consent-by-region.md) | Cookie 同意を地域で分け、日本は公表ベース（バナー非表示）にする | Accepted |
+| [ADR-019](./ADR-019-team-merge-human-only.md) | チーム名寄せの自動統合を廃止し、人が判断したものだけを適用する | Accepted |

@@ -32,7 +32,7 @@
 ### package.json scripts
 
 - `dev`: `next dev`
-- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-02 時点で15段）。
+- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-17 時点で18段）。
   実体は `package.json` が正。大きくは次の3段:
   1. **正準化・ゲート**: `normalize-team-spacing.mjs` → `check-tournament-entries.mjs` →
      `check-tournament-insights.mjs` → `check-highschool-pipeline-freshness.mjs` →
@@ -42,7 +42,8 @@
   2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（末尾で `save`。下記「ビルドキャッシュ」節）
   3. **生成**: `generate-players-json` → `generate-players-lite` → `playerstats:facts` →
      `generate-player-analysis` → `generate-beta-matches-json` → `generate-match-reverse-index` →
-     `generate-rare-events` → `playerstats:rankings` → `secondaryschool:build`
+     `generate-rare-events` → `playerstats:rankings` →（キャッシュ保存）→ `secondaryschool:build` →
+     `primaryschool:build`（2026-09-13 追加）→ `university:pathways`（2026-09-14 追加）
 - `build`: `next build`
 - `postbuild`: sitemap 生成とソート（`next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs`）
 

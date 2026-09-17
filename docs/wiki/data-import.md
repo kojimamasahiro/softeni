@@ -359,6 +359,13 @@ Deprecated:
     PDFの表記のまま入っているので、これを飛ばすと同じ学校が別チーム扱いになる。冪等。
   - 一連の手順はスキル `tournament-pdf-to-results`（`.claude/skills/`）にまとめてある。
 
+- `scripts/pdf/zennihon_university_results.py`
+  インカレ団体戦（文部科学大臣杯 全日本大学対抗選手権）のドローPDFから `matches` を抽出する。
+  出力先は `zennihon-university/<year>/versus-none-{boys,girls}.json`（選手権と同じ大会IDの対抗戦カテゴリ）。
+  敗者のスコアしか印字されない様式なので `--winner-score` が必須（2025年度は3勝先取）。
+  **勝敗は水平線の色でなく合流の縦線の色で判定する**（水平線は敗退まで赤く塗られる）。
+  様式の詳細はスクリプト冒頭の docstring が正。
+
 - `scripts/pdf/zennihon_championship_results.py`
   天皇賜杯・皇后賜杯 全日本選手権の結果PDFから**勝敗とスコア（`matches`）**を抽出し、
   `tools/zennihon-championship-<year>/*.initialPlayers.json` と合わせて
