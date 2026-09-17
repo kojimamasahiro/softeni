@@ -219,4 +219,6 @@ export type MatchRow = {
   rematchOf?: string | null;
   result: 'win' | 'lose' | 'draw';
   games: { won: string; lost: string };
+  /** 組み合わせだけで未実施（勝者もスコアも無い）。スコア欄を「0-0」ではなく「未実施」にする */
+  unplayed?: boolean;
 };

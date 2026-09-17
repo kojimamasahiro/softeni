@@ -8,7 +8,7 @@ import crypto from 'crypto';
 
 import { Identity, playerKey, resolveNumericId } from './identity';
 import { participantMatchesAliasedId, resolveAliasedPlayerId, resolveAliasedTeam } from './participantAliases';
-import { isFinalRound, isSemifinalRound, normalizeRoundOrder, parseCategoryId, resolvePlacement } from './placement';
+import { isFinalRound, isSemifinalRound, isUnplayedMatch, normalizeRoundOrder, parseCategoryId, resolvePlacement } from './placement';
 import { RawEntry, RawParticipant, SourceAdapter, StandardDetail } from './sourceAdapter';
 import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFact, ReverseIndex } from './types';
 
@@ -30,7 +30,10 @@ import type { PersonRef, Placement, PlayerEntryFact, PlayerFacts, PlayerMatchFac
 //        重複idの方に紐付き、パートナー・対戦相手名がローマ字連結表示（例:
 //        「MIYAMAEKIHO」）になっていた。全再計算で誤った紐付けの facts を一掃する
 //        （2026-07-20）。
-export const ENGINE_VERSION = '1.7.0';
+// 1.7.0: 進出率の分母から placement unknown を外した（2026-08-26）。
+// 1.8.0: まだ行われていない試合（勝者もスコアも無い）を試合の集計から外した（2026-09-18）。
+//        組み合わせだけ入れた大会の試合が「引き分け」として試合数に入り、勝率が下がっていた。
+export const ENGINE_VERSION = '1.8.0';
 
 function personRefFromParticipant(
   identity: Identity,
@@ -108,6 +111,8 @@ function factsFromCategory(
     // 自己対戦（self-vs-self）として勝敗を二重計上してしまう。相手も self なら除外する
     // （名前単位 id の限界。人物別 id 分離は P7/設計。データ契約 §D）。
     if (targetEntryNoSet.has(oppEntryNo)) continue;
+    // 組み合わせだけで未実施の試合は、勝敗・試合数・最新試合のどれにも入れない
+    if (isUnplayedMatch(m)) continue;
 
     const scores = m.scores ?? {};
     const gw = Number(scores[String(playerEntryNo)]);
