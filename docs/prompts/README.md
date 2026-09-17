@@ -8,6 +8,7 @@
 - wiki 更新
 - ADR 作成
 - 実装と docs のズレ確認
+- wiki ページの圧縮
 
 一覧:
 
@@ -15,3 +16,4 @@
 - [summarize-raw.md](./summarize-raw.md)
 - [create-adr.md](./create-adr.md)
 - [review-docs-drift.md](./review-docs-drift.md)
+- [slim-wiki-page.md](./slim-wiki-page.md) — wiki ページを「現在の仕様」だけに圧縮し、全文を raw に退避する（2026-09-18）
