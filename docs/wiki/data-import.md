@@ -1074,6 +1074,7 @@ entries の入力ミスを検出する。問題があれば終了コード1。�
     詳細は [raw/2026-09-17-x-posts-user-problem-findings.md](../raw/2026-09-17-x-posts-user-problem-findings.md)。
   - 投入済み: 高校選抜 2022・2025（JSTA 記録。2022 は `t_records/2022/2022_B17_40.pdf`）。
 - インターハイの記録（ベスト8以降・ゲームごとのポイント付き）は様式が違い、未対応。
+- 一連の手順はスキル `team-match-order`（`.claude/skills/`）にまとめてある。別の年度・別の大会へ広げるときはそこから読む。
 
 ### 決勝トーナメントの席順（`knockoutDraw`）
 
