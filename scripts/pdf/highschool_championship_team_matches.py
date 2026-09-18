@@ -6,7 +6,8 @@
 各試合へ `matches`（ペア・本数・**ゲームごとのポイント**）を差し込む。
 
 **収録範囲は年度で変わる**。2024〜2026 は**ベスト8以降の7試合だけ**（1〜3回戦は学校単位の本数のみ）、
-**2023 は1回戦から全47試合**。先に `pdftotext -layout` で詳細ページの範囲を目視する。
+**2022・2023 は1回戦から全47試合**（2022 は不戦の1試合を除く46試合）。
+**詳細ページの範囲は見出しを1ページずつ目視して決める**（`pdftotext -layout`。人の指定は1ページずれる）。
 
 ## この様式の見極め（令和8年度 女子団体で検証。令和5〜6年度でも通る）
 
@@ -22,6 +23,10 @@
 - **打ち切りの印字はあてにしない**。「打ち切り」と書かれる対戦とそうでない対戦がある
   （準決勝で 3-3 のまま印字のみ）。**勝者は本数の丸数字の有無で決める**。
   **打ち切りの本数を印字しない年度がある**（2023）。`to_detail` の docstring を参照。
+- **不戦の試合は見出しの本数が `R`**（2022 男子 p28・女子 p18）で、ペアも本数もゲームも印字されない。
+  元資料にオーダーが無いので `matches` を入れず、飛ばした試合を表示する。
+- **打ち切りの瞬間に進行中だったゲームが印字される**（丸数字がどちらにも無い行。2022 に8件）。
+  ADR-020 は決着したゲームだけを持つので落とし、落とした行を表示する。
 - ポイントは10以上になる（実測 `⑫ － 10`）。丸数字の10〜20も読む（`team_match_details.CIRCLED`）。
 
 列のx座標（pt・A4縦）:
@@ -153,13 +158,20 @@ def parse_page(pdf, page):
         subs = []
         for g in [g for g in groups if hy < g[0]['y'] < next_y]:
             y0, y1 = g[0]['y'] - 6, g[-1]['y'] + 6
-            games = []
+            games, inprogress = [], []
             for d in g:
                 lp = next((w for w in ws if in_col(w, 'left_point') and abs(w['y'] - d['y']) < 3), None)
                 rp = next((w for w in ws if in_col(w, 'right_point') and abs(w['y'] - d['y']) < 3), None)
                 if lp is None and rp is None:
                     continue  # 行だけあって実施されなかったゲーム
-                games.append((score_of(lp['t']) if lp else None, score_of(rp['t']) if rp else None))
+                pl, pr = score_of(lp['t']) if lp else None, score_of(rp['t']) if rp else None
+                if not (pl and pl[1]) and not (pr and pr[1]):
+                    # どちらにも丸数字が無い＝打ち切りの時点で進行中だったゲーム。
+                    # ADR-020 は決着したゲームだけを持つ（2022 男子 p34 の `3 － 0`）。
+                    # 丸数字の読み落ちなら、印字された本数との数え直しで止まる
+                    inprogress.append(f"{lp['t'] if lp else ''}-{rp['t'] if rp else ''}")
+                    continue
+                games.append((pl, pr))
             sub_l = pick(ws, 'left_games', y0, y1)
             sub_r = pick(ws, 'right_games', y0, y1)
             subs.append(dict(
@@ -168,10 +180,13 @@ def parse_page(pdf, page):
                 gamesA=score_of(sub_l[0]['t']) if sub_l else None,
                 gamesB=score_of(sub_r[0]['t']) if sub_r else None,
                 points=games,
+                inprogress=inprogress,
             ))
+        # 見出しの本数は数字でないことがある（不戦の `R`。2022 男子 p28・女子 p18）
+        head = [score_of(c[0]['t']) if c else None for c in (lg, rg)]
         out.append(dict(page=page, entryA=a, entryB=b,
-                        scoreA=score_of(lg[0]['t'])[0] if lg else None,
-                        scoreB=score_of(rg[0]['t'])[0] if rg else None,
+                        scoreA=head[0][0] if head[0] else None,
+                        scoreB=head[1][0] if head[1] else None,
                         subs=subs))
     return out
 
@@ -189,7 +204,11 @@ def to_detail(index, sub, school_a, school_b, idx):
     印字がある年度（2024・2026）は印字を正とし、数え直しは検算に使う。
     """
     winner = 'A' if sub['gamesA'] and sub['gamesA'][1] else 'B' if sub['gamesB'] and sub['gamesB'][1] else None
-    status = 'completed' if winner else ('unfinished' if sub['points'] else 'not_played')
+    # 本数・決着したゲーム・進行中のゲームのどれかが印字されていれば、その対戦は始まっている。
+    # **ゲームの有無で決めてはいけない**——進行中のゲーム1つだけで打ち切られると（2022）
+    # games が空になり、本数 `0 － 0` だけが残る。それは未実施ではなく打ち切り
+    started = any((sub['gamesA'], sub['gamesB'], sub['points'], sub['inprogress']))
+    status = 'completed' if winner else ('unfinished' if started else 'not_played')
     derived = status == 'unfinished' and not sub['gamesA'] and not sub['gamesB']
     scores = counted_games(sub['points']) if derived else [
         sub['gamesA'][0] if sub['gamesA'] else None,
@@ -225,7 +244,7 @@ def main():
     by_pair = {tuple(sorted(m['entries'])): m for m in details['matches']}
     idx = individual_index()
 
-    problems, derived, owner, counts = [], [], defaultdict(set), defaultdict(int)
+    problems, derived, blank, dropped, owner, counts = [], [], [], [], defaultdict(set), defaultdict(int)
     for page in range(int(lo), int(hi or lo) + 1):
         for m in parse_page(args.pdf, page):
             db = by_pair.get(tuple(sorted((m['entryA'], m['entryB']))))
@@ -235,6 +254,11 @@ def main():
                 continue
             flip = db['entries'][0] != m['entryA']  # details と左右が逆なら入れ替える
             want = (db['scores'][str(m['entryA'])], db['scores'][str(m['entryB'])])
+            if not any(s['playersA'] or s['playersB'] or s['points'] for s in m['subs']):
+                # 不戦（片側が来ない）。見出しに `R` と印字され、ペアも本数もゲームも無い。
+                # 元資料にオーダーが無いので `matches` は持たない（ADR-020）
+                blank.append(f'{label} {db["round"]}: オーダーの印字が無い（不戦）ので入れない')
+                continue
             if (m['scoreA'], m['scoreB']) != want:
                 problems.append(f"{label}: 見出しの本数 {(m['scoreA'], m['scoreB'])} / details {want}")
             if len(m['subs']) != 3:
@@ -245,6 +269,9 @@ def main():
             print(f"{label} {db['round']} {m['scoreA']}-{m['scoreB']}")
             for k, (s, raw) in enumerate(zip(subs, m['subs'])):
                 counted = counted_games(raw['points'])
+                if raw['inprogress']:
+                    dropped.append(f'{label} 第{k + 1}対戦: 打ち切り時点で進行中のゲーム '
+                                   f'{" ".join(raw["inprogress"])} を games に入れなかった')
                 if s.pop('_derived'):
                     derived.append(f'{label} 第{k + 1}対戦: 本数の印字が無く、ゲームから {counted[0]}-{counted[1]} と数えた')
                 elif s['status'] == 'not_played':
@@ -275,8 +302,12 @@ def main():
     if len(clash) > len(allowed):
         rest = {p: v for p, v in clash.items() if p not in allowed}
         problems.append(f'2校に割り当てられた選手: {rest}（同名の別人と確かめたら --same-name で通す）')
+    if blank:
+        print('\n'.join(['\nオーダーの印字が無い試合（入れていない）:'] + blank))
     if derived:
         print('\n'.join(['\n本数の印字が無く、ゲームから数えた対戦:'] + derived))
+    if dropped:
+        print('\n'.join(['\n進行中のまま打ち切られたゲーム（ADR-020 に従い games に入れない）:'] + dropped))
     if allowed:
         print('\n同名の別人として通した選手（--same-name）:', allowed)
     print('\n対戦の状態:', {k: counts[k] for k in ('completed', 'unfinished', 'not_played')},

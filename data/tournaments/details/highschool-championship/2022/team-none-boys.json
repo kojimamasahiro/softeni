@@ -403,7 +403,71 @@
       "matchId": "match-1",
       "nextMatchId": "match-17",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "板倉", "firstName": "豪" },
+            { "lastName": "奥谷", "firstName": "斗真" }
+          ],
+          "playersB": [
+            { "lastName": "大和", "firstName": "昌生" },
+            { "lastName": "五十嵐", "firstName": "響紀" }
+          ],
+          "games": [
+            [4, 2],
+            [6, 4],
+            [1, 4],
+            [6, 4],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "塚本", "firstName": "星弥" },
+            { "lastName": "渡部", "firstName": "海友" }
+          ],
+          "playersB": [{ "name": "髙山 竜聖" }, { "lastName": "松本", "firstName": "健太郎" }],
+          "games": [
+            [2, 4],
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "神谷", "firstName": "啓仁" },
+            { "lastName": "藤本", "firstName": "貫太" }
+          ],
+          "playersB": [
+            { "lastName": "稲葉", "firstName": "太一" },
+            { "lastName": "井草", "firstName": "優斗" }
+          ],
+          "games": [
+            [6, 4],
+            [6, 4],
+            [4, 0],
+            [7, 5]
+          ]
+        }
+      ]
     },
     {
       "entries": [4, 5],
@@ -416,7 +480,70 @@
       "matchId": "match-2",
       "nextMatchId": "match-18",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "菅野", "firstName": "眞紀仁" },
+            { "lastName": "渡辺", "firstName": "虎太朗" }
+          ],
+          "playersB": [{ "lastName": "坂手", "firstName": "拓海" }, { "name": "奥村 睦" }],
+          "games": [
+            [4, 1],
+            [5, 3],
+            [5, 3],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "齋藤", "firstName": "楓雅" },
+            { "lastName": "安部", "firstName": "蓮生" }
+          ],
+          "playersB": [{ "lastName": "石井", "firstName": "一至" }, { "name": "在原 隼" }],
+          "games": [
+            [1, 4],
+            [4, 1],
+            [4, 2],
+            [0, 4],
+            [5, 3],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "相山", "firstName": "昂慧" },
+            { "lastName": "田中", "firstName": "彰浩" }
+          ],
+          "playersB": [
+            { "lastName": "濱本", "firstName": "莉輝" },
+            { "lastName": "小杉", "firstName": "優太" }
+          ],
+          "games": [
+            [5, 7],
+            [5, 3],
+            [4, 6],
+            [1, 4],
+            [4, 1],
+            [5, 7]
+          ]
+        }
+      ]
     },
     {
       "entries": [8, 9],
@@ -429,7 +556,69 @@
       "matchId": "match-3",
       "nextMatchId": "match-19",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "髙田", "firstName": "淳貴" },
+            { "lastName": "飯干", "firstName": "開生" }
+          ],
+          "playersB": [
+            { "lastName": "福田", "firstName": "海聖" },
+            { "lastName": "村田", "firstName": "隆一郎" }
+          ],
+          "games": [
+            [0, 4],
+            [2, 4],
+            [4, 0],
+            [1, 4],
+            [4, 0],
+            [4, 6]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [{ "name": "谷井 優太郎" }, { "lastName": "伊藤", "firstName": "幹太" }],
+          "playersB": [
+            { "lastName": "白石", "firstName": "貴也" },
+            { "lastName": "川本", "firstName": "健士郎" }
+          ],
+          "games": [
+            [4, 6],
+            [2, 4],
+            [4, 1],
+            [1, 4],
+            [4, 2],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [{ "name": "浦濱 大牙" }, { "lastName": "東家", "firstName": "偉琉" }],
+          "playersB": [{ "lastName": "山内", "firstName": "優斗" }, { "name": "岩田 稜央" }],
+          "games": [
+            [2, 4],
+            [7, 5],
+            [2, 4],
+            [1, 4],
+            [4, 0],
+            [4, 6]
+          ]
+        }
+      ]
     },
     {
       "entries": [10, 11],
@@ -442,7 +631,70 @@
       "matchId": "match-4",
       "nextMatchId": "match-20",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "杉渕", "firstName": "忠稀" },
+            { "lastName": "吉田", "firstName": "夕輝" }
+          ],
+          "playersB": [{ "name": "肥越 翔太" }, { "name": "田頭 真弥" }],
+          "games": [
+            [5, 3],
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [3, 5],
+            [4, 2],
+            [5, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [{ "lastName": "相馬", "firstName": "史弥" }, { "name": "松岡 彩人" }],
+          "playersB": [
+            { "lastName": "大曲", "firstName": "李空" },
+            { "lastName": "岩永", "firstName": "優真" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 6],
+            [5, 3],
+            [8, 6],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "因幡", "firstName": "颯汰" },
+            { "lastName": "片岡", "firstName": "将武" }
+          ],
+          "playersB": [
+            { "lastName": "尼子", "firstName": "裕也" },
+            { "lastName": "渡邉", "firstName": "慶樹" }
+          ],
+          "games": [
+            [4, 2],
+            [5, 3],
+            [4, 1],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [14, 15],
@@ -455,7 +707,69 @@
       "matchId": "match-5",
       "nextMatchId": "match-21",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [{ "name": "須藤 漱太" }, { "name": "阿部 大地" }],
+          "playersB": [
+            { "lastName": "立野", "firstName": "桂伍" },
+            { "lastName": "川村", "firstName": "幸大" }
+          ],
+          "games": [
+            [1, 4],
+            [0, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "斎藤", "firstName": "隼羽" },
+            { "lastName": "野口", "firstName": "椋平" }
+          ],
+          "playersB": [
+            { "lastName": "山本", "firstName": "拓史" },
+            { "lastName": "辻", "firstName": "俊乃介" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [7, 5],
+            [5, 7],
+            [3, 5],
+            [2, 4],
+            [7, 3]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [{ "lastName": "金原", "firstName": "遥人" }, { "name": "飯野 幸太" }],
+          "playersB": [
+            { "lastName": "後藤", "firstName": "優斗" },
+            { "lastName": "中垣", "firstName": "敬斗" }
+          ],
+          "games": [
+            [2, 4],
+            [3, 5],
+            [3, 5],
+            [0, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [16, 17],
@@ -468,7 +782,66 @@
       "matchId": "match-6",
       "nextMatchId": "match-22",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "和氣", "firstName": "道宏" },
+            { "lastName": "確田", "firstName": "冬吹樹" }
+          ],
+          "playersB": [{ "name": "古川 椋大" }, { "name": "佐ノ 木紳" }],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [9, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "大谷", "firstName": "孔太" },
+            { "lastName": "小倉", "firstName": "光生" }
+          ],
+          "playersB": [{ "name": "近藤 絢斗" }, { "name": "渡辺 康介" }],
+          "games": [
+            [5, 7],
+            [4, 1],
+            [4, 1],
+            [3, 5],
+            [4, 0],
+            [2, 4],
+            [7, 3]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [{ "lastName": "井澤", "firstName": "伊茶" }, { "name": "正岡 子竜" }],
+          "playersB": [
+            { "lastName": "加藤", "firstName": "颯人" },
+            { "lastName": "山本", "firstName": "楓也" }
+          ],
+          "games": [
+            [6, 4],
+            [4, 2],
+            [4, 2],
+            [8, 6]
+          ]
+        }
+      ]
     },
     {
       "entries": [20, 21],
@@ -481,7 +854,71 @@
       "matchId": "match-7",
       "nextMatchId": "match-23",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [{ "name": "山田 拓波" }, { "name": "杉田 礼" }],
+          "playersB": [
+            { "lastName": "村上", "firstName": "颯斗" },
+            { "lastName": "久野", "firstName": "莉輝" }
+          ],
+          "games": [
+            [0, 4],
+            [2, 4],
+            [5, 7],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "鈴木", "firstName": "輝" },
+            { "lastName": "伊藤", "firstName": "楓真" }
+          ],
+          "playersB": [
+            { "lastName": "白井", "firstName": "春希" },
+            { "lastName": "藤井", "firstName": "晴太" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 1],
+            [4, 2],
+            [2, 4],
+            [4, 1],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "鈴木", "firstName": "駿" },
+            { "lastName": "山田", "firstName": "湊" }
+          ],
+          "playersB": [
+            { "lastName": "藤井", "firstName": "春人" },
+            { "lastName": "加藤", "firstName": "迅" }
+          ],
+          "games": [
+            [3, 5],
+            [2, 4],
+            [2, 4],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [22, 23],
@@ -494,7 +931,64 @@
       "matchId": "match-8",
       "nextMatchId": "match-24",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [{ "lastName": "小森", "firstName": "琢真" }, { "name": "中島 繋人" }],
+          "playersB": [{ "name": "沼田 青緯" }, { "name": "渡邉 仁" }],
+          "games": [
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [4, 0],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "木下", "firstName": "琉希" },
+            { "lastName": "藤井", "firstName": "智暉" }
+          ],
+          "playersB": [{ "name": "小室 玲雄" }, { "name": "中山 陽斗" }],
+          "games": [
+            [4, 1],
+            [5, 3],
+            [5, 7],
+            [1, 4],
+            [4, 2],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "井田", "firstName": "隼介" },
+            { "lastName": "百田", "firstName": "鉄馬" }
+          ],
+          "playersB": [{ "name": "蛭田 櫂" }, { "name": "鈴木 清桜" }],
+          "games": [
+            [2, 4],
+            [4, 1],
+            [0, 4],
+            [2, 4],
+            [6, 8]
+          ]
+        }
+      ]
     },
     {
       "entries": [26, 27],
@@ -507,7 +1001,73 @@
       "matchId": "match-9",
       "nextMatchId": "match-25",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "岡原", "firstName": "煌虎" },
+            { "lastName": "神野", "firstName": "晃希" }
+          ],
+          "playersB": [
+            { "lastName": "泉原", "firstName": "大地" },
+            { "lastName": "赤坂", "firstName": "浩太" }
+          ],
+          "games": [
+            [1, 4],
+            [2, 4],
+            [5, 3],
+            [4, 6],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "白岡", "firstName": "祐也" },
+            { "lastName": "橋田", "firstName": "巧" }
+          ],
+          "playersB": [
+            { "lastName": "小森", "firstName": "寛太" },
+            { "lastName": "高瀬", "firstName": "泰雅" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 6],
+            [2, 4],
+            [10, 8],
+            [6, 8]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "桑原", "firstName": "聖汰" },
+            { "lastName": "藤原", "firstName": "拓巳" }
+          ],
+          "playersB": [{ "name": "小林 侑世" }, { "name": "角 隼杜" }],
+          "games": [
+            [4, 0],
+            [2, 4],
+            [4, 1],
+            [5, 7],
+            [4, 1],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
       "entries": [28, 29],
@@ -520,7 +1080,71 @@
       "matchId": "match-10",
       "nextMatchId": "match-26",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [{ "name": "石金 悠星" }, { "lastName": "津田", "firstName": "宙紀" }],
+          "playersB": [
+            { "lastName": "安部", "firstName": "陸斗" },
+            { "lastName": "樋口", "firstName": "晴喜" }
+          ],
+          "games": [
+            [1, 4],
+            [8, 6],
+            [4, 1],
+            [4, 1],
+            [0, 4],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "尾門", "firstName": "駿" },
+            { "lastName": "永瀬", "firstName": "祐大郎" }
+          ],
+          "playersB": [
+            { "lastName": "岡本", "firstName": "央睦" },
+            { "lastName": "一法師", "firstName": "優吾" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [4, 0],
+            [3, 5],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [{ "lastName": "中村", "firstName": "陸門" }, { "name": "飯田 一矢" }],
+          "playersB": [
+            { "lastName": "河野", "firstName": "汐苑" },
+            { "lastName": "長野", "firstName": "虎之介" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 6],
+            [5, 3],
+            [6, 4],
+            [2, 4],
+            [2, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [32, 33],
@@ -533,7 +1157,74 @@
       "matchId": "match-11",
       "nextMatchId": "match-27",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "永江", "firstName": "快羽" },
+            { "lastName": "木村", "firstName": "駿佑" }
+          ],
+          "playersB": [{ "name": "木俣 蓮音" }, { "name": "藤木 海成" }],
+          "games": [
+            [4, 6],
+            [5, 3],
+            [8, 6],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "直井", "firstName": "万琴" },
+            { "lastName": "長瀬", "firstName": "智哉" }
+          ],
+          "playersB": [
+            { "lastName": "雨宮", "firstName": "陸" },
+            { "lastName": "八巻", "firstName": "隼人" }
+          ],
+          "games": [
+            [4, 0],
+            [1, 4],
+            [2, 4],
+            [5, 3],
+            [4, 2],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "林", "firstName": "幸佑" },
+            { "lastName": "田口", "firstName": "陽貴" }
+          ],
+          "playersB": [
+            { "lastName": "依田", "firstName": "翔" },
+            { "lastName": "長田", "firstName": "康希" }
+          ],
+          "games": [
+            [4, 2],
+            [0, 4],
+            [4, 2],
+            [4, 1],
+            [1, 4],
+            [5, 3]
+          ]
+        }
+      ]
     },
     {
       "entries": [34, 35],
@@ -546,7 +1237,74 @@
       "matchId": "match-12",
       "nextMatchId": "match-28",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "中島", "firstName": "玲欧" },
+            { "lastName": "竹原", "firstName": "悠斗" }
+          ],
+          "playersB": [
+            { "lastName": "関内", "firstName": "優太" },
+            { "lastName": "渡辺", "firstName": "優希" }
+          ],
+          "games": [
+            [5, 3],
+            [5, 3],
+            [1, 4],
+            [4, 2],
+            [3, 5],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "深堀", "firstName": "金の翼" },
+            { "lastName": "金谷", "firstName": "梨輝" }
+          ],
+          "playersB": [{ "name": "井 奏良" }, { "lastName": "内倉", "firstName": "海響" }],
+          "games": [
+            [5, 3],
+            [4, 1],
+            [4, 2],
+            [1, 4],
+            [1, 4],
+            [2, 4],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "曽我", "firstName": "祥帆" },
+            { "lastName": "西村", "firstName": "梓苑" }
+          ],
+          "playersB": [
+            { "lastName": "松村", "firstName": "海星" },
+            { "lastName": "坪川", "firstName": "桔伊" }
+          ],
+          "games": [
+            [7, 5],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [38, 39],
@@ -559,7 +1317,69 @@
       "matchId": "match-13",
       "nextMatchId": "match-29",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [{ "name": "陣内 希哉" }, { "lastName": "佐川", "firstName": "温斗" }],
+          "playersB": [
+            { "lastName": "髙嶺", "firstName": "大弥" },
+            { "lastName": "高嶺", "firstName": "星弥" }
+          ],
+          "games": [
+            [2, 4],
+            [3, 5],
+            [6, 4],
+            [4, 1],
+            [5, 3],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "木村", "firstName": "奏都" },
+            { "lastName": "藤田", "firstName": "颯汰" }
+          ],
+          "playersB": [
+            { "lastName": "吉川", "firstName": "洋一朗" },
+            { "lastName": "前本", "firstName": "翔太郎" }
+          ],
+          "games": [
+            [4, 0],
+            [3, 5],
+            [4, 1],
+            [4, 1],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "脇田", "firstName": "大吉" },
+            { "lastName": "斎藤", "firstName": "恭平" }
+          ],
+          "playersB": [{ "name": "須貝 壮慶" }, { "name": "宮良 直太郞" }],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [5, 3],
+            [6, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [40, 41],
@@ -572,7 +1392,74 @@
       "matchId": "match-14",
       "nextMatchId": "match-30",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "浦田", "firstName": "惟生" },
+            { "lastName": "鳥津", "firstName": "颯" }
+          ],
+          "playersB": [
+            { "lastName": "橋本", "firstName": "侑弥" },
+            { "lastName": "津田", "firstName": "聖弥" }
+          ],
+          "games": [
+            [3, 5],
+            [5, 3],
+            [0, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "立花", "firstName": "輝" },
+            { "lastName": "清原", "firstName": "聖真" }
+          ],
+          "playersB": [
+            { "lastName": "東", "firstName": "脩蔵" },
+            { "lastName": "竹内", "firstName": "遥音" }
+          ],
+          "games": [
+            [6, 4],
+            [1, 4],
+            [7, 5],
+            [4, 1],
+            [1, 4],
+            [0, 4],
+            [6, 8]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [{ "lastName": "鍬﨑", "firstName": "駿斗" }, { "name": "松谷 晃希" }],
+          "playersB": [
+            { "lastName": "澤舘", "firstName": "大智" },
+            { "lastName": "土田", "firstName": "竜太郎" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 1],
+            [2, 4],
+            [2, 4],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [44, 45],
@@ -585,7 +1472,74 @@
       "matchId": "match-15",
       "nextMatchId": "match-31",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "吉田", "firstName": "彗冴" },
+            { "lastName": "長濵", "firstName": "悠人" }
+          ],
+          "playersB": [
+            { "lastName": "杉田", "firstName": "大樹" },
+            { "lastName": "吉川", "firstName": "恵大" }
+          ],
+          "games": [
+            [6, 4],
+            [4, 6],
+            [4, 1],
+            [3, 5],
+            [1, 4],
+            [4, 0],
+            [2, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "古藤", "firstName": "瑛亘" },
+            { "lastName": "吉田", "firstName": "朝陽" }
+          ],
+          "playersB": [
+            { "lastName": "橋本", "firstName": "哉太" },
+            { "lastName": "川神", "firstName": "航平" }
+          ],
+          "games": [
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [1, 4],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [{ "name": "須川 大雅" }, { "name": "宿輪 健" }],
+          "playersB": [
+            { "lastName": "米田", "firstName": "心" },
+            { "lastName": "大田", "firstName": "優" }
+          ],
+          "games": [
+            [1, 4],
+            [8, 6],
+            [4, 2],
+            [4, 1],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [46, 47],
@@ -598,7 +1552,74 @@
       "matchId": "match-16",
       "nextMatchId": "match-32",
       "prevMatchIds": [],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [{ "name": "野口 拓麿" }, { "name": "上條 大輔" }],
+          "playersB": [
+            { "lastName": "土畑", "firstName": "海翔" },
+            { "lastName": "荒関", "firstName": "拓斗" }
+          ],
+          "games": [
+            [4, 1],
+            [8, 6],
+            [2, 4],
+            [2, 4],
+            [1, 4],
+            [4, 2],
+            [9, 11]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "小森", "firstName": "悠矢" },
+            { "lastName": "塙", "firstName": "芳征" }
+          ],
+          "playersB": [
+            { "lastName": "棟方", "firstName": "志優" },
+            { "lastName": "馬場", "firstName": "櫂斗" }
+          ],
+          "games": [
+            [8, 10],
+            [4, 1],
+            [2, 4],
+            [4, 1],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "篠原", "firstName": "正伸" },
+            { "lastName": "平林", "firstName": "和真" }
+          ],
+          "playersB": [
+            { "lastName": "山口", "firstName": "諒" },
+            { "lastName": "大谷", "firstName": "紳" }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [7, 5]
+          ]
+        }
+      ]
     },
     {
       "entries": [1, 2],
@@ -611,7 +1632,80 @@
       "matchId": "match-17",
       "nextMatchId": "match-33",
       "prevMatchIds": ["match-1"],
-      "prevMatchId": "match-1"
+      "prevMatchId": "match-1",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "宮本", "firstName": "颯人" },
+            { "lastName": "黒坂", "firstName": "卓矢" }
+          ],
+          "playersB": [
+            { "lastName": "塚本", "firstName": "星弥" },
+            { "lastName": "渡部", "firstName": "海友" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 2],
+            [4, 1],
+            [8, 10],
+            [5, 3],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "岩田", "firstName": "皓平" },
+            { "lastName": "上田", "firstName": "泰大" }
+          ],
+          "playersB": [
+            { "lastName": "板倉", "firstName": "豪" },
+            { "lastName": "奥谷", "firstName": "斗真" }
+          ],
+          "games": [
+            [4, 0],
+            [5, 3],
+            [1, 4],
+            [0, 4],
+            [6, 8],
+            [6, 4],
+            [2, 7]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "中川", "firstName": "雄太" },
+            { "lastName": "宮田", "firstName": "智友" }
+          ],
+          "playersB": [
+            { "lastName": "神谷", "firstName": "啓仁" },
+            { "lastName": "藤本", "firstName": "貫太" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 2],
+            [4, 2],
+            [1, 4],
+            [1, 4],
+            [5, 3],
+            [8, 6]
+          ]
+        }
+      ]
     },
     {
       "entries": [4, 6],
@@ -624,7 +1718,80 @@
       "matchId": "match-18",
       "nextMatchId": "match-33",
       "prevMatchIds": ["match-2"],
-      "prevMatchId": "match-2"
+      "prevMatchId": "match-2",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "相山", "firstName": "昂慧" },
+            { "lastName": "田中", "firstName": "彰浩" }
+          ],
+          "playersB": [
+            { "lastName": "白井", "firstName": "大希" },
+            { "lastName": "草地", "firstName": "凌冴" }
+          ],
+          "games": [
+            [4, 6],
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [2, 4],
+            [2, 4],
+            [3, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "齋藤", "firstName": "楓雅" },
+            { "lastName": "安部", "firstName": "蓮生" }
+          ],
+          "playersB": [
+            { "lastName": "今村", "firstName": "陸士" },
+            { "lastName": "今村", "firstName": "恒志" }
+          ],
+          "games": [
+            [3, 5],
+            [4, 2],
+            [6, 4],
+            [0, 4],
+            [4, 6],
+            [9, 7],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "菅野", "firstName": "眞紀仁" },
+            { "lastName": "渡辺", "firstName": "虎太朗" }
+          ],
+          "playersB": [
+            { "lastName": "里", "firstName": "凌輝" },
+            { "lastName": "脇田", "firstName": "隆秀" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 2],
+            [1, 4],
+            [4, 6],
+            [4, 1],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [7, 9],
@@ -637,7 +1804,70 @@
       "matchId": "match-19",
       "nextMatchId": "match-34",
       "prevMatchIds": ["match-3"],
-      "prevMatchId": "match-3"
+      "prevMatchId": "match-3",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "井元", "firstName": "啓斗" },
+            { "lastName": "出村", "firstName": "虹空" }
+          ],
+          "playersB": [
+            { "lastName": "福田", "firstName": "海聖" },
+            { "lastName": "村田", "firstName": "隆一郎" }
+          ],
+          "games": [
+            [9, 7],
+            [4, 1],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "中村", "firstName": "悠峰" },
+            { "lastName": "宮下", "firstName": "武輝" }
+          ],
+          "playersB": [
+            { "lastName": "白石", "firstName": "貴也" },
+            { "lastName": "川本", "firstName": "健士郎" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 2],
+            [4, 2],
+            [4, 2],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "飯田", "firstName": "航仁" },
+            { "lastName": "反保", "firstName": "皐聖" }
+          ],
+          "playersB": [{ "lastName": "山内", "firstName": "優斗" }, { "name": "岩田 稜央" }],
+          "games": [
+            [4, 0],
+            [8, 6],
+            [4, 2],
+            [5, 3]
+          ]
+        }
+      ]
     },
     {
       "entries": [10, 12],
@@ -650,7 +1880,72 @@
       "matchId": "match-20",
       "nextMatchId": "match-34",
       "prevMatchIds": ["match-4"],
-      "prevMatchId": "match-4"
+      "prevMatchId": "match-4",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "杉渕", "firstName": "忠稀" },
+            { "lastName": "吉田", "firstName": "夕輝" }
+          ],
+          "playersB": [
+            { "lastName": "三上", "firstName": "柊二" },
+            { "lastName": "阪口", "firstName": "蓮" }
+          ],
+          "games": [
+            [4, 1],
+            [3, 5],
+            [2, 4],
+            [4, 1],
+            [2, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [{ "lastName": "相馬", "firstName": "史弥" }, { "name": "松岡 彩人" }],
+          "playersB": [
+            { "lastName": "清水", "firstName": "駿" },
+            { "lastName": "木内", "firstName": "陸人" }
+          ],
+          "games": [
+            [4, 6],
+            [3, 5],
+            [4, 1],
+            [1, 4],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "因幡", "firstName": "颯汰" },
+            { "lastName": "片岡", "firstName": "将武" }
+          ],
+          "playersB": [
+            { "lastName": "小宮", "firstName": "彰悟" },
+            { "lastName": "鍜冶田", "firstName": "真育" }
+          ],
+          "games": [
+            [0, 4],
+            [6, 8],
+            [0, 4],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [13, 15],
@@ -663,7 +1958,74 @@
       "matchId": "match-21",
       "nextMatchId": "match-35",
       "prevMatchIds": ["match-5"],
-      "prevMatchId": "match-5"
+      "prevMatchId": "match-5",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "奥田", "firstName": "叶汰" },
+            { "lastName": "仲村", "firstName": "一希" }
+          ],
+          "playersB": [
+            { "lastName": "立野", "firstName": "桂伍" },
+            { "lastName": "川村", "firstName": "幸大" }
+          ],
+          "games": [
+            [3, 5],
+            [2, 4],
+            [3, 5],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "山﨑", "firstName": "瑠斗" },
+            { "lastName": "瀬戸", "firstName": "凌羽" }
+          ],
+          "playersB": [
+            { "lastName": "後藤", "firstName": "優斗" },
+            { "lastName": "中垣", "firstName": "敬斗" }
+          ],
+          "games": [
+            [3, 5],
+            [4, 2],
+            [4, 0],
+            [1, 4],
+            [0, 4],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "足利", "firstName": "颯太" },
+            { "lastName": "小泉", "firstName": "瑠唯" }
+          ],
+          "playersB": [
+            { "lastName": "山本", "firstName": "拓史" },
+            { "lastName": "伊藤", "firstName": "朔" }
+          ],
+          "games": [
+            [6, 4],
+            [4, 0],
+            [4, 1],
+            [6, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [16, 18],
@@ -676,7 +2038,70 @@
       "matchId": "match-22",
       "nextMatchId": "match-35",
       "prevMatchIds": ["match-6"],
-      "prevMatchId": "match-6"
+      "prevMatchId": "match-6",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "和氣", "firstName": "道宏" },
+            { "lastName": "確田", "firstName": "冬吹樹" }
+          ],
+          "playersB": [
+            { "lastName": "長友", "firstName": "海晴" },
+            { "lastName": "澤田", "firstName": "壮史" }
+          ],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [4, 0],
+            [1, 4],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "大谷", "firstName": "孔太" },
+            { "lastName": "小倉", "firstName": "光生" }
+          ],
+          "playersB": [
+            { "lastName": "平川", "firstName": "竜乃介" },
+            { "lastName": "三笠", "firstName": "哲平" }
+          ],
+          "games": [
+            [0, 4],
+            [2, 4],
+            [5, 3],
+            [0, 4],
+            [4, 2],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [{ "lastName": "井澤", "firstName": "伊茶" }, { "name": "正岡 子竜" }],
+          "playersB": [{ "name": "原 浩貴" }, { "name": "渡邊 瑛二" }],
+          "games": [
+            [4, 2],
+            [6, 4],
+            [4, 6],
+            [8, 6],
+            [5, 3]
+          ]
+        }
+      ]
     },
     {
       "entries": [19, 21],
@@ -689,7 +2114,76 @@
       "matchId": "match-23",
       "nextMatchId": "match-36",
       "prevMatchIds": ["match-7"],
-      "prevMatchId": "match-7"
+      "prevMatchId": "match-7",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "橋本", "firstName": "陸" },
+            { "lastName": "遠山", "firstName": "拓磨" }
+          ],
+          "playersB": [
+            { "lastName": "藤井", "firstName": "春人" },
+            { "lastName": "加藤", "firstName": "迅" }
+          ],
+          "games": [
+            [4, 1],
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "田中", "firstName": "陽稀" },
+            { "lastName": "松本", "firstName": "拓丸" }
+          ],
+          "playersB": [
+            { "lastName": "白井", "firstName": "春希" },
+            { "lastName": "藤井", "firstName": "晴太" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 1],
+            [4, 1],
+            [2, 4],
+            [2, 4],
+            [4, 1],
+            [8, 6]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "佐藤", "firstName": "奨吾" },
+            { "lastName": "岡田", "firstName": "侑也" }
+          ],
+          "playersB": [
+            { "lastName": "村上", "firstName": "颯斗" },
+            { "lastName": "久野", "firstName": "莉輝" }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 2],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [23, 24],
@@ -702,7 +2196,69 @@
       "matchId": "match-24",
       "nextMatchId": "match-36",
       "prevMatchIds": ["match-8"],
-      "prevMatchId": "match-8"
+      "prevMatchId": "match-8",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [{ "name": "沼田 青緯" }, { "name": "渡邉 仁" }],
+          "playersB": [
+            { "lastName": "小田切", "firstName": "智明" },
+            { "lastName": "本間", "firstName": "愛真" }
+          ],
+          "games": [
+            [0, 4],
+            [0, 4],
+            [1, 4],
+            [6, 4],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [{ "name": "小室 玲雄" }, { "name": "中山 陽斗" }],
+          "playersB": [
+            { "lastName": "関川", "firstName": "結斗" },
+            { "lastName": "菅原", "firstName": "伯斗" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [7, 9],
+            [2, 4],
+            [7, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [{ "name": "蛭田 櫂" }, { "name": "鈴木 清桜" }],
+          "playersB": [
+            { "lastName": "川崎", "firstName": "彪雅" },
+            { "lastName": "小平", "firstName": "悠斗" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [6, 4],
+            [0, 4],
+            [1, 4],
+            [5, 3]
+          ]
+        }
+      ]
     },
     {
       "entries": [25, 27],
@@ -715,7 +2271,69 @@
       "matchId": "match-25",
       "nextMatchId": "match-37",
       "prevMatchIds": ["match-9"],
-      "prevMatchId": "match-9"
+      "prevMatchId": "match-9",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "根岸", "firstName": "澪紋" },
+            { "lastName": "中尾", "firstName": "彦斗" }
+          ],
+          "playersB": [
+            { "lastName": "小森", "firstName": "寛太" },
+            { "lastName": "高瀬", "firstName": "泰雅" }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "高橋", "firstName": "拓己" },
+            { "lastName": "西宮", "firstName": "想心" }
+          ],
+          "playersB": [{ "lastName": "福井", "firstName": "天太" }, { "name": "小林 侑世" }],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "浅見", "firstName": "竣一朗" },
+            { "lastName": "初鹿", "firstName": "暁哉" }
+          ],
+          "playersB": [
+            { "lastName": "泉原", "firstName": "大地" },
+            { "lastName": "赤坂", "firstName": "浩太" }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [4, 1]
+          ]
+        }
+      ]
     },
     {
       "entries": [28, 30],
@@ -741,7 +2359,78 @@
       "matchId": "match-27",
       "nextMatchId": "match-38",
       "prevMatchIds": ["match-11"],
-      "prevMatchId": "match-11"
+      "prevMatchId": "match-11",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "丸田", "firstName": "涼介" },
+            { "lastName": "福島", "firstName": "涼" }
+          ],
+          "playersB": [
+            { "lastName": "永江", "firstName": "快羽" },
+            { "lastName": "木村", "firstName": "駿佑" }
+          ],
+          "games": [
+            [2, 4],
+            [5, 3],
+            [11, 9],
+            [7, 9],
+            [4, 6],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "石川", "firstName": "伊吹" },
+            { "lastName": "竹内", "firstName": "晴紀" }
+          ],
+          "playersB": [
+            { "lastName": "直井", "firstName": "万琴" },
+            { "lastName": "長瀬", "firstName": "智哉" }
+          ],
+          "games": [
+            [3, 5],
+            [2, 4],
+            [4, 1],
+            [2, 4],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "小笠原", "firstName": "健斗" },
+            { "lastName": "佐渡", "firstName": "宝来" }
+          ],
+          "playersB": [
+            { "lastName": "林", "firstName": "幸佑" },
+            { "lastName": "田口", "firstName": "陽貴" }
+          ],
+          "games": [
+            [2, 4],
+            [5, 3],
+            [4, 2],
+            [1, 4],
+            [4, 6],
+            [4, 1],
+            [7, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [34, 36],
@@ -754,7 +2443,75 @@
       "matchId": "match-28",
       "nextMatchId": "match-38",
       "prevMatchIds": ["match-12"],
-      "prevMatchId": "match-12"
+      "prevMatchId": "match-12",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "深堀", "firstName": "金の翼" },
+            { "lastName": "金谷", "firstName": "梨輝" }
+          ],
+          "playersB": [
+            { "lastName": "上城", "firstName": "真之介" },
+            { "lastName": "吉良", "firstName": "倫太朗" }
+          ],
+          "games": [
+            [7, 5],
+            [6, 4],
+            [1, 4],
+            [2, 4],
+            [4, 1],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "中島", "firstName": "玲欧" },
+            { "lastName": "竹原", "firstName": "悠斗" }
+          ],
+          "playersB": [
+            { "lastName": "富山", "firstName": "陽太" },
+            { "lastName": "川﨑", "firstName": "康平" }
+          ],
+          "games": [
+            [4, 1],
+            [6, 4],
+            [4, 2],
+            [8, 6]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "曽我", "firstName": "祥帆" },
+            { "lastName": "西村", "firstName": "梓苑" }
+          ],
+          "playersB": [
+            { "lastName": "西岡", "firstName": "遥平" },
+            { "lastName": "甲斐", "firstName": "健暉" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
       "entries": [37, 38],
@@ -767,7 +2524,74 @@
       "matchId": "match-29",
       "nextMatchId": "match-39",
       "prevMatchIds": ["match-13"],
-      "prevMatchId": "match-13"
+      "prevMatchId": "match-13",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "小野田", "firstName": "慎" },
+            { "lastName": "朝倉", "firstName": "嵩貴" }
+          ],
+          "playersB": [{ "name": "陣内 希哉" }, { "lastName": "佐川", "firstName": "温斗" }],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [4, 2],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "松本", "firstName": "椿" },
+            { "lastName": "吉村", "firstName": "拓海" }
+          ],
+          "playersB": [
+            { "lastName": "木村", "firstName": "奏都" },
+            { "lastName": "藤田", "firstName": "颯汰" }
+          ],
+          "games": [
+            [3, 5],
+            [4, 1],
+            [2, 4],
+            [0, 4],
+            [4, 0],
+            [5, 3],
+            [7, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "清水", "firstName": "唯冬" },
+            { "lastName": "中内", "firstName": "謙秀" }
+          ],
+          "playersB": [
+            { "lastName": "脇田", "firstName": "大吉" },
+            { "lastName": "斎藤", "firstName": "恭平" }
+          ],
+          "games": [
+            [4, 1],
+            [6, 4],
+            [4, 2],
+            [1, 4],
+            [4, 6],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [41, 42],
@@ -780,7 +2604,77 @@
       "matchId": "match-30",
       "nextMatchId": "match-39",
       "prevMatchIds": ["match-14"],
-      "prevMatchId": "match-14"
+      "prevMatchId": "match-14",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "橋本", "firstName": "侑弥" },
+            { "lastName": "津田", "firstName": "聖弥" }
+          ],
+          "playersB": [
+            { "lastName": "髙井", "firstName": "凌凱" },
+            { "lastName": "吉岡", "firstName": "莉玖" }
+          ],
+          "games": [
+            [0, 4],
+            [4, 1],
+            [2, 4],
+            [5, 7],
+            [4, 2],
+            [4, 1],
+            [1, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "東", "firstName": "脩蔵" },
+            { "lastName": "竹内", "firstName": "遥音" }
+          ],
+          "playersB": [{ "name": "井野 晏士" }, { "name": "林 昊汰" }],
+          "games": [
+            [4, 0],
+            [2, 4],
+            [4, 1],
+            [4, 2],
+            [4, 6],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "澤舘", "firstName": "大智" },
+            { "lastName": "土田", "firstName": "竜太郎" }
+          ],
+          "playersB": [
+            { "lastName": "天野", "firstName": "叶夢" },
+            { "lastName": "佐々木", "firstName": "龍輝" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 2],
+            [1, 4],
+            [5, 7],
+            [5, 3],
+            [4, 1],
+            [8, 6]
+          ]
+        }
+      ]
     },
     {
       "entries": [43, 44],
@@ -793,7 +2687,74 @@
       "matchId": "match-31",
       "nextMatchId": "match-40",
       "prevMatchIds": ["match-15"],
-      "prevMatchId": "match-15"
+      "prevMatchId": "match-15",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "遠藤", "firstName": "希来" },
+            { "lastName": "山中", "firstName": "一世" }
+          ],
+          "playersB": [
+            { "lastName": "吉田", "firstName": "彗冴" },
+            { "lastName": "長濵", "firstName": "悠人" }
+          ],
+          "games": [
+            [5, 3],
+            [4, 2],
+            [4, 2],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "小林", "firstName": "駿介" },
+            { "lastName": "吉田", "firstName": "航" }
+          ],
+          "playersB": [
+            { "lastName": "古藤", "firstName": "瑛亘" },
+            { "lastName": "吉田", "firstName": "朝陽" }
+          ],
+          "games": [
+            [4, 2],
+            [1, 4],
+            [0, 4],
+            [3, 5],
+            [4, 1],
+            [4, 0],
+            [5, 7]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "笹井", "firstName": "悠月" },
+            { "lastName": "松村", "firstName": "優成" }
+          ],
+          "playersB": [{ "name": "須川 大雅" }, { "name": "宿輪 健" }],
+          "games": [
+            [4, 2],
+            [2, 4],
+            [6, 4],
+            [1, 4],
+            [4, 1],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
       "entries": [46, 48],
@@ -806,7 +2767,71 @@
       "matchId": "match-32",
       "nextMatchId": "match-40",
       "prevMatchIds": ["match-16"],
-      "prevMatchId": "match-16"
+      "prevMatchId": "match-16",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "古幡", "firstName": "悠馬" },
+            { "lastName": "神尾", "firstName": "優介" }
+          ],
+          "playersB": [
+            { "lastName": "團野", "firstName": "佑紀" },
+            { "lastName": "金澤", "firstName": "慧" }
+          ],
+          "games": [
+            [1, 4],
+            [2, 4],
+            [3, 5],
+            [7, 5],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "篠原", "firstName": "正伸" },
+            { "lastName": "平林", "firstName": "和真" }
+          ],
+          "playersB": [
+            { "lastName": "野口", "firstName": "快" },
+            { "lastName": "菊山", "firstName": "太陽" }
+          ],
+          "games": [
+            [2, 4],
+            [2, 4],
+            [4, 6],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [{ "name": "野口 拓麿" }, { "name": "上條 大輔" }],
+          "playersB": [
+            { "lastName": "橋場", "firstName": "柊一郎" },
+            { "lastName": "安達", "firstName": "宣" }
+          ],
+          "games": [
+            [1, 4],
+            [3, 5],
+            [4, 2],
+            [0, 4],
+            [0, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [1, 6],
@@ -819,7 +2844,78 @@
       "matchId": "match-33",
       "nextMatchId": "match-41",
       "prevMatchIds": ["match-17", "match-18"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "宮本", "firstName": "颯人" },
+            { "lastName": "黒坂", "firstName": "卓矢" }
+          ],
+          "playersB": [
+            { "lastName": "里", "firstName": "凌輝" },
+            { "lastName": "脇田", "firstName": "隆秀" }
+          ],
+          "games": [
+            [4, 1],
+            [5, 3],
+            [3, 5],
+            [2, 4],
+            [5, 7],
+            [6, 4],
+            [7, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "岩田", "firstName": "皓平" },
+            { "lastName": "上田", "firstName": "泰大" }
+          ],
+          "playersB": [
+            { "lastName": "今村", "firstName": "陸士" },
+            { "lastName": "今村", "firstName": "恒志" }
+          ],
+          "games": [
+            [4, 1],
+            [3, 5],
+            [2, 4],
+            [8, 6],
+            [1, 4],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "中川", "firstName": "雄太" },
+            { "lastName": "宮田", "firstName": "智友" }
+          ],
+          "playersB": [
+            { "lastName": "白井", "firstName": "大希" },
+            { "lastName": "草地", "firstName": "凌冴" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [4, 2],
+            [4, 6],
+            [4, 2]
+          ]
+        }
+      ]
     },
     {
       "entries": [7, 12],
@@ -832,7 +2928,72 @@
       "matchId": "match-34",
       "nextMatchId": "match-41",
       "prevMatchIds": ["match-19", "match-20"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "井元", "firstName": "啓斗" },
+            { "lastName": "出村", "firstName": "虹空" }
+          ],
+          "playersB": [
+            { "lastName": "清水", "firstName": "駿" },
+            { "lastName": "木内", "firstName": "陸人" }
+          ],
+          "games": [
+            [4, 1],
+            [0, 4],
+            [6, 4],
+            [0, 4],
+            [3, 5],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "中村", "firstName": "悠峰" },
+            { "lastName": "宮下", "firstName": "武輝" }
+          ],
+          "playersB": [
+            { "lastName": "小宮", "firstName": "彰悟" },
+            { "lastName": "鍜冶田", "firstName": "真育" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [2, 4],
+            [2, 4],
+            [5, 7],
+            [2, 7]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 1,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "飯田", "firstName": "航仁" },
+            { "lastName": "反保", "firstName": "皐聖" }
+          ],
+          "playersB": [
+            { "lastName": "三上", "firstName": "柊二" },
+            { "lastName": "阪口", "firstName": "蓮" }
+          ],
+          "games": [[6, 4]]
+        }
+      ]
     },
     {
       "entries": [15, 16],
@@ -845,7 +3006,68 @@
       "matchId": "match-35",
       "nextMatchId": "match-42",
       "prevMatchIds": ["match-21", "match-22"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "立野", "firstName": "桂伍" },
+            { "lastName": "川村", "firstName": "幸大" }
+          ],
+          "playersB": [
+            { "lastName": "大谷", "firstName": "孔太" },
+            { "lastName": "小倉", "firstName": "光生" }
+          ],
+          "games": [
+            [1, 4],
+            [5, 3],
+            [0, 4],
+            [4, 2],
+            [2, 4],
+            [4, 1],
+            [7, 3]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "後藤", "firstName": "優斗" },
+            { "lastName": "中垣", "firstName": "敬斗" }
+          ],
+          "playersB": [
+            { "lastName": "和氣", "firstName": "道宏" },
+            { "lastName": "確田", "firstName": "冬吹樹" }
+          ],
+          "games": [
+            [4, 1],
+            [7, 5],
+            [2, 4],
+            [4, 2],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 0,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "山本", "firstName": "拓史" },
+            { "lastName": "伊藤", "firstName": "朔" }
+          ],
+          "playersB": [{ "lastName": "井澤", "firstName": "伊茶" }, { "name": "正岡 子竜" }],
+          "games": []
+        }
+      ]
     },
     {
       "entries": [19, 23],
@@ -858,7 +3080,65 @@
       "matchId": "match-36",
       "nextMatchId": "match-42",
       "prevMatchIds": ["match-23", "match-24"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "橋本", "firstName": "陸" },
+            { "lastName": "遠山", "firstName": "拓磨" }
+          ],
+          "playersB": [{ "name": "沼田 青緯" }, { "name": "渡邉 仁" }],
+          "games": [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [5, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "佐藤", "firstName": "奨吾" },
+            { "lastName": "岡田", "firstName": "侑也" }
+          ],
+          "playersB": [{ "name": "小室 玲雄" }, { "name": "中山 陽斗" }],
+          "games": [
+            [5, 7],
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "田中", "firstName": "陽稀" },
+            { "lastName": "松本", "firstName": "拓丸" }
+          ],
+          "playersB": [{ "name": "蛭田 櫂" }, { "name": "鈴木 清桜" }],
+          "games": [
+            [4, 1],
+            [4, 6],
+            [5, 3],
+            [4, 1],
+            [4, 1]
+          ]
+        }
+      ]
     },
     {
       "entries": [25, 28],
@@ -871,7 +3151,63 @@
       "matchId": "match-37",
       "nextMatchId": "match-43",
       "prevMatchIds": ["match-25", "match-26"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "根岸", "firstName": "澪紋" },
+            { "lastName": "中尾", "firstName": "彦斗" }
+          ],
+          "playersB": [{ "name": "石金 悠星" }, { "lastName": "津田", "firstName": "宙紀" }],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [5, 3],
+            [6, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "高橋", "firstName": "拓己" },
+            { "lastName": "西宮", "firstName": "想心" }
+          ],
+          "playersB": [
+            { "lastName": "尾門", "firstName": "駿" },
+            { "lastName": "永瀬", "firstName": "祐大郎" }
+          ],
+          "games": [
+            [2, 4],
+            [4, 1],
+            [5, 3],
+            [6, 4],
+            [4, 6],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 0,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "浅見", "firstName": "竣一朗" },
+            { "lastName": "初鹿", "firstName": "暁哉" }
+          ],
+          "playersB": [{ "lastName": "中村", "firstName": "陸門" }, { "name": "飯田 一矢" }],
+          "games": [[1, 4]]
+        }
+      ]
     },
     {
       "entries": [32, 34],
@@ -884,7 +3220,71 @@
       "matchId": "match-38",
       "nextMatchId": "match-43",
       "prevMatchIds": ["match-27", "match-28"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "直井", "firstName": "万琴" },
+            { "lastName": "長瀬", "firstName": "智哉" }
+          ],
+          "playersB": [
+            { "lastName": "中島", "firstName": "玲欧" },
+            { "lastName": "竹原", "firstName": "悠斗" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "永江", "firstName": "快羽" },
+            { "lastName": "木村", "firstName": "駿佑" }
+          ],
+          "playersB": [
+            { "lastName": "深堀", "firstName": "金の翼" },
+            { "lastName": "金谷", "firstName": "梨輝" }
+          ],
+          "games": [
+            [6, 4],
+            [5, 3],
+            [5, 7],
+            [4, 0],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 1,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "林", "firstName": "幸佑" },
+            { "lastName": "田口", "firstName": "陽貴" }
+          ],
+          "playersB": [
+            { "lastName": "曽我", "firstName": "祥帆" },
+            { "lastName": "西村", "firstName": "梓苑" }
+          ],
+          "games": [
+            [1, 4],
+            [7, 5]
+          ]
+        }
+      ]
     },
     {
       "entries": [37, 41],
@@ -897,7 +3297,69 @@
       "matchId": "match-39",
       "nextMatchId": "match-44",
       "prevMatchIds": ["match-29", "match-30"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "小野田", "firstName": "慎" },
+            { "lastName": "朝倉", "firstName": "嵩貴" }
+          ],
+          "playersB": [
+            { "lastName": "東", "firstName": "脩蔵" },
+            { "lastName": "竹内", "firstName": "遥音" }
+          ],
+          "games": [
+            [4, 0],
+            [0, 4],
+            [4, 2],
+            [3, 5],
+            [4, 2],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "松本", "firstName": "椿" },
+            { "lastName": "吉村", "firstName": "拓海" }
+          ],
+          "playersB": [
+            { "lastName": "橋本", "firstName": "侑弥" },
+            { "lastName": "津田", "firstName": "聖弥" }
+          ],
+          "games": [
+            [5, 3],
+            [4, 2],
+            [4, 0],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 1,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "清水", "firstName": "唯冬" },
+            { "lastName": "中内", "firstName": "謙秀" }
+          ],
+          "playersB": [
+            { "lastName": "澤舘", "firstName": "大智" },
+            { "lastName": "土田", "firstName": "竜太郎" }
+          ],
+          "games": [[4, 1]]
+        }
+      ]
     },
     {
       "entries": [43, 48],
@@ -910,7 +3372,69 @@
       "matchId": "match-40",
       "nextMatchId": "match-44",
       "prevMatchIds": ["match-31", "match-32"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "遠藤", "firstName": "希来" },
+            { "lastName": "山中", "firstName": "一世" }
+          ],
+          "playersB": [
+            { "lastName": "野口", "firstName": "快" },
+            { "lastName": "菊山", "firstName": "太陽" }
+          ],
+          "games": [
+            [1, 4],
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "小林", "firstName": "駿介" },
+            { "lastName": "吉田", "firstName": "航" }
+          ],
+          "playersB": [
+            { "lastName": "團野", "firstName": "佑紀" },
+            { "lastName": "金澤", "firstName": "慧" }
+          ],
+          "games": [
+            [1, 4],
+            [5, 7],
+            [2, 4],
+            [4, 0],
+            [1, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            { "lastName": "笹井", "firstName": "悠月" },
+            { "lastName": "松村", "firstName": "優成" }
+          ],
+          "playersB": [
+            { "lastName": "橋場", "firstName": "柊一郎" },
+            { "lastName": "安達", "firstName": "宣" }
+          ],
+          "games": []
+        }
+      ]
     },
     {
       "entries": [1, 12],
@@ -923,7 +3447,67 @@
       "matchId": "match-41",
       "nextMatchId": "match-45",
       "prevMatchIds": ["match-33", "match-34"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "坂口", "firstName": "生磨" },
+            { "lastName": "野本", "firstName": "凌生" }
+          ],
+          "playersB": [
+            { "lastName": "小宮", "firstName": "彰悟" },
+            { "lastName": "鍜冶田", "firstName": "真育" }
+          ],
+          "games": [
+            [4, 0],
+            [4, 2],
+            [5, 3],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "岩田", "firstName": "皓平" },
+            { "lastName": "黒坂", "firstName": "卓矢" }
+          ],
+          "playersB": [
+            { "lastName": "清水", "firstName": "駿" },
+            { "lastName": "木内", "firstName": "陸人" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            { "lastName": "中川", "firstName": "雄太" },
+            { "lastName": "宮田", "firstName": "智友" }
+          ],
+          "playersB": [
+            { "lastName": "三上", "firstName": "柊二" },
+            { "lastName": "阪口", "firstName": "蓮" }
+          ],
+          "games": []
+        }
+      ]
     },
     {
       "entries": [15, 19],
@@ -936,7 +3520,74 @@
       "matchId": "match-42",
       "nextMatchId": "match-45",
       "prevMatchIds": ["match-35", "match-36"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "立野", "firstName": "桂伍" },
+            { "lastName": "川村", "firstName": "幸大" }
+          ],
+          "playersB": [{ "lastName": "橋本", "firstName": "陸" }, { "name": "五十嵐 和真" }],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [4, 0],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "後藤", "firstName": "優斗" },
+            { "lastName": "中垣", "firstName": "敬斗" }
+          ],
+          "playersB": [
+            { "lastName": "佐藤", "firstName": "奨吾" },
+            { "lastName": "岡田", "firstName": "侑也" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 2],
+            [3, 7],
+            [2, 5],
+            [1, 4],
+            [5, 3],
+            [7, 9]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "山本", "firstName": "拓史" },
+            { "lastName": "伊藤", "firstName": "朔" }
+          ],
+          "playersB": [
+            { "lastName": "田中", "firstName": "陽稀" },
+            { "lastName": "松本", "firstName": "拓丸" }
+          ],
+          "games": [
+            [1, 4],
+            [4, 1],
+            [0, 4],
+            [3, 5],
+            [4, 2],
+            [1, 4]
+          ]
+        }
+      ]
     },
     {
       "entries": [25, 32],
@@ -949,7 +3600,75 @@
       "matchId": "match-43",
       "nextMatchId": "match-46",
       "prevMatchIds": ["match-37", "match-38"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 3,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "根岸", "firstName": "澪紋" },
+            { "lastName": "中尾", "firstName": "彦斗" }
+          ],
+          "playersB": [
+            { "lastName": "永江", "firstName": "快羽" },
+            { "lastName": "木村", "firstName": "駿佑" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [2, 4],
+            [1, 4],
+            [4, 6],
+            [6, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "高橋", "firstName": "拓己" },
+            { "lastName": "西宮", "firstName": "想心" }
+          ],
+          "playersB": [
+            { "lastName": "直井", "firstName": "万琴" },
+            { "lastName": "長瀬", "firstName": "智哉" }
+          ],
+          "games": [
+            [5, 3],
+            [2, 4],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "浅見", "firstName": "竣一朗" },
+            { "lastName": "初鹿", "firstName": "暁哉" }
+          ],
+          "playersB": [
+            { "lastName": "林", "firstName": "幸佑" },
+            { "lastName": "田口", "firstName": "陽貴" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [4, 1],
+            [4, 1]
+          ]
+        }
+      ]
     },
     {
       "entries": [37, 48],
@@ -962,7 +3681,71 @@
       "matchId": "match-44",
       "nextMatchId": "match-46",
       "prevMatchIds": ["match-39", "match-40"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "小野田", "firstName": "慎" },
+            { "lastName": "諸喜田", "firstName": "孝太郎" }
+          ],
+          "playersB": [
+            { "lastName": "團野", "firstName": "佑紀" },
+            { "lastName": "金澤", "firstName": "慧" }
+          ],
+          "games": [
+            [4, 6],
+            [5, 3],
+            [4, 6],
+            [8, 10],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "松本", "firstName": "椿" },
+            { "lastName": "吉村", "firstName": "拓海" }
+          ],
+          "playersB": [
+            { "lastName": "野口", "firstName": "快" },
+            { "lastName": "菊山", "firstName": "太陽" }
+          ],
+          "games": [
+            [4, 2],
+            [1, 4],
+            [3, 5],
+            [6, 4],
+            [1, 4],
+            [4, 2],
+            [3, 7]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "unfinished",
+          "winner": null,
+          "scoreA": 0,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "清水", "firstName": "唯冬" },
+            { "lastName": "中内", "firstName": "謙秀" }
+          ],
+          "playersB": [
+            { "lastName": "橋場", "firstName": "柊一郎" },
+            { "lastName": "安達", "firstName": "宣" }
+          ],
+          "games": [[1, 4]]
+        }
+      ]
     },
     {
       "entries": [1, 19],
@@ -975,7 +3758,64 @@
       "matchId": "match-45",
       "nextMatchId": "match-47",
       "prevMatchIds": ["match-41", "match-42"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "岩田", "firstName": "皓平" },
+            { "lastName": "黒坂", "firstName": "卓矢" }
+          ],
+          "playersB": [
+            { "lastName": "佐藤", "firstName": "奨吾" },
+            { "lastName": "岡田", "firstName": "侑也" }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            { "lastName": "坂口", "firstName": "生磨" },
+            { "lastName": "野本", "firstName": "凌生" }
+          ],
+          "playersB": [{ "lastName": "橋本", "firstName": "陸" }, { "name": "五十嵐 和真" }],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [7, 5],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            { "lastName": "中川", "firstName": "雄太" },
+            { "lastName": "宮田", "firstName": "智友" }
+          ],
+          "playersB": [
+            { "lastName": "田中", "firstName": "陽稀" },
+            { "lastName": "松本", "firstName": "拓丸" }
+          ],
+          "games": []
+        }
+      ]
     },
     {
       "entries": [25, 48],
@@ -988,7 +3828,76 @@
       "matchId": "match-46",
       "nextMatchId": "match-47",
       "prevMatchIds": ["match-43", "match-44"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            { "lastName": "根岸", "firstName": "澪紋" },
+            { "lastName": "中尾", "firstName": "彦斗" }
+          ],
+          "playersB": [
+            { "lastName": "團野", "firstName": "佑紀" },
+            { "lastName": "金澤", "firstName": "慧" }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [2, 4],
+            [7, 5],
+            [2, 4],
+            [3, 5],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "高橋", "firstName": "拓己" },
+            { "lastName": "西宮", "firstName": "想心" }
+          ],
+          "playersB": [
+            { "lastName": "野口", "firstName": "快" },
+            { "lastName": "菊山", "firstName": "太陽" }
+          ],
+          "games": [
+            [4, 6],
+            [1, 4],
+            [2, 4],
+            [4, 1],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "浅見", "firstName": "竣一朗" },
+            { "lastName": "初鹿", "firstName": "暁哉" }
+          ],
+          "playersB": [
+            { "lastName": "橋場", "firstName": "柊一郎" },
+            { "lastName": "安達", "firstName": "宣" }
+          ],
+          "games": [
+            [1, 4],
+            [2, 4],
+            [1, 4],
+            [3, 5]
+          ]
+        }
+      ]
     },
     {
       "entries": [1, 48],
@@ -1001,7 +3910,75 @@
       "matchId": "match-47",
       "nextMatchId": null,
       "prevMatchIds": ["match-45", "match-46"],
-      "prevMatchId": null
+      "prevMatchId": null,
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            { "lastName": "坂口", "firstName": "生磨" },
+            { "lastName": "野本", "firstName": "凌生" }
+          ],
+          "playersB": [
+            { "lastName": "野口", "firstName": "快" },
+            { "lastName": "菊山", "firstName": "太陽" }
+          ],
+          "games": [
+            [3, 5],
+            [2, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            { "lastName": "岩田", "firstName": "皓平" },
+            { "lastName": "黒坂", "firstName": "卓矢" }
+          ],
+          "playersB": [
+            { "lastName": "團野", "firstName": "佑紀" },
+            { "lastName": "金澤", "firstName": "慧" }
+          ],
+          "games": [
+            [4, 2],
+            [3, 5],
+            [4, 2],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D3",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 2,
+          "playersA": [
+            { "lastName": "中川", "firstName": "雄太" },
+            { "lastName": "宮田", "firstName": "智友" }
+          ],
+          "playersB": [
+            { "lastName": "橋場", "firstName": "柊一郎" },
+            { "lastName": "安達", "firstName": "宣" }
+          ],
+          "games": [
+            [4, 1],
+            [2, 4],
+            [4, 2],
+            [7, 9],
+            [5, 3],
+            [4, 2]
+          ]
+        }
+      ]
     }
   ],
   "results": [
