@@ -12,9 +12,8 @@ docs/wiki = compile 済みの現在の仕様、docs/adr = 重要な決定の記�
   （再調査を防ぐため1行だけ残す）。日付つきの経緯・実測値・検算は docs/raw へ。
   wiki は二次成果物なので、実装と食い違ったら**実装が正**
   （ADR の Context / Decision / Alternatives は歴史の記録なので例外。ADR rules 参照）。
-- **1ページ12,000字以内**（`node scripts/check-wiki-size.mjs`）。超えたら
-  docs/prompts/slim-wiki-page.md の手順で圧縮する。読むたびに長さぶんの費用がかかるため。
-  更新は「追記（YYYY-MM-DD）」を足すのではなく、**該当の節を書き換える**。
+- 更新は「追記（YYYY-MM-DD）」を足すのではなく、**該当の節を書き換える**。
+  長くなったページは docs/prompts/slim-wiki-page.md の手順で圧縮できる。
 - 各ページの冒頭に **`適用範囲`** の行（汎用 / 学校スポーツ共通 / ソフトテニス固有 / 混在）を置く。
   他競技へ持ち出せる部分を見分けるため（docs/raw/2026-09-18-idea-multi-sport-expansion.md）。
 - 新しいページは必ずクロスリンクする（docs/wiki/index.md へ追加 ＋ 関連ページから1本以上）。

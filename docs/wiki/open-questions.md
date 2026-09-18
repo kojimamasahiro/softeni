@@ -42,7 +42,7 @@
 | AIが自律的にサービスを改善する仕組み | **方向決着・一部実装**（2026-09-06〜）。検知と検証をAIに任せ、方向の判断は人が持つ。CI と判断台帳まで実装。チーム名寄せは全件人手レビューへ（[ADR-019](../adr/ADR-019-team-merge-human-only.md)） | [アイデア](../raw/2026-09-06-idea-autonomous-improvement-agent.md) |
 | AIとの共同探索と探索プロセスの属人性 | 発散フェーズ・中断中（2026-07-11）。**再開は raw 末尾の「再開ポイント」から** | [アイデア](../raw/2026-07-11-idea-ai-co-exploration-context.md) |
 | skillのローカルLLM代替（Claude不在時） | **一部実装**（2026-08-14〜）。venue-data・pdf-to-players は実装済み。本命の insight は照合の網の拡張が先。モデル選定は保留 | [アイデア](../raw/2026-08-14-idea-local-llm-skill-replacement.md) |
-| wiki の圧縮（読み込みコストの削減） | **完了**（2026-09-18）。全38ページが1ページ12,000字以内（合計47万字→27万字）。以後は `node scripts/check-wiki-size.mjs` を守る（手順は [slim-wiki-page.md](../prompts/slim-wiki-page.md)） | [作業ノート](../raw/2026-09-18-wiki-slimming.md) |
+| wiki の圧縮（読み込みコストの削減） | **完了**（2026-09-18）。全38ページを圧縮（合計47万字→27万字）。1ページ12,000字の上限は 2026-09-19 に撤廃し、長くなったページを圧縮する手順だけ残した（[slim-wiki-page.md](../prompts/slim-wiki-page.md)） | [作業ノート](../raw/2026-09-18-wiki-slimming.md) |
 
 ## データの整合・名寄せ
 
