@@ -94,6 +94,8 @@ type PackedTeamMatch = [
   scoreB: number | null,
   playersA: PackedTeamMatchPlayer[],
   playersB: PackedTeamMatchPlayer[],
+  /** ゲームごとのポイント。元資料に記録が無い大会・対戦は要素ごと省く */
+  games?: [number, number][] | null,
 ];
 
 /**
@@ -259,8 +261,8 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
     if (match.matches?.length) {
       const packPlayer = (p: TeamMatchPlayer): PackedTeamMatchPlayer => [table.add(teamMatchPlayerName(p)) as StringId, p.playerId ?? null];
       packed.push(
-        match.matches.map(
-          (sub): PackedTeamMatch => [
+        match.matches.map((sub): PackedTeamMatch => {
+          const packedSub: PackedTeamMatch = [
             table.add(sub.type) as StringId,
             table.add(sub.status) as StringId,
             sub.winner === 'A' ? 1 : sub.winner === 'B' ? 2 : 0,
@@ -268,8 +270,11 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
             sub.scoreB,
             sub.playersA.map(packPlayer),
             sub.playersB.map(packPlayer),
-          ],
-        ),
+          ];
+          // 記録がある対戦にだけ足す（本数までしか無い大会のページを重くしない）
+          if (sub.games?.length) packedSub.push(sub.games.map(([a, b]): [number, number] => [a, b]));
+          return packedSub;
+        }),
       );
     }
     return packed;
@@ -361,7 +366,7 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
       ...(teamMatches
         ? {
             matches: teamMatches.map(
-              ([type, status, winner, scoreA, scoreB, playersA, playersB]): TeamMatchDetail => ({
+              ([type, status, winner, scoreA, scoreB, playersA, playersB, games]): TeamMatchDetail => ({
                 type: readString(strings, type) as TeamMatchDetail['type'],
                 status: readString(strings, status) as TeamMatchDetail['status'],
                 winner: winner === 1 ? 'A' : winner === 2 ? 'B' : null,
@@ -369,6 +374,7 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
                 scoreB,
                 playersA: playersA.map(unpackPlayer),
                 playersB: playersB.map(unpackPlayer),
+                ...(games?.length ? { games: games.map(([a, b]): [number, number] => [a, b]) } : {}),
               }),
             ),
           }

@@ -43,6 +43,16 @@ const detail: TournamentDetailData = {
             { lastName: '伊藤', firstName: '康介' },
           ],
           playersB: [{ name: '川波 悠馬' }, { name: '百目木來杜' }],
+          // デュースで 10 以上に伸びたゲームを含める（2桁が潰れないこと）
+          games: [
+            [4, 1],
+            [2, 4],
+            [12, 10],
+            [1, 4],
+            [4, 2],
+            [3, 5],
+            [7, 5],
+          ],
         },
         {
           type: 'D2',
@@ -108,6 +118,21 @@ test('状態・勝者・本数が往復で変わらない', () => {
       ['D3', 'not_played', null, null, null],
     ],
   );
+});
+
+test('ゲームごとのポイントが順番のまま往復する。記録が無い対戦には湧かない', () => {
+  const subs = withTeam.matches ?? [];
+  assert.deepStrictEqual(subs[0].games, [
+    [4, 1],
+    [2, 4],
+    [12, 10],
+    [1, 4],
+    [4, 2],
+    [3, 5],
+    [7, 5],
+  ]);
+  assert.strictEqual(subs[1].games, undefined);
+  assert.strictEqual(subs[3].games, undefined);
 });
 
 test('選手は「姓 名」の表示名とリンク先だけになる。名前だけの選手はリンクしない', () => {
