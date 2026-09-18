@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T09:07:56.712Z",
+  "generatedAt": "2026-09-18T15:48:54.275Z",
   "match": {
     "id": "4fa37e97-f643-44ea-b387-390f44e7fecd",
     "tournament_name": "east-japan-2026",
@@ -484,52 +484,6 @@
             "point_detail": null,
             "video_start_ms": 560443,
             "video_end_ms": 590927
-          },
-          {
-            "id": "ae03bb40-6719-49eb-b3a2-c5860dcb868f",
-            "game_id": "c2ffd45e-fca4-401a-8a33-da9c72783d43",
-            "point_number": 7,
-            "winner_team": "B",
-            "rally_count": 2,
-            "first_serve_fault": false,
-            "double_fault": false,
-            "result_type": "receive_error",
-            "winner_player": "",
-            "loser_player": "西本 一雅",
-            "created_at": "2026-08-12T10:31:04.001394",
-            "serving_team": "B",
-            "serving_player": "黒坂 卓矢",
-            "point_note": null,
-            "shot_type": null,
-            "shot_course": null,
-            "recording_level": "basic",
-            "edited_at": null,
-            "point_detail": null,
-            "video_start_ms": 615044,
-            "video_end_ms": 626780
-          },
-          {
-            "id": "9125dfd4-846b-4a82-b9aa-5bb8fed63d81",
-            "game_id": "c2ffd45e-fca4-401a-8a33-da9c72783d43",
-            "point_number": 8,
-            "winner_team": "A",
-            "rally_count": 3,
-            "first_serve_fault": false,
-            "double_fault": false,
-            "result_type": "volley_winner",
-            "winner_player": "黒須 柾暉",
-            "loser_player": "",
-            "created_at": "2026-08-12T10:31:19.82922",
-            "serving_team": "B",
-            "serving_player": "黒坂 卓矢",
-            "point_note": null,
-            "shot_type": null,
-            "shot_course": null,
-            "recording_level": "basic",
-            "edited_at": null,
-            "point_detail": null,
-            "video_start_ms": 641900,
-            "video_end_ms": 656799
           }
         ]
       },
@@ -1069,29 +1023,6 @@
             "point_detail": null,
             "video_start_ms": 1419255,
             "video_end_ms": 1442152
-          },
-          {
-            "id": "7f804dbb-fb91-4c6d-ba2a-b7cabe124ed4",
-            "game_id": "08e3e943-8bb4-468e-8a50-7cd69f5fcf04",
-            "point_number": 7,
-            "winner_team": "A",
-            "rally_count": 8,
-            "first_serve_fault": false,
-            "double_fault": false,
-            "result_type": "volley_error",
-            "winner_player": "",
-            "loser_player": "黒坂 卓矢",
-            "created_at": "2026-08-12T13:08:21.389291",
-            "serving_team": "A",
-            "serving_player": "黒須 柾暉",
-            "point_note": null,
-            "shot_type": null,
-            "shot_course": null,
-            "recording_level": "basic",
-            "edited_at": null,
-            "point_detail": null,
-            "video_start_ms": 1450382,
-            "video_end_ms": 1530659
           }
         ]
       }
