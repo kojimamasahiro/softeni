@@ -63,7 +63,8 @@ COLS = {
     'right_last': (415, 456),
     'right_first': (456, 512),
 }
-RUBBER_GAP = 15.0  # 同じ対戦のゲーム行は約10pt間隔、対戦の間は30pt以上あく
+RUBBER_GAP = 25.0  # 同じ対戦のゲーム行は約10pt間隔、対戦の間は30pt以上あく。
+# 「打ち切り」の印字がゲーム行を1行ぶん押し下げるため同じ対戦の中に20pt の隙があく（2024 男子）。
 TYPES = ['D1', 'D2', 'D3']
 
 
@@ -200,6 +201,7 @@ def main():
                 problems.append(f"{label}: 見出しの本数 {(m['scoreA'], m['scoreB'])} / details {want}")
             if len(m['subs']) != 3:
                 problems.append(f'{label}: 対戦が {len(m["subs"])} 件（3件のはず）')
+                continue  # 塊の切り出しが崩れている。ここから先は当てにならない
 
             subs = [to_detail(k, s, school[m['entryA']], school[m['entryB']], idx) for k, s in enumerate(m['subs'])]
             print(f"{label} {db['round']} {m['scoreA']}-{m['scoreB']}")
