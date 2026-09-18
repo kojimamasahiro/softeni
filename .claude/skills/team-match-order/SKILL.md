@@ -16,9 +16,14 @@ description: 団体戦・対抗戦の「オーダー」（第1〜第3対戦に�
 - 取り込みの知見: [data-import.md](../../../docs/wiki/data-import.md)「団体戦の対戦ごとの記録（オーダー）の取り込み」
 - 表示: [public-pages.md](../../../docs/wiki/public-pages.md)「大会結果ページの対戦詳細」
 
-**前提**: その年度の団体戦ファイルが既にあり、`matches[].scores` が入っていること。
-無ければ先に `tournament-pdf-to-results` を通す。エントリーの並び（entryNo）がドローの席順と
-一致していることに全面的に依存している。
+**前提**:
+
+- その年度の団体戦ファイルが既にあり、`matches[].scores` が入っていること。無ければ先に
+  `tournament-pdf-to-results` を通す。エントリーの並び（entryNo）がドローの席順と一致していることに
+  全面的に依存している。
+- **`pdftotext` が使えること**（poppler。macOS は `brew install poppler`）。
+  スクリプトは `pdftotext -bbox` の語ごとの座標だけを使う（Python の PDF ライブラリは要らない）。
+- 公式記録PDFが手元にあること。出典は `data/tournaments/information/<大会>.json` の `sourceUrl`。
 
 ## いちばん多い依頼: 高校選抜の別の年度
 
