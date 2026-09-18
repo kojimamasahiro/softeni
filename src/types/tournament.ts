@@ -275,6 +275,11 @@ export type TeamMatchRow = {
   result: 'win' | 'lose' | null;
   gamesWon: number | null;
   gamesLost: number | null;
+  /**
+   * ゲームごとのポイントを、この行の組から見た向き（`[この組, 相手]`）で実施順に並べたもの。
+   * 元資料にゲームごとの記録がある大会だけが持つ（`TeamMatchDetail.games`）。
+   */
+  games?: [number, number][];
   own: { name: string; playerId?: number }[];
   opponent: { name: string; playerId?: number }[];
 };

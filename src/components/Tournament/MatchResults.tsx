@@ -39,6 +39,7 @@ function orientTeamMatches(match: TournamentMatch, side: 'A' | 'B'): TeamMatchRo
       result: sub.winner === null ? null : sub.winner === side ? 'win' : 'lose',
       gamesWon: mine ? sub.scoreA : sub.scoreB,
       gamesLost: mine ? sub.scoreB : sub.scoreA,
+      ...(sub.games?.length ? { games: sub.games.map(([a, b]): [number, number] => (mine ? [a, b] : [b, a])) } : {}),
       own: toPlayers(mine ? sub.playersA : sub.playersB),
       opponent: toPlayers(mine ? sub.playersB : sub.playersA),
     };
@@ -67,37 +68,61 @@ function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
   );
 }
 
+/**
+ * ゲームごとのポイント（ADR-020 の `games`）。左がこの組、右が相手で、実施順に並べる。
+ * **そのゲームを取ったのは多いほう**（同点は無い）なので、多いほうを太字にする。
+ * 元資料に記録がある大会だけが持ち、無い対戦では行ごと出さない。
+ */
+function TeamMatchGames({ games }: { games: NonNullable<TeamMatchRow['games']> }) {
+  return (
+    <ol className="mt-1 pl-16 flex flex-wrap gap-x-2.5 gap-y-0.5 font-mono text-text-secondary">
+      {games.map(([own, opponent], i) => (
+        <li key={i} className="whitespace-nowrap">
+          <span className="sr-only">第{i + 1}ゲーム </span>
+          <span className={own > opponent ? 'font-bold text-text' : undefined}>{own}</span>
+          <span aria-hidden="true">-</span>
+          <span className="sr-only">対</span>
+          <span className={opponent > own ? 'font-bold text-text' : undefined}>{opponent}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 /** 試合の行の下に出す、対戦ごとのペアと本数。左がこの組、右が相手（STリーグの対戦詳細と同じ並び） */
 function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
   return (
     <ul className="divide-y divide-border bg-bg-subtle">
       {rows.map((r, i) => (
-        <li key={i} className="flex items-center gap-2 px-4 py-1.5 text-xs">
-          <span className="w-14 shrink-0 text-text-muted">第{i + 1}対戦</span>
-          <span className={`flex-1 min-w-0 text-right break-words ${r.result === 'win' ? 'font-bold text-text' : 'text-text-secondary'}`}>
-            <TeamMatchPlayers players={r.own} />
-          </span>
-          <span className="shrink-0 w-16 text-center">
-            {r.status === 'not_played' ? (
-              <span className="text-text-muted">未実施</span>
-            ) : r.status === 'walkover' ? (
-              // 試合が行われていないので本数は出さない
-              <span className="text-text-muted">{r.result === 'win' ? '不戦勝' : '相手が不戦勝'}</span>
-            ) : (
-              <>
-                <span className="inline-block px-1.5 py-0.5 border border-border-strong rounded font-mono">
-                  {r.gamesWon}-{r.gamesLost}
-                </span>
-                {r.result && <span className="sr-only">{r.result === 'win' ? '勝ち' : '負け'}</span>}
-                {r.status === 'unfinished' && <span className="block text-text-muted">打ち切り</span>}
-                {/* 途中棄権は本数から勝敗が読めない（棄権した側の本数が多いことがある）ので、どちらが棄権したかを書く */}
-                {r.status === 'retired' && <span className="block text-text-muted">{r.result === 'lose' ? '棄権' : '相手が棄権'}</span>}
-              </>
-            )}
-          </span>
-          <span className={`flex-1 min-w-0 text-left break-words ${r.result === 'lose' ? 'font-bold text-text' : 'text-text-secondary'}`}>
-            <TeamMatchPlayers players={r.opponent} />
-          </span>
+        <li key={i} className="px-4 py-1.5 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="w-14 shrink-0 text-text-muted">第{i + 1}対戦</span>
+            <span className={`flex-1 min-w-0 text-right break-words ${r.result === 'win' ? 'font-bold text-text' : 'text-text-secondary'}`}>
+              <TeamMatchPlayers players={r.own} />
+            </span>
+            <span className="shrink-0 w-16 text-center">
+              {r.status === 'not_played' ? (
+                <span className="text-text-muted">未実施</span>
+              ) : r.status === 'walkover' ? (
+                // 試合が行われていないので本数は出さない
+                <span className="text-text-muted">{r.result === 'win' ? '不戦勝' : '相手が不戦勝'}</span>
+              ) : (
+                <>
+                  <span className="inline-block px-1.5 py-0.5 border border-border-strong rounded font-mono">
+                    {r.gamesWon}-{r.gamesLost}
+                  </span>
+                  {r.result && <span className="sr-only">{r.result === 'win' ? '勝ち' : '負け'}</span>}
+                  {r.status === 'unfinished' && <span className="block text-text-muted">打ち切り</span>}
+                  {/* 途中棄権は本数から勝敗が読めない（棄権した側の本数が多いことがある）ので、どちらが棄権したかを書く */}
+                  {r.status === 'retired' && <span className="block text-text-muted">{r.result === 'lose' ? '棄権' : '相手が棄権'}</span>}
+                </>
+              )}
+            </span>
+            <span className={`flex-1 min-w-0 text-left break-words ${r.result === 'lose' ? 'font-bold text-text' : 'text-text-secondary'}`}>
+              <TeamMatchPlayers players={r.opponent} />
+            </span>
+          </div>
+          {r.games?.length ? <TeamMatchGames games={r.games} /> : null}
         </li>
       ))}
     </ul>
@@ -590,6 +615,8 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
   });
 
   const hasTeamMatches = (detail.matches ?? []).some((m) => (m.matches?.length ?? 0) > 0);
+  // ゲームごとのポイントは元資料に記録がある大会だけが持つ（高校選抜は本数まで）。無いページで案内しない
+  const hasTeamMatchGames = (detail.matches ?? []).some((m) => m.matches?.some((sub) => sub.games?.length));
 
   const query = searchQuery.trim().toLowerCase();
   const visibleItems = query ? allItems.filter((item) => item.name.toLowerCase().includes(query)) : allItems;
@@ -653,6 +680,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       {hasTeamMatches && (
         <p className="mb-3 text-xs text-text-muted">
           ※ 公式記録に対戦ごとの記録がある試合は、各対戦の出場ペアと本数も載せています。左がその組、右が対戦相手です。
+          {hasTeamMatchGames && 'ゲームごとのポイントは実施順で、そのゲームを取った側を太字にしています。'}
         </p>
       )}
 
