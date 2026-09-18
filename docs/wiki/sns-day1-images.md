@@ -127,7 +127,30 @@ python tools/sns-images/day1_all.py --tournament highschool-japan-cup --year 202
 - シングルス: 準決勝・決勝を null 化 → ベスト4確定状態。
 - ダブルス: knockout 全試合を null 化 → 予選リーグ終了状態。
 
+## 年度別結果ページの OGP 画像（ベスト16のトーナメント表）
+
+1200×630 の `summary_large_image`。ベスト16→8→4→決勝を、公開ページのトーナメント表と同じ描き方で1枚にする。
+
+- **ベスト16までなのは可読性の制約**（ベスト64だと縮小後に約4pxで読めない）。
+  **画像に大会名・年・種目は入れない**（X がカードの下にタイトルを出すため二重になる）。
+  **下に余白を取る**（X はカードの左下にタイトルを重ねるので、無いと最下行が隠れる）。サイト名の文字は置かず右下にマークだけ。
+- **`matches` から直接組む**（`entries[].type` によるブラケット復元は使わない）。決勝から辿るだけなので
+  **予選リーグを含む大会でも生成でき**、ラウンド名の表記ゆれにも影響されない。
+- **ローカル生成して PNG をコミットする**（本番ビルドに画像生成の依存を増やさない）。128色パレット化。
+  実行は **`npm run og:tournaments`**（`tools/sns-images/run.sh` が Pillow の入った python を選ぶ）。
+- **`--apply` は `--changed` / `--only` / `--all` のどれかが必須**。通常は **`--changed`**
+  （未コミットの変更＋`--base` からの差分）。**未追跡ファイルは拾わない**ので、**新規に取り込んだ年は
+  `--only <tid>/<year>` で明示する**か先にコミットする。`--only` の `tournamentId` は**前方一致**
+  （`zennihon-university` は `-indoor` `-ouza` も巻き込む）。**実行時に出る対象件数が想定と合うか毎回確認する。**
+- **全件 `--apply` は既存もほぼ全部差し替える**（フォントをシステムパスから解決するため、中身が同じでもハッシュが変わる）。
+  **描画そのものを変えたときだけ `--all`**。コミット前に `git status` で既存 PNG の削除・差し替えが0件か確かめる。
+- **決勝が未確定の種目は生成されない**ので、**大会の決着後に走らせる工程**（skill `tournament-insight` の工程5）。団体戦にも生成される。
+- 索引は `data/tournaments/og-images.json`（**details JSON には書き戻さない**。ページ側は `lib/tournamentOgImage.ts` が読む）。
+  ファイル名に内容ハッシュを付けているのでキャッシュを踏まない。対象は年度別結果ページのみで、他は既定の summary カード。
+
 ## 関連
+
+- [public-pages.md](./public-pages.md) — 公開ページ全体（OGP 画像を使う面）
 
 - 既存: `day1_results.py`（汎用ドロー＋結果一覧。knockout専用）, `power_map.py`（事前勢力図）, `h2h.py`（対戦カード）,
   `tournament_og.py` / `news_og.py`（OGP画像生成。本ページのSNS投稿画像とは別系統）。

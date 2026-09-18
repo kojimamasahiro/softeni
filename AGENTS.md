@@ -1,151 +1,81 @@
 # AI Collaboration Rules
 
-## Documentation rules
+## docs の構成
 
 This repository's docs/ follows an **LLM Wiki** pattern (Karpathy, 2026-04): raw sources are
-**compiled** by an LLM into interconnected wiki pages that are **written back and accumulated**
-over time, rather than re-derived from scratch each session. Concretely: docs/raw = raw sources
-(uncompiled), docs/wiki = compiled/curated output (a secondary artifact — verify against
-implementation, don't take it at face value), docs/adr = compiled record of important decisions.
-Treat every research/brainstorm session as something that should get written back, not just
-answered in chat and forgotten.
+**compiled** into interconnected wiki pages that are **written back and accumulated** over time,
+rather than re-derived from scratch each session. docs/raw = 生の記録（追記のみ）、
+docs/wiki = compile 済みの現在の仕様、docs/adr = 重要な決定の記録。
 
-- This repository uses docs/raw as the source for unstructured discussion notes and docs/wiki as the curated project wiki.
-- Do not delete or rewrite docs/raw content unless explicitly requested.
-- When changing code, confirm whether related docs/wiki and docs/adr need updates.
-- When changing backend, database, Android, billing, analytics, score-analysis behavior, score features, data model, public pages, deployment, import scripts, or analysis logic, check whether docs/wiki needs updates.
-- When implementation and current-state docs (e.g. the wiki) conflict, implementation is the source of truth. This does NOT apply to an ADR's Context / Decision / Alternatives, which are a historical record — see ADR rules.
-- Mark uncertain content as Assumption.
-- Mark outdated content as Deprecated instead of silently deleting it.
-- Keep Open Questions in docs/wiki/open-questions.md.
-- Add ADRs only for important architectural decisions.
-- Prefer concise Japanese documentation.
-- After a research/brainstorm session or a significant implementation, run the write-back step:
-  add/update the relevant docs/raw note, then compile the durable parts into docs/wiki
-  (see docs/prompts/summarize-raw.md, docs/prompts/update-wiki.md). Periodically —
-  and always after a significant implementation — run docs/prompts/review-docs-drift.md
-  to catch wiki/implementation drift before it accumulates (see docs/raw/2026-06-25-wiki-audit.md
-  for an example of what this catches if skipped).
-- Write-back must record exclusions, not just inclusions. When compiling a docs/raw note into
-  docs/wiki, explicitly note what was reviewed and deliberately left out (redundant, too
-  speculative, out of scope for the target page, superseded, etc.), with a one-line reason each.
-  Append this as a "Compile Log" at the end of the source docs/raw note (raw stays append-only).
-  Without this, a future reader can't tell "reviewed and excluded on purpose" from "never reviewed" —
-  both look like silence otherwise.
-  This rule applies to docs/raw notes **created on or after 2026-07-11** (when the rule was written).
-  Earlier notes have no Compile Log by design, not by omission — do not read their silence as
-  "not yet reviewed", and do not retrofit one unless you are actually re-compiling the note.
-  Exception: notes dated 2026-08-01 onward were backfilled on 2026-08-12
-  (see docs/raw/2026-08-12-llm-wiki-lint.md).
-- Keep each docs/wiki page within **12,000 characters** (check: `node scripts/check-wiki-size.mjs`).
-  Every session that reads the wiki pays for its length, and pages that grew by appended
-  "追記（YYYY-MM-DD）" paragraphs reached 40,000–68,000 characters. The wiki holds the
-  **current spec only**: behavior, rules, thresholds, one-line decisions with links, and
-  rejected facts (one line, to prevent re-investigation). Dated history, measurements, and
-  verification logs go to docs/raw. When a page exceeds the budget, compress it with
-  docs/prompts/slim-wiki-page.md (the full pre-compression text is archived verbatim to
-  `docs/raw/YYYY-MM-DD-wiki-archive-<page>.md`). When updating a page, rewrite the relevant
-  section in place instead of appending a dated paragraph.
-- Each compressed wiki page starts with an `適用範囲` line (汎用 / 学校スポーツ共通 /
-  ソフトテニス固有 / 混在) so that parts reusable for other sports can be told apart
-  (see docs/raw/2026-09-18-idea-multi-sport-expansion.md).
-- When adding a new docs/wiki page, cross-link it: add it to docs/wiki/index.md and add at least
-  one link from an existing related page. Wiki pages that aren't interconnected are effectively
-  invisible to future compile passes.
+- **docs/raw は追記のみ**。削除・書き換えは明示的に頼まれたときだけ。
+- **docs/wiki は現在の仕様だけ**を持つ: 挙動・ルール・閾値・1行の判断＋リンク・棄却済みの事実
+  （再調査を防ぐため1行だけ残す）。日付つきの経緯・実測値・検算は docs/raw へ。
+  wiki は二次成果物なので、実装と食い違ったら**実装が正**
+  （ADR の Context / Decision / Alternatives は歴史の記録なので例外。ADR rules 参照）。
+- **1ページ12,000字以内**（`node scripts/check-wiki-size.mjs`）。超えたら
+  docs/prompts/slim-wiki-page.md の手順で圧縮する。読むたびに長さぶんの費用がかかるため。
+  更新は「追記（YYYY-MM-DD）」を足すのではなく、**該当の節を書き換える**。
+- 各ページの冒頭に **`適用範囲`** の行（汎用 / 学校スポーツ共通 / ソフトテニス固有 / 混在）を置く。
+  他競技へ持ち出せる部分を見分けるため（docs/raw/2026-09-18-idea-multi-sport-expansion.md）。
+- 新しいページは必ずクロスリンクする（docs/wiki/index.md へ追加 ＋ 関連ページから1本以上）。
+  孤立したページは次の compile で見えなくなる。
+- 不確かなものは **Assumption**、古くなったものは **Deprecated** と書く（黙って消さない）。
+- 未解決の問いは docs/wiki/open-questions.md に集める。
+- 日本語で簡潔に書く。
 
----
+## 書き戻し（write-back）
 
-## UI の表記ルール
+調査・ブレストの結論や大きめの実装を、チャットの中だけで終わらせない。
 
-- **絵文字を使わない**。公開ページの本文・見出し・バッジ・ラベル、およびそれらを生成する
-  コード上の文字列リテラルに絵文字（🏆 ✅ ⚠️ 等）を入れないこと。装飾やアイコンが必要な場合は
-  inline SVG か CSS で描く。理由: 絵文字は OS / ブラウザ / フォントで見た目が大きく変わり、
-  スクリーンリーダーの読み上げも制御しにくく、サイトのトーンとも合わないため。
-- 装飾目的の SVG には `aria-hidden` / `role="presentation"` を付け、意味は必ずテキストで併記する。
-- このルールは **eslint で機械的に強制**している（`eslint.config.mjs` の `no-restricted-syntax`、
-  `src/**` に error で適用）。検出は `\p{Emoji_Presentation}` ＋ 異体字セレクタ U+FE0F。
-  矢印（→ ←）・幾何学図形（▲ ▼ ◀ ▶ ○ ●）・罫線（─）・チェック記号（✓ ✗ ✕）・丸数字（① ②）・
-  著作権記号（©）は絵文字ではないので許可される。
-- 対象は**公開ページの UI** に限る。SNS 投稿テンプレ（`lib/rareEvents.mjs`）と CLI 出力
-  （`scripts/**`）は対象外（前者は投稿先の慣習に合わせる、後者は人が一度読むだけの出力のため）。
-
----
+- docs/raw にノートを追加/更新し、残す価値のある部分を docs/wiki へ compile する
+  （docs/prompts/summarize-raw.md → docs/prompts/update-wiki.md）。
+- compile したら、**何を意図的に落としたか**を raw の「Compile Log」に1行ずつ理由つきで書く。
+  適用範囲と例外は docs/prompts/update-wiki.md が正。
+- 大きめの実装のあとは docs/prompts/review-docs-drift.md で wiki と実装のずれを見る
+  （放置した結果は docs/raw/2026-06-25-wiki-audit.md）。
+- コードを変えたら、関連する docs/wiki と docs/adr の更新要否を確認する。特に backend、database、
+  Android、課金、分析、score 機能、データモデル、公開ページ、デプロイ、取り込みスクリプト。
 
 ## Before coding
 
-Before implementing any feature or modifying behavior:
+- 関連する docs/wiki と docs/adr を読む。wiki が現在の仕様で、経緯や実測が要るときだけ
+  リンク先の docs/raw アーカイブを開く。
+- 既存の決定・制約と、Deprecated / Draft の記述を確認する。
+- 足りない要件を勝手に決めない。
 
-- Read related docs/wiki and docs/adr files. Wiki pages hold the current spec; open the
-  linked docs/raw archive only when you need the history or measurements behind it.
-- Check for existing architecture decisions and constraints.
-- Check for deprecated or draft specifications.
-- Do not assume missing requirements.
+## 要件の確認
 
----
+仕様が不完全・矛盾・曖昧なときは、実装前に質問する。前提は明示し、未解決は Open Questions へ。
+黙って挙動を発明しない。
 
-## Requirement clarification
-
-If specifications are incomplete, contradictory, or ambiguous:
-
-- Ask follow-up questions before implementation.
-- Do not silently invent behavior.
-- Present assumptions explicitly.
-- Add unresolved items under `Open Questions`.
-
-Critical logic must always be clarified before coding.
-
-Examples:
-
-- timezone handling
-- reward unlock duration
-- sync conflict resolution
-- statistical formulas
-- anomaly thresholds
-- public/private visibility behavior
-
----
-
-## Documentation sync
-
-When implementation changes behavior:
-
-- Update related wiki pages.
-- Mark outdated sections as Deprecated.
-- Add migration notes if necessary.
-- Add or update ADRs when architectural decisions change.
-
----
+次の項目は**必ず先に確認する**: タイムゾーンの扱い、統計式、異常値の閾値、公開/非公開の扱い、
+同期の衝突解決、リワードの解放期間。
 
 ## ADR rules
 
 An ADR records _when and why_ a decision was made — it is not a description of the current code.
 
-Create or update ADRs when changing:
-
-- architecture
-- data flow
-- synchronization behavior
-- timezone handling
-- monetization logic
-- public API contracts
-- analysis methodology
+Create or update ADRs when changing: architecture / data flow / synchronization behavior /
+timezone handling / monetization logic / public API contracts / analysis methodology.
 
 How to keep ADRs accurate without losing history:
 
-- "Implementation is the source of truth" applies to _current behavior_. Do NOT rewrite an ADR's Context / Decision / Alternatives to match the implementation — they are a historical snapshot of the reasoning.
+- Do NOT rewrite an ADR's Context / Decision / Alternatives to match the implementation —
+  they are a historical snapshot of the reasoning.
 - Manage state with the Status field (Draft / Accepted / Deprecated / Superseded).
   - While Draft, editing the body directly is fine.
-  - After Accepted, if the decision changes, do NOT rewrite the body. Set Status to Superseded / Deprecated and record the new decision in a new ADR (or an appended note) so the decision history stays auditable.
-- "Current-state" parts of an ADR (e.g. an Implementation Status section) SHOULD be kept in sync with reality.
+  - After Accepted, if the decision changes, do NOT rewrite the body. Set Status to
+    Superseded / Deprecated and record the new decision in a new ADR (or an appended note)
+    so the decision history stays auditable.
+- "Current-state" parts of an ADR (e.g. an Implementation Status section) SHOULD be kept in sync.
 - If the implementation drifted unintentionally, fix the implementation, not the ADR.
 
----
+## UI の表記
 
-## Preferred workflow
+- **公開ページに絵文字を使わない**（`src/**` に eslint で強制。装飾が要るなら inline SVG か CSS）。
+  対象範囲・許可される記号（→ ▲ ✓ ① © 等）・例外は docs/wiki/ux-writing.md が正。
+- 装飾目的の SVG には `aria-hidden` / `role="presentation"` を付け、意味は必ずテキストで併記する。
 
-Conversation
-→ Draft specification
-→ Clarification
-→ Wiki update
-→ Implementation
-→ Documentation sync
+## 進め方
+
+会話 → 仕様の下書き → 確認 → wiki 更新 → 実装 → docs 同期
