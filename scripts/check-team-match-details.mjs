@@ -7,7 +7,8 @@
  *
  * 見ること:
  *   1. 形: type / status / winner / score の組み合わせが仕様どおりか
- *      （completed は勝者あり・勝者の本数が多い、unfinished は勝者なし・本数あり、not_played は本数なし）
+ *      （completed は勝者あり・勝者の本数が多い、retired は勝者あり・本数の大小は問わない、
+ *       unfinished は勝者なし・本数あり、not_played は本数なし）
  *   2. 親との一致: 勝者 A の数・B の数が親の scores（entries[0] / entries[1]）と一致するか
  *   3. 選手: 姓・名で持つ選手が個人戦の出場記録に実在するか、誤分割と判断済みの綴りでないか。
  *      姓名の分割修正（normalize-name-splits.mjs）から取り残されると、選手ページに繋がらなくなる
@@ -24,7 +25,7 @@ const DETAILS = path.join(ROOT, 'data', 'tournaments', 'details');
 const ALIAS_PATH = path.join(ROOT, 'data', 'players', 'name-split-aliases.json');
 
 const TYPES = new Set(['D1', 'D2', 'D3', 'S']);
-const STATUSES = new Set(['completed', 'unfinished', 'not_played']);
+const STATUSES = new Set(['completed', 'retired', 'unfinished', 'not_played']);
 
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -85,6 +86,12 @@ for (const { file, data } of files) {
         if (sub.winner !== 'A' && sub.winner !== 'B') problems.push(`${at}: completed なのに winner が無い`);
         else if (!hasScore) problems.push(`${at}: completed なのに本数が無い`);
         else if ((sub.winner === 'A') !== sub.scoreA > sub.scoreB) problems.push(`${at}: winner と本数が合わない (${sub.scoreA}-${sub.scoreB} ${sub.winner})`);
+      } else if (sub.status === 'retired') {
+        // 途中棄権。棄権しなかった側の勝ちで、**勝者の本数が多いとは限らない**
+        // （実例: アジア競技大会2026 男子団体 韓国-インドネシア 第3対戦は 3-2 から韓国が棄権）。
+        // 勝敗は本数から導けないので winner を必ず持つ。
+        if (sub.winner !== 'A' && sub.winner !== 'B') problems.push(`${at}: retired なのに winner が無い`);
+        if (!hasScore) problems.push(`${at}: retired なのに棄権時点の本数が無い`);
       } else if (sub.status === 'unfinished') {
         if (sub.winner !== null) problems.push(`${at}: unfinished なのに winner がある`);
         if (!hasScore) problems.push(`${at}: unfinished なのに途中の本数が無い`);

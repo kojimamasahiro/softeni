@@ -54,6 +54,16 @@ const detail: TournamentDetailData = {
           playersB: [{ name: 'C' }, { name: 'D' }],
         },
         {
+          // 途中棄権。**勝者（B）の本数のほうが少ない**ので、winner を落とすと勝敗が逆に読める
+          type: 'S',
+          status: 'retired',
+          winner: 'B',
+          scoreA: 3,
+          scoreB: 2,
+          playersA: [{ name: 'X' }],
+          playersB: [{ name: 'Y' }],
+        },
+        {
           type: 'D3',
           status: 'not_played',
           winner: null,
@@ -83,6 +93,7 @@ test('状態・勝者・本数が往復で変わらない', () => {
     [
       ['D1', 'completed', 'A', 4, 3],
       ['D2', 'unfinished', null, 3, 3],
+      ['S', 'retired', 'B', 3, 2],
       ['D3', 'not_played', null, null, null],
     ],
   );

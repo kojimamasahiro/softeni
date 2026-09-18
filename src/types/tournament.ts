@@ -179,11 +179,14 @@ export interface TournamentMatch {
  */
 export interface TeamMatchDetail {
   type: 'D1' | 'D2' | 'D3' | 'S';
-  /** completed: 決着 / unfinished: 途中で打ち切り（途中の本数を持つ）/ not_played: 未実施 */
-  status: 'completed' | 'unfinished' | 'not_played';
-  /** completed のときだけ 'A' か 'B'。それ以外は null */
+  /**
+   * completed: 決着 / retired: 途中棄権（棄権しなかった側の勝ち。**勝者の本数が多いとは限らない**）/
+   * unfinished: 団体の勝敗が決まって途中で打ち切り（勝者なし）/ not_played: 未実施
+   */
+  status: 'completed' | 'retired' | 'unfinished' | 'not_played';
+  /** completed と retired のときだけ 'A' か 'B'。それ以外は null */
   winner: 'A' | 'B' | null;
-  /** not_played のときは null */
+  /** not_played のときは null。retired は棄権した時点の本数 */
   scoreA: number | null;
   scoreB: number | null;
   playersA: TeamMatchPlayer[];
@@ -192,6 +195,7 @@ export interface TeamMatchDetail {
    * ゲームごとのポイント（`[A のポイント, B のポイント]` を実施順に）。
    * 元資料にゲームごとの記録がある大会だけが持つ（インターハイ。高校選抜は本数までしか印字されない）。
    * そのゲームを取ったのは**多いほう**（同点は無い）。デュースが続くと 10 以上になる。
+   * **決着したゲームだけを持つ**。retired で中断されたゲーム（0-0 等）は入れない（取った側が決まらないため）。
    */
   games?: [number, number][];
 }
@@ -262,7 +266,7 @@ export type MatchRow = {
 export type TeamMatchRow = {
   type: TeamMatchDetail['type'];
   status: TeamMatchDetail['status'];
-  /** completed のときだけ win / lose */
+  /** 勝者が決まっている（completed / retired）ときだけ win / lose */
   result: 'win' | 'lose' | null;
   gamesWon: number | null;
   gamesLost: number | null;

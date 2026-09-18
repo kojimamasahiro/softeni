@@ -85,6 +85,8 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
                 </span>
                 {r.result && <span className="sr-only">{r.result === 'win' ? '勝ち' : '負け'}</span>}
                 {r.status === 'unfinished' && <span className="block text-text-muted">打ち切り</span>}
+                {/* 途中棄権は本数から勝敗が読めない（棄権した側の本数が多いことがある）ので、どちらが棄権したかを書く */}
+                {r.status === 'retired' && <span className="block text-text-muted">{r.result === 'lose' ? '棄権' : '相手が棄権'}</span>}
               </>
             )}
           </span>
