@@ -1,0 +1,621 @@
+# wiki アーカイブ: players-pages.md（2026-09-18 圧縮前の全文）
+
+2026-09-18 に [docs/wiki/players-pages.md](../wiki/players-pages.md) を「現在の仕様」だけに圧縮した。
+圧縮前の本文（実測値・改修の前後比較・UI 実装の経緯・設計スナップショット）をここにそのまま残す。
+手順は [docs/prompts/slim-wiki-page.md](../prompts/slim-wiki-page.md)、経緯は [2026-09-18-wiki-slimming.md](./2026-09-18-wiki-slimming.md)。
+
+本文中の wiki 内リンク（`./xxx.md`）は `../wiki/xxx.md` に置き換えた。それ以外は原文のまま。
+
+---
+
+## （原題）Players Pages（選手ページ）
+
+選手まわりの公開ページ（URL 2 系統・選手一覧・選手 SEO・結果ページの noindex 選別）の現状仕様。
+公開面全体の構成・サイトモード切替・共通レイアウトは [public-pages.md](../wiki/public-pages.md) を参照。
+SEO カニバリ整理は [seo.md](../wiki/seo.md)（#1 / #2）。データ構造は [data-model.md](../wiki/data-model.md)。
+
+## 選手 URL の 2 系統：`/players/{slug}` と `/players/{id}/results`（区別・重要）
+
+選手まわりには **別系統の 2 種類の URL / 識別子** があり、混同しやすいので明確に区別する。
+
+| 観点 | プロフィール系（slug） | 結果ページ系（id） |
+| --- | --- | --- |
+| URL | `/players/{slug}/`（＋ `/players/{slug}/information`） | `/players/{id}/results/` |
+| 識別子 | **slug**（文字列。例 `funemizu-hayato`） | **数値 id**（例 `29`） |
+| 正データ | `data/players/{slug}/`（`information.json` ＋ `analysis.json`） | `data/players/index.json`（全選手の `id` / 姓名 / `count`） |
+| 対象範囲 | **curated のみ**（約 23 選手。手動整備したプロフィール） | **掲載選手全体**（結果ページが実在するのは `count>=5`、約 8,000 組） |
+| 主な中身 | プロフィール（身長・所属・ポジション）＋通算成績＋career-record/milestone | 収録試合の結果一覧・対戦相手・主なペア |
+| 実装 | `src/pages/players/[id]/index.tsx`（`[id]` には slug が入る）、`lib/careerRecord.ts` | `src/pages/players/[id]/results.tsx`、`data/players/index.json` |
+| 名前からの解決 | `resolveSlugByFullName()`（`lib/careerRecord.ts`）。姓名**完全一致かつ一意**のときのみ slug を返す（曖昧なら null） | `data/players/index.json` を姓名一致（`lastName::firstName`、`count>=5`）。**同姓同名は最初の id**（学校ページ・高校歴代・チーム年度・news プレビュー共通の既存規約） |
+| リンク付与条件 | curated 選手のみ（解決できた時だけ） | 結果ページが実在する選手（`count>=5`）のみ。無ければ名前のみ表示（デッドリンク防止） |
+
+使い分けの原則:
+
+- **選手名から「その選手の成績ページ」へ内部リンクしたい一般用途**は、原則 **id 系（`/players/{id}/results/`）** を使う。curated でない選手にも付くため網羅性が高い（学校ページ・高校歴代ページ・チーム年度ページ・/news プレビューはすべてこの方式）。
+- **slug 系（`/players/{slug}`）** は curated プロフィールに限定。career-record/milestone など「手動整備済みの濃い情報」を出す場面でのみ使う（大会ハブの curated 優勝者など）。
+- 結果ページ（id）→ プロフィール（slug）への**逆リンク**は、姓名一致で curated プロフィールがある時のみ表示する（`results.tsx`）。
+- 2 系統の **URL 統合は当面しない**方針（2026-06 決定。カニバリ対象は curated 約 23 選手のみとスコープが小さく、統合は 301・移植の毀損リスクが上回るため）。
+
+注意（Assumption）: `data/players/index.json` には所属（team）が無いため id 解決は**姓名のみ**で行い、同姓同名は最初の id に寄せる。所属で曖昧性を解消したい照合（連覇判定など）は別途 `tournamentRecords` の `playerKey`（名前@所属）を使う。
+
+注意（重要）: この解決は `姓::名` の**完全一致**なので、取り込み由来で姓名の切り位置がぶれると（`谷|明日里` / `谷明|日里`）**同一人物が別 id になり、両方が `count>=5` を割って結果ページが消える**。2026-08-29 の全数調査で 147 件見つかり 141 件を修正した（結果ページが新たに立った選手 35 名）。検出・判断・適用の運用は [team-player-identity.md](../wiki/team-player-identity.md) の「姓名の分割ゆれ」節。
+
+## 選手一覧ページ（`/players`）（2026-08-08 全面改修）
+
+検討経緯は [docs/raw/2026-08-08-idea-players-index-redesign.md](../raw/2026-08-08-idea-players-index-redesign.md)。
+
+### ページの役割（最重要・以前は誤っていた）
+
+`/players` は **選手を探す入口**（`docs/ui/deliverables/04-site-structure.md` の「選手入口(検索)」）。
+
+2026-08-08 以前、このページは **「同姓同名選手の一覧」を名乗っていたが、それは実装の誤解だった**。
+生成側の変数名 `sameNameGroups` は実際には「全収録選手を氏名でグループ化したもの」で、
+
+- `count` は同名人数ではなく **出場した大会カテゴリ数**
+- `differentTeams` は同名別人の所属ではなく **その選手のキャリア変遷**（例: 松田拳弥＝尾上中学校→法政大学→東北）。しかも表記ゆれ（尾上 / 尾上中学校 / 平川市立尾上中学校）をそのまま並べていた
+
+実測すると全 9,391 組のうち「複数所属」は 4,512 組あるが、実際の同姓同名を記録した
+`data/players/homonyms.json`（65 件）と **1 件も重ならない**。つまり冒頭の警告ボックス
+（「同じ名前でも異なる選手の可能性があります」）は、ほぼ全訪問者に対して事実と異なる警告を
+出していた。改修でこの枠組みごと撤去した。
+
+### 構成（`06-design-principles.md` P3「一覧では要約、詳細では全量」）
+
+1. **検索**: 全収録選手 9,391 組が対象。インデックスは **focus / 入力時に遅延ロード**。
+2. **出場数の多い選手**: 上位 200 人の表（名前 / 最新所属 / 出場数 / 最高成績）。`tabular-nums`。
+3. **選手ページ一覧**: 結果ページが実在する **1,917 人全員**への名前リンク。内部リンクのハブ。
+
+### データ構成（`scripts/generate-players-json.mjs` が生成）
+
+- `players-index.json`（**新設**・約 108KB）: SSR 用。`featured`（上位 200 人の要約）と
+  `all`（`data/players/index.json` の `count>=5` 全 1,917 人の `{id, name}`）。
+  `all` は結果ページの `getStaticPaths` と同じ集合を正にしているため、**デッドリンクが
+  構造的に発生しない**。
+- `players-search.json`（全 9,391 組・約 2.9MB）: 検索用の軽量インデックス。
+  `fullName / playerId / count / team / teamCount / searchText`。
+  2026-08-08 に `differentTeams`（全所属の配列）を `team`（最新所属）＋ `teamCount` に縮約した。
+  全所属は `searchText` に畳み込んであるので検索性は落ちない。
+- **`players-min20.json` は廃止**（`git rm` 済み）。出場数 20 以上の 97 人ぶんの**全大会記録**を
+  SSR に埋め込んでおり、生成 HTML が 1.45MB・DOM 18,207 要素に膨れていた。載っていた大会記録は
+  選手結果ページと完全重複でカニバリ側（[seo.md](../wiki/seo.md) #2）だったため一覧からは落とした。
+- 旧 `players-min2.json`（約 19MB）/ `players-min10.json` は以前に廃止済み。
+
+### 改修の実測（2026-08-08）
+
+| 指標 | 旧 | 新 | |
+|---|---|---|---|
+| HTML 非圧縮 | 1,452,245 B | 414,534 B | -71% |
+| **HTML gzip** | **55,101 B** | **54,267 B** | **ほぼ変わらない** |
+| DOM 要素数 | 18,207 | 5,798 | -68% |
+| 検索インデックスの無条件 fetch | 必ず 334KB(gzip) | 0（操作時のみ） | 検索しない訪問者は -334KB |
+| 選手結果ページへの内部リンク | 97 | 1,917 | 19.8 倍 |
+
+**重要**: 旧 HTML は繰り返しが多く gzip が極めてよく効くため、**転送量としての改善は HTML 側には
+ほぼ無い**。実際の転送量の改善は「検索インデックス 334KB(gzip) を無条件に配らなくなった」ことで、
+HTML 側の利得は転送ではなく**パース・DOM 構築コスト**（要素数 -68%）に出る。
+数字を引用するときはここを取り違えないこと。
+
+### SEO
+
+- 検索はクライアント JS のみでクローラは実行しないため、検索インデックスの遅延ロード化は
+  インデックスに影響しない。選手ページの発見は `next-sitemap`（`count>=5` を全件出力）が担保する。
+  一覧からの内部リンクが 97 → 1,917 に増えたのは、[seo.md](../wiki/seo.md) #2 の「薄いページの
+  インデックス枠競合」に対して**残っていた数少ない打ち手**を使ったもの（noindex 選別の時点で
+  「内部リンク追加は頭打ち」と判断していたが、一覧ページ自体は手つかずだった）。
+- **姓の頭文字での分割ページ（`/players/あ` 等）は作らない**（2026-08-08 決定）。姓の頭文字は
+  342 種あり、うち **243 種が 5 件未満**で薄いページの量産になる。[seo.md](../wiki/seo.md) の
+  「入口を1ページに集約し、重複ページ自体を作らない」方針、および `/rankings` が年度×種目×男女で
+  URL を切らない判断（[public-pages.md](../wiki/public-pages.md)）と同じ理由。全件リンクは 1 ページに
+  収める（名前のみなら 1,917 人でも約 93KB）。
+- JSON-LD は `CollectionPage` + `ItemList`（上位 50 件）。旧実装は `WebPage` に
+  `datePublished` / `dateModified` として **`new Date()`（ビルド日）** を入れており毎ビルド
+  日付が動いていた。実データ由来の日付を持たないため**日付は出さない**（選手結果ページの
+  「ビルド日を使わない」方針と統一）。
+- `MetaHead` の `type` を `article` → `website` に修正（一覧ページのため）。
+- `WebSite` + `SearchAction`（`urlTemplate: /players/?q={search_term_string}`）を追加。
+- 検索語を `?q=` で URL に反映する（`router.replace` の shallow・400ms デバウンス）。共有・
+  ブックマーク・ブラウザバック・計測が効くようになる。canonical は `MetaHead` が常に
+  `/players/` を出すため、`?q=` 付き URL は正規化される（`output:'export'` なので実体の HTML も同一）。
+
+### UX・アクセシビリティ
+
+- 検索インデックスは `onFocus` / `onChange` で初めて取得する（`fetchStarted` ref で二重取得を防止）。
+- `useDeferredValue` で絞り込みを遅延させ、9,391 件のフィルタでキー入力が詰まるのを防ぐ。
+- 検索結果は 50 件ずつの段階表示（「さらに表示」）。全件描画による固まりを回避。
+- 検索語ハイライトは **全語**を対象にする（旧実装は `queries[0]` のみで 2 語目以降が光らなかった）。
+- 件数表示に `aria-live="polite"`、入力欄は `type="search"`、コンテナに `role="search"`。
+- 0 件時に「選手名は漢字で登録されています。ひらがな・カタカナ・ローマ字では一致しません」と明示する。
+  **読み仮名データが存在しない**ため、かな・ローマ字検索は実装できない（下記 Open 参照）。
+- 所属は **最新 1 件＋「他 N」** 表示にした。表記ゆれをそのまま並べると品質の印象を落とすため。
+  表記ゆれの正規化自体は名寄せ側の課題で、ここではやらない（[team-player-identity.md](../wiki/team-player-identity.md)）。
+- カード全体を覆う stretched link（`after:absolute inset-0`）と波線リンク（`decoration-wavy`、
+  校正エラーに見える）は撤去した。
+- 旧実装は render 中に `group.players.sort()` を呼び props 由来の配列を破壊的変更していた。表形式化に伴い解消。
+
+### 見送った案（2026-08-08）
+
+- **一覧カードへの全国大会優勝バッジ**（`titles.national` / `majorResults` 由来）: `playerstats:public`
+  が `prebuild` に入っておらず `public/data/player-stats/` は空のため、`getStaticProps` で
+  エンジンを直接叩く必要があり **ビルド時間が約 40 秒増**する。ユーザー判断で見送り。
+  表の「最高成績」列は大会結果データ（`res.tournament.label`）由来でエンジンを呼ばないため追加コストは無い。
+- 都道府県によるブラウズ軸: 一覧の元データに `prefecture` が入っておらず（`playerResult` に
+  フィールドはあるが常に undefined）、現状のデータでは実装できない。
+
+### 実装
+
+`src/pages/players/index.tsx` / `scripts/generate-players-json.mjs`。
+
+## 結果ページの大会ごとの所属表示（2026-06 追加）
+
+選手の所属は大会（年度・カテゴリ）ごとに異なりうるため、結果ページ（`/players/{id}/results/`）の各大会カードには **その大会当時の所属** を表示する。
+
+- データ取得: `src/pages/players/[id]/results.tsx` の `getStaticProps` で、各大会レコードの該当選手 participant の `team` を `tournamentSelfTeam`（キー `tournamentId/year/category`）に保持し、`PlayerTournament.team` として渡す。
+- ヘッダ（`{fullName} 選手の試合結果（{team}）`）や JSON-LD の `affiliation` は従来どおり **最新の所属**（`teamRecords` の最終年）を使う。大会ごとの所属はカード単位の表示のみ。
+- 表示: `src/components/PlayerResults.tsx` の各大会カードで「ペア」の下（ペアが無い場合は「詳細」の下）に「所属 {team}」を表示（`info.team` がある時のみ）。
+
+## 主要タイトル表の年の列（2026-09-06 整理）
+
+結果ページの「主要タイトル」表（`src/components/MajorTitles.tsx` / 生成は `lib/majorTitles.ts`）は
+`isMajorTitle` の大会×年のマトリクスで、**列（年）は details だけでなく `information` 由来の年も含む**。
+これは開催前の年に開催日（例 `11/6`）を出すための既存仕様。
+
+**列は 2022 年以降だけにする**（`MAJOR_TITLE_START_YEAR`。2026-09-06 変更）。2022 は
+**主要4大会がそろって収録されている最初の年**で、それより前は同じ `ー` が3つの別の意味になる
+（全日本ミックスは2020年創設でそもそも存在しない／全日本インドアは収録が2022年から＝未収録／
+天皇賜杯・シングルスだけ2016年から埋まっている）。2021年以前の成績が消えるわけではなく、
+年度別の大会結果カードと勲章カード（`lib/nationalTitles.ts` 系）には従来どおり出る。
+**表の直下に「※ 2022年以降を表示しています。…」の断りを必ず添える**——ページ上部の
+「全国大会優勝N回」は2021年以前も数えているため、断りが無いとこの表と食い違って見える。
+
+そのためセルの値は3種類ある。取り違えると事実誤認になるので分けて出す。
+
+| セル | 意味 |
+|---|---|
+| `優勝` / `ベスト4` / `2回戦` など | その年のその大会での成績 |
+| `ー` | **その選手が出場していない**（または記録が無い） |
+| `中止` | **大会自体が開催されなかった**年（`information` の `status: 'cancelled'`） |
+| `11/6` のような日付 | まだ開催前（`startDate` が未来） |
+
+`中止` を出すようにしたのは 2026-09-06。それまでは中止年も `ー` になり、
+「出場しなかった」のと区別が付かなかった（例: 2019優勝→2022優勝の間が空いている理由が読めない）。
+中止の語彙は [data-model](../wiki/data-model.md)、面ごとの見せ方は [public-pages](../wiki/public-pages.md)。
+
+## 結果ページを持たない選手（count<5）の情報表示（2026-06 追加）
+
+結果ページが実在するのは `count>=5` の選手のみ（`getStaticPaths`）。`count<5`（約 6,400 人）はページ化すると薄いページの量産になり SEO 上不利なので**個別ページは作らない**。一方で「どの大会に・誰と出たか」だけはユーザーに見せたいため、**固有 URL を持たないクライアントモーダル**で表示する。
+
+- 非インデックスの担保: 固有 URL を持たず、クリック時に JSON を fetch して JS で描画するだけ。クローラは JS を実行せず URL も無いので**インデックス対象にならない**。`noindex` ページを量産する案（クロールバジェットを消費する）より優れる。
+- データ生成: `scripts/generate-players-lite.mjs`（`prebuild` に追加）が `count<5` の各選手について `public/data/players-lite/{id}.json` を出力する（1 選手 1 ファイル）。中身は出場大会ごとの `tournamentName / year / team（当時の所属）/ partner{ name, id, hasPage }`。`id` は「同姓同名は最初の id」規約に合わせた canonical id。
+- 表示: `src/components/PlayerLiteLink.tsx`。名前クリックでモーダルを開き当該 JSON を fetch（簡易キャッシュあり）。モーダル内のペアは `hasPage`（count>=5）なら `/players/{id}/results` へリンク、`count<5` は入れ子モーダルにせず名前のみ表示。
+- 起点: ①結果ページの大会カードの「ペア」（`PlayerResults.tsx`、`PlayerTournament.partnerLiteId`）、②サマリーの「パートナー別」表（`PlayerSummaryStats.tsx`、`liteId`）。いずれも `count>=5` はページリンク、`count<5` は `PlayerLiteLink` に振り分ける。
+- デッドリンク防止: 以前は `count<5` のペアにも `/players/{id}/results` を張って 404 になっていた。リンク可否は `data/players/index.json` の `count`（`PlayerInfo.count` として伝播）で判定する。
+- 不具合修正（2026-07-20）: サマリーの「パートナー別」に、パートナー名の代わりに数値 ID（例 `8329`）がそのまま表示される不具合があった。原因は `PlayerSummaryStats.tsx` の名前解決が `allPlayers`（`results.tsx` の `getStaticProps` が**エンジン適用前**の集計 `byPartnerNormalized` から絞り込んだ部分集合）だけに依存しており、エンジン（`toSummaryStats`）が返す `playerStats.byPartner` のパートナーIDと集合が食い違うことがあった点。対処: エンジン側（`PartnerRow.partnerName`）が解決済みの名前を `PlayerStats.byPartner[id].name` として保持し（`types/stats.ts`）、`PlayerSummaryStats.tsx` は `allPlayers` ルックアップより先にこの `name` を使うよう変更。あわせて `allPlayers`（`minimalPlayersList`）も `byPartnerNormalized` と `summaryStats.byPartner` 両方のキー集合を合わせて絞り込むよう修正し、リンク可否判定（`count>=5`）の抜け漏れも防いだ。
+
+## 選手ページの SEO 方針（2026-06 改善）
+
+設計の経緯は `docs/raw/2026-06-12-player-page-seo-design.md` を参照。
+
+内部リンク:
+
+- 大会結果ページ（対戦詳細）のエントリー見出しで、選手ページを持つ選手（`count>=5`）の名前を `/players/{id}/results/` にリンクする（`MatchResults.tsx`）
+- 団体戦の対戦ごとの記録（ADR-020）の選手名も同じ規則でリンクする。**ただし団体戦の対戦は選手の成績集計（勝敗・勝率・ランキング）に数えない**（STリーグと同じ扱い。2026-09-18 決定）
+- トーナメント表（`TournamentBracket.tsx`）の選手名も同様にリンクする。`participant.playerId`（結果ページを持つ選手のみ数値が入る）かつ個人戦（`lastName` あり）の場合だけ `/players/{id}/results/` へリンクし、それ以外は文字のみ表示（2026-06 追加）
+- 高校の学校ページでも掲載選手名を同様にリンクする（pid「姓*名*チーム\_県」を `data/players/index.json` と姓名一致で解決）
+- チームの年度別ページ（`/teams/{teamId}/{year}/{gender}`）の「選手別成績」表でも選手名をリンクする。`getStaticProps` で `info.players` の姓名を `index.json`（`count>=5`）と一致させて pid→数値id の `playerLinks` を作り、`TeamsRanking` に渡す。同姓同名は最初のIDを使う既存規約に準拠（`src/components/TeamsRanking.tsx`、2026-06 追加）
+- 選手結果ページに「関連選手（主なペア）」セクションを表示する。`playerStats.byPartner` をペア試合数の降順で上位 8 名まで掲載し、結果ページを持つ選手（`index.json` の `count>=5`）のみ `/players/{id}/results/` へリンクする。選手ページ同士の双方向内部リンクを増やす目的（`src/pages/players/[id]/results.tsx`、2026-06 追加）
+- 同姓同名は「最初の ID を使う」既存規約に従う
+- numeric 結果ページから curated プロフィール（`/players/{slug}/`）への逆リンクを表示する（姓名一致で解決）
+- 選手結果ページの大会ごとの「詳細 大会ページ」リンクは、公式サイト（`sourceUrl`）ではなくサイト内大会ページ `/tournaments/{generation}/{tournamentId}/{year}/{gameCategory}/{ageCategory}/{gender}/` に内部リンクする（詳細ファイル名を右側から gender / ageCategory / gameCategory に分解して組み立てる。2026-06 変更）
+- プロフィール（`/players/{slug}/`）と結果ページ（`/players/{id}/results/`）の URL 統合は当面しない方針（2026-06 決定）。カニバリ対象は curated 23 選手のみとスコープが小さく、統合は 301・コンテンツ移植を伴い毀損リスクがあるため、条件付き先送りとする。GSC でカニバリが無視できない損失を出していると確認できた場合のみ着手する。なお本番は `output: 'export'`（静的書き出し）のため、統合時の 301 はホスト側（Cloudflare `public/_redirects`）で張る必要がある。統合方向（どちらを canonical にするか）は実績の厚い側へ寄せる前提で未確定（Assumption）
+
+メタ・構造化データ:
+
+- 選手結果ページの JSON-LD は `ProfilePage` + `mainEntity: Person`。`dateCreated` / `dateModified` は実データ（初出/最新出場大会の日付）由来とし、ビルド日は使わない
+  - `dateCreated` / `dateModified` は ISO 8601 の**日時（タイムゾーン付き）**で出力する（例 `2024-07-28T00:00:00+09:00`）。Google ProfilePage は日付のみだと「日時値が無効」と判定するため、データ上の `YYYY-MM-DD` に JST オフセット `T00:00:00+09:00` を付与する（2026-06 修正）
+  - ProfilePage では `mainEntityOfPage` を出力しない（Google が認識せず「項目を認識できません」になる）。エンティティ指定は `mainEntity` を使う（2026-06 修正）
+- 大会結果ページの `datePublished` / `dateModified` も大会開催日由来
+- canonical は必ず実 URL（trailingSlash あり）に一致させる。プロフィールの `/information` canonical は不具合だったため修正済み
+- title / description には所属チーム・直近成績・通算成績を埋め込み、ページごとに一意化する
+- curated プロフィールには FAQ（身長・所属・ポジション）を可視コンテンツ + FAQPage 構造化データで掲載する
+
+選手結果ページの noindex 選別（2026-06 追加）:
+
+- 背景: GSC の「クロール済み - インデックス未登録」が選手結果ページ（約 1,800 件）でほぼ全件発生していた。調査の結果、内部リンク（全ページ被リンク 3 本以上・トップから 2〜4 クリック）・クロール深度・canonical / robots・重複度はいずれも問題なく、原因は **本文の薄さ + ドメイン評価（インデックス枠）** と判断した。リンク追加は頭打ちのため、薄いページを noindex してインデックス枠を厚いページ・全国高校大会出場選手に集中させる方針を採る。
+- 判定（`src/pages/players/[id]/results.tsx` の `getStaticProps`）: **収録試合数 `totalMatches >= 15`** または **全国高校大会出場歴あり**（`playerMatches` のいずれかの大会の `generationId === 'highschool'`）なら index 対象。どちらも満たさなければ `noindex` にする。全国高校大会出場選手（有名校の主力を含む）は試合数に関わらず常に index 対象とし、「検索対象になってほしい有名校ページ」を保護する。閾値定数は `PLAYER_INDEX_MIN_MATCHES`。
+- robots: noindex 時は `noindex, follow`（`MetaHead` の `noindexFollow`）。薄いページからの内部リンク（関連選手・大会ページ）で残すページへ評価を流すため、`nofollow` にはしない。
+- 自動復帰: 判定はビルド時のデータ由来のため、試合データが増えて `totalMatches` が閾値を超える、または全国高校大会に出場すると、**次回ビルドで自動的に index 対象へ戻る**（手動の解除は不要）。逆に閾値・基準を変えたい場合は `PLAYER_INDEX_MIN_MATCHES` か判定式の 1 箇所だけ変更すればよい。
+- sitemap 連動: `next-sitemap`（`output: 'export'`）は `out/**/*.html` を一括列挙するだけで robots meta を見ないため、noindex ページも sitemap に載る。これを防ぐため postbuild に `scripts/filter-noindex-from-sitemap.mjs` を追加し、生成 HTML の `robots` meta が noindex のページの canonical を sitemap から除去する。判定はページ側 1 箇所に集約し、sitemap は生成物から派生させる（ロジック二重化なし）。postbuild 順: `next-sitemap` → `sort-sitemaps` → `filter-noindex-from-sitemap`。
+
+## 所属歴のメタデータ化（2026-09-09 実装）
+
+`title` / `description` は**最新の所属しか持っていない**。index対象の選手結果ページ 1,723枚のうち
+**1,547枚（89.8%）は経歴に2つ以上の所属を持つ**ため、世間がその選手を指すときの名前
+（実業団名・出身校）が本文の「所属別成績」表にしか無い状態だった。
+
+発端は木原恵菜（id=198）。`title` は「サンワxエナジークラブ」だが、SERP 上の彼女は
+ナガセケンコー／高田商業として認識されており、当サイトのページは選手名クエリで**圏外**だった。
+経緯と SERP 実測は [raw/2026-09-09](../raw/2026-09-09-idea-player-page-serp-competitiveness.md)。
+
+### 実装
+
+- 整形は [lib/playerCareerAffiliations.ts](../../lib/playerCareerAffiliations.ts) に集約
+  （`nationalTitles.ts` と同じく「SEO 文言のヘルパーは lib/ に置く」規約に合わせた）
+- データ源は `playerStatistics.byTeam`。`getPlayerStatistics(id, {}, root)` が全セクションを
+  読んでいるので**データ配線の追加は不要**
+- `description` 末尾に `これまでの所属は◯◯・◯◯。`。**最新の所属は除く**（`displayName` に既出）
+- JSON-LD `Person` に `alumniOf`（学校マーカーを持つもの）/ `memberOf`（それ以外）を追加。
+  `affiliation` は最新1件のまま**変更なし**
+- テスト `npm run career:test`（12件）。CI（`checks.yml`）のゲートに追加
+
+### description の予算配分
+
+Google のスニペット表示は概ね全角120字で、**改修前から166枚（10%）が超過**していた。
+そこへ足すので末尾2要素の取捨規則を置いた（`composeDescriptionTail`）:
+
+1. 予算内なら「主なペア」＋「所属歴」の両方
+2. 入らなければ**所属歴を優先し主なペアを落とす**——ペアの相手は本文の「関連選手」から
+   相互リンクされ相手自身の結果ページもあるが、所属歴は本ページにしか出ない語だから
+3. どちらも入らなければ改修前と同じ「主なペアのみ」（**既存文言は削らない＝非破壊**）
+
+閾値は `DESCRIPTION_MAX_WIDTH`（export 済み定数・1箇所）。
+
+### 実測（ビルド済み `out/`・index対象 1,723枚）
+
+| 指標 | 改修前 | 改修後 |
+|---|---|---|
+| description に所属歴が入った | 0枚 | **1,329枚**（所属歴を持つ候補の85.9%） |
+| うち主なペアを落として入れた | ― | 407枚 |
+| JSON-LD `alumniOf` / `memberOf` | 0 / 0 | **749枚 / 1,325枚** |
+| description 表示幅 中央値 | 100全角 | 114全角 |
+| 同 >120全角 | 166枚(10%) | 166枚(10%)（＝非破壊を確認） |
+
+### 既知の制約
+
+- **効果は測れない**（Assumption）。`alumniOf` / `memberOf` に Google のリッチリザルトは無く、
+  2026-07-20 の `award` 追加と同じ位置づけ。`description` 側も、足した語は**ほぼ全部
+  すでに本文の所属別成績表にある**ので、新しい literal ではなく**既にある語の重み付け**にすぎない。
+  単独で圏外を覆す施策ではないと理解した上で採用している
+- **前提そのものが弱い**（2026-09-09 追記）。同日に実施した40件サンプル調査で、
+  掲載ページと圏外ページの間に**通算試合数・HTML サイズ・内部リンク数の差が無い**ことが分かった。
+  「ページを厚くすれば順位が付く」という前提はこの母集団では支持されない
+  （詳細は [seo.md](../wiki/seo.md)「圏外はインデックスの問題ではなく、ページの厚さでもない」）。
+  本施策の期待値は当初見積もりよりさらに低いと考えるべき
+- **発端の木原恵菜は description には入らなかった**。head だけで約103全角あり規則3へ落ちる
+  （JSON-LD には入っている）
+- **略称の学校は `memberOf` 側へ落ちる**（「高田商」は学校マーカーに掛からない）。
+  正式名の対応表は 1,203件の所属名に対し既存資産が105件しか無いため見送り
+- **語尾が違う表記ゆれは畳まない**（「サンワxエナジー」と「サンワエナジークラブ」）。
+  前方一致は「中京」と「中京大学」のような別実体を誤結合するので採らない。該当は2枚
+
+### 見送った案（2026-09-09・ユーザー判断）
+
+| 案 | 理由 |
+|---|---|
+| 代表所属を最新以外にする（title の所属を差し替え） | 「代表所属は最新だけがいい」 |
+| 学校名を正式名で出す（高田商 → 高田商業高校） | 1,100件規模の新規人手データが前提 |
+| 読み仮名の整備 | 判断根拠が無い |
+| 異体字（廣→広 等）対応 | Google が同一視していることを実測で確認（[seo.md](../wiki/seo.md)） |
+
+## 選手統計エンジン（Player Statistics Engine・実装済み P1–P7 / 2026-07-02）
+
+選手ページを「国内で最も情報量の多い選手データベース」にするための集計機能群。
+実行計画 [docs/raw/2026-07-01-player-statistics-engine-implementation-plan.md](../raw/2026-07-01-player-statistics-engine-implementation-plan.md)
+の **P1〜P7 をすべて実装済み**（2026-07-02 完了）。アーキテクチャ判断は
+[ADR-011](../adr/ADR-011-player-statistics-engine.md)。設計 2 本:
+機能仕様 [docs/raw/2026-07-01-player-page-comprehensive-design.md](../raw/2026-07-01-player-page-comprehensive-design.md)、
+集計エンジン [docs/raw/2026-07-01-player-statistics-engine.md](../raw/2026-07-01-player-statistics-engine.md)、
+データ契約 [docs/raw/2026-07-01-player-statistics-engine-data-contract.md](../raw/2026-07-01-player-statistics-engine-data-contract.md)（実装はこれを正とする）。
+
+### 実装状況（2026-07-02）
+
+- **配置**: エンジンは `lib/playerStats/`。公開ファサードは `lib/playerStats/playerStatistics.ts`
+  （`getPlayerStatistics(id, options)` → `PlayerStatistics`。`getAllPlayerIds` / `toPlayerMeta` / `toPlayerJsonLd` も）。
+  公開型は `src/types/playerStatistics.ts`、内部型は `lib/playerStats/types.ts`。
+- **層構造**: L0 `sourceAdapter.ts`（読込・スキーマ変種判定・大会メタ join）/ L1 `facts.ts`（`PlayerMatchFact`・`PlayerEntryFact`）/
+  L2 `aggregators/*.ts`（純関数 fold）/ L3 `playerStatistics.ts`（オーケストレーション・プロセス内 memo）。
+- **生成スクリプト**（TS・`ts-node`。`scripts/playerStats/`）: `generate-facts.ts`（逆引き `_index/by-player.json` ＋ `_facts/{id}.json`）/
+  `generate-rankings.ts`（`data/rankings/{year}-{discipline}.json`）/ `generate-public-json.ts`（`public/data/player-stats/{id}.json`）。
+  `prebuild` に連結済み。中間・成果物（`_facts`/`_index`/`_manifest.json`/`rankings`/`public/data/player-stats`）は `.gitignore`。
+  **`_facts` / `_index` / `_manifest.json` の置き場はリポジトリ直下の `.playerstats/`**（2026-08-28 に
+  `data/players/` 配下から移動。`_facts` が18,000ファイル超あり、`data/players/**` に置くと
+  nft の output file tracing がビルド中に毎回列挙してしまうため。docs/wiki/deployment.md 参照）。
+- **既存資産の一本化（P6）**: `data/players/<slug>/analysis.json` は **エンジン Facts 由来で生成**（`lib/playerStats/legacyAnalysis.ts`）。
+  旧 `scripts/generate-player-analysis.mjs` はこの生成器へ委譲する薄いラッパになり、独自の全大会スキャン集計は削除（二重ロジック解消）。
+  外部 JSON 形は従来互換（curated 22 名で byte 一致を検証）。`careerRecord` の通算値はこの `analysis.json` を読むため transitively エンジン由来。
+- **利用文脈の配線（P5・非破壊）**: SSR `players/[id]/results.tsx` の `getStaticProps` が `playerStatistics` を追加提供（既存表示は維持）。
+  記事供給は `lib/playerStats/articleMaterial.ts`。SEO 日付は `coverage`（実データ）由来。
+- **増分ビルド（P7・2026-07-02）**: `.playerstats/_manifest.json` に入力ファイルの contentHash
+  （`details/**` = catKey、`information/*` = `info:{tid}`、グローバル入力 = `globalHash`、`ranking-config.json` = `configHash`）を保持。
+  `generate-facts` は既定で増分: 前回 manifest との diff → 逆引き索引の増分更新 → **変更大会に出場した選手だけ** `_facts` を再生成し、
+  `lastRun`（`affectedPlayers`/`changedYears`/`configChanged`）を manifest に記録する。無変更ビルドは再計算ゼロ。
+  下流はこの `lastRun` に従う: `generate-rankings` は変更年度のみ再生成（差分選手を `rankingAffectedPlayers` として追記）、
+  `generate-public-json` は `affectedPlayers ∪ rankingAffectedPlayers` のみ、`generate-analysis` は影響 curated 選手のみ（`_facts` キャッシュ利用）。
+  全再計算は `engineVersion` 変更 / グローバル入力（大会 index・選手 index・homonyms）変更 / manifest 不在 / 各スクリプトの `--full` のとき。
+  config 変更は facts に影響しないため `configChanged` として rankings/public の全再生成のみ誘発する。
+- **テスト・検証**: `npm run playerstats:test`（config/placement/aggregators/ranking/manifest 単体）/
+  `playerstats:verify`（facts golden・facade・analysis byte 一致・最終 golden `verify-golden-final.ts`＝代表＋ランダム50名の
+  キャッシュ vs 再計算一致＋内部不変量）/ `playerstats:perf`（`verify-performance.ts`＝時間予算・線形性を CI ログに出力）。
+- **性能（P7 実測 2026-07-02 @ SSD）**: 逆引きフル構築 ~0.1s / 1 選手 buildFacts 最大 ~21ms（O(m log m)）/
+  全 8,180 選手フルビルド外挿 ~29s（実測 24s）。予算は `verify-performance.ts` の定数
+  （索引 10s / 1 選手 500ms / フル 240s / 線形性 ms/match ≤ 中央値×12）。
+- **同姓同名（2026-07-02・当面は融合を許容と決定）**: numeric id は「1 名前 = 1 id」で人物を分離できないため、
+  同姓同名の別人物は 1 id に融合しうる。対象者が少なく実害が限定的なので**当面は融合を許容**する（人物別 id 払い出しは保留）。
+  緩和のみ実装: H2H/ペアは `playerKey`（名前@所属）で分離、同一カテゴリ内 self-vs-self 試合は `facts.ts` でスキップ、
+  `homonyms.json` 登録名は `identity.homonymRisk` で警告。詳細・再検討条件は [open-questions.md](../wiki/open-questions.md)。
+- **国際大会のローマ字参加者（2026-07 追加）**: `resolveNumericId` は姓名の完全一致のみのため、ローマ字表記のみの
+  国際大会参加者（コリアカップ等）は解決できない。手動対応表 `data/tournaments/participant-aliases.json` を
+  フォールバックとして `reverseIndex` / `facts` / `legacyAnalysis` / 結果ページの `getStaticProps` に配線した。
+  詳細は [data-import.md](../wiki/data-import.md)「国際大会（ローマ字表記のみの参加者）の選手同定」。
+- **ランキング（2026-07-02 修正）**: 仕様全体のまとめは [ranking.md](../wiki/ranking.md)（計算式・tier・除外・較正運用を集約、2026-07-11）。
+  年度別順位表の `playerKey` は「その年度の所属」を刻む（現所属で過去年度を汚染しない）。
+  同ポイントは標準競技順位（1224 方式・同点同順位）。**男女別に分離**（2026-07-02。混合順位表は競技慣行に合わないため。
+  出力は `rankings/{year}-{discipline}-{gender}.json`、`RankingPoint.gender` 追加、`engineVersion` 1.1.0 へ）。
+  全体表示は [/rankings ページ](../wiki/public-pages.md)（上位100位・年度/種目/男女切替）。
+
+- **新統計 UI（2026-07-02 接続）**: 結果ページに「詳細スタッツ」節（`src/components/PlayerStatisticsSections.tsx`）を追加。
+  戦績ハイライト（通算優勝・最長連勝・ベストシーズン・決勝/準決勝進出率・最多対戦・得意/苦手）/ 年度別ランキング推移 /
+  大会別成績（出場数上位10）/ 対戦相手との通算成績（H2H 上位10・結果ページを持つ相手のみリンク、それ以外は
+  `PlayerLiteLink` モーダル）/ 所属別成績（複数所属時のみ）/ キャリア年表（30件まで）。
+  既存の `PlayerSummaryStats`（通算・年度別・ペア別）と重複するセクションは出さない。`scopeNote` を注記表示し、
+  `homonymRisk` の場合は同姓同名注記を出す。データはビルド時前計算（facade）でランタイム集計なし。既存表示は無改修。
+
+### 主要大会の実績表示（勲章カード）と「全国大会優勝」SEO（2026-07-20 実装）
+
+選手結果ページで「インターハイ優勝」のような全国大会の優勝歴を可視化する機能。
+検討経緯は [docs/raw/2026-07-20-idea-player-title-prestige-badge.md](../raw/2026-07-20-idea-player-title-prestige-badge.md)。
+「希少性」の評価や大会の格付けはしない。**全国大会で優勝したという事実をそのまま出すだけ**。
+
+**対象集合が 2 つある（最重要・混同しやすい）**
+
+`lib/nationalTitles.ts` の大会マスタ（24件）は、2 つの用途の対象集合を 2 つのフラグで表す。
+**わざとずれている**（2026-07-20 ユーザー決定）ので、片方を直すときはもう片方も確認すること。
+
+| 用途 | 判定 | 含む | 除く |
+|---|---|---|---|
+| 勲章カード（ベスト8以上をカテゴリ別に表示） | `majorCategory !== null` | 小学生/中学生/ジュニア/高校生/大学/総合/**国際大会**/シニア | **社会人**・東西日本・国際予選 |
+| 「全国大会優勝」SEO・`titles.national`・`firstNational*` | `nationalTitle === true` | 国内の全国大会（**社会人を含む**） | **国際大会**・東西日本・国際予選 |
+
+ずれの理由:
+
+- **社会人**（全日本社会人・実業団・クラブ選手権）: 勲章カードのカテゴリからは外す指示だったが、
+  「全日本社会人選手権優勝」は全国大会優勝として事実正しいので、SEO からは外さない
+  （優勝者の検索流入を落とさないため）。
+- **国際大会**（平和カップひろしま・コリアカップ）: 勲章カードは「国際大会」カテゴリとして出すが、
+  国内の全国大会ではないので「全国大会優勝」には数えない。
+
+**判定（重要・`isNational` とは別基準）**:
+
+- どちらの用途でも `PlayerEntryFact.isNational` は使わない（下記の理由）。
+- 上の「確定した集計ルール」にある `isNational`（＝ `generationId` が `international` /
+  `international-qualifier` **以外**）は**使わない**。この定義は範囲が広く、東日本選手権大会
+  （`east-japan`）・西日本選手権大会（`west-japan`）という**地域大会まで true** になるため、
+  「全国大会優勝」と表示すると事実として誤りになる。`isNational` の定義自体（ランキング tier 等で
+  使用）は変更していない。
+- 除外: `international`(2) / `international-qualifier`(3) / `east-japan` / `west-japan`。
+  大会を追加しても、ホワイトリストに足さない限り実績表示には現れない（安全側に倒す設計）。
+- 該当者（2026-07-20 実測・`_facts` 18,484 件中）:
+  - **勲章カード**（ベスト8以上）: **1,519 人（8.2%）**。カテゴリ別の該当選手数は
+    ジュニア771 / 総合309 / 高校293 / シニア224 / 大学100 / 国際大会43。
+    カード枚数は 1枚=1,351人 / 2枚=134 / 3枚=19 / 4枚=11 / 5枚=4。
+    **Deprecated（2026-09-13 にカテゴリを分割）**: 下記「中学生・小学生タイルの分離」の再測定値を参照。
+  - **全国大会優勝**（SEO）: **236 人**（うち結果ページが実在する `count>=5` は約150人）。
+    優勝1回のみが大半。
+- **キャリア年表の「全国初出場」「全国初優勝」（`titles.firsts.firstNational*`）も同じ
+  ホワイトリスト基準に統一済み**（2026-07-20）。以前は広義 `isNational` を使っていたため、
+  東日本選手権への出場・優勝が「全国初出場」「全国初優勝」として年表に出ていた。
+  ランキング tier が使う `isNational` は従来どおり（用途が違うため統一しない）。
+- 各大会には `categoryLabel`（小学 / 中学 / 高校 / 大学 / 一般 / 社会人 / ジュニア / シニア）を
+  持たせている。`index.json` の `generationId` は `junior` に中学・小学・U20 が同居していて
+  この粒度を出せないため、大会ごとに明示している。
+
+**データ**:
+
+- 勲章カード: `PlayerStatistics.majorResults`（`MajorCategoryResult[]`、カテゴリ順に固定）。
+  `aggregateMajorResults`（`lib/playerStats/aggregators/majorResults.ts`）。
+- 全国大会優勝: `PlayerStatistics.titles.national`（`count` / `tournamentCount` / `titles[]`）。
+  `aggregateTitles`（`lib/playerStats/aggregators/titles.ts`）。
+
+どちらも既存 entries の単一パス fold で導けるので追加の走査は無い。
+
+**成績の対象**: 勲章カードは**ベスト8以上**（`winner` / `runnerup` / `best4` / `best8`）。
+SEO 文言は**優勝のみ**（ベスト8は検索需要が薄く、title に入れると優勝者の強いシグナルが薄まるため）。
+つまり **UI はベスト8以上、SEO は優勝のみ**。
+
+**UI**:
+
+- **リード文直後の最高成績タイル**（`src/components/PlayerMajorResults.tsx`）: h1 → リード文 →
+  タイルの順（2026-07-20 決定。文章の流れを保ちつつファーストビューには収まる位置）。
+  **1 カテゴリ = 1 タイル**で、出すのは**カテゴリ名と最高成績だけ**
+  （例: 「高校生 / 準優勝」）。狙いは「どのカテゴリでどこまで行ったか」が一目で分かることに絞り、
+  **大会名・年度・種目は展開（`<details>`）に送る**（2026-07-20 決定）。
+  展開はタイルごとではなく**セクションに 1 つ**（タイルが小さく、中に畳むと開いたとき
+  グリッドが崩れるため）。展開の中身はカテゴリ別の一覧で、`<details>` なので閉じていても
+  DOM にあり通称 literal はクローラに読まれる。
+  カテゴリの並びは `MAJOR_CATEGORY_ORDER`＝**シニア → 国際大会 → 総合 → 大学 → 高校 → ジュニア**
+  （キャリアの新しい側から。2026-07-20 に進行順から反転）。格付けの順位ではない。
+  **ベスト8未達カテゴリの空枠は出さない**（該当者の 89% が 1 カテゴリのみで、空枠 5 個＋実績 1 個に
+  なり実績が薄く見えるため）。**「new」バッジも付けない**（静的サイトでビルド日基準になり鮮度管理が
+  必要になるうえ、年度は展開側に書いてあるため）。いずれも 2026-07-20 決定。
+  **アイコンは置かない**（2026-07-20 決定。当初はメダルの inline SVG を入れていたが不要と判断）。
+  成績は必ず文字で示し、色（タイルの淡いトーン）は補助に留める。
+  同カテゴリで複数受賞している場合は `<details>` で全件を展開する（モーダルにしないのは
+  JS 不要で SSR 完結し、展開前後ともクローラに読まれるため）。
+  カテゴリの並びは `MAJOR_CATEGORY_ORDER`（キャリア進行順）に固定で、**格付けではない**。
+  記録が無いカテゴリはカードごと出さない（未収録による欠落は許容仕様）。
+  非該当の選手には何も出さない（rare-events と同じポジティブ限定の原則）。`scopeNote` を併記。
+  複数世代で勝っている選手（例: `/players/10/results/` 黒坂卓矢＝ジュニア→高校→大学→総合）は
+  カードが並ぶだけでキャリアが読める。
+  絵文字も使わない（AGENTS.md「UI の表記ルール」）。
+- **戦績ハイライトカード**（`PlayerStatisticsSections.tsx`）: 「全国大会優勝 N回」を「通算優勝」
+  より前に置く（こちらはタイルではなく SEO 側と同じ「全国大会優勝」基準）。
+- **「主要タイトル」表（`MajorTitles.tsx`）とは役割が違う。統合しない**（2026-07-20 決定）:
+  こちらは `isMajorTitle` の全日本 4 大会（選手権 / ミックス / シングルス / インドア）× 全収録年度の
+  マトリクスで、**テニスの 4 大大会と同じ位置づけ**。「出場したか、その年どうだったか」を示すのが
+  目的で、**空欄（「ー」）自体が「出ていない」という情報**なので、中身が無くても表を出す仕様は意図的。
+  実測では全 18,484 人中 4,006 人だけが 4 大会に出場歴を持ち、残りは全セル「ー」になるが、これも
+  上記の意図どおり。最高成績タイル（カテゴリ別・ベスト8以上）とは対象大会も目的も異なる。
+
+**SEO**（詳細は [seo.md](../wiki/seo.md) #2）:
+
+- title / description / 本文バッジに**通称を literal で出す**（「インターハイ」「ハイジャパ」
+  「全中」等）。正式名称「全国高等学校総合体育大会」だけでは通称クエリに一致しないため。
+  通称・略称は `NationalTitleTournamentMeta` の `shortLabel` / `aliases` が持つ。
+- JSON-LD `mainEntity: Person` に `award`（`2024年 全国高等学校総合体育大会 男子ダブルス 優勝` 形式）。
+  Assumption: Google の専用リッチリザルト対応は未確認。低コスト・低リスクのため先に入れた。
+- **noindex 判定への影響なし**。全国大会優勝者は「全国高校大会出場歴あり」等の既存 index 条件の
+  スーパーセットで、すでに index 対象。新規 URL も増やさない。
+- 文言生成（バッジ / title / description / `award`）は表記が割れないよう `lib/nationalTitles.ts`
+  に集約している。ページ側で組み立てないこと。
+
+**中学生・小学生タイルの分離（2026-09-13）**:
+
+中学生（`/secondaryschool`）・小学生（`/primaryschool`）カテゴリのページができたのに合わせ、
+**高校と同じく学齢カテゴリごとに最高成績を出す**よう、ジュニアタイルを分けた（ユーザー決定）。
+
+| タイル（`MajorCategoryId`） | 大会 |
+|---|---|
+| 高校生（`highschool`） | インターハイ / 高校選抜 / ハイスクールジャパンカップ |
+| ジュニア（`junior`） | 全日本ジュニア選手権（U20）のみ |
+| 中学生（`secondaryschool`） | 全中 / 都道府県対抗全日本中学生 / 全日本中学生クラブ（プレ大会含む） |
+| 小学生（`primaryschool`） | 全日本小学生選手権 / 全国小学生大会 |
+
+- **全日本ジュニア（U20）は「ジュニア」に残す**。高校生・中学生どちらの大会でもないので他に混ぜない
+- 表示順は シニア → 国際大会 → 総合 → 大学 → 高校生 → ジュニア → 中学生 → 小学生。
+  ジュニアは年代が高校生・中学生にまたがるのでその間
+- ラベルはサイドバー nav に合わせて **高校生 / 中学生 / 小学生**（従来の「高校」も「高校生」に変更）
+- 小学生タイルは**小学生カテゴリページ（全日本小学生のみ）と対象大会が違う**。勲章カードは選手の実績なので
+  全国小学生大会も含める（従来のジュニアタイルの対象をそのまま分けただけで、対象集合は変えていない）
+- `majorResults` は facts から都度集計していて facts にカテゴリを持たないので、`ENGINE_VERSION` は上げていない
+- 再測定（2026-09-13・`_facts` 18,306件）: 該当 **1,714人**。カテゴリ別 小学生549 / 高校生446 / 総合337 /
+  中学生292 / シニア224 / ジュニア169 / 大学146 / 国際大会43。
+  カード枚数 1枚=1,379人 / 2枚=228 / 3枚=72 / 4枚=21 / 5枚=13 / 6枚=1
+
+**`ENGINE_VERSION`**: 1.2.0 → 1.3.0（`titles.national` 追加）→ 1.4.0（`firstNational*` の
+基準統一）→ **1.5.0**（`majorResults` 追加・マスタを 2 フラグ制に変更・国際大会を追加）。
+バンプすると次回 `prebuild` で `_facts` がフル再生成される。
+
+対象機能（自動生成）: 歴代戦績 / 年度別成績 / 大会別成績 / ペア別勝敗 / 全国大会初出場 /
+全国大会初優勝 / 連覇・○回目優勝 / 通算優勝数 / 主要大会優勝数 / 年度ランキング推移 / 対戦相手 H2H。
+追加統計（2026-07-01）: 最長連勝 / 最高勝率（年度別・最小10試合）/ 苦手選手・得意選手（H2H 3対戦以上）/
+最多対戦相手 / 最多ペア / 所属別成績 / 決勝・準決勝進出率（ノックアウト個人戦を分母）/ キャリア年表。
+※「学年別成績」は確実な生年・入学年データが無いため**除外（実装しない）**。
+※追加統計はいずれも既存 Facts への単一パス fold で導け、データ構造・計算量（1選手 O(m log m)）を変えない。
+
+設計の核（単一プリミティブ方式）:
+
+> **注（2026-09-02 lint）**: 以下は 2026-07-01 時点の設計スナップショットで、**ファイル名・
+> 置き場は実装と異なる**。現行は生成が `scripts/playerStats/generate-facts.ts`
+> （`npm run playerstats:facts`）、中間・成果物の置き場が**リポジトリ直下の `.playerstats/`**
+> （`_facts` / `_index` / `_manifest.json`。2026-08-28 に `data/players/` から移動）。
+> 設計の考え方（単一プリミティブ・2段目のグローバル計算・ビルド時前計算）はそのまま生きている。
+
+- 全機能は、選手 1 人ぶんの中間データ `PlayerMatchFact[]`（1 試合 1 件）と `PlayerEntryFact[]`（1 大会カテゴリ 1 件＝最終順位）へ、
+  一度だけ前計算してから軽く畳み込む。個別機能ごとに `details/**` を走査し直さない。
+- 生成は prebuild スクリプト（`scripts/generate-player-facts.mjs` 想定）→ `data/players/_facts/{id}.json`（中間）→
+  純関数 fold で `data/players/_agg/{id}.json`（選手集計）。既存 `analysis.json` / `careerRecord` / `milestones` /
+  `majorTitles` はこの facts 入力へ統合し、ロジック二重化を解消する。
+- 年度ランキングのみ全選手横断のグローバル計算のため 2 段目 `scripts/generate-rankings.mjs` →
+  `data/rankings/{year}-{discipline}.json` を経由し、各選手へ逆展開する。
+- すべてビルド時前計算（本番 `output:'export'`）。ランタイム集計はしない。全 H2H・全ペア等の大量データは既存 lite 方式で遅延取得。
+
+確定した集計ルール（2026-07-01）:
+
+- **年区切り = 年度**。大会データの `year` が既に年度指定のため `year` をそのまま使う（日付からの再計算不要）。
+- **全国大会 = `index.json` の大会のうち `generationId` が `international` / `international-qualifier` 以外**（国際大会・国際予選は含めない）。`isMajorTitle` は従来どおり 4 大全日本。
+- **勝率・ゲーム率の算入**（データ実体に基づき改訂）: 不戦勝と途中棄権はデータ上 `retired:true` で区別できないため、`retired:true` は勝率・ゲーム率から全除外（実際に戦った試合ベース）、draw は勝率の分母から除外。ただし順位・進出率・出場回数・優勝判定など placement 側には反映する（retired の勝者は勝ち上がっているため）。
+- **年度ランキング**: 決定的な「シーズンポイント制」を主指標とし、大会格 `tier` × 順位係数を **その年度の上位 3 大会のみ合算**（掲載範囲の偏り補正）＋ `scope-limited` 注記。tier・係数は `data/ranking-config.json` に外出し。副指標として Elo 系レーティングの時系列推移を将来追加可能。
+- **対戦相手 H2H の既定軸 = 対個人**（相方問わず相手選手で名寄せ）。ペア対ペアは絞り込みオプション。
+- **所属別成績・キャリア年表の「所属」は国際大会を除外（2026-07 修正）**。国際大会（`generationId==='international'`。コリアカップ等）では `selfTeam` が国別代表コード（例: `JPN-1`）で「所属」ではないため、`aggregateByTeam` で `index.json` の当該 `tournamentId` を除外する（`isInternationalTournament`／`lib/playerStats/aggregators/util.ts`）。これにより国際出場が誤って「所属変更」として年表に載る問題を解消。**国際予選（`international-qualifier`）は実クラブ所属で出場するため除外しない**。
+- 全集計は当サイト掲載大会分。`scope: 'site-covered'` と `scopeNote` を付し、「初」「通算」は `confidence: 'scope-limited'` を明示する。
+
+データ実体確認済み（2026-07-01）: 不戦勝 / bye は独立表現を持たず `retired:true` で登録され途中棄権と判別不能（上記ルールに反映済み）。実装時に残る確認: `ranking-config.json` の tier・係数・閾値初期値の運用調整。[open-questions.md](../wiki/open-questions.md) 参照。
+
+### 結果ページのセクション階層化（2026-08-07 実装）
+
+選手結果ページは機能追加のたびにセクションを積み増した結果、大会結果（試合結果一覧）
+の手前に h2 セクションが並び、かつ見出しのタイポグラフィが全セクション同じ規格
+（`text-xl font-bold`）で「どれが主役か」が視覚的に区別できなくなっていた
+（検討経緯は [docs/raw/2026-08-07-idea-player-results-page-hierarchy.md](../raw/2026-08-07-idea-player-results-page-hierarchy.md)）。
+`docs/ui/deliverables/06-design-principles.md` の P3「段階的開示」（このページの主役に
+答えられない要素は下位へ）をそのまま適用し、新規トークンを追加せずに次の3階層へ再編した。
+
+1. h1＋リード文＋勲章カード（`PlayerMajorResults`）: 変更なし、畳まない。
+2. **スタッツ**: 見出し無しの平置き（旧・主要タイトルが占めていた位置にそのまま置く。
+   2026-08-07: 主要タイトルを大会結果の中へ移設した入れ替わりで、スタッツ側の
+   `<h2>スタッツ</h2>` 見出しも撤去した）。常時表示のチップ→`<details>`「詳細を見る」→
+   畳んだカード群、という構成（元は「サマリー」「詳細スタッツ」の2見出しだったのを
+   2026-08-07 に1本化し、さらに見出し自体も撤去した）。
+   - 常時表示部分（`PlayerSummaryStats.tsx`。自前の `<h2>` は持たない）:
+     **主なペア（試合数の多い順・上位8名）と直近3年の成績をチップ形式**だけの軽量表示
+     （旧・関連選手セクションと同じチップ形式を流用）。総合成績（試合数・勝敗・勝率の
+     1行表）は h1 直下のリード文 `summarySentence` と内容が重複するため含めていない。
+   - `<details>`「詳細を見る」の中身（`PlayerStatisticsSections.tsx`。自前の `<h2>` は
+     持たず `SectionCard`＝h3 を7枚並べる）: **対戦成績（全パートナー・全年度、勝率・
+     ゲーム率つき）**・戦績ハイライト・年度別ランキング推移・大会別成績・H2H・
+     所属別成績・キャリア年表。対戦成績カードは常時表示のチップと同じ
+     `playerStats`/`allPlayers`（props として追加）を使うため数値の食い違いは起きない。
+     パートナー別の並びは試合数の多い順（旧・挿入順だったのを修正）。
+     キャリア年表は数値ではなく時系列の出来事（デビュー・初優勝・所属変更等）で厳密には
+     「スタッツ」ではないが、他の6ブロックと同じ試合ファクト由来の自動生成であり、
+     スポーツサイトの「Player Stats」ページに沿革を含めるのは一般的な慣行のため、
+     このカテゴリのまま置いている（2026-08-07、Assumption）。
+
+   すべて同じ中間データ（`PlayerMatchFact`/`PlayerEntryFact`）由来の集計で、情報は
+   削除しない（`<details>` は閉じていても DOM に残りクローラは読む。勲章カードで採用済みの
+   前提と同型）。SEO タイトル/description（`titles.national` 等由来）が約束する実績文言は、
+   h1 直下のリード文 `summarySentence` として既にこの `<details>` の外に表示されているため、
+   畳んでも検索経由の訪問者が期待した情報を見失うことはない。
+
+   **枠は中身全体ではなくトリガー（`<summary>`）だけに付ける**（実機フィードバックを
+   経て確定）。中の `SectionCard` は既に自前の枠（`border rounded-xl shadow-sm
+   bg-surface`）を持つため、`<details>` 本体にも枠を付けると「箱の中に箱」が何層にも
+   重なりモバイルで窮屈になる。かといって `<summary>` を装飾無しの地味なテキストに
+   すると、今度は開閉できること自体が見落とされる。解決策は両者を分離すること:
+   `<summary>` は `PlayerMajorResults.tsx` と同じ慣例（文言＋▼▲の入れ替えで「その場で
+   開く」ことを示す。リンク色は遷移に見えるため使わない）に、`rounded-full border
+   border-border-strong bg-bg-subtle` の**チップ**（トリガーだけを囲む小さな箱）を
+   組み合わせて視認性を確保する。展開後の中身（`<div>`）は箱を持たせず区切り線
+   （`border-t`）1本のみとし、中身のコンポーネントが持つ既存の枠をそのまま活かす。
+   トリガー文言は「成績を詳しく見る」（2026-08-07。「詳細を見る」では何の詳細か
+   不明瞭だったため変更。「スタッツ」という語はこのサイトの語彙に無く、実際は「成績」
+   で統一されている＝対戦成績・大会別成績・所属別成績・直前のチップ「直近○年の成績」と
+   同じ語のため、そちらに揃えた）。
+
+   Assumption（軽微）: 対戦成績カードは `PlayerStatisticsSections` に統合されているため、
+   `playerStatistics`（エンジン結果）が異常系で null になった場合は対戦成績カードごと
+   非表示になる（発生頻度が極めて低い防御的分岐のため許容）。
+3. **他機能への導線**: スコア詳細のある試合（`scoreMatchLinks`）／成長記録
+   （`growthShowcaseSlug`）。集計でも試合結果の生データでもない第3カテゴリと位置づけ、
+   畳まずコンパクトに表示する（該当者のみ）。前者は大会結果の一部試合への逆引き
+   リンク一覧、後者は score 機能のポイント単位データという別ソースへの導線であり、
+   「試合結果からの集計」ではない。
+4. **大会結果（試合結果一覧）**: 主役として最後にそのまま表示。`PlayerResults.tsx`
+   （`<h2>大会結果</h2>`）の直後・年度別の試合一覧より前に **主要タイトル
+   （`MajorTitles`、4大全日本大会×年度のマトリクス表）を内包する**（2026-08-07、
+   独立セクションから移設）。「どの大会でどう勝ち上がったか」という関心事が大会結果と
+   同じという位置づけ。`PlayerResults` に `majorTitlesData` prop を追加して配線。
+   `MajorTitles` の見出しは `<h2>` → `<h3>` に変更し、隣接する年グループの見出し
+   （`{year}年`、同じく `<h3>`）と階層・スタイルを揃えた（`<h2>大会結果</h2>` の下に
+   主要タイトルと各年が並列で並ぶ構成のため）。テーブルラッパーの `mx-4`（左右16px）も
+   撤去し、隣接する試合結果カード（`mx-4` 無し）と左右の幅を揃えた。
+
+**旧「関連選手（主なペア）」セクションは撤去した**（2026-08-07）。サマリーの
+「パートナー別」と完全に同じデータ（`summaryStats.byPartner`）を使い、内部リンク条件も
+同一で純粋に重複していたため、サマリー側をそのチップ形式に一本化した。
+
+保留: 「スコア詳細のある試合」を大会結果の該当試合カードにバッジ統合し羅列の重複を
+無くす案は、`ScoreMatchLink.matchId` に対応する結合キーが `PlayerMatch` 型に無く
+追加実装が要るため見送った（[open-questions.md](../wiki/open-questions.md) 参照）。
+
+## 発展候補アイデア一覧（Idea Backlog）
+
+まだ発散フェーズ。詳細を詰めた案が育ってきたら、それぞれ専用ファイルに独立させる運用にしている
+（ログ的な1ファイルに全部積むと状況・目的が読み取りにくくなるため）。
+
+表の「状況・目的」は**状況と1行の目的・残りだけ**を書く（数値・経緯は raw へ。規則は [idea-backlog.md](../wiki/idea-backlog.md)「使い方」）。
+
+| アイデア | 状況・目的（1行） | 詳細 |
+|---|---|---|
+| 選手一覧ページ（`/players`）の再設計 | **実装済み**（2026-08-08）。「同姓同名の一覧」から入口ページへ定義し直した。残はGSC効果測定と読み仮名データ | [アイデア](../raw/2026-08-08-idea-players-index-redesign.md) |
+| 選手ページの検索競争力（グループB を攻める） | **P2a 実装・P0 実測済み**（2026-09-09）。本人資産の無い選手名クエリで上位を取る。圏外の原因は未特定で、次は外部要因の切り分け。残は title の字数予算修正（[seo.md](../wiki/seo.md)） | [アイデア](../raw/2026-09-09-idea-player-page-serp-competitiveness.md) |
+| 試合結果データだけから選手の「戦評」を編み出す | **発散フェーズ**（2026-08-06、一次検証済み）。試合結果だけから選手の特徴を記述する。検証を通った指標は「勝率調整済み圧勝度」のみ | [アイデア](../raw/2026-08-06-idea-match-result-style-commentary.md) |
