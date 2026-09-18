@@ -229,8 +229,8 @@ true になるため）。`reachRates` 側で `placement.kind === 'unknown'` を
 - 勝者の数は親の `scores` と一致。検査 `npm run check:team-match-details`（prebuild）
 - ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。**表示はしていない**。
   **決着したゲームだけ**で、中断されたゲーム（`4-4` / `0-0`）は持たない（本数は `scoreA`/`scoreB` に残る）
-- 元資料にある試合だけ持つ（高校選抜 2022・2025、インターハイ 2024・2025・2026 のベスト8以降、
-  アジア大会 2026 団体）
+- 元資料にある試合だけ持つ（高校選抜 2022・2025、アジア大会 2026 団体、
+  インターハイ 2024〜2026 はベスト8以降・**2023 は男女とも1回戦から全47試合**）
 - **選手の成績集計（Player Statistics Engine）には入れない**（STリーグと同じ扱い）
 - **入力ツールで details を作り直すと消える**。取り込みスクリプトを再実行する
 
@@ -269,4 +269,4 @@ Supabase のテーブル（`matches` / `games` / `points` / `match_video_session
 | 全中ブロック大会の掲載 | **投入済み**（2026-08-11、9ブロック） | [アイデア](../raw/2026-08-08-idea-zenchu-block-tournament-data.md) |
 | 中学カテゴリの公開ページ | **実装済み**（2026-08-12）。残は build 完走と GSC 効果測定。仕様は [secondaryschool.md](./secondaryschool.md) | [アイデア](../raw/2026-08-12-idea-juniorhigh-category-pages.md) |
 | 小学生カテゴリの公開ページ | **実装済み**（2026-09-13）。残は build 完走と GSC 効果測定。仕様は [primaryschool.md](./primaryschool.md) | [アイデア](../raw/2026-09-12-idea-primaryschool-category.md) |
-| 団体戦のオーダー | **一部実装**（2026-09-18）。残はインターハイの 2023 年以前・ポイントの見せ方 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |
+| 団体戦のオーダー | **一部実装**（2026-09-18）。残はインターハイ 2022 年以前・見せ方 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |

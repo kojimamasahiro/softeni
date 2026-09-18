@@ -3,21 +3,26 @@
 """インターハイ（全国高等学校総合体育大会）の団体戦の記録PDF → 対戦ごとの記録（ADR-020）。
 
 既存の `data/tournaments/details/highschool-championship/<年>/team-none-{boys,girls}.json` の
-各試合へ `matches`（ペア・本数・**ゲームごとのポイント**）を差し込む。高校選抜と違い、
-**詳細があるのはベスト8以降だけ**（1〜3回戦は学校単位の本数しか印字されない）。
+各試合へ `matches`（ペア・本数・**ゲームごとのポイント**）を差し込む。
 
-## この様式の見極め（令和8年度 女子団体で検証）
+**収録範囲は年度で変わる**。2024〜2026 は**ベスト8以降の7試合だけ**（1〜3回戦は学校単位の本数のみ）、
+**2023 は1回戦から全47試合**。先に `pdftotext -layout` で詳細ページの範囲を目視する。
+
+## この様式の見極め（令和8年度 女子団体で検証。令和5〜6年度でも通る）
 
 - テキストPDF。ページ構成は **p1 入賞校一覧 / p2 トーナメント表 / p3・p4 準々決勝 / p5 準決勝 / p6 決勝**。
-  年度でページ数は変わるので `--pages` で渡す。詳細ページは1ページに最大2試合。
+  年度でページ数は変わるので `--pages` で渡す。詳細ページは1ページに最大2試合
+  （2023 は p12-35 の24ページに47試合）。
 - 1試合 = 見出し行（**左右の端にエントリー番号**・学校名・都道府県・学校単位の本数）＋ 3対戦。
   **エントリー番号が印字されているので、details の試合とは番号で直接対応する**
   （高校選抜のように位置や選手の重なりから推測しなくてよい）。
 - 1対戦 = ゲーム行が最大7行（左のポイント・「－」・右のポイント）。**丸数字がそのゲームを取った側**。
-  行の中ほどに両ペアの氏名（姓と名が別の語。「・」は無い）と、対戦の本数（丸数字＝その対戦の勝者）。
+  行の中ほどに両ペアの氏名（「・」は無い）と、対戦の本数（丸数字＝その対戦の勝者）。
+  **氏名は1つの語（2024・2026）か1文字ずつの語（2023）**。どちらも `pair_names` が扱う。
 - **打ち切りの印字はあてにしない**。「打ち切り」と書かれる対戦とそうでない対戦がある
   （準決勝で 3-3 のまま印字のみ）。**勝者は本数の丸数字の有無で決める**。
-- ポイントは10以上になる（実測 `⑩ － 8`）。丸数字の10〜20も読む（`team_match_details.CIRCLED`）。
+  **打ち切りの本数を印字しない年度がある**（2023）。`to_detail` の docstring を参照。
+- ポイントは10以上になる（実測 `⑫ － 10`）。丸数字の10〜20も読む（`team_match_details.CIRCLED`）。
 
 列のx座標（pt・A4縦）:
   左 姓112 / 名146 | 左 本数223-226 | 左ポイント270-279 | 「－」293 | 右ポイント316-325 | 右 本数360-364 | 右 姓425 / 名459
@@ -26,13 +31,18 @@
 
 - 見出しの学校単位の本数 ＝ details の `scores`
 - 対戦の勝ち数 ＝ details の `scores`
-- **印字された本数 ＝ ゲームごとのポイントから数え直した本数**（この様式だけで効く強い検算）
-- 同じ選手が2校に割り当てられない
+- **印字された本数 ＝ ゲームごとのポイントから数え直した本数**（この様式だけで効く強い検算）。
+  本数の印字が無い対戦（2023 の打ち切り）は数え直しで埋め、埋めた対戦を表示する。
+  `not_played`（ゲームも本数も無い）は数えるものが無いので対象外。
+- 同じ選手が2校に割り当てられない（**同名の別人は `--same-name` で明示的に通す**）
 
 ## 使い方
 
     python3 scripts/pdf/highschool_championship_team_matches.py PDF --pages 3-6 \
         --details data/tournaments/details/highschool-championship/2026/team-none-girls.json [--write]
+    # 1回戦から載る年度（2023）と同名の別人がいる場合
+    python3 scripts/pdf/highschool_championship_team_matches.py PDF --pages 12-35 \
+        --details .../2023/team-none-boys.json --same-name 佐藤直輝 --write
     npx prettier --write data/tournaments/details/highschool-championship/2026/team-none-girls.json
     npm run check:team-match-details
 
@@ -65,6 +75,7 @@ COLS = {
 }
 RUBBER_GAP = 25.0  # 同じ対戦のゲーム行は約10pt間隔、対戦の間は30pt以上あく。
 # 「打ち切り」の印字がゲーム行を1行ぶん押し下げるため同じ対戦の中に20pt の隙があく（2024 男子）。
+NAME_ROW_GAP = 3.0  # 氏名の行は約10pt間隔。同じ行の文字は同じ y（誤差1pt未満）
 TYPES = ['D1', 'D2', 'D3']
 
 
@@ -112,13 +123,22 @@ def rubber_groups(ws):
 
 
 def pair_names(ws, last_col, first_col, y0, y1):
-    """姓と名は別の語で、同じ行に並ぶ（「・」は無い）"""
-    firsts = pick(ws, first_col, y0, y1)
-    names = []
-    for ln in pick(ws, last_col, y0, y1):
-        fn = next((f for f in firsts if abs(f['y'] - ln['y']) < 2), None)
-        names.append(unicodedata.normalize('NFKC', f"{ln['t']} {fn['t']}" if fn else ln['t']))
-    return names
+    """1行が1人。姓と名は別の欄に並ぶ（「・」は無い）。
+
+    **年度によって姓が1つの語（2024・2026）か1文字ずつの語（2023）になる**ので、
+    行ごとに欄の中の語を x 順に連結する。**欄の境界（`COLS`）で姓と名を分ける**——
+    どちらの欄も均等割り付けなので、文字の間隔で分けることはできない
+    （2023 の `國 松 樹 人` は姓の中の間隔 18pt ＞ 姓と名の間隔 16pt）。
+    """
+    chars = [(w, col) for col in (last_col, first_col) for w in pick(ws, col, y0, y1)]
+    rows = []
+    for w, col in sorted(chars, key=lambda c: c[0]['y']):
+        if not rows or w['y'] - rows[-1][0] > NAME_ROW_GAP:
+            rows.append((w['y'], [], []))
+        rows[-1][1 if col == last_col else 2].append(w)
+    join = lambda g: ''.join(w['t'] for w in sorted(g, key=lambda w: w['x']))
+    return [unicodedata.normalize('NFKC', f'{join(last)} {join(first)}'.strip())
+            for _, last, first in rows]
 
 
 def parse_page(pdf, page):
@@ -156,19 +176,35 @@ def parse_page(pdf, page):
     return out
 
 
+def counted_games(points):
+    """ゲームごとのポイントから本数を数え直す（丸数字が付いた側がそのゲームを取った）"""
+    return [sum(1 for p in points if p[side] and p[side][1]) for side in (0, 1)]
+
+
 def to_detail(index, sub, school_a, school_b, idx):
-    """ADR-020 の TeamMatchDetail へ。勝者は本数の丸数字で決まる"""
+    """ADR-020 の TeamMatchDetail へ。勝者は本数の丸数字で決まる。
+
+    **打ち切りの対戦の本数を印字しない年度がある**（2023）。その場合だけ、印字された
+    ゲームから数え直した本数を入れる（ADR-020 の `unfinished` は「途中の本数」を持つ）。
+    印字がある年度（2024・2026）は印字を正とし、数え直しは検算に使う。
+    """
     winner = 'A' if sub['gamesA'] and sub['gamesA'][1] else 'B' if sub['gamesB'] and sub['gamesB'][1] else None
     status = 'completed' if winner else ('unfinished' if sub['points'] else 'not_played')
+    derived = status == 'unfinished' and not sub['gamesA'] and not sub['gamesB']
+    scores = counted_games(sub['points']) if derived else [
+        sub['gamesA'][0] if sub['gamesA'] else None,
+        sub['gamesB'][0] if sub['gamesB'] else None,
+    ]
     return {
         'type': TYPES[index],
         'status': status,
         'winner': winner,
-        'scoreA': sub['gamesA'][0] if sub['gamesA'] else None,
-        'scoreB': sub['gamesB'][0] if sub['gamesB'] else None,
+        'scoreA': scores[0],
+        'scoreB': scores[1],
         'playersA': [player_ref(n, school_a, idx) for n in sub['playersA']],
         'playersB': [player_ref(n, school_b, idx) for n in sub['playersB']],
         'games': [[p[0][0] if p[0] else None, p[1][0] if p[1] else None] for p in sub['points']],
+        '_derived': derived,  # 出力前に落とす。数え直しで埋めた本数を表示するための印
     }
 
 
@@ -177,6 +213,8 @@ def main():
     ap.add_argument('pdf')
     ap.add_argument('--pages', required=True, help='詳細ページの範囲。例: 3-6')
     ap.add_argument('--details', required=True)
+    ap.add_argument('--same-name', action='append', default=[], metavar='氏名',
+                    help='同名の別人として2校に現れてよい氏名（人が確かめたものだけ足す。複数指定可）')
     ap.add_argument('--write', action='store_true')
     args = ap.parse_args()
 
@@ -187,7 +225,7 @@ def main():
     by_pair = {tuple(sorted(m['entries'])): m for m in details['matches']}
     idx = individual_index()
 
-    problems, owner, counts = [], defaultdict(set), defaultdict(int)
+    problems, derived, owner, counts = [], [], defaultdict(set), defaultdict(int)
     for page in range(int(lo), int(hi or lo) + 1):
         for m in parse_page(args.pdf, page):
             db = by_pair.get(tuple(sorted((m['entryA'], m['entryB']))))
@@ -206,8 +244,12 @@ def main():
             subs = [to_detail(k, s, school[m['entryA']], school[m['entryB']], idx) for k, s in enumerate(m['subs'])]
             print(f"{label} {db['round']} {m['scoreA']}-{m['scoreB']}")
             for k, (s, raw) in enumerate(zip(subs, m['subs'])):
-                counted = [sum(1 for p in raw['points'] if p[side] and p[side][1]) for side in (0, 1)]
-                if counted != [s['scoreA'], s['scoreB']]:
+                counted = counted_games(raw['points'])
+                if s.pop('_derived'):
+                    derived.append(f'{label} 第{k + 1}対戦: 本数の印字が無く、ゲームから {counted[0]}-{counted[1]} と数えた')
+                elif s['status'] == 'not_played':
+                    pass  # ゲームも本数も印字されない（ペアだけ）。数え直すものが無い
+                elif counted != [s['scoreA'], s['scoreB']]:
                     problems.append(f'{label} 第{k + 1}対戦: 本数 {[s["scoreA"], s["scoreB"]]} / ゲームから数え直すと {counted}')
                 for side, players in (('playersA', s['playersA']), ('playersB', s['playersB'])):
                     if len(players) != 2:
@@ -229,8 +271,14 @@ def main():
             db['matches'] = subs
 
     clash = {p: sorted(school.get(n, n) for n in s) for p, s in owner.items() if len(s) > 1}
-    if clash:
-        problems.append(f'2校に割り当てられた選手: {clash}')
+    allowed = {p: s for p, s in clash.items() if p in args.same_name}
+    if len(clash) > len(allowed):
+        rest = {p: v for p, v in clash.items() if p not in allowed}
+        problems.append(f'2校に割り当てられた選手: {rest}（同名の別人と確かめたら --same-name で通す）')
+    if derived:
+        print('\n'.join(['\n本数の印字が無く、ゲームから数えた対戦:'] + derived))
+    if allowed:
+        print('\n同名の別人として通した選手（--same-name）:', allowed)
     print('\n対戦の状態:', {k: counts[k] for k in ('completed', 'unfinished', 'not_played')},
           '/ 選手（延べ）: 記録あり', counts['記録あり'], '名前だけ', counts['名前だけ'])
 
