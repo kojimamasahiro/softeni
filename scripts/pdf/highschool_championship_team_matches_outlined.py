@@ -34,7 +34,8 @@
 - 見出しのエントリー番号・学校単位の本数 ＝ details の `entries` / `scores`
 - 対戦の勝ち数 ＝ details の `scores`
 - **印字された本数 ＝ ゲームごとのポイントから数え直した本数**
-- **ゲームの得点がソフトテニスとして成立する**（4点先取・デュースは2点差）。
+- **ゲームの得点がソフトテニスとして成立する**（4点先取・デュースは2点差。
+  **3-3 で迎える第7ゲームはファイナルゲームで7点先取**）。
   本数の数え直しでは見つからない ⑥/⑧ の取り違えがここに出る
 - 同じ選手が2校に割り当てられない / 個人戦の名簿に居ない選手は報告（居なくてもよい）
 
@@ -357,13 +358,17 @@ def build(args):
                     applied.append(f'{key} D{k+1} {gi+1}ゲーム目 '
                                    f'{c["printed"][0]}-{c["printed"][1]} → '
                                    f'{c["corrected"][0]}-{c["corrected"][1]}: {c["why"]}')
-                # ソフトテニスのゲームとして成立する得点か（4点先取・デュースは2点差）。
-                # ⑥と⑧の取り違えはここに出る。**出典の誤記でも鳴る**ので止めずに報告する
+                # ソフトテニスのゲームとして成立する得点か。⑥と⑧の取り違えはここに出る。
+                # **3-3 で迎える第7ゲームはファイナルゲームで7点先取**（`2 － ⑦` が正しい印字）。
+                # **出典の誤記でも鳴る**ので止めずに報告する
+                wa = wb = 0
                 for gi, (a, b) in enumerate(games):
+                    target = 7 if (wa == 3 and wb == 3) else 4
                     hi, lo = max(a, b), min(a, b)
-                    if not ((hi == 4 and lo <= 2) or (hi >= 5 and hi - lo == 2)):
+                    if not ((hi == target and lo <= target - 2) or (hi > target and hi - lo == 2)):
                         warnings.append(f'{key} D{k+1}: {gi+1}ゲーム目 {a}-{b} は'
-                                        f'ゲームとして成立しない（4点先取・デュースは2点差）')
+                                        f'ゲームとして成立しない（{target}点先取・デュースは2点差）')
+                    wa, wb = (wa + 1, wb) if a > b else (wa, wb + 1)
                 if flip:
                     games = [[b, a] for a, b in games]
                 rec = {'type': TYPES[k], 'status': status}
