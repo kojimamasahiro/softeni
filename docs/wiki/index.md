@@ -19,6 +19,7 @@
 - [Architecture](./architecture.md) `汎用`
 - [Data Model](./data-model.md) `混在`
 - [Data Import](./data-import.md) `混在`
+- [PDF からの取り込み](./pdf-import.md) `汎用`
 - [Deployment](./deployment.md) `汎用`
 
 ## Score機能（score.softeni-pick / 動画レビュー）
