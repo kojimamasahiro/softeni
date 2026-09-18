@@ -144,6 +144,15 @@
 - **Google Trends は競技をまたぐ略称（全中・インカレ）に使えない**。完全に圏外の語の需要を見る補助としてだけ使い、
   「急上昇」は絶対量の根拠にしない。
 
+## 構造化データの決めごと（`SportsEvent`）
+
+共通ヘルパー `lib/sportsEventJsonLd.ts` に集約し、4箇所（年度別結果・大会ハブの歴代優勝者・試合詳細・STリーグ）で使う。
+
+- 常に付ける: `eventStatus = EventScheduled` / `eventAttendanceMode = OfflineEventAttendanceMode` / `image`。
+  `endDate` が無ければ `startDate` で補完。`location` は常に出し、最低限 `addressCountry: 'JP'` を含む。
+- `performer` は**出演者が一意に定まるページだけ**（試合詳細・歴代優勝者）。年度別結果ページには付けず警告を許容する。
+- **`offers` は付けない**（無料の結果ページにチケット情報を付けるのは実態とずれ、虚偽の構造化データは手動対策リスク）。
+
 ## sitemap 生成の運用
 
 3つに分かれている。触るときは3つまとめて確認する。
