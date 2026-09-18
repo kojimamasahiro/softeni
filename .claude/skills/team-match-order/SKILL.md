@@ -22,7 +22,8 @@ description: 団体戦・対抗戦の「オーダー」（第1〜第3対戦に�
   `tournament-pdf-to-results` を通す。エントリーの並び（entryNo）がドローの席順と一致していることに
   全面的に依存している。
 - **`pdftotext` が使えること**（poppler。macOS は `brew install poppler`）。
-  スクリプトは `pdftotext -bbox` の語ごとの座標だけを使う（Python の PDF ライブラリは要らない）。
+  ほとんどのスクリプトは `pdftotext -bbox` の語ごとの座標だけを使う（Python の PDF ライブラリは要らない）。
+  **例外はアウトライン化PDF用の `_outlined.py`** で、`.venv`（PyMuPDF・numpy・Pillow）が要る。
 - 公式記録PDFが手元にあること。出典は `data/tournaments/information/<大会>.json` の `sourceUrl`。
 
 ## いちばん多い依頼: 高校選抜の別の年度
@@ -66,15 +67,23 @@ npm run check:team-match-details
 |---|---|---|
 | 高校選抜（JSTA 記録） | **全試合**にある（本数まで） | `highschool_senbatsu_team_matches.py` |
 | インターハイ（公式記録） | **ベスト8以降だけ**。ゲームごとのポイントつき | `highschool_championship_team_matches.py` |
+| インターハイ（**記録報告書**・アウトライン化PDF） | 同上。2025 で実施 | `highschool_championship_team_matches_outlined.py` |
 | 全中・インカレ（ドローPDF） | 敗者の本数だけ。オーダーは無い。別資料の有無は未確認 | — |
 
-インターハイはこう使う（詳細ページの範囲は年度で変わるので、先に `pdftotext -layout` で目視する）:
+インターハイはこう使う。**詳細ページの範囲は年度で変わるので、先に `pdftotext -layout` で目視する**。
+このとき**空が返ったらアウトライン化PDF**なので `_outlined.py`（`.venv/bin/python` が要る）へ。
 
 ```bash
 python3 scripts/pdf/highschool_championship_team_matches.py PDF --pages 3-6 \
     --details data/tournaments/details/highschool-championship/<年>/team-none-girls.json --write
 npx prettier --write data/tournaments/details/highschool-championship/<年>/team-none-girls.json
 npm run check:team-match-details
+```
+
+```bash
+.venv/bin/python scripts/pdf/highschool_championship_team_matches_outlined.py PDF --pages 47-50 \
+    --details data/tournaments/details/highschool-championship/<年>/team-none-girls.json \
+    --corrections scripts/pdf/highschool-championship-2025-corrections.json --write
 ```
 
 新しい様式に当たるときは、既存スクリプトを**コピーして足す**（共通化は2つ目が通ってから）。
@@ -104,6 +113,8 @@ npm run check:team-match-details
   極端に低ければ塊の対応が崩れている。
 - **ゲームごとのポイントがある様式では、ポイントから数え直した本数＝印字された本数**。
   いちばん強い検算で、インターハイでは丸数字の10以上（`⑩`）の読み落としをこれで見つけた。
+- **同じ様式では、ゲームの得点がソフトテニスとして成立するか**（4点先取・デュースはちょうど2点差）。
+  丸数字の有無が合っていると上の数え直しをすり抜ける誤りが出る（⑥と⑧の取り違えを2件見つけた）。
 
 ## 選手の結び付け
 
@@ -125,6 +136,14 @@ npm run check:team-match-details
 - **「打ち切り」の印字をあてにしない**。インターハイは印字がある対戦と、`3-3` のまま印字が無い対戦がある。
   勝者は**本数の丸数字の有無**で決める。
 - **ポイントは10以上になる**（デュース）。丸数字の10〜20を読めていないと本数が合わずに止まる。
+- **`pdftotext` が空なら文字がアウトライン化されている**（`pdffonts` も空）。`_outlined.py` を使う。
+  白い「打ち切り」の箱が下のゲーム行を覆うので、パスを1本ずつ白紙に描き直さないと隠れた数字が読めない。
+  数字も氏名も字形辞書から読む。**辞書に無い字形は止まる**ので、新しい年度では辞書に足す作業が要る。
+- **ゲームの得点が成立するか（4点先取・デュースは2点差）も見る**。⑥と⑧の取り違えは本数の数え直しでは
+  見つからない。**この検査は出典の誤記でも鳴る**。拡大して読み取り側の誤りでないと確かめたうえで、
+  補正ファイル（`-corrections.json`）に理由つきで足す。勝手に直さない・黙って印字どおりにもしない。
+- **打ち切り時点の途中のゲームは `games` に入れない**（ADR-020 は決着したゲームだけ・同点は無い）。
+  打ち切り時点の本数は対戦の `scoreA`/`scoreB` に残る。
 - **打ち切り・未実施を「無かったこと」にしない**。スコアが空なら `not_played`（ペアだけ出ている）、
   丸数字の無い途中の本数なら `unfinished`。どちらも X で聞かれる「誰が出る予定だったか」の答えになる。
 - **姓名の分割を直したら `node scripts/normalize-name-splits.mjs` を流す**。
