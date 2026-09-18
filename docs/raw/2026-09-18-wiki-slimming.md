@@ -79,3 +79,55 @@
     - A-2・A-3: 未着手で、手順も決まっていない。
     - 予算超過ページの文字数一覧: スクリプトで毎回出せるので wiki には書かない。
     - 「約95万字」の誤り: 会話内の誤りで、wiki に残す意味がない（このノートの「判明したこと」にだけ記録）。
+
+---
+
+## 完了（2026-09-18）
+
+**予算超過ページは0になった。** docs/wiki は **471,677字 → 270,965字（−43%）**、36 → 38ページ。
+確認は `node scripts/check-wiki-size.mjs`（リンク切れ0件）。
+
+| ページ | 前 | 後 | 備考 |
+|---|---:|---:|---|
+| seo.md | 39,029 | 9,245 | 最初の試験台 |
+| secondaryschool.md | 13,775 | 7,194 | |
+| upcoming-tournaments-runbook.md | 14,774 | 5,383 | 完了項目を進捗表1行ずつに |
+| monetization.md | 15,494 | 8,083 | 実装と照合し AffiliateLink の記述を訂正 |
+| data-model.md | 18,471 | 11,891 | |
+| news-context-blocks.md | 32,312 | 11,572 | |
+| players-pages.md | 34,231 | 12,009→11,992 | |
+| open-questions.md | 35,593 | 9,865 | 「解決済み（記録）」節ごとアーカイブへ |
+| public-pages.md | 38,868 | 11,792 | OGP を sns-day1-images へ、SportsEvent を seo へ移設 |
+| team-player-identity.md | 41,380 | 11,832 ＋ player-name-identity.md 4,635 | 分割 |
+| data-import.md | 71,026 | 9,169 ＋ pdf-import.md 9,403 | 分割 |
+| AGENTS.md | 5,900 | 3,239 | 重複を畳み、細部を ux-writing / update-wiki へ移設 |
+
+### 圧縮のついでに直したもの
+
+- **monetization.md**: 「AffiliateLink は実装ありコメントアウト」→ 実際は 2026-07-04 に削除済み（実装で確認）。
+- **secondaryschool.md**: 中学カテゴリの状況「実装済／未公開」→ 公開済み（noindex なし・他ページからリンクあり）。
+- **public-pages.md**: `highschool.md` からのアンカーリンクが切れないよう、パンくずの見出し文字列を維持した。
+
+### 置き場所を動かしたもの（内容は捨てていない）
+
+- 年度別結果ページの OGP 画像の生成仕様 → `sns-day1-images.md`（tools/sns-images のページ）
+- `SportsEvent` の項目規約 → `seo.md`「構造化データの決めごと」
+- 絵文字ルールの詳細 → `ux-writing.md` §3 / Compile Log の適用範囲 → `docs/prompts/update-wiki.md`
+- 姓名の分割ゆれ・改名・同姓同名・pid 重複 → `player-name-identity.md`（新規）
+- PDF の読み取りと検算 → `pdf-import.md`（新規）
+
+### やってみて分かったこと
+
+- **1ページ12,000字は「1トピック1ページ」の圧力になる。** 収まらないページ（team-player-identity・data-import）は
+  実際に2つの話題が同居していた。字数制限は分割の合図として機能する。
+- **圧縮は実装との照合を強制する。** 「未公開」「実装あり」のような状態を1行に畳もうとすると確認が要り、
+  その過程で3件の古い記述が見つかった。review-docs-drift とは別の経路でドリフトが落ちる。
+- **アンカーリンクは raw からも張られている。** raw は追記のみなので、参照されている見出しは文字列を変えられない。
+
+## Compile Log（2026-09-18 追記2）
+
+- → 各 wiki ページ（本文の圧縮）、`docs/wiki/index.md`（新規2ページの追加）、
+  `docs/wiki/open-questions.md`・`docs/wiki/idea-backlog.md`（状況の更新）。
+  - 反映しなかったもの: ページごとの前後の文字数（このノートの表が正。wiki に置くと次の更新で古くなる）、
+    圧縮中に読んだが現状の仕様ではない記述（各ページの `2026-09-18-wiki-archive-*.md` が正）、
+    「どの節をどう畳んだか」の逐一（差分を読めば足りる）。
