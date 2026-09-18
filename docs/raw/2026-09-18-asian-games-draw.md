@@ -82,6 +82,7 @@ prebuild の差分で、上松・黒坂・丸山の `analysis.json` の試合数
 - [upcoming-tournaments-runbook.md](../wiki/upcoming-tournaments-runbook.md) S11
 - [open-questions.md](../wiki/open-questions.md)「アジア競技大会2026 の結果取り込み（方式A）の細部」
 - [2026-09-17-asian-games-schedule.md](./2026-09-17-asian-games-schedule.md)
+- [2026-09-18-asian-games-day1-results.md](./2026-09-18-asian-games-day1-results.md)（続き。一日目の結果取り込み）
 
 ## 参考文献
 

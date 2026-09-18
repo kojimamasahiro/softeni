@@ -5,9 +5,12 @@
 // 「結果ページでも途中経過(ongoing)を明示表示するか」に対応するもの。
 //
 // 設計方針（2026-07-19 検討）:
-// - 対象は個人戦・団体戦の決勝トーナメント（stage:'knockout'）のみ。予選リーグ
-//   （stage:'roundrobin'）は進捗の測り方が別物（ラウンド深度でなくグループ内消化数・
-//   順位確定）になるため、今回のスコープ外（docs/wiki の Open Questions へ記載）。
+// - 進捗の尺度は決勝トーナメント（stage:'knockout'）の消化数。予選リーグ
+//   （stage:'roundrobin'）は測り方が別物（ラウンド深度でなくグループ内消化数・順位確定）
+//   なので分母には混ぜない。
+//   ただし **「まだ何も反映されていない」の判定にだけは予選リーグも見る**
+//   （2026-09-18 追加。アジア競技大会2026 女子団体で、予選リーグ12試合が確定しているのに
+//   「組み合わせを掲載しています」と出て title も「組み合わせ」になっていたため）。
 // - 完了/進行中の判定は matches の decided/total 件数比だけに頼らない。理由:
 //   3位決定戦が実施されない大会や、対戦相手が確定しない不完全な試合データ（例:
 //   entries に null を含むダミー枠）が過去の「完了済み」大会にも残っており、
@@ -20,7 +23,7 @@
 //   （「現在◯回戦まで結果掲載中」等）を組み立てるための補助情報として使う。
 
 export type ResultCoverageStatus =
-  | 'not_recorded' // 組み合わせは掲載済みだが決勝Tの結果はまだ1件も反映されていない
+  | 'not_recorded' // 組み合わせは掲載済みだが結果はまだ1件も反映されていない（予選リーグも決勝Tも）
   | 'in_progress' // 決勝Tが一部反映されている（一部エントリーが ongoing）
   | 'completed' // 決勝Tの結果が出揃っている（ongoing なエントリーが無い）
   | 'abandoned' // 大会が途中で打ち切られ、以降の試合が実施されなかった
@@ -43,6 +46,10 @@ export interface ResultCoverage {
   expectedTotalSource: 'draw' | 'entries' | 'records';
   /** 決勝Tのうち勝者が確定している試合数 */
   decidedKnockoutMatches: number;
+  /** 予選リーグ（stage:'roundrobin'）の試合レコード数 */
+  roundrobinMatchRecords: number;
+  /** 予選リーグのうち勝者が確定している試合数。「まだ何も反映されていない」の判定に使う */
+  decidedRoundrobinMatches: number;
   /** decidedKnockoutMatches / totalKnockoutMatches（totalが0ならnull） */
   progressRatio: number | null;
   /** 勝者が確定している試合のうち、最も深いラウンドの表示名（例: "準々決勝" / "3回戦"） */
@@ -149,6 +156,8 @@ const EMPTY_UNSUPPORTED: ResultCoverage = {
   knockoutMatchRecords: 0,
   expectedTotalSource: 'records',
   decidedKnockoutMatches: 0,
+  roundrobinMatchRecords: 0,
+  decidedRoundrobinMatches: 0,
   progressRatio: null,
   deepestDecidedRoundLabel: null,
   aliveEntries: 0,
@@ -177,6 +186,10 @@ export function computeResultCoverage(
   const decided = knockoutMatches.filter((m) => isDecided(m));
   const knockoutMatchRecords = knockoutMatches.length;
   const decidedKnockoutMatches = decided.length;
+
+  const roundrobinMatches = matches.filter((m) => m?.stage === 'roundrobin');
+  const roundrobinMatchRecords = roundrobinMatches.length;
+  const decidedRoundrobinMatches = roundrobinMatches.filter((m) => isDecided(m)).length;
 
   // 分母は「決勝までの想定総試合数」。試合レコード数（= 実施ぶんだけ追記される大会では
   // 進行に応じて増える）を分母にすると、全日本学生2026 女子ダブルス（332エントリー・
@@ -221,7 +234,8 @@ export function computeResultCoverage(
     // unsupported ではなく「反映前」として扱う。
     status = 'not_recorded';
   } else if (aliveEntries > 0) {
-    status = decidedKnockoutMatches === 0 ? 'not_recorded' : 'in_progress';
+    // 決勝Tが1試合も決着していなくても、予選リーグが進んでいれば「結果は反映済み」。
+    status = decidedKnockoutMatches === 0 && decidedRoundrobinMatches === 0 ? 'not_recorded' : 'in_progress';
   } else {
     status = 'completed';
   }
@@ -232,6 +246,8 @@ export function computeResultCoverage(
     knockoutMatchRecords,
     expectedTotalSource,
     decidedKnockoutMatches,
+    roundrobinMatchRecords,
+    decidedRoundrobinMatches,
     progressRatio,
     deepestDecidedRoundLabel,
     aliveEntries,
@@ -263,6 +279,11 @@ export function formatResultCoverageBodyText(coverage: ResultCoverage): string |
     return `組み合わせを掲載しています。結果はこれから随時反映予定です(全${coverage.totalKnockoutMatches}試合)。`;
   }
   if (coverage.status === 'in_progress') {
+    if (coverage.decidedKnockoutMatches === 0) {
+      // 予選リーグだけが終わっている段階。決勝Tの進捗（0%）を主役にすると
+      // 「結果が無い」ように読めるので、予選リーグを主語にする
+      return `現在の反映状況: 予選リーグ${coverage.decidedRoundrobinMatches}試合の結果を掲載中。決勝トーナメント(全${coverage.totalKnockoutMatches}試合)はこれから反映します。`;
+    }
     const percent = coverage.progressRatio !== null ? Math.round(coverage.progressRatio * 100) : null;
     const roundLabel = coverage.deepestDecidedRoundLabel ?? '一部';
     const percentText = percent !== null ? `・${percent}%` : '';
@@ -281,6 +302,7 @@ export function formatResultCoverageMetaSuffix(coverage: ResultCoverage): string
     return '組み合わせ掲載・結果は今後反映予定。';
   }
   if (coverage.status === 'in_progress') {
+    if (coverage.decidedKnockoutMatches === 0) return '予選リーグの結果を反映済み・決勝Tは今後反映予定。';
     const roundLabel = coverage.deepestDecidedRoundLabel ?? '一部';
     return `現在${roundLabel}まで結果反映中。`;
   }

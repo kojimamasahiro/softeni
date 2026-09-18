@@ -27,170 +27,2014 @@
       "firstName": null,
       "team": "パキスタン",
       "prefecture": null
+    },
+    {
+      "id": "韓国",
+      "lastName": null,
+      "firstName": null,
+      "team": "韓国",
+      "prefecture": null
+    },
+    {
+      "id": "ネパール",
+      "lastName": null,
+      "firstName": null,
+      "team": "ネパール",
+      "prefecture": null
+    },
+    {
+      "id": "インドネシア",
+      "lastName": null,
+      "firstName": null,
+      "team": "インドネシア",
+      "prefecture": null
+    },
+    {
+      "id": "チャイニーズ・タイペイ",
+      "lastName": null,
+      "firstName": null,
+      "team": "チャイニーズ・タイペイ",
+      "prefecture": null
+    },
+    {
+      "id": "モンゴル",
+      "lastName": null,
+      "firstName": null,
+      "team": "モンゴル",
+      "prefecture": null
+    },
+    {
+      "id": "インド",
+      "lastName": null,
+      "firstName": null,
+      "team": "インド",
+      "prefecture": null
+    },
+    {
+      "id": "ラオス",
+      "lastName": null,
+      "firstName": null,
+      "team": "ラオス",
+      "prefecture": null
     }
   ],
   "entries": [
     {
       "entryNo": 1,
-      "playerIds": [
-        "日本"
-      ],
+      "playerIds": ["日本"],
       "type": null
     },
     {
       "entryNo": 2,
-      "playerIds": [
-        "カンボジア"
-      ],
+      "playerIds": ["カンボジア"],
       "type": null
     },
     {
       "entryNo": 3,
-      "playerIds": [
-        "フィリピン"
-      ],
+      "playerIds": ["フィリピン"],
       "type": null
     },
     {
       "entryNo": 4,
-      "playerIds": [
-        "パキスタン"
-      ],
+      "playerIds": ["パキスタン"],
+      "type": null
+    },
+    {
+      "entryNo": 5,
+      "playerIds": ["韓国"],
+      "type": null
+    },
+    {
+      "entryNo": 6,
+      "playerIds": ["ネパール"],
+      "type": null
+    },
+    {
+      "entryNo": 7,
+      "playerIds": ["インドネシア"],
+      "type": null
+    },
+    {
+      "entryNo": 8,
+      "playerIds": ["チャイニーズ・タイペイ"],
+      "type": null
+    },
+    {
+      "entryNo": 9,
+      "playerIds": ["モンゴル"],
+      "type": null
+    },
+    {
+      "entryNo": 10,
+      "playerIds": ["インド"],
+      "type": null
+    },
+    {
+      "entryNo": 11,
+      "playerIds": ["ラオス"],
       "type": null
     }
   ],
+  "knockoutDraw": {
+    "slots": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "C",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      null
+    ]
+  },
   "matches": [
     {
-      "entries": [
-        1,
-        2
-      ],
-      "scores": {},
+      "entries": [1, 2],
+      "scores": {
+        "1": 3,
+        "2": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 1,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-1"
+      "matchId": "match-1",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "内本",
+              "firstName": "隆文"
+            },
+            {
+              "lastName": "広岡",
+              "firstName": "宙"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "KAN",
+              "firstName": "Sophorn"
+            },
+            {
+              "lastName": "YI",
+              "firstName": "Keavirak"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 2],
+            [4, 1],
+            [4, 1],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "上松",
+              "firstName": "俊貴"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "CHAO Viva"
+            }
+          ],
+          "games": [
+            [5, 3],
+            [4, 2],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "黒坂",
+              "firstName": "卓矢"
+            },
+            {
+              "lastName": "丸山",
+              "firstName": "海斗"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "DOEUM",
+              "firstName": "Samsocheaphearun"
+            },
+            {
+              "name": "SOY Sothun"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
-      "entries": [
-        3,
-        4
-      ],
-      "scores": {},
+      "entries": [3, 4],
+      "scores": {
+        "3": 3,
+        "4": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 3,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-2"
+      "matchId": "match-2",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "ARCILLA Joseph"
+            },
+            {
+              "name": "NUGUIT Samuel"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "ALI",
+              "firstName": "Muhammad"
+            },
+            {
+              "name": "ARAIN Hamza"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "NUGUIT",
+              "firstName": "Sherwin"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARAIN Hussain"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "name": "ALCOSEBA Mark"
+            },
+            {
+              "name": "TALATAYOD Dheo"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "BASHIR Rafae"
+            },
+            {
+              "name": "KHAN Rayyan"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [4, 0],
+            [1, 4],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
-      "entries": [
-        1,
-        3
-      ],
-      "scores": {},
+      "entries": [1, 3],
+      "scores": {
+        "1": 3,
+        "3": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 1,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-3"
+      "matchId": "match-3",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "内本",
+              "firstName": "隆文"
+            },
+            {
+              "lastName": "黒坂",
+              "firstName": "卓矢"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARCILLA Joseph"
+            },
+            {
+              "name": "NUGUIT Samuel"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [5, 3],
+            [4, 1],
+            [7, 5],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "上松",
+              "firstName": "俊貴"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "NUGUIT",
+              "firstName": "Sherwin"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "広岡",
+              "firstName": "宙"
+            },
+            {
+              "lastName": "丸山",
+              "firstName": "海斗"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ALCOSEBA Mark"
+            },
+            {
+              "name": "TALATAYOD Dheo"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [5, 3],
+            [5, 3],
+            [5, 3],
+            [6, 4]
+          ]
+        }
+      ]
     },
     {
-      "entries": [
-        2,
-        4
-      ],
-      "scores": {},
+      "entries": [2, 4],
+      "scores": {
+        "2": 3,
+        "4": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 2,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-4"
+      "matchId": "match-4",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "lastName": "KAN",
+              "firstName": "Sophorn"
+            },
+            {
+              "lastName": "YI",
+              "firstName": "Keavirak"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARAIN Hamza"
+            },
+            {
+              "lastName": "ALI",
+              "firstName": "Muhammad"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [2, 4],
+            [4, 0],
+            [4, 0],
+            [6, 4],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "CHAO Viva"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARAIN Hussain"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "DOEUM",
+              "firstName": "Samsocheaphearun"
+            },
+            {
+              "name": "SOY Sothun"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "KHAN Rayyan"
+            },
+            {
+              "name": "BASHIR Rafae"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 2],
+            [4, 0]
+          ]
+        }
+      ]
     },
     {
-      "entries": [
-        2,
-        3
-      ],
-      "scores": {},
+      "entries": [2, 3],
+      "scores": {
+        "2": 0,
+        "3": 3
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 3,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-5"
+      "matchId": "match-5",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "lastName": "KAN",
+              "firstName": "Sophorn"
+            },
+            {
+              "lastName": "YI",
+              "firstName": "Keavirak"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARCILLA Joseph"
+            },
+            {
+              "name": "NUGUIT Samuel"
+            }
+          ],
+          "games": [
+            [0, 4],
+            [2, 4],
+            [4, 6],
+            [1, 4],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 4,
+          "playersA": [
+            {
+              "lastName": "DOEUM",
+              "firstName": "Samsocheaphearun"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "NUGUIT",
+              "firstName": "Sherwin"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [3, 5],
+            [4, 2],
+            [2, 4],
+            [4, 0],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "SOY Sothun"
+            },
+            {
+              "name": "CHAO Viva"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ALCOSEBA Mark"
+            },
+            {
+              "name": "TALATAYOD Dheo"
+            }
+          ],
+          "games": [
+            [0, 4],
+            [1, 4],
+            [3, 5],
+            [2, 4],
+            [4, 2],
+            [4, 6]
+          ]
+        }
+      ]
     },
     {
-      "entries": [
-        1,
-        4
-      ],
-      "scores": {},
+      "entries": [1, 4],
+      "scores": {
+        "1": 3,
+        "4": 0
+      },
       "round": null,
       "stage": "roundrobin",
       "group": "A",
-      "winnerEntryNo": null,
+      "winnerEntryNo": 1,
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-6"
+      "matchId": "match-6",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "広岡",
+              "firstName": "宙"
+            },
+            {
+              "lastName": "丸山",
+              "firstName": "海斗"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "BASHIR Rafae"
+            },
+            {
+              "name": "KHAN Rayyan"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "黒坂",
+              "firstName": "卓矢"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARAIN Hussain"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "内本",
+              "firstName": "隆文"
+            },
+            {
+              "lastName": "上松",
+              "firstName": "俊貴"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "ALI",
+              "firstName": "Muhammad"
+            },
+            {
+              "name": "ARAIN Hamza"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [5, 6],
+      "scores": {
+        "5": 3,
+        "6": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 5,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-7",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "LEE Hyungwon"
+            },
+            {
+              "name": "PARK Jaekyu"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "BHANDARI Kamal"
+            },
+            {
+              "name": "KHATRI Pradip"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [6, 4],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Jinwoong"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PANDEY Brijesh"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "walkover",
+          "winner": "A",
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "name": "KIM Hyunsoo"
+            },
+            {
+              "name": "LEE Haneul"
+            }
+          ],
+          "playersB": []
+        }
+      ]
+    },
+    {
+      "entries": [6, 7],
+      "scores": {
+        "6": 0,
+        "7": 3
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 7,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-8",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "KHATRI Pradip"
+            },
+            {
+              "name": "PANDEY Brijesh"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "HUTAURUK",
+              "firstName": "Tio"
+            },
+            {
+              "lastName": "SANGER",
+              "firstName": "Fernando"
+            }
+          ],
+          "games": [
+            [1, 4],
+            [2, 4],
+            [0, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            {
+              "name": "BHANDARI Kamal"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PRADEWA Bagus"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "walkover",
+          "winner": "B",
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [],
+          "playersB": [
+            {
+              "name": "LALUYAN Rizky"
+            },
+            {
+              "name": "FALEVI Muhammad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [5, 7],
+      "scores": {
+        "5": 2,
+        "7": 1
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "B",
+      "winnerEntryNo": 5,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-9",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 2,
+          "playersA": [
+            {
+              "name": "KIM Hyunsoo"
+            },
+            {
+              "name": "LEE Haneul"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "LALUYAN Rizky"
+            },
+            {
+              "name": "FALEVI Muhammad"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [4, 1],
+            [4, 2],
+            [4, 0],
+            [3, 5],
+            [4, 1],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Jinwoong"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PRADEWA Bagus"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "retired",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 2,
+          "playersA": [
+            {
+              "name": "LEE Hyungwon"
+            },
+            {
+              "name": "PARK Jaekyu"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "HUTAURUK",
+              "firstName": "Tio"
+            },
+            {
+              "lastName": "SANGER",
+              "firstName": "Fernando"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [2, 4],
+            [2, 4],
+            [5, 3]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [8, 9],
+      "scores": {
+        "8": 3,
+        "9": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 8,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-10",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "CHEN Yu-hsun"
+            },
+            {
+              "name": "CHANG Yu-sung"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ALTANGEREL Bold-erdene"
+            },
+            {
+              "name": "NYAMDORJ Bud"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "CHEN Po-yi"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "BATAA",
+              "firstName": "Munkhtulga"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [5, 3],
+            [4, 0],
+            [7, 5]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "YU Kai-wen"
+            },
+            {
+              "name": "LIN Wei-chieh"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "KHURELBAYAR Khaliunbayar"
+            },
+            {
+              "name": "ENKHBAYAR Ulsbold"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [10, 11],
+      "scores": {
+        "10": 3,
+        "11": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 10,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-11",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "MEENA Jay"
+            },
+            {
+              "name": "CHOUDHARY Yogesh"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "SIMMALAVONG",
+              "firstName": "Sataporn"
+            },
+            {
+              "name": "LOUANGSISOMBATH Phatthana"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "THAKUR Aryan"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "VONGPHAKDY Bekki"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 2],
+            [7, 5],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "PATEL Aniket"
+            },
+            {
+              "name": "YADAV Om"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PASOMSOUK Senthanongvath"
+            },
+            {
+              "name": "PHIENVIHANE Viengthong"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [7, 5],
+            [4, 2]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [8, 10],
+      "scores": {
+        "8": 3,
+        "10": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 8,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-12",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "YU Kai-wen"
+            },
+            {
+              "name": "LIN Wei-chieh"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "MEENA Jay"
+            },
+            {
+              "name": "CHOUDHARY Yogesh"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "name": "CHANG Yu-sung"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "THAKUR Aryan"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [5, 3],
+            [5, 3],
+            [2, 4],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "name": "CHEN Po-yi"
+            },
+            {
+              "name": "CHEN Yu-hsun"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PATEL Aniket"
+            },
+            {
+              "name": "YADAV Om"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [2, 4],
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [9, 11],
+      "scores": {
+        "9": 1,
+        "11": 2
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 11,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-13",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "ALTANGEREL Bold-erdene"
+            },
+            {
+              "lastName": "BATAA",
+              "firstName": "Munkhtulga"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "SIMMALAVONG",
+              "firstName": "Sataporn"
+            },
+            {
+              "name": "LOUANGSISOMBATH Phatthana"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [3, 5]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "ENKHBAYAR Ulsbold"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PASOMSOUK Senthanongvath"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [5, 3],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "KHURELBAYAR Khaliunbayar"
+            },
+            {
+              "name": "NYAMDORJ Bud"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PHIENVIHANE Viengthong"
+            },
+            {
+              "name": "VONGPHAKDY Bekki"
+            }
+          ],
+          "games": [
+            [1, 4],
+            [4, 2],
+            [3, 5],
+            [5, 3],
+            [4, 2],
+            [0, 4],
+            [3, 5],
+            [2, 4]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [9, 10],
+      "scores": {
+        "9": 0,
+        "10": 3
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 10,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-14",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "NYAMDORJ Bud"
+            },
+            {
+              "name": "KHURELBAYAR Khaliunbayar"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "YADAV Om"
+            },
+            {
+              "name": "PATEL Aniket"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [1, 4],
+            [0, 4],
+            [1, 4],
+            [0, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            {
+              "lastName": "BATAA",
+              "firstName": "Munkhtulga"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "MEENA Jay"
+            }
+          ],
+          "games": [
+            [0, 4],
+            [3, 5],
+            [2, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 1,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "ALTANGEREL Bold-erdene"
+            },
+            {
+              "name": "ENKHBAYAR Ulsbold"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "THAKUR Aryan"
+            },
+            {
+              "name": "CHOUDHARY Yogesh"
+            }
+          ],
+          "games": [
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [1, 4],
+            [0, 4],
+            [4, 6]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [8, 11],
+      "scores": {
+        "8": 3,
+        "11": 0
+      },
+      "round": null,
+      "stage": "roundrobin",
+      "group": "C",
+      "winnerEntryNo": 8,
+      "nextMatchId": null,
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-15",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "YU Kai-wen"
+            },
+            {
+              "name": "LIN Wei-chieh"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "SIMMALAVONG",
+              "firstName": "Sataporn"
+            },
+            {
+              "name": "LOUANGSISOMBATH Phatthana"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [5, 3]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "CHEN Po-yi"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PHIENVIHANE Viengthong"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 1],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "CHEN Yu-hsun"
+            },
+            {
+              "name": "CHANG Yu-sung"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PASOMSOUK Senthanongvath"
+            },
+            {
+              "name": "VONGPHAKDY Bekki"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 0]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [10, 7],
+      "scores": {
+        "10": 0,
+        "7": 2
+      },
+      "round": "準々決勝",
+      "stage": "knockout",
+      "group": null,
+      "winnerEntryNo": 7,
+      "nextMatchId": "match-18",
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-16",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 2,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "MEENA Jay"
+            },
+            {
+              "name": "CHOUDHARY Yogesh"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "HUTAURUK",
+              "firstName": "Tio"
+            },
+            {
+              "lastName": "SANGER",
+              "firstName": "Fernando"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [0, 4],
+            [0, 4],
+            [4, 1],
+            [4, 1],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 4,
+          "playersA": [
+            {
+              "name": "THAKUR Aryan"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PRADEWA Bagus"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [4, 0],
+            [6, 4],
+            [2, 4],
+            [1, 4],
+            [4, 1],
+            [2, 7]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "name": "YADAV Om"
+            },
+            {
+              "name": "PATEL Aniket"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "FALEVI Muhammad"
+            },
+            {
+              "name": "LALUYAN Rizky"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [5, 3],
+      "scores": {
+        "5": 2,
+        "3": 0
+      },
+      "round": "準々決勝",
+      "stage": "knockout",
+      "group": null,
+      "winnerEntryNo": 5,
+      "nextMatchId": "match-19",
+      "prevMatchIds": [],
+      "prevMatchId": null,
+      "matchId": "match-17",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 2,
+          "playersA": [
+            {
+              "name": "LEE Hyungwon"
+            },
+            {
+              "name": "PARK Jaekyu"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ARCILLA Joseph"
+            },
+            {
+              "name": "NUGUIT Samuel"
+            }
+          ],
+          "games": [
+            [5, 3],
+            [3, 5],
+            [5, 3],
+            [2, 4],
+            [4, 2],
+            [4, 0],
+            [4, 0]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Jinwoong"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "NUGUIT",
+              "firstName": "Sherwin"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [5, 3],
+            [5, 3],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "name": "KIM Hyunsoo"
+            },
+            {
+              "name": "LEE Haneul"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "ALCOSEBA Mark"
+            },
+            {
+              "name": "TALATAYOD Dheo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [1, 7],
+      "scores": {},
+      "round": "準決勝",
+      "stage": "knockout",
+      "group": null,
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": ["match-16"],
+      "prevMatchId": "match-16",
+      "matchId": "match-18"
+    },
+    {
+      "entries": [5, 8],
+      "scores": {},
+      "round": "準決勝",
+      "stage": "knockout",
+      "group": null,
+      "winnerEntryNo": null,
+      "nextMatchId": null,
+      "prevMatchIds": ["match-17"],
+      "prevMatchId": "match-17",
+      "matchId": "match-19"
     }
   ],
   "results": [
     {
       "entryNo": 1,
       "tournament": {
-        "label": "出場",
+        "label": "ベスト4進出",
         "rank": {
           "kind": "ongoing"
         }
       },
-      "roundrobin": null
+      "roundrobin": {
+        "group": "A",
+        "rank": 1
+      }
     },
     {
       "entryNo": 2,
-      "tournament": {
-        "label": "出場",
-        "rank": {
-          "kind": "ongoing"
-        }
-      },
-      "roundrobin": null
+      "tournament": null,
+      "roundrobin": {
+        "group": "A",
+        "rank": 3
+      }
     },
     {
       "entryNo": 3,
       "tournament": {
-        "label": "出場",
+        "label": "ベスト8",
         "rank": {
-          "kind": "ongoing"
+          "kind": "best",
+          "bestLevel": 8
         }
       },
-      "roundrobin": null
+      "roundrobin": {
+        "group": "A",
+        "rank": 2
+      }
     },
     {
       "entryNo": 4,
+      "tournament": null,
+      "roundrobin": {
+        "group": "A",
+        "rank": 4
+      }
+    },
+    {
+      "entryNo": 5,
       "tournament": {
-        "label": "出場",
+        "label": "ベスト4進出",
         "rank": {
           "kind": "ongoing"
         }
       },
-      "roundrobin": null
+      "roundrobin": {
+        "group": "B",
+        "rank": 1
+      }
+    },
+    {
+      "entryNo": 6,
+      "tournament": null,
+      "roundrobin": {
+        "group": "B",
+        "rank": 3
+      }
+    },
+    {
+      "entryNo": 7,
+      "tournament": {
+        "label": "ベスト4進出",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": {
+        "group": "B",
+        "rank": 2
+      }
+    },
+    {
+      "entryNo": 8,
+      "tournament": {
+        "label": "ベスト4進出",
+        "rank": {
+          "kind": "ongoing"
+        }
+      },
+      "roundrobin": {
+        "group": "C",
+        "rank": 1
+      }
+    },
+    {
+      "entryNo": 9,
+      "tournament": null,
+      "roundrobin": {
+        "group": "C",
+        "rank": 4
+      }
+    },
+    {
+      "entryNo": 10,
+      "tournament": {
+        "label": "ベスト8",
+        "rank": {
+          "kind": "best",
+          "bestLevel": 8
+        }
+      },
+      "roundrobin": {
+        "group": "C",
+        "rank": 2
+      }
+    },
+    {
+      "entryNo": 11,
+      "tournament": null,
+      "roundrobin": {
+        "group": "C",
+        "rank": 3
+      }
     }
   ]
 }

@@ -46,6 +46,8 @@ function orientTeamMatches(match: TournamentMatch, side: 'A' | 'B'): TeamMatchRo
 }
 
 function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
+  // 不戦勝でペアを出さなかった側（ADR-020 の walkover）。空欄にすると読み落とすので言葉で書く
+  if (players.length === 0) return <span className="text-text-muted">出場なし</span>;
   return (
     <>
       {/* 狭い画面では2人の間で折り返し、1人の名前の途中では折り返さない */}
@@ -78,6 +80,9 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
           <span className="shrink-0 w-16 text-center">
             {r.status === 'not_played' ? (
               <span className="text-text-muted">未実施</span>
+            ) : r.status === 'walkover' ? (
+              // 試合が行われていないので本数は出さない
+              <span className="text-text-muted">{r.result === 'win' ? '不戦勝' : '相手が不戦勝'}</span>
             ) : (
               <>
                 <span className="inline-block px-1.5 py-0.5 border border-border-strong rounded font-mono">
@@ -85,6 +90,8 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
                 </span>
                 {r.result && <span className="sr-only">{r.result === 'win' ? '勝ち' : '負け'}</span>}
                 {r.status === 'unfinished' && <span className="block text-text-muted">打ち切り</span>}
+                {/* 途中棄権は本数から勝敗が読めない（棄権した側の本数が多いことがある）ので、どちらが棄権したかを書く */}
+                {r.status === 'retired' && <span className="block text-text-muted">{r.result === 'lose' ? '棄権' : '相手が棄権'}</span>}
               </>
             )}
           </span>

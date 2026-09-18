@@ -48,11 +48,12 @@ Accepted。決定日: 2026-06-26。現状仕様: `docs/tournament-data-structure
 - `lib/tournamentCoverage.ts`: `computeResultCoverage()`。決勝T（`stage:'knockout'`）の decided/total 件数と最深確定ラウンドを集計。完了/進行中の判定は **`results[].tournament.rank.kind === 'ongoing'` の有無を主軸**にする（`matches` の decided/total 比だけに頼ると、3位決定戦が未実施の大会や欠番のある古い完了済みデータを誤って「進行中」と判定してしまうため。`highschool-championship/2025` や `asian-games-qualifier/2025` の実データで確認済み）。
 - `src/components/Tournament/ResultCoverageNotice.tsx`: 結果ページ H1 直下に1行表示。`completed` / `unsupported` では非表示。
 - `src/pages/tournaments/.../[gender]/index.tsx`: 本文バナーに加え、`MetaHead` の `description` にも同内容を追記（Googleは指定した meta description をそのまま使うとは限らず、本文中に同趣旨の文言があった方が検索結果に反映されやすいため、本文とメタの両方に出す設計にした）。
-- スコープ: 個人戦 + 団体戦の**決勝トーナメントのみ**。予選リーグ（`stage:'roundrobin'`）は進捗の測り方が別物（ラウンド深度でなくグループ内消化数・順位確定）になるため対象外（下記 Open Questions へ）。
+- スコープ: 進捗の分母・分子は個人戦 + 団体戦の**決勝トーナメントのみ**。予選リーグ（`stage:'roundrobin'`）は進捗の測り方が別物（ラウンド深度でなくグループ内消化数・順位確定）になるため分母には混ぜない。
+- **2026-09-18 修正: 「まだ何も反映されていない」の判定にだけは予選リーグも見る**。それまでは決勝Tの決着が0件なら `not_recorded`（本文「組み合わせを掲載しています」・title も「組み合わせ」）になり、**予選リーグが全部終わっていても「結果が無い」ように見えていた**（アジア競技大会2026 女子団体で、予選リーグ12試合が確定しているのに発生）。現在は `decidedRoundrobinMatches > 0` なら `in_progress` にし、決勝Tが0件のときだけ文言を「現在の反映状況: 予選リーグ◯試合の結果を掲載中。決勝トーナメント(全◯試合)はこれから反映します。」に切り替える。進捗率の分母は決勝Tのまま。`ResultCoverage` に `roundrobinMatchRecords` / `decidedRoundrobinMatches` が増えた。影響する既存データは全 details を走査して1ファイルだけであることを確認済み。経緯: [2026-09-18-asian-games-day1-results.md](../raw/2026-09-18-asian-games-day1-results.md)
 - **2026-09-06 修正: 「全◯試合」の分母を想定総試合数に変更**。それまでは `matches` に**存在する** knockout レコード数を分母にしていたため、実施ぶんだけ追記していく大会では分母が進行と一緒に増え、決勝までの総試合数にならなかった（全日本学生2026 女子ダブルスは332エントリー＝決勝まで331試合なのに「全76試合」＝1回戦の数を表示していた）。現在は**「決勝Tの参加数 − 1」**（シングルエリミネーションの試合数は不戦勝の有無に関係なくこの式で決まる）を分母にし、参加数は `knockoutDraw` があれば非 null の席数、無ければ `entries` の数から採る。予選リーグ併用で `knockoutDraw` が無い大会は算出根拠が無いので従来どおりレコード数で代用する。`ResultCoverage.totalKnockoutMatches` の意味が「レコード数」から「想定総試合数」に変わり、レコード数は `knockoutMatchRecords`、根拠は `expectedTotalSource` として別フィールドになった。`status` 判定は不変。経緯: [2026-09-06-coverage-denominator-fix.md](../raw/2026-09-06-coverage-denominator-fix.md)
 
 ## Open Questions
 
 - 結果ページでの途中経過表示 → **上記の通り実装済み（2026-07-19）**。
-- 予選リーグ（`roundrobin`）の反映状況表示 → 今回は対象外。グループ内消化試合数・順位確定を別ロジックで測る必要があり、対応するかは反響次第。
+- 予選リーグ（`roundrobin`）の反映状況表示 → **「反映済みかどうか」の判定は 2026-09-18 に対応した**（上記）。予選リーグ自体の進捗（グループ内消化数・順位確定）を数字で出すかは未着手。
 - 途中経過の鮮度を上げる運用（再 export の頻度・自動化の可否）→ 未着手。今回のUIは鮮度でなく反映範囲を主役にする方針にしたため優先度は下げている。

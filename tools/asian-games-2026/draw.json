@@ -1,7 +1,1821 @@
 {
-  "_source": "第20回アジア競技大会 公式リザルトサイト 日別日程 https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18",
+  "_source": "第20回アジア競技大会 公式リザルトサイト https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18 と、各試合の結果ページ #/discipline/TST/results/<試合ID>",
   "_checkedOn": "2026-09-18",
-  "_scope": "日本が入っている予選リーグの組だけ。組内は日本が出ない試合も含めて全試合（方式A＋組の例外。2026-09-18 ユーザー判断）",
-  "_columns": ["event", "group", "matchNo", "date", "time", "court", "sides（[NOC, 姓/名 ...]）"],
-  "rows": [["Men's Singles","A","1","2026-09-22","09:45","Court 4",[["JPN","UEMATSU/Toshiki"],["CAM","DOEUM/Samsocheaphearun"]]],["Men's Singles","A","2","2026-09-22","09:45","Court 5",[["INA","HUTAURUK/Tio"],["PAK","ALI/Muhammad"]]],["Men's Singles","A","3","2026-09-22","12:15","Court 4",[["JPN","UEMATSU/Toshiki"],["INA","HUTAURUK/Tio"]]],["Men's Singles","A","4","2026-09-22","12:15","Court 5",[["CAM","DOEUM/Samsocheaphearun"],["PAK","ALI/Muhammad"]]],["Men's Singles","A","5","2026-09-22","14:45","Court 4",[["JPN","UEMATSU/Toshiki"],["PAK","ALI/Muhammad"]]],["Men's Singles","A","6","2026-09-22","14:45","Court 5",[["CAM","DOEUM/Samsocheaphearun"],["INA","HUTAURUK/Tio"]]],["Men's Singles","F","1","2026-09-22","10:30","Court 4",[["KOR","KIM/Jinwoong"],["CAM","YI/Keavirak"]]],["Men's Singles","F","2","2026-09-22","10:30","Court 5",[["MGL","BATAA/Munkhtulga"],["JPN","KUROSAKA/Takuya"]]],["Men's Singles","F","3","2026-09-22","13:00","Court 4",[["KOR","KIM/Jinwoong"],["MGL","BATAA/Munkhtulga"]]],["Men's Singles","F","4","2026-09-22","13:00","Court 5",[["CAM","YI/Keavirak"],["JPN","KUROSAKA/Takuya"]]],["Men's Singles","F","5","2026-09-22","15:30","Court 4",[["CAM","YI/Keavirak"],["MGL","BATAA/Munkhtulga"]]],["Men's Singles","F","6","2026-09-22","15:30","Court 6",[["KOR","KIM/Jinwoong"],["JPN","KUROSAKA/Takuya"]]],["Men's Team","A","1","2026-09-18","09:00","Center Court",[["JPN"],["CAM"]]],["Men's Team","A","2","2026-09-18","09:00","Show Court",[["PHI"],["PAK"]]],["Men's Team","A","3","2026-09-18","11:00","Court 4",[["JPN"],["PHI"]]],["Men's Team","A","4","2026-09-18","11:00","Court 5",[["CAM"],["PAK"]]],["Men's Team","A","5","2026-09-18","13:00","Court 2",[["CAM"],["PHI"]]],["Men's Team","A","6","2026-09-18","13:00","Court 3",[["JPN"],["PAK"]]],["Mixed Doubles","A","1","2026-09-21","10:00","Court 5",[["JPN","UEMATSU/Toshiki","TEMMA/Rena"],["PHI","SANOSA/Christy","NUGUIT/Sherwin"]]],["Mixed Doubles","E","1","2026-09-21","09:00","Court 6",[["JPN","MAEDA/Rio","MARUYAMA/Kaito"],["CAM","KAN/Sophorn","YEAN/Sokhoeun"]]],["Mixed Doubles","E","2","2026-09-21","09:00","Court 8",[["LAO","HACNOLATH/Souvananh","SIMMALAVONG/Sataporn"],["INA","SANGER/Fernando","ARASY/Siti"]]],["Mixed Doubles","E","3","2026-09-21","10:00","Court 6",[["JPN","MAEDA/Rio","MARUYAMA/Kaito"],["LAO","HACNOLATH/Souvananh","SIMMALAVONG/Sataporn"]]],["Mixed Doubles","E","4","2026-09-21","10:00","Court 8",[["CAM","KAN/Sophorn","YEAN/Sokhoeun"],["INA","SANGER/Fernando","ARASY/Siti"]]],["Mixed Doubles","E","5","2026-09-21","11:00","Court 6",[["CAM","KAN/Sophorn","YEAN/Sokhoeun"],["LAO","HACNOLATH/Souvananh","SIMMALAVONG/Sataporn"]]],["Mixed Doubles","E","6","2026-09-21","11:00","Court 8",[["JPN","MAEDA/Rio","MARUYAMA/Kaito"],["INA","SANGER/Fernando","ARASY/Siti"]]],["Women's Singles","A","1","2026-09-22","09:00","Center Court",[["JPN","TEMMA/Rena"],["NEP","CHAUDHARY/Georgia"]]],["Women's Singles","A","2","2026-09-22","11:30","Center Court",[["NEP","CHAUDHARY/Georgia"],["MGL","ERDEMBILEG/Namuunkhuslen"]]],["Women's Singles","A","3","2026-09-22","14:00","Center Court",[["JPN","TEMMA/Rena"],["MGL","ERDEMBILEG/Namuunkhuslen"]]],["Women's Singles","F","1","2026-09-22","09:45","Center Court",[["JPN","MIYAMAE/Kiho"],["PAK","ZAIDI/Eraj"]]],["Women's Singles","F","2","2026-09-22","12:15","Center Court",[["PAK","ZAIDI/Eraj"],["PHI","SANOSA/Christy"]]],["Women's Singles","F","3","2026-09-22","14:45","Center Court",[["JPN","MIYAMAE/Kiho"],["PHI","SANOSA/Christy"]]],["Women's Team","A","1","2026-09-18","09:00","Court 4",[["JPN"],["CAM"]]],["Women's Team","A","2","2026-09-18","09:00","Court 5",[["PAK"],["KOR"]]],["Women's Team","A","3","2026-09-18","11:00","Court 2",[["CAM"],["KOR"]]],["Women's Team","A","4","2026-09-18","11:00","Court 9",[["JPN"],["PAK"]]],["Women's Team","A","5","2026-09-18","13:00","Center Court",[["JPN"],["KOR"]]],["Women's Team","A","6","2026-09-18","13:00","Court 6",[["CAM"],["PAK"]]]]
+  "_scope": "個人種目は日本が入っている予選リーグの組だけ（組内は日本が出ない試合も全部）。団体戦は決勝トーナメントを持つために全組・全試合（チーム＝国なので選手集計に影響しない。2026-09-18 ユーザー判断）",
+  "_row": "event / stage(roundrobin|knockout) / group(予選) / round(決勝T) / matchNo / date / time / court / sides([NOC, 姓/名 ...]) / score([A,B]。無ければ未実施) / rubbers / id・next（決勝Tの繋がり）",
+  "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）。ポイントが null のとき、片側のペアが空なら不戦勝（出さなかった側が負け）、両側にペアがあれば未実施",
+  "knockoutDraw": {
+    "Men's Team": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "C",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      null
+    ],
+    "Women's Team": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      }
+    ]
+  },
+  "rows": [
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Center Court",
+      "sides": [["JPN"], ["CAM"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["UCHIMOTO/Takafumi", "HIROOKA/Sora"],
+          ["KAN/Sophorn", "YI/Keavirak"],
+          [
+            [4, 0],
+            [4, 2],
+            [4, 1],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "S",
+          ["UEMATSU/Toshiki"],
+          ["CHAO/Viva"],
+          [
+            [5, 3],
+            [4, 2],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        [
+          "D2",
+          ["KUROSAKA/Takuya", "MARUYAMA/Kaito"],
+          ["DOEUM/Samsocheaphearun", "SOY/Sothun"],
+          [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Show Court",
+      "sides": [["PHI"], ["PAK"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["ARCILLA/Joseph", "NUGUIT/Samuel"],
+          ["ALI/Muhammad", "ARAIN/Hamza"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["NUGUIT/Sherwin"],
+          ["ARAIN/Hussain"],
+          [
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        [
+          "D2",
+          ["ALCOSEBA/Mark", "TALATAYOD/Dheo"],
+          ["BASHIR/Rafae", "KHAN/Rayyan"],
+          [
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [4, 0],
+            [1, 4],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 4",
+      "sides": [["JPN"], ["PHI"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["UCHIMOTO/Takafumi", "KUROSAKA/Takuya"],
+          ["ARCILLA/Joseph", "NUGUIT/Samuel"],
+          [
+            [4, 2],
+            [5, 3],
+            [4, 1],
+            [7, 5],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["UEMATSU/Toshiki"],
+          ["NUGUIT/Sherwin"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 1]
+          ]
+        ],
+        [
+          "D2",
+          ["HIROOKA/Sora", "MARUYAMA/Kaito"],
+          ["ALCOSEBA/Mark", "TALATAYOD/Dheo"],
+          [
+            [4, 2],
+            [5, 3],
+            [5, 3],
+            [5, 3],
+            [6, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 4,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 5",
+      "sides": [["CAM"], ["PAK"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["KAN/Sophorn", "YI/Keavirak"],
+          ["ARAIN/Hamza", "ALI/Muhammad"],
+          [
+            [4, 0],
+            [2, 4],
+            [4, 0],
+            [4, 0],
+            [6, 4],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["CHAO/Viva"],
+          ["ARAIN/Hussain"],
+          [
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["DOEUM/Samsocheaphearun", "SOY/Sothun"],
+          ["KHAN/Rayyan", "BASHIR/Rafae"],
+          [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 2],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 5,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 2",
+      "sides": [["CAM"], ["PHI"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["KAN/Sophorn", "YI/Keavirak"],
+          ["ARCILLA/Joseph", "NUGUIT/Samuel"],
+          [
+            [0, 4],
+            [2, 4],
+            [4, 6],
+            [1, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "S",
+          ["DOEUM/Samsocheaphearun"],
+          ["NUGUIT/Sherwin"],
+          [
+            [2, 4],
+            [3, 5],
+            [4, 2],
+            [2, 4],
+            [4, 0],
+            [3, 5]
+          ]
+        ],
+        [
+          "D2",
+          ["SOY/Sothun", "CHAO/Viva"],
+          ["ALCOSEBA/Mark", "TALATAYOD/Dheo"],
+          [
+            [0, 4],
+            [1, 4],
+            [3, 5],
+            [2, 4],
+            [4, 2],
+            [4, 6]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 6,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 3",
+      "sides": [["JPN"], ["PAK"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["HIROOKA/Sora", "MARUYAMA/Kaito"],
+          ["BASHIR/Rafae", "KHAN/Rayyan"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [5, 3]
+          ]
+        ],
+        [
+          "S",
+          ["KUROSAKA/Takuya"],
+          ["ARAIN/Hussain"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["UCHIMOTO/Takafumi", "UEMATSU/Toshiki"],
+          ["ALI/Muhammad", "ARAIN/Hamza"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 6",
+      "sides": [["KOR"], ["NEP"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["LEE/Hyungwon", "PARK/Jaekyu"],
+          ["BHANDARI/Kamal", "KHATRI/Pradip"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [6, 4],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["KIM/Jinwoong"],
+          ["PANDEY/Brijesh"],
+          [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        ["D2", ["KIM/Hyunsoo", "LEE/Haneul"], [], null]
+      ],
+      "note": "第3対戦はネパールがペアを出さず不戦勝（公式サイトの表示は NEP 側が BYE）。団体の本数 3-0 には1勝として入る"
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 6",
+      "sides": [["NEP"], ["INA"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["KHATRI/Pradip", "PANDEY/Brijesh"],
+          ["HUTAURUK/Tio", "SANGER/Fernando"],
+          [
+            [1, 4],
+            [2, 4],
+            [0, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        ],
+        [
+          "S",
+          ["BHANDARI/Kamal"],
+          ["PRADEWA/Bagus"],
+          [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        ],
+        ["D2", [], ["LALUYAN/Rizky", "FALEVI/Muhammad"], null]
+      ],
+      "note": "第3対戦はネパールがペアを出さず不戦勝（公式サイトの表示は NEP 側が BYE）。団体の本数 0-3 には1勝として入る"
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 9",
+      "sides": [["KOR"], ["INA"]],
+      "score": [2, 1],
+      "rubbers": [
+        [
+          "D1",
+          ["KIM/Hyunsoo", "LEE/Haneul"],
+          ["LALUYAN/Rizky", "FALEVI/Muhammad"],
+          [
+            [2, 4],
+            [4, 1],
+            [4, 2],
+            [4, 0],
+            [3, 5],
+            [4, 1],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["KIM/Jinwoong"],
+          ["PRADEWA/Bagus"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["LEE/Hyungwon", "PARK/Jaekyu"],
+          ["HUTAURUK/Tio", "SANGER/Fernando"],
+          [
+            [4, 2],
+            [4, 0],
+            [2, 4],
+            [2, 4],
+            [5, 3]
+          ],
+          "A"
+        ]
+      ],
+      "note": "第3対戦は 3-2 から韓国が途中棄権（公式サイトの表示は KOR: RET / INA: W）。中断されたゲーム 0-0 は games に入れていない"
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 8",
+      "sides": [["TPE"], ["MGL"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["CHEN/Yu-hsun", "CHANG/Yu-sung"],
+          ["ALTANGEREL/Bold-erdene", "NYAMDORJ/Bud"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["CHEN/Po-yi"],
+          ["BATAA/Munkhtulga"],
+          [
+            [4, 2],
+            [5, 3],
+            [4, 0],
+            [7, 5]
+          ]
+        ],
+        [
+          "D2",
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          ["KHURELBAYAR/Khaliunbayar", "ENKHBAYAR/Ulsbold"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 9",
+      "sides": [["IND"], ["LAO"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["MEENA/Jay", "CHOUDHARY/Yogesh"],
+          ["SIMMALAVONG/Sataporn", "LOUANGSISOMBATH/Phatthana"],
+          [
+            [4, 2],
+            [4, 0],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["THAKUR/Aryan"],
+          ["VONGPHAKDY/Bekki"],
+          [
+            [4, 0],
+            [4, 2],
+            [7, 5],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["PATEL/Aniket", "YADAV/Om"],
+          ["PASOMSOUK/Senthanongvath", "PHIENVIHANE/Viengthong"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [7, 5],
+            [4, 2]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Center Court",
+      "sides": [["TPE"], ["IND"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          ["MEENA/Jay", "CHOUDHARY/Yogesh"],
+          [
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "S",
+          ["CHANG/Yu-sung"],
+          ["THAKUR/Aryan"],
+          [
+            [4, 1],
+            [5, 3],
+            [5, 3],
+            [2, 4],
+            [4, 1]
+          ]
+        ],
+        [
+          "D2",
+          ["CHEN/Po-yi", "CHEN/Yu-hsun"],
+          ["PATEL/Aniket", "YADAV/Om"],
+          [
+            [4, 0],
+            [2, 4],
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 4,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 8",
+      "sides": [["MGL"], ["LAO"]],
+      "score": [1, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["ALTANGEREL/Bold-erdene", "BATAA/Munkhtulga"],
+          ["SIMMALAVONG/Sataporn", "LOUANGSISOMBATH/Phatthana"],
+          [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [1, 4],
+            [3, 5]
+          ]
+        ],
+        [
+          "S",
+          ["ENKHBAYAR/Ulsbold"],
+          ["PASOMSOUK/Senthanongvath"],
+          [
+            [4, 2],
+            [4, 1],
+            [5, 3],
+            [4, 1]
+          ]
+        ],
+        [
+          "D2",
+          ["KHURELBAYAR/Khaliunbayar", "NYAMDORJ/Bud"],
+          ["PHIENVIHANE/Viengthong", "VONGPHAKDY/Bekki"],
+          [
+            [1, 4],
+            [4, 2],
+            [3, 5],
+            [5, 3],
+            [4, 2],
+            [0, 4],
+            [3, 5],
+            [2, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 5,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Show Court",
+      "sides": [["MGL"], ["IND"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["NYAMDORJ/Bud", "KHURELBAYAR/Khaliunbayar"],
+          ["YADAV/Om", "PATEL/Aniket"],
+          [
+            [2, 4],
+            [1, 4],
+            [0, 4],
+            [1, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "S",
+          ["BATAA/Munkhtulga"],
+          ["MEENA/Jay"],
+          [
+            [0, 4],
+            [3, 5],
+            [2, 4],
+            [2, 4]
+          ]
+        ],
+        [
+          "D2",
+          ["ALTANGEREL/Bold-erdene", "ENKHBAYAR/Ulsbold"],
+          ["THAKUR/Aryan", "CHOUDHARY/Yogesh"],
+          [
+            [3, 5],
+            [1, 4],
+            [4, 2],
+            [1, 4],
+            [0, 4],
+            [4, 6]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 6,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 5",
+      "sides": [["TPE"], ["LAO"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          ["SIMMALAVONG/Sataporn", "LOUANGSISOMBATH/Phatthana"],
+          [
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "S",
+          ["CHEN/Po-yi"],
+          ["PHIENVIHANE/Viengthong"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 1],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["CHEN/Yu-hsun", "CHANG/Yu-sung"],
+          ["PASOMSOUK/Senthanongvath", "VONGPHAKDY/Bekki"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "m-qf2",
+      "next": "m-sf1",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "15:00",
+      "court": "Center Court",
+      "sides": [["IND"], ["INA"]],
+      "score": [0, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["MEENA/Jay", "CHOUDHARY/Yogesh"],
+          ["HUTAURUK/Tio", "SANGER/Fernando"],
+          [
+            [2, 4],
+            [0, 4],
+            [0, 4],
+            [4, 1],
+            [4, 1],
+            [1, 4],
+            [2, 4]
+          ]
+        ],
+        [
+          "S",
+          ["THAKUR/Aryan"],
+          ["PRADEWA/Bagus"],
+          [
+            [2, 4],
+            [4, 0],
+            [6, 4],
+            [2, 4],
+            [1, 4],
+            [4, 1],
+            [2, 7]
+          ]
+        ],
+        ["D2", ["YADAV/Om", "PATEL/Aniket"], ["FALEVI/Muhammad", "LALUYAN/Rizky"], null]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "m-qf3",
+      "next": "m-sf2",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "15:00",
+      "court": "Show Court",
+      "sides": [["KOR"], ["PHI"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["LEE/Hyungwon", "PARK/Jaekyu"],
+          ["ARCILLA/Joseph", "NUGUIT/Samuel"],
+          [
+            [5, 3],
+            [3, 5],
+            [5, 3],
+            [2, 4],
+            [4, 2],
+            [4, 0],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["KIM/Jinwoong"],
+          ["NUGUIT/Sherwin"],
+          [
+            [4, 2],
+            [5, 3],
+            [5, 3],
+            [4, 2]
+          ]
+        ],
+        ["D2", ["KIM/Hyunsoo", "LEE/Haneul"], ["ALCOSEBA/Mark", "TALATAYOD/Dheo"], null]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "m-sf1",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-20",
+      "time": "11:30",
+      "court": "Center Court",
+      "sides": [["JPN"], ["INA"]]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "m-sf2",
+      "next": null,
+      "matchNo": 2,
+      "date": "2026-09-20",
+      "time": "11:30",
+      "court": "Show Court",
+      "sides": [["KOR"], ["TPE"]]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 4",
+      "sides": [["JPN"], ["CAM"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["MAEDA/Rio", "NAKATANI/Sakura"],
+          ["CHHORN/Chankanha", "KHUN/Chanroseka"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [5, 3],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["IWAKURA/Ayaka"],
+          ["CHHAN/Chheavhouy"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["TEMMA/Rena", "MIYAMAE/Kiho"],
+          ["METH/Mariyan", "YEAN/Sokhoeun"],
+          [
+            [6, 4],
+            [7, 5],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 5",
+      "sides": [["PAK"], ["KOR"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["ALI/Fizza", "NAUSHAD/Tahreem"],
+          ["EOM/Yejin", "KIM/Yeon-hwa"],
+          [
+            [0, 4],
+            [0, 4],
+            [0, 4],
+            [0, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "S",
+          ["SHALLWANI/Kainaat"],
+          ["HWANG/Jeongmi"],
+          [
+            [0, 4],
+            [0, 4],
+            [1, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "D2",
+          ["ZAIDI/Eraj", "KHAN/Sabrina"],
+          ["KIM/Hansul", "LEE/Sujin"],
+          [
+            [2, 4],
+            [1, 4],
+            [0, 4],
+            [0, 4],
+            [0, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 2",
+      "sides": [["CAM"], ["KOR"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["KHUN/Chanroseka", "CHHAN/Chheavhouy"],
+          ["KIM/Hansul", "LEE/Sujin"],
+          [
+            [2, 4],
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [3, 5]
+          ]
+        ],
+        [
+          "S",
+          ["METH/Mariyan"],
+          ["HWANG/Jeongmi"],
+          [
+            [1, 4],
+            [5, 3],
+            [4, 6],
+            [0, 4],
+            [1, 4]
+          ]
+        ],
+        [
+          "D2",
+          ["CHHORN/Chankanha", "YEAN/Sokhoeun"],
+          ["EOM/Yejin", "KIM/Yeon-hwa"],
+          [
+            [0, 4],
+            [1, 4],
+            [0, 4],
+            [0, 4],
+            [4, 0],
+            [2, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 4,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 9",
+      "sides": [["JPN"], ["PAK"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["MAEDA/Rio", "NAKATANI/Sakura"],
+          ["ZAIDI/Eraj", "KHAN/Sabrina"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["IWAKURA/Ayaka"],
+          ["SHALLWANI/Kainaat"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["TEMMA/Rena", "MIYAMAE/Kiho"],
+          ["ALI/Fizza", "NAUSHAD/Tahreem"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 0],
+            [4, 1]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 5,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Center Court",
+      "sides": [["JPN"], ["KOR"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["TEMMA/Rena", "MIYAMAE/Kiho"],
+          ["KIM/Hansul", "KIM/Yeon-hwa"],
+          [
+            [4, 0],
+            [7, 5],
+            [4, 2],
+            [5, 3],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["IWAKURA/Ayaka"],
+          ["LEE/Sujin"],
+          [
+            [3, 5],
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["MAEDA/Rio", "NAKATANI/Sakura"],
+          ["EOM/Yejin", "HWANG/Jeongmi"],
+          [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 6,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 6",
+      "sides": [["CAM"], ["PAK"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["KHUN/Chanroseka", "CHHAN/Chheavhouy"],
+          ["ALI/Fizza", "NAUSHAD/Tahreem"],
+          [
+            [4, 2],
+            [4, 1],
+            [4, 0],
+            [4, 0],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["METH/Mariyan"],
+          ["ZAIDI/Eraj"],
+          [
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 1]
+          ]
+        ],
+        [
+          "D2",
+          ["CHHORN/Chankanha", "YEAN/Sokhoeun"],
+          ["SHALLWANI/Kainaat", "KHAN/Sabrina"],
+          [
+            [5, 3],
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [5, 3]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 2",
+      "sides": [["TPE"], ["THA"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["ZHOU/Yan-zhen", "CHIANG/Min-yu"],
+          ["KLOMKAMOL/Chatcha", "JONGJIT/Praewa"],
+          [
+            [4, 2],
+            [4, 1],
+            [2, 4],
+            [4, 0],
+            [4, 1],
+            [6, 4]
+          ]
+        ],
+        [
+          "S",
+          ["LO/Shu-ting"],
+          ["SOMSANIT/Thanpitcha"],
+          [
+            [4, 1],
+            [2, 4],
+            [4, 0],
+            [4, 0],
+            [4, 2]
+          ]
+        ],
+        [
+          "D2",
+          ["HSU/Chiao-ying", "HUANG/Shih-yuan"],
+          ["PHOUNGPRAPA/Buntita", "ZIEGLER/Alisha"],
+          [
+            [4, 1],
+            [4, 2],
+            [4, 1],
+            [4, 1],
+            [4, 1]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2026-09-18",
+      "time": "09:00",
+      "court": "Court 3",
+      "sides": [["MGL"], ["PHI"]],
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["GANBOLD/Khongorzul", "AMARJARGAL/Enkhjin"],
+          ["CATINDIG/Princess", "MANALAC/Noelle"],
+          [
+            [0, 4],
+            [1, 4],
+            [2, 4],
+            [2, 4],
+            [2, 4]
+          ]
+        ],
+        [
+          "S",
+          ["GANBAATAR/Enkhkhuslen"],
+          ["SANOSA/Christy"],
+          [
+            [1, 4],
+            [1, 4],
+            [3, 5],
+            [4, 6]
+          ]
+        ],
+        [
+          "D2",
+          ["ERDEMBILEG/Namuunkhuslen", "GANTUR/Anu-ujin"],
+          ["SALAZAR/Shyryn", "PAAS/Hilary"],
+          [
+            [3, 5],
+            [0, 4],
+            [2, 4],
+            [2, 4],
+            [0, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Show Court",
+      "sides": [["TPE"], ["MGL"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["HSU/Chiao-ying", "HUANG/Shih-yuan"],
+          ["GANBAATAR/Enkhkhuslen", "AMARJARGAL/Enkhjin"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [4, 0],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["LO/Shu-ting"],
+          ["GANTUR/Anu-ujin"],
+          [
+            [4, 0],
+            [4, 0],
+            [4, 1],
+            [4, 0]
+          ]
+        ],
+        [
+          "D2",
+          ["ZHOU/Yan-zhen", "CHIANG/Min-yu"],
+          ["GANBOLD/Khongorzul", "ERDEMBILEG/Namuunkhuslen"],
+          [
+            [4, 2],
+            [4, 1],
+            [5, 3],
+            [4, 2],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2026-09-18",
+      "time": "11:00",
+      "court": "Court 3",
+      "sides": [["THA"], ["PHI"]],
+      "score": [1, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["SOMSANIT/Thanpitcha", "JONGJIT/Praewa"],
+          ["CATINDIG/Princess", "MANALAC/Noelle"],
+          [
+            [4, 6],
+            [4, 6],
+            [6, 4],
+            [4, 2],
+            [1, 4],
+            [4, 6],
+            [6, 8]
+          ]
+        ],
+        [
+          "S",
+          ["KLOMKAMOL/Chatcha"],
+          ["SANOSA/Christy"],
+          [
+            [0, 4],
+            [1, 4],
+            [4, 6],
+            [0, 4]
+          ]
+        ],
+        [
+          "D2",
+          ["PHOUNGPRAPA/Buntita", "ZIEGLER/Alisha"],
+          ["SALAZAR/Shyryn", "PAAS/Hilary"],
+          [
+            [4, 2],
+            [4, 2],
+            [4, 0],
+            [12, 10],
+            [1, 4],
+            [3, 5],
+            [0, 4],
+            [4, 1]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 4",
+      "sides": [["TPE"], ["PHI"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["HSU/Chiao-ying", "HUANG/Shih-yuan"],
+          ["SALAZAR/Shyryn", "PAAS/Hilary"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 0],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["CHIANG/Min-yu"],
+          ["SANOSA/Christy"],
+          [
+            [4, 1],
+            [4, 0],
+            [6, 4],
+            [3, 5],
+            [5, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["ZHOU/Yan-zhen", "LO/Shu-ting"],
+          ["CATINDIG/Princess", "MANALAC/Noelle"],
+          [
+            [4, 1],
+            [4, 2],
+            [4, 2],
+            [4, 2],
+            [4, 2]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2026-09-18",
+      "time": "13:00",
+      "court": "Court 8",
+      "sides": [["THA"], ["MGL"]],
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["SOMSANIT/Thanpitcha", "ZIEGLER/Alisha"],
+          ["GANTUR/Anu-ujin", "AMARJARGAL/Enkhjin"],
+          [
+            [4, 2],
+            [4, 1],
+            [6, 4],
+            [7, 5],
+            [4, 0]
+          ]
+        ],
+        [
+          "S",
+          ["KLOMKAMOL/Chatcha"],
+          ["ERDEMBILEG/Namuunkhuslen"],
+          [
+            [5, 3],
+            [4, 6],
+            [4, 1],
+            [4, 1],
+            [5, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["JONGJIT/Praewa", "PHOUNGPRAPA/Buntita"],
+          ["GANBOLD/Khongorzul", "GANBAATAR/Enkhkhuslen"],
+          [
+            [4, 2],
+            [2, 4],
+            [4, 2],
+            [1, 4],
+            [4, 2],
+            [2, 4],
+            [4, 1],
+            [4, 0]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "w-sf1",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-20",
+      "time": "09:00",
+      "court": "Center Court",
+      "sides": [["JPN"], ["PHI"]]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "w-sf2",
+      "next": null,
+      "matchNo": 2,
+      "date": "2026-09-20",
+      "time": "09:00",
+      "court": "Show Court",
+      "sides": [["KOR"], ["TPE"]]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 5",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TEMMA/Rena"],
+        ["PHI", "SANOSA/Christy", "NUGUIT/Sherwin"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Court 6",
+      "sides": [
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
+        ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Court 8",
+      "sides": [
+        ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"],
+        ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 6",
+      "sides": [
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
+        ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 4,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 8",
+      "sides": [
+        ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"],
+        ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 5,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Court 6",
+      "sides": [
+        ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"],
+        ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 6,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Court 8",
+      "sides": [
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
+        ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Court 4",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki"],
+        ["CAM", "DOEUM/Samsocheaphearun"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Court 5",
+      "sides": [
+        ["INA", "HUTAURUK/Tio"],
+        ["PAK", "ALI/Muhammad"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "12:15",
+      "court": "Court 4",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki"],
+        ["INA", "HUTAURUK/Tio"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 4,
+      "date": "2026-09-22",
+      "time": "12:15",
+      "court": "Court 5",
+      "sides": [
+        ["CAM", "DOEUM/Samsocheaphearun"],
+        ["PAK", "ALI/Muhammad"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 5,
+      "date": "2026-09-22",
+      "time": "14:45",
+      "court": "Court 4",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki"],
+        ["PAK", "ALI/Muhammad"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 6,
+      "date": "2026-09-22",
+      "time": "14:45",
+      "court": "Court 5",
+      "sides": [
+        ["CAM", "DOEUM/Samsocheaphearun"],
+        ["INA", "HUTAURUK/Tio"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Court 4",
+      "sides": [
+        ["KOR", "KIM/Jinwoong"],
+        ["CAM", "YI/Keavirak"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Court 5",
+      "sides": [
+        ["MGL", "BATAA/Munkhtulga"],
+        ["JPN", "KUROSAKA/Takuya"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "13:00",
+      "court": "Court 4",
+      "sides": [
+        ["KOR", "KIM/Jinwoong"],
+        ["MGL", "BATAA/Munkhtulga"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 4,
+      "date": "2026-09-22",
+      "time": "13:00",
+      "court": "Court 5",
+      "sides": [
+        ["CAM", "YI/Keavirak"],
+        ["JPN", "KUROSAKA/Takuya"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 5,
+      "date": "2026-09-22",
+      "time": "15:30",
+      "court": "Court 4",
+      "sides": [
+        ["CAM", "YI/Keavirak"],
+        ["MGL", "BATAA/Munkhtulga"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 6,
+      "date": "2026-09-22",
+      "time": "15:30",
+      "court": "Court 6",
+      "sides": [
+        ["KOR", "KIM/Jinwoong"],
+        ["JPN", "KUROSAKA/Takuya"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:00",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "TEMMA/Rena"],
+        ["NEP", "CHAUDHARY/Georgia"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "11:30",
+      "court": "Center Court",
+      "sides": [
+        ["NEP", "CHAUDHARY/Georgia"],
+        ["MGL", "ERDEMBILEG/Namuunkhuslen"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "TEMMA/Rena"],
+        ["MGL", "ERDEMBILEG/Namuunkhuslen"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "MIYAMAE/Kiho"],
+        ["PAK", "ZAIDI/Eraj"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "12:15",
+      "court": "Center Court",
+      "sides": [
+        ["PAK", "ZAIDI/Eraj"],
+        ["PHI", "SANOSA/Christy"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:45",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "MIYAMAE/Kiho"],
+        ["PHI", "SANOSA/Christy"]
+      ]
+    }
+  ]
 }

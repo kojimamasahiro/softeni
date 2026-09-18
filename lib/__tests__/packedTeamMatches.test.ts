@@ -54,6 +54,26 @@ const detail: TournamentDetailData = {
           playersB: [{ name: 'C' }, { name: 'D' }],
         },
         {
+          // 途中棄権。**勝者（B）の本数のほうが少ない**ので、winner を落とすと勝敗が逆に読める
+          type: 'S',
+          status: 'retired',
+          winner: 'B',
+          scoreA: 3,
+          scoreB: 2,
+          playersA: [{ name: 'X' }],
+          playersB: [{ name: 'Y' }],
+        },
+        {
+          // 不戦勝。ペアを出さなかった側（B）は空配列のまま往復すること
+          type: 'D3',
+          status: 'walkover',
+          winner: 'A',
+          scoreA: null,
+          scoreB: null,
+          playersA: [{ name: 'P' }, { name: 'Q' }],
+          playersB: [],
+        },
+        {
           type: 'D3',
           status: 'not_played',
           winner: null,
@@ -83,6 +103,8 @@ test('状態・勝者・本数が往復で変わらない', () => {
     [
       ['D1', 'completed', 'A', 4, 3],
       ['D2', 'unfinished', null, 3, 3],
+      ['S', 'retired', 'B', 3, 2],
+      ['D3', 'walkover', 'A', null, null],
       ['D3', 'not_played', null, null, null],
     ],
   );
@@ -92,6 +114,12 @@ test('選手は「姓 名」の表示名とリンク先だけになる。名前�
   const [d1] = withTeam.matches ?? [];
   assert.deepStrictEqual(d1.playersA, [{ name: '大村 怜央', playerId: 10 }, { name: '伊藤 康介' }]);
   assert.deepStrictEqual(d1.playersB, [{ name: '川波 悠馬' }, { name: '百目木來杜' }]);
+});
+
+test('不戦勝でペアを出さなかった側は空配列のまま（往復で選手が湧かない）', () => {
+  const walkover = (withTeam.matches ?? [])[3];
+  assert.deepStrictEqual(walkover.playersB, []);
+  assert.deepStrictEqual(walkover.playersA, [{ name: 'P' }, { name: 'Q' }]);
 });
 
 summary();
