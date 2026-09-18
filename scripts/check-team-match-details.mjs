@@ -28,6 +28,17 @@ const ALIAS_PATH = path.join(ROOT, 'data', 'players', 'name-split-aliases.json')
 const TYPES = new Set(['D1', 'D2', 'D3', 'S']);
 const STATUSES = new Set(['completed', 'retired', 'walkover', 'unfinished', 'not_played']);
 
+/**
+ * 4.（取り違え）の例外: **同名の別人**が同じ大会の2校に出ている組み合わせ。
+ * 人がPDFで確かめたものだけを、ファイルと氏名を明示して足す（氏名だけで緩めない）。
+ * 取り込み側は `--same-name` で同じことを通す。
+ */
+const SAME_NAME_DIFFERENT_PEOPLE = {
+  // 2023 インターハイ男子: 中京(2) の佐藤直輝（ペアは前田英貴）と羽黒(7) の佐藤直輝（ペアは木皿璃夢斗）。
+  // どちらも2回戦・3回戦で同じペアなので、塊の取り違えではなく同名の別人。
+  'data/tournaments/details/highschool-championship/2023/team-none-boys.json': ['佐藤直輝'],
+};
+
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
     const p = path.join(dir, e.name);
@@ -162,8 +173,11 @@ for (const { file, data } of files) {
     const want = [m.scores?.[String(a)], m.scores?.[String(b)]];
     if (winsA !== want[0] || winsB !== want[1]) problems.push(`${where}: 対戦の勝ち数 ${winsA}-${winsB} が試合の本数 ${want[0]}-${want[1]} と合わない`);
   }
+  const sameName = new Set(SAME_NAME_DIFFERENT_PEOPLE[rel] ?? []);
   for (const [key, entryNos] of owner) {
-    if (entryNos.size > 1) problems.push(`${rel}: ${key.replace('\t', '')} が複数の学校（entryNo ${[...entryNos].join(', ')}）に割り当てられている`);
+    const name = key.replace('\t', '');
+    if (entryNos.size > 1 && !sameName.has(name))
+      problems.push(`${rel}: ${name} が複数の学校（entryNo ${[...entryNos].join(', ')}）に割り当てられている`);
   }
 }
 
