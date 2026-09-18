@@ -1,6 +1,6 @@
 // src/components/Tournament/MatchResults.tsx
 import Link from 'next/link';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { isUnplayedMatch } from '@/lib/playerStats/placement';
 import { MatchRow, TeamMatchPlayer, TeamMatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
@@ -104,7 +104,7 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
   );
 }
 
-/** この結果ラベルが付いた組は、既定で（畳まずに）出す。 */
+/** この結果ラベルが付いた組は、既定で（畳まずに）出し、カードも開いた状態で始める。 */
 const TOP_RESULT_LABELS = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
 
 /**
@@ -113,6 +113,9 @@ const TOP_RESULT_LABELS = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
  * 「開く」操作が増えるだけで、スクロール量は元から問題になっていない。
  */
 const COLLAPSE_MIN_ENTRIES = 24;
+
+/** 上のチップ（`aria-controls`）から「その他の組」の `<details>` を指すための id。 */
+const REST_SECTION_ID = 'match-results-rest';
 
 // 絞り込み（検索・上位/その他の振り分け）は呼び出し側で済ませてある。
 // ここは 1 組ぶんの見出しと、開いたときの対戦表だけを受け持つ。
@@ -124,6 +127,7 @@ function MatchGroup({
   extraRows,
   isSeed,
   resultLabel,
+  defaultOpen = false,
 }: {
   name: string;
   nameParts?: NamePart[];
@@ -132,8 +136,10 @@ function MatchGroup({
   extraRows?: MatchRow[];
   isSeed?: boolean;
   resultLabel: string;
+  /** 上位（ベスト8以上）の組は開いた状態で出す。この節を見に来る人が最初に読むのがこの数組のため。 */
+  defaultOpen?: boolean;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
     <div className="mb-6 border border-border rounded-xl shadow-sm bg-surface">
@@ -252,6 +258,9 @@ function MatchGroup({
 export default function MatchResults({ detail, gameCategory, searchQuery, setSearchQuery }: Props) {
   // 「その他の組」を開いているか。検索中は強制的に開く（検索語が下半分にしか無いことがあるため）。
   const [showRest, setShowRest] = useState(false);
+  // 上のチップから開いたときの移動先。上位の組が開いた状態で並ぶぶん、開くだけでは
+  // 何も起きていないように見える（変化が数画面下で起きる）ので、その位置まで送る。
+  const restRef = useRef<HTMLDetailsElement>(null);
   const shouldUseShortOpponentName = gameCategory !== 'singles';
 
   const participantMap = useMemo(() => {
@@ -593,6 +602,35 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
   // 検索中は「その他」を開いたままにする。ユーザーが自分で開閉したときだけ状態を持つ。
   const restOpen = showRest || query.length > 0;
 
+  // 状態の1行。検索中は絞り込み結果の件数を出す（母数の話をしても読み手の関心とずれる）。
+  // 0 件のときは下に空状態の文面が出るので、ここでは何も出さない。
+  const statusText = !collapsible
+    ? null
+    : query.length > 0
+      ? visibleItems.length > 0
+        ? `「${searchQuery.trim()}」に一致する${visibleItems.length}組を表示しています。`
+        : null
+      : restOpen
+        ? `全${allItems.length}組を表示しています。`
+        : topItems.length > 0
+          ? `全${allItems.length}組のうち、ベスト8以上の${topItems.length}組を表示しています。`
+          : `組数が多いので、全${allItems.length}組を畳んでいます。`;
+
+  // 上位ラベルが1件も無い大会（全427件中20件）では「その他」に全組が入るので言い方を変える。
+  const restChipLabel = topItems.length > 0 ? `その他の${restItems.length}組を表示` : `全${restItems.length}組を表示`;
+  const restHideLabel = topItems.length > 0 ? `その他の${restItems.length}組を隠す` : `全${restItems.length}組を隠す`;
+  // 検索中は下の `<details>` が強制的に開いていて閉じられないので、上のチップは出さない。
+  // 開いている間も消さずにラベルだけ入れ替える（押した直後にボタンが消えるとフォーカスが飛ぶ）。
+  const showTopChip = restItems.length > 0 && query.length === 0;
+
+  const toggleRest = () => {
+    const next = !showRest;
+    setShowRest(next);
+    // 開いたぶんの変化は数画面下で起きるので、その位置まで送る。
+    // details 自身の位置は開閉で変わらないため、state の反映を待たずに呼んでよい。
+    if (next) restRef.current?.scrollIntoView();
+  };
+
   const renderItem = (item: (typeof allItems)[number]) => (
     <MatchGroup
       key={item.name}
@@ -603,6 +641,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       extraRows={item.extraRows}
       isSeed={item.isSeed}
       resultLabel={item.resultLabel}
+      defaultOpen={item.isTop}
     />
   );
 
@@ -610,13 +649,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
     <section className="mb-10">
       <h2 className="text-lg font-bold mb-3">対戦詳細</h2>
 
-      <p className="mb-3 text-sm text-text-secondary">
-        1 組ずつの勝ち上がりとスコアです。
-        {collapsible &&
-          (topItems.length > 0
-            ? '既定では上位に入った組だけを出しています。ほかの組は検索するか、下の「その他の組」から開いてください。'
-            : '組数が多いので既定では畳んでいます。検索するか、下の「その他の組」から開いてください。')}
-      </p>
+      <p className="mb-3 text-sm text-text-secondary">1 組ずつの勝ち上がりとスコアです。</p>
       {hasTeamMatches && (
         <p className="mb-3 text-xs text-text-muted">
           ※ 公式記録に対戦ごとの記録がある試合は、各対戦の出場ペアと本数も載せています。左がその組、右が対戦相手です。
@@ -634,6 +667,29 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         />
       </div>
 
+      {/* 「いま何組のうち何組を見ているか」は説明文ではなくこの行とチップで出す。
+          畳まれていることに気づかないまま離脱していたため（下のチップだけでは
+          上位の組を全部スクロールしないと目に入らない）。 */}
+      {statusText && (
+        <div className="mb-4 flex flex-wrap items-center gap-3">
+          <p className="text-sm text-text-secondary">{statusText}</p>
+          {showTopChip && (
+            <button
+              type="button"
+              aria-expanded={showRest}
+              aria-controls={REST_SECTION_ID}
+              onClick={toggleRest}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border-strong bg-bg-subtle px-4 py-2 text-sm font-semibold text-text hover:bg-surface"
+            >
+              {showRest ? restHideLabel : restChipLabel}
+              <span aria-hidden className="text-text-muted">
+                {showRest ? '▲' : '▼'}
+              </span>
+            </button>
+          )}
+        </div>
+      )}
+
       {visibleItems.length === 0 && (
         <div className="mb-6 text-sm">
           <p>「{searchQuery}」に一致する組がありません。</p>
@@ -648,14 +704,28 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
 
       {restItems.length > 0 && (
         <details
+          id={REST_SECTION_ID}
+          ref={restRef}
           open={restOpen}
+          // scroll-mt-20 は上の sticky ヘッダー（h-16）のぶん。サイト内の他のアンカーと同じ値。
+          className="group scroll-mt-20"
           onToggle={(e) => {
             // 検索によって開いた分は状態に持ち込まない（検索を消したら畳んだ状態へ戻す）。
             if (query.length === 0) setShowRest((e.currentTarget as HTMLDetailsElement).open);
           }}
         >
-          {/* 中身がカードの列なので、ここを囲むとカードの二重になる。区切りは summary の1行だけにする。 */}
-          <summary className="cursor-pointer py-2 text-sm font-semibold text-link">その他の組（{restItems.length}組）を表示</summary>
+          {/* 中身がカードの列なので、ここを囲むとカードの二重になる。区切りは summary の1行だけにする。
+              チップ型なのは上のチップと同じ見た目に揃えるため。リンク色は使わない
+              （別ページへ遷移するように見える。PlayerMajorResults.tsx の慣例）。 */}
+          <summary className="flex w-fit cursor-pointer list-none items-center gap-1.5 rounded-full border border-border-strong bg-bg-subtle px-4 py-2 text-sm font-semibold text-text hover:bg-surface">
+            {restChipLabel}
+            <span aria-hidden className="text-text-muted group-open:hidden">
+              ▼
+            </span>
+            <span aria-hidden className="hidden text-text-muted group-open:inline">
+              ▲
+            </span>
+          </summary>
           <div className="pt-4">{restItems.map(renderItem)}</div>
         </details>
       )}
