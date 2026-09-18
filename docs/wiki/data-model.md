@@ -219,21 +219,19 @@ true になるため）。`reachRates` 側で `placement.kind === 'unknown'` を
 
 ### 団体戦の対戦ごとの記録（オーダー）（[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）
 
-試合オブジェクトに任意の `matches`（対戦の配列。型 `TeamMatchDetail`）を持てる。形は STリーグの `MatchDetail` に揃え、
-`type`（`D1` `D2` `D3` / `S`）・`winner`・`scoreA`・`scoreB`・`playersA`・`playersB`。
-**A は親の `entries[0]`、B は `entries[1]`。**
+試合オブジェクトに任意の `matches`（対戦の配列。型 `TeamMatchDetail`）。形は STリーグの `MatchDetail` に揃え、
+`type` は `D1` `D2` `D3` / `S`。**A は親の `entries[0]`、B は `entries[1]`。**
 
-- `status` は5種類。`completed`（決着）/ `retired`（途中棄権。winner は棄権しなかった側で**本数が少ないことがある**）/
-  `walkover`（不戦勝。本数なし・**出さなかった側の選手が空配列**）/ `unfinished`（打ち切り。winner は null）/ `not_played`
+- `status` は5種類。`completed` / `retired`（途中棄権。winner は棄権しなかった側で**本数が少ないことがある**）/
+  `walkover`（不戦勝。本数なし・**出さなかった側の選手が空配列**）/ `unfinished`（打ち切り。winner なし）/ `not_played`
 - 選手は、同じ氏名・同じ学校の個人戦の出場記録があれば `{ lastName, firstName }`、無ければ `{ name }`。
-  **名前だけの選手は `participants` に足さない**（選手一覧で採番されないように）
-- 勝者の数は親の `scores` と一致させる。検査 `npm run check:team-match-details`（prebuild）
-- ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。
-  **決着したゲームだけ**（棄権で中断されたゲームは入れない）。**表示はしていない**
-- 持っているのは元資料にある試合だけ（高校選抜 2022・2025、インターハイ 2026 女子のベスト8以降、
-  アジア大会 2026 団体）
+  **名前だけの選手は `participants` に足さない**（選手一覧に採番されるため）
+- 勝者の数は親の `scores` と一致。検査 `npm run check:team-match-details`（prebuild）
+- ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。**表示はしていない**。
+  **決着したゲームだけ**で、中断されたゲーム（`4-4` / `0-0`）は持たない（本数は `scoreA`/`scoreB` に残る）
+- 元資料にある試合だけ持つ（高校選抜 2022・2025、インターハイ 2025・2026 のベスト8以降、アジア大会 2026 団体）
 - **選手の成績集計（Player Statistics Engine）には入れない**（STリーグと同じ扱い）
-- **入力ツールで details を作り直すと消える**。取り込みスクリプトを再実行すること
+- **入力ツールで details を作り直すと消える**。取り込みスクリプトを再実行する
 
 ## score 機能のデータ
 

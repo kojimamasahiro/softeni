@@ -38,6 +38,7 @@
 | `pdf/zennihon_mixed_results.py` | 全日本ミックスの**予選リーグ（星取表）**。ドロー表パーサの対象外 |
 | `pdf/zennihon_university_results.py` / `pdf/university_indoor.py` | インカレ団体戦 / 学生選抜インドア |
 | `pdf/highschool_senbatsu_team_matches.py` / `pdf/highschool_championship_team_matches.py` | 団体戦の対戦ごとの記録（オーダー）。共通部分は `pdf/team_match_details.py` |
+| `pdf/highschool_championship_team_matches_outlined.py` | 同上の**アウトライン化 PDF 版**（`pymupdf` が要る）。数字も氏名も `highschool-championship-2025-glyphs.json`（字形→文字）から読む。出典の誤記は `-corrections.json`、`-team-names.json` は照合用 |
 | `pdf/tournament_results_common.py` | 読み取った試合一覧を details 形式へ**組み立てる共通処理**（下記） |
 | `pdf/details_to_initial_players.py` | details（結果未入力）→ 入力ツール用 `initialPlayers` |
 
