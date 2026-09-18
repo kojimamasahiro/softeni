@@ -56,6 +56,7 @@
 ## データ運用
 
 - [チーム・選手の名寄せと識別](./team-player-identity.md) `混在`
+- [選手の名寄せと識別（氏名）](./player-name-identity.md) `混在`
 
 ## 運用・その他
 
