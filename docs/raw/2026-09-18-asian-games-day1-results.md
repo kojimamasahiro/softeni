@@ -56,16 +56,24 @@ ADR-020 の `status` は当初 `completed` / `unfinished` / `not_played` の3つ
 - **不戦勝**（韓国-ネパール / ネパール-インドネシアの第3対戦。ネパール側が `BYE`。
   団体の本数は 3-0 で、不戦勝も1勝として数える）
 
-**ユーザー判断（2026-09-18）: `retired` を足す。** ADR-020 追記4。
+**ユーザー判断（2026-09-18）: `retired` と `walkover` を足す。** ADR-020 追記4・追記5。
+
+`retired`（途中棄権）:
 
 - 勝者は**棄権しなかった側**。本数からは決まらない（実測 3-2 で本数の多い側が負け）ので `winner` を必ず持つ
 - `games` は**決着したゲームだけ**。中断されたゲーム（実測 `0-0`）は取った側が決まらないので入れない
 - 表示は本数の下に「棄権」／相手側の行では「相手が棄権」。**本数だけだと勝敗が逆に読める**ため
 - 圧縮（`packedPageData.ts`）は `status` を文字列表で詰めているので変更不要。往復テストにケースを足した
 
-これで韓国-インドネシアのオーダーが入った（対戦記録 42 → 45）。
-**不戦勝はまだ表せない**ので、男子B組の残り2試合はオーダーを持たない（本数だけ）。
-`walkover` を足す案は ADR-020 の Open Questions へ。
+`walkover`（不戦勝）:
+
+- **本数を持たない**。試合が行われていないので、`completed` で 4-0 のように書くと本数の捏造になる
+- **ペアを出さなかった側は空配列**。`{ name: '—' }` のようなダミーを入れない（選手名として扱われるため）。
+  検査は「空なのは片側だけ」「勝者はペアを出した側」まで見て、人数チェックは空の側だけ飛ばす
+- 表示は「不戦勝」／相手側の行では「相手が不戦勝」。空の側の選手欄は「出場なし」（空欄だと読み落とす）
+
+これで男子B組の3試合すべてにオーダーが入った（対戦記録 42 → 51）。
+ADR-020 の Open Questions から「不戦勝を表せない」が消えた。
 
 ## 読み取りで踏んだ罠: SPA の取り違え
 
@@ -129,9 +137,9 @@ prebuild には入っていないのでビルドは止まらない。期待値�
 オーダー（`rubbers`）・決勝Tの繋がり（`id` / `next`）・席順（`knockoutDraw`）を持てるようにした。
 `build_details.py` は冪等で、これ1つから5種目ぶんの details を作り直す。
 
-## 検査（`retired` 追加後）
+## 検査（`retired` / `walkover` 追加後）
 
-check:entries / check:team-match-details（174試合・522対戦）/ bracket:verify（不一致0）/
+check:entries / check:team-match-details（176試合・528対戦）/ bracket:verify（不一致0）/
 bracket:test / upcoming:test / tsc --noEmit / eslint、すべて問題なし。
 
 ## 関連
@@ -151,8 +159,7 @@ bracket:test / upcoming:test / tsc --noEmit / eslint、すべて問題なし。
 - **コンパイルした**: 取り込み範囲の拡張（団体は全組）・オーダーの形 → runbook S11 /
   SPA の読み取りと識別子照合 → `data-import.md` /
   反映状況の文言 → ADR-007 の Implementation Status と `public-pages.md` /
-  `retired` の追加 → ADR-020 追記4・`data-model.md`・`public-pages.md`（表示）/
-  不戦勝がまだ表せない件 → ADR-020 の Open Questions と `open-questions.md`
+  `retired` / `walkover` の追加 → ADR-020 追記4・追記5・`data-model.md`・`public-pages.md`（表示）
 - **出さなかったもの**:
   - 一日目の全試合表（B組・C組の1試合ずつのスコア）… details が正。wiki に転記すると二重管理になる
   - 各対戦のゲームごとのポイント… データにはあるが表示しない（ADR-020 追記2）ので wiki に要らない

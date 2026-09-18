@@ -8,7 +8,8 @@
  * 見ること:
  *   1. 形: type / status / winner / score の組み合わせが仕様どおりか
  *      （completed は勝者あり・勝者の本数が多い、retired は勝者あり・本数の大小は問わない、
- *       unfinished は勝者なし・本数あり、not_played は本数なし）
+ *       walkover は勝者あり・本数なし・負けた側の選手が空、unfinished は勝者なし・本数あり、
+ *       not_played は本数なし）
  *   2. 親との一致: 勝者 A の数・B の数が親の scores（entries[0] / entries[1]）と一致するか
  *   3. 選手: 姓・名で持つ選手が個人戦の出場記録に実在するか、誤分割と判断済みの綴りでないか。
  *      姓名の分割修正（normalize-name-splits.mjs）から取り残されると、選手ページに繋がらなくなる
@@ -25,7 +26,7 @@ const DETAILS = path.join(ROOT, 'data', 'tournaments', 'details');
 const ALIAS_PATH = path.join(ROOT, 'data', 'players', 'name-split-aliases.json');
 
 const TYPES = new Set(['D1', 'D2', 'D3', 'S']);
-const STATUSES = new Set(['completed', 'retired', 'unfinished', 'not_played']);
+const STATUSES = new Set(['completed', 'retired', 'walkover', 'unfinished', 'not_played']);
 
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
@@ -92,6 +93,14 @@ for (const { file, data } of files) {
         // 勝敗は本数から導けないので winner を必ず持つ。
         if (sub.winner !== 'A' && sub.winner !== 'B') problems.push(`${at}: retired なのに winner が無い`);
         if (!hasScore) problems.push(`${at}: retired なのに棄権時点の本数が無い`);
+      } else if (sub.status === 'walkover') {
+        // 不戦勝。片側がペアを出さなかった＝試合は行われていないので本数は持たない。
+        // 出さなかった側の選手は空配列（下の人数チェックで空を許すのはこの状態だけ）。
+        if (sub.winner !== 'A' && sub.winner !== 'B') problems.push(`${at}: walkover なのに winner が無い`);
+        if (!noScore) problems.push(`${at}: walkover なのに本数がある（試合は行われていない）`);
+        const empty = [sub.playersA, sub.playersB].filter((ps) => Array.isArray(ps) && ps.length === 0).length;
+        if (empty !== 1) problems.push(`${at}: walkover はペアを出さなかった側だけが空（空の側が ${empty} つ）`);
+        else if ((sub.winner === 'A') !== (sub.playersB.length === 0)) problems.push(`${at}: walkover の勝者がペアを出した側でない`);
       } else if (sub.status === 'unfinished') {
         if (sub.winner !== null) problems.push(`${at}: unfinished なのに winner がある`);
         if (!hasScore) problems.push(`${at}: unfinished なのに途中の本数が無い`);
@@ -124,10 +133,12 @@ for (const { file, data } of files) {
         ['playersB', b],
       ]) {
         const players = sub[side];
-        if (!Array.isArray(players) || players.length === 0) {
+        if (!Array.isArray(players) || (players.length === 0 && sub.status !== 'walkover')) {
           problems.push(`${at}: ${side} が空`);
           continue;
         }
+        // 不戦勝でペアを出さなかった側は空のまま（人数は問わない）
+        if (players.length === 0) continue;
         if (sub.type.startsWith('D') && players.length !== 2) problems.push(`${at}: ダブルスなのに ${side} が ${players.length} 人`);
         if (sub.type === 'S' && players.length !== 1) problems.push(`${at}: シングルスなのに ${side} が ${players.length} 人`);
         for (const p of players) {

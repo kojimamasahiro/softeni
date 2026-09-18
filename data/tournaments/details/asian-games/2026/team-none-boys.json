@@ -814,7 +814,79 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-7"
+      "matchId": "match-7",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "name": "LEE Hyungwon"
+            },
+            {
+              "name": "PARK Jaekyu"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "BHANDARI Kamal"
+            },
+            {
+              "name": "KHATRI Pradip"
+            }
+          ],
+          "games": [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [6, 4],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Jinwoong"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PANDEY Brijesh"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "walkover",
+          "winner": "A",
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "name": "KIM Hyunsoo"
+            },
+            {
+              "name": "LEE Haneul"
+            }
+          ],
+          "playersB": []
+        }
+      ]
     },
     {
       "entries": [6, 7],
@@ -829,7 +901,80 @@
       "nextMatchId": null,
       "prevMatchIds": [],
       "prevMatchId": null,
-      "matchId": "match-8"
+      "matchId": "match-8",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "KHATRI Pradip"
+            },
+            {
+              "name": "PANDEY Brijesh"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "HUTAURUK",
+              "firstName": "Tio"
+            },
+            {
+              "lastName": "SANGER",
+              "firstName": "Fernando"
+            }
+          ],
+          "games": [
+            [1, 4],
+            [2, 4],
+            [0, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 4,
+          "playersA": [
+            {
+              "name": "BHANDARI Kamal"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PRADEWA Bagus"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "walkover",
+          "winner": "B",
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [],
+          "playersB": [
+            {
+              "name": "LALUYAN Rizky"
+            },
+            {
+              "name": "FALEVI Muhammad"
+            }
+          ]
+        }
+      ]
     },
     {
       "entries": [5, 7],

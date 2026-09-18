@@ -181,14 +181,19 @@ export interface TeamMatchDetail {
   type: 'D1' | 'D2' | 'D3' | 'S';
   /**
    * completed: 決着 / retired: 途中棄権（棄権しなかった側の勝ち。**勝者の本数が多いとは限らない**）/
+   * walkover: 不戦勝（片側がペアを出さなかった。試合は行われていないので本数は無い）/
    * unfinished: 団体の勝敗が決まって途中で打ち切り（勝者なし）/ not_played: 未実施
    */
-  status: 'completed' | 'retired' | 'unfinished' | 'not_played';
-  /** completed と retired のときだけ 'A' か 'B'。それ以外は null */
+  status: 'completed' | 'retired' | 'walkover' | 'unfinished' | 'not_played';
+  /** completed / retired / walkover のときだけ 'A' か 'B'。それ以外は null */
   winner: 'A' | 'B' | null;
-  /** not_played のときは null。retired は棄権した時点の本数 */
+  /** not_played と walkover のときは null。retired は棄権した時点の本数 */
   scoreA: number | null;
   scoreB: number | null;
+  /**
+   * **walkover では、ペアを出さなかった側だけが空配列**になる。それ以外の状態では両側とも人数ぶん入る
+   * （ダブルス2人・シングルス1人）。
+   */
   playersA: TeamMatchPlayer[];
   playersB: TeamMatchPlayer[];
   /**

@@ -55,9 +55,8 @@
 
 **団体戦1試合の形**: `M1 = ダブルス / M2 = シングルス / M3 = ダブルス`（ADR-020 の `D1` / `S` / `D2`）。
 予選リーグは決着後も3対戦すべて行い、決勝Tは2勝で打ち切って第3対戦が `Cancelled`（＝`not_played`）。
-途中棄権（公式表示 `RET` / `W`）は `retired`（`draw.json` では rubber の5番目に棄権した側を書く）。
-**不戦勝（片側がペアを出さない。公式表示 `BYE`）は ADR-020 で表せないので、その試合はオーダーを持たない**
-（男子B組の2試合。本数だけ入っている）→ [open-questions.md](./open-questions.md)。
+途中棄権（公式表示 `RET` / `W`）は `retired`（`draw.json` では rubber の5番目に棄権した側を書く）、
+不戦勝（片側がペアを出さない。公式表示 `BYE`）は `walkover`（出さなかった側のペアを空配列にする）。
 
 **注意**: `details/` の中身が変わると高校データパイプラインの鮮度チェック（prebuild）が落ちる。
 `npm run highschool:pipeline` を流して解消する（コリアカップと同じ）。worktree では本体の

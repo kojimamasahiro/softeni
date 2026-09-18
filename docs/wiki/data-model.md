@@ -223,16 +223,15 @@ true になるため）。`reachRates` 側で `placement.kind === 'unknown'` を
 `type`（`D1` `D2` `D3` / `S`）・`winner`・`scoreA`・`scoreB`・`playersA`・`playersB`。
 **A は親の `entries[0]`、B は `entries[1]`。**
 
-- `status` は4種類。`completed`（決着）/ `retired`（途中棄権。winner は棄権しなかった側で、
-  **その本数が少ないことがある**）/ `unfinished`（打ち切り。winner は null）/ `not_played`（未実施）。
-  **不戦勝は表せない**（ADR-020）
+- `status` は5種類。`completed`（決着）/ `retired`（途中棄権。winner は棄権しなかった側で**本数が少ないことがある**）/
+  `walkover`（不戦勝。本数なし・**出さなかった側の選手が空配列**）/ `unfinished`（打ち切り。winner は null）/ `not_played`
 - 選手は、同じ氏名・同じ学校の個人戦の出場記録があれば `{ lastName, firstName }`、無ければ `{ name }`。
   **名前だけの選手は `participants` に足さない**（選手一覧で採番されないように）
 - 勝者の数は親の `scores` と一致させる。検査 `npm run check:team-match-details`（prebuild）
 - ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。
   **決着したゲームだけ**（棄権で中断されたゲームは入れない）。**表示はしていない**
 - 持っているのは元資料にある試合だけ（高校選抜 2022・2025、インターハイ 2026 女子のベスト8以降、
-  アジア大会 2026 の男女団体）
+  アジア大会 2026 団体）
 - **選手の成績集計（Player Statistics Engine）には入れない**（STリーグと同じ扱い）
 - **入力ツールで details を作り直すと消える**。取り込みスクリプトを再実行すること
 

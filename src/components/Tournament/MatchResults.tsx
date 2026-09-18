@@ -46,6 +46,8 @@ function orientTeamMatches(match: TournamentMatch, side: 'A' | 'B'): TeamMatchRo
 }
 
 function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
+  // 不戦勝でペアを出さなかった側（ADR-020 の walkover）。空欄にすると読み落とすので言葉で書く
+  if (players.length === 0) return <span className="text-text-muted">出場なし</span>;
   return (
     <>
       {/* 狭い画面では2人の間で折り返し、1人の名前の途中では折り返さない */}
@@ -78,6 +80,9 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
           <span className="shrink-0 w-16 text-center">
             {r.status === 'not_played' ? (
               <span className="text-text-muted">未実施</span>
+            ) : r.status === 'walkover' ? (
+              // 試合が行われていないので本数は出さない
+              <span className="text-text-muted">{r.result === 'win' ? '不戦勝' : '相手が不戦勝'}</span>
             ) : (
               <>
                 <span className="inline-block px-1.5 py-0.5 border border-border-strong rounded font-mono">

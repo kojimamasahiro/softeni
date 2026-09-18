@@ -3,7 +3,7 @@
   "_checkedOn": "2026-09-18",
   "_scope": "個人種目は日本が入っている予選リーグの組だけ（組内は日本が出ない試合も全部）。団体戦は決勝トーナメントを持つために全組・全試合（チーム＝国なので選手集計に影響しない。2026-09-18 ユーザー判断）",
   "_row": "event / stage(roundrobin|knockout) / group(予選) / round(決勝T) / matchNo / date / time / court / sides([NOC, 姓/名 ...]) / score([A,B]。無ければ未実施) / rubbers / id・next（決勝Tの繋がり）",
-  "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順。null は未実施), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）",
+  "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）。ポイントが null のとき、片側のペアが空なら不戦勝（出さなかった側が負け）、両側にペアがあれば未実施",
   "knockoutDraw": {
     "Men's Team": [
       {
@@ -355,7 +355,34 @@
       "time": "09:00",
       "court": "Court 6",
       "sides": [["KOR"], ["NEP"]],
-      "score": [3, 0]
+      "score": [3, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["LEE/Hyungwon", "PARK/Jaekyu"],
+          ["BHANDARI/Kamal", "KHATRI/Pradip"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [6, 4],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["KIM/Jinwoong"],
+          ["PANDEY/Brijesh"],
+          [
+            [4, 2],
+            [4, 0],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        ["D2", ["KIM/Hyunsoo", "LEE/Haneul"], [], null]
+      ],
+      "note": "第3対戦はネパールがペアを出さず不戦勝（公式サイトの表示は NEP 側が BYE）。団体の本数 3-0 には1勝として入る"
     },
     {
       "event": "Men's Team",
@@ -366,7 +393,34 @@
       "time": "11:00",
       "court": "Court 6",
       "sides": [["NEP"], ["INA"]],
-      "score": [0, 3]
+      "score": [0, 3],
+      "rubbers": [
+        [
+          "D1",
+          ["KHATRI/Pradip", "PANDEY/Brijesh"],
+          ["HUTAURUK/Tio", "SANGER/Fernando"],
+          [
+            [1, 4],
+            [2, 4],
+            [0, 4],
+            [1, 4],
+            [2, 4]
+          ]
+        ],
+        [
+          "S",
+          ["BHANDARI/Kamal"],
+          ["PRADEWA/Bagus"],
+          [
+            [2, 4],
+            [1, 4],
+            [1, 4],
+            [4, 6]
+          ]
+        ],
+        ["D2", [], ["LALUYAN/Rizky", "FALEVI/Muhammad"], null]
+      ],
+      "note": "第3対戦はネパールがペアを出さず不戦勝（公式サイトの表示は NEP 側が BYE）。団体の本数 0-3 には1勝として入る"
     },
     {
       "event": "Men's Team",

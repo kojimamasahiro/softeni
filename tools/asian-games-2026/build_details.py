@@ -15,8 +15,7 @@
 
 団体戦の対戦ごとの記録（オーダー）は ADR-020 の `matches` として試合の中に持つ。
 選手は、個人種目の出場記録がある人だけ姓・名で持ち、それ以外は名前だけ（participants には足さない）。
-途中棄権は `status: 'retired'`。**不戦勝（片側がペアを出さない）は ADR-020 で表せないので、
-その試合はオーダーを持たない**（本数だけ入れる）。
+途中棄権は `status: 'retired'`、不戦勝（片側がペアを出さない）は `status: 'walkover'`。
 
 未実施の試合は勝者・スコアを持たない。成績は ADR-007 の「進行中」（rank.kind: ongoing）。
 
@@ -114,6 +113,9 @@ def build_rubbers(row, individual_keys):
 
     行は [type, Aのペア, Bのペア, games] か、途中棄権なら [..., 棄権した側("A"|"B")]。
     棄権した対戦は**決着したゲームだけ**を games に持つので、本数の多いほうが勝ちとは限らない。
+
+    games が null のとき、**片側のペアが空なら不戦勝**（walkover。出さなかった側が負け）、
+    両側にペアがあれば未実施（not_played。オーダーだけ出ている）。
     """
     nocs = [row["sides"][0][0], row["sides"][1][0]]
     where = f"{row['event']} {row.get('group') or row.get('round')} {row['matchNo']}"
@@ -125,10 +127,22 @@ def build_rubbers(row, individual_keys):
             raise SystemExit(f"棄権した側が A/B でない: {where} {kind} {retired_side}")
         if retired_side and games is None:
             raise SystemExit(f"未実施なのに棄権が付いている: {where} {kind}")
+        if not a and not b:
+            raise SystemExit(f"両側ともペアが空: {where} {kind}")
+        walkover = games is None and not (a and b)
+        if walkover:
+            status = "walkover"
+        elif games is None:
+            status = "not_played"
+        elif retired_side:
+            status = "retired"
+        else:
+            status = "completed"
         entry = {
             "type": kind,
-            "status": "not_played" if games is None else "retired" if retired_side else "completed",
-            "winner": None,
+            "status": status,
+            # 不戦勝はペアを出したほうの勝ち
+            "winner": ("A" if a else "B") if walkover else None,
             "scoreA": None,
             "scoreB": None,
             "playersA": [rubber_player(p, nocs[0], individual_keys) for p in a],
