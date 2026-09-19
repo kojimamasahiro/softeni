@@ -1,9 +1,32 @@
 {
   "_source": "第20回アジア競技大会 公式リザルトサイト https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18 と、各試合の結果ページ #/discipline/TST/results/<試合ID>",
   "_checkedOn": "2026-09-18",
-  "_scope": "個人種目のうち男女シングルスは日本が入っている予選リーグの組だけ（組内は日本が出ない試合も全部）。混合ダブルスと団体戦は全組・全試合（2026-09-19 / 2026-09-18 ユーザー判断）",
+  "_scope": "5種目すべて全組・全試合（2026-09-18 団体 / 2026-09-19 混合・男女シングルス のユーザー判断）",
   "_row": "event / stage(roundrobin|knockout) / group(予選) / round(決勝T) / matchNo / date / time / court / sides([NOC, 姓/名 ...]) / score([A,B]。無ければ未実施) / rubbers / id・next（決勝Tの繋がり）",
   "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）。ポイントが null のとき、片側のペアが空なら不戦勝（出さなかった側が負け）、両側にペアがあれば未実施",
+  "_expected": "公式の Competition > Groups から転記した、種目ごとの組と出場数。転記の取りこぼしを止めるための期待値",
+  "expected": {
+    "Men's Team": {
+      "groups": ["A", "B", "C"],
+      "entries": 11
+    },
+    "Women's Team": {
+      "groups": ["A", "B"],
+      "entries": 8
+    },
+    "Mixed Doubles": {
+      "groups": ["A", "B", "C", "D", "E", "F"],
+      "entries": 19
+    },
+    "Men's Singles": {
+      "groups": ["A", "B", "C", "D", "E", "F", "G"],
+      "entries": 22
+    },
+    "Women's Singles": {
+      "groups": ["A", "B", "C", "D", "E", "F", "G", "H"],
+      "entries": 23
+    }
+  },
   "knockoutDraw": {
     "Men's Team": [
       {
@@ -1935,6 +1958,175 @@
       ]
     },
     {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Show Court",
+      "sides": [
+        ["PHI", "ARCILLA/Joseph"],
+        ["NEP", "KHATRI/Pradip"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "12:15",
+      "court": "Show Court",
+      "sides": [
+        ["NEP", "KHATRI/Pradip"],
+        ["KOR", "LEE/Haneul"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:45",
+      "court": "Show Court",
+      "sides": [
+        ["PHI", "ARCILLA/Joseph"],
+        ["KOR", "LEE/Haneul"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Center Court",
+      "sides": [
+        ["TPE", "CHEN/Po-yi"],
+        ["MGL", "ALTANGEREL/Bold-erdene"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "13:00",
+      "court": "Center Court",
+      "sides": [
+        ["MGL", "ALTANGEREL/Bold-erdene"],
+        ["IND", "THAKUR/Aryan"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "15:30",
+      "court": "Center Court",
+      "sides": [
+        ["TPE", "CHEN/Po-yi"],
+        ["IND", "THAKUR/Aryan"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Court 2",
+      "sides": [
+        ["IND", "MEENA/Jay"],
+        ["PAK", "ARAIN/Hussain"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Court 3",
+      "sides": [
+        ["INA", "FALEVI/Muhammad"],
+        ["LAO", "VONGPHAKDY/Bekki"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "13:00",
+      "court": "Court 3",
+      "sides": [
+        ["LAO", "VONGPHAKDY/Bekki"],
+        ["PHI", "NUGUIT/Sherwin"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "15:30",
+      "court": "Court 3",
+      "sides": [
+        ["INA", "FALEVI/Muhammad"],
+        ["PHI", "NUGUIT/Sherwin"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "10:30",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["NEP", "BHANDARI/Kamal"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "13:00",
+      "court": "Show Court",
+      "sides": [
+        ["NEP", "BHANDARI/Kamal"],
+        ["LAO", "LOUANGSISOMBATH/Phatthana"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "15:30",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["LAO", "LOUANGSISOMBATH/Phatthana"]
+      ]
+    },
+    {
       "event": "Women's Singles",
       "stage": "roundrobin",
       "group": "A",
@@ -2010,6 +2202,214 @@
       "sides": [
         ["JPN", "MIYAMAE/Kiho"],
         ["PHI", "SANOSA/Christy"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:00",
+      "court": "Court 2",
+      "sides": [
+        ["KOR", "LEE/Sujin"],
+        ["CAM", "METH/Mariyan"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "11:30",
+      "court": "Court 3",
+      "sides": [
+        ["CAM", "METH/Mariyan"],
+        ["TPE", "HUANG/Shih-yuan"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "court": "Court 2",
+      "sides": [
+        ["KOR", "LEE/Sujin"],
+        ["TPE", "HUANG/Shih-yuan"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:00",
+      "court": "Court 4",
+      "sides": [
+        ["PHI", "CATINDIG/Princess"],
+        ["INA", "NAFIIAH/Allif"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "11:30",
+      "court": "Court 4",
+      "sides": [
+        ["INA", "NAFIIAH/Allif"],
+        ["PRK", "RI/So Hyang"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "court": "Court 4",
+      "sides": [
+        ["PHI", "CATINDIG/Princess"],
+        ["PRK", "RI/So Hyang"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:00",
+      "court": "Court 5",
+      "sides": [
+        ["IND", "TIWARI/Aadhya"],
+        ["THA", "ZIEGLER/Alisha"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "11:30",
+      "court": "Court 5",
+      "sides": [
+        ["THA", "ZIEGLER/Alisha"],
+        ["PAK", "SHALLWANI/Kainaat"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "court": "Court 6",
+      "sides": [
+        ["IND", "TIWARI/Aadhya"],
+        ["PAK", "SHALLWANI/Kainaat"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:00",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "CHIANG/Min-yu"],
+        ["CAM", "CHHAN/Chheavhouy"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "11:30",
+      "court": "Show Court",
+      "sides": [
+        ["CAM", "CHHAN/Chheavhouy"],
+        ["INA", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:00",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "CHIANG/Min-yu"],
+        ["INA", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Court 2",
+      "sides": [
+        ["PRK", "RI/Jin Mi"],
+        ["MGL", "GANTUR/Anu-ujin"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 1,
+      "date": "2026-09-22",
+      "time": "09:45",
+      "court": "Court 3",
+      "sides": [
+        ["KOR", "HWANG/Jeongmi"],
+        ["LAO", "HACNOLATH/Souvananh"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 2,
+      "date": "2026-09-22",
+      "time": "12:15",
+      "court": "Court 3",
+      "sides": [
+        ["LAO", "HACNOLATH/Souvananh"],
+        ["THA", "KLOMKAMOL/Chatcha"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 3,
+      "date": "2026-09-22",
+      "time": "14:45",
+      "court": "Court 3",
+      "sides": [
+        ["KOR", "HWANG/Jeongmi"],
+        ["THA", "KLOMKAMOL/Chatcha"]
       ]
     }
   ]
