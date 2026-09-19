@@ -28,20 +28,33 @@ description: 団体戦・対抗戦の「オーダー」（第1〜第3対戦に�
 
 ## いちばん多い依頼: 高校選抜の別の年度
 
-全日本高校選抜（`highschool-senbatsu`）で、出典が **JSTA の記録**（`t_records/<年>/<年>_B17_40.pdf`）なら
-既存スクリプトがそのまま通る。2022・2025 で検証済み。
+全日本高校選抜（`highschool-senbatsu`）は**出典で様式が2つに分かれる**。まず `information` の
+`sourceUrl` を見る。
+
+- **JSTA の記録・Excel 様式**（2020〜2022・2024・2025）→ `highschool_senbatsu_team_matches.py`。下の手順。
+  **出典元が違っても様式が同じことがある**（2020 は愛知県高体連の PDF だが中身は同じ）。
+- **JSTA 機関誌『ソフトテニス』様式**（2023）→ `highschool_senbatsu_kikanshi_team_matches.py`。
+  **1種目が左右2ページ**で `--pages 左,右`。下の「機関誌様式」へ。
+
+どちらか迷ったら `pdftotext -layout` で1ページ見る。**ペアと本数が同じ行なら Excel 様式、
+本数が1行下なら機関誌様式**。**`sourceUrl` は勝敗の取り込み元なので、オーダーの出典とは
+限らない**（2023 は `sourceUrl` が愛知県高体連の PDF で、オーダーは機関誌から取った）。
+渡された PDF を見て決める。
 
 ```bash
 # 1. 出典を確認（information の sourceUrl。JSTA 以外の年度は「様式が違う年度」を参照）
 python3 -c "import json;print([(y['year'], y.get('sourceUrl')) for y in json.load(open('data/tournaments/information/highschool-senbatsu.json'))])"
 
-# 2. まず書き込まずに実行して、割り当てと勝敗の一致を目で見る（p1 が男子・p2 が女子）
+# 2. まず書き込まずに実行して、割り当てと勝敗の一致を目で見る
+#    （1冊2ページなら p1 が男子・p2 が女子。2024 のように男女別冊の年度は --page 1 を2回）
 python3 scripts/pdf/highschool_senbatsu_team_matches.py <PDF> --page 1 \
     --details data/tournaments/details/highschool-senbatsu/<年>/team-none-boys.json
 
-# 3. 問題が無ければ書き込み、整形して検査
+# 3. 問題が無ければ書き込み、整形して検査（勝者の丸数字が抜けていれば --corrections）
 python3 scripts/pdf/highschool_senbatsu_team_matches.py <PDF> --page 1 \
-    --details data/tournaments/details/highschool-senbatsu/<年>/team-none-boys.json --write
+    --details data/tournaments/details/highschool-senbatsu/<年>/team-none-boys.json \
+    [--corrections scripts/pdf/highschool-senbatsu-<年>-corrections.json] \
+    [--zero-as-not-played] --write
 npx prettier --write data/tournaments/details/highschool-senbatsu/<年>/team-none-*.json
 npm run check:team-match-details
 ```
@@ -54,10 +67,27 @@ npm run check:team-match-details
 
 | 止まり方 | 意味 | やること |
 |---|---|---|
-| `PDF (0, 3) / details 0-2` | PDFと既存データの本数が違う | **PDFを人が見て確認**。既存が誤りなら直す（2022 で実際に2件あった）。PDF側の誤記もありうる |
+| `PDF (0, 3) / details 0-2` | PDFと既存データの本数が違う | **PDFを人が見て確認**。既存が誤りなら直す（2022 で2件、2024 女子で1件）。**既存の本数の和が4以上なら既存が誤り**。PDF側の誤記もありうる |
+| `PDF (2, 0) / details 2-1` | 同上。**勝者の丸数字が抜けている**ことがある（2024 男子で1件） | 拡大して確認。`4` に届いていれば丸が無くても決着済み。学校単位の本数から勝者が一意に決まるなら `--corrections` の `rubbers` へ |
+| `PDF (0, 3) / details 0-2` で**PDF側が多い** | **既存の本数が少なく入っている**（2021 女子で1件）。和が4未満なので和の検査には出ない | トーナメント表の本数を拡大して読む。`②` と `③`、次の段の本数との取り違えに注意。PDF が正なら既存を直す |
 | `2校に割り当てられた選手` | 塊と試合の対応を取り違えた | 様式が想定と違う。下記「様式が違う年度」へ |
 | `エントリー行 N件 / details M件` | エントリー数が合わない | ページ指定の間違いか、別様式 |
 | `塊 N件 / 試合 M件` | 3対戦の塊として読めていない | 別様式。1文字ずつの語の結合幅（`MERGE_GAP`）が効いていない可能性 |
+
+### 機関誌様式（2023）
+
+```bash
+# 左の山・右の山の順。決勝は右ページの左上にある
+python3 scripts/pdf/highschool_senbatsu_kikanshi_team_matches.py <PDF> --pages 26,27 \
+    --details data/tournaments/details/highschool-senbatsu/2023/team-none-boys.json --write
+npx prettier --write data/tournaments/details/highschool-senbatsu/2023/team-none-*.json
+npm run check:team-match-details
+```
+
+**ページ範囲は人の指定を鵜呑みにせず `pdftotext -layout` で棚卸しする**（機関誌は他競技・他大会も
+載っている合本）。見出しの「男子結果」「女子結果」と、右ページ左上の「決勝」で当たりを付ける。
+この様式でだけ効く注意は docs/wiki/data-import.md が正（行の中心で比べる・エントリー行は
+数字の高さ・ページ下端の柱・`・` が語の中・学校単位の本数の紛れ込み）。
 
 ## 別の大会・別の様式へ広げるとき
 
@@ -65,7 +95,9 @@ npm run check:team-match-details
 
 | 大会 | 状況 | スクリプト |
 |---|---|---|
-| 高校選抜（JSTA 記録） | **全試合**にある（本数まで） | `highschool_senbatsu_team_matches.py` |
+| 高校選抜（JSTA 記録・Excel 様式） | **全試合**にある（本数まで）。2020〜2022・2024・2025 | `highschool_senbatsu_team_matches.py` |
+| 高校選抜（JSTA 機関誌『ソフトテニス』） | 同上。**1種目が左右2ページ**・ペアと本数が別行。2023 | `highschool_senbatsu_kikanshi_team_matches.py` |
+| 高校選抜（**全年度 2020〜2025 投入済み**） | これ以上は増えない。次は別の大会へ | — |
 | インターハイ（公式記録・記録報告書） | 年度で違う。2021・2024〜2026 は**ベスト8以降だけ**、**2019・2022・2023 は男女とも1回戦から**（2019 は男女1冊）。ゲームごとのポイントつき。**2018 年以前は記録が無い**（投入済み） | `highschool_championship_team_matches.py` |
 | インターハイ（**記録報告書**・アウトライン化PDF） | 同上。2025 で実施 | `highschool_championship_team_matches_outlined.py` |
 | 全中・インカレ（ドローPDF） | 敗者の本数だけ。オーダーは無い。別資料の有無は未確認 | — |
@@ -107,6 +139,7 @@ npm run check:team-match-details
 
 - **勝ち数＝既存の本数**（スクリプトが自動で確認。合わなければ止まる）。
 - **同じ選手が2校に現れない**（同上。取り違えがあれば必ずここに出る）。
+- **`not_played` の数＝2-0 で決着した試合の数**（未実施の対戦にもペアが印字される様式）。
 - **`npm run check:team-match-details`**（prebuild にも入っている）。
   形・親との一致・姓名の実在・2校への重複を見る。
 - **学校の2試合目以降で、前の試合と選手が重なるか**。高校選抜 2025 では 34/34 だった。
@@ -129,6 +162,14 @@ npm run check:team-match-details
 
 ## 落とし穴
 
+- **未実施を空欄でなく `0 － 0` と印字する出典がある**（2021 女子。**同じ PDF でも男子ページは空欄**）。
+  `unfinished` に見えるが1ゲームも行われていないので `not_played` が正。`--zero-as-not-played`。
+  **決着していない試合の `0 － 0` は倒さない**（本当の打ち切りかもしれない）ので、混ざっていれば止まる。
+- **縦の位置は行の中心で比べる**（機関誌様式。氏名10.1pt・エントリー番号14.9pt なので
+  上端どうしだと約7pt ずれ、「割り当てられない試合」が全件出る）。
+- **ページ下端の柱（ノンブル）も大きな数字**。エントリー番号と取り違える（y<800 で捨てる）。
+- **スクリプトが無出力で exit 0 なら、成功ではなく起動していない**（`__main__` ガードの消失。実際に起きた）。
+  `--help` を打って切り分ける。`matches` が1件も増えていないのに成功したように見える。
 - **ファイル全体を JSON で書き直さない**。Prettier が元の改行位置を手がかりに折り返しを決めるため、
   触っていない `entries` まで数千行の差分になる（実測 6,758 行）。各試合へ差し込む。
 - **`--write` の後は必ず `npx prettier --write`**。差し込んだ部分は1行のまま。
@@ -165,9 +206,13 @@ npm run check:team-match-details
 - **出典の誤記で当てる値が決まらないなら、印字どおり残して報告する**（補正ファイルを作らない）。
   分からないものを埋めると、後から「出典の誤記」か「こちらの判断」か区別できなくなる。
   **決まるときは補正ファイルに理由つきで足す**。`--corrections` の `headers` が見出しの本数・
-  エントリー番号・学校名、`corrections` がゲームのポイント（2019・2025 で実施）。
+  エントリー番号・学校名、`corrections` がゲームのポイント（2019・2025 で実施）、
+  `rubbers` が勝者の丸数字の抜け（高校選抜 2024 で実施）。
+  **どれも印字が前提と一致するときだけ当て、違えば止まる**。当てはまらない補正が残っても止まる。
 - **既存データの本数の和が4以上なら既存が誤り**（3対戦制。2019 男子で2件。トーナメント表は
   敗者の本数しか印字しないので、勝者を 3 と決め打ちした跡が残っている）。
+  **和が4未満でも誤っていることがある**（高校選抜 2021 女子。勝者の本数が少なく入っていた）。
+  和の検査は網羅的でないので、**オーダーの勝ち数との突き合わせが本体**。
 - **`pdftotext` が空なら文字がアウトライン化されている**（`pdffonts` も空）。`_outlined.py` を使う。
   白い「打ち切り」の箱が下のゲーム行を覆うので、パスを1本ずつ白紙に描き直さないと隠れた数字が読めない。
   数字も氏名も字形辞書から読む。**辞書に無い字形は止まる**ので、新しい年度では辞書に足す作業が要る。
