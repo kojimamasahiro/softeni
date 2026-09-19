@@ -62,7 +62,7 @@ docs/wiki 全 19 ページを読み、実装（`lib/` `src/` `scripts/` `data/`�
 
 - `public-pages.md` … 公開面の共通基盤（モード切替・レイアウト・ナビ・canonical/OGP）に縮約
 - `players-pages.md`（新規）… 選手 URL 2 系統・選手一覧・選手 SEO・noindex 選別
-- 高校は既存トップ `docs/highschool-pages.md`（実装解説）との整理も含め `highschool-pages-wiki` 化を検討（※ docs 直下の `highschool-pages.md` と内容が一部重複）
+- 高校は既存トップ `docs/wiki/highschool.md`（実装解説）との整理も含め `highschool-pages-wiki` 化を検討（※ docs 直下の `highschool-pages.md` と内容が一部重複）
 
 **注意（結合度が高く、機械的分割は不可）**: `public-pages.md` は外部から多数参照されており、見出しテキストでアンカー参照されている。分割時は下記すべての追従が必要:
 

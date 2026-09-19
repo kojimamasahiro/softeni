@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * チーム参加者IDのアンダースコア破損を修復する一回限りのクリーンアップスクリプト。
- * 背景: docs/team-id-underscore-bug.md
+ * 背景: docs/raw/2026-07-09-team-id-underscore-bug.md
  *
  * 修復対象の破損パターン:
  *   1. id が "__チーム_県" 形式（normalize-team-names.mjs の filter(Boolean) 欠落による）

@@ -2,7 +2,7 @@
 import type { PageType } from '@/lib/analytics';
 
 //
-// AdSense 手動広告枠の設定。枠の設計思想は docs/adsense-ui-proposal.md、
+// AdSense 手動広告枠の設定。枠の設計思想は docs/raw/2026-06-12-adsense-ui-proposal.md、
 // 密度の上限と段階導入の手順は docs/wiki/monetization.md「手動広告枠」を正とする。
 //
 // スロットID は AdSense 管理画面（広告 → 広告ユニットごと → ディスプレイ広告）で

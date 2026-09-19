@@ -28,6 +28,9 @@ const DOCS = path.join(ROOT, 'docs');
 // 1ページの上限（文字数）。日本語はおおむね1文字≒1トークン以上なので、これで1ページ1万トークン強に収まる。
 const WIKI_CHAR_BUDGET = 12000;
 const SCOPE_PATTERN = /適用範囲[:：]/;
+// 文字数の対象外。docs 直下に置く「進行中の作業表」で、読み物ではなく入力用の作業ファイル。
+// 終わったら消す前提なので圧縮しない（docs/README.md「docs の中身」参照）。
+const WORK_FILES = new Set(['venue-input-worksheet.md']);
 
 // 文字数を見る対象（グループ名 → ディレクトリ）。
 const SIZE_GROUPS = [
@@ -77,14 +80,16 @@ function anchorsOf(file) {
 console.log(`# docs の文字数（予算 ${WIKI_CHAR_BUDGET.toLocaleString()} 字/ページ）\n`);
 let overAll = 0;
 for (const [group, dir] of SIZE_GROUPS) {
-  const rows = listMarkdown(dir).map((file) => {
-    const text = fs.readFileSync(file, 'utf-8');
-    return {
-      page: path.basename(file),
-      chars: [...text].length,
-      hasScope: SCOPE_PATTERN.test(text.split('\n').slice(0, 12).join('\n')),
-    };
-  });
+  const rows = listMarkdown(dir)
+    .filter((file) => !WORK_FILES.has(path.basename(file)))
+    .map((file) => {
+      const text = fs.readFileSync(file, 'utf-8');
+      return {
+        page: path.basename(file),
+        chars: [...text].length,
+        hasScope: SCOPE_PATTERN.test(text.split('\n').slice(0, 12).join('\n')),
+      };
+    });
   if (rows.length === 0) continue;
   rows.sort((a, b) => b.chars - a.chars);
   const total = rows.reduce((s, r) => s + r.chars, 0);

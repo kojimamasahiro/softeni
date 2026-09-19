@@ -47,7 +47,7 @@
 関連:
 
 - [Data Model](./data-model.md)
-- `docs/tournament-data-structure.md`
+- `docs/wiki/tournament-data-structure.md`
 
 ## `/tournaments/local` の仕様
 

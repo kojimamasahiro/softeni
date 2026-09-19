@@ -67,7 +67,7 @@
 - wiki → raw の参照が「バッククォートのパス表記」と Markdown リンクで混在しており、
   到達性を機械チェックできない。どちらかに寄せるか。
 - 中断案件の「再開トリガー」を統一フォーマットで持たせる
-  （`docs/exploration-cycle-audit-2026-08-10.md` §1-7 の提言。最初の適用先候補は
+  （`docs/raw/2026-08-10-exploration-cycle-audit.md` §1-7 の提言。最初の適用先候補は
   `docs/ui/**` の M5＝トークン導入、2026-07-04 から停止中）。
 - この lint 自体を `scripts/check-docs-lint.mjs` として CI 化するか
   （リンク切れ・孤立・Compile Log 欠落・ADR Status 記入漏れは機械判定できる）。

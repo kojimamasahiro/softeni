@@ -68,7 +68,7 @@ ADR-006 の2ペイン化（`AppShell`）でヘッダーが `sticky top-0` にな
   保つため、上部アンカー広告との競合は下記の管理画面設定（アンカーを下部に）で
   回避する方針とする。
 
-AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-ui-proposal.md` §3 と整合）:
+AdSense 管理画面側の推奨設定（コード変更不要、`docs/raw/2026-06-12-adsense-ui-proposal.md` §3 と整合）:
 
 - ページ内フォーマット（自動挿入）をオフ。空白の主因。
 - **アンカー広告は下部（bottom）に設定**。上部に出すと sticky ヘッダーと重なり、
@@ -93,7 +93,7 @@ AdSense 管理画面側の推奨設定（コード変更不要、`docs/adsense-u
 自動広告のページ内自動挿入をオフにしてアンカー広告だけにした結果、広告売上が旧水準の
 約1割まで落ちた（ユーザー体感・Assumption）。自動広告に戻すと**挿入位置を選べず高さも
 確保されない**ためレイアウトが崩れる、という元の問題に戻る。そこで「位置と高さを自分で
-決める手動枠」を実装した。設計の原案は [adsense-ui-proposal.md](../adsense-ui-proposal.md)、
+決める手動枠」を実装した。設計の原案は [adsense-ui-proposal.md](2026-06-12-adsense-ui-proposal.md)、
 検討経緯は [raw/2026-08-22](../raw/2026-08-22-idea-adsense-manual-ad-units.md) /
 [raw/2026-08-23](../raw/2026-08-23-adsense-manual-ad-units-implementation.md)、
 判断の記録は [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md)。

@@ -19,12 +19,14 @@
 - [Architecture](./architecture.md) `汎用`
 - [Data Model](./data-model.md) `混在`
 - [Data Import](./data-import.md) `混在`
+- [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在`
 - [PDF からの取り込み](./pdf-import.md) `汎用`
 - [Deployment](./deployment.md) `汎用`
 
 ## Score機能（score.softeni-pick / 動画レビュー）
 
 - [Score Feature](./score-feature.md) `固有`
+- [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在`
 - [Score Site Link](./score-site-link.md) `混在`
 - [Score Analysis](./score-analysis.md) `固有`
 - [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有`
@@ -40,6 +42,7 @@
 - [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校`
 - [University Pages（大学カテゴリ・高校→大学の進路）](./university.md) `学校`
 - [Tournaments Local](./tournaments-local.md) `混在`
+- [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用`
 - [STリーグ](./st-league.md) `固有`
 - [SEO（カニバリ/重複制御）](./seo.md) `混在`
 - [高校SEO M4検証ランブック（GSC事後検証・2026年8月中旬に実行）](./highschool-seo-m4-verification.md) `学校`
