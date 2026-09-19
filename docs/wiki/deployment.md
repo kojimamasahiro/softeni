@@ -1,5 +1,11 @@
 # Deployment
 
+> **適用範囲: 汎用**。Cloudflare Pages への配信・ビルド設定は競技に依存しない。
+>
+> 全体の構成（何がどこで動くか）は [architecture.md](./architecture.md)、サイト全体の地図は
+> [project-overview.md](./project-overview.md)。
+
+
 ## 概要
 
 このリポジトリは Next.js を本体にしつつ、Cloudflare Pages 向け設定ファイルが存在します。

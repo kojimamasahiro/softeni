@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted（高レベル方針）。データモデルの詳細仕様は Open Questions に残す。
+Accepted
+
+高レベル方針。データモデルの詳細仕様は Open Questions に残す。
 
 ## Context
 

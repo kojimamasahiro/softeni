@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted（2026-09-19）
+Accepted
+
+決定日: 2026-09-19
 
 ## Context
 

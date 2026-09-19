@@ -129,6 +129,11 @@ jobs:
             npm run -s check:wiki 2>&1 | sed -n '/^# docs の文字数/,/^予算超過は全体で/p' | grep -E '^(##|超過|予算超過)' || true
             echo '```'
             echo '超過が続くなら docs/prompts/slim-wiki-page.md の手順で圧縮する。'
+            echo ''
+            echo '### docs 規約（適用範囲・孤立・ADR Status・Compile Log）'
+            echo '```'
+            npm run -s check:wiki 2>&1 | sed -n '/^# 規約チェック/,$p' | grep -E '^- ' || true
+            echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: 大会情報の残タスク（報告のみ）

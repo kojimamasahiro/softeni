@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted（高レベル方針・データフロー）。具体ブロックの語彙・実装詳細は Open Questions と raw 設計に残す。
+Accepted
+
+高レベル方針・データフロー。具体ブロックの語彙・実装詳細は Open Questions と raw 設計に残す。
 
 決定日: 2026-06-21。親仕様: `docs/raw/2026-06-21-news-auto-draft-design.md`、現状仕様: `docs/wiki/news-context-blocks.md`。
 

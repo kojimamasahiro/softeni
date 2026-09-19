@@ -1,5 +1,8 @@
 # Score Feature
 
+> **適用範囲: ソフトテニス固有**。ポイント単位の記録・動画レビューはソフトテニスのルールが前提。
+
+
 公開面（`/beta/matches-results` と score ドメイン）の保守ガイドは
 [beta-matches-results.md](./beta-matches-results.md)。
 

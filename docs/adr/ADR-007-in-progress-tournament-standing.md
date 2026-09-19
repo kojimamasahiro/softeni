@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-06-26。現状仕様: `docs/wiki/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`。ADR-005（速報・プレビュー機能）を補完する。
+Accepted
+
+決定日: 2026-06-26。現状仕様: `docs/wiki/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`。ADR-005（速報・プレビュー機能）を補完する。
 
 ## Context
 

@@ -1,5 +1,10 @@
 # Architecture
 
+> **適用範囲: 汎用**。構成（Next.js Pages Router ＋ 静的データ ＋ 一部 Supabase）は競技に依存しない。
+>
+> サイト全体の地図は [project-overview.md](./project-overview.md)、配信は [deployment.md](./deployment.md)。
+
+
 ## 全体像
 
 このリポジトリは Next.js Pages Router を中心に、静的データ配信と一部 Supabase API を併用する構成です。

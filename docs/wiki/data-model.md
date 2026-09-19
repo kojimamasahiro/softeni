@@ -6,6 +6,7 @@
 > [raw/2026-09-18-wiki-archive-data-model.md](../raw/2026-09-18-wiki-archive-data-model.md)。
 
 扱うデータは2系統: **静的 JSON**（`data/**`・`public/data/**`）と **Supabase**（score 機能の動的データ）。
+どこで動くかの全体像は [architecture.md](./architecture.md)。
 
 ## 大会データ
 
