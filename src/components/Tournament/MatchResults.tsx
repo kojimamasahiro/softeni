@@ -129,6 +129,61 @@ function TeamMatchList({ rows }: { rows: TeamMatchRow[] }) {
   );
 }
 
+/**
+ * 1組ぶんの試合の表。ラウンド・対戦相手・スコアの3列で、団体戦の記録がある試合はその下に対戦を並べる。
+ * `showHeader` が false のときも空のヘッダー行を出す——`table-fixed` の列幅をここで決めているため、
+ * 落とすと「以降の試合」の表だけ列がずれる。
+ */
+function MatchTable({ rows, showHeader }: { rows: MatchRow[]; showHeader: boolean }) {
+  return (
+    <table className="w-full text-sm table-fixed border-collapse text-left">
+      {showHeader ? (
+        <thead className="bg-bg-subtle text-text">
+          <tr>
+            <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">ラウンド</th>
+            <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left">対戦相手</th>
+            <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">スコア</th>
+          </tr>
+        </thead>
+      ) : (
+        <thead className="bg-gray-50 dark:bg-gray-700 text-text">
+          <tr>
+            <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
+            <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left"></th>
+            <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
+          </tr>
+        </thead>
+      )}
+      <tbody>
+        {rows.map((m: MatchRow, i: number) => {
+          return [
+            <tr key={i} className="border-t border-border">
+              <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
+              <td className="px-4 py-2 break-words text-left">
+                {m.opponentPlayerIds?.length === 1 ? (
+                  <Link href={`/players/${m.opponentPlayerIds[0]}/results`} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">
+                    {m.opponentDisplayName ?? '不明'}
+                  </Link>
+                ) : (
+                  (m.opponentDisplayName ?? '不明')
+                )}
+              </td>
+              <td className="px-4 py-2 text-left">{m.unplayed ? <span className="text-text-muted">未実施</span> : `${m.games.won}-${m.games.lost}`}</td>
+            </tr>,
+            m.teamMatches ? (
+              <tr key={`${i}-team`}>
+                <td colSpan={3} className="p-0">
+                  <TeamMatchList rows={m.teamMatches} />
+                </td>
+              </tr>
+            ) : null,
+          ];
+        })}
+      </tbody>
+    </table>
+  );
+}
+
 /** この結果ラベルが付いた組は、既定で（畳まずに）出し、カードも開いた状態で始める。 */
 const TOP_RESULT_LABELS = ['優勝', '準優勝', 'ベスト4', 'ベスト8'];
 
@@ -213,66 +268,26 @@ function MatchGroup({
 
       {isOpen && (
         <div className="w-full overflow-x-auto">
-          {[
-            { title: null, rows: matchGroup },
-            { title: '以降の試合', rows: extraRows ?? [] },
-          ].map(({ title, rows }, index) =>
-            rows.length > 0 ? (
-              <div key={title ?? 'main'} className="mb-2 w-full">
-                {title && <div className="px-4 py-2 text-sm font-medium text-text-secondary bg-gray-50 dark:bg-gray-700 text-left">{title}</div>}
-                <table className="w-full text-sm table-fixed border-collapse text-left">
-                  {index === 0 && (
-                    <thead className="bg-bg-subtle text-text">
-                      <tr>
-                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">ラウンド</th>
-                        <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left">対戦相手</th>
-                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left">スコア</th>
-                      </tr>
-                    </thead>
-                  )}
-                  {index !== 0 && (
-                    <thead className="bg-gray-50 dark:bg-gray-700 text-text">
-                      <tr>
-                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
-                        <th className="w-3/5 px-4 py-2 border-b border-border-strong text-left"></th>
-                        <th className="w-1/5 px-4 py-2 border-b border-border-strong text-left"></th>
-                      </tr>
-                    </thead>
-                  )}
-                  <tbody>
-                    {rows.map((m: MatchRow, i: number) => {
-                      return [
-                        <tr key={i} className="border-t border-border">
-                          <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
-                          <td className="px-4 py-2 break-words text-left">
-                            {m.opponentPlayerIds?.length === 1 ? (
-                              <Link
-                                href={`/players/${m.opponentPlayerIds[0]}/results`}
-                                className="underline underline-offset-2 decoration-dotted hover:decoration-solid"
-                              >
-                                {m.opponentDisplayName ?? '不明'}
-                              </Link>
-                            ) : (
-                              (m.opponentDisplayName ?? '不明')
-                            )}
-                          </td>
-                          <td className="px-4 py-2 text-left">
-                            {m.unplayed ? <span className="text-text-muted">未実施</span> : `${m.games.won}-${m.games.lost}`}
-                          </td>
-                        </tr>,
-                        m.teamMatches ? (
-                          <tr key={`${i}-team`}>
-                            <td colSpan={3} className="p-0">
-                              <TeamMatchList rows={m.teamMatches} />
-                            </td>
-                          </tr>
-                        ) : null,
-                      ];
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            ) : null,
+          {matchGroup.length > 0 && (
+            <div className="mb-2 w-full">
+              <MatchTable rows={matchGroup} showHeader />
+            </div>
+          )}
+          {/* 「以降の試合」は自分が負けた先の話なので、畳んでおいて読みたい人だけ開く（ユーザー判断 2026-09-19）。
+              見出しの行をそのまま summary にする（カードの中でさらにチップを置くと囲みが増える）。 */}
+          {extraRows && extraRows.length > 0 && (
+            <details className="group mb-2 w-full">
+              <summary className="flex cursor-pointer list-none items-center justify-between px-4 py-2 text-left text-sm font-medium text-text-secondary bg-gray-50 dark:bg-gray-700 hover:bg-bg-subtle">
+                以降の試合（{extraRows.length}試合）
+                <span aria-hidden className="text-xs text-text-muted group-open:hidden">
+                  ▼
+                </span>
+                <span aria-hidden className="hidden text-xs text-text-muted group-open:inline">
+                  ▲
+                </span>
+              </summary>
+              <MatchTable rows={extraRows} showHeader={false} />
+            </details>
           )}
         </div>
       )}
