@@ -1,5 +1,8 @@
 # ランキング仕様
 
+> **適用範囲: 混在**。シーズンポイント制・tier・較正の考え方は汎用。対象大会と配点はソフトテニス固有。
+
+
 年度ランキング（シーズンポイント制）の現行仕様のまとめ。2026-07-11 の較正・再分類決定を反映した最新版。
 実装が正（wikiは二次成果物）。主な実装: `lib/playerStats/aggregators/rankingCompute.ts`・
 `scripts/playerStats/generate-rankings.ts`・`data/ranking-config.json`。

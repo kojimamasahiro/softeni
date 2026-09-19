@@ -14,8 +14,9 @@ docs/wiki = compile 済みの現在の仕様、docs/adr = 重要な決定の記�
   （ADR の Context / Decision / Alternatives は歴史の記録なので例外。ADR rules 参照）。
 - 更新は「追記（YYYY-MM-DD）」を足すのではなく、**該当の節を書き換える**。
   長くなったページは docs/prompts/slim-wiki-page.md の手順で圧縮できる。
-  1ページ12,000字が目安（`npm run check:wiki`。CI の checks.yml では
-  リンク切れがゲート、文字数は報告のみ）。
+  1ページ12,000字が目安。**この節の規約は `npm run check:wiki` が機械で見る**
+  （文字数・リンク切れ・適用範囲の行・wiki の孤立・ADR の Status 書式・Compile Log の欠落）。
+  CI の checks.yml ではリンク切れがゲート、残りは報告のみ。
 - 各ページの冒頭に **`適用範囲`** の行（汎用 / 学校スポーツ共通 / ソフトテニス固有 / 混在）を置く。
   他競技へ持ち出せる部分を見分けるため（docs/raw/2026-09-18-idea-multi-sport-expansion.md）。
 - 新しいページは必ずクロスリンクする（docs/wiki/index.md へ追加 ＋ 関連ページから1本以上）。

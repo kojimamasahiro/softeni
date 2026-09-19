@@ -15,8 +15,12 @@
 //   1. ページごとの文字数（予算 WIKI_CHAR_BUDGET を超えたものに印）
 //      対象は docs/wiki と、wiki と同じ役割を持ちながら外に置かれている docs 直下・docs/ui
 //      （2026-09-19 に追加。`tournament-data-structure.md` のような大物が予算の外にいたため）
-//   2. 冒頭に「適用範囲」の行があるか（他競技へ持ち出すときの仕分け）
-//   3. docs 全体のリンク切れ（ファイルと見出しアンカー）
+//   2. docs 全体のリンク切れ（ファイルと見出しアンカー）
+//   3. AGENTS.md の docs 規約が守られているか（2026-09-19 に追加）
+//      - wiki の各ページ冒頭に「適用範囲」の行があるか
+//      - wiki のページが index.md 以外からも参照されているか（孤立していないか）
+//      - ADR の `## Status` 直下が状態語だけになっているか
+//      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
 //
 // 実行: node scripts/check-wiki-size.mjs [--strict]
 
@@ -98,7 +102,7 @@ for (const [group, dir] of SIZE_GROUPS) {
   console.log(`## ${group}: ${rows.length} ページ・${total.toLocaleString()} 字・予算超過 ${over.length}\n`);
   for (const r of rows) {
     const flag = r.chars > WIKI_CHAR_BUDGET ? '超過' : '    ';
-    const scope = r.hasScope ? '適用範囲あり' : '適用範囲なし';
+    const scope = group === 'wiki' ? (r.hasScope ? '適用範囲あり' : '適用範囲なし') : '            ';
     console.log(`${flag} ${String(r.chars).padStart(7)}  ${scope}  ${r.page}`);
   }
   console.log('');
@@ -134,5 +138,59 @@ for (const dir of LINK_DIRS) {
 
 console.log(`# リンク切れ（docs 全体・${seen.size} ファイル）: ${broken.length} 件\n`);
 for (const b of broken) console.log(`- ${b}`);
+
+// 3. AGENTS.md の docs 規約
+console.log('\n# 規約チェック\n');
+const wikiDir = path.join(DOCS, 'wiki');
+const wikiFiles = listMarkdown(wikiDir);
+
+// 3-1. 適用範囲の行
+const noScope = wikiFiles.filter((f) => {
+  const head = fs.readFileSync(f, 'utf-8').split('\n').slice(0, 12).join('\n');
+  return !SCOPE_PATTERN.test(head);
+});
+console.log(`- 適用範囲の行が無い wiki: ${noScope.length} 件 ${noScope.map((f) => path.basename(f)).join(', ')}`);
+
+// 3-2. index.md 以外から参照されていない wiki（孤立）
+const inbound = new Map(wikiFiles.map((f) => [path.basename(f), new Set()]));
+for (const f of wikiFiles) {
+  const text = fs.readFileSync(f, 'utf-8');
+  for (const m of text.matchAll(/\]\(\.\/([a-z0-9-]+\.md)/g)) {
+    if (inbound.has(m[1])) inbound.get(m[1]).add(path.basename(f));
+  }
+}
+const orphanWiki = wikiFiles
+  .map((f) => path.basename(f))
+  .filter((b) => b !== 'index.md' && [...inbound.get(b)].filter((x) => x !== 'index.md' && x !== b).length === 0);
+console.log(`- index.md 以外から参照されていない wiki: ${orphanWiki.length} 件 ${orphanWiki.join(', ')}`);
+
+// 3-3. ADR の Status 書式（直下1行が状態語だけ）
+const ADR_STATES = ['Draft', 'Accepted', 'Deprecated', 'Superseded'];
+const badStatus = [];
+for (const f of listMarkdown(path.join(DOCS, 'adr'))) {
+  const base = path.basename(f);
+  if (!/^ADR-\d{3}-/.test(base) || base.startsWith('ADR-000')) continue;
+  const lines = fs.readFileSync(f, 'utf-8').split('\n');
+  const i = lines.findIndex((l) => /^##\s+Status/.test(l));
+  if (i < 0) {
+    badStatus.push(`${base}（Status 節が無い）`);
+    continue;
+  }
+  const first = lines.slice(i + 1).find((l) => l.trim());
+  if (!first || !ADR_STATES.includes(first.trim())) badStatus.push(`${base}（${(first || '').trim().slice(0, 24)}）`);
+}
+console.log(`- Status が状態語だけになっていない ADR: ${badStatus.length} 件 ${badStatus.join(', ')}`);
+
+// 3-4. raw の Compile Log（免除の条件は docs/prompts/update-wiki.md）
+const COMPILE_LOG_SINCE = '2026-09-19'; // 規約を機械チェックにした日。これ以降に作ったノートだけを見る
+const EXEMPT = /(wiki-archive|-review|-checklist|-todo)\b/;
+const missingLog = listMarkdown(path.join(DOCS, 'raw'))
+  .map((f) => path.basename(f))
+  .filter((b) => {
+    const m = b.match(/^(\d{4}-\d{2}-\d{2})-/);
+    return m && m[1] >= COMPILE_LOG_SINCE && !EXEMPT.test(b);
+  })
+  .filter((b) => !/Compile Log/.test(fs.readFileSync(path.join(DOCS, 'raw', b), 'utf-8')));
+console.log(`- Compile Log が無い raw（${COMPILE_LOG_SINCE} 以降・免除を除く）: ${missingLog.length} 件 ${missingLog.join(', ')}`);
 
 if (strict && broken.length > 0) process.exit(1);

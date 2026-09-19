@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-09-12（ADR 化は 2026-09-17）。現状仕様: `docs/wiki/team-player-identity.md`
+Accepted
+
+決定日: 2026-09-12（ADR 化は 2026-09-17）。現状仕様: `docs/wiki/team-player-identity.md`
 「既定グループ分けの規則」「判断台帳のキーと、判断の引き継ぎ」。
 
 ## Context

@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-06-27。現状仕様: `docs/wiki/news-context-blocks.md` / `docs/wiki/seo.md` #8 / `docs/wiki/public-pages.md`。
+Accepted
+
+決定日: 2026-06-27。現状仕様: `docs/wiki/news-context-blocks.md` / `docs/wiki/seo.md` #8 / `docs/wiki/public-pages.md`。
 
 ADR-005（速報・プレビュー機能）の「記事の再利用先として結果記事（result）も持つ」部分を **Superseded**（結果記事のみ）。文脈ブロックを一次成果物とする中核方針、プレビュー（preview）記事、既存ページ差し込みは ADR-005 のまま有効。
 

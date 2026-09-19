@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-07-01（設計）、実装完了: 2026-07-02（P1–P7）。
+Accepted
+
+決定日: 2026-07-01（設計）、実装完了: 2026-07-02（P1–P7）。
 現状仕様: `docs/wiki/players-pages.md`「選手統計エンジン」節。
 設計の一次資料: `docs/raw/2026-07-01-player-statistics-engine.md` /
 同 `-data-contract.md` / 同 `-implementation-plan.md`（歴史的記録として保全）。

@@ -1,5 +1,8 @@
 # Backend
 
+> **適用範囲: 汎用**。API の境界と設定は競技に依存しない。
+
+
 > 現行仕様。2026-08-12 に実装（`next.config.mjs` / `lib/betaMatchesClient.ts` / `package.json`）と
 > 突き合わせ済み。
 
