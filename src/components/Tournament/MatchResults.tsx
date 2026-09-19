@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { isUnplayedMatch } from '@/lib/playerStats/placement';
+import { formatRoundLabel } from '@/lib/roundLabel';
 import { MatchRow, TeamMatchPlayer, TeamMatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
 import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
@@ -158,7 +159,7 @@ function MatchTable({ rows, showHeader }: { rows: MatchRow[]; showHeader: boolea
         {rows.map((m: MatchRow, i: number) => {
           return [
             <tr key={i} className="border-t border-border">
-              <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
+              <td className="px-4 py-2 break-words text-left">{formatRoundLabel(m)}</td>
               <td className="px-4 py-2 break-words text-left">
                 {m.opponentPlayerIds?.length === 1 ? (
                   <Link href={`/players/${m.opponentPlayerIds[0]}/results`} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">

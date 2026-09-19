@@ -71,6 +71,33 @@
 
 整形は `lib/categorySchedule.ts`、検査は `check:upcoming` の **[5]**。
 
+### 種目別の競技方式（`format`）
+
+`information` の `categories[].format`。**主催者が方式を文章で公開しておらず、見る人が
+公式サイトの画面から形式を読み取れない大会だけ**に書く（[ADR-021](../adr/ADR-021-category-competition-format.md)）。
+ほとんどの大会は持たない。
+
+```json
+"format": {
+  "summary": "19組を6つの予選リーグ（A〜F組。1組あたり2〜4組）に分け、勝ち上がった12組が決勝トーナメントを戦う。…",
+  "assumptions": ["決勝トーナメントへ進むのが各組の上位2組であることは公式に明記がなく、枠数（12）と組数（6）からの当サイトの推定です。"],
+  "source": "第20回アジア競技大会 公式リザルトサイト",
+  "sourceUrl": "https://results.asiangames2026.org/#/discipline/TST/competition",
+  "checkedOn": "2026-09-19"
+}
+```
+
+- **`summary` は1つの文章**。組数・通過数をフィールドに分けない。大会ごとに方式がばらばらで
+  再利用が効かないうえ、**欄があると推測で埋める圧力がかかる**（ADR-021）
+- **出典から決まらない点は `assumptions[]` へ**。画面には「当サイトの推定」と明記して本文と分けて出す。
+  推定が無ければフィールドごと省く（空配列を置かない）
+- **出典（`source` / `sourceUrl`）が無ければ表示しない**（`schedule` と同じ）。
+  出典は**種目側**に持つ（方式は種目ごとに出所が違うため。`schedule` は年度レコードに1つ）
+- `checkedOn` は「いつ時点か」。壊れた形式の値は表示しない
+- 公開しない入力メモは従来どおり `note`。`format` は公開する文章なので混ぜない
+
+整形は `lib/categoryFormat.ts`、表示は `CategoryFormatNotice.tsx`、検査は `npm run format:test`。
+
 ### 段階で分割された大会の最終成績
 
 1つの大会を進行段階ごとに複数の `categoryId` へ分けることがある（例: 予選会の

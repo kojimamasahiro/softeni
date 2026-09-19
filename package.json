@@ -67,6 +67,7 @@
     "bracket:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketLayout.test.ts && ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/bracketDrawing.test.ts && ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/packedTeamMatches.test.ts",
     "analytics:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/analytics.test.ts",
     "upcoming:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/upcomingInternational.test.ts",
+    "format:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/categoryFormat.test.ts",
     "career:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerCareerAffiliations.test.ts",
     "popular:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/popularPages.test.ts",
     "popular:import": "ts-node --project scripts/playerStats/tsconfig.json scripts/import-popular-pages.ts",
