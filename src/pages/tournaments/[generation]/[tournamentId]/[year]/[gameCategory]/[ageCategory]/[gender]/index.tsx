@@ -34,6 +34,7 @@ import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
+import { toPublicInformationEntry, type PublicTournamentInformationEntry } from '@/lib/tournamentInformationPublic';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
@@ -65,7 +66,11 @@ interface TournamentYearResultPageProps {
   /** 略称。先頭1件を title / h1 に併記する */
   searchAliases?: string[];
   categoryLabel: string;
-  infoForYear: TournamentInformationEntry | null;
+  /**
+   * その年の開催情報。**`note` を持てない型**（props は `__NEXT_DATA__` として配信HTMLに載るため。
+   * lib/tournamentInformationPublic.ts）。
+   */
+  infoForYear: PublicTournamentInformationEntry | null;
   detailDataPacked: PackedTournamentDetailData | null;
   linkCategories: LinkCategory[] | null;
   infoWarnings?: string[];
@@ -567,7 +572,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<TournamentYearResultPageProps> = async (context) => {
   const { generation, tournamentId, year, gameCategory, ageCategory, gender } = context.params as {
     generation: string;
     tournamentId: string;
@@ -872,7 +877,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: ((): Record<string, unknown> => {
+    // 戻り値に props の型を付けておくこと。`Record<string, unknown>` に緩めると
+    // `infoForYear` に生の information 年エントリ（note 付き）を入れても型が通ってしまう。
+    props: ((): TournamentYearResultPageProps => {
       return {
         generation,
         tournamentId,
@@ -884,7 +891,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         searchLabel: tournamentIndexEntry?.searchLabel ?? null,
         searchAliases: tournamentIndexEntry?.searchAliases ?? [],
         categoryLabel: infoForYear?.categories?.find((cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`)?.label ?? '',
-        infoForYear,
+        // 入力メモ（note）は props に載せない＝配信HTMLに出さない（lib/tournamentInformationPublic.ts）
+        infoForYear: toPublicInformationEntry(infoForYear),
         detailDataPacked: detailData ? packTournamentDetailData(detailData) : null,
         linkCategories,
         infoWarnings,

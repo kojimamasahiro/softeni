@@ -25,6 +25,29 @@
 **Deprecated**: `detected-documents.json`（候補検知ストア。未仕分け583件ごと 2026-09-12 に削除。
 [tournaments-local.md](./tournaments-local.md) / [ADR-001](../adr/ADR-001-local-source-detection-store.md)）。
 
+### 入力メモ（`note`）は公開しない
+
+`information/*.json` の年エントリ直下・`venues[]`・`delegations/*.json` が持つ `note` は**入力時のメモ**で、
+出典の誤りをどう直したか・なぜ値を書かなかったか、といった**内部の判断**が入る。これは公開しない。
+
+**「公開しない」は描画結果だけでなくページのペイロードも指す。** Next.js は `getStaticProps` が返した
+props を `__NEXT_DATA__` として配信HTMLに丸ごと埋めるので、**描画していなくてもHTMLには載る**。
+実際に年度別結果ページが `information` の年エントリをそのまま props に渡しており、`note` が配信HTMLに
+出ていた（2026-09-19 に発見・修正。[raw/2026-09-19-note-in-next-data.md](../raw/2026-09-19-note-in-next-data.md)）。
+
+規約: **`note` は `getStaticProps` で落とす**（描画側で出し分けない）。`information` の年エントリを
+props に載せるページは `lib/tournamentInformationPublic.ts` の `toPublicInformationEntry()` を通す。
+
+再発は型で止める。そのために2つ要る（片方だけでは効かない）:
+
+1. `PublicTournamentInformationEntry` は `note?: never`。単なる `Omit<…, 'note'>` だと
+   `note` 付きの値もそのまま代入できてしまう（余剰プロパティの検査はオブジェクトリテラルにしか効かない）
+2. **`getStaticProps` の戻り値にページの props 型を付ける**。`Record<string, unknown>` に緩めると
+   1 の型が参照されず素通りする
+
+より一般に、**props には出したいフィールドだけを明示的に詰める**。大会ハブ・大会一覧・
+ブロック/都道府県一覧・高校全国大会の歴代ページは元からそうなっており、`note` は載っていない。
+
 ### 代表名簿（`delegations`）
 
 `data/tournaments/delegations/{tournamentId}-{year}.json`。**国際大会に出る日本代表選手団の、公式発表の転記**。
@@ -41,7 +64,7 @@
 | `members[].gender` | `boys` / `girls`。表示のグループ分け |
 | `members[].affiliation` | 名簿の表記そのまま（正式名称）。サイト内の略称へ寄せない |
 | `members[].categoryIds` | 出場種目。`information` の `categories[].categoryId` と対応 |
-| `note` | 入力時のメモ。**公開ページには出さない** |
+| `note` | 入力時のメモ。**公開ページには出さない**（[入力メモ（`note`）は公開しない](#入力メモnoteは公開しない)） |
 
 生年月日・年齢は名簿にあっても取り込まない（個人情報で、掲載する用途が無い）。
 検査は `npm run check:upcoming` の **[4]**。表示は [public-pages.md](./public-pages.md)。
@@ -160,9 +183,10 @@ true になるため）。`reachRates` 側で `placement.kind === 'unknown'` を
 | `courts` | number | | 面数 |
 | `surface` | string | | 正規化語彙（下記） |
 | `usage` | string | | どの日・どの種目に使われたか。**自由文** |
-| `note` | string | | 出典の誤りを直した根拠、値を書かなかった理由 |
+| `note` | string | | 出典の誤りを直した根拠、値を書かなかった理由。**公開しない**（上記の節） |
 
-レコード直下に置ける任意フィールド: `guidelineUrl`（要項PDFのURL）、`note`（入力メモ。**公開しない**）。
+レコード直下に置ける任意フィールド: `guidelineUrl`（要項PDFのURL）、`note`（入力メモ。**公開しない**＝
+配信HTMLの `__NEXT_DATA__` にも入れない。上記の節）。
 型は `src/types/tournament.ts` の `TournamentInformationEntry` / `TournamentVenue`。
 
 記載ルール:
