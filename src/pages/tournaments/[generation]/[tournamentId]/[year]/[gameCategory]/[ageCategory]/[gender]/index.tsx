@@ -13,12 +13,14 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ResultContextBlocks, { type InsightSummary, type PriorMeetingSummary } from '@/components/ResultContextBlocks';
+import CategoryFormatNotice from '@/components/Tournament/CategoryFormatNotice';
 import MatchResults from '@/components/Tournament/MatchResults';
 import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { AD_SLOTS } from '@/lib/ads';
+import { findCategoryFormat } from '@/lib/categoryFormat';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
 import { getPublishedInsight } from '@/lib/tournamentInsight';
@@ -142,6 +144,11 @@ export default function TournamentYearResultPage({
   // completed/unsupported（過去の完了済み大会や予選リーグのみのデータ）では
   // meta description・本文とも変化なし。
   const resultCoverage = useMemo(() => computeResultCoverage(detailData, abandonment), [detailData, abandonment]);
+
+  // 競技方式。主催者が方式を文章で公開していない大会だけが持つ（ADR-021）。
+  // 持たない種目では null で、ブロックごと出ない。
+  const categoryFormat = useMemo(() => findCategoryFormat(infoForYear, categoryId), [infoForYear, categoryId]);
+
   const coverageMetaSuffix = formatResultCoverageMetaSuffix(resultCoverage);
 
   // title の後半に置く語。「組み合わせ」は実需クエリ（「{大会} {年} 組み合わせ」は
@@ -363,6 +370,11 @@ export default function TournamentYearResultPage({
               </section>
             );
           })()}
+
+        {/* 競技方式（主催者が方式を文章で公開していない大会だけ。ADR-021）。
+            リード文と広告の間には入れない——広告をファーストビューに収める配置が
+            ADR-016 の追記で決まっているため、その上に要素を足さない。 */}
+        <CategoryFormatNotice format={categoryFormat} categoryLabel={categoryLabel} />
 
         {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} insight={insight} />

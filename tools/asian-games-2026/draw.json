@@ -1,7 +1,7 @@
 {
   "_source": "第20回アジア競技大会 公式リザルトサイト https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18 と、各試合の結果ページ #/discipline/TST/results/<試合ID>",
   "_checkedOn": "2026-09-18",
-  "_scope": "個人種目は日本が入っている予選リーグの組だけ（組内は日本が出ない試合も全部）。団体戦は決勝トーナメントを持つために全組・全試合（チーム＝国なので選手集計に影響しない。2026-09-18 ユーザー判断）",
+  "_scope": "個人種目のうち男女シングルスは日本が入っている予選リーグの組だけ（組内は日本が出ない試合も全部）。混合ダブルスと団体戦は全組・全試合（2026-09-19 / 2026-09-18 ユーザー判断）",
   "_row": "event / stage(roundrobin|knockout) / group(予選) / round(決勝T) / matchNo / date / time / court / sides([NOC, 姓/名 ...]) / score([A,B]。無ければ未実施) / rubbers / id・next（決勝Tの繋がり）",
   "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）。ポイントが null のとき、片側のペアが空なら不戦勝（出さなかった側が負け）、両側にペアがあれば未実施",
   "knockoutDraw": {
@@ -1581,6 +1581,201 @@
       "sides": [
         ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
         ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Court 2",
+      "sides": [
+        ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
+        ["CAM", "CHAO/Viva", "KHUN/Chanroseka"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Court 3",
+      "sides": [
+        ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"],
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 2",
+      "sides": [
+        ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
+        ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 3",
+      "sides": [
+        ["CAM", "CHAO/Viva", "KHUN/Chanroseka"],
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Court 2",
+      "sides": [
+        ["CAM", "CHAO/Viva", "KHUN/Chanroseka"],
+        ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Court 3",
+      "sides": [
+        ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "LIN/Wei-chieh", "CHIANG/Min-yu"],
+        ["INA", "LALUYAN/Rizky", "NAFIIAH/Allif"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Show Court",
+      "sides": [
+        ["INA", "LALUYAN/Rizky", "NAFIIAH/Allif"],
+        ["PAK", "KHAN/Sabrina", "BASHIR/Rafae"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Show Court",
+      "sides": [
+        ["TPE", "LIN/Wei-chieh", "CHIANG/Min-yu"],
+        ["PAK", "KHAN/Sabrina", "BASHIR/Rafae"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Court 4",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "LEE/Sujin"],
+        ["PAK", "SHALLWANI/Kainaat", "ARAIN/Hamza"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Court 4",
+      "sides": [
+        ["PAK", "SHALLWANI/Kainaat", "ARAIN/Hamza"],
+        ["PHI", "MANALAC/Noelle", "NUGUIT/Samuel"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Court 4",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "LEE/Sujin"],
+        ["PHI", "MANALAC/Noelle", "NUGUIT/Samuel"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "09:00",
+      "court": "Center Court",
+      "sides": [
+        ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"],
+        ["NEP", "BHANDARI/Kamal", "CHAUDHARY/Georgia"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "10:00",
+      "court": "Center Court",
+      "sides": [
+        ["NEP", "BHANDARI/Kamal", "CHAUDHARY/Georgia"],
+        ["MGL", "KHURELBAYAR/Khaliunbayar", "GANBOLD/Khongorzul"]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "11:00",
+      "court": "Center Court",
+      "sides": [
+        ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"],
+        ["MGL", "KHURELBAYAR/Khaliunbayar", "GANBOLD/Khongorzul"]
       ]
     },
     {

@@ -5,8 +5,10 @@
 出力: data/tournaments/details/asian-games/2026/<種目>.json
 
 取り込む範囲（docs/wiki/upcoming-tournaments-runbook.md S11）:
-- 個人種目は「方式A＋組の例外」。日本が入っている予選リーグの組だけを持ち、組内は全試合。
-- 団体戦は決勝トーナメントを持つために全組・全試合。チーム＝国なので選手の通算成績に影響しない。
+- 男女シングルスは「方式A＋組の例外」。日本が入っている予選リーグの組だけを持ち、組内は全試合。
+- 団体戦と混合ダブルスは決勝トーナメントを持つために全組・全試合。
+  団体戦はチーム＝国なので選手の通算成績に影響しない。混合は外国選手が増えるが、
+  決勝Tの席が (組, 組内順位) で決まる（ADR-015）ため、全組を持たないとブラケットが描けない。
 
 表記:
 - 日本選手は既存の選手ページにつながるよう、国内大会と同じ id（漢字・所属・都道府県）にする
@@ -68,6 +70,10 @@ JAPANESE_PLAYERS = {
     "NAKATANI/Sakura": ("中谷", "さくら", "明治大学", "日本学連"),
     "MAEDA/Rio": ("前田", "梨緒", "明治大学", "日本学連"),
 }
+
+# 予選リーグを全組持つ種目。決勝トーナメントの席が (組, 組内順位) で決まる（ADR-015）ので、
+# 日本の組だけでは席を実体に解決できずブラケットが描けない。残りは方式A（日本が居る組だけ）。
+ALL_GROUP_EVENTS = {"Men's Team", "Women's Team", "Mixed Doubles"}
 
 ROUND_ORDER = {"準々決勝": 1, "準決勝": 2, "3位決定戦": 3, "決勝": 4}
 # 敗退したラウンド -> 成績
@@ -309,8 +315,8 @@ def check(event, data, rows):
         if len(pairs) != expected or len(set(pairs)) != len(pairs):
             problems.append(f"{g}組: {len(members)}エントリーで {len(pairs)}試合（総当たりなら {expected}）")
 
-    # 個人種目は日本が居る組だけを持つ（方式A）。団体戦は全組持つので対象外
-    if "Team" not in event:
+    # 方式A の種目は日本が居る組だけを持つ。全組を持つ種目（ALL_GROUP_EVENTS）は対象外
+    if event not in ALL_GROUP_EVENTS:
         surnames = {v[0] for v in JAPANESE_PLAYERS.values()}
         jp = {e["entryNo"] for e in data["entries"] if any(pid.split("_")[0] in surnames for pid in e["playerIds"])}
         for g, pairs in by_group.items():

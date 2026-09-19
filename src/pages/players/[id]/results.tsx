@@ -21,6 +21,7 @@ import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchRev
 import { careerAffiliationNodes, careerAffiliations, careerAffiliationsDescriptionPhrase, composeDescriptionTail } from '@/lib/playerCareerAffiliations';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
 import { getPlayerStatistics } from '@/lib/playerStats/playerStatistics';
+import { formatRoundLabel } from '@/lib/roundLabel';
 import { buildUpcomingInternationalLinks, type UpcomingInternationalLink } from '@/lib/upcomingInternational';
 import { lookupPriorMeeting } from '@/lib/priorMeetings';
 import { getAllDetailRecords, loadInformationMap, loadNationalTournamentIds, loadTournamentIndex } from '@/lib/tournamentData';
@@ -703,7 +704,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       }
 
       const matchResult: MatchResult = {
-        round: String(m.round ?? '予選'),
+        round: formatRoundLabel(m),
         opponent: opponentNames.length > 0 ? opponentNames.join('・') : opponentEntryNos.length > 0 ? `#${opponentEntryNos[0]}` : '不明',
         result: resultFlag === 'win' ? '勝' : resultFlag === 'lose' ? '敗' : '',
         score: score,
@@ -739,7 +740,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         category,
         tournamentName: tournamentMeta.get(tournamentId)?.label || tournamentId,
         year: Number(year),
-        round: m.round ?? '予選',
+        round: formatRoundLabel(m),
         entryNo: playerEntryNo,
         opponentNames,
         opponents: [], // Empty array to maintain type compatibility
