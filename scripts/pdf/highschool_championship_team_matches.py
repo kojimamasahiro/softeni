@@ -5,11 +5,12 @@
 既存の `data/tournaments/details/highschool-championship/<年>/team-none-{boys,girls}.json` の
 各試合へ `matches`（ペア・本数・**ゲームごとのポイント**）を差し込む。
 
-**収録範囲は年度で変わる**。2024〜2026 は**ベスト8以降の7試合だけ**（1〜3回戦は学校単位の本数のみ）、
-**2022・2023 は1回戦から全47試合**（2022 は不戦の1試合を除く46試合）。
+**収録範囲は年度で変わる**。2021・2024〜2026 は**ベスト8以降の7試合だけ**（1〜3回戦は学校単位の本数のみ）、
+**2019・2022・2023 は1回戦から全47試合**（2022 は不戦の1試合を除く46試合。2019 は男女1冊の記録報告書）。
+**2018 年以前は元資料にオーダーの記録が無い**ので、インターハイはこれで全部。
 **詳細ページの範囲は見出しを1ページずつ目視して決める**（`pdftotext -layout`。人の指定は1ページずれる）。
 
-## この様式の見極め（令和8年度 女子団体で検証。令和5〜6年度でも通る）
+## この様式の見極め（令和8年度 女子団体で検証。令和元〜6年度でも同じ骨格で通る）
 
 - テキストPDF。ページ構成は **p1 入賞校一覧 / p2 トーナメント表 / p3・p4 準々決勝 / p5 準決勝 / p6 決勝**。
   年度でページ数は変わるので `--pages` で渡す。詳細ページは1ページに最大2試合
@@ -19,7 +20,8 @@
   （高校選抜のように位置や選手の重なりから推測しなくてよい）。
 - 1対戦 = ゲーム行が最大7行（左のポイント・「－」・右のポイント）。**丸数字がそのゲームを取った側**。
   行の中ほどに両ペアの氏名（「・」は無い）と、対戦の本数（丸数字＝その対戦の勝者）。
-  **氏名は1つの語（2024・2026）か1文字ずつの語（2023）**。どちらも `pair_names` が扱う。
+  **氏名は1つの語（2019・2024・2026）か1文字ずつの語（2021・2022・2023）**。どちらも `pair_names` が扱う。
+  **対戦の塊は氏名の行で切る**（`rubber_groups`。2019 は未実施の対戦にゲーム行を印字しない）。
 - **打ち切りの印字はあてにしない**。「打ち切り」と書かれる対戦とそうでない対戦がある
   （準決勝で 3-3 のまま印字のみ）。**勝者は本数の丸数字の有無で決める**。
   **打ち切りの本数を印字しない年度がある**（2023）。`to_detail` の docstring を参照。
@@ -51,6 +53,9 @@
     npx prettier --write data/tournaments/details/highschool-championship/2026/team-none-girls.json
     npm run check:team-match-details
 
+`--corrections`（任意）で**見出しの誤記**（本数・エントリー番号）を補正できる。
+当てる値が出典の別の場所で決まるものだけ、理由つきで足す（`highschool-championship-2019-corrections.json`）。
+
 `--write` が無ければ表示だけ。検算に1件でも引っかかれば書き込まない。冪等。
 """
 from __future__ import annotations
@@ -78,9 +83,11 @@ COLS = {
     'right_last': (415, 456),
     'right_first': (456, 512),
 }
-RUBBER_GAP = 25.0  # 同じ対戦のゲーム行は約10pt間隔、対戦の間は30pt以上あく。
-# 「打ち切り」の印字がゲーム行を1行ぶん押し下げるため同じ対戦の中に20pt の隙があく（2024 男子）。
+# ゲーム行の区切り。**同じページでも文字が揺れる**ので全部受ける
+# （2019 男子 p47 の1行だけ全角ハイフンではなく長音符「ー」。落とすと本数の数え直しが合わない）
+DASHES = {'－', 'ー', '—', '–', '―', '-', 'ｰ'}
 NAME_ROW_GAP = 3.0  # 氏名の行は約10pt間隔。同じ行の文字は同じ y（誤差1pt未満）
+NAME_GROUP_GAP = 40.0  # 対戦の中の2行は約10pt、対戦の間は約82pt（2019・2021 で実測）
 TYPES = ['D1', 'D2', 'D3']
 
 
@@ -114,23 +121,53 @@ def headers(ws, width):
     return sorted(out)
 
 
-def rubber_groups(ws):
-    dashes = sorted([w for w in ws if w['t'] == '－' and in_col(w, 'dash')], key=lambda w: w['y'])
+def rubber_groups(ws, hy, next_y):
+    """1試合の3対戦を **氏名の行** で切り、対戦ごとの y の範囲を返す。
+
+    **ゲーム行（「－」）では切れない**。2019 は未実施・打ち切りの対戦に「－」を1行も印字せず
+    氏名だけを出すので、「－」で切ると3対戦が2つの塊になる（2019 男子で10試合）。
+    氏名は**どの年度でも3対戦×2人＝6行**あり、対戦の中は約10pt・対戦の間は約82pt なので
+    `NAME_GROUP_GAP` で切れる。境界は隣り合う塊の中点に置き、上下のゲーム行を取りこぼさない。
+    """
+    side = {}
+    for w in ws:
+        if not hy + 10 < w['y'] < next_y - 10:
+            continue
+        for cols, key in ((('left_last', 'left_first'), 'L'), (('right_last', 'right_first'), 'R')):
+            if any(in_col(w, c) for c in cols):
+                side.setdefault(round(w['y'], 1), set()).add(key)
+    # 氏名の行には**必ず両校の選手が並ぶ**。片側だけの行はページの飾り
+    # （2024 男子 p18 の右下「トーナメントへ戻る」。落とさないと4つ目の塊になる）
+    ys = sorted(y for y, sides in side.items() if len(sides) == 2)
+    rows = []
+    for y in ys:
+        if not rows or y - rows[-1][-1] > NAME_ROW_GAP:
+            rows.append([y])
+        else:
+            rows[-1].append(y)
     groups, cur = [], []
-    for d in dashes:
-        if cur and d['y'] - cur[-1]['y'] > RUBBER_GAP:
+    for row in rows:
+        if cur and row[0] - cur[-1][-1] > NAME_GROUP_GAP:
             groups.append(cur)
             cur = []
-        cur.append(d)
+        cur.append(row)
     if cur:
         groups.append(cur)
-    return groups
+    if not groups:
+        return []
+    # 端は見出しの行（学校名も氏名の欄に入る）とページの下端を必ず外す。
+    # 内側は隣り合う塊の中点。1対戦のゲーム行は氏名の行から上下 35pt には収まる。
+    edges = [hy + 10] + [(groups[i][-1][-1] + groups[i + 1][0][0]) / 2
+                         for i in range(len(groups) - 1)] + [min(next_y - 10, groups[-1][-1][-1] + 50)]
+    # 対戦の本数は**氏名の行に並んで**印字されるので、氏名の帯だけで拾う。塊全体から拾うと
+    # 見出しのすぐ下にある紛れ込みを取る（2023 男子 p14 の左の本数欄に単独の `4`）
+    return [(edges[i], edges[i + 1], g[0][0] - 15, g[-1][-1] + 15) for i, g in enumerate(groups)]
 
 
 def pair_names(ws, last_col, first_col, y0, y1):
     """1行が1人。姓と名は別の欄に並ぶ（「・」は無い）。
 
-    **年度によって姓が1つの語（2024・2026）か1文字ずつの語（2023）になる**ので、
+    **年度によって姓が1つの語（2024・2026）か1文字ずつの語（2021・2022・2023）になる**ので、
     行ごとに欄の中の語を x 順に連結する。**欄の境界（`COLS`）で姓と名を分ける**——
     どちらの欄も均等割り付けなので、文字の間隔で分けることはできない
     （2023 の `國 松 樹 人` は姓の中の間隔 18pt ＞ 姓と名の間隔 16pt）。
@@ -146,24 +183,25 @@ def pair_names(ws, last_col, first_col, y0, y1):
             for _, last, first in rows]
 
 
-def parse_page(pdf, page):
+def parse_page(pdf, page, fixes=None, applied=None):
     width, ws = words(pdf, page)
     hs = headers(ws, width)
-    groups = rubber_groups(ws)
     out = []
     for i, (hy, a, b) in enumerate(hs):
         next_y = hs[i + 1][0] if i + 1 < len(hs) else 10_000
         lg = pick(ws, 'left_games', hy - 4, hy + 4)
         rg = pick(ws, 'right_games', hy - 4, hy + 4)
         subs = []
-        for g in [g for g in groups if hy < g[0]['y'] < next_y]:
-            y0, y1 = g[0]['y'] - 6, g[-1]['y'] + 6
-            games, inprogress = [], []
-            for d in g:
+        for y0, y1, ny0, ny1 in rubber_groups(ws, hy, next_y):
+            games, inprogress, empty = [], [], 0
+            for d in pick(ws, 'dash', y0, y1):
+                if d['t'] not in DASHES:
+                    continue
                 lp = next((w for w in ws if in_col(w, 'left_point') and abs(w['y'] - d['y']) < 3), None)
                 rp = next((w for w in ws if in_col(w, 'right_point') and abs(w['y'] - d['y']) < 3), None)
                 if lp is None and rp is None:
-                    continue  # 行だけあって実施されなかったゲーム
+                    empty += 1  # 「－」だけの行。未実施か、**ポイントを印字しそこねたゲーム**
+                    continue
                 pl, pr = score_of(lp['t']) if lp else None, score_of(rp['t']) if rp else None
                 if not (pl and pl[1]) and not (pr and pr[1]):
                     # どちらにも丸数字が無い＝打ち切りの時点で進行中だったゲーム。
@@ -172,8 +210,8 @@ def parse_page(pdf, page):
                     inprogress.append(f"{lp['t'] if lp else ''}-{rp['t'] if rp else ''}")
                     continue
                 games.append((pl, pr))
-            sub_l = pick(ws, 'left_games', y0, y1)
-            sub_r = pick(ws, 'right_games', y0, y1)
+            sub_l = pick(ws, 'left_games', ny0, ny1)
+            sub_r = pick(ws, 'right_games', ny0, ny1)
             subs.append(dict(
                 playersA=pair_names(ws, 'left_last', 'left_first', y0, y1),
                 playersB=pair_names(ws, 'right_last', 'right_first', y0, y1),
@@ -181,13 +219,21 @@ def parse_page(pdf, page):
                 gamesB=score_of(sub_r[0]['t']) if sub_r else None,
                 points=games,
                 inprogress=inprogress,
+                empty=empty,
             ))
         # 見出しの本数は数字でないことがある（不戦の `R`。2022 男子 p28・女子 p18）
         head = [score_of(c[0]['t']) if c else None for c in (lg, rg)]
-        out.append(dict(page=page, entryA=a, entryB=b,
-                        scoreA=head[0][0] if head[0] else None,
-                        scoreB=head[1][0] if head[1] else None,
-                        subs=subs))
+        m = dict(page=page, entryA=a, entryB=b,
+                 scoreA=head[0][0] if head[0] else None,
+                 scoreB=head[1][0] if head[1] else None,
+                 subs=subs)
+        fix = (fixes or {}).get(f'{page}|{a}|{b}')
+        if fix:
+            # 出典の見出しの誤記。**当てる値が出典の別の場所で決まるときだけ**足す
+            m.update({k: v for k, v in fix.items() if k in ('entryA', 'entryB', 'scoreA', 'scoreB')})
+            if applied is not None:
+                applied.append(f"p{page} {a} 対 {b}: {fix['why']}")
+        out.append(m)
     return out
 
 
@@ -232,6 +278,7 @@ def main():
     ap.add_argument('pdf')
     ap.add_argument('--pages', required=True, help='詳細ページの範囲。例: 3-6')
     ap.add_argument('--details', required=True)
+    ap.add_argument('--corrections', help='出典の見出しの誤記を補正する JSON（任意）')
     ap.add_argument('--same-name', action='append', default=[], metavar='氏名',
                     help='同名の別人として2校に現れてよい氏名（人が確かめたものだけ足す。複数指定可）')
     ap.add_argument('--write', action='store_true')
@@ -244,9 +291,15 @@ def main():
     by_pair = {tuple(sorted(m['entries'])): m for m in details['matches']}
     idx = individual_index()
 
+    fixes = {}
+    if args.corrections:
+        fixes = {f['key']: f for f in json.loads(Path(args.corrections).read_text(encoding='utf-8'))['headers']}
+
     problems, derived, blank, dropped, owner, counts = [], [], [], [], defaultdict(set), defaultdict(int)
+    unprinted = []
+    corrected = []
     for page in range(int(lo), int(hi or lo) + 1):
-        for m in parse_page(args.pdf, page):
+        for m in parse_page(args.pdf, page, fixes, corrected):
             db = by_pair.get(tuple(sorted((m['entryA'], m['entryB']))))
             label = f"p{page} {school.get(m['entryA'], m['entryA'])}({m['entryA']}) 対 {school.get(m['entryB'], m['entryB'])}({m['entryB']})"
             if not db:
@@ -277,7 +330,15 @@ def main():
                 elif s['status'] == 'not_played':
                     pass  # ゲームも本数も印字されない（ペアだけ）。数え直すものが無い
                 elif counted != [s['scoreA'], s['scoreB']]:
-                    problems.append(f'{label} 第{k + 1}対戦: 本数 {[s["scoreA"], s["scoreB"]]} / ゲームから数え直すと {counted}')
+                    # 本数のほうが多く、その差が「－」だけの行に収まるなら、
+                    # **ポイントを印字しそこねたゲーム**（2019 男子 p36 の第7ゲーム）。
+                    # 本数の印字を正とし、games は印字されたゲームだけを持つ
+                    short = [s['scoreA'] - counted[0], s['scoreB'] - counted[1]]
+                    if min(short) >= 0 and 0 < sum(short) <= raw['empty']:
+                        unprinted.append(f'{label} 第{k + 1}対戦: 本数 {s["scoreA"]}-{s["scoreB"]} のうち '
+                                         f'{sum(short)}ゲームはポイントが印字されていない（games に入れない）')
+                    else:
+                        problems.append(f'{label} 第{k + 1}対戦: 本数 {[s["scoreA"], s["scoreB"]]} / ゲームから数え直すと {counted}')
                 for side, players in (('playersA', s['playersA']), ('playersB', s['playersB'])):
                     if len(players) != 2:
                         problems.append(f'{label} 第{k + 1}対戦: {side} が {len(players)} 人')
@@ -302,12 +363,16 @@ def main():
     if len(clash) > len(allowed):
         rest = {p: v for p, v in clash.items() if p not in allowed}
         problems.append(f'2校に割り当てられた選手: {rest}（同名の別人と確かめたら --same-name で通す）')
+    if corrected:
+        print('\n'.join(['\n出典の見出しの誤記として補正した試合（--corrections）:'] + corrected))
     if blank:
         print('\n'.join(['\nオーダーの印字が無い試合（入れていない）:'] + blank))
     if derived:
         print('\n'.join(['\n本数の印字が無く、ゲームから数えた対戦:'] + derived))
     if dropped:
         print('\n'.join(['\n進行中のまま打ち切られたゲーム（ADR-020 に従い games に入れない）:'] + dropped))
+    if unprinted:
+        print('\n'.join(['\nポイントが印字されていないゲーム（本数の印字を正とした）:'] + unprinted))
     if allowed:
         print('\n同名の別人として通した選手（--same-name）:', allowed)
     print('\n対戦の状態:', {k: counts[k] for k in ('completed', 'unfinished', 'not_played')},
