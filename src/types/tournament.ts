@@ -92,7 +92,12 @@ export interface TournamentInformationEntry {
    * フィールド定義と記載ルールは docs/wiki/data-model.md「大会の会場データ（`venues`）」が正。
    */
   venues?: TournamentVenue[];
-  /** 入力時のメモ（出典の誤りや、値を書かなかった理由）。**公開ページには出さない**。 */
+  /**
+   * 入力時のメモ（出典の誤りや、値を書かなかった理由）。**公開ページには出さない**。
+   * 「出さない」は描画結果だけでなく**ページのペイロード**も指す（`__NEXT_DATA__` に載るため）。
+   * props に入れるときは `lib/tournamentInformationPublic.ts` の `toPublicInformationEntry()` を通す。
+   * docs/wiki/data-model.md「入力メモ（`note`）は公開しない」
+   */
   note?: string;
   /** 大会要項PDFのURL。取得できていなければ null。 */
   guidelineUrl?: string | null;
@@ -138,6 +143,7 @@ export interface TournamentVenue {
   surface?: string;
   /** どの日・どの種目に使われたか。自由文 */
   usage?: string;
+  /** 入力時のメモ。`TournamentInformationEntry.note` と同じく**公開しない**（ペイロードにも載せない） */
   note?: string;
 }
 
