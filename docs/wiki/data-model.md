@@ -19,7 +19,8 @@
 
 名寄せ用データ（詳細は [team-player-identity.md](./team-player-identity.md)）: チームマスタ `data/teams/teams.json` ＋
 文脈 `team-context.json` / 正準対応表 `data/tournaments/team-name-aliases.json` / 同姓同名の分割 `data/players/homonyms.json`。
-構造の解説は `docs/tournament-data-structure.md`。
+構造の解説は `docs/wiki/tournament-data-structure.md`。
+フィールドと語彙のリファレンスは [tournament-data-structure.md](./tournament-data-structure.md)。
 
 `data/local-sources/ignored-documents.json` は `prefectureSlug + normalizedUrl` 完全一致の恒久 deny list（空のまま維持）。
 **Deprecated**: `detected-documents.json`（候補検知ストア。未仕分け583件ごと 2026-09-12 に削除。

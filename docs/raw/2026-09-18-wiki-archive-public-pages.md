@@ -18,7 +18,7 @@
 
 - `lib/siteConfig.ts`
 - `README.md`
-- `docs/beta-matches-results.md`
+- `docs/wiki/beta-matches-results.md`
 
 ## 実装済み
 

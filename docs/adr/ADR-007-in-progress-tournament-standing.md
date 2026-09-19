@@ -2,7 +2,7 @@
 
 ## Status
 
-Accepted。決定日: 2026-06-26。現状仕様: `docs/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`。ADR-005（速報・プレビュー機能）を補完する。
+Accepted。決定日: 2026-06-26。現状仕様: `docs/wiki/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`。ADR-005（速報・プレビュー機能）を補完する。
 
 ## Context
 
@@ -39,7 +39,7 @@ Accepted。決定日: 2026-06-26。現状仕様: `docs/tournament-data-structure
 - `lib/tournamentCoverage.ts`（`computeResultCoverage` / `formatResultCoverageBodyText` / `formatResultCoverageMetaSuffix`）
 - `src/components/Tournament/ResultCoverageNotice.tsx`
 - `src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/index.tsx`
-- `docs/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`
+- `docs/wiki/tournament-data-structure.md` / `docs/wiki/news-context-blocks.md`
 
 ## Implementation Status（2026-07-19 追記。検討経緯は [2026-07-19-result-coverage-notice-design.md](../raw/2026-07-19-result-coverage-notice-design.md)）
 

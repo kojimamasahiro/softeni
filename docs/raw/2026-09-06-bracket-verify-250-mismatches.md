@@ -229,7 +229,7 @@ TODO コメントを削除した（`if: always()` のサマリ出力をやめ、
 書き戻したもの:
 
 - `type: 'preliminary'` の意味・判定箇所・入力ツールが出せないこと
-  → **docs/tournament-data-structure.md**（`type` の語彙表と判定表がそこにあるため）。
+  → **docs/wiki/tournament-data-structure.md**（`type` の語彙表と判定表がそこにあるため）。
 - 復元適用 443 大会・38,729 試合・不一致 0 件という実測値
   → **docs/wiki/public-pages.md** / **docs/wiki/news-context-blocks.md**
   （どちらも古い実測値（372 大会・27,633 試合）を持つ節があり、更新しないと古い数字が残る）。

@@ -60,6 +60,9 @@
 
 ### 年度別結果ページ
 
+トーナメント表の組み立ては [tournament-bracket-logic.md](./tournament-bracket-logic.md)、
+データの形は [tournament-data-structure.md](./tournament-data-structure.md)。
+
 - **結果がある年だけの面**。開催前の年には URL を作らないので、**年度・カテゴリ切り替えの候補は
   `details/<tid>/<year>/<categoryId>.json` の実在で絞る**（`information` を一覧に使うと 404 を指す）。
 - `SportsEvent` 構造化データと冒頭の説明文を持ち、title / description に「結果・トーナメント表」を含める。

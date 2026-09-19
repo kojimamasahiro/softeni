@@ -41,7 +41,7 @@
 
 関連ドキュメント:
 
-- `docs/tournament-data-structure.md`
+- `docs/wiki/tournament-data-structure.md`
 
 現行の source of truth:
 

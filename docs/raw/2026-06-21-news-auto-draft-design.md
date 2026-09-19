@@ -240,7 +240,7 @@ farm が持てない「DB 由来の文脈」を部品化し、大会ページ・
 ## 関連
 
 - 競合・実現可能性調査: 本ドキュメント冒頭サマリー（2026-06-21 会話）
-- データ構造: `docs/wiki/data-model.md` / `docs/tournament-data-structure.md`
+- データ構造: `docs/wiki/data-model.md` / `docs/wiki/tournament-data-structure.md`
 - 生成運用: `docs/wiki/data-import.md`
 - SEO カニバリ運用: `docs/wiki/seo.md`
 - 選手ページ強化の先行設計: `docs/raw/2026-06-12-player-page-seo-design.md`

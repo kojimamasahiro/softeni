@@ -320,5 +320,5 @@ JSON-LD 側は `performer` を出さず description を打ち切り文言にし�
 
 - `docs/wiki` と ADR-007 への write-back。打ち切りは ADR-007 の `ongoing` 語彙に対する仕様追加なので、
   **新規 ADR ではなく ADR-007 への追記**が適切か、独立 ADR にするかを判断する。
-- `docs/tournament-data-structure.md` に `status:'abandoned'` / `abandonedAfterRound` の語彙を追記。
+- `docs/wiki/tournament-data-structure.md` に `status:'abandoned'` / `abandonedAfterRound` の語彙を追記。
 - 未実施（意図的）: 本番ビルドでの目視確認（バナー・ブラケットの「中止」・歴代優勝者の表記）。

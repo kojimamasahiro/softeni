@@ -9,7 +9,7 @@
 - `next.config.mjs`
 - `wrangler.toml`
 - `package.json`
-- `docs/cloudflare-migration-analysis.md`
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md`
 
 ## 確定情報
 
@@ -284,7 +284,7 @@ Assumption:
 
 Assumption:
 
-- `docs/cloudflare-migration-analysis.md` の記述から、Vercel 運用または Vercel 由来の検討履歴がある
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md` の記述から、Vercel 運用または Vercel 由来の検討履歴がある
 - ただし、この turn では Vercel 用設定ファイルそのものは確認していません
 
 ## score 公開面との関係

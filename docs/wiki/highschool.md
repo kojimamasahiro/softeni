@@ -1,9 +1,32 @@
 # Highschool Pages（高校カテゴリ）
 
+> **適用範囲: 学校スポーツ共通**。都道府県→学校のツリー、メンバー節、歴代記録の作り方は他競技でも使える。
+> 大会名（インターハイ・ハイジャパ・選抜）と `lib/highschool.ts` の定数はソフトテニス固有。
+
 高校カテゴリの公開ページ方針と、全国大会の歴代記録ページの現状仕様。
 高校カテゴリの URL 一覧と公開面全体の構成は [public-pages.md](./public-pages.md)「ルーティング」を参照。
 SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md) #3。
-実装のページ別処理解説は `docs/highschool-pages.md`（ルート直下）にある。
+
+## ページ構成と読むデータ
+
+（2026-09-19 に docs 直下の `highschool-pages.md` から統合。統合前の全文は
+[raw/2025-12-13-highschool-pages.md](../raw/2025-12-13-highschool-pages.md)。**そちらは4ページしか
+書かれていない古い記録**なので、現行は下の表が正。）
+
+| ページ | 読むデータ | 出すもの |
+|---|---|---|
+| `/highschool/` | — | `/highschool/boys/` へ 301（`public/_redirects`）。sitemap からは除外 |
+| `/highschool/[gender]/` | `data/prefectures.json` / 各県の `summary.json` | 都道府県一覧（収録0校の県は「収録準備中」でリンクしない）と男女切替 |
+| `/highschool/[gender]/[prefectureId]/` | 同上 | 県内の学校一覧（**直近3年ぶんだけ**。それ以前は学校ページへ誘導）、県内強豪校、会期中の出場校 |
+| `/highschool/[gender]/[prefectureId]/[teamId].tsx` | `summary.json` / `:teamId/:gender/analysis.json` / `details/**`（地区大会のメンバー） | 主要4大会のサマリー、年度別メンバー、主な卒業生、進路 |
+| `/highschool/rankings/` | `lib/highschoolRanking.ts` | 強豪校ランキング（1ページ・男女はクライアント切替） |
+| `/highschool/tournaments/` ＋ `/[tournament]/` | `lib/highschoolNationalTournaments.ts` / `details/**` | 全国大会の歴代記録（下記） |
+
+- すべて SSG（ビルド時にデータを取得する）。
+- `data/highschool/**` は `scripts/highschool/` のパイプラインが生成する（鮮度チェックは
+  [data-import.md](./data-import.md)）。`summary.json` は学校×大会×年度の成績、
+  `analysis.json` は学校ごとの出場数・種目別の最新/最高成績・主な選手。
+- **公開ページの説明文に内部ファイル名・データ構造名を出さない**（[ux-writing.md](./ux-writing.md)）。
 
 ## 高校カテゴリの公開ページ方針
 

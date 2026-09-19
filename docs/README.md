@@ -44,32 +44,28 @@
 - [adr/README.md](./adr/README.md)
 - [prompts/README.md](./prompts/README.md)
 
-## 上記3分類に属さない文書
+## docs の中身（2026-09-19 再定義）
 
-`raw` / `wiki` / `adr` のどれでもない文書。どこからもリンクされていないと
-将来のコンパイルパスから見えなくなるため、ここを所在地インデックスとする（2026-08-12 追加）。
+**3層（raw / wiki / adr）が原則**で、それ以外は「層ではないもの」だけを置く。
+2026-09-19 に docs 直下の11本を仕分けし、仕様は wiki へ、調査・提案・監査は raw へ移した
+（経緯は [raw/2026-09-19-docs-layer-cleanup.md](./raw/2026-09-19-docs-layer-cleanup.md)）。
 
-### 仕様・データ構造（wiki に準じる扱い）
+| 置き場所 | 何を置くか | 入口 |
+|---|---|---|
+| `raw/` | 生の記録（調査・提案・監査・作業ノート・wiki の圧縮前アーカイブ）。**追記のみ** | [raw/README.md](./raw/README.md) |
+| `wiki/` | compile 済みの**現在の仕様**。1ページ12,000字以内 | [wiki/index.md](./wiki/index.md) |
+| `adr/` | 重要な決定の記録（いつ・なぜ） | [adr/README.md](./adr/README.md) |
+| `prompts/` | 繰り返し使う定型プロンプト（層ではない） | [prompts/README.md](./prompts/README.md) |
+| `ui/` | UI/情報設計プロジェクトの成果物（層ではない・2026-07-04 完了） | [ui/PROJECT.md](./ui/PROJECT.md) |
+| `sql/` | Supabase への差分 DDL と適用台帳 | [sql/APPLIED.md](./sql/APPLIED.md) |
+| `story-yaml/` | 大会インサイトの YAML 仕様（ADR-012） | [story-yaml/](./story-yaml/) |
+| `notes/` | インタビュー等のメモ | [notes/](./notes/) |
+| **docs 直下** | **この README と、進行中の作業表だけ**。仕様は wiki、記録は raw へ置く | — |
 
-- [tournament-data-structure.md](./tournament-data-structure.md) — 大会データ JSON の型・構造（現行）
-- [beta-matches-results.md](./beta-matches-results.md) — 記録試合の公開面仕様
-- [story-yaml/](./story-yaml/) — 大会インサイトの YAML 仕様（ADR-012）
-- [sql/APPLIED.md](./sql/APPLIED.md) — Supabase への差分 DDL（手動適用）とその適用台帳
+進行中の作業表（終わったら消す）:
 
-### UI/情報設計 改善プロジェクト（2026-07-04 完了・移行実施中）
+- [venue-input-worksheet.md](./venue-input-worksheet.md) — 会場データ入力の作業表（入力中）。
+  文字数の検査からは除外している（`scripts/check-wiki-size.mjs` の `WORK_FILES`）
 
-- [ui/PROJECT.md](./ui/PROJECT.md) — プロジェクト定義（まずこれ）
-- [ui/project-status.md](./ui/project-status.md) — 現在の状態
-- [ui/decisions.md](./ui/decisions.md) / [ui/rules.md](./ui/rules.md) / [ui/glossary.md](./ui/glossary.md)
-- 成果物: [ui/deliverables/](./ui/deliverables/)、報告: [ui/reports/](./ui/reports/)
-
-### 調査・提案（未整理。現行仕様の根拠には使わない）
-
-- [adsense-ui-proposal.md](./adsense-ui-proposal.md)（2026-06。2026-08-23 に実装され Superseded。現行は [wiki/monetization.md](./wiki/monetization.md)「手動広告枠」）
-- [cloudflare-migration-analysis.md](./cloudflare-migration-analysis.md)（2026-06）
-- [highschool-pages.md](./highschool-pages.md)（2026-06。現行は [wiki/highschool.md](./wiki/highschool.md)）
-- [tournament_requirements.md](./tournament_requirements.md) / [tournament_bracket_logic.md](./tournament_bracket_logic.md)（2026-06）
-- [team-id-underscore-bug.md](./team-id-underscore-bug.md)（2026-07）
-- [exploration-cycle-audit-2026-08-10.md](./exploration-cycle-audit-2026-08-10.md) — 探索循環・知識蓄積プロセスの監査
-- [venue-input-worksheet.md](./venue-input-worksheet.md) — 会場データ入力の作業表
-- [notes/](./notes/) — インタビュー等のメモ
+**新しいファイルを docs 直下に作らないこと。** 仕様なら `wiki/`、調査・提案・作業ノートなら `raw/`
+（ファイル名は `YYYY-MM-DD-*.md`）。どちらか迷うものは raw に置いてから compile する。

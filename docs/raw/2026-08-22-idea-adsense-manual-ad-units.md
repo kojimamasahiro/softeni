@@ -23,7 +23,7 @@ AdSenseの自動広告（インタースティシャル・ページ内自動挿�
 
 ## 想定運用 / なぜこのスコープか
 
-`docs/adsense-ui-proposal.md`（2026-06-12、Status: Proposal・未実装）に、自動広告に頼らず
+`docs/raw/2026-06-12-adsense-ui-proposal.md`（2026-06-12、Status: Proposal・未実装）に、自動広告に頼らず
 `AdUnit.tsx` という手動枠をページ区切りに固定配置する設計が既にある。自動広告でレイアウトが
 崩れた原因（挿入位置を制御できない・高さ確保がない）は、この手動枠設計（`min-height` で
 CLSをゼロにする）であれば回避できる。したがって「新しいアイデア」というより、**既にある
@@ -39,7 +39,7 @@ AdSenseのページビュー数・ページRPM・推定収益は、そのラン�
   （ユーザー発言）。
 - アンカー広告のみの運用で、広告売上が旧水準の約1割に低下（ユーザー発言。定量値はユーザーの
   体感でありAssumption）。
-- `docs/adsense-ui-proposal.md` に手動 `AdUnit.tsx` の設計案が既にある（未実装）。CLS対策の
+- `docs/raw/2026-06-12-adsense-ui-proposal.md` に手動 `AdUnit.tsx` の設計案が既にある（未実装）。CLS対策の
   `min-height` 事前確保、SPA遷移対応（`router.asPath` キーでの再pusha）、ページ種別ごとの
   配置案（選手ページ2枠・チームページ2枠・試合詳細ページ3枠）、共通ルール（1ビューポートに
   2枠以上同時表示しない・薄いページは枠①のみ）が既に文書化済み。
@@ -82,7 +82,7 @@ AdSenseのページビュー数・ページRPM・推定収益は、そのラン�
 ## 関連
 
 - [monetization.md](../wiki/monetization.md) — AdSense/アフィリエイトの現状記録
-- [adsense-ui-proposal.md](../adsense-ui-proposal.md) — 手動枠の元設計（未実装）
+- [adsense-ui-proposal.md](2026-06-12-adsense-ui-proposal.md) — 手動枠の元設計（未実装）
 - [circulation-verification.md](../wiki/circulation-verification.md) — 段階導入・対照群比較の運用の型
 - [idea-backlog.md](../wiki/idea-backlog.md) — 索引
 

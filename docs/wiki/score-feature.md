@@ -1,5 +1,8 @@
 # Score Feature
 
+公開面（`/beta/matches-results` と score ドメイン）の保守ガイドは
+[beta-matches-results.md](./beta-matches-results.md)。
+
 ## 概要
 
 score 機能は、試合作成、ゲーム/ポイント記録、動画レビュー、公開ページ、成長分析までを含む一連の機能群です。
