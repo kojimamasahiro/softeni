@@ -39,6 +39,18 @@ const SAME_NAME_DIFFERENT_PEOPLE = {
   'data/tournaments/details/highschool-championship/2023/team-none-boys.json': ['佐藤直輝'],
 };
 
+/**
+ * 数え直しの例外: **出典が本数だけ印字してゲームのポイントを書いていない**対戦。
+ * `games` は印字されたゲームだけなので、本数のほうが多くなる。
+ * 人がPDFで確かめたものだけを、ファイル・matchId・対戦の位置（0始まり）で足す。
+ * 取り込み側（highschool_championship_team_matches.py）も同じ箇所を「印字されていないゲーム」と報告する。
+ */
+const GAMES_NOT_PRINTED = {
+  // 2019 インターハイ男子 1回戦 敦賀(38) 対 北科大(39) 第3対戦。本数は ④ － 3 だが
+  // 7行目のゲーム行が「－」だけでポイントが無い（p36）。印字された6ゲームは 3-3。
+  'data/tournaments/details/highschool-championship/2019/team-none-boys.json': ['match-13|2'],
+};
+
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
     const p = path.join(dir, e.name);
@@ -131,7 +143,8 @@ for (const { file, data } of files) {
           else if (g[0] > g[1]) wonA += 1;
           else wonB += 1;
         }
-        if (sub.status !== 'not_played' && (wonA !== sub.scoreA || wonB !== sub.scoreB)) {
+        const notPrinted = (GAMES_NOT_PRINTED[rel] ?? []).includes(`${m.matchId}|${i}`);
+        if (sub.status !== 'not_played' && (wonA !== sub.scoreA || wonB !== sub.scoreB) && !notPrinted) {
           problems.push(`${at}: 本数 ${sub.scoreA}-${sub.scoreB} がゲームごとのポイントの数え直し ${wonA}-${wonB} と合わない`);
         }
         if (sub.status === 'not_played' && sub.games.length > 0) problems.push(`${at}: not_played なのに games がある`);
