@@ -3436,10 +3436,10 @@
       "prevMatchId": "match-67"
     },
     {
-      "entries": [286,27],
-      "scores": {"27":4,"286":1},
+      "entries": [286,288],
+      "scores": {"286":1,"288":4},
       "round": "2回戦",
-      "winnerEntryNo": 27,
+      "winnerEntryNo": 288,
       "retired": false,
       "stage": "knockout",
       "group": null,
@@ -3449,24 +3449,11 @@
       "prevMatchId": "match-68"
     },
     {
-      "entries": [288,286],
-      "scores": {"286":1,"288":4},
-      "round": "2回戦",
-      "winnerEntryNo": 288,
-      "retired": false,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-189",
-      "nextMatchId": "match-262",
-      "prevMatchIds": [],
-      "prevMatchId": null
-    },
-    {
       "entries": [289,290],
       "scores": {"289":4,"290":1},
       "round": "2回戦",
       "winnerEntryNo": 289,
-      "retired": true,
+      "retired": false,
       "stage": "knockout",
       "group": null,
       "matchId": "match-190",
@@ -4398,8 +4385,8 @@
       "prevMatchId": null
     },
     {
-      "entries": [283,27],
-      "scores": {"27":3,"283":4},
+      "entries": [283,288],
+      "scores": {"283":4,"288":3},
       "round": "3回戦",
       "winnerEntryNo": 283,
       "retired": false,
@@ -4407,20 +4394,7 @@
       "group": null,
       "matchId": "match-262",
       "nextMatchId": "match-300",
-      "prevMatchIds": ["match-187","match-188","match-189"],
-      "prevMatchId": null
-    },
-    {
-      "entries": [288,283],
-      "scores": {"283":4,"288":3},
-      "round": "3回戦",
-      "winnerEntryNo": 283,
-      "retired": false,
-      "stage": "knockout",
-      "group": null,
-      "matchId": "match-263",
-      "nextMatchId": "match-300",
-      "prevMatchIds": [],
+      "prevMatchIds": ["match-187","match-188"],
       "prevMatchId": null
     },
     {
@@ -4901,7 +4875,7 @@
       "group": null,
       "matchId": "match-300",
       "nextMatchId": "match-318",
-      "prevMatchIds": ["match-262","match-263","match-264"],
+      "prevMatchIds": ["match-262","match-264"],
       "prevMatchId": null
     },
     {
