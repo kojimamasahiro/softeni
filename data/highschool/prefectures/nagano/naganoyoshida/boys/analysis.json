@@ -19,7 +19,7 @@
         "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["西澤_大貴_長野吉田", "竹田_真翔_長野吉田"]
+        "playerIds": ["西澤_大貴_長野吉田_長野県", "竹田_真翔_長野吉田_長野県"]
       },
       "historicalBest": {
         "team": "長野吉田",
@@ -31,7 +31,7 @@
         "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["西澤_大貴_長野吉田", "竹田_真翔_長野吉田"]
+        "playerIds": ["西澤_大貴_長野吉田_長野県", "竹田_真翔_長野吉田_長野県"]
       }
     },
     "team": {
@@ -42,6 +42,14 @@
   "uniquePlayers": 6,
   "topPlayers": [
     {
+      "id": "西澤_大貴_長野吉田_長野県",
+      "appearances": 2
+    },
+    {
+      "id": "竹田_真翔_長野吉田_長野県",
+      "appearances": 2
+    },
+    {
       "id": "樋口_晶彦_長野吉田_長野県",
       "appearances": 1
     },
@@ -51,14 +59,6 @@
     },
     {
       "id": "塩入_綾祐_長野吉田_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "中村_佑輔_長野吉田_長野県",
-      "appearances": 1
-    },
-    {
-      "id": "西澤_大貴_長野吉田_長野県",
       "appearances": 1
     }
   ]

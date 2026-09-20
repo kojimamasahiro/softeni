@@ -1,27 +1,38 @@
 {
-  "totalAppearances": 45,
+  "totalAppearances": 4,
   "byCategory": {
-    "singles": 45
+    "doubles": 4
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "高田商業",
+        "teamId": "takadashougyou",
+        "prefecture": "奈良県",
+        "prefectureId": "nara",
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "west-japan",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["鈴木_唯斗_高田商業高校_奈良県", "結城_琉衣_高田商業高校_奈良県"]
+      },
       "historicalBest": {
         "team": "高田商業",
         "teamId": "takadashougyou",
         "prefecture": "奈良県",
         "prefectureId": "nara",
-        "result": "ベスト8",
-        "category": "singles",
-        "tournamentId": "zennihon-singles",
-        "year": 2016,
+        "result": "5回戦敗退",
+        "category": "doubles",
+        "tournamentId": "west-japan",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["金子_大祐_高田商業高校_奈良県"]
+        "playerIds": ["鈴木_唯斗_高田商業高校_奈良県", "結城_琉衣_高田商業高校_奈良県"]
       }
-    },
-    "doubles": {
-      "recentlyResult": null,
-      "historicalBest": null
     },
     "team": {
       "recentlyResult": null,

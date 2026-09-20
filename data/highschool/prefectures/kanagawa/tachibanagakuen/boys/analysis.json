@@ -19,7 +19,7 @@
         "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["高山_輝也_立花学園", "大谷地_蒼星_立花学園"]
+        "playerIds": ["高山_輝也_立花学園_神奈川県", "大谷地_蒼星_立花学園_神奈川県"]
       },
       "historicalBest": {
         "team": "立花学園",
@@ -31,7 +31,7 @@
         "tournamentId": "east-japan",
         "year": 2025,
         "gender": "boys",
-        "playerIds": ["高山_輝也_立花学園", "大谷地_蒼星_立花学園"]
+        "playerIds": ["高山_輝也_立花学園_神奈川県", "大谷地_蒼星_立花学園_神奈川県"]
       }
     },
     "team": {
@@ -39,15 +39,19 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 2,
+  "uniquePlayers": 3,
   "topPlayers": [
+    {
+      "id": "大谷地_蒼星_立花学園_神奈川県",
+      "appearances": 3
+    },
     {
       "id": "髙山_輝也_立花学園_神奈川県",
       "appearances": 2
     },
     {
-      "id": "大谷地_蒼星_立花学園_神奈川県",
-      "appearances": 2
+      "id": "高山_輝也_立花学園_神奈川県",
+      "appearances": 1
     }
   ]
 }

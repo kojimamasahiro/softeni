@@ -1,35 +1,12 @@
 {
-  "totalAppearances": 26,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 13,
-    "singles": 13
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
-      "recentlyResult": {
-        "team": "宮崎商業",
-        "teamId": "miyazakishougyou",
-        "prefecture": "宮崎県",
-        "prefectureId": "miyazaki",
-        "result": "準優勝",
-        "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": ["山口_優菜_宮崎商業高校_宮崎県"]
-      },
-      "historicalBest": {
-        "team": "宮崎商業",
-        "teamId": "miyazakishougyou",
-        "prefecture": "宮崎県",
-        "prefectureId": "miyazaki",
-        "result": "準優勝",
-        "category": "singles",
-        "tournamentId": "zennihon-junior",
-        "year": 2025,
-        "gender": "girls",
-        "playerIds": ["山口_優菜_宮崎商業高校_宮崎県"]
-      }
+      "recentlyResult": null,
+      "historicalBest": null
     },
     "doubles": {
       "recentlyResult": {
@@ -37,24 +14,24 @@
         "teamId": "miyazakishougyou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "優勝",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-junior",
+        "tournamentId": "west-japan",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商業高校_宮崎県"]
+        "playerIds": ["甲斐_理央奈_宮崎商業高校_宮崎県", "山口_優菜_宮崎商業高校_宮崎県"]
       },
       "historicalBest": {
         "team": "宮崎商業",
         "teamId": "miyazakishougyou",
         "prefecture": "宮崎県",
         "prefectureId": "miyazaki",
-        "result": "優勝",
+        "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "zennihon-junior",
+        "tournamentId": "west-japan",
         "year": 2024,
         "gender": "girls",
-        "playerIds": ["天間_麗奈_東北_宮城県", "山口_優菜_宮崎商業高校_宮崎県"]
+        "playerIds": ["甲斐_理央奈_宮崎商業高校_宮崎県", "山口_優菜_宮崎商業高校_宮崎県"]
       }
     },
     "team": {

@@ -83,10 +83,17 @@ python3 extract_tournament.py DRAW.pdf --out entries.json
 {"id":1,"name":"ヨネックス（東京都）","team":"ヨネックス","prefecture":"東京都","category":"team"}
 ```
 
-> **`tempId` は `姓_名_学校` の3項目。**
-> SKILL.md は `姓_名_学校_都道府県`（4項目）と書いているが、`tools/` 配下の実ファイルは
-> 新旧すべて3項目だった（`上岡_俊介_Up Rise` / `濵田_英明_練馬ソフト` 等）。
-> 実データに合わせている。経緯は `docs/raw/2026-08-14-idea-local-llm-skill-replacement.md`。
+> **`tempId` は `姓_名_学校_都道府県` の4項目**（2026-09-16 変更。それ以前の既定は3項目だった）。
+> 都道府県の代わりに所属連盟名が入る大会ではそれが4項目目に入る。組み立ては `identity.py` の
+> `make_temp_id()` だけに置いてある（都道府県がまだ決まっていない途中段階でだけ3項目になる）。
+> `scripts/pdf/tournament_results_common.py` の `build()` が
+> `participants[].id` / `entries[].playerIds` をこの形で組み直すため、
+> `data/tournaments/details/**` は全大会が4項目。`tools/` 配下も2026-09-16 時点で
+> 4項目が14,734件・19フォルダ、3項目は8,328件・7フォルダ（`highschool-championship-2012`〜`-2017`、
+> `west-japan-2026` の旧ファイルのみ）。
+> 2026-08 時点の「実データは新旧すべて3項目」という記述は当時の誤り。経緯は
+> `docs/raw/2026-08-14-idea-local-llm-skill-replacement.md` と
+> `docs/raw/2026-09-04-zennihon-championship-2016-pdf-entries-import.md`。
 
 ## 検証レポート
 
@@ -177,7 +184,7 @@ python3 test_regression.py    # Ollama不要
 - どの大会にどの設定を使ったかが1か所を見れば分かる
 - `has_prefecture` / `splits_name` で**その様式に無い項目を検証レポートから外せる**
 - `name_in_one_column` で**列検出の結果に関わらず氏名を1つの枠として扱える**
-- `prefecture_default` / `tempid_includes_prefecture` で**ドロー表に書いていない所属連盟**を入れられる
+- `prefecture_default` で**ドロー表に書いていない所属連盟**を入れられる（tempId の4項目目にもそれが入る）
   （都道府県欄の無い大会で全件が要確認に並ぶと、本当に見るべき警告が埋もれる）
 
 `--profile <名前>` で明示、`--no-profile` で使わず自動調整だけにできる。

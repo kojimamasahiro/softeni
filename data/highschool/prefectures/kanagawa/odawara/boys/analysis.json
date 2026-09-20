@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 4,
+  "totalAppearances": 5,
   "byCategory": {
-    "doubles": 3,
+    "doubles": 4,
     "singles": 1
   },
   "resultsByCategory": {
@@ -39,10 +39,10 @@
         "prefectureId": "kanagawa",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["若生_裕希_小田原_神奈川県", "久保田_凰心_小田原_神奈川県"]
+        "playerIds": ["若生_裕希_小田原高校_神奈川県", "久保田_凰心_小田原高校_神奈川県"]
       },
       "historicalBest": {
         "team": "小田原",
@@ -51,10 +51,10 @@
         "prefectureId": "kanagawa",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["若生_裕希_小田原_神奈川県", "久保田_凰心_小田原_神奈川県"]
+        "playerIds": ["若生_裕希_小田原高校_神奈川県", "久保田_凰心_小田原高校_神奈川県"]
       }
     },
     "team": {
@@ -65,19 +65,19 @@
   "uniquePlayers": 5,
   "topPlayers": [
     {
+      "id": "若生_裕希_小田原_神奈川県",
+      "appearances": 3
+    },
+    {
+      "id": "久保田_凰心_小田原_神奈川県",
+      "appearances": 2
+    },
+    {
       "id": "平野_太樹_小田原_神奈川県",
       "appearances": 2
     },
     {
-      "id": "若生_裕希_小田原_神奈川県",
-      "appearances": 2
-    },
-    {
       "id": "山口_翔太郎_小田原_神奈川県",
-      "appearances": 1
-    },
-    {
-      "id": "久保田_凰心_小田原_神奈川県",
       "appearances": 1
     },
     {

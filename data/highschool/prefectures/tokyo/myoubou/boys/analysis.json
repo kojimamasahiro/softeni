@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 12,
+  "totalAppearances": 15,
   "byCategory": {
     "team": 2,
-    "doubles": 10
+    "doubles": 13
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "myoubou",
         "prefecture": "東京都",
         "prefectureId": "tokyo",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
+        "tournamentId": "east-japan",
         "year": 2024,
         "gender": "boys",
-        "playerIds": ["塚越_穂空_明法_東京都", "勝村_将大_明法_東京都"]
+        "playerIds": ["塚越_穂空_明法高等学校_東京都", "勝村_将大_明法高等学校_東京都"]
       },
       "historicalBest": {
         "team": "明法",
@@ -29,10 +29,10 @@
         "prefectureId": "tokyo",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "east-japan",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["成田_朋哉_明法_東京都", "今井_瞭_明法_東京都"]
+        "playerIds": ["塚越_穂空_明法高等学校_東京都", "勝村_将大_明法高等学校_東京都"]
       }
     },
     "team": {
@@ -53,24 +53,24 @@
   "uniquePlayers": 14,
   "topPlayers": [
     {
-      "id": "今井_瞭_明法_東京都",
-      "appearances": 3
+      "id": "山本_悠路_明法_東京都",
+      "appearances": 4
     },
     {
-      "id": "山本_悠路_明法_東京都",
-      "appearances": 3
+      "id": "今井_瞭_明法_東京都",
+      "appearances": 4
     },
     {
       "id": "塚越_穂空_明法_東京都",
-      "appearances": 2
+      "appearances": 3
     },
     {
       "id": "勝村_将大_明法_東京都",
-      "appearances": 2
+      "appearances": 3
     },
     {
-      "id": "成田_朋哉_明法_東京都",
-      "appearances": 1
+      "id": "澤田_竜治_明法_東京都",
+      "appearances": 2
     }
   ]
 }

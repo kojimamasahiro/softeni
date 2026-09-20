@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 6,
+  "totalAppearances": 8,
   "byCategory": {
     "team": 1,
-    "doubles": 5
+    "doubles": 7
   },
   "resultsByCategory": {
     "singles": {
@@ -18,10 +18,10 @@
         "prefectureId": "nara",
         "result": "2回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2014,
+        "tournamentId": "west-japan",
+        "year": 2021,
         "gender": "boys",
-        "playerIds": ["幸田_真_関西中央_奈良県", "梶谷_司_関西中央_奈良県"]
+        "playerIds": ["本村_征也_関西中央高等学校_奈良県", "長谷川_大河_関西中央高等学校_奈良県"]
       }
     },
     "team": {
@@ -39,26 +39,26 @@
       }
     }
   },
-  "uniquePlayers": 10,
+  "uniquePlayers": 12,
   "topPlayers": [
     {
+      "id": "小林_歩輝_関西中央_奈良県",
+      "appearances": 2
+    },
+    {
+      "id": "井場_想大_関西中央_奈良県",
+      "appearances": 2
+    },
+    {
+      "id": "本村_征也_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
+      "id": "長谷川_大河_関西中央_奈良県",
+      "appearances": 1
+    },
+    {
       "id": "戸羽_佑斗_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "西嶋_拓磨_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "幸田_真_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "梶谷_司_関西中央_奈良県",
-      "appearances": 1
-    },
-    {
-      "id": "藤岡_亮輔_関西中央_奈良県",
       "appearances": 1
     }
   ]

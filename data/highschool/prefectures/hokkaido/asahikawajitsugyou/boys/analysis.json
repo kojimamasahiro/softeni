@@ -1,38 +1,37 @@
 {
-  "totalAppearances": 3,
+  "totalAppearances": 1,
   "byCategory": {
-    "doubles": 1,
-    "singles": 2
+    "doubles": 1
   },
   "resultsByCategory": {
     "singles": {
       "recentlyResult": null,
+      "historicalBest": null
+    },
+    "doubles": {
+      "recentlyResult": {
+        "team": "旭川実業",
+        "teamId": "asahikawajitsugyou",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["熊谷_拓海_旭川実業高校_北海道", "細川_瞬汰_旭川実業高校_北海道"]
+      },
       "historicalBest": {
         "team": "旭川実業",
         "teamId": "asahikawajitsugyou",
         "prefecture": "北海道",
         "prefectureId": "hokkaido",
         "result": "1回戦敗退",
-        "category": "singles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
-        "gender": "boys",
-        "playerIds": ["鈴木_海斗_旭川実業_北海道"]
-      }
-    },
-    "doubles": {
-      "recentlyResult": null,
-      "historicalBest": {
-        "team": "旭川実業",
-        "teamId": "asahikawajitsugyou",
-        "prefecture": "北海道",
-        "prefectureId": "hokkaido",
-        "result": "予選敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
+        "tournamentId": "east-japan",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["鈴木_海斗_旭川実業_北海道", "加藤_滉介_旭川実業_北海道"]
+        "playerIds": ["熊谷_拓海_旭川実業高校_北海道", "細川_瞬汰_旭川実業高校_北海道"]
       }
     },
     "team": {

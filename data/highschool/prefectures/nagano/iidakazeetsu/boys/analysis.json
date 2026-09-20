@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 2,
   "byCategory": {
-    "doubles": 1
+    "doubles": 2
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "飯田風越",
+        "teamId": "iidakazeetsu",
+        "prefecture": "長野県",
+        "prefectureId": "nagano",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["木下_遥_飯田風越高校_長野県", "半崎_佑心_飯田風越高校_長野県"]
+      },
       "historicalBest": {
         "team": "飯田風越",
         "teamId": "iidakazeetsu",

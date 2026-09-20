@@ -45,6 +45,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import checks  # noqa: E402
 import geometry  # noqa: E402
+import identity  # noqa: E402
 import labeling  # noqa: E402
 import namesplit  # noqa: E402
 import profiles  # noqa: E402
@@ -169,10 +170,9 @@ def apply_profile_defaults(entries: list[dict], profile) -> None:
             continue
         for player in e.get('information') or []:
             player['prefecture'] = player['prefecture'] or profile.prefecture_default
-            parts = [player['lastName'], player['firstName'], player['team']]
-            if profile.tempid_includes_prefecture:
-                parts.append(player['prefecture'])
-            player['tempId'] = '_'.join(parts)
+            player['tempId'] = identity.make_temp_id(
+                player['lastName'], player['firstName'], player['team'], player['prefecture']
+            )
 
 
 def apply_role_overrides(labels: dict[int, str], trace: dict[int, str], profile, manual_roles: dict[int, str]) -> bool:
@@ -288,10 +288,10 @@ def build_entries(rows, labels: dict[int, str], category: str):
             'team': team_raw.strip(),
             'prefecture': pref,
             'playerId': None,
-            # tempId は実データに合わせて 姓_名_学校 の3項目。
-            # SKILL.md は 姓_名_学校_都道府県 と書いているが、tools/ 配下の実ファイルは
-            # 新旧すべて3項目だった（docs/raw/2026-08-14-idea-local-llm-skill-replacement.md）。
-            'tempId': f"{last.strip()}_{first.strip()}_{team_raw.strip()}",
+            # tempId は 姓_名_学校_都道府県 の4項目（identity.make_temp_id）。
+            # この時点では所属や都道府県がまだ空のことがあり、そのぶんは下の
+            # 「ペア内で所属・都道府県を揃える」で組み直す。
+            'tempId': identity.make_temp_id(last, first, team_raw, pref),
         }
         if split_method:
             # 姓名をどの根拠で割ったか。出力する直前に落とす（レポートに出すためだけの印）。
@@ -343,7 +343,9 @@ def build_entries(rows, labels: dict[int, str], category: str):
                     if found:
                         p['lastName'], p['firstName'] = found
                         p['_split'] = 'team_corpus'
-                p['tempId'] = f"{p['lastName']}_{p['firstName']}_{p['team']}"
+                p['tempId'] = identity.make_temp_id(
+                    p['lastName'], p['firstName'], p['team'], p['prefecture']
+                )
 
     # id は行順で確定する（番号セルは縦位置がずれて拾えないことがあるため）。
     result = []

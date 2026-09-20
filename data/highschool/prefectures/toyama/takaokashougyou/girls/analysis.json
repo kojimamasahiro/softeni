@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 1,
+  "totalAppearances": 13,
   "byCategory": {
-    "doubles": 1
+    "doubles": 13
   },
   "resultsByCategory": {
     "singles": {
@@ -9,18 +9,29 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "高岡商業",
+        "teamId": "takaokashougyou",
+        "prefecture": "富山県",
+        "prefectureId": "toyama",
+        "result": "1回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2024,
+        "gender": "girls",
+        "playerIds": ["水谷_朱璃_高岡商業高校_富山県", "多賀_千咲_高岡商業高校_富山県"]
+      },
       "historicalBest": {
         "team": "高岡商業",
         "teamId": "takaokashougyou",
         "prefecture": "富山県",
         "prefectureId": "toyama",
-        "result": "予選敗退",
+        "result": "3回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-japan-cup",
-        "year": 2021,
+        "tournamentId": "east-japan",
+        "year": 2022,
         "gender": "girls",
-        "playerIds": ["藤岡_瑠華_高岡商業_富山県", "山本_莉音_高岡商業_富山県"]
+        "playerIds": ["高井_沙彩_高岡商業高校_富山県", "福田_唯子_高岡商業高校_富山県"]
       }
     },
     "team": {

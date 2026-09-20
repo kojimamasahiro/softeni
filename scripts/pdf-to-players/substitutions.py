@@ -40,6 +40,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import identity
+
 
 class SubstitutionError(ValueError):
     """交代ファイルの書き方が entries と噛み合っていない。"""
@@ -113,9 +115,8 @@ def apply(entries: list[dict], subs: list[dict]) -> list[str]:
                     'team': team,
                     'prefecture': pref,
                     'playerId': p.get('playerId'),
-                    # tempId は entries の組み立てと同じ形。プロファイルが
-                    # 都道府県つき(4項目)を指定していれば、後段で上書きされる。
-                    'tempId': f'{last}_{first}_{team}',
+                    # tempId は entries の組み立てと同じ形（identity.make_temp_id）。
+                    'tempId': identity.make_temp_id(last, first, team, pref),
                 }
             )
         entry['information'] = info

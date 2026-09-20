@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 20,
+  "totalAppearances": 23,
   "byCategory": {
     "team": 2,
-    "doubles": 18
+    "doubles": 21
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "kawagoehigashi",
         "prefecture": "埼玉県",
         "prefectureId": "saitama",
-        "result": "3回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "east-japan",
-        "year": 2025,
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["平田_康晟_川越東_埼玉県", "栁澤_昊輝_川越東_埼玉県"]
+        "playerIds": ["橋本_知潤_川越東高校_埼玉県", "黒田_将希_川越東高校_埼玉県"]
       },
       "historicalBest": {
         "team": "川越東",
@@ -60,26 +60,26 @@
       }
     }
   },
-  "uniquePlayers": 27,
+  "uniquePlayers": 29,
   "topPlayers": [
+    {
+      "id": "平田_泰一_川越東_埼玉県",
+      "appearances": 4
+    },
+    {
+      "id": "池田_蒼空_川越東_埼玉県",
+      "appearances": 3
+    },
+    {
+      "id": "橋本_知潤_川越東_埼玉県",
+      "appearances": 3
+    },
     {
       "id": "伊藤_征杜_川越東_埼玉県",
       "appearances": 3
     },
     {
-      "id": "平田_泰一_川越東_埼玉県",
-      "appearances": 3
-    },
-    {
       "id": "平田_康晟_川越東_埼玉県",
-      "appearances": 2
-    },
-    {
-      "id": "近藤_駿也_川越東_埼玉県",
-      "appearances": 2
-    },
-    {
-      "id": "池田_蒼空_川越東_埼玉県",
       "appearances": 2
     }
   ]
