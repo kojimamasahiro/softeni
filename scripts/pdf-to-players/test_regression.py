@@ -444,7 +444,7 @@ def singles_entries() -> list[dict]:
             'name': f'{last} {first}（{team}）',
             'information': [{'lastName': last, 'firstName': first, 'team': team,
                              'prefecture': '日本学連', 'playerId': None,
-                             'tempId': f'{last}_{first}_{team}'}],
+                             'tempId': f'{last}_{first}_{team}_日本学連'}],
             'category': 'singles',
         }
     return [one(1, '橋場', '柊一郎', '法政大学'), one(2, '保海', '祥真', '立命館大学')]
@@ -456,9 +456,9 @@ def doubles_entries() -> list[dict]:
         'name': '柏・村上（東北）',
         'information': [
             {'lastName': '柏', 'firstName': '春花', 'team': '東北', 'prefecture': '宮城県',
-             'playerId': None, 'tempId': '柏_春花_東北'},
+             'playerId': None, 'tempId': '柏_春花_東北_宮城県'},
             {'lastName': '村上', 'firstName': '芹', 'team': '東北', 'prefecture': '宮城県',
-             'playerId': None, 'tempId': '村上_芹_東北'},
+             'playerId': None, 'tempId': '村上_芹_東北_宮城県'},
         ],
         'category': 'doubles',
     }]
@@ -476,7 +476,7 @@ def test_substitutions() -> None:
     check('選手交代: team を省くと元のエントリーの所属を引き継ぐ',
           entries[0]['information'][0]['team'] == '法政大学', entries[0]['information'][0]['team'])
     check('選手交代: name を作り直す', entries[0]['name'] == '山田 太郎（法政大学）', entries[0]['name'])
-    check('選手交代: tempId を作り直す', entries[0]['information'][0]['tempId'] == '山田_太郎_法政大学',
+    check('選手交代: tempId を作り直す', entries[0]['information'][0]['tempId'] == '山田_太郎_法政大学_日本学連',
           entries[0]['information'][0]['tempId'])
     check('選手交代: 何を当てたかを説明として返す', len(applied) == 1 and '橋場 柊一郎' in applied[0] and '山田 太郎' in applied[0],
           str(applied))
@@ -752,8 +752,8 @@ def test_doubles_pairing() -> None:
         entries[1]['information'][0]['lastName'],
     )
     check(
-        'ダブルス: tempId は 姓_名_学校 の3項目（実データに合わせる。SKILL.mdの4項目は誤り）',
-        entries[0]['information'][0]['tempId'] == '柏_春花_東北',
+        'ダブルス: tempId は 姓_名_学校_都道府県 の4項目（details 側の識別子と同じ形）',
+        entries[0]['information'][0]['tempId'] == '柏_春花_東北_宮城県',
         entries[0]['information'][0]['tempId'],
     )
     check(

@@ -1,7 +1,7 @@
 {
-  "totalAppearances": 5,
+  "totalAppearances": 6,
   "byCategory": {
-    "doubles": 5
+    "doubles": 6
   },
   "resultsByCategory": {
     "singles": {
@@ -9,7 +9,18 @@
       "historicalBest": null
     },
     "doubles": {
-      "recentlyResult": null,
+      "recentlyResult": {
+        "team": "鹿島学園",
+        "teamId": "kashimagakuen",
+        "prefecture": "茨城県",
+        "prefectureId": "ibaraki",
+        "result": "2回戦敗退",
+        "category": "doubles",
+        "tournamentId": "east-japan",
+        "year": 2024,
+        "gender": "boys",
+        "playerIds": ["田中_陸王_鹿島学園高校_茨城県", "長野_伊吹_鹿島学園高校_茨城県"]
+      },
       "historicalBest": {
         "team": "鹿島学園",
         "teamId": "kashimagakuen",

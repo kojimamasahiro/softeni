@@ -43,9 +43,6 @@ class Profile:
     # `prefecture` に `日本学連` のような連盟名が入るのが実データの慣習
     # （data/tournaments/details/zennihon-championship/*）。
     prefecture_default: str | None = None
-    # tempId の末尾に prefecture を足すか。既定の tempId は 姓_名_学校 の3項目だが、
-    # 実データには 姓_名_学校_都道府県 の4項目も416件ある。大会ごとにどちらか決まる。
-    tempid_includes_prefecture: bool = False
     note: str = ''
 
 
@@ -80,14 +77,13 @@ PROFILES: list[Profile] = [
         splits_name=True,
         name_in_one_column=True,
         prefecture_default='日本学連',
-        tempid_includes_prefecture=True,
         note=(
             'ブラケット表。**都道府県欄が無い**（所属は大学名）。'
             '氏名は1つの列に均等割り付けで入るが、割り付けは姓と名それぞれに掛かって'
             'いるため境目の字間だけが広い。そこを境目として割る（namesplit.py）。'
             '所属は括弧つきで、ペアの2行の間の行に置かれる。'
             'エントリー番号もペアの2行目に来る。'
-            '都道府県の代わりに所属連盟「日本学連」を入れ、tempIdも4項目にする。'
+            '都道府県の代わりに所属連盟「日本学連」を入れる（tempId の4項目目にも入る）。'
         ),
     ),
     Profile(
@@ -102,13 +98,12 @@ PROFILES: list[Profile] = [
         has_prefecture=False,
         name_in_one_column=True,
         prefecture_default='日本学連',
-        tempid_includes_prefecture=True,
         note=(
             '2段組の一覧。1行に「番号 氏名(所属)」が収まる（ブラケット表ではない）。'
             '**都道府県欄が無い**（所属は大学名）。氏名は1つの枠に均等割り付け。'
             '所属名が長いと括弧が空になり、**すぐ下の行に所属名だけが溢れて置かれる**'
             '（y_tol でその行を同じ行に取り込む）。'
-            '都道府県の代わりに所属連盟「日本学連」を入れ、tempIdも4項目にする。'
+            '都道府県の代わりに所属連盟「日本学連」を入れる（tempId の4項目目にも入る）。'
         ),
     ),
     Profile(

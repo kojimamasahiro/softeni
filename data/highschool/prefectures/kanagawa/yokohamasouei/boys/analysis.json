@@ -1,8 +1,8 @@
 {
-  "totalAppearances": 28,
+  "totalAppearances": 29,
   "byCategory": {
     "team": 6,
-    "doubles": 22
+    "doubles": 23
   },
   "resultsByCategory": {
     "singles": {
@@ -15,12 +15,12 @@
         "teamId": "yokohamasouei",
         "prefecture": "神奈川県",
         "prefectureId": "kanagawa",
-        "result": "2回戦敗退",
+        "result": "4回戦敗退",
         "category": "doubles",
         "tournamentId": "east-japan",
-        "year": 2026,
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["大沢_風木_横浜創英高校_神奈川県", "松野_光希_横浜創英高校_神奈川県"]
+        "playerIds": ["青木_優_横浜創英高校_神奈川県", "斉藤_愁我_横浜創英高校_神奈川県"]
       },
       "historicalBest": {
         "team": "横浜創英",
@@ -29,10 +29,10 @@
         "prefectureId": "kanagawa",
         "result": "4回戦敗退",
         "category": "doubles",
-        "tournamentId": "highschool-championship",
-        "year": 2022,
+        "tournamentId": "east-japan",
+        "year": 2024,
         "gender": "boys",
-        "playerIds": ["川崎_涼吾_横浜創英_神奈川県", "椿_麻央_横浜創英_神奈川県"]
+        "playerIds": ["青木_優_横浜創英高校_神奈川県", "斉藤_愁我_横浜創英高校_神奈川県"]
       }
     },
     "team": {
@@ -71,15 +71,15 @@
       "appearances": 4
     },
     {
+      "id": "青木_優_横浜創英_神奈川県",
+      "appearances": 2
+    },
+    {
+      "id": "斉藤_愁我_横浜創英_神奈川県",
+      "appearances": 2
+    },
+    {
       "id": "押見_陸_横浜創英_神奈川県",
-      "appearances": 2
-    },
-    {
-      "id": "野崎_瞭_横浜創英_神奈川県",
-      "appearances": 2
-    },
-    {
-      "id": "渡辺_澪治_横浜創英_神奈川県",
       "appearances": 2
     }
   ]

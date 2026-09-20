@@ -1,27 +1,55 @@
 {
-  "totalMatches": 272,
-  "wins": 249,
-  "losses": 23,
-  "totalWinRate": 0.915,
+  "totalMatches": 298,
+  "wins": 272,
+  "losses": 26,
+  "totalWinRate": 0.913,
   "games": {
-    "total": 1494,
-    "won": 1121,
-    "lost": 373,
-    "gameRate": 0.75
+    "total": 1621,
+    "won": 1218,
+    "lost": 403,
+    "gameRate": 0.751
   },
   "byPartner": {
     "3": {
       "matches": {
-        "total": 79,
-        "wins": 74,
+        "total": 87,
+        "wins": 82,
         "losses": 5,
-        "winRate": 0.937
+        "winRate": 0.943
       },
       "games": {
-        "total": 478,
-        "won": 358,
-        "lost": 120,
-        "gameRate": 0.749
+        "total": 514,
+        "won": 390,
+        "lost": 124,
+        "gameRate": 0.759
+      }
+    },
+    "5": {
+      "matches": {
+        "total": 4,
+        "wins": 3,
+        "losses": 1,
+        "winRate": 0.75
+      },
+      "games": {
+        "total": 17,
+        "won": 13,
+        "lost": 4,
+        "gameRate": 0.765
+      }
+    },
+    "6": {
+      "matches": {
+        "total": 8,
+        "wins": 7,
+        "losses": 1,
+        "winRate": 0.875
+      },
+      "games": {
+        "total": 40,
+        "won": 30,
+        "lost": 10,
+        "gameRate": 0.75
       }
     },
     "9": {
@@ -36,6 +64,20 @@
         "won": 12,
         "lost": 6,
         "gameRate": 0.667
+      }
+    },
+    "11": {
+      "matches": {
+        "total": 6,
+        "wins": 5,
+        "losses": 1,
+        "winRate": 0.833
+      },
+      "games": {
+        "total": 34,
+        "won": 22,
+        "lost": 12,
+        "gameRate": 0.647
       }
     },
     "13": {
@@ -236,7 +278,35 @@
         "gameRate": 0.744
       }
     },
+    "2021": {
+      "matches": {
+        "total": 8,
+        "wins": 8,
+        "losses": 0,
+        "winRate": 1
+      },
+      "games": {
+        "total": 36,
+        "won": 32,
+        "lost": 4,
+        "gameRate": 0.889
+      }
+    },
     "2022": {
+      "matches": {
+        "total": 43,
+        "wins": 39,
+        "losses": 4,
+        "winRate": 0.907
+      },
+      "games": {
+        "total": 232,
+        "won": 172,
+        "lost": 60,
+        "gameRate": 0.741
+      }
+    },
+    "2023": {
       "matches": {
         "total": 35,
         "wins": 32,
@@ -244,38 +314,24 @@
         "winRate": 0.914
       },
       "games": {
-        "total": 192,
-        "won": 142,
-        "lost": 50,
-        "gameRate": 0.74
-      }
-    },
-    "2023": {
-      "matches": {
-        "total": 31,
-        "wins": 29,
-        "losses": 2,
-        "winRate": 0.935
-      },
-      "games": {
-        "total": 165,
-        "won": 131,
-        "lost": 34,
-        "gameRate": 0.794
+        "total": 182,
+        "won": 144,
+        "lost": 38,
+        "gameRate": 0.791
       }
     },
     "2024": {
       "matches": {
-        "total": 40,
-        "wins": 37,
-        "losses": 3,
-        "winRate": 0.925
+        "total": 46,
+        "wins": 42,
+        "losses": 4,
+        "winRate": 0.913
       },
       "games": {
-        "total": 223,
-        "won": 169,
-        "lost": 54,
-        "gameRate": 0.758
+        "total": 257,
+        "won": 191,
+        "lost": 66,
+        "gameRate": 0.743
       }
     },
     "2025": {

@@ -145,5 +145,92 @@
         "age": "none"
       }
     ]
+  },
+  {
+    "year": 2024,
+    "location": "千葉県",
+    "startDate": "2024-07-20",
+    "endDate": "2024-07-21",
+    "label": "第79回 東日本選手権大会",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp/result/result2024",
+    "categories": [
+      {
+        "categoryId": "doubles-none-boys",
+        "label": "男子一般",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "doubles-none-girls",
+        "label": "女子一般",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "location": "秋田県",
+    "startDate": "2023-07-15",
+    "endDate": "2023-07-16",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp/result/result2023",
+    "label": "第78回 東日本選手権大会",
+    "categories": [],
+    "status": "cancelled",
+    "note": "中止（1試合も実施されていない）。location / startDate / endDate は中止時点の開催予定（秋田県秋田市・大仙市・横手市・7/15〜16）で実績ではない。出典: 日本ソフトテニス連盟 2023年度 大会結果一覧"
+  },
+  {
+    "year": 2022,
+    "location": "長野県",
+    "startDate": "2022-07-16",
+    "endDate": "2022-07-17",
+    "label": "第77回 東日本選手権大会",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp/result/result2022",
+    "categories": [
+      {
+        "categoryId": "doubles-none-boys",
+        "label": "男子一般",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "doubles-none-girls",
+        "label": "女子一般",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
+  },
+  {
+    "year": 2021,
+    "location": "群馬県",
+    "startDate": "2021-07-17",
+    "endDate": "2021-07-18",
+    "label": "第76回 東日本選手権大会",
+    "source": "公益財団法人 日本ソフトテニス連盟",
+    "sourceUrl": "https://www.jsta.or.jp/result/result2021",
+    "categories": [
+      {
+        "categoryId": "doubles-none-boys",
+        "label": "男子一般",
+        "category": "doubles",
+        "gender": "boys",
+        "age": "none"
+      },
+      {
+        "categoryId": "doubles-none-girls",
+        "label": "女子一般",
+        "category": "doubles",
+        "gender": "girls",
+        "age": "none"
+      }
+    ]
   }
 ]
