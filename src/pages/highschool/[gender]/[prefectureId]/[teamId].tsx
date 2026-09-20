@@ -14,6 +14,7 @@ import { getSchoolAlumni, type AlumniEntry } from '@/lib/highschoolAlumni';
 import { getBlockTournamentMembers } from '@/lib/highschoolBlockMembers';
 import { getFeederSchools, type FeederSchool } from '@/lib/highschoolFeederSchools';
 import { getSchoolInProgress, type InProgressScope } from '@/lib/highschoolInProgress';
+import { getTeamMatchMembers } from '@/lib/highschoolTeamMatchMembers';
 import { getPlayerNameToId } from '@/lib/playersIndex';
 import { getUniversityDestinations, type UniversityDestination } from '@/lib/university';
 import { getCategoryLabel, getTournamentLabel, resultPriority } from '@/lib/utils';
@@ -89,6 +90,12 @@ type Props = {
    * 成績サマリー等には地区大会を混ぜない（lib/highschoolBlockMembers.ts）
    */
   blockMembers: { year: number; pid: string }[];
+  /**
+   * 団体戦のオーダー（ADR-020）に出た選手の pid（`姓_名_学校名_都道府県` 形式）。年度別メンバーにだけ足す。
+   * 団体戦の participants は学校単位なので、これが無いと団体戦のレギュラーがメンバーに出ない
+   * （lib/highschoolTeamMatchMembers.ts）。成績・通算成績には混ぜない
+   */
+  teamMatchMembers: { year: number; pid: string }[];
   /** 開催中の全国大会での、この学校の出場状況（docs/wiki/seo.md #11） */
   inProgressScopes: InProgressScope[];
 };
@@ -202,6 +209,7 @@ export default function TeamPage({
   feederSchools,
   universityDestinations,
   blockMembers,
+  teamMatchMembers,
   inProgressScopes,
 }: Props) {
   const pageUrl = `https://softeni-pick.com/highschool/${gender}/${prefectureId}/${teamId}/`;
@@ -242,7 +250,8 @@ export default function TeamPage({
       const parts = pid.split('_');
       if (parts.length < 2) return;
       if (parts.length >= 3 && parts[2] !== teamName) return;
-      const name = `${parts[0]} ${parts[1]}`;
+      // 名が空の pid（オーダーの「名前だけ」の選手で、姓名を割れなかったもの）は姓だけで出す
+      const name = parts[1] ? `${parts[0]} ${parts[1]}` : parts[0];
       let yearMap = byYear.get(year);
       if (!yearMap) {
         yearMap = new Map();
@@ -259,6 +268,8 @@ export default function TeamPage({
       for (const pid of entry.playerIds ?? []) addMember(entry.year, pid);
     }
     for (const m of blockMembers) addMember(m.year, m.pid);
+    // 団体戦のオーダーに出た選手（lib/highschoolTeamMatchMembers.ts、2026-09-19）
+    for (const m of teamMatchMembers) addMember(m.year, m.pid);
     return [...byYear.entries()]
       .sort((a, b) => b[0] - a[0])
       .map(([year, members]) => ({
@@ -558,8 +569,8 @@ export default function TeamPage({
               {teamName} ソフトテニス{genderLabel}の年度別メンバー
             </h2>
             <p className="text-sm text-text-secondary mb-4">
-              収録している全国大会・主要大会・地区大会（ブロック大会）の結果に掲載された選手を年度別にまとめています。
-              大会結果に掲載された選手のみのため、全部員の名簿ではありません。
+              収録している全国大会・主要大会・地区大会（ブロック大会）の結果と、団体戦のオーダー（対戦ごとの出場ペア）に
+              掲載された選手を年度別にまとめています。 大会結果に掲載された選手のみのため、全部員の名簿ではありません。
             </p>
             <div className="space-y-4">
               {membersByYear.map(({ year, members }) => (
@@ -1010,6 +1021,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   }
 
+  // 団体戦のオーダーに出た選手。年度別メンバーにだけ足す（lib/highschoolTeamMatchMembers.ts）。
+  // pid の形は blockMembers と同じ（`姓_名_学校名_都道府県`）。名を持たない選手は名の位置が空になる
+  const teamMatchMembers = getTeamMatchMembers(teamName, prefecture.name, gender).map((m) => ({
+    year: m.year,
+    pid: `${m.lastName}_${m.firstName}_${teamName}_${prefecture.name}`,
+  }));
+  {
+    const nameToId = getPlayerNameToId();
+    for (const m of teamMatchMembers) {
+      if (playerLinks[m.pid] !== undefined) continue;
+      const [lastName, firstName] = m.pid.split('_');
+      if (!firstName) continue;
+      const id = nameToId.get(`${lastName}::${firstName}`);
+      if (id !== undefined) playerLinks[m.pid] = id;
+    }
+  }
+
   // 主な卒業生（Phase 2）。要件は docs/raw/2026-07-17-idea-highschool-strong-school-ranking.md
   const alumni = getSchoolAlumni(process.cwd(), teamName, gender);
 
@@ -1037,6 +1065,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       feederSchools,
       universityDestinations,
       blockMembers,
+      teamMatchMembers,
       inProgressScopes,
     },
   };

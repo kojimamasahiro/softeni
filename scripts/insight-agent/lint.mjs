@@ -28,12 +28,43 @@ const VERIFIER = path.join(process.cwd(), 'scripts', 'verify-story-text.mjs');
 // PROMPT.md「評価語・修飾語を使わないこと」の禁止例をそのまま機械化したもの。
 // 「順位と年数だけで語る」がADR-005由来の制約なので、成績以外の価値判断語はすべてここに入る。
 const BANNED_WORDS = [
-  '強豪', '名門', '古豪', '王者', '女王', '絶対王者',
-  '悲願', '雪辱', 'リベンジ', '復活', '返り咲',
-  '圧巻', '圧倒的', '驚異的', '驚異の', '衝撃', '劇的', '見事',
-  '注目の', '実力者', '実力校', '優勝候補', '本命', '大本命',
-  '常勝', '無敵', '最強', '快挙', '偉業', '金字塔',
-  '底力', '意地', '執念', '気迫', '死闘', '熱戦', '激闘',
+  '強豪',
+  '名門',
+  '古豪',
+  '王者',
+  '女王',
+  '絶対王者',
+  '悲願',
+  '雪辱',
+  'リベンジ',
+  '復活',
+  '返り咲',
+  '圧巻',
+  '圧倒的',
+  '驚異的',
+  '驚異の',
+  '衝撃',
+  '劇的',
+  '見事',
+  '注目の',
+  '実力者',
+  '実力校',
+  '優勝候補',
+  '本命',
+  '大本命',
+  '常勝',
+  '無敵',
+  '最強',
+  '快挙',
+  '偉業',
+  '金字塔',
+  '底力',
+  '意地',
+  '執念',
+  '気迫',
+  '死闘',
+  '熱戦',
+  '激闘',
 ];
 
 // PROMPT.md「推測を書かないこと。理由・心境・背景・今後の見通しは、YAMLに無い限り書かない」。
@@ -107,9 +138,7 @@ function residue(text, known, vocab) {
   for (const k of known) if (s.includes(k)) s = s.split(k).join(' ');
   // ひらがな・数字・記号・成績語は固有名詞になり得ないので落とす。
   s = s.replace(/[ぁ-ん０-９0-9\s、。「」『』（）()・･,.\-−ー〜%％]/g, ' ');
-  return [...s.matchAll(/[^\s]+/g)]
-    .map((m) => [...m[0]].filter((ch) => !vocab.has(ch)).join(''))
-    .filter(Boolean);
+  return [...s.matchAll(/[^\s]+/g)].map((m) => [...m[0]].filter((ch) => !vocab.has(ch)).join('')).filter(Boolean);
 }
 
 /**
@@ -208,7 +237,12 @@ function loadInput(args) {
   const text = args.whole ? raw : extractBody(raw);
   // markdown下書きは PROMPT.md の指示どおり各投稿末尾に `used: <id>, <id>` を持つ。
   // `used:` は本文の外（引用ブロックの下）に置かれることがあるので、抜き出す前の全文から拾う。
-  const usedIds = [...raw.matchAll(/^\s*>?\s*used:\s*(.+)$/gim)].flatMap((m) => m[1].split(/[,、]/).map((s) => s.trim()).filter(Boolean));
+  const usedIds = [...raw.matchAll(/^\s*>?\s*used:\s*(.+)$/gim)].flatMap((m) =>
+    m[1]
+      .split(/[,、]/)
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
   return { text, usedIds, source: args.files[0] ?? '--text', tournament: args.tournament, year: args.year, category: args.category };
 }
 
@@ -243,12 +277,14 @@ function lintWording(text) {
 
 function lintUsedIds(usedIds, source) {
   if (usedIds.length > 0) return [];
-  return [{
-    level: 'ERROR',
-    rule: 'used',
-    message: 'story id の併記が無い（ADR-012 は usedStoryIds を公開の必須条件にしている）',
-    sentence: source,
-  }];
+  return [
+    {
+      level: 'ERROR',
+      rule: 'used',
+      message: 'story id の併記が無い（ADR-012 は usedStoryIds を公開の必須条件にしている）',
+      sentence: source,
+    },
+  ];
 }
 
 /**
@@ -287,7 +323,12 @@ function main() {
     const files = fs.existsSync(dir)
       ? fs.readdirSync(dir).flatMap((y) => {
           const d = path.join(dir, y);
-          return fs.statSync(d).isDirectory() ? fs.readdirSync(d).filter((f) => f.endsWith('.json')).map((f) => path.join(d, f)) : [];
+          return fs.statSync(d).isDirectory()
+            ? fs
+                .readdirSync(d)
+                .filter((f) => f.endsWith('.json'))
+                .map((f) => path.join(d, f))
+            : [];
         })
       : [];
     const known = knownNames(args.tournament, args.category);

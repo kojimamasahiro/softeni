@@ -323,4 +323,4 @@ Supabase のテーブル（`matches` / `games` / `points` / `match_video_session
 | 全中ブロック大会の掲載 | **投入済み**（2026-08-11、9ブロック） | [アイデア](../raw/2026-08-08-idea-zenchu-block-tournament-data.md) |
 | 中学カテゴリの公開ページ | **実装済み**（2026-08-12）。残は build 完走と GSC 効果測定。仕様は [secondaryschool.md](./secondaryschool.md) | [アイデア](../raw/2026-08-12-idea-juniorhigh-category-pages.md) |
 | 小学生カテゴリの公開ページ | **実装済み**（2026-09-13）。残は build 完走と GSC 効果測定。仕様は [primaryschool.md](./primaryschool.md) | [アイデア](../raw/2026-09-12-idea-primaryschool-category.md) |
-| 団体戦のオーダー | **一部実装**（2026-09-19）。インターハイは記録がある年度（2019・2021〜2026）を全部入れた。残は見せ方 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |
+| 団体戦のオーダー | **一部実装**（2026-09-19）。インターハイは記録がある年度（2019・2021〜2026）を全部入れた。学校ページのメンバーと年度別結果の FAQ に反映済み（[SEO](../raw/2026-09-19-idea-team-match-order-seo.md)）。残は選手ページでの見せ方 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |

@@ -47,9 +47,7 @@ function getSupabaseConfig() {
   const url = USE_TEST ? process.env.NEXT_PUBLIC_SUPABASE_TEST_URL : (process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL);
   const serviceKey = USE_TEST ? process.env.SUPABASE_TEST_SERVICE_KEY : process.env.SUPABASE_SERVICE_KEY;
   if (!url || !serviceKey) {
-    throw new Error(
-      `Supabase 環境変数が見つかりません（${USE_TEST ? 'テスト用' : '本番用'}）。.env.local を確認してください。`,
-    );
+    throw new Error(`Supabase 環境変数が見つかりません（${USE_TEST ? 'テスト用' : '本番用'}）。.env.local を確認してください。`);
   }
   return { url, serviceKey };
 }
@@ -126,11 +124,7 @@ function planMatchUpdate(row) {
 async function fixMatches(supabase) {
   // team_a / team_b の表示文字列、またはフラット列のいずれかで
   // このプレイヤーを含む可能性がある行を広めに取得し、JS側で厳密に判定する。
-  const orParts = [
-    `team_a.ilike.%${OLD_FULL}%`,
-    `team_b.ilike.%${OLD_FULL}%`,
-    ...FLAT_SLOTS.flatMap(([lastKey]) => [`${lastKey}.eq.${OLD_LAST}`]),
-  ];
+  const orParts = [`team_a.ilike.%${OLD_FULL}%`, `team_b.ilike.%${OLD_FULL}%`, ...FLAT_SLOTS.flatMap(([lastKey]) => [`${lastKey}.eq.${OLD_LAST}`])];
 
   const { data, error } = await supabase.from('matches').select('*').or(orParts.join(','));
   if (error) throw error;

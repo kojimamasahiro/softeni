@@ -18,7 +18,7 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 | `/highschool/` | — | `/highschool/boys/` へ 301（`public/_redirects`）。sitemap からは除外 |
 | `/highschool/[gender]/` | `data/prefectures.json` / 各県の `summary.json` | 都道府県一覧（収録0校の県は「収録準備中」でリンクしない）と男女切替 |
 | `/highschool/[gender]/[prefectureId]/` | 同上 | 県内の学校一覧（**直近3年ぶんだけ**。それ以前は学校ページへ誘導）、県内強豪校、会期中の出場校 |
-| `/highschool/[gender]/[prefectureId]/[teamId].tsx` | `summary.json` / `:teamId/:gender/analysis.json` / `details/**`（地区大会のメンバー） | 主要4大会のサマリー、年度別メンバー、主な卒業生、進路 |
+| `/highschool/[gender]/[prefectureId]/[teamId].tsx` | `summary.json` / `:teamId/:gender/analysis.json` / `details/**`（地区大会のメンバー・団体戦のオーダー） | 主要4大会のサマリー、年度別メンバー、主な卒業生、進路 |
 | `/highschool/rankings/` | `lib/highschoolRanking.ts` | 強豪校ランキング（1ページ・男女はクライアント切替） |
 | `/highschool/tournaments/` ＋ `/[tournament]/` | `lib/highschoolNationalTournaments.ts` / `details/**` | 全国大会の歴代記録（下記） |
 
@@ -44,6 +44,7 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 都道府県ページの学校一覧は直近 3 年分の成績のみ表示し、それ以前は学校ページへ誘導する
 - 学校ページのサマリーはインターハイに加え、国体・ハイスクールジャパンカップ・選抜を含む主要 4 大会の掲載数・最新・最高成績を表示する
 - 学校ページに年度別メンバー一覧を表示する（「◯◯高校 ソフトテニス メンバー」検索意図への対応）。収録大会結果に選手名が掲載された選手のみを年度別に集計し、全部員の名簿ではない旨を明記する。選手ページがある選手は `/players/{id}/results/` へリンクし、title / description / FAQ にも「メンバー」を含める
+  - **2026-09-19: 団体戦のオーダー（ADR-020）に出た選手もメンバーに含める**。団体戦の `participants` は学校単位なので、レギュラーが1人も出ていなかった。地区大会と同じ形で `lib/highschoolTeamMatchMembers.ts` が年度別メンバーにだけ足す（高校の大会のみ・成績には入れない）。「名前だけ」の選手も含める（リンクは張らない。[経緯](../raw/2026-09-19-idea-team-match-order-seo.md)）
   - **2026-09-14: 地区大会（`highschool-*-block` 9地区＋`highschool-tokai-senbatsu`）の出場選手もメンバーに含める**。高校カテゴリは地区大会を成績・ランキング・主な卒業生に統合しない方針だが、メンバーは順位ではなく出場の事実なので**例外**とした。集計パイプライン（summary.json）は触らず、`lib/highschoolBlockMembers.ts` がビルド時に details を読んで年度別メンバーにだけ足す。実測で361ページに1,383名が加わり、155ページは最新年のメンバーが地区大会からしか取れなかった。あわせて description・FAQ に最新年と人数（例「2026年は17名」）を出し、導入文の直下にメンバー節（`#members`）へのリンクを置いた。経緯は [raw/2026-09-14-highschool-members-seo.md](../raw/2026-09-14-highschool-members-seo.md)
 - 高校カテゴリ共通の定数・判定ロジック（大会優先度、ベスト8 判定、mixed 表示判定など）は `lib/highschool.ts` に集約する
 

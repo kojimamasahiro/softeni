@@ -21,6 +21,7 @@ import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { AD_SLOTS } from '@/lib/ads';
 import { findCategoryFormat } from '@/lib/categoryFormat';
+import { buildTeamMatchOrderSummary, describeFinalOrder } from '@/lib/teamMatchOrderSummary';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
 import { getPublishedInsight } from '@/lib/tournamentInsight';
@@ -162,6 +163,33 @@ export default function TournamentYearResultPage({
   // 結果が 1 件も入っていない種目で「結果」を名乗らないのは #11 の開示ルールと同じ扱い。
   const titleFocus = resultCoverage.status === 'not_recorded' ? '組み合わせ' : '結果・組み合わせ';
 
+  // 団体戦のオーダー（ADR-020）。持たない種目では null で、以降のブロックはどれも出ない。
+  // 「オーダー」は X で繰り返される問いの語だが、対戦詳細の表には1回も出ていなかった
+  // （docs/wiki/seo.md「大会名の表記と検索語の乖離」と同じ型の missing literal）。
+  const orderSummary = useMemo(() => buildTeamMatchOrderSummary(detailData), [detailData]);
+  const finalOrderText = orderSummary ? describeFinalOrder(orderSummary) : null;
+
+  // FAQ は**画面に出している文面と同じもの**を FAQPage に入れる（表示していない答えを
+  // 構造化データにだけ持たせない）。オーダーを持つ種目だけが持つ。
+  const orderFaqItems = orderSummary
+    ? [
+        ...(finalOrderText
+          ? [
+              {
+                question: `${headingName}${year}年${categoryLabel ? `${categoryLabel}` : ''}の決勝のオーダーは？`,
+                answer: finalOrderText,
+              },
+            ]
+          : []),
+        {
+          question: `${headingName}${year}年${categoryLabel ? `${categoryLabel}` : ''}のオーダーはどの試合まで分かりますか？`,
+          answer: `公式記録にオーダーがある${orderSummary.matchCount}試合・${orderSummary.rubberCount}対戦について、第1対戦からの出場ペアと本数をページ内の「対戦詳細」に掲載しています。${
+            orderSummary.hasGames ? 'ゲームごとのポイントも実施順で掲載しています。' : ''
+          }「対戦詳細」は選手名や所属で絞り込めます。`,
+        },
+      ]
+    : [];
+
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
     { label: '大会結果一覧', href: '/tournaments' },
@@ -202,7 +230,9 @@ export default function TournamentYearResultPage({
     <>
       <MetaHead
         title={`${titleLeadName}${year}${categoryLabel ? ` ${categoryLabel}` : ''} ${titleFocus} | ソフトテニス情報`}
-        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・組み合わせ（トーナメント表）・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
+        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・組み合わせ（トーナメント表）・優勝/上位入賞者の成績一覧。${
+          orderSummary ? `各試合のオーダー（第1対戦からの出場ペアと本数）も${orderSummary.matchCount}試合ぶん掲載。` : ''
+        }${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
         {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
@@ -248,6 +278,24 @@ export default function TournamentYearResultPage({
             }),
           }}
         />
+
+        {/* オーダーを持つ種目だけ。画面の「よくある質問」と同じ文面を入れる */}
+        {orderFaqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: orderFaqItems.map((item) => ({
+                  '@type': 'Question',
+                  name: item.question,
+                  acceptedAnswer: { '@type': 'Answer', text: item.answer },
+                })),
+              }),
+            }}
+          />
+        )}
 
         <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
       </Head>
@@ -452,6 +500,21 @@ export default function TournamentYearResultPage({
           <>
             <MatchResults detail={detailData} gameCategory={gameCategory} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           </>
+        )}
+
+        {/* 団体戦のオーダーについての FAQ。上の対戦詳細の表を読まなくても答えが分かる位置に置く */}
+        {orderFaqItems.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-3">オーダーについてのよくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {orderFaqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-border p-4">
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         )}
 
         {infoForYear?.source && (

@@ -695,7 +695,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       <p className="mb-3 text-sm text-text-secondary">1 組ずつの勝ち上がりとスコアです。</p>
       {hasTeamMatches && (
         <p className="mb-3 text-xs text-text-muted">
-          ※ 公式記録に対戦ごとの記録がある試合は、各対戦の出場ペアと本数も載せています。左がその組、右が対戦相手です。
+          ※ 公式記録にオーダー（対戦ごとの出場ペア）がある試合は、第1対戦からの出場ペアと本数も載せています。左がその組、右が対戦相手です。
           {hasTeamMatchGames && 'ゲームごとのポイントは実施順で、そのゲームを取った側を太字にしています。'}
         </p>
       )}
