@@ -57,9 +57,10 @@ export function emptyLedger() {
 }
 
 /** clusterKey と同じ正規化（1名分）。 */
-const canonName = (n) => String(typeof n === 'string' ? n : n.name)
-  .normalize('NFKC')
-  .replace(/\s+/g, '');
+const canonName = (n) =>
+  String(typeof n === 'string' ? n : n.name)
+    .normalize('NFKC')
+    .replace(/\s+/g, '');
 
 /**
  * クラスタの判断を引き当てる。完全一致が無ければ、**顔ぶれが減る前の記録から

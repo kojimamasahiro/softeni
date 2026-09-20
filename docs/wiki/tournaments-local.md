@@ -1,5 +1,8 @@
 # Tournaments Local
 
+> **適用範囲: 混在**。地方大会の掲載運用の考え方は汎用。連盟・都道府県の構成はソフトテニス固有。
+
+
 ## 概要
 
 `/tournaments/local/` は、都道府県単位で地域大会結果への導線を提供する公開ページ群です。
@@ -47,7 +50,7 @@
 関連:
 
 - [Data Model](./data-model.md)
-- `docs/tournament-data-structure.md`
+- `docs/wiki/tournament-data-structure.md`
 
 ## `/tournaments/local` の仕様
 

@@ -1,5 +1,8 @@
 # Database
 
+> **適用範囲: ソフトテニス固有**。score 機能のテーブル（ゲーム・ポイント）はソフトテニスの得点方式が前提。
+
+
 > 現行仕様。2026-08-12 に `src/types/database.ts` と列単位で突き合わせ済み
 > （差分は `games.initial_receive_player_index` の1件のみで、反映済み）。
 > ただし制約・index・RLS・trigger はコードから読めないため、そこは推定のまま。

@@ -79,7 +79,10 @@ function staleAliasIn(segment, facts) {
   if (!segment) return null;
   let flat = normalize(segment);
   // 長い名前から順に伏せる（「東海大学」を先に消してから「東海」を見る）
-  const present = [...facts.teams, ...facts.names].map(normalize).filter(Boolean).sort((a, b) => b.length - a.length);
+  const present = [...facts.teams, ...facts.names]
+    .map(normalize)
+    .filter(Boolean)
+    .sort((a, b) => b.length - a.length);
   for (const name of present) flat = flat.split(name).join('\u0000');
   for (const [alias, canonical] of teamAliasPairs()) {
     if (!flat.split(normalize(canonical)).join('\u0000').includes(alias)) continue;
@@ -89,7 +92,6 @@ function staleAliasIn(segment, facts) {
   }
   return null;
 }
-
 
 /** results[].tournament.rank -> 比較可能なスコア。ベスト8未満はドロー規模依存なので null。 */
 function rankScore(rank) {
@@ -551,7 +553,10 @@ function main() {
     }
     const names = new Set();
     const teams = new Set();
-    for (const categoryId of args.category.split(',').map((s) => s.trim()).filter(Boolean)) {
+    for (const categoryId of args.category
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)) {
       const facts = loadFacts(args.tournament, categoryId);
       for (const n of facts.names) names.add(n);
       for (const t of facts.teams) teams.add(t);
@@ -560,7 +565,10 @@ function main() {
     // 正しい表記まで「知らない名前」に見えてしまうため、姓と名の断片も併せて返す。
     // 元データは姓名を別フィールドで持つが facts は連結済みなので、ここで読み直す。
     const parts = new Set();
-    for (const categoryId of args.category.split(',').map((s) => s.trim()).filter(Boolean)) {
+    for (const categoryId of args.category
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean)) {
       const base = path.join(DETAILS_DIR, args.tournament);
       for (const y of fs.readdirSync(base).filter((v) => /^\d{4}$/.test(v))) {
         const file = path.join(base, y, `${categoryId}.json`);

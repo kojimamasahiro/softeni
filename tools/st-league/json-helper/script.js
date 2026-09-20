@@ -6,9 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // デフォルト値の設定
   document.getElementById('matchId').value = 1;
-  document.getElementById('matchDate').value = new Date()
-    .toISOString()
-    .split('T')[0];
+  document.getElementById('matchDate').value = new Date().toISOString().split('T')[0];
   document.getElementById('status').value = 'finished';
 
   // participants.jsからデータを取得
@@ -35,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 現在のgenderを管理
   let currentGender = 'girls';
 
-  const teamList =
-    currentGender === 'girls' ? participants.girls : participants.boys;
+  const teamList = currentGender === 'girls' ? participants.girls : participants.boys;
   teamList.forEach((team) => {
     const optionA = document.createElement('option');
     optionA.value = team.teamId;
@@ -52,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // チーム選択時に選手を更新
   const updatePlayers = (teamId, dropdownId) => {
     const dropdown = document.getElementById(dropdownId);
-    const teamList =
-      currentGender === 'girls' ? participants.girls : participants.boys;
+    const teamList = currentGender === 'girls' ? participants.girls : participants.boys;
     dropdown.innerHTML = '';
     if (!teamId) return;
     const team = teamList.find((t) => t.teamId === teamId);
@@ -85,10 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <label>チームAのスコア:</label>
       <div id="scoreAButtons${index}" class="score-buttons">
         ${[0, 1, 2, 3, 4]
-          .map(
-            (score) =>
-              `<button type='button' class='score-button' data-team='A' data-index='${index}' data-score='${score}'>${score}</button>`,
-          )
+          .map((score) => `<button type='button' class='score-button' data-team='A' data-index='${index}' data-score='${score}'>${score}</button>`)
           .join('')}
       </div>
       <input type="hidden" id="scoreA${index}" name="scoreA${index}" value="4">
@@ -96,10 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <label>チームBのスコア:</label>
       <div id="scoreBButtons${index}" class="score-buttons">
         ${[0, 1, 2, 3, 4]
-          .map(
-            (score) =>
-              `<button type='button' class='score-button' data-team='B' data-index='${index}' data-score='${score}'>${score}</button>`,
-          )
+          .map((score) => `<button type='button' class='score-button' data-team='B' data-index='${index}' data-score='${score}'>${score}</button>`)
           .join('')}
       </div>
       <input type="hidden" id="scoreB${index}" name="scoreB${index}" value="4">
@@ -138,21 +128,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // スコアボタンの選択状態を更新
-        const buttonsGroup = matchDiv.querySelectorAll(
-          `.score-button[data-team='${team}'][data-index='${index}']`,
-        );
+        const buttonsGroup = matchDiv.querySelectorAll(`.score-button[data-team='${team}'][data-index='${index}']`);
         buttonsGroup.forEach((btn) => btn.classList.remove('selected'));
         e.target.classList.add('selected');
 
         // スコアを比較して勝者を自動入力
-        const scoreA = parseInt(
-          document.getElementById(`scoreA${index}`).value,
-          10,
-        );
-        const scoreB = parseInt(
-          document.getElementById(`scoreB${index}`).value,
-          10,
-        );
+        const scoreA = parseInt(document.getElementById(`scoreA${index}`).value, 10);
+        const scoreB = parseInt(document.getElementById(`scoreB${index}`).value, 10);
         const winnerInput = document.getElementById(`winner${index}`);
 
         if (scoreA > scoreB) {
@@ -194,14 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update options for all dropdowns in the team
       const dropdowns =
         team === 'A'
-          ? [
-              document.getElementById(`playersA1_${index}`),
-              document.getElementById(`playersA2_${index}`),
-            ]
-          : [
-              document.getElementById(`playersB1_${index}`),
-              document.getElementById(`playersB2_${index}`),
-            ];
+          ? [document.getElementById(`playersA1_${index}`), document.getElementById(`playersA2_${index}`)]
+          : [document.getElementById(`playersB1_${index}`), document.getElementById(`playersB2_${index}`)];
 
       dropdowns.forEach((dropdown) => {
         if (dropdown) {
@@ -224,24 +200,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const playerB2 = document.getElementById(`playersB2_${index}`);
 
       if (playerA1) {
-        playerA1.addEventListener('change', () =>
-          updateDropdownOptions(index, 'A'),
-        );
+        playerA1.addEventListener('change', () => updateDropdownOptions(index, 'A'));
       }
       if (playerA2) {
-        playerA2.addEventListener('change', () =>
-          updateDropdownOptions(index, 'A'),
-        );
+        playerA2.addEventListener('change', () => updateDropdownOptions(index, 'A'));
       }
       if (playerB1) {
-        playerB1.addEventListener('change', () =>
-          updateDropdownOptions(index, 'B'),
-        );
+        playerB1.addEventListener('change', () => updateDropdownOptions(index, 'B'));
       }
       if (playerB2) {
-        playerB2.addEventListener('change', () =>
-          updateDropdownOptions(index, 'B'),
-        );
+        playerB2.addEventListener('change', () => updateDropdownOptions(index, 'B'));
       }
     }
 
@@ -285,8 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 男女選手データを切り替えるための関数
   const updateParticipants = (gender) => {
     currentGender = gender;
-    const participantsData =
-      gender === 'girls' ? participants.girls : participants.boys;
+    const participantsData = gender === 'girls' ? participants.girls : participants.boys;
 
     // チームセレクトボックスを更新
     teamASelect.innerHTML = '';
@@ -354,10 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     allDropdowns.forEach((dropdown) => {
       const currentValue = dropdown.value;
       Array.from(dropdown.options).forEach((option) => {
-        if (
-          selectedPlayers.has(option.value) &&
-          option.value !== currentValue
-        ) {
+        if (selectedPlayers.has(option.value) && option.value !== currentValue) {
           option.disabled = true;
         } else {
           option.disabled = false;
@@ -422,14 +386,8 @@ document.addEventListener('DOMContentLoaded', () => {
       scoreA: parseInt(document.getElementById('scoreA').value, 10),
       scoreB: parseInt(document.getElementById('scoreB').value, 10),
       matches: matchTypes.map((type, index) => {
-        const scoreA = parseInt(
-          document.getElementById(`scoreA${index}`).value,
-          10,
-        );
-        const scoreB = parseInt(
-          document.getElementById(`scoreB${index}`).value,
-          10,
-        );
+        const scoreA = parseInt(document.getElementById(`scoreA${index}`).value, 10);
+        const scoreB = parseInt(document.getElementById(`scoreB${index}`).value, 10);
 
         let playersA = [];
         let playersB = [];
@@ -441,30 +399,20 @@ document.addEventListener('DOMContentLoaded', () => {
           const playerB2 = document.getElementById(`playersB2_${index}`);
 
           if (playerA1 && playerA2) {
-            playersA = [
-              parseInt(playerA1.value, 10),
-              parseInt(playerA2.value, 10),
-            ];
+            playersA = [parseInt(playerA1.value, 10), parseInt(playerA2.value, 10)];
           }
           if (playerB1 && playerB2) {
-            playersB = [
-              parseInt(playerB1.value, 10),
-              parseInt(playerB2.value, 10),
-            ];
+            playersB = [parseInt(playerB1.value, 10), parseInt(playerB2.value, 10)];
           }
         } else {
           const playerA = document.getElementById(`playersA${index}`);
           const playerB = document.getElementById(`playersB${index}`);
 
           if (playerA) {
-            playersA = Array.from(playerA.selectedOptions).map((option) =>
-              parseInt(option.value, 10),
-            );
+            playersA = Array.from(playerA.selectedOptions).map((option) => parseInt(option.value, 10));
           }
           if (playerB) {
-            playersB = Array.from(playerB.selectedOptions).map((option) =>
-              parseInt(option.value, 10),
-            );
+            playersB = Array.from(playerB.selectedOptions).map((option) => parseInt(option.value, 10));
           }
         }
 

@@ -1,4 +1,5 @@
 // src/components/ResultsTable.tsx
+import { formatRoundLabel } from '@/lib/roundLabel';
 import { MatchRow } from '@/types/tournament';
 
 export default function ResultsTable({ rows, className = '' }: { rows: MatchRow[]; className?: string }) {
@@ -13,7 +14,7 @@ export default function ResultsTable({ rows, className = '' }: { rows: MatchRow[
       </thead>
       <tbody>
         {rows.map((match, i) => {
-          const round = match.round ?? '予選';
+          const round = formatRoundLabel(match);
           const opponentDisplay = match.opponentDisplayName ?? '不明';
           const scoreDisplay = `${match.games.won}-${match.games.lost}`;
 

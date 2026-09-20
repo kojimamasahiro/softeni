@@ -32,9 +32,7 @@ function loadNews() {
     for (const file of fs.readdirSync(newsDir)) {
       if (!file.endsWith('.json')) continue;
       try {
-        const rec = JSON.parse(
-          fs.readFileSync(path.join(newsDir, file), 'utf-8'),
-        );
+        const rec = JSON.parse(fs.readFileSync(path.join(newsDir, file), 'utf-8'));
         if (!rec || rec.state !== 'published' || !rec.articleId) continue;
         const date = rec.updatedAt || rec.createdAt || null;
         if (date) newsLastmod[rec.articleId] = date;
@@ -49,20 +47,13 @@ function loadNews() {
 
 function loadData() {
   try {
-    const infoDir = path.join(
-      process.cwd(),
-      'data',
-      'tournaments',
-      'information',
-    );
+    const infoDir = path.join(process.cwd(), 'data', 'tournaments', 'information');
     if (fs.existsSync(infoDir)) {
       for (const file of fs.readdirSync(infoDir)) {
         if (!file.endsWith('.json')) continue;
         const tid = file.replace(/\.json$/, '');
         try {
-          const entries = JSON.parse(
-            fs.readFileSync(path.join(infoDir, file), 'utf-8'),
-          );
+          const entries = JSON.parse(fs.readFileSync(path.join(infoDir, file), 'utf-8'));
           if (!Array.isArray(entries)) continue;
           tournamentDates[tid] = {};
           for (const e of entries) {
@@ -88,12 +79,7 @@ function loadData() {
     }
 
     // details を走査して各選手の最新出場日を求める
-    const detailsDir = path.join(
-      process.cwd(),
-      'data',
-      'tournaments',
-      'details',
-    );
+    const detailsDir = path.join(process.cwd(), 'data', 'tournaments', 'details');
     if (fs.existsSync(detailsDir)) {
       for (const tid of fs.readdirSync(detailsDir)) {
         const tidDir = path.join(detailsDir, tid);
@@ -104,16 +90,12 @@ function loadData() {
           // 選手ページの lastmod は「その選手が出た大会のうち最も新しい日付」。
           // ここも大会終了日そのままだと、開催前・開催中の大会に出場している選手が
           // 未来日の lastmod を持ってしまうためクランプする。
-          const date = clampToBuildDate(
-            tournamentDates[tid] ? tournamentDates[tid][String(year)] : null,
-          );
+          const date = clampToBuildDate(tournamentDates[tid] ? tournamentDates[tid][String(year)] : null);
           if (!date) continue;
           for (const file of fs.readdirSync(yearDir)) {
             if (!file.endsWith('.json')) continue;
             try {
-              const detail = JSON.parse(
-                fs.readFileSync(path.join(yearDir, file), 'utf-8'),
-              );
+              const detail = JSON.parse(fs.readFileSync(path.join(yearDir, file), 'utf-8'));
               for (const p of detail.participants ?? []) {
                 if (!p.lastName || !p.firstName) continue;
                 const id = nameToId.get(`${p.lastName}::${p.firstName}`);
@@ -182,13 +164,9 @@ module.exports = {
     }
 
     // 大会結果ページ: /tournaments/{generation}/{tid}/{year}/...
-    const tournamentMatch = loc.match(
-      /^\/tournaments\/[^/]+\/([^/]+)\/(\d{4})\//,
-    );
+    const tournamentMatch = loc.match(/^\/tournaments\/[^/]+\/([^/]+)\/(\d{4})\//);
     if (tournamentMatch) {
-      lastmod = tournamentDates[tournamentMatch[1]]
-        ? tournamentDates[tournamentMatch[1]][tournamentMatch[2]]
-        : undefined;
+      lastmod = tournamentDates[tournamentMatch[1]] ? tournamentDates[tournamentMatch[1]][tournamentMatch[2]] : undefined;
       // 大会の終了日をそのまま lastmod にすると、開催前・開催中の大会で**未来日**になる。
       // 未来の lastmod は無視されるうえ、途中経過を何度更新しても値が動かないため
       // 鮮度シグナルが一切効かない（インターハイ2026で lastmod=2026-08-07、
@@ -221,13 +199,7 @@ module.exports = {
     // next-sitemap (output: export 構成) は getStaticProps を持たない
     // 純粋な静的ページを sitemap に含めないため、公開対象の静的ページを明示的に補う。
     // 動的/SSG ページは自動列挙されるのでここには含めない（重複防止）。
-    const staticPublicPaths = [
-      '/about/',
-      '/contact/',
-      '/faq/',
-      '/privacy/',
-      '/st-league/about/',
-    ];
+    const staticPublicPaths = ['/about/', '/contact/', '/faq/', '/privacy/', '/st-league/about/'];
     for (const loc of staticPublicPaths) {
       result.push({
         loc,
@@ -245,18 +217,10 @@ module.exports = {
         priority: config.priority,
       });
 
-      const featuredPath = path.join(
-        process.cwd(),
-        'data',
-        'growth-featured.json',
-      );
+      const featuredPath = path.join(process.cwd(), 'data', 'growth-featured.json');
       if (fs.existsSync(featuredPath)) {
-        const featuredPayload = JSON.parse(
-          fs.readFileSync(featuredPath, 'utf-8'),
-        );
-        const featured = Array.isArray(featuredPayload?.featured)
-          ? featuredPayload.featured
-          : [];
+        const featuredPayload = JSON.parse(fs.readFileSync(featuredPath, 'utf-8'));
+        const featured = Array.isArray(featuredPayload?.featured) ? featuredPayload.featured : [];
         for (const entry of featured) {
           if (!entry?.slug) continue;
           result.push({
@@ -271,13 +235,7 @@ module.exports = {
     }
 
     try {
-      const indexPath = path.join(
-        process.cwd(),
-        'public',
-        'data',
-        'beta-matches',
-        'index.json',
-      );
+      const indexPath = path.join(process.cwd(), 'public', 'data', 'beta-matches', 'index.json');
       if (!fs.existsSync(indexPath)) return result;
 
       const index = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));

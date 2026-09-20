@@ -13,12 +13,15 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import ResultContextBlocks, { type InsightSummary, type PriorMeetingSummary } from '@/components/ResultContextBlocks';
+import CategoryFormatNotice from '@/components/Tournament/CategoryFormatNotice';
 import MatchResults from '@/components/Tournament/MatchResults';
 import ResultCoverageNotice from '@/components/Tournament/ResultCoverageNotice';
 import TeamResults from '@/components/Tournament/TeamResults';
 import TournamentBracket from '@/components/Tournament/TournamentBracket';
 import type { ContextMilestone } from '@/components/TournamentContextBlocks';
 import { AD_SLOTS } from '@/lib/ads';
+import { findCategoryFormat } from '@/lib/categoryFormat';
+import { buildTeamMatchOrderSummary, describeFinalOrder } from '@/lib/teamMatchOrderSummary';
 import { getScoreMatchLinksForTournament, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { getChampionDefeat, getChampionMilestones, getGiantKillings, suppressChampionDefeatIfDuplicate } from '@/lib/milestones';
 import { getPublishedInsight } from '@/lib/tournamentInsight';
@@ -32,6 +35,7 @@ import { buildPriorMeetingIndex, meetingKey } from '@/lib/priorMeetings';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { applyAbandonment, getAbandonment } from '@/lib/tournamentAbandonment';
 import { computeResultCoverage, formatResultCoverageMetaSuffix } from '@/lib/tournamentCoverage';
+import { toPublicInformationEntry, type PublicTournamentInformationEntry } from '@/lib/tournamentInformationPublic';
 import { getHistoricalWinners } from '@/lib/tournamentRecords';
 import { buildTournamentSearchNames } from '@/lib/tournamentSearchNames';
 import { TournamentDetailData, TournamentIndexEntry, TournamentInformationEntry } from '@/types/index';
@@ -63,7 +67,11 @@ interface TournamentYearResultPageProps {
   /** 略称。先頭1件を title / h1 に併記する */
   searchAliases?: string[];
   categoryLabel: string;
-  infoForYear: TournamentInformationEntry | null;
+  /**
+   * その年の開催情報。**`note` を持てない型**（props は `__NEXT_DATA__` として配信HTMLに載るため。
+   * lib/tournamentInformationPublic.ts）。
+   */
+  infoForYear: PublicTournamentInformationEntry | null;
   detailDataPacked: PackedTournamentDetailData | null;
   linkCategories: LinkCategory[] | null;
   infoWarnings?: string[];
@@ -142,6 +150,11 @@ export default function TournamentYearResultPage({
   // completed/unsupported（過去の完了済み大会や予選リーグのみのデータ）では
   // meta description・本文とも変化なし。
   const resultCoverage = useMemo(() => computeResultCoverage(detailData, abandonment), [detailData, abandonment]);
+
+  // 競技方式。主催者が方式を文章で公開していない大会だけが持つ（ADR-021）。
+  // 持たない種目では null で、ブロックごと出ない。
+  const categoryFormat = useMemo(() => findCategoryFormat(infoForYear, categoryId), [infoForYear, categoryId]);
+
   const coverageMetaSuffix = formatResultCoverageMetaSuffix(resultCoverage);
 
   // title の後半に置く語。「組み合わせ」は実需クエリ（「{大会} {年} 組み合わせ」は
@@ -149,6 +162,33 @@ export default function TournamentYearResultPage({
   // 「トーナメント表」は同義語であって検索語ではない（2026-09-09 実測）。
   // 結果が 1 件も入っていない種目で「結果」を名乗らないのは #11 の開示ルールと同じ扱い。
   const titleFocus = resultCoverage.status === 'not_recorded' ? '組み合わせ' : '結果・組み合わせ';
+
+  // 団体戦のオーダー（ADR-020）。持たない種目では null で、以降のブロックはどれも出ない。
+  // 「オーダー」は X で繰り返される問いの語だが、対戦詳細の表には1回も出ていなかった
+  // （docs/wiki/seo.md「大会名の表記と検索語の乖離」と同じ型の missing literal）。
+  const orderSummary = useMemo(() => buildTeamMatchOrderSummary(detailData), [detailData]);
+  const finalOrderText = orderSummary ? describeFinalOrder(orderSummary) : null;
+
+  // FAQ は**画面に出している文面と同じもの**を FAQPage に入れる（表示していない答えを
+  // 構造化データにだけ持たせない）。オーダーを持つ種目だけが持つ。
+  const orderFaqItems = orderSummary
+    ? [
+        ...(finalOrderText
+          ? [
+              {
+                question: `${headingName}${year}年${categoryLabel ? `${categoryLabel}` : ''}の決勝のオーダーは？`,
+                answer: finalOrderText,
+              },
+            ]
+          : []),
+        {
+          question: `${headingName}${year}年${categoryLabel ? `${categoryLabel}` : ''}のオーダーはどの試合まで分かりますか？`,
+          answer: `公式記録にオーダーがある${orderSummary.matchCount}試合・${orderSummary.rubberCount}対戦について、第1対戦からの出場ペアと本数をページ内の「対戦詳細」に掲載しています。${
+            orderSummary.hasGames ? 'ゲームごとのポイントも実施順で掲載しています。' : ''
+          }「対戦詳細」は選手名や所属で絞り込めます。`,
+        },
+      ]
+    : [];
 
   const breadcrumbs = [
     { label: 'ホーム', href: '/' },
@@ -190,7 +230,9 @@ export default function TournamentYearResultPage({
     <>
       <MetaHead
         title={`${titleLeadName}${year}${categoryLabel ? ` ${categoryLabel}` : ''} ${titleFocus} | ソフトテニス情報`}
-        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・組み合わせ（トーナメント表）・優勝/上位入賞者の成績一覧。${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
+        description={`ソフトテニス「${headingName}」${year}年${categoryLabel ? ` ${categoryLabel}` : ''}の試合結果・組み合わせ（トーナメント表）・優勝/上位入賞者の成績一覧。${
+          orderSummary ? `各試合のオーダー（第1対戦からの出場ペアと本数）も${orderSummary.matchCount}試合ぶん掲載。` : ''
+        }${infoForYear?.location ? `開催地は${infoForYear.location}。` : ''}過去大会の結果もまとめて掲載しています。${coverageMetaSuffix ?? ''}`}
         url={pageUrl}
         type="article"
         {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
@@ -236,6 +278,24 @@ export default function TournamentYearResultPage({
             }),
           }}
         />
+
+        {/* オーダーを持つ種目だけ。画面の「よくある質問」と同じ文面を入れる */}
+        {orderFaqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'FAQPage',
+                mainEntity: orderFaqItems.map((item) => ({
+                  '@type': 'Question',
+                  name: item.question,
+                  acceptedAnswer: { '@type': 'Answer', text: item.answer },
+                })),
+              }),
+            }}
+          />
+        )}
 
         <meta name="viewport" content="width=device-width,initial-scale=1.0"></meta>
       </Head>
@@ -364,6 +424,11 @@ export default function TournamentYearResultPage({
             );
           })()}
 
+        {/* 競技方式（主催者が方式を文章で公開していない大会だけ。ADR-021）。
+            リード文と広告の間には入れない——広告をファーストビューに収める配置が
+            ADR-016 の追記で決まっているため、その上に要素を足さない。 */}
+        <CategoryFormatNotice format={categoryFormat} categoryLabel={categoryLabel} />
+
         {/* 注目ポイント（過去データ由来: 連覇 / 初優勝 / 王者撃破） */}
         <ResultContextBlocks label={label} year={year} milestones={contextMilestones} priorMeetings={priorMeetingCards} insight={insight} />
 
@@ -435,6 +500,21 @@ export default function TournamentYearResultPage({
           <>
             <MatchResults detail={detailData} gameCategory={gameCategory} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           </>
+        )}
+
+        {/* 団体戦のオーダーについての FAQ。上の対戦詳細の表を読まなくても答えが分かる位置に置く */}
+        {orderFaqItems.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-3">オーダーについてのよくある質問</h2>
+            <div className="space-y-4 text-sm text-gray-700 dark:text-gray-200">
+              {orderFaqItems.map((item) => (
+                <div key={item.question} className="rounded-xl border border-border p-4">
+                  <h3 className="font-semibold mb-2">{item.question}</h3>
+                  <p>{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         )}
 
         {infoForYear?.source && (
@@ -555,7 +635,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<TournamentYearResultPageProps> = async (context) => {
   const { generation, tournamentId, year, gameCategory, ageCategory, gender } = context.params as {
     generation: string;
     tournamentId: string;
@@ -860,7 +940,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   return {
-    props: ((): Record<string, unknown> => {
+    // 戻り値に props の型を付けておくこと。`Record<string, unknown>` に緩めると
+    // `infoForYear` に生の information 年エントリ（note 付き）を入れても型が通ってしまう。
+    props: ((): TournamentYearResultPageProps => {
       return {
         generation,
         tournamentId,
@@ -872,7 +954,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
         searchLabel: tournamentIndexEntry?.searchLabel ?? null,
         searchAliases: tournamentIndexEntry?.searchAliases ?? [],
         categoryLabel: infoForYear?.categories?.find((cat) => cat.categoryId === `${gameCategory}-${ageCategory}-${gender}`)?.label ?? '',
-        infoForYear,
+        // 入力メモ（note）は props に載せない＝配信HTMLに出さない（lib/tournamentInformationPublic.ts）
+        infoForYear: toPublicInformationEntry(infoForYear),
         detailDataPacked: detailData ? packTournamentDetailData(detailData) : null,
         linkCategories,
         infoWarnings,

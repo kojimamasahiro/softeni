@@ -119,7 +119,7 @@ console.log(miss.length, miss.map(e=>e.entryNo).slice(0,20));
 ## 関連
 
 - `tools/tournament3/index.html`（`shouldSkipByeDerived` / `reachedOnlyByByes`）
-- [docs/tournament-data-structure.md](../tournament-data-structure.md)（`seed` / `packing` / `extra` の定義）
+- [docs/wiki/tournament-data-structure.md](../wiki/tournament-data-structure.md)（`seed` / `packing` / `extra` の定義）
 - [2026-08-01-idea-news-fact-based-story-categories.md](2026-08-01-idea-news-fact-based-story-categories.md)（発見の経緯）
 - [ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md)（機械照合では防げない誤りの実例として追記済み）
 

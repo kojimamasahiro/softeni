@@ -32,7 +32,7 @@ AdSense収益（離脱率・視認可能時間に影響）の両方に効く共�
 
 ## わかっていること
 
-- [docs/adsense-ui-proposal.md](../adsense-ui-proposal.md) §4 に「Search Console / CrUX で
+- [docs/raw/2026-06-12-adsense-ui-proposal.md](2026-06-12-adsense-ui-proposal.md) §4 に「Search Console / CrUX で
   CLSを監視。導入後にCLS > 0.1になったらmin-height設定を見直す」という運用方針の記載が
   既にある（広告枠のCLS対策文脈）。ただし実際の計測・改善はまだ未実施（Assumption:
   AdUnitコンポーネント自体が `Status: Proposal(未実装)` のため）。
@@ -58,13 +58,13 @@ AdSense収益（離脱率・視認可能時間に影響）の両方に効く共�
 
 1. PageSpeed Insights / CrUXで主要ページ（トップ・大会ハブ・選手詳細等）の現状値を計測
 2. ボトルネックの特定（画像かJSかレイアウトシフトか）に応じて対応を絞る
-3. `docs/adsense-ui-proposal.md` のCLS監視方針と合流させ、広告枠実装時のCLS基準としても使う
+3. `docs/raw/2026-06-12-adsense-ui-proposal.md` のCLS監視方針と合流させ、広告枠実装時のCLS基準としても使う
 
 ## 関連
 
 - [monetization.md](../wiki/monetization.md) — AdSense/Auto ads全般。モバイル全画面
   （ビネット）オフの経緯もここ。
-- [adsense-ui-proposal.md](../adsense-ui-proposal.md) §4 — CLS監視の既存方針
+- [adsense-ui-proposal.md](2026-06-12-adsense-ui-proposal.md) §4 — CLS監視の既存方針
 - [highschool-seo-m4-verification.md](../wiki/highschool-seo-m4-verification.md) — SEO関連の
   既存の計測運用の型（GSCチェックのやり方の参考になりうる）
 

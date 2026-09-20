@@ -2,7 +2,9 @@
 
 ## Status
 
-Deprecated（2026-09-12。理由は末尾の「2026-09-12 追記」を参照。Context / Decision / Alternatives は当時の記録として残す）
+Deprecated
+
+2026-09-12。理由は末尾の「2026-09-12 追記」を参照。Context / Decision / Alternatives は当時の記録として残す
 
 ## Context
 

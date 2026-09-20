@@ -1,5 +1,11 @@
 # Deployment
 
+> **適用範囲: 汎用**。Cloudflare Pages への配信・ビルド設定は競技に依存しない。
+>
+> 全体の構成（何がどこで動くか）は [architecture.md](./architecture.md)、サイト全体の地図は
+> [project-overview.md](./project-overview.md)。
+
+
 ## 概要
 
 このリポジトリは Next.js を本体にしつつ、Cloudflare Pages 向け設定ファイルが存在します。
@@ -9,7 +15,7 @@
 - `next.config.mjs`
 - `wrangler.toml`
 - `package.json`
-- `docs/cloudflare-migration-analysis.md`
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md`
 
 ## 確定情報
 
@@ -284,7 +290,7 @@ Assumption:
 
 Assumption:
 
-- `docs/cloudflare-migration-analysis.md` の記述から、Vercel 運用または Vercel 由来の検討履歴がある
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md` の記述から、Vercel 運用または Vercel 由来の検討履歴がある
 - ただし、この turn では Vercel 用設定ファイルそのものは確認していません
 
 ## score 公開面との関係

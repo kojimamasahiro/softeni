@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-09-05。現状仕様: `docs/wiki/team-player-identity.md`「チーム名寄せの運用」。
+Accepted
+
+決定日: 2026-09-05。現状仕様: `docs/wiki/team-player-identity.md`「チーム名寄せの運用」。
 
 ## Context
 

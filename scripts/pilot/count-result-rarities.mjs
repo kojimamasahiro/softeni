@@ -51,9 +51,7 @@ function resolveEntry(entry, participantById) {
 // data/tournaments/details/<tournamentId>/<year>/<categoryId>.json のみ対象。
 // <year>/temp/** は作業中の中間データ（不完全なJSON構造）のため除外する。
 
-const tournamentIds = fs
-  .readdirSync(DETAILS_DIR)
-  .filter((name) => fs.statSync(path.join(DETAILS_DIR, name)).isDirectory());
+const tournamentIds = fs.readdirSync(DETAILS_DIR).filter((name) => fs.statSync(path.join(DETAILS_DIR, name)).isDirectory());
 
 // categoryTimeline: key=`${tournamentId}::${categoryId}` -> { years: number[] (held editions, asc),
 //   champions: Map<year, ChampionInfo|null> }
@@ -202,7 +200,10 @@ for (const [key, timeline] of categoryTimeline.entries()) {
     hadPriorKnownChampion = true;
 
     // --- title-streak-gap: subject（個人 or 団体）単位の再優勝ギャップ検出 ---
-    const subjects = champ.players.length > 0 ? champ.playerKeys.map((pk, i) => ({ key: pk, label: champ.players[i] })) : [{ key: normalizeKeyPart(champ.teams.join('|')), label: champ.display }];
+    const subjects =
+      champ.players.length > 0
+        ? champ.playerKeys.map((pk, i) => ({ key: pk, label: champ.players[i] }))
+        : [{ key: normalizeKeyPart(champ.teams.join('|')), label: champ.display }];
 
     for (const subj of subjects) {
       if (!subj.key) continue;
@@ -241,7 +242,7 @@ const summary = {
     count: perfectTitleEvents.length,
     countWithRetiredInvolved: perfectTitleEvents.filter((e) => e.retiredInvolved).length,
     unknownCount: perfectTitleUnknown.length,
-    rate: totalYearsWithKnownChampion ? (perfectTitleEvents.length / totalYearsWithKnownChampion) : 0,
+    rate: totalYearsWithKnownChampion ? perfectTitleEvents.length / totalYearsWithKnownChampion : 0,
   },
   titleStreakGap: {
     count: titleStreakGapEvents.length,
@@ -259,13 +260,7 @@ const summary = {
 
 const args = process.argv.slice(2);
 if (args.includes('--json')) {
-  console.log(
-    JSON.stringify(
-      { summary, perfectTitleEvents, perfectTitleUnknown, titleStreakGapEvents, firstRegionEvents },
-      null,
-      2,
-    ),
-  );
+  console.log(JSON.stringify({ summary, perfectTitleEvents, perfectTitleUnknown, titleStreakGapEvents, firstRegionEvents }, null, 2));
 } else {
   console.log('=== サマリー ===');
   console.log(JSON.stringify(summary, null, 2));

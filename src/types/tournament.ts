@@ -61,6 +61,31 @@ export interface TournamentCategoryInfo {
    * docs/wiki/data-model.md「種目別の競技日程（`schedule`）」
    */
   schedule?: TournamentCategorySchedule;
+  /**
+   * その種目の競技方式（予選リーグの組数・通過数・決勝トーナメントの形など）。
+   * **主催者が方式を公開していない大会で、見る人が画面から形式を読み取れないとき**だけ書く。
+   * docs/wiki/data-model.md「種目別の競技方式（`format`）」/ docs/adr/ADR-021
+   */
+  format?: TournamentCategoryFormat;
+}
+
+export interface TournamentCategoryFormat {
+  /**
+   * 方式の説明。**1つの文章**で持つ（組数・通過数をフィールドに分けない。大会ごとに方式が
+   * ばらばらで再利用が効かず、欄を推測で埋める圧力がかかるため。ADR-021）。
+   */
+  summary: string;
+  /**
+   * 出典から決まらず当サイトが推定した点。**画面には「当サイトの推定」と明記して出す**。
+   * 推定が無ければ省略する（空配列を置かない）。
+   */
+  assumptions?: string[];
+  /** 出典名。`summary` を書いたら必須 */
+  source: string;
+  /** 出典 URL。`summary` を書いたら必須 */
+  sourceUrl: string;
+  /** 出典を確認した日（YYYY-MM-DD）。主催者は会期中に方式表示を変えることがある */
+  checkedOn?: string;
 }
 
 export interface TournamentCategorySchedule {
@@ -92,7 +117,12 @@ export interface TournamentInformationEntry {
    * フィールド定義と記載ルールは docs/wiki/data-model.md「大会の会場データ（`venues`）」が正。
    */
   venues?: TournamentVenue[];
-  /** 入力時のメモ（出典の誤りや、値を書かなかった理由）。**公開ページには出さない**。 */
+  /**
+   * 入力時のメモ（出典の誤りや、値を書かなかった理由）。**公開ページには出さない**。
+   * 「出さない」は描画結果だけでなく**ページのペイロード**も指す（`__NEXT_DATA__` に載るため）。
+   * props に入れるときは `lib/tournamentInformationPublic.ts` の `toPublicInformationEntry()` を通す。
+   * docs/wiki/data-model.md「入力メモ（`note`）は公開しない」
+   */
   note?: string;
   /** 大会要項PDFのURL。取得できていなければ null。 */
   guidelineUrl?: string | null;
@@ -138,6 +168,7 @@ export interface TournamentVenue {
   surface?: string;
   /** どの日・どの種目に使われたか。自由文 */
   usage?: string;
+  /** 入力時のメモ。`TournamentInformationEntry.note` と同じく**公開しない**（ペイロードにも載せない） */
   note?: string;
 }
 

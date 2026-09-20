@@ -7,23 +7,17 @@
 */
 const fs = require('fs');
 const path = require('path');
-const { normalizeResults, serializeOutput } = require(
-  path.join(__dirname, '..', 'tools', 'shared', 'normalize-core.js'),
-);
+const { normalizeResults, serializeOutput } = require(path.join(__dirname, '..', 'tools', 'shared', 'normalize-core.js'));
 
 // allow overriding filenames via CLI args: node script [input] [output] [entriesMetaPath]
 // defaults kept for backward compatibility
 const argv = process.argv.slice(2);
 if (argv[0] === '-h' || argv[0] === '--help') {
-  console.log(
-    'Usage: node normalize-to-participants-entries.cjs [input.json] [output.json] [entriesMeta.json]',
-  );
+  console.log('Usage: node normalize-to-participants-entries.cjs [input.json] [output.json] [entriesMeta.json]');
   process.exit(0);
 }
 
-const src = argv[0]
-  ? path.resolve(argv[0])
-  : path.join('doubles-none-boys.json');
+const src = argv[0] ? path.resolve(argv[0]) : path.join('doubles-none-boys.json');
 const out = argv[1] ? path.resolve(argv[1]) : path.join('output.json');
 // entriesMetaPath intentionally points to sibling entries folder; keep compatibility
 // If the input `src` was provided as a path, compute entriesMetaPath relative

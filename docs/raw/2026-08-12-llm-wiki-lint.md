@@ -3,7 +3,7 @@
 実施日: 2026-08-12
 対象: `docs/**`（.md 全125ファイル）＋ `AGENTS.md`、突き合わせ先は `src/**` / `lib/**` / `scripts/**` / `docs/sql/**`
 種別: 定期ヘルスチェック（矛盾・孤立ページ・知識ギャップ・次に聞くべき問い）
-前回の類似実施: `docs/raw/2026-08-01-wiki-audit.md`、`docs/exploration-cycle-audit-2026-08-10.md`
+前回の類似実施: `docs/raw/2026-08-01-wiki-audit.md`、`docs/raw/2026-08-10-exploration-cycle-audit.md`
 
 ---
 
@@ -23,7 +23,7 @@
 
 | 対象 | 内容 |
 |---|---|
-| `docs/tournament-data-structure.md` | `file:///Users/mkojima/...` の絶対パスリンク13件 → 相対パス `../src/types/tournament.ts` に置換（他人の環境・GitHub 上で全滅していた） |
+| `docs/wiki/tournament-data-structure.md` | `file:///Users/mkojima/...` の絶対パスリンク13件 → 相対パス `../src/types/tournament.ts` に置換（他人の環境・GitHub 上で全滅していた） |
 | `docs/adr/README.md` | ADR 一覧表を追加。ADR-001 / 002 / 006 / 008 / 009 はどの索引からもリンクされていなかった |
 | `docs/README.md` | 「上記3分類に属さない文書」節を追加。`docs/ui/**`・トップレベル調査文書・`docs/sql/`・`docs/notes/` の所在地インデックスを新設 |
 | `docs/wiki/database.md` | `games.initial_receive_player_index` を追記／「`supabase/schema.sql` は未検出」→ `docs/sql/*.sql` の差分DDL運用という現状に更新／Open Question を差し替え |
@@ -123,7 +123,7 @@ AGENTS.md が Compile Log を要求し始めたのは 2026-07-11。それ以降�
 
 ### 4-4. 中断案件の再開トリガー欠落（監査レポートの指摘が未適用）
 
-`docs/exploration-cycle-audit-2026-08-10.md` §1-7 が「全ての中断案件に再開条件を統一フォーマットで
+`docs/raw/2026-08-10-exploration-cycle-audit.md` §1-7 が「全ての中断案件に再開条件を統一フォーマットで
 持たせる」と提言しているが、2日後の現時点で適用されていない。実例:
 `docs/ui/**` プロジェクトは「M5 着手可」のまま 2026-07-04 から1ヶ月以上停止、再開条件の記載なし。
 

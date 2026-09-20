@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 
 import BracketSheets from '@/components/Tournament/BracketSheets';
 import { describeBracketLayout } from '@/lib/bracketLayout';
+import { formatRoundLabel } from '@/lib/roundLabel';
 import { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant } from '@/types/index';
 import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
@@ -22,6 +23,8 @@ interface BracketMatchRow {
   matchId?: string;
   stage: string | null;
   round: string | null;
+  /** 予選リーグの組。ラウンド欄を「予選 グループA」と出すのに使う（lib/roundLabel.ts） */
+  group: string | null;
   opponentDisplayName: string;
   opponentPlayerIds: number[];
   won: string;
@@ -156,6 +159,7 @@ function buildMatchRowsForEntry(
       matchId: m.matchId,
       stage: m.stage,
       round: m.round ?? null,
+      group: m.group ?? null,
       opponentDisplayName,
       opponentPlayerIds,
       won: scoreSelf,
@@ -955,7 +959,7 @@ export default function TournamentBracket({
                     <tbody>
                       {rows.map((row, i) => (
                         <tr key={`${row.matchId ?? i}`} className={`border-t border-border ${row.round === roundName ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}>
-                          <td className="break-words px-3 py-2 text-left">{row.round ?? '予選'}</td>
+                          <td className="break-words px-3 py-2 text-left">{formatRoundLabel(row)}</td>
                           <td className="break-words px-3 py-2 text-left">
                             {row.opponentPlayerIds.length === 1 ? (
                               <Link

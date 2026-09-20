@@ -189,8 +189,7 @@ for (const { file, data } of files) {
   const sameName = new Set(SAME_NAME_DIFFERENT_PEOPLE[rel] ?? []);
   for (const [key, entryNos] of owner) {
     const name = key.replace('\t', '');
-    if (entryNos.size > 1 && !sameName.has(name))
-      problems.push(`${rel}: ${name} が複数の学校（entryNo ${[...entryNos].join(', ')}）に割り当てられている`);
+    if (entryNos.size > 1 && !sameName.has(name)) problems.push(`${rel}: ${name} が複数の学校（entryNo ${[...entryNos].join(', ')}）に割り当てられている`);
   }
 }
 

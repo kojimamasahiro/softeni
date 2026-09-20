@@ -392,14 +392,14 @@ npm run generate-sitemap
 5. **Cloudflare Pagesテストデプロイ**
 6. **本番移行**
 
-詳細は [`docs/cloudflare-migration-analysis.md`](docs/cloudflare-migration-analysis.md) を参照してください。
+詳細は [`docs/raw/2025-11-30-cloudflare-migration-analysis.md`](docs/raw/2025-11-30-cloudflare-migration-analysis.md) を参照してください。
 
 ---
 
 ## 📚 関連ドキュメント
 
-- [beta/matches-results 保守ガイド](docs/beta-matches-results.md)
-- [大会データ構造](docs/tournament-data-structure.md)
+- [beta/matches-results 保守ガイド](docs/wiki/beta-matches-results.md)
+- [大会データ構造](docs/wiki/tournament-data-structure.md)
 - [ポイントシステム](POINT_SYSTEM_README.md)
 - [サーブ統計ガイド](SERVE_STATISTICS_GUIDE.md)
 

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { isUnplayedMatch } from '@/lib/playerStats/placement';
+import { formatRoundLabel } from '@/lib/roundLabel';
 import { MatchRow, TeamMatchPlayer, TeamMatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
 import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
@@ -158,7 +159,7 @@ function MatchTable({ rows, showHeader }: { rows: MatchRow[]; showHeader: boolea
         {rows.map((m: MatchRow, i: number) => {
           return [
             <tr key={i} className="border-t border-border">
-              <td className="px-4 py-2 break-words text-left">{m.round ?? '予選'}</td>
+              <td className="px-4 py-2 break-words text-left">{formatRoundLabel(m)}</td>
               <td className="px-4 py-2 break-words text-left">
                 {m.opponentPlayerIds?.length === 1 ? (
                   <Link href={`/players/${m.opponentPlayerIds[0]}/results`} className="underline underline-offset-2 decoration-dotted hover:decoration-solid">
@@ -694,7 +695,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
       <p className="mb-3 text-sm text-text-secondary">1 組ずつの勝ち上がりとスコアです。</p>
       {hasTeamMatches && (
         <p className="mb-3 text-xs text-text-muted">
-          ※ 公式記録に対戦ごとの記録がある試合は、各対戦の出場ペアと本数も載せています。左がその組、右が対戦相手です。
+          ※ 公式記録にオーダー（対戦ごとの出場ペア）がある試合は、第1対戦からの出場ペアと本数も載せています。左がその組、右が対戦相手です。
           {hasTeamMatchGames && 'ゲームごとのポイントは実施順で、そのゲームを取った側を太字にしています。'}
         </p>
       )}

@@ -1,5 +1,8 @@
 # Score Analysis
 
+> **適用範囲: ソフトテニス固有**。成長分析・試合分析はソフトテニスのポイント記録が前提。
+
+
 > 現行仕様。2026-08-12 に `lib/growthAnalysis/**`・`lib/matchAnalysis/**`・
 > `scripts/generate-beta-matches-json.mjs` と突き合わせ済み。
 

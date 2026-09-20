@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-08-01。現状仕様: `docs/story-yaml/README.md` / `docs/story-yaml/PROMPT.md` /
+Accepted
+
+決定日: 2026-08-01。現状仕様: `docs/story-yaml/README.md` / `docs/story-yaml/PROMPT.md` /
 `docs/raw/2026-08-01-idea-news-fact-based-story-categories.md`。
 
 ADR-005（文脈ブロック）の「本文はテンプレートのみ・LLM不使用」を **Superseded**（その一点のみ）。

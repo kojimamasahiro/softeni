@@ -42,6 +42,15 @@ docs/adr/ADR-020-team-match-rubber-details.md。
         --details data/tournaments/details/highschool-senbatsu/2025/team-none-boys.json [--write]
 
 `--write` が無ければ差分を表示するだけ。
+
+`--corrections`（任意）で**勝者の丸数字が抜けている対戦**を補正できる。勝った側が
+出典の別の場所（学校単位の本数）で決まるものだけ、理由つきで足す
+（`highschool-senbatsu-2024-corrections.json`）。印字が補正の前提と違えば止まる。
+
+`--zero-as-not-played`（任意）は、**未実施の対戦を空欄でなく `0 － 0` と印字する出典**のため
+（2021 女子。同じ PDF の男子ページは空欄で、7件ずつちょうど対応する）。
+**他の2対戦だけで既に決着している試合の `0 － 0`** だけを未実施に倒し、
+そうでない `0 － 0`（本当の打ち切り）が1つでもあれば止まる。変換した対戦は毎回表示する。
 """
 from __future__ import annotations
 
@@ -161,6 +170,66 @@ def group_blocks(rubbers):
     return out
 
 
+def apply_rubber_fixes(details, blocks, chosen, fixes, stem):
+    """勝者の丸数字が抜けている対戦に、丸を補う（`--corrections` の `rubbers`）。
+
+    当てる値が出典の別の場所で決まるものだけを足す。印字が補正の前提
+    （本数の組と、どちらにも丸が無いこと）と違えば止まる。
+    """
+    mine = [f for f in fixes if f['key'].split('|')[0] == stem]
+    used, notes = set(), []
+    for m in details['matches']:
+        i = chosen.get(m['matchId'])
+        for f in mine:
+            if i is None or f['key'] != f'{stem}|{m["matchId"]}':
+                continue
+            used.add(f['key'])
+            r = blocks[i][f['rubber']]
+            printed = [r['ls'][0] if r['ls'] else None, r['rs'][0] if r['rs'] else None]
+            circled = bool((r['ls'] and r['ls'][1]) or (r['rs'] and r['rs'][1]))
+            if printed != f['printed'] or circled:
+                sys.exit(f'{f["key"]} 第{f["rubber"] + 1}対戦: 印字が補正の前提と違う（{printed} 丸 {circled}）')
+            side = 'ls' if f['winner'] == 'A' else 'rs'
+            r[side] = (r[side][0], True)
+            notes.append(f'    {f["key"]} 第{f["rubber"] + 1}対戦 {printed[0]} － {printed[1]}'
+                         f' → {f["winner"]} の勝ち: {f["why"]}')
+    unused = [f['key'] for f in mine if f['key'] not in used]
+    if unused:
+        sys.exit(f'当てはまらない補正: {unused}')
+    return notes
+
+
+def zero_to_not_played(details, blocks, chosen, school):
+    """未実施を `0 － 0` と印字する出典のため、決着済みの試合の `0 － 0` だけを未実施に倒す。
+
+    ADR-020 の `unfinished` は「打ち切り時点の途中の本数」なので、1ゲームも行われていない
+    `0 － 0` は本来 `not_played`。ただし**本当に 0-0 で打ち切られた対戦**と区別できないと
+    記録を消してしまうので、**他の2対戦だけで勝敗が付いている試合**に限る。
+    """
+    notes, risky = [], []
+    for m in details['matches']:
+        i = chosen.get(m['matchId'])
+        if i is None:
+            continue
+        blk = blocks[i]
+        zeros = [k for k, r in enumerate(blk)
+                 if r['ls'] and r['rs'] and r['ls'][0] == 0 and r['rs'][0] == 0
+                 and not r['ls'][1] and not r['rs'][1]]
+        if not zeros:
+            continue
+        decided = max(wins([r for k, r in enumerate(blk) if k not in zeros])) > len(blk) // 2
+        for k in zeros:
+            where = f'{m["matchId"]} {school[m["entries"][0]]} 対 {school[m["entries"][1]]} 第{k + 1}対戦'
+            if not decided:
+                risky.append(where)
+                continue
+            blk[k]['ls'] = blk[k]['rs'] = None
+            notes.append('    ' + where)
+    if risky:
+        sys.exit('\n'.join(['決着していない試合の `0 － 0` は未実施に倒せない（本当の打ち切りかもしれない）:'] + risky))
+    return notes
+
+
 def wins(blk):
     return (sum(1 for r in blk if r['ls'] and r['ls'][1]), sum(1 for r in blk if r['rs'] and r['rs'][1]))
 
@@ -246,6 +315,9 @@ def main():
     ap.add_argument('pdf')
     ap.add_argument('--page', type=int, required=True)
     ap.add_argument('--details', required=True)
+    ap.add_argument('--corrections', help='勝者の丸数字が抜けている対戦を補正する JSON（任意）')
+    ap.add_argument('--zero-as-not-played', action='store_true',
+                    help='未実施を `0 － 0` と印字する出典（2021 女子）。決着済みの試合のものだけ倒す')
     ap.add_argument('--write', action='store_true')
     args = ap.parse_args()
 
@@ -265,6 +337,11 @@ def main():
         sys.exit('\n'.join(errors))
 
     chosen = assign(details, rows, blocks, width)
+    fixed = []
+    if args.corrections:
+        fixes = json.loads(Path(args.corrections).read_text(encoding='utf-8'))['rubbers']
+        fixed = apply_rubber_fixes(details, blocks, chosen, fixes, details_path.stem)
+    zeroed = zero_to_not_played(details, blocks, chosen, school) if args.zero_as_not_played else []
     missing = [m['matchId'] for m in details['matches'] if m['matchId'] not in chosen]
     if missing:
         errors.append(f'割り当てられない試合: {missing}')
@@ -301,6 +378,10 @@ def main():
             print(f'    {s["type"]} {s["status"]:10} {fmt(s["playersA"]):22} {s["scoreA"]!s:>4}-{s["scoreB"]!s:<4} {fmt(s["playersB"])}')
             for p in s['playersA'] + s['playersB']:
                 counts['linked' if 'lastName' in p else 'name_only'] += 1
+    if fixed:
+        print('\n'.join(['出典の丸数字の抜けとして補正した対戦（--corrections）:'] + fixed))
+    if zeroed:
+        print('\n'.join(['`0 － 0` を未実施として扱った対戦（--zero-as-not-played）:'] + zeroed))
     print('対戦の状態:', {k: counts[k] for k in ('completed', 'unfinished', 'not_played')},
           '/ 選手（延べ）: 記録あり', counts['linked'], '名前だけ', counts['name_only'], '（* は記録あり）')
 
@@ -311,3 +392,5 @@ def main():
         write_details(details_path, details)
 
 
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,12 @@
 # TournamentBracket ロジック概要
 
+> **適用範囲: 汎用**（トーナメント表を持つ競技ならそのまま使える）。
+> **2026-09-19 に docs 直下から移した**（内容は 2026-02 当時のまま）。
+> **これは「試合データから表示用ツリーを組む」側の解説**。開催前でも席順を復元する
+> `lib/bracketLayout.ts`（`entries[].type` / `knockoutDraw` から枠を組む。[ADR-015](../adr/ADR-015-knockout-draw-by-group.md)）
+> とは別物で、そちらの仕様は [pdf-import.md](./pdf-import.md) と
+> [tournament-data-structure.md](tournament-data-structure.md)。
+
 `src/components/Tournament/TournamentBracket.tsx` のロジックに関するドキュメントです。
 
 ## 概要

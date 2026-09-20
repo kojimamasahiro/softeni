@@ -218,7 +218,7 @@ curated 注目選手は**廃止**（curated が少なく実質ゼロ件で見出
 - 未実装 milestone（`best4-first` / `career-wins` / `first-appearance`）の語彙確定。
   3種ともキャリア通算の判定なので、名寄せが前提として揃っていない。
 
-## 決着済み
+## 決着済み（旧 Open Questions）
 
 - **`articleId` の命名規約** → `{tournamentId}-{year}`。result 廃止で「昇格時に共有する安定 ID」の問い自体が消滅。
 - **所属校名の表記統一** → データ側（`normalize-team-names.mjs` ＋ `team-name-aliases.json`）で解消済み。

@@ -50,8 +50,7 @@
     // 1) teamPrefectureMap から正規化一致を探す
     if (typeof teamPrefectureMap !== 'undefined') {
       for (const teamName of Object.keys(teamPrefectureMap)) {
-        if (compact(teamName) === compactTeam)
-          return { team: teamName, prefecture: teamPrefectureMap[teamName] };
+        if (compact(teamName) === compactTeam) return { team: teamName, prefecture: teamPrefectureMap[teamName] };
       }
     }
 
@@ -261,19 +260,12 @@
       let teamNames = [];
       let prefectureNames = [];
       try {
-        const outputParsed = JSON.parse(
-          document.getElementById('output').value,
-        );
+        const outputParsed = JSON.parse(document.getElementById('output').value);
         if (Array.isArray(outputParsed)) {
           for (const pair of outputParsed) {
             for (const player of pair.information || []) {
-              if (player.team && !teamNames.includes(player.team))
-                teamNames.push(player.team);
-              if (
-                player.prefecture &&
-                !prefectureNames.includes(player.prefecture)
-              )
-                prefectureNames.push(player.prefecture);
+              if (player.team && !teamNames.includes(player.team)) teamNames.push(player.team);
+              if (player.prefecture && !prefectureNames.includes(player.prefecture)) prefectureNames.push(player.prefecture);
             }
           }
         }
@@ -281,10 +273,8 @@
         /* noop */
       }
       if (typeof teamPrefectureMap !== 'undefined') {
-        for (const t of Object.keys(teamPrefectureMap))
-          if (!teamNames.includes(t)) teamNames.push(t);
-        for (const p of new Set(Object.values(teamPrefectureMap)))
-          if (!prefectureNames.includes(p)) prefectureNames.push(p);
+        for (const t of Object.keys(teamPrefectureMap)) if (!teamNames.includes(t)) teamNames.push(t);
+        for (const p of new Set(Object.values(teamPrefectureMap))) if (!prefectureNames.includes(p)) prefectureNames.push(p);
       }
 
       // 3) cleaned から、まず後方に付いている「チーム名/都道府県名」を剥がす（空白なし比較）
@@ -294,17 +284,13 @@
         teamInput.value = detectedTeam;
         if (detectedPref && !prefectureInput.value) {
           prefectureInput.value = detectedPref;
-        } else if (
-          !prefectureInput.value &&
-          typeof teamPrefectureMap !== 'undefined'
-        ) {
+        } else if (!prefectureInput.value && typeof teamPrefectureMap !== 'undefined') {
           const pref = teamPrefectureMap[detectedTeam];
           if (pref) prefectureInput.value = pref;
         }
         // cleaned 末尾に team が含まれていたら削る（空白無し比較）
         const teamComp = compact(detectedTeam);
-        if (rest.endsWith(teamComp))
-          rest = rest.slice(0, rest.length - teamComp.length);
+        if (rest.endsWith(teamComp)) rest = rest.slice(0, rest.length - teamComp.length);
       } else {
         // カッコから見つからない場合は後方一致で検出
         for (const t of teamNames) {
@@ -312,11 +298,7 @@
           if (tc && rest.endsWith(tc)) {
             teamInput.value = t;
             rest = rest.slice(0, rest.length - tc.length);
-            if (
-              !prefectureInput.value &&
-              typeof teamPrefectureMap !== 'undefined' &&
-              teamPrefectureMap[t]
-            ) {
+            if (!prefectureInput.value && typeof teamPrefectureMap !== 'undefined' && teamPrefectureMap[t]) {
               prefectureInput.value = teamPrefectureMap[t];
             }
             break;
@@ -342,9 +324,7 @@
         const joinedName = rest; // すでに空白/数字/カッコ除去済み
         (function applyPriorityLastName() {
           if (!joinedName) return;
-          const sorted = [...PRIORITY_LASTNAMES].sort(
-            (a, b) => b.length - a.length,
-          );
+          const sorted = [...PRIORITY_LASTNAMES].sort((a, b) => b.length - a.length);
           for (const ln of sorted) {
             if (joinedName.startsWith(ln)) {
               lastNameInput.value = ln;
@@ -454,9 +434,7 @@
     if (allBlank) {
       // 団体戦モードでチームのみ出力
       const team = playerDivs[0].querySelector('.team').value.trim();
-      const prefecture = playerDivs[0]
-        .querySelector('.prefecture')
-        .value.trim();
+      const prefecture = playerDivs[0].querySelector('.prefecture').value.trim();
       if (!team && !prefecture) {
         alert('チーム名と都道府県名は必須です（団体戦モード）');
         return;
@@ -464,9 +442,7 @@
 
       const obj = {
         id: outputId,
-        name: team
-          ? `${team}${prefecture ? `（${prefecture}）` : ''}`
-          : `${prefecture}`,
+        name: team ? `${team}${prefecture ? `（${prefecture}）` : ''}` : `${prefecture}`,
         team: team || undefined,
         prefecture: prefecture || undefined,
         category: team ? 'team' : 'prefecture',
@@ -481,8 +457,7 @@
       }
 
       idInput.value = outputId;
-      output.value =
-        '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+      output.value = '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
 
       resetInputs();
 
@@ -507,8 +482,7 @@
       representativeTeam = [...teamSet][0];
       for (const player of players) {
         player.team = player.team || representativeTeam;
-        player.tempId =
-          player.lastName + '_' + player.firstName + '_' + representativeTeam;
+        player.tempId = player.lastName + '_' + player.firstName + '_' + representativeTeam;
       }
     } else if (teamSet.size === 0) {
       representativeTeam = '';
@@ -516,9 +490,7 @@
       representativeTeam = '混合';
     }
 
-    const name =
-      players.map((p) => p.lastName).join('・') +
-      (representativeTeam ? `（${representativeTeam}）` : '');
+    const name = players.map((p) => p.lastName).join('・') + (representativeTeam ? `（${representativeTeam}）` : '');
 
     const obj = {
       id: outputId,
@@ -548,8 +520,7 @@
     }
 
     idInput.value = outputId;
-    output.value =
-      '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+    output.value = '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
 
     resetInputs();
 
@@ -558,26 +529,17 @@
 
   // 入力欄をリセットする関数
   function resetInputs() {
-    document
-      .querySelectorAll('.playerInput')
-      .forEach((input) => (input.value = ''));
-    document
-      .querySelectorAll('.lastName')
-      .forEach((input) => (input.value = ''));
-    document
-      .querySelectorAll('.firstName')
-      .forEach((input) => (input.value = ''));
+    document.querySelectorAll('.playerInput').forEach((input) => (input.value = ''));
+    document.querySelectorAll('.lastName').forEach((input) => (input.value = ''));
+    document.querySelectorAll('.firstName').forEach((input) => (input.value = ''));
     document.querySelectorAll('.team').forEach((input) => (input.value = ''));
-    document
-      .querySelectorAll('.prefecture')
-      .forEach((input) => (input.value = ''));
+    document.querySelectorAll('.prefecture').forEach((input) => (input.value = ''));
   }
 
   // bye を追加する関数
   function addByeObject() {
     jsonArray.push({ id: 'bye', name: '1回戦免除', information: [] });
-    output.value =
-      '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+    output.value = '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
   }
 
   const addByeBtn = document.getElementById('addByeBtn');
@@ -592,8 +554,7 @@
     jsonArray.push(byeObj);
 
     // 出力を更新（配列ごとに改行の圧縮表示の例）
-    const compressedWithBreaks =
-      '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
+    const compressedWithBreaks = '[\n' + jsonArray.map((o) => JSON.stringify(o)).join(',\n') + '\n]';
     output.value = compressedWithBreaks;
   });
 
@@ -662,9 +623,7 @@ function removeUnwantedChars(event) {
 
 // 指定したコンテナ内の全対象 input にイベントを設定
 function setupSpaceRemoval(container) {
-  const inputs = container.querySelectorAll(
-    'input.firstName, input.team, input.prefecture',
-  );
+  const inputs = container.querySelectorAll('input.firstName, input.team, input.prefecture');
   inputs.forEach((input) => {
     input.addEventListener('input', removeUnwantedChars);
   });
@@ -678,10 +637,7 @@ function setupTeamPrefectureAutoFill(container) {
     if (!teamName) return false;
 
     // 1. teamPrefectureMap から補完
-    if (
-      typeof teamPrefectureMap !== 'undefined' &&
-      teamPrefectureMap[teamName]
-    ) {
+    if (typeof teamPrefectureMap !== 'undefined' && teamPrefectureMap[teamName]) {
       prefectureInput.value = teamPrefectureMap[teamName];
       return true;
     }

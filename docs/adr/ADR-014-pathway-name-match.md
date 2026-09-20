@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-08-12。現状仕様: `docs/wiki/secondaryschool.md`「進路（中学 → 高校）」。
+Accepted
+
+決定日: 2026-08-12。現状仕様: `docs/wiki/secondaryschool.md`「進路（中学 → 高校）」。
 
 **これは同日に一度決めた「県をまたぐ単独一致は採用しない」を明示的に覆す。**
 実装は `scripts/build-secondaryschool-pathways.mjs`。

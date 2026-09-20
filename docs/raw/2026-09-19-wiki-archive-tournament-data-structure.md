@@ -1,4 +1,15 @@
-# Tournament Data Structure Documentation
+# wiki アーカイブ: tournament-data-structure.md（2026-09-19 圧縮前の全文）
+
+2026-09-19 に docs 直下から [docs/wiki/tournament-data-structure.md](../wiki/tournament-data-structure.md) へ移し、
+「現在の仕様」だけに圧縮した。圧縮前の全文（JSON の実例・使用箇所・データフロー・
+大会一覧ページの節）をここにそのまま残す。
+手順は [docs/prompts/slim-wiki-page.md](../prompts/slim-wiki-page.md)、経緯は [2026-09-19-docs-layer-cleanup.md](./2026-09-19-docs-layer-cleanup.md)。
+
+本文中の `src/types/tournament.ts` へのリンクだけ、この置き場所から辿れるよう `../../src/` に直した。それ以外は原文のまま。
+
+---
+
+## （原題）Tournament Data Structure Documentation
 
 このドキュメントは、`data/tournament/` ディレクトリ配下のJSONファイルの構造と使用方法を説明します。
 
@@ -27,7 +38,7 @@ data/tournament/
 
 #### データ構造
 
-> **型定義**: [`TournamentIndexEntry`](../src/types/tournament.ts#L3-L9)
+> **型定義**: [`TournamentIndexEntry`](../../src/types/tournament.ts#L3-L9)
 
 ```typescript
 export interface TournamentIndexEntry {
@@ -157,7 +168,7 @@ interface GenerationEntry {
 
 #### データ構造
 
-> **型定義**: [`TournamentInformationEntry`](../src/types/tournament.ts#L19-L27), [`TournamentCategoryInfo`](../src/types/tournament.ts#L11-L17)
+> **型定義**: [`TournamentInformationEntry`](../../src/types/tournament.ts#L19-L27), [`TournamentCategoryInfo`](../../src/types/tournament.ts#L11-L17)
 
 ```typescript
 export interface TournamentInformationEntry {
@@ -182,7 +193,7 @@ export interface TournamentCategoryInfo {
 > **注**: 実際のJSONファイルには `informationId` フィールドが含まれていますが、型定義には含まれていません。
 > また、上のコード片は必須フィールドのみで、実際には `label` / `venues` / `note` /
 > `guidelineUrl` / `resultPath` / `status` / `scheduleSource`（＋`categories[].schedule`）などの任意フィールドがある。**最新は必ず
-> [`src/types/tournament.ts`](../src/types/tournament.ts) を見ること。**
+> [`src/types/tournament.ts`](../../src/types/tournament.ts) を見ること。**
 
 #### 大会運営状態の語彙（`status`）
 
@@ -194,10 +205,10 @@ export interface TournamentCategoryInfo {
 | `TournamentCategoryInfo.status` | `'abandoned'` | その種目が**途中で打ち切られた**（そこまでの成績は有効）。`abandonedAfterRound` に最後に完了したラウンド名を入れる |
 
 - 中止: `lib/tournamentCancellation.ts`（`isCancelledEntry`）/
-  [設計ノート](./raw/2026-09-05-cancelled-tournament-editions.md)
+  [設計ノート](./2026-09-05-cancelled-tournament-editions.md)
   → 中止年は成績系（連覇・playerStats・歴代優勝者の JSON-LD）に**入れない**
 - 打ち切り: `lib/tournamentAbandonment.ts` /
-  [設計ノート](./raw/2026-07-26-abandoned-tournament-ui-design.md)
+  [設計ノート](./2026-07-26-abandoned-tournament-ui-design.md)
   → 打ち切り年は**開催年として数え**、到達成績（ベスト8等）が集計に入る
 
 どちらも**理由は持たない**（断定できないため。入力メモは公開しない `note` に書く）。
@@ -251,7 +262,7 @@ export interface TournamentCategoryInfo {
 
 ##### 個人戦（ダブルス・シングルス）の場合
 
-> **型定義**: [`TournamentDetailData`](../src/types/tournament.ts#L73-L78), [`TournamentParticipant`](../src/types/tournament.ts#L29-L36), [`TournamentEntry`](../src/types/tournament.ts#L38-L42), [`TournamentMatch`](../src/types/tournament.ts#L44-L56), [`TournamentResult`](../src/types/tournament.ts#L58-L71)
+> **型定義**: [`TournamentDetailData`](../../src/types/tournament.ts#L73-L78), [`TournamentParticipant`](../../src/types/tournament.ts#L29-L36), [`TournamentEntry`](../../src/types/tournament.ts#L38-L42), [`TournamentMatch`](../../src/types/tournament.ts#L44-L56), [`TournamentResult`](../../src/types/tournament.ts#L58-L71)
 
 ```typescript
 export interface TournamentDetailData {
@@ -323,7 +334,7 @@ export interface TournamentResult {
 
 **大会途中でも `results` を生成できる**（以前は途中だと配列ごと省く運用だった）。鍵は、最深試合の `winnerEntryNo` が `null`（未実施）の間は **敗退ではなく `ongoing`** として扱うこと。これにより速報（プレビュー）段階でも各エントリーの途中経過/敗退を出せる。完了大会では `ongoing` は出ず、従来どおり winner/runnerup/best/round のみになる（既存出力は不変）。
 
-この `ongoing` を `/news` のプレビュー記事が読み、ピックアップ選手（前回王者・前回入賞者・過去の優勝者）の「今大会の途中経過/敗退」バッジに使う。詳細は [news-context-blocks.md](./wiki/news-context-blocks.md)。
+この `ongoing` を `/news` のプレビュー記事が読み、ピックアップ選手（前回王者・前回入賞者・過去の優勝者）の「今大会の途中経過/敗退」バッジに使う。詳細は [news-context-blocks.md](../wiki/news-context-blocks.md)。
 
 ##### 団体戦の場合
 
@@ -466,7 +477,7 @@ export interface TournamentParticipant {
 - **null**: タイプ指定なし（予選リーグ参加者、判定不能な場合）
 
 「予選リーグ（`stage: "roundrobin"`）」と「本戦前の予選（`round: "予選"` の1試合）」は別物。
-前者の参加者は `null` で、決勝Tの席は `knockoutDraw` が持つ（[ADR-015](./adr/ADR-015-knockout-draw-by-group.md)）。
+前者の参加者は `null` で、決勝Tの席は `knockoutDraw` が持つ（[ADR-015](../adr/ADR-015-knockout-draw-by-group.md)）。
 
 判定は 2 箇所にあり、**同じ規約**である必要がある。
 
@@ -477,7 +488,7 @@ export interface TournamentParticipant {
 
 **`buildEntriesMeta()`（入力ツール）は `preliminary` を出せない**（1回戦の枠組みしか見ないため、
 本戦前の予選があると枠がずれる）。この形式の大会を新規に入力する場合は手当てが要る
-（[open-questions](./wiki/open-questions.md)）。
+（[open-questions](../wiki/open-questions.md)）。
 
 **開催前は前者しか使えない**。2回戦の枠が未確定（1回戦の勝者が決まっていない）なので、
 後者の方式ではシードの相手が bye のままになり `type` が `null` に落ちる（2026-07-26 の不具合）。
@@ -509,19 +520,19 @@ export interface TournamentParticipant {
 
 ## TypeScript型定義
 
-全ての型定義は [`src/types/tournament.ts`](../src/types/tournament.ts) に定義されています。
+全ての型定義は [`src/types/tournament.ts`](../../src/types/tournament.ts) に定義されています。
 
 ### 主要な型
 
-- [`TournamentIndexEntry`](../src/types/tournament.ts#L3-L9) - 大会マスタデータ
-- [`TournamentCategoryInfo`](../src/types/tournament.ts#L11-L17) - カテゴリ情報
-- [`TournamentInformationEntry`](../src/types/tournament.ts#L19-L27) - 大会開催情報
-- [`TournamentParticipant`](../src/types/tournament.ts#L29-L36) - 参加者情報
-- [`TournamentEntry`](../src/types/tournament.ts#L38-L42) - エントリー情報
-- [`TournamentMatch`](../src/types/tournament.ts#L44-L56) - 試合情報
-- [`TournamentResult`](../src/types/tournament.ts#L58-L71) - 結果情報
-- [`TournamentDetailData`](../src/types/tournament.ts#L73-L78) - 大会詳細データ
-- [`MatchRow`](../src/types/tournament.ts#L80-L88) - 試合行データ（表示用）
+- [`TournamentIndexEntry`](../../src/types/tournament.ts#L3-L9) - 大会マスタデータ
+- [`TournamentCategoryInfo`](../../src/types/tournament.ts#L11-L17) - カテゴリ情報
+- [`TournamentInformationEntry`](../../src/types/tournament.ts#L19-L27) - 大会開催情報
+- [`TournamentParticipant`](../../src/types/tournament.ts#L29-L36) - 参加者情報
+- [`TournamentEntry`](../../src/types/tournament.ts#L38-L42) - エントリー情報
+- [`TournamentMatch`](../../src/types/tournament.ts#L44-L56) - 試合情報
+- [`TournamentResult`](../../src/types/tournament.ts#L58-L71) - 結果情報
+- [`TournamentDetailData`](../../src/types/tournament.ts#L73-L78) - 大会詳細データ
+- [`MatchRow`](../../src/types/tournament.ts#L80-L88) - 試合行データ（表示用）
 
 ### 型定義されていないデータ
 

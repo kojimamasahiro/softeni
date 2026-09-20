@@ -23,7 +23,7 @@ Accepted
 つまり「自動広告に戻せばレイアウトが壊れ、アンカーだけでは収益が立たない」という
 二択になっていた。どちらも選ばずに済ませる第三の道が必要になった。
 
-なお 2026-06-12 の `docs/adsense-ui-proposal.md` に手動枠の設計案が既にあったが、
+なお 2026-06-12 の `docs/raw/2026-06-12-adsense-ui-proposal.md` に手動枠の設計案が既にあったが、
 未実装のまま残っていた。
 
 ## Decision
@@ -182,7 +182,7 @@ Decision 本体も、2026-08-23 追記の「ファーストビュー内に置く
 - `src/components/AppShell.tsx`（フッター直上の枠・本文量の歯止め）
 - `src/pages/players/[id]/results.tsx`
 - [docs/wiki/monetization.md](../wiki/monetization.md)
-- [docs/adsense-ui-proposal.md](../adsense-ui-proposal.md)
+- [docs/raw/2026-06-12-adsense-ui-proposal.md](../raw/2026-06-12-adsense-ui-proposal.md)
 - [docs/wiki/circulation-verification.md](../wiki/circulation-verification.md)
 
 ## Open Questions

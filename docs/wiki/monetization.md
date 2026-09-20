@@ -30,7 +30,7 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
 ## 手動広告枠（AdUnit）
 
 自動広告のページ内挿入をやめると売上が落ち、戻すとレイアウトが崩れる。そこで**位置と高さを自分で決める枠**を実装した。
-判断は [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md)、原案は [adsense-ui-proposal.md](../adsense-ui-proposal.md)。
+判断は [ADR-016](../adr/ADR-016-manual-adsense-units-over-auto-ads.md)、原案は [adsense-ui-proposal.md](../raw/2026-06-12-adsense-ui-proposal.md)。
 
 | 何 | どこ |
 |---|---|

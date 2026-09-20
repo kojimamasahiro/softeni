@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted。決定日: 2026-08-12。現状仕様: `docs/wiki/team-player-identity.md`「チーム名寄せの運用」。
+Accepted
+
+決定日: 2026-08-12。現状仕様: `docs/wiki/team-player-identity.md`「チーム名寄せの運用」。
 
 `data/tournaments/team-name-aliases.json` のスキーマを拡張する。既存エントリは無変更で動く（後方互換）。
 

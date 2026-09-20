@@ -102,6 +102,13 @@ jobs:
       - name: ブラケット復元の照合
         run: node scripts/verify-bracket-layout.mjs
 
+      # 2026-09-19 追加。docs 全体のリンク切れ（ファイル・見出しアンカー）を見る。
+      # 昨日の wiki 圧縮で見出しを変えた結果 ADR-005 からの参照が1件壊れており、
+      # 手で叩くまで誰も気づけなかった。誰が見ても直すべき種類なのでゲートに置く。
+      # 文字数の超過は下の「報告のみ」側（仕様が増えればページは育つので止めない）。
+      - name: docs のリンク切れ
+        run: npm run -s check:wiki -- --strict > /dev/null
+
       # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
       - name: 識別・名寄せの要対応（報告のみ）
         if: always()
@@ -110,6 +117,22 @@ jobs:
             echo '## 識別・名寄せの要対応シグナル'
             echo '```'
             node scripts/check-identity-health.mjs 2>&1 | tail -40 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: docs の文字数（報告のみ）
+        if: always()
+        run: |
+          {
+            echo '## docs の文字数（予算 12,000 字/ページ）'
+            echo '```'
+            npm run -s check:wiki 2>&1 | sed -n '/^# docs の文字数/,/^予算超過は全体で/p' | grep -E '^(##|超過|予算超過)' || true
+            echo '```'
+            echo '超過が続くなら docs/prompts/slim-wiki-page.md の手順で圧縮する。'
+            echo ''
+            echo '### docs 規約（適用範囲・孤立・ADR Status・Compile Log）'
+            echo '```'
+            npm run -s check:wiki 2>&1 | sed -n '/^# 規約チェック/,$p' | grep -E '^- ' || true
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 

@@ -1,5 +1,8 @@
 # Primary School Pages（小学生カテゴリ）
 
+> **適用範囲: 学校スポーツ共通**。カテゴリの作り方（掲載閾値・進路・順位づけをしない方針）は他競技でも使える。大会名・団体名はソフトテニス固有。
+
+
 小学生カテゴリ（`/primaryschool`）の公開ページ方針と仕様。
 検討の経緯・実測値は [raw/2026-09-12-idea-primaryschool-category.md](../raw/2026-09-12-idea-primaryschool-category.md)。
 中学カテゴリは [secondaryschool.md](./secondaryschool.md)、URL 一覧は [public-pages.md](./public-pages.md)。

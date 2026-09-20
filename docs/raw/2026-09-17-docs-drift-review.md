@@ -10,7 +10,7 @@
 
 | 項目 | 結果 |
 |---|---|
-| リンク切れ | 0件（検出3件は前回と同じ `docs/adsense-ui-proposal.md` の誤検知） |
+| リンク切れ | 0件（検出3件は前回と同じ `docs/raw/2026-06-12-adsense-ui-proposal.md` の誤検知） |
 | `wiki/index.md` への掲載 | 全ページ掲載済み |
 | ADR の Status 記入 / `adr/README.md` への掲載 | 19/19（テンプレート含む） |
 | 9/2 以降の raw（42本）の Compile Log | 41本あり / 1本なし（`2026-09-13-primaryschool-teamid-review.md`＝作業リスト型） |
