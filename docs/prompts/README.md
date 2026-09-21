@@ -8,6 +8,7 @@
 
 - **Claude Code**: 「`docs/prompts/update-wiki.md` の手順で wiki を更新して」のようにファイルを指定する。
   よく使うものは `.claude/skills/` の skill 側にも手順があるので、そちらが発火すればそれでよい。
+- **Codex**: 同じくファイルを指定する。skill は `.agents/skills/`（`.claude/skills/` へのリンク）から読まれる。
 - **その他**: ファイルの中身をそのまま貼る。
 
 主な用途:
