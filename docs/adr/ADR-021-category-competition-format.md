@@ -68,6 +68,11 @@ Accepted
 - 検査: `npm run format:test`（`lib/__tests__/categoryFormat.test.ts`）
 - データ: アジア競技大会2026 の混合ダブルス・男子シングルス・女子シングルスの3種目だけ。
   混合は「各組上位2組が通過」が推定、シングルスは推定なしで方式が決まる
+- **2026-09-22: 混合の推定が当たった**（公式の決勝Tの12組が各組の上位2組とちょうど一致）。
+  `assumptions` を外し、`summary` に事実として書いた。あわせて公式の組み合わせで分かった
+  「A・C・D・F組の1位が1回戦不戦勝」を足した（**なぜその4組かは公表されていないので書かない**）。
+  `checkedOn` を 2026-09-22 に更新。推定していた事実は
+  [raw/2026-09-22-asian-games-team-finals-and-mixed.md](../raw/2026-09-22-asian-games-team-finals-and-mixed.md) に残す
 
 ## 関連
 

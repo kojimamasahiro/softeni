@@ -1966,36 +1966,332 @@
     },
     {
       "entries": [1, 7],
-      "scores": {},
+      "scores": {
+        "1": 2,
+        "7": 0
+      },
       "round": "準決勝",
       "stage": "knockout",
       "group": null,
-      "winnerEntryNo": null,
-      "nextMatchId": null,
+      "winnerEntryNo": 1,
+      "nextMatchId": "match-20",
       "prevMatchIds": ["match-16"],
       "prevMatchId": "match-16",
-      "matchId": "match-18"
+      "matchId": "match-18",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "lastName": "内本",
+              "firstName": "隆文"
+            },
+            {
+              "lastName": "黒坂",
+              "firstName": "卓矢"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "HUTAURUK",
+              "firstName": "Tio"
+            },
+            {
+              "lastName": "SANGER",
+              "firstName": "Fernando"
+            }
+          ],
+          "games": [
+            [4, 1],
+            [4, 0],
+            [6, 4],
+            [3, 5],
+            [4, 0],
+            [6, 4]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "上松",
+              "firstName": "俊貴"
+            }
+          ],
+          "playersB": [
+            {
+              "name": "PRADEWA Bagus"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "lastName": "広岡",
+              "firstName": "宙"
+            },
+            {
+              "lastName": "丸山",
+              "firstName": "海斗"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "FALEVI",
+              "firstName": "Muhammad"
+            },
+            {
+              "lastName": "LALUYAN",
+              "firstName": "Rizky"
+            }
+          ]
+        }
+      ]
     },
     {
       "entries": [5, 8],
-      "scores": {},
+      "scores": {
+        "5": 1,
+        "8": 2
+      },
       "round": "準決勝",
       "stage": "knockout",
       "group": null,
-      "winnerEntryNo": null,
-      "nextMatchId": null,
+      "winnerEntryNo": 8,
+      "nextMatchId": "match-20",
       "prevMatchIds": ["match-17"],
       "prevMatchId": "match-17",
-      "matchId": "match-19"
+      "matchId": "match-19",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 3,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "name": "LEE Hyungwon"
+            },
+            {
+              "lastName": "PARK",
+              "firstName": "Jaekyu"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "YU",
+              "firstName": "Kai-wen"
+            },
+            {
+              "lastName": "LIN",
+              "firstName": "Wei-chieh"
+            }
+          ],
+          "games": [
+            [6, 4],
+            [4, 0],
+            [1, 4],
+            [1, 4],
+            [3, 5],
+            [4, 2],
+            [1, 4],
+            [5, 7]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 3,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Jinwoong"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "CHANG",
+              "firstName": "Yu-sung"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [1, 4],
+            [4, 2],
+            [4, 1],
+            [0, 4],
+            [1, 4],
+            [7, 3]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "completed",
+          "winner": "B",
+          "scoreA": 0,
+          "scoreB": 5,
+          "playersA": [
+            {
+              "lastName": "KIM",
+              "firstName": "Hyunsoo"
+            },
+            {
+              "lastName": "LEE",
+              "firstName": "Haneul"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "CHEN",
+              "firstName": "Po-yi"
+            },
+            {
+              "name": "CHEN Yu-hsun"
+            }
+          ],
+          "games": [
+            [2, 4],
+            [2, 4],
+            [4, 6],
+            [2, 4],
+            [1, 4]
+          ]
+        }
+      ]
+    },
+    {
+      "entries": [1, 8],
+      "scores": {
+        "1": 2,
+        "8": 0
+      },
+      "round": "決勝",
+      "stage": "knockout",
+      "group": null,
+      "winnerEntryNo": 1,
+      "nextMatchId": null,
+      "prevMatchIds": ["match-18", "match-19"],
+      "prevMatchId": "match-18",
+      "matchId": "match-20",
+      "matches": [
+        {
+          "type": "D1",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 5,
+          "scoreB": 0,
+          "playersA": [
+            {
+              "lastName": "内本",
+              "firstName": "隆文"
+            },
+            {
+              "lastName": "黒坂",
+              "firstName": "卓矢"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "CHEN",
+              "firstName": "Po-yi"
+            },
+            {
+              "name": "CHEN Yu-hsun"
+            }
+          ],
+          "games": [
+            [6, 4],
+            [4, 2],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "S",
+          "status": "completed",
+          "winner": "A",
+          "scoreA": 4,
+          "scoreB": 1,
+          "playersA": [
+            {
+              "lastName": "上松",
+              "firstName": "俊貴"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "CHANG",
+              "firstName": "Yu-sung"
+            }
+          ],
+          "games": [
+            [4, 2],
+            [4, 0],
+            [0, 4],
+            [4, 2],
+            [4, 1]
+          ]
+        },
+        {
+          "type": "D2",
+          "status": "not_played",
+          "winner": null,
+          "scoreA": null,
+          "scoreB": null,
+          "playersA": [
+            {
+              "lastName": "広岡",
+              "firstName": "宙"
+            },
+            {
+              "lastName": "丸山",
+              "firstName": "海斗"
+            }
+          ],
+          "playersB": [
+            {
+              "lastName": "YU",
+              "firstName": "Kai-wen"
+            },
+            {
+              "lastName": "LIN",
+              "firstName": "Wei-chieh"
+            }
+          ]
+        }
+      ]
     }
   ],
   "results": [
     {
       "entryNo": 1,
       "tournament": {
-        "label": "ベスト4進出",
+        "label": "優勝",
         "rank": {
-          "kind": "ongoing"
+          "kind": "winner"
         }
       },
       "roundrobin": {
@@ -2036,9 +2332,10 @@
     {
       "entryNo": 5,
       "tournament": {
-        "label": "ベスト4進出",
+        "label": "ベスト4",
         "rank": {
-          "kind": "ongoing"
+          "kind": "best",
+          "bestLevel": 4
         }
       },
       "roundrobin": {
@@ -2057,9 +2354,10 @@
     {
       "entryNo": 7,
       "tournament": {
-        "label": "ベスト4進出",
+        "label": "ベスト4",
         "rank": {
-          "kind": "ongoing"
+          "kind": "best",
+          "bestLevel": 4
         }
       },
       "roundrobin": {
@@ -2070,9 +2368,9 @@
     {
       "entryNo": 8,
       "tournament": {
-        "label": "ベスト4進出",
+        "label": "準優勝",
         "rank": {
-          "kind": "ongoing"
+          "kind": "runnerup"
         }
       },
       "roundrobin": {
