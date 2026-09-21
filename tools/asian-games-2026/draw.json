@@ -1,6 +1,6 @@
 {
   "_source": "第20回アジア競技大会 公式リザルトサイト https://results.asiangames2026.org/#/discipline/TST/schedule/daily/2026-09-18 と、各試合の結果ページ #/discipline/TST/results/<試合ID>",
-  "_checkedOn": "2026-09-18",
+  "_checkedOn": "2026-09-22",
   "_scope": "5種目すべて全組・全試合（2026-09-18 団体 / 2026-09-19 混合・男女シングルス のユーザー判断）",
   "_row": "event / stage(roundrobin|knockout) / group(予選) / round(決勝T) / matchNo / date / time / court / sides([NOC, 姓/名 ...]) / score([A,B]。無ければ未実施) / rubbers / id・next（決勝Tの繋がり）",
   "_rubber": "[type(D1|S|D2), Aのペア, Bのペア, ゲームごとのポイント([Aの得点,Bの得点] を実施順), 棄権した側(\"A\"|\"B\"。無ければ省く)]。A は sides[0]。棄権した対戦は**決着したゲームだけ**を並べる（中断されたゲームは取った側が決まらないので入れない）。ポイントが null のとき、片側のペアが空なら不戦勝（出さなかった側が負け）、両側にペアがあれば未実施",
@@ -73,6 +73,60 @@
         "group": "B",
         "rank": 1
       }
+    ],
+    "Mixed Doubles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "F",
+        "rank": 2
+      },
+      {
+        "group": "E",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 2
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "D",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "C",
+        "rank": 2
+      },
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "F",
+        "rank": 1
+      },
+      null
     ]
   },
   "rows": [
@@ -881,24 +935,136 @@
       "stage": "knockout",
       "round": "準決勝",
       "id": "m-sf1",
-      "next": null,
+      "next": "m-f",
       "matchNo": 1,
       "date": "2026-09-20",
       "time": "11:30",
       "court": "Center Court",
-      "sides": [["JPN"], ["INA"]]
+      "sides": [["JPN"], ["INA"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["UCHIMOTO/Takafumi", "KUROSAKA/Takuya"],
+          ["HUTAURUK/Tio", "SANGER/Fernando"],
+          [
+            [4, 1],
+            [4, 0],
+            [6, 4],
+            [3, 5],
+            [4, 0],
+            [6, 4]
+          ]
+        ],
+        [
+          "S",
+          ["UEMATSU/Toshiki"],
+          ["PRADEWA/Bagus"],
+          [
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        ],
+        ["D2", ["HIROOKA/Sora", "MARUYAMA/Kaito"], ["FALEVI/Muhammad", "LALUYAN/Rizky"], null]
+      ]
     },
     {
       "event": "Men's Team",
       "stage": "knockout",
       "round": "準決勝",
       "id": "m-sf2",
-      "next": null,
+      "next": "m-f",
       "matchNo": 2,
       "date": "2026-09-20",
       "time": "11:30",
       "court": "Show Court",
-      "sides": [["KOR"], ["TPE"]]
+      "sides": [["KOR"], ["TPE"]],
+      "score": [1, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["LEE/Hyungwon", "PARK/Jaekyu"],
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          [
+            [6, 4],
+            [4, 0],
+            [1, 4],
+            [1, 4],
+            [3, 5],
+            [4, 2],
+            [1, 4],
+            [5, 7]
+          ]
+        ],
+        [
+          "S",
+          ["KIM/Jinwoong"],
+          ["CHANG/Yu-sung"],
+          [
+            [4, 2],
+            [1, 4],
+            [4, 2],
+            [4, 1],
+            [0, 4],
+            [1, 4],
+            [7, 3]
+          ]
+        ],
+        [
+          "D2",
+          ["KIM/Hyunsoo", "LEE/Haneul"],
+          ["CHEN/Po-yi", "CHEN/Yu-hsun"],
+          [
+            [2, 4],
+            [2, 4],
+            [4, 6],
+            [2, 4],
+            [1, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "m-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-20",
+      "time": "17:15",
+      "court": "Center Court",
+      "sides": [["JPN"], ["TPE"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["UCHIMOTO/Takafumi", "KUROSAKA/Takuya"],
+          ["CHEN/Po-yi", "CHEN/Yu-hsun"],
+          [
+            [6, 4],
+            [4, 2],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["UEMATSU/Toshiki"],
+          ["CHANG/Yu-sung"],
+          [
+            [4, 2],
+            [4, 0],
+            [0, 4],
+            [4, 2],
+            [4, 1]
+          ]
+        ],
+        ["D2", ["HIROOKA/Sora", "MARUYAMA/Kaito"], ["YU/Kai-wen", "LIN/Wei-chieh"], null]
+      ]
     },
     {
       "event": "Women's Team",
@@ -1496,24 +1662,151 @@
       "stage": "knockout",
       "round": "準決勝",
       "id": "w-sf1",
-      "next": null,
+      "next": "w-f",
       "matchNo": 1,
       "date": "2026-09-20",
       "time": "09:00",
       "court": "Center Court",
-      "sides": [["JPN"], ["PHI"]]
+      "sides": [["JPN"], ["PHI"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["TEMMA/Rena", "MIYAMAE/Kiho"],
+          ["CATINDIG/Princess", "MANALAC/Noelle"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [4, 0],
+            [4, 1]
+          ]
+        ],
+        [
+          "S",
+          ["IWAKURA/Ayaka"],
+          ["SANOSA/Christy"],
+          [
+            [4, 0],
+            [4, 1],
+            [4, 2],
+            [4, 2]
+          ]
+        ],
+        ["D2", ["MAEDA/Rio", "NAKATANI/Sakura"], ["SALAZAR/Shyryn", "PAAS/Hilary"], null]
+      ]
     },
     {
       "event": "Women's Team",
       "stage": "knockout",
       "round": "準決勝",
       "id": "w-sf2",
-      "next": null,
+      "next": "w-f",
       "matchNo": 2,
       "date": "2026-09-20",
       "time": "09:00",
       "court": "Show Court",
-      "sides": [["KOR"], ["TPE"]]
+      "sides": [["KOR"], ["TPE"]],
+      "score": [1, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["LEE/Sujin", "KIM/Hansul"],
+          ["HSU/Chiao-ying", "HUANG/Shih-yuan"],
+          [
+            [1, 4],
+            [4, 0],
+            [1, 4],
+            [4, 2],
+            [0, 4],
+            [4, 1],
+            [0, 4],
+            [6, 4],
+            [3, 7]
+          ]
+        ],
+        [
+          "S",
+          ["HWANG/Jeongmi"],
+          ["CHIANG/Min-yu"],
+          [
+            [2, 4],
+            [6, 4],
+            [4, 2],
+            [0, 4],
+            [2, 4],
+            [4, 2],
+            [11, 9]
+          ]
+        ],
+        [
+          "D2",
+          ["EOM/Yejin", "KIM/Yeon-hwa"],
+          ["ZHOU/Yan-zhen", "LO/Shu-ting"],
+          [
+            [2, 4],
+            [5, 7],
+            [4, 1],
+            [8, 6],
+            [4, 2],
+            [2, 4],
+            [2, 4],
+            [5, 3],
+            [2, 7]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "w-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-20",
+      "time": "14:00",
+      "court": "Center Court",
+      "sides": [["JPN"], ["TPE"]],
+      "score": [2, 1],
+      "rubbers": [
+        [
+          "D1",
+          ["TEMMA/Rena", "MIYAMAE/Kiho"],
+          ["HSU/Chiao-ying", "HUANG/Shih-yuan"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 1],
+            [4, 2]
+          ]
+        ],
+        [
+          "S",
+          ["IWAKURA/Ayaka"],
+          ["CHIANG/Min-yu"],
+          [
+            [3, 5],
+            [4, 2],
+            [3, 5],
+            [2, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "D2",
+          ["MAEDA/Rio", "NAKATANI/Sakura"],
+          ["ZHOU/Yan-zhen", "LO/Shu-ting"],
+          [
+            [4, 2],
+            [4, 2],
+            [4, 2],
+            [4, 1],
+            [4, 1]
+          ]
+        ]
+      ]
     },
     {
       "event": "Mixed Doubles",
@@ -1526,7 +1819,8 @@
       "sides": [
         ["JPN", "UEMATSU/Toshiki", "TEMMA/Rena"],
         ["PHI", "SANOSA/Christy", "NUGUIT/Sherwin"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1539,7 +1833,8 @@
       "sides": [
         ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
         ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1552,7 +1847,8 @@
       "sides": [
         ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"],
         ["INA", "SANGER/Fernando", "ARASY/Siti"]
-      ]
+      ],
+      "score": [1, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1565,7 +1861,8 @@
       "sides": [
         ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
         ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"]
-      ]
+      ],
+      "score": [5, 1]
     },
     {
       "event": "Mixed Doubles",
@@ -1578,7 +1875,8 @@
       "sides": [
         ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"],
         ["INA", "SANGER/Fernando", "ARASY/Siti"]
-      ]
+      ],
+      "score": [0, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1591,7 +1889,8 @@
       "sides": [
         ["CAM", "KAN/Sophorn", "YEAN/Sokhoeun"],
         ["LAO", "HACNOLATH/Souvananh", "SIMMALAVONG/Sataporn"]
-      ]
+      ],
+      "score": [5, 4]
     },
     {
       "event": "Mixed Doubles",
@@ -1604,7 +1903,8 @@
       "sides": [
         ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
         ["INA", "SANGER/Fernando", "ARASY/Siti"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1617,7 +1917,8 @@
       "sides": [
         ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
         ["CAM", "CHAO/Viva", "KHUN/Chanroseka"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1630,7 +1931,8 @@
       "sides": [
         ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"],
         ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
-      ]
+      ],
+      "score": [0, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1643,7 +1945,8 @@
       "sides": [
         ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
         ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1656,7 +1959,8 @@
       "sides": [
         ["CAM", "CHAO/Viva", "KHUN/Chanroseka"],
         ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
-      ]
+      ],
+      "score": [0, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1669,7 +1973,8 @@
       "sides": [
         ["CAM", "CHAO/Viva", "KHUN/Chanroseka"],
         ["MGL", "NYAMDORJ/Bud", "GANBAATAR/Enkhkhuslen"]
-      ]
+      ],
+      "score": [5, 3]
     },
     {
       "event": "Mixed Doubles",
@@ -1682,7 +1987,8 @@
       "sides": [
         ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
         ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
-      ]
+      ],
+      "score": [1, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1695,7 +2001,8 @@
       "sides": [
         ["TPE", "LIN/Wei-chieh", "CHIANG/Min-yu"],
         ["INA", "LALUYAN/Rizky", "NAFIIAH/Allif"]
-      ]
+      ],
+      "score": [5, 2]
     },
     {
       "event": "Mixed Doubles",
@@ -1708,7 +2015,8 @@
       "sides": [
         ["INA", "LALUYAN/Rizky", "NAFIIAH/Allif"],
         ["PAK", "KHAN/Sabrina", "BASHIR/Rafae"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1721,7 +2029,8 @@
       "sides": [
         ["TPE", "LIN/Wei-chieh", "CHIANG/Min-yu"],
         ["PAK", "KHAN/Sabrina", "BASHIR/Rafae"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1734,7 +2043,8 @@
       "sides": [
         ["KOR", "KIM/Hyunsoo", "LEE/Sujin"],
         ["PAK", "SHALLWANI/Kainaat", "ARAIN/Hamza"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1747,7 +2057,8 @@
       "sides": [
         ["PAK", "SHALLWANI/Kainaat", "ARAIN/Hamza"],
         ["PHI", "MANALAC/Noelle", "NUGUIT/Samuel"]
-      ]
+      ],
+      "score": [0, 5]
     },
     {
       "event": "Mixed Doubles",
@@ -1760,7 +2071,8 @@
       "sides": [
         ["KOR", "KIM/Hyunsoo", "LEE/Sujin"],
         ["PHI", "MANALAC/Noelle", "NUGUIT/Samuel"]
-      ]
+      ],
+      "score": [5, 2]
     },
     {
       "event": "Mixed Doubles",
@@ -1773,7 +2085,8 @@
       "sides": [
         ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"],
         ["NEP", "BHANDARI/Kamal", "CHAUDHARY/Georgia"]
-      ]
+      ],
+      "score": [5, 0]
     },
     {
       "event": "Mixed Doubles",
@@ -1786,7 +2099,8 @@
       "sides": [
         ["NEP", "BHANDARI/Kamal", "CHAUDHARY/Georgia"],
         ["MGL", "KHURELBAYAR/Khaliunbayar", "GANBOLD/Khongorzul"]
-      ]
+      ],
+      "score": [5, 4]
     },
     {
       "event": "Mixed Doubles",
@@ -1799,7 +2113,184 @@
       "sides": [
         ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"],
         ["MGL", "KHURELBAYAR/Khaliunbayar", "GANBOLD/Khongorzul"]
-      ]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r2",
+      "next": "x-qf1",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "12:30",
+      "court": "Center Court",
+      "sides": [
+        ["NEP", "BHANDARI/Kamal", "CHAUDHARY/Georgia"],
+        ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ],
+      "score": [1, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r3",
+      "next": "x-qf2",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "12:30",
+      "court": "Show Court",
+      "sides": [
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"],
+        ["PHI", "MANALAC/Noelle", "NUGUIT/Samuel"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r6",
+      "next": "x-qf3",
+      "matchNo": 6,
+      "date": "2026-09-21",
+      "time": "12:30",
+      "court": "Court 2",
+      "sides": [
+        ["INA", "LALUYAN/Rizky", "NAFIIAH/Allif"],
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"]
+      ],
+      "score": [0, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r7",
+      "next": "x-qf4",
+      "matchNo": 7,
+      "date": "2026-09-21",
+      "time": "12:30",
+      "court": "Court 4",
+      "sides": [
+        ["IND", "TIWARI/Aadhya", "MEENA/Jay"],
+        ["PHI", "SANOSA/Christy", "NUGUIT/Sherwin"]
+      ],
+      "score": [2, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf1",
+      "next": "x-sf1",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "14:00",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TEMMA/Rena"],
+        ["INA", "SANGER/Fernando", "ARASY/Siti"]
+      ],
+      "score": [5, 2]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf2",
+      "next": "x-sf1",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "14:00",
+      "court": "Show Court",
+      "sides": [
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"],
+        ["TPE", "LIN/Wei-chieh", "CHIANG/Min-yu"]
+      ],
+      "score": [5, 4]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf3",
+      "next": "x-sf2",
+      "matchNo": 3,
+      "date": "2026-09-21",
+      "time": "14:00",
+      "court": "Court 2",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "LEE/Sujin"],
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"]
+      ],
+      "score": [1, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf4",
+      "next": "x-sf2",
+      "matchNo": 4,
+      "date": "2026-09-21",
+      "time": "14:00",
+      "court": "Court 4",
+      "sides": [
+        ["PHI", "SANOSA/Christy", "NUGUIT/Sherwin"],
+        ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"]
+      ],
+      "score": [0, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "x-sf1",
+      "next": "x-f",
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "15:30",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TEMMA/Rena"],
+        ["KOR", "KIM/Yeon-hwa", "PARK/Jaekyu"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "x-sf2",
+      "next": "x-f",
+      "matchNo": 2,
+      "date": "2026-09-21",
+      "time": "15:30",
+      "court": "Show Court",
+      "sides": [
+        ["JPN", "MAEDA/Rio", "MARUYAMA/Kaito"],
+        ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"]
+      ],
+      "score": [0, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "x-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-21",
+      "time": "17:00",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TEMMA/Rena"],
+        ["TPE", "YU/Kai-wen", "HUANG/Shih-yuan"]
+      ],
+      "score": [4, 5]
     },
     {
       "event": "Men's Singles",
