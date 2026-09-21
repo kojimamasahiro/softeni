@@ -109,6 +109,11 @@ jobs:
       - name: docs のリンク切れ
         run: npm run -s check:wiki -- --strict > /dev/null
 
+      # 2026-09-22 追加。Codex 用の .agents/skills は .claude/skills へのリンク。
+      # skill を足したのにリンクを張り忘れると Codex からだけ見えなくなる。
+      - name: Codex 用 skill リンクの同期
+        run: npm run -s sync:skills -- --check
+
       # ---- 報告のみ: 落ちてもこの workflow は赤にしない ----
       - name: 識別・名寄せの要対応（報告のみ）
         if: always()

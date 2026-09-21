@@ -1,5 +1,16 @@
 # AI Collaboration Rules
 
+このファイルはどのエージェントでも読む共通ルール（Codex は直接、Claude Code は CLAUDE.md 経由）。
+
+## Skills
+
+定型作業の手順は skill にまとめてある。実体は `.claude/skills/<name>/SKILL.md`、
+Codex 用の `.agents/skills/<name>` はそこへのシンボリックリンク。
+
+- skill を足す・消すときは `.claude/skills/` 側だけ触り、`npm run sync:skills` でリンクを張り直す
+  （CI は `--check` でずれを検出する）。
+- SKILL.md は特定エージェントの道具名（Read / Edit など）に依存しない書き方にする。
+
 ## docs の構成
 
 This repository's docs/ follows an **LLM Wiki** pattern (Karpathy, 2026-04): raw sources are
