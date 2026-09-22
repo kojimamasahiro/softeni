@@ -17,6 +17,8 @@ import { AD_SLOTS } from '@/lib/ads';
 import { buildDelegationLookup } from '@/lib/delegation';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
 import { composePlayerResultsTitle, nationalTitleAwards, nationalTitleDescriptionPhrase } from '@/lib/nationalTitles';
+import { getPlayerOgImage } from '@/lib/playerOgImage';
+import { buildSiteUrl } from '@/lib/siteConfig';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { careerAffiliationNodes, careerAffiliations, careerAffiliationsDescriptionPhrase, composeDescriptionTail } from '@/lib/playerCareerAffiliations';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
@@ -31,6 +33,8 @@ import { TournamentEntry, TournamentParticipant } from '@/types/tournament';
 
 type PlayerResultsProps = {
   playerId: string;
+  /** 全国大会優勝者の成績カード（lib/playerOgImage.ts）。無ければ既定の OGP 画像 */
+  ogImage?: string | null;
   lastName: string;
   firstName: string;
   team?: string | null;
@@ -78,6 +82,7 @@ export default function PlayerResultsPage({
   growthShowcaseSlug = null,
   upcomingInternational = [],
   noindex = false,
+  ogImage = null,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results/`;
@@ -186,7 +191,15 @@ export default function PlayerResultsPage({
 
   return (
     <>
-      <MetaHead title={metaTitle} description={summarySentence} url={pageUrl} type="article" noindex={noindex} noindexFollow={noindex} />
+      <MetaHead
+        title={metaTitle}
+        description={summarySentence}
+        url={pageUrl}
+        type="article"
+        noindex={noindex}
+        noindexFollow={noindex}
+        {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
+      />
 
       <Head>
         <script
@@ -1157,6 +1170,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       playerId,
       noindex: !shouldIndex,
+      ogImage: getPlayerOgImage(playerId),
       lastName: idx.lastName,
       firstName: idx.firstName,
       team,
