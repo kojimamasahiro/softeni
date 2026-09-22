@@ -70,6 +70,7 @@
     "format:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/categoryFormat.test.ts",
     "career:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerCareerAffiliations.test.ts",
     "player-title:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerResultsTitle.test.ts",
+    "records:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/highschoolChampionRecords.test.ts",
     "popular:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/popularPages.test.ts",
     "popular:import": "ts-node --project scripts/playerStats/tsconfig.json scripts/import-popular-pages.ts",
     "rare-events:generate": "node scripts/generate-rare-events.mjs",
