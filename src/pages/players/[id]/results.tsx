@@ -10,7 +10,7 @@ import MetaHead from '@/components/MetaHead';
 import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
 import PlayerStatisticsSections, { CareerTimeline } from '@/components/PlayerStatisticsSections';
-import PlayerSummaryStats from '@/components/PlayerSummaryStats';
+import PlayerSummaryStats, { RIVAL_MIN_MEETINGS, type RivalChip } from '@/components/PlayerSummaryStats';
 import PlayerUpcomingInternational from '@/components/PlayerUpcomingInternational';
 import PageLayout from '@/components/PageLayout';
 import { AD_SLOTS } from '@/lib/ads';
@@ -167,6 +167,20 @@ export default function PlayerResultsPage({
 
   // 通称（インターハイ 等）を title に literal で出し、「{選手名} インターハイ 優勝」系の
   // クエリに寄せる。正式名称だけでは通称クエリに一致しないため（docs/wiki/seo.md #3）。
+  // 常時表示の「よく対戦した相手」。2回以上・選手 id 単位（docs/raw/2026-09-22-idea-seo-expansion.md #1）。
+  const statsLinkable = new Set(statsLinkableIds);
+  const rivalChips: RivalChip[] = (playerStatistics?.headToHead ?? [])
+    .filter((h) => h.meetings >= RIVAL_MIN_MEETINGS)
+    .slice(0, 5)
+    .map((h) => ({
+      key: h.opponentKey,
+      name: h.opponentName,
+      meetings: h.meetings,
+      wins: h.wins,
+      losses: h.losses,
+      href: h.opponentId != null && statsLinkable.has(h.opponentId) ? `/players/${h.opponentId}/results` : null,
+    }));
+
   // 字数は完成形の幅で予算化する（composePlayerResultsTitle）。
   const metaTitle = composePlayerResultsTitle(displayName, fullName, nationalTitles) ?? `${displayName}の試合結果・戦績 | ソフトテニス`;
 
@@ -279,7 +293,7 @@ export default function PlayerResultsPage({
             大会別成績・H2H・所属別成績）はページ長の大半を占めるため段階的開示（P3）で
             <details>「詳細を見る」に畳む）。 */}
         <section>
-          {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}
+          {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} rivals={rivalChips} />}
 
           {/* <details> は閉じていても DOM に残りクローラは読む（勲章カードで採用済みの前提と
               同型、docs/wiki/players-pages.md「主要大会の実績表示」参照）。SEOタイトル/

@@ -12,9 +12,20 @@ import Link from 'next/link';
 
 import { PlayerInfo, PlayerStats } from '@/types/index';
 
+/** 「よく対戦した相手」に出す対戦数の下限（2026-09-22 ユーザー判断）。H2H 表も同じ下限を使う。 */
+export const RIVAL_MIN_MEETINGS = 2;
+
+/** 常時表示する「よく対戦した相手」1件。href は相手の結果ページがあるときだけ。 */
+export type RivalChip = { key: string; name: string; meetings: number; wins: number; losses: number; href: string | null };
+
 type SummaryStatsProps = {
   playerStats: PlayerStats;
   allPlayers: PlayerInfo[];
+  /**
+   * 2回以上対戦した相手（選手 id 単位・対戦数の多い順）。「{選手A} {選手B}」の検索語に対して、
+   * 2人の名前と通算成績を畳まない位置に置くため（docs/raw/2026-09-22-idea-seo-expansion.md #1）。
+   */
+  rivals?: RivalChip[];
 };
 
 // 直近何年ぶんを見せるか。詳細スタッツ側（対戦成績カード）には全年度がある。
@@ -29,7 +40,7 @@ function resolvePartnerName(id: string, name: string | undefined, allPlayers: Pl
   return matched ? `${matched.lastName}${matched.firstName || ''}` : '';
 }
 
-export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryStatsProps) {
+export default function PlayerSummaryStats({ playerStats, allPlayers, rivals = [] }: SummaryStatsProps) {
   if (!playerStats || !playerStats.totalMatches) return null;
 
   const partnerChips = Object.entries(playerStats.byPartner)
@@ -59,7 +70,7 @@ export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryS
       losses: agg.matches.losses,
     }));
 
-  if (partnerChips.length === 0 && yearChips.length === 0) return null;
+  if (partnerChips.length === 0 && yearChips.length === 0 && rivals.length === 0) return null;
 
   return (
     <>
@@ -74,6 +85,33 @@ export default function PlayerSummaryStats({ playerStats, allPlayers }: SummaryS
                   {p.hasPage ? (
                     <Link
                       href={`/players/${p.id}/results`}
+                      className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-info transition-colors hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-gray-700"
+                    >
+                      {label}
+                    </Link>
+                  ) : (
+                    <span className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-text-secondary dark:bg-gray-800">
+                      {label}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+
+      {rivals.length > 0 && (
+        <div className="mb-3">
+          <p className="mb-2 text-xs text-text-muted">よく対戦した相手（2回以上・対戦数の多い順）</p>
+          <ul className="flex flex-wrap gap-2">
+            {rivals.map((r) => {
+              const label = `${r.name}（${r.meetings}戦 ${r.wins}勝${r.losses}敗）`;
+              return (
+                <li key={r.key}>
+                  {r.href ? (
+                    <Link
+                      href={r.href}
                       className="inline-block rounded-full border border-border bg-gray-50 px-3 py-1 text-sm text-info transition-colors hover:bg-blue-50 dark:bg-gray-800 dark:hover:bg-gray-700"
                     >
                       {label}

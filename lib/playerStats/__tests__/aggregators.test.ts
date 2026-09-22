@@ -162,6 +162,18 @@ test('headToHead: 対個人（doubles は相手2名それぞれに計上）', ()
   assert.strictEqual(x!.losses, 1);
 });
 
+test('headToHead: 所属が変わっても同じ選手 id なら1人に集約する（id の無い参照も key で寄せる）', () => {
+  const f = facts([
+    match({ result: 'win', opponents: [ref(2, 'X', 'A高')] }),
+    match({ result: 'lose', opponents: [ref(2, 'X', 'B大')] }),
+    match({ result: 'win', opponents: [ref(null, 'X', 'B大')] }),
+  ]);
+  const h = aggregateHeadToHead(f);
+  assert.strictEqual(h.length, 1);
+  assert.strictEqual(h[0].meetings, 3);
+  assert.strictEqual(h[0].opponentId, 2);
+});
+
 test('byPartner: partnerKey で集約（数値id付き参照を優先保持）', () => {
   const f = facts([match({ category: 'doubles', partner: ref(null, 'P', 'A校') }), match({ category: 'doubles', partner: ref(9, 'P', 'A校') })]);
   const bp = aggregateByPartner(f);

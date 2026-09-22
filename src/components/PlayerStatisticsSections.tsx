@@ -10,6 +10,7 @@
 
 import Link from 'next/link';
 
+import { RIVAL_MIN_MEETINGS } from '@/components/PlayerSummaryStats';
 import PlayerLiteLink from '@/components/PlayerLiteLink';
 import { getTournamentHubHref } from '@/lib/highschoolNationalTournamentMeta';
 import type { PlayerInfo, PlayerStats } from '@/types/index';
@@ -347,10 +348,13 @@ function TournamentTable({ rows, generationMap }: { rows: TournamentRow[]; gener
 }
 
 function HeadToHeadTable({ rows, linkable }: { rows: Head2HeadRow[]; linkable: Set<number> }) {
-  if (rows.length === 0) return null;
-  const top = rows.slice(0, 10);
+  const top = rows.filter((h) => h.meetings >= RIVAL_MIN_MEETINGS).slice(0, 10);
+  if (top.length === 0) return null;
   return (
-    <SectionCard title="対戦相手との通算成績" note="相手選手ごとの通算対戦成績（対個人・相方問わず名寄せ）です。対戦数の多い順に掲載しています。">
+    <SectionCard
+      title="対戦相手との通算成績"
+      note={`${RIVAL_MIN_MEETINGS}回以上対戦した相手選手ごとの通算対戦成績です（相方や所属が変わっても同じ選手として数えます）。対戦数の多い順に掲載しています。`}
+    >
       <table className="w-full border border-border-strong text-sm">
         <thead className="bg-bg-subtle text-gray-800 dark:text-gray-200">
           <tr>
