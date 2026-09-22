@@ -25,6 +25,7 @@ import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getDelegationBlock, type DelegationBlock } from '@/lib/delegation';
 import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
+import { computeChampionRecords, describeCategoryRecord, toGenericRecordRows } from '@/lib/championRecords';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
@@ -334,8 +335,20 @@ export default function TournamentHubPage({
       : `${titleLeadName}${titleYear} 結果・歴代優勝者 | ソフトテニス情報`;
   // FAQ は**検索名を設定した大会だけ**に出す。全ハブに定型文を撒くと
   // 「同じフレーズの機械的な反復」になり、seo.md #2 追記が避けた薄い重複を量産するため。
-  const faqItems =
-    primaryAlias && searchLabel && !upcomingOnly
+  // 種目別の最多優勝・最長連覇（lib/championRecords.ts）。個人戦は選手、団体戦はチームで数える。
+  // 画面と FAQ で同じ文面を使う。中止の年は championRows に入らないので連覇はそこで途切れる。
+  const recordSentences = computeChampionRecords(toGenericRecordRows(championRows)).map(describeCategoryRecord);
+  const recordFaq =
+    recordSentences.length > 0 && !upcomingOnly
+      ? [
+          {
+            question: `${titleLeadName}で最も多く優勝しているのは誰ですか？`,
+            answer: `${yearRange ? `${yearRange}の収録範囲では、` : ''}${recordSentences.join('')}`,
+          },
+        ]
+      : [];
+  const faqItems = [
+    ...(primaryAlias && searchLabel && !upcomingOnly
       ? [
           {
             question: `「${primaryAlias}」とは何ですか？`,
@@ -346,7 +359,9 @@ export default function TournamentHubPage({
             answer: `見られます。本ページに${yearRange ? `${yearRange}の` : ''}歴代優勝者を種目別に一覧で掲載しており、各年度の結果ページからトーナメント表と全試合結果を確認できます。`,
           },
         ]
-      : [];
+      : []),
+    ...recordFaq,
+  ];
 
   // 構造化データ用の別名リスト。正式名称と重複するものは除く。
   const alternateNames = [searchLabel, ...searchAliases].filter((n): n is string => !!n && n !== label);
@@ -651,6 +666,21 @@ export default function TournamentHubPage({
                 </tbody>
               </table>
             </div>
+          </section>
+        )}
+
+        {recordSentences.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-1">記録（最多優勝・連覇）</h2>
+            <p className="text-sm text-text-secondary mb-3">
+              {yearRange ? `${yearRange}の` : ''}
+              収録範囲で、種目ごとに数えています（個人戦は選手、団体戦はチーム単位）。収録の無い年や中止の年をまたぐ優勝は連覇に数えません。
+            </p>
+            <ul className="list-disc space-y-1 pl-5 text-sm">
+              {recordSentences.map((sentence) => (
+                <li key={sentence}>{sentence}</li>
+              ))}
+            </ul>
           </section>
         )}
 

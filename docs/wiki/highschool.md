@@ -58,7 +58,7 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - データは既存の `data/tournaments/details/{tournamentId}/{year}/{category}.json` と `information/{tournamentId}.json`（開催地・日程・種別ラベル）から年度別・種目別に抽出する。上位入賞の判定は `results[].tournament.rank.kind` が `winner` / `runnerup`、または `best` かつ `bestLevel === 4`。記録範囲はベスト4まで
 - 種目は男子→女子、団体→ダブルス→シングルスの順に並べ、各種目から既存の年度別結果ページ（`/tournaments/highschool/{tournamentId}/{year}/{category}/{age}/{gender}`）へ「対戦表を見る」で内部リンクする
 - 上部に種目別の歴代優勝サマリー表を表示する。各行（種目）×各列（年度）のセルに、優勝の「年度・学校・選手・都道府県」を載せる（団体は校名、個人は選手名＋所属）。データは `ChampionSummaryRow` / `ChampionCell`（`buildChampionSummary`）。優勝者不明の年は表示しない
-- 歴代優勝サマリーの下に「記録（最多優勝・連覇）」節と同文の FAQ を出す（2026-09-22、`lib/highschoolChampionRecords.ts`）。
+- 歴代優勝サマリーの下に「記録（最多優勝・連覇）」節と同文の FAQ を出す（2026-09-22、`lib/championRecords.ts`。高校は個人戦も所属校で数える）。
   **種目別**に数え、収録範囲の中だけ（画面に範囲を明記）。連覇は収録のある連続した年だけで、収録の無い年・中止の年をまたぐと途切れる。
   個人戦は所属校で数え、ペアが2校なら両校に数える。最多が1回・連覇が無い種目は出さない。規則は `npm run records:test`（CI）
 - 上位入賞の所属校から各校の戦績ページ（`/highschool/{gender}/{prefectureId}/{teamId}`）へ内部リンクする（2026-06 追加）。リンク解決は `getSchoolResolver()`（`lib/highschoolNationalTournaments.ts`）が `data/highschool/prefectures/<prefId>/summary.json` を唯一の正として `(team, prefectureId, gender)` の実在を確認し、**一意に特定できる場合のみ**リンクする（デッドリンク防止。同名校が複数残る場合はリンクせず名前のみ表示）。`mixed` は男子・女子どちらのページにも出る規約に合わせる。リゾルバはモジュールスコープで一度だけ構築してキャッシュする

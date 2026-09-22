@@ -78,7 +78,7 @@ jobs:
       - name: 選手ページの title 字数予算 テスト
         run: npm run -s player-title:test
 
-      - name: 高校全国大会の記録（最多優勝・連覇） テスト
+      - name: 大会の記録（最多優勝・連覇） テスト
         run: npm run -s records:test
 
       - name: 地域移行トラッカーの検証
