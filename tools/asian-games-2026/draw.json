@@ -127,6 +127,71 @@
         "rank": 1
       },
       null
+    ],
+    "Men's Singles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 1
+      },
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "F",
+        "rank": 1
+      },
+      {
+        "group": "G",
+        "rank": 1
+      }
+    ],
+    "Women's Singles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 1
+      },
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "F",
+        "rank": 1
+      },
+      {
+        "group": "G",
+        "rank": 1
+      },
+      {
+        "group": "H",
+        "rank": 1
+      }
     ]
   },
   "rows": [
@@ -2303,7 +2368,8 @@
       "sides": [
         ["JPN", "UEMATSU/Toshiki"],
         ["CAM", "DOEUM/Samsocheaphearun"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2316,7 +2382,8 @@
       "sides": [
         ["INA", "HUTAURUK/Tio"],
         ["PAK", "ALI/Muhammad"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2329,7 +2396,8 @@
       "sides": [
         ["JPN", "UEMATSU/Toshiki"],
         ["INA", "HUTAURUK/Tio"]
-      ]
+      ],
+      "score": [4, 2]
     },
     {
       "event": "Men's Singles",
@@ -2342,7 +2410,8 @@
       "sides": [
         ["CAM", "DOEUM/Samsocheaphearun"],
         ["PAK", "ALI/Muhammad"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2355,7 +2424,8 @@
       "sides": [
         ["JPN", "UEMATSU/Toshiki"],
         ["PAK", "ALI/Muhammad"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2368,7 +2438,8 @@
       "sides": [
         ["CAM", "DOEUM/Samsocheaphearun"],
         ["INA", "HUTAURUK/Tio"]
-      ]
+      ],
+      "score": [2, 4]
     },
     {
       "event": "Men's Singles",
@@ -2381,7 +2452,8 @@
       "sides": [
         ["KOR", "KIM/Jinwoong"],
         ["CAM", "YI/Keavirak"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2394,7 +2466,8 @@
       "sides": [
         ["MGL", "BATAA/Munkhtulga"],
         ["JPN", "KUROSAKA/Takuya"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Men's Singles",
@@ -2407,7 +2480,8 @@
       "sides": [
         ["KOR", "KIM/Jinwoong"],
         ["MGL", "BATAA/Munkhtulga"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2420,7 +2494,8 @@
       "sides": [
         ["CAM", "YI/Keavirak"],
         ["JPN", "KUROSAKA/Takuya"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Men's Singles",
@@ -2433,7 +2508,8 @@
       "sides": [
         ["CAM", "YI/Keavirak"],
         ["MGL", "BATAA/Munkhtulga"]
-      ]
+      ],
+      "score": [4, 2]
     },
     {
       "event": "Men's Singles",
@@ -2446,7 +2522,8 @@
       "sides": [
         ["KOR", "KIM/Jinwoong"],
         ["JPN", "KUROSAKA/Takuya"]
-      ]
+      ],
+      "score": [3, 4]
     },
     {
       "event": "Men's Singles",
@@ -2459,7 +2536,8 @@
       "sides": [
         ["PHI", "ARCILLA/Joseph"],
         ["NEP", "KHATRI/Pradip"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2472,7 +2550,8 @@
       "sides": [
         ["NEP", "KHATRI/Pradip"],
         ["KOR", "LEE/Haneul"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Men's Singles",
@@ -2485,7 +2564,8 @@
       "sides": [
         ["PHI", "ARCILLA/Joseph"],
         ["KOR", "LEE/Haneul"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Men's Singles",
@@ -2498,7 +2578,8 @@
       "sides": [
         ["TPE", "CHEN/Po-yi"],
         ["MGL", "ALTANGEREL/Bold-erdene"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2511,7 +2592,8 @@
       "sides": [
         ["MGL", "ALTANGEREL/Bold-erdene"],
         ["IND", "THAKUR/Aryan"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Men's Singles",
@@ -2524,7 +2606,8 @@
       "sides": [
         ["TPE", "CHEN/Po-yi"],
         ["IND", "THAKUR/Aryan"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2537,7 +2620,8 @@
       "sides": [
         ["IND", "MEENA/Jay"],
         ["PAK", "ARAIN/Hussain"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2550,7 +2634,8 @@
       "sides": [
         ["INA", "FALEVI/Muhammad"],
         ["LAO", "VONGPHAKDY/Bekki"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2563,7 +2648,8 @@
       "sides": [
         ["LAO", "VONGPHAKDY/Bekki"],
         ["PHI", "NUGUIT/Sherwin"]
-      ]
+      ],
+      "score": [2, 4]
     },
     {
       "event": "Men's Singles",
@@ -2576,7 +2662,8 @@
       "sides": [
         ["INA", "FALEVI/Muhammad"],
         ["PHI", "NUGUIT/Sherwin"]
-      ]
+      ],
+      "score": [3, 4]
     },
     {
       "event": "Men's Singles",
@@ -2589,7 +2676,8 @@
       "sides": [
         ["TPE", "CHANG/Yu-sung"],
         ["NEP", "BHANDARI/Kamal"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Men's Singles",
@@ -2602,7 +2690,8 @@
       "sides": [
         ["NEP", "BHANDARI/Kamal"],
         ["LAO", "LOUANGSISOMBATH/Phatthana"]
-      ]
+      ],
+      "score": [4, 3]
     },
     {
       "event": "Men's Singles",
@@ -2615,7 +2704,8 @@
       "sides": [
         ["TPE", "CHANG/Yu-sung"],
         ["LAO", "LOUANGSISOMBATH/Phatthana"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2628,7 +2718,8 @@
       "sides": [
         ["JPN", "TEMMA/Rena"],
         ["NEP", "CHAUDHARY/Georgia"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2641,7 +2732,8 @@
       "sides": [
         ["NEP", "CHAUDHARY/Georgia"],
         ["MGL", "ERDEMBILEG/Namuunkhuslen"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Women's Singles",
@@ -2654,7 +2746,8 @@
       "sides": [
         ["JPN", "TEMMA/Rena"],
         ["MGL", "ERDEMBILEG/Namuunkhuslen"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2667,7 +2760,8 @@
       "sides": [
         ["JPN", "MIYAMAE/Kiho"],
         ["PAK", "ZAIDI/Eraj"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2680,7 +2774,8 @@
       "sides": [
         ["PAK", "ZAIDI/Eraj"],
         ["PHI", "SANOSA/Christy"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Women's Singles",
@@ -2693,7 +2788,8 @@
       "sides": [
         ["JPN", "MIYAMAE/Kiho"],
         ["PHI", "SANOSA/Christy"]
-      ]
+      ],
+      "score": [4, 1]
     },
     {
       "event": "Women's Singles",
@@ -2706,7 +2802,8 @@
       "sides": [
         ["KOR", "LEE/Sujin"],
         ["CAM", "METH/Mariyan"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2719,7 +2816,8 @@
       "sides": [
         ["CAM", "METH/Mariyan"],
         ["TPE", "HUANG/Shih-yuan"]
-      ]
+      ],
+      "score": [0, 4]
     },
     {
       "event": "Women's Singles",
@@ -2732,7 +2830,8 @@
       "sides": [
         ["KOR", "LEE/Sujin"],
         ["TPE", "HUANG/Shih-yuan"]
-      ]
+      ],
+      "score": [4, 2]
     },
     {
       "event": "Women's Singles",
@@ -2745,7 +2844,8 @@
       "sides": [
         ["PHI", "CATINDIG/Princess"],
         ["INA", "NAFIIAH/Allif"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2758,7 +2858,8 @@
       "sides": [
         ["INA", "NAFIIAH/Allif"],
         ["PRK", "RI/So Hyang"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2771,7 +2872,8 @@
       "sides": [
         ["PHI", "CATINDIG/Princess"],
         ["PRK", "RI/So Hyang"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2784,7 +2886,8 @@
       "sides": [
         ["IND", "TIWARI/Aadhya"],
         ["THA", "ZIEGLER/Alisha"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2797,7 +2900,8 @@
       "sides": [
         ["THA", "ZIEGLER/Alisha"],
         ["PAK", "SHALLWANI/Kainaat"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2810,7 +2914,8 @@
       "sides": [
         ["IND", "TIWARI/Aadhya"],
         ["PAK", "SHALLWANI/Kainaat"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2823,7 +2928,8 @@
       "sides": [
         ["TPE", "CHIANG/Min-yu"],
         ["CAM", "CHHAN/Chheavhouy"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2836,7 +2942,8 @@
       "sides": [
         ["CAM", "CHHAN/Chheavhouy"],
         ["INA", "ARASY/Siti"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2849,7 +2956,8 @@
       "sides": [
         ["TPE", "CHIANG/Min-yu"],
         ["INA", "ARASY/Siti"]
-      ]
+      ],
+      "score": [4, 1]
     },
     {
       "event": "Women's Singles",
@@ -2862,7 +2970,8 @@
       "sides": [
         ["PRK", "RI/Jin Mi"],
         ["MGL", "GANTUR/Anu-ujin"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2875,7 +2984,8 @@
       "sides": [
         ["KOR", "HWANG/Jeongmi"],
         ["LAO", "HACNOLATH/Souvananh"]
-      ]
+      ],
+      "score": [4, 0]
     },
     {
       "event": "Women's Singles",
@@ -2888,7 +2998,8 @@
       "sides": [
         ["LAO", "HACNOLATH/Souvananh"],
         ["THA", "KLOMKAMOL/Chatcha"]
-      ]
+      ],
+      "score": [1, 4]
     },
     {
       "event": "Women's Singles",
@@ -2901,6 +3012,112 @@
       "sides": [
         ["KOR", "HWANG/Jeongmi"],
         ["THA", "KLOMKAMOL/Chatcha"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf2",
+      "next": null,
+      "matchNo": 2,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Court 2",
+      "sides": [
+        ["KOR", "LEE/Haneul"],
+        ["TPE", "CHEN/Po-yi"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf3",
+      "next": null,
+      "matchNo": 3,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Court 3",
+      "sides": [
+        ["IND", "MEENA/Jay"],
+        ["PHI", "NUGUIT/Sherwin"]
+      ]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf4",
+      "next": null,
+      "matchNo": 4,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Court 4",
+      "sides": [
+        ["JPN", "KUROSAKA/Takuya"],
+        ["TPE", "CHANG/Yu-sung"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf1",
+      "next": null,
+      "matchNo": 1,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Center Court",
+      "sides": [
+        ["JPN", "TEMMA/Rena"],
+        ["KOR", "LEE/Sujin"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf2",
+      "next": null,
+      "matchNo": 2,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Show Court",
+      "sides": [
+        ["PRK", "RI/So Hyang"],
+        ["THA", "ZIEGLER/Alisha"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf3",
+      "next": null,
+      "matchNo": 3,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Court 5",
+      "sides": [
+        ["TPE", "CHIANG/Min-yu"],
+        ["JPN", "MIYAMAE/Kiho"]
+      ]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf4",
+      "next": null,
+      "matchNo": 4,
+      "date": "2026-09-23",
+      "time": "09:00",
+      "court": "Court 6",
+      "sides": [
+        ["PRK", "RI/Jin Mi"],
+        ["KOR", "HWANG/Jeongmi"]
       ]
     }
   ]
