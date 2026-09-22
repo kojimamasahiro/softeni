@@ -73,6 +73,14 @@
 `npm run highschool:pipeline` を流して解消する（コリアカップと同じ）。worktree では本体の
 `.venv/bin` を PATH に通す（`pykakasi` が要る）。
 
+**前回大会（第19回・杭州。2023年10月開催なので `year: 2023`）も同じ形で持つ**。出典は ASTF が公開している
+大会公式の結果PDF（5種目）で、`tools/asian-games-2023/draw.json` → `python3 tools/asian-games-2023/build_details.py`。
+組み立ては 2026 のスクリプトを読み込み、日本選手の対応表（2023年度の国内大会の表記）だけ差し替える。
+**組内順位は公式の順位表（`standings`）を正とし、転記した試合から勝ち数・本数を数え直して一致しなければ止まる**
+（PDFの予選リーグは本数しか無く、3人が1勝1敗で並んだ組は得点まで見ないと並ばないため）。
+予選リーグの不戦勝は `retired: true`＋勝者の本数を満点、途中棄権は `retired: true`＋公式の本数。
+名前の揃え方と判断の経緯は [raw/2026-09-23-asian-games-2023-results.md](../raw/2026-09-23-asian-games-2023-results.md)。
+
 一日目の取り込みで踏んだ罠・成績の付け方の実例は
 [raw/2026-09-18-asian-games-day1-results.md](../raw/2026-09-18-asian-games-day1-results.md)。
 

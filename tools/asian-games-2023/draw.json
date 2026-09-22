@@ -1,0 +1,2638 @@
+{
+  "_source": "Asia Soft Tennis Federation が公開している大会公式の結果PDF（Timing and Results provided by Bornan）。男子団体 https://www.astf.asia/files/2023/2023_R04_TM_Result_c.pdf / 女子団体 https://www.astf.asia/files/2023/2023_R04_TW_Result_c.pdf / 混合 https://www.astf.asia/files/2023/2023_R04_MX_Result_b.pdf / 男子シングルス https://www.astf.asia/files/2023/2023_R04_SM_Result_c.pdf / 女子シングルス https://www.astf.asia/files/2023/2023_R04_SW_Result_b.pdf",
+  "_checkedOn": "2026-09-23",
+  "_scope": "5種目すべて全組・全試合（2026年大会と同じ）。予選リーグは公式の Group Results（対戦表）から、決勝Tは Draw と Match Statistics から転記",
+  "_row": "2026年と同じ（tools/asian-games-2026/draw.json の _row）。予選リーグの時刻・コートと試合順は公式PDFに無いので持たない（matchNo は対戦表の並び順）。retired: 'walkover'（公式 (WO) 0-0。サイトの慣例どおり勝者の本数を満点にする）/ 'retired'（途中棄権。公式の本数のまま）",
+  "_names": "外国選手は公式PDFのローマ字。2026年大会にも出ている選手は2026年の表記に揃える（例 HUTAURUK Tio Juliandi → HUTAURUK/Tio、RI Jinmi → RI/Jin Mi、MAÑALAC Noelle C C → MANALAC/Noelle）。チャイニーズ・タイペイの名は2026年の公式表記と同じくハイフンでつなぐ（YU Kai Wen → YU/Kai-wen）。PDFで略されている名（混合の対戦表）は、同じ選手の個人種目・団体の表記か、それが無ければ Wikipedia の表記で補う（THONG N S → THONG-NGIU/Sippakorn、GANBOLD K → GANBOLD/Khongorzul、KANN S → KANN/Sophorn、ARCILLA J → ARCILLA/Joseph、SAÑOSA C → SANOSA/Christy、METH M → METH/Mariyan）。GER A Prasitt Anawat はPDFの文字詰めの崩れとみて GERAPRASITT/Anawat",
+  "_standings": "公式の Group Results の順位と、勝ち数・取った数・取られた数（団体は対戦の数、個人はゲーム数）。転記の検算と組内順位に使う",
+  "expected": {
+    "Men's Team": {
+      "groups": ["A", "B"],
+      "entries": 9
+    },
+    "Women's Team": {
+      "groups": ["A", "B"],
+      "entries": 10
+    },
+    "Mixed Doubles": {
+      "groups": ["A", "B", "C", "D", "E", "F"],
+      "entries": 20
+    },
+    "Men's Singles": {
+      "groups": ["A", "B", "C", "D", "E", "F"],
+      "entries": 21
+    },
+    "Women's Singles": {
+      "groups": ["A", "B", "C", "D", "E", "F", "G", "H"],
+      "entries": 23
+    }
+  },
+  "knockoutDraw": {
+    "Men's Team": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      }
+    ],
+    "Women's Team": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      }
+    ],
+    "Mixed Doubles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "E",
+        "rank": 2
+      },
+      {
+        "group": "F",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 2
+      },
+      null,
+      {
+        "group": "C",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "C",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      null,
+      {
+        "group": "F",
+        "rank": 1
+      }
+    ],
+    "Men's Singles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "E",
+        "rank": 2
+      },
+      {
+        "group": "F",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 2
+      },
+      null,
+      {
+        "group": "C",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 1
+      },
+      null,
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "C",
+        "rank": 2
+      },
+      {
+        "group": "A",
+        "rank": 2
+      },
+      {
+        "group": "B",
+        "rank": 2
+      },
+      null,
+      {
+        "group": "F",
+        "rank": 1
+      }
+    ],
+    "Women's Singles": [
+      {
+        "group": "A",
+        "rank": 1
+      },
+      {
+        "group": "B",
+        "rank": 1
+      },
+      {
+        "group": "C",
+        "rank": 1
+      },
+      {
+        "group": "D",
+        "rank": 1
+      },
+      {
+        "group": "E",
+        "rank": 1
+      },
+      {
+        "group": "F",
+        "rank": 1
+      },
+      {
+        "group": "G",
+        "rank": 1
+      },
+      {
+        "group": "H",
+        "rank": 1
+      }
+    ]
+  },
+  "standings": {
+    "Men's Team": {
+      "A": [
+        {
+          "side": ["TPE"],
+          "wins": 4,
+          "won": 10,
+          "lost": 2
+        },
+        {
+          "side": ["KOR"],
+          "wins": 3,
+          "won": 9,
+          "lost": 3
+        },
+        {
+          "side": ["THA"],
+          "wins": 2,
+          "won": 4,
+          "lost": 8
+        },
+        {
+          "side": ["IND"],
+          "wins": 1,
+          "won": 6,
+          "lost": 6
+        },
+        {
+          "side": ["CAM"],
+          "wins": 0,
+          "won": 1,
+          "lost": 11
+        }
+      ],
+      "B": [
+        {
+          "side": ["JPN"],
+          "wins": 3,
+          "won": 9,
+          "lost": 0
+        },
+        {
+          "side": ["INA"],
+          "wins": 2,
+          "won": 5,
+          "lost": 4
+        },
+        {
+          "side": ["PHI"],
+          "wins": 1,
+          "won": 3,
+          "lost": 6
+        },
+        {
+          "side": ["MGL"],
+          "wins": 0,
+          "won": 1,
+          "lost": 8
+        }
+      ]
+    },
+    "Women's Team": {
+      "A": [
+        {
+          "side": ["JPN"],
+          "wins": 4,
+          "won": 12,
+          "lost": 0
+        },
+        {
+          "side": ["CHN"],
+          "wins": 3,
+          "won": 6,
+          "lost": 5
+        },
+        {
+          "side": ["IND"],
+          "wins": 2,
+          "won": 7,
+          "lost": 5
+        },
+        {
+          "side": ["MGL"],
+          "wins": 1,
+          "won": 3,
+          "lost": 9
+        },
+        {
+          "side": ["VIE"],
+          "wins": 0,
+          "won": 1,
+          "lost": 10
+        }
+      ],
+      "B": [
+        {
+          "side": ["TPE"],
+          "wins": 4,
+          "won": 10,
+          "lost": 2
+        },
+        {
+          "side": ["KOR"],
+          "wins": 3,
+          "won": 8,
+          "lost": 4
+        },
+        {
+          "side": ["PHI"],
+          "wins": 2,
+          "won": 6,
+          "lost": 6
+        },
+        {
+          "side": ["CAM"],
+          "wins": 1,
+          "won": 4,
+          "lost": 8
+        },
+        {
+          "side": ["THA"],
+          "wins": 0,
+          "won": 2,
+          "lost": 10
+        }
+      ]
+    },
+    "Mixed Doubles": {
+      "A": [
+        {
+          "side": ["TPE", "YU/Kai-wen", "CHENG/Chu-ling"],
+          "wins": 2,
+          "won": 10,
+          "lost": 2
+        },
+        {
+          "side": ["PHI", "TALATAYOD/Dheo", "MANALAC/Noelle"],
+          "wins": 1,
+          "won": 6,
+          "lost": 8
+        },
+        {
+          "side": ["IND", "MEENA/Jay", "TIWARI/Aadhya"],
+          "wins": 0,
+          "won": 4,
+          "lost": 10
+        }
+      ],
+      "B": [
+        {
+          "side": ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+          "wins": 3,
+          "won": 15,
+          "lost": 2
+        },
+        {
+          "side": ["PRK", "HAN/Songryong", "RI/Jin Mi"],
+          "wins": 2,
+          "won": 12,
+          "lost": 7
+        },
+        {
+          "side": ["THA", "THONG-NGIU/Sippakorn", "SOMSANIT/Thanpitcha"],
+          "wins": 1,
+          "won": 7,
+          "lost": 10
+        },
+        {
+          "side": ["MGL", "BAYARMAA/Bilguun", "GANBOLD/Khongorzul"],
+          "wins": 0,
+          "won": 0,
+          "lost": 15
+        }
+      ],
+      "C": [
+        {
+          "side": ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"],
+          "wins": 2,
+          "won": 10,
+          "lost": 0
+        },
+        {
+          "side": ["INA", "HUTAURUK/Tio", "PITRI/Dwi Rahayu"],
+          "wins": 1,
+          "won": 5,
+          "lost": 5
+        },
+        {
+          "side": ["CAM", "JOHN/Mada", "HO/Sreynoch"],
+          "wins": 0,
+          "won": 0,
+          "lost": 10
+        }
+      ],
+      "D": [
+        {
+          "side": ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"],
+          "wins": 2,
+          "won": 10,
+          "lost": 0
+        },
+        {
+          "side": ["INA", "SANGER/Fernando", "NAFIIAH/Allif"],
+          "wins": 1,
+          "won": 5,
+          "lost": 5
+        },
+        {
+          "side": ["VIE", "NGUYEN/Nhat Quang", "DANG/Thi Hanh"],
+          "wins": 0,
+          "won": 0,
+          "lost": 10
+        }
+      ],
+      "E": [
+        {
+          "side": ["MGL", "BATAA/Munkhtulga", "BATAA/Chinmurun"],
+          "wins": 2,
+          "won": 10,
+          "lost": 6
+        },
+        {
+          "side": ["THA", "YANNARIT/Kawin", "JONGJIT/Praewa"],
+          "wins": 1,
+          "won": 7,
+          "lost": 9
+        },
+        {
+          "side": ["CAM", "KANN/Sophorn", "METH/Mariyan"],
+          "wins": 0,
+          "won": 8,
+          "lost": 10
+        }
+      ],
+      "F": [
+        {
+          "side": ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"],
+          "wins": 3,
+          "won": 15,
+          "lost": 1
+        },
+        {
+          "side": ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"],
+          "wins": 2,
+          "won": 10,
+          "lost": 8
+        },
+        {
+          "side": ["IND", "PATEL/Aniket Chirag", "KULANDAIVELU/Manogarbabu Raga Sri"],
+          "wins": 1,
+          "won": 5,
+          "lost": 13
+        },
+        {
+          "side": ["PHI", "ARCILLA/Joseph", "SANOSA/Christy"],
+          "wins": 0,
+          "won": 7,
+          "lost": 15
+        }
+      ]
+    },
+    "Men's Singles": {
+      "A": [
+        {
+          "side": ["IND", "MEENA/Jay"],
+          "wins": 2,
+          "won": 8,
+          "lost": 3
+        },
+        {
+          "side": ["TPE", "CHEN/Yu-hsun"],
+          "wins": 1,
+          "won": 6,
+          "lost": 6
+        },
+        {
+          "side": ["INA", "ALIBASA/Mario Harley"],
+          "wins": 0,
+          "won": 3,
+          "lost": 8
+        }
+      ],
+      "B": [
+        {
+          "side": ["KOR", "YOON/Hyoungwook"],
+          "wins": 3,
+          "won": 12,
+          "lost": 0
+        },
+        {
+          "side": ["THA", "YANNARIT/Kawin"],
+          "wins": 2,
+          "won": 8,
+          "lost": 4
+        },
+        {
+          "side": ["CAM", "SAY/Sochetra"],
+          "wins": 1,
+          "won": 4,
+          "lost": 11
+        },
+        {
+          "side": ["MGL", "BATAA/Munkhtulga"],
+          "wins": 0,
+          "won": 3,
+          "lost": 12
+        }
+      ],
+      "C": [
+        {
+          "side": ["PRK", "RI/Ryonghae"],
+          "wins": 2,
+          "won": 8,
+          "lost": 4
+        },
+        {
+          "side": ["JPN", "UEMATSU/Toshiki"],
+          "wins": 1,
+          "won": 6,
+          "lost": 4
+        },
+        {
+          "side": ["PHI", "NUGUIT/Samuel"],
+          "wins": 0,
+          "won": 2,
+          "lost": 8
+        }
+      ],
+      "D": [
+        {
+          "side": ["KOR", "KIM/Taemin"],
+          "wins": 3,
+          "won": 12,
+          "lost": 2
+        },
+        {
+          "side": ["INA", "TRIJATI/Sunu Wahyu"],
+          "wins": 2,
+          "won": 8,
+          "lost": 7
+        },
+        {
+          "side": ["PRK", "HAN/Songryong"],
+          "wins": 1,
+          "won": 7,
+          "lost": 10
+        },
+        {
+          "side": ["THA", "GERAPRASITT/Anawat"],
+          "wins": 0,
+          "won": 4,
+          "lost": 12
+        }
+      ],
+      "E": [
+        {
+          "side": ["JPN", "FUNEMIZU/Hayato"],
+          "wins": 3,
+          "won": 8,
+          "lost": 0
+        },
+        {
+          "side": ["TPE", "CHANG/Yu-sung"],
+          "wins": 2,
+          "won": 4,
+          "lost": 5
+        },
+        {
+          "side": ["CAM", "DOEUM/Samsocheaphearun"],
+          "wins": 1,
+          "won": 2,
+          "lost": 8
+        },
+        {
+          "side": ["MGL", "BAYARMAA/Bilguun"],
+          "wins": 0,
+          "won": 0,
+          "lost": 1
+        }
+      ],
+      "F": [
+        {
+          "side": ["PHI", "MORALDE/Adjuthor II"],
+          "wins": 2,
+          "won": 8,
+          "lost": 0
+        },
+        {
+          "side": ["IND", "PATEL/Aniket Chirag"],
+          "wins": 1,
+          "won": 4,
+          "lost": 4
+        },
+        {
+          "side": ["VIE", "NGUYEN/Nhat Quang"],
+          "wins": 0,
+          "won": 0,
+          "lost": 8
+        }
+      ]
+    },
+    "Women's Singles": {
+      "A": [
+        {
+          "side": ["JPN", "TAKAHASHI/Noa"],
+          "wins": 1,
+          "won": 4,
+          "lost": 0
+        },
+        {
+          "side": ["MGL", "BATAA/Chinmurun"],
+          "wins": 0,
+          "won": 0,
+          "lost": 4
+        }
+      ],
+      "B": [
+        {
+          "side": ["KOR", "LEE/Minseon"],
+          "wins": 2,
+          "won": 8,
+          "lost": 0
+        },
+        {
+          "side": ["TPE", "LO/Shu-ting"],
+          "wins": 1,
+          "won": 4,
+          "lost": 5
+        },
+        {
+          "side": ["IND", "TIWARI/Aadhya"],
+          "wins": 0,
+          "won": 1,
+          "lost": 8
+        }
+      ],
+      "C": [
+        {
+          "side": ["CHN", "LI/Denglin"],
+          "wins": 2,
+          "won": 8,
+          "lost": 2
+        },
+        {
+          "side": ["CAM", "YEAN/Sokhoeun"],
+          "wins": 1,
+          "won": 4,
+          "lost": 4
+        },
+        {
+          "side": ["VIE", "DANG/Thi Hanh"],
+          "wins": 0,
+          "won": 2,
+          "lost": 8
+        }
+      ],
+      "D": [
+        {
+          "side": ["INA", "PITRI/Dwi Rahayu"],
+          "wins": 2,
+          "won": 8,
+          "lost": 3
+        },
+        {
+          "side": ["PHI", "ZOLETA/Noelle Nikki C"],
+          "wins": 1,
+          "won": 7,
+          "lost": 4
+        },
+        {
+          "side": ["THA", "SOMSANIT/Thanpitcha"],
+          "wins": 0,
+          "won": 0,
+          "lost": 8
+        }
+      ],
+      "E": [
+        {
+          "side": ["CHN", "MA/Yue"],
+          "wins": 2,
+          "won": 8,
+          "lost": 0
+        },
+        {
+          "side": ["THA", "JONGJIT/Praewa"],
+          "wins": 1,
+          "won": 4,
+          "lost": 7
+        },
+        {
+          "side": ["MGL", "ERDEMBILEG/Namuunkhuslen"],
+          "wins": 0,
+          "won": 3,
+          "lost": 8
+        }
+      ],
+      "F": [
+        {
+          "side": ["IND", "KULANDAIVELU/Manogarbabu Raga Sri"],
+          "wins": 2,
+          "won": 8,
+          "lost": 1
+        },
+        {
+          "side": ["CAM", "KI/Mengchoung"],
+          "wins": 1,
+          "won": 5,
+          "lost": 4
+        },
+        {
+          "side": ["VIE", "NGUYEN/Thi Mai Huong"],
+          "wins": 0,
+          "won": 0,
+          "lost": 8
+        }
+      ],
+      "G": [
+        {
+          "side": ["KOR", "MUN/Hyegyeong"],
+          "wins": 2,
+          "won": 8,
+          "lost": 2
+        },
+        {
+          "side": ["PHI", "CATINDIG/Princess"],
+          "wins": 1,
+          "won": 4,
+          "lost": 6
+        },
+        {
+          "side": ["INA", "NAFIIAH/Allif"],
+          "wins": 0,
+          "won": 4,
+          "lost": 8
+        }
+      ],
+      "H": [
+        {
+          "side": ["JPN", "ONOUE/Kurumi"],
+          "wins": 1,
+          "won": 7,
+          "lost": 5
+        },
+        {
+          "side": ["TPE", "CHENG/Chu-ling"],
+          "wins": 1,
+          "won": 5,
+          "lost": 6
+        },
+        {
+          "side": ["PRK", "RI/Jin Mi"],
+          "wins": 1,
+          "won": 6,
+          "lost": 7
+        }
+      ]
+    }
+  },
+  "rows": [
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["KOR"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["THA"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["IND"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 4,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["CAM"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 5,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["THA"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 6,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["IND"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 7,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["CAM"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 8,
+      "date": "2023-10-03",
+      "sides": [["THA"], ["IND"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 9,
+      "date": "2023-10-03",
+      "sides": [["THA"], ["CAM"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 10,
+      "date": "2023-10-03",
+      "sides": [["IND"], ["CAM"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["INA"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["PHI"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["MGL"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2023-10-03",
+      "sides": [["INA"], ["PHI"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2023-10-03",
+      "sides": [["INA"], ["MGL"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2023-10-03",
+      "sides": [["PHI"], ["MGL"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "m-sf1",
+      "next": "m-f",
+      "matchNo": 1,
+      "date": "2023-10-04",
+      "sides": [["TPE"], ["INA"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          ["ALIBASA/Mario Harley", "TRIJATI/Sunu Wahyu"],
+          [
+            [4, 2],
+            [4, 2],
+            [4, 1],
+            [4, 2],
+            [11, 9]
+          ]
+        ],
+        [
+          "S",
+          ["CHANG/Yu-sung"],
+          ["BHAKTI/Anugerah Muhammad Hemat"],
+          [
+            [6, 4],
+            [9, 7],
+            [4, 2],
+            [4, 1]
+          ]
+        ],
+        ["D2", ["CHEN/Yu-hsun", "CHEN/Po-yi"], ["HUTAURUK/Tio", "SANGER/Fernando"], null]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "m-sf2",
+      "next": "m-f",
+      "matchNo": 2,
+      "date": "2023-10-04",
+      "sides": [["KOR"], ["JPN"]],
+      "score": [0, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["KIM/Taemin", "KIM/Hyunsoo"],
+          ["UCHIMOTO/Takafumi", "HIROOKA/Sora"],
+          [
+            [4, 2],
+            [3, 5],
+            [2, 4],
+            [1, 4],
+            [6, 4],
+            [2, 4],
+            [0, 4]
+          ]
+        ],
+        [
+          "S",
+          ["YOON/Hyoungwook"],
+          ["UEMATSU/Toshiki"],
+          [
+            [2, 4],
+            [4, 2],
+            [4, 0],
+            [2, 4],
+            [5, 3],
+            [0, 4],
+            [4, 7]
+          ]
+        ],
+        ["D2", ["LEE/Hyeonsu", "KIM/Byunggook"], ["FUNEMIZU/Hayato", "UCHIDA/Riku"], null]
+      ]
+    },
+    {
+      "event": "Men's Team",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "m-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2023-10-04",
+      "sides": [["TPE"], ["JPN"]],
+      "score": [0, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["YU/Kai-wen", "LIN/Wei-chieh"],
+          ["UCHIMOTO/Takafumi", "HIROOKA/Sora"],
+          [
+            [3, 5],
+            [4, 0],
+            [1, 4],
+            [1, 4],
+            [4, 0],
+            [4, 1],
+            [0, 4],
+            [1, 4]
+          ]
+        ],
+        [
+          "S",
+          ["CHANG/Yu-sung"],
+          ["UEMATSU/Toshiki"],
+          [
+            [0, 4],
+            [4, 0],
+            [5, 7],
+            [1, 4],
+            [1, 4]
+          ]
+        ],
+        ["D2", ["CHEN/Yu-hsun", "CHEN/Po-yi"], ["FUNEMIZU/Hayato", "UCHIDA/Riku"], null]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["CHN"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["IND"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["MGL"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 4,
+      "date": "2023-10-03",
+      "sides": [["JPN"], ["VIE"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 5,
+      "date": "2023-10-03",
+      "sides": [["CHN"], ["IND"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 6,
+      "date": "2023-10-03",
+      "sides": [["CHN"], ["MGL"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 7,
+      "date": "2023-10-03",
+      "sides": [["CHN"], ["VIE"]],
+      "score": [2, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 8,
+      "date": "2023-10-03",
+      "sides": [["IND"], ["MGL"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 9,
+      "date": "2023-10-03",
+      "sides": [["IND"], ["VIE"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 10,
+      "date": "2023-10-03",
+      "sides": [["MGL"], ["VIE"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["KOR"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["PHI"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["CAM"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2023-10-03",
+      "sides": [["TPE"], ["THA"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["PHI"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["CAM"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 7,
+      "date": "2023-10-03",
+      "sides": [["KOR"], ["THA"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 8,
+      "date": "2023-10-03",
+      "sides": [["PHI"], ["CAM"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 9,
+      "date": "2023-10-03",
+      "sides": [["PHI"], ["THA"]],
+      "score": [3, 0]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 10,
+      "date": "2023-10-03",
+      "sides": [["CAM"], ["THA"]],
+      "score": [2, 1]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "w-sf1",
+      "next": "w-f",
+      "matchNo": 1,
+      "date": "2023-10-04",
+      "sides": [["JPN"], ["KOR"]],
+      "score": [2, 0],
+      "rubbers": [
+        [
+          "D1",
+          ["TAKAHASHI/Noa", "WATANABE/Emina"],
+          ["JI/Dayoung", "LIM/Jinah"],
+          [
+            [1, 4],
+            [4, 2],
+            [4, 6],
+            [2, 4],
+            [4, 2],
+            [2, 4],
+            [4, 2],
+            [6, 4],
+            [7, 4]
+          ]
+        ],
+        [
+          "S",
+          ["ONOUE/Kurumi"],
+          ["LEE/Minseon"],
+          [
+            [4, 1],
+            [4, 1],
+            [4, 2],
+            [2, 4],
+            [4, 1]
+          ]
+        ],
+        ["D2", ["SHIMUTA/Tomomi", "KUBO/Haruka"], ["MUN/Hyegyeong", "KO/Eunji"], null]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "w-sf2",
+      "next": "w-f",
+      "matchNo": 2,
+      "date": "2023-10-04",
+      "sides": [["CHN"], ["TPE"]],
+      "score": [0, 2],
+      "rubbers": [
+        [
+          "D1",
+          ["MA/Yue", "FU/Xiaochen"],
+          ["HUANG/Shih-yuan", "HSU/Chiao-ying"],
+          [
+            [4, 2],
+            [6, 4],
+            [2, 4],
+            [1, 4],
+            [0, 4],
+            [1, 4],
+            [5, 7]
+          ]
+        ],
+        [
+          "S",
+          ["LI/Denglin"],
+          ["CHENG/Chu-ling"],
+          [
+            [4, 2],
+            [10, 12],
+            [4, 6],
+            [5, 3],
+            [1, 4],
+            [2, 4]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Women's Team",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "w-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2023-10-04",
+      "sides": [["JPN"], ["TPE"]],
+      "score": [2, 1],
+      "rubbers": [
+        [
+          "D1",
+          ["TAKAHASHI/Noa", "WATANABE/Emina"],
+          ["KUO/Chien-chi", "LO/Shu-ting"],
+          [
+            [4, 1],
+            [3, 5],
+            [4, 0],
+            [8, 10],
+            [5, 3],
+            [4, 1],
+            [1, 4],
+            [3, 5],
+            [7, 3]
+          ]
+        ],
+        [
+          "S",
+          ["ONOUE/Kurumi"],
+          ["CHENG/Chu-ling"],
+          [
+            [4, 2],
+            [0, 4],
+            [6, 4],
+            [1, 4],
+            [0, 4],
+            [6, 8]
+          ]
+        ],
+        [
+          "D2",
+          ["SHIMUTA/Tomomi", "KUBO/Haruka"],
+          ["HUANG/Shih-yuan", "HSU/Chiao-ying"],
+          [
+            [1, 4],
+            [2, 4],
+            [1, 4],
+            [4, 1],
+            [4, 0],
+            [4, 1],
+            [4, 1],
+            [7, 5]
+          ]
+        ]
+      ]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "YU/Kai-wen", "CHENG/Chu-ling"],
+        ["PHI", "TALATAYOD/Dheo", "MANALAC/Noelle"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "YU/Kai-wen", "CHENG/Chu-ling"],
+        ["IND", "MEENA/Jay", "TIWARI/Aadhya"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["PHI", "TALATAYOD/Dheo", "MANALAC/Noelle"],
+        ["IND", "MEENA/Jay", "TIWARI/Aadhya"]
+      ],
+      "score": [5, 3]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+        ["PRK", "HAN/Songryong", "RI/Jin Mi"]
+      ],
+      "score": [5, 2]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+        ["THA", "THONG-NGIU/Sippakorn", "SOMSANIT/Thanpitcha"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+        ["MGL", "BAYARMAA/Bilguun", "GANBOLD/Khongorzul"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2023-10-05",
+      "sides": [
+        ["PRK", "HAN/Songryong", "RI/Jin Mi"],
+        ["THA", "THONG-NGIU/Sippakorn", "SOMSANIT/Thanpitcha"]
+      ],
+      "score": [5, 2]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2023-10-05",
+      "sides": [
+        ["PRK", "HAN/Songryong", "RI/Jin Mi"],
+        ["MGL", "BAYARMAA/Bilguun", "GANBOLD/Khongorzul"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2023-10-05",
+      "sides": [
+        ["THA", "THONG-NGIU/Sippakorn", "SOMSANIT/Thanpitcha"],
+        ["MGL", "BAYARMAA/Bilguun", "GANBOLD/Khongorzul"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"],
+        ["INA", "HUTAURUK/Tio", "PITRI/Dwi Rahayu"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"],
+        ["CAM", "JOHN/Mada", "HO/Sreynoch"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["INA", "HUTAURUK/Tio", "PITRI/Dwi Rahayu"],
+        ["CAM", "JOHN/Mada", "HO/Sreynoch"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"],
+        ["INA", "SANGER/Fernando", "NAFIIAH/Allif"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"],
+        ["VIE", "NGUYEN/Nhat Quang", "DANG/Thi Hanh"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["INA", "SANGER/Fernando", "NAFIIAH/Allif"],
+        ["VIE", "NGUYEN/Nhat Quang", "DANG/Thi Hanh"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["MGL", "BATAA/Munkhtulga", "BATAA/Chinmurun"],
+        ["THA", "YANNARIT/Kawin", "JONGJIT/Praewa"]
+      ],
+      "score": [5, 2]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["MGL", "BATAA/Munkhtulga", "BATAA/Chinmurun"],
+        ["CAM", "KANN/Sophorn", "METH/Mariyan"]
+      ],
+      "score": [5, 4]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["THA", "YANNARIT/Kawin", "JONGJIT/Praewa"],
+        ["CAM", "KANN/Sophorn", "METH/Mariyan"]
+      ],
+      "score": [5, 4]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"],
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"],
+        ["IND", "PATEL/Aniket Chirag", "KULANDAIVELU/Manogarbabu Raga Sri"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"],
+        ["PHI", "ARCILLA/Joseph", "SANOSA/Christy"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 4,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"],
+        ["IND", "PATEL/Aniket Chirag", "KULANDAIVELU/Manogarbabu Raga Sri"]
+      ],
+      "score": [5, 0]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 5,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"],
+        ["PHI", "ARCILLA/Joseph", "SANOSA/Christy"]
+      ],
+      "score": [5, 3]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 6,
+      "date": "2023-10-05",
+      "sides": [
+        ["IND", "PATEL/Aniket Chirag", "KULANDAIVELU/Manogarbabu Raga Sri"],
+        ["PHI", "ARCILLA/Joseph", "SANOSA/Christy"]
+      ],
+      "score": [5, 3]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r1-2",
+      "next": "x-qf1",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["THA", "YANNARIT/Kawin", "JONGJIT/Praewa"],
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"]
+      ],
+      "score": [0, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r1-3",
+      "next": "x-qf2",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+        ["INA", "SANGER/Fernando", "NAFIIAH/Allif"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r1-6",
+      "next": "x-qf3",
+      "matchNo": 6,
+      "date": "2023-10-05",
+      "sides": [
+        ["MGL", "BATAA/Munkhtulga", "BATAA/Chinmurun"],
+        ["INA", "HUTAURUK/Tio", "PITRI/Dwi Rahayu"]
+      ],
+      "score": [2, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "x-r1-7",
+      "next": "x-qf4",
+      "matchNo": 7,
+      "date": "2023-10-05",
+      "sides": [
+        ["PHI", "TALATAYOD/Dheo", "MANALAC/Noelle"],
+        ["PRK", "HAN/Songryong", "RI/Jin Mi"]
+      ],
+      "score": [4, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf1",
+      "next": "x-sf1",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "YU/Kai-wen", "CHENG/Chu-ling"],
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"]
+      ],
+      "score": [0, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf2",
+      "next": "x-sf1",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["KOR", "KIM/Byunggook", "JI/Dayoung"],
+        ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"]
+      ],
+      "score": [2, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf3",
+      "next": "x-sf2",
+      "matchNo": 3,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"],
+        ["INA", "HUTAURUK/Tio", "PITRI/Dwi Rahayu"]
+      ],
+      "score": [5, 1]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "x-qf4",
+      "next": "x-sf2",
+      "matchNo": 4,
+      "date": "2023-10-05",
+      "sides": [
+        ["PRK", "HAN/Songryong", "RI/Jin Mi"],
+        ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"]
+      ],
+      "score": [2, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "x-sf1",
+      "next": "x-f",
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["TPE", "LIN/Wei-chieh", "HUANG/Shih-yuan"],
+        ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"]
+      ],
+      "score": [2, 5]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "x-sf2",
+      "next": "x-f",
+      "matchNo": 2,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"],
+        ["KOR", "KIM/Hyunsoo", "MUN/Hyegyeong"]
+      ],
+      "score": [5, 4]
+    },
+    {
+      "event": "Mixed Doubles",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "x-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2023-10-05",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki", "TAKAHASHI/Noa"],
+        ["JPN", "UCHIDA/Riku", "SHIMUTA/Tomomi"]
+      ],
+      "score": [5, 3]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["IND", "MEENA/Jay"],
+        ["TPE", "CHEN/Yu-hsun"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["IND", "MEENA/Jay"],
+        ["INA", "ALIBASA/Mario Harley"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["TPE", "CHEN/Yu-hsun"],
+        ["INA", "ALIBASA/Mario Harley"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "YOON/Hyoungwook"],
+        ["THA", "YANNARIT/Kawin"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "YOON/Hyoungwook"],
+        ["CAM", "SAY/Sochetra"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "YOON/Hyoungwook"],
+        ["MGL", "BATAA/Munkhtulga"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 4,
+      "date": "2023-10-06",
+      "sides": [
+        ["THA", "YANNARIT/Kawin"],
+        ["CAM", "SAY/Sochetra"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 5,
+      "date": "2023-10-06",
+      "sides": [
+        ["THA", "YANNARIT/Kawin"],
+        ["MGL", "BATAA/Munkhtulga"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 6,
+      "date": "2023-10-06",
+      "sides": [
+        ["CAM", "SAY/Sochetra"],
+        ["MGL", "BATAA/Munkhtulga"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["PRK", "RI/Ryonghae"],
+        ["JPN", "UEMATSU/Toshiki"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["PRK", "RI/Ryonghae"],
+        ["PHI", "NUGUIT/Samuel"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki"],
+        ["PHI", "NUGUIT/Samuel"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "KIM/Taemin"],
+        ["INA", "TRIJATI/Sunu Wahyu"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "KIM/Taemin"],
+        ["PRK", "HAN/Songryong"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "KIM/Taemin"],
+        ["THA", "GERAPRASITT/Anawat"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 4,
+      "date": "2023-10-06",
+      "sides": [
+        ["INA", "TRIJATI/Sunu Wahyu"],
+        ["PRK", "HAN/Songryong"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 5,
+      "date": "2023-10-06",
+      "sides": [
+        ["INA", "TRIJATI/Sunu Wahyu"],
+        ["THA", "GERAPRASITT/Anawat"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 6,
+      "date": "2023-10-06",
+      "sides": [
+        ["PRK", "HAN/Songryong"],
+        ["THA", "GERAPRASITT/Anawat"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "FUNEMIZU/Hayato"],
+        ["TPE", "CHANG/Yu-sung"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "FUNEMIZU/Hayato"],
+        ["CAM", "DOEUM/Samsocheaphearun"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "FUNEMIZU/Hayato"],
+        ["MGL", "BAYARMAA/Bilguun"]
+      ],
+      "score": [4, 0],
+      "retired": "walkover"
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 4,
+      "date": "2023-10-06",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["CAM", "DOEUM/Samsocheaphearun"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 5,
+      "date": "2023-10-06",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["MGL", "BAYARMAA/Bilguun"]
+      ],
+      "score": [4, 0],
+      "retired": "walkover"
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 6,
+      "date": "2023-10-06",
+      "sides": [
+        ["CAM", "DOEUM/Samsocheaphearun"],
+        ["MGL", "BAYARMAA/Bilguun"]
+      ],
+      "score": [1, 0],
+      "retired": "retired"
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["PHI", "MORALDE/Adjuthor II"],
+        ["IND", "PATEL/Aniket Chirag"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["PHI", "MORALDE/Adjuthor II"],
+        ["VIE", "NGUYEN/Nhat Quang"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["IND", "PATEL/Aniket Chirag"],
+        ["VIE", "NGUYEN/Nhat Quang"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "ms-r1-2",
+      "next": "ms-qf1",
+      "matchNo": 2,
+      "date": "2023-10-07",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["IND", "PATEL/Aniket Chirag"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "ms-r1-3",
+      "next": "ms-qf2",
+      "matchNo": 3,
+      "date": "2023-10-07",
+      "sides": [
+        ["KOR", "YOON/Hyoungwook"],
+        ["INA", "TRIJATI/Sunu Wahyu"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "ms-r1-6",
+      "next": "ms-qf3",
+      "matchNo": 6,
+      "date": "2023-10-07",
+      "sides": [
+        ["JPN", "FUNEMIZU/Hayato"],
+        ["JPN", "UEMATSU/Toshiki"]
+      ],
+      "score": [3, 4]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "1回戦",
+      "id": "ms-r1-7",
+      "next": "ms-qf4",
+      "matchNo": 7,
+      "date": "2023-10-07",
+      "sides": [
+        ["TPE", "CHEN/Yu-hsun"],
+        ["THA", "YANNARIT/Kawin"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf1",
+      "next": "ms-sf1",
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["IND", "MEENA/Jay"],
+        ["TPE", "CHANG/Yu-sung"]
+      ],
+      "score": [1, 4]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf2",
+      "next": "ms-sf1",
+      "matchNo": 2,
+      "date": "2023-10-07",
+      "sides": [
+        ["KOR", "YOON/Hyoungwook"],
+        ["PRK", "RI/Ryonghae"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf3",
+      "next": "ms-sf2",
+      "matchNo": 3,
+      "date": "2023-10-07",
+      "sides": [
+        ["KOR", "KIM/Taemin"],
+        ["JPN", "UEMATSU/Toshiki"]
+      ],
+      "score": [2, 4]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ms-qf4",
+      "next": "ms-sf2",
+      "matchNo": 4,
+      "date": "2023-10-07",
+      "sides": [
+        ["TPE", "CHEN/Yu-hsun"],
+        ["PHI", "MORALDE/Adjuthor II"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "ms-sf1",
+      "next": "ms-f",
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["KOR", "YOON/Hyoungwook"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "ms-sf2",
+      "next": "ms-f",
+      "matchNo": 2,
+      "date": "2023-10-07",
+      "sides": [
+        ["JPN", "UEMATSU/Toshiki"],
+        ["TPE", "CHEN/Yu-hsun"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Men's Singles",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "ms-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["TPE", "CHANG/Yu-sung"],
+        ["JPN", "UEMATSU/Toshiki"]
+      ],
+      "score": [0, 4]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "A",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "TAKAHASHI/Noa"],
+        ["MGL", "BATAA/Chinmurun"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "LEE/Minseon"],
+        ["TPE", "LO/Shu-ting"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "LEE/Minseon"],
+        ["IND", "TIWARI/Aadhya"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "B",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["TPE", "LO/Shu-ting"],
+        ["IND", "TIWARI/Aadhya"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["CHN", "LI/Denglin"],
+        ["CAM", "YEAN/Sokhoeun"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["CHN", "LI/Denglin"],
+        ["VIE", "DANG/Thi Hanh"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "C",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["CAM", "YEAN/Sokhoeun"],
+        ["VIE", "DANG/Thi Hanh"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["INA", "PITRI/Dwi Rahayu"],
+        ["PHI", "ZOLETA/Noelle Nikki C"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["INA", "PITRI/Dwi Rahayu"],
+        ["THA", "SOMSANIT/Thanpitcha"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "D",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["PHI", "ZOLETA/Noelle Nikki C"],
+        ["THA", "SOMSANIT/Thanpitcha"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["CHN", "MA/Yue"],
+        ["THA", "JONGJIT/Praewa"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["CHN", "MA/Yue"],
+        ["MGL", "ERDEMBILEG/Namuunkhuslen"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "E",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["THA", "JONGJIT/Praewa"],
+        ["MGL", "ERDEMBILEG/Namuunkhuslen"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["IND", "KULANDAIVELU/Manogarbabu Raga Sri"],
+        ["CAM", "KI/Mengchoung"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["IND", "KULANDAIVELU/Manogarbabu Raga Sri"],
+        ["VIE", "NGUYEN/Thi Mai Huong"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "F",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["CAM", "KI/Mengchoung"],
+        ["VIE", "NGUYEN/Thi Mai Huong"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "MUN/Hyegyeong"],
+        ["PHI", "CATINDIG/Princess"]
+      ],
+      "score": [4, 0]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["KOR", "MUN/Hyegyeong"],
+        ["INA", "NAFIIAH/Allif"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "G",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["PHI", "CATINDIG/Princess"],
+        ["INA", "NAFIIAH/Allif"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 1,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "ONOUE/Kurumi"],
+        ["TPE", "CHENG/Chu-ling"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 2,
+      "date": "2023-10-06",
+      "sides": [
+        ["JPN", "ONOUE/Kurumi"],
+        ["PRK", "RI/Jin Mi"]
+      ],
+      "score": [3, 4]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "roundrobin",
+      "group": "H",
+      "matchNo": 3,
+      "date": "2023-10-06",
+      "sides": [
+        ["TPE", "CHENG/Chu-ling"],
+        ["PRK", "RI/Jin Mi"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf1",
+      "next": "ws-sf1",
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["JPN", "TAKAHASHI/Noa"],
+        ["KOR", "LEE/Minseon"]
+      ],
+      "score": [4, 3]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf2",
+      "next": "ws-sf1",
+      "matchNo": 2,
+      "date": "2023-10-07",
+      "sides": [
+        ["CHN", "LI/Denglin"],
+        ["INA", "PITRI/Dwi Rahayu"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf3",
+      "next": "ws-sf2",
+      "matchNo": 3,
+      "date": "2023-10-07",
+      "sides": [
+        ["CHN", "MA/Yue"],
+        ["IND", "KULANDAIVELU/Manogarbabu Raga Sri"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準々決勝",
+      "id": "ws-qf4",
+      "next": "ws-sf2",
+      "matchNo": 4,
+      "date": "2023-10-07",
+      "sides": [
+        ["KOR", "MUN/Hyegyeong"],
+        ["JPN", "ONOUE/Kurumi"]
+      ],
+      "score": [4, 2]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "ws-sf1",
+      "next": "ws-f",
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["JPN", "TAKAHASHI/Noa"],
+        ["CHN", "LI/Denglin"]
+      ],
+      "score": [4, 1]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "準決勝",
+      "id": "ws-sf2",
+      "next": "ws-f",
+      "matchNo": 2,
+      "date": "2023-10-07",
+      "sides": [
+        ["CHN", "MA/Yue"],
+        ["KOR", "MUN/Hyegyeong"]
+      ],
+      "score": [0, 4]
+    },
+    {
+      "event": "Women's Singles",
+      "stage": "knockout",
+      "round": "決勝",
+      "id": "ws-f",
+      "next": null,
+      "matchNo": 1,
+      "date": "2023-10-07",
+      "sides": [
+        ["JPN", "TAKAHASHI/Noa"],
+        ["KOR", "MUN/Hyegyeong"]
+      ],
+      "score": [0, 4]
+    }
+  ]
+}
