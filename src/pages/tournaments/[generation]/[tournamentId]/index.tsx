@@ -25,6 +25,7 @@ import { getClubTransition, type ClubTransitionData } from '@/lib/clubTransition
 import { getHsNationalSlugByTournamentId } from '@/lib/highschoolNationalTournaments';
 import { getDelegationBlock, type DelegationBlock } from '@/lib/delegation';
 import { getQualifierFinishers, type QualifierFinishersBlock } from '@/lib/qualifierFinishers';
+import { computeChampionRecords, describeCategoryRecord, toGenericRecordRows } from '@/lib/championRecords';
 import { getChampionMilestones } from '@/lib/milestones';
 import { buildEventOrganizer, buildEventPlace, buildEventPlaceFromVenue, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { getAbandonment } from '@/lib/tournamentAbandonment';
@@ -142,6 +143,18 @@ interface TournamentHubPageProps {
    * 年またぎでずれる（hydration mismatch）ため、getStaticProps で確定させる。
    */
   buildYear: number;
+}
+
+/** `2026-11-06`〜`2026-11-08` → `2026年11月6日〜8日`（月またぎは `〜12月1日`）。description 用。 */
+function formatJaDateRange(start: string, end: string | null): string {
+  const parse = (d: string) => /^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+  const s = parse(start);
+  if (!s) return start;
+  const head = `${s[1]}年${Number(s[2])}月${Number(s[3])}日`;
+  const e = end && end !== start ? parse(end) : null;
+  if (!e) return head;
+  if (e[1] !== s[1]) return `${head}〜${e[1]}年${Number(e[2])}月${Number(e[3])}日`;
+  return e[2] === s[2] ? `${head}〜${Number(e[3])}日` : `${head}〜${Number(e[2])}月${Number(e[3])}日`;
 }
 
 export default function TournamentHubPage({
@@ -309,13 +322,33 @@ export default function TournamentHubPage({
   // title は短い名前で始める。`headingName`（インカレで 22 全角）を頭に置くと
   // 表示枠 28〜32 全角の中に「結果」も年も入らない（seo.md「title の字数超過」）。
   // 正式名称は h1・description・JSON-LD の alternateName 側で literal を確保している。
+  //
+  // 過去の結果があり、かつ会期前の年度がある大会（例: 10月開催の全日本選手権を9月に見る）は、
+  // 歴代ページのままだと「{大会名} {年} 日程」「{大会名} 会場」の受け皿がどこにも無い。
+  // 会期前のあいだだけ次回の年と「日程・会場」を先頭側に出し、「歴代優勝者」は後ろに残す。
+  // 会期に入ったら従来の title に戻す（会期中は結果・組み合わせの需要が主になるため）。
+  const upcomingPreview = !upcomingOnly && upcoming && !upcoming.hasStarted ? upcoming : null;
   const title = upcomingOnly
     ? `${titleLeadName}${upcomingOnly.year} 日程・会場・実施種目 | ソフトテニス情報`
-    : `${titleLeadName}${titleYear} 結果・歴代優勝者 | ソフトテニス情報`;
+    : upcomingPreview
+      ? `${titleLeadName}${upcomingPreview.year} 日程・会場｜歴代優勝者 | ソフトテニス情報`
+      : `${titleLeadName}${titleYear} 結果・歴代優勝者 | ソフトテニス情報`;
   // FAQ は**検索名を設定した大会だけ**に出す。全ハブに定型文を撒くと
   // 「同じフレーズの機械的な反復」になり、seo.md #2 追記が避けた薄い重複を量産するため。
-  const faqItems =
-    primaryAlias && searchLabel && !upcomingOnly
+  // 種目別の最多優勝・最長連覇（lib/championRecords.ts）。個人戦は選手、団体戦はチームで数える。
+  // 画面と FAQ で同じ文面を使う。中止の年は championRows に入らないので連覇はそこで途切れる。
+  const recordSentences = computeChampionRecords(toGenericRecordRows(championRows)).map(describeCategoryRecord);
+  const recordFaq =
+    recordSentences.length > 0 && !upcomingOnly
+      ? [
+          {
+            question: `${titleLeadName}で最も多く優勝しているのは誰ですか？`,
+            answer: `${yearRange ? `${yearRange}の収録範囲では、` : ''}${recordSentences.join('')}`,
+          },
+        ]
+      : [];
+  const faqItems = [
+    ...(primaryAlias && searchLabel && !upcomingOnly
       ? [
           {
             question: `「${primaryAlias}」とは何ですか？`,
@@ -326,7 +359,9 @@ export default function TournamentHubPage({
             answer: `見られます。本ページに${yearRange ? `${yearRange}の` : ''}歴代優勝者を種目別に一覧で掲載しており、各年度の結果ページからトーナメント表と全試合結果を確認できます。`,
           },
         ]
-      : [];
+      : []),
+    ...recordFaq,
+  ];
 
   // 構造化データ用の別名リスト。正式名称と重複するものは除く。
   const alternateNames = [searchLabel, ...searchAliases].filter((n): n is string => !!n && n !== label);
@@ -339,7 +374,17 @@ export default function TournamentHubPage({
       ]
         .filter(Boolean)
         .join(' / ')}。`
-    : `ソフトテニス「${headingName}」の${titleYear ? `${titleYear}年大会と` : ''}歴代の大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。${searchNote ?? ''}`;
+    : `${
+        upcomingPreview
+          ? `次回の${upcomingPreview.label}は${[
+              upcomingPreview.startDate ? formatJaDateRange(upcomingPreview.startDate, upcomingPreview.endDate) : null,
+              upcomingPreview.location,
+              upcomingPreview.venues.map((v) => v.name).find((n): n is string => !!n) ?? null,
+            ]
+              .filter(Boolean)
+              .join('・')}で開催。`
+          : ''
+      }ソフトテニス「${headingName}」の${titleYear ? `${titleYear}年大会と` : ''}歴代の大会結果・トーナメント表・優勝/上位入賞者を年度別にまとめています。${yearRange ? `${yearRange}の` : ''}試合結果を一覧から確認できます。${searchNote ?? ''}`;
 
   return (
     <>
@@ -621,6 +666,21 @@ export default function TournamentHubPage({
                 </tbody>
               </table>
             </div>
+          </section>
+        )}
+
+        {recordSentences.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-lg font-bold mb-1">記録（最多優勝・連覇）</h2>
+            <p className="text-sm text-text-secondary mb-3">
+              {yearRange ? `${yearRange}の` : ''}
+              収録範囲で、種目ごとに数えています（個人戦は選手、団体戦はチーム単位）。収録の無い年や中止の年をまたぐ優勝は連覇に数えません。
+            </p>
+            <ul className="list-disc space-y-1 pl-5 text-sm">
+              {recordSentences.map((sentence) => (
+                <li key={sentence}>{sentence}</li>
+              ))}
+            </ul>
           </section>
         )}
 

@@ -23,6 +23,7 @@ import {
   type TournamentRecords,
   type UpcomingEdition,
 } from '@/lib/highschoolNationalTournaments';
+import { computeChampionRecords, describeCategoryRecord, toHighschoolRecordRows } from '@/lib/championRecords';
 import { CANCELLED_LABEL } from '@/lib/tournamentCancellation';
 
 type Props = {
@@ -435,6 +436,9 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
     ...cancelled.map((cn) => ({ year: cn.year, record: null, cancelled: cn })),
   ].sort((a, b) => b.year - a.year);
 
+  // 種目別の最多優勝・最長連覇（lib/championRecords.ts）。画面と FAQ で同じ文面を使う。
+  const recordSentences = computeChampionRecords(toHighschoolRecordRows(championSummary)).map(describeCategoryRecord);
+
   const upcomingEditions = inProgress ? upcoming.filter((e) => e.year !== inProgress.year) : upcoming;
   const nextEdition = upcomingEditions[0] ?? null;
 
@@ -485,6 +489,14 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
       question: `${shortLabel}の歴代優勝校・優勝ペアはどこで分かりますか？`,
       answer: `このページで年度別・種目別に優勝〜ベスト4の上位入賞をまとめています。${yearRange ? `${yearRange}の` : ''}結果を確認できます。`,
     },
+    ...(recordSentences.length > 0
+      ? [
+          {
+            question: `${shortLabel}で最も多く優勝している学校はどこですか？`,
+            answer: `${yearRange ? `${yearRange}の収録範囲では、` : ''}${recordSentences.join('')}`,
+          },
+        ]
+      : []),
     {
       question: '都道府県別・学校別のページとの違いは何ですか？',
       answer:
@@ -692,6 +704,20 @@ export default function HighschoolTournamentRecordsPage({ records }: Props) {
         {lastModified && <p className="mb-8 -mt-4 text-xs text-gray-400 dark:text-gray-500">最終更新: {formatDateRange(lastModified, null)}</p>}
 
         <ChampionSummary rows={championSummary} cancelledYears={cancelled.map((c) => c.year)} />
+
+        {recordSentences.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-xl font-bold mb-1">記録（最多優勝・連覇）</h2>
+            <p className="text-sm text-text-secondary mb-4">
+              {yearRange ? `${yearRange}の` : ''}収録範囲で、種目ごとに数えています。収録の無い年や中止の年をまたぐ優勝は連覇に数えません。
+            </p>
+            <ul className="list-disc space-y-1 pl-5 text-sm">
+              {recordSentences.map((sentence) => (
+                <li key={sentence}>{sentence}</li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {yearSections.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-6 text-center">

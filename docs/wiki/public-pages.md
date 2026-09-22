@@ -48,6 +48,11 @@
 - **実際に詳細データがある年度・種別だけ**をチップでリンク化し、年度降順で表示する。
 - 各詳細 JSON から優勝者を抽出して「歴代優勝者」表を出す。構造化データは `CollectionPage` /
   `ItemList` / `BreadcrumbList`。
+- 表の下に「記録（最多優勝・連覇）」節と同文の FAQ（2026-09-22、`lib/championRecords.ts`）。**個人戦は選手**
+  （playerId があればそれで同一性を判定）、**団体戦はチーム**で数える。数え方の共通規則（種目別・収録範囲内・
+  収録の無い年／中止の年をまたぐと連覇は途切れる）は [highschool.md](./highschool.md) の同節と同じ。
+  性別だけの種目名（全日本シングルスの「男子」）は1文では「男子シングルス」と補う。
+  2026-09-22 時点で11大会に出る（全日本シングルスの上松俊貴5連覇など）。
 - **SEO 集中**: 高校全国大会（`getHsNationalSlugByTournamentId` が解決）と `featurePath` を持つ大会
   （現状 STリーグ）のハブは `noindex, follow` にし、誘導バナーを出す（[seo.md](./seo.md) #3）。
 - `information[].resultPath` は**結果がサイト内の別ページにある大会**用（例: STリーグ → `/st-league/2025/matches/`）。

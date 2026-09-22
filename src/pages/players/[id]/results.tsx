@@ -10,13 +10,15 @@ import MetaHead from '@/components/MetaHead';
 import PlayerMajorResults from '@/components/PlayerMajorResults';
 import PlayerResults, { PlayerMatch, PlayerTournament } from '@/components/PlayerResults';
 import PlayerStatisticsSections, { CareerTimeline } from '@/components/PlayerStatisticsSections';
-import PlayerSummaryStats from '@/components/PlayerSummaryStats';
+import PlayerSummaryStats, { RIVAL_MIN_MEETINGS, type RivalChip } from '@/components/PlayerSummaryStats';
 import PlayerUpcomingInternational from '@/components/PlayerUpcomingInternational';
 import PageLayout from '@/components/PageLayout';
 import { AD_SLOTS } from '@/lib/ads';
 import { buildDelegationLookup } from '@/lib/delegation';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
-import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
+import { composePlayerResultsTitle, nationalTitleAwards, nationalTitleDescriptionPhrase } from '@/lib/nationalTitles';
+import { getPlayerOgImage } from '@/lib/playerOgImage';
+import { buildSiteUrl } from '@/lib/siteConfig';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { careerAffiliationNodes, careerAffiliations, careerAffiliationsDescriptionPhrase, composeDescriptionTail } from '@/lib/playerCareerAffiliations';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
@@ -31,6 +33,8 @@ import { TournamentEntry, TournamentParticipant } from '@/types/tournament';
 
 type PlayerResultsProps = {
   playerId: string;
+  /** 全国大会優勝者の成績カード（lib/playerOgImage.ts）。無ければ既定の OGP 画像 */
+  ogImage?: string | null;
   lastName: string;
   firstName: string;
   team?: string | null;
@@ -78,6 +82,7 @@ export default function PlayerResultsPage({
   growthShowcaseSlug = null,
   upcomingInternational = [],
   noindex = false,
+  ogImage = null,
 }: PlayerResultsProps) {
   const fullName = `${lastName}${firstName}`;
   const pageUrl = `https://softeni-pick.com/players/${playerId}/results/`;
@@ -145,7 +150,6 @@ export default function PlayerResultsPage({
   // 主要大会の実績カード用（ベスト8以上・カテゴリ別）。SEO 文言の nationalTitles とは対象集合が違う
   // （社会人と国際大会の扱いが逆）ので、まとめずに別々に持つ。
   const majorResults = playerStatistics?.majorResults ?? [];
-  const nationalTitlePhrase = nationalTitleTitlePhrase(nationalTitles);
   const nationalDescriptionPhrase = nationalTitleDescriptionPhrase(nationalTitles);
 
   // 所属歴（最新の所属は displayName に出ているので除く）。description と JSON-LD で同じ集合を使う。
@@ -168,13 +172,34 @@ export default function PlayerResultsPage({
 
   // 通称（インターハイ 等）を title に literal で出し、「{選手名} インターハイ 優勝」系の
   // クエリに寄せる。正式名称だけでは通称クエリに一致しないため（docs/wiki/seo.md #3）。
-  const metaTitle = nationalTitlePhrase
-    ? `${displayName} ${nationalTitlePhrase}｜試合結果・戦績 | ソフトテニス`
-    : `${displayName}の試合結果・戦績 | ソフトテニス`;
+  // 常時表示の「よく対戦した相手」。2回以上・選手 id 単位（docs/raw/2026-09-22-idea-seo-expansion.md #1）。
+  const statsLinkable = new Set(statsLinkableIds);
+  const rivalChips: RivalChip[] = (playerStatistics?.headToHead ?? [])
+    .filter((h) => h.meetings >= RIVAL_MIN_MEETINGS)
+    .slice(0, 5)
+    .map((h) => ({
+      key: h.opponentKey,
+      name: h.opponentName,
+      meetings: h.meetings,
+      wins: h.wins,
+      losses: h.losses,
+      href: h.opponentId != null && statsLinkable.has(h.opponentId) ? `/players/${h.opponentId}/results` : null,
+    }));
+
+  // 字数は完成形の幅で予算化する（composePlayerResultsTitle）。
+  const metaTitle = composePlayerResultsTitle(displayName, fullName, nationalTitles) ?? `${displayName}の試合結果・戦績 | ソフトテニス`;
 
   return (
     <>
-      <MetaHead title={metaTitle} description={summarySentence} url={pageUrl} type="article" noindex={noindex} noindexFollow={noindex} />
+      <MetaHead
+        title={metaTitle}
+        description={summarySentence}
+        url={pageUrl}
+        type="article"
+        noindex={noindex}
+        noindexFollow={noindex}
+        {...(ogImage ? { image: buildSiteUrl(ogImage), imageWidth: 1200, imageHeight: 630, twitterCardType: 'summary_large_image' as const } : {})}
+      />
 
       <Head>
         <script
@@ -281,7 +306,7 @@ export default function PlayerResultsPage({
             大会別成績・H2H・所属別成績）はページ長の大半を占めるため段階的開示（P3）で
             <details>「詳細を見る」に畳む）。 */}
         <section>
-          {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} />}
+          {playerStats && <PlayerSummaryStats playerStats={playerStats} allPlayers={allPlayers || []} rivals={rivalChips} />}
 
           {/* <details> は閉じていても DOM に残りクローラは読む（勲章カードで採用済みの前提と
               同型、docs/wiki/players-pages.md「主要大会の実績表示」参照）。SEOタイトル/
@@ -1145,6 +1170,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       playerId,
       noindex: !shouldIndex,
+      ogImage: getPlayerOgImage(playerId),
       lastName: idx.lastName,
       firstName: idx.firstName,
       team,

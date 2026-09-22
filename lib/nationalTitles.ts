@@ -347,6 +347,45 @@ export function nationalTitleTitlePhrase(titles: NationalTitleLike[]): string | 
   return `${head}ほか全国優勝計${titles.length}回`;
 }
 
+/** 選手結果ページの title 表示幅の上限（全角=1 / 半角=0.5）。SERP の表示枠は概ね28〜32全角。 */
+export const PLAYER_TITLE_MAX_WIDTH = 32;
+
+function titleWidth(s: string): number {
+  let w = 0;
+  for (const ch of s) w += /[ -~｡-ﾟ]/.test(ch) ? 0.5 : 1;
+  return w;
+}
+
+/**
+ * 全国優勝者の選手結果ページの title。
+ *
+ * 旧実装は実績フレーズだけを `TWO_LABEL_MAX` で予算化しており、`{選手名}（{所属}）` と
+ * 接尾辞を数えていなかった。その結果 index 対象の約14%（ほぼ全て全国優勝者）が30全角を超え、
+ * Google に title を書き換えられて「{選手名} インターハイ 優勝」の literal を失っていた
+ * （docs/wiki/seo.md「title の字数予算」）。ここでは**完成形の幅**で候補を上から試し、
+ * 最初に収まったものを使う。守る優先順は 選手名 ＞ 直近の優勝大会の通称 ＞ 「ソフトテニス」 ＞ 所属 ＞ 優勝回数の総数。
+ * どれも収まらないときは最後の候補（最短）を使う。
+ */
+export function composePlayerResultsTitle(displayName: string, fullName: string, titles: NationalTitleLike[]): string | null {
+  const groups = groupNationalTitles(titles);
+  if (groups.length === 0) return null;
+  const full = nationalTitleTitlePhrase(titles)!;
+  const one = groups[0].badgeLabel;
+  const oneWithTotal = groups.length > 1 ? `${one}ほか全国優勝計${titles.length}回` : one;
+  const LONG = '｜試合結果・戦績 | ソフトテニス';
+  const SHORT = '｜ソフトテニス戦績';
+  const candidates = [
+    `${displayName} ${full}${LONG}`,
+    `${displayName} ${full}${SHORT}`,
+    `${displayName} ${oneWithTotal}${SHORT}`,
+    `${displayName} ${one}${LONG}`,
+    `${displayName} ${one}${SHORT}`,
+    `${fullName} ${one}${SHORT}`,
+    `${fullName} ${one}`,
+  ];
+  return candidates.find((c) => titleWidth(c) <= PLAYER_TITLE_MAX_WIDTH) ?? candidates[candidates.length - 1];
+}
+
 /**
  * 検索用の大会表記。正式名称に通称が含まれていない場合だけ「正式名称（通称）」にする。
  * 「全日本ジュニア選手権大会（全日本ジュニア選手権）」のような冗長な重複を避ける。
