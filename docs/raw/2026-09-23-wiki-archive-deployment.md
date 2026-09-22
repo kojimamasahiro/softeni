@@ -1,0 +1,349 @@
+# wiki アーカイブ: deployment.md（2026-09-23 圧縮前の全文）
+
+2026-09-23 に [docs/wiki/deployment.md](../wiki/deployment.md) が1ページの目安（12,000字）を超えたため、
+[docs/prompts/slim-wiki-page.md](../prompts/slim-wiki-page.md) の手順で現在の仕様だけへ圧縮した。
+以下は圧縮前の全文をそのまま写したもの（リンクは `../wiki/` 基準に置き換え）。
+作業ノートは [2026-09-23-docs-raw-growth-and-wiki-slim.md](./2026-09-23-docs-raw-growth-and-wiki-slim.md)。
+
+---
+
+# Deployment
+
+> **適用範囲: 汎用**。Cloudflare Pages への配信・ビルド設定は競技に依存しない。
+>
+> 全体の構成（何がどこで動くか）は [architecture.md](../wiki/architecture.md)、サイト全体の地図は
+> [project-overview.md](../wiki/project-overview.md)。
+
+
+## 概要
+
+このリポジトリは Next.js を本体にしつつ、Cloudflare Pages 向け設定ファイルが存在します。
+
+確認根拠:
+
+- `next.config.mjs`
+- `wrangler.toml`
+- `package.json`
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md`
+
+## 確定情報
+
+### Next.js ビルド設定
+
+- `NODE_ENV=production` のとき `output: 'export'`
+- `trailingSlash: true`
+- `images.unoptimized: true`
+
+### Cloudflare Pages 設定
+
+`wrangler.toml`:
+
+- `name = "softeni-pick"`
+- `pages_build_output_dir = "out"`
+
+補足: `wrangler.adinsight.toml`(AdInsight 紹介サイト向け設定)は 2026-07-04 に
+`adinsight-site/` ごと削除した(docs/ui/decisions.md D-016)。
+
+### package.json scripts
+
+- `dev`: `next dev`
+- `prebuild`: **データ健全性チェック → 正準化 → 生成物ビルド**の直列チェーン（2026-09-18 時点で19段）。
+  実体は `package.json` が正。大きくは次の3段:
+  1. **正準化・ゲート**: `normalize-team-spacing.mjs` → `check-tournament-entries.mjs` →
+     `check-team-match-details.mjs`（2026-09-18 追加。[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）→
+     `check-tournament-insights.mjs` → `check-highschool-pipeline-freshness.mjs` →
+     `check-name-splits.mjs --strict`。**ここで落ちるとビルドが止まる**（意図的な門番。
+     `check-name-splits --strict` は 2026-08-29 に追加、`check-tournament-insights` は
+     [ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md) の公開条件を強制する）
+  2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（末尾で `save`。下記「ビルドキャッシュ」節）
+  3. **生成**: `generate-players-json` → `generate-players-lite` → `playerstats:facts` →
+     `generate-player-analysis` → `generate-beta-matches-json` → `generate-match-reverse-index` →
+     `generate-rare-events` → `playerstats:rankings` →（キャッシュ保存）→ `secondaryschool:build` →
+     `primaryschool:build`（2026-09-13 追加）→ `university:pathways`（2026-09-14 追加）
+- `build`: `next build`
+- `postbuild`: sitemap 生成とソート（`next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs`）
+
+#### sitemap の出力先（2026-08-05 修正）
+
+`next-sitemap.config.js` に **`outDir: 'out'` を明示している**。既定値（`public/`）のままだと
+デプロイされる sitemap が**常に1ビルド古くなる**ため。
+
+順序が問題になる:
+
+```
+next build（output: 'export'）が public/ を out/ にコピー
+  → postbuild で next-sitemap が書く
+```
+
+既定では next-sitemap の書き込み先が `public/` なので、`out/sitemap-0.xml`（=
+`pages_build_output_dir` = 配信される実体）は「**前回**のビルドが `public/` に残した sitemap」に
+なる。2026-08-05 の実測で out/ 3,369 URL に対し public/ 3,461 URL、差分 92 件は全て index 対象の
+高校学校ページだった。
+
+あわせて:
+
+- `scripts/sort-sitemaps.mjs` の対象も `out/` に変更（従来 `public/` のみ）
+- `public/sitemap*.xml` / `public/robots.txt` は生成物なので `.gitignore` へ。
+  追跡したままだと export 時に out/ へコピーされ、同じ古さが復活しうる
+- `scripts/filter-noindex-from-sitemap.mjs` は従来から `out/` も見ているため変更不要
+
+詳細: [docs/raw/2026-08-05-seo-audit.md](../raw/2026-08-05-seo-audit.md) A-1
+
+### GitHub Actions（`.github/workflows/checks.yml`・2026-09-06 追加）
+
+Cloudflare Pages と**役割を分けている**。CF は push 契機でビルドし、`prebuild` の先頭6段が
+ゲートとして働く（落ちるとデプロイが止まる）。しかし **prebuild に置けるのはゲートだけ**なので、
+合否が付かない「人の判断待ち一覧」型の検出器は置き場が無く休眠していた
+（2026-09-06 時点で検出器11本中7本＋テスト系10本が自動実行されていなかった）。
+
+| | Cloudflare Pages | GitHub Actions |
+|---|---|---|
+| 契機 | push のみ | push / PR / **cron（毎週月 09:00 JST）** / 手動 |
+| 置けるもの | ゲートのみ（失敗＝デプロイ停止） | **ゲートと報告を分離**。報告はデプロイに影響しない |
+| 結果 | ビルドログ | ジョブサマリ |
+
+- **ゲート（落ちたら赤）**: `check-orphan-entries` / `check-duplicate-placements` /
+  `check-growth-analysis` / `bracket:test` / `analytics:test` / `upcoming:test` / `club:verify`
+  — ローカル実測で合計3秒。
+- **報告のみ（赤にしない）**: `verify-bracket-layout` / `check-identity-health` /
+  `check-upcoming-tournaments` — `$GITHUB_STEP_SUMMARY` へ出力。
+
+`verify-bracket-layout` は 2026-09-06 時点で**250件の不一致があり赤**のため、赤いCIを常態化
+させないよう報告側に置いている。解消したらゲートへ昇格させること。
+
+リポジトリは PUBLIC なので Actions の実行時間は無料。
+`permissions: contents: read` で、現時点では**リポジトリへの書き戻しはしない**。
+
+**Python の回帰テストも 2026-09-06 に追加**（当初は依存が未固定で見送っていた）。
+依存は `scripts/requirements-test.txt` に固定（`pdfplumber` / `requests` の2つだけ。
+テストは pytest でなく `python3 test_regression.py` で回すので pytest は不要）。
+CI の Python は **3.13**（リポジトリの `.venv` と同じ）。
+
+- `scripts/pdf-to-players/test_regression.py` … **75/75**
+- `scripts/venue-agent/test_regression.py` … **5/5**
+
+**カバレッジの制限**: fixtures の PDF は `.gitignore`（`*.pdf`）で追跡していないため、
+PDF に依る項目は CI で自動 SKIP される。**カバーできるのは 144 項目中 75（52%）**
+（手元では fixtures 2本があるので 144/144。ただし手元でも 4本は欠けている）。
+残りを CI で見るには fixtures の扱いを決める必要がある。
+
+対象外: `scripts/pdf/` はより広い依存（pandas / scipy / numpy / Pillow / pymupdf /
+namedivider）を使うが、回帰テストが無いため固定していない。
+
+経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
+
+### review-snapshot ワークフロー（`.github/workflows/review-snapshot.yml`・2026-09-06 追加）
+
+`checks.yml` と**別ファイルに分けてある**。`checks.yml` は `permissions: contents: read` のままで、
+**リポジトリへ書き戻す仕事だけ**をこちらに置き `contents: write` を与えている
+（ゲートを回すだけのワークフローに push 権限を持たせないため）。
+
+- 毎週月曜 09:30 JST（`checks.yml` の30分後）＋手動実行。
+- `node scripts/record-review-snapshot.mjs` が
+  `data/teams/review-history.json` にレビューの進み具合を追記する。
+- **数字が動いたときだけコミットする**（動いていない日を書き足すと、情報は増えず
+  コミットと本番ビルドだけが増えるため）。
+- コミットメッセージに `[skip ci]` を入れて Cloudflare Pages のビルドを飛ばす想定。
+  **初回の実運用で実際に飛んでいるか確認すること**（未検証）。
+
+書き戻す対象は「**再生成できない記録**」に限る。過去に `sitemap.yml`（2025-05-02 追加・
+2日で無効化・2025-10-24 削除）が生成物をコミットして戻す設計で廃れており、その教訓は
+「書き戻すな」ではなく「生成物を書き戻すな」だと整理した。
+経緯: [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
+
+### ビルド時間の内訳（2026-07-19 実測）
+
+teams 系の集計最適化により **22分41秒 → 8分53秒**（commit 0076636 → 2f34553）。
+
+| フェーズ | 修正前 | 修正後 |
+|---|---|---|
+| clone + `npm ci` | 25秒 | 24秒 |
+| prebuild（大半が `generate-facts`） | 2分15秒 | 2分6秒 |
+| lint + 型チェック | 22秒 | 22秒 |
+| webpack compile | 2分6秒 | 1分45秒 |
+| Collecting page data | 1分49秒 | 10秒 |
+| Generating static pages | 14分39秒 | 3分13秒 |
+| upload + deploy | 34秒 | 40秒 |
+
+出力は 2026-08-28 時点で **4,450 HTML・9,743ファイル・397MB**（2026-07-19 は 3,717 HTML・
+7,945ファイル・379MB。約8か月分ではなく1か月強で +733ページ）。
+**アップロードは30秒台で問題ではない**。
+
+その後 `generate-facts` を増分化（下記）。詳細は
+docs/raw/2026-07-19-cloudflare-build-time.md。
+
+### 静的ページ生成のコスト特性
+
+ページ生成コストはルートごとに極端に偏る。2026-07-19 時点の上位3ルート
+（`/teams/[teamId]/[year]/[gender]`、`/players/[id]/results`、`/teams/[teamId]`）で
+生成時間の95%を占めていた。
+
+ビルド時にデータファイルを読むユーティリティは、**プロセス内キャッシュを必ず持たせること**。
+`getStaticProps` はページ数ぶん（数千回）呼ばれるため、キャッシュの無い
+`readFileSync` + `JSON.parse` は「ページ数 × データ件数」に膨らむ。
+
+2026-07-19 に `src/utils/tournament-data-loader.ts`（`getAllTournamentFiles` /
+`loadTournamentData`）へキャッシュを追加し、teams 系ルートの集計を約20倍高速化した。
+`loadTournamentData()` の返り値は**プロセス内で共有される読み取り専用データ**であり、
+呼び出し側で破壊的変更をしてはならない。
+
+同種のキャッシュは `lib/tournamentData.ts`、`src/pages/players/[id]/results.tsx`、
+`src/pages/players/[id]/index.tsx` にも入っている。関連: docs/wiki/players-pages.md。
+
+`data/players/index.json`（約1.4MB / 18,500件）は **`lib/playersIndex.ts` 経由で読むこと**。
+`getPlayerIndex()` / `getPlayerNameToId()`（`姓::名` -> 数値id、count>=5・同姓同名は先勝ち）/
+`getPlayerIdToName()` を出しており、プロセス内で1回しか読まない。
+**返り値はプロセス内で共有される読み取り専用データ**で、書き換えてはならない。
+2026-08-28 以前は5ルートが個別に読み直しており、1ページあたり9.8msを払っていた。
+
+ただし**ページ生成には数百msの床がある**。getStaticProps を持たない純粋な静的ページでも
+1ページ約470msかかる（React の SSR レンダリング + フレームワークのオーバーヘッド）。
+1ページあたりが1秒を切っているルートは、データ取得を最適化しても頭打ちになる。
+
+### output file tracing（nft）のワイルドカード走査
+
+`next build` の compile フェーズでは `@vercel/nft` が「実行時に必要なファイル」を静的解析する
+（output file tracing）。**`output: 'export'` では trace 結果は誰も使わない**（静的HTMLしか
+配らないため）が、**Next 15.5 には tracing を止める設定が無い**。
+
+- `outputFileTracing: false` は config schema から削除済み
+- `outputFileTracingExcludes` は nft の実行**後**に適用されるので、走査自体は止まらない
+- `next-trace-entrypoints-plugin` の `traceIgnores` は `webpack-config.js` で `[]` 固定
+
+したがって**「走らせない」ことはできず、「走査範囲を狭める」しか手が無い**。
+
+#### ビルド時にデータを読むコードの書き方（重要）
+
+nft はパス式を静的に評価する。`process.cwd()` を直接書いた上でパス配列を spread すると、
+nft は `process.cwd()` だけ解決できて残りが不明になり、
+リポジトリ全体（`<project>` 直下からの再帰ワイルドカード）を glob してしまう。
+
+```ts
+// 悪い: リポジトリ全体が glob される
+const DATA_DIR = ['data', 'secondaryschool'];
+fs.readFileSync(path.join(process.cwd(), ...DATA_DIR, file), 'utf-8');
+
+// 良い: data/secondaryschool 配下だけに限定される
+fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-8');
+
+// さらに良い: 関数経由だと nft は解決を諦め、glob 自体が出ない
+fs.readFileSync(path.join(resolveRoot(), ...DATA_DIR, file), 'utf-8');
+```
+
+`readdirSync` でディレクトリを開いてから `readFileSync` する形でも同じことが起きる。
+**新しくビルド時データ読み取りを足すときは、この形になっていないか必ず確認すること。**
+
+2026-08-28 に既知の4箇所を修正済み（`lib/secondaryschool.ts`、`lib/clubTransition.ts`、
+`lib/qualifierFinishers.ts`、`src/pages/tournaments/[generation]/[tournamentId]/index.tsx`）。
+
+#### 全体 glob が復活したときの特定方法
+
+ビルド後の `.next/server/pages/**/*.nft.json` を開き、**明らかに無関係なパス**
+（`.venv/`、`.claude/`、`docs/` など）を含む trace ファイルを探す。それを出しているエントリが
+発生源。2026-08-28 はこの方法で、lib 3件を直しても残っていた4つめ（大会ハブページ）を特定した。
+
+```bash
+for f in $(find .next/server/pages -name '*.nft.json'); do
+  node -e "const d=require('$PWD/'+'$f');console.log((d.files||[]).filter(x=>/\.venv|\.claude|docs\//.test(x)).length, '$f')"
+done | sort -rn | head
+```
+
+#### 生成物を `data/` の外に置く
+
+playerStats の生成物（`_facts` は18,000ファイル超）は **リポジトリ直下の `.playerstats/`** に置く
+（2026-08-28 に `data/players/` 配下から移動）。nft が出す `data/**/*` と `data/players/**/*` は
+そこに置いたファイルを毎回列挙してしまうため。
+
+| glob | 移動前 | 移動後 |
+|---|---|---|
+| `data/players/**/*` | 18,526ファイル | 53ファイル |
+| `data/**/*` | 20,172ファイル | 1,699ファイル |
+
+**今後ビルド生成物を足すときも `data/` 配下には置かないこと。**
+
+詳細と実測: [docs/raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md)
+
+### generate-facts の増分ビルドとビルドキャッシュ
+
+`.playerstats/_facts`（約138MB / 18,471ファイル）・`_index`・`_manifest.json` は
+`.gitignore` 対象のため、Cloudflare では clone 直後に存在せず `generate-facts` が
+毎回フルビルド（約2分）に落ちていた。ローカルでは増分（数秒〜10秒）が既定。
+（2026-08-28 以前は `data/players/` 配下にあった。上記「生成物を `data/` の外に置く」参照。
+移動でキャッシュのレイアウトが変わったため、移行後の初回だけ復元が拒否されフルビルドになる。）
+
+`scripts/playerStats/cache-sync.mjs` がこれらを `.next/cache/playerstats/` に退避し、
+次回ビルドで復元する。prebuild の先頭で `restore`、末尾で `save` を実行する。
+
+Cloudflare Pages のビルドキャッシュは、Next.js プロジェクトに対して **`.next/cache`** と
+package manager のグローバルキャッシュを保存・復元する（公式ドキュメント Build caching）。
+**保持期間は最終読み出しから7日、上限はプロジェクトあたり10GB。**
+
+安全側の設計:
+
+- manifest は mtime ではなく**入力ファイルの内容ハッシュ**ベースなので、
+  復元物が古くても内容が変われば再生成される（git clone で mtime が失われても無害）
+- キャッシュが無い・不完全・ファイル数が合わない場合は復元を拒否してフルビルドに落ちる
+- save は一時ディレクトリ + `rename` で原子的に差し替える
+- cache-sync は例外を握り潰して常に成功終了する（キャッシュ障害でビルドを落とさない）
+- 作業コピーが存在する場合 restore はスキップするため、ローカル開発は影響を受けない
+
+## 推測を含む整理
+
+### Cloudflare Pages
+
+Assumption:
+
+- `next.config.mjs` と `wrangler.toml` から、Cloudflare Pages への静的配信を現在の主要候補または現行構成として想定している
+
+### Vercel
+
+Assumption:
+
+- `docs/raw/2025-11-30-cloudflare-migration-analysis.md` の記述から、Vercel 運用または Vercel 由来の検討履歴がある
+- ただし、この turn では Vercel 用設定ファイルそのものは確認していません
+
+## score 公開面との関係
+
+- `score` mode は静的公開を前提とする設計
+- 公開データは `public/data/beta-matches/**`
+- 編集系 API は `score` mode で 404 にする実装
+
+## 動的機能（速報など）を足す時の選択肢
+
+Assumption: 以下は 2026-07-19 の検討時点の整理であり、実装はしていない。
+
+フルSSGとリアルタイム速報は本来ぶつからない。約3,700ページは過去戦績のアーカイブで
+SSGが最適であり、速報は数ページだけなので、全体を動的基盤に移す理由にはならない。
+
+- **A. 現状維持 + 速報だけクライアント購読（Supabase Realtime）** — デプロイ不要。
+  初期HTMLに中身が無いため速報ページのSEO/OGPは弱い。
+- **B. Cloudflare Pages Functions を足す（移行なし）** — 現構成のまま `functions/` を
+  置けば動的エンドポイントが使える。静的 export で無効化されている `/api/matches/*` の
+  代替置き場にもなる。ビルドログに `No functions dir at /functions found` と出ている。
+- **C. Workers + OpenNext** — ISR / SSR が使え、ビルド時間がページ数に比例しなくなる。
+  代償は KV/R2/キャッシュ設定の運用複雑度と Cloudflare 固有の Node API 制約。
+- **D. Vercel** — ISR/PPR が最も素直。課金とロックイン。
+
+推奨順序は「まずビルド最適化 → 速報が必要になったら B+A → C は SSG が再び破綻した時」。
+
+注意: **C はビルド時間問題の解決策としては筋が悪い。** 重いページ生成コストは ISR に
+してもユーザーの初回アクセス時に移るだけで、集計の非効率はどの構成でも先に直す必要がある。
+
+## Open Questions
+
+- 現在の本番が Cloudflare Pages か、移行途中か
+- 2 ドメインを同じビルド成果物で配るか、別 build するか
+- 静的 export で使えない API Routes を本番でどこまで利用しているか
+- webpack compile の1分45秒を Turbopack（`next build --turbopack`）で短縮できるか（未検証）
+- nft のワイルドカード走査が Cloudflare 実機でどれだけのコストになっているか（2026-08-28 時点で
+  ローカル計測のみ。ローカルには `.venv` / `.claude/worktrees` / `out/` があるため絶対値が
+  過大に出る）。`process.cwd()` + spread を潰した前後でビルドログを比較すること
+
+解決済み:
+
+- ~~`generate-facts` の増分 manifest を Cloudflare のビルドキャッシュに乗せる方法~~
+  → `scripts/playerStats/cache-sync.mjs` で解決（上記）
+- ~~`/players/[id]/results` に同種の非効率が残っていないか~~
+  → 調査の結果、構造的な非効率は無く**最適化対象外**と判断（2026-07-19）。
+  データ取得は約80ms、props も平均25.2kBで無駄が無い。報告値1.24秒の大半は
+  React の SSR レンダリングとページ生成の床。

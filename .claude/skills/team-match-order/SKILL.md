@@ -13,7 +13,7 @@ description: 団体戦・対抗戦の「オーダー」（第1〜第3対戦に�
 
 - データの形と決定の経緯: [ADR-020](../../../docs/adr/ADR-020-team-match-rubber-details.md)
 - 現在の仕様: [data-model.md](../../../docs/wiki/data-model.md)「団体戦の対戦ごとの記録」
-- 取り込みの知見: [data-import.md](../../../docs/wiki/data-import.md)「団体戦の対戦ごとの記録（オーダー）の取り込み」
+- 取り込みの知見: [team-match-order-import.md](../../../docs/wiki/team-match-order-import.md)
 - 表示: [public-pages.md](../../../docs/wiki/public-pages.md)「大会結果ページの対戦詳細」
 
 **前提**:
@@ -86,7 +86,7 @@ npm run check:team-match-details
 
 **ページ範囲は人の指定を鵜呑みにせず `pdftotext -layout` で棚卸しする**（機関誌は他競技・他大会も
 載っている合本）。見出しの「男子結果」「女子結果」と、右ページ左上の「決勝」で当たりを付ける。
-この様式でだけ効く注意は docs/wiki/data-import.md が正（行の中心で比べる・エントリー行は
+この様式でだけ効く注意は docs/wiki/team-match-order-import.md が正（行の中心で比べる・エントリー行は
 数字の高さ・ページ下端の柱・`・` が語の中・学校単位の本数の紛れ込み）。
 
 ## 別の大会・別の様式へ広げるとき
@@ -234,7 +234,7 @@ npm run check:team-match-details
 `AGENTS.md` の LLM Wiki 運用に従う。
 
 - `docs/raw/<日付>-<大会>-<年>-team-match-order.md` に実施記録（様式・検算・止まった箇所・未了）。
-- 次の年度でも使える知見だけ `docs/wiki/data-import.md` へ compile。
+- 次の年度でも使える知見だけ `docs/wiki/team-match-order-import.md` へ compile。
 - 収録範囲が変わるので `docs/wiki/data-model.md` の「現在は◯◯」を更新する。
 - 新しい様式に対応したら、このスキルの表も更新する。
 - raw の末尾に Compile Log（何を載せ、何を意図的に載せなかったか）。

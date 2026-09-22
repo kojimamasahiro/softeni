@@ -71,6 +71,7 @@ data/tournaments/
   段階分割された大会では `ageCategory` に `final` / `semifinal` / `qualifying` 等の**段階**が入る（[data-model.md](./data-model.md)）。
 - **参加者ID**: 個人戦は `{姓}_{名}_{チーム名}_{都道府県}`、団体戦は `{チーム名}_{都道府県}`。
   **団体戦でも `prefecture` を null のままにしない**（[pdf-import.md](./pdf-import.md)）。
+  空の項目でアンダースコアが余分に付く不具合の調査は [raw/2026-07-09](../raw/2026-07-09-team-id-underscore-bug.md)。
 
 ### `stage` と `rank.kind`
 

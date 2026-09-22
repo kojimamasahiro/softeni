@@ -104,6 +104,18 @@ details の試合オブジェクトに、任意の `matches`（対戦ごとの�
 - `data/tournaments/details/highschool-senbatsu/{2022,2025}/team-none-{boys,girls}.json`
 - `lib/packedPageData.ts` / `src/components/Tournament/MatchResults.tsx`（表示。2026-09-18 追記）
 - `lib/__tests__/packedTeamMatches.test.ts`（圧縮の往復。`npm run bracket:test`）
+- 年度別の実施記録（raw）: インターハイ [2026](../raw/2026-09-18-interhigh-team-match-order.md) /
+  [2024](../raw/2026-09-18-interhigh-2024-boys-team-match-order.md) /
+  [2025](../raw/2026-09-18-interhigh-2025-outlined-team-match-order.md) /
+  [2023 男子](../raw/2026-09-19-interhigh-2023-boys-team-match-order.md) /
+  [2023 女子](../raw/2026-09-19-interhigh-2023-girls-team-match-order.md) /
+  [2022](../raw/2026-09-19-interhigh-2022-team-match-order.md) /
+  [2021](../raw/2026-09-19-interhigh-2021-team-match-order.md) /
+  [2019](../raw/2026-09-19-interhigh-2019-team-match-order.md)、
+  高校選抜 [2020](../raw/2026-09-19-senbatsu-2020-team-match-order.md) /
+  [2021](../raw/2026-09-19-senbatsu-2021-team-match-order.md) /
+  [2023](../raw/2026-09-19-senbatsu-2023-team-match-order.md) /
+  [2024](../raw/2026-09-19-senbatsu-2024-team-match-order.md)
 
 ## Open Questions
 
