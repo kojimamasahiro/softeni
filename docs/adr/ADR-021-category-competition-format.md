@@ -73,6 +73,10 @@ Accepted
   「A・C・D・F組の1位が1回戦不戦勝」を足した（**なぜその4組かは公表されていないので書かない**）。
   `checkedOn` を 2026-09-22 に更新。推定していた事実は
   [raw/2026-09-22-asian-games-team-finals-and-mixed.md](../raw/2026-09-22-asian-games-team-finals-and-mixed.md) に残す
+- **2026-09-22: シングルスの「各組1位が準々決勝」も当たった**（男子7人・女子8人とも準々決勝の顔ぶれが
+  各組1位とちょうど一致）。両種目の `assumptions`（人数と組数の一致からの読み取り、と注記していたもの）を外した。
+  男子の不戦勝は A組の1位で、これも `summary` に事実として書いた。3種目とも推定は残っていない
+  （[raw/2026-09-22-asian-games-singles-day1.md](../raw/2026-09-22-asian-games-singles-day1.md)）
 
 ## 関連
 

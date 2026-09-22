@@ -79,6 +79,9 @@ ROUND_TO_RANK = {
     "決勝": ("準優勝", {"kind": "runnerup"}),
 }
 ROUND_TO_ONGOING = {"1回戦": "出場", "準々決勝": "ベスト8進出", "準決勝": "ベスト4進出", "決勝": "決勝進出"}
+# 決勝Tの枠数 -> 最初のラウンドと、そこを不戦勝で抜けた先のラウンド
+FIRST_ROUND_BY_SLOTS = {16: "1回戦", 8: "準々決勝", 4: "準決勝"}
+ROUND_AFTER = {"1回戦": "準々決勝", "準々決勝": "準決勝", "準決勝": "決勝"}
 
 
 def participant_for(noc, romaji):
@@ -220,7 +223,7 @@ def build(event, rows, individual_keys, draw_slots):
         parent["prevMatchIds"].append(match["matchId"])
         parent["prevMatchId"] = parent["prevMatchIds"][0]
 
-    results = build_results(matches, entries)
+    results = build_results(matches, entries, draw_slots)
     data = {"participants": list(participants.values()), "entries": entries}
     if draw_slots:
         data["knockoutDraw"] = {"slots": draw_slots}
@@ -259,8 +262,21 @@ def roundrobin_standings(matches):
     return ranks
 
 
-def build_results(matches, entries):
+def bye_seats(draw_slots):
+    """最初のラウンドが不戦勝の席 (組, 組内順位) と、その席が次に出るラウンド。"""
+    if not draw_slots:
+        return {}, None
+    after = ROUND_AFTER[FIRST_ROUND_BY_SLOTS[len(draw_slots)]]
+    seats = {}
+    for i, slot in enumerate(draw_slots):
+        if slot and draw_slots[i ^ 1] is None:
+            seats[(slot["group"], slot["rank"])] = after
+    return seats, after
+
+
+def build_results(matches, entries, draw_slots=None):
     ranks = roundrobin_standings(matches)
+    byes, _ = bye_seats(draw_slots)
     finals = [m for m in matches if m["stage"] == "knockout" and m["round"] == "決勝"]
     results = []
     for e in entries:
@@ -278,6 +294,9 @@ def build_results(matches, entries):
             else:
                 label, rank = ROUND_TO_RANK[last["round"]]
             tournament = {"label": label, "rank": rank}
+        elif ranks.get(no) and (ranks[no]["group"], ranks[no]["rank"]) in byes:
+            # 最初のラウンドが不戦勝で、次の対戦カードがまだ決まっていない（例: 男子シングルスの準々決勝）
+            tournament = {"label": ROUND_TO_ONGOING[byes[(ranks[no]["group"], ranks[no]["rank"])]], "rank": {"kind": "ongoing"}}
         elif mine and all(m["winnerEntryNo"] is not None for m in mine):
             # 予選リーグで敗退（決勝Tに進んでいない）。最終成績は持たない
             tournament = None
