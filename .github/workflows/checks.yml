@@ -75,6 +75,9 @@ jobs:
       - name: 選手ページの所属歴メタデータ テスト
         run: npm run -s career:test
 
+      - name: 選手ページの title 字数予算 テスト
+        run: npm run -s player-title:test
+
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 

@@ -16,7 +16,7 @@ import PageLayout from '@/components/PageLayout';
 import { AD_SLOTS } from '@/lib/ads';
 import { buildDelegationLookup } from '@/lib/delegation';
 import { getMajorTitlesForPlayer, MajorTitleData } from '@/lib/majorTitles';
-import { nationalTitleAwards, nationalTitleDescriptionPhrase, nationalTitleTitlePhrase } from '@/lib/nationalTitles';
+import { composePlayerResultsTitle, nationalTitleAwards, nationalTitleDescriptionPhrase } from '@/lib/nationalTitles';
 import { getScoreMatchLinksForPlayer, type ScoreMatchLink } from '@/lib/matchReverseIndex';
 import { careerAffiliationNodes, careerAffiliations, careerAffiliationsDescriptionPhrase, composeDescriptionTail } from '@/lib/playerCareerAffiliations';
 import { resolveAliasedPlayerId, resolveAliasedTeam } from '@/lib/playerStats/participantAliases';
@@ -145,7 +145,6 @@ export default function PlayerResultsPage({
   // 主要大会の実績カード用（ベスト8以上・カテゴリ別）。SEO 文言の nationalTitles とは対象集合が違う
   // （社会人と国際大会の扱いが逆）ので、まとめずに別々に持つ。
   const majorResults = playerStatistics?.majorResults ?? [];
-  const nationalTitlePhrase = nationalTitleTitlePhrase(nationalTitles);
   const nationalDescriptionPhrase = nationalTitleDescriptionPhrase(nationalTitles);
 
   // 所属歴（最新の所属は displayName に出ているので除く）。description と JSON-LD で同じ集合を使う。
@@ -168,9 +167,8 @@ export default function PlayerResultsPage({
 
   // 通称（インターハイ 等）を title に literal で出し、「{選手名} インターハイ 優勝」系の
   // クエリに寄せる。正式名称だけでは通称クエリに一致しないため（docs/wiki/seo.md #3）。
-  const metaTitle = nationalTitlePhrase
-    ? `${displayName} ${nationalTitlePhrase}｜試合結果・戦績 | ソフトテニス`
-    : `${displayName}の試合結果・戦績 | ソフトテニス`;
+  // 字数は完成形の幅で予算化する（composePlayerResultsTitle）。
+  const metaTitle = composePlayerResultsTitle(displayName, fullName, nationalTitles) ?? `${displayName}の試合結果・戦績 | ソフトテニス`;
 
   return (
     <>
