@@ -58,6 +58,9 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - データは既存の `data/tournaments/details/{tournamentId}/{year}/{category}.json` と `information/{tournamentId}.json`（開催地・日程・種別ラベル）から年度別・種目別に抽出する。上位入賞の判定は `results[].tournament.rank.kind` が `winner` / `runnerup`、または `best` かつ `bestLevel === 4`。記録範囲はベスト4まで
 - 種目は男子→女子、団体→ダブルス→シングルスの順に並べ、各種目から既存の年度別結果ページ（`/tournaments/highschool/{tournamentId}/{year}/{category}/{age}/{gender}`）へ「対戦表を見る」で内部リンクする
 - 上部に種目別の歴代優勝サマリー表を表示する。各行（種目）×各列（年度）のセルに、優勝の「年度・学校・選手・都道府県」を載せる（団体は校名、個人は選手名＋所属）。データは `ChampionSummaryRow` / `ChampionCell`（`buildChampionSummary`）。優勝者不明の年は表示しない
+- 歴代優勝サマリーの下に「記録（最多優勝・連覇）」節と同文の FAQ を出す（2026-09-22、`lib/highschoolChampionRecords.ts`）。
+  **種目別**に数え、収録範囲の中だけ（画面に範囲を明記）。連覇は収録のある連続した年だけで、収録の無い年・中止の年をまたぐと途切れる。
+  個人戦は所属校で数え、ペアが2校なら両校に数える。最多が1回・連覇が無い種目は出さない。規則は `npm run records:test`（CI）
 - 上位入賞の所属校から各校の戦績ページ（`/highschool/{gender}/{prefectureId}/{teamId}`）へ内部リンクする（2026-06 追加）。リンク解決は `getSchoolResolver()`（`lib/highschoolNationalTournaments.ts`）が `data/highschool/prefectures/<prefId>/summary.json` を唯一の正として `(team, prefectureId, gender)` の実在を確認し、**一意に特定できる場合のみ**リンクする（デッドリンク防止。同名校が複数残る場合はリンクせず名前のみ表示）。`mixed` は男子・女子どちらのページにも出る規約に合わせる。リゾルバはモジュールスコープで一度だけ構築してキャッシュする
 - 上位入賞・歴代優勝サマリーの選手名から各選手の試合結果ページ（`/players/{id}/results`）へ内部リンクする（2026-06 追加）。リンク解決は `getPlayerResolver()`（`lib/highschoolNationalTournaments.ts`）が `data/players/index.json` を唯一の正として、結果ページが実在する選手（`count>=5`、`results.tsx` の `getStaticPaths` と同条件）のみを姓名一致でリンクする（デッドリンク防止。結果ページが無い選手は名前のみ表示）。同姓同名は最初の ID を使う（学校ページ・`players/index.tsx` と同じ規約）。`RecordPlacement.playerLinks` / `ChampionCell.playerLinks` として保持し、ページ側は `PlayerNames` で描画する。リゾルバはモジュールスコープで一度だけ構築してキャッシュする
 - 開催予定セクション（2026-06 追加）: `information/{tournamentId}.json` に登録があり、まだ結果（`details`）が無い年度を「開催予定（または集計待ち）」として新しい年順に表示する（`UpcomingEdition` / `upcoming`）。開催地・日程・実施予定種目ラベル・出典（`source` / `sourceUrl`、無ければ公式 URL）を載せ、結果確定前から大会の存在と検索意図を受ける。先頭の `upcoming[0]` は title / description / FAQ に「N年大会は…開催予定です」として動的に埋め込む
