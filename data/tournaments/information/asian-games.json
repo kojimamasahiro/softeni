@@ -105,5 +105,82 @@
         }
       }
     ]
+  },
+  {
+    "year": 2023,
+    "location": "中国",
+    "startDate": "2023-10-03",
+    "endDate": "2023-10-07",
+    "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+    "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_TM_Result_c.pdf",
+    "label": "第19回 アジア競技大会",
+    "note": "杭州大会（Hangzhou 2022）。新型コロナで1年延期され2023年に開催されたので year は開催年度の2023（大会名の2022ではない）。会場は杭州奥体中心網球中心（公式PDFの表記は HOC Tennis Centre）。国外の会場なので venues は持たない（コリアカップと同じ）。結果は ASTF が公開している大会公式の結果PDF（Timing and Results provided by Bornan）5本から tools/asian-games-2023/draw.json に転記した。sourceUrl は男子団体のPDFで、残りは TW_Result_c / MX_Result_b / SM_Result_c / SW_Result_b（同じフォルダ）。大会公式サイト info.hangzhou2022.cn は 2026-09-23 時点で名前解決できず見られない。2026-09-23 取り込み",
+    "categories": [
+      {
+        "categoryId": "team-none-boys",
+        "label": "男子団体",
+        "category": "team",
+        "gender": "boys",
+        "age": "none",
+        "format": {
+          "summary": "9か国を2つの予選リーグ（A組5か国・B組4か国）に分け、各組上位2か国が準決勝へ進む（A組1位対B組2位、A組2位対B組1位）。1対戦はダブルス・シングルス・ダブルスの3本。準決勝で敗れた2か国がともに3位となり、3位決定戦は行わない。予選リーグは10月3日、準決勝・決勝は10月4日。",
+          "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+          "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_TM_Result_c.pdf",
+          "checkedOn": "2026-09-23"
+        }
+      },
+      {
+        "categoryId": "team-none-girls",
+        "label": "女子団体",
+        "category": "team",
+        "gender": "girls",
+        "age": "none",
+        "format": {
+          "summary": "10か国を2つの予選リーグ（A・B組とも5か国）に分け、各組上位2か国が準決勝へ進む（A組1位対B組2位、A組2位対B組1位）。1対戦はダブルス・シングルス・ダブルスの3本。準決勝で敗れた2か国がともに3位となり、3位決定戦は行わない。予選リーグは10月3日、準決勝・決勝は10月4日。",
+          "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+          "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_TW_Result_c.pdf",
+          "checkedOn": "2026-09-23"
+        }
+      },
+      {
+        "categoryId": "doubles-none-mixed",
+        "label": "混合ダブルス",
+        "category": "doubles",
+        "gender": "mixed",
+        "age": "none",
+        "format": {
+          "summary": "20組を6つの予選リーグ（A〜F組。1組あたり3〜4組）に分け、各組上位2組の12組が決勝トーナメントを戦う。決勝トーナメントは16枠の1回戦で、実際に行われるのは4試合。A・C・D・F組の1位の4組は不戦勝で準々決勝から入った。準決勝で敗れた2組がともに3位となり、3位決定戦は行わない。予選リーグから決勝まで10月5日の1日で行った。",
+          "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+          "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_MX_Result_b.pdf",
+          "checkedOn": "2026-09-23"
+        }
+      },
+      {
+        "categoryId": "singles-none-boys",
+        "label": "男子シングルス",
+        "category": "singles",
+        "gender": "boys",
+        "age": "none",
+        "format": {
+          "summary": "21人を6つの予選リーグ（A〜F組。1組あたり3〜4人）に分け、各組上位2人の12人が決勝トーナメントを戦う。決勝トーナメントは16枠の1回戦で、実際に行われるのは4試合。A・C・D・F組の1位の4人は不戦勝で準々決勝から入った。準決勝で敗れた2人がともに3位となり、3位決定戦は行わない。予選リーグは10月6日、決勝トーナメントは10月7日。",
+          "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+          "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_SM_Result_c.pdf",
+          "checkedOn": "2026-09-23"
+        }
+      },
+      {
+        "categoryId": "singles-none-girls",
+        "label": "女子シングルス",
+        "category": "singles",
+        "gender": "girls",
+        "age": "none",
+        "format": {
+          "summary": "23人を8つの予選リーグ（A〜H組。A組は2人、ほかは3人）に分け、各組1位の8人が準々決勝へ進む。準決勝で敗れた2人がともに3位となり、3位決定戦は行わない。予選リーグは10月6日、準々決勝以降は10月7日。",
+          "source": "Asia Soft Tennis Federation（大会公式の結果PDF）",
+          "sourceUrl": "https://www.astf.asia/files/2023/2023_R04_SW_Result_b.pdf",
+          "checkedOn": "2026-09-23"
+        }
+      }
+    ]
   }
 ]
