@@ -56,6 +56,12 @@ bracket:verify（474大会・不一致0）/ check:upcoming / format:test / tsc /
 highschool:pipeline と prebuild も流した。混合・男子シングルスのページで、スコアの下にポイントが出て、
 相手側の行では左右が入れ替わることをスマホ幅で確認した。
 
+## 男子シングルス決勝（同日・後から）
+
+取り込み時点で試合中だった男子決勝が終わり、同じ API（`results/M.SINGLES-----------.FNL-.000100--`）から入れた。
+**上松 4-3 黒坂**（5-3, 6-4, 1-4, 3-5, 4-1, 4-6, 7-2）。上松が優勝・黒坂が準優勝で、全5種目が決着し
+進行中の成績は無くなった。prebuild の差分は両選手の `analysis.json` ほか生成物だけ。検査はすべて問題なし。
+
 ## 関連
 
 - [upcoming-tournaments-runbook.md](../wiki/upcoming-tournaments-runbook.md) S11
