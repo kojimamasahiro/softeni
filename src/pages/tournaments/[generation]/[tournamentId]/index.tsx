@@ -262,6 +262,13 @@ export default function TournamentHubPage({
     ...cancelledYears.map((c) => ({ year: c.year, group: null, cancelled: c })),
   ].sort((a, b) => Number(b.year) - Number(a.year));
 
+  // 最新年度の種目チップ。年度別結果はページ下部（歴代優勝者・記録の後）にあり、シェアされたハブから
+  // 今年の結果へ移る導線が1画面目に無かった。開催中は「開催前」ブロックの実施種目チップが同じ年の
+  // 結果ページへリンクしているので、そのときは重ねて出さない（会期が終わるとそのブロックは消える）。
+  const latestGroup = yearGroups.length > 0 ? [...yearGroups].sort((a, b) => Number(b.year) - Number(a.year))[0] : null;
+  const upcomingLinksLatest = !!upcoming && !!latestGroup && upcoming.year === Number(latestGroup.year) && upcoming.categoryLabels.some((c) => c.href);
+  const latestResults = latestGroup && !upcomingLinksLatest ? latestGroup : null;
+
   const championTable = (() => {
     const years = [...new Set([...championRows.map((r) => r.year), ...cancelledYearSet])].sort((a, b) => Number(b) - Number(a));
 
@@ -553,6 +560,29 @@ export default function TournamentHubPage({
           </div>
         )}
 
+        {latestResults && (
+          <section className="mb-6" aria-labelledby="latest-results-heading">
+            <h2 id="latest-results-heading" className="text-base font-semibold mb-2">
+              {latestResults.year}年度の結果
+            </h2>
+            <ul className="flex flex-wrap gap-2">
+              {latestResults.categories.map((cat) => (
+                <li key={`latest-${cat.category}-${cat.age}-${cat.gender}`}>
+                  <Link href={cat.href}>
+                    <span className="inline-block bg-info-bg text-info px-3 py-1 rounded-full text-sm hover:opacity-80 transition">{cat.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 text-xs text-text-muted">
+              過去の年度は
+              <a href="#yearly-results" className="text-link hover:underline">
+                年度別結果
+              </a>
+              へ。
+            </p>
+          </section>
+        )}
         {upcoming && <UpcomingTournamentSection data={upcoming} />}
 
         <RelatedTournamentsBlock links={relatedLinks} />
@@ -701,7 +731,9 @@ export default function TournamentHubPage({
           )
         ) : (
           <section className="mb-10">
-            <h2 className="text-lg font-bold mb-3">年度別結果</h2>
+            <h2 id="yearly-results" className="text-lg font-bold mb-3">
+              年度別結果
+            </h2>
             {yearSections.map(({ year, group: g, cancelled: c }) =>
               c ? (
                 // 中止の年。日程・会場は「中止時点の開催予定」なので、実績と同じ書き方
