@@ -87,8 +87,11 @@ PDF から読み取る部分は [pdf-import.md](./pdf-import.md)。
 
 ## 公式サイト（SPA）から読むとき
 
-PDF ではなくブラウザの画面から読む大会がある（アジア競技大会2026 の公式リザルトサイトは Vue の SPA で、
-日程データが HTTP の JSON として見えない）。手順は
+PDF ではなくブラウザの画面から読む大会がある（アジア競技大会2026 の公式リザルトサイトは Vue の SPA）。
+裏の API（`back.results.asiangames2026.org/s/AG2026/en/TST/{schedule/daily/<日付>|results/<試合キー>}`）は
+**zlib 圧縮の JSON を文字列として返す**ので、ネットワーク一覧で JSON に見えない。ブラウザ内で `fetch` →
+各文字を1バイトに戻して `DecompressionStream('deflate')` で読める。**curl からは 403**（CloudFront で拒否）なので、
+ブラウザで取り出した結果を転記し、ハッシュで一致を確かめる。手順は
 [upcoming-tournaments-runbook.md](./upcoming-tournaments-runbook.md) S11。読み方の要点:
 
 - **ページ遷移の完了を待たずに読むと、前のページの内容をそのまま読む**（待ち時間を足しても起きる）。

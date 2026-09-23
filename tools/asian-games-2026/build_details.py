@@ -16,6 +16,7 @@
 
 団体戦の対戦ごとの記録（オーダー）は ADR-020 の `matches` として試合の中に持つ。
 選手は、個人種目の出場記録がある人だけ姓・名で持ち、それ以外は名前だけ（participants には足さない）。
+個人種目（混合・シングルス）はゲームごとのポイントを試合の `games` に持つ（団体の対戦と同じ形）。
 途中棄権は `status: 'retired'`、不戦勝（片側がペアを出さない）は `status: 'walkover'`。
 
 未実施の試合は勝者・スコアを持たない。成績は ADR-007 の「進行中」（rank.kind: ongoing）。
@@ -206,6 +207,9 @@ def build(event, rows, individual_keys, draw_slots):
             "prevMatchId": None,
             "matchId": f"match-{len(matches) + 1}",
         }
+        if row.get("games"):
+            # 個人種目のゲームごとのポイント（[entries[0] の得点, entries[1] の得点] を実施順）
+            match["games"] = [list(g) for g in row["games"]]
         if row.get("rubbers"):
             match["matches"] = build_rubbers(row, individual_keys)
         matches.append(match)
@@ -348,6 +352,16 @@ def check(event, data, rows, expected):
         won_b = sum(1 for s in m["matches"] if s["winner"] == "B")
         if (won_a, won_b) != (m["scores"].get(str(a)), m["scores"].get(str(b))):
             problems.append(f"{m['matchId']}: オーダーの勝ち数 {won_a}-{won_b} が本数 {m['scores']} と合わない")
+
+    # 個人種目のポイント: 取ったゲームの数が本数と一致するか（同点のゲームは無い）
+    for m in data["matches"]:
+        if "games" not in m:
+            continue
+        a, b = m["entries"]
+        won_a = sum(1 for g in m["games"] if g[0] > g[1])
+        won_b = sum(1 for g in m["games"] if g[1] > g[0])
+        if won_a + won_b != len(m["games"]) or (won_a, won_b) != (m["scores"].get(str(a)), m["scores"].get(str(b))):
+            problems.append(f"{m['matchId']}: ポイントの取得ゲーム {won_a}-{won_b} が本数 {m['scores']} と合わない")
 
     # 決勝Tの席が参照する予選リーグの順位が results にあるか
     slots = (data.get("knockoutDraw") or {}).get("slots") or []
