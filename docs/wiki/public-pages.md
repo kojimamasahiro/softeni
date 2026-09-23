@@ -44,6 +44,7 @@
 - `getStaticPaths` は `details/{tournamentId}` 配下の年度ディレクトリ走査。`generation` は
   `index.json` / `local_index.json` の `generationId`（不明なら `unknown`）。
 - **実際に詳細データがある年度・種別だけ**をチップでリンク化し、年度降順で表示する。
+- **最新年度の種目チップを H1 直下にも出す**（年度別結果が下部のため）。開催前ブロックが同年の結果へリンク中は出さない。
 - 各詳細 JSON から優勝者を抽出して「歴代優勝者」表を出す。構造化データは `CollectionPage` /
   `ItemList` / `BreadcrumbList`。
 - 表の下に「記録（最多優勝・連覇）」節と同文の FAQ（`lib/championRecords.ts`）。**個人戦は選手**（playerId 優先）、
