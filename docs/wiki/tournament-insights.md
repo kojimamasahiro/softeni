@@ -230,6 +230,7 @@ prebuild が `scripts/check-tournament-insights.mjs` を走らせ、**`verifiedA
 - [news-context-blocks.md](./news-context-blocks.md) — 同じ枠に並ぶテンプレート生成の文脈ブロック
 - [sns-story-platform.md](./sns-story-platform.md) — 設計の経緯（アイデアバックログ側）
 - [seo.md](./seo.md) #11 — 大会期間中の更新方針（速報クエリは狙わない）
+- 過去年の記事の「N連覇」が翌年の結果で不一致になった不具合（修正済み）: [raw/2026-08-02](../raw/2026-08-02-bug-verify-streak-unbounded-by-article-year.md)
 - 実施記録: [社会人2026 1日目](../raw/2026-08-29-zennihon-workers-2026-day1-insight.md) /
   [社会人2026 男子ダブルス確定版](../raw/2026-08-30-zennihon-workers-2026-boys-final-insight.md) /
   [インカレ2026 ダブルス](../raw/2026-09-09-incare-2026-doubles-insight.md) /

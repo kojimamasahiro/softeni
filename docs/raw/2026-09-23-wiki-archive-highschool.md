@@ -1,16 +1,26 @@
+# wiki アーカイブ: highschool.md（2026-09-23 圧縮前の全文）
+
+2026-09-23 に [docs/wiki/highschool.md](../wiki/highschool.md) が1ページの目安（12,000字）を超えたため、
+[docs/prompts/slim-wiki-page.md](../prompts/slim-wiki-page.md) の手順で現在の仕様だけへ圧縮した。
+以下は圧縮前の全文をそのまま写したもの（リンクは `../wiki/` 基準に置き換え）。
+作業ノートは [2026-09-23-docs-raw-growth-and-wiki-slim.md](./2026-09-23-docs-raw-growth-and-wiki-slim.md)。
+
+---
+
 # Highschool Pages（高校カテゴリ）
 
 > **適用範囲: 学校スポーツ共通**。都道府県→学校のツリー、メンバー節、歴代記録の作り方は他競技でも使える。
 > 大会名（インターハイ・ハイジャパ・選抜）と `lib/highschool.ts` の定数はソフトテニス固有。
-> **2026-09-23 に重複と日付つきの経緯を圧縮した。** 圧縮前の全文は [raw/2026-09-23-wiki-archive-highschool.md](../raw/2026-09-23-wiki-archive-highschool.md)。
 
 高校カテゴリの公開ページ方針と、全国大会の歴代記録ページの現状仕様。
-高校カテゴリの URL 一覧と公開面全体の構成は [public-pages.md](./public-pages.md)「ルーティング」を参照。
-SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md) #3。
+高校カテゴリの URL 一覧と公開面全体の構成は [public-pages.md](../wiki/public-pages.md)「ルーティング」を参照。
+SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](../wiki/seo.md) #3。
 
 ## ページ構成と読むデータ
 
-（統合前の古い記録は [raw/2025-12-13-highschool-pages.md](../raw/2025-12-13-highschool-pages.md)。現行は下の表が正。）
+（2026-09-19 に docs 直下の `highschool-pages.md` から統合。統合前の全文は
+[raw/2025-12-13-highschool-pages.md](../raw/2025-12-13-highschool-pages.md)。**そちらは4ページしか
+書かれていない古い記録**なので、現行は下の表が正。）
 
 | ページ | 読むデータ | 出すもの |
 |---|---|---|
@@ -23,9 +33,9 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 
 - すべて SSG（ビルド時にデータを取得する）。
 - `data/highschool/**` は `scripts/highschool/` のパイプラインが生成する（鮮度チェックは
-  [data-import.md](./data-import.md)）。`summary.json` は学校×大会×年度の成績、
+  [data-import.md](../wiki/data-import.md)）。`summary.json` は学校×大会×年度の成績、
   `analysis.json` は学校ごとの出場数・種目別の最新/最高成績・主な選手。
-- **公開ページの説明文に内部ファイル名・データ構造名を出さない**（[ux-writing.md](./ux-writing.md)）。
+- **公開ページの説明文に内部ファイル名・データ構造名を出さない**（[ux-writing.md](../wiki/ux-writing.md)）。
 
 ## 高校カテゴリの公開ページ方針
 
@@ -37,11 +47,14 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 都道府県ページでは、直近1年の主要大会結果ページに掲載された学校を優先表示する
 - 高校大会の `mixed` 結果は男子・女子の両方で参照できるようにする
 - FAQ / CollectionPage / Article / ItemList などの構造化データで文脈を補う
-- `/highschool` の 301 は `public/_redirects` が正（ページ側の meta refresh はフォールバック）
-- 学校ページのサマリーの主要4大会は、インターハイ・国体・ハイスクールジャパンカップ・選抜
+- 公開ページの説明文では、内部ファイル名・データ構造名・実装都合の表現を出さず、機能として自然に伝わる言い回しを優先する
+- `/highschool` は `public/_redirects`（Cloudflare Pages）で `/highschool/boys/` へ 301 リダイレクトする（ページ側の meta refresh はフォールバック）。sitemap からは除外する
+- 都道府県一覧では収録 0 校の県はリンクせず「収録準備中」として表示する
+- 都道府県ページの学校一覧は直近 3 年分の成績のみ表示し、それ以前は学校ページへ誘導する
+- 学校ページのサマリーはインターハイに加え、国体・ハイスクールジャパンカップ・選抜を含む主要 4 大会の掲載数・最新・最高成績を表示する
 - 学校ページに年度別メンバー一覧を表示する（「◯◯高校 ソフトテニス メンバー」検索意図への対応）。収録大会結果に選手名が掲載された選手のみを年度別に集計し、全部員の名簿ではない旨を明記する。選手ページがある選手は `/players/{id}/results/` へリンクし、title / description / FAQ にも「メンバー」を含める
-  - **団体戦のオーダー（ADR-020）に出た選手も含める**（団体戦の `participants` は学校単位のため）。`lib/highschoolTeamMatchMembers.ts` が年度別メンバーにだけ足す（高校の大会のみ・成績には入れない）。「名前だけ」の選手も含め、リンクは張らない（[経緯](../raw/2026-09-19-idea-team-match-order-seo.md)）
-  - **地区大会（`highschool-*-block` 9地区＋`highschool-tokai-senbatsu`）の出場選手も含める**。地区大会は成績・ランキング・主な卒業生に統合しない方針だが、メンバーは出場の事実なので**例外**。summary.json は触らず `lib/highschoolBlockMembers.ts` がビルド時に足す。description・FAQ に最新年と人数（例「2026年は17名」）を出し、導入文の直下に `#members` へのリンクを置く（[経緯](../raw/2026-09-14-highschool-members-seo.md)）
+  - **2026-09-19: 団体戦のオーダー（ADR-020）に出た選手もメンバーに含める**。団体戦の `participants` は学校単位なので、レギュラーが1人も出ていなかった。地区大会と同じ形で `lib/highschoolTeamMatchMembers.ts` が年度別メンバーにだけ足す（高校の大会のみ・成績には入れない）。「名前だけ」の選手も含める（リンクは張らない。[経緯](../raw/2026-09-19-idea-team-match-order-seo.md)）
+  - **2026-09-14: 地区大会（`highschool-*-block` 9地区＋`highschool-tokai-senbatsu`）の出場選手もメンバーに含める**。高校カテゴリは地区大会を成績・ランキング・主な卒業生に統合しない方針だが、メンバーは順位ではなく出場の事実なので**例外**とした。集計パイプライン（summary.json）は触らず、`lib/highschoolBlockMembers.ts` がビルド時に details を読んで年度別メンバーにだけ足す。実測で361ページに1,383名が加わり、155ページは最新年のメンバーが地区大会からしか取れなかった。あわせて description・FAQ に最新年と人数（例「2026年は17名」）を出し、導入文の直下にメンバー節（`#members`）へのリンクを置いた。経緯は [raw/2026-09-14-highschool-members-seo.md](../raw/2026-09-14-highschool-members-seo.md)
 - 高校カテゴリ共通の定数・判定ロジック（大会優先度、ベスト8 判定、mixed 表示判定など）は `lib/highschool.ts` に集約する
 
 ## 高校 全国大会の歴代記録ページ（2026-06 追加）
@@ -57,11 +70,12 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 歴代優勝サマリーの下に「記録（最多優勝・連覇）」節と同文の FAQ を出す（2026-09-22、`lib/championRecords.ts`。高校は個人戦も所属校で数える）。
   **種目別**に数え、収録範囲の中だけ（画面に範囲を明記）。連覇は収録のある連続した年だけで、収録の無い年・中止の年をまたぐと途切れる。
   個人戦は所属校で数え、ペアが2校なら両校に数える。最多が1回・連覇が無い種目は出さない。規則は `npm run records:test`（CI）
-- 所属校→学校ページ（`getSchoolResolver()`）と選手名→`/players/{id}/results`（`getPlayerResolver()`）へ内部リンクする。どちらも `lib/highschoolNationalTournaments.ts` にあり、モジュールスコープで一度だけ構築する。**一意に実在を確認できたときだけリンク**し、それ以外は名前だけ出す（デッドリンク防止）。学校は `summary.json` の `(team, prefectureId, gender)`（`mixed` は男女両方）、選手は `data/players/index.json` の `count>=5`（`results.tsx` の `getStaticPaths` と同条件）で、同姓同名は最初の ID。描画は `PlayerNames`（`playerLinks`）
+- 上位入賞の所属校から各校の戦績ページ（`/highschool/{gender}/{prefectureId}/{teamId}`）へ内部リンクする（2026-06 追加）。リンク解決は `getSchoolResolver()`（`lib/highschoolNationalTournaments.ts`）が `data/highschool/prefectures/<prefId>/summary.json` を唯一の正として `(team, prefectureId, gender)` の実在を確認し、**一意に特定できる場合のみ**リンクする（デッドリンク防止。同名校が複数残る場合はリンクせず名前のみ表示）。`mixed` は男子・女子どちらのページにも出る規約に合わせる。リゾルバはモジュールスコープで一度だけ構築してキャッシュする
+- 上位入賞・歴代優勝サマリーの選手名から各選手の試合結果ページ（`/players/{id}/results`）へ内部リンクする（2026-06 追加）。リンク解決は `getPlayerResolver()`（`lib/highschoolNationalTournaments.ts`）が `data/players/index.json` を唯一の正として、結果ページが実在する選手（`count>=5`、`results.tsx` の `getStaticPaths` と同条件）のみを姓名一致でリンクする（デッドリンク防止。結果ページが無い選手は名前のみ表示）。同姓同名は最初の ID を使う（学校ページ・`players/index.tsx` と同じ規約）。`RecordPlacement.playerLinks` / `ChampionCell.playerLinks` として保持し、ページ側は `PlayerNames` で描画する。リゾルバはモジュールスコープで一度だけ構築してキャッシュする
 - 開催予定セクション（2026-06 追加）: `information/{tournamentId}.json` に登録があり、まだ結果（`details`）が無い年度を「開催予定（または集計待ち）」として新しい年順に表示する（`UpcomingEdition` / `upcoming`）。開催地・日程・実施予定種目ラベル・出典（`source` / `sourceUrl`、無ければ公式 URL）を載せ、結果確定前から大会の存在と検索意図を受ける。先頭の `upcoming[0]` は title / description / FAQ に「N年大会は…開催予定です」として動的に埋め込む
-- 構造化データは `BreadcrumbList`（`Breadcrumb.tsx` 由来。[public-pages.md](./public-pages.md#パンくずの構造化データbreadcrumblist)）/ `ItemList`（歴代優勝者）/ `FAQPage` を出力する。canonical は各ページ自身。`dateModified` は `information` 中の最新日付（`lastModified`）由来で、ビルド日は使わない。ページ下部に「最終更新」として同じ日付を表示する
+- 構造化データは `BreadcrumbList`（`Breadcrumb.tsx` 由来。[public-pages.md](../wiki/public-pages.md#パンくずの構造化データbreadcrumblist)）/ `ItemList`（歴代優勝者）/ `FAQPage` を出力する。canonical は各ページ自身。`dateModified` は `information` 中の最新日付（`lastModified`）由来で、ビルド日は使わない。ページ下部に「最終更新」として同じ日付を表示する
 - 既存の大会ハブ（`/tournaments/[generation]/[tournamentId]`）と対象データは重なるが、こちらは高校カテゴリ内の導線として「ベスト4までの歴代上位入賞」を主軸に差別化する
-- SEO: 高校全国大会は検索面をこの高校歴代ページへ集中させる方針（2026-06 決定）。重複する汎用大会ハブ（`/tournaments/highschool/highschool-championship` ほか）は `noindex, follow` にし、ハブ→高校歴代ページの誘導バナーで評価と回遊を流す。カニバリ整理の全体像と判定実装は [seo.md](./seo.md) #3 を参照
+- SEO: 高校全国大会は検索面をこの高校歴代ページへ集中させる方針（2026-06 決定）。重複する汎用大会ハブ（`/tournaments/highschool/highschool-championship` ほか）は `noindex, follow` にし、ハブ→高校歴代ページの誘導バナーで評価と回遊を流す。カニバリ整理の全体像と判定実装は [seo.md](../wiki/seo.md) #3 を参照
 - `/highschool/[gender]` の都道府県一覧の上に入口カードを追加して回遊させる
 - 静的ルートが優先されるため `/highschool/[gender]`（boys/girls）とは衝突しない
 - Assumption: 2022 インターハイ男子ダブルスは元データに優勝・準優勝が複数登録されており、ページはこれを忠実に表示する（重複の整理が必要なら元データ側で対応する）
@@ -71,7 +85,7 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 
 対象 URL: 大会別歴代ページ、都道府県ページ、学校ページの**既存3種**（新規 URL は作らない）。
 
-- 会期中は「{通称}{年} 結果」の需要がピークになるが、**新規ページを作ってもインデックスが間に合わない**。そこで既にインデックス済みの3種のページを更新して受ける。設計判断と背景は [seo.md](./seo.md) #11 の 2026-08-01 追記、経緯は [raw/2026-08-01-in-progress-tournament-seo.md](../raw/2026-08-01-in-progress-tournament-seo.md)
+- 会期中は「{通称}{年} 結果」の需要がピークになるが、**新規ページを作ってもインデックスが間に合わない**。そこで既にインデックス済みの3種のページを更新して受ける。設計判断と背景は [seo.md](../wiki/seo.md) #11 の 2026-08-01 追記、経緯は [raw/2026-08-01-in-progress-tournament-seo.md](../raw/2026-08-01-in-progress-tournament-seo.md)
 - 「開催中」の判定は**日付ではなくデータの状態**で行う。`computeResultCoverage`（`lib/tournamentCoverage.ts`・ADR-007）の `status` が `in_progress`（一部反映済み）または `not_recorded`（組み合わせのみ）の種目を対象にする。`completed` / `abandoned` は従来どおり「年度別の記録」側で表示する
 - 大会別歴代ページ: `InProgressEdition` / `InProgressCategory`（`lib/highschoolNationalTournaments.ts`）。**上位入賞（優勝〜ベスト4）が未確定でも**、出場校数・都道府県数・エントリー数・種目別の進捗・現在の勝ち上がり・年度別結果ページへの直リンクを最上部に出す。`upcoming`（開催予定）からは開催中の年を除外し、同じ年を二重に出さない
 - 都道府県ページ・学校ページ: `lib/highschoolInProgress.ts` が `(都道府県, 性別)` と `(学校名, 都道府県, 性別)` の索引をモジュールスコープで一度だけ構築し、`getPrefectureInProgress` / `getSchoolInProgress` で引く。学校ページ・選手結果ページへのリンク解決は歴代ページと同じ `getSchoolResolver` / `getPlayerResolver` を再利用する（デッドリンク防止）
@@ -90,8 +104,9 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 - 掲載閾値: 選手結果ページ実在（count>=5）AND（全日本系大会ベスト8以上 or STリーグ出場 or 国際大会出場）。ノイズ最小化を優先した設計（2026-07-18 ユーザー決定）
 - 表示: 上位5名・実績順。「代表実績1行（大会名+成績+年）・最後に確認できた所属」。選手結果ページへリンク。FAQ「◯◯出身の主な選手は？」も動的生成
 - 実績の序列: 大会tier（全日本主要20/国際18/STリーグ16/その他10）+ 成績（優勝9/準優勝7/ベスト4 5/ベスト8 3）。同点は新しい年を優先
+- 掲載規模: 約64学校×性別（全632中）。閾値により強豪校に自然と集中する
 - 強豪校ランキングの配点には使わない（ランキングの定義は「高校の成績」のまま）
-- 「{高校名}の選手の進路」節（出身中学＋進学先大学）の下に置く。説明文に掲載条件を明記し、網羅の「進路」と実績のハイライトという役割の違いを示す（重複にマークは付けない）。仕様は [university.md](./university.md)「高校の学校ページの『進路』節」
+- **2026-09-13: 「進路」節の下に移した（案A）**。同じページに「{高校名}の選手の進路」節（h3「出身中学」＋「進学先大学」）を新設し、主な卒業生はその下に残した。説明文に掲載条件（全日本の大会でベスト8以上・STリーグ出場・国際大会出場）を明記し、網羅の「進路」と実績のハイライトという役割の違いを文言で示している（重複は277件中136件＝49%。マークは付けない）。仕様は [university.md](../wiki/university.md)「高校の学校ページの『進路』節」
 - 同姓同名は既存規約（players/index.json の最初の id・homonym は名前ベース）に従う。改姓による追跡切れは対応しない
 - **都道府県版（2026-07-18 追加）**: 都道府県ページにも「{県名}の高校出身の主な選手」を表示（`getPrefectureAlumni`。県内高校の卒業生を横断して実績順の上位5名、同一選手が県内複数校に出現した場合は最良1件に統合）。出身校リンクは summary の team→teamId で解決し、解決できない校名はテキスト表示（デッドリンク防止）。FAQ「{県名}の高校出身の主な選手は？」も動的生成
 - 実装: `lib/highschoolAlumni.ts`、`src/pages/highschool/[gender]/[prefectureId]/[teamId].tsx`、`src/pages/highschool/[gender]/[prefectureId]/index.tsx`
@@ -113,12 +128,12 @@ SEO カニバリ集中（高校歴代へ寄せる方針）は [seo.md](./seo.md)
 
 ## 発展候補アイデア一覧（Idea Backlog）
 
-表の「状況・目的」は**状況と1行の目的・残りだけ**を書く（数値・経緯は raw へ。規則は [idea-backlog.md](./idea-backlog.md)「使い方」）。
+表の「状況・目的」は**状況と1行の目的・残りだけ**を書く（数値・経緯は raw へ。規則は [idea-backlog.md](../wiki/idea-backlog.md)「使い方」）。
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 開催中の全国大会を既存ページで受ける（会期中SEO） | **実装済み**（2026-08-01）。会期中の検索を新規URLなしで既存ページが受ける。残は2026年9月末の平常期GSCチェック（[ランブック](./highschool-seo-m4-verification.md)） | [経緯・検算](../raw/2026-08-01-in-progress-tournament-seo.md) / [seo.md #11](./seo.md) |
+| 開催中の全国大会を既存ページで受ける（会期中SEO） | **実装済み**（2026-08-01）。会期中の検索を新規URLなしで既存ページが受ける。残は2026年9月末の平常期GSCチェック（[ランブック](../wiki/highschool-seo-m4-verification.md)） | [経緯・検算](../raw/2026-08-01-in-progress-tournament-seo.md) / [seo.md #11](../wiki/seo.md) |
 | 高校ソフトテニス 強豪校ランキングページ | **実装済み**（2026-07-18）。`/highschool/rankings/`。残は9月末の平常期GSCチェック、国体データ、県別展開・公私立フィルタ | [アイデア・計画](../raw/2026-07-17-idea-highschool-strong-school-ranking.md) / [SERP 調査](../raw/2026-07-17-highschool-head-query-seo.md) |
 | 高校総体 地方（地区）大会結果の掲載 | **投入済み**（2026-07-26、9地区）。高校カテゴリへは統合しない。残は `needsReview` の名前分割の精度確認、打ち切り語彙の追記、本番ビルドでの目視 | [アイデア](../raw/2026-07-22-idea-highschool-block-tournament-data.md) / [ページ構成決定](../raw/2026-07-22-highschool-block-tournament-page-structure.md) / [打ち切りUI設計](../raw/2026-07-26-abandoned-tournament-ui-design.md) |
-| 地区大会結果とインターハイnewsプレビューの連携 | **一部実装済み**（2026-07-26、団体戦対応 2026-07-30）。「前哨戦・再戦」を4面に表示。残は通算対戦成績（head-to-head）。仕様は [news-context-blocks.md](./news-context-blocks.md) | [アイデア](../raw/2026-07-26-idea-block-tournament-news-integration.md) |
-| 学校ページの回遊強化（横リンクの新設） | **発散フェーズ**（2026-08-15）。学校ページに同県の他校への横リンクを足し、回遊を増やす。未決は絞り方。計測は[回遊検証ランブック](./circulation-verification.md)（ベースラインは2026-09-09より後の期間で取る） | [アイデア](../raw/2026-08-15-idea-highschool-school-page-cross-links.md) |
+| 地区大会結果とインターハイnewsプレビューの連携 | **一部実装済み**（2026-07-26、団体戦対応 2026-07-30）。「前哨戦・再戦」を4面に表示。残は通算対戦成績（head-to-head）。仕様は [news-context-blocks.md](../wiki/news-context-blocks.md) | [アイデア](../raw/2026-07-26-idea-block-tournament-news-integration.md) |
+| 学校ページの回遊強化（横リンクの新設） | **発散フェーズ**（2026-08-15）。学校ページに同県の他校への横リンクを足し、回遊を増やす。未決は絞り方。計測は[回遊検証ランブック](../wiki/circulation-verification.md)（ベースラインは2026-09-09より後の期間で取る） | [アイデア](../raw/2026-08-15-idea-highschool-school-page-cross-links.md) |

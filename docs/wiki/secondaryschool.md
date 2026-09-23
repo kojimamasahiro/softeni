@@ -184,5 +184,6 @@ npm run secondaryschool:build   # 索引と進路をまとめて生成
 - [team-player-identity.md](./team-player-identity.md) — 名寄せの運用と alias の大会スコープ
 - [ADR-013](../adr/ADR-013-scoped-team-name-aliases.md) / [ADR-014](../adr/ADR-014-pathway-name-match.md)
 - 検討の経緯: [raw/2026-08-12](../raw/2026-08-12-idea-juniorhigh-category-pages.md) /
+  [公開チェックリスト](../raw/2026-08-12-secondaryschool-release-checklist.md) /
   [raw/2026-09-12](../raw/2026-09-12-idea-primaryschool-category.md) /
   [raw/2026-09-13](../raw/2026-09-13-prefecture-achievements.md)

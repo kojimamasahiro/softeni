@@ -159,7 +159,8 @@ PDF の読み方は大会・年度ごとに違うが、**読み終わったあ�
 - **異体字ゆれと校名変更は分けて扱う**。多数派に寄せるのは表記ゆれまでで、**校名変更後の名前に遡って寄せない**
   （当時の表記としては原典が正しい）。
 - **`tempId` は `姓_名_学校_都道府県` の4項目**。details 生成経路は tempId を見ないので3項目でも通るが、
-  **入力ツールに貼って人が入力した結果を書き出す経路だけ**は tempId が識別子になり年度間でずれる。
+  **入力ツールに貼って人が入力した結果を書き出す経路だけ**は tempId が識別子になり年度間でずれる
+  （[経緯](../raw/2026-09-16-pdf-to-players-tempid-four-parts.md)）。
 - **団体戦エントリーは `校名_都道府県` の2項目**。`prefecture` を **null のままにしない**
   （都道府県別集計やトーナメント表の所属表示が空になり、他大会の同じ学校と別チーム扱いになる）。
   大学連盟の大会は **`日本学連`** を入れる。
@@ -186,4 +187,5 @@ PDF の読み方は大会・年度ごとに違うが、**読み終わったあ�
 - [team-player-identity.md](./team-player-identity.md) — 学校名の名寄せ
 - [data-model.md](./data-model.md) — details の形
 - 年度ごとの実施記録は `docs/raw/2026-08-20〜2026-09-10` の各 `*-pdf-*-import.md`
-  （一覧は [raw/2026-09-18-wiki-archive-data-import.md](../raw/2026-09-18-wiki-archive-data-import.md) 内のリンク）
+  （一覧は [raw/2026-09-18-wiki-archive-data-import.md](../raw/2026-09-18-wiki-archive-data-import.md) 内のリンク）。
+  座標プリセットの年度差と OCR の実測は [raw/2026-08-20 全日本社会人2022](../raw/2026-08-20-zennihon-workers-2022-pdf-entries-ocr-finding.md)

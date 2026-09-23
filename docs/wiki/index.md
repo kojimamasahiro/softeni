@@ -24,6 +24,7 @@
 - [Data Import](./data-import.md) `混在`
 - [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在`
 - [PDF からの取り込み](./pdf-import.md) `汎用`
+- [団体戦のオーダーの取り込み](./team-match-order-import.md) `混在`
 - [Deployment](./deployment.md) `汎用`
 
 ## Score機能（score.softeni-pick / 動画レビュー）

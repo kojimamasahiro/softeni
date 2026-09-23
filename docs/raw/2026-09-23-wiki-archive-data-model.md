@@ -1,13 +1,21 @@
+# wiki アーカイブ: data-model.md（2026-09-23 圧縮前の全文）
+
+2026-09-23 に [docs/wiki/data-model.md](../wiki/data-model.md) が1ページの目安（12,000字）を超えたため、
+[docs/prompts/slim-wiki-page.md](../prompts/slim-wiki-page.md) の手順で現在の仕様だけへ圧縮した。
+以下は圧縮前の全文をそのまま写したもの（リンクは `../wiki/` 基準に置き換え）。
+作業ノートは [2026-09-23-docs-raw-growth-and-wiki-slim.md](./2026-09-23-docs-raw-growth-and-wiki-slim.md)。
+
+---
+
 # Data Model
 
 > **適用範囲: 混在**。大会→年度→種目→試合という形と、出典・推測に関する規約は汎用。
 > 種目名・団体戦の作り・score 機能はソフトテニス固有。
-> **2026-09-18 に現在の仕様だけへ圧縮し、2026-09-23 に再圧縮した。** 出典の誤りの実例・照合の実測・JSON の例は
-> [raw/2026-09-18-wiki-archive-data-model.md](../raw/2026-09-18-wiki-archive-data-model.md) /
-> [raw/2026-09-23-wiki-archive-data-model.md](../raw/2026-09-23-wiki-archive-data-model.md)。
+> **2026-09-18 に現在の仕様だけへ圧縮した。** 出典の誤りの実例・照合の実測・経緯は
+> [raw/2026-09-18-wiki-archive-data-model.md](../raw/2026-09-18-wiki-archive-data-model.md)。
 
 扱うデータは2系統: **静的 JSON**（`data/**`・`public/data/**`）と **Supabase**（score 機能の動的データ）。
-どこで動くかの全体像は [architecture.md](./architecture.md)。
+どこで動くかの全体像は [architecture.md](../wiki/architecture.md)。
 
 ## 大会データ
 
@@ -19,36 +27,47 @@
 | 公式発表された代表選手団 | `data/tournaments/delegations/*.json` |
 | 地方大会の巡回元 URL | `data/local-sources/prefecture-sources.json` |
 
-名寄せ用データ（詳細は [team-player-identity.md](./team-player-identity.md)）: チームマスタ `data/teams/teams.json` ＋
+名寄せ用データ（詳細は [team-player-identity.md](../wiki/team-player-identity.md)）: チームマスタ `data/teams/teams.json` ＋
 文脈 `team-context.json` / 正準対応表 `data/tournaments/team-name-aliases.json` / 同姓同名の分割 `data/players/homonyms.json`。
-フィールドと語彙のリファレンスは [tournament-data-structure.md](./tournament-data-structure.md)。
+構造の解説は `docs/wiki/tournament-data-structure.md`。
+フィールドと語彙のリファレンスは [tournament-data-structure.md](../wiki/tournament-data-structure.md)。
 
 `data/local-sources/ignored-documents.json` は `prefectureSlug + normalizedUrl` 完全一致の恒久 deny list（空のまま維持）。
 **Deprecated**: `detected-documents.json`（候補検知ストア。未仕分け583件ごと 2026-09-12 に削除。
-[tournaments-local.md](./tournaments-local.md) / [ADR-001](../adr/ADR-001-local-source-detection-store.md)）。
+[tournaments-local.md](../wiki/tournaments-local.md) / [ADR-001](../adr/ADR-001-local-source-detection-store.md)）。
 
 ### 入力メモ（`note`）は公開しない
 
 `information/*.json` の年エントリ直下・`venues[]`・`delegations/*.json` が持つ `note` は**入力時のメモ**で、
 出典の誤りをどう直したか・なぜ値を書かなかったか、といった**内部の判断**が入る。これは公開しない。
 
-**「公開しない」は描画結果だけでなくページのペイロードも指す**（`getStaticProps` の props は `__NEXT_DATA__` として
-配信HTMLに丸ごと載る。[実例](../raw/2026-09-19-note-in-next-data.md)）。
+**「公開しない」は描画結果だけでなくページのペイロードも指す。** Next.js は `getStaticProps` が返した
+props を `__NEXT_DATA__` として配信HTMLに丸ごと埋めるので、**描画していなくてもHTMLには載る**。
+実際に年度別結果ページが `information` の年エントリをそのまま props に渡しており、`note` が配信HTMLに
+出ていた（2026-09-19 に発見・修正。[raw/2026-09-19-note-in-next-data.md](../raw/2026-09-19-note-in-next-data.md)）。
 
-- **`note` は `getStaticProps` で落とす**（描画側で出し分けない）。`information` の年エントリは
-  `lib/tournamentInformationPublic.ts` の `toPublicInformationEntry()` を通す。
-- 再発は型で止める。**2つとも要る**: `PublicTournamentInformationEntry` は `note?: never`（`Omit` では代入が通る）、
-  **`getStaticProps` の戻り値にページの props 型を付ける**（`Record<string, unknown>` に緩めると素通り）。
-- より一般に、**props には出したいフィールドだけを明示的に詰める**。
+規約: **`note` は `getStaticProps` で落とす**（描画側で出し分けない）。`information` の年エントリを
+props に載せるページは `lib/tournamentInformationPublic.ts` の `toPublicInformationEntry()` を通す。
+
+再発は型で止める。そのために2つ要る（片方だけでは効かない）:
+
+1. `PublicTournamentInformationEntry` は `note?: never`。単なる `Omit<…, 'note'>` だと
+   `note` 付きの値もそのまま代入できてしまう（余剰プロパティの検査はオブジェクトリテラルにしか効かない）
+2. **`getStaticProps` の戻り値にページの props 型を付ける**。`Record<string, unknown>` に緩めると
+   1 の型が参照されず素通りする
+
+より一般に、**props には出したいフィールドだけを明示的に詰める**。大会ハブ・大会一覧・
+ブロック/都道府県一覧・高校全国大会の歴代ページは元からそうなっており、`note` は載っていない。
 
 ### 代表名簿（`delegations`）
 
 `data/tournaments/delegations/{tournamentId}-{year}.json`。**国際大会に出る日本代表選手団の、公式発表の転記**。
-**当サイトのデータから導出できない外部由来の事実**なので:
+他の大会データと決定的に違うのは**当サイトのデータから導出できない外部由来の事実**である点。規約:
 
 - `source` / `sourceUrl` / `announcedOn` を**必ず持つ**。描画側はこれを併記する
 - **発表に無いことは書かない**（混合ダブルスのペア構成を過去のペア履歴から推測して補わない）
-- **選手のみを持つ**（スタッフは照合相手がサイト内に無く、転記の誤りを検出できないため）
+- **選手のみを持つ**（監督・トレーナーは持たない）。選手は氏名を `data/players/index.json` と
+  突き合わせて検証できるが、スタッフは照合相手がサイト内に無く転記の誤りを検出できないため
 
 | フィールド | 意味 |
 |---|---|
@@ -59,20 +78,30 @@
 | `note` | 入力時のメモ。**公開ページには出さない**（[入力メモ（`note`）は公開しない](#入力メモnoteは公開しない)） |
 
 生年月日・年齢は名簿にあっても取り込まない（個人情報で、掲載する用途が無い）。
-検査は `npm run check:upcoming` の **[4]**。表示は [public-pages.md](./public-pages.md)。
+検査は `npm run check:upcoming` の **[4]**。表示は [public-pages.md](../wiki/public-pages.md)。
 
-`details/**` に入れないのは、種目の割り当てを表現できず、ペア未発表の種目で entries が作れないため。
+`details/**` に入れないのは、entries 単位では**種目の割り当て**を表現できず、ペア未発表の種目で entries が作れず、
+年度別結果ページの URL が増えるため。
 
 ### 種目別の競技日程（`schedule`）
 
 `information` の `categories[].schedule` ＋ 年度レコードの `scheduleSource` / `scheduleSourceUrl` / `scheduleCheckedOn`。
 **主催者が種目ごとの日程を出している開催前・開催中の大会だけ**に書く。
 
+```json
+"scheduleCheckedOn": "2026-09-16",
+"categories": [
+  { "categoryId": "team-none-boys", "schedule": { "startDate": "2026-09-18", "endDate": "2026-09-20", "finalTime": "17:15" } }
+]
+```
+
 - `startDate` / `endDate` はその種目の最初の試合日〜決勝日（1日なら同じ値）。**間の毎日試合があるとは限らない**
 - `finalTime` は決勝の開始予定時刻（`HH:MM`、**会場の現地時刻**）。出典に無ければ省略
-- **出典が無ければ一切表示しない**。表示は「（予定）」＋出典・確認日（`scheduleCheckedOn`）を必ず併記
-- **推測で埋めない**（出典に無い日は書かず `note` に理由）。日単位の細かい進行は持たない
-- 出典は年度レコードに1つ（種目ごとに違う例がまだ無い。**Assumption**。出たら種目側へ移す）
+- **出典が無ければ日程は一切表示しない**（併記できないため）。`scheduleCheckedOn` は「いつ時点か」を出すため
+- **予定の転記であって実績ではない**。表示は「（予定）」＋出典・確認日を必ず併記する
+- **推測で埋めない**。出典に無い日は書かず、`note` に理由を残す
+- 日単位の細かい進行（何組が何時から）は持たない。「いつ見ればいいか」が分かる粒度まで
+- 出典を年度レコードに1つ持つのは、種目ごとに出典が違う例がまだ無いため（**Assumption**。出たら種目側へ移す）
 
 整形は `lib/categorySchedule.ts`、検査は `check:upcoming` の **[5]**。
 
@@ -82,10 +111,24 @@
 公式サイトの画面から形式を読み取れない大会だけ**に書く（[ADR-021](../adr/ADR-021-category-competition-format.md)）。
 ほとんどの大会は持たない。
 
-- フィールドは `summary`（**1つの文章**。組数・通過数を欄に分けない＝推測で埋める圧力を作らない）/ `assumptions[]` /
-  `source` / `sourceUrl` / `checkedOn`
-- **出典から決まらない点は `assumptions[]` へ**（画面で「当サイトの推定」と分けて出す）。無ければフィールドごと省く
-- **出典が無ければ表示しない**。出典は**種目側**に持つ。公開しない入力メモは `note`（`format` に混ぜない）
+```json
+"format": {
+  "summary": "19組を6つの予選リーグ（A〜F組。1組あたり2〜4組）に分け、勝ち上がった12組が決勝トーナメントを戦う。…",
+  "assumptions": ["決勝トーナメントへ進むのが各組の上位2組であることは公式に明記がなく、枠数（12）と組数（6）からの当サイトの推定です。"],
+  "source": "第20回アジア競技大会 公式リザルトサイト",
+  "sourceUrl": "https://results.asiangames2026.org/#/discipline/TST/competition",
+  "checkedOn": "2026-09-19"
+}
+```
+
+- **`summary` は1つの文章**。組数・通過数をフィールドに分けない。大会ごとに方式がばらばらで
+  再利用が効かないうえ、**欄があると推測で埋める圧力がかかる**（ADR-021）
+- **出典から決まらない点は `assumptions[]` へ**。画面には「当サイトの推定」と明記して本文と分けて出す。
+  推定が無ければフィールドごと省く（空配列を置かない）
+- **出典（`source` / `sourceUrl`）が無ければ表示しない**（`schedule` と同じ）。
+  出典は**種目側**に持つ（方式は種目ごとに出所が違うため。`schedule` は年度レコードに1つ）
+- `checkedOn` は「いつ時点か」。壊れた形式の値は表示しない
+- 公開しない入力メモは従来どおり `note`。`format` は公開する文章なので混ぜない
 
 整形は `lib/categoryFormat.ts`、表示は `CategoryFormatNotice.tsx`、検査は `npm run format:test`。
 
@@ -103,8 +146,9 @@
 年齢区分（`over50` 等）とは別物で、**年齢区分の重複出場（全日本シニアの over50 と over60 など）は正常**。
 検査は `npm run check:placements`。
 
-進出率の二重計上は `reachRates` 側で `placement.kind === 'unknown'` を分母から外して初めて解ける
-（[upcoming-tournaments-runbook.md](./upcoming-tournaments-runbook.md) の M2）。
+**この規約だけでは進出率の二重計上は解けない**（`isKnockoutSinglesDoublesMixed` が `appearsInKnockout` でも
+true になるため）。`reachRates` 側で `placement.kind === 'unknown'` を分母から外して初めて成立する
+（[upcoming-tournaments-runbook.md](../wiki/upcoming-tournaments-runbook.md) の M2）。
 
 ### 中止（開催されなかった回）
 
@@ -131,10 +175,13 @@
 
 `information/*.json` の各年レコードは開催地を2系統で持つ。
 
-- `location`（string）… 都道府県。**構造は書き換えない**（開催地フィルタの逆引き `prefNameToId[info.location]` が使う）
+- `location`（string）… 都道府県。**既存フィールドで、構造は書き換えない**
+  （`src/pages/tournaments/index.tsx` の `prefNameToId[info.location]` が開催地フィルタの逆引きに使う。
+  `"兵庫県、京都府"` のような値もあるが、整理は読み取り側を `venues` へ切り替えるときにまとめて行う）
 - `venues`（配列）… 会場の構造化データ。大会と会場が 1:N（日別・種目別・複数市区町村や複数県）だから配列
 
-**「書き換えない」は構造の話で、事実誤りは直す**（前年レコードからの複製で壊れる失敗モードが実在する。公開値）。
+**「書き換えない」は構造の話で、事実誤りは直す。** `location` は**前年レコードからの複製で壊れる**失敗モードが
+実在し（全中2026 が前年の県名のままだった）、年別結果ページの description に出る**公開値**なので誤りは利用者に見える。
 
 | フィールド | 型 | 必須 | 説明 |
 |---|---|---|---|
@@ -149,37 +196,62 @@
 | `usage` | string | | どの日・どの種目に使われたか。**自由文** |
 | `note` | string | | 出典の誤りを直した根拠、値を書かなかった理由。**公開しない**（上記の節） |
 
-レコード直下の任意フィールド: `guidelineUrl`（要項PDFのURL）、`note`（**公開しない**）。
+レコード直下に置ける任意フィールド: `guidelineUrl`（要項PDFのURL）、`note`（入力メモ。**公開しない**＝
+配信HTMLの `__NEXT_DATA__` にも入れない。上記の節）。
 型は `src/types/tournament.ts` の `TournamentInformationEntry` / `TournamentVenue`。
 
 記載ルール:
 
-- **`surface` は正規化語彙**（`クレー` / `ハード` / `砂入り人工芝` / `木床フローリング`）。施設名は原文を保つ
+- **`surface` は正規化語彙**（`クレー` / `ハード` / `砂入り人工芝` / `木床フローリング`）。施設名は識別子なので
+  原文を保つが、`surface` は絞り込みに使う閉じた語彙なので入力時に揃える。
+  確認は `grep -rho '"surface": "[^"]*"' data/tournaments/information/ | sort -u`
 - **`indoor` は持たない**（要項に明記が無く推測になるため）。**`usage` は構造化しない**
   （`categories` が空の年度があり紐付け先が無い）。
 - **推測で埋めない**。値が壊れていれば書かず `note` に理由を残す（桁落ちした TEL など）。
 
-#### 出典と検算
+#### 出典（要項PDF）の扱い
 
-手順の詳細はスキル `tournament-venue-data`。wiki に置くのは守ることだけ。
+**要項PDF自体に誤記がある**（括弧内の市名と住所の市名が食い違う等）。対処は
+`name`（修正値）＋ `nameRaw`（原文）＋ `note`（根拠）の3点セットで、**原文を必ず残す**。
+検出は **`address` 先頭の都道府県と `prefecture` の一致**で行う。
 
-- **要項PDF自体に誤記がある**。`name`（修正値）＋ `nameRaw`（原文）＋ `note`（根拠）の3点セットで**原文を必ず残す**。
-  検出は `address` 先頭の都道府県と `prefecture` の一致。
-- **出典が正しくても現状と違うことがある**: 要項は変更前のまま公開され続ける（変更要項は別ドメインのことも）。
-  年の取り違えは既存の `startDate` と突き合わせ、PDF の新旧は**メタデータの作成日時**で判定する。未発表の項目は書かない。
-- `data/local-sources/jsta-yearly-events/{年度}.json`（日本連盟の日程・開催地一覧PDFの手動転記。2024年度以降）は
-  **開催地の正としないが、書き換えもしない**。`venue-candidates.json` は突き合わせのレビュー用候補ストア。
-- 照合は `location` の検算にも使える。**日付だけの照合は同日開催の別大会と誤マッチする**（大会名の類似度を併用）、
-  **都道府県の切り出しは47都道府県のリストで前方一致**（`..[県]` の正規表現は誤検出）、2023年以前は機械照合できない。
-- 人が仕分けないと進まないストアは溜まって止まる（`detected-documents.json` の前例）。**育てるなら出口を先に決める**。
+**出典が正しくても現状と違うことがある。**
+
+- **要項PDFは変更前のまま公開され続ける**（地震による開催地変更が反映されない実例あり）。
+  要項を取ったら**同じ大会の新しい告知がないか確認する**。**変更要項は別ドメインに出ることがある**。
+- **`data/local-sources/jsta-yearly-events/{年度}.json` を開催地の正としない**。日程一覧PDFの写しなので
+  発行後の変更が反映されない。原本の写しとして正しいので**書き換えない**。
+- **年を必ず確かめる**。要項PDFは大会名に年が入らないことがあり、古い年の要項と取り違えやすい。
+  既存レコードの `startDate` と突き合わせると気づける。
+- **PDFの新旧はファイル名・URLの日付ではなくメタデータの作成日時で判定する**
+  （`python3 -c "import pdfplumber;print(pdfplumber.open('x.pdf').metadata)"`）。
+- 変更後にまだ発表されていない項目は**書かない**（`note` に理由）。
+
+#### 取得元と検算
+
+- `data/local-sources/jsta-yearly-events/{年度}.json` — 日本連盟の「大会日程及び開催地一覧」PDF
+  （`t_records/{年度}/{年度}_taikai_alle.pdf`）を**手動転記**したもの。2024年度以降のみ。市区町村レベルまで
+- 施設名・住所・面数・サーフェスは各大会の**要項PDF**の「4. 会場」節
+- `data/local-sources/venue-candidates.json` — 上記と `information` を突き合わせたレビュー用候補ストア
+
+**この照合は `location` の検算にも使える**（`startDate` 一致＋大会名の類似度で突き合わせ、都道府県を比較）。落とし穴:
+
+- **日付だけの照合は同日開催の別大会と誤マッチする**。大会名の類似度を併用する（誤マッチは confidence 0.5前後に落ちる）
+- **都道府県の切り出しを `..[県]` 系の正規表現で書かない**（和歌山県・神奈川県・鹿児島県が誤検出）。47都道府県のリストで前方一致する
+- **「連続する年で `location` が同じ」だけでは誤りを判定できない**（固定会場の正常データが大半）
+- **2023年以前は機械照合できない**（jsta ソースが2024年度以降のため）
+- `venue-candidates.json` は**「人が仕分けないと何も進まない」形式**で、同型の `detected-documents.json` は
+  583件を溜めて停止した。**育てるなら出口を先に決めること**
 
 #### 施設マスタと描画先
 
-施設マスタ（`data/venues/venues.json`）は**まだ作らない**。**同一施設が3回以上出現した時点で切り出す**。
+施設マスタ（`data/venues/venues.json`）は**まだ作らない**。当面は `venues[]` にインラインで持ち、
+**同一施設が3回以上出現した時点で切り出す**（逆向きの正規化は ID 体系を情報不足のまま決めることになる）。
+`aliases` に旧称を貯めておくと切り出し時の名寄せが楽になる。
 
 描画先は**大会ハブの「開催前」ブロックだけ**（`UpcomingTournamentSection.tsx`）。
 **確定した過去の大会では描画しない**（需要が未検証のため）。補充は
-[upcoming-tournaments-runbook.md](./upcoming-tournaments-runbook.md) の S7。
+[upcoming-tournaments-runbook.md](../wiki/upcoming-tournaments-runbook.md) の S7。
 
 ## 選手データ
 
@@ -203,8 +275,9 @@
 
 - 団体戦の `participants[]` は姓名を持たず（`lastName`/`firstName` が `null`）、`team` と `prefecture` だけを持つ
 - 表示は **「チーム名（都道府県）」**（例: `東北（宮城県）`）。`prefecture` が無い大会はチーム名のみ
-- 判定は `isTeamFormatPlayers()` に集約する。**`lastName === null` で判定しない**（`unpackTournamentDetailData()` が
-  `null` を `''` にするので、個人戦扱いになり `（東北）` のような表示になる）
+- 判定は `isTeamFormatPlayers()` に集約する。**`lastName === null` で判定してはいけない**——
+  `lib/packedPageData.ts` の `unpackTournamentDetailData()` が `readString()` で `null` を `''` にするため、
+  ページ側に届く時点で `null` ではない。踏むと個人戦扱いになり `（東北）` のような表示になる
 
 ### 団体戦の対戦ごとの記録（オーダー）（[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）
 
@@ -216,7 +289,7 @@
 - 選手は、同じ氏名・同じ学校の個人戦の出場記録があれば `{ lastName, firstName }`、無ければ `{ name }`。
   **名前だけの選手は `participants` に足さない**（選手一覧に採番されるため）
 - 勝者の数は親の `scores` と一致。検査 `npm run check:team-match-details`（prebuild）
-- ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。対戦詳細に表示する（ADR-020 追記8）。
+- ゲームごとのポイントは `games`（`[[Aのポイント, Bのポイント], …]` を実施順に）。**表示はしていない**。
   **決着したゲームだけ**で、中断されたゲーム（`4-4` / `0-0`）は持たない（本数は `scoreA`/`scoreB` に残る）
 - 元資料にある試合だけ持つ（高校選抜 **2020〜2025 の全年度**、アジア大会 2026 団体、
   インターハイ **2021・2024〜2026 はベスト8以降**・**2019・2022・2023 は1回戦から**。
@@ -231,7 +304,7 @@
 `data/growth-exclusions.json`（撤回リスト。載せた `subject_key` はレポート生成から除外）。
 
 Supabase のテーブル（`matches` / `games` / `points` / `match_video_sessions` / `match_point_candidates`）の
-列・リレーションは [database.md](./database.md) に集約する（ここでは再掲しない）。
+列・リレーションは [database.md](../wiki/database.md) に集約する（ここでは再掲しない）。
 
 モデル上の特徴:
 
@@ -250,13 +323,13 @@ Supabase のテーブル（`matches` / `games` / `points` / `match_video_session
 
 ## 発展候補アイデア一覧（Idea Backlog）
 
-表の「状況・目的」は**状況と1行の目的・残りだけ**（規則は [idea-backlog.md](./idea-backlog.md)）。
+表の「状況・目的」は**状況と1行の目的・残りだけ**（規則は [idea-backlog.md](../wiki/idea-backlog.md)）。
 
 | アイデア | 状況・目的（1行） | 詳細 |
 |---|---|---|
-| 大会メタデータ基盤（会場・施設・日程・要項） | **一部実装**（2026-08-25〜）。残りは[実行ランブック](./upcoming-tournaments-runbook.md) | [アイデア](../raw/2026-07-26-idea-tournament-metadata-platform.md) |
+| 大会メタデータ基盤（会場・施設・日程・要項） | **一部実装**（2026-08-25〜）。残りは[実行ランブック](../wiki/upcoming-tournaments-runbook.md) | [アイデア](../raw/2026-07-26-idea-tournament-metadata-platform.md) |
 | Knowledge Graph によるデータ設計・UX統合 | 発散フェーズ（2026-07-11）。関係解決ロジックが機能ごとに重複実装されている。次は候補ビューの小さな試作 | [アイデア](../raw/2026-07-11-idea-knowledge-graph-views.md) |
 | 全中ブロック大会の掲載 | **投入済み**（2026-08-11、9ブロック） | [アイデア](../raw/2026-08-08-idea-zenchu-block-tournament-data.md) |
-| 中学カテゴリの公開ページ | **実装済み**（2026-08-12）。残は build 完走と GSC 効果測定。仕様は [secondaryschool.md](./secondaryschool.md) | [アイデア](../raw/2026-08-12-idea-juniorhigh-category-pages.md) |
-| 小学生カテゴリの公開ページ | **実装済み**（2026-09-13）。残は build 完走と GSC 効果測定。仕様は [primaryschool.md](./primaryschool.md) | [アイデア](../raw/2026-09-12-idea-primaryschool-category.md) |
+| 中学カテゴリの公開ページ | **実装済み**（2026-08-12）。残は build 完走と GSC 効果測定。仕様は [secondaryschool.md](../wiki/secondaryschool.md) | [アイデア](../raw/2026-08-12-idea-juniorhigh-category-pages.md) |
+| 小学生カテゴリの公開ページ | **実装済み**（2026-09-13）。残は build 完走と GSC 効果測定。仕様は [primaryschool.md](../wiki/primaryschool.md) | [アイデア](../raw/2026-09-12-idea-primaryschool-category.md) |
 | 団体戦のオーダー | **一部実装**（2026-09-19）。インターハイは記録がある年度（2019・2021〜2026）を全部入れた。学校ページのメンバーと年度別結果の FAQ に反映済み（[SEO](../raw/2026-09-19-idea-team-match-order-seo.md)）。残は選手ページでの見せ方 | [アイデア](../raw/2026-09-18-idea-team-match-order.md) |
