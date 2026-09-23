@@ -47,6 +47,12 @@ function orientTeamMatches(match: TournamentMatch, side: 'A' | 'B'): TeamMatchRo
   });
 }
 
+/** 個人戦のゲームごとのポイントを、side 側から見た向き（`[この組, 相手]`）に並べ替える。記録が無ければ undefined */
+function orientPointGames(match: TournamentMatch, side: 'A' | 'B'): [number, number][] | undefined {
+  if (!match.games?.length) return undefined;
+  return match.games.map(([a, b]): [number, number] => (side === 'A' ? [a, b] : [b, a]));
+}
+
 function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
   // 不戦勝でペアを出さなかった側（ADR-020 の walkover）。空欄にすると読み落とすので言葉で書く
   if (players.length === 0) return <span className="text-text-muted">出場なし</span>;
@@ -74,9 +80,9 @@ function TeamMatchPlayers({ players }: { players: TeamMatchRow['own'] }) {
  * **そのゲームを取ったのは多いほう**（同点は無い）なので、多いほうを太字にする。
  * 元資料に記録がある大会だけが持ち、無い対戦では行ごと出さない。
  */
-function TeamMatchGames({ games }: { games: NonNullable<TeamMatchRow['games']> }) {
+function TeamMatchGames({ games, className = 'mt-1 pl-16' }: { games: NonNullable<TeamMatchRow['games']>; className?: string }) {
   return (
-    <ol className="mt-1 pl-16 flex flex-wrap gap-x-2.5 gap-y-0.5 font-mono text-text-secondary">
+    <ol className={`${className} flex flex-wrap gap-x-2.5 gap-y-0.5 font-mono text-text-secondary`}>
       {games.map(([own, opponent], i) => (
         <li key={i} className="whitespace-nowrap">
           <span className="sr-only">第{i + 1}ゲーム </span>
@@ -171,6 +177,14 @@ function MatchTable({ rows, showHeader }: { rows: MatchRow[]; showHeader: boolea
               </td>
               <td className="px-4 py-2 text-left">{m.unplayed ? <span className="text-text-muted">未実施</span> : `${m.games.won}-${m.games.lost}`}</td>
             </tr>,
+            // 個人戦のゲームごとのポイント。団体戦の対戦ごとの行と同じ見た目で、試合の行のすぐ下に出す
+            m.pointGames?.length ? (
+              <tr key={`${i}-games`}>
+                <td colSpan={3} className="px-4 pb-2 text-xs">
+                  <TeamMatchGames games={m.pointGames} className="" />
+                </td>
+              </tr>
+            ) : null,
             m.teamMatches ? (
               <tr key={`${i}-team`}>
                 <td colSpan={3} className="p-0">
@@ -466,6 +480,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: nm.winnerEntryNo === prevWinner ? 'win' : 'lose',
         games: a === prevWinner ? { won: scoreA, lost: scoreB } : { won: scoreB, lost: scoreA },
         unplayed,
+        pointGames: orientPointGames(nm, a === prevWinner ? 'A' : 'B'),
         teamMatches: orientTeamMatches(nm, a === prevWinner ? 'A' : 'B'),
       };
 
@@ -515,6 +530,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: m.winnerEntryNo === a ? 'win' : m.winnerEntryNo === b ? 'lose' : 'draw',
         games: { won: scoreA, lost: scoreB },
         unplayed,
+        pointGames: orientPointGames(m, 'A'),
         teamMatches: orientTeamMatches(m, 'A'),
       };
       const rowB: MatchRow = {
@@ -527,6 +543,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         result: m.winnerEntryNo === b ? 'win' : m.winnerEntryNo === a ? 'lose' : 'draw',
         games: { won: scoreB, lost: scoreA },
         unplayed,
+        pointGames: orientPointGames(m, 'B'),
         teamMatches: orientTeamMatches(m, 'B'),
       };
 
@@ -633,6 +650,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
   const hasTeamMatches = (detail.matches ?? []).some((m) => (m.matches?.length ?? 0) > 0);
   // ゲームごとのポイントは元資料に記録がある大会だけが持つ（高校選抜は本数まで）。無いページで案内しない
   const hasTeamMatchGames = (detail.matches ?? []).some((m) => m.matches?.some((sub) => sub.games?.length));
+  const hasPointGames = (detail.matches ?? []).some((m) => m.games?.length);
 
   const query = searchQuery.trim().toLowerCase();
   const visibleItems = query ? allItems.filter((item) => item.name.toLowerCase().includes(query)) : allItems;
@@ -697,6 +715,11 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         <p className="mb-3 text-xs text-text-muted">
           ※ 公式記録にオーダー（対戦ごとの出場ペア）がある試合は、第1対戦からの出場ペアと本数も載せています。左がその組、右が対戦相手です。
           {hasTeamMatchGames && 'ゲームごとのポイントは実施順で、そのゲームを取った側を太字にしています。'}
+        </p>
+      )}
+      {hasPointGames && (
+        <p className="mb-3 text-xs text-text-muted">
+          ※ スコアの下はゲームごとのポイントです。実施順で、左がその組、右が対戦相手です。そのゲームを取った側を太字にしています。
         </p>
       )}
 

@@ -201,6 +201,12 @@ export interface TournamentMatch {
   prevMatchId: string | null;
   /** 団体戦の対戦ごとの記録（オーダー）。元資料にある大会・試合だけが持つ。詳細は docs/adr/ADR-020-team-match-rubber-details.md */
   matches?: TeamMatchDetail[];
+  /**
+   * 個人戦のゲームごとのポイント（`[entries[0] のポイント, entries[1] のポイント]` を実施順に）。
+   * 元資料にゲームごとの記録がある大会だけが持つ（アジア競技大会2026 の混合・シングルス）。
+   * 形と約束は `TeamMatchDetail.games` と同じ。
+   */
+  games?: [number, number][];
 }
 
 /**
@@ -294,6 +300,8 @@ export type MatchRow = {
   games: { won: string; lost: string };
   /** 組み合わせだけで未実施（勝者もスコアも無い）。スコア欄を「0-0」ではなく「未実施」にする */
   unplayed?: boolean;
+  /** 個人戦のゲームごとのポイントを、この行の組から見た向き（`[この組, 相手]`）で実施順に並べたもの */
+  pointGames?: [number, number][];
   /** 団体戦の対戦ごとの記録（ADR-020）を、この行の組から見た向きに並べたもの。記録が無ければ undefined */
   teamMatches?: TeamMatchRow[];
 };

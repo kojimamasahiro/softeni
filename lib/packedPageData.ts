@@ -80,6 +80,8 @@ type PackedMatch = [
   nextMatchId: NullableStringId,
   /** 団体戦の対戦ごとの記録（ADR-020）。持たない試合は要素ごと省く */
   teamMatches?: PackedTeamMatch[] | null,
+  /** 個人戦のゲームごとのポイント（`entries` の順）。持たない試合は要素ごと省く */
+  games?: [number, number][] | null,
 ];
 
 /** 選手は表示名とリンク先だけ詰める（姓・名の区別は表示に要らない） */
@@ -277,6 +279,11 @@ export function packTournamentDetailData(detailData: TournamentDetailData): Pack
         }),
       );
     }
+    // 記録がある試合にだけ足す。団体戦の枠が無ければ null で埋めて位置を揃える
+    if (match.games?.length) {
+      if (packed.length < 9) packed.push(null);
+      packed.push(match.games.map(([a, b]): [number, number] => [a, b]));
+    }
     return packed;
   });
 
@@ -342,45 +349,48 @@ export function unpackTournamentDetailData(packed: PackedTournamentDetailData): 
     ...(playerId !== null ? { playerId } : {}),
   });
 
-  const matches: TournamentMatch[] = packed.matches.map(([entries, packedScores, round, winnerEntryNo, stage, group, matchId, nextMatchId, teamMatches]) => {
-    const scores: Record<string, number> = {};
-    entries.forEach((entryNo, index) => {
-      const score = packedScores[index];
-      if (typeof score === 'number') {
-        scores[String(entryNo)] = score;
-      }
-    });
+  const matches: TournamentMatch[] = packed.matches.map(
+    ([entries, packedScores, round, winnerEntryNo, stage, group, matchId, nextMatchId, teamMatches, games]) => {
+      const scores: Record<string, number> = {};
+      entries.forEach((entryNo, index) => {
+        const score = packedScores[index];
+        if (typeof score === 'number') {
+          scores[String(entryNo)] = score;
+        }
+      });
 
-    return {
-      entries,
-      scores,
-      round: readNullableString(strings, round),
-      winnerEntryNo: winnerEntryNo ?? -1,
-      retired: false,
-      stage: readString(strings, stage),
-      group: readNullableString(strings, group),
-      matchId: readString(strings, matchId),
-      nextMatchId: readNullableString(strings, nextMatchId),
-      prevMatchIds: [],
-      prevMatchId: null,
-      ...(teamMatches
-        ? {
-            matches: teamMatches.map(
-              ([type, status, winner, scoreA, scoreB, playersA, playersB, games]): TeamMatchDetail => ({
-                type: readString(strings, type) as TeamMatchDetail['type'],
-                status: readString(strings, status) as TeamMatchDetail['status'],
-                winner: winner === 1 ? 'A' : winner === 2 ? 'B' : null,
-                scoreA,
-                scoreB,
-                playersA: playersA.map(unpackPlayer),
-                playersB: playersB.map(unpackPlayer),
-                ...(games?.length ? { games: games.map(([a, b]): [number, number] => [a, b]) } : {}),
-              }),
-            ),
-          }
-        : {}),
-    };
-  });
+      return {
+        entries,
+        scores,
+        round: readNullableString(strings, round),
+        winnerEntryNo: winnerEntryNo ?? -1,
+        retired: false,
+        stage: readString(strings, stage),
+        group: readNullableString(strings, group),
+        matchId: readString(strings, matchId),
+        nextMatchId: readNullableString(strings, nextMatchId),
+        prevMatchIds: [],
+        prevMatchId: null,
+        ...(games?.length ? { games: games.map(([a, b]): [number, number] => [a, b]) } : {}),
+        ...(teamMatches
+          ? {
+              matches: teamMatches.map(
+                ([type, status, winner, scoreA, scoreB, playersA, playersB, games]): TeamMatchDetail => ({
+                  type: readString(strings, type) as TeamMatchDetail['type'],
+                  status: readString(strings, status) as TeamMatchDetail['status'],
+                  winner: winner === 1 ? 'A' : winner === 2 ? 'B' : null,
+                  scoreA,
+                  scoreB,
+                  playersA: playersA.map(unpackPlayer),
+                  playersB: playersB.map(unpackPlayer),
+                  ...(games?.length ? { games: games.map(([a, b]): [number, number] => [a, b]) } : {}),
+                }),
+              ),
+            }
+          : {}),
+      };
+    },
+  );
 
   const results: TournamentResult[] = packed.results.map(
     ([entryNo, tournamentLabel, rankKind, rankValue, rankBestLevel, rankRound, roundrobinGroup, roundrobinRank]) => {
