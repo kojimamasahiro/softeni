@@ -96,7 +96,7 @@
 - Supabase の `matches`、`games`、`points` から公開用 JSON を生成する
 - 取得対象は作成日時降順の全件（取得上限なし）
 - Supabase の1クエリ返却上限（1000行）で黙って切られないよう、`matches` / `games` / `points` は `.range()` でページ送りして全件取る。`.in()` の ID 列は100件ずつに分ける（経緯: docs/raw/2026-09-25-beta-matches-points-truncation.md）
-- 書き出し時に「ポイントの積み上げ ≠ games.points_a/b」のゲームがあれば警告を出す（分析ページの整合性チェックと同じ条件）
+- 書き出し時に「ポイントの積み上げ ≠ games.points_a/b」のゲームが1つでもあれば、何も書き出さずに失敗する（prebuild ごと止まる。分析ページの整合性チェックと同じ条件）
 - 出力は追記型で、出力先 `public/data/beta-matches/` を全削除せず既存ファイルを更新する（公開 URL の消失を防ぐ）。旧仕様の「最新 50 件上限＋毎回削除して再生成」は撤廃済み（docs/wiki/data-import.md・score-site-link.md 参照）
 - 環境変数がない場合は既存スナップショットを再利用する
 - 一覧用には `summarizeMatchForIndex` でポイント配列を落として軽量化する

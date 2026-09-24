@@ -264,8 +264,8 @@ const groupPointsByGameId = (points) => {
 };
 
 // 分析ページはポイントを積み上げたスコアと games.points_a/b の一致を前提にする。
-// 取得漏れがあると分析表示が止まるので、書き出し時点で気づけるようにする。
-const warnScoreIntegrity = (matches) => {
+// 取得漏れのまま公開すると分析表示が止まり、rare-events など下流も欠けたデータで作られるので、ここでビルドを止める。
+const assertScoreIntegrity = (matches) => {
   const mismatched = [];
 
   matches.forEach((match) => {
@@ -281,7 +281,7 @@ const warnScoreIntegrity = (matches) => {
   });
 
   if (mismatched.length > 0) {
-    console.warn(`⚠ ${mismatched.length} games have points that do not add up to the game score:\n  ${mismatched.join('\n  ')}`);
+    throw new Error(`${mismatched.length} games have points that do not add up to the game score:\n  ${mismatched.join('\n  ')}`);
   }
 };
 
@@ -451,7 +451,7 @@ const buildBetaMatchesJson = async () => {
   matches.sort((a, b) => String(b.created_at ?? '').localeCompare(String(a.created_at ?? '')));
 
   const safeMatches = await attachGamesToMatches(supabase, matches);
-  warnScoreIntegrity(safeMatches);
+  assertScoreIntegrity(safeMatches);
   const publicMatches = safeMatches.map(toPublicMatchSnapshot).map(enrichWithSiteLink);
   const generatedAt = new Date().toISOString();
 
