@@ -263,29 +263,76 @@ const groupPointsByGameId = (points) => {
   return pointsByGameId;
 };
 
+// 分析ページはポイントを積み上げたスコアと games.points_a/b の一致を前提にする。
+// 取得漏れがあると分析表示が止まるので、書き出し時点で気づけるようにする。
+const warnScoreIntegrity = (matches) => {
+  const mismatched = [];
+
+  matches.forEach((match) => {
+    (match.games ?? []).forEach((game) => {
+      const points = game.points ?? [];
+      const pointsA = points.filter((point) => point.winner_team === 'A').length;
+      const pointsB = points.filter((point) => point.winner_team === 'B').length;
+
+      if (pointsA !== (game.points_a ?? 0) || pointsB !== (game.points_b ?? 0)) {
+        mismatched.push(`${match.id} G${game.game_number} (games ${game.points_a}-${game.points_b} / points ${pointsA}-${pointsB})`);
+      }
+    });
+  });
+
+  if (mismatched.length > 0) {
+    console.warn(`⚠ ${mismatched.length} games have points that do not add up to the game score:\n  ${mismatched.join('\n  ')}`);
+  }
+};
+
+// Supabase は1クエリの返却行数に上限（既定 1000）があり、超えた分は黙って切られる。
+// 全件が要る取得は必ずこれを通す。ページ送りの順序が揺れないよう、一意に決まる並びを orderColumns で渡す。
+const SUPABASE_PAGE_SIZE = 1000;
+// .in() の ID 列は URL に載るので、長くなりすぎないよう分割する
+const IN_FILTER_CHUNK_SIZE = 100;
+
+const fetchAllRows = async (buildQuery, orderColumns) => {
+  const rows = [];
+
+  for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+    let query = buildQuery();
+    orderColumns.forEach((column) => {
+      query = query.order(column, { ascending: true });
+    });
+
+    const { data, error } = await query.range(from, from + SUPABASE_PAGE_SIZE - 1);
+
+    if (error) {
+      throw error;
+    }
+
+    const page = data ?? [];
+    rows.push(...page);
+
+    if (page.length < SUPABASE_PAGE_SIZE) {
+      return rows;
+    }
+  }
+};
+
+const fetchAllRowsIn = async (supabase, table, column, ids, orderColumns) => {
+  const rows = [];
+
+  for (let index = 0; index < ids.length; index += IN_FILTER_CHUNK_SIZE) {
+    const chunk = ids.slice(index, index + IN_FILTER_CHUNK_SIZE);
+    rows.push(...(await fetchAllRows(() => supabase.from(table).select('*').in(column, chunk), orderColumns)));
+  }
+
+  return rows;
+};
+
 const attachGamesToMatches = async (supabase, matches) => {
   const matchIds = matches.map((match) => match.id);
   if (matchIds.length === 0) return matches;
 
-  const { data: games, error: gamesError } = await supabase.from('games').select('*').in('match_id', matchIds).order('game_number', { ascending: true });
-
-  if (gamesError) {
-    throw gamesError;
-  }
-
-  const safeGames = games ?? [];
+  const safeGames = await fetchAllRowsIn(supabase, 'games', 'match_id', matchIds, ['id']);
   const gameIds = safeGames.map((game) => game.id);
-  let pointsByGameId = new Map();
-
-  if (gameIds.length > 0) {
-    const { data: points, error: pointsError } = await supabase.from('points').select('*').in('game_id', gameIds).order('point_number', { ascending: true });
-
-    if (pointsError) {
-      throw pointsError;
-    }
-
-    pointsByGameId = groupPointsByGameId(points ?? []);
-  }
+  const pointsByGameId = groupPointsByGameId(gameIds.length > 0 ? await fetchAllRowsIn(supabase, 'points', 'game_id', gameIds, ['id']) : []);
 
   const gamesByMatchId = new Map();
   safeGames.forEach((game) => {
@@ -400,13 +447,11 @@ const buildBetaMatchesJson = async () => {
     },
   });
 
-  const { data: matches, error } = await supabase.from('matches').select('*').order('created_at', { ascending: false });
+  const matches = await fetchAllRows(() => supabase.from('matches').select('*'), ['id']);
+  matches.sort((a, b) => String(b.created_at ?? '').localeCompare(String(a.created_at ?? '')));
 
-  if (error) {
-    throw error;
-  }
-
-  const safeMatches = await attachGamesToMatches(supabase, matches ?? []);
+  const safeMatches = await attachGamesToMatches(supabase, matches);
+  warnScoreIntegrity(safeMatches);
   const publicMatches = safeMatches.map(toPublicMatchSnapshot).map(enrichWithSiteLink);
   const generatedAt = new Date().toISOString();
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T15:48:54.275Z",
+  "generatedAt": "2026-09-24T15:56:45.679Z",
   "match": {
     "id": "381d9c08-c645-4fb6-b194-8f6af34aeef6",
     "tournament_name": "zennihon-university-2026",
@@ -249,6 +249,29 @@
             "point_detail": null,
             "video_start_ms": 329639,
             "video_end_ms": 356694
+          },
+          {
+            "id": "9e8275a2-4369-45c6-bd8d-37fb45f6a295",
+            "game_id": "6aa8727e-db63-44ff-9f46-08503ee7c1a8",
+            "point_number": 8,
+            "winner_team": "B",
+            "rally_count": 10,
+            "first_serve_fault": false,
+            "double_fault": false,
+            "result_type": "follow_error",
+            "winner_player": "",
+            "loser_player": "川﨑 康平",
+            "created_at": "2026-09-14T14:58:58.319901",
+            "serving_team": "B",
+            "serving_player": "安達 宣",
+            "point_note": null,
+            "shot_type": null,
+            "shot_course": null,
+            "recording_level": "basic",
+            "edited_at": null,
+            "point_detail": null,
+            "video_start_ms": 375085,
+            "video_end_ms": 394293
           }
         ]
       },
@@ -705,6 +728,29 @@
             "point_detail": null,
             "video_start_ms": 1026719,
             "video_end_ms": 1056426
+          },
+          {
+            "id": "1984bace-44d8-405e-aecb-ca2e572f49ee",
+            "game_id": "66d6eaf7-73b2-43cc-bd2d-f4278300b018",
+            "point_number": 8,
+            "winner_team": "B",
+            "rally_count": 11,
+            "first_serve_fault": false,
+            "double_fault": false,
+            "result_type": "out",
+            "winner_player": "",
+            "loser_player": "黒坂 卓矢",
+            "created_at": "2026-09-14T15:38:20.555148",
+            "serving_team": "A",
+            "serving_player": "黒坂 卓矢",
+            "point_note": null,
+            "shot_type": null,
+            "shot_course": null,
+            "recording_level": "basic",
+            "edited_at": null,
+            "point_detail": null,
+            "video_start_ms": 1075279,
+            "video_end_ms": 1093837
           }
         ]
       },
@@ -1009,6 +1055,29 @@
             "point_detail": null,
             "video_start_ms": 1585441,
             "video_end_ms": 1597717
+          },
+          {
+            "id": "e09274f4-e288-47e1-ae60-90b1c469bab9",
+            "game_id": "71405b94-375e-429a-adfe-62e1244b38ba",
+            "point_number": 8,
+            "winner_team": "A",
+            "rally_count": 9,
+            "first_serve_fault": false,
+            "double_fault": false,
+            "result_type": "smash_winner",
+            "winner_player": "黒坂 卓矢",
+            "loser_player": "",
+            "created_at": "2026-09-14T15:42:37.297844",
+            "serving_team": "A",
+            "serving_player": "黒坂 卓矢",
+            "point_note": null,
+            "shot_type": null,
+            "shot_course": null,
+            "recording_level": "basic",
+            "edited_at": null,
+            "point_detail": null,
+            "video_start_ms": 1627076,
+            "video_end_ms": 1649704
           }
         ]
       },
