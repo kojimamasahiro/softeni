@@ -80,37 +80,16 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
   { aspectRatio, className, onEmbedBlocked, onReady, playerHeight, responsive, videoId },
   ref,
 ) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  // YT.Player は渡した要素を iframe に置き換えるので、React が持つ外枠とは別の差し込み先を用意する
+  const mountRef = useRef<HTMLDivElement | null>(null);
   const playerRef = useRef<YouTubePlayerInstance | null>(null);
   const onEmbedBlockedRef = useRef(onEmbedBlocked);
   const onReadyRef = useRef(onReady);
   const rangeEndMsRef = useRef<number | null>(null);
   const pausePollRef = useRef<number | null>(null);
   const [playerKey, setPlayerKey] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
   const resolvedAspectRatio = aspectRatio ?? PLAYER_WIDTH / DEFAULT_PLAYER_HEIGHT;
-  const resolvedPlayerHeight = responsive && containerWidth > 0 ? Math.round(containerWidth / resolvedAspectRatio) : (playerHeight ?? DEFAULT_PLAYER_HEIGHT);
-
-  useEffect(() => {
-    if (!responsive || !containerRef.current || typeof window === 'undefined') {
-      return;
-    }
-
-    const updateWidth = () => {
-      setContainerWidth(containerRef.current?.clientWidth ?? 0);
-    };
-
-    updateWidth();
-
-    const observer = new ResizeObserver(() => {
-      updateWidth();
-    });
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [responsive]);
+  const fixedPlayerHeight = playerHeight ?? DEFAULT_PLAYER_HEIGHT;
 
   useEffect(() => {
     onEmbedBlockedRef.current = onEmbedBlocked;
@@ -198,15 +177,15 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
     let cancelled = false;
 
     const initializePlayer = async () => {
-      if (!containerRef.current) return;
+      if (!mountRef.current) return;
 
       await loadYouTubeIframeApi();
-      if (cancelled || !containerRef.current || !window.YT?.Player) return;
+      if (cancelled || !mountRef.current || !window.YT?.Player) return;
 
-      const resolvedWidth = responsive && containerWidth > 0 ? '100%' : String(PLAYER_WIDTH);
-      const player = new window.YT.Player(containerRef.current, {
-        height: String(resolvedPlayerHeight),
-        width: resolvedWidth,
+      // responsive では外枠の aspect-ratio が大きさを決め、iframe はそれを埋める
+      const player = new window.YT.Player(mountRef.current, {
+        height: responsive ? '100%' : String(fixedPlayerHeight),
+        width: responsive ? '100%' : String(PLAYER_WIDTH),
         videoId,
         playerVars: {
           playsinline: 1,
@@ -240,13 +219,7 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
       playerRef.current?.destroy();
       playerRef.current = null;
     };
-  }, [containerWidth, playerKey, resolvedPlayerHeight, responsive, videoId]);
-
-  useEffect(() => {
-    if (!responsive || containerWidth <= 0) return;
-
-    playerRef.current?.setSize?.(containerWidth, resolvedPlayerHeight);
-  }, [containerWidth, resolvedPlayerHeight, responsive]);
+  }, [fixedPlayerHeight, playerKey, responsive, videoId]);
 
   useEffect(() => {
     setPlayerKey((previous) => previous + 1);
@@ -255,12 +228,10 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
   return (
     <div
       className={className}
-      ref={containerRef}
-      style={{
-        height: `${resolvedPlayerHeight}px`,
-        width: '100%',
-      }}
-    />
+      style={responsive ? { aspectRatio: String(resolvedAspectRatio), width: '100%' } : { height: `${fixedPlayerHeight}px`, width: '100%' }}
+    >
+      <div ref={mountRef} className="h-full w-full" />
+    </div>
   );
 });
 

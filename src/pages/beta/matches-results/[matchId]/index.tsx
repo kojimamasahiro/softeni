@@ -72,9 +72,7 @@ const FLOATING_VIDEO_LAYOUT: Record<FloatingVideoSize, { containerWidth: string 
   },
 };
 
-const FLOATING_VIDEO_SPACER_CLASS = 'mb-[28rem] md:mb-[42rem]';
-const MOBILE_VIDEO_ASPECT_RATIO = 16 / 9;
-const TALL_WIDE_VIDEO_ASPECT_RATIO = 32 / 27;
+const VIDEO_ASPECT_RATIO = 16 / 9;
 
 const normalizePlayerName = (name: string | null | undefined) => {
   if (!name) return null;
@@ -149,8 +147,9 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   const [highlightedPointId, setHighlightedPointId] = useState<string | null>(null);
   const [youtubeEmbedBlocked, setYoutubeEmbedBlocked] = useState(match.youtube_embed_allowed === false);
   const [isVideoFloating, setIsVideoFloating] = useState(false);
+  // 固定表示で動画が抜けた穴を、抜ける直前の実際の高さ（section の mb-8 込み）で埋めて本文が跳ねないようにする
+  const [floatingSpacerHeight, setFloatingSpacerHeight] = useState(0);
   const [floatingVideoSize, setFloatingVideoSize] = useState<FloatingVideoSize>('md');
-  const [isDesktopViewport, setIsDesktopViewport] = useState(false);
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -160,20 +159,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
       setFocusTeam(queryTeam);
     }
   }, [router.isReady, router.query.focusTeam]);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
-    const syncViewport = () => setIsDesktopViewport(mediaQuery.matches);
-
-    syncViewport();
-    mediaQuery.addEventListener('change', syncViewport);
-
-    return () => {
-      mediaQuery.removeEventListener('change', syncViewport);
-    };
-  }, []);
 
   // エキスパンドのトグル関数
   const toggleGameExpansion = (gameNumber: number) => {
@@ -208,7 +193,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   const formatScoreTransition = (point: ReviewPoint) => `${point.scoreBefore.A}-${point.scoreBefore.B} → ${point.scoreAfter.A}-${point.scoreAfter.B}`;
 
   const floatingVideoLayout = FLOATING_VIDEO_LAYOUT[floatingVideoSize];
-  const activeVideoAspectRatio = isDesktopViewport ? TALL_WIDE_VIDEO_ASPECT_RATIO : MOBILE_VIDEO_ASPECT_RATIO;
 
   const getPointPlayerName = (point: Point) => {
     const isErrorPoint = point.result_type ? POINT_ERROR_TYPES.includes(point.result_type as (typeof POINT_ERROR_TYPES)[number]) : false;
@@ -1403,7 +1387,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
 
         {(youtubeVideoId || youtubeWatchUrl) && (
           <>
-            {isVideoFloating && <div className={FLOATING_VIDEO_SPACER_CLASS} />}
+            {isVideoFloating && <div aria-hidden="true" style={{ height: floatingSpacerHeight }} />}
             <section
               ref={playerSectionRef}
               className={
@@ -1415,7 +1399,12 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
-                      onClick={() => setIsVideoFloating((current) => !current)}
+                      onClick={() => {
+                        if (!isVideoFloating) {
+                          setFloatingSpacerHeight((playerSectionRef.current?.offsetHeight ?? 0) + 32);
+                        }
+                        setIsVideoFloating((current) => !current);
+                      }}
                       className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${isVideoFloating ? 'border-gray-300 bg-surface text-text shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-700' : 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 dark:border-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400'}`}
                       aria-pressed={isVideoFloating}
                     >
@@ -1451,7 +1440,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                       videoId={youtubeVideoId}
                       onEmbedBlocked={() => setYoutubeEmbedBlocked(true)}
                       responsive
-                      aspectRatio={activeVideoAspectRatio}
+                      aspectRatio={VIDEO_ASPECT_RATIO}
                       className="w-full"
                     />
                   </div>
