@@ -776,6 +776,9 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
       }
     >();
 
+    // 試合の勝者が落としたゲームの得点は、取っても結局そのゲームを失っているので勝敗を分けていない。候補から外す
+    const gamesWonByOverallWinner = new Set(gamesAsc.filter((game) => overallWinner && game.winner_team === overallWinner).map((game) => game.game_number));
+
     let previousWinnerTeam: TeamKey | null = null;
     let previousStreakLength = 0;
 
@@ -804,6 +807,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
           ? `${context.scoreBefore.A}-${context.scoreBefore.B}から${teamNames[loserTeam]}が${resultLabel}で失点`
           : `${context.scoreBefore.A}-${context.scoreBefore.B}から${winnerTeam ? teamNames[winnerTeam] : '得点チーム'}が${resultLabel}でポイント`;
       const addCandidate = (category: 'deuce' | 'game_point' | 'two_two' | 'streak_stop', weight: number, descriptionSuffix?: string) => {
+        if (!gamesWonByOverallWinner.has(context.gameNumber)) return;
+
         const existing = decisiveCandidateMap.get(context.point.id);
         const description = descriptionSuffix ? `${baseDescription}。${descriptionSuffix}` : baseDescription;
 
