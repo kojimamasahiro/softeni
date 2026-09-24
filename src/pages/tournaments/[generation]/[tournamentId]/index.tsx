@@ -18,6 +18,7 @@ import TournamentContextBlocks, { type TournamentContextData } from '@/component
 import DelegationSection from '@/components/tournaments/DelegationSection';
 import QualifierFinishersSection from '@/components/tournaments/QualifierFinishersSection';
 import RelatedTournamentsBlock, { type RelatedTournamentLink } from '@/components/tournaments/RelatedTournamentsBlock';
+import { getTodayInTokyo } from '@/components/tournaments/UpcomingTournaments';
 import UpcomingTournamentSection, { type UpcomingTournamentData } from '@/components/tournaments/UpcomingTournamentSection';
 import { getCareerRecordByFullName } from '@/lib/careerRecord';
 import { buildCategorySchedule } from '@/lib/categorySchedule';
@@ -262,11 +263,19 @@ export default function TournamentHubPage({
     ...cancelledYears.map((c) => ({ year: c.year, group: null, cancelled: c })),
   ].sort((a, b) => Number(b.year) - Number(a.year));
 
+  // 開催前ブロックの表示可否は getStaticProps 側で「endDate >= ビルド時刻」を見て決めているが、
+  // CF は push 契機でしかビルドし直さない（docs/wiki/deployment.md）。次のデプロイまで
+  // 「会期が終わったのに開催中」のまま残ってしまうため、UpcomingTournaments.tsx と同じく
+  // 描画時（クライアントの実際の今日）に日付を取り直し、会期が過ぎていれば自己修復で消す。
+  const today = getTodayInTokyo();
+  const upcomingActive = !!upcoming && (!upcoming.endDate || upcoming.endDate >= today);
+
   // 最新年度の種目チップ。年度別結果はページ下部（歴代優勝者・記録の後）にあり、シェアされたハブから
   // 今年の結果へ移る導線が1画面目に無かった。開催中は「開催前」ブロックの実施種目チップが同じ年の
   // 結果ページへリンクしているので、そのときは重ねて出さない（会期が終わるとそのブロックは消える）。
   const latestGroup = yearGroups.length > 0 ? [...yearGroups].sort((a, b) => Number(b.year) - Number(a.year))[0] : null;
-  const upcomingLinksLatest = !!upcoming && !!latestGroup && upcoming.year === Number(latestGroup.year) && upcoming.categoryLabels.some((c) => c.href);
+  const upcomingLinksLatest =
+    upcomingActive && !!upcoming && !!latestGroup && upcoming.year === Number(latestGroup.year) && upcoming.categoryLabels.some((c) => c.href);
   const latestResults = latestGroup && !upcomingLinksLatest ? latestGroup : null;
 
   const championTable = (() => {
@@ -583,7 +592,7 @@ export default function TournamentHubPage({
             </p>
           </section>
         )}
-        {upcoming && <UpcomingTournamentSection data={upcoming} />}
+        {upcoming && upcomingActive && <UpcomingTournamentSection data={upcoming} />}
 
         <RelatedTournamentsBlock links={relatedLinks} />
 

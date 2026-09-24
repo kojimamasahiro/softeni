@@ -19,6 +19,7 @@
 import Link from 'next/link';
 
 import type { CategorySchedule } from '@/lib/categorySchedule';
+import { getTodayInTokyo } from '@/components/tournaments/UpcomingTournaments';
 
 /** 開催前ブロックで表示する会場1件。information の `venues[]` の表示に必要な項目だけを抜いたもの。 */
 export type UpcomingVenue = {
@@ -46,7 +47,11 @@ export type UpcomingTournamentData = {
   officialUrl: string | null;
   /** 種目別の競技日程（主催者発表の予定の転記）。無ければ null で、表ごと出さない */
   schedule: CategorySchedule | null;
-  /** すでに会期に入っているか（true なら「開催中」表記にする） */
+  /**
+   * すでに会期に入っているか（true なら「開催中」表記にする）。
+   * getStaticProps のビルド時刻で判定した値なので、次のデプロイまでの間は古くなりうる
+   * （このコンポーネントは描画時に startDate と実際の今日を比較し直して自己修復する）。
+   */
   hasStarted: boolean;
 };
 
@@ -124,7 +129,9 @@ function ScheduleTable({ schedule }: { schedule: CategorySchedule }) {
 }
 
 export default function UpcomingTournamentSection({ data }: { data: UpcomingTournamentData }) {
-  const statusLabel = data.hasStarted ? '開催中' : '開催予定';
+  // ビルド時刻ではなく描画時の今日で判定し直す（呼び出し側の index.tsx 参照）。
+  const hasStarted = data.startDate ? data.startDate <= getTodayInTokyo() : data.hasStarted;
+  const statusLabel = hasStarted ? '開催中' : '開催予定';
   const dateRange = formatDateRange(data.startDate, data.endDate);
 
   return (
