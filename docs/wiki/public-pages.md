@@ -112,7 +112,9 @@
 | 大会ハブ（国際大会） | 代表名簿、または予選会の上位進出者 | `DelegationSection.tsx` / `QualifierFinishersSection.tsx` |
 
 - **開催前ブロックは `endDate >= 今日` の information がある大会に出る**（「結果がまだ無い」は条件にしない）。
-  **「今日」は描画時に評価する**（`getTodayInTokyo()`）。
+  **「今日」は描画時に評価する**（`getTodayInTokyo()`）。CF は push 契機でしかビルドし直さないため
+  （[deployment.md](./deployment.md)）、ここを取りこぼすと会期後もビルド時刻の判定が配信され続ける
+  （2026-09-24 に実際に発生。[raw/2026-09-24-upcoming-block-stale-hasstarted-fix.md](../raw/2026-09-24-upcoming-block-stale-hasstarted-fix.md)）。
 - **結果ゼロかつ未来の予定ありの大会は、h1・title・description・本文を「日程・会場」へ切り替える**（結果が入れば自動で戻る）。
 - **実施種目のラベルは `details/` のファイルがあるときだけリンク**（無いと 404）。
 - **予選会↔本大会は `{本大会ID}-qualifier` の命名規約で対応付ける**。「これから開催」のリンク先はサイト内の大会ハブ。
