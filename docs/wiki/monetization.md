@@ -169,7 +169,8 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
 ## プライバシー・法務
 
 - `src/pages/privacy.tsx` に広告・アクセス解析の説明。「4. 外部送信について」は `EXTERNAL_TRANSMISSIONS` の表で
-  送信先・利用目的・送信情報を掲載している。**送信先サービスを増減させたらこの表の更新が必須。**
+  送信先・利用目的・送信情報を掲載している（GA4・AdSense・YouTube 埋め込みプレーヤー）。**送信先サービスを増減させたらこの表の更新が必須。**
+  YouTube は試合詳細の動画のために足した（YouTube API のデベロッパー ポリシーも開示を求める。[beta-matches-results.md](./beta-matches-results.md)「埋め込む動画の出どころ」）。
 - 「5. Cookie の利用と停止方法」に地域ごとの扱いとオプトアウト手段。
 - **未対応**: AdSense を配信しているため、EEA/UK には Google 認定 CMP が必要で、自作バナーは本来これを満たさない
   （[open-questions.md](./open-questions.md)）。

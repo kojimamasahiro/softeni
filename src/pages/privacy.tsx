@@ -23,6 +23,14 @@ const EXTERNAL_TRANSMISSIONS = [
     items: 'Cookie に保存された識別子、閲覧したページの URL、IP アドレス、ブラウザ・端末の情報',
     policyUrl: 'https://policies.google.com/technologies/ads?hl=ja',
   },
+  {
+    // 試合詳細ページの動画（src/components/YouTubeRangePlayer.tsx）。ページを開いた時点でプレーヤーを読み込む
+    name: 'YouTube 埋め込みプレーヤー（試合詳細ページの動画）',
+    provider: 'Google LLC',
+    purpose: '動画の表示・再生、再生状況の測定、不正利用の防止',
+    items: 'Cookie に保存された識別子、閲覧したページの URL、IP アドレス、ブラウザ・端末の情報、動画の再生状況',
+    policyUrl: 'https://policies.google.com/privacy?hl=ja',
+  },
 ];
 
 export default function PrivacyPolicy() {
