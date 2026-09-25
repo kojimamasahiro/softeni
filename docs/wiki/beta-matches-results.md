@@ -183,6 +183,16 @@
 - `?game=G&point=N` も同じ案内を出す。`point_number` はゲームごとの番号なので、`game` なしの `?point=N` は1ゲームの試合でしか解決しない
 - GA4 イベント: 共有ボタン `share_point`（`method`: `share` / `copy`）、案内から再生 `shared_point_play`
 
+### 埋め込む動画の出どころ
+
+試合に付ける YouTube 動画（`youtube_video_id`）は、**連盟・大会主催者・協賛社の公式チャンネル、または出場選手本人のチャンネル**で公開されたものに限る。
+**一般観客が投稿した動画は付けない**（動画なしで記録だけ公開する）。
+
+- 理由: 日本ソフトテニス連盟の撮影規程（[jsta.or.jp](https://jsta.or.jp/events/qualifying-mark/photograph/)）は、一般観客による YouTube 投稿と、営利目的の撮影・SNS 投稿を禁止している。規程に反した動画を埋め込むと、当サイトが広めることになる。規程の対象は撮影者なので、公式・主催者側・選手本人の動画を YouTube の埋め込みプレーヤーで表示することは直接の対象外と判断した（Assumption: 連盟への確認はしていない）
+- 投稿者の確認は YouTube の oEmbed（`https://www.youtube.com/oembed?url=...` の `author_name`）で見られる
+- YouTube API サービスのデベロッパー ポリシー（G. 配布と商用利用）は「YouTube API データを含むページで広告を販売すること」を禁止している。ただし、YouTube 以外のコンテンツが、動画を取り除いても広告を正当化できるだけの独立した価値を持つ場合は例外になる。試合詳細ページはスコア記録と分析が主なので例外にあたると判断し、広告（AdSense）は外さない。**動画だけを並べるページ（例: 動画の一覧・連続再生だけのページ）を作るときは、広告を置かない**
+- 経緯と投稿者の内訳: [raw/2026-09-25-idea-rally-share-link.md](../raw/2026-09-25-idea-rally-share-link.md)
+
 ### 画面の責務
 
 一覧:
