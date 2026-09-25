@@ -30,6 +30,7 @@ const RECORD_SECTIONS: { kind: RareEventKind; title: string; value: (e: RareEven
   { kind: 'longest-deuce', title: '最長デュースゲーム', value: (e) => `全${e.detail.totalPoints}ポイント` },
   { kind: 'biggest-comeback', title: '最大ビハインドからの逆転ゲーム', value: (e) => `${e.detail.deficit}点差` },
   { kind: 'longest-point-streak', title: '最多連続ポイント', value: (e) => `${e.detail.streak}連続` },
+  { kind: 'match-points-saved', title: 'マッチポイントをしのいで勝利', value: (e) => `${e.detail.saved}本` },
 ];
 
 /** 全件系（記録枠ではなく発生したものを列挙するカテゴリ）。 */

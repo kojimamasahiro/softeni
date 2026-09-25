@@ -6,7 +6,7 @@ import path from 'path';
 // getStaticProps からのみ使う（fs 依存のためクライアントへ import しない）。
 // 仕様: docs/wiki/rare-events.md
 
-export type RareEventKind = 'longest-rally' | 'service-ace' | 'longest-deuce' | 'biggest-comeback' | 'longest-point-streak' | 'pattern';
+export type RareEventKind = 'longest-rally' | 'service-ace' | 'longest-deuce' | 'biggest-comeback' | 'longest-point-streak' | 'match-points-saved' | 'pattern';
 
 export interface RareEvent {
   kind: RareEventKind;

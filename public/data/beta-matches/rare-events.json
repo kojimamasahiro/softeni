@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T15:56:52.406Z",
+  "generatedAt": "2026-09-24T23:43:09.708Z",
   "config": {
     "scope": "all-time",
     "categories": {
@@ -25,6 +25,11 @@
       "longest-point-streak": {
         "enabled": true,
         "minStreak": 5,
+        "maxTies": 3
+      },
+      "match-points-saved": {
+        "enabled": true,
+        "minSaved": 1,
         "maxTies": 3
       }
     },
@@ -173,6 +178,30 @@
       },
       "videoUrl": "https://www.youtube.com/watch?v=Jc_ISY7h6hk&t=675s",
       "label": "記録済み全試合で最多の9連続ポイント",
+      "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+      "postable": true
+    },
+    {
+      "kind": "match-points-saved",
+      "scope": "all-time",
+      "tournamentId": "east-japan",
+      "year": 2026,
+      "matchId": "a9715c94-abae-467b-8541-ee688e592522",
+      "round": "準決勝",
+      "teamA": "植田 璃音・安達 宣",
+      "teamB": "船水 颯人・端山 羅行",
+      "detailPath": "/tournaments/all/east-japan/2026/doubles/none/boys/matches/a9715c94-abae-467b-8541-ee688e592522",
+      "gameId": "2c5c3305-f042-41ce-b8ce-493b13c2a00d",
+      "gameNumber": 7,
+      "pointId": "79a05d9b-2ffd-4547-9b5b-7a68d54953e0",
+      "pointNumber": 10,
+      "subjectTeam": "B",
+      "detail": {
+        "saved": 4,
+        "lastGameNumber": 7
+      },
+      "videoUrl": "https://www.youtube.com/watch?v=ZzCeoJ3DYA0&t=2088s",
+      "label": "記録済み全試合で最多、マッチポイントを4本しのいで勝利",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
       "postable": true
     }
@@ -329,6 +358,32 @@
         },
         "videoUrl": "https://www.youtube.com/watch?v=Jc_ISY7h6hk&t=675s",
         "label": "記録済み全試合で最多の9連続ポイント",
+        "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+        "postable": true
+      }
+    ],
+    "a9715c94-abae-467b-8541-ee688e592522": [
+      {
+        "kind": "match-points-saved",
+        "scope": "all-time",
+        "tournamentId": "east-japan",
+        "year": 2026,
+        "matchId": "a9715c94-abae-467b-8541-ee688e592522",
+        "round": "準決勝",
+        "teamA": "植田 璃音・安達 宣",
+        "teamB": "船水 颯人・端山 羅行",
+        "detailPath": "/tournaments/all/east-japan/2026/doubles/none/boys/matches/a9715c94-abae-467b-8541-ee688e592522",
+        "gameId": "2c5c3305-f042-41ce-b8ce-493b13c2a00d",
+        "gameNumber": 7,
+        "pointId": "79a05d9b-2ffd-4547-9b5b-7a68d54953e0",
+        "pointNumber": 10,
+        "subjectTeam": "B",
+        "detail": {
+          "saved": 4,
+          "lastGameNumber": 7
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=ZzCeoJ3DYA0&t=2088s",
+        "label": "記録済み全試合で最多、マッチポイントを4本しのいで勝利",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
         "postable": true
       }

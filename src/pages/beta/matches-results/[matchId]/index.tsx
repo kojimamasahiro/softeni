@@ -34,6 +34,7 @@ const RARE_EVENT_KIND_TAGS: Record<RareEvent['kind'], string> = {
   'longest-deuce': '最長デュース',
   'biggest-comeback': '逆転',
   'longest-point-streak': '連続ポイント',
+  'match-points-saved': 'マッチポイントをしのぐ',
   pattern: '希少パターン',
 };
 

@@ -79,6 +79,7 @@ const main = () => {
     console.log(`  [分布] デュースゲーム総ポイント: ${distribution(stats.deuceGames.map((d) => d.totalPoints)) || 'なし'}`);
     console.log(`  [分布] 逆転ゲームの最大ビハインド: ${distribution(stats.comebacks.map((c) => c.deficit)) || 'なし'}`);
     console.log(`  [分布] 試合内最長連続ポイント: ${distribution(stats.streaks.map((s) => s.streak)) || 'なし'}`);
+    console.log(`  [分布] 勝者がしのいだマッチポイント: ${distribution(stats.matchPointsSaved.map((m) => m.saved)) || 'なし'}`);
     for (const s of stats.suppressed ?? []) {
       console.log(`  [抑制] ${s.kind}: 同値タイ${s.ties}件 > maxTies=${s.maxTies} のため非表示（希少性なしと判定）`);
     }
