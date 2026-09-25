@@ -74,6 +74,7 @@
     "player-title:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerResultsTitle.test.ts",
     "records:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/championRecords.test.ts",
     "popular:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/popularPages.test.ts",
+    "point-share:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/pointShare.test.ts",
     "popular:import": "ts-node --project scripts/playerStats/tsconfig.json scripts/import-popular-pages.ts",
     "rare-events:generate": "node scripts/generate-rare-events.mjs",
     "rare-events:report": "node scripts/rare-events-report.mjs",

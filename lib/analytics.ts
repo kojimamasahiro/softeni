@@ -122,6 +122,18 @@ export function trackConsentChoice(granted: boolean): void {
   window.gtag?.('event', granted ? 'consent_accept' : 'consent_decline');
 }
 
+/** 試合詳細のラリー共有ボタン（docs/wiki/beta-matches-results.md「ラリー共有リンク」）。 */
+export function trackPointShare(method: 'share' | 'copy'): void {
+  if (typeof window === 'undefined') return;
+  window.gtag?.('event', 'share_point', { method });
+}
+
+/** 共有リンクから開いた人が案内の「このラリーを再生」を押した。 */
+export function trackSharedPointPlay(): void {
+  if (typeof window === 'undefined') return;
+  window.gtag?.('event', 'shared_point_play');
+}
+
 /** リンクを含む要素に付ける data 属性名。モジュール単位の CTR を出すために使う。 */
 export const LINK_MODULE_ATTR = 'data-link-module';
 

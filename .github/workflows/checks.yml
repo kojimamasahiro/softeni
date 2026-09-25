@@ -81,6 +81,9 @@ jobs:
       - name: 大会の記録（最多優勝・連覇） テスト
         run: npm run -s records:test
 
+      - name: 試合詳細のラリー共有リンク テスト
+        run: npm run -s point-share:test
+
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 
