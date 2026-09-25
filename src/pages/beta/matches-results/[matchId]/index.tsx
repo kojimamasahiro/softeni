@@ -7,16 +7,19 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import MetaHead from '@/components/MetaHead';
+import PointShareButton from '@/components/PointShareButton';
 import YouTubeRangePlayer, { type YouTubeRangePlayerHandle } from '@/components/YouTubeRangePlayer';
 import { getBetaMatchById, getBetaTeamDisplayName, getLatestBetaMatchIds } from '@/lib/betaMatchesStatic';
+import { trackSharedPointPlay } from '@/lib/analytics';
 import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
 import { AnalysisGuideCard, AnalysisReliability, analyzeMatch, ImprovementHint, MatchAnalysisSummary, RateMetric, TeamKey } from '@/lib/matchAnalysis';
+import { buildPointShareText, buildPointShareUrl, describeSharedPoint, locateSharedPoint, scoreBeforePoint, type LocatedPoint } from '@/lib/pointShare';
 import { getRareEventsForMatch, type RareEvent } from '@/lib/rareEventsStatic';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
 import { getTournamentInfoSSR, TournamentInfo } from '@/lib/tournamentHelpers.server';
-import { buildYouTubeWatchUrlFromVideoId, formatVideoTimestamp } from '@/lib/youtubePlayback';
+import { buildYouTubeWatchUrlFromVideoId, formatVideoTimestamp, getPointVideoEndMs } from '@/lib/youtubePlayback';
 
 import { Game, Match, Point } from '../../../../types/database';
 
@@ -302,53 +305,26 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
     [gamesAsc, playPointVideo],
   );
 
+  // 共有リンク（?pointId= / ?game=&point=）で開かれたラリー。自動では再生せず、上部の案内から再生する
+  // （docs/wiki/beta-matches-results.md「ラリー共有リンク」）。
+  const [sharedPoint, setSharedPoint] = useState<LocatedPoint<Point> | null>(null);
+
   useEffect(() => {
     if (!router.isReady || handledQueryRef.current) return;
 
-    const pointIdQuery = router.query.pointId;
-    const pointNumberQuery = router.query.point;
-    const timeQuery = router.query.t;
-
-    if (typeof pointIdQuery === 'string') {
-      const locatedPoint = gamesAsc
-        .flatMap((game) =>
-          (game.points ?? []).map((point) => ({
-            gameNumber: game.game_number,
-            point,
-          })),
-        )
-        .find(({ point }) => point.id === pointIdQuery);
-
-      if (locatedPoint) {
-        handledQueryRef.current = true;
-        scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
-          playVideo: true,
-        });
-      }
+    const located = locateSharedPoint(gamesAsc, {
+      pointId: router.query.pointId,
+      game: router.query.game,
+      point: router.query.point,
+    });
+    if (located) {
+      handledQueryRef.current = true;
+      setSharedPoint(located);
+      setExpandedGames((previous) => new Set(previous).add(located.gameNumber));
       return;
     }
 
-    if (typeof pointNumberQuery === 'string') {
-      const pointNumber = Number(pointNumberQuery);
-      if (!Number.isNaN(pointNumber)) {
-        const locatedPoint = gamesAsc
-          .flatMap((game) =>
-            (game.points ?? []).map((point) => ({
-              gameNumber: game.game_number,
-              point,
-            })),
-          )
-          .find(({ point }) => point.point_number === pointNumber);
-        if (locatedPoint) {
-          handledQueryRef.current = true;
-          scrollToPoint(locatedPoint.gameNumber, locatedPoint.point.id, {
-            playVideo: true,
-          });
-          return;
-        }
-      }
-    }
-
+    const timeQuery = router.query.t;
     if (typeof timeQuery === 'string' && youtubeVideoId && !youtubeEmbedBlocked) {
       const seconds = Number(timeQuery);
       if (!Number.isNaN(seconds)) {
@@ -356,7 +332,26 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
         youtubePlayerRef.current?.playRange(seconds * 1000);
       }
     }
-  }, [gamesAsc, router.isReady, router.query.point, router.query.pointId, router.query.t, scrollToPoint, youtubeEmbedBlocked, youtubeVideoId]);
+  }, [gamesAsc, router.isReady, router.query.game, router.query.point, router.query.pointId, router.query.t, youtubeEmbedBlocked, youtubeVideoId]);
+
+  const sharedPointHasVideo = sharedPoint !== null && sharedPoint.point.video_start_ms !== null && sharedPoint.point.video_start_ms !== undefined;
+
+  const playSharedPoint = () => {
+    if (!sharedPoint) return;
+    trackSharedPointPlay();
+    const { point } = sharedPoint;
+    if (point.video_start_ms === null || point.video_start_ms === undefined) return;
+
+    if (!youtubeVideoId || youtubeEmbedBlocked) {
+      playPointVideo(point);
+      return;
+    }
+    setHighlightedPointId(point.id);
+    if (!isVideoFloating) {
+      playerSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    youtubePlayerRef.current?.playRange(point.video_start_ms, getPointVideoEndMs(point.video_start_ms, point.video_end_ms));
+  };
 
   const teamAPlayers = useMemo(() => getTeamPlayerNames(match, 'A'), [match]);
   const teamBPlayers = useMemo(() => getTeamPlayerNames(match, 'B'), [match]);
@@ -1103,6 +1098,40 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   // trailingSlash: true のため canonical も末尾スラッシュ付きの実 URL に揃える。
   const seoCanonicalUrl = buildSiteUrl(`${getPublicMatchDetailPath(match)}/`);
   const seoWinnerName = matchWinner ? getShortTeamName(matchWinner) : null;
+
+  // ラリー共有リンクの文面と URL（docs/wiki/beta-matches-results.md「ラリー共有リンク」）
+  const describePoint = (gameNumber: number, point: Point) => {
+    const game = gamesAsc.find((candidate) => candidate.game_number === gameNumber);
+    return describeSharedPoint({
+      gameNumber,
+      scoreBefore: game ? scoreBeforePoint(game, point) : { A: 0, B: 0 },
+      rallyCount: point.rally_count,
+      winnerName: point.winner_team === 'A' || point.winner_team === 'B' ? getShortTeamName(point.winner_team) : null,
+    });
+  };
+  const getPointShareProps = (gameNumber: number, pointId: string) => {
+    const game = gamesAsc.find((candidate) => candidate.game_number === gameNumber);
+    const point = game?.points?.find((candidate) => candidate.id === pointId);
+    if (!game || !point) return null;
+    return {
+      title: `${seoTeamA} vs ${seoTeamB}`,
+      text: buildPointShareText({
+        tournamentLabel: getTournamentDisplayName(),
+        roundName: match.round_name,
+        teamA: getShortTeamName('A'),
+        teamB: getShortTeamName('B'),
+        gameNumber,
+        scoreBefore: scoreBeforePoint(game, point),
+        rallyCount: point.rally_count,
+        winnerName: point.winner_team === 'A' || point.winner_team === 'B' ? getShortTeamName(point.winner_team) : null,
+      }),
+      url: buildPointShareUrl(seoCanonicalUrl, point.id),
+    };
+  };
+  const renderPointShareButton = (gameNumber: number, pointId: string, className?: string) => {
+    const shareProps = getPointShareProps(gameNumber, pointId);
+    return shareProps ? <PointShareButton {...shareProps} className={className} /> : null;
+  };
   const seoTotalPoints = resultViewModel.matchOverview.totalPoints;
   const seoResultText = seoWinnerName ? `ゲームカウント${gamesWonA}-${gamesWonB}で${seoWinnerName}が勝利。` : `ゲームカウント${gamesWonA}-${gamesWonB}。`;
   const seoTitle = `${seoMatchup}｜${seoTournamentName}${seoRoundLabel} 試合詳細・スコア`;
@@ -1170,6 +1199,29 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
             ← 試合一覧に戻る
           </Link>
         </div>
+
+        {sharedPoint && (
+          <section aria-labelledby="shared-point-title" className="mb-6 rounded-lg border border-info-border bg-info-bg p-4">
+            <p id="shared-point-title" className="text-xs font-medium text-info">
+              共有されたラリー
+            </p>
+            <p className="mt-1 font-semibold text-text">{describePoint(sharedPoint.gameNumber, sharedPoint.point)}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {sharedPointHasVideo && (
+                <button type="button" onClick={playSharedPoint} className="rounded bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700">
+                  このラリーを再生
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => scrollToPoint(sharedPoint.gameNumber, sharedPoint.point.id)}
+                className="rounded border border-border bg-surface px-4 py-2 text-sm font-medium text-text hover:bg-bg-subtle"
+              >
+                記録を見る
+              </button>
+            </div>
+          </section>
+        )}
 
         {selectedReviewGroup && (
           <div
@@ -1330,25 +1382,27 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                 </p>
                 <div className="mt-3 grid gap-2">
                   {rareEvents.map((event) => (
-                    <button
-                      key={`${event.kind}-${event.pointId}`}
-                      type="button"
-                      onClick={() =>
-                        scrollToPoint(event.gameNumber, event.pointId, {
-                          playVideo: true,
-                        })
-                      }
-                      className="flex w-full flex-wrap items-center gap-2 rounded bg-surface px-3 py-2 text-left text-sm hover:bg-bg-subtle"
-                    >
-                      <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-900/50 dark:text-amber-200">
-                        {RARE_EVENT_KIND_TAGS[event.kind]}
-                      </span>
-                      <span className="font-medium text-text">{event.label}</span>
-                      <span className="text-xs text-text-muted">
-                        第{event.gameNumber}ゲーム #{event.pointNumber}
-                        {event.videoUrl ? '（タップで動画再生）' : ''}
-                      </span>
-                    </button>
+                    <div key={`${event.kind}-${event.pointId}`} className="flex items-center gap-2 rounded bg-surface pr-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          scrollToPoint(event.gameNumber, event.pointId, {
+                            playVideo: true,
+                          })
+                        }
+                        className="flex min-w-0 flex-1 flex-wrap items-center gap-2 rounded px-3 py-2 text-left text-sm hover:bg-bg-subtle"
+                      >
+                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-900/50 dark:text-amber-200">
+                          {RARE_EVENT_KIND_TAGS[event.kind]}
+                        </span>
+                        <span className="font-medium text-text">{event.label}</span>
+                        <span className="text-xs text-text-muted">
+                          第{event.gameNumber}ゲーム #{event.pointNumber}
+                          {event.videoUrl ? '（タップで動画再生）' : ''}
+                        </span>
+                      </button>
+                      {renderPointShareButton(event.gameNumber, event.pointId, 'shrink-0')}
+                    </div>
                   ))}
                 </div>
                 <div className="mt-2 flex items-center justify-between gap-2">
@@ -1367,18 +1421,20 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                 <h2 className="text-sm font-semibold text-text">勝敗を分けた局面候補</h2>
                 <div className="mt-3 grid gap-2">
                   {resultViewModel.matchOverview.decisiveMoments.map((moment) => (
-                    <button
-                      key={moment.id}
-                      type="button"
-                      onClick={() =>
-                        scrollToPoint(moment.gameNumber, moment.id, {
-                          playVideo: true,
-                        })
-                      }
-                      className="w-full rounded bg-surface px-3 py-2 text-left text-sm text-text-secondary hover:bg-bg-subtle"
-                    >
-                      <span className="font-medium text-text">{moment.label}</span> {moment.description}
-                    </button>
+                    <div key={moment.id} className="flex items-center gap-2 rounded bg-surface pr-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          scrollToPoint(moment.gameNumber, moment.id, {
+                            playVideo: true,
+                          })
+                        }
+                        className="min-w-0 flex-1 rounded px-3 py-2 text-left text-sm text-text-secondary hover:bg-bg-subtle"
+                      >
+                        <span className="font-medium text-text">{moment.label}</span> {moment.description}
+                      </button>
+                      {renderPointShareButton(moment.gameNumber, moment.id, 'shrink-0')}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -1570,6 +1626,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                                     </button>
                                   </>
                                 )}
+                                {renderPointShareButton(game.gameNumber, point.id)}
                               </div>
                             </div>
                           );
