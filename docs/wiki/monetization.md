@@ -133,7 +133,8 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
 - **日本（端末TZが `Asia/Tokyo`）: バナーを出さず** `ad_storage` / `analytics_storage` とも granted。
   外部送信は `src/pages/privacy.tsx`「4. 外部送信について」で公表している（電気通信事業法の外部送信規律）。
   **この公表とバナー非表示はセットで、片方だけ変えてはならない。**
-- **それ以外（EEA/UK/スイスを含む）**: バナーを出し、同意前は denied（cookieless ping は送信される）、同意後に granted。
+- **それ以外**: バナーを出し、同意前は denied（cookieless ping は送信される）、同意後に granted。
+- **EEA・英国・スイスからのアクセスは Cloudflare の WAF でブロックしている**（[ADR-022](../adr/ADR-022-block-eea-uk-ch-access.md)。設定はリポジトリの外、Cloudflare 管理画面）。
 - 過去に「拒否する」を押した人（`localStorage.cookieConsent === 'false'`）は**地域に関わらず** denied のまま。
 - 地域判定は `lib/consentRegion.ts` の `isConsentExemptRegion()`。タイムゾーンを使う理由と限界
   （外れたときは必ず「バナーを出す」側に倒れる）は同ファイルのコメントが正。
@@ -172,8 +173,7 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
   送信先・利用目的・送信情報を掲載している（GA4・AdSense・YouTube 埋め込みプレーヤー）。**送信先サービスを増減させたらこの表の更新が必須。**
   YouTube は試合詳細の動画のために足した（YouTube API のデベロッパー ポリシーも開示を求める。[beta-matches-results.md](./beta-matches-results.md)「埋め込む動画の出どころ」）。
 - 「5. Cookie の利用と停止方法」に地域ごとの扱いとオプトアウト手段。
-- **未対応**: AdSense を配信しているため、EEA/UK には Google 認定 CMP が必要で、自作バナーは本来これを満たさない
-  （[open-questions.md](./open-questions.md)）。
+- EEA/UK 向けの Google 認定 CMP は不要にした（EEA・英国・スイスをブロック。流入 0 だったため。[ADR-022](../adr/ADR-022-block-eea-uk-ch-access.md)）。
 
 ## 発展候補アイデア一覧（Idea Backlog）
 

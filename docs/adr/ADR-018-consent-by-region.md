@@ -87,6 +87,8 @@ EEA 在住者の端末が `Asia/Tokyo` になっていることは実質起こ�
 - `src/components/CookieConsent.tsx` — 免除地域ではバナーを描画しない
 - `src/pages/privacy.tsx` — 「4. 外部送信について」「5. Cookie の利用と停止方法」
 
-**未対応**: AdSense を配信している以上、Google の EU ユーザーの同意ポリシー上、EEA/UK には
+**2026-09-26 解消**: EEA・英国・スイスからのアクセスをブロックしたため、認定 CMP は不要になった（[ADR-022](./ADR-022-block-eea-uk-ch-access.md)）。以下は解消前の記述。
+
+**未対応（当時）**: AdSense を配信している以上、Google の EU ユーザーの同意ポリシー上、EEA/UK には
 Google 認定 CMP が必要で、自作バナーは本来これを満たさない。本 ADR 以前からの未対応事項で、
 本決定で新たに生じたものではない。[open-questions.md](../wiki/open-questions.md) に記載。

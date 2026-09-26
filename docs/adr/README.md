@@ -59,3 +59,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-019](./ADR-019-team-merge-human-only.md) | チーム名寄せの自動統合を廃止し、人が判断したものだけを適用する | Accepted |
 | [ADR-020](./ADR-020-team-match-rubber-details.md) | 団体戦の対戦ごとの記録（オーダー）を試合の中に STリーグと同じ形で持つ | Accepted |
 | [ADR-021](./ADR-021-category-competition-format.md) | 競技方式は種目ごとに「1つの文章＋推定の断り」で持ち、出典が無ければ表示しない | Accepted |
+| [ADR-022](./ADR-022-block-eea-uk-ch-access.md) | EEA・英国・スイスからのアクセスを Cloudflare でブロックする | Accepted |
