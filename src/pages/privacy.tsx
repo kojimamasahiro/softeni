@@ -111,8 +111,9 @@ export default function PrivacyPolicy() {
           <h2 className="text-xl font-semibold mb-2">5. Cookie の利用と停止方法</h2>
           <p className="mb-3">
             日本国内からのアクセスでは、上記の内容を本ページで公表したうえで、Cookie
-            を利用したアクセス解析および広告配信を行っています。欧州経済領域（EEA）・英国・スイスからのアクセスでは、Cookie
-            の利用について事前に同意を求めるバナーを表示し、同意いただけない場合は解析・広告用の Cookie を使用しません。
+            を利用したアクセス解析および広告配信を行っています。それ以外の地域からのアクセスでは、Cookie
+            の利用について事前に同意を求めるバナーを表示し、同意いただけない場合は解析・広告用の Cookie
+            を使用しません。なお、欧州経済領域（EEA）・英国・スイスからは当サイトを閲覧いただけません。
           </p>
           <p>Cookie の利用を停止したい場合は、次のいずれかの方法をご利用いただけます。</p>
           <ul className="list-disc list-inside mt-2 space-y-1">

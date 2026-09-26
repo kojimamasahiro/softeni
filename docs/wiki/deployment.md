@@ -93,6 +93,10 @@ fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-
 
 - `score` mode は静的公開が前提。公開データは `public/data/beta-matches/**`、編集系 API は `score` mode で 404。
 
+## Cloudflare 側の設定（リポジトリの外）
+
+- **WAF カスタムルールで EEA・英国・スイスからのアクセスをブロック**（認証済みボットは除外）。式と理由は [ADR-022](../adr/ADR-022-block-eea-uk-ch-access.md)
+
 ## 動的機能（速報など）を足すときの選択肢
 
 Assumption（2026-07-19 の検討・未実装）。アーカイブは SSG のままでよく、速報は数ページだけなので全体を動的基盤に移す理由はない。
