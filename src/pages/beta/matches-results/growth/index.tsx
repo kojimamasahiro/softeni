@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { Card, comparisonLabels, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
+import { Card, comparisonLabels, ComparisonBasis, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
 import { getGrowthReportFileName, GrowthComparison, GrowthReport, GrowthTarget } from '@/lib/growthAnalysis';
 import { buildSiteUrl, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 
@@ -153,10 +153,11 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
 
           {!loading && report && selectedComparison && (
             <div className="space-y-5">
+              <ComparisonBasis comparison={selectedComparison} />
               {selectedComparison.kind !== 'recent_period' && (
                 <Card
                   title={selectedComparison.title}
-                  messages={[selectedComparison.description, ...selectedComparison.messages]}
+                  messages={selectedComparison.messages}
                   metrics={selectedComparison.metrics.filter((metric) => metric.denominator > 0 || metric.previousDenominator > 0)}
                 />
               )}
