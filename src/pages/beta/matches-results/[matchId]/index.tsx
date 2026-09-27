@@ -8,6 +8,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import MetaHead from '@/components/MetaHead';
 import PointShareButton from '@/components/PointShareButton';
+import GameScoreboard from '@/components/matches/GameScoreboard';
 import MatchFlowChart from '@/components/matches/MatchFlowChart';
 import PointSourceChart from '@/components/matches/PointSourceChart';
 import RallyLengthChart from '@/components/matches/RallyLengthChart';
@@ -203,6 +204,16 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   const pointSources = useMemo(() => buildPointSources(analysisSummary.reconstructedPoints), [analysisSummary]);
   const rallyLengthSplit = useMemo(() => buildRallyLengthSplit(analysisSummary.reconstructedPoints), [analysisSummary]);
   const showPointStrip = analysisSummary.scoreIntegrity.ok && analysisSummary.reconstructedPoints.length > 0;
+  // 上段のスコア表。スマホで横にはみ出さないよう名字だけにする（無ければ通常の表示名）
+  const getSurnameLabel = useCallback(
+    (team: TeamKey) => {
+      const surnames =
+        team === 'A' ? [match.team_a_player1_last_name, match.team_a_player2_last_name] : [match.team_b_player1_last_name, match.team_b_player2_last_name];
+      const label = surnames.filter((name): name is string => Boolean(name)).join('・');
+      return label || getShortTeamName(team);
+    },
+    [match, getShortTeamName],
+  );
   // ポイントの並びでゲームを選んだとき、下の「試合の流れ」でそのゲームを開いて見せる
   const openGameFlow = useCallback((gameNumber: number) => {
     setExpandedGames((previous) => new Set(previous).add(gameNumber));
@@ -1017,58 +1028,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
     },
   ];
 
-  const renderScoreboard = () => (
-    <div className="overflow-x-auto">
-      <table className="min-w-full table-auto border-collapse border border-border-strong">
-        <thead>
-          <tr className="bg-gray-50 dark:bg-gray-800/90">
-            <th className="w-auto border border-border-strong px-3 py-2 text-left">チーム</th>
-            {gamesAsc.map((game) => (
-              <th key={game.game_number} className="min-w-12 border border-border-strong px-3 py-2 text-center">
-                {game.game_number}
-              </th>
-            ))}
-            <th className="border border-border-strong bg-warning-bg px-3 py-2 text-center font-bold">G</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-            <td className="w-auto whitespace-nowrap border border-border-strong px-3 py-2 font-medium">{getShortTeamName('A')}</td>
-            {gamesAsc.map((game) => (
-              <td
-                key={game.game_number}
-                className={`border border-border-strong px-3 py-2 text-center ${game.winner_team === 'A' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'}`}
-              >
-                {game.points_a}
-              </td>
-            ))}
-            <td
-              className={`border border-border-strong bg-warning-bg px-3 py-2 text-center ${matchWinner === 'A' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'}`}
-            >
-              {gamesWonA}
-            </td>
-          </tr>
-          <tr className="hover:bg-gray-50 dark:hover:bg-gray-800/70">
-            <td className="w-auto whitespace-nowrap border border-border-strong px-3 py-2 font-medium">{getShortTeamName('B')}</td>
-            {gamesAsc.map((game) => (
-              <td
-                key={game.game_number}
-                className={`border border-border-strong px-3 py-2 text-center ${game.winner_team === 'B' ? 'bg-green-100 font-bold text-green-800 dark:bg-green-900/30 dark:text-green-300' : 'font-normal dark:text-gray-200'}`}
-              >
-                {game.points_b}
-              </td>
-            ))}
-            <td
-              className={`border border-border-strong bg-warning-bg px-3 py-2 text-center ${matchWinner === 'B' ? 'font-bold dark:text-yellow-100' : 'font-normal dark:text-gray-200'}`}
-            >
-              {gamesWonB}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-
   // --- SEO（試合ごとに一意化した title / description / 構造化データ） ---
   // 仕様: docs/wiki/public-pages.md「試合詳細ページの SEO 方針」
   const seoTeamA = getShortTeamName('A');
@@ -1358,6 +1317,19 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
               </div>
             )}
 
+            <div>
+              <h2 className="mb-2 text-sm font-semibold text-text">ゲームスコア</h2>
+              <GameScoreboard
+                games={gamesAsc.map((game) => ({
+                  gameNumber: game.game_number,
+                  points: { A: game.points_a ?? 0, B: game.points_b ?? 0 },
+                  winner: game.winner_team === 'A' || game.winner_team === 'B' ? game.winner_team : null,
+                }))}
+                teamLabels={{ A: getSurnameLabel('A'), B: getSurnameLabel('B') }}
+                teamNames={{ A: getShortTeamName('A'), B: getShortTeamName('B') }}
+              />
+            </div>
+
             {showPointStrip && (
               <div>
                 <h2 className="mb-2 text-sm font-semibold text-text">ポイントの並び</h2>
@@ -1367,14 +1339,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                   getResultLabel={getResultTypeLabel}
                   onSelectGame={openGameFlow}
                 />
-              </div>
-            )}
-
-            {/* ゲームスコアの表はポイントの並び（行の右にスコア）と重なるので、並びを出せないときだけ出す */}
-            {!showPointStrip && (
-              <div>
-                <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">ゲームスコア</div>
-                {renderScoreboard()}
               </div>
             )}
 
