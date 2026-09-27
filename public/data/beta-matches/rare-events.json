@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T23:43:09.708Z",
+  "generatedAt": "2026-09-27T22:31:00.312Z",
   "config": {
     "scope": "all-time",
     "categories": {
@@ -76,10 +76,10 @@
       "subjectTeam": "A",
       "subjectPlayer": "片岡 暁紀",
       "detail": {
-        "totalInTournament": 2
+        "totalInTournament": 3
       },
       "videoUrl": null,
-      "label": "サービスエース（記録済み全試合で計2本）",
+      "label": "サービスエース（記録済み全試合で計3本）",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
       "postable": false
     },
@@ -100,12 +100,36 @@
       "subjectTeam": "A",
       "subjectPlayer": "黒坂 卓矢",
       "detail": {
-        "totalInTournament": 2
+        "totalInTournament": 3
       },
       "videoUrl": null,
-      "label": "サービスエース（記録済み全試合で計2本）",
+      "label": "サービスエース（記録済み全試合で計3本）",
       "scopeNote": "当サイトでスコア記録した全試合の中での比較",
       "postable": false
+    },
+    {
+      "kind": "service-ace",
+      "scope": "all-time",
+      "tournamentId": "zennihon-university",
+      "year": 2026,
+      "matchId": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+      "round": "準決勝",
+      "teamA": "川﨑 康平・黒坂 卓矢",
+      "teamB": "野口 快・安部 蓮生",
+      "detailPath": "/tournaments/university/zennihon-university/2026/doubles/none/boys/matches/7d5f4643-8943-4389-a761-e92b331aa2a6",
+      "gameId": "2fa86d4a-18a0-49a6-abff-c442692597f3",
+      "gameNumber": 9,
+      "pointId": "27414bad-499a-4948-97c9-db3c8a28026e",
+      "pointNumber": 1,
+      "subjectTeam": "B",
+      "subjectPlayer": "野口 快",
+      "detail": {
+        "totalInTournament": 3
+      },
+      "videoUrl": "https://www.youtube.com/watch?v=A1uTIsE6zWc&t=1523s",
+      "label": "サービスエース（記録済み全試合で計3本）",
+      "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+      "postable": true
     },
     {
       "kind": "longest-deuce",
@@ -250,10 +274,10 @@
         "subjectTeam": "A",
         "subjectPlayer": "片岡 暁紀",
         "detail": {
-          "totalInTournament": 2
+          "totalInTournament": 3
         },
         "videoUrl": null,
-        "label": "サービスエース（記録済み全試合で計2本）",
+        "label": "サービスエース（記録済み全試合で計3本）",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
         "postable": false
       },
@@ -274,12 +298,38 @@
         "subjectTeam": "A",
         "subjectPlayer": "黒坂 卓矢",
         "detail": {
-          "totalInTournament": 2
+          "totalInTournament": 3
         },
         "videoUrl": null,
-        "label": "サービスエース（記録済み全試合で計2本）",
+        "label": "サービスエース（記録済み全試合で計3本）",
         "scopeNote": "当サイトでスコア記録した全試合の中での比較",
         "postable": false
+      }
+    ],
+    "7d5f4643-8943-4389-a761-e92b331aa2a6": [
+      {
+        "kind": "service-ace",
+        "scope": "all-time",
+        "tournamentId": "zennihon-university",
+        "year": 2026,
+        "matchId": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+        "round": "準決勝",
+        "teamA": "川﨑 康平・黒坂 卓矢",
+        "teamB": "野口 快・安部 蓮生",
+        "detailPath": "/tournaments/university/zennihon-university/2026/doubles/none/boys/matches/7d5f4643-8943-4389-a761-e92b331aa2a6",
+        "gameId": "2fa86d4a-18a0-49a6-abff-c442692597f3",
+        "gameNumber": 9,
+        "pointId": "27414bad-499a-4948-97c9-db3c8a28026e",
+        "pointNumber": 1,
+        "subjectTeam": "B",
+        "subjectPlayer": "野口 快",
+        "detail": {
+          "totalInTournament": 3
+        },
+        "videoUrl": "https://www.youtube.com/watch?v=A1uTIsE6zWc&t=1523s",
+        "label": "サービスエース（記録済み全試合で計3本）",
+        "scopeNote": "当サイトでスコア記録した全試合の中での比較",
+        "postable": true
       }
     ],
     "426a64b3-e46d-4244-b53a-8505b6eac3e2": [

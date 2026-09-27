@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-09-27T22:31:00.123Z",
+  "match": {
+    "id": "bbb67122-e781-48f1-87b0-1a2dcf1ed09e",
+    "tournament_name": "zennihon-university-2026",
+    "team_a": "294 植田 璃音 (早稲田大学) [日本学連] / 安達 宣 (早稲田大学) [日本学連]",
+    "team_b": "476 水木 洸 (日本体育大学) [日本学連] / 森 良輔 (日本体育大学) [日本学連]",
+    "best_of": 9,
+    "created_at": "2026-09-27T15:10:49.974908",
+    "tournament_generation": "university",
+    "tournament_gender": "boys",
+    "tournament_category": "doubles",
+    "round_name": "準決勝",
+    "tournament_year": 2026,
+    "game_type": "doubles",
+    "team_a_entry_number": "294",
+    "team_a_player1_last_name": "植田",
+    "team_a_player1_first_name": "璃音",
+    "team_a_player1_team_name": "早稲田大学",
+    "team_a_player1_region": "日本学連",
+    "team_a_player2_last_name": "安達",
+    "team_a_player2_first_name": "宣",
+    "team_a_player2_team_name": "早稲田大学",
+    "team_a_player2_region": "日本学連",
+    "team_b_entry_number": "476",
+    "team_b_player1_last_name": "水木",
+    "team_b_player1_first_name": "洸",
+    "team_b_player1_team_name": "日本体育大学",
+    "team_b_player1_region": "日本学連",
+    "team_b_player2_last_name": "森",
+    "team_b_player2_first_name": "良輔",
+    "team_b_player2_team_name": "日本体育大学",
+    "team_b_player2_region": "日本学連",
+    "teams": {
+      "A": {
+        "players": [
+          {
+            "region": "日本学連",
+            "last_name": "植田",
+            "team_name": "早稲田大学",
+            "first_name": "璃音"
+          },
+          {
+            "region": "日本学連",
+            "last_name": "安達",
+            "team_name": "早稲田大学",
+            "first_name": "宣"
+          }
+        ],
+        "entry_number": "294"
+      },
+      "B": {
+        "players": [
+          {
+            "region": "日本学連",
+            "last_name": "水木",
+            "team_name": "日本体育大学",
+            "first_name": "洸"
+          },
+          {
+            "region": "日本学連",
+            "last_name": "森",
+            "team_name": "日本体育大学",
+            "first_name": "良輔"
+          }
+        ],
+        "entry_number": "476"
+      }
+    },
+    "tournament_id": "zennihon-university",
+    "match_date": "2026-09-10",
+    "court_name": null,
+    "status": "in_progress",
+    "completed_at": null,
+    "opponent_level": "unknown",
+    "youtube_video_id": "UH_ExBryfgM",
+    "youtube_url": "https://www.youtube.com/watch?v=UH_ExBryfgM",
+    "youtube_embed_allowed": true,
+    "games": [
+      {
+        "id": "27f4400d-0d92-4ce8-93c2-356b6389223f",
+        "match_id": "bbb67122-e781-48f1-87b0-1a2dcf1ed09e",
+        "game_number": 1,
+        "winner_team": null,
+        "points_a": 0,
+        "points_b": 0,
+        "created_at": "2026-09-27T15:14:32.982059",
+        "initial_serve_team": "A",
+        "initial_serve_player_index": 0,
+        "initial_receive_player_index": 0,
+        "points": []
+      }
+    ],
+    "siteLink": {
+      "tournamentPath": "/tournaments/university/zennihon-university/2026/doubles/none/boys",
+      "entryNos": [
+        294,
+        476
+      ]
+    }
+  }
+}

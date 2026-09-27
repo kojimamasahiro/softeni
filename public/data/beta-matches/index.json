@@ -1,6 +1,468 @@
 {
-  "generatedAt": "2026-09-24T23:43:09.535Z",
+  "generatedAt": "2026-09-27T22:31:00.123Z",
   "matches": [
+    {
+      "id": "bbb67122-e781-48f1-87b0-1a2dcf1ed09e",
+      "tournament_name": "zennihon-university-2026",
+      "team_a": "294 植田 璃音 (早稲田大学) [日本学連] / 安達 宣 (早稲田大学) [日本学連]",
+      "team_b": "476 水木 洸 (日本体育大学) [日本学連] / 森 良輔 (日本体育大学) [日本学連]",
+      "best_of": 9,
+      "created_at": "2026-09-27T15:10:49.974908",
+      "tournament_generation": "university",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "294",
+      "team_a_player1_last_name": "植田",
+      "team_a_player1_first_name": "璃音",
+      "team_a_player1_team_name": "早稲田大学",
+      "team_a_player1_region": "日本学連",
+      "team_a_player2_last_name": "安達",
+      "team_a_player2_first_name": "宣",
+      "team_a_player2_team_name": "早稲田大学",
+      "team_a_player2_region": "日本学連",
+      "team_b_entry_number": "476",
+      "team_b_player1_last_name": "水木",
+      "team_b_player1_first_name": "洸",
+      "team_b_player1_team_name": "日本体育大学",
+      "team_b_player1_region": "日本学連",
+      "team_b_player2_last_name": "森",
+      "team_b_player2_first_name": "良輔",
+      "team_b_player2_team_name": "日本体育大学",
+      "team_b_player2_region": "日本学連",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "植田",
+              "team_name": "早稲田大学",
+              "first_name": "璃音"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "安達",
+              "team_name": "早稲田大学",
+              "first_name": "宣"
+            }
+          ],
+          "entry_number": "294"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "水木",
+              "team_name": "日本体育大学",
+              "first_name": "洸"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "森",
+              "team_name": "日本体育大学",
+              "first_name": "良輔"
+            }
+          ],
+          "entry_number": "476"
+        }
+      },
+      "tournament_id": "zennihon-university",
+      "match_date": "2026-09-10",
+      "court_name": null,
+      "status": "in_progress",
+      "completed_at": null,
+      "opponent_level": "unknown",
+      "youtube_video_id": "UH_ExBryfgM",
+      "youtube_url": "https://www.youtube.com/watch?v=UH_ExBryfgM",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "27f4400d-0d92-4ce8-93c2-356b6389223f",
+          "match_id": "bbb67122-e781-48f1-87b0-1a2dcf1ed09e",
+          "game_number": 1,
+          "winner_team": null,
+          "points_a": 0,
+          "points_b": 0,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T15:14:32.982059"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/university/zennihon-university/2026/doubles/none/boys",
+        "entryNos": [
+          294,
+          476
+        ]
+      }
+    },
+    {
+      "id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+      "tournament_name": "zennihon-university-2026",
+      "team_a": "1 川﨑 康平 (日本体育大学) [日本学連] / 黒坂 卓矢 (日本体育大学) [日本学連]",
+      "team_b": "257 野口 快 (日本体育大学) [日本学連] / 安部 蓮生 (日本体育大学) [日本学連]",
+      "best_of": 9,
+      "created_at": "2026-09-27T09:16:25.767646",
+      "tournament_generation": "university",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "1",
+      "team_a_player1_last_name": "川﨑",
+      "team_a_player1_first_name": "康平",
+      "team_a_player1_team_name": "日本体育大学",
+      "team_a_player1_region": "日本学連",
+      "team_a_player2_last_name": "黒坂",
+      "team_a_player2_first_name": "卓矢",
+      "team_a_player2_team_name": "日本体育大学",
+      "team_a_player2_region": "日本学連",
+      "team_b_entry_number": "257",
+      "team_b_player1_last_name": "野口",
+      "team_b_player1_first_name": "快",
+      "team_b_player1_team_name": "日本体育大学",
+      "team_b_player1_region": "日本学連",
+      "team_b_player2_last_name": "安部",
+      "team_b_player2_first_name": "蓮生",
+      "team_b_player2_team_name": "日本体育大学",
+      "team_b_player2_region": "日本学連",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "川﨑",
+              "team_name": "日本体育大学",
+              "first_name": "康平"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "黒坂",
+              "team_name": "日本体育大学",
+              "first_name": "卓矢"
+            }
+          ],
+          "entry_number": "1"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "日本学連",
+              "last_name": "野口",
+              "team_name": "日本体育大学",
+              "first_name": "快"
+            },
+            {
+              "region": "日本学連",
+              "last_name": "安部",
+              "team_name": "日本体育大学",
+              "first_name": "蓮生"
+            }
+          ],
+          "entry_number": "257"
+        }
+      },
+      "tournament_id": "zennihon-university",
+      "match_date": "2026-09-14",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-09-27T10:59:31.698+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "A1uTIsE6zWc",
+      "youtube_url": "https://www.youtube.com/watch?v=A1uTIsE6zWc",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "67dadc09-2268-4066-95a6-e5802919a524",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T09:16:26.128755"
+        },
+        {
+          "id": "7cf34be8-566e-4337-acab-3504fb13e6bf",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:34:06.975722"
+        },
+        {
+          "id": "3bc9a04e-46ad-49d0-8fac-13637c8a44a4",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:35:54.276668"
+        },
+        {
+          "id": "91b79bef-7e8c-46cc-bc72-6aab24f52dfc",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 4,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:37:49.235293"
+        },
+        {
+          "id": "256b159c-887c-48d4-b2d5-40f38727d4da",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 5,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:39:36.651427"
+        },
+        {
+          "id": "a902fff7-1bc2-4bc1-9099-c3b1ebe4d79c",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 6,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:40:51.37207"
+        },
+        {
+          "id": "53d18102-f140-4c6d-838a-e839d6e9ab62",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 7,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:53:13.419249"
+        },
+        {
+          "id": "76f440fb-7613-4018-8b28-2bc8c6697c87",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 8,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:54:46.683858"
+        },
+        {
+          "id": "2fa86d4a-18a0-49a6-abff-c442692597f3",
+          "match_id": "7d5f4643-8943-4389-a761-e92b331aa2a6",
+          "game_number": 9,
+          "winner_team": "A",
+          "points_a": 7,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-27T10:56:28.380115"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/university/zennihon-university/2026/doubles/none/boys",
+        "entryNos": [
+          1,
+          257
+        ]
+      }
+    },
+    {
+      "id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+      "tournament_name": "zennihon-workers-2026",
+      "team_a": "200 長江 光一 (NTT西日本) [広島県] / 林 佑太郎 (NTT西日本) [広島県]",
+      "team_b": "398 上岡 俊介 (Up Rise) [京都府] / 丸山 海斗 (one team) [京都府]",
+      "best_of": 7,
+      "created_at": "2026-09-26T14:49:30.060984",
+      "tournament_generation": "corporate",
+      "tournament_gender": "boys",
+      "tournament_category": "doubles",
+      "round_name": "準決勝",
+      "tournament_year": 2026,
+      "game_type": "doubles",
+      "team_a_entry_number": "200",
+      "team_a_player1_last_name": "長江",
+      "team_a_player1_first_name": "光一",
+      "team_a_player1_team_name": "NTT西日本",
+      "team_a_player1_region": "広島県",
+      "team_a_player2_last_name": "林",
+      "team_a_player2_first_name": "佑太郎",
+      "team_a_player2_team_name": "NTT西日本",
+      "team_a_player2_region": "広島県",
+      "team_b_entry_number": "398",
+      "team_b_player1_last_name": "上岡",
+      "team_b_player1_first_name": "俊介",
+      "team_b_player1_team_name": "Up Rise",
+      "team_b_player1_region": "京都府",
+      "team_b_player2_last_name": "丸山",
+      "team_b_player2_first_name": "海斗",
+      "team_b_player2_team_name": "one team",
+      "team_b_player2_region": "京都府",
+      "teams": {
+        "A": {
+          "players": [
+            {
+              "region": "広島県",
+              "last_name": "長江",
+              "team_name": "NTT西日本",
+              "first_name": "光一"
+            },
+            {
+              "region": "広島県",
+              "last_name": "林",
+              "team_name": "NTT西日本",
+              "first_name": "佑太郎"
+            }
+          ],
+          "entry_number": "200"
+        },
+        "B": {
+          "players": [
+            {
+              "region": "京都府",
+              "last_name": "上岡",
+              "team_name": "Up Rise",
+              "first_name": "俊介"
+            },
+            {
+              "region": "京都府",
+              "last_name": "丸山",
+              "team_name": "one team",
+              "first_name": "海斗"
+            }
+          ],
+          "entry_number": "398"
+        }
+      },
+      "tournament_id": "zennihon-workers",
+      "match_date": "2026-08-30",
+      "court_name": null,
+      "status": "completed",
+      "completed_at": "2026-09-26T15:31:25.621+00:00",
+      "opponent_level": "unknown",
+      "youtube_video_id": "JSTa9Qw5AQw",
+      "youtube_url": "https://www.youtube.com/watch?v=JSTa9Qw5AQw",
+      "youtube_embed_allowed": true,
+      "games": [
+        {
+          "id": "b90f68bf-67db-421d-a515-f1f6f3783772",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 1,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T14:49:30.425588"
+        },
+        {
+          "id": "658506eb-a1f1-47ff-847a-0eafbc957910",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 2,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 2,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T14:58:55.108565"
+        },
+        {
+          "id": "e4f3745d-430e-4042-999d-0bfd9d29b948",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 3,
+          "winner_team": "B",
+          "points_a": 2,
+          "points_b": 4,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T15:00:33.640072"
+        },
+        {
+          "id": "8e03fce9-9595-4fd1-ada7-a907407305b9",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 4,
+          "winner_team": "B",
+          "points_a": 7,
+          "points_b": 9,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T15:04:25.504271"
+        },
+        {
+          "id": "bfea9f05-27da-4dcd-9834-3b39f5558af1",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 5,
+          "winner_team": "A",
+          "points_a": 4,
+          "points_b": 1,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T15:24:31.190084"
+        },
+        {
+          "id": "63992c40-be96-428c-8d50-b8d747538339",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 6,
+          "winner_team": "B",
+          "points_a": 1,
+          "points_b": 4,
+          "initial_serve_team": "A",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T15:27:12.596248"
+        },
+        {
+          "id": "5c589b4a-b16c-4fd1-873c-ccd967eaee47",
+          "match_id": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+          "game_number": 7,
+          "winner_team": "B",
+          "points_a": 4,
+          "points_b": 7,
+          "initial_serve_team": "B",
+          "initial_serve_player_index": 0,
+          "initial_receive_player_index": 0,
+          "created_at": "2026-09-26T15:28:30.91604"
+        }
+      ],
+      "siteLink": {
+        "tournamentPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys",
+        "entryNos": [
+          200,
+          398
+        ]
+      }
+    },
     {
       "id": "381d9c08-c645-4fb6-b194-8f6af34aeef6",
       "tournament_name": "zennihon-university-2026",
@@ -3085,14 +3547,14 @@
         }
       },
       "tournament_id": "zennihon-championship",
-      "match_date": null,
+      "match_date": "2025-11-09",
       "court_name": null,
       "status": "completed",
       "completed_at": "2025-11-09T01:16:22.544755+00:00",
       "opponent_level": "unknown",
       "youtube_video_id": null,
       "youtube_url": null,
-      "youtube_embed_allowed": null,
+      "youtube_embed_allowed": true,
       "games": [
         {
           "id": "cb9a7427-6f34-44c1-b662-4557f781ba5e",
