@@ -68,8 +68,8 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
   return (
     <>
       <MetaHead
-        title="試合結果一覧"
-        description="ポイント詳細記録から、試合結果と分析ページを確認できます。"
+        title="試合分析"
+        description="公開動画から記録した試合を、ポイント単位のデータで振り返れます。試合の流れや名場面、得点の内訳を見られます。"
         url={buildSiteUrl(`${getPublicMatchesListPath()}/`)}
         type="website"
       />
@@ -78,13 +78,13 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '試合一覧', href: getPublicMatchesListPath() },
+            { label: '試合分析', href: getPublicMatchesListPath() },
           ]}
         />
         <div>
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-text">試合結果一覧</h1>
-            <p className="mt-2 text-sm text-text-secondary">ポイント詳細記録から、試合結果と分析ページを確認できます。</p>
+            <h1 className="text-2xl font-bold text-text">試合分析</h1>
+            <p className="mt-2 text-sm text-text-secondary">公開動画から記録した試合を、ポイント単位のデータで振り返れます。</p>
             <div className="mt-4">
               <Link
                 href={getPublicMatchesGrowthPath()}

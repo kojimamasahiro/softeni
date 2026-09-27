@@ -68,6 +68,10 @@ const SOFTENI_GROUPS: NavGroup[] = [
     label: '読みもの・記録',
     items: [
       { label: 'ニュース', href: '/news', matchPrefix: '/news' },
+      // 公開動画から記録した試合の分析（/matches 配下。名場面 /matches/highlights も含む）。
+      // D-011 でナビから外していたが、D-026（2026-09-27）で出す。見せたいのはスコアそのものより
+      // データから分かることなので、ラベルは「試合記録」でなく「試合分析」。
+      { label: '試合分析', href: '/matches', matchPrefix: '/matches' },
       { label: '成長記録', href: '/growth', matchPrefix: '/growth' },
     ],
   },
@@ -87,13 +91,13 @@ const SOFTENI_GROUPS: NavGroup[] = [
 ];
 
 const SCORE_NAV: NavItem[] = [
-  { label: '試合一覧', href: getPublicMatchesListPath() },
+  { label: '試合分析', href: getPublicMatchesListPath() },
   { label: '成長分析', href: getPublicMatchesGrowthPath() },
 ];
 
 /**
  * 上部バー用のフラットなナビ項目。
- * - score モード: 上部バーのみ運用（サイドバーは出さない / ADR-006）。試合一覧/成長分析。
+ * - score モード: 上部バーのみ運用（サイドバーは出さない / ADR-006）。試合分析/成長分析。
  * - softeni-pick モード: グループを平坦化（フォールバック用途）。
  */
 export function getNavItems(): NavItem[] {

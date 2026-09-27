@@ -93,7 +93,7 @@ export default function RareEventHighlightsPage({ generatedAt, events, tournamen
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '試合一覧', href: getPublicMatchesListPath() },
+            { label: '試合分析', href: getPublicMatchesListPath() },
             { label: 'サイト記録', href: `${getPublicMatchesListPath()}/highlights` },
           ]}
         />
@@ -150,7 +150,7 @@ export default function RareEventHighlightsPage({ generatedAt, events, tournamen
 
         <div className="mt-8">
           <Link href={getPublicMatchesListPath()} className="text-sm text-link hover:underline">
-            ← 試合一覧に戻る
+            ← 試合分析に戻る
           </Link>
         </div>
       </PageLayout>
