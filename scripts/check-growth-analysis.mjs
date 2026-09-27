@@ -10,6 +10,8 @@ process.env.TS_NODE_COMPILER_OPTIONS = JSON.stringify({
 require('ts-node/register/transpile-only');
 
 const { buildGrowthReport, buildGrowthTargets } = require('../lib/growthAnalysis/index.ts');
+const { getRecentPeriodComparison } = require('../lib/growthAnalysis/comparisons.ts');
+const { getStatsForTarget } = require('../lib/growthAnalysis/stats.ts');
 
 const player = (lastName, firstName, teamName = '北高校', region = '東京') => ({
   last_name: lastName,
@@ -152,5 +154,32 @@ assert.equal(serviceMetric.trend, 'improved');
 const lostStreakMetric = report.comparison?.metrics.find((metric) => metric.key === 'threePointLostStreakCount');
 assert.ok(lostStreakMetric, 'lost streak metric should exist');
 assert.equal(lostStreakMetric.trend, 'improved');
+
+// 節の構成（2026-09-27）: 先頭は数字を持たない「まとめ」、以降は各指標を1回だけ出す
+assert.equal(report.sections[0].id, 'summary');
+assert.equal(report.sections[0].metrics.length, 0, 'summary should not repeat metric rows');
+const sectionMetricKeys = report.sections.flatMap((section) => section.metrics.map((metric) => metric.key));
+assert.equal(new Set(sectionMetricKeys).size, sectionMetricKeys.length, 'each metric should appear in only one section');
+const receiveMetric = report.comparison.metrics.find((metric) => metric.key === 'receivePointWinRate');
+assert.equal(sectionMetricKeys.includes('receivePointWinRate'), receiveMetric.denominator > 0, 'receive metric should be shown with serve when it has data');
+
+// ラリーの区切りは試合詳細と同じ 1〜2 / 3〜4 / 5〜8 / 9本以上
+const rallyKeys = report.comparison.metrics.filter((metric) => metric.category === 'rally').map((metric) => metric.key);
+assert.deepEqual(rallyKeys, ['rally1to2WinRate', 'rally3to4WinRate', 'rally5to8WinRate', 'rally9PlusWinRate']);
+assert.ok(report.comparison.metrics.find((metric) => metric.key === 'rally3to4WinRate').denominator > 0);
+
+// 「最近の成長」の比べ方（2026-09-27）: 5試合までは最新1試合 vs それ以前の全試合、6試合以上は同じ数の試合どうし
+const baseStats = getStatsForTarget(matches, target.key);
+const repeatStats = (count) => Array.from({ length: count }, (_, index) => baseStats[index % baseStats.length]);
+const five = getRecentPeriodComparison(repeatStats(5));
+assert.equal(five.currentMatchCount, 1);
+assert.equal(five.previousMatchCount, 4, 'with 2-5 matches, every earlier match should be used');
+assert.equal(five.currentLabel, '最新試合');
+const six = getRecentPeriodComparison(repeatStats(6));
+assert.equal(six.currentMatchCount, 3);
+assert.equal(six.previousMatchCount, 3);
+const ten = getRecentPeriodComparison(repeatStats(10));
+assert.equal(ten.currentMatchCount, 5);
+assert.equal(ten.previousMatchCount, 5);
 
 console.log('✓ growth analysis fixture checks passed');

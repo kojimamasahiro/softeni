@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-24T23:43:09.535Z",
+  "generatedAt": "2026-09-27T14:59:56.168Z",
   "report": {
     "target": {
       "key": "player:黒坂 卓矢",
@@ -19,15 +19,15 @@
       "completedMatchCount": 2,
       "latestMatchDate": "2026-05-17T01:12:33.899315+00:00"
     },
-    "generatedAt": "2026-09-24T23:43:09.535Z",
+    "generatedAt": "2026-09-27T14:59:56.168Z",
     "matchCount": 2,
     "completedMatchCount": 2,
     "comparison": {
       "kind": "recent_period",
       "title": "最近の成長",
-      "description": "1試合と、その前の1試合を比べています。",
-      "currentLabel": "今回",
-      "previousLabel": "前回",
+      "description": "最新の1試合と、それ以前の1試合をまとめた値を比べています。",
+      "currentLabel": "最新試合",
+      "previousLabel": "それ以前",
       "currentMatchCount": 1,
       "previousMatchCount": 1,
       "metrics": [
@@ -279,8 +279,8 @@
           "summary": "2点差以上のリードを守れた率は、まだ比較できる記録が足りません。"
         },
         {
-          "key": "shortRallyWinRate",
-          "label": "1-2本ラリー得点率",
+          "key": "rally1to2WinRate",
+          "label": "1〜2本のラリーの得点率",
           "category": "rally",
           "unit": "percent",
           "higherIsBetter": true,
@@ -295,45 +295,64 @@
           "previousDenominator": 0,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
+          "summary": "1〜2本のラリーの得点率は、まだ比較できる記録が足りません。"
         },
         {
-          "key": "middleRallyWinRate",
-          "label": "3-5本ラリー得点率",
+          "key": "rally3to4WinRate",
+          "label": "3〜4本のラリーの得点率",
           "category": "rally",
           "unit": "percent",
           "higherIsBetter": true,
-          "currentValue": 33.33333333333333,
-          "previousValue": 50,
-          "delta": -16.66666666666667,
-          "trend": "declined",
+          "currentValue": 40,
+          "previousValue": 40,
+          "delta": 0,
+          "trend": "stable",
           "confidence": "small_sample",
-          "numerator": 4,
-          "denominator": 12,
-          "previousNumerator": 4,
+          "numerator": 2,
+          "denominator": 5,
+          "previousNumerator": 2,
+          "previousDenominator": 5,
+          "matchCount": 1,
+          "previousMatchCount": 1,
+          "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+        },
+        {
+          "key": "rally5to8WinRate",
+          "label": "5〜8本のラリーの得点率",
+          "category": "rally",
+          "unit": "percent",
+          "higherIsBetter": true,
+          "currentValue": 36,
+          "previousValue": 35.714285714285715,
+          "delta": 0.2857142857142847,
+          "trend": "stable",
+          "confidence": "small_sample",
+          "numerator": 9,
+          "denominator": 25,
+          "previousNumerator": 5,
+          "previousDenominator": 14,
+          "matchCount": 1,
+          "previousMatchCount": 1,
+          "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+        },
+        {
+          "key": "rally9PlusWinRate",
+          "label": "9本以上のラリーの得点率",
+          "category": "rally",
+          "unit": "percent",
+          "higherIsBetter": true,
+          "currentValue": 50,
+          "previousValue": 25,
+          "delta": 25,
+          "trend": "improved",
+          "confidence": "small_sample",
+          "numerator": 12,
+          "denominator": 24,
+          "previousNumerator": 2,
           "previousDenominator": 8,
           "matchCount": 1,
           "previousMatchCount": 1,
-          "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-        },
-        {
-          "key": "longRallyWinRate",
-          "label": "6本以上ラリー得点率",
-          "category": "rally",
-          "unit": "percent",
-          "higherIsBetter": true,
-          "currentValue": 45.23809523809524,
-          "previousValue": 26.31578947368421,
-          "delta": 18.922305764411032,
-          "trend": "improved",
-          "confidence": "small_sample",
-          "numerator": 19,
-          "denominator": 42,
-          "previousNumerator": 5,
-          "previousDenominator": 19,
-          "matchCount": 1,
-          "previousMatchCount": 1,
-          "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+          "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
         },
         {
           "key": "threePointLostStreakCount",
@@ -394,17 +413,17 @@
         }
       ],
       "messages": [
-        "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-        "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+        "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+        "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
       ]
     },
     "comparisons": [
       {
         "kind": "recent_period",
         "title": "最近の成長",
-        "description": "1試合と、その前の1試合を比べています。",
-        "currentLabel": "今回",
-        "previousLabel": "前回",
+        "description": "最新の1試合と、それ以前の1試合をまとめた値を比べています。",
+        "currentLabel": "最新試合",
+        "previousLabel": "それ以前",
         "currentMatchCount": 1,
         "previousMatchCount": 1,
         "metrics": [
@@ -656,8 +675,8 @@
             "summary": "2点差以上のリードを守れた率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "shortRallyWinRate",
-            "label": "1-2本ラリー得点率",
+            "key": "rally1to2WinRate",
+            "label": "1〜2本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
@@ -672,45 +691,64 @@
             "previousDenominator": 0,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
+            "summary": "1〜2本のラリーの得点率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "middleRallyWinRate",
-            "label": "3-5本ラリー得点率",
+            "key": "rally3to4WinRate",
+            "label": "3〜4本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 33.33333333333333,
-            "previousValue": 50,
-            "delta": -16.66666666666667,
-            "trend": "declined",
+            "currentValue": 40,
+            "previousValue": 40,
+            "delta": 0,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 12,
-            "previousNumerator": 4,
+            "numerator": 2,
+            "denominator": 5,
+            "previousNumerator": 2,
+            "previousDenominator": 5,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally5to8WinRate",
+            "label": "5〜8本のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 36,
+            "previousValue": 35.714285714285715,
+            "delta": 0.2857142857142847,
+            "trend": "stable",
+            "confidence": "small_sample",
+            "numerator": 9,
+            "denominator": 25,
+            "previousNumerator": 5,
+            "previousDenominator": 14,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally9PlusWinRate",
+            "label": "9本以上のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 50,
+            "previousValue": 25,
+            "delta": 25,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 12,
+            "denominator": 24,
+            "previousNumerator": 2,
             "previousDenominator": 8,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-          },
-          {
-            "key": "longRallyWinRate",
-            "label": "6本以上ラリー得点率",
-            "category": "rally",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 45.23809523809524,
-            "previousValue": 26.31578947368421,
-            "delta": 18.922305764411032,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 19,
-            "denominator": 42,
-            "previousNumerator": 5,
-            "previousDenominator": 19,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+            "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -771,8 +809,8 @@
           }
         ],
         "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+          "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+          "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
         ]
       },
       {
@@ -1032,8 +1070,8 @@
             "summary": "2点差以上のリードを守れた率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "shortRallyWinRate",
-            "label": "1-2本ラリー得点率",
+            "key": "rally1to2WinRate",
+            "label": "1〜2本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
@@ -1048,45 +1086,64 @@
             "previousDenominator": 0,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
+            "summary": "1〜2本のラリーの得点率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "middleRallyWinRate",
-            "label": "3-5本ラリー得点率",
+            "key": "rally3to4WinRate",
+            "label": "3〜4本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 33.33333333333333,
-            "previousValue": 50,
-            "delta": -16.66666666666667,
-            "trend": "declined",
+            "currentValue": 40,
+            "previousValue": 40,
+            "delta": 0,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 12,
-            "previousNumerator": 4,
+            "numerator": 2,
+            "denominator": 5,
+            "previousNumerator": 2,
+            "previousDenominator": 5,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally5to8WinRate",
+            "label": "5〜8本のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 36,
+            "previousValue": 35.714285714285715,
+            "delta": 0.2857142857142847,
+            "trend": "stable",
+            "confidence": "small_sample",
+            "numerator": 9,
+            "denominator": 25,
+            "previousNumerator": 5,
+            "previousDenominator": 14,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally9PlusWinRate",
+            "label": "9本以上のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 50,
+            "previousValue": 25,
+            "delta": 25,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 12,
+            "denominator": 24,
+            "previousNumerator": 2,
             "previousDenominator": 8,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-          },
-          {
-            "key": "longRallyWinRate",
-            "label": "6本以上ラリー得点率",
-            "category": "rally",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 45.23809523809524,
-            "previousValue": 26.31578947368421,
-            "delta": 18.922305764411032,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 19,
-            "denominator": 42,
-            "previousNumerator": 5,
-            "previousDenominator": 19,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+            "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -1147,8 +1204,8 @@
           }
         ],
         "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+          "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+          "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
         ]
       },
       {
@@ -1408,8 +1465,8 @@
             "summary": "2点差以上のリードを守れた率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "shortRallyWinRate",
-            "label": "1-2本ラリー得点率",
+            "key": "rally1to2WinRate",
+            "label": "1〜2本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
@@ -1424,45 +1481,64 @@
             "previousDenominator": 0,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
+            "summary": "1〜2本のラリーの得点率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "middleRallyWinRate",
-            "label": "3-5本ラリー得点率",
+            "key": "rally3to4WinRate",
+            "label": "3〜4本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 33.33333333333333,
-            "previousValue": 50,
-            "delta": -16.66666666666667,
-            "trend": "declined",
+            "currentValue": 40,
+            "previousValue": 40,
+            "delta": 0,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 12,
-            "previousNumerator": 4,
+            "numerator": 2,
+            "denominator": 5,
+            "previousNumerator": 2,
+            "previousDenominator": 5,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally5to8WinRate",
+            "label": "5〜8本のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 36,
+            "previousValue": 35.714285714285715,
+            "delta": 0.2857142857142847,
+            "trend": "stable",
+            "confidence": "small_sample",
+            "numerator": 9,
+            "denominator": 25,
+            "previousNumerator": 5,
+            "previousDenominator": 14,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally9PlusWinRate",
+            "label": "9本以上のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 50,
+            "previousValue": 25,
+            "delta": 25,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 12,
+            "denominator": 24,
+            "previousNumerator": 2,
             "previousDenominator": 8,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-          },
-          {
-            "key": "longRallyWinRate",
-            "label": "6本以上ラリー得点率",
-            "category": "rally",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 45.23809523809524,
-            "previousValue": 26.31578947368421,
-            "delta": 18.922305764411032,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 19,
-            "denominator": 42,
-            "previousNumerator": 5,
-            "previousDenominator": 19,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+            "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -1523,8 +1599,8 @@
           }
         ],
         "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+          "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+          "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
         ]
       },
       {
@@ -1784,8 +1860,8 @@
             "summary": "2点差以上のリードを守れた率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "shortRallyWinRate",
-            "label": "1-2本ラリー得点率",
+            "key": "rally1to2WinRate",
+            "label": "1〜2本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
@@ -1800,45 +1876,64 @@
             "previousDenominator": 0,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "1-2本ラリー得点率は、まだ比較できる記録が足りません。"
+            "summary": "1〜2本のラリーの得点率は、まだ比較できる記録が足りません。"
           },
           {
-            "key": "middleRallyWinRate",
-            "label": "3-5本ラリー得点率",
+            "key": "rally3to4WinRate",
+            "label": "3〜4本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 33.33333333333333,
-            "previousValue": 50,
-            "delta": -16.66666666666667,
-            "trend": "declined",
+            "currentValue": 40,
+            "previousValue": 40,
+            "delta": 0,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 12,
-            "previousNumerator": 4,
+            "numerator": 2,
+            "denominator": 5,
+            "previousNumerator": 2,
+            "previousDenominator": 5,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally5to8WinRate",
+            "label": "5〜8本のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 36,
+            "previousValue": 35.714285714285715,
+            "delta": 0.2857142857142847,
+            "trend": "stable",
+            "confidence": "small_sample",
+            "numerator": 9,
+            "denominator": 25,
+            "previousNumerator": 5,
+            "previousDenominator": 14,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally9PlusWinRate",
+            "label": "9本以上のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 50,
+            "previousValue": 25,
+            "delta": 25,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 12,
+            "denominator": 24,
+            "previousNumerator": 2,
             "previousDenominator": 8,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-          },
-          {
-            "key": "longRallyWinRate",
-            "label": "6本以上ラリー得点率",
-            "category": "rally",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 45.23809523809524,
-            "previousValue": 26.31578947368421,
-            "delta": 18.922305764411032,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 19,
-            "denominator": 42,
-            "previousNumerator": 5,
-            "previousDenominator": 19,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+            "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
           },
           {
             "key": "threePointLostStreakCount",
@@ -1899,172 +1994,25 @@
           }
         ],
         "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+          "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+          "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
         ]
       }
     ],
     "sections": [
       {
         "id": "summary",
-        "title": "最近の成長",
+        "title": "まとめ",
         "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
+          "伸びた指標: 2-2後の次ポイント取得率、ゲームポイント取得率",
+          "次に見ておきたい指標: 2ndサービス時得点率、ゲームポイントを握られた後の粘り率"
         ],
-        "metrics": [
-          {
-            "key": "servicePointWinRate",
-            "label": "サーブ時得点率",
-            "category": "serve",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 39.285714285714285,
-            "previousValue": 37.5,
-            "delta": 1.7857142857142847,
-            "trend": "stable",
-            "confidence": "small_sample",
-            "numerator": 11,
-            "denominator": 28,
-            "previousNumerator": 6,
-            "previousDenominator": 16,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "サーブ時得点率は 38% から 39% で、大きな変化はありません。"
-          },
-          {
-            "key": "firstServeSuccessRate",
-            "label": "1stサービス成功率",
-            "category": "serve",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 82.14285714285714,
-            "previousValue": 87.5,
-            "delta": -5.357142857142861,
-            "trend": "declined",
-            "confidence": "small_sample",
-            "numerator": 23,
-            "denominator": 28,
-            "previousNumerator": 14,
-            "previousDenominator": 16,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "1stサービス成功率は 88% から 82% です。次はここを見てみましょう（-5pt）。"
-          },
-          {
-            "key": "firstServePointWinRate",
-            "label": "1stサービス時得点率",
-            "category": "serve",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 43.47826086956522,
-            "previousValue": 28.57142857142857,
-            "delta": 14.90683229813665,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 10,
-            "denominator": 23,
-            "previousNumerator": 4,
-            "previousDenominator": 14,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "1stサービス時得点率は 29% から 43% に改善傾向です（+15pt）。"
-          },
-          {
-            "key": "secondServePointWinRate",
-            "label": "2ndサービス時得点率",
-            "category": "serve",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 20,
-            "previousValue": 100,
-            "delta": -80,
-            "trend": "declined",
-            "confidence": "small_sample",
-            "numerator": 1,
-            "denominator": 5,
-            "previousNumerator": 2,
-            "previousDenominator": 2,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
-          }
-        ]
-      },
-      {
-        "id": "tracking",
-        "title": "改善トラッキング",
-        "messages": [
-          "前回まで確認していた「2-2後の次ポイント取得率」は改善傾向です。",
-          "一方で「2ndサービス時得点率」は次の試合で確認してみましょう。"
-        ],
-        "metrics": [
-          {
-            "key": "afterTwoTwoPointWinRate",
-            "label": "2-2後の次ポイント取得率",
-            "category": "key_moment",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 80,
-            "previousValue": 0,
-            "delta": 80,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 5,
-            "previousNumerator": 0,
-            "previousDenominator": 1,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。"
-          },
-          {
-            "key": "gamePointWinRate",
-            "label": "ゲームポイント取得率",
-            "category": "key_moment",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 37.5,
-            "previousValue": 0,
-            "delta": 37.5,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 3,
-            "denominator": 8,
-            "previousNumerator": 0,
-            "previousDenominator": 1,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "ゲームポイント取得率は 0% から 38% に改善傾向です（+38pt）。"
-          },
-          {
-            "key": "receivePointWinRate",
-            "label": "レシーブ時得点率",
-            "category": "receive",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 46.42857142857143,
-            "previousValue": 27.27272727272727,
-            "delta": 19.15584415584416,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 13,
-            "denominator": 28,
-            "previousNumerator": 3,
-            "previousDenominator": 11,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "レシーブ時得点率は 27% から 46% に改善傾向です（+19pt）。"
-          }
-        ]
+        "metrics": []
       },
       {
         "id": "serve",
-        "title": "サーブ成長",
-        "messages": [
-          "1stサービス時得点率は 29% から 43% に改善傾向です（+15pt）。",
-          "2ndサービス時得点率は 100% から 20% です。次はここを見てみましょう（-80pt）。"
-        ],
+        "title": "サーブとレシーブ",
+        "messages": [],
         "metrics": [
           {
             "key": "servicePointWinRate",
@@ -2160,16 +2108,32 @@
             "matchCount": 1,
             "previousMatchCount": 1,
             "summary": "ダブルフォルト率は 0% から 4% です。次はここを見てみましょう（+4pt）。"
+          },
+          {
+            "key": "receivePointWinRate",
+            "label": "レシーブ時得点率",
+            "category": "receive",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 46.42857142857143,
+            "previousValue": 27.27272727272727,
+            "delta": 19.15584415584416,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 13,
+            "denominator": 28,
+            "previousNumerator": 3,
+            "previousDenominator": 11,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "レシーブ時得点率は 27% から 46% に改善傾向です（+19pt）。"
           }
         ]
       },
       {
         "id": "key_moment",
         "title": "重要局面",
-        "messages": [
-          "2-2後の次ポイント取得率は 0% から 80% に改善傾向です（+80pt）。",
-          "ゲームポイントを握られた後の粘り率は 50% から 43% です。次はここを見てみましょう（-7pt）。"
-        ],
+        "messages": [],
         "metrics": [
           {
             "key": "afterTwoTwoPointWinRate",
@@ -2270,11 +2234,8 @@
       },
       {
         "id": "momentum",
-        "title": "連続失点の変化",
-        "messages": [
-          "連続失点後の次ポイント取得率は 30% から 47% に改善傾向です（+17pt）。",
-          "最大連続失点は 5.0回 から 7.0回 です。次はここを見てみましょう（+2.0回）。"
-        ],
+        "title": "流れ（連続失点）",
+        "messages": [],
         "metrics": [
           {
             "key": "afterConsecutiveLostPointWinRate",
@@ -2375,49 +2336,65 @@
       },
       {
         "id": "rally",
-        "title": "ラリー傾向",
-        "messages": [
-          "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。",
-          "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-        ],
+        "title": "ラリーの長さ別",
+        "messages": [],
         "metrics": [
           {
-            "key": "middleRallyWinRate",
-            "label": "3-5本ラリー得点率",
+            "key": "rally3to4WinRate",
+            "label": "3〜4本のラリーの得点率",
             "category": "rally",
             "unit": "percent",
             "higherIsBetter": true,
-            "currentValue": 33.33333333333333,
-            "previousValue": 50,
-            "delta": -16.66666666666667,
-            "trend": "declined",
+            "currentValue": 40,
+            "previousValue": 40,
+            "delta": 0,
+            "trend": "stable",
             "confidence": "small_sample",
-            "numerator": 4,
-            "denominator": 12,
-            "previousNumerator": 4,
+            "numerator": 2,
+            "denominator": 5,
+            "previousNumerator": 2,
+            "previousDenominator": 5,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "3〜4本のラリーの得点率は 40% から 40% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally5to8WinRate",
+            "label": "5〜8本のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 36,
+            "previousValue": 35.714285714285715,
+            "delta": 0.2857142857142847,
+            "trend": "stable",
+            "confidence": "small_sample",
+            "numerator": 9,
+            "denominator": 25,
+            "previousNumerator": 5,
+            "previousDenominator": 14,
+            "matchCount": 1,
+            "previousMatchCount": 1,
+            "summary": "5〜8本のラリーの得点率は 36% から 36% で、大きな変化はありません。"
+          },
+          {
+            "key": "rally9PlusWinRate",
+            "label": "9本以上のラリーの得点率",
+            "category": "rally",
+            "unit": "percent",
+            "higherIsBetter": true,
+            "currentValue": 50,
+            "previousValue": 25,
+            "delta": 25,
+            "trend": "improved",
+            "confidence": "small_sample",
+            "numerator": 12,
+            "denominator": 24,
+            "previousNumerator": 2,
             "previousDenominator": 8,
             "matchCount": 1,
             "previousMatchCount": 1,
-            "summary": "3-5本ラリー得点率は 50% から 33% です。次はここを見てみましょう（-17pt）。"
-          },
-          {
-            "key": "longRallyWinRate",
-            "label": "6本以上ラリー得点率",
-            "category": "rally",
-            "unit": "percent",
-            "higherIsBetter": true,
-            "currentValue": 45.23809523809524,
-            "previousValue": 26.31578947368421,
-            "delta": 18.922305764411032,
-            "trend": "improved",
-            "confidence": "small_sample",
-            "numerator": 19,
-            "denominator": 42,
-            "previousNumerator": 5,
-            "previousDenominator": 19,
-            "matchCount": 1,
-            "previousMatchCount": 1,
-            "summary": "6本以上ラリー得点率は 26% から 45% に改善傾向です（+19pt）。"
+            "summary": "9本以上のラリーの得点率は 25% から 50% に改善傾向です（+25pt）。"
           }
         ]
       }

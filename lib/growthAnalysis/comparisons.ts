@@ -15,8 +15,8 @@ const practiceThemeMap: Record<string, Omit<PracticeTheme, 'id' | 'sourceMetricK
     title: 'レシーブから先にミスしない',
     description: 'レシーブ後の1本目まで含めて、落ち着いて入ることを確認します。',
   },
-  longRallyWinRate: {
-    title: '6本以上のラリーで無理に決めにいかない',
+  rally9PlusWinRate: {
+    title: '9本以上のラリーで無理に決めにいかない',
     description: '長いラリーで失点しにくい形を作れるかを見てみましょう。',
   },
   threePointLostStreakCount: {
@@ -50,21 +50,14 @@ export const getDeclinedMetrics = (metrics: GrowthMetric[]) =>
     .filter((metric) => metric.trend === 'declined')
     .sort((left, right) => Math.abs(right.delta ?? 0) - Math.abs(left.delta ?? 0));
 
+// 比較の文。数字は各行に出すので、ここでは指標の名前だけを挙げる（同じ数字を何度も出さない。2026-09-27）
 export const buildComparisonMessages = (metrics: GrowthMetric[]) => {
-  const improved = getImprovedMetrics(metrics)[0];
-  const declined = getDeclinedMetrics(metrics)[0];
+  const improved = getImprovedMetrics(metrics).slice(0, 2);
+  const declined = getDeclinedMetrics(metrics).slice(0, 2);
   const messages: string[] = [];
-
-  if (improved) {
-    messages.push(improved.summary);
-  }
-  if (declined) {
-    messages.push(declined.summary);
-  }
-  if (messages.length === 0) {
-    messages.push('大きな変化はまだ見えにくい状態です。次の数試合も続けて確認してみましょう。');
-  }
-
+  if (improved.length > 0) messages.push(`伸びた指標: ${improved.map((metric) => metric.label).join('、')}`);
+  if (declined.length > 0) messages.push(`次に見ておきたい指標: ${declined.map((metric) => metric.label).join('、')}`);
+  if (messages.length === 0) messages.push('大きな変化はまだ見えにくい状態です。次の数試合も続けて確認してみましょう。');
   return messages;
 };
 
@@ -102,18 +95,39 @@ const buildComparison = ({
   };
 };
 
+// 「最近の成長」の比べ方（2026-09-27 にユーザー確認のうえ変更）
+// - 2〜5試合: 最新の1試合と、それ以前の全試合をまとめた値を比べる。記録を全部使い、「今回はいつもと比べてどうか」を見る
+//   （以前は直近1試合とその前の1試合だけで、3〜5試合あっても古い試合を使っていなかった）
+// - 6試合以上: 直近の数試合と、その直前の同じ数の試合を比べる（6〜9試合は3試合ずつ、10試合以上は5試合ずつ）
+export const RECENT_PERIOD_WINDOW_MIN_MATCHES = 6;
+
 export const getRecentPeriodComparison = (stats: SingleMatchGrowthStats[]): GrowthComparison | null => {
   if (stats.length < 2) return null;
-  const windowSize = stats.length >= 10 ? 5 : stats.length >= 6 ? 3 : 1;
+
+  if (stats.length < RECENT_PERIOD_WINDOW_MIN_MATCHES) {
+    const currentStats = stats.slice(-1);
+    const previousStats = stats.slice(0, -1);
+    return buildComparison({
+      kind: 'recent_period',
+      title: '最近の成長',
+      description: `最新の1試合と、それ以前の${previousStats.length}試合をまとめた値を比べています。`,
+      currentLabel: '最新試合',
+      previousLabel: 'それ以前',
+      currentStats,
+      previousStats,
+    });
+  }
+
+  const windowSize = stats.length >= 10 ? 5 : 3;
   const currentStats = stats.slice(-windowSize);
   const previousStats = stats.slice(-(windowSize * 2), -windowSize);
 
   return buildComparison({
     kind: 'recent_period',
     title: '最近の成長',
-    description: `${currentStats.length}試合と、その前の${previousStats.length}試合を比べています。`,
-    currentLabel: windowSize === 1 ? '今回' : `直近${currentStats.length}試合`,
-    previousLabel: windowSize === 1 ? '前回' : `前${previousStats.length}試合`,
+    description: `直近の${currentStats.length}試合と、その前の${previousStats.length}試合を比べています。`,
+    currentLabel: `直近${currentStats.length}試合`,
+    previousLabel: `前${previousStats.length}試合`,
     currentStats,
     previousStats,
   });
@@ -193,70 +207,24 @@ export const getOpponentLevelComparison = (stats: SingleMatchGrowthStats[]): Gro
   );
 };
 
-const buildTrackingMessages = (metrics: GrowthMetric[]) => {
-  const improved = getImprovedMetrics(metrics)[0];
-  const declined = getDeclinedMetrics(metrics)[0];
-  const messages: string[] = [];
-
-  if (improved) {
-    messages.push(`前回まで確認していた「${improved.label}」は改善傾向です。`);
-  }
-  if (declined) {
-    messages.push(`一方で「${declined.label}」は次の試合で確認してみましょう。`);
-  }
-  if (messages.length === 0) {
-    messages.push('改善トラッキングは、あと数試合記録すると見えやすくなります。');
-  }
-  return messages;
-};
+// 各指標は1回だけ出す。以前の「最近の成長」「改善トラッキング」は下の節と同じ指標を繰り返していたので「まとめ」に吸収した（2026-09-27）。
+const SECTION_DEFS: Array<{ id: string; title: string; categories: GrowthMetric['category'][] }> = [
+  { id: 'serve', title: 'サーブとレシーブ', categories: ['serve', 'receive'] },
+  { id: 'key_moment', title: '重要局面', categories: ['key_moment'] },
+  { id: 'momentum', title: '流れ（連続失点）', categories: ['momentum'] },
+  { id: 'rally', title: 'ラリーの長さ別', categories: ['rally'] },
+];
 
 export const buildSections = (comparison: GrowthComparison | null): GrowthReportSection[] => {
   if (!comparison) return [];
-  const byCategory = (category: GrowthMetric['category']) => comparison.metrics.filter((metric) => metric.category === category);
-
-  const sections: GrowthReportSection[] = [
-    {
-      id: 'summary',
-      title: '最近の成長',
-      messages: comparison.messages,
-      metrics: getComparableMetrics(comparison.metrics).slice(0, 4),
-    },
-    {
-      id: 'tracking',
-      title: '改善トラッキング',
-      messages: buildTrackingMessages(comparison.metrics),
-      metrics: [...getImprovedMetrics(comparison.metrics), ...getDeclinedMetrics(comparison.metrics)].slice(0, 3),
-    },
-    {
-      id: 'serve',
-      title: 'サーブ成長',
-      messages: buildComparisonMessages(byCategory('serve')),
-      metrics: byCategory('serve'),
-    },
-    {
-      id: 'key_moment',
-      title: '重要局面',
-      messages: buildComparisonMessages(byCategory('key_moment')),
-      metrics: byCategory('key_moment'),
-    },
-    {
-      id: 'momentum',
-      title: '連続失点の変化',
-      messages: buildComparisonMessages(byCategory('momentum')),
-      metrics: byCategory('momentum'),
-    },
-    {
-      id: 'rally',
-      title: 'ラリー傾向',
-      messages: buildComparisonMessages(byCategory('rally')),
-      metrics: byCategory('rally'),
-    },
-  ];
-
-  return sections.map((section) => ({
-    ...section,
-    metrics: section.metrics.filter((metric) => metric.denominator > 0),
-  }));
+  const summary: GrowthReportSection = { id: 'summary', title: 'まとめ', messages: buildComparisonMessages(comparison.metrics), metrics: [] };
+  const sections = SECTION_DEFS.map(({ id, title, categories }) => ({
+    id,
+    title,
+    messages: [],
+    metrics: comparison.metrics.filter((metric) => categories.includes(metric.category) && metric.denominator > 0),
+  })).filter((section) => section.metrics.length > 0);
+  return [summary, ...sections];
 };
 
 export const buildPracticeThemes = (comparison: GrowthComparison | null): PracticeTheme[] => {

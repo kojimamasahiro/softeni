@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
-import { Card, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
+import { Card, ComparisonBasis, getTargetMeta, PracticeThemes } from '@/components/growth/GrowthReportView';
 import { gatherShowcaseRecords, loadFeaturedEntries, loadGrowthTargets, showcaseDisplayName, type ShowcaseRecord } from '@/lib/growthShowcase';
 import { buildSiteUrl, isScoreSiteMode } from '@/lib/siteConfig';
 
@@ -89,6 +89,7 @@ export default function GrowthShowcasePage({ slug, title, intro, records, player
           ) : (
             active && (
               <div className="mt-4 space-y-5">
+                {active.report.comparison && <ComparisonBasis comparison={active.report.comparison} />}
                 {active.report.sections.map((section) => (
                   <Card key={section.id} title={section.title} messages={section.messages} metrics={section.metrics} />
                 ))}

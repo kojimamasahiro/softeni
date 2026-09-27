@@ -1,4 +1,4 @@
-import type { Game, Match, Point } from '../../src/types/database';
+import type { Game, Match } from '../../src/types/database';
 import type {
   AggregatedMetricSource,
   AverageStat,
@@ -12,6 +12,8 @@ import type {
   SingleMatchGrowthStats,
   TeamKey,
 } from './types';
+import { getRallyBucket } from '../matchAnalysis/helpers';
+import type { RallyBucket } from '../matchAnalysis/types';
 import { getGrowthTargetForSide, getMatchDate, getMatchWinner, getRequiredWins, isCompletedMatch } from './targets';
 
 const NORMAL_GAME_WIN_POINTS = 4;
@@ -132,25 +134,34 @@ const metricDefinitions: Array<{
     higherIsBetter: true,
     kind: 'rate',
   },
+  // ラリーの区切りは試合詳細（lib/matchAnalysis の RallyBucket）と同じ 1〜2 / 3〜4 / 5〜8 / 9本以上（2026-09-27 にそろえた）
   {
-    key: 'shortRallyWinRate',
-    label: '1-2本ラリー得点率',
+    key: 'rally1to2WinRate',
+    label: '1〜2本のラリーの得点率',
     category: 'rally',
     unit: 'percent',
     higherIsBetter: true,
     kind: 'rate',
   },
   {
-    key: 'middleRallyWinRate',
-    label: '3-5本ラリー得点率',
+    key: 'rally3to4WinRate',
+    label: '3〜4本のラリーの得点率',
     category: 'rally',
     unit: 'percent',
     higherIsBetter: true,
     kind: 'rate',
   },
   {
-    key: 'longRallyWinRate',
-    label: '6本以上ラリー得点率',
+    key: 'rally5to8WinRate',
+    label: '5〜8本のラリーの得点率',
+    category: 'rally',
+    unit: 'percent',
+    higherIsBetter: true,
+    kind: 'rate',
+  },
+  {
+    key: 'rally9PlusWinRate',
+    label: '9本以上のラリーの得点率',
     category: 'rally',
     unit: 'percent',
     higherIsBetter: true,
@@ -243,15 +254,6 @@ const isGamePointOpportunity = (context: ReconstructedPoint, team: TeamKey) => {
   return isWinningScore(context.scoreBefore[team] + 1, context.scoreBefore[opponent], context.pointsToWin);
 };
 
-const getRallyBucket = (point: Point) => {
-  if (point.double_fault) return 'unknown';
-  const rallyCount = point.rally_count ?? 0;
-  if (rallyCount <= 0) return 'unknown';
-  if (rallyCount <= 2) return 'short';
-  if (rallyCount <= 5) return 'middle';
-  return 'long';
-};
-
 const getLostStreakStats = (reconstructedPoints: ReconstructedPoint[], team: TeamKey) => {
   let currentLostStreak = 0;
   let maxLostStreak = 0;
@@ -338,9 +340,7 @@ const getSingleMatchGrowthStats = (match: Match, side: TeamKey): SingleMatchGrow
   const opponentGamePointPoints = reconstructedPoints.filter((context) => isGamePointOpportunity(context, opponent));
   const finalGamePoints = reconstructedPoints.filter((context) => context.isFinalGame);
   const rallyPoints = reconstructedPoints.filter((context) => getRallyBucket(context.point) !== 'unknown');
-  const shortRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'short');
-  const middleRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'middle');
-  const longRallyPoints = rallyPoints.filter((context) => getRallyBucket(context.point) === 'long');
+  const rallyPointsIn = (bucket: RallyBucket) => rallyPoints.filter((context) => getRallyBucket(context.point) === bucket);
   const lostStreakStats = getLostStreakStats(reconstructedPoints, side);
   const matchWinner = getMatchWinner(match);
   const opponentTarget = getGrowthTargetForSide(match, opponent);
@@ -372,9 +372,10 @@ const getSingleMatchGrowthStats = (match: Match, side: TeamKey): SingleMatchGrow
       finalGamePointWinRate: createRate(finalGamePoints, side),
       afterConsecutiveLostPointWinRate: lostStreakStats.afterConsecutiveLostPointWinRate,
       twoPointLeadHoldRate: getTwoPointLeadHoldRate(match, side),
-      shortRallyWinRate: createRate(shortRallyPoints, side),
-      middleRallyWinRate: createRate(middleRallyPoints, side),
-      longRallyWinRate: createRate(longRallyPoints, side),
+      rally1to2WinRate: createRate(rallyPointsIn('1-2'), side),
+      rally3to4WinRate: createRate(rallyPointsIn('3-4'), side),
+      rally5to8WinRate: createRate(rallyPointsIn('5-8'), side),
+      rally9PlusWinRate: createRate(rallyPointsIn('9+'), side),
     },
     averages: {
       threePointLostStreakCount: lostStreakStats.threePointLostStreakCount,
