@@ -202,6 +202,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   // 下段のグラフ（決め球とミス・ラリーの長さ別）
   const pointSources = useMemo(() => buildPointSources(analysisSummary.reconstructedPoints), [analysisSummary]);
   const rallyLengthSplit = useMemo(() => buildRallyLengthSplit(analysisSummary.reconstructedPoints), [analysisSummary]);
+  const showPointStrip = analysisSummary.scoreIntegrity.ok && analysisSummary.reconstructedPoints.length > 0;
   // ポイントの並びでゲームを選んだとき、下の「試合の流れ」でそのゲームを開いて見せる
   const openGameFlow = useCallback((gameNumber: number) => {
     setExpandedGames((previous) => new Set(previous).add(gameNumber));
@@ -885,6 +886,36 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
     };
   }, [analysisSummary, formatServerLabel, gamesAsc, getShortTeamName, teamAPlayers, teamBPlayers]);
 
+  // 上段の「見どころの場面」。名場面（サイト内で希少な1本）と勝敗を分けた局面候補を1つの一覧にまとめる。
+  // 同じ1本が重なったら名場面を残し、「この試合で分かったこと」の「その場面を見る」と同じ1本は一覧から外す。
+  const highlightItems = useMemo(() => {
+    const seen = new Set(matchFindings.flatMap((finding) => (finding.target ? [finding.target.pointId] : [])));
+    const items: Array<{ source: 'rare' | 'decisive'; pointId: string; gameNumber: number; tag: string; text: string }> = [];
+    rareEvents.forEach((event) => {
+      if (seen.has(event.pointId)) return;
+      seen.add(event.pointId);
+      items.push({
+        source: 'rare',
+        pointId: event.pointId,
+        gameNumber: event.gameNumber,
+        tag: RARE_EVENT_KIND_TAGS[event.kind],
+        text: `第${event.gameNumber}ゲーム #${event.pointNumber} ${event.label}`,
+      });
+    });
+    resultViewModel.matchOverview.decisiveMoments.forEach((moment) => {
+      if (seen.has(moment.id)) return;
+      seen.add(moment.id);
+      items.push({
+        source: 'decisive',
+        pointId: moment.id,
+        gameNumber: moment.gameNumber,
+        tag: '勝敗の分かれ目',
+        text: `${moment.label} ${moment.description}`,
+      });
+    });
+    return items;
+  }, [matchFindings, rareEvents, resultViewModel]);
+
   if (!match) return <div className="p-6 text-text dark:bg-gray-900">Match not found</div>;
 
   const matchWinner = getMatchWinner();
@@ -1327,7 +1358,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
               </div>
             )}
 
-            {analysisSummary.scoreIntegrity.ok && analysisSummary.reconstructedPoints.length > 0 && (
+            {showPointStrip && (
               <div>
                 <h2 className="mb-2 text-sm font-semibold text-text">ポイントの並び</h2>
                 <MatchFlowChart
@@ -1339,74 +1370,53 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
               </div>
             )}
 
-            <div>
-              <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">ゲームスコア</div>
-              {renderScoreboard()}
-            </div>
-
-            {rareEvents.length > 0 && (
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-900/20">
-                <h2 className="text-sm font-semibold text-amber-900 dark:text-amber-200">この試合の名場面</h2>
-                <p className="mt-1 text-xs text-amber-800/80 dark:text-amber-300/80">
-                  当サイトでスコア記録した全試合と比べて希少なプレーが、この試合に含まれています。
-                </p>
-                <div className="mt-3 grid gap-2">
-                  {rareEvents.map((event) => (
-                    <div key={`${event.kind}-${event.pointId}`} className="flex items-center gap-2 rounded bg-surface pr-2">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          scrollToPoint(event.gameNumber, event.pointId, {
-                            playVideo: true,
-                          })
-                        }
-                        className="flex min-w-0 flex-1 flex-wrap items-center gap-2 rounded px-3 py-2 text-left text-sm hover:bg-bg-subtle"
-                      >
-                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-900/50 dark:text-amber-200">
-                          {RARE_EVENT_KIND_TAGS[event.kind]}
-                        </span>
-                        <span className="font-medium text-text">{event.label}</span>
-                        <span className="text-xs text-text-muted">
-                          第{event.gameNumber}ゲーム #{event.pointNumber}
-                          {event.videoUrl ? '（タップで動画再生）' : ''}
-                        </span>
-                      </button>
-                      {renderPointShareButton(event.gameNumber, event.pointId, 'shrink-0')}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-2 flex items-center justify-between gap-2">
-                  <p className="text-[10px] text-amber-800/70 dark:text-amber-300/70">※{rareEvents[0].scopeNote}</p>
-                  {!isScoreSiteMode() && (
-                    <Link href={`${getPublicMatchesListPath()}/highlights`} className="whitespace-nowrap text-xs font-medium text-link hover:underline">
-                      サイト記録一覧 →
-                    </Link>
-                  )}
-                </div>
+            {/* ゲームスコアの表はポイントの並び（行の右にスコア）と重なるので、並びを出せないときだけ出す */}
+            {!showPointStrip && (
+              <div>
+                <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">ゲームスコア</div>
+                {renderScoreboard()}
               </div>
             )}
 
-            {resultViewModel.matchOverview.decisiveMoments.length > 0 && (
-              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-700/40">
-                <h2 className="text-sm font-semibold text-text">勝敗を分けた局面候補</h2>
-                <div className="mt-3 grid gap-2">
-                  {resultViewModel.matchOverview.decisiveMoments.map((moment) => (
-                    <div key={moment.id} className="flex items-center gap-2 rounded bg-surface pr-2">
+            {highlightItems.length > 0 && (
+              <div>
+                <h2 className="text-sm font-semibold text-text">見どころの場面</h2>
+                <p className="mt-1 text-xs text-text-muted">押すとその1本へ移動し、動画があれば再生します。</p>
+                <ul className="mt-2 grid gap-2">
+                  {highlightItems.map((item) => (
+                    <li key={item.pointId} className="flex items-center gap-2 rounded-lg border border-border bg-gray-50 pr-2 dark:bg-gray-800/60">
                       <button
                         type="button"
-                        onClick={() =>
-                          scrollToPoint(moment.gameNumber, moment.id, {
-                            playVideo: true,
-                          })
-                        }
-                        className="min-w-0 flex-1 rounded px-3 py-2 text-left text-sm text-text-secondary hover:bg-bg-subtle"
+                        onClick={() => scrollToPoint(item.gameNumber, item.pointId, { playVideo: true })}
+                        className="flex min-w-0 flex-1 flex-wrap items-center gap-2 rounded-lg px-3 py-2 text-left text-sm hover:bg-bg-subtle"
                       >
-                        <span className="font-medium text-text">{moment.label}</span> {moment.description}
+                        <span
+                          className={
+                            item.source === 'rare'
+                              ? 'rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-900/50 dark:text-amber-200'
+                              : 'rounded-full bg-gray-200 px-2 py-0.5 text-xs font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200'
+                          }
+                        >
+                          {item.tag}
+                        </span>
+                        <span className="text-text">{item.text}</span>
                       </button>
-                      {renderPointShareButton(moment.gameNumber, moment.id, 'shrink-0')}
-                    </div>
+                      {renderPointShareButton(item.gameNumber, item.pointId, 'shrink-0')}
+                    </li>
                   ))}
-                </div>
+                </ul>
+                {rareEvents.length > 0 && (
+                  <div className="mt-2 flex items-center justify-between gap-2">
+                    <p className="text-[10px] text-text-muted">
+                      ※「{RARE_EVENT_KIND_TAGS[rareEvents[0].kind]}」などの記録は、{rareEvents[0].scopeNote}
+                    </p>
+                    {!isScoreSiteMode() && (
+                      <Link href={`${getPublicMatchesListPath()}/highlights`} className="whitespace-nowrap text-xs font-medium text-link hover:underline">
+                        サイト記録一覧 →
+                      </Link>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>

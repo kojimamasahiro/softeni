@@ -19,7 +19,8 @@
 
 2026-07-11:
 
-- **表示先は試合詳細ページ**（スコア記録と一緒に「この試合の名場面」ブロックで表示）。
+- **表示先は試合詳細ページ**。2026-09-27 から上段の「見どころの場面」の一覧に、勝敗を分けた局面候補と一緒に並ぶ（名場面は黄色のタグ＋種類名）。
+  同じ1本が重なれば名場面を残す（仕様は [score-analysis.md](./score-analysis.md)「試合で分かったこと」）。
   当初案の「ニュース記事に追記」は、ADR-010 で result 記事が廃止済みのため採らず、
   まずスコア詳細ページ表示から始める（将来、大会結果ページ・大会ハブへの差し込みは P2 候補）。
 - **SNS 投稿は手動**（レポートスクリプトが出力するテンプレ文をコピペ。投稿前レビューを兼ねる）。
@@ -65,7 +66,7 @@ public/data/beta-matches/matches/*.json（既存生成物）
   ↓ scripts/generate-rare-events.mjs（prebuild 連鎖: generate-match-reverse-index の後）
   ↓ public/data/beta-matches/rare-events.json（events + byMatch 索引）
   ↓ lib/rareEventsStatic.ts（getStaticProps 用リーダー、プロセス内キャッシュ）
-  ↓ 試合詳細ページ「この試合の名場面」ブロック（ポイントへジャンプ＋動画再生）
+  ↓ 試合詳細ページ「見どころの場面」（ポイントへジャンプ＋動画再生）
 ```
 
 - 比較プールは `buildScopePools()`: scope='all-time' は大会紐付けのある全試合を1プール、
@@ -93,7 +94,7 @@ public/data/beta-matches/matches/*.json（既存生成物）
 最上級5カテゴリ（最長ラリー/最長デュース/最大逆転/最多連続/マッチポイントをしのいで勝利）は記録カード、
 サービスエース・昇格パターンは全件リストで表示する。
 
-- 導線: 試合詳細の「この試合の名場面」ブロック末尾 →「サイト記録一覧」リンク。
+- 導線: 試合詳細の「見どころの場面」末尾 →「サイト記録一覧」リンク（名場面が1件以上あるときだけ）。
 - SNS 投稿の受け皿 URL としても使える（投稿文の定番リンク先候補）。
 - 将来: 記録更新履歴（歴代記録）を残すと「サイト記録更新」の物語になる（P3 と接続。
   現状 rare-events.json はビルドごとに上書きで履歴を持たない）。
@@ -147,7 +148,7 @@ shot_type / shot_course はスキーマ有・未収録（recording_level: basic�
 - `scripts/rare-events-report.mjs` — 収穫レポート＋投稿テンプレ（手動実行）
 - `scripts/rare-events-discover.mjs` — パターン発見レポート（手動実行）
 - `lib/rareEventsStatic.ts` — サーバー用リーダー＋ `RareEvent` 型
-- `src/pages/beta/matches-results/[matchId]/index.tsx` — 「この試合の名場面」ブロック
+- `src/pages/beta/matches-results/[matchId]/index.tsx` — 「見どころの場面」（`highlightItems`）
 - `src/pages/matches/highlights.tsx` — サイト記録一覧（レコードブック）
 
 ## 参考実績
