@@ -121,6 +121,14 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 - `src/components/matches/matchInput/useMatchInputController.ts`
 - `docs/raw/2026-08-11-score-input-keyboard-shortcuts.md`
 
+### 再生速度
+
+入力画面の動画の下に「再生速度 1倍 / 1.5倍 / 2倍」の切り替えがある（`YoutubeHelperPanel`、2026-09-27）。
+記録は動画の再生時間とほぼ同じ速さで進む（1本約32秒）ため、見る時間を縮める。
+選んだ速度は端末の localStorage（`matchInput.playbackRate`）に覚え、次に開いたときも同じ速度で再生する。
+速度はプレーヤーの `playbackRate` で渡す（`YouTubeRangePlayer`。公開ページの再生には影響しない）。
+経緯と、合わせて検討した「合間を飛ばす」等は [raw/2026-07-11-idea-score-recording-semiauto.md](../raw/2026-07-11-idea-score-recording-semiauto.md) の 2026-09-27 追記。
+
 ### 入力時の自動推定
 
 ポイント入力フォームでは、入力済みの内容から一意に決まる項目を自動で埋めます
