@@ -1,4 +1,5 @@
 // 試合詳細ページ上段の「ポイントの並び」。1ゲーム1行で、1本ごとに取った側の色の四角を左から並べる。
+// ゲームスコアと取ったゲーム数は上の小さなスコア表（GameScoreboard）が受け持つので、行にはスコアを出さない。
 // 先行・連続得点・デュースの長さを色の並びで読む。長いゲームは折り返して2行になる。
 // 行そのものがボタンで、押すと下の「試合の流れ」でそのゲームを開く（四角は小さく指では押し分けられないため、押す単位はゲーム）。
 // 折れ線（累計の点差・ゲームごとの点差）は読みにくく棄却した。仕様: docs/wiki/score-analysis.md「試合で分かったこと」。
@@ -69,7 +70,7 @@ export default function MatchFlowChart({ contexts, teamNames, getResultLabel, on
               type="button"
               onClick={() => onSelectGame(row.gameNumber)}
               aria-label={`第${row.gameNumber}ゲーム ${row.score}${row.winner ? `、${teamNames[row.winner]}が取得` : ''}。${row.points.length}本。押すと詳細を開きます`}
-              className="grid w-full grid-cols-[2rem_minmax(0,1fr)_3rem] items-center gap-2 rounded px-1 py-1.5 text-left hover:bg-bg-subtle"
+              className="grid w-full grid-cols-[2rem_minmax(0,1fr)] items-center gap-2 rounded px-1 py-1.5 text-left hover:bg-bg-subtle"
             >
               <span className="text-xs text-text-muted" aria-hidden="true">
                 G{row.gameNumber}
@@ -85,9 +86,6 @@ export default function MatchFlowChart({ contexts, teamNames, getResultLabel, on
                     />
                   );
                 })}
-              </span>
-              <span className="text-right text-sm font-semibold tabular-nums text-text" aria-hidden="true">
-                {row.score}
               </span>
             </button>
           </li>
