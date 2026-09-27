@@ -8,11 +8,25 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import PageLayout from '@/components/PageLayout';
 import MetaHead from '@/components/MetaHead';
 import PointShareButton from '@/components/PointShareButton';
+import MatchFlowChart from '@/components/matches/MatchFlowChart';
+import PointSourceChart from '@/components/matches/PointSourceChart';
+import RallyLengthChart from '@/components/matches/RallyLengthChart';
 import YouTubeRangePlayer, { type YouTubeRangePlayerHandle } from '@/components/YouTubeRangePlayer';
 import { getBetaMatchById, getBetaTeamDisplayName, getLatestBetaMatchIds } from '@/lib/betaMatchesStatic';
 import { trackSharedPointPlay } from '@/lib/analytics';
 import { getGrowthTargetForSide } from '@/lib/growthAnalysis';
-import { AnalysisGuideCard, AnalysisReliability, analyzeMatch, ImprovementHint, MatchAnalysisSummary, RateMetric, TeamKey } from '@/lib/matchAnalysis';
+import {
+  AnalysisGuideCard,
+  AnalysisReliability,
+  analyzeMatch,
+  buildMatchFindings,
+  buildPointSources,
+  buildRallyLengthSplit,
+  ImprovementHint,
+  MatchAnalysisSummary,
+  RateMetric,
+  TeamKey,
+} from '@/lib/matchAnalysis';
 import { buildPointShareText, buildPointShareUrl, describeSharedPoint, locateSharedPoint, scoreBeforePoint, type LocatedPoint } from '@/lib/pointShare';
 import { getRareEventsForMatch, type RareEvent } from '@/lib/rareEventsStatic';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
@@ -50,8 +64,6 @@ type SelectedReviewGroup = {
 type FloatingVideoSize = 'sm' | 'md' | 'lg';
 
 const POINT_ERROR_TYPES = ['net', 'out', 'smash_error', 'volley_error', 'double_fault', 'receive_error', 'follow_error'] as const;
-
-const POINT_WINNER_TYPES = ['smash_winner', 'volley_winner', 'passing_winner', 'drop_winner', 'net_in_winner', 'service_ace', 'winner'] as const;
 
 const EXTENDED_POINT_ERROR_TYPES = [...POINT_ERROR_TYPES, 'forced_error', 'unforced_error'] as const;
 
@@ -181,6 +193,22 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   const gamesAsc = useMemo(() => [...(match.games ?? [])].sort((a, b) => a.game_number - b.game_number), [match.games]);
   // データベースのプレイヤー情報から苗字のみのチーム名を生成する関数
   const getShortTeamName = useCallback((team: 'A' | 'B') => getBetaTeamDisplayName(match, team), [match]);
+  // 上段の「この試合で分かったこと」（docs/wiki/score-analysis.md）。スコアの再構築が食い違う試合では出さない
+  const matchFindings = useMemo(
+    () =>
+      analysisSummary.scoreIntegrity.ok ? buildMatchFindings(analysisSummary.reconstructedPoints, { A: getShortTeamName('A'), B: getShortTeamName('B') }) : [],
+    [analysisSummary, getShortTeamName],
+  );
+  // 下段のグラフ（決め球とミス・ラリーの長さ別）
+  const pointSources = useMemo(() => buildPointSources(analysisSummary.reconstructedPoints), [analysisSummary]);
+  const rallyLengthSplit = useMemo(() => buildRallyLengthSplit(analysisSummary.reconstructedPoints), [analysisSummary]);
+  // ポイントの並びでゲームを選んだとき、下の「試合の流れ」でそのゲームを開いて見せる
+  const openGameFlow = useCallback((gameNumber: number) => {
+    setExpandedGames((previous) => new Set(previous).add(gameNumber));
+    window.setTimeout(() => {
+      document.getElementById(`game-flow-${gameNumber}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 0);
+  }, []);
 
   const getPointAnchorId = (pointId: string) => `point-${pointId}`;
   const youtubeVideoId = match.youtube_video_id ?? null;
@@ -490,55 +518,11 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
       gamesAsc.map((game) => [game.game_number, analysisSummary.reconstructedPoints.filter((context) => context.gameNumber === game.game_number)]),
     );
 
-    const createReasonCounts = () =>
-      new Map<string, number>([
-        ['決定打', 0],
-        ['相手ミス', 0],
-        ['サービスエース', 0],
-        ['相手のダブルフォルト', 0],
-        ['その他', 0],
-      ]);
-
-    const createConcededReasonCounts = () =>
-      new Map<string, number>([
-        ['相手の決定打', 0],
-        ['自チームミス', 0],
-        ['自チームのダブルフォルト', 0],
-        ['その他', 0],
-      ]);
-
     const toSortedEntries = (counts: Map<string, number>) =>
       [...counts.entries()]
         .filter(([, count]) => count > 0)
         .sort((left, right) => right[1] - left[1])
         .map(([label, count]) => ({ label, count }));
-
-    const getScoreReasonLabel = (team: TeamKey, point: Point) => {
-      const resultType = point.result_type || '';
-      if (point.winner_team !== team) return 'その他';
-      if (resultType === 'service_ace') return 'サービスエース';
-      if (resultType === 'double_fault') return '相手のダブルフォルト';
-      if (POINT_WINNER_TYPES.includes(resultType as (typeof POINT_WINNER_TYPES)[number])) {
-        return '決定打';
-      }
-      if (EXTENDED_POINT_ERROR_TYPES.includes(resultType as (typeof EXTENDED_POINT_ERROR_TYPES)[number])) {
-        return '相手ミス';
-      }
-      return 'その他';
-    };
-
-    const getConcededReasonLabel = (team: TeamKey, point: Point) => {
-      const resultType = point.result_type || '';
-      if (!point.winner_team || point.winner_team === team) return 'その他';
-      if (resultType === 'double_fault') return '自チームのダブルフォルト';
-      if (POINT_WINNER_TYPES.includes(resultType as (typeof POINT_WINNER_TYPES)[number])) {
-        return '相手の決定打';
-      }
-      if (EXTENDED_POINT_ERROR_TYPES.includes(resultType as (typeof EXTENDED_POINT_ERROR_TYPES)[number])) {
-        return '自チームミス';
-      }
-      return 'その他';
-    };
 
     const allKnownPlayers = new Map<string, TeamKey | 'unknown'>();
     teamAPlayers.forEach((player) => allKnownPlayers.set(player, 'A'));
@@ -608,36 +592,8 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
       return stat.gameBreakdown.get(gameNumber)!;
     };
 
-    const pointBreakdown = {
-      A: {
-        team: 'A' as TeamKey,
-        teamName: teamNames.A,
-        scoringReasons: createReasonCounts(),
-        concededReasons: createConcededReasonCounts(),
-      },
-      B: {
-        team: 'B' as TeamKey,
-        teamName: teamNames.B,
-        scoringReasons: createReasonCounts(),
-        concededReasons: createConcededReasonCounts(),
-      },
-    };
-
     gamesAsc.forEach((game) => {
       (game.points ?? []).forEach((point) => {
-        (['A', 'B'] as TeamKey[]).forEach((team) => {
-          const scoreReason = getScoreReasonLabel(team, point);
-          const concededReason = getConcededReasonLabel(team, point);
-          pointBreakdown[team].scoringReasons.set(
-            scoreReason,
-            (pointBreakdown[team].scoringReasons.get(scoreReason) ?? 0) + (point.winner_team === team ? 1 : 0),
-          );
-          pointBreakdown[team].concededReasons.set(
-            concededReason,
-            (pointBreakdown[team].concededReasons.get(concededReason) ?? 0) + (point.winner_team && point.winner_team !== team ? 1 : 0),
-          );
-        });
-
         const servingTeam = point.serving_team === 'A' || point.serving_team === 'B' ? point.serving_team : 'unknown';
         const servingPlayer = normalizePlayerName(point.serving_player);
         const servingStat = ensurePlayer(servingPlayer, servingTeam);
@@ -925,12 +881,6 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
         decisiveMoments,
       },
       gameFlow,
-      pointBreakdown: (['A', 'B'] as TeamKey[]).map((team) => ({
-        team,
-        teamName: pointBreakdown[team].teamName,
-        scoringReasons: toSortedEntries(pointBreakdown[team].scoringReasons),
-        concededReasons: toSortedEntries(pointBreakdown[team].concededReasons),
-      })),
       playerInvolvement,
     };
   }, [analysisSummary, formatServerLabel, gamesAsc, getShortTeamName, teamAPlayers, teamBPlayers]);
@@ -1174,7 +1124,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   // 可視パンくず。Breadcrumbs コンポーネントが BreadcrumbList の JSON-LD もここから生成する。
   const breadcrumbItems = [
     { label: 'ホーム', href: '/' },
-    { label: '試合一覧', href: getPublicMatchesListPath() },
+    { label: '試合分析', href: getPublicMatchesListPath() },
     ...(tournamentInfo && fullTournamentUrl ? [{ label: seoTournamentName, href: fullTournamentUrl }] : []),
     { label: seoMatchup, href: seoCanonicalUrl },
   ];
@@ -1196,7 +1146,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
         <Breadcrumbs crumbs={breadcrumbItems} />
         <div className="flex justify-between items-center mb-6">
           <Link href={getPublicMatchesListPath()} className="text-link hover:underline">
-            ← 試合一覧に戻る
+            ← 試合分析に戻る
           </Link>
         </div>
 
@@ -1350,24 +1300,44 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
               </div>
             )}
 
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-text-muted">総ポイント数</div>
-                <div className="mt-2 text-2xl font-bold text-text">{resultViewModel.matchOverview.totalPoints}</div>
+            {matchFindings.length > 0 && (
+              <div>
+                <h2 className="text-sm font-semibold text-text">この試合で分かったこと</h2>
+                <ul className="mt-2 grid gap-2">
+                  {matchFindings.map((finding) => (
+                    <li
+                      key={finding.kind}
+                      className="flex flex-col gap-1 rounded-lg border border-border bg-gray-50 px-4 py-3 text-sm text-text sm:flex-row sm:items-center sm:justify-between sm:gap-3 dark:bg-gray-800/60"
+                    >
+                      <span>{finding.text}</span>
+                      {finding.target && (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            if (finding.target) scrollToPoint(finding.target.gameNumber, finding.target.pointId, { playVideo: true });
+                          }}
+                          className="self-start whitespace-nowrap text-xs font-medium text-link hover:underline sm:self-auto"
+                        >
+                          その場面を見る →
+                        </button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-text-muted">勝敗を分けた局面候補</div>
-                <div className="mt-2 text-2xl font-bold text-text">{resultViewModel.matchOverview.decisiveMoments.length}件</div>
+            )}
+
+            {analysisSummary.scoreIntegrity.ok && analysisSummary.reconstructedPoints.length > 0 && (
+              <div>
+                <h2 className="mb-2 text-sm font-semibold text-text">ポイントの並び</h2>
+                <MatchFlowChart
+                  contexts={analysisSummary.reconstructedPoints}
+                  teamNames={{ A: getShortTeamName('A'), B: getShortTeamName('B') }}
+                  getResultLabel={getResultTypeLabel}
+                  onSelectGame={openGameFlow}
+                />
               </div>
-              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-text-muted">{getShortTeamName('A')}の最大連続得点</div>
-                <div className="mt-2 text-2xl font-bold text-info">{resultViewModel.matchOverview.streaks.A.for}点</div>
-              </div>
-              <div className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
-                <div className="text-xs font-medium text-text-muted">{getShortTeamName('B')}の最大連続得点</div>
-                <div className="mt-2 text-2xl font-bold text-success">{resultViewModel.matchOverview.streaks.B.for}点</div>
-              </div>
-            </div>
+            )}
 
             <div>
               <div className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-200">ゲームスコア</div>
@@ -1523,7 +1493,11 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
               const rawGame = gamesAsc.find((candidate) => candidate.game_number === game.gameNumber);
 
               return (
-                <div key={game.gameNumber} className="rounded-lg border border-border bg-gray-50 dark:bg-gray-800/60">
+                <div
+                  key={game.gameNumber}
+                  id={`game-flow-${game.gameNumber}`}
+                  className="scroll-mt-4 rounded-lg border border-border bg-gray-50 dark:bg-gray-800/60"
+                >
                   <button
                     type="button"
                     onClick={() => toggleGameExpansion(game.gameNumber)}
@@ -1923,41 +1897,24 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
 
         <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
           <div className="mb-4">
-            <h2 className="text-xl font-semibold text-text">得点・失点の内訳</h2>
-            <p className="mt-1 text-sm text-text-muted">点がどう動いたかを、得点と失点につながった記録に分けて見られます。</p>
+            <h2 className="text-xl font-semibold text-text">決め球とミス</h2>
+            <p className="mt-1 text-sm text-text-muted">
+              左は{getShortTeamName('A')}、右は{getShortTeamName('B')}が自分でしたことです。上は自分で決めた点、下は自分のミスで失った点。
+            </p>
           </div>
+          <PointSourceChart sources={pointSources} teamNames={{ A: getShortTeamName('A'), B: getShortTeamName('B') }} />
+        </section>
 
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {resultViewModel.pointBreakdown.map((teamBreakdown) => (
-              <div key={teamBreakdown.team} className="rounded-lg border border-border bg-gray-50 p-4 dark:bg-gray-800/60">
-                <h3 className="text-lg font-semibold text-text">{teamBreakdown.teamName}</h3>
-                <div className="mt-4 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <div className="text-sm font-medium text-text">得点につながった記録</div>
-                    <div className="mt-3 space-y-2">
-                      {teamBreakdown.scoringReasons.map((entry) => (
-                        <div key={`${teamBreakdown.team}-${entry.label}-for`} className="flex items-center justify-between text-sm">
-                          <span className="text-text-secondary">{entry.label}</span>
-                          <span className="font-semibold text-text">{entry.count}件</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-white p-4 dark:bg-gray-900/40">
-                    <div className="text-sm font-medium text-text">失点につながった記録</div>
-                    <div className="mt-3 space-y-2">
-                      {teamBreakdown.concededReasons.map((entry) => (
-                        <div key={`${teamBreakdown.team}-${entry.label}-against`} className="flex items-center justify-between text-sm">
-                          <span className="text-text-secondary">{entry.label}</span>
-                          <span className="font-semibold text-text">{entry.count}件</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+        <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
+          <div className="mb-4">
+            <h2 className="text-xl font-semibold text-text">ラリーの長さ別</h2>
+            <p className="mt-1 text-sm text-text-muted">ラリーの本数ごとに、どちらが点を取ったかを見られます。</p>
           </div>
+          <RallyLengthChart
+            rows={rallyLengthSplit.rows}
+            unknown={rallyLengthSplit.unknown}
+            teamNames={{ A: getShortTeamName('A'), B: getShortTeamName('B') }}
+          />
         </section>
 
         <section className="mb-6 rounded-lg border border-border bg-surface p-6 shadow-sm">
