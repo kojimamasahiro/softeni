@@ -13,7 +13,7 @@ export default function Footer() {
           </p>
           <div className="mt-2 flex flex-wrap justify-center gap-4 text-sm">
             <Link href={getPublicMatchesListPath()} className="hover:text-primary-hover hover:underline transition duration-200 ease-in-out">
-              試合一覧
+              試合分析
             </Link>
             <Link href="https://softeni-pick.com" className="hover:text-primary-hover hover:underline transition duration-200 ease-in-out">
               Softeni Pick

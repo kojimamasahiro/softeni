@@ -17,6 +17,8 @@ import { buildImprovementHints } from './improvementHints';
 import type { MatchAnalysisSummary, NeutralComparisonMetrics, RateMetric, ReconstructedPointContext, TeamKey } from './types';
 
 export * from './types';
+export { buildPointSources, buildRallyLengthSplit, RALLY_ROW_MIN_RELIABLE, type PointSourceRow, type PointSources, type RallyLengthRow } from './matchCharts';
+export { buildMatchFindings, MATCH_FINDING_THRESHOLDS, type MatchFinding, type MatchFindingKind } from './matchFindings';
 
 export const analyzeMatch = (match: Match): MatchAnalysisSummary => {
   const sortedGames = [...(match.games ?? [])].sort((left, right) => left.game_number - right.game_number);

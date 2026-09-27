@@ -84,6 +84,9 @@ jobs:
       - name: 試合詳細のラリー共有リンク テスト
         run: npm run -s point-share:test
 
+      - name: 試合詳細の「この試合で分かったこと」テスト
+        run: npm run -s match-findings:test
+
       - name: 地域移行トラッカーの検証
         run: npm run -s club:verify
 

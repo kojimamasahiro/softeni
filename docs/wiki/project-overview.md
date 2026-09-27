@@ -64,13 +64,13 @@ score 系は、試合単位の記録・公開・分析を扱う領域です。
 - `softeni-pick` mode:
   本体サイトと beta 導線を持つ
 - `score` mode:
-  `/matches*` の閲覧用公開面を持つ
+  `/matches*` の閲覧用公開面を持つ（未デプロイ。今後は記録の道具の置き場。ADR-003）
 
 ## 実装済み
 
 - 大会・選手・チーム・高校カテゴリの静的ページ群
 - 試合作成、ポイント入力、動画レビュー、公開用 JSON 生成
-- `score.softeni-pick.com` 想定の公開 URL 切り替え
+- `score` mode の URL 切り替え（`lib/siteConfig.ts`。`score.softeni-pick.com` は未デプロイ）
 
 ## 前提
 

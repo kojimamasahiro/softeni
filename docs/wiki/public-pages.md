@@ -16,8 +16,9 @@
 `/highschool/**`（[highschool.md](./highschool.md)）/ `/secondaryschool/**`（[secondaryschool.md](./secondaryschool.md)）/
 `/primaryschool/**`（[primaryschool.md](./primaryschool.md)）/ `/university/**`（[university.md](./university.md)）/
 `/st-league/**`（[st-league.md](./st-league.md)）/ `/rankings` / `/news`・`/news/[articleId]` /
-`/growth`・`/growth/[slug]` / `/beta/**`。
-`score` mode: `/matches` / `/matches/[matchId]` / `/matches/growth`。
+`/growth`・`/growth/[slug]` / `/matches`・`/matches/[matchId]`・`/matches/highlights`・`/matches/growth` / `/beta/**`。
+`score` mode: `/matches` / `/matches/[matchId]` / `/matches/growth`。**score mode は未デプロイ**（`score.softeni-pick.com` は DNS 未設定。2026-09-27 確認）。
+今後の score サブドメインは閲覧公開ではなく記録の道具（ログイン必須）の置き場（ADR-003）。
 
 - **`/rankings` は1ページ**。年度・種目・男女をクライアント側で切り替える（薄いページを量産しない）。各表は上位100位。
   **タブ裏はクライアント描画なので、全年度・全種目の上位3位を静的 HTML で併載**する（[seo.md](./seo.md) #9）。
@@ -182,6 +183,7 @@ GA4 の閲覧数の上位3件をカードで出す。**リアルタイムでは�
   robots で Disallow している `/api/` `/beta/` `/test-db` は含めない。**公開ページを追加したら更新する。**
 - **ナビゲーション**は左サイドバー＋右コンテンツの2ペイン（ADR-006）。`score` mode は上部バーのみ
   （分岐は `isScoreSiteMode()`）。サイドバー第1階層は「セクション入口」に限定し、末端ページへの重複リンクは張らない。
+  記録試合の入口は「読みもの・記録 > 試合分析」（`/matches`。docs/ui D-026 で D-011 を覆した）。
   コンテキスト第2階層は本文上部のサブナビに置く。
 
 ### 試合詳細ページ
@@ -217,8 +219,7 @@ canonical は `getPublicMatchDetailPath(match)` ＋末尾スラッシュ。JSON-
 
 ## Open Questions
 
-- 本番で2ドメインをどうデプロイ・管理しているか。
-- `score` 側のヘッダー/フッターの差し替え方針、専用ブランド/ナビ設計をどこまで分けるか（Draft）。
+- `score` 側のヘッダー/フッター・ナビを、記録の道具（ADR-003 Phase 2）としてどう作るか。現行の閲覧用 score mode の外枠は静的生成なので非公開の試合には使えず、再利用できるのは `PublicMatchDetailPage` と分析ロジック。
 - OGP 文言・サイト名の正式運用ルール。
 - 高校カテゴリの注目校表示ロジックを将来的に手動編集可能にするか。
 

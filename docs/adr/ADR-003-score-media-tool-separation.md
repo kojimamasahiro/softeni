@@ -105,6 +105,24 @@ private な UGC はランタイムでしか出さない。これで公開デー�
 - `src/types/database.ts`（`Match` への `owner_user_id` / `visibility` 追加が対象）
 - `src/pages/beta/matches/**`（UGC 記録 UI の認証付き再利用）
 
+## 追記（2026-09-27）: 現状と追加の決定
+
+本文（Context / Decision / Alternatives）は書き換えず、ここに追記する。
+
+- **現状**: `score.softeni-pick.com` は未デプロイ（DNS 未設定）。公開中の閲覧面は本体だけで、
+  `/matches`・`/matches/[matchId]`・`/matches/highlights`・掲載大会配下のネスト URL がある。
+  本体のサイドナビに「試合分析」（`/matches`）を出した（docs/ui D-026）。
+- **決定: 利用者が記録した試合は、当面本体（メディア）に載せない。** 公開を選んだ試合であっても同じ。
+  理由は、利用者が登録した試合を本体に載せるのはリスクがあるため（オーナー判断）。
+  リスクの中身（内容の正しさ、写っている人の扱い、モデレーション等）の洗い出しは未実施（Assumption）。
+  したがって本体の試合は、運営が公開動画から記録したものだけになる。
+- **閲覧用の score mode の扱い**: 利用者が自分の試合を非公開で見る画面は Phase 2 で必要。
+  ただし現行の score mode は公開 JSON から静的にページを作る外枠で、非公開の試合には使えない。
+  再利用するのは `PublicMatchDetailPage` と分析ロジックで、外枠は Phase 2 で作り直す。それまでは消さずに残す。
+- **有料化の時期**: 記録の道具を一般に公開するとき（Phase 2）。本体の閲覧面は無料のまま。
+- 経緯と、本体で見せるものを「スコア」より「データから分かること」に置く方針は
+  [docs/raw/2026-09-27-idea-match-detail-charts.md](../raw/2026-09-27-idea-match-detail-charts.md)。
+
 ## Open Questions
 
 - UGC 用データモデルの具体仕様（`owner_user_id` / `visibility` の enum / 静的生成の絞り込み条件）。

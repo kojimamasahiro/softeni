@@ -91,7 +91,7 @@ export function PublicGrowthAnalysisPage({ targets }: GrowthPageProps) {
         <Breadcrumbs
           crumbs={[
             { label: 'ホーム', href: '/' },
-            { label: '試合一覧', href: getPublicMatchesListPath() },
+            { label: '試合分析', href: getPublicMatchesListPath() },
             { label: '成長分析', href: getPublicMatchesGrowthPath() },
           ]}
         />
