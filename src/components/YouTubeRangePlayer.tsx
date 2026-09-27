@@ -21,6 +21,7 @@ type YouTubePlayerInstance = {
   pauseVideo: () => void;
   playVideo: () => void;
   seekTo: (seconds: number, allowSeekAhead?: boolean) => void;
+  setPlaybackRate?: (rate: number) => void;
   setSize?: (width: number, height: number) => void;
 };
 
@@ -39,6 +40,8 @@ type YouTubeRangePlayerProps = {
   className?: string;
   onEmbedBlocked?: () => void;
   onReady?: () => void;
+  /** 再生速度（1 = 等速）。記録画面の倍速再生で使う。省略時は YouTube の既定のまま */
+  playbackRate?: number;
   playerHeight?: number;
   responsive?: boolean;
   videoId: string;
@@ -77,7 +80,7 @@ const loadYouTubeIframeApi = () =>
   });
 
 const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlayerProps>(function YouTubeRangePlayer(
-  { aspectRatio, className, onEmbedBlocked, onReady, playerHeight, responsive, videoId },
+  { aspectRatio, className, onEmbedBlocked, onReady, playbackRate, playerHeight, responsive, videoId },
   ref,
 ) {
   // YT.Player は渡した要素を iframe に置き換えるので、React が持つ外枠とは別の差し込み先を用意する
@@ -85,6 +88,7 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
   const playerRef = useRef<YouTubePlayerInstance | null>(null);
   const onEmbedBlockedRef = useRef(onEmbedBlocked);
   const onReadyRef = useRef(onReady);
+  const playbackRateRef = useRef(playbackRate);
   const rangeEndMsRef = useRef<number | null>(null);
   const pausePollRef = useRef<number | null>(null);
   const [playerKey, setPlayerKey] = useState(0);
@@ -98,6 +102,12 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
   useEffect(() => {
     onReadyRef.current = onReady;
   }, [onReady]);
+
+  // 再生速度が変わったら今のプレーヤーへ反映する（未準備なら onReady で反映）
+  useEffect(() => {
+    playbackRateRef.current = playbackRate;
+    if (playbackRate !== undefined) playerRef.current?.setPlaybackRate?.(playbackRate);
+  }, [playbackRate]);
 
   const clearPausePoll = () => {
     if (pausePollRef.current !== null) {
@@ -198,6 +208,7 @@ const YouTubeRangePlayer = forwardRef<YouTubeRangePlayerHandle, YouTubeRangePlay
             }
           },
           onReady: () => {
+            if (playbackRateRef.current !== undefined) player.setPlaybackRate?.(playbackRateRef.current);
             onReadyRef.current?.();
           },
           onStateChange: (event: { data?: number }) => {
