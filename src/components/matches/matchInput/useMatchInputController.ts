@@ -243,6 +243,16 @@ export const useMatchInputController = () => {
     getActiveYoutubePlayerRef().current?.pause();
   };
 
+  const toggleVideoPlayback = () => {
+    const player = getActiveYoutubePlayerRef().current;
+    if (!player) return;
+    if (player.isPlaying()) {
+      player.pause();
+    } else {
+      player.play();
+    }
+  };
+
   const seekVideoByMs = (deltaMs: number) => {
     const currentMs = getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
     if (currentMs === null || currentMs === undefined) {
@@ -465,6 +475,13 @@ export const useMatchInputController = () => {
       }
 
       if (!hasVideo) return;
+
+      // スペースで再生／一時停止。フォーカス中のボタンが押されたりページがスクロールしたりしないよう既定動作は止める。
+      if (event.key === ' ') {
+        event.preventDefault();
+        toggleVideoPlayback();
+        return;
+      }
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
