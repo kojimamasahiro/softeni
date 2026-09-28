@@ -2,7 +2,7 @@
 // サイト内検索のクエリを受け取り、**0件になる語**を洗い出す。
 //
 // なぜ要るか（docs/raw/2026-09-06-idea-user-problem-discovery.md）:
-// `/players` は検索語を URL に反映し（`?q=`）、`_app.tsx` が `page_path` ごと
+// `/players` は検索語を URL に反映し（`?q=`）、`_app.tsx` が遷移ごとに
 // `page_view` を送っている。つまり「ユーザーが自分の言葉で何を探したか」が GA4 に
 // 溜まっている。検索インデックスは 11,179 組なので、**0件になった語は
 // 「収録していない」か「表記が違う」のどちらか**で、どちらもそのまま打ち手になる。
@@ -43,8 +43,9 @@ function parseInput(text) {
   for (const line of text.split('\n')) {
     const s = line.trim();
     if (!s || s.startsWith('#')) continue;
-    // 「?q=あいうえお」「/players?q=あいうえお」のような GA4 のページパスも受ける
-    const m = s.match(/[?&]q=([^&\s,]+)/);
+    // 「?q=あいうえお」「/players?q=あいうえお」のような GA4 のページパスも受ける。
+    // 2026-09-28 修正前の GA4 には `?q=田中?q=田中` と二重で記録されているので、`?` で切る。
+    const m = s.match(/[?&]q=([^&?\s,]+)/);
     let query;
     let count = 1;
     if (m) {

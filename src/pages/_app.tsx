@@ -43,9 +43,15 @@ export default function App({ Component, pageProps }: AppProps) {
 
     // SPA 遷移は config の再実行ではなく page_view イベントで送る
     // （config 再実行による二重計上 / セッション分断を避ける）。
-    const handleRouteChange = (url: string) => {
+    //
+    // page_path は送らない。GA4 は page_path があるとそれをパスとし、page_location の
+    // クエリを後ろに足すので、`/players/?q=田中` が `/players/?q=田中?q=田中` と記録された。
+    // GA4 のパス・クエリは page_location だけから作らせる（2026-09-28 本番で /g/collect を実測）。
+    //
+    // 前提: GA4 の拡張計測「ブラウザの履歴イベントに基づくページの変更」はオフ。
+    // オンだと遷移ごとに自動の page_view も出て二重計上になる。
+    const handleRouteChange = () => {
       window.gtag?.('event', 'page_view', {
-        page_path: url,
         page_location: window.location.href,
         page_title: document.title,
       });
@@ -134,8 +140,9 @@ export default function App({ Component, pageProps }: AppProps) {
               gtag('set', 'ads_data_redaction', true);
 
               gtag('js', new Date());
+              // page_path は渡さない。config の値はその後の全イベントに残るので、
+              // SPA 遷移後もイベントのページが「最初に開いたページ」になっていた。
               gtag('config', '${GA_ID}', {
-                page_path: window.location.pathname,
                 cookie_flags: 'SameSite=Lax;Secure'
               });
             `}

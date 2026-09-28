@@ -125,6 +125,12 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
   確認したいときだけ `.env.local` に `NEXT_PUBLIC_GA_IN_DEV=true`。
   **Cloudflare Pages のプレビューは本番ビルドなのでこの gate では止まらない（未対応）。**
 - SPA 遷移は `gtag('config')` の再実行ではなく `gtag('event','page_view')`（二重計上・セッション分断の回避）。
+- **`page_path` は送らない**（`config` にも `page_view` にも）。GA4 は `page_path` があるとそれをパスとし
+  `page_location` のクエリを後ろに足すので `/players/?q=田中?q=田中` になる。`config` の `page_path` は
+  以後の全イベントに残り、SPA 遷移後も「最初に開いたページ」として記録される。パス・クエリは `page_location` だけで作らせる。
+- **GA4 の拡張計測「ブラウザの履歴イベントに基づくページの変更」はオフ**にする前提（手動の page_view と二重になる）。
+  管理画面の設定なのでコードからは強制できない。2026-09-28 以前のデータは SPA 遷移の page_view が約2倍・
+  うち半分は着地ページに計上されている。経緯は [2026-09-28 の調査](../raw/2026-09-28-daily-research-findings.md)。
 - クッキーは `SameSite=Lax;Secure`。
 - `wait_for_update: 500` / `url_passthrough` / `ads_data_redaction` で同意確定待ち・クッキー不可時の計測ロスを軽減。
 
