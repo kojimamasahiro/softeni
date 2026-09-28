@@ -789,3 +789,11 @@ Open Question の側だけが更新されていなかった。→ [data-import.m
 ### `lib/matchAnalysis/` と `lib/growthAnalysis/` の責務境界（2026-08-12 解決）
 
 「1試合の中 / 複数試合をまたぐ」で分割。→ [score-analysis.md](../wiki/score-analysis.md)「責務境界」
+
+### `/players` の検索URLが GA4 で `?q=田中?q=田中` になる（2026-09-28 → 同日解決）
+
+`page_path` にクエリ付きの URL を渡していたため、GA4 が `page_location` のクエリを重ねて付けていた。
+`config` の `page_path` が全イベントに残って SPA 遷移後も着地ページで記録される問題も同時に見つかった。
+`page_path` を削除して解消。拡張計測の履歴イベントのオフだけ未確認として残す。
+→ [2026-09-28 の調査](./2026-09-28-daily-research-findings.md)「追記: GA4 `?q=` 二重化の原因特定」、
+[monetization.md](../wiki/monetization.md)「計測（GA4）」
