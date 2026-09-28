@@ -247,10 +247,19 @@ const buildGrowthAnalysisJson = (
   };
 };
 
+// 記録中のピック（主観の名場面の印と感想）は記録画面だけで使う。公開サイトの JSON には書き出さない。
+const PRIVATE_POINT_FIELDS = ['is_pick', 'pick_note'];
+
+const stripPrivatePointFields = (point) => {
+  const publicPoint = { ...point };
+  PRIVATE_POINT_FIELDS.forEach((field) => delete publicPoint[field]);
+  return publicPoint;
+};
+
 const groupPointsByGameId = (points) => {
   const pointsByGameId = new Map();
 
-  points.forEach((point) => {
+  points.map(stripPrivatePointFields).forEach((point) => {
     const existing = pointsByGameId.get(point.game_id) ?? [];
     existing.push(point);
     pointsByGameId.set(point.game_id, existing);
