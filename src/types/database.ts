@@ -114,6 +114,9 @@ export interface Point {
   point_detail?: string | null;
   video_start_ms?: number | null;
   video_end_ms?: number | null;
+  // 記録中のピック（主観の名場面）。公開サイトの静的 JSON には書き出さない
+  is_pick?: boolean | null;
+  pick_note?: string | null;
 }
 
 export interface MatchVideoSession {

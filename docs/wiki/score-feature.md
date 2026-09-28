@@ -79,12 +79,13 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 - `shot_course`
 - `video_start_ms`
 - `video_end_ms`
+- `is_pick` / `pick_note`（下の「ピック」）
 
 確認根拠:
 
 - `src/types/database.ts`
 - `src/pages/api/matches/[matchId]/points/index.ts`
-- `docs/sql/point-youtube-review.sql`
+- `docs/sql/point-youtube-review.sql` / `docs/sql/point-pick.sql`
 
 ### キーボードショートカット
 
@@ -99,9 +100,11 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 | `d` | ダブルフォルト | 入力フォーム表示中 |
 | `f` | 1stフォルト | 入力フォーム表示中 |
 | `g` | ポイント記録（編集中は更新） | 入力フォーム表示中・勝者チーム選択済み・送信中でない |
+| `p` | ピックの切り替え | 入力フォーム表示中 |
 | `Ctrl+D` | 動画を再生 | 動画あり |
 | `Ctrl+F` | 動画時刻をクリア | 動画あり |
 | `←` / `→` | 5秒シーク | 動画あり |
+| `Space` | 再生／一時停止の切り替え | 動画あり |
 
 `d` / `f` は単キーと Ctrl 併用で意味が異なる（単キー＝ポイント入力、Ctrl＝動画操作）ことに注意。
 ポイント入力系のキーは動画が無い試合でも使えます。
@@ -120,6 +123,24 @@ score 機能は、試合作成、ゲーム/ポイント記録、動画レビュ�
 
 - `src/components/matches/matchInput/useMatchInputController.ts`
 - `docs/raw/2026-08-11-score-input-keyboard-shortcuts.md`
+
+### ピック（記録中の名場面の印）
+
+記録中に主観で「すごい」と思った1本に付ける印。X 投稿のネタ集めと、記録を続ける動機づけが目的
+（[raw/2026-09-28-idea-point-pickup-post.md](../raw/2026-09-28-idea-point-pickup-post.md)）。
+データで選ぶ[希少イベント](./rare-events.md)とは別物。
+
+- 「ポイント記録」ボタンの下にトグル（`p` キーでも切り替え）。オンにすると「何がすごかったか」の一言欄が出る（任意・200字まで）。
+  記録すると次のポイント用にオフへ戻る。既存ポイントは「編集」から付け外しできる。
+- 保存先は `points.is_pick`（boolean、既定 false）と `points.pick_note`。`point_note` は公開の試合詳細に出るため使わない。
+  ピックを外すと感想も消す。ピックしていない新規ポイントではこの2列を送らない。
+- 見返すのは記録画面のゲーム履歴だけ（冒頭の「この試合のピック（N本）」一覧と、各ポイントの「ピック」ラベル）。
+- **公開サイトには出さない**: `scripts/generate-beta-matches-json.mjs` が静的 JSON から2列を外す。
+
+確認根拠:
+
+- `src/components/matches/matchInput/PointInputForm.tsx` / `GameHistorySection.tsx` / `types.ts`（`buildPickPayload`）
+- `docs/sql/point-pick.sql`
 
 ### 再生速度
 

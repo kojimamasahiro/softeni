@@ -30,7 +30,7 @@ type DesktopVideoSidebarProps = {
 };
 
 /**
- * xl 以上の画面幅で、YouTube再生・動画時刻入力・簡易ゲーム状況を左カラムに固定表示するサイドバー。
+ * xl 以上の画面幅で、YouTube再生・簡易ゲーム状況・動画時刻入力を左カラムに固定表示するサイドバー。
  */
 const DesktopVideoSidebar = ({
   activeYouTubeVideoId,
@@ -70,15 +70,6 @@ const DesktopVideoSidebar = ({
       />
     )}
 
-    <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 shadow-md">
-      <VideoTimeRangeInputs
-        pointData={pointData}
-        onChange={(updates) => setPointData({ ...pointData, ...updates })}
-        startInputValue={getVideoStartInput()}
-        endInputValue={getVideoEndInput()}
-      />
-    </div>
-
     <div className="rounded-lg bg-white p-4 shadow-md">
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -111,6 +102,16 @@ const DesktopVideoSidebar = ({
           )}
         </div>
       )}
+    </div>
+
+    {/* 動画時刻の手入力。普段は「開始/終了を記録」ボタンで足りるので、スコアの下に置く */}
+    <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 shadow-md">
+      <VideoTimeRangeInputs
+        pointData={pointData}
+        onChange={(updates) => setPointData({ ...pointData, ...updates })}
+        startInputValue={getVideoStartInput()}
+        endInputValue={getVideoEndInput()}
+      />
     </div>
   </div>
 );

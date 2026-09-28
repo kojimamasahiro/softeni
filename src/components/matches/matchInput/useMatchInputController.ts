@@ -17,7 +17,7 @@ import { getGamesWon, isMatchFinishedByGames } from '../../../../lib/videoReview
 import { formatMsForInput, normalizeYouTubeInput } from '../../../../lib/youtubePlayback';
 import type { YouTubeRangePlayerHandle } from '../../../components/YouTubeRangePlayer';
 import type { Game, Match, Point } from '../../../types/database';
-import { EMPTY_POINT_DATA, type ManualServingPlayer, type MatchMetadataState, type PointDataState, type ServingPlayerInfo } from './types';
+import { buildPickPayload, EMPTY_POINT_DATA, type ManualServingPlayer, type MatchMetadataState, type PointDataState, type ServingPlayerInfo } from './types';
 
 /**
  * サーブ系の結果タイプ（サービスエース／ダブルフォルト）を解除するときに戻す値。
@@ -243,6 +243,16 @@ export const useMatchInputController = () => {
     getActiveYoutubePlayerRef().current?.pause();
   };
 
+  const toggleVideoPlayback = () => {
+    const player = getActiveYoutubePlayerRef().current;
+    if (!player) return;
+    if (player.isPlaying()) {
+      player.pause();
+    } else {
+      player.play();
+    }
+  };
+
   const seekVideoByMs = (deltaMs: number) => {
     const currentMs = getActiveYoutubePlayerRef().current?.captureCurrentTimeMs();
     if (currentMs === null || currentMs === undefined) {
@@ -443,6 +453,14 @@ export const useMatchInputController = () => {
         return;
       }
 
+      // ピックの切り替え（主観の名場面の印）
+      if (key === 'p') {
+        if (!isPointInputActive) return;
+        event.preventDefault();
+        togglePick();
+        return;
+      }
+
       // 記録／更新の確定。ボタンの disabled 条件と同じ（勝者チーム未選択・送信中は無効）。
       if (key === 'g') {
         if (!isPointInputActive || !pointData.winner_team || submitting) return;
@@ -457,6 +475,13 @@ export const useMatchInputController = () => {
       }
 
       if (!hasVideo) return;
+
+      // スペースで再生／一時停止。フォーカス中のボタンが押されたりページがスクロールしたりしないよう既定動作は止める。
+      if (event.key === ' ') {
+        event.preventDefault();
+        toggleVideoPlayback();
+        return;
+      }
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
@@ -492,6 +517,8 @@ export const useMatchInputController = () => {
       loser_player: loserPlayerValue,
       video_start_ms: point.video_start_ms ?? null,
       video_end_ms: point.video_end_ms ?? null,
+      is_pick: Boolean(point.is_pick),
+      pick_note: point.pick_note ?? '',
     });
 
     const seekTimeMs = getEditPointSeekTimeMs(game, point);
@@ -534,6 +561,7 @@ export const useMatchInputController = () => {
           loser_player: loserPlayerName,
           video_start_ms: pointData.video_start_ms,
           video_end_ms: pointData.video_end_ms,
+          ...buildPickPayload(pointData, Boolean(editingPoint.is_pick)),
         }),
       });
 
@@ -641,6 +669,7 @@ export const useMatchInputController = () => {
         loser_player: loserPlayerName,
         video_start_ms: pointDataToSubmit.video_start_ms,
         video_end_ms: pointDataToSubmit.video_end_ms,
+        ...buildPickPayload(pointDataToSubmit, false),
         created_at: new Date().toISOString(),
       };
 
@@ -691,6 +720,7 @@ export const useMatchInputController = () => {
           loser_player: loserPlayerName,
           video_start_ms: pointDataToSubmit.video_start_ms,
           video_end_ms: pointDataToSubmit.video_end_ms,
+          ...buildPickPayload(pointDataToSubmit, false),
         }),
       });
 
@@ -1164,6 +1194,10 @@ export const useMatchInputController = () => {
     });
   };
 
+  const togglePick = () => {
+    setPointData((current) => ({ ...current, is_pick: !current.is_pick }));
+  };
+
   const toggleFirstServeFault = () => {
     setPointData((current) => {
       // ダブルフォルトは1stフォルト確定なので切り替えさせない
@@ -1288,6 +1322,7 @@ export const useMatchInputController = () => {
     selectServiceAce,
     selectDoubleFault,
     toggleFirstServeFault,
+    togglePick,
     submitPoint,
     updatePoint,
     startEditPoint,

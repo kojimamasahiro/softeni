@@ -52,6 +52,7 @@ const MatchInput = () => {
     selectServiceAce,
     selectDoubleFault,
     toggleFirstServeFault,
+    togglePick,
     submitPoint,
     updatePoint,
     startEditPoint,
@@ -254,6 +255,7 @@ const MatchInput = () => {
               onSelectServiceAce={selectServiceAce}
               onSelectDoubleFault={selectDoubleFault}
               onToggleFirstServeFault={toggleFirstServeFault}
+              onTogglePick={togglePick}
               onSubmitPoint={submitPoint}
               onUpdatePoint={updatePoint}
               onCancelEditPoint={cancelEditPoint}

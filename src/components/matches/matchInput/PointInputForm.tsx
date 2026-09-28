@@ -35,6 +35,7 @@ type PointInputFormProps = {
   onSelectServiceAce: () => void;
   onSelectDoubleFault: () => void;
   onToggleFirstServeFault: () => void;
+  onTogglePick: () => void;
   onSubmitPoint: () => void;
   onUpdatePoint: () => void;
   onCancelEditPoint: () => void;
@@ -66,6 +67,7 @@ const PointInputForm = ({
   onSelectServiceAce,
   onSelectDoubleFault,
   onToggleFirstServeFault,
+  onTogglePick,
   onSubmitPoint,
   onUpdatePoint,
   onCancelEditPoint,
@@ -494,6 +496,40 @@ const PointInputForm = ({
             {submitting ? '記録中...' : 'ポイント記録'}
             {!submitting && <ShortcutKeyHint shortcutKey="G" />}
           </button>
+        )}
+      </div>
+
+      {/*
+        ピック: 記録中に主観で「すごい」と思った1本の印。感想は任意。
+        いまは記録画面のゲーム履歴で見返すだけで、公開サイトには出さない。
+      */}
+      <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3">
+        <button
+          type="button"
+          onClick={onTogglePick}
+          aria-pressed={pointData.is_pick}
+          className={`w-full rounded border-2 px-4 py-2 text-sm font-medium transition-all ${
+            pointData.is_pick ? 'border-amber-500 bg-amber-400 text-amber-950' : 'border-amber-300 bg-white text-amber-800 hover:border-amber-400'
+          }`}
+        >
+          <span aria-hidden="true" className="mr-1">
+            {pointData.is_pick ? '★' : '☆'}
+          </span>
+          {pointData.is_pick ? 'ピック中（もう一度押すと外す）' : 'このポイントをピック'}
+          <ShortcutKeyHint shortcutKey="P" />
+        </button>
+        {pointData.is_pick && (
+          <label className="mt-2 block text-xs text-amber-900">
+            何がすごかったか（任意）
+            <input
+              type="text"
+              value={pointData.pick_note}
+              onChange={(event) => setPointData((current) => ({ ...current, pick_note: event.target.value }))}
+              placeholder="例: 前衛が読み切ったポーチ"
+              maxLength={200}
+              className="mt-1 w-full rounded border border-amber-300 bg-white px-2 py-1.5 text-sm text-gray-900"
+            />
+          </label>
         )}
       </div>
     </div>

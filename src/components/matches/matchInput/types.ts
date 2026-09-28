@@ -9,6 +9,8 @@ export type PointDataState = {
   loser_player: string;
   video_start_ms: number | null;
   video_end_ms: number | null;
+  is_pick: boolean;
+  pick_note: string;
 };
 
 export type MatchMetadataState = {
@@ -42,4 +44,20 @@ export const EMPTY_POINT_DATA: PointDataState = {
   loser_player: '',
   video_start_ms: null,
   video_end_ms: null,
+  is_pick: false,
+  pick_note: '',
+};
+
+/**
+ * ピックの保存用フィールド。ピックしていない新規ポイントでは送らない
+ * （points.is_pick 列を追加する前の DB でも記録を止めないため。docs/sql/point-pick.sql）。
+ * 感想は任意。ピックを外したら感想も消す。
+ */
+export const buildPickPayload = (data: PointDataState, hadPick: boolean) => {
+  if (!data.is_pick && !hadPick) return {};
+  const note = data.pick_note.trim();
+  return {
+    is_pick: data.is_pick,
+    pick_note: data.is_pick && note ? note : null,
+  };
 };
