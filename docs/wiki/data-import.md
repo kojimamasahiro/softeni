@@ -181,9 +181,7 @@ PDF ではなくブラウザの画面から読む大会がある（アジア競�
 
 ## Open Questions
 
-- tournament details 生成の標準手順はどのスクリプト列か。
-- players 生成で最終的に正とする入力源はどれか。
-- どこまでが自動生成で、どこからが手修正か。
+[open-questions.md「各ページに紐づくもの」](./open-questions.md#各ページに紐づくもの) に集約。
 
 ## 関連
 

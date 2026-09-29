@@ -3,8 +3,8 @@
 > **適用範囲: ソフトテニス固有**。score 機能のテーブル（ゲーム・ポイント）はソフトテニスの得点方式が前提。
 
 
-> 現行仕様。2026-08-12 に `src/types/database.ts` と列単位で突き合わせ済み
-> （差分は `games.initial_receive_player_index` の1件のみで、反映済み）。
+> 現行仕様。2026-09-30 に `src/types/database.ts` と列単位で突き合わせ済み
+> （差分は `points.is_pick` / `pick_note` の1件のみで、反映済み）。
 > ただし制約・index・RLS・trigger はコードから読めないため、そこは推定のまま。
 
 ## 概要
@@ -35,7 +35,7 @@
 
 ## テーブル
 
-列は `src/types/database.ts` と一致していることを確認済み（2026-08-12）。
+列は `src/types/database.ts` と一致していることを確認済み（2026-09-30）。
 
 ### `matches`
 
@@ -109,6 +109,9 @@
 - `point_detail`
 - `video_start_ms`
 - `video_end_ms`
+- `is_pick` / `pick_note`（記録中のピック。2026-09-29 追加、適用 DDL は `docs/sql/point-pick.sql`。
+  **公開 JSON には書き出さない**（`generate-beta-matches-json.mjs` の `PRIVATE_POINT_FIELDS`）。
+  詳細は [score-feature.md](./score-feature.md)「ピック」）
 
 ### `match_video_sessions`
 
@@ -173,8 +176,4 @@
 
 ## Open Questions
 
-- `receive-order.sql` が本番 Supabase に適用済みか未確認
-  （台帳は [docs/sql/APPLIED.md](../sql/APPLIED.md) に用意した。適用したら記入する）
-- RLS の有無とポリシー
-- `matches.status` の正式な状態遷移
-- `points.result_type` / `processing_status` の正式 enum 定義
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。

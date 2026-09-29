@@ -82,7 +82,4 @@ score 系は、試合単位の記録・公開・分析を扱う領域です。
 
 ## Open Questions
 
-- score 機能を本体サイトからどこまで分離するのが正式方針か。
-  高レベル方針は [ADR-003](../adr/ADR-003-score-media-tool-separation.md)（閲覧公開＝メディア／
-  ツール公開＝UGC の分離）で決着済みだが、ツール公開側の具体は未着手。
-  一般公開・ピボットの検討は [score-general-availability.md](./score-general-availability.md)
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。

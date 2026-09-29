@@ -53,7 +53,7 @@
 | 置き場所 | 何を置くか | 入口 |
 |---|---|---|
 | `raw/` | 生の記録（調査・提案・監査・作業ノート・wiki の圧縮前アーカイブ）。**追記のみ** | [raw/README.md](./raw/README.md) |
-| `wiki/` | compile 済みの**現在の仕様**。1ページ12,000字以内 | [wiki/index.md](./wiki/index.md) |
+| `wiki/` | compile 済みの**現在の仕様**。1ページ12,000字が目安（圧縮は1.3倍超から） | [wiki/index.md](./wiki/index.md) |
 | `adr/` | 重要な決定の記録（いつ・なぜ） | [adr/README.md](./adr/README.md) |
 | `prompts/` | 繰り返し使う定型プロンプト（層ではない） | [prompts/README.md](./prompts/README.md) |
 | `ui/` | UI/情報設計プロジェクトの成果物（層ではない・2026-07-04 完了） | [ui/PROJECT.md](./ui/PROJECT.md) |

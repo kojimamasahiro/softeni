@@ -191,10 +191,7 @@ score 機能側の収益化検討は [score-general-availability.md](./score-gen
 
 ## Open Questions
 
-- 手動枠の合否閾値が暫定値であること（CLS 0.1 / 推定収益 / 回遊20%）。1面目の実測でベースラインに差し替える。
-- アフィリエイトを再開するかどうか（コードは削除済み）。
-- `app-ads.txt` の対象アプリと Web 本体の関係。
-- lazyOnload 化のあと `#418` / `no_div` が本番で解消したかのモニタリング（ローカルでは再現できない）。
+[open-questions.md「収益化・計測」](./open-questions.md#収益化計測) に集約。
 
 ## Assumption
 
