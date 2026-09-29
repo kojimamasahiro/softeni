@@ -111,10 +111,4 @@ score をツールとして外部に開く（UGC）場合はここが前提か�
 
 ## Open Questions
 
-- score をツール公開（UGC）する場合、書き込み経路と認可をどう作るか（ADR-003 の未決部分）
-
-以前ここにあった「本番で API Routes をどこまで使うか」「書き込みの利用者制御」
-「`public/data/beta-matches/**` の生成トリガー」「`functions/` の所在」は
-2026-08-12 の lint で実装を確認して解決した（順に: 本番では使わない＝静的エクスポート／
-本番に書き込み経路が無いこと自体が制御／`prebuild` の `generate-beta-matches-json.mjs`／
-`functions/` はリポジトリに存在しない）。
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。

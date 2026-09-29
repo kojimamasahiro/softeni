@@ -253,4 +253,4 @@
 
 ## Open Questions
 
-- 指標採用の研究的根拠や現場根拠をどこまで持たせるか
+[open-questions.md「各ページに紐づくもの」](./open-questions.md#各ページに紐づくもの) に集約。

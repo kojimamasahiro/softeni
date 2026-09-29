@@ -237,15 +237,6 @@ details の `matches[].scores`（エントリー単位の数値）に収まら�
 3. `matches.json` に各試合（`division` 付き）を追加。
 4. 必要に応じ `editions.json` に開催回・昇降格を追記。
 
-## Open Questions / 未入力データ
+## Open Questions
 
-- STリーグⅢ は階層構成の中での位置付けを紹介する扱いとし、対戦データは持たない方針（上記「STリーグⅢ の位置付け」参照）。
-  「準備中」の TODO ではないため、データ収集対象には含めない。
-- STリーグⅡ（女子）は2025（第3回）を入力済み。予選リーグ（3ブロック・各4チーム）の星取り18タイと
-  最終順位（公式記録、`results.2.girls` の `ranking`/`blocks`）を掲載。順位決定戦の個別対戦・選手別データは
-  未入力（女子は公式PDFに選手名簿が無いため tie 単位のみ／`matches: []`）。開催日は男子Ⅱ部に合わせた
-  仮置き（2025-12-11、Assumption）で要確認。他年度（2023・2024）の女子Ⅱ部や2026以降は別途入力が必要。
-- 年度間の昇降格の確定情報（`editions.json` の `promotionRelegation` は一部 Assumption）。
-- NTT西日本の連覇数など個別記録の裏取り。
-
-詳細は `docs/wiki/open-questions.md` を参照。
+[open-questions.md「各ページに紐づくもの」](./open-questions.md#各ページに紐づくもの) に集約。

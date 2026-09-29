@@ -8,11 +8,12 @@
 // 追記を重ねたページは 4〜7万字まで育っていた。圧縮の手順は docs/prompts/slim-wiki-page.md。
 //
 // CI（.github/workflows/checks.yml）では2つの役割に分けて使う:
-//   - ゲート   … `--strict`。リンク切れがあれば終了コード1（誰が見ても直すべきなので止めてよい）
+//   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があれば終了コード1
+//                （誰が見ても直すべきなので止めてよい）
 //   - 報告のみ … 引数なし。文字数の超過を一覧にする（仕様が増えればページは育つので、止めない）
 //
 // 見るもの:
-//   1. ページごとの文字数（予算 WIKI_CHAR_BUDGET を超えたものに印）
+//   1. ページごとの文字数（目安 WIKI_CHAR_BUDGET 超に「超過」、圧縮基準 SLIM_THRESHOLD 超に「圧縮」の印）
 //      対象は docs/wiki と、wiki と同じ役割を持ちながら外に置かれている docs 直下・docs/ui
 //      （2026-09-19 に追加。`tournament-data-structure.md` のような大物が予算の外にいたため）
 //   2. docs 全体のリンク切れ（ファイルと見出しアンカー）
@@ -21,6 +22,7 @@
 //      - wiki のページが index.md 以外からも参照されているか（孤立していないか）
 //      - ADR の `## Status` 直下が状態語だけになっているか
 //      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
+//      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
 //
 // 実行: node scripts/check-wiki-size.mjs [--strict]
 
@@ -29,8 +31,14 @@ import path from 'path';
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, 'docs');
-// 1ページの上限（文字数）。日本語はおおむね1文字≒1トークン以上なので、これで1ページ1万トークン強に収まる。
+// 1ページの目安（文字数）。日本語はおおむね1文字≒1トークン以上なので、これで1ページ1万トークン強に収まる。
 const WIKI_CHAR_BUDGET = 12000;
+// 圧縮する基準（目安の1.3倍）。目安の超過は報告だけで、圧縮はこれを超えたページに限る（2026-09-30）。
+// 目安ぎりぎりまで削ると、削る作業（全文の読み直し・退避・測り直し）のトークンが、読むたびに浮く分を上回る。
+// 次の小さな追記でまた超えるので、まとまった量を一度に削れるところまで育ってから手を付ける。
+const SLIM_THRESHOLD = Math.round(WIKI_CHAR_BUDGET * 1.3);
+// 目安の対象外。未解決の問いを集約するページなので、集約した分だけ育つのは設計どおり。
+const BUDGET_EXEMPT = new Set(['open-questions.md']);
 const SCOPE_PATTERN = /適用範囲[:：]/;
 // 文字数の対象外。docs 直下に置く「進行中の作業表」で、読み物ではなく入力用の作業ファイル。
 // 終わったら消す前提なので圧縮しない（docs/README.md「docs の中身」参照）。
@@ -81,8 +89,9 @@ function anchorsOf(file) {
 }
 
 // 1. 文字数と適用範囲
-console.log(`# docs の文字数（予算 ${WIKI_CHAR_BUDGET.toLocaleString()} 字/ページ）\n`);
+console.log(`# docs の文字数（目安 ${WIKI_CHAR_BUDGET.toLocaleString()} 字/ページ・圧縮は ${SLIM_THRESHOLD.toLocaleString()} 字超から）\n`);
 let overAll = 0;
+let slimAll = 0;
 for (const [group, dir] of SIZE_GROUPS) {
   const rows = listMarkdown(dir)
     .filter((file) => !WORK_FILES.has(path.basename(file)))
@@ -97,17 +106,26 @@ for (const [group, dir] of SIZE_GROUPS) {
   if (rows.length === 0) continue;
   rows.sort((a, b) => b.chars - a.chars);
   const total = rows.reduce((s, r) => s + r.chars, 0);
-  const over = rows.filter((r) => r.chars > WIKI_CHAR_BUDGET);
+  const counted = rows.filter((r) => !BUDGET_EXEMPT.has(r.page));
+  const over = counted.filter((r) => r.chars > WIKI_CHAR_BUDGET);
+  const slim = counted.filter((r) => r.chars > SLIM_THRESHOLD);
   overAll += over.length;
-  console.log(`## ${group}: ${rows.length} ページ・${total.toLocaleString()} 字・予算超過 ${over.length}\n`);
+  slimAll += slim.length;
+  console.log(`## ${group}: ${rows.length} ページ・${total.toLocaleString()} 字・予算超過 ${over.length}・圧縮基準超過 ${slim.length}\n`);
   for (const r of rows) {
-    const flag = r.chars > WIKI_CHAR_BUDGET ? '超過' : '    ';
+    const flag = BUDGET_EXEMPT.has(r.page)
+      ? '対象外'
+      : r.chars > SLIM_THRESHOLD
+        ? '圧縮'
+        : r.chars > WIKI_CHAR_BUDGET
+          ? '超過'
+          : '    ';
     const scope = group === 'wiki' ? (r.hasScope ? '適用範囲あり' : '適用範囲なし') : '            ';
     console.log(`${flag} ${String(r.chars).padStart(7)}  ${scope}  ${r.page}`);
   }
   console.log('');
 }
-console.log(`予算超過は全体で ${overAll} ページ\n`);
+console.log(`予算超過は全体で ${overAll} ページ（うち圧縮基準 ${SLIM_THRESHOLD.toLocaleString()} 字の超過 ${slimAll} ページ）\n`);
 
 // 2. リンク切れ
 const broken = [];
@@ -193,4 +211,18 @@ const missingLog = listMarkdown(path.join(DOCS, 'raw'))
   .filter((b) => !/Compile Log/.test(fs.readFileSync(path.join(DOCS, 'raw', b), 'utf-8')));
 console.log(`- Compile Log が無い raw（${COMPILE_LOG_SINCE} 以降・免除を除く）: ${missingLog.length} 件 ${missingLog.join(', ')}`);
 
-if (strict && broken.length > 0) process.exit(1);
+// 3-5. docs/sql/*.sql がすべて APPLIED.md の台帳に載っているか（2026-09-30 に追加）
+// point-pick.sql の行が漏れていた（docs/raw/2026-09-30-llm-wiki-lint.md）。適用可否はコードから読めないので、
+// 台帳に行が無いと「未適用のまま本番で動かない」に誰も気づけない。
+const sqlDir = path.join(DOCS, 'sql');
+const ledgerPath = path.join(sqlDir, 'APPLIED.md');
+const ledger = fs.existsSync(ledgerPath) ? fs.readFileSync(ledgerPath, 'utf-8') : '';
+const unlisted = fs.existsSync(sqlDir)
+  ? fs
+      .readdirSync(sqlDir)
+      .filter((b) => b.endsWith('.sql'))
+      .filter((b) => !ledger.includes(`](./${b})`))
+  : [];
+console.log(`- APPLIED.md の台帳に行が無い SQL: ${unlisted.length} 件 ${unlisted.join(', ')}`);
+
+if (strict && (broken.length > 0 || unlisted.length > 0)) process.exit(1);

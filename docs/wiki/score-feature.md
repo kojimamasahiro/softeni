@@ -257,6 +257,4 @@ Draft / Open Question:
 
 ## Open Questions
 
-- `edit_token` / `edit_token_hash` の正式な利用箇所
-- 試合編集権限を今後どの方式で渡すか
-- 公開用 `matchId` を恒久的にそのまま使う方針か
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。

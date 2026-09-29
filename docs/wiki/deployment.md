@@ -110,10 +110,7 @@ Assumption（2026-07-19 の検討・未実装）。アーカイブは SSG のま
 
 ## Open Questions
 
-- 2 ドメインを同じビルド成果物で配るか、別 build するか
-- 静的 export で使えない API Routes を本番でどこまで使っているか
-- webpack compile（約1分45秒）を Turbopack で短縮できるか（未検証）
-- nft の走査が CF 実機でどれだけのコストか（ローカル計測のみ）
+[open-questions.md「ビルド・デプロイ」](./open-questions.md#ビルドデプロイ) に集約。
 
 ## 経緯
 

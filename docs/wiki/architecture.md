@@ -147,5 +147,4 @@ score 公開データは一覧・詳細・成長分析で分かれています�
 
 ## Open Questions
 
-- 本番で `src/pages/api/matches/**` をどの環境で動かしているか
-- `data/**` と Supabase のどちらが score 機能の正式ソースか
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。

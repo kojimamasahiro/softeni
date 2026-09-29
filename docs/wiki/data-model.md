@@ -245,9 +245,7 @@ Supabase のテーブル（`matches` / `games` / `points` / `match_video_session
 
 ## Open Questions
 
-- RLS・index・trigger・constraint の全体像
-- `matches.status` と `processing_status` の正式な状態遷移
-- points の `result_type` の正式な語彙表
+[open-questions.md「score 機能」](./open-questions.md#score-機能) に集約。
 
 ## 発展候補アイデア一覧（Idea Backlog）
 
