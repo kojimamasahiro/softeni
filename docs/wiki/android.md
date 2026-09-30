@@ -1,16 +1,28 @@
 # Android
 
-> **適用範囲: 汎用**。このリポジトリに Android 実装は無いという記録。競技に依存しない。
+> **適用範囲: 汎用**。このリポジトリに Android 実装は無いという記録と、間借りしている別アプリのサイト。競技に依存しない。
 
 
 ## 概要
 
 このリポジトリ内では、Softeni Pick 本体の Android アプリ実装は確認できません。
 
-以前は `adinsight-site/`(Android アプリ「AdInsight」向けの静的紹介サイト・別 Cloudflare Pages プロジェクト)が存在したが、
-Softeni Pick 本体と無関係なため 2026-07-04 に本リポジトリから削除した(docs/ui/decisions.md D-016)。
+## 別アプリ「AdInsight」のサイト（間借り）
+
+`adinsight-site/` は Softeni Pick とは**無関係な** Android アプリ「AdInsight」の紹介・法務サイト。
+独自ドメインの費用を避けるため `adinsight.softeni-pick.com` を間借りしており、ソースもこの repo が正
+（docs/ui/decisions.md D-027。2026-07-04 に一度削除し（D-016）、2026-09-30 に復元）。
+
+- アプリ本体: https://github.com/kojimamasahiro/adinsight （同じサイトの別版は置かない）
+- ページ: `/`、`/privacy`、`/terms`、`/account-delete`。Google Play に登録済みの URL なので**パスを変えない・消さない**
+- 配信: 本体とは別の Cloudflare Pages プロジェクト `adinsight`（[deployment.md](./deployment.md)）。production branch は main、
+  Build watch paths の include を `adinsight-site/*`、`scripts/build-adinsight-site.mjs`、`wrangler.adinsight.toml` に絞り、本サイトだけの更新ではビルドしない
+- `config.js` はアプリの Supabase の公開値（URL・publishable key）と Functions の URL だけ。アプリ側で切り替えたら合わせる
+- 文言（プライバシー・規約・課金の説明）はアプリの仕様に従う。本体の UX ルール（[ux-writing.md](./ux-writing.md)）の対象外
+
+経緯と調査: [raw/2026-09-30-adinsight-site-restore.md](../raw/2026-09-30-adinsight-site-restore.md)
 
 ## Assumption
 
-- Android 実装本体は別リポジトリ管理の可能性が高い
-- AdInsight 関連(紹介サイト・法務ページ・課金導線)は本リポジトリの管理対象外
+- Softeni Pick 本体の Android 実装は別リポジトリ管理の可能性が高い
+- Pages `adinsight` は Git 連携で、production branch は削除済みの `cloudflare` のまま（未確認。上の設定へ変更が要る）

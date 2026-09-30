@@ -49,6 +49,7 @@
     "prebuild": "node scripts/normalize-team-spacing.mjs && node scripts/check-tournament-entries.mjs && node scripts/check-team-match-details.mjs && node scripts/check-tournament-insights.mjs && node scripts/check-highschool-pipeline-freshness.mjs && node scripts/check-name-splits.mjs --strict && node scripts/playerStats/cache-sync.mjs restore && node scripts/generate-players-json.mjs && node scripts/generate-players-lite.mjs && npm run playerstats:facts && node scripts/generate-player-analysis.mjs && node scripts/generate-beta-matches-json.mjs && node scripts/generate-match-reverse-index.mjs && node scripts/generate-rare-events.mjs && npm run playerstats:rankings && node scripts/playerStats/cache-sync.mjs save && npm run secondaryschool:build && npm run primaryschool:build && npm run university:pathways",
     "playerstats:cache-sync": "node scripts/playerStats/cache-sync.mjs",
     "build": "NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID next build",
+    "build:adinsight": "node scripts/build-adinsight-site.mjs",
     "check:growth": "node scripts/check-growth-analysis.mjs",
     "check:entries": "node scripts/check-tournament-entries.mjs",
     "check:team-match-details": "node scripts/check-team-match-details.mjs",
