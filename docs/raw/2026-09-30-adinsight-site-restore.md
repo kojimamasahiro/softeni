@@ -36,7 +36,10 @@
 - Cloudflare Pages `adinsight` の Git 連携と production branch を確認する。`cloudflare` ブランチのままなら
   main へ付け替える（付け替えないと、この repo の変更が公開されない）。
   ビルドコマンド `npm run build:adinsight`、出力先 `out`（`adinsight-site/README.md`）。
-- 付け替え後は main への push ごとに `adinsight` も再ビルドされる。
+- オーナー要望: 本サイトの更新（main への push）のたびに `adinsight` がビルドされるのは避けたい。
+  → Pages の **Build watch paths**（Settings → Builds）の include を `adinsight-site/*`、`scripts/build-adinsight-site.mjs`、`wrangler.adinsight.toml`
+  に絞る。これらに触れない push ではビルドがスキップされる。
+- 却下: 専用ブランチ（`cloudflare` 等）を production branch にして、更新時だけ手で push する（main とずれていき、今回のように「どれが公開版か」分からなくなる）。
 
 ## Compile Log
 

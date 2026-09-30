@@ -26,6 +26,9 @@ Softeni Pick 本体とは別の Cloudflare Pages プロジェクト。
 - Build command: `npm run build:adinsight`（このディレクトリを `out/` へコピーするだけ）
 - Build output directory: `out`
 - Custom domain: `adinsight.softeni-pick.com`
+- Production branch: `main`
+- Build watch paths (include): `adinsight-site/*`, `scripts/build-adinsight-site.mjs`, `wrangler.adinsight.toml`
+  （本サイトだけの更新で `adinsight` をビルドしないため）
 
 Routes are provided as directory index pages to avoid clean URL redirect loops:
 

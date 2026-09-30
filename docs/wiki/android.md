@@ -15,7 +15,8 @@
 
 - アプリ本体: https://github.com/kojimamasahiro/adinsight （同じサイトの別版は置かない）
 - ページ: `/`、`/privacy`、`/terms`、`/account-delete`。Google Play に登録済みの URL なので**パスを変えない・消さない**
-- 配信: 本体とは別の Cloudflare Pages プロジェクト `adinsight`（[deployment.md](./deployment.md)）
+- 配信: 本体とは別の Cloudflare Pages プロジェクト `adinsight`（[deployment.md](./deployment.md)）。production branch は main、
+  Build watch paths の include を `adinsight-site/*`、`scripts/build-adinsight-site.mjs`、`wrangler.adinsight.toml` に絞り、本サイトだけの更新ではビルドしない
 - `config.js` はアプリの Supabase の公開値（URL・publishable key）と Functions の URL だけ。アプリ側で切り替えたら合わせる
 - 文言（プライバシー・規約・課金の説明）はアプリの仕様に従う。本体の UX ルール（[ux-writing.md](./ux-writing.md)）の対象外
 
@@ -24,4 +25,4 @@
 ## Assumption
 
 - Softeni Pick 本体の Android 実装は別リポジトリ管理の可能性が高い
-- Pages `adinsight` は Git 連携で、production branch は削除済みの `cloudflare` のまま（未確認。main へ付け替えが要る）
+- Pages `adinsight` は Git 連携で、production branch は削除済みの `cloudflare` のまま（未確認。上の設定へ変更が要る）
