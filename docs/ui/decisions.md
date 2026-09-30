@@ -249,3 +249,12 @@
 - 理由: D-011 はお試し期間として露出を抑えていた。score 機能の当面の読者を観戦者に置き、本体サイトからの導線を強くする方針に変えたため。観戦者は動画があればスコアより動画を見るので、見せたいのはスコアそのものより「データから分かること」。ラベルもそれに合わせた(docs/raw/2026-09-27-idea-match-detail-charts.md)
 - 却下した代替案: (a)「試合記録」(スコアの閲覧を主役に見せてしまう)、(b)「名場面」(`/matches/highlights` だけを指し、一覧と分析を含まない)
 - supersedes: D-011
+
+## D-027: adinsight-site/ を復元し、別アプリの紹介・法務サイトを間借りで管理する(D-016 を覆す)
+
+- 日付: 2026-09-30
+- フェーズ: 運用(移行完了後の方針変更)
+- 決定内容: 削除した `adinsight-site/`・`wrangler.adinsight.toml`・`scripts/build-adinsight-site.mjs`・package.json の `build:adinsight` を削除直前(`694b9d23~1`)の状態から復元する。ソースの正はこの repo に一本化し、アプリ側 repo(kojimamasahiro/adinsight)の `account-deletion-site/` は削除する。`config.js` はアプリ側で切り替えた publishable key に合わせる
+- 理由: オーナー判断。Android アプリ「AdInsight」(別 repo)を再始動し、Google Play に登録済みのプライバシー・規約・アカウント削除の URL(`adinsight.softeni-pick.com`)が引き続き必要。独自ドメインの費用を避けるため softeni-pick.com のサブドメインを間借りし、配信元の Cloudflare Pages プロジェクト `adinsight` もこの repo から出ていたため(公開中の内容がこの repo の `964ac897` と一致。docs/raw/2026-09-30-adinsight-site-restore.md)
+- 却下した代替案: (a) ソースをアプリ側 repo に一本化し、この repo には DNS を貸していることだけ記録する(Pages プロジェクトがこの repo と連携しているため、付け替えの手間がかかる)、(b) 両 repo にソースを置く(2026-09-30 時点で既に内容がずれており、どちらが正か分からなくなる)
+- supersedes: D-016

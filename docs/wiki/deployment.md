@@ -25,7 +25,7 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
   3. **生成**: players / playerStats facts / 分析 / beta-matches / 逆引き索引 / rare-events / rankings →
      `secondaryschool:build` → `primaryschool:build` → `university:pathways`
 - `postbuild`: `next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs`
-- `wrangler.adinsight.toml` は `adinsight-site/` ごと削除済み（docs/ui/decisions.md D-016）。
+- `wrangler.adinsight.toml` / `npm run build:adinsight` は別アプリのサイト `adinsight-site/` 用（別 Pages プロジェクト `adinsight`、出力 `out`）。本体のビルドとは無関係（[android.md](./android.md)、docs/ui/decisions.md D-027）。
 
 #### sitemap の出力先（2026-08-05 修正）
 
