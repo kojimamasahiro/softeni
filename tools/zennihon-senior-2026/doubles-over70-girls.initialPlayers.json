@@ -1,0 +1,830 @@
+[
+  {
+    "id": 1,
+    "name": "岸・伴戸（サンスポーツクラブ）",
+    "information": [
+      {
+        "lastName": "岸",
+        "firstName": "知惠子",
+        "team": "サンスポーツクラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "岸_知惠子_サンスポーツクラブ_栃木県"
+      },
+      {
+        "lastName": "伴戸",
+        "firstName": "明己",
+        "team": "札幌白石クラブ",
+        "prefecture": "北海道",
+        "playerId": null,
+        "tempId": "伴戸_明己_札幌白石クラブ_北海道"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 2,
+    "name": "門・吉田（二見クラブ）",
+    "information": [
+      {
+        "lastName": "門",
+        "firstName": "恵子",
+        "team": "二見クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "門_恵子_二見クラブ_兵庫県"
+      },
+      {
+        "lastName": "吉田",
+        "firstName": "京子",
+        "team": "加古川クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "吉田_京子_加古川クラブ_兵庫県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 3,
+    "name": "後藤・木村（一宮さつき）",
+    "information": [
+      {
+        "lastName": "後藤",
+        "firstName": "三枝子",
+        "team": "一宮さつき",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "後藤_三枝子_一宮さつき_愛知県"
+      },
+      {
+        "lastName": "木村",
+        "firstName": "祐子",
+        "team": "稲沢倶楽部",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "木村_祐子_稲沢倶楽部_愛知県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 4,
+    "name": "佐々木・鶴川（昭島クラブ）",
+    "information": [
+      {
+        "lastName": "佐々木",
+        "firstName": "美知子",
+        "team": "昭島クラブ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "佐々木_美知子_昭島クラブ_東京都"
+      },
+      {
+        "lastName": "鶴川",
+        "firstName": "章子",
+        "team": "けやきクラブ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "鶴川_章子_けやきクラブ_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 5,
+    "name": "高野・小林（暁星クラブ）",
+    "information": [
+      {
+        "lastName": "高野",
+        "firstName": "正代",
+        "team": "暁星クラブ",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "高野_正代_暁星クラブ_香川県"
+      },
+      {
+        "lastName": "小林",
+        "firstName": "京子",
+        "team": "富士クラブ",
+        "prefecture": "香川県",
+        "playerId": null,
+        "tempId": "小林_京子_富士クラブ_香川県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 6,
+    "name": "三松・藤井（東大阪アミー）",
+    "information": [
+      {
+        "lastName": "三松",
+        "firstName": "典子",
+        "team": "東大阪アミー",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "三松_典子_東大阪アミー_大阪府"
+      },
+      {
+        "lastName": "藤井",
+        "firstName": "春美",
+        "team": "Ｔ・Ｍクラブ",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "藤井_春美_Ｔ・Ｍクラブ_奈良県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 7,
+    "name": "矢部・森谷（“Ｋ”Ｓ．ＴＣＬＵＢ）",
+    "information": [
+      {
+        "lastName": "矢部",
+        "firstName": "優子",
+        "team": "“Ｋ”Ｓ．ＴＣＬＵＢ",
+        "prefecture": "神奈川県",
+        "playerId": null,
+        "tempId": "矢部_優子_“Ｋ”Ｓ．ＴＣＬＵＢ_神奈川県"
+      },
+      {
+        "lastName": "森谷",
+        "firstName": "トシ江",
+        "team": "大田支部",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "森谷_トシ江_大田支部_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 8,
+    "name": "江利角・安達（スポーツマンシップ）",
+    "information": [
+      {
+        "lastName": "江利角",
+        "firstName": "富美子",
+        "team": "スポーツマンシップ",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "江利角_富美子_スポーツマンシップ_大分県"
+      },
+      {
+        "lastName": "安達",
+        "firstName": "伸子",
+        "team": "スポーツマンシップ",
+        "prefecture": "大分県",
+        "playerId": null,
+        "tempId": "安達_伸子_スポーツマンシップ_大分県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 9,
+    "name": "古賀・白井（三木クラブ）",
+    "information": [
+      {
+        "lastName": "古賀",
+        "firstName": "日登美",
+        "team": "三木クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "古賀_日登美_三木クラブ_兵庫県"
+      },
+      {
+        "lastName": "白井",
+        "firstName": "典子",
+        "team": "垂水クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "白井_典子_垂水クラブ_兵庫県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 10,
+    "name": "新保・菅井（流山ママクラブ）",
+    "information": [
+      {
+        "lastName": "新保",
+        "firstName": "康子",
+        "team": "流山ママクラブ",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "新保_康子_流山ママクラブ_千葉県"
+      },
+      {
+        "lastName": "菅井",
+        "firstName": "洋子",
+        "team": "明日香",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "菅井_洋子_明日香_千葉県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 11,
+    "name": "竹内・阿部（浜松早起会）",
+    "information": [
+      {
+        "lastName": "竹内",
+        "firstName": "喜代",
+        "team": "浜松早起会",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "竹内_喜代_浜松早起会_静岡県"
+      },
+      {
+        "lastName": "阿部",
+        "firstName": "新子",
+        "team": "森林クラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "阿部_新子_森林クラブ_愛知県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 12,
+    "name": "菅・西原（アイビー）",
+    "information": [
+      {
+        "lastName": "菅",
+        "firstName": "敦子",
+        "team": "アイビー",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "菅_敦子_アイビー_兵庫県"
+      },
+      {
+        "lastName": "西原",
+        "firstName": "恵子",
+        "team": "明石レディース",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "西原_恵子_明石レディース_兵庫県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 13,
+    "name": "水野・宮越（東松山レディス）",
+    "information": [
+      {
+        "lastName": "水野",
+        "firstName": "恵子",
+        "team": "東松山レディス",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "水野_恵子_東松山レディス_埼玉県"
+      },
+      {
+        "lastName": "宮越",
+        "firstName": "由美子",
+        "team": "川口クラブ",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "宮越_由美子_川口クラブ_埼玉県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 14,
+    "name": "榎本・小野山（和歌山忠友クラブ）",
+    "information": [
+      {
+        "lastName": "榎本",
+        "firstName": "恵子",
+        "team": "和歌山忠友クラブ",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "榎本_恵子_和歌山忠友クラブ_和歌山県"
+      },
+      {
+        "lastName": "小野山",
+        "firstName": "佳子",
+        "team": "和歌山忠友クラブ",
+        "prefecture": "和歌山県",
+        "playerId": null,
+        "tempId": "小野山_佳子_和歌山忠友クラブ_和歌山県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 15,
+    "name": "嶋村・前川（小津クラブ）",
+    "information": [
+      {
+        "lastName": "嶋村",
+        "firstName": "志津代",
+        "team": "小津クラブ",
+        "prefecture": "高知県",
+        "playerId": null,
+        "tempId": "嶋村_志津代_小津クラブ_高知県"
+      },
+      {
+        "lastName": "前川",
+        "firstName": "寿美",
+        "team": "徳島抽栄会",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "前川_寿美_徳島抽栄会_徳島県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 16,
+    "name": "杉井・井尻（堺ミルフィーズ）",
+    "information": [
+      {
+        "lastName": "杉井",
+        "firstName": "恵子",
+        "team": "堺ミルフィーズ",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "杉井_恵子_堺ミルフィーズ_大阪府"
+      },
+      {
+        "lastName": "井尻",
+        "firstName": "幸子",
+        "team": "松原市連盟",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "井尻_幸子_松原市連盟_大阪府"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 17,
+    "name": "生田目・笹川（東京アーデル）",
+    "information": [
+      {
+        "lastName": "生田目",
+        "firstName": "光子",
+        "team": "東京アーデル",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "生田目_光子_東京アーデル_東京都"
+      },
+      {
+        "lastName": "笹川",
+        "firstName": "友子",
+        "team": "東京アーデル",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "笹川_友子_東京アーデル_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 18,
+    "name": "片山・松本（チームＴＡＫＡ）",
+    "information": [
+      {
+        "lastName": "片山",
+        "firstName": "あけ美",
+        "team": "チームＴＡＫＡ",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "片山_あけ美_チームＴＡＫＡ_岐阜県"
+      },
+      {
+        "lastName": "松本",
+        "firstName": "孝子",
+        "team": "チームＴＡＫＡ",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "松本_孝子_チームＴＡＫＡ_岐阜県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 19,
+    "name": "中田・藤原（朝日生命クラブ）",
+    "information": [
+      {
+        "lastName": "中田",
+        "firstName": "三千惠",
+        "team": "朝日生命クラブ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "中田_三千惠_朝日生命クラブ_東京都"
+      },
+      {
+        "lastName": "藤原",
+        "firstName": "芳子",
+        "team": "府中ソフトテニス",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "藤原_芳子_府中ソフトテニス_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 20,
+    "name": "伊藤・山中（葵クラブ）",
+    "information": [
+      {
+        "lastName": "伊藤",
+        "firstName": "節子",
+        "team": "葵クラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "伊藤_節子_葵クラブ_愛知県"
+      },
+      {
+        "lastName": "山中",
+        "firstName": "久代",
+        "team": "豊田クラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "山中_久代_豊田クラブ_愛知県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 21,
+    "name": "佐藤・柏原（すずらんクラブ）",
+    "information": [
+      {
+        "lastName": "佐藤",
+        "firstName": "雅子",
+        "team": "すずらんクラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "佐藤_雅子_すずらんクラブ_兵庫県"
+      },
+      {
+        "lastName": "柏原",
+        "firstName": "敦子",
+        "team": "明石レディース",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "柏原_敦子_明石レディース_兵庫県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 22,
+    "name": "大久保・井関（牛久クラブ）",
+    "information": [
+      {
+        "lastName": "大久保",
+        "firstName": "三枝子",
+        "team": "牛久クラブ",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "大久保_三枝子_牛久クラブ_茨城県"
+      },
+      {
+        "lastName": "井関",
+        "firstName": "好子",
+        "team": "牛久クラブ",
+        "prefecture": "茨城県",
+        "playerId": null,
+        "tempId": "井関_好子_牛久クラブ_茨城県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 23,
+    "name": "渡辺・犬伏（徳島庭球倶楽部）",
+    "information": [
+      {
+        "lastName": "渡辺",
+        "firstName": "須摩子",
+        "team": "徳島庭球倶楽部",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "渡辺_須摩子_徳島庭球倶楽部_徳島県"
+      },
+      {
+        "lastName": "犬伏",
+        "firstName": "恵美子",
+        "team": "徳島庭球倶楽部",
+        "prefecture": "徳島県",
+        "playerId": null,
+        "tempId": "犬伏_恵美子_徳島庭球倶楽部_徳島県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 24,
+    "name": "犬養・福田（岩槻すみれクラブ）",
+    "information": [
+      {
+        "lastName": "犬養",
+        "firstName": "久子",
+        "team": "岩槻すみれクラブ",
+        "prefecture": "埼玉県",
+        "playerId": null,
+        "tempId": "犬養_久子_岩槻すみれクラブ_埼玉県"
+      },
+      {
+        "lastName": "福田",
+        "firstName": "淳子",
+        "team": "富士見が丘クラブ",
+        "prefecture": "栃木県",
+        "playerId": null,
+        "tempId": "福田_淳子_富士見が丘クラブ_栃木県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 25,
+    "name": "中村・田村（みつわクラブ）",
+    "information": [
+      {
+        "lastName": "中村",
+        "firstName": "委子",
+        "team": "みつわクラブ",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "中村_委子_みつわクラブ_大阪府"
+      },
+      {
+        "lastName": "田村",
+        "firstName": "治子",
+        "team": "八尾市協会",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "田村_治子_八尾市協会_大阪府"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 26,
+    "name": "原・三方（かがやき）",
+    "information": [
+      {
+        "lastName": "原",
+        "firstName": "三代",
+        "team": "かがやき",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "原_三代_かがやき_岐阜県"
+      },
+      {
+        "lastName": "三方",
+        "firstName": "孝子",
+        "team": "グリーンクラブ",
+        "prefecture": "岐阜県",
+        "playerId": null,
+        "tempId": "三方_孝子_グリーンクラブ_岐阜県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 27,
+    "name": "本田・木村（津田クラブ）",
+    "information": [
+      {
+        "lastName": "本田",
+        "firstName": "みな子",
+        "team": "津田クラブ",
+        "prefecture": "島根県",
+        "playerId": null,
+        "tempId": "本田_みな子_津田クラブ_島根県"
+      },
+      {
+        "lastName": "木村",
+        "firstName": "斗水代",
+        "team": "倉敷さわやか会",
+        "prefecture": "岡山県",
+        "playerId": null,
+        "tempId": "木村_斗水代_倉敷さわやか会_岡山県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 28,
+    "name": "佐原・鈴木（けやきクラブ）",
+    "information": [
+      {
+        "lastName": "佐原",
+        "firstName": "弘子",
+        "team": "けやきクラブ",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "佐原_弘子_けやきクラブ_東京都"
+      },
+      {
+        "lastName": "鈴木",
+        "firstName": "公子",
+        "team": "練馬ソフト",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "鈴木_公子_練馬ソフト_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 29,
+    "name": "増田・神野（岡崎バード）",
+    "information": [
+      {
+        "lastName": "増田",
+        "firstName": "加奈",
+        "team": "岡崎バード",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "増田_加奈_岡崎バード_愛知県"
+      },
+      {
+        "lastName": "神野",
+        "firstName": "弓子",
+        "team": "すみれクラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "神野_弓子_すみれクラブ_愛知県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 30,
+    "name": "河田・中西（Ｔ・Ｍクラブ）",
+    "information": [
+      {
+        "lastName": "河田",
+        "firstName": "敦子",
+        "team": "Ｔ・Ｍクラブ",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "河田_敦子_Ｔ・Ｍクラブ_奈良県"
+      },
+      {
+        "lastName": "中西",
+        "firstName": "佳子",
+        "team": "橿原クラブ",
+        "prefecture": "奈良県",
+        "playerId": null,
+        "tempId": "中西_佳子_橿原クラブ_奈良県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 31,
+    "name": "清水・立崎（市原ドリーム）",
+    "information": [
+      {
+        "lastName": "清水",
+        "firstName": "さかゑ",
+        "team": "市原ドリーム",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "清水_さかゑ_市原ドリーム_千葉県"
+      },
+      {
+        "lastName": "立崎",
+        "firstName": "千代子",
+        "team": "佐倉クラブ",
+        "prefecture": "千葉県",
+        "playerId": null,
+        "tempId": "立崎_千代子_佐倉クラブ_千葉県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 32,
+    "name": "杉山・美和（浜松テニックス）",
+    "information": [
+      {
+        "lastName": "杉山",
+        "firstName": "克子",
+        "team": "浜松テニックス",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "杉山_克子_浜松テニックス_静岡県"
+      },
+      {
+        "lastName": "美和",
+        "firstName": "貞子",
+        "team": "浜松テニックス",
+        "prefecture": "静岡県",
+        "playerId": null,
+        "tempId": "美和_貞子_浜松テニックス_静岡県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 33,
+    "name": "岡中・林（すずらんクラブ）",
+    "information": [
+      {
+        "lastName": "岡中",
+        "firstName": "節子",
+        "team": "すずらんクラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "岡中_節子_すずらんクラブ_兵庫県"
+      },
+      {
+        "lastName": "林",
+        "firstName": "裕美",
+        "team": "加古川クラブ",
+        "prefecture": "兵庫県",
+        "playerId": null,
+        "tempId": "林_裕美_加古川クラブ_兵庫県"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 34,
+    "name": "稲垣・高島（大田支部）",
+    "information": [
+      {
+        "lastName": "稲垣",
+        "firstName": "まり子",
+        "team": "大田支部",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "稲垣_まり子_大田支部_東京都"
+      },
+      {
+        "lastName": "高島",
+        "firstName": "喜代美",
+        "team": "杉並支部",
+        "prefecture": "東京都",
+        "playerId": null,
+        "tempId": "高島_喜代美_杉並支部_東京都"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 35,
+    "name": "村田・上野（苺クラブ）",
+    "information": [
+      {
+        "lastName": "村田",
+        "firstName": "和世",
+        "team": "苺クラブ",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "村田_和世_苺クラブ_大阪府"
+      },
+      {
+        "lastName": "上野",
+        "firstName": "絹代",
+        "team": "苺クラブ",
+        "prefecture": "大阪府",
+        "playerId": null,
+        "tempId": "上野_絹代_苺クラブ_大阪府"
+      }
+    ],
+    "category": "doubles"
+  },
+  {
+    "id": 36,
+    "name": "尾張・岩原（岡崎レディスクラブ）",
+    "information": [
+      {
+        "lastName": "尾張",
+        "firstName": "由美",
+        "team": "岡崎レディスクラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "尾張_由美_岡崎レディスクラブ_愛知県"
+      },
+      {
+        "lastName": "岩原",
+        "firstName": "慶子",
+        "team": "岡崎レディスクラブ",
+        "prefecture": "愛知県",
+        "playerId": null,
+        "tempId": "岩原_慶子_岡崎レディスクラブ_愛知県"
+      }
+    ],
+    "category": "doubles"
+  }
+]
