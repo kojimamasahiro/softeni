@@ -68,8 +68,12 @@ Ollamaが無くても最後まで通る。設計の経緯は
 `tools/<大会slug>-<年>/` にステージングする**。ファイル名は
 `{doubles,team}-none-{boys,girls}.initialPlayers.json`。この4ファイルを `tools/tournament3`
 に貼り付け、PDFを見ながら人がスコアを入力する運用。
+**年齢区分などの部がある大会は、`none` の位置にその大会の既存 details と同じ部名を使う**
+（全日本シニアは `doubles-over{50..80}-{boys,girls}`。前年度の `data/tournaments/details/<slug>/<年>/` のファイル名を見て揃える）。
+リーグ表の種目は `tools/roundrobin` に貼る。
 既存例: `tools/highschool-championship-2012` 〜 `-2019`、`tools/east-japan-2021/2022/2024`、
-`tools/west-japan-2021`〜`-2024`。インデントは2スペース・末尾改行あり（既存ファイルと揃える）。
+`tools/west-japan-2021`〜`-2024`、`tools/zennihon-senior-2026`。インデントは2スペース・末尾改行あり（既存ファイルと揃える）。
+ダブルスの `name` の括弧内は、ペアで所属が違ってもペア1人目の所属（既存ファイルに揃える）。
 
 取り込んだ年度が `data/tournaments/information/<大会slug>.json` に無ければ、**大会情報も足す**
 （`year` / `location` / `startDate` / `endDate` / `label` / `source` / `sourceUrl` / `categories`）。
@@ -215,6 +219,7 @@ x/y座標から行・列を復元している。要点:
 | スキャン画像（テキスト層なし） | インターハイ2013 男女 | 各314エントリー＋48チーム。既存年度と姓名完全一致 男180/女196名 |
 | スキャン画像（要 deskew） | インターハイ2012 男女 | 男316・女320エントリー＋各48チーム。同 男178/女207名 |
 | ブラケット表・一般カテゴリ（下記） | 東日本2021/2022/2024・西日本2021〜2024 | 汎用CLIでは崩れ、使い捨てスクリプトで抽出（`tools/{east,west}-japan-<年>/`） |
+| ブラケット表＋リーグ表・年齢区分（下記） | 全日本シニア2026 男女50〜80歳 14本 | 汎用CLIは姓名を割れず、使い捨てスクリプトで抽出（`tools/zennihon-senior-2026/`）。既存と姓名一致 1,167/1,442名 |
 
 回帰テストは `python3 scripts/pdf-to-players/test_regression.py`（Ollama不要・78/78 pass）。
 fixtureは `scripts/pdf-to-players/fixtures/zenchu-2024-draw.pdf`。
@@ -249,6 +254,32 @@ fixtureは `scripts/pdf-to-players/fixtures/zenchu-2024-draw.pdf`。
   （`能登町役場`→`兼六クラブ` で実際に発生。別名表と `data/teams/review-decisions.json` が矛盾していた）。
 - 出力後は `data/tournaments/details/**` 全体と「姓+名」で照合し、**別の位置で割ると既存データに一致する**
   件数がゼロであることを確認する（誤分割の検出）。
+
+### 全日本シニア選手権（年齢区分ごとのPDF）
+
+JSTA のお知らせページに `{男子,女子}{50..80}歳.pdf` が種目ごとに並ぶ（2026年度は14本、全てテキスト層あり）。
+記録は `docs/raw/2026-10-01-zennihon-senior-2026-pdf-entries-import.md`。
+
+- **1大会の中に様式が2つある**。参加数の多い種目はブラケット表（左右2列）、少ない種目（2026は女子75・80、男子80）は
+  A〜F ブロックのリーグ表。ページ本文に `勝率` があればリーグ表として分岐する。
+- **ブラケット表の氏名は4枠グリッドだが、一般カテゴリと違って座標で確定する**。3文字の姓・名は1枠に圧縮されて
+  印字される（`小笠原` が姓1枠目、`孝太郎` が名1枠目に詰まる）ので、どの文字も「姓2枠／名2枠」のどちらかに必ず入る。
+  ページ・列ごとに氏名xの最小/最大の中点で割れば曖昧さが無い（パターン2）。汎用CLIはここで「境目が無い」と判定して崩れる。
+- リーグ表は姓名の間がはっきり空くので、行内の最大字間で割る（パターン3）。
+- 県・所属は一般カテゴリと同じ「ペア共通なら中央行、選手ごとならその選手の行」。小字（7.9〜8.3pt）は縦位置が
+  1pt前後ずれるので、上/中央/下の最寄り行に割り当てる。
+
+### 照合で既存データ側の誤分割が見つかったとき
+
+PDFの座標で姓名が確定でき、既存 details 側が別の位置で割っていた場合（全日本シニア2025 `東勝|久` → 2026 PDF で `東|勝久`）は、
+ユーザーの了承を取ってから既存側を直す。**details を手で書き換えない**（id・`playerIds`・index の count がずれる）。手順:
+
+1. `data/players/name-split-aliases.json` の `entries` に `{canonical, aliases, reason}` を足す（reason に根拠のPDFと座標）。
+2. `node scripts/normalize-name-splits.mjs --dry-run` → 本実行（participants の id・姓名、`playerIds` を書き換える）。
+3. `data/players/index.json` に正しい分割の行がまだ無ければ、誤分割の行を文字列置換で**改名して id を保ち**、count を戻す
+   （スクリプトは count を0にするだけ）。`docs/wiki/player-name-identity.md`「姓名の分割ゆれ」。
+4. `node scripts/check-name-splits.mjs` で A/B/C が0件、`node scripts/check-highschool-pipeline-freshness.mjs` が古ければ
+   `npm run highschool:pipeline`（`scripts/highschool/02result/results.json` が**全大会の** details を読むため、高校以外の修正でも古くなる）。
 
 ### 既存の scripts/pdf/ との関係
 
