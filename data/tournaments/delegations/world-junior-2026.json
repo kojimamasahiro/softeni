@@ -1,0 +1,107 @@
+{
+  "tournamentId": "world-junior",
+  "year": 2026,
+  "label": "日本選手団",
+  "announcedOn": "2026-10-01",
+  "source": "公益財団法人日本ソフトテニス連盟",
+  "sourceUrl": "https://jsta.or.jp/news/2026/10/01/%E3%80%90%E6%97%A5%E6%9C%AC%E9%81%B8%E6%89%8B%E5%9B%A3%E6%B1%BA%E5%AE%9A%E3%80%91%E7%AC%AC5%E5%9B%9E%E4%B8%96%E7%95%8C%E3%82%B8%E3%83%A5%E3%83%8B%E3%82%A2%E3%82%BD%E3%83%95%E3%83%88%E3%83%86%E3%83%8B/",
+  "note": "出典はJSTAのお知らせ（2026-10-01）に添付の「2026世界ジュニア選手権派遣者一覧」PDF（https://jsta.or.jp/wp-content/uploads/2026/10/2026%E4%B8%96%E7%95%8C%E3%82%B8%E3%83%A5%E3%83%8B%E3%82%A2%E9%81%B8%E6%89%8B%E6%A8%A9%E6%B4%BE%E9%81%A3%E8%80%85%E4%B8%80%E8%A6%A7.pdf）。並びは名簿どおり男子U-21→U-18→U-15、女子も同じ（各2名）。所属は名簿の表記そのまま（都道府県欄・『日本学連』の区分は持たない）。大橋玲雨は名簿では『大𣘺』（𣘺は橋の異体字）だが、選手ページの表記『大橋』に揃えた。名簿は年代（U-21/U-18/U-15）を示すが種目の割り当ては無く、個人種目が年代別かどうかも発表に無いので、categoryIds は団体（団体戦は各年代1ペアの3ペア構成と発表にある）だけにした（2026-10-02 ユーザー判断）。年代は持つ欄が無いのでここに記録: 男子 U-21 橋場・川﨑 / U-18 塚本・荻谷 / U-15 丹羽・東郷、女子 U-21 中谷・大橋 / U-18 足利・山口 / U-15 野上・松山。スタッフ4名（団長・男女監督・トレーナー）は取り込まない（asian-games-2026 と同じ理由）。",
+  "members": [
+    {
+      "lastName": "橋場",
+      "firstName": "柊一郎",
+      "gender": "boys",
+      "affiliation": "法政大学",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "川﨑",
+      "firstName": "康平",
+      "gender": "boys",
+      "affiliation": "日本体育大学",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "塚本",
+      "firstName": "光琉",
+      "gender": "boys",
+      "affiliation": "岡崎城西高校",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "荻谷",
+      "firstName": "侑磨",
+      "gender": "boys",
+      "affiliation": "高田商業高校",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "丹羽",
+      "firstName": "悠弦",
+      "gender": "boys",
+      "affiliation": "刈谷朝日クラブ",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "東郷",
+      "firstName": "翔太",
+      "gender": "boys",
+      "affiliation": "王寺ユースソフトテニスクラブ",
+      "schoolYear": null,
+      "categoryIds": ["team-none-boys"]
+    },
+    {
+      "lastName": "中谷",
+      "firstName": "ももこ",
+      "gender": "girls",
+      "affiliation": "明治大学",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "大橋",
+      "firstName": "玲雨",
+      "gender": "girls",
+      "affiliation": "明治大学",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "足利",
+      "firstName": "茉奈",
+      "gender": "girls",
+      "affiliation": "神戸松蔭大学",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "山口",
+      "firstName": "優菜",
+      "gender": "girls",
+      "affiliation": "宮崎商業高校",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "野上",
+      "firstName": "怜奈",
+      "gender": "girls",
+      "affiliation": "M's",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    },
+    {
+      "lastName": "松山",
+      "firstName": "穂乃香",
+      "gender": "girls",
+      "affiliation": "京都光華中学校",
+      "schoolYear": null,
+      "categoryIds": ["team-none-girls"]
+    }
+  ]
+}
