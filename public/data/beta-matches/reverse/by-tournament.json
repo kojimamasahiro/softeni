@@ -1,6 +1,54 @@
 {
-  "generatedAt": "2026-09-28T16:02:15.902Z",
+  "generatedAt": "2026-10-03T01:19:44.763Z",
   "tournaments": {
+    "/tournaments/university/zennihon-university/2026/singles/none/boys": [
+      {
+        "matchId": "bc7a437f-878d-4d79-b105-0b4691695714",
+        "detailPath": "/tournaments/university/zennihon-university/2026/singles/none/boys/matches/bc7a437f-878d-4d79-b105-0b4691695714",
+        "round": "準決勝",
+        "entryNos": [
+          1,
+          29
+        ],
+        "teamA": "橋場 柊一郎",
+        "teamB": "川﨑 康平"
+      }
+    ],
+    "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys": [
+      {
+        "matchId": "426a64b3-e46d-4244-b53a-8505b6eac3e2",
+        "detailPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys/matches/426a64b3-e46d-4244-b53a-8505b6eac3e2",
+        "round": "決勝",
+        "entryNos": [
+          1,
+          398
+        ],
+        "teamA": "内本 隆文・上松 俊貴",
+        "teamB": "上岡 俊介・丸山 海斗"
+      },
+      {
+        "matchId": "aab4e6b5-a8aa-44a3-8cb0-2c9e5063de72",
+        "detailPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys/matches/aab4e6b5-a8aa-44a3-8cb0-2c9e5063de72",
+        "round": "準決勝",
+        "entryNos": [
+          1,
+          100
+        ],
+        "teamA": "内本 隆文・上松 俊貴",
+        "teamB": "矢野 颯人・内田 理久"
+      },
+      {
+        "matchId": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+        "detailPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys/matches/3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
+        "round": "準決勝",
+        "entryNos": [
+          200,
+          398
+        ],
+        "teamA": "長江 光一・林 佑太郎",
+        "teamB": "上岡 俊介・丸山 海斗"
+      }
+    ],
     "/tournaments/university/zennihon-university/2026/doubles/none/boys": [
       {
         "matchId": "381d9c08-c645-4fb6-b194-8f6af34aeef6",
@@ -45,30 +93,6 @@
         ],
         "teamA": "川﨑 康平・黒坂 卓矢",
         "teamB": "橋場 柊一郎・菊山 太陽"
-      }
-    ],
-    "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys": [
-      {
-        "matchId": "426a64b3-e46d-4244-b53a-8505b6eac3e2",
-        "detailPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys/matches/426a64b3-e46d-4244-b53a-8505b6eac3e2",
-        "round": "決勝",
-        "entryNos": [
-          1,
-          398
-        ],
-        "teamA": "内本 隆文・上松 俊貴",
-        "teamB": "上岡 俊介・丸山 海斗"
-      },
-      {
-        "matchId": "3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
-        "detailPath": "/tournaments/corporate/zennihon-workers/2026/doubles/none/boys/matches/3a01ed24-f4ce-4d7d-95e7-7d39174b3b7a",
-        "round": "準決勝",
-        "entryNos": [
-          200,
-          398
-        ],
-        "teamA": "長江 光一・林 佑太郎",
-        "teamB": "上岡 俊介・丸山 海斗"
       }
     ],
     "/tournaments/all/west-japan/2025/doubles/none/boys": [
