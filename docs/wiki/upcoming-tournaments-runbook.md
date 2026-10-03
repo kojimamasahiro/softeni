@@ -137,7 +137,13 @@ categoryId の age の位置で `team-adult-*` / `team-youth-*` に分ける。�
 
 - エントリーは JSTA の組合せ PDF から `tools/kokutai-2026/*.initialPlayers.json` にステージング済み（結果が出るまで details には書かない）
 - 会場は要項が未確認なので `venues` 無し（`check:upcoming` に欠けとして出る）
-- 会期中: 組合せ PDF の山（1回戦の不戦・順位決定戦）から matches を作り、結果を入れる
+- **会期中の結果**: `tools/kokutai-2026/results.json` に試合を書き足し → `python3 tools/kokutai-2026/build_details.py`
+  → `npx prettier --write data/tournaments/details/kokutai/2026/*.json`（冪等。日ごとに作り直す）。
+  1行は `{"round", "entries": [entryNo, entryNo], "score": [勝ち数, 勝ち数] | null}`。未実施は `score: null` で組み合わせだけ出る
+- ラウンドは本戦（枠数で 1回戦〜決勝）＋順位決定（`5〜8位決定戦` ×2 → `5・6位決定戦` / `7・8位決定戦`、`3位決定戦`）。
+  **8位まで入賞なので4種別とも順位決定戦がある**。順位決定戦はブラケットに繋げない（既存の `3位決定戦` と同じ）
+- スクリプトは**ドロー上で当たりえない組み合わせ・前のラウンドを勝っていない者・順位決定戦の顔ぶれ違い**で止まる。
+  架空の結果で最後まで流し、`check-tournament-entries` / `check-duplicate-placements` / `bracket:verify` が通ることを確認済み
 
 ## 残作業
 
