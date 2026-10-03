@@ -1,4 +1,4 @@
-import { joinPlayerName } from '@/utils/playerName';
+import { formatTeamWithPrefecture, joinPlayerName } from '@/utils/playerName';
 
 type EntryInfo = {
   entryNo: number;
@@ -72,7 +72,7 @@ export default function EntryOverview({ entries, fixCategory }: Props) {
                   }
 
                   if (category === 'team') {
-                    return `${entry.entryNo}.　${entry.team}（${entry.prefecture}）`;
+                    return `${entry.entryNo}.　${formatTeamWithPrefecture(entry.team ?? '', entry.prefecture)}`;
                   }
 
                   // doublesなど

@@ -5,7 +5,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 import { isUnplayedMatch } from '@/lib/playerStats/placement';
 import { formatRoundLabel } from '@/lib/roundLabel';
 import { MatchRow, TeamMatchPlayer, TeamMatchRow, TournamentDetailData, TournamentEntry, TournamentMatch } from '@/types/tournament';
-import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
+import { formatTeamWithPrefecture, isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
 type NamePart = {
   text: string;
@@ -349,7 +349,7 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
           .map((pl) => {
             const teamName = pl?.team || '不明';
             const prefecture = pl?.prefecture;
-            return prefecture ? `${teamName}（${prefecture}）` : teamName;
+            return formatTeamWithPrefecture(teamName, prefecture);
           })
           .filter((name) => name !== '不明');
         return teamNames.join('・') || `#${entry.entryNo ?? '?'}`;
@@ -561,6 +561,9 @@ export default function MatchResults({ detail, gameCategory, searchQuery, setSea
         const rank = (r?: string | null) => {
           if (!r) return 0;
           const s = String(r);
+          // 順位決定戦は本戦の後（「3位決定戦」の数字を回戦として拾わない）。
+          // 国スポの「5〜8位決定戦」は「5・6位／7・8位決定戦」の前に行われる
+          if (/位決定/.test(s)) return /〜/.test(s) ? 110 : 120;
           // 明示的なマッピング: 決勝を最大にして最後に来るようにする
           if (/準々決勝/.test(s)) return 70;
           if (/準決勝/.test(s)) return 80;

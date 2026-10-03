@@ -72,6 +72,7 @@
     "analytics:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/analytics.test.ts",
     "upcoming:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/upcomingInternational.test.ts",
     "format:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/categoryFormat.test.ts",
+    "team-label:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/teamLabel.test.ts",
     "career:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerCareerAffiliations.test.ts",
     "player-title:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/playerResultsTitle.test.ts",
     "records:test": "ts-node --project scripts/playerStats/tsconfig.json lib/__tests__/championRecords.test.ts",

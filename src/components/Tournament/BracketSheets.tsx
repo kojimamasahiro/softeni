@@ -50,7 +50,8 @@ function useNameOf(detailData: TournamentDetailData): BracketNameOf {
       const names = players.map((p) => joinPlayerName(p.lastName, p.firstName)).filter(Boolean);
       const teams = [...new Set(players.map((p) => p.team).filter(Boolean))];
       if (names.length === 0) {
-        const prefs = [...new Set(players.map((p) => p.prefecture).filter(Boolean))];
+        // 都道府県チーム（国民スポーツ大会）はチーム名と同じなので添えない
+        const prefs = [...new Set(players.map((p) => p.prefecture).filter((p) => p && !teams.includes(p)))];
         return { main: teams.join('／') || `#${entryNo}`, sub: prefs.join('／') };
       }
       return { main: names.join('・'), sub: teams.join('／') };

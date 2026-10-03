@@ -137,7 +137,18 @@ categoryId の age の位置で `team-adult-*` / `team-youth-*` に分ける。�
 
 - エントリーは JSTA の組合せ PDF から `tools/kokutai-2026/*.initialPlayers.json` にステージング済み（結果が出るまで details には書かない）
 - 会場は要項が未確認なので `venues` 無し（`check:upcoming` に欠けとして出る）
-- 会期中: 組合せ PDF の山（1回戦の不戦・順位決定戦）から matches を作り、結果を入れる
+- **会期中の結果**（2026-10-03 ユーザー決定: 本戦は tournament3 で手入力）:
+  1. 本戦（1回戦〜決勝）を `tools/tournament3` で入力して `details/kokutai/2026/*.json` に書き出す（これまでどおり）
+  2. 順位決定戦は tournament3 で表せないので `tools/kokutai-2026/placements.json` に書く。
+     1行は `{"round", "entries": [entryNo, entryNo], "score": [勝ち数, 勝ち数] | null}`
+  3. `python3 tools/kokutai-2026/build_details.py` → `npx prettier --write data/tournaments/details/kokutai/2026/*.json`。
+     details の本戦に順位決定戦を足し、results を付け直し、検査して書き戻す（冪等。tournament3 で書き出すたびに流す）
+- ラウンド名は順位決定が `5〜8位決定戦` ×2 → `5・6位決定戦` / `7・8位決定戦`、`3位決定戦`。
+  **8位まで入賞なので4種別とも順位決定戦がある**。順位決定戦はブラケットに繋げない（既存の `3位決定戦` と同じ）
+- 成績は順位決定戦が済んだら `3位`〜`8位`（ユーザー決定。rank は best 4 / best 8 のまま）
+- スクリプトは**ドロー上で当たりえない組み合わせ・前のラウンドを勝っていない者・順位決定戦の顔ぶれ違い・エントリーのずれ**で止まる
+- 公開ページはチーム名と都道府県が同じなら括弧を付けない（`formatTeamWithPrefecture`。「愛知県（愛知県）」を避ける）。
+  各チームの対戦一覧は順位決定戦を本戦の後に並べる
 
 ## 残作業
 

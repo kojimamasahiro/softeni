@@ -7,7 +7,7 @@ import BracketSheets from '@/components/Tournament/BracketSheets';
 import { describeBracketLayout } from '@/lib/bracketLayout';
 import { formatRoundLabel } from '@/lib/roundLabel';
 import { TournamentDetailData, TournamentEntry, TournamentMatch, TournamentParticipant } from '@/types/index';
-import { isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
+import { formatTeamWithPrefecture, isTeamFormatPlayers, joinPlayerName } from '@/utils/playerName';
 
 interface SelectedEntryInfo {
   entryNo: number;
@@ -61,7 +61,7 @@ function buildEntryNameParts(participants: TournamentParticipant[], entry: Tourn
 
   const isTeamFormat = isTeamFormatPlayers(players);
   if (isTeamFormat) {
-    return players.map((pl) => ({ text: pl.prefecture ? `${pl.team || '不明'}（${pl.prefecture}）` : pl.team || '不明' }));
+    return players.map((pl) => ({ text: formatTeamWithPrefecture(pl.team || '不明', pl.prefecture) }));
   }
 
   const teamGroups = new Map<string, NamePart[]>();
@@ -101,7 +101,7 @@ function buildOpponentDisplay(
     const teamNames = players
       .map((pl) => {
         const teamName = pl.team || '不明';
-        return pl.prefecture ? `${teamName}（${pl.prefecture}）` : teamName;
+        return formatTeamWithPrefecture(teamName, pl.prefecture);
       })
       .filter((name) => name !== '不明');
     return { name: teamNames.join('・') || `#${entry.entryNo ?? '?'}`, playerIds: [] };
