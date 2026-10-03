@@ -128,6 +128,17 @@
 年代別かどうかも書いていないため（推測で足さない）。対戦表が公開されない大会で、結果は順位だけになる見込み
 （[raw/2026-10-02-idea-placement-only-results.md](../raw/2026-10-02-idea-placement-only-results.md)）。
 
+## 国民スポーツ大会2026（10/16〜19・青森）
+
+`kokutai`（`generationId: all`）で登録し、第80回の大会情報と4種別のエントリーを入れた（2026-10-03）。
+都道府県対抗の団体戦なので**チーム＝都道府県**（`team`・`prefecture`・`name` がすべて県名）。成年／少年は
+categoryId の age の位置で `team-adult-*` / `team-youth-*` に分ける。学校・所属とは当面つなげない
+（[raw/2026-10-03-idea-kokusupo.md](../raw/2026-10-03-idea-kokusupo.md)）。
+
+- エントリーは JSTA の組合せ PDF から `tools/kokutai-2026/*.initialPlayers.json` にステージング済み（結果が出るまで details には書かない）
+- 会場は要項が未確認なので `venues` 無し（`check:upcoming` に欠けとして出る）
+- 会期中: 組合せ PDF の山（1回戦の不戦・順位決定戦）から matches を作り、結果を入れる
+
 ## 残作業
 
 | # | 何を | なぜ |

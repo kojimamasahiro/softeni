@@ -1,0 +1,62 @@
+[
+  {
+    "year": 2026,
+    "location": "青森県青森市",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-19",
+    "guidelineUrl": null,
+    "source": "公益財団法人日本ソフトテニス連盟（第80回 国民スポーツ大会について）",
+    "sourceUrl": "https://jsta.or.jp/news/2026/09/07/%E7%AC%AC80%E5%9B%9E-%E5%9B%BD%E6%B0%91%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E5%A4%A7%E4%BC%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+    "scheduleSource": "公益財団法人日本ソフトテニス連盟（第80回 国民スポーツ大会について）",
+    "scheduleSourceUrl": "https://jsta.or.jp/news/2026/09/07/%E7%AC%AC80%E5%9B%9E-%E5%9B%BD%E6%B0%91%E3%82%B9%E3%83%9D%E3%83%BC%E3%83%84%E5%A4%A7%E4%BC%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/",
+    "scheduleCheckedOn": "2026-10-03",
+    "label": "第80回 国民スポーツ大会",
+    "note": "都道府県対抗の団体戦（1試合は3対戦）。チームは都道府県で、学校・所属とは当面つなげない（docs/raw/2026-10-03-idea-kokusupo.md）。成年と少年は categoryId の age の位置で分ける（adult / youth）。会場は青森県総合運動公園テニスコート（徳島県ソフトテニス連盟の国スポページによる。JSTA の組合せには会場名が無く、要項も未確認のため venues は持たない）。日程は JSTA の組合せ PDF の日付欄（少年 10/16〜17、成年 10/18〜19）。出場数は少年男子47・少年女子21・成年男子24・成年女子16。2026-10-03 登録",
+    "categories": [
+      {
+        "categoryId": "team-adult-boys",
+        "label": "成年男子",
+        "category": "team",
+        "gender": "boys",
+        "age": "adult",
+        "schedule": {
+          "startDate": "2026-10-18",
+          "endDate": "2026-10-19"
+        }
+      },
+      {
+        "categoryId": "team-adult-girls",
+        "label": "成年女子",
+        "category": "team",
+        "gender": "girls",
+        "age": "adult",
+        "schedule": {
+          "startDate": "2026-10-18",
+          "endDate": "2026-10-19"
+        }
+      },
+      {
+        "categoryId": "team-youth-boys",
+        "label": "少年男子",
+        "category": "team",
+        "gender": "boys",
+        "age": "youth",
+        "schedule": {
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-17"
+        }
+      },
+      {
+        "categoryId": "team-youth-girls",
+        "label": "少年女子",
+        "category": "team",
+        "gender": "girls",
+        "age": "youth",
+        "schedule": {
+          "startDate": "2026-10-16",
+          "endDate": "2026-10-17"
+        }
+      }
+    ]
+  }
+]
