@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T16:01:51.376Z",
+  "generatedAt": "2026-10-03T01:19:44.640Z",
   "targets": [
     {
       "key": "pair:川﨑 康平&黒坂 卓矢",
@@ -61,6 +61,24 @@
       "latestMatchDate": "2026-09-10"
     },
     {
+      "key": "player:橋場 柊一郎",
+      "kind": "player",
+      "displayName": "橋場 柊一郎",
+      "playerNames": [
+        "橋場 柊一郎"
+      ],
+      "teamNames": [
+        "法政大学"
+      ],
+      "regions": [
+        "日本学連"
+      ],
+      "visibility": "link",
+      "matchCount": 2,
+      "completedMatchCount": 2,
+      "latestMatchDate": "2026-09-10"
+    },
+    {
       "key": "pair:橋場 柊一郎&菊山 太陽",
       "kind": "pair",
       "displayName": "橋場 柊一郎・菊山 太陽",
@@ -77,6 +95,24 @@
       "visibility": "link",
       "matchCount": 2,
       "completedMatchCount": 2,
+      "latestMatchDate": "2026-09-10"
+    },
+    {
+      "key": "player:川﨑 康平",
+      "kind": "player",
+      "displayName": "川﨑 康平",
+      "playerNames": [
+        "川﨑 康平"
+      ],
+      "teamNames": [
+        "日本体育大学"
+      ],
+      "regions": [
+        "日本学連"
+      ],
+      "visibility": "link",
+      "matchCount": 1,
+      "completedMatchCount": 1,
       "latestMatchDate": "2026-09-10"
     },
     {
@@ -139,8 +175,8 @@
         "広島"
       ],
       "visibility": "link",
-      "matchCount": 3,
-      "completedMatchCount": 3,
+      "matchCount": 4,
+      "completedMatchCount": 4,
       "latestMatchDate": "2026-08-30"
     },
     {
@@ -163,12 +199,12 @@
       "latestMatchDate": "2026-08-30"
     },
     {
-      "key": "pair:上松 俊貴&矢野 颯人",
+      "key": "pair:内田 理久&矢野 颯人",
       "kind": "pair",
-      "displayName": "矢野 颯人・上松 俊貴",
+      "displayName": "矢野 颯人・内田 理久",
       "playerNames": [
         "矢野 颯人",
-        "上松 俊貴"
+        "内田 理久"
       ],
       "teamNames": [
         "NTT西日本"
@@ -179,7 +215,7 @@
       "visibility": "link",
       "matchCount": 1,
       "completedMatchCount": 1,
-      "latestMatchDate": "2026-08-20"
+      "latestMatchDate": "2026-08-30"
     },
     {
       "key": "pair:端山 羅行&船水 颯人",
@@ -484,24 +520,6 @@
       "latestMatchDate": "2026-05-17"
     },
     {
-      "key": "player:橋場 柊一郎",
-      "kind": "player",
-      "displayName": "橋場 柊一郎",
-      "playerNames": [
-        "橋場 柊一郎"
-      ],
-      "teamNames": [
-        "法政大学"
-      ],
-      "regions": [
-        "日本学連"
-      ],
-      "visibility": "link",
-      "matchCount": 1,
-      "completedMatchCount": 1,
-      "latestMatchDate": "2026-05-14T15:00:18.286794+00:00"
-    },
-    {
       "key": "pair:片岡 暁紀&黒坂 卓矢",
       "kind": "pair",
       "displayName": "片岡 暁紀・黒坂 卓矢",
@@ -656,6 +674,25 @@
       "matchCount": 1,
       "completedMatchCount": 1,
       "latestMatchDate": "2025-11-04T09:55:59.857737+00:00"
+    },
+    {
+      "key": "pair:上松 俊貴&矢野 颯人",
+      "kind": "pair",
+      "displayName": "矢野 颯人・上松 俊貴",
+      "playerNames": [
+        "矢野 颯人",
+        "上松 俊貴"
+      ],
+      "teamNames": [
+        "NTT西日本"
+      ],
+      "regions": [
+        "広島県"
+      ],
+      "visibility": "link",
+      "matchCount": 1,
+      "completedMatchCount": 1,
+      "latestMatchDate": "2025-08-20"
     }
   ]
 }
