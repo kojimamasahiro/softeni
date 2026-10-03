@@ -11,16 +11,16 @@
     "doubles": {
       "recentlyResult": null,
       "historicalBest": {
-        "team": "香川県",
-        "teamId": "kagawaken",
-        "prefecture": "香川県",
-        "prefectureId": "kagawa",
+        "team": "滝川",
+        "teamId": "takikawa",
+        "prefecture": "北海道",
+        "prefectureId": "hokkaido",
         "result": "予選敗退",
         "category": "doubles",
         "tournamentId": "highschool-japan-cup",
         "year": 2021,
         "gender": "girls",
-        "playerIds": ["増田_菜々_高松商_香川県", "佐々木_高松商業_香川県_香川県"]
+        "playerIds": ["安楽_未渉_滝川_北海道", "石黒_茉子_滝川_北海道"]
       }
     },
     "team": {
@@ -28,10 +28,14 @@
       "historicalBest": null
     }
   },
-  "uniquePlayers": 1,
+  "uniquePlayers": 2,
   "topPlayers": [
     {
-      "id": "佐々木_高松商業_香川県_香川県",
+      "id": "安楽_未渉_滝川_北海道",
+      "appearances": 1
+    },
+    {
+      "id": "石黒_茉子_滝川_北海道",
       "appearances": 1
     }
   ]

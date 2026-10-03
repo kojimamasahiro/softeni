@@ -92,6 +92,18 @@
 - 団体戦では pid が選手ではなくチームを指し氏名が `null` になるので、メンバー一覧から除外する。
 - 同一年度・同一チームの本物の同姓同名は dedup で1人に潰れる（D/E/F は個人選手ページ向けで、名簿には適用していない）。
 
+## 個人戦の pid は必ず4区切り（名の欠落を3区切りで入れない）
+
+高校パイプライン（`scripts/highschool/03list/summary.py`）は **pid を `_` で割った [2] を学校**とみなす。
+名が取れず `姓_学校_県` の3区切りで入れると県名が学校として数えられ、
+`scripts/highschool/01team/teams.json` に架空校（`北海道` `香川県`）が生まれる。
+
+- ドローが「姓・姓（県：学校）」だけの大会は、**参加選手一覧など別の公式資料で名を補う**
+  （HJC 2021 はゴーセンの参加選手一覧で全員補えた）。
+- 取り込み後に `git grep -E '"id":"[^_"]+_[^_"]+_[^_"]+"' -- 'data/tournaments/details/highschool-*'` が空であることを確かめる。
+- 列ずれ（学校名が `firstName`、県名が `team`）も同じ症状で出る。経緯は
+  [raw/2026-10-03-hjc-2021-surname-only-ids.md](../raw/2026-10-03-hjc-2021-surname-only-ids.md)。
+
 ## 関連
 
 - [team-player-identity.md](./team-player-identity.md) — チーム名寄せ（実行順序・ヘルスチェックもこちら）
