@@ -27,6 +27,14 @@ export function joinPlayerName(lastName?: string | null, firstName?: string | nu
  * `=== null` ではなく「姓名がどちらも空」で判定する（そうしないと個人戦扱いになり
  * 「（東北）」のように空の選手名＋括弧つきチーム名で表示されてしまう）。
  */
+/**
+ * 団体戦のチーム名に都道府県を括弧で添える。チーム名が都道府県そのもの
+ * （国民スポーツ大会の都道府県チーム）なら「愛知県（愛知県）」と重なるので添えない。
+ */
+export function formatTeamWithPrefecture(team: string, prefecture?: string | null): string {
+  return prefecture && prefecture !== team ? `${team}（${prefecture}）` : team;
+}
+
 export function isTeamFormatPlayers(players: { lastName?: string | null; firstName?: string | null }[]): boolean {
   if (players.length === 0) return false;
   return players.every((pl) => !pl?.lastName && !pl?.firstName);

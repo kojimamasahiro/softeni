@@ -111,8 +111,23 @@ Idea Backlog。P0 の前半（大会情報・エントリー）を投入済み�
 - 気づいた点: チーム名と都道府県が同じなので、公開ページで「愛知県（愛知県）」と2回出る。
 - 結果の出どころは未定。大会公式の速報ページは見つからず、検索で出たのは個人のまとめサイト（zutto-sports.com）だけ。
 
+## 追記（2026-10-03・入力の分担と表示の決定）
+
+- ユーザー決定: 会期中の結果は **tournament3 で手入力**。順位決定戦の成績は **「3位」〜「8位」**。県名の重複は **表示側で1回にする**。
+- tournament3 は本戦の山しか扱えず、順位決定戦を表せない（results のラベルも 優勝／準優勝／ベスト4／ベスト8 だけ）。
+  そこで build_details.py を「details（tournament3 の本戦）＋ placements.json（順位決定戦）→ 検査して書き戻す」形に変えた。
+  results.json（全試合の転記ファイル）は廃止。tournament3 の試合にある項目（オーダー等）はそのまま残す。
+- 架空の結果（本戦を tournament3 の出力風に details へ、順位決定戦を placements.json へ）で、2回流して2回目が「変更なし」、
+  `check-tournament-entries` / `check-duplicate-placements` / `bracket:verify` が通ることを確認。
+- 表示: `src/utils/playerName.ts` に `formatTeamWithPrefecture` を足し、TournamentBracket / MatchResults / EntryOverview / BracketSheets で使う。
+  チーム名＝都道府県なら括弧を付けない。単体テスト `npm run team-label:test`。
+- 表示の不具合も1つ直した: 各チームの対戦一覧の並び替え（MatchResults）が「3位決定戦」の「3」を回戦番号として拾い、
+  1回戦と準々決勝の間に並べていた。「位決定」を含むラウンドは本戦の後（5〜8位決定戦 → 5・6位／7・8位・3位決定戦）にした。
+  既存の大学王座 2026（3位決定戦・7・8位決定戦）にも効く。
+
 ## Compile Log
 
 - wiki（data-model.md の表）には状況と1行の目的だけ載せた。段階計画・課題は詳細なので raw に残した。
 - 2026-10-03 投入分: wiki には runbook の節と data-model の状況だけ載せた。抽出の手順・照合の詳細は raw に残した。
 - 2026-10-03 結果取り込みの準備: wiki（runbook）には入力の形・ラウンド名・検査の範囲だけ載せた。席番号の検査の理屈と架空データでの確認は raw に残した。
+- 2026-10-03 入力の分担: wiki（runbook）には手順・ラウンド名・成績の表記・表示の規約だけ載せた。tournament3 の制約の調べと架空データでの確認は raw に残した。

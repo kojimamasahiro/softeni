@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""第80回 国民スポーツ大会（2026・青森）ソフトテニス競技の組み合わせと結果を details JSON に書き出す。
+"""第80回 国民スポーツ大会（2026・青森）ソフトテニス競技の details に順位決定戦を足し、成績を付け直して検査する。
+
+分担（2026-10-03 ユーザー決定）:
+  本戦（1回戦〜決勝）… tools/tournament3 で手入力して details に書き出す（これまでどおり）
+  順位決定戦         … tournament3 では表せないので tools/kokutai-2026/placements.json に書く
+  このスクリプト     … details の本戦＋placements.json を読み、順位決定戦を足し、results を付け直し、全体を検査して書き戻す（冪等）
 
 入力:
-  tools/kokutai-2026/team-<種別>.initialPlayers.json … エントリー（JSTA の組合せ PDF の番号順。チーム＝都道府県）
-  tools/kokutai-2026/results.json                    … 試合の一覧。会期中は日ごとに書き足して作り直す（冪等）
+  data/tournaments/details/kokutai/2026/team-<種別>.json … 本戦の試合はここから読む（順位決定戦は placements.json で置き換える）
+  tools/kokutai-2026/team-<種別>.initialPlayers.json   … エントリー（JSTA の組合せ PDF の番号順。チーム＝都道府県）
+  tools/kokutai-2026/placements.json                    … 順位決定戦。1行は1試合:
+    {"round": "5〜8位決定戦", "entries": [5, 23], "score": [2, 1]}
+    - entries は entryNo（組合せ PDF の番号）、score は対戦の勝ち数（entries と同じ並び）。未実施なら null
 出力:
-  data/tournaments/details/kokutai/2026/team-<種別>.json
-
-results.json の1行は1試合:
-  {"round": "2回戦", "entries": [12, 13], "score": [2, 1]}
-  - entries は entryNo（組合せ PDF の番号）。並びは PDF の上→下
-  - score は団体戦の対戦の勝ち数（entries と同じ並び）。未実施なら null（組み合わせだけ出す）
-  - 対戦ごとの記録（オーダー）を入れるときは rubbers（ADR-020。tools/asian-games-2026 と同じ形）
-  - 棄権・不戦勝は "retired": true（score は読めたとおり）
+  同じ details ファイル（変わったときだけ書く）
 
 ラウンド:
   本戦 … 1回戦 / 2回戦 / 3回戦 / 準々決勝 / 準決勝 / 決勝（種別の枠数で何回戦まであるかが決まる）
@@ -20,15 +21,17 @@ results.json の1行は1試合:
             準決勝の敗者で 3位決定戦。**国スポは8位まで入賞**（得点が付く）なので4種別とも実施される
 
 検査（食い違ったら止まる）:
+  - エントリーが tools/ のステージングと一致すること
   - 本戦の各試合の2者が、そのラウンドで当たりうる位置（ドローの同じ山の左右）にいること
   - 本戦の2回戦以降に出る者は、前のラウンドを勝っているか、そのラウンドが最初の試合（不戦勝の枠）であること
   - 順位決定戦の顔ぶれが、元になる試合の敗者・勝者と一致すること
 
 成績（results）:
   未決着の者は ADR-007 の「進行中」（rank.kind: ongoing）。決着したら N回戦敗退 / ベスト8 / ベスト4 / 準優勝 / 優勝。
-  順位決定戦の結果は label に順位を書く（rank は best のまま。placement に「N位」の型が無いため）。
+  順位決定戦が済んだら label を「3位」〜「8位」にする（ユーザー決定。rank は best 4 / best 8 のまま。
+  placement に「N位」の型が無いため）。
 
-実行: python3 tools/kokutai-2026/build_details.py
+実行: python3 tools/kokutai-2026/build_details.py   （tournament3 で書き出した後に毎回流す）
 """
 
 import json
@@ -97,12 +100,11 @@ def build(category, players, rows):
         a, b = r["entries"]
         if a not in seats or b not in seats or a == b:
             fail(f"{where} {r['round']}: entryNo が不正 {r['entries']}")
-        if r.get("score") is not None and (len(r["score"]) != 2 or r["score"][0] == r["score"][1]):
-            fail(f"{where} {r['round']} {r['entries']}: score は [勝ち数, 勝ち数] で同点にならない")
+        if r.get("winner") is not None and r["winner"] not in r["entries"]:
+            fail(f"{where} {r['round']} {r['entries']}: 勝者 {r['winner']} が対戦の2者に無い")
 
     def winner(r):
-        s = r.get("score")
-        return None if s is None else (r["entries"][0] if s[0] > s[1] else r["entries"][1])
+        return r.get("winner")
 
     def loser(r):
         w = winner(r)
@@ -154,10 +156,9 @@ def build(category, players, rows):
     matches = []
     for i, r in enumerate(ordered):
         a, b = r["entries"]
-        s = r.get("score")
         m = {
             "entries": [a, b],
-            "scores": {str(a): s[0], str(b): s[1]} if s else {},
+            "scores": r["scores"],
             "round": r["round"],
             "winnerEntryNo": winner(r),
             "retired": bool(r.get("retired")),
@@ -168,8 +169,7 @@ def build(category, players, rows):
             "prevMatchIds": [],
             "prevMatchId": None,
         }
-        if r.get("rubbers"):
-            m["matches"] = r["rubbers"]
+        m.update(r.get("extra") or {})  # tournament3 側の項目（オーダー等）はそのまま残す
         matches.append(m)
 
     # 本戦の勝者の進む先。順位決定戦はブラケットに繋げない（既存の 3位決定戦 と同じ）
@@ -244,20 +244,63 @@ def standing(no, matches, rounds, first_round):
     return {"label": f"{n}回戦敗退", "rank": {"kind": "round", "round": n}}
 
 
+MATCH_KEYS = {"entries", "scores", "round", "winnerEntryNo", "retired", "stage", "group",
+              "matchId", "nextMatchId", "prevMatchIds", "prevMatchId"}
+
+
+def rows_from_details(data, where):
+    """details の本戦の試合 -> 行。順位決定戦は placements.json が正なので捨てる。"""
+    rows = []
+    for m in data["matches"]:
+        if m["round"] in PLACEMENT:
+            continue
+        if m.get("stage") != "knockout":
+            fail(f"{where}: knockout でない試合がある {m.get('matchId')}")
+        rows.append({"round": m["round"], "entries": m["entries"], "scores": m.get("scores") or {},
+                     "winner": m.get("winnerEntryNo"), "retired": m.get("retired"),
+                     "extra": {k: v for k, v in m.items() if k not in MATCH_KEYS}})
+    return rows
+
+
+def rows_from_placements(src, where):
+    rows = []
+    for r in src:
+        if r["round"] not in PLACEMENT:
+            fail(f"{where}: placements.json に本戦のラウンド {r['round']}（本戦は tournament3 で入れる）")
+        a, b = r["entries"]
+        sc = r.get("score")
+        if sc is not None and (len(sc) != 2 or sc[0] == sc[1]):
+            fail(f"{where} {r['round']} {r['entries']}: score は [勝ち数, 勝ち数] で同点にならない")
+        rows.append({"round": r["round"], "entries": [a, b],
+                     "scores": {str(a): sc[0], str(b): sc[1]} if sc else {},
+                     "winner": None if sc is None else (a if sc[0] > sc[1] else b),
+                     "retired": r.get("retired")})
+    return rows
+
+
 def main():
-    with open(os.path.join(TOOLS, "results.json"), encoding="utf-8") as f:
-        src = json.load(f)
+    with open(os.path.join(TOOLS, "placements.json"), encoding="utf-8") as f:
+        placements = json.load(f)
     for cat in CATEGORIES:
         with open(os.path.join(TOOLS, f"{cat}.initialPlayers.json"), encoding="utf-8") as f:
             players = json.load(f)
-        data = build(cat, players, src[cat])
-        os.makedirs(OUT_DIR, exist_ok=True)
         path = os.path.join(OUT_DIR, f"{cat}.json")
+        with open(path, encoding="utf-8") as f:
+            current = json.load(f)
+        want = [f"{p['team']}_{p['prefecture']}" for p in players]
+        got = [e["playerIds"][0] for e in sorted(current["entries"], key=lambda e: e["entryNo"])]
+        if want != got:
+            fail(f"{cat}: details のエントリーが tools/ のステージングと違う")
+        rows = rows_from_details(current, cat) + rows_from_placements(placements.get(cat, []), cat)
+        data = build(cat, players, rows)
+        done = sum(1 for m in data["matches"] if m["winnerEntryNo"] is not None)
+        if data == current:
+            print(f"{cat}: 変更なし（試合 {len(data['matches'])}・決着 {done}）")
+            continue
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
             f.write("\n")
-        done = sum(1 for m in data["matches"] if m["winnerEntryNo"] is not None)
-        print(f"{cat}: エントリー {len(data['entries'])} / 試合 {len(data['matches'])}（決着 {done}）")
+        print(f"{cat}: 書き直した（試合 {len(data['matches'])}・決着 {done}）→ npx prettier --write で整形")
 
 
 if __name__ == "__main__":
