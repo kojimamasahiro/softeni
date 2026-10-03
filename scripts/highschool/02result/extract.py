@@ -19,6 +19,10 @@ TOURNAMENTS_INDEX_PATH = str(SCRIPT_DIR / "../../../data/tournaments/index.json"
 #   2. `栃木` `砺波` `豊浦` のように**接尾辞が無く高校名と完全一致する**中学校名。
 #      正規化を直しても一致してしまうので、大会そのものを除外するしかない（39種・143件）
 #
+# 国民スポーツ大会（`kokutai`）も除外する（2026-10-03 追加）。チームが学校ではなく都道府県で、
+# `北海道` `香川県` のように県名と同じ名前の高校チームが teams.json にあるため、県チームの成績が
+# その高校に付いてしまう。少年の部を学校へつなぐのは選手名簿を入れてから（docs/raw/2026-10-03-idea-kokusupo.md）。
+#
 # **全日本選手権・全日本シングルス・東西日本などは除外しない。** 高体連の高校生が
 # 正当に出場しており、「この高校の選手が全日本でベスト8」は高校ページに出すべき情報。
 # `zennihon-junior` も除外しない（u17/u20 は高校生。u14 で高校名に一致するのは実測0件）。
@@ -51,7 +55,7 @@ def load_target_tournaments():
         tournament_ids.append(tournament_id)
 
     if skipped:
-        print(f"⏭️  中学・小学専用の大会を除外しました: {len(skipped)}件 ({', '.join(sorted(skipped))})")
+        print(f"⏭️  高校の集計に入れない大会を除外しました: {len(skipped)}件 ({', '.join(sorted(skipped))})")
 
     return tournament_ids
 
