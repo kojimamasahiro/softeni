@@ -21,6 +21,7 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
      （[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）→ `check-tournament-insights`
      （[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md) の公開条件）→
      `check-highschool-pipeline-freshness` → `check-name-splits --strict`。**ここで落ちるとビルドが止まる**（意図的な門番）
+     鮮度チェックは push 前にも `.githooks/pre-push` で走る（生成物が古い・未コミットなら push を止める。`npm install` の `prepare` が `core.hooksPath` を設定。飛ばすときは `--no-verify`）
   2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（生成の後で `save`）
   3. **生成**: players / playerStats facts / 分析 / beta-matches / 逆引き索引 / rare-events / rankings →
      `secondaryschool:build` → `primaryschool:build` → `university:pathways`

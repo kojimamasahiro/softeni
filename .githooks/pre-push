@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# push 前に高校データパイプラインの生成物が最新かを確かめる。
+# Cloudflare Pages のビルド（prebuild）が同じチェックで落ちるのを push 前に止めるため（2026-10-03 追加）。
+# 重い処理（pipeline / prebuild 本体）はここでは動かさない。止まったら表示されたコマンドを流してコミットし直す。
+# 緊急時は `git push --no-verify` で飛ばせる。
+
+set -u
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT" || exit 1
+
+if ! node scripts/check-highschool-pipeline-freshness.mjs; then
+  echo ""
+  echo "pre-push: push を止めました。npm run highschool:pipeline → npm run prebuild を流し、生成物をコミットしてから push してください。"
+  exit 1
+fi
+
+# 鮮度チェックは作業ツリーを見るので、生成物を流しただけでコミットしていないと素通りする。
+UNCOMMITTED="$(git status --porcelain -- data/highschool scripts/highschool/02result scripts/highschool/03list)"
+if [ -n "$UNCOMMITTED" ]; then
+  echo "$UNCOMMITTED"
+  echo ""
+  echo "pre-push: 高校データパイプラインの生成物にコミットしていない変更があります。コミットしてから push してください。"
+  exit 1
+fi
