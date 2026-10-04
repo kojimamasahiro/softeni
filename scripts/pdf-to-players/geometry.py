@@ -14,9 +14,14 @@ master.py と違い、座標をモジュール定数で持たない。すべて�
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 
 import pdfplumber
+
+# pdfminer は色指定の解釈に失敗するたびに WARNING を出す（JSTA のPDFは1ページで3,000行超）。
+# 抽出結果には影響しないので黙らせる。出力が膨らむとエージェントの文脈を無駄に食う。
+logging.getLogger('pdfminer').setLevel(logging.ERROR)
 
 # これより小さい文字は、同じ行でもY座標が上下にぶれる（ルビ・注記・小さい所属名など）。
 SMALL_SIZE_THRESHOLD = 6.5
