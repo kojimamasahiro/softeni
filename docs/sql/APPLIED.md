@@ -21,6 +21,7 @@
 | [point-youtube-review.sql](./point-youtube-review.sql) | `matches` の YouTube 列、`points` の動画時刻列 | 2026-05-22 | 適用済み（日付不明） | 2026-09-30 に列の存在を確認 |
 | [receive-order.sql](./receive-order.sql) | `games.initial_receive_player_index` | 2026-08-11 | 適用済み（日付不明） | 2026-09-30 に列の存在を確認 |
 | [point-pick.sql](./point-pick.sql) | `points.is_pick` / `pick_note`（記録中のピック） | 2026-09-29 | 適用済み（日付不明） | 2026-09-30 に列の存在を確認。台帳の行が漏れていたのを同日の lint で補った |
+| [team-rubber-order.sql](./team-rubber-order.sql) | `matches.team_rubber_order`（団体戦の第何対戦か。ADR-023） | 2026-10-07 | 2026-10-07（ユーザー） | 同日に列の存在を確認（anon select で 200、存在しない列は 400） |
 
 ## 確認のしかた
 

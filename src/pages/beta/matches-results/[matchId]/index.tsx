@@ -32,6 +32,7 @@ import { buildPointShareText, buildPointShareUrl, describeSharedPoint, locateSha
 import { getRareEventsForMatch, type RareEvent } from '@/lib/rareEventsStatic';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 import { buildEventOrganizer, buildEventPlace, resolveEventDates, sportsEventBaseFields } from '@/lib/sportsEventJsonLd';
+import { formatRoundLabel } from '@/lib/matchHelpers';
 import { generateTournamentUrlFromMatch } from '@/lib/tournamentHelpers';
 import { getTournamentInfoSSR, TournamentInfo } from '@/lib/tournamentHelpers.server';
 import { buildYouTubeWatchUrlFromVideoId, formatVideoTimestamp, getPointVideoEndMs } from '@/lib/youtubePlayback';
@@ -1034,7 +1035,7 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
   const seoTeamB = getShortTeamName('B');
   const seoMatchup = `${seoTeamA} vs ${seoTeamB}`;
   const seoTournamentName = getTournamentDisplayName();
-  const seoRoundLabel = match.round_name ? ` ${match.round_name}` : '';
+  const seoRoundLabel = match.round_name ? ` ${formatRoundLabel(match)}` : '';
   // trailingSlash: true のため canonical も末尾スラッシュ付きの実 URL に揃える。
   const seoCanonicalUrl = buildSiteUrl(`${getPublicMatchDetailPath(match)}/`);
   const seoWinnerName = matchWinner ? getShortTeamName(matchWinner) : null;
@@ -1267,7 +1268,9 @@ export const PublicMatchDetailPage = ({ match, tournamentInfo, rareEvents = [] }
                   ) : (
                     <span className="font-medium text-text">{getTournamentDisplayName()}</span>
                   )}
-                  {match.round_name && <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{match.round_name}</span>}
+                  {match.round_name && (
+                    <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{formatRoundLabel(match)}</span>
+                  )}
                   <span className="text-text-muted">記録日 {recordedDate}</span>
                 </div>
               </div>

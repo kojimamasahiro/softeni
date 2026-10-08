@@ -19,4 +19,10 @@ export type EntryOption = {
     team_name: string;
     region: string;
   }[];
+  /** 団体戦のエントリーだけが持つ選手候補（同じチーム名で個人戦に出た選手） */
+  members?: {
+    last_name: string;
+    first_name: string;
+    last_year: number;
+  }[];
 };

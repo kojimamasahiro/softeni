@@ -119,7 +119,8 @@ const buildReverseIndex = () => {
     const link = {
       matchId: match.id,
       detailPath,
-      round: match.round_name ?? null,
+      // 団体戦の1対戦は同じ組が対戦の数だけ並ぶので、第何対戦かを回戦に足して見分ける（ADR-023）
+      round: match.team_rubber_order ? `${match.round_name ?? ''} 第${match.team_rubber_order}対戦`.trim() : (match.round_name ?? null),
       entryNos: match.siteLink?.entryNos ?? [],
       teamA: buildTeamDisplayName(match, 'a'),
       teamB: buildTeamDisplayName(match, 'b'),

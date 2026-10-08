@@ -2,6 +2,15 @@
 import { Match, MatchPlayer } from '../src/types/database';
 
 /**
+ * 回戦の表示。団体戦の1対戦なら「決勝 第2対戦」のように第何対戦かを足す（ADR-023）
+ */
+export const formatRoundLabel = (match: Pick<Match, 'round_name' | 'team_rubber_order'>): string => {
+  const round = match.round_name ?? '';
+  if (!match.team_rubber_order) return round;
+  return `${round} 第${match.team_rubber_order}対戦`.trim();
+};
+
+/**
  * プレイヤー名を取得する（個別フィールドから）
  */
 export const getPlayerName = (match: Match, team: 'A' | 'B', player: 1 | 2): string => {

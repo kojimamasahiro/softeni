@@ -59,6 +59,7 @@
 
 - 大会カテゴリの特定: `tournament_generation` / `tournament_id` / `tournament_year` / `gameCategory` / `ageCategory` / `gender`
 - 試合行の特定: entryNo ペア（順不同）
+  - **団体戦の対戦は例外**: 同じ組（チーム同士）の記録が対戦の数だけ並ぶので、「entryNo ペア＋`team_rubber_order`（第何対戦か）」で特定する。作成画面で団体を選ぶと、チームのエントリー番号・ダブルスの2人ずつ・第何対戦かを送る。details のオーダーへの反映は `npm run score:team-matches`（[team-match-order-import.md](./team-match-order-import.md)「score 機能から入れる」、[ADR-023](../adr/ADR-023-score-team-rubbers-to-details.md)）
 - `round_name` はキーに含めず、不一致検出（検証）にのみ使う
 
 大会側の連番 `matchId`（`match-N`）は外部キーとして使わない。
