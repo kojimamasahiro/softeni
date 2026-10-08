@@ -183,7 +183,7 @@ export default function TournamentYearResultPage({
           : []),
         {
           question: `${headingName}${year}年${categoryLabel ? `${categoryLabel}` : ''}のオーダーはどの試合まで分かりますか？`,
-          answer: `公式記録にオーダーがある${orderSummary.matchCount}試合・${orderSummary.rubberCount}対戦について、第1対戦からの出場ペアと本数をページ内の「対戦詳細」に掲載しています。${
+          answer: `公式記録や試合動画でオーダーが分かる${orderSummary.matchCount}試合・${orderSummary.rubberCount}対戦について、第1対戦からの出場ペアと本数をページ内の「対戦詳細」に掲載しています。${
             orderSummary.hasGames ? 'ゲームごとのポイントも実施順で掲載しています。' : ''
           }「対戦詳細」は選手名や所属で絞り込めます。`,
         },
