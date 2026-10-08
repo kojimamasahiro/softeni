@@ -101,6 +101,8 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     category: '',
     year: new Date().getFullYear(),
     round_name: '',
+    // 団体戦の第何対戦か（'1'〜'3'）。種目が団体のときだけ使う（ADR-023）
+    team_rubber_order: '',
     best_of: 7,
     match_date: new Date().toISOString().slice(0, 10),
     court_name: '',
@@ -213,7 +215,10 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
   // エントリー候補を選手フォームへ反映（手入力フィールドは編集可能なまま）
   const applyEntryToTeam = (side: 'A' | 'B', option: EntryOption | null) => {
     if (!option) return;
-    const [p1, p2] = option.players;
+    const [p1, entryP2] = option.players;
+    // 団体戦のエントリーはチーム単位（氏名なし）。チーム名・地域を2人ぶんに入れ、氏名は対戦ごとに選ぶ
+    const isTeamEntry = !p1?.last_name && !p1?.first_name;
+    const p2 = isTeamEntry ? { ...p1, last_name: '', first_name: '' } : entryP2;
     const nextTeam = {
       entry_number: String(option.entryNo),
       player1_last_name: p1?.last_name ?? '',
@@ -269,16 +274,22 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (getGameTypeFromCategory(formData.category) === 'team' && !formData.team_rubber_order) {
+      alert('団体戦は第何対戦かを選んでください。');
+      return;
+    }
+
     // 氏名の表記ゆれ（空白・大小）で既存選手と別キーになるのを防ぐ警告。
     // 完全一致する既存選手はそのまま、緩いキー（空白除去）が既存と一致する場合だけ確認する。
     // 新規選手（既存に似た名前が無い）は警告しない。
     const enteredGameType = getGameTypeFromCategory(formData.category);
+    const enteredIsPair = enteredGameType === 'doubles' || enteredGameType === 'team';
     const enteredPlayers = [
       {
         lastName: teamA.player1_last_name,
         firstName: teamA.player1_first_name,
       },
-      ...(enteredGameType === 'doubles'
+      ...(enteredIsPair
         ? [
             {
               lastName: teamA.player2_last_name,
@@ -290,7 +301,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         lastName: teamB.player1_last_name,
         firstName: teamB.player1_first_name,
       },
-      ...(enteredGameType === 'doubles'
+      ...(enteredIsPair
         ? [
             {
               lastName: teamB.player2_last_name,
@@ -326,6 +337,9 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
     try {
       // カテゴリ詳細からゲーム形式を取得
       const gameType = getGameTypeFromCategory(formData.category);
+      // 団体戦は1対戦（ダブルス）ずつ記録する。チームのエントリー番号＋第何対戦かで大会の試合に紐付く（ADR-023）
+      const isTeam = gameType === 'team';
+      const isPair = gameType === 'doubles' || isTeam;
 
       // API用にフィールド名を変換
       // formData.tournament_name は大会ID（年なし）。tournament_name には
@@ -340,7 +354,9 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         tournament_year: formData.year,
         round_name: formData.round_name,
         best_of: formData.best_of,
-        game_type: gameType,
+        game_type: isTeam ? 'doubles' : gameType,
+        // 列は docs/sql/team-rubber-order.sql で足す。個人戦では送らない（未適用の環境でも個人戦は作れるように）
+        ...(isTeam ? { team_rubber_order: Number(formData.team_rubber_order) } : {}),
         match_date: formData.match_date || null,
         court_name: formData.court_name || null,
         status: 'in_progress',
@@ -354,10 +370,10 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         team_a_player1_first_name: teamA.player1_first_name,
         team_a_player1_team_name: teamA.player1_team_name,
         team_a_player1_region: teamA.player1_region,
-        team_a_player2_last_name: gameType === 'doubles' ? teamA.player2_last_name : null,
-        team_a_player2_first_name: gameType === 'doubles' ? teamA.player2_first_name : null,
-        team_a_player2_team_name: gameType === 'doubles' ? teamA.player2_team_name : null,
-        team_a_player2_region: gameType === 'doubles' ? teamA.player2_region : null,
+        team_a_player2_last_name: isPair ? teamA.player2_last_name : null,
+        team_a_player2_first_name: isPair ? teamA.player2_first_name : null,
+        team_a_player2_team_name: isPair ? teamA.player2_team_name : null,
+        team_a_player2_region: isPair ? teamA.player2_region : null,
 
         // チームB詳細情報
         team_b_entry_number: teamB.entry_number,
@@ -365,10 +381,10 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         team_b_player1_first_name: teamB.player1_first_name,
         team_b_player1_team_name: teamB.player1_team_name,
         team_b_player1_region: teamB.player1_region,
-        team_b_player2_last_name: gameType === 'doubles' ? teamB.player2_last_name : null,
-        team_b_player2_first_name: gameType === 'doubles' ? teamB.player2_first_name : null,
-        team_b_player2_team_name: gameType === 'doubles' ? teamB.player2_team_name : null,
-        team_b_player2_region: gameType === 'doubles' ? teamB.player2_region : null,
+        team_b_player2_last_name: isPair ? teamB.player2_last_name : null,
+        team_b_player2_first_name: isPair ? teamB.player2_first_name : null,
+        team_b_player2_team_name: isPair ? teamB.player2_team_name : null,
+        team_b_player2_region: isPair ? teamB.player2_region : null,
 
         // 構造化されたチームデータ
         teams: {
@@ -381,7 +397,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
                 team_name: teamA.player1_team_name,
                 region: teamA.player1_region,
               },
-              ...(gameType === 'doubles'
+              ...(isPair
                 ? [
                     {
                       last_name: teamA.player2_last_name,
@@ -402,7 +418,7 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
                 team_name: teamB.player1_team_name,
                 region: teamB.player1_region,
               },
-              ...(gameType === 'doubles'
+              ...(isPair
                 ? [
                     {
                       last_name: teamB.player2_last_name,
@@ -417,14 +433,12 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
         },
 
         // 表示用（後方互換性のため）
-        team_a:
-          gameType === 'doubles'
-            ? `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}] / ${teamA.player2_last_name} ${teamA.player2_first_name} (${teamA.player2_team_name}) [${teamA.player2_region}]`
-            : `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}]`,
-        team_b:
-          gameType === 'doubles'
-            ? `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}] / ${teamB.player2_last_name} ${teamB.player2_first_name} (${teamB.player2_team_name}) [${teamB.player2_region}]`
-            : `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}]`,
+        team_a: isPair
+          ? `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}] / ${teamA.player2_last_name} ${teamA.player2_first_name} (${teamA.player2_team_name}) [${teamA.player2_region}]`
+          : `${teamA.entry_number} ${teamA.player1_last_name} ${teamA.player1_first_name} (${teamA.player1_team_name}) [${teamA.player1_region}]`,
+        team_b: isPair
+          ? `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}] / ${teamB.player2_last_name} ${teamB.player2_first_name} (${teamB.player2_team_name}) [${teamB.player2_region}]`
+          : `${teamB.entry_number} ${teamB.player1_last_name} ${teamB.player1_first_name} (${teamB.player1_team_name}) [${teamB.player1_region}]`,
       };
 
       const response = await fetch('/api/matches', {
@@ -631,6 +645,25 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
           </select>
         </div>
 
+        {getGameTypeFromCategory(formData.category) === 'team' && (
+          <div>
+            <label className="block text-sm font-medium mb-2">対戦 *</label>
+            <SelectableButtonGroup
+              name="team_rubber_order"
+              ariaLabel="第何対戦か"
+              options={[
+                { value: '1', label: '第1対戦' },
+                { value: '2', label: '第2対戦' },
+                { value: '3', label: '第3対戦' },
+              ]}
+              value={formData.team_rubber_order}
+              onChange={(value) => setFormData({ ...formData, team_rubber_order: value })}
+              columns={3}
+            />
+            <p className="mt-1 text-xs text-gray-500">団体戦は1対戦ずつ記録します。エントリーはチームを選び、出場した2人を入力してください。</p>
+          </div>
+        )}
+
         <div className="grid gap-4 rounded border border-gray-200 bg-gray-50 p-4 md:grid-cols-3">
           <div>
             <label className="block text-sm font-medium mb-2">試合日</label>
@@ -671,7 +704,8 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
           teamLabel="チーム A"
           team={teamA}
           onTeamChange={setTeamA}
-          isDoubles={getGameTypeFromCategory(formData.category) === 'doubles'}
+          isDoubles={['doubles', 'team'].includes(getGameTypeFromCategory(formData.category))}
+          memberOptions={entryOptions.find((option) => String(option.entryNo) === teamA.entry_number)?.members}
           entryOptions={entryOptions}
           onApplyEntry={(option) => applyEntryToTeam('A', option)}
           lastNameListId="known-last-names"
@@ -683,7 +717,8 @@ const CreateMatch = ({ tournamentOptions, tournamentCatalog }: CreateMatchProps)
           teamLabel="チーム B"
           team={teamB}
           onTeamChange={setTeamB}
-          isDoubles={getGameTypeFromCategory(formData.category) === 'doubles'}
+          isDoubles={['doubles', 'team'].includes(getGameTypeFromCategory(formData.category))}
+          memberOptions={entryOptions.find((option) => String(option.entryNo) === teamB.entry_number)?.members}
           entryOptions={entryOptions}
           onApplyEntry={(option) => applyEntryToTeam('B', option)}
           lastNameListId="known-last-names"

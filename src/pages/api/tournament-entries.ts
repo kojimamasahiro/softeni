@@ -18,10 +18,19 @@ interface EntryOptionPlayer {
   region: string;
 }
 
+interface TeamMemberCandidate {
+  last_name: string;
+  first_name: string;
+  /** そのチーム名で個人戦に出た最後の年（候補の並び順と表示に使う） */
+  last_year: number;
+}
+
 export interface TournamentEntryOption {
   entryNo: number;
   label: string;
   players: EntryOptionPlayer[];
+  /** 団体戦のエントリーだけが持つ。同じチーム名で個人戦に出た選手（ADR-023） */
+  members?: TeamMemberCandidate[];
 }
 
 interface DetailParticipant {
@@ -38,6 +47,53 @@ interface DetailEntry {
 }
 
 const isSafeSegment = (value: string) => /^[\w-]+$/.test(value);
+
+// チーム名の比較キー（全角・半角と空白の揺れだけを吸収する。scripts/pdf/team_match_details.py の key_of と同じ）
+const teamKey = (value: string) => value.normalize('NFKC').replace(/\s+/g, '');
+
+/**
+ * 団体戦の選手候補: 個人戦（doubles / singles）の出場記録を、チーム名ごとに集める。
+ * 結び付けの規約は ADR-020（同じ氏名・同じチームの個人戦の記録）と同じ。
+ * 同じチーム名で男女のチームがある（例: ワタキューセイモア）ので、団体のファイルと同じ性別の種目だけを見る。
+ */
+const collectTeamMembers = (detailsRoot: string, teamKeys: Set<string>, gender: string) => {
+  const members = new Map<string, Map<string, TeamMemberCandidate>>();
+  if (teamKeys.size === 0) return members;
+
+  for (const tournamentDir of fs.readdirSync(detailsRoot, { withFileTypes: true })) {
+    if (!tournamentDir.isDirectory()) continue;
+    const tournamentPath = path.join(detailsRoot, tournamentDir.name);
+    for (const yearDir of fs.readdirSync(tournamentPath, { withFileTypes: true })) {
+      if (!yearDir.isDirectory() || !/^\d{4}$/.test(yearDir.name)) continue;
+      const year = Number(yearDir.name);
+      const yearPath = path.join(tournamentPath, yearDir.name);
+      for (const fileName of fs.readdirSync(yearPath)) {
+        if (!/^(doubles|singles)-.*\.json$/.test(fileName) || !fileName.endsWith(`-${gender}.json`)) continue;
+        let detail: { participants?: DetailParticipant[] };
+        try {
+          detail = JSON.parse(fs.readFileSync(path.join(yearPath, fileName), 'utf-8'));
+        } catch {
+          continue;
+        }
+        for (const participant of detail.participants ?? []) {
+          const lastName = participant.lastName?.trim();
+          const firstName = participant.firstName?.trim();
+          if (!lastName || !firstName || !participant.team) continue;
+          const key = teamKey(participant.team);
+          if (!teamKeys.has(key)) continue;
+          const byName = members.get(key) ?? new Map<string, TeamMemberCandidate>();
+          members.set(key, byName);
+          const nameKey = `${lastName} ${firstName}`;
+          const existing = byName.get(nameKey);
+          if (!existing || existing.last_year < year) {
+            byName.set(nameKey, { last_name: lastName, first_name: firstName, last_year: year });
+          }
+        }
+      }
+    }
+  }
+  return members;
+};
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (isScoreSiteMode()) {
@@ -88,12 +144,30 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
             region: p.prefecture ?? '',
           }));
 
-        const label = `${entry.entryNo} ${players.map((p) => `${p.last_name}${p.first_name}`).join('・')}`;
+        // 団体戦のエントリーは氏名を持たない（チーム単位）ので、チーム名で表示する
+        const names = players.map((p) => `${p.last_name}${p.first_name}`).filter(Boolean);
+        const label = `${entry.entryNo} ${names.length > 0 ? names.join('・') : players.map((p) => p.team_name).join('・')}`;
 
         return { entryNo: entry.entryNo, label, players };
       })
       .filter((entry) => entry.players.length > 0)
       .sort((a, b) => a.entryNo - b.entryNo);
+
+    // 団体戦: エントリーはチーム単位（氏名が無い）なので、対戦に出る選手の候補を添える
+    if (categoryId.startsWith('team-')) {
+      const detailsRoot = path.join(process.cwd(), 'data', 'tournaments', 'details');
+      const teamKeys = new Set(entries.map((entry) => teamKey(entry.players[0]?.team_name ?? '')).filter(Boolean));
+      const gender = categoryId.split('-')[2] ?? '';
+      const members = collectTeamMembers(detailsRoot, teamKeys, gender);
+      for (const entry of entries) {
+        const candidates = members.get(teamKey(entry.players[0]?.team_name ?? ''));
+        entry.members = candidates
+          ? Array.from(candidates.values()).sort(
+              (a, b) => b.last_year - a.last_year || `${a.last_name}${a.first_name}`.localeCompare(`${b.last_name}${b.first_name}`, 'ja'),
+            )
+          : [];
+      }
+    }
 
     return res.status(200).json({ entries });
   } catch (error) {

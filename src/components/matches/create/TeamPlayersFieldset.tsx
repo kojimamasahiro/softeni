@@ -12,6 +12,8 @@ type TeamPlayersFieldsetProps = {
   onApplyEntry: (option: EntryOption | null) => void;
   lastNameListId: string;
   firstNameListId: string;
+  /** 団体戦: 選んだチームの選手候補（同じチーム名で個人戦に出た選手）。選ぶと姓・名を埋める */
+  memberOptions?: NonNullable<EntryOption['members']>;
 };
 
 const ACCENT_STYLES = {
@@ -41,12 +43,43 @@ const TeamPlayersFieldset = ({
   onApplyEntry,
   lastNameListId,
   firstNameListId,
+  memberOptions = [],
 }: TeamPlayersFieldsetProps) => {
   const accent = ACCENT_STYLES[teamKey];
   const ringClass = teamKey === 'A' ? 'focus-visible:ring-blue-400' : 'focus-visible:ring-red-400';
 
   const updatePlayer1 = (field: keyof TeamFormState, value: string) => onTeamChange((current) => ({ ...current, [field]: value }));
   const updatePlayer2 = (field: keyof TeamFormState, value: string) => onTeamChange((current) => ({ ...current, [field]: value }));
+
+  const applyMember = (slot: 1 | 2, value: string) => {
+    const member = memberOptions.find((option) => `${option.last_name} ${option.first_name}` === value);
+    if (!member) return;
+    onTeamChange((current) => ({
+      ...current,
+      [`player${slot}_last_name`]: member.last_name,
+      [`player${slot}_first_name`]: member.first_name,
+    }));
+  };
+
+  const renderMemberSelect = (slot: 1 | 2) =>
+    memberOptions.length > 0 && (
+      <select
+        value=""
+        onChange={(e) => applyMember(slot, e.target.value)}
+        aria-label={`選手${slot}をチームの候補から選ぶ`}
+        className={`w-full rounded border border-emerald-300 bg-emerald-50 p-2 text-sm ${INPUT_CLASS} ${ringClass}`}
+      >
+        <option value="">チームの候補から選ぶ…</option>
+        {memberOptions.map((option) => {
+          const name = `${option.last_name} ${option.first_name}`;
+          return (
+            <option key={name} value={name}>
+              {name}（{option.last_year}）
+            </option>
+          );
+        })}
+      </select>
+    );
 
   return (
     <div className={`rounded-lg border p-4 ${accent.wrapper}`}>
@@ -85,6 +118,7 @@ const TeamPlayersFieldset = ({
         <div className="rounded border border-gray-200 bg-white p-3">
           <p className="mb-2 text-xs font-medium text-gray-600">選手1</p>
           <div className="space-y-2">
+            {renderMemberSelect(1)}
             <div className="grid grid-cols-2 gap-2">
               <input
                 type="text"
@@ -127,6 +161,7 @@ const TeamPlayersFieldset = ({
           <div className="rounded border border-gray-200 bg-white p-3">
             <p className="mb-2 text-xs font-medium text-gray-600">選手2</p>
             <div className="space-y-2">
+              {renderMemberSelect(2)}
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="text"

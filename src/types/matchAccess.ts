@@ -10,6 +10,7 @@ export interface CommonMatchInput {
   tournament_category: Match['tournament_category'];
   tournament_year?: Match['tournament_year'];
   round_name: Match['round_name'];
+  team_rubber_order?: Match['team_rubber_order'];
   best_of: Match['best_of'];
   game_type?: Match['game_type'];
   match_date?: Match['match_date'];

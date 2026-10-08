@@ -27,6 +27,8 @@ export interface Match {
   tournament_category: string | null;
   tournament_year?: number | null;
   round_name: string | null;
+  /** 団体戦の第何対戦か（1〜3）。団体戦の1対戦として記録した試合だけが持つ（ADR-023） */
+  team_rubber_order?: number | null;
   best_of: number;
   game_type?: string | null;
   created_at: string;

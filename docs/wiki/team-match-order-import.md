@@ -31,6 +31,26 @@ npm run check:team-match-details
 - インターハイは**見出し行に左右のエントリー番号が印字されている**ので番号で直接対応する。
   ゲームごとのポイントは `games` へ。**ポイントは10以上になる**（実測 `⑫ － 10`。変換表は⑳まで持つ）。
 
+## score 機能から入れる（記録PDFが無い大会）
+
+記録PDFが無く動画しかない大会（実業団リーグ 2026 など）は、score 機能で1対戦ずつ記録して書き戻す
+（[ADR-023](../adr/ADR-023-score-team-rubbers-to-details.md)）。
+
+```
+# 1. /beta/matches/create で 種目「団体」・回戦・第N対戦・両チーム（エントリー）・2人ずつを選んで記録し、完了にする
+node scripts/generate-beta-matches-json.mjs           # 2. スナップショットを Supabase から更新
+npm run score:team-matches                            # 3. 下書き（何を書くか・飛ばす理由を表示）
+npm run score:team-matches -- --write                 #    書き込み
+npx prettier --write <team-*.json> && npm run check:team-match-details
+```
+
+- 対象は `tournament_category='team'`・`team_rubber_order` あり・`status='completed'`・`siteLink` ありの試合。
+- **揃うまで書かない**: 第1対戦から欠けずに並び、勝ち数が親の `scores` と一致した試合だけ。
+  2-0 で決着して第3対戦を記録しなかった試合は、記録した2対戦だけを持つ（未実施を作らない）。
+- 向きは親の `entries[0]` が A。score 側で左右が逆なら入れ替える。ゲームは勝者の決まったゲームだけを `games` へ。
+- **既に `matches` がある試合は上書きしない**（同じなら何もしない、違えば止める。`--replace` で置き換え）。
+- 選手の結び付けは PDF と同じ（同じ氏名・同じチームの個人戦の記録）。作成画面でもそのチームの個人戦の出場選手を候補に出す。
+
 ## インターハイの様式
 
 - **年度で変わるのは収録範囲・氏名の組み方・打ち切りの書き方の3つ**。列の x 座標は 2021〜2026 で同じで、

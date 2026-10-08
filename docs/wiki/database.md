@@ -49,6 +49,7 @@
 - `tournament_category`
 - `tournament_year`
 - `round_name`
+- `team_rubber_order`（団体戦の第何対戦か。1〜3、個人戦は null。`docs/sql/team-rubber-order.sql`・ADR-023）
 - `best_of`
 - `game_type`
 - `created_at`

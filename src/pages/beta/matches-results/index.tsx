@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumb';
 import MetaHead from '@/components/MetaHead';
 import PageLayout from '@/components/PageLayout';
 import { getBetaTeamDisplayName, getLatestBetaMatches } from '@/lib/betaMatchesStatic';
+import { formatRoundLabel } from '@/lib/matchHelpers';
 import { buildSiteUrl, getPublicMatchDetailPath, getPublicMatchesGrowthPath, getPublicMatchesListPath, isScoreSiteMode } from '@/lib/siteConfig';
 import { generateTournamentUrlFromMatch, TournamentInfo } from '@/lib/tournamentClientHelpers';
 
@@ -155,7 +156,7 @@ export function PublicMatchesListPage({ matches, tournamentInfos }: Props) {
 
                         <div className="flex items-center gap-2 mt-1">
                           {match.round_name && (
-                            <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{match.round_name}</span>
+                            <span className="rounded bg-bg-subtle px-2 py-1 text-xs text-gray-700 dark:text-gray-200">{formatRoundLabel(match)}</span>
                           )}
                           {(() => {
                             const status = getMatchStatus(match);
