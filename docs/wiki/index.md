@@ -48,24 +48,24 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 ## feature — 機能・ページ群の仕様
 
 - [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在` — score 公開面（/beta/matches-results・/matches）の保守ガイド。1つのコアを2モードで使う構成、ルーティング、公開 JSON の生成と除外項目、ラリー共有リンク、埋め込み動画の規則、改修時の確認箇所。score モードの公開面は未デプロイで、一部は当時のまま
-- [Highschool Pages（高校カテゴリ）](./highschool.md) `学校` — 高校カテゴリの公開ページ方針と現行仕様。全国大会の歴代記録、開催中の表示、主な卒業生、強豪校ランキング
+- [Highschool Pages（高校カテゴリ）](./highschool.md) `学校` — 高校カテゴリの公開ページ方針と現行仕様。学校ページ（年度別メンバー・主な卒業生）、全国大会の歴代記録、開催中の全国大会の表示、強豪校ランキング
 - [Monetization](./monetization.md) `汎用` — 収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md) `混在` — 速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則、実装状況、milestone の判定規約
-- [Players Pages（選手ページ）](./players-pages.md) `混在` — 選手ページの現行仕様。URL の2系統、選手一覧、結果ページの表示、SEO 方針、選手統計エンジン
-- [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校` — 小学生カテゴリ（/primaryschool）の公開ページ方針と仕様。対象は全日本小学生選手権だけ、都道府県・団体ページ
-- [Public Pages](./public-pages.md) `混在` — 公開ページの構成。ルーティング、サイトモード切替、開催前の大会の出し方、中止回の見せ方、トップページ、共通の作り
+- [Players Pages（選手ページ）](./players-pages.md) `混在` — 選手ページの現行仕様。slug 系と id 系の URL の2系統、選手一覧、結果ページの表示、SEO（noindex 選別・所属歴）、選手統計エンジンと集計ルール、勲章カードと全国大会優勝 SEO、セクション階層
+- [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校` — 小学生カテゴリ（/primaryschool）の仕様。「小学校」と呼ばない、対象は全日本小学生選手権だけ、性別を URL に入れない、teamId（地名部分の読みの上書き）、都道府県の全国大会成績、進路（小→中）
+- [Public Pages](./public-pages.md) `混在` — 公開ページの構成と共通の作り。ルーティング、/teams・大会ハブ・年度別結果ページの規則、開催前の大会と中止回の見せ方、トップページ、パンくず・ナビ・llms.txt、サイトモード切替
 - [希少イベント検知（この試合の名場面）](./rare-events.md) `固有` — score のポイント列から希少なプレー（名場面）を検知し、試合詳細に出す仕組み。カテゴリ、データフロー、運用
 - [Score Analysis](./score-analysis.md) `固有` — score のデータを使った分析の仕様。試合分析と成長分析の責務境界、分析観点と指標、試合詳細の上段（この試合で分かったこと・ポイントの並び・ゲームスコア・見どころ）と下段グラフ、成長記録の比べ方、ビルド時の生成
 - [Score Feature](./score-feature.md) `固有` — score 機能の記録・入力側の現行仕様。画面と導線、ポイント記録（ショートカット・ピック・再生速度・入力時の自動推定・修正導線・ゲーム単位のやり直し）、YouTube 連携、共有 URL。編集 URL とドメイン分離は Draft
 - [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有` `draft` — score 機能を一般ユーザーにも広げる検討（未決定の発散フェーズ）。差別化の核（成長のヒントが主軸）、収益化オプション、需要調査、パイロット相関分析、score 関連アイデアの状況一覧
 - [Score Site Link（試合詳細と本体の相互リンク）](./score-site-link.md) `混在` — score の試合詳細を本体のネスト URL で公開し、大会・選手ページと相互リンクする仕様。結合キーは entryNo ペア（団体戦は＋team_rubber_order）、公開 JSON の siteLink、野良試合は noindex、逆引き表。共有ヘルパーの統一は未了
-- [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校` — 中学カテゴリ（/secondaryschool）の公開ページ方針と仕様。teamId の作り方、掲載閾値、都道府県・チームページ
+- [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校` — 中学カテゴリ（/secondaryschool）の仕様。高校と違い性別を URL に入れず「チーム」と呼んで順位づけをしない。ルーティング、teamId の作り方、掲載閾値、都道府県・チームページ、進路（中学→高校）と出身クラブ
 - [SNS 1日目投稿画像（sns-images / day1）](./sns-day1-images.md) `混在` — 2日制の大会の1日目終了時に X へ投稿する画像・キャプションを、内部データから自動生成するツールの仕様
 - [SNSストーリー生成基盤](./sns-story-platform.md) `汎用` `draft` — SNS 向けストーリー生成基盤の要件。要件定義まで完了、設計は未着手
 - [STリーグ ページ / データモデル](./st-league.md) `固有` — STリーグ（実業団リーグ）の公開ページとデータ構造。ディレクトリ構成、共有モジュール、データ追加手順
 - [大会インサイト（結果ページの「注目ポイント」）](./tournament-insights.md) `汎用` — 年度別結果ページの「注目ポイント」を、LLM 執筆＋機械照合で公開する仕組み。4つの工程、公開の強制、落とし穴
 - [Tournaments Local](./tournaments-local.md) `混在` — 地方大会（都道府県単位）の結果への導線ページ群と掲載運用。/tournaments/local の仕様
-- [大学カテゴリ（/university）](./university.md) `学校` — 大学カテゴリ（/university）の仕様。中身は高校→大学の進路だけで、都道府県→チームのツリーは持たない
+- [大学カテゴリ（/university）](./university.md) `学校` — 大学カテゴリ（/university）の仕様。中身は高校→大学の進路だけで、都道府県→チームのツリーは持たない。進路の採用条件（年差4年）、高校ページの進路節、大学の個別ページは /teams/[teamId] 型に寄せる
 
 ## procedure — 繰り返す手順と検算
 

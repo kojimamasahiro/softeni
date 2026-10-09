@@ -2,12 +2,13 @@
 type: feature
 scope: 学校
 status: current
-summary: "小学生カテゴリ（/primaryschool）の公開ページ方針と仕様。対象は全日本小学生選手権だけ、都道府県・団体ページ"
+summary: "小学生カテゴリ（/primaryschool）の仕様。「小学校」と呼ばない、対象は全日本小学生選手権だけ、性別を URL に入れない、teamId（地名部分の読みの上書き）、都道府県の全国大会成績、進路（小→中）"
 code:
   - "src/pages/primaryschool/"
   - "data/primaryschool/"
   - "scripts/build-primaryschool-index.mjs"
   - "scripts/build-primaryschool-pathways.mjs"
+  - "src/components/PrefectureAchievements.tsx"
 ---
 # Primary School Pages（小学生カテゴリ）
 

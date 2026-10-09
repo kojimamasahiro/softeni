@@ -2,7 +2,7 @@
 type: feature
 scope: 学校
 status: current
-summary: "高校カテゴリの公開ページ方針と現行仕様。全国大会の歴代記録、開催中の表示、主な卒業生、強豪校ランキング"
+summary: "高校カテゴリの公開ページ方針と現行仕様。学校ページ（年度別メンバー・主な卒業生）、全国大会の歴代記録、開催中の全国大会の表示、強豪校ランキング"
 code:
   - "src/pages/highschool/"
   - "lib/highschool.ts"
@@ -10,6 +10,8 @@ code:
   - "lib/highschoolRanking.ts"
   - "lib/highschoolInProgress.ts"
   - "lib/highschoolAlumni.ts"
+  - "lib/highschoolTeamMatchMembers.ts"
+  - "lib/highschoolBlockMembers.ts"
   - "data/highschool/"
 ---
 # Highschool Pages（高校カテゴリ）
