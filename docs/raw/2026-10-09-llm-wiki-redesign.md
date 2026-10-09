@@ -333,6 +333,14 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
     - **運用の宿題（本文のずれではない）**: `highschool-seo-m4-verification.md` の「2026年9月末の平常期チェック」と、
       `circulation-verification.md` の「2026年9月（9/1〜9/28）のベースライン取得」は、今日（2026-10-10）時点で実施記録がファイル名の範囲では見当たらない
       （raw にあるのは 8/15 の `m4-gsc-review` のみ）。
+  - **P1 の確認の取り直しと、Cloudflare のビルド失敗（#194・2026-10-10）**: P1 で「wiki の Markdown を読む他のコードは無い」と確認したつもりだったが、
+    そのときの grep は zsh の glob のエラーで実際には動いておらず、確認になっていなかった。取り直して `src`・`lib`・`pages`・`scripts`・`tools` の実行コードを調べると、
+    `docs/` を読むのは出力先を決めるだけの2つ（`build-primaryschool-teamid-todo.mjs`・`build-secondaryschool-teamid-todo.mjs`。どちらも `prebuild` に入っていない）で、結論は変わらなかった。
+    #194 の先頭コミット `0c7d3a3` で Cloudflare Pages のビルドが失敗した。ログはダッシュボードにあり、API トークンが無く読めない。
+    main と #193 の Cloudflare ビルド、GitHub Actions の `checks` は成功している。原因を探すため、同コミットをクリーンな worktree に取り出し、秘密情報なしで
+    `npm run build`（`prebuild` → `next build` → `postbuild`）を通して流したところ、**6156ページを生成して成功**した（`prebuild` が変えた生成物は `generatedAt` の時刻3件だけ）。
+    PR の内容に起因する不具合は見つからず、Cloudflare 側の一過性の失敗と見て、ビルドを再実行させるためにこの記録を push した。
+    再び失敗するなら、ダッシュボードのログを見る必要がある。
 - [x] P2 `wiki:index` ＋ `wiki:for`（2026-10-09・ブランチ `claude/llm-wiki-operating-model`）
   - 共有部品 `scripts/lib/wiki-meta.mjs`（frontmatter の解析・検証、`wiki:for` の一致、index の生成）。P1 で `check-wiki-size.mjs` に直書きした解析をここへ移した。
     テストは `scripts/lib/wiki-meta.test.mjs`（48件。前方一致が `/` で区切られること、壊れた frontmatter の各種、index の決定性など）で、CI に1ステップ足した。
