@@ -112,6 +112,8 @@
     "review:audit": "node scripts/audit-review-sample.mjs",
     "check:search-misses": "node scripts/check-search-misses.mjs",
     "check:wiki": "node scripts/check-wiki-size.mjs",
+    "wiki:index": "node scripts/generate-wiki-index.mjs",
+    "wiki:for": "node scripts/wiki-for.mjs",
     "sync:skills": "node scripts/sync-agent-skills.mjs"
   },
   "dependencies": {

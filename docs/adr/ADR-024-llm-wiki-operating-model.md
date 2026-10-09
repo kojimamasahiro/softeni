@@ -4,7 +4,7 @@
 
 Draft
 
-決定日: 2026-10-09。実装状況: P1 完了（frontmatter 42ページ＋検証ゲート）、P2〜P5 は未着手（段階導入 P1〜P5）。P4（AGENTS.md の書き換え）の完了で Accepted にする。
+決定日: 2026-10-09。実装状況: P1 完了（frontmatter 42ページ＋検証ゲート）、P2 完了（`wiki:index`・`wiki:for`・index の鮮度ゲート）、P3〜P5 は未着手（段階導入 P1〜P5）。P4（AGENTS.md の書き換え）の完了で Accepted にする。
 経緯・測定・各ステップの訂正は [raw/2026-10-09-llm-wiki-redesign.md](../raw/2026-10-09-llm-wiki-redesign.md) が正。
 
 ## Context
@@ -17,7 +17,8 @@ Draft
   - Schema（規則）が AGENTS.md・docs/README.md・prompts・check スクリプトに分散し、Compile Log の規則は4か所にある。
   - 適用範囲の印をページと index の両方で手で持ち、41行の突き合わせで2件が食い違っていた。
   - 「どの事実をどのページに書くか」の判断が手順にならず、エージェントの頭の中にある。
-  - 触るコードから所有ページを引く手段が無い。本文のパス言及で辿れるのは、更新されたページの35%（ファイル単位）〜75%（ディレクトリ単位）。
+  - 触るコードから所有ページを引く手段が無い。本文のフルパス言及で辿れるのは、同じコミットで更新されたページの35%。
+    （「ディレクトリ単位なら75%」と見ていたのは、`scripts/` のような汎用ディレクトリの文字列まで数えた水増しで、1コミットに16ページ前後を返す雑音だった。）
   - wiki 自体の操作（compile / lint / 圧縮）が、他の定型作業と違って skill になっていない。
 - 直近120コミットで、コードを触るコミットの81%が同じコミットで wiki も更新している。書き戻しの習慣はあり、足りないのは構造と道具。
 
@@ -52,7 +53,7 @@ Draft
 - **wiki を人間が通読する前提のまま保つ**: 現状の粒度は維持できるが、毎回の読み手はエージェントで、ルーティングに必要な summary や `code:` が持てない。却下。
 - **ADR を第4の層にする**: 「現在の理解」と「なぜそうしたか」の入口が分かれ、エージェントがどちらも引けなくなる。却下。
 - **AGENTS.md の入れ子分割（`docs/AGENTS.md`）**: 常時読込が3,737字と小さく利点が無い。書き戻しの契機はコードを書いている最中に発火するのでルートに無いと見落とす。見送り。
-- **`area:` を足す／`code:` をファイル単位にする**: 42ページなら type 別の index で足りる。ファイル単位は壊れやすい（本文のパス言及で35%しか当たらない）。却下。
+- **`area:` を足す／`code:` をファイル単位にする**: 42ページなら type 別の index で足りる。ファイル単位は壊れやすい（ファイルの分割・改名でパスが古くなる。実際に旧パス2件が本文に残っていた）。却下。
 - **本文中のコードパスの存在をゲートにする**: 388件中12件が実在しないが、文脈上は意図的な記述（削除済み・まだ作らない・Deprecated・テンプレート等）が8件で、誤検知が約8割。報告に留める。
 - **Claude Code 専用の hook で所有ページを知らせる**: Codex では効かずツール間で挙動が割れる。見送り（`wiki:for` の導入後も更新率が上がらなければ再検討）。
 - **既存の raw に遡って frontmatter を付ける**: 追記のみの原則に反する。新規ノートから。却下。
@@ -63,6 +64,8 @@ Draft
   ずれ（旧パスの残り、実在しない `code:`）が早く見つかる。wiki 操作が skill として自動発火する。
 - 負担: 42ページへの frontmatter 付与（type の分類と summary の1行は書く作業）。`code:` と `summary` の保守。
   frontmatter の更新忘れは存在検査では防げない（意味 lint が拾う）。skill の発火が過剰・過少になる恐れ。
+- 限界: パスで引ける範囲は、同じコミットで更新されたページの 32〜38%（`wiki:for` の測定。`code:` だけで 32%、本文の言及を足して 38%）。
+  残りの更新は変更したコードのパスから予測できない。主な経路は index の説明（`summary`）で、`summary` の質が効く。
 - 残る課題: idea-backlog 索引と open-questions への編集の集中（120コミット中 33 / 36）は、この設計の生成対象（index.md）の外。
 
 ## Related Files
@@ -70,7 +73,8 @@ Draft
 - [raw/2026-10-09-llm-wiki-redesign.md](../raw/2026-10-09-llm-wiki-redesign.md) — 経緯・測定・各ステップの決定と訂正
 - `AGENTS.md` / `CLAUDE.md` / `.github/copilot-instructions.md` — 指示の入口（P4 で書き換え）
 - `docs/README.md`、`docs/prompts/*.md` — Schema の分散箇所（P3・P4 で整理）
-- `scripts/check-wiki-size.mjs` — 機械検査（P1 で frontmatter と `code:` の検証を足す）
+- `scripts/check-wiki-size.mjs` — 機械検査（P1 で frontmatter と `code:` の検証、P2 で index の鮮度を足した）
+- `scripts/lib/wiki-meta.mjs`（＋ `wiki-meta.test.mjs`）・`scripts/generate-wiki-index.mjs`・`scripts/wiki-for.mjs` — P2 の部品と CLI
 - `.githooks/pre-push`、`.github/workflows/checks.yml` — 強制（P4）
 - `.claude/skills/`（実体）と `.agents/skills/`（Codex 用リンク）— wiki 操作の skill を足す（P3）
 

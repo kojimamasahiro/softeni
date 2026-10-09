@@ -2,89 +2,88 @@
 type: index
 scope: 汎用
 status: current
-summary: "wiki の入口。全ページの一覧と、適用範囲の印の見方"
+summary: "wiki の入口。全ページを type 別に並べた説明つきの一覧。npm run wiki:index で生成する"
 ---
+<!-- 生成物。npm run wiki:index で作り直す（手で直さない。コンフリクトしたら作り直す）。元は各ページ先頭の frontmatter。設計は ADR-024。 -->
 # Wiki Index
 
 > **適用範囲: 汎用**。この wiki の入口。
 
+Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は、そのページ先頭の frontmatter の `summary`。
 
-この Wiki は、Softeni Pick の現在の仕様・設計・運用を Markdown で整理するための入口です。
-ページ数が増えたため、カテゴリ別に整理しています（2026-08-01 再編成）。
+読み方:
 
-## 適用範囲の印（2026-09-18 追加）
+1. **意図で選ぶ** — 下の一覧から説明で選ぶ。
+2. **触るコードで選ぶ（補助）** — `npm run wiki:for -- <パス>` で、そのパスを `code:` に持つページと、本文でそのパスに触れているページを引く。
+3. **語で選ぶ** — `grep -rn "<語>" docs/wiki`。
+4. 選んだページは全文を読む。「なぜ」が要るときだけ [ADR](../adr/README.md)、証拠が要るときだけ [raw](../raw/README.md)。
 
-各ページ名の後ろの印は、**他競技へ仕組みを持ち出すときにそのまま使えるか**を表す。
-`汎用`＝どの競技でも使える / `学校`＝日本の学校スポーツ（インターハイ・全中等）なら共通 /
-`固有`＝ソフトテニス固有 / `混在`＝節によって違う。
+印: `汎用` どの競技でも使える／`学校` 日本の学校スポーツに共通／`固有` ソフトテニス固有／`混在` 節によって違う
+（背景は [raw/2026-09-18-idea-multi-sport-expansion.md](../raw/2026-09-18-idea-multi-sport-expansion.md)）。
+`draft` は検討中で未確定、`deprecated` は古くなった記述。
 
-**初回の印はページ冒頭だけを見て付けた（Assumption）**。ページを圧縮するときに本文を読んで、
-ページ冒頭の「適用範囲」で確定させる（手順は [slim-wiki-page.md](../prompts/slim-wiki-page.md)）。
-確定済みは `seo.md` のみ。背景は [raw/2026-09-18-idea-multi-sport-expansion.md](../raw/2026-09-18-idea-multi-sport-expansion.md)。
+## overview — 全体の構成と基盤
 
-## 全体像・基盤
+- [Android](./android.md) `汎用` — Android アプリは無いという記録と、同じリポジトリで間借りしている別アプリ AdInsight のサイトの扱い
+- [Architecture](./architecture.md) `汎用` — Next.js Pages Router＋静的データ＋一部 Supabase の全体構成。レンダリングの決定性、データ層、API 層、デプロイ構成
+- [Backend](./backend.md) `汎用` — API の境界と実行モデル。モード切替、データ更新フロー、認可
+- [Deployment](./deployment.md) `汎用` — Cloudflare Pages へのビルドと配信、GitHub Actions、ビルド時間の守ること、動的機能を足すときの選択肢
+- [Project Overview](./project-overview.md) `固有` — サイト全体の地図。現在の主要領域と、softeni-pick 本体と score の関係
 
-- [Project Overview](./project-overview.md) `固有`
-- [Architecture](./architecture.md) `汎用`
-- [Data Model](./data-model.md) `混在`
-- [Data Import](./data-import.md) `混在`
-- [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在`
-- [PDF からの取り込み](./pdf-import.md) `汎用`
-- [団体戦のオーダーの取り込み](./team-match-order-import.md) `混在`
-- [Deployment](./deployment.md) `汎用`
+## entity — データの対象（定義・識別子・置き場）
 
-## Score機能（score.softeni-pick / 動画レビュー）
+- [Data Model](./data-model.md) `混在` — データの2系統（静的 JSON と Supabase）の全体像。どのファイルが何の正か、大会・選手・score のデータ
+- [Database](./database.md) `固有` — Supabase の接続設定・テーブル・リレーション・運用メモ（score 機能のデータ）
+- [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在` — data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。型の正は src/types/tournament.ts
 
-- [Score Feature](./score-feature.md) `固有`
-- [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在`
-- [Score Site Link](./score-site-link.md) `混在`
-- [Score Analysis](./score-analysis.md) `固有`
-- [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有`
+## concept — 規則・判定のしかた
 
-## 公開ページ（softeni-pick）
+- [選手の名寄せと識別（氏名）](./player-name-identity.md) `混在` — 選手を氏名で一意に識別する規則。姓名の分割ゆれ、別人判定、pid の4区切り、改名の対応表（設計のみ）
+- [ランキング仕様](./ranking.md) `混在` — 年度ランキング（シーズンポイント制）の現行仕様。計算式、除外・特殊ルール、バックテストによる較正、Elo 副指標
+- [SEO カニバリゼーション / 重複制御](./seo.md) `混在` — ページ種別の間で検索語が重なるカニバリの制御ルール。重複マップ、title の字数予算、構造化データ、sitemap の運用
+- [チーム・選手の名寄せと識別](./team-player-identity.md) `混在` — チーム名・都道府県の正準化と名寄せの運用、チームの一意な識別。機械は提案まで、統合は人が決める
+- [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用` — TournamentBracket が試合データからトーナメント表を組み立てるロジック。使用データ、レイアウト、表示
+- [UX Writing（UI文言ルール）](./ux-writing.md) `汎用` — 公開ページの日本語 UI 文言のルール。文体、句点、記号、用語、空状態、注記、リンクテキスト
 
-- [Public Pages](./public-pages.md) `混在`
-- [UX Writing（UI文言ルール）](./ux-writing.md) `汎用`
-- [Players Pages（選手ページ）](./players-pages.md) `混在`
-- [ランキング仕様](./ranking.md) `混在`
-- [Highschool Pages（高校カテゴリ）](./highschool.md) `学校`
-- [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校`
-- [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校`
-- [University Pages（大学カテゴリ・高校→大学の進路）](./university.md) `学校`
-- [Tournaments Local](./tournaments-local.md) `混在`
-- [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用`
-- [STリーグ](./st-league.md) `固有`
-- [SEO（カニバリ/重複制御）](./seo.md) `混在`
-- [高校SEO M4検証ランブック（GSC事後検証・2026年8月中旬に実行）](./highschool-seo-m4-verification.md) `学校`
-- [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md) `汎用`
-- [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md) `混在`
+## feature — 機能・ページ群の仕様
 
-## コンテンツ生成・ストーリー
+- [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在` — score 公開面（/beta/matches-results）の保守ガイド。ルーティングと責務、データソース、モード切替、改修時の見方
+- [Highschool Pages（高校カテゴリ）](./highschool.md) `学校` — 高校カテゴリの公開ページ方針と現行仕様。全国大会の歴代記録、開催中の表示、主な卒業生、強豪校ランキング
+- [Monetization](./monetization.md) `汎用` — 収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない
+- [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md) `混在` — 速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則、実装状況、milestone の判定規約
+- [Players Pages（選手ページ）](./players-pages.md) `混在` — 選手ページの現行仕様。URL の2系統、選手一覧、結果ページの表示、SEO 方針、選手統計エンジン
+- [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校` — 小学生カテゴリ（/primaryschool）の公開ページ方針と仕様。対象は全日本小学生選手権だけ、都道府県・団体ページ
+- [Public Pages](./public-pages.md) `混在` — 公開ページの構成。ルーティング、サイトモード切替、開催前の大会の出し方、中止回の見せ方、トップページ、共通の作り
+- [希少イベント検知（この試合の名場面）](./rare-events.md) `固有` — score のポイント列から希少なプレー（名場面）を検知し、試合詳細に出す仕組み。カテゴリ、データフロー、運用
+- [Score Analysis](./score-analysis.md) `固有` — score のデータを使った試合分析・成長分析の仕様。公開面、データソース、分析ロジック、責務境界
+- [Score Feature](./score-feature.md) `固有` — score 機能（ポイント記録・動画レビュー・共有 URL・編集 URL）の画面と導線の現行仕様
+- [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有` `draft` — score 機能の一般公開・新機能ピボットの検討。未決定の発散フェーズ（需要調査、収益化オプション、差別化の核）
+- [Score Site Link（試合詳細と本体の相互リンク）](./score-site-link.md) `混在` — score の試合詳細を本体ドメインのネスト URL で公開し、大会ページ・選手ページと相互リンクする仕様
+- [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校` — 中学カテゴリ（/secondaryschool）の公開ページ方針と仕様。teamId の作り方、掲載閾値、都道府県・チームページ
+- [SNS 1日目投稿画像（sns-images / day1）](./sns-day1-images.md) `混在` — 2日制の大会の1日目終了時に X へ投稿する画像・キャプションを、内部データから自動生成するツールの仕様
+- [SNSストーリー生成基盤](./sns-story-platform.md) `汎用` `draft` — SNS 向けストーリー生成基盤の要件。要件定義まで完了、設計は未着手
+- [STリーグ ページ / データモデル](./st-league.md) `固有` — STリーグ（実業団リーグ）の公開ページとデータ構造。ディレクトリ構成、共有モジュール、データ追加手順
+- [大会インサイト（結果ページの「注目ポイント」）](./tournament-insights.md) `汎用` — 年度別結果ページの「注目ポイント」を、LLM 執筆＋機械照合で公開する仕組み。4つの工程、公開の強制、落とし穴
+- [Tournaments Local](./tournaments-local.md) `混在` — 地方大会（都道府県単位）の結果への導線ページ群と掲載運用。/tournaments/local の仕様
+- [大学カテゴリ（/university）](./university.md) `学校` — 大学カテゴリ（/university）の仕様。中身は高校→大学の進路だけで、都道府県→チームのツリーは持たない
 
-- [大会インサイト（結果ページの「注目ポイント」）](./tournament-insights.md) `混在`
-- [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md) `混在`
-- [希少イベント検知（この試合の名場面）](./rare-events.md) `固有`
-- [SNSストーリー生成基盤](./sns-story-platform.md) `汎用`
-- [SNS 1日目投稿画像](./sns-day1-images.md) `混在`
+## procedure — 繰り返す手順と検算
 
-## データ運用
+- [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md) `汎用` — 回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。指標の定義、手順、判定の表
+- [Data Import](./data-import.md) `混在` — 大会・選手・score 公開 JSON をローカルスクリプトで生成する運用。prebuild のゲート、データの正と派生の向き、品質チェック、入力ツール
+- [高校SEO M4検証ランブック（GSC事後検証）](./highschool-seo-m4-verification.md) `学校` — 高校カテゴリの SEO 施策が検索で効いたかを Google Search Console で事後検証する手順書
+- [PDF からの取り込み](./pdf-import.md) `汎用` — 大会 PDF から data/ や入力ツール用 JSON を作る道具と、繰り返し踏んだ落とし穴。検算は独立した経路で行う
+- [団体戦のオーダーの取り込み](./team-match-order-import.md) `混在` — 団体戦のオーダーを公式記録または score 機能から details の matches に入れる手順と、検算・様式の知見
+- [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md) `混在` — 開催前の大会・国際大会（アジア競技大会・世界ジュニア・国スポ）の露出の残作業を、順番に実行するための一覧
 
-- [チーム・選手の名寄せと識別](./team-player-identity.md) `混在`
-- [選手の名寄せと識別（氏名）](./player-name-identity.md) `混在`
+## index — 索引・集約
 
-## 運用・その他
+- [Idea Backlog 索引](./idea-backlog.md) `汎用` — Idea Backlog（発展候補アイデア）の所在地インデックスと一言サマリ。詳細は各エリアページの表が正
+- [Open Questions](./open-questions.md) `混在` — wiki 全体の未解決の問いの唯一の置き場。各ページの Open Questions 節はここへのリンク1行
 
-- [Open Questions](./open-questions.md) `汎用`
-- [Idea Backlog 索引](./idea-backlog.md) `汎用`
-- [backend.md](./backend.md) `汎用`
-- [database.md](./database.md) `固有`
-- [android.md](./android.md) `汎用`
-- [monetization.md](./monetization.md) `汎用`
+## wiki の外
 
-## 運用補助
-
-- [docs/README.md](../README.md)
-- [raw/README.md](../raw/README.md)
-- [ADR README](../adr/README.md)
-- [ADR Template](../adr/ADR-000-template.md)
-- [Prompt README](../prompts/README.md)
+- [docs/README.md](../README.md) — docs の運用ガイド（層の定義、置き場所）
+- [adr/README.md](../adr/README.md) — 重要な決定の記録
+- [raw/README.md](../raw/README.md) — 生の記録（追記のみ）
+- [prompts/README.md](../prompts/README.md) — 定型プロンプト

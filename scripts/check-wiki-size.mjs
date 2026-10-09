@@ -9,7 +9,7 @@
 //
 // CI（.github/workflows/checks.yml）では2つの役割に分けて使う:
 //   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があるか、wiki の frontmatter が
-//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）なら終了コード1
+//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違えば終了コード1
 //                （誰が見ても直すべきなので止めてよい）
 //   - 報告のみ … 引数なし。文字数の超過を一覧にする（仕様が増えればページは育つので、止めない）
 //
@@ -25,12 +25,15 @@
 //      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
 //      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
 //      - wiki の frontmatter（type / scope / status / summary と任意の code:）が正しいか（ゲート。ADR-024 の P1）
+//      - index.md が frontmatter からの生成物と一致するか（ゲート。ADR-024 の P2。直し方は npm run wiki:index）
 //   文字数と「適用範囲」の行の検査は、frontmatter を除いた本文で行う（メタデータで予算がずれないように）。
 //
 // 実行: node scripts/check-wiki-size.mjs [--strict]
 
 import fs from 'fs';
 import path from 'path';
+
+import { splitFrontmatter, validateFrontmatter, loadWikiPages, buildIndexText } from './lib/wiki-meta.mjs';
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, 'docs');
@@ -57,81 +60,6 @@ const SIZE_GROUPS = [
 const LINK_DIRS = [path.join(DOCS, 'wiki'), path.join(DOCS, 'prompts'), path.join(DOCS, 'adr'), path.join(DOCS, 'raw'), path.join(DOCS, 'ui'), DOCS];
 
 const strict = process.argv.includes('--strict');
-
-// wiki の frontmatter（docs/adr/ADR-024、設計の経緯は docs/raw/2026-10-09-llm-wiki-redesign.md の ④⑤⑦）。
-// 形は `---` で挟んだ `key: value` と、`code:` の下の `  - "path"` の並びだけ。YAML の全機能は使わない（依存を増やさないため）。
-const FM_TYPES = ['entity', 'concept', 'feature', 'procedure', 'overview', 'index'];
-const FM_SCOPES = ['汎用', '学校', '固有', '混在'];
-const FM_STATUSES = ['current', 'draft', 'deprecated'];
-const FM_KEYS = ['type', 'scope', 'status', 'summary', 'code'];
-const FM_SUMMARY_MAX = 160;
-// 本文の「適用範囲」の語 → scope の値（index.md の印と同じ4語）。
-const SCOPE_WORDS = { 汎用: '汎用', 学校スポーツ共通: '学校', 学校: '学校', ソフトテニス固有: '固有', 固有: '固有', 混在: '混在' };
-
-// 値は "…"（JSON 形式）か '…'（Prettier が書き換えるとこの形になる）か素の文字列。
-function parseScalar(v) {
-  if (v.startsWith('"')) return JSON.parse(v);
-  if (v.length >= 2 && v.startsWith("'") && v.endsWith("'")) return v.slice(1, -1).replace(/''/g, "'");
-  return v;
-}
-
-// 先頭の frontmatter と本文に分ける。frontmatter が無ければ meta は null。
-function splitFrontmatter(text) {
-  const m = text.match(/^---\n([\s\S]*?)\n---\n?/);
-  if (!m) return { meta: null, errors: [], body: text };
-  const meta = {};
-  const errors = [];
-  let key = null;
-  for (const line of m[1].split('\n')) {
-    try {
-      let mm;
-      if ((mm = line.match(/^([A-Za-z_]+):\s*(.*)$/))) {
-        key = mm[1];
-        meta[key] = mm[2] === '' ? [] : parseScalar(mm[2].trim());
-      } else if (key && Array.isArray(meta[key]) && (mm = line.match(/^\s+-\s+(.+)$/))) {
-        meta[key].push(parseScalar(mm[1].trim()));
-      } else if (line.trim() !== '') {
-        errors.push(`解釈できない行（${line.slice(0, 30)}）`);
-      }
-    } catch {
-      errors.push(`値を解釈できない（${line.slice(0, 30)}）`);
-    }
-  }
-  return { meta, errors, body: text.slice(m[0].length) };
-}
-
-// wiki 1ページの frontmatter を検査する。schema＝形と値、codeMissing＝code: の実在しないパス。
-function validateFrontmatter(text) {
-  const { meta, errors, body } = splitFrontmatter(text);
-  const schema = [...errors];
-  const codeMissing = [];
-  if (!meta) return { schema: ['frontmatter が無い（必須: type / scope / status / summary。形式は docs/adr/ADR-024）'], codeMissing };
-  for (const k of Object.keys(meta)) if (!FM_KEYS.includes(k)) schema.push(`未知のキー ${k}`);
-  if (!FM_TYPES.includes(meta.type)) schema.push(`type が不正（${FM_TYPES.join('/')}）`);
-  if (!FM_SCOPES.includes(meta.scope)) schema.push(`scope が不正（${FM_SCOPES.join('/')}）`);
-  if (!FM_STATUSES.includes(meta.status)) schema.push(`status が不正（${FM_STATUSES.join('/')}）`);
-  if (typeof meta.summary !== 'string' || meta.summary.trim() === '') schema.push('summary が空');
-  else if ([...meta.summary].length > FM_SUMMARY_MAX) schema.push(`summary が長い（${FM_SUMMARY_MAX} 字まで）`);
-  if ('code' in meta) {
-    if (!Array.isArray(meta.code) || meta.code.length === 0) schema.push('code が空（無いなら項目ごと省く）');
-    else {
-      for (const p of meta.code) {
-        if (typeof p !== 'string' || p.startsWith('/') || p.includes('..')) schema.push(`code のパスが不正（${p}）`);
-        else if (!fs.existsSync(path.join(ROOT, p))) codeMissing.push(p);
-      }
-    }
-  }
-  // 移行の間は本文の「適用範囲」の行も残すので、frontmatter の scope と一致していることを確かめる。
-  const sm = body
-    .split('\n')
-    .slice(0, 12)
-    .join('\n')
-    .match(/適用範囲[:：]\s*\*{0,2}\s*(汎用|学校スポーツ共通|学校|ソフトテニス固有|固有|混在)/);
-  if (sm && FM_SCOPES.includes(meta.scope) && SCOPE_WORDS[sm[1]] !== meta.scope) {
-    schema.push(`scope（${meta.scope}）が本文の適用範囲（${sm[1]}）と食い違う`);
-  }
-  return { schema, codeMissing };
-}
 
 function listMarkdown(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -316,4 +244,14 @@ for (const f of wikiFiles) {
 console.log(`- frontmatter が不正な wiki: ${fmBad.length} 件 ${fmBad.join(', ')}`);
 console.log(`- code: に実在しないパスがある wiki: ${fmCodeMissing.length} 件 ${fmCodeMissing.join(', ')}`);
 
-if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0)) process.exit(1);
+// 3-7. index.md が frontmatter からの生成物と一致するか（ADR-024 の P2・ゲート）。
+// 手で直した index が残ると、summary や scope を変えても入口だけ古いままになる（P1 前は41行中2件の印が食い違っていた）。
+// frontmatter が不正で生成できないときは、上の 3-6 が落とすので、ここでは数えない。
+const indexBuilt = buildIndexText(loadWikiPages());
+const indexFile = path.join(DOCS, 'wiki', 'index.md');
+const indexStale = indexBuilt.text !== null && (!fs.existsSync(indexFile) || fs.readFileSync(indexFile, 'utf-8') !== indexBuilt.text);
+console.log(
+  `- index.md が生成物と異なる: ${indexStale ? '1 件 npm run wiki:index で作り直す' : indexBuilt.text === null ? '判定できない（frontmatter を先に直す）' : '0 件'}`,
+);
+
+if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale)) process.exit(1);
