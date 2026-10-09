@@ -1,3 +1,13 @@
+---
+type: concept
+scope: 混在
+status: current
+summary: "ページ種別の間で検索語が重なるカニバリの制御ルール。重複マップ、title の字数予算、構造化データ、sitemap の運用"
+code:
+  - "scripts/filter-noindex-from-sitemap.mjs"
+  - "lib/teamIndexing.ts"
+  - "lib/tournamentSearchNames.ts"
+---
 # SEO カニバリゼーション / 重複制御
 
 > **適用範囲: 混在**。「制御手段」「守ること」「計測の原則」「sitemap」は競技に依存しない。

@@ -1,3 +1,13 @@
+---
+type: feature
+scope: 汎用
+status: current
+summary: "年度別結果ページの「注目ポイント」を、LLM 執筆＋機械照合で公開する仕組み。4つの工程、公開の強制、落とし穴"
+code:
+  - "src/components/ResultContextBlocks.tsx"
+  - "scripts/check-tournament-insights.mjs"
+  - "data/tournament-insights/"
+---
 # 大会インサイト（結果ページの「注目ポイント」）
 
 > **適用範囲: 汎用**。LLM が書いた散文を機械照合してから載せる仕組み。競技に依存しない。

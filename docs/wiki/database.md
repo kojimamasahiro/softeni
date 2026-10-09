@@ -1,3 +1,14 @@
+---
+type: entity
+scope: 固有
+status: current
+summary: "Supabase の接続設定・テーブル・リレーション・運用メモ（score 機能のデータ）"
+code:
+  - "src/types/database.ts"
+  - "lib/supabase.ts"
+  - "lib/supabaseClient.ts"
+  - "docs/sql/"
+---
 # Database
 
 > **適用範囲: ソフトテニス固有**。score 機能のテーブル（ゲーム・ポイント）はソフトテニスの得点方式が前提。

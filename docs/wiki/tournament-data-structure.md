@@ -1,3 +1,12 @@
+---
+type: entity
+scope: 混在
+status: current
+summary: "data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。型の正は src/types/tournament.ts"
+code:
+  - "data/tournaments/"
+  - "src/types/tournament.ts"
+---
 # 大会データ JSON の構造（リファレンス）
 
 > **適用範囲: 混在**。ファイルの役割分担と命名規約の考え方は汎用。種目名・世代区分はソフトテニス固有。

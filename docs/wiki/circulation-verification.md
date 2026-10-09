@@ -1,3 +1,14 @@
+---
+type: procedure
+scope: 汎用
+status: current
+summary: "回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。指標の定義、手順、判定の表"
+code:
+  - "lib/analytics.ts"
+  - "lib/ads.ts"
+  - "src/pages/_app.tsx"
+  - "src/components/CookieConsent.tsx"
+---
 # 回遊検証ランブック（GA4 / AdSense）
 
 > **適用範囲: 汎用**。回遊施策の効果を GA4 と AdSense で判定する手順。競技に依存しない。

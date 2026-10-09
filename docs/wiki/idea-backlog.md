@@ -1,3 +1,9 @@
+---
+type: index
+scope: 汎用
+status: current
+summary: "Idea Backlog（発展候補アイデア）の所在地インデックスと一言サマリ。詳細は各エリアページの表が正"
+---
 # Idea Backlog 索引
 
 > **適用範囲: 汎用**。Idea Backlog の索引そのもの。

@@ -1,3 +1,14 @@
+---
+type: concept
+scope: 混在
+status: current
+summary: "選手を氏名で一意に識別する規則。姓名の分割ゆれ、別人判定、pid の4区切り、改名の対応表（設計のみ）"
+code:
+  - "scripts/check-name-splits.mjs"
+  - "scripts/normalize-name-splits.mjs"
+  - "scripts/build-player-homonyms.py"
+  - "data/players/"
+---
 # 選手の名寄せと識別（氏名）
 
 > **適用範囲: 混在**。「切り位置のぶれ」「同姓同名の別人判定」「多数決を使わない」は汎用。

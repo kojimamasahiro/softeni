@@ -1,3 +1,15 @@
+---
+type: feature
+scope: 汎用
+status: current
+summary: "収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない"
+code:
+  - "lib/ads.ts"
+  - "lib/analytics.ts"
+  - "src/components/AdUnit.tsx"
+  - "src/pages/_app.tsx"
+  - "src/pages/privacy.tsx"
+---
 # Monetization
 
 > **適用範囲: 汎用**。広告枠の置き方・CLS の決めごと・同意まわりは競技に依存しない。

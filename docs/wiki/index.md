@@ -1,3 +1,9 @@
+---
+type: index
+scope: 汎用
+status: current
+summary: "wiki の入口。全ページの一覧と、適用範囲の印の見方"
+---
 # Wiki Index
 
 > **適用範囲: 汎用**。この wiki の入口。

@@ -1,3 +1,14 @@
+---
+type: concept
+scope: 混在
+status: current
+summary: "年度ランキング（シーズンポイント制）の現行仕様。計算式、除外・特殊ルール、バックテストによる較正、Elo 副指標"
+code:
+  - "lib/playerStats/aggregators/"
+  - "scripts/playerStats/generate-rankings.ts"
+  - "scripts/ranking/"
+  - "data/ranking-config.json"
+---
 # ランキング仕様
 
 > **適用範囲: 混在**。シーズンポイント制・tier・較正の考え方は汎用。対象大会と配点はソフトテニス固有。

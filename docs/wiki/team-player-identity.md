@@ -1,3 +1,16 @@
+---
+type: concept
+scope: 混在
+status: current
+summary: "チーム名・都道府県の正準化と名寄せの運用、チームの一意な識別。機械は提案まで、統合は人が決める"
+code:
+  - "scripts/normalize-prefectures.mjs"
+  - "scripts/build-team-master.mjs"
+  - "scripts/build-team-merge-candidates.mjs"
+  - "scripts/lib/team-core.mjs"
+  - "scripts/lib/kanji-variants.mjs"
+  - "data/teams/"
+---
 # チーム・選手の名寄せと識別
 
 > **適用範囲: 混在**。「照合と表示を分ける」「機械は提案まで・統合は人が決める」「判断を台帳に残す」は汎用。

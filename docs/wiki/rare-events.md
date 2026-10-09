@@ -1,3 +1,16 @@
+---
+type: feature
+scope: 固有
+status: current
+summary: "score のポイント列から希少なプレー（名場面）を検知し、試合詳細に出す仕組み。カテゴリ、データフロー、運用"
+code:
+  - "lib/rareEvents.mjs"
+  - "lib/rareEventDiscovery.mjs"
+  - "lib/rareEventsStatic.ts"
+  - "scripts/generate-rare-events.mjs"
+  - "scripts/rare-events-report.mjs"
+  - "scripts/rare-events-discover.mjs"
+---
 # 希少イベント検知（この試合の名場面）
 
 > **適用範囲: ソフトテニス固有**。ポイント列から希少なプレーを検知する仕組みで、ソフトテニスの得点方式が前提。

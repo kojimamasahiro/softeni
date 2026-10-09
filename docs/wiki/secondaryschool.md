@@ -1,3 +1,16 @@
+---
+type: feature
+scope: 学校
+status: current
+summary: "中学カテゴリ（/secondaryschool）の公開ページ方針と仕様。teamId の作り方、掲載閾値、都道府県・チームページ"
+code:
+  - "src/pages/secondaryschool/"
+  - "data/secondaryschool/"
+  - "scripts/build-secondaryschool-index.mjs"
+  - "scripts/build-secondaryschool-pathways.mjs"
+  - "lib/clubTransition.ts"
+  - "lib/highschoolFeederSchools.ts"
+---
 # Secondary School Pages（中学カテゴリ）
 
 > **適用範囲: 学校スポーツ共通**。カテゴリの作り方（掲載閾値・進路・順位づけをしない方針）は

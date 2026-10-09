@@ -1,3 +1,15 @@
+---
+type: procedure
+scope: 混在
+status: current
+summary: "団体戦のオーダーを公式記録または score 機能から details の matches に入れる手順と、検算・様式の知見"
+code:
+  - "scripts/pdf/team_match_details.py"
+  - "scripts/pdf/highschool_championship_team_matches.py"
+  - "scripts/pdf/highschool_senbatsu_team_matches.py"
+  - "scripts/score-team-matches.py"
+  - "scripts/check-team-match-details.mjs"
+---
 # 団体戦のオーダーの取り込み
 
 > **適用範囲: 混在**。検算の考え方（既存データとの突き合わせ・出典の誤記の扱い・状態の決め方）は汎用。

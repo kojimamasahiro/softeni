@@ -1,3 +1,14 @@
+---
+type: feature
+scope: 固有
+status: current
+summary: "score 機能（ポイント記録・動画レビュー・共有 URL・編集 URL）の画面と導線の現行仕様"
+code:
+  - "src/pages/beta/matches/"
+  - "src/components/matches/matchInput/"
+  - "lib/pointInference.ts"
+  - "scripts/generate-beta-matches-json.mjs"
+---
 # Score Feature
 
 > **適用範囲: ソフトテニス固有**。ポイント単位の記録・動画レビューはソフトテニスのルールが前提。

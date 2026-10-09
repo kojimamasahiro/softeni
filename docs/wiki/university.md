@@ -1,3 +1,14 @@
+---
+type: feature
+scope: 学校
+status: current
+summary: "大学カテゴリ（/university）の仕様。中身は高校→大学の進路だけで、都道府県→チームのツリーは持たない"
+code:
+  - "src/pages/university/"
+  - "lib/university.ts"
+  - "scripts/build-university-pathways.mjs"
+  - "data/university/"
+---
 # 大学カテゴリ（/university）
 
 > **適用範囲: 学校スポーツ共通**。「高校 → 大学」の進路の作り方は他競技でも使える。大学名・大会名はソフトテニス固有。

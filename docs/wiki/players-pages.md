@@ -1,3 +1,17 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "選手ページの現行仕様。URL の2系統、選手一覧、結果ページの表示、SEO 方針、選手統計エンジン"
+code:
+  - "src/pages/players/"
+  - "lib/playerStats/"
+  - "scripts/generate-players-json.mjs"
+  - "scripts/generate-players-lite.mjs"
+  - "lib/nationalTitles.ts"
+  - "lib/majorTitles.ts"
+  - "lib/playerCareerAffiliations.ts"
+---
 # Players Pages（選手ページ）
 
 > **適用範囲: 混在**。URL の2系統・薄いページの noindex 選別・集計エンジンの層構造は汎用。

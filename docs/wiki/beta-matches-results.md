@@ -1,3 +1,17 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "score 公開面（/beta/matches-results）の保守ガイド。ルーティングと責務、データソース、モード切替、改修時の見方"
+code:
+  - "src/pages/beta/matches-results/"
+  - "src/pages/api/matches/"
+  - "lib/siteConfig.ts"
+  - "lib/betaMatchesStatic.ts"
+  - "lib/matchAnalysis/"
+  - "src/types/matchAccess.ts"
+  - "scripts/generate-beta-matches-json.mjs"
+---
 # beta/matches-results / score 公開 保守ガイド
 
 > **適用範囲: 混在**。1つのコアを2つの公開面から使うモード切替の考え方は汎用。
@@ -166,7 +180,7 @@
 
 ### 分析ロジック
 
-実装: `lib/matchAnalysis.ts`
+実装: `lib/matchAnalysis/`（入口は `index.ts` の `analyzeMatch`）
 
 - ポイント列を再構築してチーム別の比較指標を作る
 - サーブ、レシーブ、重要局面、ラリー長、連続得点、決着内訳を集計する
@@ -254,7 +268,7 @@
 - `lib/betaMatchesStatic.ts`
 - `src/types/matchAccess.ts`
 - `src/pages/beta/matches-results/[matchId]/index.tsx`
-- `lib/matchAnalysis.ts`
+- `lib/matchAnalysis/`
 
 特に `games[].points[]`、`winner_team`、`rally_count`、サーブ関連フィールドは表示と分析の両方に影響します。
 

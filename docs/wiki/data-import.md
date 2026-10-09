@@ -1,3 +1,15 @@
+---
+type: procedure
+scope: 混在
+status: current
+summary: "大会・選手・score 公開 JSON をローカルスクリプトで生成する運用。prebuild のゲート、データの正と派生の向き、品質チェック、入力ツール"
+code:
+  - "scripts/check-tournament-entries.mjs"
+  - "scripts/normalize-team-names.mjs"
+  - "scripts/normalize-prefectures.mjs"
+  - "tools/shared/"
+  - "tools/tournament3/"
+---
 # Data Import
 
 > **適用範囲: 混在**。生成の流れ・検査・入力ツールの考え方は汎用。大会名・カテゴリはソフトテニス固有。

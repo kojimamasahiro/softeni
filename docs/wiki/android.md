@@ -1,3 +1,11 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "Android アプリは無いという記録と、同じリポジトリで間借りしている別アプリ AdInsight のサイトの扱い"
+code:
+  - "scripts/build-adinsight-site.mjs"
+---
 # Android
 
 > **適用範囲: 汎用**。このリポジトリに Android 実装は無いという記録と、間借りしている別アプリのサイト。競技に依存しない。

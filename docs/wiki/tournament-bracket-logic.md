@@ -1,3 +1,12 @@
+---
+type: concept
+scope: 汎用
+status: current
+summary: "TournamentBracket が試合データからトーナメント表を組み立てるロジック。使用データ、レイアウト、表示"
+code:
+  - "lib/bracketLayout.ts"
+  - "src/components/Tournament/"
+---
 # TournamentBracket ロジック概要
 
 > **適用範囲: 汎用**（トーナメント表を持つ競技ならそのまま使える）。

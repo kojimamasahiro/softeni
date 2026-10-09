@@ -1,3 +1,9 @@
+---
+type: procedure
+scope: 学校
+status: current
+summary: "高校カテゴリの SEO 施策が検索で効いたかを Google Search Console で事後検証する手順書"
+---
 # 高校SEO M4検証ランブック（GSC事後検証）
 
 > **適用範囲: 学校スポーツ共通**。GSC で高校カテゴリの施策を事後検証する手順。大会名だけがソフトテニス固有。

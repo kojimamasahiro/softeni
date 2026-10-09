@@ -1,3 +1,14 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "地方大会（都道府県単位）の結果への導線ページ群と掲載運用。/tournaments/local の仕様"
+code:
+  - "src/pages/tournaments/local/"
+  - "src/components/tournaments/"
+  - "data/local-sources/"
+  - "scripts/normalize-local-tournament-candidate.mjs"
+---
 # Tournaments Local
 
 > **適用範囲: 混在**。地方大会の掲載運用の考え方は汎用。連盟・都道府県の構成はソフトテニス固有。

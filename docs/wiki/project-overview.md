@@ -1,3 +1,11 @@
+---
+type: overview
+scope: 固有
+status: current
+summary: "サイト全体の地図。現在の主要領域と、softeni-pick 本体と score の関係"
+code:
+  - "lib/siteConfig.ts"
+---
 # Project Overview
 
 > **適用範囲: ソフトテニス固有**。このサイト全体の地図。

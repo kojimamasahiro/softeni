@@ -1,3 +1,14 @@
+---
+type: procedure
+scope: 混在
+status: current
+summary: "開催前の大会・国際大会（アジア競技大会・世界ジュニア・国スポ）の露出の残作業を、順番に実行するための一覧"
+code:
+  - "tools/asian-games-2026/"
+  - "tools/kokutai-2026/"
+  - "lib/upcomingInternational.ts"
+  - "lib/categorySchedule.ts"
+---
 # 開催前の大会・国際大会の露出 実行ランブック
 
 > **適用範囲: 混在**。「新規URLを作らず既存ページで受ける」「開催前の大会を出す」の考え方は汎用。

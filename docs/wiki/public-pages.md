@@ -1,3 +1,15 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "公開ページの構成。ルーティング、サイトモード切替、開催前の大会の出し方、中止回の見せ方、トップページ、共通の作り"
+code:
+  - "lib/siteConfig.ts"
+  - "lib/navigation.ts"
+  - "src/components/Breadcrumb.tsx"
+  - "src/pages/index.tsx"
+  - "lib/upcomingInternational.ts"
+---
 # Public Pages
 
 > **適用範囲: 混在**。サイトモード切替・構造化データ・パンくず・OGP の作り方は汎用。

@@ -1,3 +1,12 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "Next.js Pages Router＋静的データ＋一部 Supabase の全体構成。レンダリングの決定性、データ層、API 層、デプロイ構成"
+code:
+  - "next.config.mjs"
+  - "lib/siteConfig.ts"
+---
 # Architecture
 
 > **適用範囲: 汎用**。構成（Next.js Pages Router ＋ 静的データ ＋ 一部 Supabase）は競技に依存しない。

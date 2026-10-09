@@ -1,3 +1,14 @@
+---
+type: feature
+scope: 学校
+status: current
+summary: "小学生カテゴリ（/primaryschool）の公開ページ方針と仕様。対象は全日本小学生選手権だけ、都道府県・団体ページ"
+code:
+  - "src/pages/primaryschool/"
+  - "data/primaryschool/"
+  - "scripts/build-primaryschool-index.mjs"
+  - "scripts/build-primaryschool-pathways.mjs"
+---
 # Primary School Pages（小学生カテゴリ）
 
 > **適用範囲: 学校スポーツ共通**。カテゴリの作り方（掲載閾値・進路・順位づけをしない方針）は他競技でも使える。大会名・団体名はソフトテニス固有。

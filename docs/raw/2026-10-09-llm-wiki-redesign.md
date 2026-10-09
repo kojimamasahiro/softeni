@@ -275,7 +275,20 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
 
 （P1〜P5 の進捗をここに書き込む。着手は指示を受けてから。）
 
-- [ ] P1 frontmatter（42ページ）＋ check:wiki の検証
+- [x] P1 frontmatter（42ページ）＋ check:wiki の検証（2026-10-09・ブランチ `claude/llm-wiki-operating-model`）
+  - 42ページに `type` / `scope` / `status` / `summary` を付け、36ページ・計149件のパスに `code:` を付けた（`code:` 無しは highschool-seo-m4-verification・idea-backlog・
+    index・open-questions・score-general-availability・sns-story-platform の6ページ）。本文は旧パス5行の置き換えを除き1文字も変えていない
+    （差分は挿入442行・削除5行）。type の内訳: feature 19／procedure 6／concept 6／overview 5／entity 3／index 3。status は draft が2
+    （score-general-availability・sns-story-platform）。scope は本文の「適用範囲」の行から機械的に導出した。
+  - `scripts/check-wiki-size.mjs` に frontmatter の検証をゲートとして追加（必須項目・値・未知のキー・summary の長さ・`code:` の実在・本文の適用範囲との一致）。
+    9種類の壊し方を一時コピーで試し、すべて理由つきで検出されることを確認した。Prettier が引用符を `'…'` に書き換えても通る。
+    文字数と「適用範囲」の行の検査は frontmatter を除いた本文で行う（計測値は 309,952 字のまま変わらない）。
+  - ⑩ の計画からの差分: (a) 本文の「適用範囲」の行は残した（AGENTS.md が置くよう求めており、書き換えは P4 のため）。代わりに `scope` と一致することをゲートにした。
+    行の整理は P4 で行う。(b) type は暫定: monetization は overview から feature に変えた。2つの型にまたがる ranking（concept）・data-import（procedure）・
+    team-player-identity（concept）・players-pages（feature）などは、主な役割で1つに決めた。分割は圧縮・追記のときに行う。
+  - ⑧ で見つけた本物のずれ2件を直した（`lib/matchAnalysis.ts` → `lib/matchAnalysis/`、`lib/newsArticle.ts` → `lib/newsArticle/` と `contextBlocks.ts`）。
+    `scripts/normalize-player-names.mjs` は open-questions で「未実装」として挙げている意図的な記述だったので、ずれではない。
+  - docs/prompts/update-wiki.md と slim-wiki-page.md に、frontmatter を付ける／残す旨を1行ずつ足した（AGENTS.md は P4 まで触らない）。
 - [ ] P2 `wiki:index` ＋ `wiki:for`
 - [ ] P3 skill 3つ ＋ docs/prompts のリダイレクト ＋ Compile Log の書式
 - [ ] P4 AGENTS.md の書き換え ＋ pre-push ＋ PR テンプレート ＋ CI の報告項目

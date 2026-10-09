@@ -1,3 +1,11 @@
+---
+type: procedure
+scope: 汎用
+status: current
+summary: "大会 PDF から data/ や入力ツール用 JSON を作る道具と、繰り返し踏んだ落とし穴。検算は独立した経路で行う"
+code:
+  - "scripts/pdf/"
+---
 # PDF からの取り込み
 
 > **適用範囲: 汎用**。「テキスト層の有無をまず数える」「別ページ・別種目・既存データで独立に検算する」

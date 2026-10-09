@@ -1,3 +1,13 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "Cloudflare Pages へのビルドと配信、GitHub Actions、ビルド時間の守ること、動的機能を足すときの選択肢"
+code:
+  - ".github/workflows/"
+  - ".githooks/"
+  - "next.config.mjs"
+---
 # Deployment
 
 > **適用範囲: 汎用**。Cloudflare Pages への配信・ビルド設定は競技に依存しない。

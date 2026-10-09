@@ -1,3 +1,9 @@
+---
+type: index
+scope: 混在
+status: current
+summary: "wiki 全体の未解決の問いの唯一の置き場。各ページの Open Questions 節はここへのリンク1行"
+---
 # Open Questions
 
 > **適用範囲: 混在**（運用の問いは汎用、データの問いはソフトテニス固有）。

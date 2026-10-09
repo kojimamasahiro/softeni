@@ -1,3 +1,16 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "score の試合詳細を本体ドメインのネスト URL で公開し、大会ページ・選手ページと相互リンクする仕様"
+code:
+  - "lib/siteLink.mjs"
+  - "scripts/generate-beta-matches-json.mjs"
+  - "src/pages/beta/matches/"
+  - "lib/tournamentHelpers.ts"
+  - "lib/tournamentClientHelpers.ts"
+  - "lib/betaMatchesStatic.ts"
+---
 # Score Site Link（試合詳細と本体の相互リンク）
 
 > **適用範囲: 混在**。「同じ実体に複数 URL があるときの canonical の寄せ方」は汎用。大会・試合の紐付けはソフトテニス固有。

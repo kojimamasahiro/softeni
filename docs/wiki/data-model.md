@@ -1,3 +1,15 @@
+---
+type: entity
+scope: 混在
+status: current
+summary: "データの2系統（静的 JSON と Supabase）の全体像。どのファイルが何の正か、大会・選手・score のデータ"
+code:
+  - "data/tournaments/"
+  - "data/players/"
+  - "data/teams/"
+  - "src/types/tournament.ts"
+  - "src/types/database.ts"
+---
 # Data Model
 
 > **適用範囲: 混在**。大会→年度→種目→試合という形と、出典・推測に関する規約は汎用。

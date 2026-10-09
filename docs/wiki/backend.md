@@ -1,3 +1,15 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "API の境界と実行モデル。モード切替、データ更新フロー、認可"
+code:
+  - "lib/siteConfig.ts"
+  - "lib/env.ts"
+  - "lib/betaMatchesClient.ts"
+  - "src/pages/api/"
+  - "scripts/generate-beta-matches-json.mjs"
+---
 # Backend
 
 > **適用範囲: 汎用**。API の境界と設定は競技に依存しない。
