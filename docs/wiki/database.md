@@ -2,7 +2,7 @@
 type: entity
 scope: 固有
 status: current
-summary: "Supabase の接続設定・テーブル・リレーション・運用メモ（score 機能のデータ）"
+summary: "score 機能の Supabase テーブル（matches・games・points と動画レビュー用の2つ）の列とリレーション。スキーマ全体の定義は repo に無く、型と差分 DDL から復元した推定"
 code:
   - "src/types/database.ts"
   - "lib/supabase.ts"

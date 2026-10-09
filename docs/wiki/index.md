@@ -24,16 +24,16 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 
 ## overview — 全体の構成と基盤
 
-- [Android](./android.md) `汎用` — Android アプリは無いという記録と、同じリポジトリで間借りしている別アプリ AdInsight のサイトの扱い
+- [Android](./android.md) `汎用` — Android アプリの実装はこのリポジトリに無い。無関係な別アプリ AdInsight の紹介・法務サイトを adinsight.softeni-pick.com で間借りしている（Play 登録済みのパスは変えない）
 - [Architecture](./architecture.md) `汎用` — Next.js Pages Router＋静的データ＋一部 Supabase の全体構成。レンダリングの決定性、データ層、API 層、デプロイ構成
-- [Backend](./backend.md) `汎用` — API の境界と実行モデル。モード切替、データ更新フロー、認可
-- [Deployment](./deployment.md) `汎用` — Cloudflare Pages へのビルドと配信、GitHub Actions、ビルド時間の守ること、動的機能を足すときの選択肢
-- [Project Overview](./project-overview.md) `固有` — サイト全体の地図。現在の主要領域と、softeni-pick 本体と score の関係
+- [Backend](./backend.md) `汎用` — 本番にサーバーは無い（静的 export）という実行モデル。試合データ・動画レビューの API はローカル開発時だけ動く。静的 JSON 配信、モード切替、認可（ユーザー認証なし）
+- [Deployment](./deployment.md) `汎用` — 静的 export の Cloudflare Pages ビルド設定と prebuild のゲート、GitHub Actions のゲートと報告の分け、ビルド時間の守ること、ビルドキャッシュ。動的機能の選択肢は未実装の検討
+- [Project Overview](./project-overview.md) `固有` — サイト全体の地図。本体サイトの主要領域（大会・選手・チーム・高校・ランキング・STリーグ・ニュース）と score 系機能の導線を示し、詳細は各ページへ案内する
 
 ## entity — データの対象（定義・識別子・置き場）
 
 - [Data Model](./data-model.md) `混在` — データの2系統（静的 JSON と Supabase）の全体像。どのファイルが何の正か、大会・選手・score のデータ
-- [Database](./database.md) `固有` — Supabase の接続設定・テーブル・リレーション・運用メモ（score 機能のデータ）
+- [Database](./database.md) `固有` — score 機能の Supabase テーブル（matches・games・points と動画レビュー用の2つ）の列とリレーション。スキーマ全体の定義は repo に無く、型と差分 DDL から復元した推定
 - [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在` — data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。型の正は src/types/tournament.ts
 
 ## concept — 規則・判定のしかた
@@ -42,7 +42,7 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 - [ランキング仕様](./ranking.md) `混在` — 年度ランキング（シーズンポイント制）の現行仕様。計算式、除外・特殊ルール、バックテストによる較正、Elo 副指標
 - [SEO カニバリゼーション / 重複制御](./seo.md) `混在` — ページ種別の間で検索語が重なるカニバリの制御ルール。重複マップ、title の字数予算、構造化データ、sitemap の運用
 - [チーム・選手の名寄せと識別](./team-player-identity.md) `混在` — チーム名・都道府県の正準化と名寄せの運用、チームの一意な識別。機械は提案まで、統合は人が決める
-- [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用` — TournamentBracket が試合データからトーナメント表を組み立てるロジック。使用データ、レイアウト、表示
+- [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用` — 試合のつながり（nextMatchId）を決勝から逆にたどり、表示用のトーナメント表を組み立てる TournamentBracket のロジック。開催前の席順復元（lib/bracketLayout.ts）は別物
 - [UX Writing（UI文言ルール）](./ux-writing.md) `汎用` — 公開ページの日本語 UI 文言のルール。文体、句点、記号、用語、空状態、注記、リンクテキスト
 
 ## feature — 機能・ページ群の仕様

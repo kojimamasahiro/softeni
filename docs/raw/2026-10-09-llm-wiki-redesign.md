@@ -306,6 +306,16 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
   - ⑧ で見つけた本物のずれ2件を直した（`lib/matchAnalysis.ts` → `lib/matchAnalysis/`、`lib/newsArticle.ts` → `lib/newsArticle/` と `contextBlocks.ts`）。
     `scripts/normalize-player-names.mjs` は open-questions で「未実装」として挙げている意図的な記述だったので、ずれではない。
   - docs/prompts/update-wiki.md と slim-wiki-page.md に、frontmatter を付ける／残す旨を1行ずつ足した（AGENTS.md は P4 まで触らない）。
+  - **P1 の `summary` と `code:` の見直し（P2 のあと）**: 名前と見出しだけで書いた6ページ（backend・database・android・project-overview・
+    tournament-bracket-logic・deployment）を全文で読み直して直した。`summary` は最重要の事実が欠けていた
+    （例: backend は「本番にサーバーは無い（静的 export）」。deployment は prebuild のゲートと checks.yml のゲート／報告の分け）。
+    **`code:` の誤帰属が1件あった**: tournament-bracket-logic が `lib/bracketLayout.ts` を「別物」と断っているのに、
+    本文のパス言及から機械的に拾った P1 の初期値がそれを `code:` に入れていた。「対比のために名前を挙げただけのパス」を拾う型の誤りで、
+    「別物」の語が言及の隣の行にあったため、言及と同じ行だけを見る機械検査をすり抜けた（前後2行まで広げると検出できる）。
+  - **未検証の範囲**: 全文を読んだのは上の6ページだけ。残り30ページの `summary` は冒頭と見出しからの案、`code:` は本文の言及から機械的に作った初期値で、
+    項目を1つずつ読んで検証してはいない。機械検査（本文の言及あり135／なし12／対比語の文脈2→内容確認で誤検知、前後2行の窓で7件→誤りは上の1件だけ）は済み。
+    `code:` を本文の言及から機械的に作ると、対比・否定の文脈のパスを拾う。P4 で wiki-compile の手順に「`code:` は所有するもの。
+    対比で名前が出ただけのパスは入れない」を書く。
 - [x] P2 `wiki:index` ＋ `wiki:for`（2026-10-09・ブランチ `claude/llm-wiki-operating-model`）
   - 共有部品 `scripts/lib/wiki-meta.mjs`（frontmatter の解析・検証、`wiki:for` の一致、index の生成）。P1 で `check-wiki-size.mjs` に直書きした解析をここへ移した。
     テストは `scripts/lib/wiki-meta.test.mjs`（48件。前方一致が `/` で区切られること、壊れた frontmatter の各種、index の決定性など）で、CI に1ステップ足した。

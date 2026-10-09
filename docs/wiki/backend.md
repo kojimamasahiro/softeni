@@ -2,8 +2,9 @@
 type: overview
 scope: 汎用
 status: current
-summary: "API の境界と実行モデル。モード切替、データ更新フロー、認可"
+summary: "本番にサーバーは無い（静的 export）という実行モデル。試合データ・動画レビューの API はローカル開発時だけ動く。静的 JSON 配信、モード切替、認可（ユーザー認証なし）"
 code:
+  - "next.config.mjs"
   - "lib/siteConfig.ts"
   - "lib/env.ts"
   - "lib/betaMatchesClient.ts"

@@ -2,9 +2,8 @@
 type: concept
 scope: 汎用
 status: current
-summary: "TournamentBracket が試合データからトーナメント表を組み立てるロジック。使用データ、レイアウト、表示"
+summary: "試合のつながり（nextMatchId）を決勝から逆にたどり、表示用のトーナメント表を組み立てる TournamentBracket のロジック。開催前の席順復元（lib/bracketLayout.ts）は別物"
 code:
-  - "lib/bracketLayout.ts"
   - "src/components/Tournament/"
 ---
 # TournamentBracket ロジック概要
