@@ -61,3 +61,4 @@ Status は各 ADR の `## Status` 節が正。この表は所在地インデッ�
 | [ADR-021](./ADR-021-category-competition-format.md) | 競技方式は種目ごとに「1つの文章＋推定の断り」で持ち、出典が無ければ表示しない | Accepted |
 | [ADR-022](./ADR-022-block-eea-uk-ch-access.md) | EEA・英国・スイスからのアクセスを Cloudflare でブロックする | Accepted |
 | [ADR-023](./ADR-023-score-team-rubbers-to-details.md) | 団体戦の対戦を score 機能で記録し、details のオーダーへ書き戻す | Accepted |
+| [ADR-024](./ADR-024-llm-wiki-operating-model.md) | LLM Wiki の運用モデル（エージェントが読む「現在の理解」へ compile し続ける） | Draft |
