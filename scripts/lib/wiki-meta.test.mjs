@@ -8,7 +8,20 @@
 //   - index.md の生成（type 順・ファイル名順・index.md 自身を除く・draft の印・同じ入力なら同じ出力・不正なページがあれば作らない）
 //
 // 実行: node scripts/lib/wiki-meta.test.mjs
-import { splitFrontmatter, validateFrontmatter, matchPages, normalizeTarget, buildIndexText, titleOf, ROOT, compileLogDestinations } from './wiki-meta.mjs';
+import {
+  splitFrontmatter,
+  validateFrontmatter,
+  matchPages,
+  normalizeTarget,
+  buildIndexText,
+  titleOf,
+  ROOT,
+  compileLogDestinations,
+  deadPathsInBody,
+  npmRunMissing,
+  draftPromotionCandidates,
+  ownersNotUpdated,
+} from './wiki-meta.mjs';
 
 let pass = 0;
 const failed = [];
@@ -202,6 +215,53 @@ const exists = (set) => (p) => set.includes(p);
   );
   check('Compile Log: コードブロックの中の例は見ない', dests('## Compile Log\n\n```markdown\n- wiki:example: x\n```\n\n- wiki:seo: y\n') === 'wiki:seo@7');
   check('Compile Log: 節が無ければ空', dests('# T\n\n- wiki:seo: x\n') === '');
+}
+
+// ---- 報告用の検査 ----
+{
+  const has = (set) => (p) => set.includes(p);
+  const dead = (body, exist = []) =>
+    deadPathsInBody(body, has(exist))
+      .map((d) => `${d.path}@${d.line}`)
+      .join(',');
+  check('報告/パス: 実在しないパスを行番号つきで挙げる', dead('実装は `lib/old.ts` にある。', []) === 'lib/old.ts@1');
+  check('報告/パス: 実在するパスは挙げない', dead('実装は `lib/a.ts` にある。', ['lib/a.ts']) === '');
+  check('報告/パス: 同じ行に「削除済み」があれば挙げない', dead('`lib/old.ts` は削除済み。') === '');
+  check('報告/パス: 前後1行に断り書きがあれば挙げない', dead('`lib/old.ts` は\n2026-07-04 に削除済み。') === '' && dead('未実装。\n`lib/old.ts`') === '');
+  check('報告/パス: 2行以上離れた断り書きは効かない', dead('削除済み。\n\n\n`lib/old.ts`') === 'lib/old.ts@4');
+  check(
+    '報告/パス: 断り書きを見出しに持つ節の中は挙げない',
+    dead('## 改名（設計のみ・未実装）\n\n決めた: `data/x.json` を新設\n\n## 次\n\n`lib/old.ts`') === 'lib/old.ts@7',
+  );
+  check('報告/パス: コードブロックの中は見ない', dead('```\n`lib/old.ts`\n```') === '');
+  check('報告/パス: YYYY や * を含むひな形は見ない', dead('`docs/raw/YYYY-MM-DD-x.md` と `scripts/*.mjs`') === '');
+  check(
+    '報告/パス: 動的ルートは [ より前の実在で見る',
+    dead('`src/pages/p/[id]/index.tsx`', ['src/pages/p/']) === '' && dead('`src/pages/q/[id].tsx`', ['src/pages/p/']) === 'src/pages/q/[id].tsx@1',
+  );
+  check('報告/npm run: package.json に無いものを挙げる', npmRunMissing('`npm run a` と `npm run -s b:c` と `npm run a`', { a: 'x' }).join() === 'b:c');
+  const P = (base, meta) => ({ base, meta });
+  check(
+    '報告/draft: code: が全部実在する draft だけを挙げる',
+    draftPromotionCandidates(
+      [
+        P('a.md', { status: 'draft', code: ['x'] }),
+        P('b.md', { status: 'draft', code: ['x', 'y'] }),
+        P('c.md', { status: 'current', code: ['x'] }),
+        P('d.md', { status: 'draft' }),
+      ],
+      has(['x']),
+    ).join() === 'a.md',
+  );
+  const pages = [P('own.md', { code: ['lib/a.ts', 'src/pages/p/'] }), P('other.md', { code: ['lib/b.ts'] }), P('data.md', { code: ['data/t/'] })];
+  const owners = (files) =>
+    ownersNotUpdated(pages, files)
+      .map((o) => `${o.page}:${o.files.join('+')}`)
+      .join(',');
+  check('報告/所有者: コードを変えて所有ページを直していなければ挙げる', owners(['lib/a.ts', 'src/pages/p/x.tsx']) === 'own.md:lib/a.ts+src/pages/p/x.tsx');
+  check('報告/所有者: 同じ変更で所有ページを更新していれば挙げない', owners(['lib/a.ts', 'docs/wiki/own.md']) === '');
+  check('報告/所有者: data/・public/・docs/ の変更は数えない', owners(['data/t/x.json', 'public/data/x.json', 'docs/raw/n.md']) === '');
+  check('報告/所有者: 親ディレクトリの一致（contains）は所有ではない', owners(['lib/']) === '' || !owners(['lib/']).includes('own.md'));
 }
 
 // ---- 見出し ----
