@@ -2,13 +2,17 @@
 type: entity
 scope: 混在
 status: current
-summary: "データの2系統（静的 JSON と Supabase）の全体像。どのファイルが何の正か、大会・選手・score のデータ"
+summary: "静的 JSON と Supabase の2系統のうち、どのファイルが何の正か。大会情報の拡張（代表名簿・競技日程・競技方式・中止・会場）の規約、入力メモ note を公開しない規則、選手名・団体戦の表示と団体戦オーダーの持ち方"
 code:
   - "data/tournaments/"
   - "data/players/"
   - "data/teams/"
   - "src/types/tournament.ts"
-  - "src/types/database.ts"
+  - "lib/tournamentInformationPublic.ts"
+  - "lib/tournamentCancellation.ts"
+  - "lib/categorySchedule.ts"
+  - "lib/categoryFormat.ts"
+  - "src/utils/playerName.ts"
 ---
 # Data Model
 

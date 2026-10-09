@@ -2,11 +2,14 @@
 type: feature
 scope: 混在
 status: current
-summary: "score の試合詳細を本体ドメインのネスト URL で公開し、大会ページ・選手ページと相互リンクする仕様"
+summary: "score の試合詳細を本体のネスト URL で公開し、大会・選手ページと相互リンクする仕様。結合キーは entryNo ペア（団体戦は＋team_rubber_order）、公開 JSON の siteLink、野良試合は noindex、逆引き表。共有ヘルパーの統一は未了"
 code:
   - "lib/siteLink.mjs"
   - "scripts/generate-beta-matches-json.mjs"
-  - "src/pages/beta/matches/"
+  - "scripts/generate-match-reverse-index.mjs"
+  - "lib/matchReverseIndex.ts"
+  - "src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/"
+  - "src/pages/beta/matches/create.tsx"
   - "lib/tournamentHelpers.ts"
   - "lib/tournamentClientHelpers.ts"
   - "lib/betaMatchesStatic.ts"

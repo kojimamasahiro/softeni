@@ -2,12 +2,15 @@
 type: feature
 scope: 固有
 status: current
-summary: "score 機能（ポイント記録・動画レビュー・共有 URL・編集 URL）の画面と導線の現行仕様"
+summary: "score 機能の記録・入力側の現行仕様。画面と導線、ポイント記録（ショートカット・ピック・再生速度・入力時の自動推定・修正導線・ゲーム単位のやり直し）、YouTube 連携、共有 URL。編集 URL とドメイン分離は Draft"
 code:
   - "src/pages/beta/matches/"
   - "src/components/matches/matchInput/"
   - "lib/pointInference.ts"
-  - "scripts/generate-beta-matches-json.mjs"
+  - "lib/serveHelpers.ts"
+  - "src/components/ServeSelection.tsx"
+  - "src/pages/growth/"
+  - "data/growth-featured.json"
 ---
 # Score Feature
 

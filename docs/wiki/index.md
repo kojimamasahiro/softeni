@@ -25,16 +25,16 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 ## overview — 全体の構成と基盤
 
 - [Android](./android.md) `汎用` — Android アプリの実装はこのリポジトリに無い。無関係な別アプリ AdInsight の紹介・法務サイトを adinsight.softeni-pick.com で間借りしている（Play 登録済みのパスは変えない）
-- [Architecture](./architecture.md) `汎用` — Next.js Pages Router＋静的データ＋一部 Supabase の全体構成。レンダリングの決定性、データ層、API 層、デプロイ構成
+- [Architecture](./architecture.md) `汎用` — Next.js Pages Router＋静的データ＋一部 Supabase の全体構成（フロント・score 公開ページ・データ層・API 層・生成スクリプト・デプロイ）と、hydration を避けるレンダリングの決定性の規則
 - [Backend](./backend.md) `汎用` — 本番にサーバーは無い（静的 export）という実行モデル。試合データ・動画レビューの API はローカル開発時だけ動く。静的 JSON 配信、モード切替、認可（ユーザー認証なし）
 - [Deployment](./deployment.md) `汎用` — 静的 export の Cloudflare Pages ビルド設定と prebuild のゲート、GitHub Actions のゲートと報告の分け、ビルド時間の守ること、ビルドキャッシュ。動的機能の選択肢は未実装の検討
 - [Project Overview](./project-overview.md) `固有` — サイト全体の地図。本体サイトの主要領域（大会・選手・チーム・高校・ランキング・STリーグ・ニュース）と score 系機能の導線を示し、詳細は各ページへ案内する
 
 ## entity — データの対象（定義・識別子・置き場）
 
-- [Data Model](./data-model.md) `混在` — データの2系統（静的 JSON と Supabase）の全体像。どのファイルが何の正か、大会・選手・score のデータ
+- [Data Model](./data-model.md) `混在` — 静的 JSON と Supabase の2系統のうち、どのファイルが何の正か。大会情報の拡張（代表名簿・競技日程・競技方式・中止・会場）の規約、入力メモ note を公開しない規則、選手名・団体戦の表示と団体戦オーダーの持ち方
 - [Database](./database.md) `固有` — score 機能の Supabase テーブル（matches・games・points と動画レビュー用の2つ）の列とリレーション。スキーマ全体の定義は repo に無く、型と差分 DDL から復元した推定
-- [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在` — data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。型の正は src/types/tournament.ts
+- [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在` — data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。カテゴリID・参加者IDの命名規約、rank.kind、entries[].type（ドローの席）の判定規約、打ち切りの語彙。型の正は src/types/tournament.ts
 
 ## concept — 規則・判定のしかた
 
@@ -47,7 +47,7 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 
 ## feature — 機能・ページ群の仕様
 
-- [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在` — score 公開面（/beta/matches-results）の保守ガイド。ルーティングと責務、データソース、モード切替、改修時の見方
+- [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在` — score 公開面（/beta/matches-results・/matches）の保守ガイド。1つのコアを2モードで使う構成、ルーティング、公開 JSON の生成と除外項目、ラリー共有リンク、埋め込み動画の規則、改修時の確認箇所。score モードの公開面は未デプロイで、一部は当時のまま
 - [Highschool Pages（高校カテゴリ）](./highschool.md) `学校` — 高校カテゴリの公開ページ方針と現行仕様。全国大会の歴代記録、開催中の表示、主な卒業生、強豪校ランキング
 - [Monetization](./monetization.md) `汎用` — 収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md) `混在` — 速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則、実装状況、milestone の判定規約
@@ -55,10 +55,10 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 - [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校` — 小学生カテゴリ（/primaryschool）の公開ページ方針と仕様。対象は全日本小学生選手権だけ、都道府県・団体ページ
 - [Public Pages](./public-pages.md) `混在` — 公開ページの構成。ルーティング、サイトモード切替、開催前の大会の出し方、中止回の見せ方、トップページ、共通の作り
 - [希少イベント検知（この試合の名場面）](./rare-events.md) `固有` — score のポイント列から希少なプレー（名場面）を検知し、試合詳細に出す仕組み。カテゴリ、データフロー、運用
-- [Score Analysis](./score-analysis.md) `固有` — score のデータを使った試合分析・成長分析の仕様。公開面、データソース、分析ロジック、責務境界
-- [Score Feature](./score-feature.md) `固有` — score 機能（ポイント記録・動画レビュー・共有 URL・編集 URL）の画面と導線の現行仕様
-- [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有` `draft` — score 機能の一般公開・新機能ピボットの検討。未決定の発散フェーズ（需要調査、収益化オプション、差別化の核）
-- [Score Site Link（試合詳細と本体の相互リンク）](./score-site-link.md) `混在` — score の試合詳細を本体ドメインのネスト URL で公開し、大会ページ・選手ページと相互リンクする仕様
+- [Score Analysis](./score-analysis.md) `固有` — score のデータを使った分析の仕様。試合分析と成長分析の責務境界、分析観点と指標、試合詳細の上段（この試合で分かったこと・ポイントの並び・ゲームスコア・見どころ）と下段グラフ、成長記録の比べ方、ビルド時の生成
+- [Score Feature](./score-feature.md) `固有` — score 機能の記録・入力側の現行仕様。画面と導線、ポイント記録（ショートカット・ピック・再生速度・入力時の自動推定・修正導線・ゲーム単位のやり直し）、YouTube 連携、共有 URL。編集 URL とドメイン分離は Draft
+- [Score 一般公開・新機能ピボット検討](./score-general-availability.md) `固有` `draft` — score 機能を一般ユーザーにも広げる検討（未決定の発散フェーズ）。差別化の核（成長のヒントが主軸）、収益化オプション、需要調査、パイロット相関分析、score 関連アイデアの状況一覧
+- [Score Site Link（試合詳細と本体の相互リンク）](./score-site-link.md) `混在` — score の試合詳細を本体のネスト URL で公開し、大会・選手ページと相互リンクする仕様。結合キーは entryNo ペア（団体戦は＋team_rubber_order）、公開 JSON の siteLink、野良試合は noindex、逆引き表。共有ヘルパーの統一は未了
 - [Secondary School Pages（中学カテゴリ）](./secondaryschool.md) `学校` — 中学カテゴリ（/secondaryschool）の公開ページ方針と仕様。teamId の作り方、掲載閾値、都道府県・チームページ
 - [SNS 1日目投稿画像（sns-images / day1）](./sns-day1-images.md) `混在` — 2日制の大会の1日目終了時に X へ投稿する画像・キャプションを、内部データから自動生成するツールの仕様
 - [SNSストーリー生成基盤](./sns-story-platform.md) `汎用` `draft` — SNS 向けストーリー生成基盤の要件。要件定義まで完了、設計は未着手
@@ -70,9 +70,9 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 ## procedure — 繰り返す手順と検算
 
 - [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md) `汎用` — 回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。指標の定義、手順、判定の表
-- [Data Import](./data-import.md) `混在` — 大会・選手・score 公開 JSON をローカルスクリプトで生成する運用。prebuild のゲート、データの正と派生の向き、品質チェック、入力ツール
+- [Data Import](./data-import.md) `混在` — 大会・選手・score 公開 JSON の生成運用。prebuild のゲートと鮮度チェック、データの正と派生の向き、品質チェック、決勝Tの席順（knockoutDraw）、名寄せの取り込み側ルール、国際大会・SPA の読み方、入力ツール
 - [高校SEO M4検証ランブック（GSC事後検証）](./highschool-seo-m4-verification.md) `学校` — 高校カテゴリの SEO 施策が検索で効いたかを Google Search Console で事後検証する手順書
-- [PDF からの取り込み](./pdf-import.md) `汎用` — 大会 PDF から data/ や入力ツール用 JSON を作る道具と、繰り返し踏んだ落とし穴。検算は独立した経路で行う
+- [PDF からの取り込み](./pdf-import.md) `汎用` — 大会 PDF から details や入力ツール用 JSON を作る道具と、姓名の分割、独立した経路での検算、スキャン・アウトライン化 PDF の落とし穴、表記と tempId の扱い
 - [団体戦のオーダーの取り込み](./team-match-order-import.md) `混在` — 団体戦のオーダーを公式記録または score 機能から details の matches に入れる手順と、検算・様式の知見
 - [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md) `混在` — 開催前の大会・国際大会（アジア競技大会・世界ジュニア・国スポ）の露出の残作業を、順番に実行するための一覧
 

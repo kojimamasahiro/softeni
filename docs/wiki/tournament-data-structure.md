@@ -2,10 +2,13 @@
 type: entity
 scope: 混在
 status: current
-summary: "data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。型の正は src/types/tournament.ts"
+summary: "data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。カテゴリID・参加者IDの命名規約、rank.kind、entries[].type（ドローの席）の判定規約、打ち切りの語彙。型の正は src/types/tournament.ts"
 code:
   - "data/tournaments/"
   - "src/types/tournament.ts"
+  - "tools/shared/normalize-core.js"
+  - "tools/tournament3/"
+  - "lib/tournamentAbandonment.ts"
 ---
 # 大会データ JSON の構造（リファレンス）
 

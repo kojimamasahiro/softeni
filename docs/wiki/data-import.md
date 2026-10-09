@@ -2,13 +2,17 @@
 type: procedure
 scope: 混在
 status: current
-summary: "大会・選手・score 公開 JSON をローカルスクリプトで生成する運用。prebuild のゲート、データの正と派生の向き、品質チェック、入力ツール"
+summary: "大会・選手・score 公開 JSON の生成運用。prebuild のゲートと鮮度チェック、データの正と派生の向き、品質チェック、決勝Tの席順（knockoutDraw）、名寄せの取り込み側ルール、国際大会・SPA の読み方、入力ツール"
 code:
   - "scripts/check-tournament-entries.mjs"
+  - "scripts/check-highschool-pipeline-freshness.mjs"
+  - "scripts/highschool/lib/source-hash.mjs"
   - "scripts/normalize-team-names.mjs"
   - "scripts/normalize-prefectures.mjs"
+  - "lib/playerStats/participantAliases.ts"
   - "tools/shared/"
   - "tools/tournament3/"
+  - "tools/roundrobin/"
 ---
 # Data Import
 

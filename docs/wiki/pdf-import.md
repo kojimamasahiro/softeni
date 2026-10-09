@@ -2,9 +2,10 @@
 type: procedure
 scope: 汎用
 status: current
-summary: "大会 PDF から data/ や入力ツール用 JSON を作る道具と、繰り返し踏んだ落とし穴。検算は独立した経路で行う"
+summary: "大会 PDF から details や入力ツール用 JSON を作る道具と、姓名の分割、独立した経路での検算、スキャン・アウトライン化 PDF の落とし穴、表記と tempId の扱い"
 code:
   - "scripts/pdf/"
+  - "scripts/pdf-to-players/"
 ---
 # PDF からの取り込み
 

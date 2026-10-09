@@ -2,15 +2,17 @@
 type: feature
 scope: 混在
 status: current
-summary: "score 公開面（/beta/matches-results）の保守ガイド。ルーティングと責務、データソース、モード切替、改修時の見方"
+summary: "score 公開面（/beta/matches-results・/matches）の保守ガイド。1つのコアを2モードで使う構成、ルーティング、公開 JSON の生成と除外項目、ラリー共有リンク、埋め込み動画の規則、改修時の確認箇所。score モードの公開面は未デプロイで、一部は当時のまま"
 code:
   - "src/pages/beta/matches-results/"
+  - "src/pages/matches/"
   - "src/pages/api/matches/"
   - "lib/siteConfig.ts"
   - "lib/betaMatchesStatic.ts"
-  - "lib/matchAnalysis/"
+  - "lib/pointShare.ts"
   - "src/types/matchAccess.ts"
   - "scripts/generate-beta-matches-json.mjs"
+  - "public/data/beta-matches/"
 ---
 # beta/matches-results / score 公開 保守ガイド
 
