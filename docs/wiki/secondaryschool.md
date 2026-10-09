@@ -1,3 +1,16 @@
+---
+type: feature
+scope: 学校
+status: current
+summary: "中学カテゴリ（/secondaryschool）の仕様。高校と違い性別を URL に入れず「チーム」と呼んで順位づけをしない。ルーティング、teamId の作り方、掲載閾値、都道府県・チームページ、進路（中学→高校）と出身クラブ"
+code:
+  - "src/pages/secondaryschool/"
+  - "data/secondaryschool/"
+  - "scripts/build-secondaryschool-index.mjs"
+  - "scripts/build-secondaryschool-pathways.mjs"
+  - "lib/highschoolFeederSchools.ts"
+  - "lib/secondaryschoolFeederClubs.ts"
+---
 # Secondary School Pages（中学カテゴリ）
 
 > **適用範囲: 学校スポーツ共通**。カテゴリの作り方（掲載閾値・進路・順位づけをしない方針）は

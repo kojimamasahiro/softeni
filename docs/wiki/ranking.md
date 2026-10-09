@@ -1,3 +1,15 @@
+---
+type: concept
+scope: 混在
+status: current
+summary: "年度ランキング（シーズンポイント制）の現行仕様。計算式（tier重み×順位係数、上位3大会を合算）、除外・特殊ルール、パイプライン、バックテストでの較正、内部利用の Elo 副指標と金星（giant-killing）検知"
+code:
+  - "lib/playerStats/aggregators/rankingCompute.ts"
+  - "scripts/playerStats/generate-rankings.ts"
+  - "scripts/ranking/"
+  - "data/ranking-config.json"
+  - "lib/ratingsUpsets.ts"
+---
 # ランキング仕様
 
 > **適用範囲: 混在**。シーズンポイント制・tier・較正の考え方は汎用。対象大会と配点はソフトテニス固有。

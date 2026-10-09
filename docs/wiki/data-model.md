@@ -1,3 +1,18 @@
+---
+type: entity
+scope: 混在
+status: current
+summary: "静的 JSON と Supabase の2系統のうち、どのファイルが何の正か。大会情報の拡張（代表名簿・競技日程・競技方式・中止・会場）の規約、入力メモ note を公開しない規則、選手名・団体戦の表示と団体戦オーダーの持ち方"
+code:
+  - "data/tournaments/"
+  - "data/players/"
+  - "src/types/tournament.ts"
+  - "lib/tournamentInformationPublic.ts"
+  - "lib/tournamentCancellation.ts"
+  - "lib/categorySchedule.ts"
+  - "lib/categoryFormat.ts"
+  - "src/utils/playerName.ts"
+---
 # Data Model
 
 > **適用範囲: 混在**。大会→年度→種目→試合という形と、出典・推測に関する規約は汎用。

@@ -1,3 +1,16 @@
+---
+type: feature
+scope: 固有
+status: current
+summary: "score のデータを使った分析の仕様。試合分析と成長分析の責務境界、分析観点と指標、試合詳細の上段（この試合で分かったこと・ポイントの並び・ゲームスコア・見どころ）と下段グラフ、成長記録の比べ方、ビルド時の生成"
+code:
+  - "lib/matchAnalysis/"
+  - "lib/growthAnalysis/"
+  - "lib/matchRules.ts"
+  - "scripts/check-growth-analysis.mjs"
+  - "src/components/matches/"
+  - "src/components/growth/"
+---
 # Score Analysis
 
 > **適用範囲: ソフトテニス固有**。成長分析・試合分析はソフトテニスのポイント記録が前提。

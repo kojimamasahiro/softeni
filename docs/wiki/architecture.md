@@ -1,3 +1,9 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "Next.js Pages Router＋静的データ＋一部 Supabase の全体構成（フロント・score 公開ページ・データ層・API 層・生成スクリプト・デプロイ）と、hydration を避けるレンダリングの決定性の規則"
+---
 # Architecture
 
 > **適用範囲: 汎用**。構成（Next.js Pages Router ＋ 静的データ ＋ 一部 Supabase）は競技に依存しない。

@@ -1,3 +1,11 @@
+---
+type: concept
+scope: 汎用
+status: current
+summary: "試合のつながり（nextMatchId）を決勝から逆にたどり、表示用のトーナメント表を組み立てる TournamentBracket のロジック。開催前の席順復元（lib/bracketLayout.ts）は別物"
+code:
+  - "src/components/Tournament/"
+---
 # TournamentBracket ロジック概要
 
 > **適用範囲: 汎用**（トーナメント表を持つ競技ならそのまま使える）。

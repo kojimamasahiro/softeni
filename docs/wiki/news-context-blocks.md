@@ -1,3 +1,19 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則と実装状況、milestone の判定規約、プレビュー記事の6ブロックと照合規約、直近の対戦（priorMeetings）、ブラケット復元"
+code:
+  - "lib/newsArticle/"
+  - "scripts/generate-news-drafts.mjs"
+  - "src/pages/news/"
+  - "lib/milestones.ts"
+  - "lib/tournamentRecords.ts"
+  - "lib/careerRecord.ts"
+  - "lib/priorMeetings.ts"
+  - "lib/bracketLayout.ts"
+  - "tools/sns-images/news_og.py"
+---
 # 文脈ブロック / 速報・プレビュー機能
 
 > **適用範囲: 混在**。「文脈ブロックを一次成果物にする」「言えないことは書かない」「照合キーの結合度で
@@ -50,7 +66,7 @@
 | 節目イベント | `lib/milestones.ts` |
 | 通算成績 | `lib/careerRecord.ts` |
 | 直近の対戦 | `lib/priorMeetings.ts` |
-| 記事レコード・ビュー | `lib/newsArticle.ts` / `src/pages/news/*` / `scripts/generate-news-drafts.mjs` |
+| 記事レコード・ビュー | `lib/newsArticle/` / `src/pages/news/*` / `scripts/generate-news-drafts.mjs` |
 | 差し込み | `TournamentContextBlocks.tsx` / `ResultContextBlocks.tsx` / `PlayerCareerHighlights.tsx` |
 
 `historical-winners` は既存の高校歴代ロジック（`lib/highschoolNationalTournaments.ts`）を大会非依存に
@@ -79,7 +95,7 @@
 ## プレビュー記事の構成
 
 curated 注目選手は**廃止**（curated が少なく実質ゼロ件で見出しと中身が乖離していた）。
-掲載エントリー＋前年/直近データの照合だけで決定的に出せる6ブロックを `lib/newsArticle.ts` で算出する。
+掲載エントリー＋前年/直近データの照合だけで決定的に出せる6ブロックを `lib/newsArticle/contextBlocks.ts` で算出する。
 
 | # | ブロック | 中身 |
 |---|---|---|
@@ -119,7 +135,7 @@ curated 注目選手は**廃止**（curated が少なく実質ゼロ件で見出
 ### ④直近大会の好成績者
 
 - 窓は**開催日から3ヶ月以内・同一 `generationId`・最大2大会**で、**`isMajorTitle` を優先**
-  （`findRecentTournaments`）。自大会は除外（前回入賞は②）。閾値は `lib/newsArticle.ts` の定数
+  （`findRecentTournaments`）。自大会は除外（前回入賞は②）。閾値は `lib/newsArticle/contextBlocks.ts` の定数
   （`RECENT_WINDOW_MONTHS` / `RECENT_TOURNAMENT_LIMIT` / `RECENT_ACHIEVERS_PER_CATEGORY`=8）。
 - 候補大会は `index.json` と `local_index.json` の**両方**を読む（地区大会は `local_index` にしか無い）。
 - **`generationId` フィルタは必須**。外すと一般カテゴリの major が高校大会のプレビューを独占し、

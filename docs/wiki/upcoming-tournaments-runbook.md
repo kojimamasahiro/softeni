@@ -1,3 +1,15 @@
+---
+type: procedure
+scope: 混在
+status: current
+summary: "開催前の大会・国際大会の露出の運用と残作業。アジア競技大会2026の結果取り込み（draw.json → build_details.py）、世界ジュニア・国スポ2026の扱いと会期中の手順、残作業 S5〜S8、やらないと決めたこと"
+code:
+  - "tools/asian-games-2026/"
+  - "tools/asian-games-2023/"
+  - "tools/kokutai-2026/"
+  - "scripts/check-upcoming-tournaments.mjs"
+  - "lib/delegation.ts"
+---
 # 開催前の大会・国際大会の露出 実行ランブック
 
 > **適用範囲: 混在**。「新規URLを作らず既存ページで受ける」「開催前の大会を出す」の考え方は汎用。

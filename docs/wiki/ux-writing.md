@@ -1,3 +1,12 @@
+---
+type: concept
+scope: 汎用
+status: current
+summary: "公開ページの日本語 UI 文言のルール。文体、句点、記号と絵文字の禁止（eslint で強制）、用語（収録と掲載の使い分け）、空状態、注記（scopeNote）、リンクテキスト、進行中・エラー"
+code:
+  - "lib/uiText.ts"
+  - "eslint.config.mjs"
+---
 # UX Writing（UI文言ルール）
 
 > **適用範囲: 汎用**。日本語 UI の書き方。競技に依存しない。

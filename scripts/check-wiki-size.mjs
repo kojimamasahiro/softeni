@@ -8,7 +8,8 @@
 // 追記を重ねたページは 4〜7万字まで育っていた。圧縮の手順は docs/prompts/slim-wiki-page.md。
 //
 // CI（.github/workflows/checks.yml）では2つの役割に分けて使う:
-//   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があれば終了コード1
+//   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があるか、wiki の frontmatter が
+//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違えば終了コード1
 //                （誰が見ても直すべきなので止めてよい）
 //   - 報告のみ … 引数なし。文字数の超過を一覧にする（仕様が増えればページは育つので、止めない）
 //
@@ -23,11 +24,16 @@
 //      - ADR の `## Status` 直下が状態語だけになっているか
 //      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
 //      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
+//      - wiki の frontmatter（type / scope / status / summary と任意の code:）が正しいか（ゲート。ADR-024 の P1）
+//      - index.md が frontmatter からの生成物と一致するか（ゲート。ADR-024 の P2。直し方は npm run wiki:index）
+//   文字数と「適用範囲」の行の検査は、frontmatter を除いた本文で行う（メタデータで予算がずれないように）。
 //
 // 実行: node scripts/check-wiki-size.mjs [--strict]
 
 import fs from 'fs';
 import path from 'path';
+
+import { splitFrontmatter, validateFrontmatter, loadWikiPages, buildIndexText } from './lib/wiki-meta.mjs';
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, 'docs');
@@ -77,7 +83,7 @@ function anchorsOf(file) {
   if (!anchorCache.has(file)) {
     const set = new Set();
     let inFence = false;
-    for (const line of fs.readFileSync(file, 'utf-8').split('\n')) {
+    for (const line of splitFrontmatter(fs.readFileSync(file, 'utf-8')).body.split('\n')) {
       if (line.startsWith('```')) inFence = !inFence;
       if (inFence) continue;
       const m = line.match(/^#{1,6}\s+(.*)$/);
@@ -96,7 +102,7 @@ for (const [group, dir] of SIZE_GROUPS) {
   const rows = listMarkdown(dir)
     .filter((file) => !WORK_FILES.has(path.basename(file)))
     .map((file) => {
-      const text = fs.readFileSync(file, 'utf-8');
+      const text = splitFrontmatter(fs.readFileSync(file, 'utf-8')).body;
       return {
         page: path.basename(file),
         chars: [...text].length,
@@ -164,7 +170,7 @@ const wikiFiles = listMarkdown(wikiDir);
 
 // 3-1. 適用範囲の行
 const noScope = wikiFiles.filter((f) => {
-  const head = fs.readFileSync(f, 'utf-8').split('\n').slice(0, 12).join('\n');
+  const head = splitFrontmatter(fs.readFileSync(f, 'utf-8')).body.split('\n').slice(0, 12).join('\n');
   return !SCOPE_PATTERN.test(head);
 });
 console.log(`- 適用範囲の行が無い wiki: ${noScope.length} 件 ${noScope.map((f) => path.basename(f)).join(', ')}`);
@@ -225,4 +231,27 @@ const unlisted = fs.existsSync(sqlDir)
   : [];
 console.log(`- APPLIED.md の台帳に行が無い SQL: ${unlisted.length} 件 ${unlisted.join(', ')}`);
 
-if (strict && (broken.length > 0 || unlisted.length > 0)) process.exit(1);
+// 3-6. wiki の frontmatter（ADR-024 の P1・ゲート）。type / scope / status / summary の形と値、
+// 本文の適用範囲との一致、code: に書いたパスの実在。本文中のパスの存在はゲートにしない（意図的な記述が混じり誤検知が多い）。
+const fmBad = [];
+const fmCodeMissing = [];
+for (const f of wikiFiles) {
+  const r = validateFrontmatter(fs.readFileSync(f, 'utf-8'));
+  const base = path.basename(f);
+  if (r.schema.length > 0) fmBad.push(`${base}（${r.schema.join('、')}）`);
+  if (r.codeMissing.length > 0) fmCodeMissing.push(`${base}（${r.codeMissing.join(', ')}）`);
+}
+console.log(`- frontmatter が不正な wiki: ${fmBad.length} 件 ${fmBad.join(', ')}`);
+console.log(`- code: に実在しないパスがある wiki: ${fmCodeMissing.length} 件 ${fmCodeMissing.join(', ')}`);
+
+// 3-7. index.md が frontmatter からの生成物と一致するか（ADR-024 の P2・ゲート）。
+// 手で直した index が残ると、summary や scope を変えても入口だけ古いままになる（P1 前は41行中2件の印が食い違っていた）。
+// frontmatter が不正で生成できないときは、上の 3-6 が落とすので、ここでは数えない。
+const indexBuilt = buildIndexText(loadWikiPages());
+const indexFile = path.join(DOCS, 'wiki', 'index.md');
+const indexStale = indexBuilt.text !== null && (!fs.existsSync(indexFile) || fs.readFileSync(indexFile, 'utf-8') !== indexBuilt.text);
+console.log(
+  `- index.md が生成物と異なる: ${indexStale ? '1 件 npm run wiki:index で作り直す' : indexBuilt.text === null ? '判定できない（frontmatter を先に直す）' : '0 件'}`,
+);
+
+if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale)) process.exit(1);

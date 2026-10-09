@@ -1,3 +1,19 @@
+---
+type: feature
+scope: 学校
+status: current
+summary: "高校カテゴリの公開ページ方針と現行仕様。学校ページ（年度別メンバー・主な卒業生）、全国大会の歴代記録、開催中の全国大会の表示、強豪校ランキング"
+code:
+  - "src/pages/highschool/"
+  - "lib/highschool.ts"
+  - "lib/highschoolNationalTournaments.ts"
+  - "lib/highschoolRanking.ts"
+  - "lib/highschoolInProgress.ts"
+  - "lib/highschoolAlumni.ts"
+  - "lib/highschoolTeamMatchMembers.ts"
+  - "lib/highschoolBlockMembers.ts"
+  - "data/highschool/"
+---
 # Highschool Pages（高校カテゴリ）
 
 > **適用範囲: 学校スポーツ共通**。都道府県→学校のツリー、メンバー節、歴代記録の作り方は他競技でも使える。

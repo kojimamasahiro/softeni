@@ -1,3 +1,20 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "公開ページの構成と共通の作り。ルーティング、/teams・大会ハブ・年度別結果ページの規則、開催前の大会と中止回の見せ方、トップページ、パンくず・ナビ・llms.txt、サイトモード切替"
+code:
+  - "lib/siteConfig.ts"
+  - "lib/navigation.ts"
+  - "src/components/Breadcrumb.tsx"
+  - "src/pages/index.tsx"
+  - "lib/upcomingInternational.ts"
+  - "lib/championRecords.ts"
+  - "lib/clubTransition.ts"
+  - "lib/teamMatchOrderSummary.ts"
+  - "data/popular-pages.json"
+  - "public/llms.txt"
+---
 # Public Pages
 
 > **適用範囲: 混在**。サイトモード切替・構造化データ・パンくず・OGP の作り方は汎用。

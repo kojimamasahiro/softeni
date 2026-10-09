@@ -1,3 +1,14 @@
+---
+type: entity
+scope: 固有
+status: current
+summary: "score 機能の Supabase テーブル（matches・games・points と動画レビュー用の2つ）の列とリレーション。スキーマ全体の定義は repo に無く、型と差分 DDL から復元した推定"
+code:
+  - "src/types/database.ts"
+  - "lib/supabase.ts"
+  - "lib/supabaseClient.ts"
+  - "docs/sql/"
+---
 # Database
 
 > **適用範囲: ソフトテニス固有**。score 機能のテーブル（ゲーム・ポイント）はソフトテニスの得点方式が前提。

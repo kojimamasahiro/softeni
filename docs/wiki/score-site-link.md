@@ -1,3 +1,19 @@
+---
+type: feature
+scope: 混在
+status: current
+summary: "score の試合詳細を本体のネスト URL で公開し、大会・選手ページと相互リンクする仕様。結合キーは entryNo ペア（団体戦は＋team_rubber_order）、公開 JSON の siteLink、野良試合は noindex、逆引き表。共有ヘルパーの統一は未了"
+code:
+  - "lib/siteLink.mjs"
+  - "scripts/generate-beta-matches-json.mjs"
+  - "scripts/generate-match-reverse-index.mjs"
+  - "lib/matchReverseIndex.ts"
+  - "src/pages/tournaments/[generation]/[tournamentId]/[year]/[gameCategory]/[ageCategory]/[gender]/matches/"
+  - "src/pages/beta/matches/create.tsx"
+  - "lib/tournamentHelpers.ts"
+  - "lib/tournamentClientHelpers.ts"
+  - "lib/betaMatchesStatic.ts"
+---
 # Score Site Link（試合詳細と本体の相互リンク）
 
 > **適用範囲: 混在**。「同じ実体に複数 URL があるときの canonical の寄せ方」は汎用。大会・試合の紐付けはソフトテニス固有。

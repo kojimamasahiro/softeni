@@ -1,3 +1,15 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "静的 export の Cloudflare Pages ビルド設定と prebuild のゲート、GitHub Actions のゲートと報告の分け、ビルド時間の守ること、ビルドキャッシュ。動的機能の選択肢は未実装の検討"
+code:
+  - "wrangler.toml"
+  - "next.config.mjs"
+  - ".github/workflows/"
+  - ".githooks/"
+  - "scripts/playerStats/cache-sync.mjs"
+---
 # Deployment
 
 > **適用範囲: 汎用**。Cloudflare Pages への配信・ビルド設定は競技に依存しない。

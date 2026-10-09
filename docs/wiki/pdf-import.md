@@ -1,3 +1,12 @@
+---
+type: procedure
+scope: 汎用
+status: current
+summary: "大会 PDF から details や入力ツール用 JSON を作る道具と、姓名の分割、独立した経路での検算、スキャン・アウトライン化 PDF の落とし穴、表記と tempId の扱い"
+code:
+  - "scripts/pdf/"
+  - "scripts/pdf-to-players/"
+---
 # PDF からの取り込み
 
 > **適用範囲: 汎用**。「テキスト層の有無をまず数える」「別ページ・別種目・既存データで独立に検算する」

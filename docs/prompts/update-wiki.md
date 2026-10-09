@@ -7,6 +7,9 @@ docs/raw と現在の実装を確認し、docs/wiki を更新してください�
 - 古い内容は Deprecated と明記する
 - 重要な設計判断があれば ADR 候補を提案する
 - docs/raw は削除・上書きしない
+- wiki ページを新設・書き直すときは、先頭の frontmatter（`type` / `scope` / `status` / `summary` と任意の `code:`）を
+  付ける／残す。形式と値は [ADR-024](../adr/ADR-024-llm-wiki-operating-model.md)、`npm run check:wiki -- --strict` が見る
+  （2026-10-09 に導入。本文の「適用範囲」の行も当面は残し、`scope` と食い違わないようにする）
 - raw の内容のうち wiki に反映しなかった部分は、黙って捨てずに理由（重複／推測レベルが低い／
   対象ページのスコープ外／新しい情報で置き換え、等）とともに raw ファイル末尾の
   「Compile Log」セクションに追記する。読み手が「検討した上で除外した」のか

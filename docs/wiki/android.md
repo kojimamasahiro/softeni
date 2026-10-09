@@ -1,3 +1,13 @@
+---
+type: overview
+scope: 汎用
+status: current
+summary: "Android アプリの実装はこのリポジトリに無い。無関係な別アプリ AdInsight の紹介・法務サイトを adinsight.softeni-pick.com で間借りしている（Play 登録済みのパスは変えない）"
+code:
+  - "adinsight-site/"
+  - "scripts/build-adinsight-site.mjs"
+  - "wrangler.adinsight.toml"
+---
 # Android
 
 > **適用範囲: 汎用**。このリポジトリに Android 実装は無いという記録と、間借りしている別アプリのサイト。競技に依存しない。
