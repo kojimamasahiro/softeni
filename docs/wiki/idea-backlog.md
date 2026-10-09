@@ -2,7 +2,7 @@
 type: index
 scope: 汎用
 status: current
-summary: "Idea Backlog（発展候補アイデア）の所在地インデックスと一言サマリ。詳細は各エリアページの表が正"
+summary: "Idea Backlog（発展候補アイデア）の所在地インデックスと一言サマリ。詳細は各エリアページの表が正で、ここは同期用の一言のみ。書き方の規則（1アイデア40字以内・括弧内を書き換える）もここ"
 ---
 # Idea Backlog 索引
 

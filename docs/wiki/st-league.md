@@ -2,12 +2,14 @@
 type: feature
 scope: 固有
 status: current
-summary: "STリーグ（実業団リーグ）の公開ページとデータ構造。ディレクトリ構成、共有モジュール、データ追加手順"
+summary: "STリーグ（実業団リーグ）の公開ページとデータ構造。ディレクトリ構成と division、共有モジュール、各ページ（年度ハブ・対戦詳細・チーム・分析・歴代）、チームページ連携と年度別メンバー、大会一覧との連携、データ追加手順"
 code:
   - "src/pages/st-league/"
   - "src/utils/st-league.ts"
   - "src/utils/team-data-aggregator.ts"
+  - "src/pages/teams/[teamId]/index.tsx"
   - "data/st-league/"
+  - "data/tournaments/information/st-league.json"
 ---
 # STリーグ ページ / データモデル
 

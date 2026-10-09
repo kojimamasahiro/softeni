@@ -3,8 +3,6 @@ type: overview
 scope: 固有
 status: current
 summary: "サイト全体の地図。本体サイトの主要領域（大会・選手・チーム・高校・ランキング・STリーグ・ニュース）と score 系機能の導線を示し、詳細は各ページへ案内する"
-code:
-  - "lib/siteConfig.ts"
 ---
 # Project Overview
 

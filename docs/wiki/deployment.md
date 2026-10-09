@@ -6,7 +6,6 @@ summary: "静的 export の Cloudflare Pages ビルド設定と prebuild のゲ�
 code:
   - "wrangler.toml"
   - "next.config.mjs"
-  - "next-sitemap.config.js"
   - ".github/workflows/"
   - ".githooks/"
   - "scripts/playerStats/cache-sync.mjs"

@@ -2,12 +2,13 @@
 type: concept
 scope: 混在
 status: current
-summary: "選手を氏名で一意に識別する規則。姓名の分割ゆれ、別人判定、pid の4区切り、改名の対応表（設計のみ）"
+summary: "選手を氏名で一意に識別する規則。姓名の分割ゆれ（検出器 A/B/C）、同姓同名の別人判定（D/E/F）、改名の対応表（設計のみ・未実装）、チームの年度別メンバーの pid 重複、個人戦の pid は4区切り"
 code:
   - "scripts/check-name-splits.mjs"
   - "scripts/normalize-name-splits.mjs"
   - "scripts/build-player-homonyms.py"
-  - "data/players/"
+  - "data/players/name-split-aliases.json"
+  - "data/players/homonyms.json"
 ---
 # 選手の名寄せと識別（氏名）
 

@@ -2,11 +2,13 @@
 type: procedure
 scope: 混在
 status: current
-summary: "団体戦のオーダーを公式記録または score 機能から details の matches に入れる手順と、検算・様式の知見"
+summary: "団体戦のオーダーを公式記録 PDF または score 機能から details の matches に入れる手順。インターハイ・高校選抜（機関誌・アウトライン化を含む）の様式ごとの読み方、検算、出典の誤記の扱い"
 code:
   - "scripts/pdf/team_match_details.py"
   - "scripts/pdf/highschool_championship_team_matches.py"
+  - "scripts/pdf/highschool_championship_team_matches_outlined.py"
   - "scripts/pdf/highschool_senbatsu_team_matches.py"
+  - "scripts/pdf/highschool_senbatsu_kikanshi_team_matches.py"
   - "scripts/score-team-matches.py"
   - "scripts/check-team-match-details.mjs"
 ---

@@ -312,10 +312,27 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
     **`code:` の誤帰属が1件あった**: tournament-bracket-logic が `lib/bracketLayout.ts` を「別物」と断っているのに、
     本文のパス言及から機械的に拾った P1 の初期値がそれを `code:` に入れていた。「対比のために名前を挙げただけのパス」を拾う型の誤りで、
     「別物」の語が言及の隣の行にあったため、言及と同じ行だけを見る機械検査をすり抜けた（前後2行まで広げると検出できる）。
-  - **未検証の範囲**: 全文を読んだのは上の6ページだけ。残り30ページの `summary` は冒頭と見出しからの案、`code:` は本文の言及から機械的に作った初期値で、
-    項目を1つずつ読んで検証してはいない。機械検査（本文の言及あり135／なし12／対比語の文脈2→内容確認で誤検知、前後2行の窓で7件→誤りは上の1件だけ）は済み。
-    `code:` を本文の言及から機械的に作ると、対比・否定の文脈のパスを拾う。P4 で wiki-compile の手順に「`code:` は所有するもの。
-    対比で名前が出ただけのパスは入れない」を書く。
+  - **全ページの検証（2026-10-10）**: 残りの全ページを全文で読み、`summary` と `code:` を1つずつ検証して直した
+    （全文を読んだのは 41 ページ。`index.md` は生成物）。判断の基準は「`code:` は**そのページが定義・決定している対象**に絞る。
+    言及しているだけのパスは `wiki:for` の『本文で言及』が拾う」。
+    - 直したこと: 所有者でないパスを外した（architecture の `lib/siteConfig.ts`、data-model の `database.ts`、score-feature の生成スクリプト、
+      secondaryschool の `clubTransition.ts`、circulation-verification の4つなど）。本文が所有を宣言しているのに落ちていたパスを足した
+      （news-context-blocks の `lib/bracketLayout.ts`、monetization の `consentRegion.ts`、seo の sitemap 2つと構造化データの共通ヘルパー、
+      tournaments-local の `/tournaments/block`、players-pages の生成スクリプトなど）。`summary` は最重要の事実が欠けていたものを補った。
+    - 結果: `code:` を持つページ 33、項目 205（種類 199）。同じ項目を複数ページが持つのは 6 種で、いずれも同じファイルの別側面を書く正当な共有
+      （data/tournaments/ の data-model と tournament-data-structure など）。`wiki:for` を main の直近120コミット（155ペア）で再測定すると、
+      `code:` だけで再現率 32% → 34%・適合率 40% → 43%、本文の言及込みで 38%・31%。**効いたのは再現率ではなく適合率**（誤った所有の除去）。
+      パスで引ける範囲の天井が 35〜40% 前後という上の測定は変わらない。
+    - `code:` を本文の言及から機械的に作ると、対比・否定の文脈のパスを拾う（tournament-bracket-logic の `lib/bracketLayout.ts`）。
+      P3 の wiki-compile の手順に「`code:` は所有するもの。対比で名前が出ただけのパスは入れない」を書く。
+    - 本文を読んで気づいたずれ（本文は直していない。意味 lint の指摘として P3 以降で扱う）:
+      (1) `tournament-bracket-logic.md` は `lib/bracketLayout.ts` の仕様の置き場を pdf-import と tournament-data-structure と案内するが、
+      専用節があるのは news-context-blocks（「ブラケット復元」）。(2) `open-questions.md` の改名対応表の項目は設計の置き場を team-player-identity と書くが、
+      2026-09-18 の分割で player-name-identity に移っている。(3) `beta-matches-results.md` は冒頭で「内容は当時のまま・実装との照合は未実施」と自認している。
+      (4) `score-site-link.md` は現状仕様と設計ドラフトが混ざる（open-questions にも同旨の項目）。
+    - **運用の宿題（本文のずれではない）**: `highschool-seo-m4-verification.md` の「2026年9月末の平常期チェック」と、
+      `circulation-verification.md` の「2026年9月（9/1〜9/28）のベースライン取得」は、今日（2026-10-10）時点で実施記録がファイル名の範囲では見当たらない
+      （raw にあるのは 8/15 の `m4-gsc-review` のみ）。
 - [x] P2 `wiki:index` ＋ `wiki:for`（2026-10-09・ブランチ `claude/llm-wiki-operating-model`）
   - 共有部品 `scripts/lib/wiki-meta.mjs`（frontmatter の解析・検証、`wiki:for` の一致、index の生成）。P1 で `check-wiki-size.mjs` に直書きした解析をここへ移した。
     テストは `scripts/lib/wiki-meta.test.mjs`（48件。前方一致が `/` で区切られること、壊れた frontmatter の各種、index の決定性など）で、CI に1ステップ足した。

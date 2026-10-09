@@ -2,7 +2,7 @@
 type: index
 scope: 混在
 status: current
-summary: "wiki 全体の未解決の問いの唯一の置き場。各ページの Open Questions 節はここへのリンク1行"
+summary: "wiki 全体の未解決の問いの唯一の置き場（各ページの Open Questions 節はここへのリンク1行）。運用・データの整合・大会データ・検査・SEO・収益化・ビルド・score 機能・ページ別の章立てで、解決したら本文から外す"
 ---
 # Open Questions
 

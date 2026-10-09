@@ -2,11 +2,17 @@
 type: feature
 scope: 混在
 status: current
-summary: "地方大会（都道府県単位）の結果への導線ページ群と掲載運用。/tournaments/local の仕様"
+summary: "地方大会の導線ページ群の仕様と掲載運用。/tournaments/local（都道府県）と /tournaments/block（地区大会）、使用データと表示条件、source of truth、候補検知フロー（2026-09-12 に停止）"
 code:
   - "src/pages/tournaments/local/"
+  - "src/pages/tournaments/block/"
   - "src/components/tournaments/"
+  - "data/tournaments/local_index.json"
+  - "data/tournaments/blocks.json"
+  - "data/tournaments/federations.json"
   - "data/local-sources/"
+  - "scripts/crawl-local-tournaments.mjs"
+  - "scripts/apply-accepted-qualifiers.mjs"
   - "scripts/normalize-local-tournament-candidate.mjs"
 ---
 # Tournaments Local

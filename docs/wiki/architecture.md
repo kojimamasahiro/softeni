@@ -3,9 +3,6 @@ type: overview
 scope: 汎用
 status: current
 summary: "Next.js Pages Router＋静的データ＋一部 Supabase の全体構成（フロント・score 公開ページ・データ層・API 層・生成スクリプト・デプロイ）と、hydration を避けるレンダリングの決定性の規則"
-code:
-  - "next.config.mjs"
-  - "wrangler.toml"
 ---
 # Architecture
 

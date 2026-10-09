@@ -6,7 +6,6 @@ summary: "静的 JSON と Supabase の2系統のうち、どのファイルが�
 code:
   - "data/tournaments/"
   - "data/players/"
-  - "data/teams/"
   - "src/types/tournament.ts"
   - "lib/tournamentInformationPublic.ts"
   - "lib/tournamentCancellation.ts"

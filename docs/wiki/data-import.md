@@ -7,8 +7,6 @@ code:
   - "scripts/check-tournament-entries.mjs"
   - "scripts/check-highschool-pipeline-freshness.mjs"
   - "scripts/highschool/lib/source-hash.mjs"
-  - "scripts/normalize-team-names.mjs"
-  - "scripts/normalize-prefectures.mjs"
   - "lib/playerStats/participantAliases.ts"
   - "tools/shared/"
   - "tools/tournament3/"

@@ -2,13 +2,19 @@
 type: concept
 scope: 混在
 status: current
-summary: "チーム名・都道府県の正準化と名寄せの運用、チームの一意な識別。機械は提案まで、統合は人が決める"
+summary: "チーム名・都道府県の正準化と名寄せの運用。機械は候補までで統合は人が決める（ADR-019）、alias の大会スコープ、異体字は照合と表示を分ける、判断台帳、実行順序とヘルスチェック"
 code:
   - "scripts/normalize-prefectures.mjs"
+  - "scripts/normalize-team-names.mjs"
+  - "scripts/normalize-team-spacing.mjs"
   - "scripts/build-team-master.mjs"
   - "scripts/build-team-merge-candidates.mjs"
+  - "scripts/apply-auto-merges.mjs"
+  - "scripts/undo-team-merge.mjs"
+  - "scripts/check-identity-health.mjs"
   - "scripts/lib/team-core.mjs"
   - "scripts/lib/kanji-variants.mjs"
+  - "data/tournaments/team-name-aliases.json"
   - "data/teams/"
 ---
 # チーム・選手の名寄せと識別
