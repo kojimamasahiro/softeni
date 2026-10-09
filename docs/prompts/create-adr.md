@@ -1,8 +1,7 @@
-指定された設計判断について ADR を作成してください。
-以下を守ってください:
+# create-adr（skill `wiki-compile` へ移した）
 
-- 重要判断のみADR化する
-- 実装済みか構想段階かを明記する
-- 代替案と捨てた理由を書く
-- 関連ファイルを列挙する
-- 不明点は Open Questions に残す
+ADR の作成手順は 2026-10-10 に skill へ移した（[ADR-024](../adr/ADR-024-llm-wiki-operating-model.md) の P3）。
+手順の本体: [.claude/skills/wiki-compile/SKILL.md](../../.claude/skills/wiki-compile/SKILL.md)
+（「ADR の要否と書き方」の節）
+
+このファイルは、docs/raw や AGENTS.md からのリンクを壊さないために残している。新しく手順を足すときは skill 側に書く。
