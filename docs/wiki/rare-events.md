@@ -2,7 +2,7 @@
 type: feature
 scope: 固有
 status: current
-summary: "score のポイント列から希少なプレー（名場面）を検知し、試合詳細に出す仕組み。カテゴリ、データフロー、運用"
+summary: "score のポイント列から希少なプレー（名場面）を検知し、試合詳細の「見どころの場面」とサイト記録一覧（/matches/highlights）に出す仕組み。判定スコープ、6カテゴリ、データフロー、運用、パターン発見ハーネス"
 code:
   - "lib/rareEvents.mjs"
   - "lib/rareEventDiscovery.mjs"
@@ -10,6 +10,7 @@ code:
   - "scripts/generate-rare-events.mjs"
   - "scripts/rare-events-report.mjs"
   - "scripts/rare-events-discover.mjs"
+  - "src/pages/matches/highlights.tsx"
 ---
 # 希少イベント検知（この試合の名場面）
 

@@ -2,11 +2,14 @@
 type: feature
 scope: 汎用
 status: current
-summary: "年度別結果ページの「注目ポイント」を、LLM 執筆＋機械照合で公開する仕組み。4つの工程、公開の強制、落とし穴"
+summary: "年度別結果ページの「注目ポイント」を LLM 執筆＋機械照合で公開する仕組みの、サイト側の運用。データの置き場、4つの工程、prebuild の公開ゲート、照合が守らない範囲、進行中と完了の書き分け。kind 一覧は docs/story-yaml が正"
 code:
   - "src/components/ResultContextBlocks.tsx"
   - "scripts/check-tournament-insights.mjs"
+  - "scripts/generate-story-yaml.mjs"
+  - "scripts/verify-story-text.mjs"
   - "data/tournament-insights/"
+  - "docs/story-yaml/"
 ---
 # 大会インサイト（結果ページの「注目ポイント」）
 

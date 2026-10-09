@@ -2,14 +2,17 @@
 type: feature
 scope: 混在
 status: current
-summary: "速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則、実装状況、milestone の判定規約"
+summary: "速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則と実装状況、milestone の判定規約、プレビュー記事の6ブロックと照合規約、直近の対戦（priorMeetings）、ブラケット復元"
 code:
   - "lib/newsArticle/"
   - "scripts/generate-news-drafts.mjs"
+  - "src/pages/news/"
   - "lib/milestones.ts"
   - "lib/tournamentRecords.ts"
   - "lib/careerRecord.ts"
   - "lib/priorMeetings.ts"
+  - "lib/bracketLayout.ts"
+  - "tools/sns-images/news_og.py"
 ---
 # 文脈ブロック / 速報・プレビュー機能
 

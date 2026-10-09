@@ -2,10 +2,11 @@
 type: feature
 scope: 混在
 status: current
-summary: "2日制の大会の1日目終了時に X へ投稿する画像・キャプションを、内部データから自動生成するツールの仕様"
+summary: "2日制の大会の1日目終了時に X へ投稿する画像・キャプションを内部データから自動生成するツールの仕様（1日目・完結報告・CLI）。年度別結果ページの OGP 画像（ベスト16のトーナメント表）の生成と運用も含む"
 code:
   - "tools/sns-images/"
   - "lib/tournamentOgImage.ts"
+  - "data/tournaments/og-images.json"
 ---
 # SNS 1日目投稿画像（sns-images / day1）
 
