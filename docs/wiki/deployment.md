@@ -33,7 +33,7 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
      （[ADR-020](../adr/ADR-020-team-match-rubber-details.md)）→ `check-tournament-insights`
      （[ADR-012](../adr/ADR-012-llm-authored-insights-with-machine-verification.md) の公開条件）→
      `check-highschool-pipeline-freshness` → `check-name-splits --strict`。**ここで落ちるとビルドが止まる**（意図的な門番）
-     鮮度チェックは push 前にも `.githooks/pre-push` で走る（生成物が古い・未コミットなら push を止める。`npm install` の `prepare` が `core.hooksPath` を設定。飛ばすときは `--no-verify`）
+     鮮度チェックは push 前にも `.githooks/pre-push` で走る（生成物が古い・未コミットなら push を止める。`npm install` の `prepare` が `core.hooksPath` を設定。飛ばすときは `--no-verify`）。同じフックが docs の検査（`npm run check:wiki -- --strict`。リンク切れ・frontmatter・`index.md` の鮮度・Compile Log の行き先など。約0.5秒）も走らせる
   2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（生成の後で `save`）
   3. **生成**: players / playerStats facts / 分析 / beta-matches / 逆引き索引 / rare-events / rankings →
      `secondaryschool:build` → `primaryschool:build` → `university:pathways`
@@ -57,7 +57,8 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
 | 置けるもの | ゲートのみ（失敗＝デプロイ停止） | **ゲートと報告を分ける**。報告はデプロイに影響しない |
 
 - **ゲート**と**報告のみ**の一覧は `.github/workflows/checks.yml` が正（各ステップに追加日と理由のコメントがある）。
-  docs のリンク切れと skill リンクの同期もゲート、docs の文字数・識別の要対応・大会情報の残タスクは報告のみ。
+  docs はリンク切れ・SQL 台帳・wiki の frontmatter と `code:`・`index.md` の鮮度・Compile Log の行き先と、skill リンクの同期がゲート。
+  docs の文字数・規約（孤立・本文のパスなど）・PR の docs 同期（コードを変えたが所有ページが未更新）・識別の要対応・大会情報の残タスクは報告のみ。
 - 報告側に置いた検出器は、解消したらゲートへ昇格させる（`verify-bracket-layout` / `check-team-id-alignment` はこの経路で昇格済み）。
 - `permissions: contents: read`。**リポジトリへ書き戻す仕事は `review-snapshot.yml` に分ける**（ゲートに push 権限を持たせない）。
 - Python の回帰テスト（`scripts/pdf-to-players` / `scripts/venue-agent` の `test_regression.py`）は

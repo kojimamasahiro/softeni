@@ -28,8 +28,8 @@ summary: "wiki 全体の未解決の問いの唯一の置き場（各ページ�
   同じ高校から同じ大学へ複数人、などの相互裏付けで `basis` を細かくできるか。
 - wiki → raw の参照が「バッククォートのパス表記」と Markdown リンクで混在し、到達性を機械チェックできない。
 - 中断案件の「再開トリガー」を統一フォーマットで持たせるか（最初の適用先候補は `docs/ui/**` の M5＝トークン導入）。
-- `npm run check:wiki` の報告のみの項目（文字数・適用範囲・孤立・ADR Status・Compile Log）を**ゲートに上げるか**
-  （リンク切れと SQL 台帳の漏れは既にゲート。[raw](../raw/2026-09-19-docs-layer-cleanup.md)）。
+- `npm run check:wiki` の報告のみの項目（文字数・孤立・ADR Status・Compile Log の欠落・本文のパス・所有ページの未更新）を**ゲートに上げるか**
+  （リンク切れ・SQL 台帳・frontmatter・`index.md`・Compile Log の行き先は既にゲート。昇格は wiki-lint の「同種の指摘が2回出たら」の規則で決める。[raw](../raw/2026-09-19-docs-layer-cleanup.md)）。
 
 ## 発展候補アイデア一覧（Idea Backlog・プロジェクト運用/メタ）
 
