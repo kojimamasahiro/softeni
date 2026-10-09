@@ -9,7 +9,7 @@
 //
 // CI（.github/workflows/checks.yml）では2つの役割に分けて使う:
 //   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があるか、wiki の frontmatter が
-//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違えば終了コード1
+//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違うか、Compile Log の行き先が実在しなければ終了コード1
 //                （誰が見ても直すべきなので止めてよい）
 //   - 報告のみ … 引数なし。文字数の超過を一覧にする（仕様が増えればページは育つので、止めない）
 //
@@ -25,6 +25,7 @@
 //      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
 //      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
 //      - wiki の frontmatter（type / scope / status / summary と任意の code:）が正しいか（ゲート。ADR-024 の P1）
+//      - raw の Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在するか（ゲート。ADR-024 の P3）
 //      - index.md が frontmatter からの生成物と一致するか（ゲート。ADR-024 の P2。直し方は npm run wiki:index）
 //   文字数と「適用範囲」の行の検査は、frontmatter を除いた本文で行う（メタデータで予算がずれないように）。
 //
@@ -33,7 +34,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { splitFrontmatter, validateFrontmatter, loadWikiPages, buildIndexText } from './lib/wiki-meta.mjs';
+import { splitFrontmatter, validateFrontmatter, loadWikiPages, buildIndexText, compileLogDestinations } from './lib/wiki-meta.mjs';
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, 'docs');
@@ -254,4 +255,19 @@ console.log(
   `- index.md が生成物と異なる: ${indexStale ? '1 件 npm run wiki:index で作り直す' : indexBuilt.text === null ? '判定できない（frontmatter を先に直す）' : '0 件'}`,
 );
 
-if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale)) process.exit(1);
+// 3-8. raw の Compile Log の行き先（`wiki:<ページ>` / `ADR-<番号>`）が実在するか（ADR-024 の P3・ゲート）。
+// 書式は .claude/skills/wiki-compile/references/compile-log.md。この2つだけを見る（旧書式・自由記述の行は見ない）。
+// 行き先が消えた・綴りを誤った Compile Log は、「検討した上で反映した」という記録が空を指す。
+const adrFiles = fs.existsSync(path.join(DOCS, 'adr')) ? fs.readdirSync(path.join(DOCS, 'adr')) : [];
+const badDest = [];
+for (const file of listMarkdown(path.join(DOCS, 'raw'))) {
+  for (const d of compileLogDestinations(fs.readFileSync(file, 'utf-8'))) {
+    const ok = d.kind === 'wiki' ? fs.existsSync(path.join(DOCS, 'wiki', `${d.name}.md`)) : adrFiles.some((b) => b.startsWith(`ADR-${d.name}-`));
+    if (!ok) badDest.push(`${path.basename(file)}:${d.line}（${d.kind === 'wiki' ? 'wiki:' : 'ADR-'}${d.name}）`);
+  }
+}
+console.log(`- Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在しない raw: ${badDest.length} 件 ${badDest.join(', ')}`);
+
+if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0)) {
+  process.exit(1);
+}

@@ -122,8 +122,9 @@ jobs:
       # （point-pick.sql の行が漏れていた。docs/raw/2026-09-30-llm-wiki-lint.md）。
       # 2026-10-09 に wiki の frontmatter（必須項目・値・code: の実在）と、index.md が frontmatter からの
       # 生成物と一致するかもゲートに足した（ADR-024 の P1・P2）。index が古いときは npm run wiki:index。
+      # 2026-10-10 に raw の Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在するかも足した（P3）。
       # 既定の shell は pipefail なので、パイプしても check:wiki の終了コードで落ちる。
-      - name: docs のリンク切れ・SQL 台帳・wiki の frontmatter と index
+      - name: docs のリンク切れ・SQL 台帳・wiki の frontmatter と index・Compile Log の行き先
         run: npm run -s check:wiki -- --strict | sed -n '/^# リンク切れ/,$p'
 
       # 2026-10-09 追加。frontmatter の解析・検証、wiki:for の前方一致、index の生成の回帰テスト。

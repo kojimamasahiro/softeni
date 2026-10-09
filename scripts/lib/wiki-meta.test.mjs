@@ -8,7 +8,7 @@
 //   - index.md の生成（type 順・ファイル名順・index.md 自身を除く・draft の印・同じ入力なら同じ出力・不正なページがあれば作らない）
 //
 // 実行: node scripts/lib/wiki-meta.test.mjs
-import { splitFrontmatter, validateFrontmatter, matchPages, normalizeTarget, buildIndexText, titleOf, ROOT } from './wiki-meta.mjs';
+import { splitFrontmatter, validateFrontmatter, matchPages, normalizeTarget, buildIndexText, titleOf, ROOT, compileLogDestinations } from './wiki-meta.mjs';
 
 let pass = 0;
 const failed = [];
@@ -173,6 +173,35 @@ const exists = (set) => (p) => set.includes(p);
   check('index: frontmatter が不正なページがあれば作らず、問題を挙げる', broken.text === null && broken.problems[0].startsWith('bad.md'));
   const nometa = buildIndexText([{ base: 'x.md', title: 'x', errors: [], meta: null }]);
   check('index: frontmatter の無いページも問題として挙げる', nometa.text === null && nometa.problems.length === 1);
+}
+
+// ---- Compile Log の行き先 ----
+{
+  const dests = (t) =>
+    compileLogDestinations(t)
+      .map((d) => `${d.kind}:${d.name}@${d.line}`)
+      .join(',');
+  const note = (log) => `# T\n\n本文\n\n## Compile Log\n\n${log}\n`;
+  check(
+    'Compile Log: wiki:<ページ名> と ADR-<番号> を取り出す',
+    dests(note('- wiki:database: 列\n- ADR-023: 判断3つ')) === 'wiki:database@7,adr:023@8',
+    dests(note('- wiki:database: 列\n- ADR-023: 判断3つ')),
+  );
+  check('Compile Log: バッククォートで囲んでもよい', dests(note('- `wiki:seo`: x\n- `ADR-024`: y')) === 'wiki:seo@7,adr:024@8');
+  check('Compile Log: .md は付けても付けなくてもよい', dests(note('- wiki:data-model.md: x')) === 'wiki:data-model@7');
+  check('Compile Log: 全角コロンも区切りにできる', dests(note('- wiki:seo： x')) === 'wiki:seo@7');
+  check(
+    'Compile Log: 旧書式・自由記述・落とした(…)・AGENTS.md は見ない',
+    dests(note('- wiki（seo.md）へ: x\n- ADR-023 へ: y\n- 落とした(重複): wiki:seo に既にある\n- `AGENTS.md`（未）: z')) === '',
+  );
+  check('Compile Log: 節の外の行は見ない', dests('## 概要\n\n- wiki:seo: x\n\n## Compile Log\n\n- wiki:ranking: y\n') === 'wiki:ranking@7');
+  check('Compile Log: 次の同じ深さの見出しで節が終わる', dests('## Compile Log\n\n- wiki:seo: a\n\n## 次\n\n- wiki:ranking: b\n') === 'wiki:seo@3');
+  check(
+    'Compile Log: ### の「Compile Log（追記）」も節として扱う',
+    dests('## Compile Log\n\n- wiki:seo: a\n\n### Compile Log（追記2）\n\n- ADR-012: b\n') === 'wiki:seo@3,adr:012@7',
+  );
+  check('Compile Log: コードブロックの中の例は見ない', dests('## Compile Log\n\n```markdown\n- wiki:example: x\n```\n\n- wiki:seo: y\n') === 'wiki:seo@7');
+  check('Compile Log: 節が無ければ空', dests('# T\n\n- wiki:seo: x\n') === '');
 }
 
 // ---- 見出し ----
