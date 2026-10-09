@@ -2,12 +2,7 @@
 type: procedure
 scope: 汎用
 status: current
-summary: "回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。指標の定義、手順、判定の表"
-code:
-  - "lib/analytics.ts"
-  - "lib/ads.ts"
-  - "src/pages/_app.tsx"
-  - "src/components/CookieConsent.tsx"
+summary: "回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。主指標はモジュールCTR（イベント比）、対照群との差の差で判定、ベースラインは平常期。測定期間中は対象2種別の広告設定を触らない"
 ---
 # 回遊検証ランブック（GA4 / AdSense）
 

@@ -2,11 +2,15 @@
 type: concept
 scope: 混在
 status: current
-summary: "ページ種別の間で検索語が重なるカニバリの制御ルール。重複マップ、title の字数予算、構造化データ、sitemap の運用"
+summary: "ページ種別の間で検索語が重なるカニバリの制御ルール（制御手段、守ること、重複マップ #1〜16、noindex 選別の閾値）、大会名・機能名の検索語の乖離、title の字数予算、計測の原則、構造化データ、sitemap の運用"
 code:
   - "scripts/filter-noindex-from-sitemap.mjs"
+  - "scripts/sort-sitemaps.mjs"
+  - "next-sitemap.config.js"
   - "lib/teamIndexing.ts"
   - "lib/tournamentSearchNames.ts"
+  - "lib/highschoolNationalTournamentMeta.ts"
+  - "lib/sportsEventJsonLd.ts"
 ---
 # SEO カニバリゼーション / 重複制御
 

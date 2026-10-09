@@ -2,13 +2,17 @@
 type: feature
 scope: 汎用
 status: current
-summary: "収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない"
+summary: "収益化と計測の現行仕様。AdSense の読み込みと手動広告枠（配置の原則・CLS・撤退ライン）、GA4 の計測と地域別の同意、回遊計測のカスタムイベント、プライバシー・法務。アフィリエイトは使っていない"
 code:
-  - "lib/ads.ts"
-  - "lib/analytics.ts"
-  - "src/components/AdUnit.tsx"
   - "src/pages/_app.tsx"
+  - "lib/ads.ts"
+  - "src/components/AdUnit.tsx"
+  - "lib/analytics.ts"
+  - "lib/consentRegion.ts"
+  - "src/components/CookieConsent.tsx"
   - "src/pages/privacy.tsx"
+  - "public/ads.txt"
+  - "public/app-ads.txt"
 ---
 # Monetization
 

@@ -40,16 +40,16 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 
 - [選手の名寄せと識別（氏名）](./player-name-identity.md) `混在` — 選手を氏名で一意に識別する規則。姓名の分割ゆれ、別人判定、pid の4区切り、改名の対応表（設計のみ）
 - [ランキング仕様](./ranking.md) `混在` — 年度ランキング（シーズンポイント制）の現行仕様。計算式（tier重み×順位係数、上位3大会を合算）、除外・特殊ルール、パイプライン、バックテストでの較正、内部利用の Elo 副指標と金星（giant-killing）検知
-- [SEO カニバリゼーション / 重複制御](./seo.md) `混在` — ページ種別の間で検索語が重なるカニバリの制御ルール。重複マップ、title の字数予算、構造化データ、sitemap の運用
+- [SEO カニバリゼーション / 重複制御](./seo.md) `混在` — ページ種別の間で検索語が重なるカニバリの制御ルール（制御手段、守ること、重複マップ #1〜16、noindex 選別の閾値）、大会名・機能名の検索語の乖離、title の字数予算、計測の原則、構造化データ、sitemap の運用
 - [チーム・選手の名寄せと識別](./team-player-identity.md) `混在` — チーム名・都道府県の正準化と名寄せの運用、チームの一意な識別。機械は提案まで、統合は人が決める
 - [TournamentBracket ロジック概要](./tournament-bracket-logic.md) `汎用` — 試合のつながり（nextMatchId）を決勝から逆にたどり、表示用のトーナメント表を組み立てる TournamentBracket のロジック。開催前の席順復元（lib/bracketLayout.ts）は別物
-- [UX Writing（UI文言ルール）](./ux-writing.md) `汎用` — 公開ページの日本語 UI 文言のルール。文体、句点、記号、用語、空状態、注記、リンクテキスト
+- [UX Writing（UI文言ルール）](./ux-writing.md) `汎用` — 公開ページの日本語 UI 文言のルール。文体、句点、記号と絵文字の禁止（eslint で強制）、用語（収録と掲載の使い分け）、空状態、注記（scopeNote）、リンクテキスト、進行中・エラー
 
 ## feature — 機能・ページ群の仕様
 
 - [beta/matches-results / score 公開 保守ガイド](./beta-matches-results.md) `混在` — score 公開面（/beta/matches-results・/matches）の保守ガイド。1つのコアを2モードで使う構成、ルーティング、公開 JSON の生成と除外項目、ラリー共有リンク、埋め込み動画の規則、改修時の確認箇所。score モードの公開面は未デプロイで、一部は当時のまま
 - [Highschool Pages（高校カテゴリ）](./highschool.md) `学校` — 高校カテゴリの公開ページ方針と現行仕様。学校ページ（年度別メンバー・主な卒業生）、全国大会の歴代記録、開催中の全国大会の表示、強豪校ランキング
-- [Monetization](./monetization.md) `汎用` — 収益化の現行仕様。AdSense の読み込みと手動広告枠、GA4 の計測、プライバシー・法務。アフィリエイトは使っていない
+- [Monetization](./monetization.md) `汎用` — 収益化と計測の現行仕様。AdSense の読み込みと手動広告枠（配置の原則・CLS・撤退ライン）、GA4 の計測と地域別の同意、回遊計測のカスタムイベント、プライバシー・法務。アフィリエイトは使っていない
 - [文脈ブロック / 速報・プレビュー機能](./news-context-blocks.md) `混在` — 速報・プレビュー記事を、決定的に出せる文脈ブロックから組む機能。設計原則と実装状況、milestone の判定規約、プレビュー記事の6ブロックと照合規約、直近の対戦（priorMeetings）、ブラケット復元
 - [Players Pages（選手ページ）](./players-pages.md) `混在` — 選手ページの現行仕様。slug 系と id 系の URL の2系統、選手一覧、結果ページの表示、SEO（noindex 選別・所属歴）、選手統計エンジンと集計ルール、勲章カードと全国大会優勝 SEO、セクション階層
 - [Primary School Pages（小学生カテゴリ）](./primaryschool.md) `学校` — 小学生カテゴリ（/primaryschool）の仕様。「小学校」と呼ばない、対象は全日本小学生選手権だけ、性別を URL に入れない、teamId（地名部分の読みの上書き）、都道府県の全国大会成績、進路（小→中）
@@ -69,12 +69,12 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 
 ## procedure — 繰り返す手順と検算
 
-- [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md) `汎用` — 回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。指標の定義、手順、判定の表
+- [回遊検証ランブック（GA4 / AdSense）](./circulation-verification.md) `汎用` — 回遊施策が効いたかを GA4 と AdSense で判定する検証ランブック。主指標はモジュールCTR（イベント比）、対照群との差の差で判定、ベースラインは平常期。測定期間中は対象2種別の広告設定を触らない
 - [Data Import](./data-import.md) `混在` — 大会・選手・score 公開 JSON の生成運用。prebuild のゲートと鮮度チェック、データの正と派生の向き、品質チェック、決勝Tの席順（knockoutDraw）、名寄せの取り込み側ルール、国際大会・SPA の読み方、入力ツール
-- [高校SEO M4検証ランブック（GSC事後検証）](./highschool-seo-m4-verification.md) `学校` — 高校カテゴリの SEO 施策が検索で効いたかを Google Search Console で事後検証する手順書
+- [高校SEO M4検証ランブック（GSC事後検証）](./highschool-seo-m4-verification.md) `学校` — 高校カテゴリの SEO 施策が検索で効いたかを Google Search Console で事後検証する手順書。インデックス確認、クエリ群の計測、カニバリ確認、判定表。実施時期は初回（8月中旬）・平常期（9月末）・選抜前（2027年2月）
 - [PDF からの取り込み](./pdf-import.md) `汎用` — 大会 PDF から details や入力ツール用 JSON を作る道具と、姓名の分割、独立した経路での検算、スキャン・アウトライン化 PDF の落とし穴、表記と tempId の扱い
 - [団体戦のオーダーの取り込み](./team-match-order-import.md) `混在` — 団体戦のオーダーを公式記録または score 機能から details の matches に入れる手順と、検算・様式の知見
-- [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md) `混在` — 開催前の大会・国際大会（アジア競技大会・世界ジュニア・国スポ）の露出の残作業を、順番に実行するための一覧
+- [開催前の大会・国際大会の露出 実行ランブック](./upcoming-tournaments-runbook.md) `混在` — 開催前の大会・国際大会の露出の運用と残作業。アジア競技大会2026の結果取り込み（draw.json → build_details.py）、世界ジュニア・国スポ2026の扱いと会期中の手順、残作業 S5〜S8、やらないと決めたこと
 
 ## index — 索引・集約
 
