@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# push 前に高校データパイプラインの生成物が最新かを確かめる。
-# Cloudflare Pages のビルド（prebuild）が同じチェックで落ちるのを push 前に止めるため（2026-10-03 追加）。
+# push 前に次の2つを確かめる。どちらも CI / Cloudflare で落ちるのを push 前に止めるためのもの。
+#   1. 高校データパイプラインの生成物が最新か（Cloudflare Pages のビルド prebuild が同じチェックで落ちる。2026-10-03 追加）
+#   2. docs の機械検査（npm run check:wiki -- --strict。checks.yml のゲートと同じ。約1秒。ADR-024 の P4 で追加）
 # 重い処理（pipeline / prebuild 本体）はここでは動かさない。止まったら表示されたコマンドを流してコミットし直す。
 # 緊急時は `git push --no-verify` で飛ばせる。
 
@@ -20,5 +21,14 @@ if [ -n "$UNCOMMITTED" ]; then
   echo "$UNCOMMITTED"
   echo ""
   echo "pre-push: 高校データパイプラインの生成物にコミットしていない変更があります。コミットしてから push してください。"
+  exit 1
+fi
+
+# docs のゲート: リンク切れ・SQL 台帳・wiki の frontmatter と code:・index.md の鮮度・Compile Log の行き先。
+# index.md が古いだけなら `npm run wiki:index` で作り直す（手で直さない）。
+if ! WIKI_OUT="$(node scripts/check-wiki-size.mjs --strict 2>&1)"; then
+  echo "$WIKI_OUT" | sed -n '/^# リンク切れ/,$p'
+  echo ""
+  echo "pre-push: docs の検査（npm run check:wiki -- --strict）で止めました。index.md が古いだけなら npm run wiki:index を流してコミットし直してください。"
   exit 1
 fi
