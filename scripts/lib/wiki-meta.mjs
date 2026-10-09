@@ -226,3 +226,37 @@ export function buildIndexText(pages) {
   }
   return { text: text + INDEX_FOOT, problems: [] };
 }
+
+// ---- Compile Log の行き先 ----
+
+/**
+ * raw ノートの「Compile Log」節から、機械が実在を確かめる行き先を取り出す（ADR-024 の P3）。
+ *   `- wiki:<ページ名>: …`（`.md` は付けても付けなくてもよい）→ { kind: 'wiki', name }
+ *   `- ADR-<3桁>: …`                                          → { kind: 'adr', name }
+ * 行き先はバッククォートで囲んでもよい。書式に合わない行（旧書式・自由記述・`落とした(…)` など）は見ない。
+ * Compile Log の節は、見出しに「Compile Log」を含む `##` / `###` から、同じ深さ以下の次の見出しまで。コードブロックの中は見ない。
+ */
+export function compileLogDestinations(text) {
+  const out = [];
+  let level = 0; // 0 = Compile Log の外
+  let inFence = false;
+  text.split('\n').forEach((line, i) => {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      return;
+    }
+    if (inFence) return;
+    const h = line.match(/^(#{1,6})\s+(.*)$/);
+    if (h) {
+      if (/Compile Log/.test(h[2]) && h[1].length >= 2 && h[1].length <= 3) level = h[1].length;
+      else if (level && h[1].length <= level) level = 0;
+      return;
+    }
+    if (!level) return;
+    let m = line.match(/^\s*[-*]\s+`?wiki:([A-Za-z0-9][\w.-]*?)(?:\.md)?`?\s*[:：]/);
+    if (m) out.push({ line: i + 1, kind: 'wiki', name: m[1] });
+    m = line.match(/^\s*[-*]\s+`?ADR-(\d{3})`?\s*[:：]/);
+    if (m) out.push({ line: i + 1, kind: 'adr', name: m[1] });
+  });
+  return out;
+}

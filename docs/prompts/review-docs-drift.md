@@ -1,9 +1,6 @@
-現在の実装と docs/wiki の内容を比較し、ドキュメントのズレを検出してください。
-以下を出してください:
+# review-docs-drift（skill `wiki-lint` へ移した）
 
-- 実装と一致している内容
-- 実装と矛盾している内容
-- 実装で確認できない内容
-- Deprecatedにすべき内容
-- 更新すべきWikiページ
-- ADR化すべき判断
+実装と wiki のずれを検出する手順は 2026-10-10 に skill へ移した（[ADR-024](../adr/ADR-024-llm-wiki-operating-model.md) の P3）。
+手順の本体: [.claude/skills/wiki-lint/SKILL.md](../../.claude/skills/wiki-lint/SKILL.md)
+
+このファイルは、docs/raw や AGENTS.md からのリンクを壊さないために残している。新しく手順を足すときは skill 側に書く。

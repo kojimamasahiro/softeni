@@ -351,7 +351,20 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
     「本文で言及」を足して 38%（32%）。主経路は index の説明で、パスの経路は補助、という位置づけは変えない。
   - ⑩ の計画からの差分: `wiki:for` に「本文で言及」の一致を足した（⑦ の3経路のうち「語」の一部を取り込んだ形。改名・削除で古くなる記述を引くため）。
     CI のステップ名を「docs のリンク切れ・SQL 台帳・wiki の frontmatter と index」に直した。
-- [ ] P3 skill 3つ ＋ docs/prompts のリダイレクト ＋ Compile Log の書式
+- [x] P3 skill 3つ ＋ docs/prompts のリダイレクト ＋ Compile Log の書式（2026-10-10・ブランチ `claude/llm-wiki-p3-skills`。PR #194 の上に積む）
+  - skill 3つ（実体は `.claude/skills/`、`.agents/skills` へは `npm run sync:skills` でリンク。9件で同期済み）。ツール名（Read / Edit など）に依存しない書き方。
+    - `wiki-compile`: Triage → Route → Write → Close、行き先の表、frontmatter（`summary`・`code:` の規則）、ADR の要否と書き方。
+      `references/page-types.md`（型6つ・判定順・frontmatter の仕様）と `references/compile-log.md`（書式・機械チェック・適用範囲）を持つ。
+      旧 update-wiki / summarize-raw / create-adr を統合した。「Compile Log の適用範囲」は日付つきの履歴を畳み、現在形（2026-07-11 以降に付け、遡らない）だけにした。
+    - `wiki-lint`: 意味 lint。機械から先に回し、主張と実装の突き合わせ・所有者の点検・滞留の探索・実施予定を過ぎた運用を見て、raw の lint ノートに残す。
+      昇格ルールと、この設計作業で踏んだ測定の落とし穴（`wc -m` がバイト数、git の標本は main の範囲、汎用ディレクトリの水増し、隣の行の対比語）を入れた。
+    - `wiki-slim`: 旧 slim-wiki-page を移し、frontmatter を残す・`code:` は所有するものだけ、を足した。
+    - 説明文は3つ合計で741字（既存の skill は1つ約340字）。常時読み込まれる分は小さい。
+  - `docs/prompts/*.md` の5ファイルは skill への1〜3行のリダイレクトにした（raw 28・AGENTS.md・wiki からのリンクを守る。アンカー付きのリンクが無いことは確認済み）。README も更新。
+  - **Compile Log の書式をゲート化**: `wiki:<ページ名>` と `ADR-<番号>` の行き先が実在するか（旧書式・自由記述は見ない）。
+    `compileLogDestinations()` を共有部品に入れ、テスト10件を足した（計58件）。一時コピーで実在しない行き先2件を検出できること、
+    実データで誤検知が0件なことを確認した。
+  - ⑩の計画からの差分なし。`AGENTS.md` は触っていない（P4）。AGENTS.md は `docs/prompts/*.md` を名指ししているが、リダイレクト経由で skill に届く。
 - [ ] P4 AGENTS.md の書き換え ＋ pre-push ＋ PR テンプレート ＋ CI の報告項目
 - [ ] P5 随時（entity 2ページ・raw の kind・混在ページの分割・memory の棚卸し）
 
@@ -376,3 +389,4 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
 - 落とした(測定ミスの訂正): `wc -m` がバイト数を返していた誤り（wiki の規模・AGENTS.md の字数）、Open Questions の二重管理という誤読、
   「索引の生成で編集集中が減る」という過大な説明。いずれも本文の該当箇所に訂正を残した。
 - 落とした(議論の途中経過): 各ステップで私が出した暫定分類の細部（⑤ の42ページの個別割り当て）。P1 で実際に分類し直すので、ここには残さない。
+- `ADR-024`: 実装状況を P3 完了に更新（skill 3つ・docs/prompts のリダイレクト・Compile Log の行き先のゲート）。

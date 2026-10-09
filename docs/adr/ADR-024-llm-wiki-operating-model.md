@@ -4,7 +4,7 @@
 
 Draft
 
-決定日: 2026-10-09。実装状況: P1 完了（frontmatter 42ページ＋検証ゲート）、P2 完了（`wiki:index`・`wiki:for`・index の鮮度ゲート）、P3〜P5 は未着手（段階導入 P1〜P5）。P4（AGENTS.md の書き換え）の完了で Accepted にする。
+決定日: 2026-10-09。実装状況: P1 完了（frontmatter 42ページ＋検証ゲート）、P2 完了（`wiki:index`・`wiki:for`・index の鮮度ゲート）、P3 完了（skill 3つ・`docs/prompts` のリダイレクト化・Compile Log の書式と行き先のゲート）、P4〜P5 は未着手（段階導入 P1〜P5）。P4（AGENTS.md の書き換え）の完了で Accepted にする。
 経緯・測定・各ステップの訂正は [raw/2026-10-09-llm-wiki-redesign.md](../raw/2026-10-09-llm-wiki-redesign.md) が正。
 
 ## Context

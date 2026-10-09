@@ -1,37 +1,7 @@
-docs/raw と現在の実装を確認し、docs/wiki を更新してください。
-以下を守ってください:
+# update-wiki（skill `wiki-compile` へ移した）
 
-- 実装で確認できる内容を優先する
-- 推測は Assumption と明記する
-- 未確認事項は docs/wiki/open-questions.md に移す
-- 古い内容は Deprecated と明記する
-- 重要な設計判断があれば ADR 候補を提案する
-- docs/raw は削除・上書きしない
-- wiki ページを新設・書き直すときは、先頭の frontmatter（`type` / `scope` / `status` / `summary` と任意の `code:`）を
-  付ける／残す。形式と値は [ADR-024](../adr/ADR-024-llm-wiki-operating-model.md)、`npm run check:wiki -- --strict` が見る
-  （2026-10-09 に導入。本文の「適用範囲」の行も当面は残し、`scope` と食い違わないようにする）
-- raw の内容のうち wiki に反映しなかった部分は、黙って捨てずに理由（重複／推測レベルが低い／
-  対象ページのスコープ外／新しい情報で置き換え、等）とともに raw ファイル末尾の
-  「Compile Log」セクションに追記する。読み手が「検討した上で除外した」のか
-  「まだ確認していない」のかを区別できるようにする。
+raw と実装から wiki を更新する手順は 2026-10-10 に skill へ移した（[ADR-024](../adr/ADR-024-llm-wiki-operating-model.md) の P3）。
+手順の本体: [.claude/skills/wiki-compile/SKILL.md](../../.claude/skills/wiki-compile/SKILL.md)
+（Compile Log の書式と適用範囲は同 skill の [references/compile-log.md](../../.claude/skills/wiki-compile/references/compile-log.md)）
 
-## Compile Log の適用範囲（AGENTS.md から移設・2026-09-18）
-
-- この規則は **2026-07-11 以降に作られた docs/raw のノート**に適用する。
-  それ以前のノートに Compile Log が無いのは設計どおりで、書き忘れではない。
-  「まだ確認していない」と読まないこと。再 compile するとき以外、後から付け足さない。
-- 例外: 2026-08-01 以降のノートは 2026-08-12 に遡って付けた
-  （docs/raw/2026-08-12-llm-wiki-lint.md）。
-- **Compile Log を求めないもの**（2026-09-19 に明文化。機械チェックの免除条件と同じ）:
-  - `*-wiki-archive-*.md` — wiki ページの圧縮前の全文。**compile の「元」ではなく「先」**なので、
-    落としたものを書く相手がいない。
-  - `*-review.md` / `*-checklist.md` / `*-todo.md` — **作業リスト型**（teamId の目視リスト、
-    要確認リスト、リリース前チェック）。wiki へ載せる durable な中身が元々無く、
-    「除外のみ1行」を書かせても情報が増えない。
-  - `README.md` など日付を持たないメタ文書。
-- **機械チェックは 2026-09-19 以降に作られたノートだけを見る**
-  （`scripts/check-wiki-size.mjs` の `COMPILE_LOG_SINCE`）。それ以前の未記入は、
-  AGENTS.md の「再 compile するとき以外は遡って付けない」に従いそのままにする。
-  2026-09-19 時点の未記入は、免除を除くと 2026-07〜08 の idea / plan ノート13本。
-- 書く場所は raw ファイル末尾の「Compile Log」節（raw は追記のみ）。
-  落とした理由の例: 重複 / 推測の域を出ない / 対象ページのスコープ外 / 新しい情報で置き換え。
+このファイルは、docs/raw や AGENTS.md からのリンクを壊さないために残している。新しく手順を足すときは skill 側に書く。
