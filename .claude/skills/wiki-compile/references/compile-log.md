@@ -32,9 +32,12 @@ raw ノートのうち、wiki・ADR へ compile したもの（または compile
 - **`wiki:<ページ名>` と `ADR-<番号>` の行き先が実在するか**（ゲート）。実在しないと落ちる。
   この2つだけを見る。書式に合わない行は見ない。
 - **Compile Log の節があるか**（報告）。2026-09-19 以降に作ったノートだけが対象で、次は免除。
-  - `*-wiki-archive-*.md` — wiki ページの圧縮前の全文。compile の「先」であって「元」ではない。
-  - `*-review.md` / `*-checklist.md` / `*-todo.md` — 作業リスト型。wiki へ載せる durable な中身が元々無い。
+  - 先頭の `kind` が `archive`（wiki ページの圧縮前の全文。compile の「先」であって「元」ではない）または
+    `worklist`（作業リスト。wiki へ載せる durable な中身が元々無い）。`research` / `idea` / `plan` は免除されない。
+  - `kind` を持たない旧ノートは、ファイル名で決める: `*-wiki-archive-*.md` / `*-review.md` / `*-checklist.md` / `*-todo.md`。
   - `README.md` など日付を持たないメタ文書。
+- **`kind` の値が語彙の外でないか**（ゲート）と、**2026-10-10 以降の新規ノートに `kind` があるか**（報告）。
+  書き方は [docs/raw/README.md](../../../../docs/raw/README.md)。
 
 ## 適用範囲
 

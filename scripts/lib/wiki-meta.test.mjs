@@ -21,6 +21,8 @@ import {
   npmRunMissing,
   draftPromotionCandidates,
   ownersNotUpdated,
+  rawKindOf,
+  compileLogExempt,
 } from './wiki-meta.mjs';
 
 let pass = 0;
@@ -262,6 +264,37 @@ const exists = (set) => (p) => set.includes(p);
   check('報告/所有者: 同じ変更で所有ページを更新していれば挙げない', owners(['lib/a.ts', 'docs/wiki/own.md']) === '');
   check('報告/所有者: data/・public/・docs/ の変更は数えない', owners(['data/t/x.json', 'public/data/x.json', 'docs/raw/n.md']) === '');
   check('報告/所有者: 親ディレクトリの一致（contains）は所有ではない', owners(['lib/']) === '' || !owners(['lib/']).includes('own.md'));
+}
+
+// ---- raw の kind（P5） ----
+{
+  const note = (kind) => `---\nkind: ${kind}\n---\n# 題\n本文\n`;
+  check('kind: 語彙の中の値を読む', rawKindOf(note('research')).kind === 'research' && rawKindOf(note('archive')).kind === 'archive');
+  check('kind: frontmatter が無ければ null・エラーなし', rawKindOf('# 題\n本文\n').kind === null && rawKindOf('# 題\n本文\n').error === null);
+  check('kind: kind の行が無い frontmatter は null・エラーなし', rawKindOf('---\nfoo: bar\n---\n# 題\n').error === null);
+  check('kind: 語彙の外はエラー（綴りの誤り）', rawKindOf(note('reserch')).error !== null && rawKindOf(note('reserch')).kind === null);
+  check('kind: 他のキーや解釈できない行があっても kind は読む', rawKindOf('---\nfoo: bar\n  変な行\nkind: plan\n---\n').kind === 'plan');
+  check('kind: 本文途中の水平線は frontmatter にならない', rawKindOf('# 題\n\n---\nkind: idea\n---\n').kind === null);
+  check(
+    '免除: worklist / archive は Compile Log を求めない',
+    compileLogExempt('2026-10-10-a.md', note('worklist')) && compileLogExempt('2026-10-10-a.md', note('archive')),
+  );
+  check(
+    '免除: research / idea / plan は求める',
+    !compileLogExempt('2026-10-10-a.md', note('research')) &&
+      !compileLogExempt('2026-10-10-a.md', note('idea')) &&
+      !compileLogExempt('2026-10-10-a.md', note('plan')),
+  );
+  check('免除: kind があれば、免除の名前でも kind が勝つ', !compileLogExempt('2026-10-10-x-review.md', note('research')));
+  check(
+    '免除: kind が無ければ従来のファイル名（wiki-archive / -review / -checklist / -todo）',
+    ['2026-09-23-wiki-archive-x.md', '2026-10-01-x-review.md', '2026-10-01-x-checklist.md', '2026-10-01-x-todo.md'].every((b) => compileLogExempt(b, '# 題\n')),
+  );
+  check('免除: kind が無く名前も一致しなければ求める', !compileLogExempt('2026-10-01-idea-x.md', '# 題\n'));
+  check(
+    '免除: kind が語彙の外ならファイル名に戻る',
+    compileLogExempt('2026-10-01-x-todo.md', note('reserch')) && !compileLogExempt('2026-10-01-x.md', note('reserch')),
+  );
 }
 
 // ---- 見出し ----

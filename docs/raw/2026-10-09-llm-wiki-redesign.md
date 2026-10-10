@@ -386,7 +386,39 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
       （パスから所有ページを当てられるのは約3分の1、という上の測定が前提）。
   - ADR-024 を **Accepted** にした（`docs/adr/README.md` の一覧も）。`docs/wiki/open-questions.md` の『報告のみの項目をゲートに上げるか』を現状に合わせた。
   - 残: P5（Player / Team の entity ページ、新規 raw の `kind`、混在ページの分割、memory の棚卸し）は随時。
-- [ ] P5 随時（entity 2ページ・raw の kind・混在ページの分割・memory の棚卸し）
+- [x] P5 随時（2026-10-10 に着手。4項目のうち3つを実施し、混在ページの分割は圧縮の契機を待つ）
+  - **Player / Team の entity ページ**（`player.md` 2,617字・`team.md` 2,456字。ともに3,000字以内）。コードとデータで確かめたこと:
+    - 識別子を定義するページが無かった。`wiki:for -- data/players/index.json` は、言及しているだけの4ページを返していた。
+      今は entity ページが先頭に出る（`data/teams/teams.json`・`lib/playerStats/identity.ts` も同じ）。
+    - **選手の識別子は4種**で、作り方も結合先も別。参加者 id（`participants[].id`）／数値 id（`data/players/index.json`）／slug（`data/players/{slug}/`）／
+      `playerKey`（統計エンジンの `名前@所属`）。score の Supabase は選手を ID でなく氏名・所属・地域の文字列で持つ。
+    - 参加者 id は `[姓, 名, 所属, 県]` のうち null を除いて `_` で結んだもの。**details 全体 88,042 人のすべてがこの規則に一致**した
+      （4区切り 78,682／3区切り 4,885＝個人で県が null／2区切り 4,405＝団体戦のチーム＋県／1区切り 70＝県の無い団体戦）。
+      tournament-data-structure は『個人戦は4区切り』と書いていて、県が null の約5千人はその書き方から外れていた。所有者は変えず、null のときの規則を1行足した。
+    - 数値 id は**氏名1つにつき1行**で所属を含まない。`extract-players.mjs` が既存を保って末尾に採番し、同姓同名は先勝ちで融合する。
+      `homonyms.json` は記録で id を分けない（統計エンジンが `homonymRisk` の注記を出すだけ）。
+      team-player-identity の表に『確実な別人だけ分割』とあったのは実装と食い違っていたので直した。
+    - **チームに単一の ID は無い**。結合キーはチーム名の文字列で、`teams.json` の `id` は**位置で振る連番**（`teams.length + 1`）。作り直すと総入れ替わりになる
+      （2026-09-06 に別チームの経歴が表示された原因。`check-team-id-alignment.mjs` が検査する）。`teamId`（URL）は `/teams`・高校・中学・小学で出どころが別の名前空間。
+    - **`index.json` の `count` は凍結値だった**。`extract-players.mjs` を手で流した時点の値で、prebuild では数え直さない。
+      現在の大会データで数え直すと 8,758 / 18,543 行で値が変わり、**結果ページの対象（`count>=5`）が 1,965 → 4,242 人**になる
+      （既存の 1,950 人が閾値を越え、新規が 327 名。実際のスクリプトを一時コピーで流して実測し、リポジトリは変えていない）。
+      意図した凍結か放置の結果かは記録から読めない。ビルド時間と薄いページの扱いに関わるので、判断を open-questions に載せた。
+  - **新規 raw の `kind`**: 語彙は research / idea / plan / worklist / archive。`scripts/lib/wiki-meta.mjs` に `rawKindOf`・`compileLogExempt`、
+    `check:wiki` に『kind が語彙の外ならゲート／2026-10-10 以降の新規ノートに無ければ報告』。Compile Log の免除は、kind があればそれ（worklist・archive）、
+    無い旧ノートは従来のファイル名。テスト12件を足して計85件。一時コピーで、語彙外は終了コード1・kind なしは報告のみ・worklist は免除・research は Compile Log が要る、を確認した。
+    既存の raw 235本は触っていない。
+  - **memory の棚卸し**（5件 → 1件）。repo に同じ内容があるかを1件ずつ確かめた:
+    - `feedback_pdf_two_char_name_split`（2文字名は姓1+名1）→ skill `tournament-pdf-to-players` に既にあるので削除。
+    - `feedback_tempid_four_parts`（tempId は4項目）→ `pdf-import.md`・同 skill に既にある。件数は 2026-09-16 時点で古い。削除。
+    - `feedback_precommit_pipeline_prebuild`（push 前に pipeline → prebuild）→ `data-import.md` に pipeline の鮮度の説明はあるが、push 前に自分で流すこと・差分の確認が無かったので足してから削除。
+    - `project_pdf_tournament_entry_extraction`（PDF 取り込みの長い記録）→ 座標での分割・ベクターのグリフ・プリセットは `pdf-import.md` と skill に既にある。
+      **無かった2点を `pdf-import.md` に足した**（再抽出は姓名を連結した文字列で比べる／details が空なら再実行で復元する）。前者は 2026-08-20 の Compile Log が『wiki に載せた』と書いていたのに、
+      9/18 の data-import.md の圧縮で落ちていた（全文は [raw/2026-09-18-wiki-archive-data-import.md](./2026-09-18-wiki-archive-data-import.md) に退避済み）。削除。
+    - `project_llm_wiki_redesign` → 進捗は ADR-024 とこのノートに任せ、作業スタイルとこの環境の癖だけに絞った。
+  - **混在ページの分割**: 圧縮基準を超えたページは 0 件（`check:wiki`）。『圧縮・追記が大きくなったときに分ける』と決めたので、今回は分けない。
+    候補は ⑤ の6ページ（ranking・players-pages・data-import・team-player-identity・deployment・st-league）のまま。
+  - 途中の訂正: zsh は変数を単語分割しないので、`S="a b"; grep … $S` が空を返した。『memory の内容が repo に無い』と読みかけたが、空の結果を疑って直した（memory に癖として残した）。
 
 ## 未決（次以降）
 
@@ -413,3 +445,16 @@ Claude の memory は4件で、プロジェクトの事実や規則が混ざっ�
 - wiki:deployment: pre-push が docs の検査も走らせること、ゲートと報告の現行の一覧を反映（P4 自身の docs 同期）。
 - ADR-024: Status を Accepted に（P4 完了）。
 - wiki:open-questions: 『報告のみの項目をゲートに上げるか』を現状（ゲートに入った項目）に合わせた。
+- wiki:player: 識別子4種（参加者 id・数値 id・slug・playerKey）の作り方と使い道、`count>=5` と `count` が凍結値であること、`homonyms.json` は id を分けないこと（新設）。
+- wiki:team: チームに単一の ID が無いこと、`teams.json` の連番 id が安定しないこと、`teamId` が名前空間ごとに別の出どころであること（新設）。
+- wiki:tournament-data-structure: 参加者 id は県が null のとき項目と区切りを付けない、の1行。player.md・team.md へのリンク。
+- wiki:team-player-identity: 『確実な別人だけ分割』を実装に合わせて修正（`homonyms.json` は記録で id は分けない）。player.md・team.md へのリンク。
+- wiki:data-import: push 前に自分で pipeline → prebuild を流して生成物をコミットする、pipeline の差分に想定外の学校が混ざっていないか見る（memory から移した）。
+- wiki:pdf-import: 再抽出は姓名を連結した文字列で比べる、details が空なら再実行で復元する（memory から移した。後者は 2026-08-26 の Compile Log で一度落とした事件の復元手順を1行だけ戻した）。
+- wiki:open-questions: `index.json` の `count` を数え直すか（結果ページが 1,965 → 4,242 人）。
+- wiki:deployment: raw の `kind` の値をゲートの一覧に足した。
+- wiki:player-name-identity: player.md へのリンクだけ。wiki:players-pages・wiki:data-model・wiki:public-pages も同じ（本文の仕様は変えていない）。
+- ADR-024: 実装状況を P5 に更新（entity 2ページ・raw の kind・memory の棚卸しを実施。混在ページの分割は圧縮のとき）。
+- 落とした(重複): memory 4件。いずれも repo に同じ内容があることを確かめて削除した（上の表）。
+- 落とした(古い数値): memory の tempId の件数（4項目 14,734件・3項目 8,328件。2026-09-16 時点の実測）。今のデータでは変わっている。
+- 落とした(個別の事例): memory にあった 151 件・157 件の修正前後、`entryNo7 奥西/巧` の反例の詳細。該当の raw ノートに残っている。

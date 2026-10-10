@@ -82,7 +82,9 @@ data/tournaments/
   `ageCategory` は `none` / `u16` / `over50` など、`gender` は `boys` / `girls` / `mixed`。
   段階分割された大会では `ageCategory` に `final` / `semifinal` / `qualifying` 等の**段階**が入る（[data-model.md](./data-model.md)）。
 - **参加者ID**: 個人戦は `{姓}_{名}_{チーム名}_{都道府県}`、団体戦は `{チーム名}_{都道府県}`。
+  `prefecture` が null の参加者（国際大会の国、県を持たない中学のデータなど）は、その項目と区切りを付けない（`姓_名_チーム名`、団体戦は `チーム名` だけ）。
   **団体戦でも `prefecture` を null のままにしない**（[pdf-import.md](./pdf-import.md)）。
+  選手・チームの識別子の全体（数値 id・slug・teamId）は [player.md](./player.md)・[team.md](./team.md)。
   空の項目でアンダースコアが余分に付く不具合の調査は [raw/2026-07-09](../raw/2026-07-09-team-id-underscore-bug.md)。
 
 ### `stage` と `rank.kind`

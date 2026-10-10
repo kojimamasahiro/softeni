@@ -33,6 +33,7 @@ wiki の主な読み手はエージェント。人間はレビュー役。
 - 不確かなものは **Assumption**、古くなったものは **Deprecated** と書く（黙って消さない）。
 - 未解決の問いは docs/wiki/open-questions.md にだけ書く。日本語で簡潔に書く。
 - docs 直下に新しいファイルを作らない。仕様は wiki/、記録は raw/（`YYYY-MM-DD-*.md`）。迷ったら raw に置いてから compile する。
+  新しい raw ノートは先頭に `kind`（research / idea / plan / worklist / archive）を書く。書き方は docs/raw/README.md。
 
 ## 操作
 

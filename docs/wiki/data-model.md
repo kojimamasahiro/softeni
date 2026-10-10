@@ -35,7 +35,8 @@ code:
 | 地方大会の巡回元 URL | `data/local-sources/prefecture-sources.json` |
 
 名寄せ用データ（詳細は [team-player-identity.md](./team-player-identity.md)）: チームマスタ `data/teams/teams.json` ＋
-文脈 `team-context.json` / 正準対応表 `data/tournaments/team-name-aliases.json` / 同姓同名の分割 `data/players/homonyms.json`。
+文脈 `team-context.json` / 正準対応表 `data/tournaments/team-name-aliases.json` / 同姓同名の記録 `data/players/homonyms.json`。
+選手とチームの識別子（参加者 id・数値 id・slug・teamId）の定義は [player.md](./player.md)・[team.md](./team.md)。
 フィールドと語彙のリファレンスは [tournament-data-structure.md](./tournament-data-structure.md)。
 
 `data/local-sources/ignored-documents.json` は `prefectureSlug + normalizedUrl` 完全一致の恒久 deny list（空のまま維持）。

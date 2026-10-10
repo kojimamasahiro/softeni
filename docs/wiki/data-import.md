@@ -40,6 +40,11 @@ PDF から読み取る部分は [pdf-import.md](./pdf-import.md)。
 - 赤くなったら `npm run highschool:pipeline` を回し、生成物と `.pipeline-source-hash.json` を同じコミットに乗せる。
 - **python 側（`01team` / `02result` / `03list`）が読む項目を増やしたら `scripts/highschool/lib/source-hash.mjs` の
   `projectDetail` も必ず更新する**（更新漏れは「元データが変わったのに緑のまま生成物が古い」という検出漏れになる）。
+- **`data/tournaments/**` を変えたら、push の前に自分で `npm run highschool:pipeline` → `npm run prebuild` を流し、
+  作業ツリーに出た生成物の変更（`data/highschool/**`・`scripts/highschool/02result/results.json`・追跡されている `public/data/**`）も
+  コミットしてから push する**（データと生成物は別コミットでよい。高校以外の大会もハッシュの対象に入る）。
+  `.githooks/pre-push` は高校パイプラインの鮮度と未コミットの生成物を見て止めるだけで、`prebuild` 本体は流さない。
+- **pipeline の差分に想定外の学校・大会が混ざっていないか、`git diff` で見てからコミットする**（例: 県名のチームが高校に付く）。
 
 主な生成物: `generate-players-json.mjs` / `generate-players-lite.mjs` / `generate-player-analysis.mjs` /
 `generate-beta-matches-json.mjs` / `generate-match-reverse-index.mjs` / `generate-rare-events.mjs` /

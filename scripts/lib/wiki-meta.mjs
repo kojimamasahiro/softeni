@@ -261,6 +261,37 @@ export function compileLogDestinations(text) {
   return out;
 }
 
+// ---- raw の kind（ADR-024 の P5） ----
+
+// 新規の raw ノート（RAW_KIND_SINCE 以降）は、先頭の frontmatter に `kind` を書く。既存のノートは追記のみの原則に従い触らない。
+// 語彙: research=調査・実測 / idea=発展候補 / plan=実装計画・設計 / worklist=作業リスト・チェックリスト / archive=wiki ページの圧縮前の全文
+export const RAW_KINDS = ['research', 'idea', 'plan', 'worklist', 'archive'];
+// Compile Log を求めない kind。worklist は wiki へ載せる durable な中身が元々無く、archive は compile の「先」であって「元」ではない。
+const RAW_KINDS_WITHOUT_COMPILE_LOG = ['worklist', 'archive'];
+// kind を持たない旧ノートの免除は、これまでどおりファイル名で決める（遡及しない）。
+const COMPILE_LOG_EXEMPT_NAME = /(wiki-archive|-review|-checklist|-todo)\b/;
+
+/**
+ * raw ノートの kind。frontmatter が無い・kind の行が無いときは { kind: null, error: null }。
+ * 値が語彙の外なら { kind: null, error }（ゲートで止める。綴りの誤りで免除が効かなくなるのを防ぐ）。
+ * 他のキーや解釈できない行は見ない（raw の frontmatter で決めているのは kind だけ）。
+ */
+export function rawKindOf(text) {
+  const { meta } = splitFrontmatter(text);
+  if (!meta || !('kind' in meta)) return { kind: null, error: null };
+  if (typeof meta.kind !== 'string' || !RAW_KINDS.includes(meta.kind)) {
+    return { kind: null, error: `kind が語彙の外（${JSON.stringify(meta.kind)}。${RAW_KINDS.join(' / ')} のどれか）` };
+  }
+  return { kind: meta.kind, error: null };
+}
+
+/** Compile Log を求めないノートか。kind があればそれで、無ければファイル名で決める。 */
+export function compileLogExempt(base, text) {
+  const { kind } = rawKindOf(text);
+  if (kind) return RAW_KINDS_WITHOUT_COMPILE_LOG.includes(kind);
+  return COMPILE_LOG_EXEMPT_NAME.test(base);
+}
+
 // ---- 報告用の検査（ADR-024 の P4。CI のサマリに出す。ゲートにはしない） ----
 
 // 「削除済み」「まだ作らない」「〜ではなく」のような、存在しないことを承知で書いた記述は見ない。

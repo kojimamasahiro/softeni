@@ -19,6 +19,7 @@ code:
 
 選手を氏名で一意に識別するための仕組みと運用。チーム側（表記ゆれ・統合の判断）は
 [team-player-identity.md](./team-player-identity.md)。
+識別子そのもの（参加者 id・数値 id・slug・playerKey）の定義と置き場は [player.md](./player.md)。
 
 ## 姓名の分割ゆれ `data/players/name-split-aliases.json`
 

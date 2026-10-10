@@ -25,12 +25,13 @@ code:
 > [raw/2026-09-18-wiki-archive-team-player-identity.md](../raw/2026-09-18-wiki-archive-team-player-identity.md)。
 
 大会結果データ（`data/tournaments/details/**`）の表記揺れを正準化し、チーム／選手を一意に識別する仕組みと運用。
+識別子そのものの定義（参加者 id・数値 id・teamId など）は [player.md](./player.md)・[team.md](./team.md)。
 
 | 対象 | やり方 | 対応表 |
 |---|---|---|
 | 都道府県 | 47都道府県の正準形へ正規化（接尾辞・地域接頭辞・外国名・崩れ字を吸収） | `scripts/normalize-prefectures.mjs` の明示マップ |
 | チーム | NFKC で安全な揺れを畳み、略称・省略は人手レビューで集約 → データへ適用 | `data/tournaments/team-name-aliases.json` |
-| 選手 | 氏名ベースの id を基本にし、確実な別人だけ分割 | `data/players/homonyms.json` |
+| 選手 | 氏名ベースの id（所属を含まない）で同一視し、同姓同名の疑いは記録するだけで id は分けない | `data/players/homonyms.json` |
 | 姓名の分割 | 取り込み由来の切り位置ゆれ（`谷\|明日里` / `谷明\|日里`）を人手判断で集約 | `data/players/name-split-aliases.json` |
 
 ## 都道府県の正規化

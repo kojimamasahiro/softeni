@@ -69,7 +69,7 @@ npm run wiki:index -- --check    # index.md が最新か
 
 ### 6. 記録する
 
-`docs/raw/YYYY-MM-DD-llm-wiki-lint.md` に残す。見本は `docs/raw/2026-08-12-llm-wiki-lint.md`・`2026-09-30-llm-wiki-lint.md`。
+`docs/raw/YYYY-MM-DD-llm-wiki-lint.md`（先頭に `kind: research`）に残す。見本は `docs/raw/2026-08-12-llm-wiki-lint.md`・`2026-09-30-llm-wiki-lint.md`。
 節は サマリー / 修正済み / 矛盾・ドリフト（要判断）/ 孤立 / 知識ギャップ / 次に聞くべき問い / Compile Log。
 Compile Log の書式は `wiki-compile` の `references/compile-log.md`。
 
