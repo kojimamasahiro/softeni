@@ -32,7 +32,7 @@ ADR は wiki 層の「決定記録」という page type。置き場は `docs/ad
 ### 運用の原則
 
 - **1ページ1型**。
-- **事実の所有者は1つ**。ID の形式と置き場は entity ページだけが書く（Player / Team の薄い entity ページは P5 で作る予定）。
+- **事実の所有者は1つ**。ID の形式と置き場は entity ページだけが書く（選手は [player.md](../../../../docs/wiki/player.md)、チームは [team.md](../../../../docs/wiki/team.md)）。
 - 型と `status` は別軸。検討中の提案も、型は `feature` で `status: draft`。
 
 ## frontmatter

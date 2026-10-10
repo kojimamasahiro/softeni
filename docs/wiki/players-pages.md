@@ -27,6 +27,8 @@ SEO カニバリは [seo.md](./seo.md)（#1 / #2）、データ構造は [data-m
 
 ## 選手 URL の2系統（混同しやすい・重要）
 
+識別子（参加者 id・数値 id・slug・playerKey）の定義と置き場は [player.md](./player.md)。ここは URL とページの仕様。
+
 | 観点 | プロフィール系（slug） | 結果ページ系（id） |
 |---|---|---|
 | URL | `/players/{slug}/`（＋ `/information`） | `/players/{id}/results/` |

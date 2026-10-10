@@ -34,6 +34,8 @@ Softeni Pick の現在の仕様・設計・運用の一覧。各行の説明は�
 
 - [Data Model](./data-model.md) `混在` — 静的 JSON と Supabase の2系統のうち、どのファイルが何の正か。大会情報の拡張（代表名簿・競技日程・競技方式・中止・会場）の規約、入力メモ note を公開しない規則、選手名・団体戦の表示と団体戦オーダーの持ち方
 - [Database](./database.md) `固有` — score 機能の Supabase テーブル（matches・games・points と動画レビュー用の2つ）の列とリレーション。スキーマ全体の定義は repo に無く、型と差分 DDL から復元した推定
+- [Player（選手）](./player.md) `固有` — 選手（Player）の定義と識別子。選手マスタは無く、参加者 id・数値 id・slug・playerKey の4種を用途で使い分ける。結果ページの有無を決める count>=5 と、各識別子の置き場・作り方
+- [Team（チーム）](./team.md) `固有` — チーム（Team）の定義と識別子。チームに単一の ID は無く、結合キーはチーム名の文字列。teams.json の連番 id は安定しない。teamId はページ群ごとに別の名前空間で、出どころが違う
 - [大会データ JSON の構造（リファレンス）](./tournament-data-structure.md) `混在` — data/tournaments/** の JSON の構成・フィールド・語彙のリファレンス。カテゴリID・参加者IDの命名規約、rank.kind、entries[].type（ドローの席）の判定規約、打ち切りの語彙。型の正は src/types/tournament.ts
 
 ## concept — 規則・判定のしかた
