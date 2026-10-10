@@ -92,6 +92,10 @@ fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-
 - **ビルド生成物は `data/` の外に置く**（playerStats は `.playerstats/`）。`data/**/*` の glob が毎回列挙するため。
 - ページ生成には約470ms/ページの床がある（SSR ＋フレームワーク）。1秒を切るルートはデータ取得を削っても頭打ち。
   `/players/[id]/results` はこの理由で最適化対象外と判断済み。
+- **出力のファイル数に上限がある**。Cloudflare Pages の無料プランは1サイト 20,000 ファイル（有料プランは `PAGES_WRANGLER_MAJOR_VERSION=4` を設定すれば 100,000）。
+  ビルドは 20 分で打ち切られる。`out/` は 17,983 ファイル・8,433 ページ（`/players/[id]/results` が 4,242 枚＝8,484 ファイル。1枚あたり HTML と
+  `_next/data` の JSON の2つ）。**結果ページを約 1,000 枚増やすと無料プランの上限に当たる**。`data/players/index.json` の `count` を数え直す前（[player.md](./player.md)）と
+  ページ数を増やす変更の前に、`find out -type f | wc -l` で測る。
 
 ## ビルドキャッシュ（generate-facts の増分）
 

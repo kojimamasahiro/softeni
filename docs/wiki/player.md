@@ -48,11 +48,13 @@ code:
 
 - **結果ページが実在するのは `count>=5` の行だけ**。`/players/{id}/results/`・内部リンク・名前からの解決（中学・小学・STリーグ・news）が同じ閾値を使う。
   リンクを張る前に `count>=5` を確かめる（無いと 404）。
-- **`count` は `extract-players.mjs` を最後に流した時点の延べ出場数**。prebuild では数え直さない。
+- **`count` は `extract-players.mjs` を最後に流した時点の延べ出場数**。prebuild では数え直さないので、取り込みを重ねると古くなる。
+  数え直すときは `node scripts/extract-players.mjs 5`（引数は新規に採番する氏名の最小出場数）。既存の行と id は変わらず、全行の `count` が更新され、
+  5回以上の新規氏名が末尾に足される。流したら `node scripts/check-name-splits.mjs --strict`。結果ページが増えるので、ビルド時間も見る（[deployment.md](./deployment.md)）。
   姓名の切り位置を直したときは `normalize-name-splits.mjs` が該当氏名の分だけ数え直す。
 - **`homonyms.json` に載っても数値 id は分かれない**。載った氏名の選手統計に「同姓同名の別選手の成績が含まれている可能性」の注記（`homonymRisk`）が出るだけ。
 - 切り位置がぶれると同じ人が別の数値 id になり、両方が `count>=5` を割ると結果ページが消える。
-- `index.json` を `extract-players.mjs` で丸ごと再生成しない（注意と理由は [player-name-identity.md](./player-name-identity.md)）。
+- `extract-players.mjs` を**引数なしで流さない**（出場1回の氏名まで採番する。注意と理由は [player-name-identity.md](./player-name-identity.md)）。
 
 ## 関連
 

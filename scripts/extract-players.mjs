@@ -1,7 +1,13 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-// node scripts/extract-players.mjs
+// node scripts/extract-players.mjs <最小出場数>
+//
+// data/players/index.json の count（結果ページ /players/{id}/results/ が実在するのは count>=5）を、
+// 今の大会データで数え直す。既存の行と id は保ち、最小出場数以上の新規氏名だけを末尾に採番する。
+// **引数を渡す**こと（結果ページの閾値と同じ 5）。引数なしは 1 になり、出場1回の氏名まで採番する。
+// prebuild では流れないので、取り込みを重ねると count は古くなる。流したら node scripts/check-name-splits.mjs --strict。
+// 姓名の切り位置を直したときは normalize-name-splits.mjs が該当氏名の count だけ数え直す。
 
 const BASE_DIR = path.join(process.cwd(), 'data', 'tournaments', 'details');
 const OUT_PATH = path.join(process.cwd(), 'data', 'players', 'index.json');
@@ -123,15 +129,18 @@ async function main() {
   }
 
   await fs.mkdir(path.dirname(OUT_PATH), { recursive: true });
-  // write as array with each element on a single line: [{...}, {...}]
+  // write as array with each element on a single line: [{ ... }, { ... }]
+  // 1行の形は、リポジトリにコミットされている index.json（`{ "id": 1, "lastName": "安藤", ... }`）に合わせる。
+  // 詰めた形（`{"id":1,...}`）で書くと、count を数え直すたびに全行が差分になる。
   const lines = [];
   lines.push('[');
   for (let i = 0; i < out.length; i++) {
     const obj = out[i];
-    // compact object: no spaces after commas to mimic requested style but keep a space after colon for readability
-    const compact = JSON.stringify(obj);
+    const body = Object.entries(obj)
+      .map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`)
+      .join(', ');
     const comma = i === out.length - 1 ? '' : ',';
-    lines.push(`  ${compact}${comma}`);
+    lines.push(`  { ${body} }${comma}`);
   }
   lines.push(']');
   await fs.writeFile(OUT_PATH, lines.join('\n') + '\n', 'utf8');
