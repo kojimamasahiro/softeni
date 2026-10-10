@@ -51,8 +51,9 @@ code:
 
 注意:
 
-- **`data/players/index.json` を `extract-players.mjs` で丸ごと再生成しない**。閾値未満の名前まで一気に採番され、
-  対象は取り込みが進むほど増える。`normalize-name-splits.mjs` が該当名の `count` だけ更新するのでそちらを使う。
+- **`extract-players.mjs` を引数なしで流さない**。最小出場数が 1 になり、出場1回の名前まで一気に採番される（対象は取り込みが進むほど増える）。
+  `count` を全体で数え直すなら `node scripts/extract-players.mjs 5`（結果ページの閾値と同じ）。切り位置を直したときに該当名の `count` だけ更新するなら
+  `normalize-name-splits.mjs`。どちらも流したあとに `node scripts/check-name-splits.mjs --strict`。
 - **分割を直したときの index 行は「改名」でよい**（正しい分割の行がまだ無ければ、誤分割の行の姓名を書き換えて
   `count` を数え直す＝id を保てる。既にあるなら重複するので消すか `count: 0` で残す）。
   1行1エントリの整形を崩さないよう**文字列置換**で直す。

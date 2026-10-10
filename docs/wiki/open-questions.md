@@ -61,11 +61,6 @@ summary: "wiki 全体の未解決の問いの唯一の置き場（各ページ�
 - **国際大会（ローマ字表記）の選手同定**: 対応表 `data/tournaments/participant-aliases.json` は
   curated slug との完全一致で拾えた分だけ登録済み（コリアカップ2026は63名中27名）。残りは漢字が判明次第追記する。
 - **同姓同名の人物別 id の払い出し**（当面は融合を許容。[players-pages.md](./players-pages.md)）。実害が出た段階で再検討。
-- **`data/players/index.json` の `count` を数え直すか**（[player.md](./player.md)）。`count` は `extract-players.mjs` を最後に流した時点の値で、
-  prebuild では更新されない。いま現在の大会データで数え直すと、結果ページの対象（`count>=5`）が 1,965 → 4,242 人に増える
-  （既存の1,950人が閾値を越え、新規の327名が加わる。実行は `node scripts/extract-players.mjs 5` を一時コピーで流して実測）。
-  増やす場合は、ビルド時間（[deployment.md](./deployment.md)）・薄いページの noindex 選別（[seo.md](./seo.md)）・
-  `index.json` を丸ごと再生成してはいけない注意（[player-name-identity.md](./player-name-identity.md)）との兼ね合いを決める。**未判断**。
 
 ## 大会データ
 
