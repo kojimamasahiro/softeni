@@ -19,22 +19,34 @@
 //      （2026-09-19 に追加。`tournament-data-structure.md` のような大物が予算の外にいたため）
 //   2. docs 全体のリンク切れ（ファイルと見出しアンカー）
 //   3. AGENTS.md の docs 規約が守られているか（2026-09-19 に追加）
-//      - wiki の各ページ冒頭に「適用範囲」の行があるか
 //      - wiki のページが index.md 以外からも参照されているか（孤立していないか）
 //      - ADR の `## Status` 直下が状態語だけになっているか
 //      - raw のノートに Compile Log があるか（免除の条件は docs/prompts/update-wiki.md）
 //      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
 //      - wiki の frontmatter（type / scope / status / summary と任意の code:）が正しいか（ゲート。ADR-024 の P1）
 //      - raw の Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在するか（ゲート。ADR-024 の P3）
+//      - 報告（ADR-024 の P4）: 本文中の実在しないパス・npm run の不在・draft の昇格漏れ候補、
+//        `--changed-base=<ref>` を付けると『コードを変えたが所有ページを更新していない』（PR 用）
 //      - index.md が frontmatter からの生成物と一致するか（ゲート。ADR-024 の P2。直し方は npm run wiki:index）
-//   文字数と「適用範囲」の行の検査は、frontmatter を除いた本文で行う（メタデータで予算がずれないように）。
+//   文字数の検査は、frontmatter を除いた本文で行う（メタデータで予算がずれないように）。
 //
 // 実行: node scripts/check-wiki-size.mjs [--strict]
 
+import { execFileSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-import { splitFrontmatter, validateFrontmatter, loadWikiPages, buildIndexText, compileLogDestinations } from './lib/wiki-meta.mjs';
+import {
+  splitFrontmatter,
+  validateFrontmatter,
+  loadWikiPages,
+  buildIndexText,
+  compileLogDestinations,
+  deadPathsInBody,
+  npmRunMissing,
+  draftPromotionCandidates,
+  ownersNotUpdated,
+} from './lib/wiki-meta.mjs';
 
 const ROOT = process.cwd();
 const DOCS = path.join(ROOT, 'docs');
@@ -46,7 +58,6 @@ const WIKI_CHAR_BUDGET = 12000;
 const SLIM_THRESHOLD = Math.round(WIKI_CHAR_BUDGET * 1.3);
 // 目安の対象外。未解決の問いを集約するページなので、集約した分だけ育つのは設計どおり。
 const BUDGET_EXEMPT = new Set(['open-questions.md']);
-const SCOPE_PATTERN = /適用範囲[:：]/;
 // 文字数の対象外。docs 直下に置く「進行中の作業表」で、読み物ではなく入力用の作業ファイル。
 // 終わったら消す前提なので圧縮しない（docs/README.md「docs の中身」参照）。
 const WORK_FILES = new Set(['venue-input-worksheet.md']);
@@ -95,7 +106,7 @@ function anchorsOf(file) {
   return anchorCache.get(file);
 }
 
-// 1. 文字数と適用範囲
+// 1. 文字数（wiki は frontmatter の scope も並べる）
 console.log(`# docs の文字数（目安 ${WIKI_CHAR_BUDGET.toLocaleString()} 字/ページ・圧縮は ${SLIM_THRESHOLD.toLocaleString()} 字超から）\n`);
 let overAll = 0;
 let slimAll = 0;
@@ -103,11 +114,11 @@ for (const [group, dir] of SIZE_GROUPS) {
   const rows = listMarkdown(dir)
     .filter((file) => !WORK_FILES.has(path.basename(file)))
     .map((file) => {
-      const text = splitFrontmatter(fs.readFileSync(file, 'utf-8')).body;
+      const { meta, body } = splitFrontmatter(fs.readFileSync(file, 'utf-8'));
       return {
         page: path.basename(file),
-        chars: [...text].length,
-        hasScope: SCOPE_PATTERN.test(text.split('\n').slice(0, 12).join('\n')),
+        chars: [...body].length,
+        scope: meta && meta.scope ? meta.scope : '-',
       };
     });
   if (rows.length === 0) continue;
@@ -127,7 +138,7 @@ for (const [group, dir] of SIZE_GROUPS) {
         : r.chars > WIKI_CHAR_BUDGET
           ? '超過'
           : '    ';
-    const scope = group === 'wiki' ? (r.hasScope ? '適用範囲あり' : '適用範囲なし') : '            ';
+    const scope = group === 'wiki' ? `[${r.scope}]`.padEnd(5, '　') : '';
     console.log(`${flag} ${String(r.chars).padStart(7)}  ${scope}  ${r.page}`);
   }
   console.log('');
@@ -169,12 +180,8 @@ console.log('\n# 規約チェック\n');
 const wikiDir = path.join(DOCS, 'wiki');
 const wikiFiles = listMarkdown(wikiDir);
 
-// 3-1. 適用範囲の行
-const noScope = wikiFiles.filter((f) => {
-  const head = splitFrontmatter(fs.readFileSync(f, 'utf-8')).body.split('\n').slice(0, 12).join('\n');
-  return !SCOPE_PATTERN.test(head);
-});
-console.log(`- 適用範囲の行が無い wiki: ${noScope.length} 件 ${noScope.map((f) => path.basename(f)).join(', ')}`);
+// （3-1 の『適用範囲の行が無い wiki』は ADR-024 の P4 で外した。scope の正は frontmatter で、本文の行は任意。
+//   行があるときの scope との一致は 3-6 の frontmatter 検査が見る。）
 
 // 3-2. index.md 以外から参照されていない wiki（孤立）
 const inbound = new Map(wikiFiles.map((f) => [path.basename(f), new Set()]));
@@ -267,6 +274,49 @@ for (const file of listMarkdown(path.join(DOCS, 'raw'))) {
   }
 }
 console.log(`- Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在しない raw: ${badDest.length} 件 ${badDest.join(', ')}`);
+
+// 3-9. 報告（ゲートにしない。CI のサマリに出す。ADR-024 の P4）。判定の関数は scripts/lib/wiki-meta.mjs。
+//   - 本文中の実在しないパス: 意図的な記述（削除済み・まだ作らない・設計のみ…が前後1行か見出しにある）は除く
+//   - 本文の npm run が package.json に無い
+//   - status: draft なのに code: が全部実在する（current への昇格漏れの候補）
+//   - --changed-base=<ref> のとき: コードを変えたのに、code: で所有するページを同じ変更で更新していないもの（PR 用）
+const pkgScripts = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf-8')).scripts;
+const allPages = loadWikiPages();
+const deadPaths = [];
+const npmMissing = [];
+for (const p of allPages) {
+  for (const d of deadPathsInBody(p.body)) deadPaths.push(`${p.base}:${d.line}（${d.path}）`);
+  for (const n of npmRunMissing(p.body, pkgScripts)) npmMissing.push(`${p.base}（npm run ${n}）`);
+}
+const listUp = (xs, n = 10) => xs.slice(0, n).join(', ') + (xs.length > n ? ` ほか ${xs.length - n} 件` : '');
+console.log(`- 本文中の実在しないパス（意図的な記述を除く）: ${deadPaths.length} 件 ${listUp(deadPaths)}`);
+console.log(`- 本文の npm run が package.json に無い: ${npmMissing.length} 件 ${listUp(npmMissing)}`);
+const promote = draftPromotionCandidates(allPages);
+console.log(`- status: draft なのに code: が全て実在する（current への昇格漏れの候補）: ${promote.length} 件 ${promote.join(', ')}`);
+
+const changedBase = (process.argv.find((a) => a.startsWith('--changed-base=')) || '').slice('--changed-base='.length);
+if (changedBase) {
+  const gitLines = (args) =>
+    execFileSync('git', args, { cwd: ROOT, encoding: 'utf-8', stdio: ['ignore', 'pipe', 'pipe'] })
+      .split('\n')
+      .filter(Boolean);
+  let changed = null;
+  try {
+    // 三点差分（merge-base から）。浅い clone で merge-base が取れないときは二点差分にする
+    // （pull_request の HEAD はベースにマージした結果なので、ベースの先端との二点差分が PR の変更そのもの）。
+    try {
+      changed = gitLines(['diff', '--name-only', `${changedBase}...HEAD`]);
+    } catch {
+      changed = gitLines(['diff', '--name-only', changedBase, 'HEAD']);
+    }
+  } catch {
+    console.log(`- コードを変えたが所有ページを更新していない: 判定できない（git diff ${changedBase} に失敗）`);
+  }
+  if (changed) {
+    const stale = ownersNotUpdated(allPages, changed).map((o) => `${o.page}←${listUp(o.files, 2)}`);
+    console.log(`- コードを変えたが所有ページを更新していない（${changedBase} との差・${changed.length} ファイル）: ${stale.length} 件 ${listUp(stale)}`);
+  }
+}
 
 if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0)) {
   process.exit(1);

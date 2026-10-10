@@ -155,12 +155,28 @@ jobs:
             echo '```'
             npm run -s check:wiki 2>&1 | sed -n '/^# docs の文字数/,/^予算超過は全体で/p' | grep -E '^(##|超過|圧縮|予算超過)' || true
             echo '```'
-            echo '「圧縮」印のページだけ docs/prompts/slim-wiki-page.md の手順で圧縮する（「超過」は報告のみ）。'
+            echo '「圧縮」印のページだけ skill wiki-slim の手順で圧縮する（「超過」は報告のみ）。'
             echo ''
-            echo '### docs 規約（適用範囲・孤立・ADR Status・Compile Log）'
+            echo '### docs 規約（孤立・ADR Status・Compile Log・本文のパスなど）'
             echo '```'
             npm run -s check:wiki 2>&1 | sed -n '/^# 規約チェック/,$p' | grep -E '^- ' || true
             echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # 2026-10-10 追加（ADR-024 の P4）。PR で、コードを変えたのに code: で所有する wiki ページを直していないものを挙げる。
+      # pull_request の HEAD はベースにマージした結果なので、ベースの先端を取れば（浅い clone でも）
+      # 二点差分で PR の変更ファイルが分かる。所有の判定は frontmatter の code:。データ・生成物・docs の変更は数えない。
+      # 更新が要らない変更も多いので報告のみ（直近120コミットの測定で、パスから所有ページを当てられるのは約3分の1）。
+      - name: docs 同期の確認（報告のみ・PR）
+        if: always() && github.event_name == 'pull_request'
+        run: |
+          git fetch --no-tags --depth=1 origin "${GITHUB_BASE_REF}" || true
+          {
+            echo '## docs 同期の確認（コードを変えたが所有ページを更新していないもの）'
+            echo '```'
+            npm run -s check:wiki -- --changed-base=FETCH_HEAD 2>&1 | grep -E '^- コードを変えた' || true
+            echo '```'
+            echo '更新が不要ならそのままでよい。必要なら npm run wiki:for -- <パス> で所有ページを引いて直す。'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: 大会情報の残タスク（報告のみ）

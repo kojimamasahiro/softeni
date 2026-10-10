@@ -79,7 +79,7 @@ export function validateFrontmatter(text, exists = (p) => fs.existsSync(path.joi
       }
     }
   }
-  // 移行の間は本文の「適用範囲」の行も残すので、frontmatter の scope と一致していることを確かめる。
+  // 本文に「適用範囲」の行があるときは、frontmatter の scope と一致していることを確かめる（行は任意。scope の正は frontmatter）。
   const sm = body.split('\n').slice(0, 12).join('\n').match(SCOPE_LINE);
   if (sm && FM_SCOPES.includes(meta.scope) && SCOPE_WORDS[sm[1]] !== meta.scope) {
     schema.push(`scope（${meta.scope}）が本文の適用範囲（${sm[1]}）と食い違う`);
@@ -259,4 +259,79 @@ export function compileLogDestinations(text) {
     if (m) out.push({ line: i + 1, kind: 'adr', name: m[1] });
   });
   return out;
+}
+
+// ---- 報告用の検査（ADR-024 の P4。CI のサマリに出す。ゲートにはしない） ----
+
+// 「削除済み」「まだ作らない」「〜ではなく」のような、存在しないことを承知で書いた記述は見ない。
+const INTENT_WORDS = /削除|Deprecated|まだ作らない|ではなく|未実装|未作成|廃止|撤去|設計のみ|取り下げ|撤回|移動済み/;
+const PATH_IN_CODE = /`((?:src|lib|scripts|tools|data|public|docs|\.github|\.githooks|\.claude)\/[\w.\/[\]-]+)`/g;
+
+/**
+ * 本文中のバッククォートで囲んだパスのうち、実在しないものを返す（意図的な記述を除く）。
+ * 除外: コードブロックの中、INTENT_WORDS が**前後1行以内**にある行、INTENT_WORDS を見出しに持つ節の中、`YYYY` や `*` を含むひな形。
+ * （同じ行だけを見ると、断り書きが隣の行や見出しにある記述を誤検知する。実例: 次の行に「削除済み」、見出しに「設計のみ・未実装」。）
+ * 動的ルート（`[id]`）は `[` より前の実在で見る。単純な存在検査は誤検知が多かった（388件中12件が不在で、うち8件は意図的）ので、報告にとどめる。
+ */
+export function deadPathsInBody(body, exists = (p) => fs.existsSync(path.join(ROOT, p))) {
+  const lines = body.split('\n');
+  const out = [];
+  let inFence = false;
+  let sectionIntent = false;
+  lines.forEach((line, i) => {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      return;
+    }
+    if (inFence) return;
+    if (/^#{1,6}\s/.test(line)) {
+      sectionIntent = INTENT_WORDS.test(line);
+      return;
+    }
+    if (sectionIntent) return;
+    if (INTENT_WORDS.test([lines[i - 1], line, lines[i + 1]].filter((x) => x !== undefined).join('\n'))) return;
+    for (const m of line.matchAll(PATH_IN_CODE)) {
+      const p = m[1].replace(/[.,]+$/, '');
+      if (/YYYY|\*/.test(p)) continue;
+      if (!exists(p.includes('[') ? p.split('[')[0] : p)) out.push({ line: i + 1, path: p });
+    }
+  });
+  return out;
+}
+
+/** 本文の `npm run <名前>` のうち、package.json の scripts に無いもの。 */
+export function npmRunMissing(body, scripts) {
+  const out = new Set();
+  for (const m of body.matchAll(/npm run (?:-s )?([\w:.-]+)/g)) if (!(m[1] in scripts)) out.add(m[1]);
+  return [...out];
+}
+
+/** `status: draft` なのに `code:` が1件以上あり、すべて実在するページ（current への昇格漏れの候補）。 */
+export function draftPromotionCandidates(pages, exists = (p) => fs.existsSync(path.join(ROOT, p))) {
+  return pages
+    .filter((p) => p.meta && p.meta.status === 'draft' && Array.isArray(p.meta.code) && p.meta.code.length > 0 && p.meta.code.every(exists))
+    .map((p) => p.base);
+}
+
+// データ・生成物・docs の変更は『仕様を直す契機』ではない（データの追加のたびに所有ページが挙がるのを避ける）。
+const NOT_CODE_PREFIXES = ['docs/', 'data/', 'public/'];
+
+/**
+ * 変えたファイルのうち、`code:` で所有するページ（一致・配下）が、同じ変更で更新されていないもの。
+ * changedFiles はリポジトリ基準の相対パス（`git diff --name-only` の出力）。『本文で言及』と『含む』は所有ではないので数えない。
+ */
+export function ownersNotUpdated(pages, changedFiles, root = ROOT) {
+  const updated = new Set(changedFiles.filter((f) => f.startsWith('docs/wiki/')).map((f) => path.basename(f)));
+  const owners = pages.map((p) => ({ ...p, body: undefined })); // body を外すと『本文で言及』は出ない
+  const byPage = new Map();
+  for (const f of changedFiles) {
+    if (NOT_CODE_PREFIXES.some((x) => f.startsWith(x))) continue;
+    for (const m of matchPages(owners, f, root)) {
+      if (m.kind !== 'exact' && m.kind !== 'inside') continue;
+      if (updated.has(m.base)) continue;
+      if (!byPage.has(m.base)) byPage.set(m.base, []);
+      byPage.get(m.base).push(f);
+    }
+  }
+  return [...byPage.entries()].map(([page, files]) => ({ page, files })).sort((a, b) => b.files.length - a.files.length || a.page.localeCompare(b.page));
 }
