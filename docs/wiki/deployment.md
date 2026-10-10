@@ -57,7 +57,7 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
 | 置けるもの | ゲートのみ（失敗＝デプロイ停止） | **ゲートと報告を分ける**。報告はデプロイに影響しない |
 
 - **ゲート**と**報告のみ**の一覧は `.github/workflows/checks.yml` が正（各ステップに追加日と理由のコメントがある）。
-  docs はリンク切れ・SQL 台帳・wiki の frontmatter と `code:`・`index.md` の鮮度・Compile Log の行き先と、skill リンクの同期がゲート。
+  docs はリンク切れ・SQL 台帳・wiki の frontmatter と `code:`・`index.md` の鮮度・Compile Log の行き先・raw の `kind` の値と、skill リンクの同期がゲート。
   docs の文字数・規約（孤立・本文のパスなど）・PR の docs 同期（コードを変えたが所有ページが未更新）・識別の要対応・大会情報の残タスクは報告のみ。
 - 報告側に置いた検出器は、解消したらゲートへ昇格させる（`verify-bracket-layout` / `check-team-id-alignment` はこの経路で昇格済み）。
 - `permissions: contents: read`。**リポジトリへ書き戻す仕事は `review-snapshot.yml` に分ける**（ゲートに push 権限を持たせない）。

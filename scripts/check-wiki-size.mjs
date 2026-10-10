@@ -9,7 +9,7 @@
 //
 // CI（.github/workflows/checks.yml）では2つの役割に分けて使う:
 //   - ゲート   … `--strict`。リンク切れか、APPLIED.md に行の無い SQL があるか、wiki の frontmatter が
-//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違うか、Compile Log の行き先が実在しなければ終了コード1
+//                不正（必須項目・値・本文の適用範囲との食い違い・code: の実在）か、index.md が生成物と違うか、Compile Log の行き先が実在しない・raw の kind が語彙の外なら終了コード1
 //                （誰が見ても直すべきなので止めてよい）
 //   - 報告のみ … 引数なし。文字数の超過を一覧にする（仕様が増えればページは育つので、止めない）
 //
@@ -25,6 +25,7 @@
 //      - docs/sql/*.sql がすべて docs/sql/APPLIED.md の台帳に載っているか（2026-09-30 に追加・ゲート）
 //      - wiki の frontmatter（type / scope / status / summary と任意の code:）が正しいか（ゲート。ADR-024 の P1）
 //      - raw の Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在するか（ゲート。ADR-024 の P3）
+//      - raw の kind（ADR-024 の P5）: 値が語彙の外ならゲート、新規ノートに kind が無ければ報告
 //      - 報告（ADR-024 の P4）: 本文中の実在しないパス・npm run の不在・draft の昇格漏れ候補、
 //        `--changed-base=<ref>` を付けると『コードを変えたが所有ページを更新していない』（PR 用）
 //      - index.md が frontmatter からの生成物と一致するか（ゲート。ADR-024 の P2。直し方は npm run wiki:index）
@@ -46,6 +47,8 @@ import {
   npmRunMissing,
   draftPromotionCandidates,
   ownersNotUpdated,
+  rawKindOf,
+  compileLogExempt,
 } from './lib/wiki-meta.mjs';
 
 const ROOT = process.cwd();
@@ -213,16 +216,18 @@ for (const f of listMarkdown(path.join(DOCS, 'adr'))) {
 }
 console.log(`- Status が状態語だけになっていない ADR: ${badStatus.length} 件 ${badStatus.join(', ')}`);
 
-// 3-4. raw の Compile Log（免除の条件は docs/prompts/update-wiki.md）
+// 3-4. raw の Compile Log（免除は kind か、kind の無い旧ノートのファイル名。判定は scripts/lib/wiki-meta.mjs の compileLogExempt）
 const COMPILE_LOG_SINCE = '2026-09-19'; // 規約を機械チェックにした日。これ以降に作ったノートだけを見る
-const EXEMPT = /(wiki-archive|-review|-checklist|-todo)\b/;
 const missingLog = listMarkdown(path.join(DOCS, 'raw'))
-  .map((f) => path.basename(f))
-  .filter((b) => {
-    const m = b.match(/^(\d{4}-\d{2}-\d{2})-/);
-    return m && m[1] >= COMPILE_LOG_SINCE && !EXEMPT.test(b);
+  .filter((f) => {
+    const m = path.basename(f).match(/^(\d{4}-\d{2}-\d{2})-/);
+    return m && m[1] >= COMPILE_LOG_SINCE;
   })
-  .filter((b) => !/Compile Log/.test(fs.readFileSync(path.join(DOCS, 'raw', b), 'utf-8')));
+  .filter((f) => {
+    const text = fs.readFileSync(f, 'utf-8');
+    return !compileLogExempt(path.basename(f), text) && !/Compile Log/.test(text);
+  })
+  .map((f) => path.basename(f));
 console.log(`- Compile Log が無い raw（${COMPILE_LOG_SINCE} 以降・免除を除く）: ${missingLog.length} 件 ${missingLog.join(', ')}`);
 
 // 3-5. docs/sql/*.sql がすべて APPLIED.md の台帳に載っているか（2026-09-30 に追加）
@@ -275,6 +280,22 @@ for (const file of listMarkdown(path.join(DOCS, 'raw'))) {
 }
 console.log(`- Compile Log の行き先（wiki:<ページ> / ADR-<番号>）が実在しない raw: ${badDest.length} 件 ${badDest.join(', ')}`);
 
+// 3-8b. raw の kind（ADR-024 の P5）。新規ノート（RAW_KIND_SINCE 以降）は先頭の frontmatter に kind を書く。
+//   - kind の値が語彙の外（綴りの誤り）: ゲート。Compile Log の免除が静かに効かなくなるのを止める
+//   - 新規ノートに kind が無い: 報告のみ。既存のノートは追記のみの原則に従い触らない（遡及しない）
+const RAW_KIND_SINCE = '2026-10-10';
+const badKind = [];
+const noKind = [];
+for (const file of listMarkdown(path.join(DOCS, 'raw'))) {
+  const base = path.basename(file);
+  const r = rawKindOf(fs.readFileSync(file, 'utf-8'));
+  if (r.error) badKind.push(`${base}（${r.error}）`);
+  const m = base.match(/^(\d{4}-\d{2}-\d{2})-/);
+  if (m && m[1] >= RAW_KIND_SINCE && !r.kind && !r.error) noKind.push(base);
+}
+console.log(`- kind が語彙の外の raw: ${badKind.length} 件 ${badKind.join(', ')}`);
+console.log(`- kind が無い新規の raw（${RAW_KIND_SINCE} 以降）: ${noKind.length} 件 ${noKind.join(', ')}`);
+
 // 3-9. 報告（ゲートにしない。CI のサマリに出す。ADR-024 の P4）。判定の関数は scripts/lib/wiki-meta.mjs。
 //   - 本文中の実在しないパス: 意図的な記述（削除済み・まだ作らない・設計のみ…が前後1行か見出しにある）は除く
 //   - 本文の npm run が package.json に無い
@@ -318,6 +339,6 @@ if (changedBase) {
   }
 }
 
-if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0)) {
+if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0 || badKind.length > 0)) {
   process.exit(1);
 }
