@@ -339,6 +339,9 @@ if (changedBase) {
   }
 }
 
-if (strict && (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0 || badKind.length > 0)) {
+if (
+  strict &&
+  (broken.length > 0 || unlisted.length > 0 || fmBad.length > 0 || fmCodeMissing.length > 0 || indexStale || badDest.length > 0 || badKind.length > 0)
+) {
   process.exit(1);
 }
