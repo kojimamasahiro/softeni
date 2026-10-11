@@ -1,4 +1,6 @@
 // next.config.mjs
+import path from 'node:path';
+
 /** @type {import('next').NextConfig} */
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -18,6 +20,13 @@ const nextConfig = {
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false };
+    // 本番は out/_next/data を消す（scripts/drop-next-data.mjs）ので、next/link を素の <a> に差し替える
+    if (isProduction) {
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'next/link$': path.join(process.cwd(), 'src/components/StaticLink.tsx'),
+      };
+    }
     return config;
   },
   reactStrictMode: true,
