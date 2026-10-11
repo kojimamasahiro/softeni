@@ -9,6 +9,8 @@ code:
   - ".github/workflows/"
   - ".githooks/"
   - "scripts/playerStats/cache-sync.mjs"
+  - "scripts/drop-next-data.mjs"
+  - "src/components/StaticLink.tsx"
 ---
 # Deployment
 
@@ -37,7 +39,7 @@ Next.js の静的 export を Cloudflare Pages で配る。CF は push 契機で�
   2. **playerStats キャッシュの復元**: `playerStats/cache-sync.mjs restore`（生成の後で `save`）
   3. **生成**: players / playerStats facts / 分析 / beta-matches / 逆引き索引 / rare-events / rankings →
      `secondaryschool:build` → `primaryschool:build` → `university:pathways`
-- `postbuild`: `next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs`
+- `postbuild`: `next-sitemap` → `sort-sitemaps.mjs` → `filter-noindex-from-sitemap.mjs` → `drop-next-data.mjs`（`out/_next/data` を消す。下の「出力のファイル数に上限がある」）
 - `wrangler.adinsight.toml` / `npm run build:adinsight` は別アプリのサイト `adinsight-site/` 用（別 Pages プロジェクト `adinsight`、出力 `out`）。本体のビルドとは無関係（[android.md](./android.md)、docs/ui/decisions.md D-027）。
 
 #### sitemap の出力先（2026-08-05 修正）
@@ -93,9 +95,17 @@ fs.readFileSync(path.join(process.cwd(), 'data', 'secondaryschool', file), 'utf-
 - ページ生成には約470ms/ページの床がある（SSR ＋フレームワーク）。1秒を切るルートはデータ取得を削っても頭打ち。
   `/players/[id]/results` はこの理由で最適化対象外と判断済み。
 - **出力のファイル数に上限がある**。Cloudflare Pages の無料プランは1サイト 20,000 ファイル（有料プランは `PAGES_WRANGLER_MAJOR_VERSION=4` を設定すれば 100,000）。
-  ビルドは 20 分で打ち切られる。`out/` は 17,983 ファイル・8,433 ページ（`/players/[id]/results` が 4,242 枚＝8,484 ファイル。1枚あたり HTML と
-  `_next/data` の JSON の2つ）。**結果ページを約 1,000 枚増やすと無料プランの上限に当たる**。`data/players/index.json` の `count` を数え直す前（[player.md](./player.md)）と
-  ページ数を増やす変更の前に、`find out -type f | wc -l` で測る。
+  ビルドは 20 分で打ち切られる。数は `find out -type f | wc -l` で測る（`drop-next-data.mjs` も最後に出す）。ページ数を増やす変更の前と、
+  `data/players/index.json` の `count` を数え直す前（[player.md](./player.md)）に測る。
+  - **`out/_next/data` は出力しない**。getStaticProps の JSON（クライアント遷移用。1ページに1つ）が出力の約半分を占めるため、
+    postbuild の `scripts/drop-next-data.mjs` が消す。これで 8,433 ページが約 9,600 ファイルになる（消さないと約 18,000）。
+  - 代わりに本番では **`next/link` を素の `<a>` に差し替える**（`next.config.mjs` の webpack alias → `src/components/StaticLink.tsx`）。
+    差し替えないと、画面内のリンクごとに prefetch が 404 になり、クリック時も 404 を受けてから全体を再読み込みする。
+    サイト内の遷移は**毎回ページ全体の読み込み**になる。HTML・SEO・OGP は変わらない。開発（`next dev`）は元の `next/link` のまま。
+  - `router.push` / `router.replace` で**別ページ**へ動かすと、JSON が無いので Next.js は全体の再読み込みに切り替える（壊れはしない）。
+    同じページで URL だけ変えるときは `shallow: true` を付ける（JSON を取りに行かない）。
+  - 判断: 有料プラン（月 $5）より先に、無料のまま出力を減らす方を選んだ（2026-10-11）。
+- ローカルで `npm run build` するときは `next dev` を止める。Assumption: 同じ `.next/` を使うため、`next build` が開始直後で固まる（止めたら通った）。
 
 ## ビルドキャッシュ（generate-facts の増分）
 
@@ -133,5 +143,6 @@ Assumption（2026-07-19 の検討・未実装）。アーカイブは SSG のま
 ## 経緯
 
 - 圧縮前の全文（ビルド時間の内訳表・出力ファイル数の推移・nft の実測）: [raw/2026-09-23-wiki-archive-deployment.md](../raw/2026-09-23-wiki-archive-deployment.md)
+- ファイル数上限への対応（案の比較・出力の内訳・確認の手順）: [raw/2026-10-11-cloudflare-file-limit.md](../raw/2026-10-11-cloudflare-file-limit.md)
 - [raw/2025-11-30-cloudflare-migration-analysis.md](../raw/2025-11-30-cloudflare-migration-analysis.md) / [raw/2026-07-19-cloudflare-build-time.md](../raw/2026-07-19-cloudflare-build-time.md) /
   [raw/2026-08-28-build-time-nft-glob.md](../raw/2026-08-28-build-time-nft-glob.md) / [raw/2026-09-06-idea-autonomous-improvement-agent.md](../raw/2026-09-06-idea-autonomous-improvement-agent.md)
